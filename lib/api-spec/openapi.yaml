@@ -1,22 +1,130 @@
 openapi: 3.1.0
 info:
-  # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: WWW Studio API
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
     description: Health operations
+  - name: Auth
+    description: Browser and mobile authentication endpoints.
+  - name: gallery
+    description: Template gallery
+  - name: projects
+    description: User projects
+  - name: clone
+    description: Cloning engine
+  - name: editor
+    description: Visual editor operations
+  - name: chat
+    description: AI chat
+  - name: user
+    description: User profile
+
 paths:
+  /auth/user:
+    get:
+      tags: [Auth]
+      operationId: getCurrentAuthUser
+      summary: Get the currently authenticated user
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          schema:
+            type: string
+        - name: sid
+          in: cookie
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Auth status resolved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthUserEnvelope"
+  /login:
+    get:
+      tags: [Auth]
+      operationId: beginBrowserLogin
+      summary: Start the browser OIDC login flow
+      parameters:
+        - name: returnTo
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        "302":
+          description: Redirect to the OIDC authorization endpoint.
+  /callback:
+    get:
+      tags: [Auth]
+      operationId: handleBrowserLoginCallback
+      summary: Complete the browser OIDC login flow
+      parameters:
+        - name: code
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: state
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        "302":
+          description: Redirect to returnTo on success.
+  /logout:
+    get:
+      tags: [Auth]
+      operationId: logoutBrowserSession
+      summary: Clear session and begin OIDC logout
+      responses:
+        "302":
+          description: Redirect to OIDC provider logout URL.
+  /mobile-auth/token-exchange:
+    post:
+      tags: [Auth]
+      operationId: exchangeMobileAuthorizationCode
+      summary: Exchange a mobile OIDC code for a session token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MobileTokenExchangeRequest"
+      responses:
+        "200":
+          description: Session created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MobileTokenExchangeSuccess"
+  /mobile-auth/logout:
+    post:
+      tags: [Auth]
+      operationId: logoutMobileSession
+      summary: Delete a mobile session token
+      responses:
+        "200":
+          description: Logout processed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LogoutSuccess"
+
   /healthz:
     get:
       operationId: healthCheck
       tags: [health]
       summary: Health check
-      description: Returns server health status
       responses:
         "200":
           description: Healthy
@@ -24,6 +132,301 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+
+  /gallery:
+    get:
+      operationId: getGalleryTemplates
+      tags: [gallery]
+      summary: Get gallery templates
+      parameters:
+        - name: style
+          in: query
+          schema:
+            type: string
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: sort
+          in: query
+          schema:
+            type: string
+            enum: [trending, newest, popular]
+      responses:
+        "200":
+          description: List of templates
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GalleryTemplate"
+
+  /gallery/{id}:
+    get:
+      operationId: getGalleryTemplate
+      tags: [gallery]
+      summary: Get a single gallery template
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Template
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GalleryTemplate"
+        "404":
+          description: Not found
+
+  /gallery/stats:
+    get:
+      operationId: getGalleryStats
+      tags: [gallery]
+      summary: Gallery stats (counts by style, total templates)
+      responses:
+        "200":
+          description: Gallery stats
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GalleryStats"
+
+  /projects:
+    get:
+      operationId: getProjects
+      tags: [projects]
+      summary: Get user's projects
+      responses:
+        "200":
+          description: List of projects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Project"
+    post:
+      operationId: createProject
+      tags: [projects]
+      summary: Create a new project
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProjectInput"
+      responses:
+        "201":
+          description: Created project
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Project"
+
+  /projects/{id}:
+    get:
+      operationId: getProject
+      tags: [projects]
+      summary: Get a project by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Project
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Project"
+        "404":
+          description: Not found
+    patch:
+      operationId: updateProject
+      tags: [projects]
+      summary: Update a project
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProjectUpdate"
+      responses:
+        "200":
+          description: Updated project
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Project"
+    delete:
+      operationId: deleteProject
+      tags: [projects]
+      summary: Delete a project
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Deleted
+
+  /projects/recent:
+    get:
+      operationId: getRecentProjects
+      tags: [projects]
+      summary: Get recently edited projects (wow endpoint)
+      responses:
+        "200":
+          description: Recent projects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Project"
+
+  /clone:
+    post:
+      operationId: cloneFromUrl
+      tags: [clone]
+      summary: Clone a website from a URL into editable React + Tailwind code
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CloneInput"
+      responses:
+        "200":
+          description: Clone result with generated component tree
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CloneResult"
+
+  /variants:
+    post:
+      operationId: generateVariants
+      tags: [editor]
+      summary: Generate style variants for a component or section
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/VariantsInput"
+      responses:
+        "200":
+          description: Generated variants
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VariantsResult"
+
+  /theme:
+    post:
+      operationId: applyTheme
+      tags: [editor]
+      summary: Apply a named or prompt-based theme to a project
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ThemeInput"
+      responses:
+        "200":
+          description: Updated theme tokens
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ThemeResult"
+
+  /themes:
+    get:
+      operationId: getThemes
+      tags: [editor]
+      summary: List all available preset themes
+      responses:
+        "200":
+          description: Theme list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Theme"
+
+  /chat:
+    post:
+      operationId: sendChatMessage
+      tags: [chat]
+      summary: Send a chat message to the AI assistant with project context
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChatMessageInput"
+      responses:
+        "200":
+          description: AI response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChatResponse"
+
+  /chat/{projectId}/history:
+    get:
+      operationId: getChatHistory
+      tags: [chat]
+      summary: Get chat history for a project
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Chat messages
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ChatMessage"
+
+  /user/me:
+    get:
+      operationId: getMe
+      tags: [user]
+      summary: Get current authenticated user profile
+      responses:
+        "200":
+          description: User profile
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfile"
+        "401":
+          description: Unauthorized
+
 components:
   schemas:
     HealthStatus:
@@ -34,3 +437,309 @@ components:
       required:
         - status
 
+    AuthUser:
+      type: object
+      required: [id, email, firstName, lastName, profileImageUrl]
+      properties:
+        id:
+          type: string
+        email:
+          type: ["string", "null"]
+        firstName:
+          type: ["string", "null"]
+        lastName:
+          type: ["string", "null"]
+        profileImageUrl:
+          type: ["string", "null"]
+
+    AuthUserEnvelope:
+      type: object
+      required: [user]
+      properties:
+        user:
+          oneOf:
+            - $ref: "#/components/schemas/AuthUser"
+            - type: "null"
+
+    MobileTokenExchangeRequest:
+      type: object
+      required: [code, code_verifier, redirect_uri, state]
+      properties:
+        code:
+          type: string
+        code_verifier:
+          type: string
+        redirect_uri:
+          type: string
+        state:
+          type: string
+        nonce:
+          type: string
+
+    MobileTokenExchangeSuccess:
+      type: object
+      required: [token]
+      properties:
+        token:
+          type: string
+
+    LogoutSuccess:
+      type: object
+      required: [success]
+      properties:
+        success:
+          type: boolean
+
+    ErrorEnvelope:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: string
+
+    GalleryTemplate:
+      type: object
+      required: [id, title, thumbnailUrl, style, creator, likes, tags, sourceUrl]
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        thumbnailUrl:
+          type: string
+        style:
+          type: string
+        creator:
+          type: string
+        likes:
+          type: integer
+        tags:
+          type: array
+          items:
+            type: string
+        sourceUrl:
+          type: string
+        description:
+          type: ["string", "null"]
+        isFeatured:
+          type: boolean
+
+    GalleryStats:
+      type: object
+      required: [total, byStyle, featured]
+      properties:
+        total:
+          type: integer
+        byStyle:
+          type: object
+          additionalProperties:
+            type: integer
+        featured:
+          type: integer
+
+    Project:
+      type: object
+      required: [id, name, slug, status, createdAt, updatedAt]
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        slug:
+          type: string
+        status:
+          type: string
+          enum: [draft, published]
+        thumbnailUrl:
+          type: ["string", "null"]
+        sourceUrl:
+          type: ["string", "null"]
+        componentTree:
+          type: ["string", "null"]
+        themeTokens:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+
+    ProjectInput:
+      type: object
+      required: [name]
+      properties:
+        name:
+          type: string
+        sourceUrl:
+          type: string
+        templateId:
+          type: string
+
+    ProjectUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        thumbnailUrl:
+          type: string
+        componentTree:
+          type: string
+        themeTokens:
+          type: string
+        status:
+          type: string
+          enum: [draft, published]
+
+    CloneInput:
+      type: object
+      required: [url]
+      properties:
+        url:
+          type: string
+        projectId:
+          type: ["string", "null"]
+
+    CloneResult:
+      type: object
+      required: [projectId, componentTree, thumbnailUrl, title]
+      properties:
+        projectId:
+          type: string
+        componentTree:
+          type: string
+        thumbnailUrl:
+          type: string
+        title:
+          type: string
+        detectedStyle:
+          type: string
+        colors:
+          type: array
+          items:
+            type: string
+
+    VariantsInput:
+      type: object
+      required: [componentCode, count]
+      properties:
+        componentCode:
+          type: string
+        count:
+          type: integer
+        projectId:
+          type: ["string", "null"]
+        style:
+          type: ["string", "null"]
+
+    VariantsResult:
+      type: object
+      required: [variants]
+      properties:
+        variants:
+          type: array
+          items:
+            $ref: "#/components/schemas/Variant"
+
+    Variant:
+      type: object
+      required: [id, label, code, description]
+      properties:
+        id:
+          type: string
+        label:
+          type: string
+        code:
+          type: string
+        description:
+          type: string
+
+    ThemeInput:
+      type: object
+      required: [projectId]
+      properties:
+        projectId:
+          type: string
+        themePreset:
+          type: ["string", "null"]
+        themePrompt:
+          type: ["string", "null"]
+
+    ThemeResult:
+      type: object
+      required: [themeTokens, presetName]
+      properties:
+        themeTokens:
+          type: string
+        presetName:
+          type: string
+        cssVariables:
+          type: object
+          additionalProperties:
+            type: string
+
+    Theme:
+      type: object
+      required: [id, name, description, preview]
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        preview:
+          type: string
+
+    ChatMessageInput:
+      type: object
+      required: [message]
+      properties:
+        message:
+          type: string
+        projectId:
+          type: ["string", "null"]
+        context:
+          type: ["string", "null"]
+
+    ChatResponse:
+      type: object
+      required: [reply, messageId]
+      properties:
+        reply:
+          type: string
+        messageId:
+          type: string
+        codeChanges:
+          type: ["string", "null"]
+        suggestions:
+          type: array
+          items:
+            type: string
+
+    ChatMessage:
+      type: object
+      required: [id, role, content, createdAt]
+      properties:
+        id:
+          type: string
+        role:
+          type: string
+          enum: [user, assistant]
+        content:
+          type: string
+        createdAt:
+          type: string
+
+    UserProfile:
+      type: object
+      required: [id, username]
+      properties:
+        id:
+          type: string
+        username:
+          type: string
+        displayName:
+          type: ["string", "null"]
+        avatarUrl:
+          type: ["string", "null"]
+        projectCount:
+          type: integer

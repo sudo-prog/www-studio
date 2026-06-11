@@ -1,0 +1,3 @@
+- [Express 5 req.params typing](express5-params.md) — req.params values are typed as `string | string[]` in Express 5; always cast with String() before passing to drizzle eq().
+- [replit-auth-web lib pattern](replit-auth-web.md) — exports from source (./src/index.ts), not compiled dist; do not add as tsconfig project reference in consumers.
+- [Gallery seeding via executeSql](gallery-seed.md) — $defaultFn UUIDs only apply through Drizzle ORM, not raw SQL; must include id in INSERT when seeding via executeSql.
