@@ -27,6 +27,7 @@ import type {
   ChatResponse,
   CloneInput,
   CloneResult,
+  CreateSnapshotInput,
   GalleryStats,
   GalleryTemplate,
   GenerateImageInput,
@@ -43,8 +44,10 @@ import type {
   ProjectInput,
   ProjectUpdate,
   PublishResult,
+  RestoreResult,
   ScreenshotToCodeInput,
   ScreenshotToCodeResult,
+  Snapshot,
   Theme,
   ThemeInput,
   ThemeResult,
@@ -2160,6 +2163,227 @@ export const usePublishProject = <TError = ErrorType<void>,
         TContext
       > => {
       return useMutation(getPublishProjectMutationOptions(options));
+    }
+
+export const getListSnapshotsUrl = (id: string,) => {
+
+
+
+
+  return `/api/projects/${id}/snapshots`
+}
+
+/**
+ * @summary List save-state snapshots for a project
+ */
+export const listSnapshots = async (id: string, options?: RequestInit): Promise<Snapshot[]> => {
+
+  return customFetch<Snapshot[]>(getListSnapshotsUrl(id),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getListSnapshotsQueryKey = (id: string,) => {
+    return [
+    `/api/projects/${id}/snapshots`
+    ] as const;
+    }
+
+
+export const getListSnapshotsQueryOptions = <TData = Awaited<ReturnType<typeof listSnapshots>>, TError = ErrorType<unknown>>(id: string, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listSnapshots>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getListSnapshotsQueryKey(id);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof listSnapshots>>> = ({ signal }) => listSnapshots(id, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, enabled: !!(id), ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof listSnapshots>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type ListSnapshotsQueryResult = NonNullable<Awaited<ReturnType<typeof listSnapshots>>>
+export type ListSnapshotsQueryError = ErrorType<unknown>
+
+
+/**
+ * @summary List save-state snapshots for a project
+ */
+
+export function useListSnapshots<TData = Awaited<ReturnType<typeof listSnapshots>>, TError = ErrorType<unknown>>(
+ id: string, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listSnapshots>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getListSnapshotsQueryOptions(id,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+
+
+
+
+
+
+export const getCreateSnapshotUrl = (id: string,) => {
+
+
+
+
+  return `/api/projects/${id}/snapshots`
+}
+
+/**
+ * @summary Create a snapshot (manual or auto-save)
+ */
+export const createSnapshot = async (id: string,
+    createSnapshotInput: CreateSnapshotInput, options?: RequestInit): Promise<Snapshot> => {
+
+  return customFetch<Snapshot>(getCreateSnapshotUrl(id),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      createSnapshotInput,)
+  }
+);}
+
+
+
+
+export const getCreateSnapshotMutationOptions = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createSnapshot>>, TError,{id: string;data: BodyType<CreateSnapshotInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof createSnapshot>>, TError,{id: string;data: BodyType<CreateSnapshotInput>}, TContext> => {
+
+const mutationKey = ['createSnapshot'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof createSnapshot>>, {id: string;data: BodyType<CreateSnapshotInput>}> = (props) => {
+          const {id,data} = props ?? {};
+
+          return  createSnapshot(id,data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type CreateSnapshotMutationResult = NonNullable<Awaited<ReturnType<typeof createSnapshot>>>
+    export type CreateSnapshotMutationBody = BodyType<CreateSnapshotInput>
+    export type CreateSnapshotMutationError = ErrorType<void>
+
+    /**
+ * @summary Create a snapshot (manual or auto-save)
+ */
+export const useCreateSnapshot = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createSnapshot>>, TError,{id: string;data: BodyType<CreateSnapshotInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof createSnapshot>>,
+        TError,
+        {id: string;data: BodyType<CreateSnapshotInput>},
+        TContext
+      > => {
+      return useMutation(getCreateSnapshotMutationOptions(options));
+    }
+
+export const getRestoreSnapshotUrl = (id: string,
+    snapshotId: string,) => {
+
+
+
+
+  return `/api/projects/${id}/snapshots/${snapshotId}/restore`
+}
+
+/**
+ * @summary Restore a project to a snapshot
+ */
+export const restoreSnapshot = async (id: string,
+    snapshotId: string, options?: RequestInit): Promise<RestoreResult> => {
+
+  return customFetch<RestoreResult>(getRestoreSnapshotUrl(id,snapshotId),
+  {
+    ...options,
+    method: 'POST'
+
+
+  }
+);}
+
+
+
+
+export const getRestoreSnapshotMutationOptions = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof restoreSnapshot>>, TError,{id: string;snapshotId: string}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof restoreSnapshot>>, TError,{id: string;snapshotId: string}, TContext> => {
+
+const mutationKey = ['restoreSnapshot'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof restoreSnapshot>>, {id: string;snapshotId: string}> = (props) => {
+          const {id,snapshotId} = props ?? {};
+
+          return  restoreSnapshot(id,snapshotId,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type RestoreSnapshotMutationResult = NonNullable<Awaited<ReturnType<typeof restoreSnapshot>>>
+
+    export type RestoreSnapshotMutationError = ErrorType<void>
+
+    /**
+ * @summary Restore a project to a snapshot
+ */
+export const useRestoreSnapshot = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof restoreSnapshot>>, TError,{id: string;snapshotId: string}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof restoreSnapshot>>,
+        TError,
+        {id: string;snapshotId: string},
+        TContext
+      > => {
+      return useMutation(getRestoreSnapshotMutationOptions(options));
     }
 
 export const getGetMeUrl = () => {

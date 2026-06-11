@@ -4,3 +4,4 @@
 - [OpenAI key pattern](openai-key-pattern.md) — OPENAI_API_KEY optional; all AI routes fall back to heuristics/Unsplash when absent.
 - [API codegen flow](api-codegen-flow.md) — edit openapi.yaml → pnpm --filter @workspace/api-spec run codegen; checks tsc:libs; run after every new endpoint.
 - [Body size limit](body-size-limit.md) — Express JSON/urlencoded limit set to 20mb for base64 image payloads (screenshot-to-code).
+- [Offline sync pattern](offline-sync.md) — navigator.onLine + window online/offline events + localStorage queue; flush on reconnect; hook lives in use-offline-sync.ts.

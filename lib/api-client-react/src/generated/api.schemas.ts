@@ -203,6 +203,30 @@ export interface ChatMessage {
   createdAt: string;
 }
 
+export interface Snapshot {
+  id: string;
+  projectId: string;
+  userId: string;
+  label: string;
+  /** @nullable */
+  componentTree?: string | null;
+  /** @nullable */
+  themeTokens?: string | null;
+  createdAt: string;
+}
+
+export interface CreateSnapshotInput {
+  label?: string;
+  /** @nullable */
+  componentTree?: string | null;
+  /** @nullable */
+  themeTokens?: string | null;
+}
+
+export interface RestoreResult {
+  success: boolean;
+}
+
 export interface GenerateInput {
   prompt: string;
 }

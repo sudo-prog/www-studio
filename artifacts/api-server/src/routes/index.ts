@@ -11,6 +11,7 @@ import generateRouter from "./generate";
 import screenshotToCodeRouter from "./screenshot-to-code";
 import exportRouter from "./export";
 import publishRouter from "./publish";
+import snapshotsRouter from "./snapshots";
 
 const router: IRouter = Router();
 
@@ -26,5 +27,6 @@ router.use(generateRouter);
 router.use(screenshotToCodeRouter);
 router.use(exportRouter);
 router.use(publishRouter);
+router.use(snapshotsRouter);
 
 export default router;

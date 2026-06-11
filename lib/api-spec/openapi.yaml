@@ -532,6 +532,82 @@ paths:
         "404":
           description: Not found
 
+  /projects/{id}/snapshots:
+    get:
+      operationId: listSnapshots
+      tags: [projects]
+      summary: List save-state snapshots for a project
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: List of snapshots
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Snapshot"
+    post:
+      operationId: createSnapshot
+      tags: [projects]
+      summary: Create a snapshot (manual or auto-save)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateSnapshotInput"
+      responses:
+        "201":
+          description: Created snapshot
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Snapshot"
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not found
+
+  /projects/{id}/snapshots/{snapshotId}/restore:
+    post:
+      operationId: restoreSnapshot
+      tags: [projects]
+      summary: Restore a project to a snapshot
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: snapshotId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Restore result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestoreResult"
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not found
+
   /user/me:
     get:
       operationId: getMe
@@ -848,6 +924,42 @@ components:
           type: string
         createdAt:
           type: string
+
+    Snapshot:
+      type: object
+      required: [id, projectId, userId, label, createdAt]
+      properties:
+        id:
+          type: string
+        projectId:
+          type: string
+        userId:
+          type: string
+        label:
+          type: string
+        componentTree:
+          type: ["string", "null"]
+        themeTokens:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+
+    CreateSnapshotInput:
+      type: object
+      properties:
+        label:
+          type: string
+        componentTree:
+          type: ["string", "null"]
+        themeTokens:
+          type: ["string", "null"]
+
+    RestoreResult:
+      type: object
+      required: [success]
+      properties:
+        success:
+          type: boolean
 
     GenerateInput:
       type: object

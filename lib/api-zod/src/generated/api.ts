@@ -412,6 +412,52 @@ export const PublishProjectResponse = zod.object({
 
 
 /**
+ * @summary List save-state snapshots for a project
+ */
+export const ListSnapshotsParams = zod.object({
+  "id": zod.coerce.string()
+})
+
+export const ListSnapshotsResponseItem = zod.object({
+  "id": zod.string(),
+  "projectId": zod.string(),
+  "userId": zod.string(),
+  "label": zod.string(),
+  "componentTree": zod.string().nullish(),
+  "themeTokens": zod.string().nullish(),
+  "createdAt": zod.string()
+})
+export const ListSnapshotsResponse = zod.array(ListSnapshotsResponseItem)
+
+
+/**
+ * @summary Create a snapshot (manual or auto-save)
+ */
+export const CreateSnapshotParams = zod.object({
+  "id": zod.coerce.string()
+})
+
+export const CreateSnapshotBody = zod.object({
+  "label": zod.string().optional(),
+  "componentTree": zod.string().nullish(),
+  "themeTokens": zod.string().nullish()
+})
+
+
+/**
+ * @summary Restore a project to a snapshot
+ */
+export const RestoreSnapshotParams = zod.object({
+  "id": zod.coerce.string(),
+  "snapshotId": zod.coerce.string()
+})
+
+export const RestoreSnapshotResponse = zod.object({
+  "success": zod.boolean()
+})
+
+
+/**
  * @summary Get current authenticated user profile
  */
 export const GetMeResponse = zod.object({
