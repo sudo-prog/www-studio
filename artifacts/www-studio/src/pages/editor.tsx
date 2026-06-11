@@ -20,6 +20,7 @@ import {
   RotateCcw, Cloud, CloudOff, Ruler, Search, Tag, FileText,
   Zap, Settings2, LayoutPanelLeft, Code2, Columns2, Eye,
   Pencil, CheckCheck, Upload, Trash2, Paintbrush, FolderOpen,
+  MousePointer2, SquareDashedMousePointer,
 } from "lucide-react";
 import { Link } from "wouter";
 import {
@@ -34,10 +35,14 @@ import { SortableLayers, type Layer } from "@/components/editor/SortableLayers";
 import { parseHtmlLayers, reorderHtml } from "@/components/editor/layer-utils";
 import { ThemeCustomizer } from "@/components/editor/ThemeCustomizer";
 import { useProjectAssets } from "@/hooks/use-project-assets";
+import { ElementInspector, type ElementInfo } from "@/components/editor/ElementInspector";
+import { PageManager, type Page } from "@/components/editor/PageManager";
 
 type DeviceMode = "desktop" | "tablet" | "mobile";
 type ViewMode = "preview" | "split" | "code";
-type RightPanel = "theme" | "images" | "animations" | "seo" | "content" | "history";
+type RightPanel = "properties" | "theme" | "images" | "animations" | "seo" | "content" | "history";
+
+const DEFAULT_PAGE_HTML = `<section class="min-h-screen bg-background flex items-center justify-center p-8"><div class="text-center space-y-4"><h1 class="text-4xl font-bold text-foreground">New Page</h1><p class="text-muted-foreground text-lg">Start building this page with AI or select an element to edit.</p></div></section>`;
 
 const DEVICE_WIDTHS: Record<DeviceMode, string> = {
   desktop: "100%",
@@ -655,6 +660,97 @@ const EDIT_MODE_REMOVE = `
 })();
 `;
 
+// ─────────── SELECTION MODE SCRIPT ───────────
+const SELECTION_INJECT = `
+(function() {
+  if (window.__wwwSelectActive) return;
+  window.__wwwSelectActive = true;
+  var style = document.createElement('style');
+  style.id = 'www-select-style';
+  style.textContent = '* { cursor: pointer !important; user-select: none !important; } [data-ws] { outline: 2.5px solid #3b82f6 !important; outline-offset: 2px !important; box-shadow: 0 0 0 5px rgba(59,130,246,0.12) !important; } body *:not([data-ws]):hover { outline: 1.5px dashed rgba(59,130,246,0.4) !important; outline-offset: 1px !important; }';
+  document.head.appendChild(style);
+  var sel = null;
+  function rgb2hex(v) {
+    if (!v) return '';
+    var m = v.match(/rgba?\\((\\d+),\\s*(\\d+),\\s*(\\d+)/);
+    if (!m) return v;
+    return '#'+[m[1],m[2],m[3]].map(function(x){return(+x).toString(16).padStart(2,'0');}).join('');
+  }
+  document.addEventListener('click', function(e) {
+    e.preventDefault(); e.stopPropagation();
+    var el = e.target;
+    if (el===document.body||el===document.documentElement) return;
+    if (sel) sel.removeAttribute('data-ws');
+    sel = el;
+    el.setAttribute('data-ws','1');
+    var c = window.getComputedStyle(el);
+    var s = el.style;
+    window.parent.postMessage({
+      type: 'www-studio:selected',
+      info: {
+        tagName: el.tagName.toLowerCase(),
+        id: el.id||'',
+        className: typeof el.className==='string'?el.className:'',
+        text: el.childElementCount===0?(el.textContent||'').trim().slice(0,60):'',
+        styles: {
+          width:s.width||'',height:s.height||'',maxWidth:s.maxWidth||'',minWidth:s.minWidth||'',
+          paddingTop:s.paddingTop||c.paddingTop,paddingRight:s.paddingRight||c.paddingRight,
+          paddingBottom:s.paddingBottom||c.paddingBottom,paddingLeft:s.paddingLeft||c.paddingLeft,
+          marginTop:s.marginTop||c.marginTop,marginRight:s.marginRight||c.marginRight,
+          marginBottom:s.marginBottom||c.marginBottom,marginLeft:s.marginLeft||c.marginLeft,
+          fontSize:s.fontSize||c.fontSize,fontWeight:s.fontWeight||c.fontWeight,
+          fontFamily:s.fontFamily||c.fontFamily,color:rgb2hex(s.color||c.color),
+          textAlign:s.textAlign||c.textAlign,lineHeight:s.lineHeight||c.lineHeight,
+          letterSpacing:s.letterSpacing||c.letterSpacing,
+          textDecoration:s.textDecoration||c.textDecoration,
+          textTransform:s.textTransform||c.textTransform,
+          fontStyle:s.fontStyle||c.fontStyle,
+          backgroundColor:rgb2hex(s.backgroundColor||c.backgroundColor),
+          borderRadius:s.borderRadius||c.borderRadius,
+          borderWidth:s.borderWidth||c.borderWidth,borderStyle:s.borderStyle||c.borderStyle,
+          borderColor:rgb2hex(s.borderColor||c.borderColor),
+          display:s.display||c.display,flexDirection:s.flexDirection||c.flexDirection,
+          justifyContent:s.justifyContent||c.justifyContent,alignItems:s.alignItems||c.alignItems,
+          flexWrap:s.flexWrap||c.flexWrap,gap:s.gap||c.gap,
+          gridTemplateColumns:s.gridTemplateColumns||c.gridTemplateColumns,
+          opacity:s.opacity||c.opacity,
+          boxShadow:s.boxShadow||(c.boxShadow!=='none'?c.boxShadow:''),
+          position:s.position||c.position,overflow:s.overflow||c.overflow,
+          href:el.tagName==='A'?(el.getAttribute('href')||''):'',
+          target:el.tagName==='A'?(el.getAttribute('target')||''):'',
+        }
+      }
+    }, '*');
+  }, true);
+  window.addEventListener('message', function(e) {
+    var d = e.data;
+    if (!d||!d.type) return;
+    if (d.type==='www-studio:style'&&sel) { sel.style[d.prop]=d.val; }
+    if (d.type==='www-studio:link'&&sel) {
+      var el=sel;
+      if (el.tagName!=='A') {
+        var a=document.createElement('a');
+        el.parentNode.insertBefore(a,el);a.appendChild(el);
+        el.removeAttribute('data-ws');a.setAttribute('data-ws','1');sel=a;
+      }
+      sel.href=d.href||'#';
+      if(d.target)sel.target=d.target;else sel.removeAttribute('target');
+    }
+    if (d.type==='www-studio:removelink'&&sel&&sel.tagName==='A') {
+      var p=sel.parentNode;
+      while(sel.firstChild)p.insertBefore(sel.firstChild,sel);
+      p.removeChild(sel);sel=null;
+    }
+    if (d.type==='www-studio:deselect'){if(sel){sel.removeAttribute('data-ws');sel=null;}}
+    if (d.type==='www-studio:select-off'){
+      document.getElementById('www-select-style')?.remove();
+      if(sel){sel.removeAttribute('data-ws');sel=null;}
+      window.__wwwSelectActive=false;
+    }
+  });
+})();
+`;
+
 // ─────────── MAIN EDITOR ───────────
 export default function Editor() {
   const { projectId } = useParams();
@@ -674,6 +770,14 @@ export default function Editor() {
   // Inline edit mode
   const [editMode, setEditMode] = useState(false);
   const [editModeDirty, setEditModeDirty] = useState(false);
+
+  // Element selection + inspector
+  const [selectionMode, setSelectionMode] = useState(false);
+  const [selectedElement, setSelectedElement] = useState<ElementInfo | null>(null);
+  const [canvasDirty, setCanvasDirty] = useState(false);
+
+  // Multi-page
+  const [currentPageId, setCurrentPageId] = useState("home");
 
   // Code / split view
   const [localCode, setLocalCode] = useState<string>("");
@@ -727,6 +831,18 @@ export default function Editor() {
     }, 30_000);
     return () => { if (autoSaveTimerRef.current) clearInterval(autoSaveTimerRef.current); };
   }, [project, saveSnapshot]);
+
+  // postMessage listener: element selection from iframe
+  useEffect(() => {
+    const handler = (e: MessageEvent) => {
+      if (e.data?.type === "www-studio:selected") {
+        setSelectedElement(e.data.info as ElementInfo);
+        setRightPanel("properties");
+      }
+    };
+    window.addEventListener("message", handler);
+    return () => window.removeEventListener("message", handler);
+  }, []);
 
   // Pixel overlay injection
   useEffect(() => {
@@ -860,6 +976,145 @@ export default function Editor() {
     });
   };
 
+  // ── Selection mode ─────────────────────────────────────────────────
+  const toggleSelectionMode = useCallback(() => {
+    const iframe = iframeRef.current;
+    if (!iframe?.contentDocument) {
+      toast({ title: "Preview must be loaded first", variant: "destructive" });
+      return;
+    }
+    if (selectionMode) {
+      iframe.contentWindow?.postMessage({ type: "www-studio:select-off" }, "*");
+      setSelectionMode(false);
+      setSelectedElement(null);
+      setCanvasDirty(false);
+    } else {
+      // Turn off edit mode if active
+      if (editMode) {
+        try {
+          const doc = iframe.contentDocument;
+          const s = doc.createElement("script");
+          s.textContent = EDIT_MODE_REMOVE;
+          doc.body?.appendChild(s); s.remove();
+        } catch { /* cross-origin */ }
+        setEditMode(false); setEditModeDirty(false);
+      }
+      try {
+        const doc = iframe.contentDocument;
+        const script = doc.createElement("script");
+        script.textContent = SELECTION_INJECT;
+        doc.body?.appendChild(script); script.remove();
+        setSelectionMode(true);
+      } catch {
+        toast({ title: "Could not enable selection mode", variant: "destructive" });
+      }
+    }
+  }, [selectionMode, editMode, toast]);
+
+  const applyElementStyle = useCallback((property: string, value: string) => {
+    iframeRef.current?.contentWindow?.postMessage({ type: "www-studio:style", prop: property, val: value }, "*");
+    setSelectedElement((prev) => prev ? { ...prev, styles: { ...prev.styles, [property]: value } } : null);
+    setCanvasDirty(true);
+  }, []);
+
+  const applyElementLink = useCallback((href: string, target: string) => {
+    iframeRef.current?.contentWindow?.postMessage({ type: "www-studio:link", href, target }, "*");
+    setSelectedElement((prev) => prev ? { ...prev, styles: { ...prev.styles, href, target } } : null);
+    setCanvasDirty(true);
+  }, []);
+
+  const removeElementLink = useCallback(() => {
+    iframeRef.current?.contentWindow?.postMessage({ type: "www-studio:removelink" }, "*");
+    setSelectedElement((prev) => prev ? { ...prev, styles: { ...prev.styles, href: "", target: "" } } : null);
+    setCanvasDirty(true);
+  }, []);
+
+  const saveCanvasChanges = useCallback(() => {
+    const iframe = iframeRef.current;
+    if (!iframe?.contentDocument || !projectId) return;
+    try {
+      const body = iframe.contentDocument.body;
+      body.querySelector("#www-select-style")?.remove();
+      body.querySelectorAll("[data-ws]").forEach((el) => el.removeAttribute("data-ws"));
+      const newHtml = body.innerHTML;
+
+      if (currentPageId === "home") {
+        updateProject.mutate({ id: projectId, data: { componentTree: newHtml } }, {
+          onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: getGetProjectQueryKey(projectId!) });
+            toast({ title: "Changes saved!" });
+            setCanvasDirty(false);
+          },
+          onError: () => toast({ title: "Failed to save", variant: "destructive" }),
+        });
+      } else {
+        // Save to themeTokens.pageHtml[currentPageId]
+        let tokens: Record<string, unknown> = {};
+        try { tokens = JSON.parse(project?.themeTokens ?? "{}"); } catch { /* */ }
+        const newTokens = JSON.stringify({ ...tokens, pageHtml: { ...(tokens.pageHtml as Record<string, string> ?? {}), [currentPageId]: newHtml } });
+        updateProject.mutate({ id: projectId, data: { themeTokens: newTokens } }, {
+          onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: getGetProjectQueryKey(projectId!) });
+            toast({ title: "Changes saved!" });
+            setCanvasDirty(false);
+          },
+          onError: () => toast({ title: "Failed to save", variant: "destructive" }),
+        });
+      }
+    } catch {
+      toast({ title: "Could not read iframe content", variant: "destructive" });
+    }
+  }, [projectId, currentPageId, project?.themeTokens, updateProject, queryClient, toast]);
+
+  // ── Page management ───────────────────────────────────────────────
+  const handleAddPage = useCallback(() => {
+    if (!projectId) return;
+    let tokens: Record<string, unknown> = {};
+    try { tokens = JSON.parse(project?.themeTokens ?? "{}"); } catch { /* */ }
+    const existingPages = (tokens.pages as Page[] ?? []);
+    const newId = `page-${Date.now()}`;
+    const newPage: Page = { id: newId, name: `Page ${existingPages.length + 2}`, slug: `/page-${existingPages.length + 2}` };
+    const newTokens = JSON.stringify({
+      ...tokens,
+      pages: [...existingPages, newPage],
+      pageHtml: { ...(tokens.pageHtml as Record<string, string> ?? {}), [newId]: DEFAULT_PAGE_HTML },
+    });
+    updateProject.mutate({ id: projectId, data: { themeTokens: newTokens } }, {
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: getGetProjectQueryKey(projectId!) });
+        setCurrentPageId(newId);
+        toast({ title: `"${newPage.name}" added` });
+      },
+    });
+  }, [projectId, project?.themeTokens, updateProject, queryClient, toast]);
+
+  const handleDeletePage = useCallback((pageId: string) => {
+    if (!projectId || pageId === "home") return;
+    let tokens: Record<string, unknown> = {};
+    try { tokens = JSON.parse(project?.themeTokens ?? "{}"); } catch { /* */ }
+    const existingPages = (tokens.pages as Page[] ?? []).filter((p) => p.id !== pageId);
+    const pageHtml = { ...(tokens.pageHtml as Record<string, string> ?? {}) };
+    delete pageHtml[pageId];
+    const newTokens = JSON.stringify({ ...tokens, pages: existingPages, pageHtml });
+    updateProject.mutate({ id: projectId, data: { themeTokens: newTokens } }, {
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: getGetProjectQueryKey(projectId!) });
+        if (currentPageId === pageId) setCurrentPageId("home");
+        toast({ title: "Page deleted" });
+      },
+    });
+  }, [projectId, project?.themeTokens, currentPageId, updateProject, queryClient, toast]);
+
+  const handleRenamePage = useCallback((pageId: string, name: string) => {
+    if (!projectId || pageId === "home") return;
+    let tokens: Record<string, unknown> = {};
+    try { tokens = JSON.parse(project?.themeTokens ?? "{}"); } catch { /* */ }
+    const pages = (tokens.pages as Page[] ?? []).map((p) => p.id === pageId ? { ...p, name } : p);
+    updateProject.mutate({ id: projectId, data: { themeTokens: JSON.stringify({ ...tokens, pages }) } }, {
+      onSuccess: () => queryClient.invalidateQueries({ queryKey: getGetProjectQueryKey(projectId!) }),
+    });
+  }, [projectId, project?.themeTokens, updateProject, queryClient]);
+
   // Layers reorder
   const handleLayerReorder = useCallback((newLayers: Layer[]) => {
     if (!projectId || !project?.componentTree) return;
@@ -886,11 +1141,29 @@ export default function Editor() {
     });
   };
 
+  // ── Derived: pages + current page HTML (hooks must be before early return) ──
+  const pages: Page[] = useMemo(() => {
+    const home: Page[] = [{ id: "home", name: "Home", slug: "/", isHome: true }];
+    try {
+      const tokens = JSON.parse(project?.themeTokens ?? "{}");
+      return [...home, ...(tokens.pages ?? [])];
+    } catch { return home; }
+  }, [project?.themeTokens]);
+
+  const currentPageHtml = useMemo(() => {
+    if (currentPageId === "home") return null;
+    try {
+      const tokens = JSON.parse(project?.themeTokens ?? "{}");
+      return (tokens.pageHtml as Record<string, string>)?.[currentPageId] ?? DEFAULT_PAGE_HTML;
+    } catch { return DEFAULT_PAGE_HTML; }
+  }, [currentPageId, project?.themeTokens]);
+
   if (isProjectLoading || !project) {
     return <div className="min-h-screen bg-background flex items-center justify-center"><Loader2 className="w-6 h-6 animate-spin text-muted-foreground" /></div>;
   }
 
   const RIGHT_TABS: { id: RightPanel; icon: React.ReactNode; label: string; title: string }[] = [
+    { id: "properties", icon: <MousePointer2 className="w-3.5 h-3.5" />, label: "Select", title: "Element Inspector" },
     { id: "theme", icon: <Paintbrush className="w-3.5 h-3.5" />, label: "Theme", title: "Theme Customizer" },
     { id: "images", icon: <Image className="w-3.5 h-3.5" />, label: "Media", title: "Images & Assets" },
     { id: "animations", icon: <Zap className="w-3.5 h-3.5" />, label: "Anim", title: "Animation Presets" },
@@ -905,8 +1178,9 @@ export default function Editor() {
     { id: "code", icon: <Code2 className="w-3.5 h-3.5" />, title: "Code View" },
   ];
 
-  // The iframe in srcdoc mode (code/split view uses live-edited code)
-  const usesSrcdoc = viewMode !== "preview" && localCode.length > 0;
+  // The iframe in srcdoc mode (code/split view or non-home page)
+  const usesSrcdoc = (viewMode !== "preview" && localCode.length > 0) || currentPageId !== "home";
+  const iframeSrcDoc = currentPageId !== "home" ? (currentPageHtml ?? DEFAULT_PAGE_HTML) : localCode;
 
   return (
     <div className="h-screen w-screen flex flex-col bg-background text-foreground overflow-hidden">
@@ -960,6 +1234,31 @@ export default function Editor() {
 
         {/* Right: actions */}
         <div className="flex items-center gap-1 shrink-0">
+          {/* Selection mode toggle */}
+          <Button
+            variant={selectionMode ? "secondary" : "ghost"}
+            size="sm"
+            className={cn("h-8 gap-1.5 text-xs", selectionMode ? "text-violet-400 border border-violet-400/30" : "text-muted-foreground")}
+            title="Click to select elements and edit properties"
+            onClick={toggleSelectionMode}
+          >
+            <MousePointer2 className="w-3.5 h-3.5" />
+            <span className="hidden lg:inline">{selectionMode ? "Selecting" : "Select"}</span>
+          </Button>
+
+          {/* Save canvas changes (selection mode) */}
+          {selectionMode && canvasDirty && (
+            <Button
+              size="sm"
+              className="h-8 gap-1.5 text-xs bg-violet-600 hover:bg-violet-700"
+              onClick={saveCanvasChanges}
+              disabled={updateProject.isPending}
+            >
+              {updateProject.isPending ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <CheckCheck className="w-3.5 h-3.5" />}
+              Save
+            </Button>
+          )}
+
           {/* Edit mode toggle */}
           <Button
             variant={editMode ? "secondary" : "ghost"}
@@ -1036,9 +1335,21 @@ export default function Editor() {
       {/* Main Layout */}
       <div className="flex-1 flex overflow-hidden">
 
-        {/* Left Sidebar — Layers (drag-to-reorder) */}
+        {/* Left Sidebar — Pages + Layers */}
         <aside className="w-52 border-r border-border/50 bg-card/30 flex flex-col shrink-0">
-          <div className="h-9 border-b border-border/50 flex items-center justify-between px-3 shrink-0">
+          <PageManager
+            pages={pages}
+            currentPageId={currentPageId}
+            onSelect={(id) => {
+              setCurrentPageId(id);
+              setSelectedElement(null);
+              setCanvasDirty(false);
+            }}
+            onAdd={handleAddPage}
+            onDelete={handleDeletePage}
+            onRename={handleRenamePage}
+          />
+          <div className="h-8 border-b border-border/50 flex items-center justify-between px-3 shrink-0">
             <span className="font-medium text-xs text-muted-foreground uppercase tracking-wider">Layers</span>
             <span className="text-[10px] text-muted-foreground/50">drag to reorder</span>
           </div>
@@ -1097,10 +1408,11 @@ export default function Editor() {
                   >
                     {usesSrcdoc ? (
                       <iframe
+                        key={`srcdoc-${currentPageId}`}
                         ref={iframeRef}
-                        srcDoc={localCode}
+                        srcDoc={iframeSrcDoc}
                         className="w-full h-full border-0"
-                        title="Project Preview (code)"
+                        title="Project Preview"
                         sandbox="allow-scripts allow-same-origin"
                       />
                     ) : (
@@ -1157,6 +1469,31 @@ export default function Editor() {
             ))}
           </div>
 
+          {rightPanel === "properties" && (
+            selectedElement ? (
+              <ElementInspector
+                element={selectedElement}
+                pages={pages}
+                onStyleChange={applyElementStyle}
+                onLinkChange={applyElementLink}
+                onRemoveLink={removeElementLink}
+              />
+            ) : (
+              <div className="flex-1 flex flex-col items-center justify-center gap-3 p-6 text-center">
+                <div className="w-12 h-12 rounded-full bg-muted/50 flex items-center justify-center">
+                  <MousePointer2 className="w-5 h-5 text-muted-foreground" />
+                </div>
+                <div className="space-y-1">
+                  <p className="text-sm font-medium text-foreground">Select an element</p>
+                  <p className="text-xs text-muted-foreground">Click <span className="font-mono text-violet-400">Select</span> in the toolbar, then click any element on the canvas to edit its properties.</p>
+                </div>
+                <Button variant="outline" size="sm" className="gap-1.5 mt-2 text-xs" onClick={toggleSelectionMode}>
+                  <MousePointer2 className="w-3.5 h-3.5" />
+                  {selectionMode ? "Selection active" : "Enable selection"}
+                </Button>
+              </div>
+            )
+          )}
           {rightPanel === "theme" && (
             <ThemeCustomizer
               projectId={project.id}

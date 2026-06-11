@@ -5,3 +5,7 @@
 - [API codegen flow](api-codegen-flow.md) — edit openapi.yaml → pnpm --filter @workspace/api-spec run codegen; checks tsc:libs; run after every new endpoint.
 - [Body size limit](body-size-limit.md) — Express JSON/urlencoded limit set to 20mb for base64 image payloads (screenshot-to-code).
 - [Offline sync pattern](offline-sync.md) — navigator.onLine + window online/offline events + localStorage queue; flush on reconnect; hook lives in use-offline-sync.ts.
+- [Lucide-react icon names](lucide-icons.md) — LinkOff does not exist; use Link2Off. Always verify icon names against installed version before using.
+- [Editor postMessage protocol](editor-postmessage.md) — iframe↔parent messaging for selection mode: www-studio:selected, www-studio:style, www-studio:link, www-studio:removelink, www-studio:select-off.
+- [Multi-page storage](multipage-storage.md) — extra pages stored in themeTokens.pages[] + themeTokens.pageHtml[pageId]; no DB schema changes needed.
+- [React hooks before early return](react-hooks-order.md) — useMemo/useState/useEffect must all be called before any conditional early return in a component.
