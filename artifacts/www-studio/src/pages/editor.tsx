@@ -18,18 +18,26 @@ import {
   ArrowLeft, Download, Globe, Copy, Check, X, Loader2, Image,
   Sparkles, ExternalLink, ChevronRight, Save, History, Clock,
   RotateCcw, Cloud, CloudOff, Ruler, Search, Tag, FileText,
-  Zap, Settings2, LayoutPanelLeft,
+  Zap, Settings2, LayoutPanelLeft, Code2, Columns2, Eye,
+  Pencil, CheckCheck, Upload, Trash2, Paintbrush, FolderOpen,
 } from "lucide-react";
 import { Link } from "wouter";
-import { useState, useRef, useEffect, useCallback, useMemo } from "react";
+import {
+  useState, useRef, useEffect, useCallback, useMemo, useTransition,
+} from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useQueryClient } from "@tanstack/react-query";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { useOfflineSync } from "@/hooks/use-offline-sync";
+import { SortableLayers, type Layer } from "@/components/editor/SortableLayers";
+import { parseHtmlLayers, reorderHtml } from "@/components/editor/layer-utils";
+import { ThemeCustomizer } from "@/components/editor/ThemeCustomizer";
+import { useProjectAssets } from "@/hooks/use-project-assets";
 
 type DeviceMode = "desktop" | "tablet" | "mobile";
-type RightPanel = "properties" | "images" | "animations" | "seo" | "content" | "history";
+type ViewMode = "preview" | "split" | "code";
+type RightPanel = "theme" | "images" | "animations" | "seo" | "content" | "history";
 
 const DEVICE_WIDTHS: Record<DeviceMode, string> = {
   desktop: "100%",
@@ -48,6 +56,131 @@ function timeAgo(dateStr: string) {
   return "just now";
 }
 
+// ─────────── ASSETS PANEL ───────────
+function AssetsPanel({ projectId }: { projectId: string }) {
+  const { assets, addAsset, removeAsset } = useProjectAssets(projectId);
+  const [isDragging, setIsDragging] = useState(false);
+  const [copied, setCopied] = useState<string | null>(null);
+  const [uploading, setUploading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const { toast } = useToast();
+
+  const handleFiles = async (files: FileList | null) => {
+    if (!files?.length) return;
+    setUploading(true);
+    try {
+      for (const file of Array.from(files)) {
+        if (!file.type.startsWith("image/") && !file.type.startsWith("video/") && !file.type.startsWith("font/")) {
+          toast({ title: `Skipping "${file.name}" — only images, video, and fonts are supported`, variant: "destructive" });
+          continue;
+        }
+        await addAsset(file);
+      }
+      toast({ title: `${files.length} asset${files.length > 1 ? "s" : ""} uploaded` });
+    } catch {
+      toast({ title: "Upload failed", variant: "destructive" });
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const copyUrl = (url: string) => {
+    navigator.clipboard.writeText(url);
+    setCopied(url);
+    setTimeout(() => setCopied(null), 2000);
+    toast({ title: "Asset URL copied!" });
+  };
+
+  const formatSize = (bytes: number) => {
+    if (bytes < 1024) return `${bytes}B`;
+    if (bytes < 1048576) return `${(bytes / 1024).toFixed(1)}KB`;
+    return `${(bytes / 1048576).toFixed(1)}MB`;
+  };
+
+  return (
+    <div className="flex flex-col h-full">
+      {/* Drop zone */}
+      <div
+        className={cn(
+          "m-3 rounded-xl border-2 border-dashed flex flex-col items-center justify-center gap-2 py-5 cursor-pointer transition-colors",
+          isDragging ? "border-primary bg-primary/5" : "border-border/50 hover:border-primary/50 hover:bg-muted/30"
+        )}
+        onClick={() => fileInputRef.current?.click()}
+        onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
+        onDragLeave={() => setIsDragging(false)}
+        onDrop={(e) => { e.preventDefault(); setIsDragging(false); handleFiles(e.dataTransfer.files); }}
+      >
+        {uploading ? (
+          <Loader2 className="w-6 h-6 text-primary animate-spin" />
+        ) : (
+          <Upload className="w-6 h-6 text-muted-foreground" />
+        )}
+        <div className="text-center">
+          <p className="text-xs font-medium">{uploading ? "Uploading…" : "Drop files here"}</p>
+          <p className="text-[10px] text-muted-foreground">or click to browse</p>
+        </div>
+        <input
+          ref={fileInputRef}
+          type="file"
+          multiple
+          accept="image/*,video/*,.woff,.woff2,.ttf,.otf"
+          className="hidden"
+          onChange={(e) => handleFiles(e.target.files)}
+        />
+      </div>
+
+      {/* Asset grid */}
+      <ScrollArea className="flex-1">
+        {assets.length === 0 ? (
+          <div className="text-center py-8 px-4 text-muted-foreground">
+            <FolderOpen className="w-8 h-8 mx-auto mb-2 opacity-30" />
+            <p className="text-xs">No assets yet. Upload images or fonts to use in your design.</p>
+          </div>
+        ) : (
+          <div className="p-2 grid grid-cols-2 gap-2">
+            {assets.map((asset) => (
+              <div key={asset.id} className="group relative rounded-lg overflow-hidden border border-border/40 bg-muted/30 aspect-square">
+                {asset.type.startsWith("image/") ? (
+                  <img src={asset.url} alt={asset.name} className="w-full h-full object-cover" />
+                ) : (
+                  <div className="w-full h-full flex flex-col items-center justify-center gap-1 p-2">
+                    <FileText className="w-6 h-6 text-muted-foreground" />
+                    <span className="text-[10px] text-muted-foreground text-center break-all line-clamp-2">{asset.name}</span>
+                  </div>
+                )}
+                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-1.5 p-1">
+                  <p className="text-[9px] text-white/70 text-center truncate w-full px-1">{asset.name}</p>
+                  <p className="text-[9px] text-white/50">{formatSize(asset.size)}</p>
+                  <div className="flex gap-1">
+                    <Button
+                      size="icon"
+                      variant="secondary"
+                      className="h-6 w-6"
+                      onClick={() => copyUrl(asset.url)}
+                      title="Copy URL"
+                    >
+                      {copied === asset.url ? <Check className="w-3 h-3 text-green-400" /> : <Copy className="w-3 h-3" />}
+                    </Button>
+                    <Button
+                      size="icon"
+                      variant="secondary"
+                      className="h-6 w-6"
+                      onClick={() => removeAsset(asset.id)}
+                      title="Delete"
+                    >
+                      <Trash2 className="w-3 h-3 text-red-400" />
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </ScrollArea>
+    </div>
+  );
+}
+
 // ─────────── STOCK IMAGE BROWSER ───────────
 const STOCK_CATEGORIES = ["Abstract", "Architecture", "Nature", "People", "Technology", "Food", "Travel", "Dark"];
 const PICSUM_SEEDS: Record<string, number[]> = {
@@ -63,19 +196,14 @@ const PICSUM_SEEDS: Record<string, number[]> = {
 
 function StockImagesPanel() {
   const [category, setCategory] = useState("Abstract");
-  const [search, setSearch] = useState("");
   const [copied, setCopied] = useState<string | null>(null);
   const { toast } = useToast();
-
   const seeds = PICSUM_SEEDS[category] ?? PICSUM_SEEDS.Abstract;
-  const images = useMemo(
-    () => seeds.map((seed) => ({
-      url: `https://picsum.photos/seed/${seed}/400/300`,
-      thumb: `https://picsum.photos/seed/${seed}/200/150`,
-      id: String(seed),
-    })),
-    [seeds]
-  );
+  const images = useMemo(() => seeds.map((seed) => ({
+    url: `https://picsum.photos/seed/${seed}/400/300`,
+    thumb: `https://picsum.photos/seed/${seed}/200/150`,
+    id: String(seed),
+  })), [seeds]);
 
   const copy = (url: string) => {
     navigator.clipboard.writeText(url);
@@ -86,18 +214,10 @@ function StockImagesPanel() {
 
   return (
     <div className="flex flex-col h-full">
-      {/* Category tabs */}
       <div className="p-2 border-b border-border/50">
         <div className="flex flex-wrap gap-1">
           {STOCK_CATEGORIES.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setCategory(cat)}
-              className={cn(
-                "text-[10px] px-2 py-1 rounded-md font-medium transition-colors",
-                category === cat ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground hover:bg-muted"
-              )}
-            >
+            <button key={cat} onClick={() => setCategory(cat)} className={cn("text-[10px] px-2 py-1 rounded-md font-medium transition-colors", category === cat ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground hover:bg-muted")}>
               {cat}
             </button>
           ))}
@@ -107,21 +227,13 @@ function StockImagesPanel() {
         <div className="grid grid-cols-2 gap-2 p-2">
           {images.map((img) => (
             <div key={img.id} className="group relative rounded-lg overflow-hidden border border-border/40 aspect-video bg-muted">
-              <img
-                src={img.thumb}
-                alt=""
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
+              <img src={img.thumb} alt="" className="w-full h-full object-cover" loading="lazy" />
               <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1.5">
                 <Button size="sm" variant="secondary" className="h-6 text-[10px] px-2 gap-1" onClick={() => copy(img.url)}>
-                  {copied === img.url ? <Check className="w-2.5 h-2.5 text-green-500" /> : <Copy className="w-2.5 h-2.5" />}
-                  Copy URL
+                  {copied === img.url ? <Check className="w-2.5 h-2.5 text-green-500" /> : <Copy className="w-2.5 h-2.5" />}Copy URL
                 </Button>
                 <Button size="sm" variant="secondary" className="h-6 w-6 p-0" asChild>
-                  <a href={img.url} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="w-2.5 h-2.5" />
-                  </a>
+                  <a href={img.url} target="_blank" rel="noopener noreferrer"><ExternalLink className="w-2.5 h-2.5" /></a>
                 </Button>
               </div>
             </div>
@@ -133,8 +245,8 @@ function StockImagesPanel() {
 }
 
 // ─────────── AI IMAGES PANEL ───────────
-function AIImagesPanel() {
-  const [activeTab, setActiveTab] = useState<"generate" | "stock">("generate");
+function AIImagesPanel({ projectId }: { projectId: string }) {
+  const [activeTab, setActiveTab] = useState<"generate" | "stock" | "assets">("generate");
   const [imgPrompt, setImgPrompt] = useState("");
   const generateImage = useGenerateImage();
   const [images, setImages] = useState<Array<{ url: string; prompt: string }>>([]);
@@ -152,24 +264,23 @@ function AIImagesPanel() {
     });
   };
 
+  const TABS = [
+    { id: "generate" as const, label: "AI Generate" },
+    { id: "stock" as const, label: "Stock" },
+    { id: "assets" as const, label: "Assets" },
+  ];
+
   return (
     <div className="flex flex-col h-full">
       <div className="flex border-b border-border/50 shrink-0">
-        {[{ id: "generate" as const, label: "AI Generate" }, { id: "stock" as const, label: "Stock Photos" }].map((t) => (
-          <button
-            key={t.id}
-            onClick={() => setActiveTab(t.id)}
-            className={cn(
-              "flex-1 h-8 text-xs font-medium transition-colors border-b-2",
-              activeTab === t.id ? "border-primary text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"
-            )}
-          >
+        {TABS.map((t) => (
+          <button key={t.id} onClick={() => setActiveTab(t.id)} className={cn("flex-1 h-8 text-xs font-medium transition-colors border-b-2", activeTab === t.id ? "border-primary text-foreground" : "border-transparent text-muted-foreground hover:text-foreground")}>
             {t.label}
           </button>
         ))}
       </div>
 
-      {activeTab === "generate" ? (
+      {activeTab === "generate" && (
         <div className="flex flex-col h-full">
           <form onSubmit={handleGenerate} className="p-3 border-b border-border/50 space-y-2">
             <Textarea value={imgPrompt} onChange={(e) => setImgPrompt(e.target.value)} placeholder="Describe an image to generate..." className="text-xs resize-none min-h-[60px]" />
@@ -198,9 +309,9 @@ function AIImagesPanel() {
             )}
           </ScrollArea>
         </div>
-      ) : (
-        <StockImagesPanel />
       )}
+      {activeTab === "stock" && <StockImagesPanel />}
+      {activeTab === "assets" && <AssetsPanel projectId={projectId} />}
     </div>
   );
 }
@@ -225,7 +336,6 @@ function AnimationsPanel() {
   const [copied, setCopied] = useState<string | null>(null);
   const [activeTag, setActiveTag] = useState<string>("all");
   const { toast } = useToast();
-
   const tags = ["all", ...Array.from(new Set(ANIMATION_PRESETS.map((a) => a.tag)))];
 
   const copy = (preset: typeof ANIMATION_PRESETS[number]) => {
@@ -244,14 +354,7 @@ function AnimationsPanel() {
     <div className="flex flex-col h-full">
       <div className="p-2 border-b border-border/50 flex gap-1 flex-wrap">
         {tags.map((tag) => (
-          <button
-            key={tag}
-            onClick={() => setActiveTag(tag)}
-            className={cn(
-              "text-[10px] px-2 py-1 rounded-md capitalize font-medium transition-colors",
-              activeTag === tag ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground hover:bg-muted"
-            )}
-          >
+          <button key={tag} onClick={() => setActiveTag(tag)} className={cn("text-[10px] px-2 py-1 rounded-md capitalize font-medium transition-colors", activeTag === tag ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground hover:bg-muted")}>
             {tag}
           </button>
         ))}
@@ -259,29 +362,18 @@ function AnimationsPanel() {
       <ScrollArea className="flex-1">
         <div className="p-2 space-y-1">
           {filtered.map((preset) => (
-            <div
-              key={preset.id}
-              className="group flex items-center justify-between gap-2 px-3 py-2.5 rounded-lg hover:bg-muted/50 transition-colors cursor-default"
-            >
+            <div key={preset.id} className="group flex items-center justify-between gap-2 px-3 py-2.5 rounded-lg hover:bg-muted/50 transition-colors cursor-default">
               <div className="min-w-0 flex-1">
                 <p className="text-xs font-medium">{preset.name}</p>
-                <span className={cn(
-                  "text-[10px] px-1.5 py-0.5 rounded-sm capitalize",
+                <span className={cn("text-[10px] px-1.5 py-0.5 rounded-sm capitalize",
                   preset.tag === "entrance" ? "bg-blue-500/10 text-blue-400" :
                   preset.tag === "loop" ? "bg-violet-500/10 text-violet-400" :
                   preset.tag === "hover" ? "bg-green-500/10 text-green-400" :
-                  "bg-orange-500/10 text-orange-400"
-                )}>
+                  "bg-orange-500/10 text-orange-400")}>
                   {preset.tag}
                 </span>
               </div>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="h-6 w-6 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity"
-                onClick={() => copy(preset)}
-                title="Copy animation code"
-              >
+              <Button variant="ghost" size="icon" className="h-6 w-6 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" onClick={() => copy(preset)} title="Copy animation code">
                 {copied === preset.id ? <Check className="w-3 h-3 text-green-500" /> : <Copy className="w-3 h-3" />}
               </Button>
             </div>
@@ -294,59 +386,38 @@ function AnimationsPanel() {
 
 // ─────────── SEO PANEL ───────────
 interface SeoData {
-  title: string;
-  description: string;
-  ogTitle: string;
-  ogDescription: string;
-  ogImage: string;
-  keywords: string;
-  canonical: string;
-  robots: string;
+  title: string; description: string; ogTitle: string; ogDescription: string;
+  ogImage: string; keywords: string; canonical: string; robots: string;
 }
 
 function SeoPanel({ projectId, themeTokens }: { projectId: string; themeTokens?: string | null }) {
   const patchProject = useUpdateProject();
   const { toast } = useToast();
-
-  const parsedTokens = useMemo(() => {
-    try { return JSON.parse(themeTokens ?? "{}"); } catch { return {}; }
-  }, [themeTokens]);
-
+  const parsedTokens = useMemo(() => { try { return JSON.parse(themeTokens ?? "{}"); } catch { return {}; } }, [themeTokens]);
   const [seo, setSeo] = useState<SeoData>({
-    title: parsedTokens.seo?.title ?? "",
-    description: parsedTokens.seo?.description ?? "",
-    ogTitle: parsedTokens.seo?.ogTitle ?? "",
-    ogDescription: parsedTokens.seo?.ogDescription ?? "",
-    ogImage: parsedTokens.seo?.ogImage ?? "",
-    keywords: parsedTokens.seo?.keywords ?? "",
-    canonical: parsedTokens.seo?.canonical ?? "",
-    robots: parsedTokens.seo?.robots ?? "index, follow",
+    title: parsedTokens.seo?.title ?? "", description: parsedTokens.seo?.description ?? "",
+    ogTitle: parsedTokens.seo?.ogTitle ?? "", ogDescription: parsedTokens.seo?.ogDescription ?? "",
+    ogImage: parsedTokens.seo?.ogImage ?? "", keywords: parsedTokens.seo?.keywords ?? "",
+    canonical: parsedTokens.seo?.canonical ?? "", robots: parsedTokens.seo?.robots ?? "index, follow",
   });
-
   const handleSave = () => {
-    const newTokens = JSON.stringify({ ...parsedTokens, seo });
-    patchProject.mutate({ id: projectId, data: { themeTokens: newTokens } }, {
+    patchProject.mutate({ id: projectId, data: { themeTokens: JSON.stringify({ ...parsedTokens, seo }) } }, {
       onSuccess: () => toast({ title: "SEO metadata saved!" }),
       onError: () => toast({ title: "Failed to save SEO", variant: "destructive" }),
     });
   };
-
-  const update = (key: keyof SeoData) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
-    setSeo((prev) => ({ ...prev, [key]: e.target.value }));
-
+  const update = (key: keyof SeoData) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => setSeo((prev) => ({ ...prev, [key]: e.target.value }));
   const descLen = seo.description.length;
 
   return (
     <ScrollArea className="flex-1">
       <div className="p-3 space-y-4">
-        {/* Search Preview */}
         <div className="rounded-xl bg-white p-3 space-y-0.5">
           <p className="text-[11px] text-[#1a0dab] truncate font-medium">{seo.title || "Page Title · WWW Studio"}</p>
           <p className="text-[10px] text-[#006621] truncate">{seo.canonical || "https://yoursite.com"}</p>
           <p className="text-[10px] text-[#545454] line-clamp-2 leading-relaxed">{seo.description || "Add a meta description to see a preview here."}</p>
         </div>
         <p className="text-[10px] text-muted-foreground text-center -mt-2">Google Search Preview</p>
-
         <div className="space-y-3">
           <div className="space-y-1.5">
             <label className="text-xs text-muted-foreground flex justify-between"><span>Page Title</span><span className={cn("tabular-nums", seo.title.length > 60 ? "text-red-400" : "")}>{seo.title.length}/60</span></label>
@@ -354,34 +425,19 @@ function SeoPanel({ projectId, themeTokens }: { projectId: string; themeTokens?:
           </div>
           <div className="space-y-1.5">
             <label className="text-xs text-muted-foreground flex justify-between"><span>Meta Description</span><span className={cn("tabular-nums", descLen > 160 ? "text-red-400" : descLen > 130 ? "text-yellow-400" : "")}>{descLen}/160</span></label>
-            <Textarea value={seo.description} onChange={update("description")} placeholder="Describe your page in 120–160 characters for best results." className="text-xs resize-none min-h-[60px]" />
+            <Textarea value={seo.description} onChange={update("description")} placeholder="Describe your page in 120–160 characters." className="text-xs resize-none min-h-[60px]" />
           </div>
           <div className="space-y-1.5">
             <label className="text-xs text-muted-foreground">Keywords</label>
             <Input value={seo.keywords} onChange={update("keywords")} placeholder="design, ui, builder, tailwind" className="h-8 text-xs" />
           </div>
-
           <div className="w-full h-px bg-border/50" />
           <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Open Graph</p>
-
-          <div className="space-y-1.5">
-            <label className="text-xs text-muted-foreground">OG Title</label>
-            <Input value={seo.ogTitle} onChange={update("ogTitle")} placeholder="Same as page title" className="h-8 text-xs" />
-          </div>
-          <div className="space-y-1.5">
-            <label className="text-xs text-muted-foreground">OG Description</label>
-            <Textarea value={seo.ogDescription} onChange={update("ogDescription")} placeholder="Social share description" className="text-xs resize-none min-h-[52px]" />
-          </div>
-          <div className="space-y-1.5">
-            <label className="text-xs text-muted-foreground">OG Image URL</label>
-            <Input value={seo.ogImage} onChange={update("ogImage")} placeholder="https://..." className="h-8 text-xs" />
-          </div>
-
+          <div className="space-y-1.5"><label className="text-xs text-muted-foreground">OG Title</label><Input value={seo.ogTitle} onChange={update("ogTitle")} placeholder="Same as page title" className="h-8 text-xs" /></div>
+          <div className="space-y-1.5"><label className="text-xs text-muted-foreground">OG Description</label><Textarea value={seo.ogDescription} onChange={update("ogDescription")} placeholder="Social share description" className="text-xs resize-none min-h-[52px]" /></div>
+          <div className="space-y-1.5"><label className="text-xs text-muted-foreground">OG Image URL</label><Input value={seo.ogImage} onChange={update("ogImage")} placeholder="https://..." className="h-8 text-xs" /></div>
           <div className="w-full h-px bg-border/50" />
-          <div className="space-y-1.5">
-            <label className="text-xs text-muted-foreground">Canonical URL</label>
-            <Input value={seo.canonical} onChange={update("canonical")} placeholder="https://yoursite.com/page" className="h-8 text-xs" />
-          </div>
+          <div className="space-y-1.5"><label className="text-xs text-muted-foreground">Canonical URL</label><Input value={seo.canonical} onChange={update("canonical")} placeholder="https://yoursite.com/page" className="h-8 text-xs" /></div>
           <div className="space-y-1.5">
             <label className="text-xs text-muted-foreground">Robots</label>
             <select value={seo.robots} onChange={update("robots")} className="w-full h-8 px-2 text-xs rounded-md border border-input bg-background text-foreground">
@@ -392,10 +448,8 @@ function SeoPanel({ projectId, themeTokens }: { projectId: string; themeTokens?:
             </select>
           </div>
         </div>
-
         <Button size="sm" className="w-full gap-2" onClick={handleSave} disabled={patchProject.isPending}>
-          {patchProject.isPending ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Tag className="w-3.5 h-3.5" />}
-          Save SEO Metadata
+          {patchProject.isPending ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Tag className="w-3.5 h-3.5" />}Save SEO Metadata
         </Button>
       </div>
     </ScrollArea>
@@ -406,29 +460,24 @@ function SeoPanel({ projectId, themeTokens }: { projectId: string; themeTokens?:
 function ContentPanel({ projectId, componentTree }: { projectId: string; componentTree?: string | null }) {
   const { toast } = useToast();
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
-
   const textNodes = useMemo(() => {
     if (!componentTree) return [];
-    const results: Array<{ path: string; text: string; depth: number }> = [];
+    const results: Array<{ path: string; text: string }> = [];
     try {
-      const tree = JSON.parse(componentTree);
-      const walk = (node: any, path: string, depth: number) => {
-        if (!node) return;
-        if (typeof node.text === "string" && node.text.trim()) {
-          results.push({ path, text: node.text, depth });
+      const doc = new DOMParser().parseFromString(componentTree, "text/html");
+      const walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_TEXT);
+      let node: Node | null;
+      let idx = 0;
+      while ((node = walker.nextNode()) && idx < 30) {
+        const text = node.textContent?.trim() ?? "";
+        if (text.length > 2) {
+          const parent = (node.parentElement?.tagName ?? "").toLowerCase();
+          results.push({ path: parent, text });
+          idx++;
         }
-        if (typeof node.children === "object") {
-          Object.entries(node.children ?? {}).forEach(([k, child]) => walk(child, `${path}.${k}`, depth + 1));
-        }
-        if (Array.isArray(node.children)) {
-          node.children.forEach((child: any, i: number) => walk(child, `${path}[${i}]`, depth + 1));
-        }
-      };
-      walk(tree, "root", 0);
-    } catch {
-      // no-op
-    }
-    return results.slice(0, 30);
+      }
+    } catch { /* no-op */ }
+    return results;
   }, [componentTree]);
 
   return (
@@ -437,41 +486,22 @@ function ContentPanel({ projectId, componentTree }: { projectId: string; compone
         {textNodes.length === 0 ? (
           <div className="text-center py-10 px-4 text-muted-foreground">
             <FileText className="w-8 h-8 mx-auto mb-2 opacity-30" />
-            <p className="text-xs">No text content detected yet. Generate or clone a site to see editable content here.</p>
+            <p className="text-xs">No text content detected. Generate or clone a site first.</p>
           </div>
         ) : (
           textNodes.map((node, i) => (
             <div key={i} className="group rounded-lg border border-border/40 overflow-hidden">
               <div className="flex items-center justify-between px-2 py-1 bg-muted/30">
-                <span className="text-[10px] font-mono text-muted-foreground truncate max-w-[140px]">{node.path}</span>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-5 w-5 opacity-0 group-hover:opacity-100 transition-opacity"
-                  onClick={() => setEditingIndex(editingIndex === i ? null : i)}
-                >
+                <span className="text-[10px] font-mono text-muted-foreground">&lt;{node.path}&gt;</span>
+                <Button variant="ghost" size="icon" className="h-5 w-5 opacity-0 group-hover:opacity-100 transition-opacity" onClick={() => setEditingIndex(editingIndex === i ? null : i)}>
                   <Settings2 className="w-3 h-3" />
                 </Button>
               </div>
               {editingIndex === i ? (
                 <div className="p-2 space-y-2">
-                  <Textarea
-                    defaultValue={node.text}
-                    className="text-xs resize-none min-h-[52px]"
-                    id={`cms-${i}`}
-                  />
+                  <Textarea defaultValue={node.text} className="text-xs resize-none min-h-[52px]" id={`cms-${i}`} />
                   <div className="flex gap-1.5">
-                    <Button
-                      size="sm"
-                      className="flex-1 h-7 text-xs"
-                      onClick={() => {
-                        const el = document.getElementById(`cms-${i}`) as HTMLTextAreaElement;
-                        toast({ title: "Content saved (visual edit)" });
-                        setEditingIndex(null);
-                      }}
-                    >
-                      Save
-                    </Button>
+                    <Button size="sm" className="flex-1 h-7 text-xs" onClick={() => { toast({ title: "Content updated" }); setEditingIndex(null); }}>Save</Button>
                     <Button size="sm" variant="ghost" className="h-7 text-xs" onClick={() => setEditingIndex(null)}>Cancel</Button>
                   </div>
                 </div>
@@ -507,17 +537,11 @@ function HistoryPanel({ projectId }: { projectId: string }) {
   };
 
   if (isLoading) return <div className="flex items-center justify-center py-12"><Loader2 className="w-5 h-5 animate-spin text-muted-foreground" /></div>;
-
   if (!snapshots?.length) {
     return (
       <div className="flex flex-col items-center justify-center py-10 px-4 text-center gap-3">
-        <div className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center">
-          <History className="w-5 h-5 text-muted-foreground" />
-        </div>
-        <div>
-          <p className="text-sm font-medium">No saves yet</p>
-          <p className="text-xs text-muted-foreground mt-1">Auto-saves appear every 30 seconds. Hit Save for a named version.</p>
-        </div>
+        <div className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center"><History className="w-5 h-5 text-muted-foreground" /></div>
+        <div><p className="text-sm font-medium">No saves yet</p><p className="text-xs text-muted-foreground mt-1">Auto-saves every 30s. Hit Save for a named version.</p></div>
       </div>
     );
   }
@@ -527,21 +551,9 @@ function HistoryPanel({ projectId }: { projectId: string }) {
       <div className="p-2 space-y-1">
         {snapshots.map((snap) => (
           <div key={snap.id} className="group flex items-start gap-2.5 rounded-lg px-2.5 py-2 hover:bg-muted/50 transition-colors">
-            <div className="shrink-0 mt-0.5">
-              {snap.label === "Auto-save" ? <Clock className="w-3.5 h-3.5 text-muted-foreground" /> : <Save className="w-3.5 h-3.5 text-primary" />}
-            </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-xs font-medium truncate">{snap.label}</p>
-              <p className="text-xs text-muted-foreground">{timeAgo(snap.createdAt)}</p>
-            </div>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-6 w-6 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity"
-              title="Restore this version"
-              onClick={() => handleRestore(snap.id, snap.label)}
-              disabled={restoringId === snap.id}
-            >
+            <div className="shrink-0 mt-0.5">{snap.label === "Auto-save" ? <Clock className="w-3.5 h-3.5 text-muted-foreground" /> : <Save className="w-3.5 h-3.5 text-primary" />}</div>
+            <div className="flex-1 min-w-0"><p className="text-xs font-medium truncate">{snap.label}</p><p className="text-xs text-muted-foreground">{timeAgo(snap.createdAt)}</p></div>
+            <Button variant="ghost" size="icon" className="h-6 w-6 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" title="Restore" onClick={() => handleRestore(snap.id, snap.label)} disabled={restoringId === snap.id}>
               {restoringId === snap.id ? <Loader2 className="w-3 h-3 animate-spin" /> : <RotateCcw className="w-3 h-3" />}
             </Button>
           </div>
@@ -557,14 +569,12 @@ function PublishModal({ projectId, projectSlug, onClose }: { projectId: string; 
   const [liveUrl, setLiveUrl] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const { toast } = useToast();
-
   const handlePublish = () => {
     publishMutation.mutate({ id: projectId }, {
       onSuccess: (result) => setLiveUrl(result.liveUrl),
       onError: () => toast({ title: "Publish failed", variant: "destructive" }),
     });
   };
-
   const copy = (text: string) => { navigator.clipboard.writeText(text); setCopied(true); setTimeout(() => setCopied(false), 2000); };
 
   return (
@@ -607,18 +617,43 @@ function PublishModal({ projectId, projectSlug, onClose }: { projectId: string; 
   );
 }
 
-// ─────────── LAYER ITEM ───────────
-function LayerItem({ name, depth, selected }: { name: string; depth: number; selected?: boolean }) {
-  return (
-    <div
-      className={cn("flex items-center gap-1 py-1.5 rounded cursor-pointer font-mono text-xs transition-colors", selected ? "bg-primary/10 text-primary" : "hover:bg-muted text-foreground/70 hover:text-foreground")}
-      style={{ paddingLeft: `${8 + depth * 12}px` }}
-    >
-      <ChevronRight className="w-3 h-3 shrink-0 text-muted-foreground" />
-      {name}
-    </div>
-  );
-}
+// ─────────── INLINE EDIT SCRIPT ───────────
+const EDIT_MODE_INJECT = `
+(function() {
+  if (window.__editModeActive) return;
+  window.__editModeActive = true;
+  var style = document.createElement('style');
+  style.id = 'edit-mode-style';
+  style.textContent = \`
+    [contenteditable="true"] {
+      outline: 2px dashed rgba(59,130,246,0.6) !important;
+      outline-offset: 2px;
+      min-height: 1em;
+      cursor: text;
+      transition: outline-color 0.15s;
+    }
+    [contenteditable="true"]:hover { outline-color: rgba(59,130,246,1) !important; }
+    [contenteditable="true"]:focus { outline-color: rgba(99,102,241,1) !important; background: rgba(59,130,246,0.04); }
+  \`;
+  document.head.appendChild(style);
+  var TEXT_TAGS = ['P','H1','H2','H3','H4','H5','H6','SPAN','A','LI','BUTTON','LABEL','TD','TH','CAPTION','FIGCAPTION','BLOCKQUOTE'];
+  document.querySelectorAll(TEXT_TAGS.join(',')).forEach(function(el) {
+    if (!el.querySelector('img,video,iframe')) {
+      el.setAttribute('contenteditable', 'true');
+    }
+  });
+})();
+`;
+
+const EDIT_MODE_REMOVE = `
+(function() {
+  document.getElementById('edit-mode-style')?.remove();
+  document.querySelectorAll('[contenteditable]').forEach(function(el) {
+    el.removeAttribute('contenteditable');
+  });
+  window.__editModeActive = false;
+})();
+`;
 
 // ─────────── MAIN EDITOR ───────────
 export default function Editor() {
@@ -629,19 +664,44 @@ export default function Editor() {
 
   const [chatInput, setChatInput] = useState("");
   const [deviceMode, setDeviceMode] = useState<DeviceMode>("desktop");
-  const [rightPanel, setRightPanel] = useState<RightPanel>("properties");
+  const [viewMode, setViewMode] = useState<ViewMode>("preview");
+  const [rightPanel, setRightPanel] = useState<RightPanel>("theme");
   const [showPublishModal, setShowPublishModal] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [lastSaved, setLastSaved] = useState<Date | null>(null);
   const [pixelOverlay, setPixelOverlay] = useState(false);
+
+  // Inline edit mode
+  const [editMode, setEditMode] = useState(false);
+  const [editModeDirty, setEditModeDirty] = useState(false);
+
+  // Code / split view
+  const [localCode, setLocalCode] = useState<string>("");
+  const [codeDirty, setCodeDirty] = useState(false);
+  const [isFetchingCode, setIsFetchingCode] = useState(false);
+
+  // Layers
+  const [layers, setLayers] = useState<Layer[]>([]);
+  const [selectedLayerId, setSelectedLayerId] = useState<string | undefined>();
+
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const codeDebounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const autoSaveTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const lastAutoSaveRef = useRef<string | null>(null);
+  const iframeKey = useRef(0);
 
   const sendMessage = useSendChatMessage();
+  const updateProject = useUpdateProject();
   const queryClient = useQueryClient();
   const { toast } = useToast();
   const { isOnline, pendingCount, enqueue } = useOfflineSync();
+
+  // Parse layers from componentTree HTML
+  useEffect(() => {
+    if (project?.componentTree) {
+      setLayers(parseHtmlLayers(project.componentTree));
+    }
+  }, [project?.componentTree]);
 
   const saveSnapshot = useCallback((label: string, silent = false) => {
     if (!projectId || !project) return;
@@ -668,42 +728,152 @@ export default function Editor() {
     return () => { if (autoSaveTimerRef.current) clearInterval(autoSaveTimerRef.current); };
   }, [project, saveSnapshot]);
 
-  // Toggle pixel overlay in iframe
+  // Pixel overlay injection
   useEffect(() => {
     const iframe = iframeRef.current;
     if (!iframe?.contentDocument) return;
     const doc = iframe.contentDocument;
-    const existingStyle = doc.getElementById("pixel-overlay-style");
+    const existing = doc.getElementById("pixel-overlay-style");
     if (pixelOverlay) {
-      if (!existingStyle) {
+      if (!existing) {
         const style = doc.createElement("style");
         style.id = "pixel-overlay-style";
-        style.textContent = `
-          * { outline: 1px solid rgba(59,130,246,0.25) !important; }
-          *:hover { outline: 2px solid rgba(59,130,246,0.7) !important; }
-          *::before { content: attr(class); font-size: 10px; position: absolute; top: 0; left: 0; background: rgba(0,0,0,0.7); color: #60a5fa; padding: 2px 4px; pointer-events: none; white-space: nowrap; overflow: hidden; max-width: 200px; }
-        `;
-        doc.head.appendChild(style);
+        style.textContent = `* { outline: 1px solid rgba(59,130,246,0.25) !important; } *:hover { outline: 2px solid rgba(59,130,246,0.7) !important; }`;
+        doc.head?.appendChild(style);
       }
     } else {
-      existingStyle?.remove();
+      existing?.remove();
     }
   }, [pixelOverlay]);
 
-  const layers = useMemo(() => {
-    if (!project?.componentTree) return [];
+  // Enter / exit edit mode
+  const toggleEditMode = useCallback(() => {
+    const iframe = iframeRef.current;
+    if (!iframe?.contentDocument) {
+      toast({ title: "Preview must be loaded first", variant: "destructive" });
+      return;
+    }
+    if (editMode) {
+      // Exit: remove contenteditable
+      try {
+        const doc = iframe.contentDocument;
+        const script = doc.createElement("script");
+        script.textContent = EDIT_MODE_REMOVE;
+        doc.body?.appendChild(script);
+        script.remove();
+      } catch { /* cross-origin safety */ }
+      setEditMode(false);
+      setEditModeDirty(false);
+    } else {
+      // Enter: inject contenteditable
+      try {
+        const doc = iframe.contentDocument;
+        const script = doc.createElement("script");
+        script.textContent = EDIT_MODE_INJECT;
+        doc.body?.appendChild(script);
+        script.remove();
+        setEditMode(true);
+        setEditModeDirty(false);
+        // Mark dirty on any input inside iframe
+        const markDirty = () => setEditModeDirty(true);
+        doc.addEventListener("input", markDirty, { once: true });
+      } catch {
+        toast({ title: "Could not enable edit mode", variant: "destructive" });
+      }
+    }
+  }, [editMode, toast]);
+
+  // Apply inline edits: scrape modified HTML and save
+  const applyInlineEdits = useCallback(() => {
+    const iframe = iframeRef.current;
+    if (!iframe?.contentDocument || !projectId) return;
     try {
-      const tree = JSON.parse(project.componentTree);
-      const items: Array<{ name: string; depth: number }> = [];
-      const walk = (node: any, depth: number) => {
-        if (!node || depth > 4) return;
-        items.push({ name: node.name || node.type || "node", depth });
-        (node.children ?? []).slice(0, 8).forEach((c: any) => walk(c, depth + 1));
-      };
-      walk(tree, 0);
-      return items.slice(0, 30);
-    } catch { return [{ name: "Body", depth: 0 }]; }
-  }, [project?.componentTree]);
+      const body = iframe.contentDocument.body;
+      // Remove editor artifacts before saving
+      body.querySelector("#edit-mode-style")?.remove();
+      body.querySelectorAll("[contenteditable]").forEach((el) => el.removeAttribute("contenteditable"));
+      const newHtml = body.innerHTML;
+      updateProject.mutate({ id: projectId, data: { componentTree: newHtml } }, {
+        onSuccess: () => {
+          queryClient.invalidateQueries({ queryKey: getGetProjectQueryKey(projectId!) });
+          toast({ title: "Inline edits applied!" });
+          setEditMode(false);
+          setEditModeDirty(false);
+        },
+        onError: () => toast({ title: "Failed to apply edits", variant: "destructive" }),
+      });
+    } catch {
+      toast({ title: "Could not read iframe content", variant: "destructive" });
+    }
+  }, [projectId, updateProject, queryClient, toast]);
+
+  // Enter code / split view
+  const enterCodeView = useCallback(async (mode: "split" | "code") => {
+    if (localCode && viewMode !== "preview") {
+      setViewMode(mode);
+      return;
+    }
+    setIsFetchingCode(true);
+    try {
+      const res = await fetch(`/api/projects/${projectId}/preview-html`);
+      const html = await res.text();
+      setLocalCode(html);
+      setCodeDirty(false);
+    } catch {
+      setLocalCode(project?.componentTree ?? "<!-- No content yet -->");
+    } finally {
+      setIsFetchingCode(false);
+    }
+    setViewMode(mode);
+  }, [localCode, viewMode, projectId, project?.componentTree]);
+
+  const handleViewMode = (mode: ViewMode) => {
+    if (mode === "preview") {
+      setViewMode("preview");
+    } else {
+      enterCodeView(mode);
+    }
+  };
+
+  // Debounced code → live preview (update iframe srcdoc)
+  const handleCodeChange = (value: string) => {
+    setLocalCode(value);
+    setCodeDirty(true);
+  };
+
+  // Save code edits to project
+  const saveCodeEdits = () => {
+    if (!projectId || !localCode) return;
+    // Extract body content from full HTML
+    let bodyContent = localCode;
+    try {
+      const doc = new DOMParser().parseFromString(localCode, "text/html");
+      bodyContent = doc.body.innerHTML || localCode;
+    } catch { /* use raw */ }
+    updateProject.mutate({ id: projectId, data: { componentTree: bodyContent } }, {
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: getGetProjectQueryKey(projectId!) });
+        toast({ title: "Code changes saved!" });
+        setCodeDirty(false);
+      },
+      onError: () => toast({ title: "Failed to save code", variant: "destructive" }),
+    });
+  };
+
+  // Layers reorder
+  const handleLayerReorder = useCallback((newLayers: Layer[]) => {
+    if (!projectId || !project?.componentTree) return;
+    const newHtml = reorderHtml(project.componentTree, newLayers);
+    setLayers(newLayers);
+    updateProject.mutate({ id: projectId, data: { componentTree: newHtml } }, {
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: getGetProjectQueryKey(projectId!) });
+        // Reload iframe
+        iframeKey.current += 1;
+      },
+      onError: () => toast({ title: "Failed to reorder layers", variant: "destructive" }),
+    });
+  }, [projectId, project?.componentTree, updateProject, queryClient, toast]);
 
   const handleSendChat = (e: React.FormEvent) => {
     e.preventDefault();
@@ -721,13 +891,22 @@ export default function Editor() {
   }
 
   const RIGHT_TABS: { id: RightPanel; icon: React.ReactNode; label: string; title: string }[] = [
-    { id: "properties", icon: <LayoutPanelLeft className="w-3.5 h-3.5" />, label: "Design", title: "Properties" },
-    { id: "images", icon: <Image className="w-3.5 h-3.5" />, label: "Media", title: "Images & Stock Photos" },
+    { id: "theme", icon: <Paintbrush className="w-3.5 h-3.5" />, label: "Theme", title: "Theme Customizer" },
+    { id: "images", icon: <Image className="w-3.5 h-3.5" />, label: "Media", title: "Images & Assets" },
     { id: "animations", icon: <Zap className="w-3.5 h-3.5" />, label: "Anim", title: "Animation Presets" },
     { id: "seo", icon: <Search className="w-3.5 h-3.5" />, label: "SEO", title: "SEO Tools" },
     { id: "content", icon: <FileText className="w-3.5 h-3.5" />, label: "CMS", title: "Content Editor" },
     { id: "history", icon: <History className="w-3.5 h-3.5" />, label: "History", title: "Version History" },
   ];
+
+  const VIEW_MODES: { id: ViewMode; icon: React.ReactNode; title: string }[] = [
+    { id: "preview", icon: <Eye className="w-3.5 h-3.5" />, title: "Preview" },
+    { id: "split", icon: <Columns2 className="w-3.5 h-3.5" />, title: "Split View" },
+    { id: "code", icon: <Code2 className="w-3.5 h-3.5" />, title: "Code View" },
+  ];
+
+  // The iframe in srcdoc mode (code/split view uses live-edited code)
+  const usesSrcdoc = viewMode !== "preview" && localCode.length > 0;
 
   return (
     <div className="h-screen w-screen flex flex-col bg-background text-foreground overflow-hidden">
@@ -735,48 +914,106 @@ export default function Editor() {
 
       {/* Top Toolbar */}
       <header className="h-14 border-b border-border/50 bg-card/50 backdrop-blur flex items-center justify-between px-3 shrink-0 gap-2">
+        {/* Left */}
         <div className="flex items-center gap-2 min-w-0">
           <Button variant="ghost" size="icon" asChild className="shrink-0 h-8 w-8">
             <Link href="/projects"><ArrowLeft className="w-4 h-4" /></Link>
           </Button>
-          <div className="font-medium text-sm truncate max-w-[160px]">{project.name}</div>
+          <div className="font-medium text-sm truncate max-w-[140px]">{project.name}</div>
           {project.status === "published" && (
             <span className="text-xs px-2 py-0.5 rounded-full bg-green-500/10 text-green-500 border border-green-500/20 shrink-0">Live</span>
           )}
         </div>
 
-        <div className="flex items-center gap-1 border border-border/50 rounded-md p-1 bg-background/50 shrink-0">
-          {(["desktop", "tablet", "mobile"] as DeviceMode[]).map((mode) => (
-            <Button key={mode} variant="ghost" size="icon" className={cn("w-7 h-7 rounded-sm", deviceMode === mode ? "bg-primary/15 text-primary" : "text-muted-foreground")} onClick={() => setDeviceMode(mode)}>
-              {mode === "desktop" && <Monitor className="w-3.5 h-3.5" />}
-              {mode === "tablet" && <Tablet className="w-3.5 h-3.5" />}
-              {mode === "mobile" && <Smartphone className="w-3.5 h-3.5" />}
-            </Button>
-          ))}
+        {/* Center: device + view modes */}
+        <div className="flex items-center gap-1.5 shrink-0">
+          {/* Device toggle */}
+          <div className="flex items-center gap-0.5 border border-border/50 rounded-md p-0.5 bg-background/50">
+            {(["desktop", "tablet", "mobile"] as DeviceMode[]).map((mode) => (
+              <Button key={mode} variant="ghost" size="icon" className={cn("w-7 h-7 rounded-sm", deviceMode === mode ? "bg-primary/15 text-primary" : "text-muted-foreground")} onClick={() => setDeviceMode(mode)}>
+                {mode === "desktop" && <Monitor className="w-3.5 h-3.5" />}
+                {mode === "tablet" && <Tablet className="w-3.5 h-3.5" />}
+                {mode === "mobile" && <Smartphone className="w-3.5 h-3.5" />}
+              </Button>
+            ))}
+          </div>
+
+          <div className="w-px h-5 bg-border" />
+
+          {/* View mode toggle */}
+          <div className="flex items-center gap-0.5 border border-border/50 rounded-md p-0.5 bg-background/50">
+            {VIEW_MODES.map(({ id, icon, title }) => (
+              <Button
+                key={id}
+                variant="ghost"
+                size="icon"
+                title={title}
+                disabled={isFetchingCode}
+                className={cn("w-7 h-7 rounded-sm", viewMode === id ? "bg-primary/15 text-primary" : "text-muted-foreground")}
+                onClick={() => handleViewMode(id)}
+              >
+                {isFetchingCode && id !== "preview" ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : icon}
+              </Button>
+            ))}
+          </div>
         </div>
 
-        <div className="flex items-center gap-1.5 shrink-0">
-          <Button variant="ghost" size="icon" className="w-8 h-8"><Undo className="w-3.5 h-3.5" /></Button>
-          <Button variant="ghost" size="icon" className="w-8 h-8"><Redo className="w-3.5 h-3.5" /></Button>
+        {/* Right: actions */}
+        <div className="flex items-center gap-1 shrink-0">
+          {/* Edit mode toggle */}
+          <Button
+            variant={editMode ? "secondary" : "ghost"}
+            size="sm"
+            className={cn("h-8 gap-1.5 text-xs", editMode ? "text-blue-400 border border-blue-400/30" : "text-muted-foreground")}
+            title="Toggle inline canvas editing"
+            onClick={toggleEditMode}
+          >
+            <Pencil className="w-3.5 h-3.5" />
+            <span className="hidden lg:inline">{editMode ? "Editing" : "Edit"}</span>
+          </Button>
 
-          {/* Pixel overlay toggle */}
+          {/* Apply inline edits */}
+          {editMode && editModeDirty && (
+            <Button
+              size="sm"
+              className="h-8 gap-1.5 text-xs bg-blue-600 hover:bg-blue-700"
+              onClick={applyInlineEdits}
+              disabled={updateProject.isPending}
+            >
+              {updateProject.isPending ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <CheckCheck className="w-3.5 h-3.5" />}
+              Apply
+            </Button>
+          )}
+
+          {/* Save code edits */}
+          {viewMode !== "preview" && codeDirty && (
+            <Button size="sm" className="h-8 gap-1.5 text-xs bg-green-600 hover:bg-green-700" onClick={saveCodeEdits} disabled={updateProject.isPending}>
+              {updateProject.isPending ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Save className="w-3.5 h-3.5" />}
+              Save Code
+            </Button>
+          )}
+
+          <div className="w-px h-5 bg-border mx-0.5" />
+
+          {/* Pixel overlay */}
           <Button
             variant={pixelOverlay ? "secondary" : "ghost"}
             size="icon"
             className={cn("w-8 h-8", pixelOverlay && "text-blue-400")}
-            title="Toggle pixel measurement overlay"
+            title="Toggle pixel overlay"
             onClick={() => setPixelOverlay((v) => !v)}
           >
             <Ruler className="w-3.5 h-3.5" />
           </Button>
 
+          {/* Undo / Redo */}
+          <Button variant="ghost" size="icon" className="w-8 h-8"><Undo className="w-3.5 h-3.5" /></Button>
+          <Button variant="ghost" size="icon" className="w-8 h-8"><Redo className="w-3.5 h-3.5" /></Button>
+
           <div className="w-px h-5 bg-border mx-0.5" />
 
-          {/* Sync status */}
-          <div
-            className={cn("hidden sm:flex items-center gap-1 text-xs px-1.5 py-1 rounded-md", isOnline ? pendingCount > 0 ? "text-amber-500" : "text-muted-foreground" : "text-rose-500")}
-            title={!isOnline ? "Offline — saves queued" : pendingCount > 0 ? `${pendingCount} saves queued` : "Synced"}
-          >
+          {/* Sync */}
+          <div className={cn("hidden sm:flex items-center gap-1 text-xs px-1.5 py-1 rounded-md", isOnline ? pendingCount > 0 ? "text-amber-500" : "text-muted-foreground" : "text-rose-500")} title={!isOnline ? "Offline" : pendingCount > 0 ? `${pendingCount} queued` : "Synced"}>
             {isOnline ? <Cloud className="w-3.5 h-3.5" /> : <CloudOff className="w-3.5 h-3.5" />}
             <span>{!isOnline ? "Offline" : pendingCount > 0 ? `${pendingCount}` : lastSaved ? timeAgo(lastSaved.toISOString()) : ""}</span>
           </div>
@@ -798,55 +1035,111 @@ export default function Editor() {
 
       {/* Main Layout */}
       <div className="flex-1 flex overflow-hidden">
-        {/* Left Sidebar - Layers */}
+
+        {/* Left Sidebar — Layers (drag-to-reorder) */}
         <aside className="w-52 border-r border-border/50 bg-card/30 flex flex-col shrink-0">
-          <div className="h-9 border-b border-border/50 flex items-center px-3 font-medium text-xs text-muted-foreground uppercase tracking-wider shrink-0">Layers</div>
-          <ScrollArea className="flex-1 py-1">
-            {layers.length > 0 ? (
-              layers.map((layer, i) => <LayerItem key={i} name={layer.name} depth={layer.depth} selected={i === 0} />)
-            ) : (
-              <div className="text-xs text-muted-foreground text-center py-6 px-3">No layers yet</div>
-            )}
+          <div className="h-9 border-b border-border/50 flex items-center justify-between px-3 shrink-0">
+            <span className="font-medium text-xs text-muted-foreground uppercase tracking-wider">Layers</span>
+            <span className="text-[10px] text-muted-foreground/50">drag to reorder</span>
+          </div>
+          <ScrollArea className="flex-1 px-1 py-1">
+            <SortableLayers
+              layers={layers}
+              selectedId={selectedLayerId}
+              onSelect={setSelectedLayerId}
+              onReorder={handleLayerReorder}
+            />
           </ScrollArea>
         </aside>
 
         {/* Center Canvas */}
-        <main className="flex-1 bg-muted/10 flex flex-col overflow-hidden">
-          <div className="flex-1 p-4 flex items-center justify-center overflow-auto">
-            <div
-              className="bg-background border border-border/50 rounded-lg shadow-2xl shadow-black/30 overflow-hidden transition-all duration-300"
-              style={{ width: DEVICE_WIDTHS[deviceMode], maxWidth: "100%", height: "calc(100vh - 180px)" }}
-            >
-              <iframe
-                ref={iframeRef}
-                src={`/api/projects/${project.id}/preview-html`}
-                className="w-full h-full border-0"
-                title="Project Preview"
-                sandbox="allow-scripts allow-same-origin"
-              />
-            </div>
-          </div>
+        <main className="flex-1 bg-muted/10 flex flex-col overflow-hidden min-w-0">
+          <div className="flex-1 flex overflow-hidden">
 
-          {/* AI Chat Bar */}
-          <div className="h-13 border-t border-border/50 bg-card/50 backdrop-blur flex items-center px-4 shrink-0 gap-3 py-2">
-            <Wand2 className="w-4 h-4 text-primary shrink-0" />
-            <form onSubmit={handleSendChat} className="flex-1 flex items-center gap-2">
-              <Input
-                value={chatInput}
-                onChange={(e) => setChatInput(e.target.value)}
-                placeholder="Ask AI to modify the design..."
-                className="flex-1 bg-transparent border-0 focus-visible:ring-0 shadow-none px-0 h-8 text-sm"
-              />
-              <Button type="submit" size="icon" variant="ghost" className="h-8 w-8 shrink-0" disabled={!chatInput.trim() || sendMessage.isPending}>
-                {sendMessage.isPending ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
-              </Button>
-            </form>
+            {/* Code pane (split or code-only) */}
+            {viewMode !== "preview" && (
+              <div className={cn("flex flex-col border-r border-border/50 bg-[#0d1117] overflow-hidden", viewMode === "code" ? "flex-1" : "w-1/2")}>
+                <div className="h-8 flex items-center justify-between px-3 border-b border-border/20 shrink-0">
+                  <span className="text-[10px] font-mono text-muted-foreground">HTML / Tailwind</span>
+                  {codeDirty && <span className="text-[10px] text-amber-400 font-mono">● unsaved</span>}
+                </div>
+                <textarea
+                  value={localCode}
+                  onChange={(e) => handleCodeChange(e.target.value)}
+                  spellCheck={false}
+                  className="flex-1 resize-none bg-transparent text-[12px] font-mono text-slate-300 p-3 focus:outline-none leading-relaxed"
+                  placeholder="<!-- HTML + Tailwind code appears here -->"
+                  style={{ tabSize: 2 }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Tab") {
+                      e.preventDefault();
+                      const start = e.currentTarget.selectionStart;
+                      const end = e.currentTarget.selectionEnd;
+                      const newVal = localCode.substring(0, start) + "  " + localCode.substring(end);
+                      setLocalCode(newVal);
+                      setTimeout(() => { e.currentTarget.selectionStart = e.currentTarget.selectionEnd = start + 2; }, 0);
+                    }
+                  }}
+                />
+              </div>
+            )}
+
+            {/* Preview pane */}
+            {viewMode !== "code" && (
+              <div className={cn("flex flex-col overflow-hidden", viewMode === "split" ? "w-1/2" : "flex-1")}>
+                <div className="flex-1 p-4 flex items-center justify-center overflow-auto">
+                  <div
+                    className={cn(
+                      "bg-background border border-border/50 rounded-lg shadow-2xl shadow-black/30 overflow-hidden transition-all duration-300",
+                      editMode && "ring-2 ring-blue-500/40"
+                    )}
+                    style={{ width: DEVICE_WIDTHS[deviceMode], maxWidth: "100%", height: "calc(100vh - 210px)" }}
+                  >
+                    {usesSrcdoc ? (
+                      <iframe
+                        ref={iframeRef}
+                        srcDoc={localCode}
+                        className="w-full h-full border-0"
+                        title="Project Preview (code)"
+                        sandbox="allow-scripts allow-same-origin"
+                      />
+                    ) : (
+                      <iframe
+                        key={iframeKey.current}
+                        ref={iframeRef}
+                        src={`/api/projects/${project.id}/preview-html`}
+                        className="w-full h-full border-0"
+                        title="Project Preview"
+                        sandbox="allow-scripts allow-same-origin"
+                      />
+                    )}
+                  </div>
+                </div>
+
+                {/* AI Chat Bar */}
+                <div className="h-13 border-t border-border/50 bg-card/50 backdrop-blur flex items-center px-4 shrink-0 gap-3 py-2">
+                  <Wand2 className="w-4 h-4 text-primary shrink-0" />
+                  <form onSubmit={handleSendChat} className="flex-1 flex items-center gap-2">
+                    <Input
+                      value={chatInput}
+                      onChange={(e) => setChatInput(e.target.value)}
+                      placeholder={editMode ? "Exit edit mode to use AI chat…" : "Ask AI to modify the design…"}
+                      disabled={editMode}
+                      className="flex-1 bg-transparent border-0 focus-visible:ring-0 shadow-none px-0 h-8 text-sm disabled:opacity-40"
+                    />
+                    <Button type="submit" size="icon" variant="ghost" className="h-8 w-8 shrink-0" disabled={!chatInput.trim() || sendMessage.isPending || editMode}>
+                      {sendMessage.isPending ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
+                    </Button>
+                  </form>
+                </div>
+              </div>
+            )}
           </div>
         </main>
 
         {/* Right Inspector */}
         <aside className="w-64 border-l border-border/50 bg-card/30 flex flex-col shrink-0">
-          {/* 6-tab header */}
+          {/* Tab header */}
           <div className="flex border-b border-border/50 shrink-0">
             {RIGHT_TABS.map((tab) => (
               <button
@@ -864,60 +1157,14 @@ export default function Editor() {
             ))}
           </div>
 
-          {/* Properties panel */}
-          {rightPanel === "properties" && (
-            <ScrollArea className="flex-1 p-4">
-              <div className="space-y-5">
-                <div className="space-y-2.5">
-                  <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Layout</h4>
-                  <div className="grid grid-cols-2 gap-2">
-                    <div className="space-y-1"><label className="text-xs text-muted-foreground">Width</label><Input className="h-8 text-xs font-mono" defaultValue="100%" /></div>
-                    <div className="space-y-1"><label className="text-xs text-muted-foreground">Height</label><Input className="h-8 text-xs font-mono" defaultValue="auto" /></div>
-                    <div className="space-y-1"><label className="text-xs text-muted-foreground">Padding X</label><Input className="h-8 text-xs font-mono" defaultValue="24px" /></div>
-                    <div className="space-y-1"><label className="text-xs text-muted-foreground">Padding Y</label><Input className="h-8 text-xs font-mono" defaultValue="16px" /></div>
-                    <div className="space-y-1"><label className="text-xs text-muted-foreground">Gap</label><Input className="h-8 text-xs font-mono" defaultValue="16px" /></div>
-                    <div className="space-y-1"><label className="text-xs text-muted-foreground">Radius</label><Input className="h-8 text-xs font-mono" defaultValue="12px" /></div>
-                  </div>
-                </div>
-                <div className="w-full h-px bg-border/50" />
-                <div className="space-y-2.5">
-                  <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Typography</h4>
-                  <select className="w-full h-8 px-2 text-xs rounded-md border border-input bg-background text-foreground">
-                    <option>Inter</option><option>JetBrains Mono</option><option>Geist</option><option>Satoshi</option><option>Manrope</option><option>DM Sans</option>
-                  </select>
-                  <div className="grid grid-cols-2 gap-2">
-                    <Input className="h-8 text-xs font-mono" defaultValue="16px" />
-                    <select className="w-full h-8 px-2 text-xs rounded-md border border-input bg-background text-foreground">
-                      <option>Regular 400</option><option>Medium 500</option><option>Semibold 600</option><option>Bold 700</option>
-                    </select>
-                  </div>
-                  <div className="grid grid-cols-2 gap-2">
-                    <div className="space-y-1"><label className="text-xs text-muted-foreground">Line height</label><Input className="h-8 text-xs font-mono" defaultValue="1.5" /></div>
-                    <div className="space-y-1"><label className="text-xs text-muted-foreground">Letter sp.</label><Input className="h-8 text-xs font-mono" defaultValue="0em" /></div>
-                  </div>
-                </div>
-                <div className="w-full h-px bg-border/50" />
-                <div className="space-y-2.5">
-                  <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Colors</h4>
-                  {[
-                    { label: "Background", value: "#09090b" },
-                    { label: "Foreground", value: "#fafafa" },
-                    { label: "Primary", value: "#3b82f6" },
-                    { label: "Muted", value: "#27272a" },
-                    { label: "Border", value: "#3f3f46" },
-                  ].map(({ label, value }) => (
-                    <div key={label} className="flex items-center gap-2">
-                      <input type="color" defaultValue={value} className="w-6 h-6 rounded border border-border/50 cursor-pointer bg-transparent" />
-                      <span className="text-xs flex-1">{label}</span>
-                      <span className="text-xs font-mono text-muted-foreground">{value}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </ScrollArea>
+          {rightPanel === "theme" && (
+            <ThemeCustomizer
+              projectId={project.id}
+              themeTokens={project.themeTokens}
+              iframeRef={iframeRef}
+            />
           )}
-
-          {rightPanel === "images" && <AIImagesPanel />}
+          {rightPanel === "images" && <AIImagesPanel projectId={project.id} />}
           {rightPanel === "animations" && <AnimationsPanel />}
           {rightPanel === "seo" && <SeoPanel projectId={project.id} themeTokens={project.themeTokens} />}
           {rightPanel === "content" && <ContentPanel projectId={project.id} componentTree={project.componentTree} />}
