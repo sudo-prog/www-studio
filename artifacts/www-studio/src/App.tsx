@@ -10,6 +10,7 @@ import Dashboard from "@/pages/dashboard";
 import NewProject from "@/pages/new-project";
 import Editor from "@/pages/editor";
 import Profile from "@/pages/profile";
+import Components from "@/pages/components";
 
 const queryClient = new QueryClient();
 
@@ -18,6 +19,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/projects" component={Dashboard} />
+      <Route path="/ui-library" component={Components} />
       <Route path="/editor/new" component={NewProject} />
       <Route path="/editor/:projectId" component={Editor} />
       <Route path="/profile" component={Profile} />

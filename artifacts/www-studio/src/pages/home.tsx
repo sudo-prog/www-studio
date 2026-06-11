@@ -1,45 +1,88 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Button } from "@/components/ui/button";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { useGetGalleryTemplates } from "@workspace/api-client-react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Heart, Search, Eye } from "lucide-react";
+import { Heart, Search, Eye, Blocks, WandSparkles, Code2, Layers } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { AiChatWidget } from "@/components/AiChatWidget";
+import { useState } from "react";
 
 export default function Home() {
   const { data: templates = [], isLoading } = useGetGalleryTemplates();
+  const [search, setSearch] = useState("");
+  const [, setLocation] = useLocation();
+
+  const filtered = templates.filter(
+    (t) =>
+      !search ||
+      t.title.toLowerCase().includes(search.toLowerCase()) ||
+      t.tags?.some((tag) => tag.toLowerCase().includes(search.toLowerCase()))
+  );
 
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="px-4 py-24 md:py-32 flex flex-col items-center text-center max-w-4xl mx-auto">
+        <section className="px-4 py-20 md:py-28 flex flex-col items-center text-center max-w-4xl mx-auto">
+          <div className="inline-flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/20 mb-6">
+            <WandSparkles className="w-3.5 h-3.5" />
+            AI-Powered Visual Builder
+          </div>
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-            Clone any website. <span className="text-primary">Edit like magic.</span> Own the code.
+            Clone any website.{" "}
+            <span className="bg-gradient-to-r from-primary to-violet-400 bg-clip-text text-transparent">
+              Edit like magic.
+            </span>{" "}
+            Own the code.
           </h1>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl">
-            WWW Studio is the visual UI builder for developers. Paste a URL, get an editable React + Tailwind codebase, and reshape it instantly.
+          <p className="text-lg text-muted-foreground mb-10 max-w-2xl leading-relaxed">
+            WWW Studio is the visual UI builder for developers. Paste a URL, describe your idea, or upload a screenshot — get an editable React + Tailwind codebase instantly.
           </p>
-          <div className="flex items-center gap-4">
-            <Button size="lg" className="h-12 px-8 text-base" asChild>
-              <Link href="/editor/new">Start Building</Link>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <Button size="lg" className="h-12 px-8 text-base gap-2" asChild>
+              <Link href="/editor/new">
+                <WandSparkles className="w-5 h-5" />Start Building
+              </Link>
             </Button>
-            <Button size="lg" variant="outline" className="h-12 px-8 text-base">
-              Browse Gallery
+            <Button size="lg" variant="outline" className="h-12 px-8 text-base gap-2" asChild>
+              <Link href="/ui-library">
+                <Blocks className="w-5 h-5" />Component Library
+              </Link>
             </Button>
+          </div>
+
+          {/* Feature pills */}
+          <div className="flex flex-wrap justify-center gap-2 mt-10">
+            {[
+              { icon: <Code2 className="w-3.5 h-3.5" />, label: "Screenshot → Code" },
+              { icon: <WandSparkles className="w-3.5 h-3.5" />, label: "Generate from Prompt" },
+              { icon: <Layers className="w-3.5 h-3.5" />, label: "Export HTML + Tailwind" },
+              { icon: <Blocks className="w-3.5 h-3.5" />, label: "UI Library" },
+            ].map(({ icon, label }) => (
+              <div key={label} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted/50 border border-border/50 text-xs text-muted-foreground">
+                {icon}{label}
+              </div>
+            ))}
           </div>
         </section>
 
         {/* Gallery Section */}
         <section className="px-4 md:px-6 pb-24 max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
-            <h2 className="text-2xl font-semibold tracking-tight">Community Templates</h2>
-            <div className="flex items-center gap-2 w-full md:w-auto">
-              <div className="relative w-full md:w-64">
-                <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-                <Input placeholder="Search templates..." className="pl-9" />
-              </div>
+            <div>
+              <h2 className="text-2xl font-semibold tracking-tight">Community Templates</h2>
+              <p className="text-sm text-muted-foreground mt-1">{templates.length} templates ready to fork</p>
+            </div>
+            <div className="relative w-full md:w-72">
+              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+              <Input
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Search templates..."
+                className="pl-9"
+              />
             </div>
           </div>
 
@@ -49,23 +92,25 @@ export default function Home() {
                 <div key={i} className="h-[300px] rounded-lg bg-muted animate-pulse" />
               ))}
             </div>
+          ) : filtered.length === 0 ? (
+            <div className="text-center py-16 text-muted-foreground">
+              <Search className="w-10 h-10 mx-auto mb-3 opacity-30" />
+              <p>No templates found for "{search}"</p>
+            </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {templates.map((template) => (
+              {filtered.map((template) => (
                 <Card key={template.id} className="overflow-hidden group border-muted bg-card hover:border-primary/50 transition-colors">
                   <div className="aspect-video bg-muted relative overflow-hidden">
                     {template.thumbnailUrl ? (
                       <img src={template.thumbnailUrl} alt={template.title} className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" />
                     ) : (
-                      <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
-                        No Preview
-                      </div>
+                      <div className="absolute inset-0 flex items-center justify-center text-muted-foreground text-sm">No Preview</div>
                     )}
                     <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                       <Button variant="secondary" size="sm" asChild>
                         <Link href={`/editor/new?templateId=${template.id}`}>
-                          <Eye className="w-4 h-4 mr-2" />
-                          Fork Template
+                          <Eye className="w-4 h-4 mr-2" />Fork Template
                         </Link>
                       </Button>
                     </div>
@@ -75,17 +120,14 @@ export default function Home() {
                     <p className="text-xs text-muted-foreground mb-3">by {template.creator}</p>
                     <div className="flex flex-wrap gap-1">
                       {template.tags?.slice(0, 3).map((tag) => (
-                        <span key={tag} className="text-[10px] px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground">
-                          {tag}
-                        </span>
+                        <span key={tag} className="text-[10px] px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground">{tag}</span>
                       ))}
                     </div>
                   </CardContent>
                   <CardFooter className="p-4 pt-0 flex justify-between items-center text-xs text-muted-foreground">
                     <span className="capitalize">{template.style}</span>
                     <div className="flex items-center gap-1">
-                      <Heart className="w-3 h-3" />
-                      <span>{template.likes}</span>
+                      <Heart className="w-3 h-3" /><span>{template.likes}</span>
                     </div>
                   </CardFooter>
                 </Card>
@@ -94,6 +136,7 @@ export default function Home() {
           )}
         </section>
       </main>
+      <AiChatWidget context="home/gallery page" onNavigate={setLocation} />
     </div>
   );
 }

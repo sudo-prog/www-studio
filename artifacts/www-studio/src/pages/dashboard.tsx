@@ -1,13 +1,14 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Button } from "@/components/ui/button";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { useGetProjects, useDeleteProject, getGetProjectsQueryKey } from "@workspace/api-client-react";
 import { useQueryClient } from "@tanstack/react-query";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Plus, MoreVertical, Trash2, Clock, Play } from "lucide-react";
+import { Plus, MoreVertical, Trash2, Clock, Play, Globe } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@workspace/replit-auth-web";
+import { AiChatWidget } from "@/components/AiChatWidget";
 
 export default function Dashboard() {
   const { data: projects = [], isLoading } = useGetProjects();
@@ -15,22 +16,18 @@ export default function Dashboard() {
   const queryClient = useQueryClient();
   const { toast } = useToast();
   const { isAuthenticated, isLoading: authLoading } = useAuth();
+  const [, setLocation] = useLocation();
 
   const handleDelete = (id: string) => {
-    deleteProject.mutate(
-      { id },
-      {
-        onSuccess: () => {
-          queryClient.invalidateQueries({ queryKey: getGetProjectsQueryKey() });
-          toast({ title: "Project deleted" });
-        },
-      }
-    );
+    deleteProject.mutate({ id }, {
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: getGetProjectsQueryKey() });
+        toast({ title: "Project deleted" });
+      },
+    });
   };
 
-  if (authLoading) {
-    return <div className="min-h-screen bg-background" />;
-  }
+  if (authLoading) return <div className="min-h-screen bg-background" />;
 
   if (!isAuthenticated) {
     return (
@@ -50,12 +47,13 @@ export default function Dashboard() {
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-3xl font-bold tracking-tight">My Projects</h1>
-            <p className="text-muted-foreground mt-1">Manage and edit your cloned websites.</p>
+            <p className="text-muted-foreground mt-1">
+              {projects.length} project{projects.length !== 1 ? "s" : ""} — manage and edit your websites.
+            </p>
           </div>
           <Button asChild>
             <Link href="/editor/new" className="gap-2">
-              <Plus className="h-4 w-4" />
-              New Project
+              <Plus className="h-4 w-4" />New Project
             </Link>
           </Button>
         </div>
@@ -67,13 +65,13 @@ export default function Dashboard() {
             ))}
           </div>
         ) : projects.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-24 text-center border rounded-lg border-dashed">
-            <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-4">
+          <div className="flex flex-col items-center justify-center py-24 text-center border rounded-xl border-dashed border-border/50">
+            <div className="w-16 h-16 bg-muted rounded-2xl flex items-center justify-center mb-4">
               <Plus className="h-8 w-8 text-muted-foreground" />
             </div>
             <h3 className="text-xl font-semibold mb-2">No projects yet</h3>
-            <p className="text-muted-foreground max-w-sm mb-6">
-              Create your first project by cloning an existing website or starting from a template.
+            <p className="text-muted-foreground max-w-sm mb-6 text-sm">
+              Create your first project by cloning a website, generating from a prompt, or converting a screenshot.
             </p>
             <Button asChild>
               <Link href="/editor/new">Create Project</Link>
@@ -87,31 +85,35 @@ export default function Dashboard() {
                   {project.thumbnailUrl ? (
                     <img src={project.thumbnailUrl} alt={project.name} className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" />
                   ) : (
-                    <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
-                      No Preview
-                    </div>
+                    <div className="absolute inset-0 flex items-center justify-center text-muted-foreground text-sm">No Preview</div>
                   )}
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
                     <Button variant="secondary" size="sm" asChild>
                       <Link href={`/editor/${project.id}`}>
-                        <Play className="w-4 h-4 mr-2" />
-                        Open Editor
+                        <Play className="w-4 h-4 mr-2" />Open Editor
                       </Link>
                     </Button>
                   </div>
+                  {project.status === "published" && (
+                    <div className="absolute top-2 left-2">
+                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-green-500/20 text-green-400 border border-green-500/30 flex items-center gap-1">
+                        <Globe className="w-2.5 h-2.5" />Live
+                      </span>
+                    </div>
+                  )}
                 </div>
                 <CardContent className="p-4 flex-1">
                   <div className="flex items-start justify-between gap-2">
-                    <div>
-                      <h3 className="font-semibold line-clamp-1 mb-1" title={project.name}>{project.name}</h3>
+                    <div className="min-w-0">
+                      <h3 className="font-semibold truncate mb-1" title={project.name}>{project.name}</h3>
                       <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                        <Clock className="w-3 h-3" />
+                        <Clock className="w-3 h-3 shrink-0" />
                         <span>{new Date(project.updatedAt).toLocaleDateString()}</span>
                       </div>
                     </div>
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" size="icon" className="h-8 w-8 -mr-2 text-muted-foreground hover:text-foreground">
+                        <Button variant="ghost" size="icon" className="h-8 w-8 -mr-2 text-muted-foreground hover:text-foreground shrink-0">
                           <MoreVertical className="h-4 w-4" />
                         </Button>
                       </DropdownMenuTrigger>
@@ -119,9 +121,11 @@ export default function Dashboard() {
                         <DropdownMenuItem asChild>
                           <Link href={`/editor/${project.id}`}>Edit</Link>
                         </DropdownMenuItem>
-                        <DropdownMenuItem className="text-destructive focus:text-destructive" onClick={() => handleDelete(project.id)}>
-                          <Trash2 className="w-4 h-4 mr-2" />
-                          Delete
+                        <DropdownMenuItem
+                          className="text-destructive focus:text-destructive"
+                          onClick={() => handleDelete(project.id)}
+                        >
+                          <Trash2 className="w-4 h-4 mr-2" />Delete
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
@@ -129,13 +133,14 @@ export default function Dashboard() {
                 </CardContent>
                 <CardFooter className="p-4 pt-0 text-xs text-muted-foreground flex justify-between">
                   <span className="capitalize">{project.status}</span>
-                  {project.slug && <span>/{project.slug}</span>}
+                  {project.slug && <span className="font-mono truncate max-w-[80px]">/{project.slug}</span>}
                 </CardFooter>
               </Card>
             ))}
           </div>
         )}
       </main>
+      <AiChatWidget context="my projects dashboard" onNavigate={setLocation} />
     </div>
   );
 }
