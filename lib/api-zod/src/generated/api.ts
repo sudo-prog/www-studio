@@ -334,6 +334,84 @@ export const GetChatHistoryResponse = zod.array(GetChatHistoryResponseItem)
 
 
 /**
+ * @summary Generate a website from a text prompt
+ */
+export const GenerateFromPromptBody = zod.object({
+  "prompt": zod.string()
+})
+
+export const GenerateFromPromptResponse = zod.object({
+  "projectId": zod.string(),
+  "componentTree": zod.string(),
+  "title": zod.string(),
+  "detectedStyle": zod.string().optional(),
+  "colors": zod.array(zod.string()).optional()
+})
+
+
+/**
+ * @summary Generate an AI image from a prompt
+ */
+export const GenerateImageBody = zod.object({
+  "prompt": zod.string(),
+  "size": zod.string().optional()
+})
+
+export const GenerateImageResponse = zod.object({
+  "url": zod.string(),
+  "prompt": zod.string(),
+  "fallback": zod.boolean().optional()
+})
+
+
+/**
+ * @summary Convert a screenshot or image to a component tree
+ */
+export const ScreenshotToCodeBody = zod.object({
+  "image": zod.string().describe('Base64-encoded image'),
+  "mimeType": zod.string().optional(),
+  "filename": zod.string().optional()
+})
+
+export const ScreenshotToCodeResponse = zod.object({
+  "projectId": zod.string(),
+  "componentTree": zod.string(),
+  "name": zod.string()
+})
+
+
+/**
+ * @summary Export a project as a downloadable HTML file
+ */
+export const ExportProjectParams = zod.object({
+  "id": zod.coerce.string()
+})
+
+
+/**
+ * @summary Get a project rendered as HTML for inline preview
+ */
+export const PreviewProjectHtmlParams = zod.object({
+  "id": zod.coerce.string()
+})
+
+
+/**
+ * @summary Publish a project and get its live URL
+ */
+export const PublishProjectParams = zod.object({
+  "id": zod.coerce.string()
+})
+
+export const PublishProjectResponse = zod.object({
+  "success": zod.boolean(),
+  "liveUrl": zod.string(),
+  "slug": zod.string(),
+  "status": zod.string()
+})
+
+
+/**
  * @summary Get current authenticated user profile
  */
 export const GetMeResponse = zod.object({

@@ -203,6 +203,49 @@ export interface ChatMessage {
   createdAt: string;
 }
 
+export interface GenerateInput {
+  prompt: string;
+}
+
+export interface GenerateResult {
+  projectId: string;
+  componentTree: string;
+  title: string;
+  detectedStyle?: string;
+  colors?: string[];
+}
+
+export interface GenerateImageInput {
+  prompt: string;
+  size?: string;
+}
+
+export interface GenerateImageResult {
+  url: string;
+  prompt: string;
+  fallback?: boolean;
+}
+
+export interface ScreenshotToCodeInput {
+  /** Base64-encoded image */
+  image: string;
+  mimeType?: string;
+  filename?: string;
+}
+
+export interface ScreenshotToCodeResult {
+  projectId: string;
+  componentTree: string;
+  name: string;
+}
+
+export interface PublishResult {
+  success: boolean;
+  liveUrl: string;
+  slug: string;
+  status: string;
+}
+
 export interface UserProfile {
   id: string;
   username: string;

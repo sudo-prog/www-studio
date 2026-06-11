@@ -7,6 +7,10 @@ import cloneRouter from "./clone";
 import editorRouter from "./editor";
 import chatRouter from "./chat";
 import userRouter from "./user";
+import generateRouter from "./generate";
+import screenshotToCodeRouter from "./screenshot-to-code";
+import exportRouter from "./export";
+import publishRouter from "./publish";
 
 const router: IRouter = Router();
 
@@ -18,5 +22,9 @@ router.use(cloneRouter);
 router.use(editorRouter);
 router.use(chatRouter);
 router.use(userRouter);
+router.use(generateRouter);
+router.use(screenshotToCodeRouter);
+router.use(exportRouter);
+router.use(publishRouter);
 
 export default router;

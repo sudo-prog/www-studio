@@ -29,6 +29,10 @@ import type {
   CloneResult,
   GalleryStats,
   GalleryTemplate,
+  GenerateImageInput,
+  GenerateImageResult,
+  GenerateInput,
+  GenerateResult,
   GetGalleryTemplatesParams,
   HandleBrowserLoginCallbackParams,
   HealthStatus,
@@ -38,6 +42,9 @@ import type {
   Project,
   ProjectInput,
   ProjectUpdate,
+  PublishResult,
+  ScreenshotToCodeInput,
+  ScreenshotToCodeResult,
   Theme,
   ThemeInput,
   ThemeResult,
@@ -1717,6 +1724,443 @@ export function useGetChatHistory<TData = Awaited<ReturnType<typeof getChatHisto
 
 
 
+
+export const getGenerateFromPromptUrl = () => {
+
+
+
+
+  return `/api/generate`
+}
+
+/**
+ * @summary Generate a website from a text prompt
+ */
+export const generateFromPrompt = async (generateInput: GenerateInput, options?: RequestInit): Promise<GenerateResult> => {
+
+  return customFetch<GenerateResult>(getGenerateFromPromptUrl(),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      generateInput,)
+  }
+);}
+
+
+
+
+export const getGenerateFromPromptMutationOptions = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof generateFromPrompt>>, TError,{data: BodyType<GenerateInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof generateFromPrompt>>, TError,{data: BodyType<GenerateInput>}, TContext> => {
+
+const mutationKey = ['generateFromPrompt'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof generateFromPrompt>>, {data: BodyType<GenerateInput>}> = (props) => {
+          const {data} = props ?? {};
+
+          return  generateFromPrompt(data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type GenerateFromPromptMutationResult = NonNullable<Awaited<ReturnType<typeof generateFromPrompt>>>
+    export type GenerateFromPromptMutationBody = BodyType<GenerateInput>
+    export type GenerateFromPromptMutationError = ErrorType<unknown>
+
+    /**
+ * @summary Generate a website from a text prompt
+ */
+export const useGenerateFromPrompt = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof generateFromPrompt>>, TError,{data: BodyType<GenerateInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof generateFromPrompt>>,
+        TError,
+        {data: BodyType<GenerateInput>},
+        TContext
+      > => {
+      return useMutation(getGenerateFromPromptMutationOptions(options));
+    }
+
+export const getGenerateImageUrl = () => {
+
+
+
+
+  return `/api/generate-image`
+}
+
+/**
+ * @summary Generate an AI image from a prompt
+ */
+export const generateImage = async (generateImageInput: GenerateImageInput, options?: RequestInit): Promise<GenerateImageResult> => {
+
+  return customFetch<GenerateImageResult>(getGenerateImageUrl(),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      generateImageInput,)
+  }
+);}
+
+
+
+
+export const getGenerateImageMutationOptions = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof generateImage>>, TError,{data: BodyType<GenerateImageInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof generateImage>>, TError,{data: BodyType<GenerateImageInput>}, TContext> => {
+
+const mutationKey = ['generateImage'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof generateImage>>, {data: BodyType<GenerateImageInput>}> = (props) => {
+          const {data} = props ?? {};
+
+          return  generateImage(data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type GenerateImageMutationResult = NonNullable<Awaited<ReturnType<typeof generateImage>>>
+    export type GenerateImageMutationBody = BodyType<GenerateImageInput>
+    export type GenerateImageMutationError = ErrorType<unknown>
+
+    /**
+ * @summary Generate an AI image from a prompt
+ */
+export const useGenerateImage = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof generateImage>>, TError,{data: BodyType<GenerateImageInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof generateImage>>,
+        TError,
+        {data: BodyType<GenerateImageInput>},
+        TContext
+      > => {
+      return useMutation(getGenerateImageMutationOptions(options));
+    }
+
+export const getScreenshotToCodeUrl = () => {
+
+
+
+
+  return `/api/screenshot-to-code`
+}
+
+/**
+ * @summary Convert a screenshot or image to a component tree
+ */
+export const screenshotToCode = async (screenshotToCodeInput: ScreenshotToCodeInput, options?: RequestInit): Promise<ScreenshotToCodeResult> => {
+
+  return customFetch<ScreenshotToCodeResult>(getScreenshotToCodeUrl(),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      screenshotToCodeInput,)
+  }
+);}
+
+
+
+
+export const getScreenshotToCodeMutationOptions = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof screenshotToCode>>, TError,{data: BodyType<ScreenshotToCodeInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof screenshotToCode>>, TError,{data: BodyType<ScreenshotToCodeInput>}, TContext> => {
+
+const mutationKey = ['screenshotToCode'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof screenshotToCode>>, {data: BodyType<ScreenshotToCodeInput>}> = (props) => {
+          const {data} = props ?? {};
+
+          return  screenshotToCode(data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type ScreenshotToCodeMutationResult = NonNullable<Awaited<ReturnType<typeof screenshotToCode>>>
+    export type ScreenshotToCodeMutationBody = BodyType<ScreenshotToCodeInput>
+    export type ScreenshotToCodeMutationError = ErrorType<unknown>
+
+    /**
+ * @summary Convert a screenshot or image to a component tree
+ */
+export const useScreenshotToCode = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof screenshotToCode>>, TError,{data: BodyType<ScreenshotToCodeInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof screenshotToCode>>,
+        TError,
+        {data: BodyType<ScreenshotToCodeInput>},
+        TContext
+      > => {
+      return useMutation(getScreenshotToCodeMutationOptions(options));
+    }
+
+export const getExportProjectUrl = (id: string,) => {
+
+
+
+
+  return `/api/projects/${id}/export`
+}
+
+/**
+ * @summary Export a project as a downloadable HTML file
+ */
+export const exportProject = async (id: string, options?: RequestInit): Promise<string> => {
+
+  return customFetch<string>(getExportProjectUrl(id),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getExportProjectQueryKey = (id: string,) => {
+    return [
+    `/api/projects/${id}/export`
+    ] as const;
+    }
+
+
+export const getExportProjectQueryOptions = <TData = Awaited<ReturnType<typeof exportProject>>, TError = ErrorType<unknown>>(id: string, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof exportProject>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getExportProjectQueryKey(id);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof exportProject>>> = ({ signal }) => exportProject(id, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, enabled: !!(id), ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof exportProject>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type ExportProjectQueryResult = NonNullable<Awaited<ReturnType<typeof exportProject>>>
+export type ExportProjectQueryError = ErrorType<unknown>
+
+
+/**
+ * @summary Export a project as a downloadable HTML file
+ */
+
+export function useExportProject<TData = Awaited<ReturnType<typeof exportProject>>, TError = ErrorType<unknown>>(
+ id: string, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof exportProject>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getExportProjectQueryOptions(id,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+
+
+
+
+
+
+export const getPreviewProjectHtmlUrl = (id: string,) => {
+
+
+
+
+  return `/api/projects/${id}/preview-html`
+}
+
+/**
+ * @summary Get a project rendered as HTML for inline preview
+ */
+export const previewProjectHtml = async (id: string, options?: RequestInit): Promise<string> => {
+
+  return customFetch<string>(getPreviewProjectHtmlUrl(id),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getPreviewProjectHtmlQueryKey = (id: string,) => {
+    return [
+    `/api/projects/${id}/preview-html`
+    ] as const;
+    }
+
+
+export const getPreviewProjectHtmlQueryOptions = <TData = Awaited<ReturnType<typeof previewProjectHtml>>, TError = ErrorType<unknown>>(id: string, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof previewProjectHtml>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getPreviewProjectHtmlQueryKey(id);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof previewProjectHtml>>> = ({ signal }) => previewProjectHtml(id, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, enabled: !!(id), ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof previewProjectHtml>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type PreviewProjectHtmlQueryResult = NonNullable<Awaited<ReturnType<typeof previewProjectHtml>>>
+export type PreviewProjectHtmlQueryError = ErrorType<unknown>
+
+
+/**
+ * @summary Get a project rendered as HTML for inline preview
+ */
+
+export function usePreviewProjectHtml<TData = Awaited<ReturnType<typeof previewProjectHtml>>, TError = ErrorType<unknown>>(
+ id: string, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof previewProjectHtml>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getPreviewProjectHtmlQueryOptions(id,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+
+
+
+
+
+
+export const getPublishProjectUrl = (id: string,) => {
+
+
+
+
+  return `/api/projects/${id}/publish`
+}
+
+/**
+ * @summary Publish a project and get its live URL
+ */
+export const publishProject = async (id: string, options?: RequestInit): Promise<PublishResult> => {
+
+  return customFetch<PublishResult>(getPublishProjectUrl(id),
+  {
+    ...options,
+    method: 'POST'
+
+
+  }
+);}
+
+
+
+
+export const getPublishProjectMutationOptions = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof publishProject>>, TError,{id: string}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof publishProject>>, TError,{id: string}, TContext> => {
+
+const mutationKey = ['publishProject'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof publishProject>>, {id: string}> = (props) => {
+          const {id} = props ?? {};
+
+          return  publishProject(id,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type PublishProjectMutationResult = NonNullable<Awaited<ReturnType<typeof publishProject>>>
+
+    export type PublishProjectMutationError = ErrorType<void>
+
+    /**
+ * @summary Publish a project and get its live URL
+ */
+export const usePublishProject = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof publishProject>>, TError,{id: string}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof publishProject>>,
+        TError,
+        {id: string},
+        TContext
+      > => {
+      return useMutation(getPublishProjectMutationOptions(options));
+    }
 
 export const getGetMeUrl = () => {
 

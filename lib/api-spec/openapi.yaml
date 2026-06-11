@@ -23,6 +23,8 @@ tags:
     description: AI chat
   - name: user
     description: User profile
+  - name: generate
+    description: AI generation (text-to-site, screenshot-to-code, image generation)
 
 paths:
   /auth/user:
@@ -412,6 +414,124 @@ paths:
                 items:
                   $ref: "#/components/schemas/ChatMessage"
 
+  /generate:
+    post:
+      operationId: generateFromPrompt
+      tags: [generate]
+      summary: Generate a website from a text prompt
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GenerateInput"
+      responses:
+        "200":
+          description: Generated project
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GenerateResult"
+
+  /generate-image:
+    post:
+      operationId: generateImage
+      tags: [generate]
+      summary: Generate an AI image from a prompt
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GenerateImageInput"
+      responses:
+        "200":
+          description: Generated image URL
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GenerateImageResult"
+
+  /screenshot-to-code:
+    post:
+      operationId: screenshotToCode
+      tags: [generate]
+      summary: Convert a screenshot or image to a component tree
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ScreenshotToCodeInput"
+      responses:
+        "200":
+          description: Extracted component tree
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ScreenshotToCodeResult"
+
+  /projects/{id}/export:
+    get:
+      operationId: exportProject
+      tags: [projects]
+      summary: Export a project as a downloadable HTML file
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: HTML file download
+          content:
+            text/html:
+              schema:
+                type: string
+
+  /projects/{id}/preview-html:
+    get:
+      operationId: previewProjectHtml
+      tags: [projects]
+      summary: Get a project rendered as HTML for inline preview
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Rendered HTML
+          content:
+            text/html:
+              schema:
+                type: string
+
+  /projects/{id}/publish:
+    post:
+      operationId: publishProject
+      tags: [projects]
+      summary: Publish a project and get its live URL
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Publish result with live URL
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PublishResult"
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not found
+
   /user/me:
     get:
       operationId: getMe
@@ -727,6 +847,86 @@ components:
         content:
           type: string
         createdAt:
+          type: string
+
+    GenerateInput:
+      type: object
+      required: [prompt]
+      properties:
+        prompt:
+          type: string
+
+    GenerateResult:
+      type: object
+      required: [projectId, componentTree, title]
+      properties:
+        projectId:
+          type: string
+        componentTree:
+          type: string
+        title:
+          type: string
+        detectedStyle:
+          type: string
+        colors:
+          type: array
+          items:
+            type: string
+
+    GenerateImageInput:
+      type: object
+      required: [prompt]
+      properties:
+        prompt:
+          type: string
+        size:
+          type: string
+
+    GenerateImageResult:
+      type: object
+      required: [url, prompt]
+      properties:
+        url:
+          type: string
+        prompt:
+          type: string
+        fallback:
+          type: boolean
+
+    ScreenshotToCodeInput:
+      type: object
+      required: [image]
+      properties:
+        image:
+          type: string
+          description: Base64-encoded image
+        mimeType:
+          type: string
+        filename:
+          type: string
+
+    ScreenshotToCodeResult:
+      type: object
+      required: [projectId, componentTree, name]
+      properties:
+        projectId:
+          type: string
+        componentTree:
+          type: string
+        name:
+          type: string
+
+    PublishResult:
+      type: object
+      required: [success, liveUrl, slug, status]
+      properties:
+        success:
+          type: boolean
+        liveUrl:
+          type: string
+        slug:
+          type: string
+        status:
           type: string
 
     UserProfile:
