@@ -1,0 +1,19 @@
+{
+  "name": "WWW Studio",
+  "short_name": "WWW Studio",
+  "description": "Clone any website. Edit like magic. Own the code.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["productivity", "design", "developer"]
+}
