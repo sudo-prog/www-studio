@@ -1,8 +1,9 @@
 import { Feather } from "@expo/vector-icons";
 import { useGetGalleryTemplates } from "@workspace/api-client-react";
+import type { GalleryTemplate } from "@workspace/api-client-react";
+import { Image } from "expo-image";
 import React, { useState } from "react";
 import {
-  ActivityIndicator,
   FlatList,
   Platform,
   RefreshControl,
@@ -14,7 +15,6 @@ import {
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { useColors } from "@/hooks/useColors";
-import type { GalleryTemplate } from "@workspace/api-client-react";
 
 const STYLES = ["All", "minimal", "bold", "dark", "corporate", "creative", "landing"];
 
@@ -38,9 +38,19 @@ function GalleryCard({ item, colors }: { item: GalleryTemplate; colors: ReturnTy
   return (
     <View style={[styles.card, { backgroundColor: colors.card, borderColor: colors.border }]}>
       <View style={[styles.cardThumbnail, { backgroundColor: colors.muted }]}>
-        <View style={styles.thumbnailPlaceholder}>
-          <Feather name="layout" size={24} color={colors.mutedForeground} />
-        </View>
+        {item.thumbnailUrl ? (
+          <Image
+            source={{ uri: item.thumbnailUrl }}
+            style={styles.thumbnailImage}
+            contentFit="cover"
+            transition={200}
+            placeholder={{ blurhash: "LEHV6nWB2yk8pyo0adR*.7kCMdnj" }}
+          />
+        ) : (
+          <View style={styles.thumbnailPlaceholder}>
+            <Feather name="layout" size={24} color={colors.mutedForeground} />
+          </View>
+        )}
         {item.isFeatured && (
           <View style={[styles.featuredBadge, { backgroundColor: colors.primary }]}>
             <Text style={styles.featuredText}>Featured</Text>
@@ -86,14 +96,6 @@ export default function GalleryScreen() {
     <GalleryCard item={item} colors={colors} />
   );
 
-  const renderSkeleton = () => (
-    <View style={styles.grid}>
-      {Array.from({ length: 6 }).map((_, i) => (
-        <SkeletonCard key={i} colors={colors} />
-      ))}
-    </View>
-  );
-
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       <View style={[styles.header, { paddingTop: topPad + 12, borderBottomColor: colors.border }]}>
@@ -109,9 +111,9 @@ export default function GalleryScreen() {
         keyExtractor={(item) => item.id}
         numColumns={2}
         columnWrapperStyle={styles.row}
-        contentContainerStyle={[styles.listContent]}
+        contentContainerStyle={styles.listContent}
         showsVerticalScrollIndicator={false}
-        scrollEnabled={!isLoading}
+        scrollEnabled={!!(!isLoading)}
         refreshControl={
           <RefreshControl
             refreshing={false}
@@ -127,6 +129,7 @@ export default function GalleryScreen() {
               keyExtractor={(s) => s}
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={styles.filterList}
+              scrollEnabled={true}
               renderItem={({ item: s }) => (
                 <TouchableOpacity
                   onPress={() => setSelectedStyle(s)}
@@ -149,7 +152,13 @@ export default function GalleryScreen() {
                 </TouchableOpacity>
               )}
             />
-            {isLoading && renderSkeleton()}
+            {isLoading && (
+              <View style={styles.grid}>
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <SkeletonCard key={i} colors={colors} />
+                ))}
+              </View>
+            )}
             {isError && (
               <View style={styles.errorState}>
                 <Feather name="alert-circle" size={32} color={colors.mutedForeground} />
@@ -228,9 +237,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     position: "relative",
   },
+  thumbnailImage: {
+    width: "100%",
+    height: "100%",
+  },
   thumbnailPlaceholder: {
     alignItems: "center",
     justifyContent: "center",
+    flex: 1,
   },
   featuredBadge: {
     position: "absolute",

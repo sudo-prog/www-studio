@@ -1,6 +1,7 @@
 import { Feather } from "@expo/vector-icons";
 import { useGetProjects } from "@workspace/api-client-react";
 import type { Project } from "@workspace/api-client-react";
+import { Image } from "expo-image";
 import { router } from "expo-router";
 import React from "react";
 import {
@@ -25,7 +26,17 @@ function ProjectCard({ item, colors }: { item: Project; colors: ReturnType<typeo
       activeOpacity={0.8}
     >
       <View style={[styles.thumbnail, { backgroundColor: colors.muted }]}>
-        <Feather name="monitor" size={28} color={colors.mutedForeground} />
+        {item.thumbnailUrl ? (
+          <Image
+            source={{ uri: item.thumbnailUrl }}
+            style={styles.thumbnailImage}
+            contentFit="cover"
+            transition={200}
+            placeholder={{ blurhash: "LEHV6nWB2yk8pyo0adR*.7kCMdnj" }}
+          />
+        ) : (
+          <Feather name="monitor" size={22} color={colors.mutedForeground} />
+        )}
       </View>
       <View style={styles.cardBody}>
         <View style={styles.cardHeader}>
@@ -138,7 +149,7 @@ export default function ProjectsScreen() {
         keyExtractor={(item) => item.id}
         contentContainerStyle={styles.listContent}
         showsVerticalScrollIndicator={false}
-        scrollEnabled={!isLoading}
+        scrollEnabled={!!(!isLoading)}
         refreshControl={
           <RefreshControl
             refreshing={false}
@@ -223,6 +234,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
+    overflow: "hidden",
+  },
+  thumbnailImage: {
+    width: "100%",
+    height: "100%",
   },
   cardBody: { flex: 1, gap: 4 },
   cardHeader: { flexDirection: "row", alignItems: "center", gap: 8 },
