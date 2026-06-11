@@ -37,10 +37,11 @@ import { ThemeCustomizer } from "@/components/editor/ThemeCustomizer";
 import { useProjectAssets } from "@/hooks/use-project-assets";
 import { ElementInspector, type ElementInfo } from "@/components/editor/ElementInspector";
 import { PageManager, type Page } from "@/components/editor/PageManager";
+import { DesignPanel } from "@/components/editor/DesignPanel";
 
 type DeviceMode = "desktop" | "tablet" | "mobile";
 type ViewMode = "preview" | "split" | "code";
-type RightPanel = "properties" | "theme" | "images" | "animations" | "seo" | "content" | "history";
+type RightPanel = "properties" | "design" | "theme" | "images" | "animations" | "seo" | "content" | "history";
 
 const DEFAULT_PAGE_HTML = `<section class="min-h-screen bg-background flex items-center justify-center p-8"><div class="text-center space-y-4"><h1 class="text-4xl font-bold text-foreground">New Page</h1><p class="text-muted-foreground text-lg">Start building this page with AI or select an element to edit.</p></div></section>`;
 
@@ -1164,6 +1165,7 @@ export default function Editor() {
 
   const RIGHT_TABS: { id: RightPanel; icon: React.ReactNode; label: string; title: string }[] = [
     { id: "properties", icon: <MousePointer2 className="w-3.5 h-3.5" />, label: "Select", title: "Element Inspector" },
+    { id: "design", icon: <Sparkles className="w-3.5 h-3.5" />, label: "Design", title: "Design.md — AI Style Guide" },
     { id: "theme", icon: <Paintbrush className="w-3.5 h-3.5" />, label: "Theme", title: "Theme Customizer" },
     { id: "images", icon: <Image className="w-3.5 h-3.5" />, label: "Media", title: "Images & Assets" },
     { id: "animations", icon: <Zap className="w-3.5 h-3.5" />, label: "Anim", title: "Animation Presets" },
@@ -1493,6 +1495,13 @@ export default function Editor() {
                 </Button>
               </div>
             )
+          )}
+          {rightPanel === "design" && (
+            <DesignPanel
+              projectId={project.id}
+              themeTokens={project.themeTokens}
+              iframeRef={iframeRef}
+            />
           )}
           {rightPanel === "theme" && (
             <ThemeCustomizer
