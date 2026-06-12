@@ -1,6 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { useAuth } from "@workspace/replit-auth-web";
+import { useAuth } from "@workspace/auth-web";
 import { Code2, WandSparkles, LogOut, User, Blocks } from "lucide-react";
 import {
   DropdownMenu,

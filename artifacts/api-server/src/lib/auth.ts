@@ -1,32 +1,18 @@
-import * as client from "openid-client";
 import crypto from "crypto";
 import { type Request, type Response } from "express";
-import { db, sessionsTable } from "@workspace/db";
+import { db, usersTable, sessionsTable } from "@workspace/db";
 import { eq } from "drizzle-orm";
 import type { AuthUser } from "@workspace/api-zod";
 
-export const ISSUER_URL = process.env.ISSUER_URL ?? "https://replit.com/oidc";
 export const SESSION_COOKIE = "sid";
-export const SESSION_TTL = 7 * 24 * 60 * 60 * 1000;
+export const SESSION_TTL = 7 * 24 * 60 * 60 * 1000; // 7 days
 
 export interface SessionData {
   user: AuthUser;
-  access_token: string;
-  refresh_token?: string;
-  expires_at?: number;
+  created_at: number;
 }
 
-let oidcConfig: client.Configuration | null = null;
-
-export async function getOidcConfig(): Promise<client.Configuration> {
-  if (!oidcConfig) {
-    oidcConfig = await client.discovery(
-      new URL(ISSUER_URL),
-      process.env.REPL_ID!,
-    );
-  }
-  return oidcConfig;
-}
+// ── Session Management (DB-backed, no Replit dependency) ──
 
 export async function createSession(data: SessionData): Promise<string> {
   const sid = crypto.randomBytes(32).toString("hex");

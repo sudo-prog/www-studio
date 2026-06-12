@@ -123,7 +123,7 @@ export default function ProjectsScreen() {
             activeOpacity={0.85}
           >
             <Feather name="log-in" size={16} color="#ffffff" />
-            <Text style={styles.signInText}>Sign in with Replit</Text>
+            <Text style={styles.signInText}>Sign in with GitHub</Text>
           </TouchableOpacity>
         </View>
       </View>

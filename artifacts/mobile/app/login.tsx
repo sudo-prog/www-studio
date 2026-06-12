@@ -63,7 +63,7 @@ export default function LoginScreen() {
           ) : (
             <>
               <Feather name="log-in" size={18} color="#ffffff" />
-              <Text style={styles.signInText}>Sign in with Replit</Text>
+              <Text style={styles.signInText}>Sign in with GitHub</Text>
             </>
           )}
         </TouchableOpacity>

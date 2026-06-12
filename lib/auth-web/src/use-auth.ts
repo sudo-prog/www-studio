@@ -8,6 +8,7 @@ interface AuthState {
   isLoading: boolean;
   isAuthenticated: boolean;
   login: () => void;
+  loginWithGitHub: () => void;
   logout: () => void;
 }
 
@@ -42,8 +43,13 @@ export function useAuth(): AuthState {
   }, []);
 
   const login = useCallback(() => {
-    const base = (typeof window !== "undefined" && (window as unknown as { __BASE_URL__?: string }).__BASE_URL__) || "/";
-    window.location.href = `/api/login?returnTo=${encodeURIComponent(base)}`;
+    // Redirect to the login page (to be implemented as a UI page in the web app)
+    window.location.href = "/login";
+  }, []);
+
+  const loginWithGitHub = useCallback(() => {
+    const returnTo = window.location.pathname;
+    window.location.href = `/api/auth/github?returnTo=${encodeURIComponent(returnTo)}`;
   }, []);
 
   const logout = useCallback(() => {
@@ -55,6 +61,7 @@ export function useAuth(): AuthState {
     isLoading,
     isAuthenticated: !!user,
     login,
+    loginWithGitHub,
     logout,
   };
 }
