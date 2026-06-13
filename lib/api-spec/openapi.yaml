@@ -25,6 +25,8 @@ tags:
     description: User profile
   - name: generate
     description: AI generation (text-to-site, screenshot-to-code, image generation)
+  - name: scenes
+    description: Visual scenes workspace (SVG canvas + wellness animations)
 
 paths:
   /auth/user:
@@ -623,6 +625,152 @@ paths:
         "401":
           description: Unauthorized
 
+  /llm/config:
+    get:
+      operationId: getLLMConfig
+      tags: [generate]
+      summary: Get current LLM configuration
+      responses:
+        "200":
+          description: LLM configuration
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LLMConfig"
+
+  /scenes:
+    get:
+      operationId: getScenes
+      tags: [scenes]
+      summary: List user scenes
+      responses:
+        "200":
+          description: Scene list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Scene"
+    post:
+      operationId: createScene
+      tags: [scenes]
+      summary: Create a new scene
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SceneInput"
+      responses:
+        "201":
+          description: Scene created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Scene"
+
+  /scenes/ai-generate:
+    post:
+      operationId: aiGenerateScene
+      tags: [scenes]
+      summary: AI-generate a scene from a prompt
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SceneAIInput"
+      responses:
+        "200":
+          description: Generated scene
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Scene"
+
+  /scenes/{id}:
+    get:
+      operationId: getScene
+      tags: [scenes]
+      summary: Get a scene by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Scene data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Scene"
+        "404":
+          description: Not found
+    patch:
+      operationId: updateScene
+      tags: [scenes]
+      summary: Update a scene
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SceneUpdate"
+      responses:
+        "200":
+          description: Scene updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Scene"
+    delete:
+      operationId: deleteScene
+      tags: [scenes]
+      summary: Delete a scene
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Deleted
+
+  /scenes/{id}/export:
+    post:
+      operationId: exportScene
+      tags: [scenes]
+      summary: Export scene as code
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SceneExportInput"
+      responses:
+        "200":
+          description: Exported code
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SceneExportResult"
+
 components:
   schemas:
     HealthStatus:
@@ -1055,3 +1203,129 @@ components:
           type: ["string", "null"]
         projectCount:
           type: integer
+
+    LLMConfig:
+      type: object
+      required: [baseUrl, model, configured, provider]
+      properties:
+        baseUrl:
+          type: string
+        model:
+          type: string
+        visionModel:
+          type: string
+        configured:
+          type: boolean
+        provider:
+          type: string
+
+    Scene:
+      type: object
+      required: [id, name, slug, status, canvasWidth, canvasHeight, createdAt, updatedAt]
+      properties:
+        id:
+          type: string
+        userId:
+          type: string
+        name:
+          type: string
+        slug:
+          type: string
+        description:
+          type: ["string", "null"]
+        tags:
+          type: ["string", "null"]
+        status:
+          type: string
+          enum: [draft, published]
+        thumbnailUrl:
+          type: ["string", "null"]
+        canvasWidth:
+          type: integer
+        canvasHeight:
+          type: integer
+        elements:
+          type: ["string", "null"]
+        animations:
+          type: ["string", "null"]
+        themeTokens:
+          type: ["string", "null"]
+        linkedProjectId:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+
+    SceneInput:
+      type: object
+      required: [name]
+      properties:
+        name:
+          type: string
+        description:
+          type: ["string", "null"]
+        canvasWidth:
+          type: integer
+        canvasHeight:
+          type: integer
+        elements:
+          type: ["string", "null"]
+        animations:
+          type: ["string", "null"]
+        themeTokens:
+          type: ["string", "null"]
+        tags:
+          type: ["string", "null"]
+
+    SceneUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: ["string", "null"]
+        status:
+          type: string
+          enum: [draft, published]
+        thumbnailUrl:
+          type: ["string", "null"]
+        elements:
+          type: ["string", "null"]
+        animations:
+          type: ["string", "null"]
+        themeTokens:
+          type: ["string", "null"]
+        tags:
+          type: ["string", "null"]
+        canvasWidth:
+          type: integer
+        canvasHeight:
+          type: integer
+
+    SceneExportInput:
+      type: object
+      properties:
+        format:
+          type: string
+          enum: [react-framer, nextjs, cursor-prompt, svg]
+
+    SceneExportResult:
+      type: object
+      required: [code, format, filename]
+      properties:
+        code:
+          type: string
+        format:
+          type: string
+        filename:
+          type: string
+
+    SceneAIInput:
+      type: object
+      required: [prompt]
+      properties:
+        prompt:
+          type: string
+        style:
+          type: ["string", "null"]

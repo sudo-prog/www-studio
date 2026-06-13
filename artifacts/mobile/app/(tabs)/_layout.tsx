@@ -20,6 +20,10 @@ function NativeTabLayout() {
         <Icon sf={{ default: "folder", selected: "folder.fill" }} />
         <Label>Projects</Label>
       </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="scenes">
+        <Icon sf={{ default: "sparkles.rectangle.stack", selected: "sparkles.rectangle.stack.fill" }} />
+        <Label>Scenes</Label>
+      </NativeTabs.Trigger>
       <NativeTabs.Trigger name="components">
         <Icon sf={{ default: "puzzlepiece", selected: "puzzlepiece.fill" }} />
         <Label>Components</Label>
@@ -91,6 +95,18 @@ function ClassicTabLayout() {
               <SymbolView name="folder" tintColor={color} size={22} />
             ) : (
               <Feather name="folder" size={22} color={color} />
+            ),
+        }}
+      />
+      <Tabs.Screen
+        name="scenes"
+        options={{
+          title: "Scenes",
+          tabBarIcon: ({ color }) =>
+            isIOS ? (
+              <SymbolView name="sparkles.rectangle.stack" tintColor={color} size={22} />
+            ) : (
+              <Feather name="layers" size={22} color={color} />
             ),
         }}
       />

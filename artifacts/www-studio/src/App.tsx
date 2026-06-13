@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 import NotFound from "@/pages/not-found";
 
 import Home from "@/pages/home";
@@ -11,6 +12,11 @@ import NewProject from "@/pages/new-project";
 import Editor from "@/pages/editor";
 import Profile from "@/pages/profile";
 import Components from "@/pages/components";
+import Gallery from "@/pages/gallery";
+import Scenes from "@/pages/scenes";
+import SceneEditor from "@/pages/scene-editor";
+import ScenePreview from "@/pages/scene-preview";
+import SceneShare from "@/pages/scene-share";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +29,11 @@ function Router() {
       <Route path="/editor/new" component={NewProject} />
       <Route path="/editor/:projectId" component={Editor} />
       <Route path="/profile" component={Profile} />
+      <Route path="/gallery" component={Gallery} />
+      <Route path="/scenes" component={Scenes} />
+      <Route path="/scenes/:id" component={SceneEditor} />
+      <Route path="/scenes/:id/preview" component={ScenePreview} />
+      <Route path="/scenes/:id/share" component={SceneShare} />
       <Route component={NotFound} />
     </Switch>
   );
@@ -33,10 +44,12 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider defaultTheme="dark" storageKey="www-studio-theme">
         <TooltipProvider>
-          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-            <Router />
-          </WouterRouter>
-          <Toaster />
+          <ErrorBoundary>
+            <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+              <Router />
+            </WouterRouter>
+            <Toaster />
+          </ErrorBoundary>
         </TooltipProvider>
       </ThemeProvider>
     </QueryClientProvider>

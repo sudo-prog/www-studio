@@ -469,3 +469,175 @@ export const GetMeResponse = zod.object({
 })
 
 
+/**
+ * @summary Get current LLM configuration
+ */
+export const GetLLMConfigResponse = zod.object({
+  "baseUrl": zod.string(),
+  "model": zod.string(),
+  "visionModel": zod.string().optional(),
+  "configured": zod.boolean(),
+  "provider": zod.string()
+})
+
+
+/**
+ * @summary List user scenes
+ */
+export const GetScenesResponseItem = zod.object({
+  "id": zod.string(),
+  "userId": zod.string().optional(),
+  "name": zod.string(),
+  "slug": zod.string(),
+  "description": zod.string().nullish(),
+  "tags": zod.string().nullish(),
+  "status": zod.enum(['draft', 'published']),
+  "thumbnailUrl": zod.string().nullish(),
+  "canvasWidth": zod.number(),
+  "canvasHeight": zod.number(),
+  "elements": zod.string().nullish(),
+  "animations": zod.string().nullish(),
+  "themeTokens": zod.string().nullish(),
+  "linkedProjectId": zod.string().nullish(),
+  "createdAt": zod.string(),
+  "updatedAt": zod.string()
+})
+export const GetScenesResponse = zod.array(GetScenesResponseItem)
+
+
+/**
+ * @summary Create a new scene
+ */
+export const CreateSceneBody = zod.object({
+  "name": zod.string(),
+  "description": zod.string().nullish(),
+  "canvasWidth": zod.number().optional(),
+  "canvasHeight": zod.number().optional(),
+  "elements": zod.string().nullish(),
+  "animations": zod.string().nullish(),
+  "themeTokens": zod.string().nullish(),
+  "tags": zod.string().nullish()
+})
+
+
+/**
+ * @summary AI-generate a scene from a prompt
+ */
+export const AiGenerateSceneBody = zod.object({
+  "prompt": zod.string(),
+  "style": zod.string().nullish()
+})
+
+export const AiGenerateSceneResponse = zod.object({
+  "id": zod.string(),
+  "userId": zod.string().optional(),
+  "name": zod.string(),
+  "slug": zod.string(),
+  "description": zod.string().nullish(),
+  "tags": zod.string().nullish(),
+  "status": zod.enum(['draft', 'published']),
+  "thumbnailUrl": zod.string().nullish(),
+  "canvasWidth": zod.number(),
+  "canvasHeight": zod.number(),
+  "elements": zod.string().nullish(),
+  "animations": zod.string().nullish(),
+  "themeTokens": zod.string().nullish(),
+  "linkedProjectId": zod.string().nullish(),
+  "createdAt": zod.string(),
+  "updatedAt": zod.string()
+})
+
+
+/**
+ * @summary Get a scene by ID
+ */
+export const GetSceneParams = zod.object({
+  "id": zod.coerce.string()
+})
+
+export const GetSceneResponse = zod.object({
+  "id": zod.string(),
+  "userId": zod.string().optional(),
+  "name": zod.string(),
+  "slug": zod.string(),
+  "description": zod.string().nullish(),
+  "tags": zod.string().nullish(),
+  "status": zod.enum(['draft', 'published']),
+  "thumbnailUrl": zod.string().nullish(),
+  "canvasWidth": zod.number(),
+  "canvasHeight": zod.number(),
+  "elements": zod.string().nullish(),
+  "animations": zod.string().nullish(),
+  "themeTokens": zod.string().nullish(),
+  "linkedProjectId": zod.string().nullish(),
+  "createdAt": zod.string(),
+  "updatedAt": zod.string()
+})
+
+
+/**
+ * @summary Update a scene
+ */
+export const UpdateSceneParams = zod.object({
+  "id": zod.coerce.string()
+})
+
+export const UpdateSceneBody = zod.object({
+  "name": zod.string().optional(),
+  "description": zod.string().nullish(),
+  "status": zod.enum(['draft', 'published']).optional(),
+  "thumbnailUrl": zod.string().nullish(),
+  "elements": zod.string().nullish(),
+  "animations": zod.string().nullish(),
+  "themeTokens": zod.string().nullish(),
+  "tags": zod.string().nullish(),
+  "canvasWidth": zod.number().optional(),
+  "canvasHeight": zod.number().optional()
+})
+
+export const UpdateSceneResponse = zod.object({
+  "id": zod.string(),
+  "userId": zod.string().optional(),
+  "name": zod.string(),
+  "slug": zod.string(),
+  "description": zod.string().nullish(),
+  "tags": zod.string().nullish(),
+  "status": zod.enum(['draft', 'published']),
+  "thumbnailUrl": zod.string().nullish(),
+  "canvasWidth": zod.number(),
+  "canvasHeight": zod.number(),
+  "elements": zod.string().nullish(),
+  "animations": zod.string().nullish(),
+  "themeTokens": zod.string().nullish(),
+  "linkedProjectId": zod.string().nullish(),
+  "createdAt": zod.string(),
+  "updatedAt": zod.string()
+})
+
+
+/**
+ * @summary Delete a scene
+ */
+export const DeleteSceneParams = zod.object({
+  "id": zod.coerce.string()
+})
+
+
+/**
+ * @summary Export scene as code
+ */
+export const ExportSceneParams = zod.object({
+  "id": zod.coerce.string()
+})
+
+export const ExportSceneBody = zod.object({
+  "format": zod.enum(['react-framer', 'nextjs', 'cursor-prompt', 'svg']).optional()
+})
+
+export const ExportSceneResponse = zod.object({
+  "code": zod.string(),
+  "format": zod.string(),
+  "filename": zod.string()
+})
+
+

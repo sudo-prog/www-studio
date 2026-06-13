@@ -280,6 +280,117 @@ export interface UserProfile {
   projectCount?: number;
 }
 
+export interface LLMConfig {
+  baseUrl: string;
+  model: string;
+  visionModel?: string;
+  configured: boolean;
+  provider: string;
+}
+
+export type SceneStatus = typeof SceneStatus[keyof typeof SceneStatus];
+
+
+export const SceneStatus = {
+  draft: 'draft',
+  published: 'published',
+} as const;
+
+export interface Scene {
+  id: string;
+  userId?: string;
+  name: string;
+  slug: string;
+  /** @nullable */
+  description?: string | null;
+  /** @nullable */
+  tags?: string | null;
+  status: SceneStatus;
+  /** @nullable */
+  thumbnailUrl?: string | null;
+  canvasWidth: number;
+  canvasHeight: number;
+  /** @nullable */
+  elements?: string | null;
+  /** @nullable */
+  animations?: string | null;
+  /** @nullable */
+  themeTokens?: string | null;
+  /** @nullable */
+  linkedProjectId?: string | null;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface SceneInput {
+  name: string;
+  /** @nullable */
+  description?: string | null;
+  canvasWidth?: number;
+  canvasHeight?: number;
+  /** @nullable */
+  elements?: string | null;
+  /** @nullable */
+  animations?: string | null;
+  /** @nullable */
+  themeTokens?: string | null;
+  /** @nullable */
+  tags?: string | null;
+}
+
+export type SceneUpdateStatus = typeof SceneUpdateStatus[keyof typeof SceneUpdateStatus];
+
+
+export const SceneUpdateStatus = {
+  draft: 'draft',
+  published: 'published',
+} as const;
+
+export interface SceneUpdate {
+  name?: string;
+  /** @nullable */
+  description?: string | null;
+  status?: SceneUpdateStatus;
+  /** @nullable */
+  thumbnailUrl?: string | null;
+  /** @nullable */
+  elements?: string | null;
+  /** @nullable */
+  animations?: string | null;
+  /** @nullable */
+  themeTokens?: string | null;
+  /** @nullable */
+  tags?: string | null;
+  canvasWidth?: number;
+  canvasHeight?: number;
+}
+
+export type SceneExportInputFormat = typeof SceneExportInputFormat[keyof typeof SceneExportInputFormat];
+
+
+export const SceneExportInputFormat = {
+  'react-framer': 'react-framer',
+  nextjs: 'nextjs',
+  'cursor-prompt': 'cursor-prompt',
+  svg: 'svg',
+} as const;
+
+export interface SceneExportInput {
+  format?: SceneExportInputFormat;
+}
+
+export interface SceneExportResult {
+  code: string;
+  format: string;
+  filename: string;
+}
+
+export interface SceneAIInput {
+  prompt: string;
+  /** @nullable */
+  style?: string | null;
+}
+
 export type BeginBrowserLoginParams = {
 returnTo?: string;
 };

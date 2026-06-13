@@ -1,7 +1,7 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@workspace/auth-web";
-import { Code2, WandSparkles, LogOut, User, Blocks } from "lucide-react";
+import { Code2, WandSparkles, LogOut, User, Blocks, Layers, Globe } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,7 +19,9 @@ export function Navbar() {
       href={href}
       className={cn(
         "text-sm transition-colors",
-        location === href ? "text-foreground font-medium" : "text-muted-foreground hover:text-foreground"
+        location === href || location.startsWith(href + "/")
+          ? "text-foreground font-medium"
+          : "text-muted-foreground hover:text-foreground"
       )}
     >
       {label}
@@ -35,10 +37,19 @@ export function Navbar() {
         </Link>
         <div className="flex flex-1 items-center gap-5 text-sm">
           {navLink("/", "Gallery")}
+          {navLink("/scenes", "Scenes")}
+          {navLink("/scenes/gallery", "Scene Gallery")}
+          {navLink("/gallery", "Projects")}
           {navLink("/ui-library", "Components")}
           {isAuthenticated && navLink("/projects", "My Projects")}
         </div>
         <div className="flex items-center gap-2">
+          <Button variant="ghost" size="sm" asChild>
+            <Link href="/gallery" className="flex items-center gap-2">
+              <Globe className="h-4 w-4" />
+              <span className="hidden sm:inline">Gallery</span>
+            </Link>
+          </Button>
           <Button variant="ghost" size="sm" asChild>
             <Link href="/editor/new" className="flex items-center gap-2">
               <WandSparkles className="h-4 w-4" />

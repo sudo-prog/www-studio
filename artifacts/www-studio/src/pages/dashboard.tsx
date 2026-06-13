@@ -1,22 +1,27 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "wouter";
-import { useGetProjects, useDeleteProject, getGetProjectsQueryKey } from "@workspace/api-client-react";
+import { useGetProjects, useDeleteProject, getGetProjectsQueryKey, useGetScenes } from "@workspace/api-client-react";
 import { useQueryClient } from "@tanstack/react-query";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Plus, MoreVertical, Trash2, Clock, Play, Globe } from "lucide-react";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Plus, MoreVertical, Trash2, Clock, Play, Globe, Layers, Download, BarChart3, FolderOpen, Sparkles, Zap, ArrowRight } from "lucide-react";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@workspace/auth-web";
 import { AiChatWidget } from "@/components/AiChatWidget";
 
 export default function Dashboard() {
   const { data: projects = [], isLoading } = useGetProjects();
+  const { data: scenes = [] } = useGetScenes();
   const deleteProject = useDeleteProject();
   const queryClient = useQueryClient();
   const { toast } = useToast();
   const { isAuthenticated, isLoading: authLoading } = useAuth();
   const [, setLocation] = useLocation();
+
+  const publishedCount = (projects as any[]).filter((p: any) => p.status === "published").length;
+  const scenesCount = (scenes as any[]).length;
+  const publishedScenes = (scenes as any[]).filter((s: any) => s.status === "published").length;
 
   const handleDelete = (id: string) => {
     deleteProject.mutate({ id }, {
@@ -40,15 +45,103 @@ export default function Dashboard() {
     );
   }
 
+  function downloadProjectHtml(projectId: string, projectName: string) {
+    const url = `/api/projects/${projectId}/export`;
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${projectName.toLowerCase().replace(/\s+/g, "-")}.html`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
       <main className="flex-1 p-6 md:p-8 max-w-7xl mx-auto w-full">
+
+        {/* Stats bar */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+          {[
+            { icon: <FolderOpen className="h-4 w-4" />, label: "Projects", value: (projects as any[]).length, color: "text-blue-400" },
+            { icon: <Globe className="h-4 w-4" />,       label: "Published", value: publishedCount,              color: "text-green-400" },
+            { icon: <Layers className="h-4 w-4" />,      label: "Scenes",    value: scenesCount,                  color: "text-purple-400" },
+            { icon: <BarChart3 className="h-4 w-4" />,   label: "Live Scenes", value: publishedScenes,           color: "text-orange-400" },
+          ].map(({ icon, label, value, color }) => (
+            <div key={label} className="bg-card border border-border rounded-xl p-4 flex items-center gap-3">
+              <div className={`${color} shrink-0`}>{icon}</div>
+              <div>
+                <p className="text-2xl font-bold tabular-nums">{value}</p>
+                <p className="text-xs text-muted-foreground">{label}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Recent Scenes strip */}
+        {(scenes as any[]).length > 0 && (
+          <div className="mb-8">
+            <div className="flex items-center justify-between mb-3">
+              <h2 className="text-sm font-semibold flex items-center gap-2">
+                <Layers className="h-4 w-4 text-purple-400" />Recent Scenes
+              </h2>
+              <Link href="/scenes" className="text-xs text-muted-foreground hover:text-foreground flex items-center gap-1">
+                View all →
+              </Link>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {(scenes as any[]).slice(0, 4).map((scene: any) => {
+                let elements: any[] = [];
+                try { elements = JSON.parse(scene.elements ?? "[]"); } catch {}
+                const colors = elements.slice(0, 4).map((e: any) => e.fill).filter(Boolean);
+                return (
+                  <Link key={scene.id} href={`/scenes/${scene.id}`}>
+                    <div className="bg-card border border-border rounded-xl overflow-hidden hover:border-primary/40 transition-colors group cursor-pointer">
+                      <div
+                        className="h-16 relative"
+                        style={colors.length ? {
+                          background: `linear-gradient(135deg, ${colors.join(",")})`
+                        } : { background: "hsl(var(--muted))" }}
+                      >
+                        {scene.status === "published" && (
+                          <span className="absolute top-1.5 right-1.5 text-[9px] px-1.5 py-0.5 rounded-full bg-green-500/20 text-green-400 border border-green-500/30">Live</span>
+                        )}
+                      </div>
+                      <div className="px-2.5 py-2">
+                        <p className="text-xs font-medium truncate group-hover:text-primary transition-colors">{scene.name}</p>
+                        <p className="text-[10px] text-muted-foreground">{elements.length} elements</p>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* Quick actions */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+          {[
+            { icon: <Plus className="h-4 w-4" />,       label: "New Project",       sub: "Blank canvas",           href: "/editor/new",        color: "bg-blue-500/10 text-blue-400 border-blue-500/20" },
+            { icon: <Zap className="h-4 w-4" />,         label: "AI Scene",          sub: "Generate with AI",       href: "/scenes",            color: "bg-purple-500/10 text-purple-400 border-purple-500/20" },
+            { icon: <Globe className="h-4 w-4" />,       label: "Public Gallery",    sub: "Browse community",       href: "/scenes/gallery",    color: "bg-green-500/10 text-green-400 border-green-500/20" },
+            { icon: <Sparkles className="h-4 w-4" />,   label: "My Scenes",         sub: "All compositions",       href: "/scenes",            color: "bg-orange-500/10 text-orange-400 border-orange-500/20" },
+          ].map(({ icon, label, sub, href, color }) => (
+            <Link key={label} href={href}>
+              <div className={`border rounded-xl p-4 hover:opacity-90 transition-all cursor-pointer h-full ${color}`}>
+                <div className="mb-2">{icon}</div>
+                <p className="font-semibold text-sm">{label}</p>
+                <p className="text-xs opacity-70">{sub}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-3xl font-bold tracking-tight">My Projects</h1>
             <p className="text-muted-foreground mt-1">
-              {projects.length} project{projects.length !== 1 ? "s" : ""} — manage and edit your websites.
+              {(projects as any[]).length} project{(projects as any[]).length !== 1 ? "s" : ""} — manage and edit your websites.
             </p>
           </div>
           <Button asChild>
@@ -119,8 +212,14 @@ export default function Dashboard() {
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
                         <DropdownMenuItem asChild>
-                          <Link href={`/editor/${project.id}`}>Edit</Link>
+                          <Link href={`/editor/${project.id}`}>
+                            <Play className="w-4 h-4 mr-2" />Edit
+                          </Link>
                         </DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => downloadProjectHtml(project.id, project.name)}>
+                          <Download className="w-4 h-4 mr-2" />Download HTML
+                        </DropdownMenuItem>
+                        <DropdownMenuSeparator />
                         <DropdownMenuItem
                           className="text-destructive focus:text-destructive"
                           onClick={() => handleDelete(project.id)}

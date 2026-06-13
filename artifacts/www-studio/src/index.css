@@ -135,3 +135,62 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* ── Wellness Scene Animation Keyframes ─────────────────────────────── */
+
+@keyframes gentle-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes gradient-breathe {
+  0%, 100% { opacity: var(--op, 0.7); transform: scale(1); }
+  50% { opacity: calc(var(--op, 0.7) + 0.2); transform: scale(1.06); }
+}
+
+@keyframes shadow-pulse {
+  0%, 100% { filter: drop-shadow(0 0 0 transparent); }
+  50% { filter: drop-shadow(0 0 16px currentColor); }
+}
+
+@keyframes morph {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fade-in-out {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.9; }
+}
+
+@keyframes scale-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+@keyframes elastic-bounce {
+  0% { transform: translateY(0) scaleY(1); }
+  20% { transform: translateY(-20px) scaleY(0.9); }
+  40% { transform: translateY(0) scaleY(1.1); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes drift {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(15px); }
+}
+
+@keyframes hover-lift {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-10px) scale(1.04); }
+}
+
+@keyframes scroll-reveal {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: var(--op, 0.7); transform: translateY(0); }
+}

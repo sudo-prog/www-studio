@@ -1,17 +1,62 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "wouter";
-import { useGetGalleryTemplates } from "@workspace/api-client-react";
+import { useGetGalleryTemplates, useGetScenes } from "@workspace/api-client-react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Heart, Search, Eye, Blocks, WandSparkles, Code2, Layers } from "lucide-react";
+import {
+  Heart, Search, Eye, Blocks, WandSparkles, Code2, Layers, Globe,
+  ArrowRight, Sparkles,
+} from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { AiChatWidget } from "@/components/AiChatWidget";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+const WELLNESS_COLORS = ["#7FB5A0","#B39DC2","#E8957A","#87BBDB","#F4C5A1","#4A7C6B","#C8D8E0"];
+
+function SceneShowcaseCard({ scene, href }: { scene: any; href?: string }) {
+  let elements: any[] = [];
+  try { elements = JSON.parse(scene.elements ?? "[]"); } catch { /* */ }
+
+  const dest = href ?? `/scenes/${scene.id}/share`;
+
+  return (
+    <Link href={dest}>
+      <div className="group relative h-36 rounded-2xl overflow-hidden cursor-pointer border border-border hover:border-primary/40 transition-all hover:shadow-lg hover:shadow-primary/10"
+        style={{ background: "linear-gradient(135deg, #0d1117 0%, #161b22 100%)" }}>
+        <svg viewBox={`0 0 ${scene.canvasWidth ?? 1440} ${scene.canvasHeight ?? 900}`} className="absolute inset-0 w-full h-full opacity-90">
+          {elements.slice(0, 6).map((el: any) => {
+            if (el.type === "circle") return <circle key={el.id} cx={el.x + el.width/2} cy={el.y + el.height/2} r={el.width/2} fill={el.fill} opacity={el.opacity ?? 0.7} />;
+            if (el.type === "rect")   return <rect   key={el.id} x={el.x} y={el.y} width={el.width} height={el.height} rx={12} fill={el.fill} opacity={el.opacity ?? 0.7} />;
+            return null;
+          })}
+        </svg>
+        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+          <span className="text-white text-xs font-medium px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-sm flex items-center gap-1.5">
+            <Eye className="h-3 w-3" />Share
+          </span>
+        </div>
+        <div className="absolute bottom-2 left-3">
+          <p className="text-white/80 text-xs font-medium truncate max-w-[120px]">{scene.name}</p>
+        </div>
+      </div>
+    </Link>
+  );
+}
 
 export default function Home() {
   const { data: templates = [], isLoading } = useGetGalleryTemplates();
-  const [search, setSearch] = useState("");
-  const [, setLocation] = useLocation();
+  const { data: allScenes = [] }            = useGetScenes();
+  const [search, setSearch]   = useState("");
+  const [, setLocation]       = useLocation();
+  const [publicScenes, setPublicScenes] = useState<any[]>([]);
+
+  // Fetch public scenes for showcase
+  useEffect(() => {
+    fetch("/api/scenes/public?limit=6")
+      .then((r) => r.ok ? r.json() : [])
+      .then((d) => setPublicScenes(d.slice(0, 6)))
+      .catch(() => {});
+  }, []);
 
   const filtered = templates.filter(
     (t) =>
@@ -20,11 +65,13 @@ export default function Home() {
       t.tags?.some((tag) => tag.toLowerCase().includes(search.toLowerCase()))
   );
 
+  const showcaseScenes = publicScenes.length > 0 ? publicScenes : (allScenes as any[]).slice(0, 6);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-1">
-        {/* Hero Section */}
+        {/* Hero */}
         <section className="px-4 py-20 md:py-28 flex flex-col items-center text-center max-w-4xl mx-auto">
           <div className="inline-flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/20 mb-6">
             <WandSparkles className="w-3.5 h-3.5" />
@@ -47,19 +94,18 @@ export default function Home() {
               </Link>
             </Button>
             <Button size="lg" variant="outline" className="h-12 px-8 text-base gap-2" asChild>
-              <Link href="/ui-library">
-                <Blocks className="w-5 h-5" />Component Library
+              <Link href="/scenes">
+                <Sparkles className="w-5 h-5" />Wellness Scenes
               </Link>
             </Button>
           </div>
-
-          {/* Feature pills */}
           <div className="flex flex-wrap justify-center gap-2 mt-10">
             {[
-              { icon: <Code2 className="w-3.5 h-3.5" />, label: "Screenshot → Code" },
-              { icon: <WandSparkles className="w-3.5 h-3.5" />, label: "Generate from Prompt" },
-              { icon: <Layers className="w-3.5 h-3.5" />, label: "Export HTML + Tailwind" },
-              { icon: <Blocks className="w-3.5 h-3.5" />, label: "UI Library" },
+              { icon: <Code2 className="w-3.5 h-3.5" />,       label: "Screenshot → Code"  },
+              { icon: <WandSparkles className="w-3.5 h-3.5" />, label: "Generate from Prompt"},
+              { icon: <Layers className="w-3.5 h-3.5" />,       label: "Export HTML + Tailwind"},
+              { icon: <Blocks className="w-3.5 h-3.5" />,       label: "UI Library"          },
+              { icon: <Sparkles className="w-3.5 h-3.5" />,     label: "AI Wellness Scenes"  },
             ].map(({ icon, label }) => (
               <div key={label} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted/50 border border-border/50 text-xs text-muted-foreground">
                 {icon}{label}
@@ -68,7 +114,60 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Gallery Section */}
+        {/* Scenes Showcase */}
+        {showcaseScenes.length > 0 && (
+          <section className="px-4 md:px-6 pb-16 max-w-7xl mx-auto">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <Sparkles className="h-5 w-5 text-primary" />
+                  <h2 className="text-2xl font-semibold tracking-tight">Wellness Scenes</h2>
+                </div>
+                <p className="text-sm text-muted-foreground">AI-generated SVG compositions with living animations — click to share</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <Button variant="outline" size="sm" asChild>
+                  <Link href="/scenes/gallery" className="gap-1.5">
+                    <Globe className="h-3.5 w-3.5" />Public Gallery
+                  </Link>
+                </Button>
+                <Button size="sm" asChild>
+                  <Link href="/scenes" className="gap-1.5">
+                    My Scenes<ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+
+            {/* Wellness colors + stats */}
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex gap-1.5">
+                {WELLNESS_COLORS.map((c) => (
+                  <div key={c} className="w-5 h-5 rounded-full border border-white/10 shrink-0" style={{ background: c }} />
+                ))}
+              </div>
+              {publicScenes.length > 0 && (
+                <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                  <span className="flex items-center gap-1">
+                    <Globe className="h-3 w-3 text-green-400" />
+                    {publicScenes.filter((s: any) => s.status === "published").length} published
+                  </span>
+                  <span>
+                    ♥ {publicScenes.reduce((n: number, s: any) => n + (s.likes ?? 0), 0)} total likes
+                  </span>
+                </div>
+              )}
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+              {showcaseScenes.map((scene: any) => (
+                <SceneShowcaseCard key={scene.id} scene={scene} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Templates Gallery */}
         <section className="px-4 md:px-6 pb-24 max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
             <div>
@@ -88,7 +187,7 @@ export default function Home() {
 
           {isLoading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[1, 2, 3, 4, 5, 6].map((i) => (
+              {[1,2,3,4,5,6].map((i) => (
                 <div key={i} className="h-[300px] rounded-lg bg-muted animate-pulse" />
               ))}
             </div>

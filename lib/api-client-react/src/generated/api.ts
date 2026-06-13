@@ -37,6 +37,7 @@ import type {
   GetGalleryTemplatesParams,
   HandleBrowserLoginCallbackParams,
   HealthStatus,
+  LLMConfig,
   LogoutSuccess,
   MobileTokenExchangeRequest,
   MobileTokenExchangeSuccess,
@@ -45,6 +46,12 @@ import type {
   ProjectUpdate,
   PublishResult,
   RestoreResult,
+  Scene,
+  SceneAIInput,
+  SceneExportInput,
+  SceneExportResult,
+  SceneInput,
+  SceneUpdate,
   ScreenshotToCodeInput,
   ScreenshotToCodeResult,
   Snapshot,
@@ -2462,4 +2469,591 @@ export function useGetMe<TData = Awaited<ReturnType<typeof getMe>>, TError = Err
 
 
 
+
+export const getGetLLMConfigUrl = () => {
+
+
+
+
+  return `/api/llm/config`
+}
+
+/**
+ * @summary Get current LLM configuration
+ */
+export const getLLMConfig = async ( options?: RequestInit): Promise<LLMConfig> => {
+
+  return customFetch<LLMConfig>(getGetLLMConfigUrl(),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetLLMConfigQueryKey = () => {
+    return [
+    `/api/llm/config`
+    ] as const;
+    }
+
+
+export const getGetLLMConfigQueryOptions = <TData = Awaited<ReturnType<typeof getLLMConfig>>, TError = ErrorType<unknown>>( options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getLLMConfig>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetLLMConfigQueryKey();
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getLLMConfig>>> = ({ signal }) => getLLMConfig({ signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getLLMConfig>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetLLMConfigQueryResult = NonNullable<Awaited<ReturnType<typeof getLLMConfig>>>
+export type GetLLMConfigQueryError = ErrorType<unknown>
+
+
+/**
+ * @summary Get current LLM configuration
+ */
+
+export function useGetLLMConfig<TData = Awaited<ReturnType<typeof getLLMConfig>>, TError = ErrorType<unknown>>(
+  options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getLLMConfig>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetLLMConfigQueryOptions(options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+
+
+
+
+
+
+export const getGetScenesUrl = () => {
+
+
+
+
+  return `/api/scenes`
+}
+
+/**
+ * @summary List user scenes
+ */
+export const getScenes = async ( options?: RequestInit): Promise<Scene[]> => {
+
+  return customFetch<Scene[]>(getGetScenesUrl(),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetScenesQueryKey = () => {
+    return [
+    `/api/scenes`
+    ] as const;
+    }
+
+
+export const getGetScenesQueryOptions = <TData = Awaited<ReturnType<typeof getScenes>>, TError = ErrorType<unknown>>( options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getScenes>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetScenesQueryKey();
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getScenes>>> = ({ signal }) => getScenes({ signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getScenes>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetScenesQueryResult = NonNullable<Awaited<ReturnType<typeof getScenes>>>
+export type GetScenesQueryError = ErrorType<unknown>
+
+
+/**
+ * @summary List user scenes
+ */
+
+export function useGetScenes<TData = Awaited<ReturnType<typeof getScenes>>, TError = ErrorType<unknown>>(
+  options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getScenes>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetScenesQueryOptions(options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+
+
+
+
+
+
+export const getCreateSceneUrl = () => {
+
+
+
+
+  return `/api/scenes`
+}
+
+/**
+ * @summary Create a new scene
+ */
+export const createScene = async (sceneInput: SceneInput, options?: RequestInit): Promise<Scene> => {
+
+  return customFetch<Scene>(getCreateSceneUrl(),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      sceneInput,)
+  }
+);}
+
+
+
+
+export const getCreateSceneMutationOptions = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createScene>>, TError,{data: BodyType<SceneInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof createScene>>, TError,{data: BodyType<SceneInput>}, TContext> => {
+
+const mutationKey = ['createScene'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof createScene>>, {data: BodyType<SceneInput>}> = (props) => {
+          const {data} = props ?? {};
+
+          return  createScene(data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type CreateSceneMutationResult = NonNullable<Awaited<ReturnType<typeof createScene>>>
+    export type CreateSceneMutationBody = BodyType<SceneInput>
+    export type CreateSceneMutationError = ErrorType<unknown>
+
+    /**
+ * @summary Create a new scene
+ */
+export const useCreateScene = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createScene>>, TError,{data: BodyType<SceneInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof createScene>>,
+        TError,
+        {data: BodyType<SceneInput>},
+        TContext
+      > => {
+      return useMutation(getCreateSceneMutationOptions(options));
+    }
+
+export const getAiGenerateSceneUrl = () => {
+
+
+
+
+  return `/api/scenes/ai-generate`
+}
+
+/**
+ * @summary AI-generate a scene from a prompt
+ */
+export const aiGenerateScene = async (sceneAIInput: SceneAIInput, options?: RequestInit): Promise<Scene> => {
+
+  return customFetch<Scene>(getAiGenerateSceneUrl(),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      sceneAIInput,)
+  }
+);}
+
+
+
+
+export const getAiGenerateSceneMutationOptions = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof aiGenerateScene>>, TError,{data: BodyType<SceneAIInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof aiGenerateScene>>, TError,{data: BodyType<SceneAIInput>}, TContext> => {
+
+const mutationKey = ['aiGenerateScene'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof aiGenerateScene>>, {data: BodyType<SceneAIInput>}> = (props) => {
+          const {data} = props ?? {};
+
+          return  aiGenerateScene(data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type AiGenerateSceneMutationResult = NonNullable<Awaited<ReturnType<typeof aiGenerateScene>>>
+    export type AiGenerateSceneMutationBody = BodyType<SceneAIInput>
+    export type AiGenerateSceneMutationError = ErrorType<unknown>
+
+    /**
+ * @summary AI-generate a scene from a prompt
+ */
+export const useAiGenerateScene = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof aiGenerateScene>>, TError,{data: BodyType<SceneAIInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof aiGenerateScene>>,
+        TError,
+        {data: BodyType<SceneAIInput>},
+        TContext
+      > => {
+      return useMutation(getAiGenerateSceneMutationOptions(options));
+    }
+
+export const getGetSceneUrl = (id: string,) => {
+
+
+
+
+  return `/api/scenes/${id}`
+}
+
+/**
+ * @summary Get a scene by ID
+ */
+export const getScene = async (id: string, options?: RequestInit): Promise<Scene> => {
+
+  return customFetch<Scene>(getGetSceneUrl(id),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetSceneQueryKey = (id: string,) => {
+    return [
+    `/api/scenes/${id}`
+    ] as const;
+    }
+
+
+export const getGetSceneQueryOptions = <TData = Awaited<ReturnType<typeof getScene>>, TError = ErrorType<void>>(id: string, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getScene>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetSceneQueryKey(id);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getScene>>> = ({ signal }) => getScene(id, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, enabled: !!(id), ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getScene>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetSceneQueryResult = NonNullable<Awaited<ReturnType<typeof getScene>>>
+export type GetSceneQueryError = ErrorType<void>
+
+
+/**
+ * @summary Get a scene by ID
+ */
+
+export function useGetScene<TData = Awaited<ReturnType<typeof getScene>>, TError = ErrorType<void>>(
+ id: string, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getScene>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetSceneQueryOptions(id,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+
+
+
+
+
+
+export const getUpdateSceneUrl = (id: string,) => {
+
+
+
+
+  return `/api/scenes/${id}`
+}
+
+/**
+ * @summary Update a scene
+ */
+export const updateScene = async (id: string,
+    sceneUpdate: SceneUpdate, options?: RequestInit): Promise<Scene> => {
+
+  return customFetch<Scene>(getUpdateSceneUrl(id),
+  {
+    ...options,
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      sceneUpdate,)
+  }
+);}
+
+
+
+
+export const getUpdateSceneMutationOptions = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateScene>>, TError,{id: string;data: BodyType<SceneUpdate>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof updateScene>>, TError,{id: string;data: BodyType<SceneUpdate>}, TContext> => {
+
+const mutationKey = ['updateScene'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof updateScene>>, {id: string;data: BodyType<SceneUpdate>}> = (props) => {
+          const {id,data} = props ?? {};
+
+          return  updateScene(id,data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type UpdateSceneMutationResult = NonNullable<Awaited<ReturnType<typeof updateScene>>>
+    export type UpdateSceneMutationBody = BodyType<SceneUpdate>
+    export type UpdateSceneMutationError = ErrorType<unknown>
+
+    /**
+ * @summary Update a scene
+ */
+export const useUpdateScene = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateScene>>, TError,{id: string;data: BodyType<SceneUpdate>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof updateScene>>,
+        TError,
+        {id: string;data: BodyType<SceneUpdate>},
+        TContext
+      > => {
+      return useMutation(getUpdateSceneMutationOptions(options));
+    }
+
+export const getDeleteSceneUrl = (id: string,) => {
+
+
+
+
+  return `/api/scenes/${id}`
+}
+
+/**
+ * @summary Delete a scene
+ */
+export const deleteScene = async (id: string, options?: RequestInit): Promise<void> => {
+
+  return customFetch<void>(getDeleteSceneUrl(id),
+  {
+    ...options,
+    method: 'DELETE'
+
+
+  }
+);}
+
+
+
+
+export const getDeleteSceneMutationOptions = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteScene>>, TError,{id: string}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof deleteScene>>, TError,{id: string}, TContext> => {
+
+const mutationKey = ['deleteScene'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof deleteScene>>, {id: string}> = (props) => {
+          const {id} = props ?? {};
+
+          return  deleteScene(id,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type DeleteSceneMutationResult = NonNullable<Awaited<ReturnType<typeof deleteScene>>>
+
+    export type DeleteSceneMutationError = ErrorType<unknown>
+
+    /**
+ * @summary Delete a scene
+ */
+export const useDeleteScene = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteScene>>, TError,{id: string}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof deleteScene>>,
+        TError,
+        {id: string},
+        TContext
+      > => {
+      return useMutation(getDeleteSceneMutationOptions(options));
+    }
+
+export const getExportSceneUrl = (id: string,) => {
+
+
+
+
+  return `/api/scenes/${id}/export`
+}
+
+/**
+ * @summary Export scene as code
+ */
+export const exportScene = async (id: string,
+    sceneExportInput: SceneExportInput, options?: RequestInit): Promise<SceneExportResult> => {
+
+  return customFetch<SceneExportResult>(getExportSceneUrl(id),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      sceneExportInput,)
+  }
+);}
+
+
+
+
+export const getExportSceneMutationOptions = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof exportScene>>, TError,{id: string;data: BodyType<SceneExportInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof exportScene>>, TError,{id: string;data: BodyType<SceneExportInput>}, TContext> => {
+
+const mutationKey = ['exportScene'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof exportScene>>, {id: string;data: BodyType<SceneExportInput>}> = (props) => {
+          const {id,data} = props ?? {};
+
+          return  exportScene(id,data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type ExportSceneMutationResult = NonNullable<Awaited<ReturnType<typeof exportScene>>>
+    export type ExportSceneMutationBody = BodyType<SceneExportInput>
+    export type ExportSceneMutationError = ErrorType<unknown>
+
+    /**
+ * @summary Export scene as code
+ */
+export const useExportScene = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof exportScene>>, TError,{id: string;data: BodyType<SceneExportInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof exportScene>>,
+        TError,
+        {id: string;data: BodyType<SceneExportInput>},
+        TContext
+      > => {
+      return useMutation(getExportSceneMutationOptions(options));
+    }
 
