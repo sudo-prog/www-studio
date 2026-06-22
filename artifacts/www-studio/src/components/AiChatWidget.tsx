@@ -3,8 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
-import { useSendChatMessage } from "@workspace/api-client-react";
-import { Wand2, Send, X, Loader2, Bot, User, Minimize2, Maximize2 } from "lucide-react";
+import { Wand2, Send, X, Loader2, Bot, User, Minimize2, Maximize2, AlertCircle } from "lucide-react";
 
 interface Message {
   id: string;
@@ -12,6 +11,7 @@ interface Message {
   content: string;
   suggestions?: string[];
   codeChanges?: string | null;
+  isError?: boolean;
 }
 
 const WELCOME: Message = {
@@ -26,6 +26,30 @@ const WELCOME: Message = {
   ],
 };
 
+const PROXY_URL = "http://localhost:8081/v1";
+
+async function callGeminiAPI(messages: { role: string; content: string }[]): Promise<{ reply: string; suggestions?: string[] }> {
+  const res = await fetch(`${PROXY_URL}/chat/completions`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      model: "gemini-2.0-flash",
+      messages,
+      temperature: 0.7,
+      max_tokens: 2048,
+    }),
+  });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const data = await res.json();
+  const reply = data.choices?.[0]?.message?.content ?? "Sorry, I couldn't generate a response.";
+  const suggestions = [
+    "Make it more colorful",
+    "Add a pricing section",
+    "Make it responsive",
+  ];
+  return { reply, suggestions };
+}
+
 interface AiChatWidgetProps {
   context?: string;
   onNavigate?: (path: string) => void;
@@ -36,14 +60,22 @@ export function AiChatWidget({ context, onNavigate }: AiChatWidgetProps) {
   const [minimized, setMinimized] = useState(false);
   const [messages, setMessages] = useState<Message[]>([WELCOME]);
   const [input, setInput] = useState("");
+  const [proxyAvailable, setProxyAvailable] = useState<boolean | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
-  const sendMessage = useSendChatMessage();
 
   useEffect(() => {
     if (open) bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, open]);
 
-  const send = (text?: string) => {
+  // Check if Gemini proxy is available
+  useEffect(() => {
+    if (!open) return;
+    fetch(`${PROXY_URL}/models`, { signal: AbortSignal.timeout(3000) })
+      .then(() => setProxyAvailable(true))
+      .catch(() => setProxyAvailable(false));
+  }, [open]);
+
+  const send = async (text?: string) => {
     const msg = text ?? input.trim();
     if (!msg) return;
     setInput("");
@@ -51,35 +83,75 @@ export function AiChatWidget({ context, onNavigate }: AiChatWidgetProps) {
     const userMsg: Message = { id: crypto.randomUUID(), role: "user", content: msg };
     setMessages((prev) => [...prev, userMsg]);
 
-    sendMessage.mutate(
-      { data: { message: msg, projectId: undefined, context } },
-      {
-        onSuccess: (result) => {
-          setMessages((prev) => [
-            ...prev,
-            {
-              id: crypto.randomUUID(),
-              role: "assistant",
-              content: result.reply,
-              suggestions: result.suggestions ?? [],
-              codeChanges: result.codeChanges,
-            },
-          ]);
-
-          // Navigation intents
-          if (onNavigate) {
-            const lower = msg.toLowerCase();
-            if (lower.includes("new project") || lower.includes("create") || lower.includes("generate")) {
-              onNavigate("/editor/new");
-            } else if (lower.includes("my project") || lower.includes("dashboard")) {
-              onNavigate("/projects");
-            } else if (lower.includes("component") || lower.includes("library")) {
-              onNavigate("/components");
-            }
-          }
+    // If proxy is not available, show helpful message
+    if (proxyAvailable === false) {
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: crypto.randomUUID(),
+          role: "assistant",
+          content: "The Gemini AI proxy is not running. To use the AI assistant locally, start the proxy:\n\nbash scripts/start-gemini-proxy.sh\n\nThen refresh this page.",
+          isError: true,
         },
+      ]);
+      return;
+    }
+
+    // If proxy availability is still unknown, wait for check
+    if (proxyAvailable === null) {
+      setProxyAvailable(false);
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: crypto.randomUUID(),
+          role: "assistant",
+          content: "The Gemini AI proxy is not running. To use the AI assistant locally, start the proxy:\n\nbash scripts/start-gemini-proxy.sh\n\nThen refresh this page.",
+          isError: true,
+        },
+      ]);
+      return;
+    }
+
+    try {
+      const apiMessages = messages
+        .filter((m) => !m.isError)
+        .map((m) => ({ role: m.role, content: m.content }));
+      apiMessages.push({ role: "user", content: msg });
+
+      const { reply, suggestions } = await callGeminiAPI(apiMessages);
+
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: crypto.randomUUID(),
+          role: "assistant",
+          content: reply,
+          suggestions: suggestions ?? [],
+        },
+      ]);
+
+      // Navigation intents
+      if (onNavigate) {
+        const lower = msg.toLowerCase();
+        if (lower.includes("new project") || lower.includes("create") || lower.includes("generate")) {
+          onNavigate("/editor/new");
+        } else if (lower.includes("my project") || lower.includes("dashboard")) {
+          onNavigate("/projects");
+        } else if (lower.includes("component") || lower.includes("library")) {
+          onNavigate("/components");
+        }
       }
-    );
+    } catch {
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: crypto.randomUUID(),
+          role: "assistant",
+          content: "Sorry, the AI assistant encountered an error. Make sure the Gemini proxy is running on localhost:8081.",
+          isError: true,
+        },
+      ]);
+    }
   };
 
   return (
@@ -113,7 +185,9 @@ export function AiChatWidget({ context, onNavigate }: AiChatWidgetProps) {
               </div>
               <div>
                 <p className="text-sm font-medium leading-none">AI Assistant</p>
-                <p className="text-[10px] text-muted-foreground">WWW Studio</p>
+                <p className="text-[10px] text-muted-foreground">
+                  {proxyAvailable === null ? "Connecting..." : proxyAvailable ? "Gemini Online" : "Proxy Offline"}
+                </p>
               </div>
             </div>
             <div className="flex items-center gap-1">
@@ -128,6 +202,16 @@ export function AiChatWidget({ context, onNavigate }: AiChatWidgetProps) {
 
           {!minimized && (
             <>
+              {/* Proxy offline banner */}
+              {proxyAvailable === false && (
+                <div className="px-3 py-2 bg-yellow-500/10 border-b border-yellow-500/20 flex items-start gap-2">
+                  <AlertCircle className="w-3.5 h-3.5 text-yellow-500 shrink-0 mt-0.5" />
+                  <p className="text-[10px] text-yellow-600 dark:text-yellow-400 leading-relaxed">
+                    Gemini proxy not running. Start it locally: <code className="bg-black/10 px-1 rounded">bash scripts/start-gemini-proxy.sh</code>
+                  </p>
+                </div>
+              )}
+
               {/* Messages */}
               <ScrollArea className="flex-1 px-3 py-2">
                 <div className="space-y-3">
@@ -136,7 +220,7 @@ export function AiChatWidget({ context, onNavigate }: AiChatWidgetProps) {
                       <div className={cn("w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5", msg.role === "user" ? "bg-primary/20" : "bg-muted")}>
                         {msg.role === "user" ? <User className="w-3 h-3 text-primary" /> : <Bot className="w-3 h-3 text-muted-foreground" />}
                       </div>
-                      <div className={cn("max-w-[200px] rounded-2xl px-3 py-2 text-xs leading-relaxed", msg.role === "user" ? "bg-primary text-primary-foreground rounded-tr-sm" : "bg-muted text-foreground rounded-tl-sm")}>
+                      <div className={cn("max-w-[200px] rounded-2xl px-3 py-2 text-xs leading-relaxed", msg.role === "user" ? "bg-primary text-primary-foreground rounded-tr-sm" : msg.isError ? "bg-yellow-500/10 text-yellow-700 dark:text-yellow-300 rounded-tl-sm" : "bg-muted text-foreground rounded-tl-sm")}>
                         {msg.content.split("\n").map((line, i) => (
                           <span key={i}>{line}{i < msg.content.split("\n").length - 1 && <br />}</span>
                         ))}
@@ -148,7 +232,7 @@ export function AiChatWidget({ context, onNavigate }: AiChatWidgetProps) {
                   ))}
 
                   {/* Suggestions */}
-                  {messages.at(-1)?.role === "assistant" && messages.at(-1)?.suggestions?.length ? (
+                  {messages.at(-1)?.role === "assistant" && messages.at(-1)?.suggestions?.length && !messages.at(-1)?.isError ? (
                     <div className="flex flex-wrap gap-1.5 pl-8">
                       {messages.at(-1)!.suggestions!.map((s) => (
                         <button
@@ -162,7 +246,7 @@ export function AiChatWidget({ context, onNavigate }: AiChatWidgetProps) {
                     </div>
                   ) : null}
 
-                  {sendMessage.isPending && (
+                  {proxyAvailable && (
                     <div className="flex gap-2">
                       <div className="w-6 h-6 rounded-full bg-muted flex items-center justify-center shrink-0">
                         <Bot className="w-3 h-3 text-muted-foreground" />
@@ -185,10 +269,10 @@ export function AiChatWidget({ context, onNavigate }: AiChatWidgetProps) {
                   <Input
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
-                    placeholder="Ask anything..."
+                    placeholder={proxyAvailable === false ? "Proxy offline..." : "Ask anything..."}
                     className="flex-1 border-0 bg-transparent p-0 h-7 text-xs shadow-none focus-visible:ring-0 placeholder:text-muted-foreground/60"
                   />
-                  <Button type="submit" size="icon" variant="ghost" className="h-6 w-6 shrink-0" disabled={!input.trim() || sendMessage.isPending}>
+                  <Button type="submit" size="icon" variant="ghost" className="h-6 w-6 shrink-0" disabled={!input.trim() || proxyAvailable === false}>
                     <Send className="w-3 h-3" />
                   </Button>
                 </form>

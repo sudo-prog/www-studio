@@ -81,7 +81,7 @@ export function Navbar() {
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
-            <Button size="sm" onClick={login}>Log in</Button>
+            <Button size="sm" onClick={loginWithGitHub}>Log in</Button>
           )}
         </div>
       </div>

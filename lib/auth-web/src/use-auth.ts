@@ -48,8 +48,20 @@ export function useAuth(): AuthState {
   }, []);
 
   const loginWithGitHub = useCallback(() => {
-    const returnTo = window.location.pathname;
-    window.location.href = `/api/auth/github?returnTo=${encodeURIComponent(returnTo)}`;
+    // GitHub OAuth requires a backend server. On static hosting (GitHub Pages),
+    // show a notice. When running with the API server, this redirects correctly.
+    const hasBackend = !window.location.hostname.includes("github.io");
+    if (hasBackend) {
+      const returnTo = window.location.pathname;
+      window.location.href = `/api/auth/github?returnTo=${encodeURIComponent(returnTo)}`;
+    } else {
+      // Static hosting — show a temporary notice
+      const el = document.createElement("div");
+      el.className = "fixed top-4 left-1/2 -translate-x-1/2 z-[100] bg-zinc-900 border border-zinc-700 text-white text-sm px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3";
+      el.innerHTML = `<span>GitHub login requires the backend server. Run locally with <code class="bg-black/30 px-1.5 py-0.5 rounded text-xs">pnpm --filter @workspace/api-server run dev</code> + <code class="bg-black/30 px-1.5 py-0.5 rounded text-xs">bash scripts/start-gemini-proxy.sh</code></span>`;
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 6000);
+    }
   }, []);
 
   const logout = useCallback(() => {
