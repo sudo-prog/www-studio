@@ -89,3 +89,36 @@
 - [x] `/scenes/:id/preview` is a standalone embeddable page (no Navbar, no auth)
 - [x] Rate limit responses return `{ error: "..." }` JSON
 - [x] All 4 workflows healthy, API rebuilt with rate limiter included
+
+## Phase 9: Gemini Web2API Integration ✅
+- [x] Copied gemini-web2api Python proxy into `lib/integrations/gemini-web2api/`
+  - Core Python files: `__init__.py`, `__main__.py`, `server.py`, `gemini.py`, `models.py`, `config.py`, `tools.py`, `multimodal.py`
+  - Project files: `requirements.txt`, `pyproject.toml`, `Dockerfile`, `docker-compose.local.yml`, `config.example.json`
+  - Standalone script: `gemini_web2api.py`
+- [x] Updated `artifacts/api-server/src/lib/llm.ts` with Gemini Web2API support
+  - Added `GEMINI_WEB2API_BASE_URL` env var (default: `http://localhost:8081/v1`)
+  - Added `GEMINI_WEB2API_MODEL` env var (default: `gemini-2.0-flash`)
+  - Added `getGeminiWeb2APIClient()` function returning an OpenAI-compatible client
+  - Added `isGeminiWeb2APIReachable()` health check
+  - `getLLMProvider()` detects "Gemini Web2API" from base URL containing `localhost:8081` or `gemini`
+- [x] Updated `artifacts/api-server/src/routes/chat.ts` with real LLM calls
+  - Replaced mock `generateAIReply()` with actual LLM calls via `chatComplete()` / `streamChat()`
+  - Added `POST /chat/stream` SSE endpoint for streaming responses
+  - Falls back to heuristic replies if LLM is unreachable
+  - Supports all providers: OpenAI, Ollama, OpenRouter, LM Studio, Gemini Web2API
+- [x] Updated `artifacts/api-server/src/routes/generate.ts` to use unified LLM client
+  - Replaced direct `getOpenAI()` with `chatComplete()` from `llm.ts`
+  - Removed duplicate `getOpenAI()` function
+  - Falls back to heuristic tree generation if LLM is unreachable
+- [x] Updated `artifacts/api-server/src/routes/screenshot-to-code.ts` to use unified LLM client
+  - Replaced direct `getOpenAI()` with `visionComplete()` from `llm.ts`
+  - Removed duplicate `getOpenAI()` function
+  - Falls back to heuristic tree if LLM is unreachable
+- [x] Created `scripts/start-gemini-proxy.sh` startup script
+  - Checks for Python 3 and httpx dependency
+  - Creates default `config.json` from `config.example.json` if missing
+  - Starts the gemini-web2api proxy on configurable port (default 8081)
+- [x] Updated `artifacts/api-server/src/routes/health.ts` with provider health checks
+  - Added `GET /health` endpoint with detailed AI provider status
+  - Reports primary provider and Gemini Web2API proxy reachability
+  - Lists all available (reachable) providers

@@ -1,3 +1,4 @@
+import { type AnimationPreset } from "@/lib/scene-types";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -6,7 +7,7 @@ import type { RefObject } from "react";
 gsap.registerPlugin(ScrollTrigger);
 
 // Preset types
-export type AnimationPreset = {
+export type GSAPAnimationPreset = {
   id: string;
   name: string;
   category: "svg" | "scroll" | "ui" | "morph" | "stagger";
@@ -15,7 +16,7 @@ export type AnimationPreset = {
 };
 
 // SVG & Path Animations
-export const svgPresets: AnimationPreset[] = [
+export const gsapPresets: GSAPAnimationPreset[] = [
   {
     id: "stroke-draw",
     name: "Stroke Draw",
@@ -51,13 +52,13 @@ export const svgPresets: AnimationPreset[] = [
 ];
 
 // ScrollTrigger Presets (maximatherapy.com style)
-export const scrollPresets: AnimationPreset[] = [
+export const scrollPresets: GSAPAnimationPreset[] = [
   {
     id: "parallax",
     name: "Parallax Layer",
     category: "scroll",
     apply: (target, opts = {}) => {
-      return ScrollTrigger.create({
+      const instance = ScrollTrigger.create({
         trigger: target as Element,
         start: "top bottom",
         end: "bottom top",
@@ -67,6 +68,7 @@ export const scrollPresets: AnimationPreset[] = [
         },
         ...opts,
       });
+      return instance as unknown as gsap.core.Animation;
     },
   },
   {
@@ -135,30 +137,30 @@ export const usePresetAnimation = (
   options: Record<string, any> = {}
 ) => {
   useGSAP(() => {
-    const preset = [...svgPresets, ...scrollPresets].find((p) => p.id === presetId);
+    const preset = [...gsapPresets, ...scrollPresets].find((p) => p.id === presetId);
     if (preset && targetRef.current) preset.apply(targetRef.current, options);
   }, [presetId]);
 };
 
 // CSS keyframe strings used in SVG exports
 export const CSS_KEYFRAMES: Record<string, string> = {
-  "none":             "",
-  "gentle-float":     "@keyframes gentle-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}",
-  "gradient-breathe": "@keyframes gradient-breathe{0%,100%{opacity:var(--op,0.7);transform:scale(1)}50%{opacity:calc(var(--op,0.7)+0.2);transform:scale(1.06)}}",
-  "shadow-pulse":     "@keyframes shadow-pulse{0%,100%{opacity:var(--op,0.7)}50%{opacity:calc(var(--op,0.7)+0.25)}}",
-  "scale-pulse":      "@keyframes scale-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}",
-  "fade-in-out":      "@keyframes fade-in-out{0%,100%{opacity:var(--op,0.7)}50%{opacity:calc(var(--op,0.7)*0.4)}}",
-  "morph":            "@keyframes morph{0%,100%{transform:scale(1) rotate(0deg)}50%{transform:scale(1.05) rotate(3deg)}}",
-  "spin-slow":        "@keyframes spin-slow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}",
-  "elastic-bounce":   "@keyframes elastic-bounce{0%,100%{transform:scale(1)}30%{transform:scale(1.15)}60%{transform:scale(0.92)}80%{transform:scale(1.06)}}",
-  "hover-lift":       "@keyframes hover-lift{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-10px) scale(1.04)}}",
-  "scroll-reveal":    "@keyframes scroll-reveal{0%{opacity:0;transform:translateY(20px)}100%{opacity:var(--op,0.7);transform:translateY(0)}}",
+  none:             "",
+  "gentle-float":   "@keyframes gentle-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}",
+  "gradient-breathe":"@keyframes gradient-breathe{0%,100%{opacity:var(--op,0.7);transform:scale(1)}50%{opacity:calc(var(--op,0.7)+0.2);transform:scale(1.06)}}",
+  "shadow-pulse":   "@keyframes shadow-pulse{0%,100%{opacity:var(--op,0.7)}50%{opacity:calc(var(--op,0.7)+0.25)}}",
+  "scale-pulse":    "@keyframes scale-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}",
+  "fade-in-out":    "@keyframes fade-in-out{0%,100%{opacity:var(--op,0.7)}50%{opacity:calc(var(--op,0.7)*0.4)}}",
+  "morph":           "@keyframes morph{0%,100%{transform:scale(1) rotate(0deg)}50%{transform:scale(1.05) rotate(3deg)}}",
+  "spin-slow":       "@keyframes spin-slow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}",
+  "elastic-bounce":  "@keyframes elastic-bounce{0%,100%{transform:scale(1)}30%{transform:scale(1.15)}60%{transform:scale(0.92)}80%{transform:scale(1.06)}}",
+  "hover-lift":      "@keyframes hover-lift{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-10px) scale(1.04)}}",
+  "scroll-reveal":   "@keyframes scroll-reveal{0%{opacity:0;transform:translateY(20px)}100%{opacity:var(--op,0.7);transform:translateY(0)}}",
   "drift":            "@keyframes drift{0%,100%{transform:translateX(0)}50%{transform:translateX(15px)}}",
 };
 
 export function allCssKeyframes(): string {
-  return Object.values(CSS_KEYFRAMES).filter(Boolean).join("\n");
+  return Object.values(CSS_KEYFRAMES).filter((v): v is string => typeof v === "string").join("\n");
 }
 
 export { gsap, ScrollTrigger, useGSAP };
-export default { svgPresets, scrollPresets, motionVariants, usePresetAnimation };
+export default { gsapPresets, scrollPresets, motionVariants, usePresetAnimation };

@@ -20,6 +20,11 @@ import { SceneEmbedCode }   from "@/components/scenes/SceneEmbedCode";
 import { InfoTab }          from "@/components/scenes/InfoTab";
 import { AnimationTimeline } from "@/components/scenes/AnimationTimeline";
 import { ScrollTriggerConfig, type ScrollConfig } from "@/components/scenes/ScrollTriggerConfig";
+import { CommandPalette } from "@/components/scenes/CommandPalette";
+import { ScrollDebugOverlay } from "@/components/scenes/ScrollDebugOverlay";
+import { PerformanceAuditor } from "@/components/scenes/PerformanceAuditor";
+import { useGSAPCanvas } from "@/lib/use-gsap-canvas";
+import { useLenis } from "@/lib/use-lenis";
 import { useGetScene, useUpdateScene } from "@workspace/api-client-react";
 import { type SceneElement, type SceneData, DEFAULT_WELLNESS_TOKENS } from "@/lib/scene-types";
 import {
@@ -28,11 +33,11 @@ import {
   ChevronUp, ChevronDown, Copy,
   Layers, Palette, Play, Download, MessageSquare,
   Sparkles, Terminal, Keyboard, History, ExternalLink,
-  Globe, Code2, Info, Tag, X, Timer, MousePointer2,
+  Globe, Code2, Info, Tag, X, Timer, MousePointer2, Gauge,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-type RightTab = "layers" | "properties" | "animation" | "timeline" | "scroll" | "export" | "history" | "embed" | "info";
+type RightTab = "layers" | "properties" | "animation" | "timeline" | "scroll" | "export" | "history" | "embed" | "info" | "performance";
 
 interface EditorState {
   scene:      SceneData;
@@ -151,7 +156,7 @@ function parseScene(raw: any): SceneData {
   };
 }
 
-function autoSaveLabel(savedAt: Date | null): string {
+function getAutoSaveLabel(savedAt: Date | null): string {
   if (!savedAt) return "";
   const secs = Math.round((Date.now() - savedAt.getTime()) / 1000);
   if (secs < 5)  return "Just saved";
@@ -170,6 +175,7 @@ export default function SceneEditor() {
   const [showEnhancer, setShowEnhancer] = useState(false);
   const [showCursor,   setShowCursor]   = useState(false);
   const [showShortcuts,setShowShortcuts]= useState(false);
+  const [showCommand,  setShowCommand]  = useState(false);
   const [autoSavedAt,  setAutoSavedAt]  = useState<Date | null>(null);
   const [autoSaveLabel, setAutoSaveLabel] = useState("");
 
@@ -207,16 +213,13 @@ export default function SceneEditor() {
     return () => clearInterval(timer);
   }, [sceneId]);
 
-  // Update auto-save label every 5s
+  // Auto-save display label
   useEffect(() => {
-    const t = setInterval(() => setAutoSaveLabel(autoSaveLabel => autoSaveLabel ? autoSaveLabel : autoSaveLabel), 5000);
-    return () => clearInterval(t);
-  }, []);
-
-  useEffect(() => {
-    if (autoSavedAt) setAutoSaveLabel(autoSaveLabel ? autoSaveLabel : "Just saved");
-    const interval = setInterval(() => setAutoSaveLabel(autoSaveLabel => autoSavedAt ? autoSaveLabel : ""), 5000);
-    return () => clearInterval(interval);
+    if (!autoSavedAt) { setAutoSaveLabel(""); return; }
+    const label = getAutoSaveLabel(autoSavedAt);
+    setAutoSaveLabel(label);
+    const id = setInterval(() => setAutoSaveLabel(getAutoSaveLabel(autoSavedAt)), 5000);
+    return () => clearInterval(id);
   }, [autoSavedAt]);
 
   // Keyboard shortcuts
@@ -229,6 +232,7 @@ export default function SceneEditor() {
       if ((e.ctrlKey || e.metaKey) && e.key === "k") { e.preventDefault(); setShowCursor(true); }
       if ((e.ctrlKey || e.metaKey) && e.key === "Enter") { e.preventDefault(); setShowEnhancer(true); }
       if ((e.ctrlKey || e.metaKey) && e.key === "p") { e.preventDefault(); window.open(`/scenes/${sceneId}/preview`, "_blank"); }
+      if ((e.ctrlKey || e.metaKey) && e.key === "/") { e.preventDefault(); setShowCommand((v) => !v); }
       if (!isInput && e.key === "?") { e.preventDefault(); setShowShortcuts(v => !v); }
       if (!isInput && e.key === "Escape") { dispatch({ type: "SELECT", id: null }); }
       if (!isInput && (e.key === "Delete" || e.key === "Backspace") && state.selectedId) {
@@ -243,6 +247,8 @@ export default function SceneEditor() {
       if ((e.ctrlKey || e.metaKey) && e.key === "2") { e.preventDefault(); setRightTab("properties"); }
       if ((e.ctrlKey || e.metaKey) && e.key === "3") { e.preventDefault(); setRightTab("animation"); }
       if ((e.ctrlKey || e.metaKey) && e.key === "4") { e.preventDefault(); setRightTab("export"); }
+      if ((e.ctrlKey || e.metaKey) && e.key === "5") { e.preventDefault(); setRightTab("timeline"); }
+      if ((e.ctrlKey || e.metaKey) && e.key === "6") { e.preventDefault(); setRightTab("scroll"); }
       if (!isInput && e.key === " ") { e.preventDefault(); setShowChat(v => !v); }
     }
     window.addEventListener("keydown", onKeyDown);
@@ -326,6 +332,19 @@ export default function SceneEditor() {
       <KeyboardShortcuts open={showShortcuts} onClose={() => setShowShortcuts(false)} />
       <SceneEnhancer open={showEnhancer} onClose={() => setShowEnhancer(false)} sceneId={sceneId} onApply={handleEnhancerApply} />
       <SendToCursor  open={showCursor}   onClose={() => setShowCursor(false)}   scene={state.scene} />
+      <CommandPalette open={showCommand} onClose={() => setShowCommand(false)} onCommand={(cmd) => {
+        if (cmd.id === "save") handleSave();
+        else if (cmd.id === "undo") dispatch({ type: "UNDO" });
+        else if (cmd.id === "redo") dispatch({ type: "REDO" });
+        else if (cmd.id === "duplicate" && state.selectedId) {
+          const el = state.scene.elements.find(el => el.id === state.selectedId);
+          if (el) dispatch({ type: "ADD_ELEMENT", el: { ...el, id: crypto.randomUUID(), x: el.x + 20, y: el.y + 20, name: el.name + " copy" } });
+        }
+        else if (cmd.id === "delete" && state.selectedId) dispatch({ type: "DELETE_ELEMENT", id: state.selectedId });
+        else if (cmd.id === "preview") window.open(`/scenes/${sceneId}/preview`, "_blank");
+        else if (cmd.id === "chat") setShowChat((v) => !v);
+        else if (cmd.id === "enhance") setShowEnhancer(true);
+      }} />
 
       <div className="h-screen flex flex-col bg-background overflow-hidden">
         {/* ── Top bar ── */}
@@ -375,6 +394,10 @@ export default function SceneEditor() {
 
           <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => setShowShortcuts(true)} title="Keyboard shortcuts (?)">
             <Keyboard className="h-3.5 w-3.5" />
+          </Button>
+
+          <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => setShowCommand(true)} title="Command palette (Ctrl+/)">
+            <Terminal className="h-3.5 w-3.5" />
           </Button>
 
           {/* View/like stats */}
@@ -467,6 +490,7 @@ export default function SceneEditor() {
               background={state.scene.background}
               onSelect={handleSelect}
               onMove={handleMove}
+              onDropNew={handleAdd}
             />
             <div className="absolute bottom-2 left-2 flex items-center gap-2 text-[10px] text-white/40 bg-black/40 px-2 py-1 rounded-md pointer-events-none backdrop-blur-sm">
               <span>{state.scene.canvasWidth}×{state.scene.canvasHeight}</span>
@@ -493,13 +517,13 @@ export default function SceneEditor() {
             showChat ? "w-0 opacity-0 overflow-hidden" : "w-[260px]"
           )}>
             {/* Tab bar */}
-            <div className="flex border-b border-border shrink-0">
-              {(["layers","properties","animation","timeline","scroll","export","history","embed","info"] as RightTab[]).map((tab) => (
+            <div className="flex border-b border-border shrink-0 overflow-x-auto">
+              {(["layers","properties","animation","timeline","scroll","export","history","embed","info","performance"] as RightTab[]).map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setRightTab(tab)}
                   className={cn(
-                    "flex-1 py-2.5 transition-colors",
+                    "px-2 py-2 transition-colors whitespace-nowrap",
                     rightTab === tab ? "text-foreground border-b-2 border-primary -mb-px" : "text-muted-foreground hover:text-foreground"
                   )}
                   title={tab}
@@ -513,6 +537,7 @@ export default function SceneEditor() {
                   {tab === "history"    && <History       className="h-3.5 w-3.5 mx-auto" />}
                   {tab === "embed"      && <Code2         className="h-3.5 w-3.5 mx-auto" />}
                   {tab === "info"       && <Info          className="h-3.5 w-3.5 mx-auto" />}
+                  {tab === "performance" && <Gauge       className="h-3.5 w-3.5 mx-auto" />}
                 </button>
               ))}
             </div>
@@ -720,6 +745,16 @@ export default function SceneEditor() {
                   scene={state.scene}
                   onUpdate={(patch) => dispatch({ type: "LOAD_SCENE", scene: { ...state.scene, ...patch } })}
                   onSave={(patch) => updateScene.mutateAsync({ id: sceneId, data: patch }).then(() => toast({ title: "Saved!" }))}
+                />
+              )}
+
+              {/* Performance */}
+              {rightTab === "performance" && (
+                <PerformanceAuditor
+                  elements={state.scene.elements}
+                  onOptimize={(fixes) => {
+                    toast({ title: `${fixes.length} optimization(s) found`, description: fixes.join("; ") });
+                  }}
                 />
               )}
             </div>

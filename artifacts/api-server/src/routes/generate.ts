@@ -1,13 +1,16 @@
 import { Router, type IRouter, type Request, type Response } from "express";
 import { db, projectsTable } from "@workspace/db";
-import OpenAI from "openai";
+import {
+  chatComplete,
+  getLLMProvider,
+  llm,
+  LLM_BASE_URL,
+  LLM_MODEL,
+  LLM_API_KEY,
+  type ChatMessage,
+} from "../lib/llm";
 
 const router: IRouter = Router();
-
-function getOpenAI(): OpenAI | null {
-  if (!process.env.OPENAI_API_KEY) return null;
-  return new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-}
 
 const STYLE_KEYWORDS: Record<string, string> = {
   dark: "dark-mode", black: "dark-mode", minimal: "minimal", clean: "minimal",
@@ -195,14 +198,11 @@ function generateTreeFromPrompt(prompt: string, title: string, style: string): s
   return JSON.stringify({ type: "page", name: title, prompt, children: sections }, null, 2);
 }
 
-async function generateWithAI(openai: OpenAI, prompt: string, title: string): Promise<string> {
-  const completion = await openai.chat.completions.create({
-    model: "gpt-4o-mini",
-    max_tokens: 3000,
-    messages: [
-      {
-        role: "system",
-        content: `You are a web design AI. Given a prompt, return a JSON component tree for a beautiful website.
+async function generateWithLLM(prompt: string, title: string): Promise<string> {
+  const messages: ChatMessage[] = [
+    {
+      role: "system",
+      content: `You are a web design AI. Given a prompt, return a JSON component tree for a beautiful website.
 The tree must be valid JSON with this shape:
 {
   "type": "page",
@@ -212,15 +212,14 @@ The tree must be valid JSON with this shape:
 }
 Each section/child: { "type": "section"|"div"|"h1"|"h2"|"p"|"button"|"card", "name": "string", "content": "string (for text nodes)", "className": "tailwind classes", "children": [...] }
 Use Tailwind CSS classes. Return ONLY the JSON, no markdown, no explanation.`,
-      },
-      {
-        role: "user",
-        content: `Create a beautiful website for: "${prompt}"\nPage title: "${title}"`,
-      },
-    ],
-  });
+    },
+    {
+      role: "user",
+      content: `Create a beautiful website for: "${prompt}"\nPage title: "${title}"`,
+    },
+  ];
 
-  const raw = completion.choices[0]?.message?.content ?? "";
+  const raw = await chatComplete(messages, { model: LLM_MODEL, maxTokens: 3000 });
   JSON.parse(raw); // validate
   return raw;
 }
@@ -238,10 +237,15 @@ router.post("/generate", async (req: Request, res: Response) => {
   const colors = STYLE_PALETTES[detectedStyle] ?? STYLE_PALETTES.minimal;
 
   let componentTree: string;
-  const openai = getOpenAI();
-  if (openai) {
+
+  // Try the unified LLM client if an API key is configured or the base URL is reachable
+  const provider = getLLMProvider();
+  const hasApiKey = !!LLM_API_KEY && LLM_API_KEY !== "ollama";
+  const isLocalProxy = LLM_BASE_URL.includes("localhost") || LLM_BASE_URL.includes("127.0.0.1");
+
+  if (hasApiKey || isLocalProxy) {
     try {
-      componentTree = await generateWithAI(openai, prompt, title);
+      componentTree = await generateWithLLM(prompt, title);
     } catch {
       componentTree = generateTreeFromPrompt(prompt, title, detectedStyle);
     }
@@ -278,10 +282,11 @@ router.post("/generate-image", async (req: Request, res: Response) => {
     return;
   }
 
-  const openai = getOpenAI();
-  if (openai) {
+  // Image generation requires OpenAI API key — use the unified client if configured
+  const hasOpenAIKey = !!process.env.OPENAI_API_KEY;
+  if (hasOpenAIKey) {
     try {
-      const response = await openai.images.generate({
+      const response = await llm.images.generate({
         model: "dall-e-3",
         prompt,
         n: 1,

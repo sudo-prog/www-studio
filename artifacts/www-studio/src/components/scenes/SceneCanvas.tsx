@@ -1,5 +1,7 @@
-import { useRef, useCallback } from "react";
+import { useRef, useCallback, CSSProperties } from "react";
+import { useDroppable, type DragStartEvent } from "@dnd-kit/core";
 import { type SceneElement } from "@/lib/scene-types";
+import { cn } from "@/lib/utils";
 
 interface Props {
   elements:        SceneElement[];
@@ -9,6 +11,7 @@ interface Props {
   background:      string;
   onSelect:        (id: string | null) => void;
   onMove:          (id: string, x: number, y: number) => void;
+  onDropNew?:      (el: SceneElement) => void;
 }
 
 function getPolygonPoints(type: SceneElement["type"], w: number, h: number): string {
@@ -34,19 +37,25 @@ function SceneElementShape({ el, selected, onMouseDown }: {
 }) {
   if (!el.visible) return null;
 
-  const filter = el.blur > 0 ? `blur(${el.blur}px)` : undefined;
-  const transform = el.rotation ? `rotate(${el.rotation} ${el.x + el.width/2} ${el.y + el.height/2})` : undefined;
+  const blurStyle: CSSProperties | undefined = el.blur ? { filter: `blur(${el.blur}px)` } : undefined;
+  const transformStyle = el.rotation ? `rotate(${el.rotation} ${el.x + el.width/2} ${el.y + el.height/2})` : undefined;
 
   const preset = el.animation?.preset ?? "none";
-  const animStyle = preset !== "none" ? {
+  const animStyle: CSSProperties | undefined = preset !== "none" ? {
     animation: `${preset} ${el.animation?.duration ?? 4}s ${el.animation?.easing ?? "ease-in-out"} ${el.animation?.delay ?? 0}s ${el.animation?.loop !== false ? "infinite" : "1"} both`,
-  } : {};
+  } : undefined;
 
-  const baseProps = {
+  const style: CSSProperties = {
     opacity: el.opacity,
-    style:   { cursor: el.locked ? "not-allowed" : "move", filter, ...animStyle },
-    transform,
+    cursor: el.locked ? "not-allowed" : "move",
+    ...(blurStyle ?? {}),
+    ...(animStyle ?? {}),
+  };
+
+  const svgProps: Record<string, unknown> & React.SVGAttributes<SVGElement> = {
+    style,
     onMouseDown: (e: React.MouseEvent) => { if (!el.locked) onMouseDown(e, el.id); },
+    ...(transformStyle ? { transform: transformStyle } : {}),
   };
 
   let shape: React.ReactNode = null;
@@ -61,7 +70,7 @@ function SceneElementShape({ el, selected, onMouseDown }: {
         fillOpacity={el.fillOpacity}
         stroke={el.stroke}
         strokeWidth={el.strokeWidth}
-        {...baseProps}
+        {...svgProps}
       />
     );
   } else if (el.type === "rect") {
@@ -76,7 +85,7 @@ function SceneElementShape({ el, selected, onMouseDown }: {
         rx={12}
         stroke={el.stroke}
         strokeWidth={el.strokeWidth}
-        {...baseProps}
+        {...svgProps}
       />
     );
   } else if (el.type === "text") {
@@ -88,7 +97,7 @@ function SceneElementShape({ el, selected, onMouseDown }: {
         fontFamily={el.fontFamily ?? "Inter, sans-serif"}
         fontWeight={el.fontWeight ?? 400}
         fill={el.fill}
-        {...baseProps}
+        {...svgProps}
       >
         {el.text ?? "Text"}
       </text>
@@ -101,7 +110,7 @@ function SceneElementShape({ el, selected, onMouseDown }: {
         strokeWidth={3}
         fill="none"
         transform={`translate(${el.x},${el.y}) scale(${el.width/300},${el.height/60})`}
-        {...baseProps}
+        {...svgProps}
       />
     );
   } else if (el.type === "line") {
@@ -113,7 +122,7 @@ function SceneElementShape({ el, selected, onMouseDown }: {
         y2={el.y}
         stroke={el.fill}
         strokeWidth={Math.max(1, el.height)}
-        {...baseProps}
+        {...svgProps}
       />
     );
   } else if (["blob", "triangle", "hexagon", "diamond", "star"].includes(el.type)) {
@@ -124,20 +133,22 @@ function SceneElementShape({ el, selected, onMouseDown }: {
           d={el.svgPath}
           fill={el.fill}
           fillOpacity={el.fillOpacity}
-          transform={`translate(${el.x},${el.y}) scale(${el.width/240},${el.height/220})`}
-          {...baseProps}
+          {...svgProps}
         />
       );
     } else if (poly) {
       shape = (
         <polygon
-          points={poly.split(" ").map((pt) => {
-            const [px, py] = pt.split(",");
-            return `${el.x + parseFloat(px)},${el.y + parseFloat(py)}`;
-          }).join(" ")}
+          points={poly
+            .split(" ")
+            .map((pt) => {
+              const [px, py] = pt.split(",");
+              return `${el.x + parseFloat(px)},${el.y + parseFloat(py)}`;
+            })
+            .join(" ")}
           fill={el.fill}
           fillOpacity={el.fillOpacity}
-          {...baseProps}
+          {...svgProps}
         />
       );
     }
@@ -175,9 +186,62 @@ function SceneElementShape({ el, selected, onMouseDown }: {
   );
 }
 
-export function SceneCanvas({ elements, selectedId, canvasWidth, canvasHeight, background, onSelect, onMove }: Props) {
+export function SceneCanvas({ elements, selectedId, canvasWidth, canvasHeight, background, onSelect, onMove, onDropNew }: Props) {
   const svgRef  = useRef<SVGSVGElement>(null);
   const dragRef = useRef<{ id: string; startSvgX: number; startSvgY: number; origX: number; origY: number } | null>(null);
+
+  // Drop zone for library shapes
+  const { isOver, setNodeRef } = useDroppable({
+    id: "scene-canvas-drop",
+    data: { accepts: "library-shape" as string },
+  });
+
+  const handleCanvasDrop: React.DragEventHandler<HTMLDivElement> = (e) => {
+    e.preventDefault();
+    const raw = e.dataTransfer.getData("application/library-shape");
+    if (!raw || !svgRef.current || !onDropNew) return;
+    try {
+      const payload = JSON.parse(raw) as Partial<SceneElement> & { type: SceneElement["type"] };
+      const rect = svgRef.current.getBoundingClientRect();
+      const scaleX = canvasWidth / rect.width;
+      const scaleY = canvasHeight / rect.height;
+      const x = Math.round((payload.x ?? 100) * scaleX + Math.random() * 100);
+      const y = Math.round((payload.y ?? 100) * scaleY + Math.random() * 100);
+      onDropNew({
+        id: crypto.randomUUID(),
+        type: payload.type,
+        name: payload.name ?? payload.type,
+        x,
+        y,
+        width: payload.width ?? 200,
+        height: payload.height ?? 200,
+        fill: payload.fill ?? "#7FB5A0",
+        fillOpacity: payload.fillOpacity ?? 1,
+        stroke: payload.stroke,
+        strokeWidth: payload.strokeWidth ?? 0,
+        opacity: payload.opacity ?? 0.85,
+        rotation: payload.rotation ?? 0,
+        blur: payload.blur ?? 0,
+        visible: payload.visible ?? true,
+        locked: payload.locked ?? false,
+        zIndex: elements.length,
+        svgPath: payload.svgPath,
+        text: payload.text,
+        fontSize: payload.fontSize,
+        fontFamily: payload.fontFamily,
+        fontWeight: payload.fontWeight,
+        animation: payload.animation ?? { preset: "none", duration: 3, delay: 0, easing: "ease-in-out", loop: true },
+        scrollConfig: payload.scrollConfig,
+      });
+    } catch {
+      // ignore malformed drop payloads
+    }
+  };
+
+  const handleDragOver: React.DragEventHandler<HTMLDivElement> = (e) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = "copy";
+  };
 
   function getSVGCoords(e: React.MouseEvent): { x: number; y: number } {
     const svg  = svgRef.current;
@@ -216,8 +280,15 @@ export function SceneCanvas({ elements, selectedId, canvasWidth, canvasHeight, b
 
   const sorted = [...elements].sort((a, b) => a.zIndex - b.zIndex);
 
+  // Drop overlay
+
   return (
-    <div className="relative w-full h-full flex items-center justify-center bg-[#0a0a0a] overflow-hidden">
+    <div
+      ref={setNodeRef}
+      className={cn("relative w-full h-full flex items-center justify-center bg-[#0a0a0a] overflow-hidden transition-colors", isOver && "ring-2 ring-primary/40")}
+      onDragOver={handleDragOver}
+      onDrop={handleCanvasDrop}
+    >
       {/* Grid background */}
       <div
         className="absolute inset-0 opacity-5"
@@ -275,7 +346,13 @@ export function SceneCanvas({ elements, selectedId, canvasWidth, canvasHeight, b
         ))}
       </svg>
 
-      {elements.length === 0 && (
+      {isOver && (
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs px-4 py-2 rounded-full shadow-lg pointer-events-none z-50">
+          Drop to add element
+        </div>
+      )}
+
+      {elements.length === 0 && !isOver && (
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
           <p className="text-white/20 text-sm">Click elements in the left panel to add them</p>
         </div>

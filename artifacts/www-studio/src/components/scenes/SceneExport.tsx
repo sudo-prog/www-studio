@@ -5,14 +5,15 @@ import { Copy, Download, CheckCircle2, Code2, ExternalLink } from "lucide-react"
 import { cn } from "@/lib/utils";
 
 const CODE_FORMATS = [
-  { id: "react-framer",   label: "React + Framer",   description: "Motion-animated component",        ext: ".tsx", group: "React" },
-  { id: "nextjs",         label: "Next.js Page",     description: "Ready-to-use page component",      ext: ".tsx", group: "React" },
-  { id: "tailwind-framer",label: "Tailwind + Framer", description: "Tailwind classes + Framer Motion", ext: ".tsx", group: "React" },
-  { id: "lottie",         label: "Lottie JSON",      description: "Lottie-compatible animation JSON",  ext: ".json",group: "Animation" },
-  { id: "gsap",           label: "GSAP Bundle",      description: "Vanilla JS + GSAP timeline",       ext: ".js",  group: "Animation" },
-  { id: "css-keyframes",  label: "CSS Keyframes",    description: "Pure CSS animation file",          ext: ".css", group: "CSS" },
-  { id: "svg",            label: "Optimized SVG",    description: "Clean SVG with animations",        ext: ".svg", group: "SVG" },
-  { id: "cursor-prompt",  label: "Cursor Prompt",    description: "Rich AI coding prompt + JSON",     ext: ".md",  group: "AI" },
+  { id: "react-framer",     label: "React + Framer",       description: "Motion-animated component",          ext: ".tsx", group: "React" },
+  { id: "nextjs",           label: "Next.js Page",         description: "Ready-to-use page component",        ext: ".tsx", group: "React" },
+  { id: "tailwind-framer",  label: "Tailwind + Framer",    description: "Tailwind classes + Framer Motion",   ext: ".tsx", group: "React" },
+  { id: "react-gsap-lenis", label: "React + GSAP + Lenis", description: "Production bundle with ScrollTrigger", ext: ".tsx", group: "React" },
+  { id: "lottie",           label: "Lottie JSON",          description: "Lottie-compatible animation JSON",    ext: ".json", group: "Animation" },
+  { id: "gsap",             label: "GSAP Bundle",          description: "Vanilla JS + GSAP timeline",         ext: ".js",   group: "Animation" },
+  { id: "css-keyframes",    label: "CSS Keyframes",        description: "Pure CSS animation file",            ext: ".css", group: "CSS" },
+  { id: "svg",              label: "Optimized SVG",        description: "Clean SVG with animations",          ext: ".svg", group: "SVG" },
+  { id: "cursor-prompt",    label: "Cursor Prompt",        description: "Rich AI coding prompt + JSON",       ext: ".md",  group: "AI" },
 ] as const;
 
 type CodeFormat = (typeof CODE_FORMATS)[number]["id"];

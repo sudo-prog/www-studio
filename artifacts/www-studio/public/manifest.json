@@ -1,19 +1,21 @@
 {
-  "name": "WWW Studio",
+  "name": "WWW Studio — AI Website Builder",
   "short_name": "WWW Studio",
-  "description": "Clone any website. Edit like magic. Own the code.",
+  "description": "AI-powered visual website builder with Gemini integration",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0a0a0a",
-  "theme_color": "#0a0a0a",
-  "orientation": "any",
+  "background_color": "#0a1628",
+  "theme_color": "#0a1628",
   "icons": [
     {
-      "src": "/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
-  ],
-  "categories": ["productivity", "design", "developer"]
+  ]
 }

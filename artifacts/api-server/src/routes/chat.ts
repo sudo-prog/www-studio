@@ -1,6 +1,13 @@
 import { Router, type IRouter, type Request, type Response } from "express";
 import { db, chatMessagesTable } from "@workspace/db";
 import { eq, asc } from "drizzle-orm";
+import {
+  chatComplete,
+  streamChat,
+  getLLMProvider,
+  LLM_MODEL,
+  type ChatMessage,
+} from "../lib/llm";
 
 const router: IRouter = Router();
 
@@ -62,6 +69,7 @@ function generateAIReply(message: string, context?: string): { reply: string; co
   };
 }
 
+// POST /chat — non-streaming (uses unified LLM client with fallback)
 router.post("/chat", async (req: Request, res: Response) => {
   const { message, projectId, context } = req.body;
 
@@ -80,7 +88,34 @@ router.post("/chat", async (req: Request, res: Response) => {
     content: message,
   });
 
-  const { reply, codeChanges, suggestions } = generateAIReply(message, context);
+  // Try real LLM first, fall back to heuristic reply
+  let reply: string;
+  let codeChanges: string | null = null;
+  let suggestions: string[];
+
+  try {
+    const messages: ChatMessage[] = [
+      {
+        role: "system",
+        content: `You are an AI web design assistant inside WWW Studio. Help the user modify their website.
+Respond with helpful, concise advice about web design changes. If the user asks for specific code changes, include them.
+Current provider: ${getLLMProvider()}. Model: ${LLM_MODEL}.`,
+      },
+    ];
+    if (context) {
+      messages.push({ role: "user", content: `Current context: ${context}` });
+    }
+    messages.push({ role: "user", content: message });
+
+    reply = await chatComplete(messages, { temperature: 0.7, maxTokens: 1024 });
+    suggestions = AI_SUGGESTIONS.slice(0, 3);
+  } catch {
+    // Fallback to heuristic reply
+    const fallback = generateAIReply(message, context);
+    reply = fallback.reply;
+    codeChanges = fallback.codeChanges;
+    suggestions = fallback.suggestions;
+  }
 
   const messageId = crypto.randomUUID();
 
@@ -94,6 +129,78 @@ router.post("/chat", async (req: Request, res: Response) => {
   });
 
   res.json({ reply, messageId, codeChanges, suggestions });
+});
+
+// POST /chat/stream — streaming SSE (uses unified LLM client with fallback)
+router.post("/chat/stream", async (req: Request, res: Response) => {
+  const { message, projectId, context } = req.body;
+
+  if (!message) {
+    res.status(400).json({ error: "message is required" });
+    return;
+  }
+
+  const userId = req.isAuthenticated() ? req.user.id : null;
+
+  // Save user message
+  await db.insert(chatMessagesTable).values({
+    projectId: projectId || null,
+    userId,
+    role: "user",
+    content: message,
+  });
+
+  res.setHeader("Content-Type", "text/event-stream");
+  res.setHeader("Cache-Control", "no-cache");
+  res.setHeader("Connection", "keep-alive");
+  res.flushHeaders();
+
+  const messageId = crypto.randomUUID();
+  let fullReply = "";
+
+  try {
+    const messages: ChatMessage[] = [
+      {
+        role: "system",
+        content: `You are an AI web design assistant inside WWW Studio. Help the user modify their website.
+Respond with helpful, concise advice about web design changes. If the user asks for specific code changes, include them.
+Current provider: ${getLLMProvider()}. Model: ${LLM_MODEL}.`,
+      },
+    ];
+    if (context) {
+      messages.push({ role: "user", content: `Current context: ${context}` });
+    }
+    messages.push({ role: "user", content: message });
+
+    for await (const delta of streamChat(messages, { temperature: 0.7 })) {
+      fullReply += delta;
+      res.write(`data: ${JSON.stringify({ delta, messageId })}\n\n`);
+    }
+  } catch {
+    // Fallback: send heuristic reply as a single chunk
+    const fallback = generateAIReply(message, context);
+    fullReply = fallback.reply;
+    const payload = JSON.stringify({
+      delta: fallback.reply,
+      messageId,
+      codeChanges: fallback.codeChanges,
+      suggestions: fallback.suggestions,
+      fallback: true,
+    });
+    res.write(`data: ${payload}\n\n`);
+  }
+
+  // Save assistant reply
+  await db.insert(chatMessagesTable).values({
+    id: messageId,
+    projectId: projectId || null,
+    userId,
+    role: "assistant",
+    content: fullReply,
+  });
+
+  res.write(`data: [DONE]\n\n`);
+  res.end();
 });
 
 router.get("/chat/:projectId/history", async (req: Request, res: Response) => {

@@ -28,12 +28,23 @@ export type ElementType =
   | "text"
   | "line";
 
+export interface ScrollConfig {
+  enabled:     boolean;
+  trigger?:    string;
+  end?:        string;
+  scrub?:      boolean | number;
+  pin?:        boolean;
+  markers?:    boolean;
+  scaleFrom?:  number;
+}
+
 export interface ElementAnimation {
-  preset:   AnimationPreset;
-  duration: number;
-  delay:    number;
-  easing:   string;
-  loop:     boolean;
+  preset:       AnimationPreset;
+  duration:     number;
+  delay:        number;
+  easing:       string;
+  loop:         boolean;
+  scrollConfig?: ScrollConfig;
 }
 
 export interface SceneElement {

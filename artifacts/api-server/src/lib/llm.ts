@@ -1,6 +1,6 @@
 /**
- * Unified LLM client — works with Ollama, OpenRouter, LM Studio, OpenAI, or any
- * OpenAI-compatible endpoint.
+ * Unified LLM client — works with Ollama, OpenRouter, LM Studio, OpenAI,
+ * Gemini Web2API, or any OpenAI-compatible endpoint.
  *
  * Configure via environment variables:
  *   LLM_BASE_URL      default: http://localhost:11434/v1  (Ollama)
@@ -14,6 +14,8 @@
  *                         LLM_MODEL=meta-llama/llama-3.3-70b-instruct:free
  *   LM Studio:            LLM_BASE_URL=http://localhost:1234/v1  LLM_MODEL=<your-model>
  *   OpenAI:               LLM_API_KEY=sk-...  LLM_MODEL=gpt-4o-mini
+ *   Gemini Web2API:       LLM_BASE_URL=http://localhost:8081/v1  LLM_MODEL=gemini-2.0-flash
+ *                         GEMINI_WEB2API_BASE_URL=http://localhost:8081/v1
  */
 
 import OpenAI from "openai";
@@ -31,6 +33,38 @@ export const llm = new OpenAI({
     : {}),
 });
 
+// ── Gemini Web2API proxy ──────────────────────────────────────────────────────
+
+export const GEMINI_WEB2API_BASE_URL = process.env.GEMINI_WEB2API_BASE_URL ?? "http://localhost:8081/v1";
+export const GEMINI_WEB2API_MODEL     = process.env.GEMINI_WEB2API_MODEL     ?? "gemini-2.0-flash";
+
+let _geminiClient: OpenAI | null = null;
+
+/** Get (or lazily create) an OpenAI client pointed at the gemini-web2api proxy. */
+export function getGeminiWeb2APIClient(): OpenAI {
+  if (!_geminiClient) {
+    _geminiClient = new OpenAI({
+      baseURL: GEMINI_WEB2API_BASE_URL,
+      apiKey:  process.env.GEMINI_WEB2API_API_KEY ?? "gemini-web2api",
+    });
+  }
+  return _geminiClient;
+}
+
+/** Check whether the Gemini Web2API proxy is reachable. */
+export async function isGeminiWeb2APIReachable(): Promise<boolean> {
+  try {
+    const client = getGeminiWeb2APIClient();
+    await Promise.race([
+      client.models.list(),
+      new Promise<never>((_, reject) => setTimeout(() => reject(new Error("timeout")), 3000)),
+    ]);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 export interface ChatMessage {
   role: "system" | "user" | "assistant";
   content: string;
@@ -41,6 +75,7 @@ export function getLLMProvider(): string {
   if (LLM_BASE_URL.includes("openai.com")) return "OpenAI";
   if (LLM_BASE_URL.includes("localhost:11434")) return "Ollama";
   if (LLM_BASE_URL.includes("localhost:1234")) return "LM Studio";
+  if (LLM_BASE_URL.includes("localhost:8081") || LLM_BASE_URL.includes("gemini")) return "Gemini Web2API";
   return "Custom";
 }
 
