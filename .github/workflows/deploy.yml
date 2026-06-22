@@ -37,6 +37,7 @@ jobs:
       - name: Build www-studio frontend
         run: cd artifacts/www-studio && pnpm run build
         env:
+          GITHUB_PAGES: "true"
           VITE_API_BASE_URL: /api
 
       - name: Move build output to public
