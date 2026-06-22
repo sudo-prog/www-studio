@@ -11,7 +11,7 @@ import {
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
-  const { user, isAuthenticated, login, logout } = useAuth();
+  const { user, isAuthenticated, loginWithGitHub, logout } = useAuth();
   const [location] = useLocation();
 
   const navLink = (href: string, label: string) => (
