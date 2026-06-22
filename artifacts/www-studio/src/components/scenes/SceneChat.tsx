@@ -42,6 +42,206 @@ const SUGGESTION_CHIPS = [
   "Add depth with blurred orbs",
 ];
 
+// ─── Local AI fallback (no API key needed) ─────────────────────────────────
+
+const WELLNESS_PALETTE = ["#7FB5A0", "#B39DC2", "#E8957A", "#87BBDB", "#F4C5A1", "#4A7C6B", "#C8D8E0", "#E8DDD0"];
+const ANIM_PRESETS = ["none", "gentle-float", "gradient-breathe", "scale-pulse", "fade-in-out", "spin-slow", "drift"];
+
+function generateLocalSceneResponse(userText: string, elements: SceneElement[]): { text: string; actions: SceneAction[] } {
+  const lower = userText.toLowerCase();
+  const actions: SceneAction[] = [];
+
+  if (lower.includes("add") && lower.includes("orb")) {
+    const count = lower.match(/(\d+)/);
+    const n = count ? Math.min(parseInt(count[1]), 5) : 1;
+    for (let i = 0; i < n; i++) {
+      const size = 150 + Math.random() * 200;
+      actions.push({
+        type: "add",
+        element: {
+          id: crypto.randomUUID(),
+          name: `Orb ${elements.length + i + 1}`,
+          type: "circle",
+          x: Math.floor(Math.random() * 1000),
+          y: Math.floor(Math.random() * 600),
+          width: Math.floor(size),
+          height: Math.floor(size),
+          fill: WELLNESS_PALETTE[Math.floor(Math.random() * WELLNESS_PALETTE.length)],
+          fillOpacity: 1,
+          opacity: 0.3 + Math.random() * 0.3,
+          rotation: 0,
+          blur: 40 + Math.floor(Math.random() * 60),
+          visible: true,
+          locked: false,
+          zIndex: elements.length + i,
+          stroke: "transparent",
+          strokeWidth: 0,
+          strokeOpacity: 1,
+          mixBlendMode: "normal",
+          backdropBlur: 0,
+          animation: {
+            preset: ANIM_PRESETS[1 + Math.floor(Math.random() * (ANIM_PRESETS.length - 1))],
+            duration: 5 + Math.floor(Math.random() * 6),
+            delay: Math.random() * 2,
+            easing: "ease-in-out",
+            loop: true,
+          },
+          tags: [],
+        },
+      });
+    }
+    return { text: `Added ${n} floating orb${n > 1 ? "s" : ""} to the scene. Click "Apply" to see them on the canvas.`, actions };
+  }
+
+  if (lower.includes("lavender") || lower.includes("purple")) {
+    actions.push({
+      type: "add",
+      element: {
+        id: crypto.randomUUID(),
+        name: "Lavender Blob",
+        type: "circle",
+        x: Math.floor(Math.random() * 800),
+        y: Math.floor(Math.random() * 500),
+        width: 300,
+        height: 300,
+        fill: "#B39DC2",
+        fillOpacity: 1,
+        opacity: 0.25,
+        rotation: 0,
+        blur: 60,
+        visible: true,
+        locked: false,
+        zIndex: elements.length,
+        stroke: "transparent",
+        strokeWidth: 0,
+        strokeOpacity: 1,
+        mixBlendMode: "normal",
+        backdropBlur: 0,
+        animation: { preset: "gradient-breathe", duration: 8, delay: 0, easing: "ease-in-out", loop: true },
+        tags: [],
+      },
+    });
+    return { text: "Added a soft lavender blob background element.", actions };
+  }
+
+  if (lower.includes("muted") || lower.includes("softer") || lower.includes("gentle")) {
+    return {
+      text: "I've adjusted the scene to be more muted and serene. The existing elements now have reduced opacity and softer blur.",
+      actions: elements.slice(0, 3).map((el) => ({
+        type: "update" as const,
+        id: el.id,
+        updates: { opacity: Math.max(0.1, (el.opacity ?? 0.5) - 0.15), blur: (el.blur ?? 0) + 10 },
+      })),
+    };
+  }
+
+  if (lower.includes("coral") || lower.includes("warm") || lower.includes("peach")) {
+    actions.push({
+      type: "add",
+      element: {
+        id: crypto.randomUUID(),
+        name: "Coral Accent",
+        type: "circle",
+        x: 200 + Math.floor(Math.random() * 600),
+        y: 200 + Math.floor(Math.random() * 400),
+        width: 200,
+        height: 200,
+        fill: "#E8957A",
+        fillOpacity: 1,
+        opacity: 0.4,
+        rotation: 0,
+        blur: 30,
+        visible: true,
+        locked: false,
+        zIndex: elements.length,
+        stroke: "transparent",
+        strokeWidth: 0,
+        strokeOpacity: 1,
+        mixBlendMode: "normal",
+        backdropBlur: 0,
+        animation: { preset: "gentle-float", duration: 7, delay: 0, easing: "ease-in-out", loop: true },
+        tags: [],
+      },
+    });
+    return { text: "Added a warm coral accent shape to bring energy to the scene.", actions };
+  }
+
+  if (lower.includes("clear") || lower.includes("delete all") || lower.includes("remove all")) {
+    return {
+      text: "Cleared all elements from the scene. You can add new elements from the toolbar or ask me to generate something.",
+      actions: elements.map((el) => ({ type: "delete" as const, id: el.id })),
+    };
+  }
+
+  if (lower.includes("ocean") || lower.includes("blue") || lower.includes("serene")) {
+    actions.push({
+      type: "add",
+      element: {
+        id: crypto.randomUUID(),
+        name: "Ocean Wave",
+        type: "rect",
+        x: 0,
+        y: 600,
+        width: 1440,
+        height: 300,
+        fill: "#87BBDB",
+        fillOpacity: 1,
+        opacity: 0.2,
+        rotation: 0,
+        blur: 20,
+        visible: true,
+        locked: false,
+        zIndex: elements.length,
+        stroke: "transparent",
+        strokeWidth: 0,
+        strokeOpacity: 1,
+        mixBlendMode: "normal",
+        backdropBlur: 0,
+        animation: { preset: "drift", duration: 12, delay: 0, easing: "ease-in-out", loop: true },
+        tags: [],
+      },
+    });
+    return { text: "Added a serene ocean wave at the bottom of the scene.", actions };
+  }
+
+  if (lower.includes("depth") || lower.includes("blur") || lower.includes("layered")) {
+    actions.push({
+      type: "add",
+      element: {
+        id: crypto.randomUUID(),
+        name: "Depth Orb",
+        type: "circle",
+        x: Math.floor(Math.random() * 1000),
+        y: Math.floor(Math.random() * 600),
+        width: 400,
+        height: 400,
+        fill: WELLNESS_PALETTE[Math.floor(Math.random() * WELLNESS_PALETTE.length)],
+        fillOpacity: 1,
+        opacity: 0.15,
+        rotation: 0,
+        blur: 100,
+        visible: true,
+        locked: false,
+        zIndex: 0,
+        stroke: "transparent",
+        strokeWidth: 0,
+        strokeOpacity: 1,
+        mixBlendMode: "normal",
+        backdropBlur: 0,
+        animation: { preset: "gradient-breathe", duration: 10, delay: 0, easing: "ease-in-out", loop: true },
+        tags: [],
+      },
+    });
+    return { text: "Added a deep blurred orb for depth and atmosphere.", actions };
+  }
+
+  // Default response
+  return {
+    text: `I understand you want to "${userText}". With a Gemini API key, I can provide much more sophisticated responses. For now, try: "add orb", "add lavender", "add coral", "make muted", or "add depth".`,
+    actions: [],
+  };
+}
+
 interface Props {
   sceneId:      string;
   elements:     SceneElement[];
@@ -76,41 +276,81 @@ export function SceneChat({ sceneId, elements, selectedId, onApply, onClose }: P
     setInput("");
     setLoading(true);
 
-    try {
-      const res = await fetch(`/api/scenes/${sceneId}/chat`, {
-        method:  "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          message:    text.trim(),
-          elements:   elements.map((el) => ({
-            id: el.id, type: el.type, name: el.name,
-            x: el.x, y: el.y, width: el.width, height: el.height,
-            fill: el.fill, opacity: el.opacity, blur: el.blur,
-            animation: el.animation,
-          })),
-          selectedId,
-        }),
-      });
+    // Build a scene-aware prompt
+    const sceneContext = elements.map((el) => `${el.name} (${el.type}) at (${el.x},${el.y}) — ${el.width}×${el.height}px, fill: ${el.fill}, opacity: ${el.opacity}, blur: ${el.blur}px, animation: ${el.animation?.preset ?? "none"}`).join("\n");
+    const fullPrompt = `You are a scene design AI. The current scene has these elements:\n${sceneContext}\n\nUser request: ${text}\n\nRespond with a brief description of what you'd like to do, and suggest actions: add, update, or delete elements. Return JSON: { "text": "description", "actions": [{ "type": "add"|"update"|"delete", "element": {...}, "id": "...", "updates": {...} }] }`;
 
-      if (!res.ok) throw new Error("API error");
-      const data = await res.json() as { text: string; actions: SceneAction[] };
+    try {
+      // Try local API first (if running backend)
+      let data: { text: string; SceneAction[] } | null = null;
+
+      try {
+        const res = await fetch(`/api/scenes/${sceneId}/chat`, {
+          method:  "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            message:    text.trim(),
+            elements:   elements.map((el) => ({
+              id: el.id, type: el.type, name: el.name,
+              x: el.x, y: el.y, width: el.width, height: el.height,
+              fill: el.fill, opacity: el.opacity, blur: el.blur,
+              animation: el.animation,
+            })),
+            selectedId,
+          }),
+          signal: AbortSignal.timeout(5000),
+        });
+        if (res.ok) data = await res.json() as any;
+      } catch { /* no backend — use local AI */ }
+
+      // Fallback: local AI via Gemini API
+      if (!data) {
+        const apiKey = localStorage.getItem("www-studio-gemini-config")
+          ? JSON.parse(localStorage.getItem("www-studio-gemini-config")!).key
+          : "";
+
+        if (!apiKey) {
+          // Pure local fallback without API
+          data = generateLocalSceneResponse(text, elements);
+        } else {
+          const res = await fetch(
+            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                system_instruction: { parts: [{ text: "You are a wellness scene design AI. Given a scene description and user request, suggest modifications. Respond ONLY with JSON: { \"text\": \"brief description\", \"actions\": [{ \"type\": \"add\"|\"update\"|\"delete\", \"element\": {id,type,name,x,y,width,height,fill,fillOpacity,opacity,rotation,blur,visible,locked,zIndex,animation}, \"id\": \"uuid\", \"updates\": {} }] }" }] },
+                contents: [{ role: "user", parts: [{ text: fullPrompt }] }],
+                generationConfig: { temperature: 0.8, maxOutputTokens: 1500 },
+              }),
+            }
+          );
+          if (!res.ok) throw new Error(`API ${res.status}`);
+          const geminiData = await res.json();
+          const raw = geminiData?.candidates?.[0]?.content?.parts?.[0]?.text ?? "";
+          const cleaned = raw.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "").trim();
+          data = JSON.parse(cleaned);
+        }
+      }
 
       const assistantMsg: ChatMsg = {
         id:      crypto.randomUUID(),
         role:    "assistant",
-        text:    data.text,
+        text:    data.text || "I've processed your request.",
         actions: data.actions ?? [],
         applied: false,
       };
       setMessages((prev) => [...prev, assistantMsg]);
     } catch {
+      // Final fallback: local generation
+      const data = generateLocalSceneResponse(text, elements);
       setMessages((prev) => [
         ...prev,
         {
           id:      crypto.randomUUID(),
           role:    "assistant",
-          text:    "Couldn't reach the AI right now. Make sure your LLM is running (see LLM_BASE_URL env var).",
-          actions: [],
+          text:    data.text,
+          actions: data.actions,
           applied: false,
         },
       ]);
@@ -243,7 +483,7 @@ export function SceneChat({ sceneId, elements, selectedId, onApply, onClose }: P
           </Button>
         </form>
         <p className="text-[9px] text-muted-foreground mt-1.5 text-center">
-          Requires a running LLM — set LLM_BASE_URL env var
+          Works offline • Add Gemini API key for best results
         </p>
       </div>
     </div>
