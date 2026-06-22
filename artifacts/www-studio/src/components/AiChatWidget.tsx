@@ -26,53 +26,28 @@ const WELCOME: Message = {
   ],
 };
 
-const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta";
-const GEMINI_MODEL = "gemini-2.0-flash";
+const PROXY_URL = "http://localhost:8081/v1";
 
 async function callGeminiAPI(messages: { role: string; content: string }[]): Promise<{ reply: string; suggestions?: string[] }> {
-  const apiKey = localStorage.getItem("www-studio-gemini-key") || "";
-  const contents = messages
-    .filter((m) => m.role !== "system")
-    .map((m) => ({
-      role: m.role === "assistant" ? "model" : "user",
-      parts: [{ text: m.content }],
-    }));
-
-  const systemInstruction = messages.find((m) => m.role === "system")
-    ? { parts: [{ text: messages.find((m) => m.role === "system")!.content }] }
-    : undefined;
-
-  const body: Record<string, unknown> = {
-    generationConfig: { temperature: 0.7, maxOutputTokens: 2048 },
-    contents,
-  };
-  if (systemInstruction) body.systemInstruction = systemInstruction;
-
-  const res = await fetch(`${GEMINI_API_URL}/models/${GEMINI_MODEL}:generateContent?key=${encodeURIComponent(apiKey)}`, {
+  const res = await fetch(`${PROXY_URL}/chat/completions`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
+    body: JSON.stringify({
+      model: "gemini-2.0-flash",
+      messages,
+      temperature: 0.7,
+      max_tokens: 2048,
+    }),
   });
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({}));
-    throw new Error(err?.error?.message || `HTTP ${res.status}`);
-  }
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const data = await res.json();
-  const reply = data.candidates?.[0]?.content?.parts?.[0]?.text ?? "Sorry, I couldn't generate a response.";
+  const reply = data.choices?.[0]?.message?.content ?? "Sorry, I couldn't generate a response.";
   const suggestions = [
     "Make it more colorful",
     "Add a pricing section",
     "Make it responsive",
   ];
   return { reply, suggestions };
-}
-
-function hasGeminiKey(): boolean {
-  return !!localStorage.getItem("www-studio-gemini-key");
-}
-
-function setGeminiKey(key: string) {
-  localStorage.setItem("www-studio-gemini-key", key);
 }
 
 interface AiChatWidgetProps {
@@ -85,18 +60,19 @@ export function AiChatWidget({ context, onNavigate }: AiChatWidgetProps) {
   const [minimized, setMinimized] = useState(false);
   const [messages, setMessages] = useState<Message[]>([WELCOME]);
   const [input, setInput] = useState("");
-  const [showKeyInput, setShowKeyInput] = useState(false);
-  const [keyInput, setKeyInput] = useState("");
+  const [proxyAvailable, setProxyAvailable] = useState<boolean | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (open) bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, open]);
 
+  // Check if Gemini proxy is available
   useEffect(() => {
-    if (open && !hasGeminiKey()) {
-      setShowKeyInput(true);
-    }
+    if (!open) return;
+    fetch(`${PROXY_URL}/models`, { signal: AbortSignal.timeout(3000) })
+      .then(() => setProxyAvailable(true))
+      .catch(() => setProxyAvailable(false));
   }, [open]);
 
   const send = async (text?: string) => {
@@ -107,8 +83,32 @@ export function AiChatWidget({ context, onNavigate }: AiChatWidgetProps) {
     const userMsg: Message = { id: crypto.randomUUID(), role: "user", content: msg };
     setMessages((prev) => [...prev, userMsg]);
 
-    if (!hasGeminiKey()) {
-      setShowKeyInput(true);
+    // If proxy is not available, show helpful message
+    if (proxyAvailable === false) {
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: crypto.randomUUID(),
+          role: "assistant",
+          content: "The Gemini AI proxy is not running. To use the AI assistant locally, start the proxy:\n\nbash scripts/start-gemini-proxy.sh\n\nThen refresh this page.",
+          isError: true,
+        },
+      ]);
+      return;
+    }
+
+    // If proxy availability is still unknown, wait for check
+    if (proxyAvailable === null) {
+      setProxyAvailable(false);
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: crypto.randomUUID(),
+          role: "assistant",
+          content: "The Gemini AI proxy is not running. To use the AI assistant locally, start the proxy:\n\nbash scripts/start-gemini-proxy.sh\n\nThen refresh this page.",
+          isError: true,
+        },
+      ]);
       return;
     }
 
@@ -147,7 +147,7 @@ export function AiChatWidget({ context, onNavigate }: AiChatWidgetProps) {
         {
           id: crypto.randomUUID(),
           role: "assistant",
-          content: "Sorry, the AI assistant encountered an error. Check your Gemini API key and try again.",
+          content: "Sorry, the AI assistant encountered an error. Make sure the Gemini proxy is running on localhost:8081.",
           isError: true,
         },
       ]);
@@ -186,7 +186,7 @@ export function AiChatWidget({ context, onNavigate }: AiChatWidgetProps) {
               <div>
                 <p className="text-sm font-medium leading-none">AI Assistant</p>
                 <p className="text-[10px] text-muted-foreground">
-                  {hasGeminiKey() ? "Gemini Connected" : "API Key Required"}
+                  {proxyAvailable === null ? "Connecting..." : proxyAvailable ? "Gemini Online" : "Proxy Offline"}
                 </p>
               </div>
             </div>
@@ -202,37 +202,13 @@ export function AiChatWidget({ context, onNavigate }: AiChatWidgetProps) {
 
           {!minimized && (
             <>
-              {/* API key input */}
-              {showKeyInput && (
-                <div className="px-3 py-2 bg-yellow-500/10 border-b border-yellow-500/20">
-                  <div className="flex items-start gap-2 mb-2">
-                    <AlertCircle className="w-3.5 h-3.5 text-yellow-500 shrink-0 mt-0.5" />
-                    <p className="text-[10px] text-yellow-600 dark:text-yellow-400 leading-relaxed">
-                      Enter your Gemini API key to enable the AI assistant. Get one free at <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener" className="underline">Google AI Studio</a>.
-                    </p>
-                  </div>
-                  <div className="flex gap-1.5">
-                    <Input
-                      type="password"
-                      value={keyInput}
-                      onChange={(e) => setKeyInput(e.target.value)}
-                      placeholder="AIza..."
-                      className="flex-1 h-7 text-xs border-yellow-500/30 bg-transparent"
-                    />
-                    <Button
-                      size="sm"
-                      className="h-7 text-xs px-2"
-                      onClick={() => {
-                        if (keyInput.trim()) {
-                          setGeminiKey(keyInput.trim());
-                          setShowKeyInput(false);
-                          setKeyInput("");
-                        }
-                      }}
-                    >
-                      Save
-                    </Button>
-                  </div>
+              {/* Proxy offline banner */}
+              {proxyAvailable === false && (
+                <div className="px-3 py-2 bg-yellow-500/10 border-b border-yellow-500/20 flex items-start gap-2">
+                  <AlertCircle className="w-3.5 h-3.5 text-yellow-500 shrink-0 mt-0.5" />
+                  <p className="text-[10px] text-yellow-600 dark:text-yellow-400 leading-relaxed">
+                    Gemini proxy not running. Start it locally: <code className="bg-black/10 px-1 rounded">bash scripts/start-gemini-proxy.sh</code>
+                  </p>
                 </div>
               )}
 
@@ -270,7 +246,7 @@ export function AiChatWidget({ context, onNavigate }: AiChatWidgetProps) {
                     </div>
                   ) : null}
 
-                  {hasGeminiKey() && (
+                  {proxyAvailable && (
                     <div className="flex gap-2">
                       <div className="w-6 h-6 rounded-full bg-muted flex items-center justify-center shrink-0">
                         <Bot className="w-3 h-3 text-muted-foreground" />
@@ -293,10 +269,10 @@ export function AiChatWidget({ context, onNavigate }: AiChatWidgetProps) {
                   <Input
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
-                    placeholder={hasGeminiKey() ? "Ask anything..." : "Set API key first..."}
+                    placeholder={proxyAvailable === false ? "Proxy offline..." : "Ask anything..."}
                     className="flex-1 border-0 bg-transparent p-0 h-7 text-xs shadow-none focus-visible:ring-0 placeholder:text-muted-foreground/60"
                   />
-                  <Button type="submit" size="icon" variant="ghost" className="h-6 w-6 shrink-0" disabled={!input.trim() || !hasGeminiKey()}>
+                  <Button type="submit" size="icon" variant="ghost" className="h-6 w-6 shrink-0" disabled={!input.trim() || proxyAvailable === false}>
                     <Send className="w-3 h-3" />
                   </Button>
                 </form>
