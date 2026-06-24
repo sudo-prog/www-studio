@@ -1,14 +1,14 @@
 # WWW Studio — Agent Notes
 
-**Last Updated:** 2026-06-13
-**Status:** Scene Workspace features integrated from Replit agent update
+**Last Updated:** 2026-06-22
+**Status:** AI assistant rewritten for GitHub Pages static hosting — no backend required
 
 ---
 
 ## Architecture
 - **pnpm monorepo** with 4 artifacts + 3 shared packages
-- `artifacts/api-server` — Express on `$PORT` (default 8080)
-- `artifacts/www-studio` — React + Vite on `$PORT` (default 3000)
+- `artifacts/api-server` — Express on `$PORT` (default 8080) — optional, only needed for DB-backed scenes
+- `artifacts/www-studio` — React + Vite on `$PORT` (default 3000) — **deployed to GitHub Pages**
 - `artifacts/mobile` — Expo on `$PORT` (default 18115)
 - `artifacts/mockup-sandbox` — Vite preview server on port 8081
 - `packages/db` — Drizzle ORM + PostgreSQL schema
@@ -93,6 +93,37 @@ The update adds a complete **Wellness Scenes** workspace — an SVG canvas edito
 4. **LLM client at `artifacts/api-server/src/lib/llm.ts`** — import `chatComplete`, `streamChat`, `visionComplete` — never create OpenAI client instances inline.
 5. **`getOrGuestUserId(req)`** — single-user app; returns `req.user.id` if authenticated, else guest UUID.
 6. **Canvas is 1440×900px** — elements positioned in px, z-index determines stacking.
+
+## AI Assistant Architecture (GitHub Pages — Static Frontend)
+
+### Key Design Decision
+The AI assistant runs **entirely in the browser**. No proxy, no localhost, no backend server required. This is necessary because GitHub Pages is static hosting with no server-side execution.
+
+### `AiChatWidget.tsx` — Global AI Assistant
+- **API:** Calls Google Gemini REST API directly (`generativelanguage.googleapis.com/v1beta`)
+- **Auth:** User's own Gemini API key (stored in `localStorage` under `www-studio-gemini-config`)
+- **Free tier:** 1500 requests/day, no credit card needed — get key at `aistudio.google.com/apikey`
+- **Models:** Auto-fetches available free-tier Gemini models, sorted free-first
+- **Fallback:** If no API key, shows helpful onboarding with link to get one
+- **No dependencies on:** OpenRouter, localhost:8081 proxy, gemini-web2api
+
+### `SceneChat.tsx` — Scene AI Assistant
+- **Triple fallback strategy:**
+  1. Try local backend API `/api/scenes/:id/chat` (5s timeout)
+  2. Try Gemini API with user's key (from localStorage)
+  3. Local rule-based AI (`generateLocalSceneResponse()`)
+- **Local fallback handles:** add orb, lavender, coral, muted/soften, ocean wave, depth/blur, clear all
+- **Action format:** `{ text: string, actions: SceneAction[] }` — actions can be add/update/delete
+- **actionLabel helper:** formats action chips ("+ Add Orb", "✎ Update element", "− Remove element")
+
+### Storage Keys
+- `www-studio-gemini-config` → `{ key: string, baseUrl: string }`
+- `www-studio-selected-model` → string (model ID like "gemini-2.0-flash")
+
+### Removed Dependencies (June 2024)
+- `http://localhost:8081/v1` (gemini-web2api proxy) — no longer needed
+- OpenRouter (all models now require API key)
+- `scripts/start-gemini-proxy.sh` — no longer needed in browser context
 
 ## Wellness Color Palette
 ```
