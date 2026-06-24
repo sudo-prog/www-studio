@@ -237,7 +237,7 @@ function generateLocalSceneResponse(userText: string, elements: SceneElement[]):
 
   // Default response
   return {
-    text: `I understand you want to "${userText}". With a Gemini API key, I can provide much more sophisticated responses. For now, try: "add orb", "add lavender", "add coral", "make muted", or "add depth".`,
+    text: `I understand you want to "${userText}". With a Gemini API key, I can provide much more sophisticated responses. For now, try: "add orb", "add lavender", "add coral", "make muted", or "clear canvas".`,
     actions: [],
   };
 }
@@ -277,12 +277,12 @@ export function SceneChat({ sceneId, elements, selectedId, onApply, onClose }: P
     setLoading(true);
 
     // Build a scene-aware prompt
-    const sceneContext = elements.map((el) => `${el.name} (${el.type}) at (${el.x},${el.y}) — ${el.width}×${el.height}px, fill: ${el.fill}, opacity: ${el.opacity}, blur: ${el.blur}px, animation: ${el.animation?.preset ?? "none"}`).join("\n");
-    const fullPrompt = `You are a scene design AI. The current scene has these elements:\n${sceneContext}\n\nUser request: ${text}\n\nRespond with a brief description of what you'd like to do, and suggest actions: add, update, or delete elements. Return JSON: { "text": "description", "actions": [{ "type": "add"|"update"|"delete", "element": {...}, "id": "...", "updates": {...} }] }`;
+    const sceneContext = elements.map((el) => `${el.name} (${el.type}) at (${el.x},${el.y}) — ${el.width}×${el.height}px, fill: ${el.fill}, opacity: ${el.opacity}, blur: ${el.blur}px, animation: ${el.animation?.preset || "none"}`).join("\n");
+    const fullPrompt = `You are a scene design AI. The current scene has these elements:\n${sceneContext}\n\nUser request: ${text}\n\nRespond with a brief description of what you'd like to do, and then provide a JSON object with { "text": "...", "actions": [...] }`;
 
     try {
       // Try local API first (if running backend)
-      let data: { text: string; SceneAction[] } | null = null;
+      let data: { text: string; actions: SceneAction[] } | null = null;
 
       try {
         const res = await fetch(`/api/scenes/${sceneId}/chat`, {
@@ -319,7 +319,7 @@ export function SceneChat({ sceneId, elements, selectedId, onApply, onClose }: P
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({
-                system_instruction: { parts: [{ text: "You are a wellness scene design AI. Given a scene description and user request, suggest modifications. Respond ONLY with JSON: { \"text\": \"brief description\", \"actions\": [{ \"type\": \"add\"|\"update\"|\"delete\", \"element\": {id,type,name,x,y,width,height,fill,fillOpacity,opacity,rotation,blur,visible,locked,zIndex,animation}, \"id\": \"uuid\", \"updates\": {} }] }" }] },
+                system_instruction: { parts: [{ text: "You are a wellness scene design AI. Given a scene description and user request, suggest modifications. Respond ONLY with JSON: { \"text\": \"...\", \"actions\": [...] }" }] },
                 contents: [{ role: "user", parts: [{ text: fullPrompt }] }],
                 generationConfig: { temperature: 0.8, maxOutputTokens: 1500 },
               }),
