@@ -2,6 +2,8 @@
 
 A web-based visual editor for building websites with AI assistance.
 
+🚀 **[Live Demo](https://sudo-prog.github.io/www-studio/)** — Visit the live GitHub Pages deployment
+
 ## Project Structure
 
 ```
