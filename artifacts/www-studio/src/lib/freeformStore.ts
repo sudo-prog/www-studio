@@ -533,7 +533,9 @@ export function exportFreeformToHTML(page: FreeformPage): string {
     @media (max-width: ${page.canvasWidth}px) {
       .freeform-page { max-width:100%; }
     }
+    ${page.customCss || ""}
   </style>
+  ${page.customJs ? `<script>${page.customJs}</script>` : ""}
 </head>
 <body>
   <div class="freeform-page">

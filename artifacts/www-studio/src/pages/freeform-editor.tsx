@@ -8,15 +8,19 @@ import {
 import FreeformCanvas from "@/components/freeform/FreeformCanvas";
 import FreeformToolbar from "@/components/freeform/FreeformToolbar";
 import FreeformPropertiesPanel from "@/components/freeform/FreeformPropertiesPanel";
+import FreeformAIChat, { type FreeformAIAction } from "@/components/freeform/FreeformAIChat";
+import { ScreenshotToFreeform } from "@/components/freeform/ScreenshotToFreeform";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import {
   ArrowLeft, Download, Save, Cloud, CloudOff, Eye,
   Undo, Redo, ZoomIn, ZoomOut, Grid3x3, Ruler,
-  Plus, Layers, Palette, Component,
+  Plus, Layers, Palette, Component, Sparkles, Camera,
+  Smartphone, Code2, FileCode,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { makeFreeformElement, Artboard, ComponentMaster } from "@/lib/freeform-types";
+import { makeFreeformElement, Artboard, ComponentMaster, type FreeformElement } from "@/lib/freeform-types";
 import { DEFAULT_TOKENS, tokensToCSS } from "@/lib/design-tokens";
 import { GitHubSaveButton } from "@/components/freeform/GitHubSaveButton";
 

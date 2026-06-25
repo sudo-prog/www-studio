@@ -45,6 +45,7 @@ function SceneShowcaseCard({ scene, href }: { scene: any; href?: string }) {
 
 export default function Home() {
   const { data: templates = [], isLoading } = useGetGalleryTemplates();
+  const safeTemplates = Array.isArray(templates) ? templates : [];
   const { data: allScenes = [] }            = useGetScenes();
   const [search, setSearch]   = useState("");
   const [, setLocation]       = useLocation();
@@ -58,14 +59,15 @@ export default function Home() {
       .catch(() => {});
   }, []);
 
-  const filtered = templates.filter(
+  const filtered = safeTemplates.filter(
     (t) =>
       !search ||
-      t.title.toLowerCase().includes(search.toLowerCase()) ||
+      t.title?.toLowerCase().includes(search.toLowerCase()) ||
       t.tags?.some((tag) => tag.toLowerCase().includes(search.toLowerCase()))
   );
 
-  const showcaseScenes = publicScenes.length > 0 ? publicScenes : (allScenes as any[]).slice(0, 6);
+  const safeScenes = Array.isArray(allScenes) ? allScenes : [];
+  const showcaseScenes = (Array.isArray(publicScenes) && publicScenes.length > 0) ? publicScenes : safeScenes.slice(0, 6);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -172,7 +174,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
             <div>
               <h2 className="text-2xl font-semibold tracking-tight">Community Templates</h2>
-              <p className="text-sm text-muted-foreground mt-1">{templates.length} templates ready to fork</p>
+              <p className="text-sm text-muted-foreground mt-1">{safeTemplates.length} templates ready to fork</p>
             </div>
             <div className="relative w-full md:w-72">
               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />

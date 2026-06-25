@@ -206,9 +206,9 @@ export default function FreeformToolbar({ onAddElement }: Props) {
               placeholder="Search Giphy..."
               value={giphyQuery}
               onChange={(e) => setGiphyQuery(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && searchGiphy()}
+              onKeyDown={(e) => e.key === "Enter" && handleSearchGiphy()}
             />
-            <button onClick={searchGiphy} className="px-2 py-1 bg-primary/20 rounded-lg text-xs">
+            <button onClick={handleSearchGiphy} className="px-2 py-1 bg-primary/20 rounded-lg text-xs">
               <Search className="w-3 h-3" />
             </button>
           </div>
