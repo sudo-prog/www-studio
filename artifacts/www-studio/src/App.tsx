@@ -1,4 +1,16 @@
 import { Switch, Route, Router as WouterRouter } from "wouter";
+import { useState, useCallback, useEffect } from "react";
+
+function useHashLocation() {
+  const [location, setLocation] = useState(window.location.hash.slice(1) || "/");
+  useEffect(() => {
+    const handler = () => setLocation(window.location.hash.slice(1) || "/");
+    window.addEventListener("hashchange", handler);
+    return () => window.removeEventListener("hashchange", handler);
+  }, []);
+  const navigate = useCallback((to) => { window.location.hash = to; }, []);
+  return [location, navigate];
+}
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -47,7 +59,7 @@ function App() {
       <ThemeProvider defaultTheme="dark" storageKey="www-studio-theme">
         <TooltipProvider>
           <ErrorBoundary>
-            <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+            <WouterRouter hook={useHashLocation}>
               <Router />
             </WouterRouter>
             <Toaster />
