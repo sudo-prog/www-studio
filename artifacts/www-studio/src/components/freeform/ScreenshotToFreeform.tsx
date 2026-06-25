@@ -11,11 +11,19 @@ interface Props {
   canvasWidth: number;
   canvasHeight: number;
   onApply: (elements: FreeformElement[]) => void;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  hideTrigger?: boolean;
 }
 
-export function ScreenshotToFreeform({ canvasWidth, canvasHeight, onApply }: Props) {
+export function ScreenshotToFreeform({ canvasWidth, canvasHeight, onApply, open: controlledOpen, onOpenChange, hideTrigger }: Props) {
   const { toast } = useToast();
-  const [open, setOpen] = useState(false);
+  const [internalOpen, setInternalOpen] = useState(false);
+  const open = controlledOpen ?? internalOpen;
+  const setOpen = (v: boolean) => {
+    if (onOpenChange) onOpenChange(v);
+    else setInternalOpen(v);
+  };
   const [processing, setProcessing] = useState(false);
   const [preview, setPreview] = useState<string | null>(null);
   const [extractedElements, setExtractedElements] = useState<FreeformElement[]>([]);
@@ -78,12 +86,14 @@ export function ScreenshotToFreeform({ canvasWidth, canvasHeight, onApply }: Pro
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
+      {!hideTrigger && (
       <DialogTrigger asChild>
         <Button variant="outline" size="sm" className="gap-2">
           <Camera className="w-3.5 h-3.5" />
           Screenshot → Freeform
         </Button>
       </DialogTrigger>
+      )}
       <DialogContent className="max-w-2xl max-h-[85vh] flex flex-col">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">

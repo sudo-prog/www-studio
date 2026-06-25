@@ -14,6 +14,7 @@ import publishRouter          from "./publish";
 import snapshotsRouter        from "./snapshots";
 import designRouter           from "./design";
 import scenesRouter           from "./scenes";
+import enhancedRouter         from "./enhanced";
 
 const router: IRouter = Router();
 
@@ -32,5 +33,6 @@ router.use(publishRouter);
 router.use(snapshotsRouter);
 router.use(designRouter);
 router.use(scenesRouter);
+router.use(enhancedRouter);
 
 export default router;

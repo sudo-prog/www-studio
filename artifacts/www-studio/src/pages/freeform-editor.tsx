@@ -10,14 +10,14 @@ import FreeformToolbar from "@/components/freeform/FreeformToolbar";
 import FreeformPropertiesPanel from "@/components/freeform/FreeformPropertiesPanel";
 import FreeformAIChat, { type FreeformAIAction } from "@/components/freeform/FreeformAIChat";
 import { ScreenshotToFreeform } from "@/components/freeform/ScreenshotToFreeform";
+import CustomCodePanel from "@/components/freeform/CustomCodePanel";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import {
   ArrowLeft, Download, Save, Cloud, CloudOff, Eye,
   Undo, Redo, ZoomIn, ZoomOut, Grid3x3, Ruler,
   Plus, Layers, Palette, Component, Sparkles, Camera,
-  Smartphone, Code2, FileCode,
+  Smartphone, FileCode,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { makeFreeformElement, Artboard, ComponentMaster, type FreeformElement } from "@/lib/freeform-types";
@@ -35,6 +35,11 @@ export default function FreeformEditor() {
   const [showPreview, setShowPreview] = useState(false);
   const [showTokenPanel, setShowTokenPanel] = useState(false);
   const [showComponentPanel, setShowComponentPanel] = useState(false);
+  const [showAIChat, setShowAIChat] = useState(false);
+  const [showMobilePreview, setShowMobilePreview] = useState(false);
+  const [showCssJsPanel, setShowCssJsPanel] = useState(false);
+  const [showScreenshotDialog, setShowScreenshotDialog] = useState(false);
+  const [mobileWidth, setMobileWidth] = useState(375);
 
   const selectedEl = state.page.elements.find((e) => e.id === state.selectedId) ?? null;
 
@@ -112,6 +117,55 @@ export default function FreeformEditor() {
     dispatch({ type: "ADD_ELEMENT", el: instance as any });
   };
 
+  // ── AI Chat actions ──
+  const handleAIApplyActions = useCallback((actions: FreeformAIAction[]) => {
+    for (const action of actions) {
+      switch (action.type) {
+        case "add":
+          if (action.element) {
+            dispatch({ type: "ADD_ELEMENT", el: action.element as FreeformElement });
+          }
+          break;
+        case "update":
+          if (action.id && action.updates) {
+            dispatch({ type: "UPDATE_ELEMENT", id: action.id, updates: action.updates });
+          }
+          break;
+        case "delete":
+          if (action.id) {
+            dispatch({ type: "DELETE_ELEMENT", id: action.id });
+          }
+          break;
+        case "clear":
+          // Clear all elements — dispatch a batch by dispatching delete for each
+          state.page.elements.forEach((el) => {
+            dispatch({ type: "DELETE_ELEMENT", id: el.id });
+          });
+          break;
+        case "style":
+          if (action.id && action.updates) {
+            dispatch({ type: "UPDATE_ELEMENT", id: action.id, updates: action.updates });
+          }
+          break;
+        case "layout":
+          if (action.elements) {
+            // Batch replace — add each element
+            action.elements.forEach((el) => {
+              dispatch({ type: "ADD_ELEMENT", el: el as FreeformElement });
+            });
+          }
+          break;
+      }
+    }
+  }, [state.page.elements]);
+
+  // ── Screenshot to freeform ──
+  const handleScreenshotApply = useCallback((elements: FreeformElement[]) => {
+    elements.forEach((el) => {
+      dispatch({ type: "ADD_ELEMENT", el });
+    });
+  }, []);
+
   const tokens = state.page.tokens || DEFAULT_TOKENS;
 
   return (
@@ -179,6 +233,33 @@ export default function FreeformEditor() {
           {/* Components */}
           <Button variant="ghost" size="icon" className={cn("h-7 w-7", showComponentPanel && "text-primary")} onClick={() => { setShowComponentPanel(!showComponentPanel); setShowTokenPanel(false); }} title="Components">
             <Component className="w-3.5 h-3.5" />
+          </Button>
+
+          <div className="w-px h-5 bg-border mx-1" />
+
+          {/* AI Chat */}
+          <Button variant="ghost" size="icon" className={cn("h-7 w-7", showAIChat && "text-primary")} onClick={() => setShowAIChat(!showAIChat)} title="AI Chat">
+            <Sparkles className="w-3.5 h-3.5" />
+          </Button>
+
+          {/* Screenshot to Freeform */}
+          <ScreenshotToFreeform
+            canvasWidth={state.page.canvasWidth}
+            canvasHeight={state.page.canvasHeight}
+            onApply={handleScreenshotApply}
+            open={showScreenshotDialog}
+            onOpenChange={setShowScreenshotDialog}
+            hideTrigger
+          />
+
+          {/* Mobile Preview */}
+          <Button variant="ghost" size="icon" className={cn("h-7 w-7", showMobilePreview && "text-primary")} onClick={() => setShowMobilePreview(!showMobilePreview)} title="Mobile Preview">
+            <Smartphone className="w-3.5 h-3.5" />
+          </Button>
+
+          {/* Custom CSS/JS */}
+          <Button variant="ghost" size="icon" className={cn("h-7 w-7", showCssJsPanel && "text-primary")} onClick={() => setShowCssJsPanel(!showCssJsPanel)} title="Custom CSS/JS">
+            <FileCode className="w-3.5 h-3.5" />
           </Button>
 
           <div className="w-px h-5 bg-border mx-1" />
@@ -369,6 +450,90 @@ export default function FreeformEditor() {
                 ))}
               </div>
             )}
+          </div>
+        )}
+
+        {/* AI Chat Panel */}
+        {showAIChat && !showPreview && (
+          <FreeformAIChat
+            elements={state.page.elements}
+            canvasWidth={state.page.canvasWidth}
+            canvasHeight={state.page.canvasHeight}
+            onApplyActions={handleAIApplyActions}
+            onClose={() => setShowAIChat(false)}
+          />
+        )}
+
+        {/* Custom CSS/JS Panel */}
+        {showCssJsPanel && !showPreview && (
+          <CustomCodePanel
+            customCss={state.page.customCss || ""}
+            customJs={state.page.customJs || ""}
+            onCssChange={(css) => dispatch({ type: "SET_CUSTOM_CSS", css })}
+            onJsChange={(js) => dispatch({ type: "SET_CUSTOM_JS", js })}
+            onClose={() => setShowCssJsPanel(false)}
+          />
+        )}
+
+        {/* Mobile Preview Panel */}
+        {showMobilePreview && !showPreview && (
+          <div className="w-80 shrink-0 border-l border-border bg-background overflow-y-auto p-3 space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-medium">Mobile Preview</span>
+              <Button variant="ghost" size="icon" className="h-5 w-5" onClick={() => setShowMobilePreview(false)}>×</Button>
+            </div>
+
+            <div className="flex gap-1">
+              {[
+                { label: "iPhone SE", w: 375 },
+                { label: "iPad Mini", w: 768 },
+                { label: "Pixel 7", w: 412 },
+              ].map((device) => (
+                <button
+                  key={device.w}
+                  className={cn(
+                    "text-[10px] px-2 py-1 rounded-lg transition-colors",
+                    mobileWidth === device.w ? "bg-primary/20 text-primary" : "bg-muted/50 text-muted-foreground hover:text-foreground"
+                  )}
+                  onClick={() => setMobileWidth(device.w)}
+                >
+                  {device.label}
+                </button>
+              ))}
+            </div>
+
+            <div className="flex justify-center py-4">
+              <div
+                className="border-2 border-border rounded-2xl overflow-hidden bg-[#0d0d14] shadow-xl"
+                style={{ width: Math.min(mobileWidth, 360), height: 500 }}
+              >
+                <div
+                  className="relative mx-auto"
+                  style={{
+                    width: mobileWidth,
+                    height: 500,
+                    background:
+                      state.page.background.type === "color"
+                        ? state.page.background.value
+                        : state.page.background.type === "gradient"
+                        ? state.page.background.value
+                        : `url(${state.page.background.value})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    overflow: "hidden",
+                    transform: `scale(${Math.min(1, 340 / mobileWidth)})`,
+                    transformOrigin: "top center",
+                  }}
+                  dangerouslySetInnerHTML={{
+                    __html: exportFreeformToHTML({ ...state.page, canvasWidth: mobileWidth }),
+                  }}
+                />
+              </div>
+            </div>
+
+            <p className="text-[9px] text-muted-foreground text-center">
+              Preview at {mobileWidth}px width • Touch handles enabled
+            </p>
           </div>
         )}
       </div>

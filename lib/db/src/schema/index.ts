@@ -4,3 +4,4 @@ export * from "./gallery";
 export * from "./chat";
 export * from "./snapshots";
 export * from "./scenes";
+export * from "./components";
