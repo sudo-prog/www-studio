@@ -12,6 +12,8 @@ export type FreeformElementType =
 
 export type ShapeKind = "rectangle" | "circle" | "triangle" | "star" | "diamond" | "line";
 
+export type LayoutMode = "absolute" | "flex-row" | "flex-col" | "grid";
+
 export interface FreeformElement {
   id:        string;
   type:      FreeformElementType;
@@ -29,6 +31,17 @@ export interface FreeformElement {
   zIndex:    number;
   /** Opacity (0–1) */
   opacity:  number;
+  // ── Layout mode ───────────────────────
+  /** Layout mode for this container (absolute, flex-row, flex-col, grid) */
+  layoutMode?: LayoutMode;
+  /** Flex/grid children IDs for container elements */
+  children?: string[];
+  /** Gap between children in px (flex/grid) */
+  gap?: number;
+  /** Padding inside container (flex/grid) */
+  padding?: number;
+  /** Grid columns (layoutMode=grid) */
+  gridColumns?: number;
   // ── Content ───────────────────────
   /** Text content (type=text) */
   text?:       string;
@@ -54,6 +67,15 @@ export interface FreeformElement {
   embedType?:  "youtube" | "spotify" | "twitter" | "generic";
   /** Drawing data (type=draw) */
   drawData?:   string; // JSON-encoded path data
+  // ── Vector editing ──────────────────
+  /** SVG path data for vector shapes (type=shape with custom path) */
+  svgPath?:     string;
+  /** Boolean operation applied (union, subtract, intersect, none) */
+  booleanOp?:   "union" | "subtract" | "intersect" | "none";
+  /** Source element IDs for boolean operations */
+  booleanSourceIds?: string[];
+  /** Mask element ID */
+  maskId?:      string;
   // ── Style ─────────────────────────
   borderRadius?: number;
   boxShadow?:    string;
@@ -62,12 +84,28 @@ export interface FreeformElement {
   locked?:   boolean;
   visible?:  boolean;
   name?:     string;
+  /** Design token reference for theming */
+  tokenRef?: string;
+  /** Component master ID (for instances) */
+  masterId?: string;
+  /** Variant name for component instances */
+  variant?:  string;
 }
 
 export interface FreeformBackground {
   type:      "color" | "gradient" | "image";
   value:     string;   // hex color, full CSS gradient, or image URL
   opacity?:  number;   // for image overlay
+}
+
+export interface Artboard {
+  id:     string;
+  name:   string;
+  x:      number;  // position on infinite canvas
+  y:      number;
+  width:  number;
+  height: number;
+  background?: FreeformBackground;
 }
 
 export interface FreeformPage {
@@ -87,6 +125,30 @@ export interface FreeformPage {
   tags:        string[];
   createdAt:   string;
   updatedAt:   string;
+  customCss?:  string;
+  customJs?:   string;
+  customDomain?: string;
+  shareUrl?:     string;
+  publishedAt?: string;
+  ghPagesUrl?:   string;
+  artboards?:   Artboard[];
+  activeArtboardId?: string;
+  // ── Design tokens ─────────────────
+  tokens?:     import("./design-tokens").DesignTokens;
+  // ── Component library ─────────────
+  components?: ComponentMaster[];
+}
+
+export interface ComponentMaster {
+  id:       string;
+  name:     string;
+  elementId: string;  // the master element
+  variants: ComponentVariant[];
+}
+
+export interface ComponentVariant {
+  name:     string;
+  overrides: Record<string, any>;  // element property overrides
 }
 
 // ── Defaults ─────────────────────────────────────────────────────────────────

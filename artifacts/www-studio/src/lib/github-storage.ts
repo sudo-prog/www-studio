@@ -277,3 +277,81 @@ export function setGitHubToken(token: string): void {
 export function hasGitHubToken(): boolean {
   return !!getToken();
 }
+
+// ── GitHub Pages Publishing ────────────────────────────────────────────────
+
+const PAGES_REPO = "sudo-prog/www-studio-pages";
+
+/**
+ * Deploy a freeform page to GitHub Pages.
+ * Creates/updates the HTML file in the gh-pages branch of the pages repo.
+ */
+export async function publishToGitHubPages(
+  pageData: { id: string; name: string; slug: string; html: string; customDomain?: string }
+): Promise<{ success: boolean; url?: string; error?: string }> {
+  const { id, name, slug, html, customDomain } = pageData;
+  const path = `freeform/${slug || id}.html`;
+  const content = btoa(html);
+  const message = `Publish freeform: ${name}`;
+
+  let sha: string | null = null;
+  try {
+    const shaRes = await githubFetch(`/repos/${PAGES_REPO}/contents/${path}?ref=gh-pages`);
+    if (shaRes.ok) {
+      const shaData = await shaRes.json();
+      sha = shaData.sha || null;
+    }
+  } catch { /* file doesn't exist yet */ }
+
+  const body: any = {
+    message,
+    content,
+    branch: "gh-pages",
+  };
+  if (sha) body.sha = sha;
+
+  const res = await githubFetch(`/repos/${PAGES_REPO}/contents/${path}`, {
+    method: "PUT",
+    body: JSON.stringify(body),
+  });
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    return { success: false, error: err.message || `Publish failed: ${res.status}` };
+  }
+
+  // Write CNAME if custom domain is set
+  if (customDomain) {
+    const cnamePath = "CNAME";
+    const cnameContent = btoa(customDomain);
+    try {
+      const cnameShaRes = await githubFetch(`/repos/${PAGES_REPO}/contents/${cnamePath}?ref=gh-pages`);
+      let cnameSha: string | null = null;
+      if (cnameShaRes.ok) {
+        const cnameData = await cnameShaRes.json();
+        cnameSha = cnameData.sha || null;
+      }
+      await githubFetch(`/repos/${PAGES_REPO}/contents/${cnamePath}`, {
+        method: "PUT",
+        body: JSON.stringify({
+          message: `Set custom domain: ${customDomain}`,
+          content: cnameContent,
+          branch: "gh-pages",
+          ...(cnameSha ? { sha: cnameSha } : {}),
+        }),
+      });
+    } catch { /* CNAME write is best-effort */ }
+    return { success: true, url: `https://${customDomain}` };
+  }
+
+  const pagesUrl = `https://sudo-prog.github.io/www-studio-pages/freeform/${slug || id}.html`;
+  return { success: true, url: pagesUrl };
+}
+
+/**
+ * Get the shareable URL for a freeform page.
+ */
+export function getShareUrl(pageId: string, slug?: string): string {
+  const base = window.location.origin;
+  return `${base}/freeform/${pageId}/share`;
+}

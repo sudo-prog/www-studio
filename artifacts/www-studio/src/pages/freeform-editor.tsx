@@ -13,9 +13,11 @@ import { Input } from "@/components/ui/input";
 import {
   ArrowLeft, Download, Save, Cloud, CloudOff, Eye,
   Undo, Redo, ZoomIn, ZoomOut, Grid3x3, Ruler,
+  Plus, Layers, Palette, Component,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { makeFreeformElement } from "@/lib/freeform-types";
+import { makeFreeformElement, Artboard, ComponentMaster } from "@/lib/freeform-types";
+import { DEFAULT_TOKENS, tokensToCSS } from "@/lib/design-tokens";
 import { GitHubSaveButton } from "@/components/freeform/GitHubSaveButton";
 
 export default function FreeformEditor() {
@@ -27,6 +29,8 @@ export default function FreeformEditor() {
   );
   const [pageName, setPageName] = useState(state.page.name);
   const [showPreview, setShowPreview] = useState(false);
+  const [showTokenPanel, setShowTokenPanel] = useState(false);
+  const [showComponentPanel, setShowComponentPanel] = useState(false);
 
   const selectedEl = state.page.elements.find((e) => e.id === state.selectedId) ?? null;
 
@@ -68,6 +72,44 @@ export default function FreeformEditor() {
     URL.revokeObjectURL(url);
   };
 
+  // ── Artboard helpers ──
+  const handleAddArtboard = () => {
+    const id = crypto.randomUUID();
+    const num = (state.page.artboards?.length || 0) + 1;
+    dispatch({
+      type: "ADD_ARTBOARD",
+      artboard: { id, name: `Artboard ${num}`, x: 0, y: 0, width: 1440, height: 900 },
+    });
+  };
+
+  // ── Component helpers ──
+  const handleCreateComponent = () => {
+    if (!state.selectedId) return;
+    const id = crypto.randomUUID();
+    dispatch({
+      type: "ADD_COMPONENT",
+      component: { id, name: "Component", elementId: state.selectedId, variants: [] },
+    });
+  };
+
+  const handleCreateInstance = (componentId: string) => {
+    const master = (state.page.components || []).find((c) => c.id === componentId);
+    if (!master) return;
+    const masterEl = state.page.elements.find((e) => e.id === master.elementId);
+    if (!masterEl) return;
+    const instance = makeFreeformElement(masterEl.type, {
+      ...masterEl,
+      id: crypto.randomUUID(),
+      x: masterEl.x + 50,
+      y: masterEl.y + 50,
+      masterId: master.id,
+      name: `${master.name} instance`,
+    });
+    dispatch({ type: "ADD_ELEMENT", el: instance as any });
+  };
+
+  const tokens = state.page.tokens || DEFAULT_TOKENS;
+
   return (
     <div className="h-screen flex flex-col bg-[#0a0a0f] text-foreground overflow-hidden">
       {/* Top bar */}
@@ -87,91 +129,62 @@ export default function FreeformEditor() {
         </div>
 
         <div className="flex items-center gap-1">
-          <Button
-            variant="ghost"
-            size="icon"
-            className="h-7 w-7"
-            onClick={() => dispatch({ type: "UNDO" })}
-            disabled={state.past.length === 0}
-            title="Undo"
-          >
+          <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => dispatch({ type: "UNDO" })} disabled={state.past.length === 0} title="Undo">
             <Undo className="w-3.5 h-3.5" />
           </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="h-7 w-7"
-            onClick={() => dispatch({ type: "REDO" })}
-            disabled={state.future.length === 0}
-            title="Redo"
-          >
+          <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => dispatch({ type: "REDO" })} disabled={state.future.length === 0} title="Redo">
             <Redo className="w-3.5 h-3.5" />
           </Button>
 
           <div className="w-px h-5 bg-border mx-1" />
 
-          <Button
-            variant="ghost"
-            size="icon"
-            className="h-7 w-7"
-            onClick={() => dispatch({ type: "SET_ZOOM", zoom: Math.max(0.25, state.zoom - 0.1) })}
-            title="Zoom out"
-          >
+          <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => dispatch({ type: "SET_ZOOM", zoom: Math.max(0.25, state.zoom - 0.1) })} title="Zoom out">
             <ZoomOut className="w-3.5 h-3.5" />
           </Button>
           <span className="text-[10px] text-muted-foreground w-10 text-center tabular-nums">
             {Math.round(state.zoom * 100)}%
           </span>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="h-7 w-7"
-            onClick={() => dispatch({ type: "SET_ZOOM", zoom: Math.min(3, state.zoom + 0.1) })}
-            title="Zoom in"
-          >
+          <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => dispatch({ type: "SET_ZOOM", zoom: Math.min(3, state.zoom + 0.1) })} title="Zoom in">
             <ZoomIn className="w-3.5 h-3.5" />
           </Button>
 
           <div className="w-px h-5 bg-border mx-1" />
 
-          <Button
-            variant="ghost"
-            size="icon"
-            className={cn("h-7 w-7", state.snapGrid && "text-primary")}
-            onClick={() => dispatch({ type: "TOGGLE_SNAP" })}
-            title="Snap to grid"
-          >
+          <Button variant="ghost" size="icon" className={cn("h-7 w-7", state.snapGrid && "text-primary")} onClick={() => dispatch({ type: "TOGGLE_SNAP" })} title="Snap to grid">
             <Grid3x3 className="w-3.5 h-3.5" />
           </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            className={cn("h-7 w-7", state.showGuides && "text-primary")}
-            onClick={() => dispatch({ type: "TOGGLE_GUIDES" })}
-            title="Alignment guides"
-          >
+          <Button variant="ghost" size="icon" className={cn("h-7 w-7", state.showGuides && "text-primary")} onClick={() => dispatch({ type: "TOGGLE_GUIDES" })} title="Alignment guides">
             <Ruler className="w-3.5 h-3.5" />
+          </Button>
+          <Button variant="ghost" size="icon" className={cn("h-7 w-7", state.showRulers && "text-primary")} onClick={() => dispatch({ type: "TOGGLE_RULERS" })} title="Rulers">
+            <Layers className="w-3.5 h-3.5" />
+          </Button>
+
+          <div className="w-px h-5 bg-border mx-1" />
+
+          {/* Artboard button */}
+          <Button variant="ghost" size="icon" className="h-7 w-7" onClick={handleAddArtboard} title="Add artboard">
+            <Plus className="w-3.5 h-3.5" />
+          </Button>
+
+          {/* Design tokens */}
+          <Button variant="ghost" size="icon" className={cn("h-7 w-7", showTokenPanel && "text-primary")} onClick={() => { setShowTokenPanel(!showTokenPanel); setShowComponentPanel(false); }} title="Design tokens">
+            <Palette className="w-3.5 h-3.5" />
+          </Button>
+
+          {/* Components */}
+          <Button variant="ghost" size="icon" className={cn("h-7 w-7", showComponentPanel && "text-primary")} onClick={() => { setShowComponentPanel(!showComponentPanel); setShowTokenPanel(false); }} title="Components">
+            <Component className="w-3.5 h-3.5" />
           </Button>
 
           <div className="w-px h-5 bg-border mx-1" />
 
           <GitHubSaveButton page={state.page} />
 
-          <Button
-            variant="ghost"
-            size="icon"
-            className="h-7 w-7"
-            onClick={() => setShowPreview(!showPreview)}
-            title="Preview"
-          >
+          <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => setShowPreview(!showPreview)} title="Preview">
             <Eye className="w-3.5 h-3.5" />
           </Button>
-          <Button
-            variant="ghost"
-            size="sm"
-            className="h-7 text-xs gap-1"
-            onClick={handleExport}
-          >
+          <Button variant="ghost" size="sm" className="h-7 text-xs gap-1" onClick={handleExport}>
             <Download className="w-3.5 h-3.5" />
             Export
           </Button>
@@ -215,6 +228,10 @@ export default function FreeformEditor() {
             zoom={state.zoom}
             snapGrid={state.snapGrid}
             showGuides={state.showGuides}
+            showRulers={state.showRulers}
+            artboards={state.page.artboards}
+            activeArtboardId={state.activeArtboardId}
+            isInfiniteCanvas={state.page.artboards && state.page.artboards.length > 1}
             onSelect={handleSelect}
             onMove={handleMove}
             onResize={handleResize}
@@ -241,6 +258,115 @@ export default function FreeformEditor() {
             }}
           />
         )}
+
+        {/* Design Tokens Panel (slide-over) */}
+        {showTokenPanel && !showPreview && (
+          <div className="w-64 shrink-0 border-l border-border bg-background overflow-y-auto p-3 space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-medium">Design Tokens</span>
+              <Button variant="ghost" size="icon" className="h-5 w-5" onClick={() => setShowTokenPanel(false)}>×</Button>
+            </div>
+
+            {/* Colors */}
+            <div>
+              <Label className="text-[10px] text-muted-foreground uppercase tracking-wider mb-1 block">Colors</Label>
+              <div className="grid grid-cols-6 gap-1">
+                {Object.entries(tokens.colors).map(([name, value]) => (
+                  <button
+                    key={name}
+                    title={name}
+                    className="w-8 h-8 rounded border border-border hover:ring-1 hover:ring-primary"
+                    style={{ background: value as string }}
+                    onClick={() => {
+                      const newColor = prompt(`New color for "${name}" (current: ${value})`);
+                      if (newColor) dispatch({ type: "UPDATE_TOKEN", category: "colors", key: name, value: newColor });
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Typography */}
+            <div>
+              <Label className="text-[10px] text-muted-foreground uppercase tracking-wider mb-1 block">Font Sizes</Label>
+              <div className="space-y-1">
+                {Object.entries(tokens.typography.fontSize).map(([name, value]) => (
+                  <div key={name} className="flex items-center justify-between text-[10px]">
+                    <span className="text-muted-foreground">{name}</span>
+                    <span>{value as string}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Radii */}
+            <div>
+              <Label className="text-[10px] text-muted-foreground uppercase tracking-wider mb-1 block">Radii</Label>
+              <div className="flex flex-wrap gap-1">
+                {Object.entries(tokens.radii).map(([name, value]) => (
+                  <div key={name} className="text-[10px] bg-muted/50 px-2 py-0.5 rounded">
+                    {name}: {value as number}px
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Export CSS */}
+            <Button
+              variant="outline"
+              size="sm"
+              className="w-full h-7 text-xs"
+              onClick={() => {
+                const css = tokensToCSS(tokens);
+                navigator.clipboard.writeText(css);
+                alert("CSS variables copied to clipboard!");
+              }}
+            >
+              Copy CSS Variables
+            </Button>
+          </div>
+        )}
+
+        {/* Components Panel (slide-over) */}
+        {showComponentPanel && !showPreview && (
+          <div className="w-64 shrink-0 border-l border-border bg-background overflow-y-auto p-3 space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-medium">Components</span>
+              <Button variant="ghost" size="icon" className="h-5 w-5" onClick={() => setShowComponentPanel(false)}>×</Button>
+            </div>
+
+            {selectedEl && (
+              <Button variant="outline" size="sm" className="w-full h-7 text-xs gap-1" onClick={handleCreateComponent}>
+                <Component className="w-3 h-3" /> Create Component from Selection
+              </Button>
+            )}
+
+            {(state.page.components || []).length === 0 ? (
+              <p className="text-[10px] text-muted-foreground">
+                No components yet. Select an element and click "Create Component" to create a master component.
+              </p>
+            ) : (
+              <div className="space-y-2">
+                {(state.page.components || []).map((comp) => (
+                  <div key={comp.id} className="border border-border rounded-lg p-2 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] font-medium">{comp.name}</span>
+                      <Button variant="ghost" size="icon" className="h-4 w-4" onClick={() => dispatch({ type: "DELETE_COMPONENT", id: comp.id })}>×</Button>
+                    </div>
+                    <Button variant="outline" size="sm" className="w-full h-6 text-[10px]" onClick={() => handleCreateInstance(comp.id)}>
+                      + Create Instance
+                    </Button>
+                    {comp.variants.length > 0 && (
+                      <div className="text-[9px] text-muted-foreground">
+                        {comp.variants.length} variant(s)
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Status bar */}
@@ -248,6 +374,9 @@ export default function FreeformEditor() {
         <div className="flex items-center gap-3">
           <span>{state.page.elements.length} elements</span>
           <span>Canvas: {state.page.canvasWidth}×{state.page.canvasHeight}</span>
+          {state.page.artboards && state.page.artboards.length > 0 && (
+            <span>{state.page.artboards.length} artboard(s)</span>
+          )}
           {state.isDirty && (
             <span className="flex items-center gap-1 text-yellow-500">
               <CloudOff className="w-3 h-3" /> Unsaved
@@ -257,8 +386,13 @@ export default function FreeformEditor() {
         <div className="flex items-center gap-3">
           <span>Zoom: {Math.round(state.zoom * 100)}%</span>
           {state.snapGrid && <span className="text-primary">Snap: {state.gridSize}px</span>}
+          {state.showRulers && <span className="text-primary">Rulers</span>}
         </div>
       </footer>
     </div>
   );
+}
+
+function Label({ children, className }: { children: React.ReactNode; className?: string }) {
+  return <label className={cn("text-[10px] text-muted-foreground uppercase tracking-wider", className)}>{children}</label>;
 }

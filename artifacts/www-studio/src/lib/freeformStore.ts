@@ -3,9 +3,13 @@ import {
   FreeformElement,
   FreeformPage,
   FreeformBackground,
+  Artboard,
+  ComponentMaster,
   DEFAULT_BACKGROUND,
   makeFreeformElement,
 } from "./freeform-types";
+import { DEFAULT_TOKENS } from "./design-tokens";
+import type { DesignTokens } from "./design-tokens";
 
 // ── State ────────────────────────────────────────────────────────────────────
 
@@ -19,6 +23,10 @@ export interface FreeformState {
   gridSize:   number;
   showGuides: boolean;
   zoom:       number;
+  // ── Artboards ─────────────────────
+  activeArtboardId: string | null;
+  // ── Rulers ────────────────────────
+  showRulers: boolean;
 }
 
 export type FreeformAction =
@@ -40,9 +48,25 @@ export type FreeformAction =
   | { type: "REDO" }
   | { type: "TOGGLE_SNAP" }
   | { type: "TOGGLE_GUIDES" }
+  | { type: "TOGGLE_RULERS" }
   | { type: "SET_ZOOM";       zoom: number }
   | { type: "CANVAS_SIZE";    width: number; height: number }
-  | { type: "CLEAR_DIRTY" };
+  | { type: "SET_CUSTOM_CSS";  css: string }
+  | { type: "SET_CUSTOM_JS";   js: string }
+  | { type: "CLEAR_DIRTY" }
+  // ── Artboards ─────────────────────
+  | { type: "ADD_ARTBOARD";   artboard: Artboard }
+  | { type: "DELETE_ARTBOARD"; id: string }
+  | { type: "SET_ACTIVE_ARTBOARD"; id: string | null }
+  | { type: "UPDATE_ARTBOARD"; id: string; updates: Partial<Artboard> }
+  // ── Design tokens ─────────────────
+  | { type: "SET_TOKENS";     tokens: DesignTokens }
+  | { type: "UPDATE_TOKEN";   category: string; key: string; value: any }
+  // ── Components ────────────────────
+  | { type: "ADD_COMPONENT";   component: ComponentMaster }
+  | { type: "DELETE_COMPONENT"; id: string }
+  | { type: "ADD_VARIANT";    componentId: string; variant: import("./freeform-types").ComponentVariant }
+  | { type: "SYNC_INSTANCE";  instanceId: string };
 
 function pushHistory(past: FreeformPage[], page: FreeformPage): FreeformPage[] {
   return [...past.slice(-29), page];
@@ -282,6 +306,101 @@ export function freeformReducer(state: FreeformState, action: FreeformAction): F
     case "CLEAR_DIRTY":
       return { ...state, isDirty: false };
 
+    // ── Custom CSS/JS ──────────────────
+    case "SET_CUSTOM_CSS":
+      return { ...state, page: { ...state.page, customCss: action.css }, isDirty: true };
+    case "SET_CUSTOM_JS":
+      return { ...state, page: { ...state.page, customJs: action.js }, isDirty: true };
+
+    // ── Rulers ────────────────────────
+    case "TOGGLE_RULERS":
+      return { ...state, showRulers: !state.showRulers };
+
+    // ── Artboards ─────────────────────
+    case "ADD_ARTBOARD": {
+      const artboards = state.page.artboards || [];
+      return {
+        ...state,
+        page: { ...state.page, artboards: [...artboards, action.artboard] },
+        activeArtboardId: action.artboard.id,
+        isDirty: true,
+      };
+    }
+    case "DELETE_ARTBOARD": {
+      const artboards = (state.page.artboards || []).filter((a) => a.id !== action.id);
+      return {
+        ...state,
+        page: { ...state.page, artboards },
+        activeArtboardId: state.activeArtboardId === action.id ? (artboards[0]?.id ?? null) : state.activeArtboardId,
+        isDirty: true,
+      };
+    }
+    case "SET_ACTIVE_ARTBOARD":
+      return { ...state, activeArtboardId: action.id };
+    case "UPDATE_ARTBOARD": {
+      const artboards = (state.page.artboards || []).map((a) =>
+        a.id === action.id ? { ...a, ...action.updates } : a
+      );
+      return { ...state, page: { ...state.page, artboards }, isDirty: true };
+    }
+
+    // ── Design tokens ─────────────────
+    case "SET_TOKENS":
+      return { ...state, page: { ...state.page, tokens: action.tokens }, isDirty: true };
+    case "UPDATE_TOKEN": {
+      const tokens = state.page.tokens || DEFAULT_TOKENS;
+      const category = action.category as keyof typeof tokens;
+      const updated = { ...tokens } as any;
+      if (category === "colors") updated.colors = { ...updated.colors, [action.key]: action.value };
+      else if (category === "typography") {
+        const sub = action.key.split("-");
+        const subKey = sub[0] as "fontFamily" | "fontSize" | "fontWeight" | "lineHeight";
+        const subField = sub.length > 1 ? sub.slice(1).join("-") : action.key;
+        if (subKey === "fontFamily") updated.typography = { ...updated.typography, fontFamily: action.value };
+        else {
+          const section = { ...updated.typography[subKey] };
+          section[subField] = action.value;
+          updated.typography = { ...updated.typography, [subKey]: section };
+        }
+      } else if (category === "shadows") updated.shadows = { ...updated.shadows, [action.key]: action.value };
+      else if (category === "radii") updated.radii = { ...updated.radii, [action.key]: action.value };
+      else if (category === "spacing") updated.spacing = { ...updated.spacing, [action.key]: action.value };
+      return { ...state, page: { ...state.page, tokens: updated }, isDirty: true };
+    }
+
+    // ── Components ────────────────────
+    case "ADD_COMPONENT": {
+      const components = state.page.components || [];
+      return { ...state, page: { ...state.page, components: [...components, action.component] }, isDirty: true };
+    }
+    case "DELETE_COMPONENT": {
+      const components = (state.page.components || []).filter((c) => c.id !== action.id);
+      return { ...state, page: { ...state.page, components }, isDirty: true };
+    }
+    case "ADD_VARIANT": {
+      const components = (state.page.components || []).map((c) =>
+        c.id === action.componentId ? { ...c, variants: [...c.variants, action.variant] } : c
+      );
+      return { ...state, page: { ...state.page, components }, isDirty: true };
+    }
+    case "SYNC_INSTANCE": {
+      const master = (state.page.components || []).find((c) => c.elementId === action.instanceId) ||
+                     (state.page.components || []).find((c) => c.id === action.instanceId);
+      if (!master) return state;
+      const masterEl = state.page.elements.find((e) => e.id === master.elementId);
+      if (!masterEl) return state;
+      const next = {
+        ...state.page,
+        elements: state.page.elements.map((el) => {
+          if (el.id !== action.instanceId || !el.masterId) return el;
+          const variant = master.variants.find((v) => v.name === el.variant);
+          const base = { ...masterEl, id: el.id, x: el.x, y: el.y, masterId: el.masterId, variant: el.variant };
+          return variant ? { ...base, ...variant.overrides } : base;
+        }),
+      };
+      return { ...state, page: next, isDirty: true };
+    }
+
     default:
       return state;
   }
@@ -317,6 +436,8 @@ export function createInitialFreeformState(page?: Partial<FreeformPage>): Freefo
     gridSize:   10,
     showGuides: true,
     zoom:       1,
+    activeArtboardId: null,
+    showRulers: false,
   };
 }
 
@@ -368,7 +489,7 @@ export function exportFreeformToHTML(page: FreeformPage): string {
 
     switch (el.type) {
       case "text":
-        return `<div style="${style};color:${el.color || "#fff"};font-size:${el.fontSize || 24}px;font-weight:${fontWeight || 400};text-align:${el.textAlign || "left"};line-height:1.3;display:flex;align-items:center">${escapeHtml(el.text || "")}</div>`;
+        return `<div style="${style};color:${el.color || "#fff"};font-size:${el.fontSize || 24}px;font-weight:${el.fontWeight || 400};text-align:${el.textAlign || "left"};line-height:1.3;display:flex;align-items:center">${escapeHtml(el.text || "")}</div>`;
       case "image":
         return `<img style="${style}" src="${el.src || ""}" alt="${el.name || ""}" />`;
       case "shape":

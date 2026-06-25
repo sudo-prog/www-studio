@@ -1,5 +1,6 @@
+// ── Enhanced Freeform Canvas ─────────────────────────────────────────────────
 import { useRef, useCallback, useState, useEffect } from "react";
-import { FreeformElement, AlignmentGuide, computeAlignmentGuides } from "@/lib/freeform-types";
+import { FreeformElement, AlignmentGuide, computeAlignmentGuides, LayoutMode, Artboard } from "@/lib/freeform-types";
 import { cn } from "@/lib/utils";
 
 interface Props {
@@ -11,6 +12,11 @@ interface Props {
   zoom:          number;
   snapGrid:      boolean;
   showGuides:    boolean;
+  showRulers:    boolean;
+  layoutMode?:   LayoutMode;
+  artboards?:    Artboard[];
+  activeArtboardId?: string | null;
+  isInfiniteCanvas?: boolean;
   onSelect:      (id: string | null) => void;
   onMove:        (id: string, x: number, y: number) => void;
   onResize:      (id: string, w: number, h: number) => void;
@@ -21,28 +27,31 @@ function snapVal(n: number, grid: number, enabled: boolean) {
 }
 
 export default function FreeformCanvas({
-  elements, selectedId, canvasWidth, canvasHeight, background, zoom, snapGrid, showGuides, onSelect, onMove, onResize,
+  elements, selectedId, canvasWidth, canvasHeight, background, zoom, snapGrid, showGuides, showRulers,
+  layoutMode = "absolute", artboards, activeArtboardId, isInfiniteCanvas,
+  onSelect, onMove, onResize,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [dragging, setDragging] = useState<{ id: string; startX: number; startY: number; elX: number; elY: number } | null>(null);
   const [resizing, setResizing] = useState<{ id: string; startX: number; startY: number; startW: number; startH: number; corner: string } | null>(null);
   const [guides, setGuides] = useState<AlignmentGuide[]>([]);
+  const [pan, setPan] = useState({ x: 0, y: 0 });
+  const [isPanning, setIsPanning] = useState(false);
+  const [panStart, setPanStart] = useState({ x: 0, y: 0, panX: 0, panY: 0 });
 
   const sorted = [...elements].sort((a, b) => a.zIndex - b.zIndex);
 
   const bgStyle: React.CSSProperties = {};
-  if (background.type === "color") {
-    bgStyle.background = background.value;
-  } else if (background.type === "gradient") {
-    bgStyle.background = background.value;
-  } else if (background.type === "image") {
+  if (background.type === "color") bgStyle.background = background.value;
+  else if (background.type === "gradient") bgStyle.background = background.value;
+  else if (background.type === "image") {
     bgStyle.backgroundImage = `url(${background.value})`;
     bgStyle.backgroundSize = "cover";
     bgStyle.backgroundPosition = "center";
   }
 
   const handleMouseDown = useCallback((e: React.MouseEvent, el: FreeformElement) => {
-    if (el.locked) return;
+    if (el.locked || isPanning) return;
     e.stopPropagation();
     onSelect(el.id);
     setDragging({
@@ -52,12 +61,11 @@ export default function FreeformCanvas({
       elX: el.x,
       elY: el.y,
     });
-
     if (showGuides) {
       const guideLines = computeAlignmentGuides(el, elements);
       setGuides(guideLines);
     }
-  }, [elements, onSelect, showGuides]);
+  }, [elements, onSelect, showGuides, isPanning]);
 
   const handleResizeStart = useCallback((e: React.MouseEvent, el: FreeformElement, corner: string) => {
     e.stopPropagation();
@@ -72,10 +80,23 @@ export default function FreeformCanvas({
     });
   }, []);
 
+  const handleCanvasMouseDown = (e: React.MouseEvent) => {
+    if (e.button === 1 || (e.button === 0 && e.altKey)) {
+      e.preventDefault();
+      setIsPanning(true);
+      setPanStart({ x: e.clientX, y: e.clientY, panX: pan.x, panY: pan.y });
+    }
+  };
+
   useEffect(() => {
-    if (!dragging && !resizing) return;
+    if (!dragging && !resizing && !isPanning) return;
 
     const handleMouseMove = (e: MouseEvent) => {
+      if (isPanning) {
+        const dx = e.clientX - panStart.x;
+        const dy = e.clientY - panStart.y;
+        setPan({ x: panStart.panX + dx, y: panStart.panY + dy });
+      }
       if (dragging) {
         const dx = (e.clientX - dragging.startX) / zoom;
         const dy = (e.clientY - dragging.startY) / zoom;
@@ -90,6 +111,8 @@ export default function FreeformCanvas({
         let newH = resizing.startH;
         if (resizing.corner.includes("r")) newW = Math.max(30, resizing.startW + dx);
         if (resizing.corner.includes("b")) newH = Math.max(30, resizing.startH + dy);
+        if (resizing.corner.includes("l")) newW = Math.max(30, resizing.startW - dx);
+        if (resizing.corner.includes("t")) newH = Math.max(30, resizing.startH - dy);
         onResize(resizing.id, snapVal(newW, 10, snapGrid), snapVal(newH, 10, snapGrid));
       }
     };
@@ -98,6 +121,7 @@ export default function FreeformCanvas({
       setDragging(null);
       setResizing(null);
       setGuides([]);
+      setIsPanning(false);
     };
 
     window.addEventListener("mousemove", handleMouseMove);
@@ -106,22 +130,57 @@ export default function FreeformCanvas({
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseup", handleMouseUp);
     };
-  }, [dragging, resizing, zoom, snapGrid, onMove, onResize]);
+  }, [dragging, resizing, isPanning, zoom, snapGrid, onMove, onResize, panStart]);
 
   const handleCanvasClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget || (e.target as HTMLElement).dataset.canvas) {
-      onSelect(null);
+      if (!isPanning) onSelect(null);
     }
   };
+
+  function getContainerStyle(el: FreeformElement): React.CSSProperties {
+    const base: React.CSSProperties = {
+      left: el.x * zoom,
+      top: el.y * zoom,
+      width: el.width * zoom,
+      height: el.height * zoom,
+      zIndex: el.zIndex,
+      opacity: el.opacity,
+      transform: `rotate(${el.rotation}deg) scale(${el.scale})`,
+      transformOrigin: "center center",
+    };
+    if (el.layoutMode && el.layoutMode !== "absolute") {
+      const gap = (el.gap || 8) * zoom;
+      const padding = (el.padding || 0) * zoom;
+      if (el.layoutMode === "flex-row") {
+        return { ...base, display: "flex", flexDirection: "row", gap, padding, alignItems: "center" };
+      }
+      if (el.layoutMode === "flex-col") {
+        return { ...base, display: "flex", flexDirection: "column", gap, padding, alignItems: "stretch" };
+      }
+      if (el.layoutMode === "grid") {
+        const cols = el.gridColumns || 2;
+        return { ...base, display: "grid", gridTemplateColumns: `repeat(${cols}, 1fr)`, gap, padding };
+      }
+    }
+    return base;
+  }
+
+  function getChildElements(el: FreeformElement): FreeformElement[] {
+    if (!el.children || el.children.length === 0) return [];
+    return el.children
+      .map((cid) => sorted.find((e) => e.id === cid))
+      .filter(Boolean) as FreeformElement[];
+  }
 
   return (
     <div
       ref={containerRef}
-      className="relative overflow-auto flex-1 bg-[#0a0a0f]"
+      className={cn("relative flex-1 overflow-auto bg-[#0a0a0f]", isInfiniteCanvas && "cursor-grab")}
       onClick={handleCanvasClick}
+      onMouseDown={handleCanvasMouseDown}
       data-canvas="true"
     >
-      {/* Grid overlay when snap enabled */}
       {snapGrid && (
         <div
           className="absolute inset-0 pointer-events-none opacity-10"
@@ -133,12 +192,49 @@ export default function FreeformCanvas({
         />
       )}
 
-      {/* Canvas area */}
+      {showRulers && (
+        <>
+          <div className="sticky top-0 left-5 right-0 h-5 bg-muted/30 border-b border-border z-10 pointer-events-none">
+            {Array.from({ length: Math.ceil(canvasWidth / 50) + 1 }).map((_, i) => (
+              <span key={i} className="absolute text-[7px] text-muted-foreground" style={{ left: i * 50 * zoom }}>
+                {i * 50}
+              </span>
+            ))}
+          </div>
+          <div className="sticky top-0 left-0 w-5 h-full bg-muted/30 border-r border-border z-10 pointer-events-none">
+            {Array.from({ length: Math.ceil(canvasHeight / 50) + 1 }).map((_, i) => (
+              <span key={i} className="absolute text-[7px] text-muted-foreground" style={{ top: i * 50 * zoom }}>
+                {i * 50}
+              </span>
+            ))}
+          </div>
+          <div className="sticky top-0 left-0 w-5 h-5 bg-muted/40 border-b border-r border-border z-20" />
+        </>
+      )}
+
+      {artboards && artboards.length > 1 && (
+        <div className="sticky top-6 left-1/2 -translate-x-1/2 z-30 flex gap-1 bg-background/80 backdrop-blur rounded-lg p-1 border border-border">
+          {artboards.map((ab) => (
+            <button
+              key={ab.id}
+              onClick={() => onSelect(null)}
+              className={cn(
+                "px-3 py-1 text-[10px] rounded-md transition-colors",
+                ab.id === activeArtboardId ? "bg-primary text-white" : "bg-muted/50 text-muted-foreground hover:text-foreground"
+              )}
+            >
+              {ab.name}
+            </button>
+          ))}
+        </div>
+      )}
+
       <div
-        className="relative shadow-2xl shadow-black/50 mx-auto my-8 border border-white/5 rounded-sm"
+        className="relative shadow-2xl shadow-black/50 my-8 mx-8 border border-white/5 rounded-sm transition-transform"
         style={{
           width: canvasWidth * zoom,
           height: canvasHeight * zoom,
+          transform: isInfiniteCanvas ? `translate(${pan.x}px, ${pan.y}px)` : undefined,
           ...bgStyle,
         }}
         data-canvas="true"
@@ -146,6 +242,8 @@ export default function FreeformCanvas({
         {sorted.map((el) => {
           if (!el.visible) return null;
           const isSelected = el.id === selectedId;
+          const isContainer = el.layoutMode && el.layoutMode !== "absolute" && (el.children?.length || 0) > 0;
+
           return (
             <div
               key={el.id}
@@ -154,22 +252,22 @@ export default function FreeformCanvas({
                 el.locked ? "cursor-not-allowed" : "cursor-move",
                 isSelected && "ring-2 ring-blue-500 ring-offset-1 ring-offset-transparent"
               )}
-              style={{
-                left: el.x * zoom,
-                top: el.y * zoom,
-                width: el.width * zoom,
-                height: el.height * zoom,
-                zIndex: el.zIndex,
-                opacity: el.opacity,
-                transform: `rotate(${el.rotation}deg) scale(${el.scale})`,
-                transformOrigin: "center center",
-              }}
+              style={getContainerStyle(el)}
               onMouseDown={(e) => handleMouseDown(e, el)}
             >
-              {/* Element content */}
-              <FreeformElementRenderer el={el} zoom={zoom} />
+              {isContainer && getChildElements(el).map((child) => (
+                <div
+                  key={child.id}
+                  className="relative"
+                  style={{ flex: layoutMode === "flex-col" ? "1 1 auto" : undefined }}
+                  onMouseDown={(e) => e.stopPropagation()}
+                >
+                  <FreeformElementRenderer el={child} zoom={zoom} />
+                </div>
+              ))}
 
-              {/* Resize handles */}
+              {!isContainer && <FreeformElementRenderer el={el} zoom={zoom} />}
+
               {isSelected && !el.locked && (
                 <>
                   <div className="absolute -top-1.5 -left-1.5 w-3 h-3 bg-white border-2 border-blue-500 rounded-full cursor-nw-resize z-50" onMouseDown={(e) => handleResizeStart(e, el, "tl")} />
@@ -182,7 +280,6 @@ export default function FreeformCanvas({
           );
         })}
 
-        {/* Alignment guides */}
         {guides.map((g, i) => (
           <div
             key={i}
@@ -198,8 +295,6 @@ export default function FreeformCanvas({
     </div>
   );
 }
-
-// ── Element Renderer ─────────────────────────────────────────────────────────
 
 function FreeformElementRenderer({ el, zoom }: { el: FreeformElement; zoom: number }) {
   const baseStyle: React.CSSProperties = {
@@ -250,7 +345,13 @@ function FreeformElementRenderer({ el, zoom }: { el: FreeformElement; zoom: numb
             background: el.fill || "#7FB5A0",
             borderRadius: el.shapeKind === "circle" ? "50%" : (el.borderRadius || 8) * zoom,
             border: el.stroke ? `${(el.strokeWidth || 1) * zoom}px solid ${el.stroke}` : "none",
+            clipPath: el.shapeKind === "triangle" ? "polygon(50% 0%, 0% 100%, 100% 100%)" :
+                     el.shapeKind === "star" ? "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)" :
+                     el.shapeKind === "diamond" ? "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)" :
+                     undefined,
           }}
+          onClick={el.href ? () => window.open(el.href, "_blank") : undefined}
+          className={cn(el.href && "cursor-pointer hover:brightness-110 transition")}
         />
       );
 
@@ -266,6 +367,7 @@ function FreeformElementRenderer({ el, zoom }: { el: FreeformElement; zoom: numb
             borderRadius: (el.borderRadius || 24) * zoom,
             cursor: "pointer",
             padding: `${8 * zoom}px ${16 * zoom}px`,
+            boxShadow: el.boxShadow || "none",
           }}
         >
           {el.label || "Button"}
@@ -275,7 +377,7 @@ function FreeformElementRenderer({ el, zoom }: { el: FreeformElement; zoom: numb
     case "sticker":
       return (
         <img
-          src={el.stickerUrl || "https://placehold.co/80x80/1a1a2e/666?text=🎨"}
+          src={el.stickerUrl || "https://placehold.co/80x80/1a1a2e/666?text=sticker"}
           alt="sticker"
           style={{ ...baseStyle, objectFit: "contain" }}
           draggable={false}
@@ -298,16 +400,21 @@ function FreeformElementRenderer({ el, zoom }: { el: FreeformElement; zoom: numb
 
     case "draw":
       return (
-        <div
-          style={{
-            ...baseStyle,
-            background: "rgba(255,255,255,0.03)",
-            border: "1px dashed rgba(255,255,255,0.1)",
-            borderRadius: 8 * zoom,
-          }}
+        <svg
+          width="100%"
+          height="100%"
+          viewBox={`0 0 ${el.width} ${el.height}`}
+          className="absolute inset-0"
         >
-          <span style={{ fontSize: 10 * zoom, color: "#555" }}>Drawing</span>
-        </div>
+          <path
+            d={el.drawData || ""}
+            fill="none"
+            stroke={el.color || "#ffffff"}
+            strokeWidth={3}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
       );
 
     case "link-card":

@@ -1,4 +1,4 @@
-import { FreeformElement, ShapeKind } from "@/lib/freeform-types";
+import { FreeformElement, ShapeKind, LayoutMode } from "@/lib/freeform-types";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -6,6 +6,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Trash2, Copy, ChevronUp, ChevronDown, Lock, Unlock,
   RotateCw, Palette, Type, Image, Square, MousePointer,
+  LayoutGrid, Columns3, Rows3, Box, Combine, Minus, CircleDot, Layers,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -75,6 +76,33 @@ function ColorField({
           placeholder="#ffffff"
         />
       </div>
+    </div>
+  );
+}
+
+function SelectField({
+  label,
+  value,
+  options,
+  onChange,
+}: {
+  label: string;
+  value: string;
+  options: { value: string; label: string }[];
+  onChange: (v: string) => void;
+}) {
+  return (
+    <div className="flex items-center gap-2">
+      <Label className="text-[10px] text-muted-foreground w-14 shrink-0">{label}</Label>
+      <select
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="flex-1 h-7 text-xs bg-muted/50 rounded-md px-2"
+      >
+        {options.map((opt) => (
+          <option key={opt.value} value={opt.value}>{opt.label}</option>
+        ))}
+      </select>
     </div>
   );
 }
@@ -192,6 +220,78 @@ export default function FreeformPropertiesPanel({
             </div>
           </div>
 
+          {/* ── Layout Mode (Flex/Grid) ── */}
+          <div className="border-t border-border pt-3">
+            <Label className="text-[10px] text-muted-foreground uppercase tracking-wider mb-2 block flex items-center gap-1">
+              <LayoutGrid className="w-3 h-3" /> Layout Mode
+            </Label>
+            <div className="grid grid-cols-2 gap-1">
+              {([
+                { mode: "absolute" as LayoutMode, icon: Box, label: "Absolute" },
+                { mode: "flex-row" as LayoutMode, icon: Rows3, label: "Row" },
+                { mode: "flex-col" as LayoutMode, icon: Columns3, label: "Column" },
+                { mode: "grid" as LayoutMode, icon: LayoutGrid, label: "Grid" },
+              ]).map(({ mode, icon: Icon, label }) => (
+                <button
+                  key={mode}
+                  onClick={() => update({ layoutMode: mode })}
+                  className={cn(
+                    "flex items-center gap-1 px-2 py-1.5 text-[10px] rounded",
+                    el.layoutMode === mode ? "bg-primary text-white" : "bg-muted text-muted-foreground hover:text-foreground"
+                  )}
+                >
+                  <Icon className="w-3 h-3" /> {label}
+                </button>
+              ))}
+            </div>
+            {(el.layoutMode && el.layoutMode !== "absolute") && (
+              <div className="mt-2 space-y-2">
+                <NumberField label="Gap" value={el.gap || 8} onChange={(v) => update({ gap: v })} min={0} max={100} />
+                <NumberField label="Padding" value={el.padding || 0} onChange={(v) => update({ padding: v })} min={0} max={100} />
+                {el.layoutMode === "grid" && (
+                  <NumberField label="Columns" value={el.gridColumns || 2} onChange={(v) => update({ gridColumns: v })} min={1} max={12} />
+                )}
+              </div>
+            )}
+          </div>
+
+          {/* ── Vector Tools (shapes only) ── */}
+          {el.type === "shape" && (
+            <div className="border-t border-border pt-3">
+              <Label className="text-[10px] text-muted-foreground uppercase tracking-wider mb-2 block flex items-center gap-1">
+                <Combine className="w-3 h-3" /> Boolean Operations
+              </Label>
+              <div className="grid grid-cols-2 gap-1">
+                {([
+                  { op: "none" as const, label: "None", icon: Box },
+                  { op: "union" as const, label: "Union", icon: Combine },
+                  { op: "subtract" as const, label: "Subtract", icon: Minus },
+                  { op: "intersect" as const, label: "Intersect", icon: CircleDot },
+                ]).map(({ op, label, icon: Icon }) => (
+                  <button
+                    key={op}
+                    onClick={() => update({ booleanOp: op })}
+                    className={cn(
+                      "flex items-center gap-1 px-2 py-1.5 text-[10px] rounded",
+                      el.booleanOp === op ? "bg-primary text-white" : "bg-muted text-muted-foreground hover:text-foreground"
+                    )}
+                  >
+                    <Icon className="w-3 h-3" /> {label}
+                  </button>
+                ))}
+              </div>
+              <div className="mt-2">
+                <ColorField label="Fill" value={el.fill || "#7FB5A0"} onChange={(v) => update({ fill: v })} />
+                <div className="mt-1">
+                  <ColorField label="Stroke" value={el.stroke || "#000000"} onChange={(v) => update({ stroke: v })} />
+                </div>
+                <div className="mt-1">
+                  <NumberField label="Stroke W" value={el.strokeWidth || 0} onChange={(v) => update({ strokeWidth: v })} min={0} />
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Type-specific properties */}
           {el.type === "text" && (
             <div className="space-y-2 border-t border-border pt-3">
@@ -255,9 +355,6 @@ export default function FreeformPropertiesPanel({
                   </button>
                 ))}
               </div>
-              <ColorField label="Fill" value={el.fill || "#7FB5A0"} onChange={(v) => update({ fill: v })} />
-              <ColorField label="Stroke" value={el.stroke || "#000000"} onChange={(v) => update({ stroke: v })} />
-              <NumberField label="Stroke W" value={el.strokeWidth || 0} onChange={(v) => update({ strokeWidth: v })} min={0} />
               <NumberField label="Radius" value={el.borderRadius || 0} onChange={(v) => update({ borderRadius: v })} min={0} />
             </div>
           )}
@@ -291,19 +388,17 @@ export default function FreeformPropertiesPanel({
                 className="h-7 text-xs"
                 placeholder="https://..."
               />
-              <div className="flex items-center gap-2">
-                <Label className="text-[10px] text-muted-foreground w-14 shrink-0">Type</Label>
-                <select
-                  value={el.embedType || "generic"}
-                  onChange={(e) => update({ embedType: e.target.value as any })}
-                  className="flex-1 h-7 text-xs bg-muted/50 rounded-md px-2"
-                >
-                  <option value="youtube">YouTube</option>
-                  <option value="spotify">Spotify</option>
-                  <option value="twitter">Twitter/X</option>
-                  <option value="generic">Generic</option>
-                </select>
-              </div>
+              <SelectField
+                label="Type"
+                value={el.embedType || "generic"}
+                options={[
+                  { value: "youtube", label: "YouTube" },
+                  { value: "spotify", label: "Spotify" },
+                  { value: "twitter", label: "Twitter/X" },
+                  { value: "generic", label: "Generic" },
+                ]}
+                onChange={(v) => update({ embedType: v as any })}
+              />
             </div>
           )}
 
