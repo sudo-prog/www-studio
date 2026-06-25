@@ -1,7 +1,7 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@workspace/auth-web";
-import { Code2, WandSparkles, LogOut, User, Blocks, Layers, Globe } from "lucide-react";
+import { Code2, WandSparkles, LogOut, User, Blocks, Layers, Globe, Sun, Moon } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,10 +9,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
+import { useTheme } from "@/components/theme-provider";
 
 export function Navbar() {
   const { user, isAuthenticated, loginWithGitHub, logout } = useAuth();
   const [location] = useLocation();
+  const { theme, setTheme } = useTheme();
 
   const navLink = (href: string, label: string) => (
     <Link
@@ -44,6 +46,19 @@ export function Navbar() {
           {isAuthenticated && navLink("/projects", "My Projects")}
         </div>
         <div className="flex items-center gap-2">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8"
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            aria-label="Toggle dark mode"
+          >
+            {theme === "dark" ? (
+              <Sun className="h-4 w-4" />
+            ) : (
+              <Moon className="h-4 w-4" />
+            )}
+          </Button>
           <Button variant="ghost" size="sm" asChild>
             <Link href="/gallery" className="flex items-center gap-2">
               <Globe className="h-4 w-4" />
