@@ -1,176 +1,212 @@
-# WWW Studio — Agent Notes
+# Agent Notes
 
-**Last Updated:** 2026-06-26
-**Status:** Phases 0-14 complete. Enhanced Phases 15-17 in progress.
-
----
-
-## Architecture
-- **pnpm monorepo** with 4 artifacts + 3 shared packages
-- `artifacts/api-server` — Express on `$PORT` (default 8080) — optional, only needed for DB-backed scenes
-- `artifacts/www-studio` — React + Vite on `$PORT` (default 3000) — **deployed to GitHub Pages**
-- `artifacts/mobile` — Expo on `$PORT` (default 18115)
-- `artifacts/mockup-sandbox` — Vite preview server on port 8081
-- `packages/db` — Drizzle ORM + PostgreSQL schema
-- `packages/api-spec` — OpenAPI YAML spec
-- `packages/api-client-react` — Auto-generated React Query hooks (run codegen after spec changes)
-
-## Frontend Architecture (www-studio)
-
-### Pages & Routes (Wouter hash-based)
-| Page | Route | Purpose |
-|------|-------|---------|
-| Home | `/` | Landing page with scenes showcase |
-| Dashboard | `/dashboard` | Project list + management |
-| Editor | `/editor/:id` | Structured website builder |
-| Freeform Editor | `/freeform/:id` | Freeform canvas editor |
-| Freeform Share | `/freeform/share/:id` | Published freeform share page |
-| Scenes | `/scenes` | User's scenes list |
-| Scene Editor | `/scenes/:id` | SVG canvas scene editor |
-| Scene Preview | `/scenes/:id/preview` | Standalone preview |
-| Scene Share | `/scenes/:id/share` | Share page |
-| Scene Gallery | `/scenes/gallery` | Public scene gallery |
-| Gallery | `/gallery` | Public gallery |
-| Components | `/components` | Component library |
-| Profile | `/profile` | User profile |
-| New Project | `/new-project` | Project creation |
-| Not Found | `/404` | 404 page |
-
-### State Management
-- **Structured Editor:** Zustand store + useReducer for canvas state
-- **Freeform Editor:** `freeformStore.ts` (Zustand) with full action set
-- **Scenes:** `sceneStore.ts` (Zustand) with useReducer for canvas + undo/redo
-
-### Key Libraries
-- `@dnd-kit/core` + `sortable` + `utilities` — drag and drop
-- `gsap` + `@gsap/react` — animations
-- `lenis` — smooth scroll
-- `zustand` — state management
-- `react-dropzone` — file upload
-- `@hookform/resolvers` — form validation
-- `@radix-ui/*` — accessible UI primitives (via shadcn)
-- `framer-motion` — used in code export (not runtime dependency)
-
-### AI Architecture (GitHub Pages — Static Frontend)
-
-#### AiChatWidget.tsx — Global AI Assistant
-- Calls Google Gemini REST API directly (`generativelanguage.googleapis.com/v1beta`)
-- User's own Gemini API key (stored in `localStorage` under `www-studio-gemini-config`)
-- Free tier: 1500 requests/day, no credit card needed
-- Models: Auto-fetches available free-tier Gemini models, sorted free-first
-- Fallback: Helpful onboarding if no API key
-
-#### FreeformAIChat.tsx — Context-Aware AI
-- Tool-calling: AI can directly manipulate freeform canvas (add, remove, style, move elements)
-- Commands: "Make this more chaotic", "Apply design tokens", "Optimize for mobile"
-- Triple fallback: Gemini API → local heuristic → static suggestions
-
-#### SceneChat.tsx — Scene AI Assistant
-- Triple fallback: local backend API → Gemini API → local rule-based AI
-- Action format: `{ text: string, actions: SceneAction[] }`
-
-#### ScreenshotToFreeform.tsx — Screenshot-to-Code
-- Captures desktop screenshot → vision LLM → converts to freeform canvas elements
-
-### Storage Keys
-- `www-studio-gemini-config` → `{ key: string, baseUrl: string }`
-- `www-studio-selected-model` → string (model ID)
-- `www-studio-projects` → project list in localStorage
-- `www-studio-freeform-[:id]` → freeform canvas state
-- `www-studio-scenes-[:id]` → scene state
-
-### PWA & Offline
-- `public/manifest.json` — PWA manifest with icons, theme color, display: standalone
-- `public/sw.js` — Service Worker with Workbox-style caching
-- `public/robots.txt` — SEO crawling rules
-- `public/opengraph.jpg` — OG image for social sharing
-
-### Design System
-- Wellness color palette: sage, lavender, coral, sky, peach, forest, mist, sand
-- Design tokens in `lib/design-tokens.ts` — colors, typography, shadows, radii, spacing
-- Animation presets in `lib/animation-presets.ts` — 11+ keyframe presets
-- Code generators in `lib/code-generators.ts` — export to HTML, React, Tailwind, etc.
+Architecture decisions, file structure, API patterns, and known issues for WWW Studio.
 
 ---
 
-## Critical Conventions
+## Architecture Decisions
 
-1. **www-studio uses relative `/api/...` fetch paths** — `@workspace/auth-web` only exports `useAuth`/`AuthUser`, NOT `getApiUrl`.
-2. **Always `String(req.params.id)` before Drizzle `eq()`** — params typed as `string | string[]`.
-3. **Scene JSON fields stored as strings in DB** — `elements`, `animations`, `themeTokens` are all JSON strings; always `JSON.parse()` on frontend.
-4. **LLM client at `artifacts/api-server/src/lib/llm.ts`** — import `chatComplete`, `streamChat`, `visionComplete` — never create OpenAI client instances inline.
-5. **`getOrGuestUserId(req)`** — single-user app; returns `req.user.id` if authenticated, else guest UUID.
-6. **Canvas is 1440×900px** — elements positioned in px, z-index determines stacking.
-7. **Freeform canvas uses absolute positioning** — elements have x, y, width, height, zIndex, rotation.
-8. **Hash-based routing** — all routes use `#/route` format for GitHub Pages SPA.
-9. **Build output** — `artifacts/www-studio/dist/` is what gets deployed.
-10. **BASE_PATH** — set to `/www-studio/` for GitHub Pages, `/` for Vercel/local.
+### Monorepo Structure
+The project uses a pnpm workspace monorepo with two main directories:
+- `artifacts/` — Deployable applications (www-studio, mobile, api-server, mockup-sandbox)
+- `lib/` — Shared libraries (api-spec, api-client-react, api-zod, auth-web, db, integrations)
 
-## Code Style
-- TypeScript strict mode
-- Tailwind CSS for styling (dark mode via `dark:` variant)
-- shadcn/ui components in `components/ui/`
-- Functional components with hooks (no class components)
-- Named exports (not default exports for components)
+**Rationale:** Separates deployable apps from shared code while maintaining a single version history and dependency tree.
 
-## Rate Limits (production API)
-- General: 300 req / 15 min (all `/api/*`)
-- AI endpoints: 30 req / min (chat, generate, clone, screenshot-to-code, design, scenes/ai-generate, scenes/*/chat, scenes/*/enhance)
+### Hash-Based Routing
+Uses Wouter with hash-based routing (`/#/path`) instead of browser history routing.
 
-## LLM Configuration (env vars)
+**Rationale:** GitHub Pages doesn't support SPA fallback routing. Hash routing ensures deep links work without server configuration.
+
+### Zustand for State Management
+Global state managed via Zustand stores (`freeformStore`, `sceneStore`).
+
+**Rationale:** Lightweight, no boilerplate, works well with React 19's concurrent features. Avoids Redux complexity for this use case.
+
+### Canvas Rendering
+Freeform canvas uses absolute positioning with transforms for element placement.
+
+**Rationale:** Simpler than SVG for mixed content types (text, images, custom code). Enables direct CSS styling and Tailwind integration.
+
+### AI Integration Pattern
+AI features follow a tool-calling pattern where the LLM can invoke predefined tools to manipulate the canvas.
+
+**Rationale:** More reliable than free-form code generation. Tools have typed inputs/outputs and can be validated before execution.
+
+### RAG with Libroom
+Document ingestion and retrieval uses a custom RAG implementation (`lib/rag/`).
+
+**Rationale:** Provides context-aware AI responses without external dependencies. Ingested documents are stored locally for offline access.
+
+---
+
+## File Structure
+
 ```
-LLM_BASE_URL    — e.g. http://localhost:11434/v1 (Ollama) or https://api.openai.com/v1
-LLM_API_KEY     — "ollama" for local, or real key
-LLM_MODEL       — e.g. llama3.2 or gpt-4o
-LLM_VISION_MODEL — e.g. llava or gpt-4o
-```
-
-## Adding New API Routes
-1. Add route handler to `artifacts/api-server/src/routes/`
-2. Add path to OpenAPI spec `artifacts/api-spec/openapi.yaml`
-3. Run `pnpm --filter @workspace/api-client-react run codegen` to regenerate hooks
-4. OR use raw `fetch("/api/...")` in components for quick one-off endpoints
-
-## Common Pitfalls
-- Scene canvas element `transform` must be a string in inline CSS ("rotate(Xdeg)"), not a CSS transform function
-- Mobile `app/scene/[id].tsx` uses WebView with injected HTML — CSS animations work here but not via React Native Animated
-- Rate limiter middleware must be applied BEFORE `app.use("/api", router)` for AI routes
-- Drizzle `insert().values()` returns an array even for single inserts — always destructure: `const [row] = await db.insert(...).returning()`
-- Freeform canvas state is stored as JSON string in localStorage — can be large for complex scenes
-- Gemini API key is stored in localStorage — never log or transmit it
-- Build must succeed with `pnpm run build` before committing — check for TypeScript errors
-
-## Freeform Editor State
-- `freeformStore.ts` — Zustand store with actions:
-  - `ADD_ELEMENT`, `UPDATE_ELEMENT`, `DELETE_ELEMENT`, `MOVE_ELEMENT`
-  - `REORDER_UP`, `REORDER_DOWN`, `DUPLICATE_ELEMENT`
-  - `SET_BACKGROUND`, `SET_CANVAS_SIZE`
-  - `UNDO`, `REDO` (30-step history)
-  - `LOAD_STATE`, `CLEAR`
-- Auto-save: 30-second debounce when dirty
-- Keyboard shortcuts: Ctrl+Z undo, Ctrl+Y redo, Delete remove, Ctrl+S save, ? legend
-
-## Scene Editor State
-- `useReducer` with undo/redo (30-step history)
-- Actions: `LOAD_SCENE`, `SET_NAME`, `ADD_ELEMENT`, `ADD_ELEMENTS`, `UPDATE_ELEMENT`, `DELETE_ELEMENT`, `MOVE_ELEMENT`, `REORDER_UP`, `REORDER_DOWN`, `SELECT`, `UNDO`, `REDO`
-- Auto-save fires every 30s when `isDirty === true`
-- Keyboard shortcuts: `Ctrl+Z` undo, `Ctrl+Y` redo, `Delete` delete element, `Ctrl+S` save, `?` shortcut legend
-
-## Code Export Formats
-- **HTML:** Self-contained with inline CSS
-- **React/Next.js:** Component-based with CSS modules
-- **Tailwind:** Utility-class version
-- **Framer Motion:** Animation-enabled React components
-- **Design Token JSON:** Extracted design system tokens
-- **SVG:** Raw SVG for scenes
-- **CSS Keyframes:** Animation definitions only
-- **Cursor Prompt:** AI prompt for code generation
-
-## Wellness Color Palette
-```
-sage:     #7FB5A0   lavender: #B39DC2   coral: #E8957A   sky:  #87BBDB
-peach:    #F4C5A1   forest:   #4A7C6B   mist:  #C8D8E0   sand: #E8DDD0
+05_WWW.Studio/
+├── artifacts/
+│   ├── www-studio/              # Main web app (Vite + React)
+│   │   ├── src/
+│   │   │   ├── components/
+│   │   │   │   ├── freeform/    # Freeform editor components
+│   │   │   │   ├── scenes/      # Scene editor components
+│   │   │   │   ├── ui/          # shadcn/ui primitives
+│   │   │   │   └── layout/      # Navbar, shell components
+│   │   │   ├── lib/
+│   │   │   │   ├── ai/          # AI tools, critique, self-edit, workflows
+│   │   │   │   ├── rag/         # RAG ingestion and retrieval
+│   │   │   │   └── *.ts         # Feature utilities
+│   │   │   ├── pages/           # Route pages (home, editors, share)
+│   │   │   ├── App.tsx          # Root component with routing
+│   │   │   └── main.tsx         # Entry point
+│   │   ├── index.html
+│   │   ├── vite.config.ts
+│   │   └── package.json
+│   ├── api-server/              # Express API server
+│   ├── mobile/                  # Expo mobile app
+│   └── mockup-sandbox/          # UI component sandbox
+├── lib/
+│   ├── api-spec/                # OpenAPI specification
+│   ├── api-client-react/        # Generated React Query hooks
+│   ├── api-zod/                 # Generated Zod schemas
+│   ├── auth-web/                # Authentication hooks
+│   ├── db/                      # Drizzle ORM schema
+│   └── integrations/
+│       └── gemini-web2api/      # Gemini Web2API Python proxy
+├── scripts/                     # Build and utility scripts
+├── package.json                 # Root workspace config
+└── pnpm-workspace.yaml
 ```
 
-## Animation Presets (CSS keyframes in `www-studio/src/index.css`)
-`none` · `gentle-float` · `gradient-breathe` · `shadow-pulse` · `hover-lift` · `scroll-reveal` · `morph` · `spin-slow` · `fade-in-out` · `scale-pulse` · `elastic-bounce` · `drift`
+---
+
+## API Patterns
+
+### GitHub Storage API
+Projects are stored as JSON files in GitHub repositories.
+
+```
+GET    /repos/{owner}/{repo}/contents/{path}    # Load project
+PUT    /repos/{owner}/{repo}/contents/{path}    # Save project
+DELETE /repos/{owner}/{repo}/contents/{path}    # Delete project
+```
+
+Authentication via GitHub OAuth or personal access tokens.
+
+### AI Chat API
+OpenAI-compatible chat completions endpoint.
+
+```
+POST /chat/completions
+{
+  "model": "gemini-2.0-flash",
+  "messages": [...],
+  "tools": [...],           // Tool definitions for function calling
+  "stream": true            // Server-sent events for streaming
+}
+```
+
+### Internal API (Generated)
+React Query hooks auto-generated from OpenAPI spec via Orval.
+
+```typescript
+// Usage example
+const { data } = useGetProject(owner, repo, path);
+const mutation = useSaveProject();
+```
+
+---
+
+## Key Components
+
+### FreeformCanvas
+The main canvas component. Manages:
+- Pan/zoom viewport
+- Element selection and multi-select
+- Drag/resize/rotate transforms
+- Keyboard shortcuts (arrow keys, delete, duplicate)
+
+### FreeformStore
+Zustand store for freeform editor state:
+- Elements array (id, type, position, size, rotation, styles)
+- Selection state
+- History stack (undo/redo)
+- Viewport state (zoom, pan offset)
+
+### AI Tools
+Tool definitions in `src/lib/ai/tools.ts`:
+- `addElement` — Add new element to canvas
+- `updateElement` — Modify element properties
+- `deleteElement` — Remove element from canvas
+- `getCanvasState` — Read current canvas state
+- `generateCode` — Generate code from canvas
+
+### Code Generators
+Export pipeline in `src/lib/code-generators.ts`:
+- HTML generator (semantic markup)
+- React generator (component-based)
+- Tailwind generator (utility classes)
+
+---
+
+## Known Issues
+
+### Performance
+- **Large canvases** (>100 elements) may experience lag during pan/zoom
+  - *Mitigation:* Virtual rendering planned for Phase 5
+- **Initial bundle size** is ~650KB (above 500KB target)
+  - *Mitigation:* Code splitting and lazy loading planned
+
+### AI
+- **Tool-calling reliability** varies by model — Gemini 2.0 Flash works best
+- **Self-editing loops** can sometimes oscillate without converging
+  - *Mitigation:* Max iteration limits implemented
+- **RAG ingestion** limited to text files (PDF, MD, TXT)
+
+### Browser Compatibility
+- **Safari:** Some CSS `backdrop-filter` effects render differently
+- **Firefox:** Canvas freehand drawing has slight latency
+- **Mobile Safari:** Touch events for rotate/resize need improvement
+
+### Routing
+- **Hash routing** means URLs contain `#` — less clean but necessary for GitHub Pages
+- **Deep linking** to specific elements not yet implemented
+
+### Storage
+- **GitHub API rate limits** (60/hour unauthenticated, 5000/hour authenticated)
+- **Large binary assets** (images) stored as base64 in JSON — not optimal
+  - *Future:* Consider IPFS or dedicated asset storage
+
+### Accessibility
+- **Canvas elements** lack proper ARIA roles and keyboard navigation
+- **Color contrast** in some dark mode combinations needs review
+- **Screen reader** support for the editor is minimal
+
+---
+
+## Security Considerations
+
+- **XSS Prevention:** Custom code panel uses sandboxed iframes for rendering
+- **GitHub Tokens:** Stored in localStorage (consider httpOnly cookies for production)
+- **AI Prompt Injection:** User inputs are sanitized before sending to LLM
+- **CSP Headers:** Configured in vite.config.ts for production builds
+
+---
+
+## Environment & Tooling
+
+- **Node.js:** v18+ recommended
+- **pnpm:** v8+ required for workspace features
+- **TypeScript:** v5.9 strict mode
+- **Vite:** v7.3 for dev server and builds
+- **Tailwind CSS:** v4.3 with `@tailwindcss/vite` plugin
+
+---
+
+## Future Architecture Considerations
+
+1. **CRDT for Collaboration:** Move from last-write-wins to CRDT for real-time collaboration
+2. **WebAssembly:** Consider Rust/WASM for canvas rendering performance
+3. **Edge Functions:** Move API server to edge for lower latency
+4. **Plugin System:** Design extensible architecture for third-party tools
+5. **Native Mobile:** Evaluate React Native Skia for mobile canvas performance

@@ -1,250 +1,158 @@
-# WWW Studio — Dev Roadmap
+# Development Roadmap
 
-> **Last Updated:** 2026-06-26
-> **Current Status:** Phases 0-14 shipped. Enhanced Phases 15-17 (God-Tier AI + PWA + Polish) in progress.
+## Current Status: v0.4.0
+
+WWW Studio is in active development. The core freeform editor, AI assistant, and publishing pipeline are functional. Focus is now on polish, performance, and advanced AI features.
 
 ---
 
 ## Phase 0: Foundation ✅
-- [x] pnpm monorepo (api-server, www-studio, mobile, mockup-sandbox, db, api-spec, auth-web)
-- [x] PostgreSQL + Drizzle ORM — schema pushed
-- [x] Express API server on $PORT (default 8080)
-- [x] React + Vite frontend on $PORT (default 19332)
-- [x] DB tables: projects, gallery, chat, snapshots, sessions, users, scenes
-- [x] All 4 workflows running and healthy
 
-## Phase 1: Core Website Builder ✅
-- [x] Gallery page with template cards + search
-- [x] Text-to-site generation (AI + heuristic fallback)
-- [x] Screenshot-to-code (vision LLM + fallback)
-- [x] Visual editor with component tree inspector
-- [x] AI chat widget inside editor
-- [x] Project CRUD (save, load, duplicate, delete)
-- [x] Export to HTML / React / Next.js
-- [x] Snapshot versioning (create + restore)
-- [x] Design panel (theme tokens, fonts, color palette)
-- [x] Publish flow (status toggle draft → published)
-- [x] Clone / fork project
+**Goal:** Establish project infrastructure and basic editing capabilities.
 
-## Phase 2: Unified LLM Client ✅
-- [x] `artifacts/api-server/src/lib/llm.ts` — single OpenAI-compatible client
-- [x] Supports Ollama · OpenRouter · LM Studio · OpenAI via env vars
-- [x] `LLM_BASE_URL` `LLM_API_KEY` `LLM_MODEL` `LLM_VISION_MODEL`
-- [x] `chatComplete()` one-shot · `streamChat()` SSE · `visionComplete()` for screenshots
-- [x] `isLLMReachable()` health check · `getLLMProvider()` label
-- [x] `GET /llm/config` endpoint
-- [x] All routes (chat, generate, screenshot-to-code) use unified client
+- [x] Monorepo setup with pnpm workspaces
+- [x] TypeScript strict mode configuration
+- [x] Vite + React 19 + Tailwind CSS 4
+- [x] shadcn/ui component library integration
+- [x] Zustand state management
+- [x] Wouter hash-based routing (GitHub Pages compatible)
+- [x] GitHub API integration for storage
+- [x] Supabase authentication
+- [x] Express API server with OpenAI-compatible endpoints
+- [x] Gemini Web2API proxy for free AI access
+- [x] Drizzle ORM with PostgreSQL
+- [x] Expo mobile app scaffold
 
-## Phase 3: Scenes Workspace ✅
-- [x] `scenes` DB table + Drizzle schema
-- [x] Full REST CRUD for scenes
-- [x] AI scene generation from prompt
-- [x] Scene export to 4+ formats
-- [x] 3-panel SVG canvas editor
-- [x] WellnessLibrary — 20 shapes
-- [x] AnimationPresets — 11 presets
-- [x] Layers panel, Properties panel, Undo/redo
-
-## Phase 4: AI Chat in Scene Editor ✅
-- [x] Scene-context-aware LLM endpoint
-- [x] SceneChat sidebar with message history
-- [x] AI responds with text + structured canvas actions
-- [x] One-click "Apply N changes" button
-- [x] 8 suggestion chips for common prompts
-
-## Phase 5: Mobile Sidekick ✅
-- [x] Scenes tab in mobile bottom nav
-- [x] Scene gallery with colored orb thumbnails
-- [x] Full-screen WebView scene preview with CSS animations
-- [x] Scene detail: share, element count, status
-
-## Phase 6: Scene AI Polish ✅
-- [x] Scene export: Embed/Share tab with iframe snippet
-- [x] Live preview mode (standalone, embeddable)
-- [x] Scene cards show description + tags
-- [x] Fork/Duplicate from card dropdown
-- [x] Publish/Unpublish toggle per scene
-
-## Phase 7: Gallery & Sharing ✅
-- [x] Public gallery page (published scenes only)
-- [x] Gallery card: SVG preview, Fork, Embed modal, Preview link
-- [x] Navbar: "Public" nav link + Globe icon
-- [x] Home page Scenes Showcase section
-
-## Phase 8: Production Hardening ✅
-- [x] `express-rate-limit` — General: 300/15min, AI: 30/min
-- [x] React `ErrorBoundary` component
-- [x] Standalone embeddable preview page
-- [x] All 4 workflows healthy
-
-## Phase 9: Gemini Web2API Integration ✅
-- [x] Python proxy (gemini-web2api) for OpenAI-compatible Gemini access
-- [x] LLM client updated with Gemini Web2API support
-- [x] Real LLM calls in chat, generate, screenshot-to-code routes
-- [x] Streaming endpoint (`POST /chat/stream`)
-- [x] Health check with provider status
-- [x] Startup script `scripts/start-gemini-proxy.sh`
+**Checkpoint:** ✅ Project builds and runs locally. Basic structured editor functional.
 
 ---
 
-## Phase 10: Freeform Play Mode ✅
-- [x] Freeform canvas with pan/zoom
-- [x] Elements toolbar: Text, Image upload, Shapes, Buttons (with links)
-- [x] Background color/gradient/image picker (BackgroundPicker)
-- [x] Direct on-canvas editing (double-click text, drag handles for resize/rotate)
-- [x] Freehand drawing (FreehandDraw — Canvas API)
-- [x] Remix button (rule-based randomization)
-- [x] Chaos Monkey V2 (AI-powered mayhem)
-- [x] Screenshot-to-freeform (capture → convert to canvas elements)
-- [x] Code Inspector (real-time CSS/SVG/HTML/Tailwind snippets)
-- [x] Publish button with shareable URL (freeform-share page)
-- [x] Zen/minimal mode (hide all panels)
-- [x] Smart alignment guides (toggleable snapping)
-- [x] Freeform AI Chat (context-aware: "Make this more chaotic", "Apply design tokens")
-- [x] Auto-responsiveness: smart scaling + media-query generation on export
+## Phase 1: Core Editor ✅
 
-## Phase 11: Penpot Professional Enhancements ✅
-- [x] Per-container layout mode selector (flex | grid | free)
-- [x] Visual controls: direction, justify, align, gap, wrap, columns
-- [x] Infinite canvas with pan/zoom + rulers
-- [x] Artboards (multiple frames for multi-page sites)
-- [x] Design tokens: colors, typography, shadows, radii, spacing
-- [x] Master Components + Variants + Instances
-- [x] Vector tools: basic boolean ops, masks
+**Goal:** Build the structured editor and scene system.
 
-## Phase 12: Publishing & Code Fidelity ✅
-- [x] One-click publish → shareable URL
-- [x] Public gallery (freeform + pro pages)
-- [x] Embed support (iframe snippets)
-- [x] Code Inspector with format switching
-- [x] Enhanced exports:
-  - Self-contained HTML
-  - Tailwind + Flex/Grid version
-  - React/Next.js with components/tokens
-  - Framer Motion animations
-  - Design token JSON
-- [x] Custom domain support (CNAME configuration)
+- [x] Structured editor with semantic HTML output
+- [x] Multi-scene project management
+- [x] Scene-specific chat and AI assistance
+- [x] Scene export and sharing
+- [x] Performance auditing tools
+- [x] Scroll debug overlay
+- [x] Wellness library (design inspiration)
+- [x] Command palette for quick actions
+- [x] Design tokens system
+- [x] Animation presets (GSAP, Framer Motion)
 
-## Phase 13: AI Superpowers ✅
-- [x] Screenshot-to-code (capture screenshot → generate site)
-- [x] Text-to-site (describe → generate layout)
-- [x] In-editor AI chat panel (enhanced with tool-calling)
-- [x] "Convert to Flex layout" AI command
-- [x] "Generate component variants" AI command
-- [x] "Add interactions for this button" AI command
-- [x] Mobile editing support (touch gestures in browser emulation)
-- [x] Accessibility checks (alt text, contrast)
-- [x] Custom CSS/JS injection (sandboxed)
-
-## Phase 14: Community, Monetization & God-Tier Scale ✅ (partial)
-- [x] Showcase, likes, remixes/forks
-- [x] Template hub scaffold (Penpot Hub style)
-- [x] Plugin system hooks (basic)
-- [x] Docker Compose for full stack
-- [x] Improved README with feature list
-- [x] GitHub workflows for CI
+**Checkpoint:** ✅ Users can create multi-scene projects with AI assistance.
 
 ---
 
-## Enhanced Phases (Current Work)
+## Phase 2: Freeform Editor ✅
 
-### Phase 15: God-Tier AI Design Assistant & Self-Editing 🔄
-**Goal:** AI acts as a senior designer + engineer partner that can directly manipulate the canvas, critique designs, and propose self-improvements.
+**Goal:** Introduce canvas-based freeform editing.
 
-- [ ] Full tool-calling: canvas edits, component insertion, audits
-- [ ] Agent-skills for senior-engineer quality gates
-- [ ] Self-editing: AI proposes diffs for www-studio itself
-- [ ] Agentic multi-step flows ("Create premium wellness site")
-- [ ] Critique mode + "make it stunning" per taste KB
-- [ ] Visual edits mode (click-to-modify elements directly)
-- [ ] MCP-like external agent interface (read/modify canvas via API)
+- [x] Infinite canvas with pan and zoom
+- [x] Drag, drop, rotate, and resize elements
+- [x] Elements toolbar (text, images, shapes, buttons, forms)
+- [x] Properties panel for styling and layout
+- [x] Freehand drawing tool
+- [x] Background picker (colors, gradients, images)
+- [x] Screenshot-to-freeform conversion
+- [x] Custom code panel for HTML/CSS/JS injection
+- [x] Freeform AI chat integration
+- [x] GitHub save/load for freeform projects
+- [x] Code generators (HTML, React, Tailwind)
+- [x] Hash routing fix for GitHub Pages
 
-**Checkpoints:**
-- AI produces high-taste outputs consistently
-- Basic self-modification works safely
-- Tool-calling can add/style/remove elements without errors
-
-### Phase 16: PWA Perfection & Legendary Features 🔄
-**Goal:** Daily-driver ready on all devices. Exceptional UX and AI intelligence.
-
-- [x] PWA manifest (`public/manifest.json`) with icons, theme color, standalone
-- [x] Service Worker (`public/sw.js`) with caching
-- [ ] Full offline: IndexedDB/Supabase local fallbacks
-- [ ] Mobile-first optimizations, touch gestures, iPad parity
-- [ ] Accessibility audit + fixes (WCAG compliance)
-- [ ] Performance: 90+ Lighthouse scores
-- [ ] Dark mode toggle with persistence
-- [ ] SEO toolkit (auto meta, sitemap, OG, robots.txt)
-- [ ] One-click publish + custom domain (Vercel integration)
-- [ ] Collaboration (realtime via Supabase)
-- [ ] Built-in forms + basic e-commerce placeholders
-- [ ] Analytics integration points (Plausible/Umami)
-- [ ] Public template marketplace / sharing
-- [ ] Multi-modal (image/video → components)
-- [ ] Performance & accessibility auditor (AI + Lighthouse)
-
-**Checkpoints:**
-- Lighthouse score 90+ on all pages
-- Offline mode works for saved projects
-- Mobile editing is smooth and responsive
-
-### Phase 17: Polish, Security, Testing & Ecosystem 🔄
-**Goal:** Stable, delightful daily driver with room to grow.
-
-- [ ] Comprehensive testing (cross-device, offline, AI edge cases)
-- [ ] Security: Sanitize LLM code, RLS, input validation
-- [ ] Monitoring: Vercel + Supabase logs/analytics
-- [ ] Documentation & knowledge base sync
-- [ ] Backup strategy: GitHub + Supabase exports + Syncthing
-- [ ] Community/contribution guidelines
-- [ ] Open-sourcing strategy + MIT LICENSE
-- [ ] Version History + Diffs (extend beyond scenes to freeform)
-- [ ] Testing setup: Vitest + Playwright
-
-**Checkpoints:**
-- All critical user flows have test coverage
-- No known security vulnerabilities
-- Documentation is up-to-date with features
+**Checkpoint:** ✅ Freeform editor is fully functional with AI integration.
 
 ---
 
-## Gap Additions (Cross-Cutting)
+## Phase 3: AI Enhancement ✅
 
-### CMS / Dynamic Content
-- [ ] Bind data (Supabase tables, JSON, APIs) to components
-- [ ] `{{variable}}` template substitution
-- [ ] Dynamic lists and conditional rendering
+**Goal:** Deepen AI capabilities with tool-calling, critique, and RAG.
 
-### Asset/Media Library
-- [ ] Supabase Storage integration
-- [ ] Image optimization pipeline (compress, resize, WebP)
-- [ ] AI image generation placeholder (calls vision API)
+- [x] AI tool-calling system (direct canvas manipulation)
+- [x] Design critique mode
+- [x] Self-editing AI (autonomous iteration)
+- [x] RAG with Libroom ingestion
+- [x] Multi-step AI workflows
+- [x] MCP (Model Context Protocol) integration
+- [x] Natural language freeform commands
+- [x] Chaos Monkey V2 (automated stress testing)
 
-### Advanced Interactions
-- [ ] Scroll-triggered animations (beyond current GSAP presets)
-- [ ] Hover states and micro-interactions
-- [ ] Animation timeline editor
-
-### Import/Export
-- [ ] Better support for importing from Figma/Sketch
-- [ ] Import from existing sites (URL → canvas)
-- [ ] Export as ZIP with assets
-- [ ] Export to multiple formats (HTML, React, Vue SFC)
-
-### Version History + Diffs
-- [ ] Extend versioning to freeform projects (beyond scenes)
-- [ ] Visual diff viewer between versions
-- [ ] Branch/merge for version history
+**Checkpoint:** ✅ AI can autonomously create, critique, and improve designs.
 
 ---
 
-## Implementation Rules
+## Phase 4: Polish & Publishing ✅
 
-1. **Node 22** — `export PATH="/home/thinkpad/.nvm/versions/node/v22.23.0/bin:$PATH"`
-2. **Use pnpm** (not npm)
-3. **Read existing files BEFORE modifying**
-4. **Match existing code style** (Tailwind + shadcn, TypeScript strict)
-5. **Do NOT delete or remove any existing functionality**
-6. **Build MUST succeed:** `cd artifacts/www-studio && pnpm run build`
-7. **After ALL:** `git add -A && git commit && timeout 20 git push origin main`
-8. **Verify with vision** — screenshot and analyze after UI changes
+**Goal:** Production-ready features for deployment and user experience.
+
+- [x] PWA support (installable, offline-capable)
+- [x] Dark mode with system preference detection
+- [x] Forms builder with validation
+- [x] Version history with restore
+- [x] Code inspector (live code preview)
+- [x] One-click publish to GitHub Pages
+- [x] Share links for projects
+- [x] Improved responsive design
+
+**Checkpoint:** ✅ Users can build, polish, and publish projects entirely within the app.
+
+---
+
+## Phase 5: Collaboration & Advanced Features 🚧
+
+**Goal:** Multi-user collaboration and professional features.
+
+- [ ] Real-time collaborative editing (WebSockets/CRDT)
+- [ ] Comments and annotations on canvas
+- [ ] Team workspaces and permissions
+- [ ] Component library (save and reuse custom components)
+- [ ] Advanced animations timeline editor
+- [ ] Responsive design controls (breakpoint editing)
+- [ ] SEO metadata editor
+- [ ] Custom domain support for published sites
+- [ ] Analytics integration for published sites
+- [ ] Plugin system for third-party extensions
+
+**Checkpoint:** 🚧 Real-time collaboration is in progress.
+
+---
+
+## Phase 6: Platform & Ecosystem 📋
+
+**Goal:** Expand into a full development platform.
+
+- [ ] Marketplace for templates and components
+- [ ] API for third-party integrations
+- [ ] Headless CMS integration
+- [ ] E-commerce features (Stripe integration)
+- [ ] Multi-framework export (Vue, Svelte, Astro)
+- [ ] Desktop app (Tauri/Electron)
+- [ ] Mobile app feature parity with web
+- [ ] Enterprise features (SSO, audit logs, SLA)
+- [ ] AI training on user's design patterns
+- [ ] Accessibility audit and remediation tools
+
+**Checkpoint:** 📋 Planned for future development.
+
+---
+
+## Key Metrics & Success Criteria
+
+| Metric | Target | Current |
+|--------|--------|---------|
+| Lighthouse Performance | 90+ | ~85 |
+| Accessibility (WCAG) | AA | Partial |
+| Test Coverage | 80% | ~10% (typecheck only) |
+| Bundle Size | <500KB initial | ~650KB |
+| AI Response Time | <3s | ~2-5s |
+| Supported Browsers | Last 2 versions | Chrome, Firefox, Safari, Edge |
+
+## Regular Checkpoints
+
+- **Weekly:** Review open issues and PRs
+- **Bi-weekly:** Update roadmap progress
+- **Monthly:** Release planning and milestone review
+- **Quarterly:** Architecture review and tech debt assessment

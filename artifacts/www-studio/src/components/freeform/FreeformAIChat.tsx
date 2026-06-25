@@ -7,6 +7,7 @@ import { type FreeformElement, makeFreeformElement } from "@/lib/freeform-types"
 import { critiqueDesign, type CritiqueReport } from "@/lib/ai/critique";
 import { analyzeCodebase, type SelfEditReport } from "@/lib/ai/self-edit";
 import { executeToolCall, type CanvasToolResult } from "@/lib/ai/tools";
+import { executeWorkflow } from "@/ai/workflows";
 import {
   Wand2, Send, X, Loader2, Bot, User, Sparkles, Zap,
   ScanSearch, Code2, CheckCircle2, AlertTriangle, Info,
