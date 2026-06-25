@@ -8,7 +8,8 @@ export type FreeformElementType =
   | "sticker"
   | "embed"
   | "draw"
-  | "link-card";
+  | "link-card"
+  | "form";
 
 export type ShapeKind = "rectangle" | "circle" | "triangle" | "star" | "diamond" | "line";
 
@@ -90,6 +91,8 @@ export interface FreeformElement {
   masterId?: string;
   /** Variant name for component instances */
   variant?:  string;
+  /** Form fields JSON (for type=form) */
+  formFields?: string;
 }
 
 export interface FreeformBackground {
@@ -172,6 +175,7 @@ export function makeFreeformElement(
     embed:     { width: 400, height: 300, embedType: "generic" },
     draw:      { width: 300, height: 200 },
     "link-card": { width: 300, height: 100, borderRadius: 12 },
+    form:       { width: 320, height: 400, borderRadius: 12, fill: "rgba(255,255,255,0.03)", text: "Contact Form", color: "#ffffff", formFields: "" },
   };
 
   return {

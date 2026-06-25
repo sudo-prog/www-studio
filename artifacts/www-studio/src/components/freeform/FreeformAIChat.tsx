@@ -4,8 +4,12 @@ import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import { type FreeformElement, makeFreeformElement } from "@/lib/freeform-types";
+import { critiqueDesign, type CritiqueReport } from "@/lib/ai/critique";
+import { analyzeCodebase, type SelfEditReport } from "@/lib/ai/self-edit";
+import { executeToolCall, type CanvasToolResult } from "@/lib/ai/tools";
 import {
   Wand2, Send, X, Loader2, Bot, User, Sparkles, Zap,
+  ScanSearch, Code2, CheckCircle2, AlertTriangle, Info,
 } from "lucide-react";
 
 // ─── Types ──────────────────────────────────────────────────────────────────
@@ -26,6 +30,9 @@ interface ChatMsg {
   actions:  FreeformAIAction[];
   applied:  boolean;
   suggestions?: string[];
+  critique?: CritiqueReport;
+  selfEdit?: SelfEditReport;
+  toolResult?: CanvasToolResult;
 }
 
 // ─── Constants ───────────────────────────────────────────────────────────────
@@ -223,9 +230,43 @@ function generateLocalFreeformResponse(
     };
   }
 
+  // Tool-calling: "add a text element"
+  if (lower.includes("add text") || lower.includes("add a text") || lower.includes("text element")) {
+    const el = makeFreeformElement("text", {
+      x: canvasWidth / 2 - 100,
+      y: canvasHeight / 2 - 20,
+      text: "New text element",
+      name: "AI Text",
+    });
+    actions.push({ type: "add", element: el });
+    return { text: "Added a new text element to the canvas 📝", actions };
+  }
+
+  // Tool-calling: "make the background blue"
+  if (lower.includes("background blue") || lower.includes("make the background blue")) {
+    const el = makeFreeformElement("shape", {
+      x: 0, y: 0, width: canvasWidth, height: canvasHeight,
+      fill: "#3b82f6", name: "Background Layer", zIndex: -1,
+    });
+    actions.push({ type: "add", element: el });
+    return { text: "Added a blue background layer 🔵", actions };
+  }
+
+  // Tool-calling: "add button"
+  if (lower.includes("add button") || lower.includes("add a button")) {
+    const el = makeFreeformElement("button", {
+      x: canvasWidth / 2 - 80,
+      y: canvasHeight / 2 + 40,
+      label: "New Button",
+      name: "AI Button",
+    });
+    actions.push({ type: "add", element: el });
+    return { text: "Added a button element to the canvas 🔘", actions };
+  }
+
   // Default response
   return {
-    text: `I can help you with:\n• "Add floating shapes" — add decorative elements\n• "Make this more chaotic" — add random elements\n• "Apply design tokens" — use wellness colors\n• "Optimize for mobile" — responsive suggestions\n• "Create a hero section" — add hero layout\n• "Add a gradient background" — gradient tips\n• "Make it more minimal" — cleanup tips\n\nWhat would you like to do?`,
+    text: `I can help you with:\n• "Add floating shapes" — add decorative elements\n• "Make this more chaotic" — add random elements\n• "Apply design tokens" — use wellness colors\n• "Optimize for mobile" — responsive suggestions\n• "Create a hero section" — add hero layout\n• "Add a gradient background" — gradient tips\n• "Make it more minimal" — cleanup tips\n• "Add a text element" — adds text to canvas\n• "Make the background blue" — adds blue bg\n\nWhat would you like to do?`,
     actions: [],
   };
 }
@@ -286,7 +327,7 @@ export default function FreeformAIChat({ elements, canvasWidth, canvasHeight, on
     {
       id: "welcome",
       role: "assistant",
-      text: "I'm your freeform canvas AI! I can suggest layouts, add elements, apply design tokens, and optimize your design. What would you like?",
+      text: "I'm your freeform canvas AI! I can add elements, apply designs, critique your layout, and suggest code improvements. What would you like?",
       suggestions: SUGGESTION_CHIPS,
       actions: [],
       applied: false,
@@ -381,6 +422,51 @@ You can suggest actions like adding elements, applying design tokens, creating l
     setInput(text);
   };
 
+  // ── Critique handler ──
+  const handleCritique = useCallback(() => {
+    const report = critiqueDesign(elements);
+    const aiMsg: ChatMsg = {
+      id: crypto.randomUUID(),
+      role: "assistant",
+      text: `Design audit complete! Score: ${report.score}/100`,
+      actions: [],
+      applied: false,
+      critique: report,
+    };
+    setMessages((prev) => [...prev, aiMsg]);
+  }, [elements]);
+
+  // ── Self-edit handler ──
+  const handleSelfEdit = useCallback(() => {
+    const report = analyzeCodebase();
+    const aiMsg: ChatMsg = {
+      id: crypto.randomUUID(),
+      role: "assistant",
+      text: report.summary,
+      actions: [],
+      applied: false,
+      selfEdit: report,
+    };
+    setMessages((prev) => [...prev, aiMsg]);
+  }, []);
+
+  // ── Tool execution handler ──
+  const handleToolExecute = useCallback((toolName: string, params: Record<string, any>) => {
+    const result = executeToolCall(toolName, params);
+    const aiMsg: ChatMsg = {
+      id: crypto.randomUUID(),
+      role: "assistant",
+      text: result.message,
+      actions: result.action ? [result.action as FreeformAIAction] : [],
+      applied: false,
+      toolResult: result,
+    };
+    setMessages((prev) => [...prev, aiMsg]);
+    if (result.success && result.action) {
+      onApplyActions([result.action as FreeformAIAction]);
+    }
+  }, [onApplyActions]);
+
   return (
     <div className="w-80 shrink-0 border-l border-border bg-background flex flex-col">
       {/* Header */}
@@ -392,6 +478,30 @@ You can suggest actions like adding elements, applying design tokens, creating l
         <button onClick={onClose} className="text-muted-foreground hover:text-foreground">
           <X className="w-4 h-4" />
         </button>
+      </div>
+
+      {/* Action buttons */}
+      <div className="px-3 py-2 border-b border-border flex gap-1.5">
+        <Button
+          variant="outline"
+          size="sm"
+          className="h-7 text-[10px] gap-1 flex-1"
+          onClick={handleCritique}
+          disabled={loading}
+        >
+          <ScanSearch className="w-3 h-3" />
+          Critique
+        </Button>
+        <Button
+          variant="outline"
+          size="sm"
+          className="h-7 text-[10px] gap-1 flex-1"
+          onClick={handleSelfEdit}
+          disabled={loading}
+        >
+          <Code2 className="w-3 h-3" />
+          Suggest Improvement
+        </Button>
       </div>
 
       {/* Messages */}
@@ -413,6 +523,8 @@ You can suggest actions like adding elements, applying design tokens, creating l
               msg.role === "assistant" ? "bg-muted/50" : "bg-blue-500/20"
             )}>
               <p className="whitespace-pre-wrap">{msg.text}</p>
+
+              {/* Apply actions button */}
               {msg.actions.length > 0 && !msg.applied && (
                 <Button
                   size="sm"
@@ -425,6 +537,61 @@ You can suggest actions like adding elements, applying design tokens, creating l
               )}
               {msg.applied && (
                 <p className="mt-2 text-[10px] text-green-400">✓ Applied</p>
+              )}
+
+              {/* Critique report */}
+              {msg.critique && (
+                <div className="mt-2 space-y-1.5">
+                  <div className="flex items-center gap-1.5">
+                    {msg.critique.score >= 80 ? (
+                      <CheckCircle2 className="w-3.5 h-3.5 text-green-400" />
+                    ) : msg.critique.score >= 50 ? (
+                      <AlertTriangle className="w-3.5 h-3.5 text-yellow-400" />
+                    ) : (
+                      <AlertTriangle className="w-3.5 h-3.5 text-red-400" />
+                    )}
+                    <span className="text-[10px] font-medium">Score: {msg.critique.score}/100</span>
+                  </div>
+                  {msg.critique.issues.slice(0, 5).map((issue) => (
+                    <div key={issue.id} className="flex items-start gap-1.5 text-[10px]">
+                      <Info className="w-3 h-3 shrink-0 mt-0.5 text-muted-foreground" />
+                      <span className={cn(
+                        issue.severity === "error" && "text-red-300",
+                        issue.severity === "warning" && "text-yellow-300",
+                        issue.severity === "info" && "text-blue-300",
+                      )}>
+                        {issue.message}
+                      </span>
+                    </div>
+                  ))}
+                  <p className="text-[10px] text-muted-foreground italic">{msg.critique.summary}</p>
+                </div>
+              )}
+
+              {/* Self-edit report */}
+              {msg.selfEdit && (
+                <div className="mt-2 space-y-1.5">
+                  <p className="text-[10px] font-medium text-muted-foreground">Code Improvements:</p>
+                  {msg.selfEdit.suggestions.slice(0, 3).map((s) => (
+                    <div key={s.filePath} className="bg-black/20 rounded-lg p-2 space-y-1">
+                      <div className="flex items-center gap-1.5">
+                        <Code2 className="w-3 h-3 text-primary" />
+                        <span className="text-[10px] font-mono">{s.filePath}</span>
+                        <span className={cn(
+                          "text-[8px] px-1 py-0.5 rounded-full",
+                          s.severity === "high" && "bg-red-500/20 text-red-300",
+                          s.severity === "medium" && "bg-yellow-500/20 text-yellow-300",
+                          s.severity === "low" && "bg-blue-500/20 text-blue-300",
+                        )}>{s.severity}</span>
+                      </div>
+                      <p className="text-[10px] text-muted-foreground">{s.description}</p>
+                      <div className="bg-black/30 rounded p-1.5 font-mono text-[9px]">
+                        <div className="text-red-400">- {s.diff.oldCode.slice(0, 60)}...</div>
+                        <div className="text-green-400">+ {s.diff.newCode.slice(0, 60)}...</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               )}
             </div>
           </div>

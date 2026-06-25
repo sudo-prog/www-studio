@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {
   Type, Image, Square, MousePointer, Sticker, Code2, Pencil, Shuffle,
-  Upload, Search, X, Link2,
+  Upload, Search, X, Link2, FileText,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { FreeformElementType, makeFreeformElement, detectEmbedUrl } from "@/lib/freeform-types";
@@ -26,6 +26,7 @@ const TOOLS: ToolItem[] = [
   { type: "embed",     icon: Code2,       label: "Embed" },
   { type: "draw",      icon: Pencil,      label: "Draw" },
   { type: "link-card", icon: Link2,       label: "Link Card" },
+  { type: "form",      icon: FileText,    label: "Form" },
 ];
 
 export default function FreeformToolbar({ onAddElement }: Props) {
@@ -126,6 +127,8 @@ export default function FreeformToolbar({ onAddElement }: Props) {
               onAddElement(makeFreeformElement("draw"));
             } else if (type === "link-card") {
               onAddElement(makeFreeformElement("link-card"));
+            } else if (type === "form") {
+              onAddElement(makeFreeformElement("form"));
             }
           }}
         >

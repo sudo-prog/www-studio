@@ -23,7 +23,7 @@ export const knowledgeChunksTable = pgTable("knowledge_chunks", {
   id: varchar("id", { length: 36 }).primaryKey().$defaultFn(() => crypto.randomUUID()),
   content: text("content").notNull(),
   embedding: text("embedding"), // JSON-encoded vector (for pgvector this would be vector type)
-  metadata: jsonb("metadata").$defaultFn(() => ({}),
+  metadata: jsonb("metadata").$defaultFn(() => ({})),
   source: varchar("source", { length: 255 }),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });

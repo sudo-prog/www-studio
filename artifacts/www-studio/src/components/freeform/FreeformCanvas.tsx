@@ -2,6 +2,7 @@
 import { useRef, useCallback, useState, useEffect } from "react";
 import { FreeformElement, AlignmentGuide, computeAlignmentGuides, LayoutMode, Artboard } from "@/lib/freeform-types";
 import { cn } from "@/lib/utils";
+import FormElementRenderer from "@/components/freeform/FormElementRenderer";
 
 interface Props {
   elements:      FreeformElement[];
@@ -434,6 +435,9 @@ function FreeformElementRenderer({ el, zoom }: { el: FreeformElement; zoom: numb
           {el.href && <span style={{ fontSize: 11 * zoom, color: "#888", marginTop: 4 * zoom }}>{el.href}</span>}
         </div>
       );
+
+    case "form":
+      return <FormElementRenderer el={el} zoom={zoom} />;
 
     default:
       return <div style={baseStyle} />;
