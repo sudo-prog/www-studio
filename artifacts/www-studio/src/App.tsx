@@ -17,6 +17,7 @@ import Scenes from "@/pages/scenes";
 import SceneEditor from "@/pages/scene-editor";
 import ScenePreview from "@/pages/scene-preview";
 import SceneShare from "@/pages/scene-share";
+import FreeformEditor from "@/pages/freeform-editor";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +35,7 @@ function Router() {
       <Route path="/scenes/:id" component={SceneEditor} />
       <Route path="/scenes/:id/preview" component={ScenePreview} />
       <Route path="/scenes/:id/share" component={SceneShare} />
+      <Route path="/freeform/:projectId?" component={FreeformEditor} />
       <Route component={NotFound} />
     </Switch>
   );
