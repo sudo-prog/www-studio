@@ -1,5 +1,10 @@
 # WWW Studio — Dev Roadmap
 
+> **Last Updated:** 2026-06-26
+> **Current Status:** Phases 0-14 shipped. Enhanced Phases 15-17 (God-Tier AI + PWA + Polish) in progress.
+
+---
+
 ## Phase 0: Foundation ✅
 - [x] pnpm monorepo (api-server, www-studio, mobile, mockup-sandbox, db, api-spec, auth-web)
 - [x] PostgreSQL + Drizzle ORM — schema pushed
@@ -31,94 +36,215 @@
 - [x] All routes (chat, generate, screenshot-to-code) use unified client
 
 ## Phase 3: Scenes Workspace ✅
-- [x] `scenes` DB table + Drizzle schema (with description, tags, thumbnailUrl, linkedProjectId)
-- [x] Full REST CRUD: `GET/POST /scenes` · `GET/PATCH/DELETE /scenes/:id`
-- [x] `POST /scenes/ai-generate` — AI scene from prompt
-- [x] `POST /scenes/:id/export` — 4 formats: react-framer, nextjs, cursor-prompt, svg
-- [x] OpenAPI spec + codegen for all scenes endpoints
-- [x] `/scenes` gallery page — wellness palette strips, search, empty state
-- [x] 3-panel SVG canvas editor at `/scenes/:id`
-- [x] WellnessLibrary — 20 shapes: orbs, blobs, geometric, waves, lines, text
-- [x] AnimationPresets — 7 presets (Gentle Float, Breathe, Shadow Pulse, Morph…)
-- [x] SceneExport — 4 code formats with copy + download
-- [x] Layers panel — reorder (↑↓), hide, lock, delete per element
-- [x] Properties panel — x/y/w/h, fill, opacity, blur, rotation, text props
-- [x] Undo / redo (Ctrl+Z / Ctrl+Y, 30-step history)
-- [x] Wellness CSS tokens + 5 keyframe animations in index.css
+- [x] `scenes` DB table + Drizzle schema
+- [x] Full REST CRUD for scenes
+- [x] AI scene generation from prompt
+- [x] Scene export to 4+ formats
+- [x] 3-panel SVG canvas editor
+- [x] WellnessLibrary — 20 shapes
+- [x] AnimationPresets — 11 presets
+- [x] Layers panel, Properties panel, Undo/redo
 
 ## Phase 4: AI Chat in Scene Editor ✅
-- [x] `POST /scenes/:id/chat` — scene-context-aware LLM endpoint
-- [x] SceneChat sidebar component with message history + loading states
-- [x] AI understands current canvas elements + selected element
-- [x] AI responds with text + structured canvas actions (add/update/delete)
-- [x] One-click "Apply N changes" button commits AI suggestions to canvas
+- [x] Scene-context-aware LLM endpoint
+- [x] SceneChat sidebar with message history
+- [x] AI responds with text + structured canvas actions
+- [x] One-click "Apply N changes" button
 - [x] 8 suggestion chips for common prompts
-- [x] Sliding 300px panel toggled by "AI Chat" button — inspector hides when chat open
 
 ## Phase 5: Mobile Sidekick ✅
-- [x] Scenes tab added to mobile bottom nav (between Projects and Components)
-- [x] `app/(tabs)/scenes.tsx` — FlatList with colored orb thumbnails, search, pull-to-refresh
-- [x] `app/scene/[id].tsx` — full-screen WebView scene preview with live CSS animations
-- [x] CSS keyframe animations (gentle-float, gradient-breathe, shadow-pulse, etc.) injected into WebView HTML
-- [x] Scene detail: share button, element count, status label, back navigation
-- [x] Root stack updated with `scene` route (headerShown: false)
+- [x] Scenes tab in mobile bottom nav
+- [x] Scene gallery with colored orb thumbnails
+- [x] Full-screen WebView scene preview with CSS animations
+- [x] Scene detail: share, element count, status
 
 ## Phase 6: Scene AI Polish ✅
-- [x] SceneExport — "Embed / Share" tab with iframe snippet + preview URL copy
-- [x] Live preview mode at `/scenes/:id/preview` — standalone full-screen page, embeddable as iframe
-- [x] Scene cards show description (if set) + tags chips
-- [x] Fork / Duplicate scene from dropdown on every card
-- [x] Publish / Unpublish toggle per scene (status draft ↔ published)
-- [x] Scenes page shows "Public" badge on published cards
+- [x] Scene export: Embed/Share tab with iframe snippet
+- [x] Live preview mode (standalone, embeddable)
+- [x] Scene cards show description + tags
+- [x] Fork/Duplicate from card dropdown
+- [x] Publish/Unpublish toggle per scene
 
 ## Phase 7: Gallery & Sharing ✅
-- [x] `/gallery` public gallery page — shows published scenes only
-- [x] Gallery card: SVG preview, Fork button, Embed modal, Preview link
-- [x] `EmbedModal` — copy iframe code + open live preview
-- [x] Navbar updated: "Public" nav link + Globe icon button → /gallery
-- [x] Home page Scenes Showcase section (grid of 6 scenes + wellness palette strip)
-- [x] Home page "Wellness Scenes" CTA button added to hero
+- [x] Public gallery page (published scenes only)
+- [x] Gallery card: SVG preview, Fork, Embed modal, Preview link
+- [x] Navbar: "Public" nav link + Globe icon
+- [x] Home page Scenes Showcase section
 
 ## Phase 8: Production Hardening ✅
-- [x] `express-rate-limit` installed and applied
-  - General: 300 req / 15 min (all /api routes, skips /health)
-  - AI: 30 req / min (chat, generate, clone, screenshot-to-code, design, scenes/ai-generate, scenes/*/chat)
-- [x] React `ErrorBoundary` component wraps entire App
-  - Shows friendly error UI with "Try Again" + "Go Home" buttons
-  - Displays stack trace in dev mode only
-- [x] `/scenes/:id/preview` is a standalone embeddable page (no Navbar, no auth)
-- [x] Rate limit responses return `{ error: "..." }` JSON
-- [x] All 4 workflows healthy, API rebuilt with rate limiter included
+- [x] `express-rate-limit` — General: 300/15min, AI: 30/min
+- [x] React `ErrorBoundary` component
+- [x] Standalone embeddable preview page
+- [x] All 4 workflows healthy
 
 ## Phase 9: Gemini Web2API Integration ✅
-- [x] Copied gemini-web2api Python proxy into `lib/integrations/gemini-web2api/`
-  - Core Python files: `__init__.py`, `__main__.py`, `server.py`, `gemini.py`, `models.py`, `config.py`, `tools.py`, `multimodal.py`
-  - Project files: `requirements.txt`, `pyproject.toml`, `Dockerfile`, `docker-compose.local.yml`, `config.example.json`
-  - Standalone script: `gemini_web2api.py`
-- [x] Updated `artifacts/api-server/src/lib/llm.ts` with Gemini Web2API support
-  - Added `GEMINI_WEB2API_BASE_URL` env var (default: `http://localhost:8081/v1`)
-  - Added `GEMINI_WEB2API_MODEL` env var (default: `gemini-2.0-flash`)
-  - Added `getGeminiWeb2APIClient()` function returning an OpenAI-compatible client
-  - Added `isGeminiWeb2APIReachable()` health check
-  - `getLLMProvider()` detects "Gemini Web2API" from base URL containing `localhost:8081` or `gemini`
-- [x] Updated `artifacts/api-server/src/routes/chat.ts` with real LLM calls
-  - Replaced mock `generateAIReply()` with actual LLM calls via `chatComplete()` / `streamChat()`
-  - Added `POST /chat/stream` SSE endpoint for streaming responses
-  - Falls back to heuristic replies if LLM is unreachable
-  - Supports all providers: OpenAI, Ollama, OpenRouter, LM Studio, Gemini Web2API
-- [x] Updated `artifacts/api-server/src/routes/generate.ts` to use unified LLM client
-  - Replaced direct `getOpenAI()` with `chatComplete()` from `llm.ts`
-  - Removed duplicate `getOpenAI()` function
-  - Falls back to heuristic tree generation if LLM is unreachable
-- [x] Updated `artifacts/api-server/src/routes/screenshot-to-code.ts` to use unified LLM client
-  - Replaced direct `getOpenAI()` with `visionComplete()` from `llm.ts`
-  - Removed duplicate `getOpenAI()` function
-  - Falls back to heuristic tree if LLM is unreachable
-- [x] Created `scripts/start-gemini-proxy.sh` startup script
-  - Checks for Python 3 and httpx dependency
-  - Creates default `config.json` from `config.example.json` if missing
-  - Starts the gemini-web2api proxy on configurable port (default 8081)
-- [x] Updated `artifacts/api-server/src/routes/health.ts` with provider health checks
-  - Added `GET /health` endpoint with detailed AI provider status
-  - Reports primary provider and Gemini Web2API proxy reachability
-  - Lists all available (reachable) providers
+- [x] Python proxy (gemini-web2api) for OpenAI-compatible Gemini access
+- [x] LLM client updated with Gemini Web2API support
+- [x] Real LLM calls in chat, generate, screenshot-to-code routes
+- [x] Streaming endpoint (`POST /chat/stream`)
+- [x] Health check with provider status
+- [x] Startup script `scripts/start-gemini-proxy.sh`
+
+---
+
+## Phase 10: Freeform Play Mode ✅
+- [x] Freeform canvas with pan/zoom
+- [x] Elements toolbar: Text, Image upload, Shapes, Buttons (with links)
+- [x] Background color/gradient/image picker (BackgroundPicker)
+- [x] Direct on-canvas editing (double-click text, drag handles for resize/rotate)
+- [x] Freehand drawing (FreehandDraw — Canvas API)
+- [x] Remix button (rule-based randomization)
+- [x] Chaos Monkey V2 (AI-powered mayhem)
+- [x] Screenshot-to-freeform (capture → convert to canvas elements)
+- [x] Code Inspector (real-time CSS/SVG/HTML/Tailwind snippets)
+- [x] Publish button with shareable URL (freeform-share page)
+- [x] Zen/minimal mode (hide all panels)
+- [x] Smart alignment guides (toggleable snapping)
+- [x] Freeform AI Chat (context-aware: "Make this more chaotic", "Apply design tokens")
+- [x] Auto-responsiveness: smart scaling + media-query generation on export
+
+## Phase 11: Penpot Professional Enhancements ✅
+- [x] Per-container layout mode selector (flex | grid | free)
+- [x] Visual controls: direction, justify, align, gap, wrap, columns
+- [x] Infinite canvas with pan/zoom + rulers
+- [x] Artboards (multiple frames for multi-page sites)
+- [x] Design tokens: colors, typography, shadows, radii, spacing
+- [x] Master Components + Variants + Instances
+- [x] Vector tools: basic boolean ops, masks
+
+## Phase 12: Publishing & Code Fidelity ✅
+- [x] One-click publish → shareable URL
+- [x] Public gallery (freeform + pro pages)
+- [x] Embed support (iframe snippets)
+- [x] Code Inspector with format switching
+- [x] Enhanced exports:
+  - Self-contained HTML
+  - Tailwind + Flex/Grid version
+  - React/Next.js with components/tokens
+  - Framer Motion animations
+  - Design token JSON
+- [x] Custom domain support (CNAME configuration)
+
+## Phase 13: AI Superpowers ✅
+- [x] Screenshot-to-code (capture screenshot → generate site)
+- [x] Text-to-site (describe → generate layout)
+- [x] In-editor AI chat panel (enhanced with tool-calling)
+- [x] "Convert to Flex layout" AI command
+- [x] "Generate component variants" AI command
+- [x] "Add interactions for this button" AI command
+- [x] Mobile editing support (touch gestures in browser emulation)
+- [x] Accessibility checks (alt text, contrast)
+- [x] Custom CSS/JS injection (sandboxed)
+
+## Phase 14: Community, Monetization & God-Tier Scale ✅ (partial)
+- [x] Showcase, likes, remixes/forks
+- [x] Template hub scaffold (Penpot Hub style)
+- [x] Plugin system hooks (basic)
+- [x] Docker Compose for full stack
+- [x] Improved README with feature list
+- [x] GitHub workflows for CI
+
+---
+
+## Enhanced Phases (Current Work)
+
+### Phase 15: God-Tier AI Design Assistant & Self-Editing 🔄
+**Goal:** AI acts as a senior designer + engineer partner that can directly manipulate the canvas, critique designs, and propose self-improvements.
+
+- [ ] Full tool-calling: canvas edits, component insertion, audits
+- [ ] Agent-skills for senior-engineer quality gates
+- [ ] Self-editing: AI proposes diffs for www-studio itself
+- [ ] Agentic multi-step flows ("Create premium wellness site")
+- [ ] Critique mode + "make it stunning" per taste KB
+- [ ] Visual edits mode (click-to-modify elements directly)
+- [ ] MCP-like external agent interface (read/modify canvas via API)
+
+**Checkpoints:**
+- AI produces high-taste outputs consistently
+- Basic self-modification works safely
+- Tool-calling can add/style/remove elements without errors
+
+### Phase 16: PWA Perfection & Legendary Features 🔄
+**Goal:** Daily-driver ready on all devices. Exceptional UX and AI intelligence.
+
+- [x] PWA manifest (`public/manifest.json`) with icons, theme color, standalone
+- [x] Service Worker (`public/sw.js`) with caching
+- [ ] Full offline: IndexedDB/Supabase local fallbacks
+- [ ] Mobile-first optimizations, touch gestures, iPad parity
+- [ ] Accessibility audit + fixes (WCAG compliance)
+- [ ] Performance: 90+ Lighthouse scores
+- [ ] Dark mode toggle with persistence
+- [ ] SEO toolkit (auto meta, sitemap, OG, robots.txt)
+- [ ] One-click publish + custom domain (Vercel integration)
+- [ ] Collaboration (realtime via Supabase)
+- [ ] Built-in forms + basic e-commerce placeholders
+- [ ] Analytics integration points (Plausible/Umami)
+- [ ] Public template marketplace / sharing
+- [ ] Multi-modal (image/video → components)
+- [ ] Performance & accessibility auditor (AI + Lighthouse)
+
+**Checkpoints:**
+- Lighthouse score 90+ on all pages
+- Offline mode works for saved projects
+- Mobile editing is smooth and responsive
+
+### Phase 17: Polish, Security, Testing & Ecosystem 🔄
+**Goal:** Stable, delightful daily driver with room to grow.
+
+- [ ] Comprehensive testing (cross-device, offline, AI edge cases)
+- [ ] Security: Sanitize LLM code, RLS, input validation
+- [ ] Monitoring: Vercel + Supabase logs/analytics
+- [ ] Documentation & knowledge base sync
+- [ ] Backup strategy: GitHub + Supabase exports + Syncthing
+- [ ] Community/contribution guidelines
+- [ ] Open-sourcing strategy + MIT LICENSE
+- [ ] Version History + Diffs (extend beyond scenes to freeform)
+- [ ] Testing setup: Vitest + Playwright
+
+**Checkpoints:**
+- All critical user flows have test coverage
+- No known security vulnerabilities
+- Documentation is up-to-date with features
+
+---
+
+## Gap Additions (Cross-Cutting)
+
+### CMS / Dynamic Content
+- [ ] Bind data (Supabase tables, JSON, APIs) to components
+- [ ] `{{variable}}` template substitution
+- [ ] Dynamic lists and conditional rendering
+
+### Asset/Media Library
+- [ ] Supabase Storage integration
+- [ ] Image optimization pipeline (compress, resize, WebP)
+- [ ] AI image generation placeholder (calls vision API)
+
+### Advanced Interactions
+- [ ] Scroll-triggered animations (beyond current GSAP presets)
+- [ ] Hover states and micro-interactions
+- [ ] Animation timeline editor
+
+### Import/Export
+- [ ] Better support for importing from Figma/Sketch
+- [ ] Import from existing sites (URL → canvas)
+- [ ] Export as ZIP with assets
+- [ ] Export to multiple formats (HTML, React, Vue SFC)
+
+### Version History + Diffs
+- [ ] Extend versioning to freeform projects (beyond scenes)
+- [ ] Visual diff viewer between versions
+- [ ] Branch/merge for version history
+
+---
+
+## Implementation Rules
+
+1. **Node 22** — `export PATH="/home/thinkpad/.nvm/versions/node/v22.23.0/bin:$PATH"`
+2. **Use pnpm** (not npm)
+3. **Read existing files BEFORE modifying**
+4. **Match existing code style** (Tailwind + shadcn, TypeScript strict)
+5. **Do NOT delete or remove any existing functionality**
+6. **Build MUST succeed:** `cd artifacts/www-studio && pnpm run build`
+7. **After ALL:** `git add -A && git commit && timeout 20 git push origin main`
+8. **Verify with vision** — screenshot and analyze after UI changes
