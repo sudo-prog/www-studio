@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy
 
 on:
   push:
@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  deployments: write
 
 jobs:
   build-and-deploy:
@@ -28,7 +29,6 @@ jobs:
       - name: Build www-studio frontend
         run: cd artifacts/www-studio && pnpm run build
         env:
-          GITHUB_PAGES: "true"
           NODE_ENV: "production"
 
       - name: Deploy to gh-pages branch
@@ -37,3 +37,13 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./artifacts/www-studio/dist/public
           publish_branch: gh-pages
+
+      - name: Deploy to Vercel (preview)
+        uses: amondnet/vercel-action@v25
+        if: false  # Enable this after adding VERCEL_TOKEN to GitHub secrets
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod'
+          working-directory: ./
