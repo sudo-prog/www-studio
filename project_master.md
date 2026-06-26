@@ -8,7 +8,7 @@
 
 **Repository:** https://github.com/sudo-prog/www-studio
 
-**Current Version:** v0.4.0
+**Current Version:** v0.5.0-design-intel
 
 **License:** MIT
 
@@ -99,13 +99,15 @@
 - One-click publish to GitHub Pages
 - Share links
 
-### ✅ User Experience
-- PWA (installable, offline)
-- Dark mode
-- Forms builder
-- Version history
-- Code exports (HTML, React, Tailwind)
-- Code inspector
+### ✅ Design Intelligence Module (Phase A in progress)
+- Multi-source design synthesis: extract design systems from URLs + images
+- Produces: design.md, tailwind.config.ts, tokens.css, design-tokens.json
+- Live-editable token editor with real-time preview
+- Screenshot service with ScreenshotOne/Playwright fallback
+- Intent parser for natural language annotation interpretation
+- Browser mode (GitHub Pages) with Gemini API direct fallback
+- 12 dedicated components in `src/components/design-extract/`
+- API endpoints: POST/GET/PATCH /api/design-extract/*
 
 ---
 
@@ -118,8 +120,9 @@
 | Phase 2 | Freeform Editor (canvas, drag/drop, AI chat) | ✅ Complete |
 | Phase 3 | AI Enhancement (tools, critique, RAG) | ✅ Complete |
 | Phase 4 | Polish & Publishing (PWA, dark mode, forms) | ✅ Complete |
-| Phase 5 | Collaboration (real-time, comments, teams) | 🚧 In Progress |
-| Phase 6 | Platform (marketplace, plugins, enterprise) | 📋 Planned |
+| Phase 5 | Design Intelligence Module (design synthesis) | 🚧 Phase A in progress |
+| Phase 6 | Collaboration (real-time, comments, teams) | 📋 Planned |
+| Phase 7 | Platform (marketplace, plugins, enterprise) | 📋 Planned |
 
 See [dev_roadmap.md](./dev_roadmap.md) for detailed roadmap.
 
@@ -214,4 +217,4 @@ pnpm run build
 
 ---
 
-*Last updated: 2025-01 (v0.4.0)*
+*Last updated: 2026-06-26 (v0.5.0-design-intel Phase A)*

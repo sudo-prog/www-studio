@@ -5,3 +5,4 @@ export * from "./chat";
 export * from "./snapshots";
 export * from "./scenes";
 export * from "./components";
+export * from "./design-extractions";

@@ -203,6 +203,42 @@ Export pipeline in `src/lib/code-generators.ts`:
 
 ---
 
+## Design Intelligence Module (feature/design-intelligence)
+
+### What it is
+Multi-source design synthesis engine. Accepts primary URL + optional secondary URLs/images with annotations. Produces: design.md, tailwind.config.ts, tokens.css, design-tokens.json. Live-editable before download.
+
+### Architecture
+- **API route:** `artifacts/api-server/src/routes/design-extract.ts`
+- **DB table:** `design_extractions` (Drizzle schema in `lib/db/src/schema/design-extractions.ts`)
+- **Frontend page:** `artifacts/www-studio/src/pages/DesignExtract.tsx` at `/#/design-extract`
+- **Components:** `artifacts/www-studio/src/components/design-extract/` (12 components)
+- **Screenshot service:** `artifacts/api-server/src/lib/screenshot.ts`
+- **Intent parser:** `artifacts/api-server/src/lib/intentParser.ts`
+- **Prompt system:** `artifacts/api-server/src/lib/designPrompts.ts`
+- **Browser fallback:** `artifacts/www-studio/src/lib/designExtractClient.ts` (Gemini API direct for GitHub Pages)
+
+### Dual-mode operation
+1. **GitHub Pages (static):** Frontend calls Gemini API directly, image uploads only (no URL screenshots)
+2. **Self-hosted:** Frontend calls `/api/design-extract/*`, uses llm.ts
+
+### Key conventions
+- Always String(req.params.id) before Drizzle eq()
+- JSON fields: JSON.parse() on read, JSON.stringify() on write
+- LLM calls: always import from `artifacts/api-server/src/lib/llm.ts`
+- Rate limiter: 30 req/min AI limiter on all design-extract endpoints
+- After schema changes: `pnpm --filter @workspace/db run push`
+
+### Implementation phases
+- **Phase A:** DB schema, screenshot service, intent parser, prompts, API routes
+- **Phase B:** Frontend — page, input, progress, token editor, preview, export
+- **Phase C:** UI polish, mobile, error states, annotation UX, Google Fonts
+- **Phase D:** RAG auto-ingest, design context in AI chat, version history, public gallery
+- **Phase E:** Batch extraction, comparison, Figma import, CSS paste, critique, harmony, linter, Claude export
+- **Phase F:** Testing & QA
+
+---
+
 ## Future Architecture Considerations
 
 1. **CRDT for Collaboration:** Move from last-write-wins to CRDT for real-time collaboration

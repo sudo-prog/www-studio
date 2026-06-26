@@ -1,8 +1,8 @@
 # Development Roadmap
 
-## Current Status: v0.4.0
+## Current Status: v0.5.0-design-intel
 
-WWW Studio is in active development. The core freeform editor, AI assistant, and publishing pipeline are functional. Focus is now on polish, performance, and advanced AI features.
+WWW Studio is in active development. The core freeform editor, AI assistant, and publishing pipeline are functional. Now implementing the Design Intelligence Module — a multi-source design synthesis engine that extracts design systems from URLs and images.
 
 ---
 
@@ -101,7 +101,28 @@ WWW Studio is in active development. The core freeform editor, AI assistant, and
 
 ---
 
-## Phase 5: Collaboration & Advanced Features 🚧
+## Phase 5: Design Intelligence Module 🚧
+
+**Goal:** Multi-source design synthesis engine for extracting and applying design systems from URLs and images.
+
+**Branch:** `feature/design-intelligence`
+
+**Status:** Phase A (API Foundation) in progress via subagent
+
+- [ ] Phase A: Database schema, screenshot service, intent parser, prompts, API routes
+- [ ] Phase B: Frontend — Design Extract page, token editor, export panel
+- [ ] Phase C: UI polish, mobile, error states, annotation UX, Google Fonts
+- [ ] Phase D: RAG integration, design context in AI chat, version history, public gallery
+- [ ] Phase E: Batch extraction, comparison, Figma import, CSS paste, critique, harmony generator, linter, Claude export
+- [ ] Phase F: Testing & QA
+
+**Full spec:** See `DESIGN_INTELLIGENCE_ROADMAP.pdf` in project root
+
+**Checkpoint:** 🚧 Phase A implementation dispatched to VS Code subagent
+
+---
+
+## Phase 6: Collaboration & Advanced Features 📋
 
 **Goal:** Multi-user collaboration and professional features.
 
@@ -120,7 +141,7 @@ WWW Studio is in active development. The core freeform editor, AI assistant, and
 
 ---
 
-## Phase 6: Platform & Ecosystem 📋
+## Phase 7: Platform & Ecosystem 📋
 
 **Goal:** Expand into a full development platform.
 
