@@ -1,14 +1,14 @@
 import { Switch, Route, Router as WouterRouter } from "wouter";
 import { useState, useCallback, useEffect } from "react";
 
-function useHashLocation() {
+function useHashLocation(): [string, (to: string) => void] {
   const [location, setLocation] = useState(window.location.hash.slice(1) || "/");
   useEffect(() => {
     const handler = () => setLocation(window.location.hash.slice(1) || "/");
     window.addEventListener("hashchange", handler);
     return () => window.removeEventListener("hashchange", handler);
   }, []);
-  const navigate = useCallback((to) => { window.location.hash = to; }, []);
+  const navigate = useCallback((to: string) => { window.location.hash = to; }, []);
   return [location, navigate];
 }
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -31,6 +31,7 @@ import ScenePreview from "@/pages/scene-preview";
 import SceneShare from "@/pages/scene-share";
 import FreeformEditor from "@/pages/freeform-editor";
 import FreeformShare from "@/pages/freeform-share";
+import DesignExtractPage from "@/pages/DesignExtractPage";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +51,8 @@ function Router() {
       <Route path="/scenes/:id/share" component={SceneShare} />
       <Route path="/freeform/:projectId?" component={FreeformEditor} />
       <Route path="/freeform/:pageId/share" component={FreeformShare} />
+      <Route path="/design-extract" component={DesignExtractPage} />
+      <Route path="/design-extract/:id" component={DesignExtractPage} />
       <Route component={NotFound} />
     </Switch>
   );

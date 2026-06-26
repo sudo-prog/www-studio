@@ -1,7 +1,7 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@workspace/auth-web";
-import { Code2, WandSparkles, LogOut, User, Blocks, Layers, Globe, Sun, Moon } from "lucide-react";
+import { Code2, WandSparkles, LogOut, User, Blocks, Layers, Globe, Sun, Moon, Pipette } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -43,6 +43,7 @@ export function Navbar() {
           {navLink("/scenes/gallery", "Scene Gallery")}
           {navLink("/gallery", "Projects")}
           {navLink("/ui-library", "Components")}
+          {navLink("/design-extract", "Design Extract")}
           {isAuthenticated && navLink("/projects", "My Projects")}
         </div>
         <div className="flex items-center gap-2">
