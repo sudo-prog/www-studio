@@ -8,11 +8,12 @@
 // GET / — list user's extractions
 
 import { Router, type IRouter, type Request, type Response } from "express";
-import { db, designExtractions, projectsTable, knowledgeChunksTable } from "@workspace/db";
+import { db, designExtractions, projectsTable } from "@workspace/db";
 import { eq, and, desc } from "drizzle-orm";
 import { z } from "zod";
 import { visionComplete, LLM_VISION_MODEL } from "../lib/llm";
 import { screenshotUrl, screenshotUrlWithViewports } from "../lib/screenshot";
+import { ingestExtractionIntoRag } from "../lib/ragIngest";
 import {
   parseAnnotationIntent,
   type ReferenceIntent,
@@ -204,23 +205,7 @@ async function runExtraction(extractionId: string, req: Request): Promise<void> 
 
     // Auto-ingest into RAG knowledge base
     try {
-      const mdContent = designMd;
-      const sections = mdContent.split(/^## /m).filter(Boolean);
-      for (const section of sections) {
-        const title = section.split('\n')[0].trim();
-        await db.insert(knowledgeChunksTable).values({
-          projectId: extraction.projectId,
-          source: 'design_extraction',
-          sourceId: extractionId,
-          section: title,
-          content: section.trim(),
-          metadata: {
-            primaryUrl: extraction.primaryUrl,
-            extractionId,
-          },
-        });
-      }
-      await db.update(designExtractions).set({ savedToKb: true }).where(eq(designExtractions.id, extractionId));
+      await ingestExtractionIntoRag(extractionId);
     } catch (ingestErr) {
       console.error('[design-extract] RAG ingestion failed:', ingestErr);
       // Non-fatal — extraction still succeeded
