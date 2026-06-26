@@ -6,16 +6,10 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: false
+  contents: write
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -31,38 +25,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
-      - name: Build API server
-        run: cd artifacts/api-server && pnpm run build
-
       - name: Build www-studio frontend
         run: cd artifacts/www-studio && pnpm run build
         env:
           GITHUB_PAGES: "true"
-          VITE_API_BASE_URL: /api
 
-      - name: Move build output to public
-        run: |
-          mkdir -p public
-          cp -r artifacts/www-studio/dist/public/* public/
-          # Copy API server dist for deployment alongside frontend
-          mkdir -p public/api
-          cp -r artifacts/api-server/dist public/api/
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: public
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./artifacts/www-studio/dist/public
+          publish_branch: gh-pages
