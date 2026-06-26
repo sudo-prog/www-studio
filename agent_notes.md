@@ -218,6 +218,22 @@ Multi-source design synthesis engine. Accepts primary URL + optional secondary U
 - **Prompt system:** `artifacts/api-server/src/lib/designPrompts.ts`
 - **Browser fallback:** `artifacts/www-studio/src/lib/designExtractClient.ts` (Gemini API direct for GitHub Pages)
 
+### EndlessTools Gap Analysis (Closed)
+- FBX import: Added FBXLoader + auto-convert to GLB
+- Alpha channel export: VP9 WebM + transparent PNG
+- Stackable effects with drag-to-reorder (postProcessingStack array)
+- AI Texture generation (PBR texture sets from prompt)
+- Video texture on CoverTool (iOS-safe VideoTexture)
+- Animated GLBs (useAnimations auto-play)
+- Noun Project in-app search (Edge Function proxy)
+- Custom Materials Collection (save/reuse across sessions)
+- Web Component embed (single-line script tag, not just iframe)
+- Deep freeform integration (z-index, background render mode)
+- Context-aware AI generation (page context → aiSceneMapper)
+- Self-improving template library (AI template pack generator)
+- Scroll choreography (visual timeline component)
+- Open format (JSON import/export, no vendor lock-in)
+
 ### Dual-mode operation
 1. **GitHub Pages (static):** Frontend calls Gemini API directly, image uploads only (no URL screenshots)
 2. **Self-hosted:** Frontend calls `/api/design-extract/*`, uses llm.ts

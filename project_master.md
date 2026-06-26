@@ -8,7 +8,7 @@
 
 **Repository:** https://github.com/sudo-prog/www-studio
 
-**Current Version:** v0.5.0-design-intel
+**Current Version:** v0.6.0-3d-studio
 
 **License:** MIT
 
@@ -99,7 +99,7 @@
 - One-click publish to GitHub Pages
 - Share links
 
-### ✅ Design Intelligence Module (Phase A in progress)
+### ✅ Design Intelligence Module (Phase A-F complete)
 - Multi-source design synthesis: extract design systems from URLs + images
 - Produces: design.md, tailwind.config.ts, tokens.css, design-tokens.json
 - Live-editable token editor with real-time preview
@@ -108,6 +108,12 @@
 - Browser mode (GitHub Pages) with Gemini API direct fallback
 - 12 dedicated components in `src/components/design-extract/`
 - API endpoints: POST/GET/PATCH /api/design-extract/*
+- RAG auto-ingest into knowledge_chunks table
+- Undo history (20 snapshots)
+- Public extraction gallery
+- Batch extraction, comparison, Figma import, CSS paste
+- AI critique, color harmony, token linter, Claude Artifacts export
+- 5 test files (988 lines) + QA checklist
 
 ---
 
@@ -120,9 +126,10 @@
 | Phase 2 | Freeform Editor (canvas, drag/drop, AI chat) | ✅ Complete |
 | Phase 3 | AI Enhancement (tools, critique, RAG) | ✅ Complete |
 | Phase 4 | Polish & Publishing (PWA, dark mode, forms) | ✅ Complete |
-| Phase 5 | Design Intelligence Module (design synthesis) | 🚧 Phase A in progress |
-| Phase 6 | Collaboration (real-time, comments, teams) | 📋 Planned |
-| Phase 7 | Platform (marketplace, plugins, enterprise) | 📋 Planned |
+| Phase 5 | Design Intelligence Module (design synthesis) | ✅ Complete (Phases A-F) |
+| Phase 6 | 3D Studio Module (R3F scene builder) | 🔄 Phase 0 in progress |
+| Phase 7 | Collaboration (real-time, comments, teams) | 📋 Planned |
+| Phase 8 | Platform (marketplace, plugins, enterprise) | 📋 Planned |
 
 See [dev_roadmap.md](./dev_roadmap.md) for detailed roadmap.
 
@@ -217,4 +224,4 @@ pnpm run build
 
 ---
 
-*Last updated: 2026-06-26 (v0.5.0-design-intel Phase A)*
+*Last updated: 2026-06-26 (v0.6.0-3d-studio · Design Intelligence ✅ complete · 3D Studio 🔄 Phase 0)*

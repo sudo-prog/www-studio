@@ -1,8 +1,8 @@
 # Development Roadmap
 
-## Current Status: v0.5.0-design-intel
+## Current Status: v0.6.0-3d-studio
 
-WWW Studio is in active development. The core freeform editor, AI assistant, and publishing pipeline are functional. Now implementing the Design Intelligence Module — a multi-source design synthesis engine that extracts design systems from URLs and images.
+WWW Studio is in active development. The Design Intelligence Module (Phases A-F) is fully complete with 7 test files. Now building the 3D Studio Module — a god-tier 3D section builder with React Three Fiber, templates, AI, timeline, shaders, and export suite.
 
 ---
 
@@ -160,13 +160,90 @@ WWW Studio is in active development. The core freeform editor, AI assistant, and
 
 ---
 
+## 3D Studio Module 🚧
+
+**Goal:** God-tier 3D section builder inspired by endlesstools.io, surpassing it in customizability, AI-power, and deep freeform editor integration.
+
+**Branch:** `feature/3d-studio-core` (branch from `feature/design-intelligence`)
+
+**Phase 0:** Dependency Setup & Type Foundation 🔄 In progress
+- [ ] Install three, @react-three/fiber, @react-three/drei, @react-three/postprocessing, postprocessing, leva, gsap, ccapture.js, three-mesh-bvh
+- [ ] Create `src/types/three.ts` with ThreeDSceneConfig + DEFAULT_SCENE_CONFIG
+- [ ] Register '3d-scene' in sectionRegistry.ts
+
+**Phase 1:** Core Canvas + SceneContent
+- [ ] ThreeDSection.tsx (Canvas wrapper with editing chrome)
+- [ ] SceneContent.tsx (R3F scene with Leva controls, Environment, Grid, OrbitControls, EffectComposer)
+
+**Phase 2:** Four Core Tools
+- [ ] TypeTool.tsx (3D text with extrusion + bevel)
+- [ ] CoverTool.tsx (image/video plane + FX stack)
+- [ ] ObjectTool.tsx (GLB loader + procedural shapes)
+- [ ] ShapeTool.tsx (SVG → 3D extrusion)
+
+**Phase 3:** Template Gallery (15+ Presets)
+- [ ] sceneTemplates.ts (heatwave, liquid-metal, earth-moon, retro-futuristic, etc.)
+- [ ] ThreeDTemplateGallery.tsx (grid with live mini-previews)
+
+**Phase 4:** Asset Library + Supabase Storage
+- [ ] three_assets table + RLS
+- [ ] supabaseAssets.ts utility
+- [ ] ThreeDAssetLibrary.tsx (drag-drop upload + picker)
+
+**Phase 5:** Timeline & Camera Animation
+- [ ] ThreeDTimelineEditor.tsx (keyframe editor)
+- [ ] GSAP integration in SceneContent
+
+**Phase 6:** Shader Playground
+- [ ] shaderPresets.ts (8 named presets)
+- [ ] ThreeDShaderPlayground.tsx (GLSL editor + live preview)
+
+**Phase 7:** Export Suite
+- [ ] threeExports.ts (PNG 8K, GLB, WebM video, embed code)
+- [ ] ThreeDEmbedExporter.tsx
+
+**Phase 8:** AI Scene Mapper
+- [ ] aiSceneMapper.ts (prompt → ThreeDSceneConfig via LLM)
+- [ ] AIScenePromptModal.tsx
+
+**Phase 9:** Properties Panel (12 tabs)
+- [ ] ThreeDPropertiesPanel.tsx (AI & Templates, Text, Materials, Lighting, Post-Processing, Objects, Cover, Camera, Timeline, Shader, Export, Performance)
+
+**Phase 10:** Multi-Object Composer
+- [ ] ThreeDMultiObjectComposer.tsx (add/edit/reorder extraObjects)
+
+**Phase 11:** Performance System
+- [ ] Performance modes (high/balanced/low)
+- [ ] ThreeDPerformanceMonitor.tsx (FPS + draw calls overlay)
+
+**Phase 12:** RAG Ingestion
+- [ ] knowledge_base/three-d-studio.md
+- [ ] pnpm kb:ingest
+
+**Phase 13:** Advanced Additions (Stretch)
+- [ ] USDZ export (AR)
+- [ ] Image-to-3D (AI)
+- [ ] Particle system
+- [ ] Physics simulation
+- [ ] AI texture applicator
+- [ ] Noun Project integration
+- [ ] Version history per section
+- [ ] Collaborative live editing
+- [ ] Interactive web embeds
+
+**Full spec:** See `THREE_D_STUDIO_ROADMAP.md` in project root
+
+**Checkpoint:** 🔄 Phase 0 in progress via VS Code subagent
+
+---
+
 ## Key Metrics & Success Criteria
 
 | Metric | Target | Current |
 |--------|--------|---------|
 | Lighthouse Performance | 90+ | ~85 |
 | Accessibility (WCAG) | AA | Partial |
-| Test Coverage | 80% | ~10% (typecheck only) |
+| Test Coverage | 80% | ~15% (typecheck + new tests) |
 | Bundle Size | <500KB initial | ~650KB |
 | AI Response Time | <3s | ~2-5s |
 | Supported Browsers | Last 2 versions | Chrome, Firefox, Safari, Edge |
