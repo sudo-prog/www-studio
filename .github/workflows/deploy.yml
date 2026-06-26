@@ -35,5 +35,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./artifacts/www-studio/dist
+          publish_dir: ./artifacts/www-studio/dist/public
           publish_branch: gh-pages

@@ -1,0 +1,12 @@
+{
+  "buildCommand": "pnpm --filter @workspace/www-studio run build",
+  "outputDirectory": "artifacts/www-studio/dist/public",
+  "installCommand": "pnpm install --no-frozen-lockfile",
+  "framework": "vite",
+  "env": {
+    "GITHUB_PAGES": "false"
+  },
+  "routes": [
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}
