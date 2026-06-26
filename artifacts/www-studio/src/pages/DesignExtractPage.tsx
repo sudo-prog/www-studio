@@ -3,11 +3,11 @@
 //   input → processing → complete | error
 // Two-column layout: left (input/progress/md) right (token editor/history)
 
-import { useReducer, useEffect, useCallback, useRef } from "react";
+import { useReducer, useEffect, useCallback, useRef, useState } from "react";
 import { useRoute } from "wouter";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Sparkles, AlertCircle } from "lucide-react";
+import { Sparkles, AlertCircle, Upload, RefreshCw, WifiOff, Image } from "lucide-react";
 import DesignExtractInput, { type Reference } from "@/components/design-extract/DesignExtractInput";
 import ExtractionProgress from "@/components/design-extract/ExtractionProgress";
 import DesignMdPreview from "@/components/design-extract/DesignMdPreview";
@@ -27,6 +27,7 @@ interface State {
   tokens: TokenData | null;
   markdown: string | null;
   error: string | null;
+  errorType: "url_fetch" | "llm" | "screenshot" | "general";
   references: Reference[];
   history: ExtractionSummary[];
 }
@@ -34,7 +35,7 @@ interface State {
 type Action =
   | { type: "SUBMIT"; url: string; references: Reference[] }
   | { type: "POLL_RESULT"; tokens: TokenData; markdown: string }
-  | { type: "SET_ERROR"; error: string }
+  | { type: "SET_ERROR"; error: string; errorType?: State["errorType"] }
   | { type: "RESET" }
   | { type: "LOAD_EXISTING"; extractionId: string; url: string; tokens: TokenData; markdown: string }
   | { type: "UPDATE_HISTORY"; history: ExtractionSummary[] };
@@ -46,6 +47,7 @@ const initialState: State = {
   tokens: null,
   markdown: null,
   error: null,
+  errorType: "general",
   references: [],
   history: [],
 };
@@ -59,6 +61,7 @@ function reducer(state: State, action: Action): State {
         url: action.url,
         references: action.references,
         error: null,
+        errorType: "general",
         extractionId: null,
         tokens: null,
         markdown: null,
@@ -71,7 +74,7 @@ function reducer(state: State, action: Action): State {
         markdown: action.markdown,
       };
     case "SET_ERROR":
-      return { ...state, phase: "error", error: action.error };
+      return { ...state, phase: "error", error: action.error, errorType: action.errorType || "general" };
     case "RESET":
       return { ...initialState, history: state.history };
     case "LOAD_EXISTING":
@@ -83,6 +86,7 @@ function reducer(state: State, action: Action): State {
         tokens: action.tokens,
         markdown: action.markdown,
         error: null,
+        errorType: "general",
       };
     case "UPDATE_HISTORY":
       return { ...state, history: action.history };
@@ -123,6 +127,103 @@ function defaultTokens(): TokenData {
   };
 }
 
+// ─── Error Banner Component ──────────────────────────────────────────────────
+
+function ErrorBanner({
+  error,
+  errorType,
+  onRetry,
+  onUploadScreenshot,
+}: {
+  error: string;
+  errorType: State["errorType"];
+  onRetry: () => void;
+  onUploadScreenshot: () => void;
+}) {
+  const configs = {
+    url_fetch: {
+      icon: WifiOff,
+      title: "Could not fetch URL",
+      description: "The design URL couldn't be accessed. You can upload a screenshot instead.",
+      showUpload: true,
+    },
+    llm: {
+      icon: AlertCircle,
+      title: "Analysis failed",
+      description: "The design analysis encountered an error. Try again or upload a screenshot manually.",
+      showUpload: true,
+    },
+    screenshot: {
+      icon: Image,
+      title: "Screenshot service unavailable",
+      description: "The screenshot capture service is temporarily unavailable.",
+      showUpload: true,
+    },
+    general: {
+      icon: AlertCircle,
+      title: "Something went wrong",
+      description: error,
+      showUpload: true,
+    },
+  };
+
+  const config = configs[errorType];
+  const Icon = config.icon;
+
+  return (
+    <div className="animate-[fadeSlideIn_0.3s_ease-out] border border-red-500/30 bg-red-500/5 rounded-lg p-4 space-y-3">
+      <div className="flex items-start gap-3">
+        <Icon className="h-5 w-5 text-red-400 shrink-0 mt-0.5" />
+        <div className="flex-1 min-w-0">
+          <p className="text-sm font-medium text-red-400">{config.title}</p>
+          <p className="text-xs text-red-400/70 mt-1">{config.description}</p>
+        </div>
+      </div>
+      <div className="flex gap-2 pl-8">
+        <Button
+          size="sm"
+          variant="outline"
+          onClick={onRetry}
+          className="h-8 text-xs border-red-500/30 bg-transparent hover:bg-red-500/10 text-red-400"
+        >
+          <RefreshCw className="h-3 w-3 mr-1.5" />
+          Try again
+        </Button>
+        {config.showUpload && (
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={onUploadScreenshot}
+            className="h-8 text-xs border-[#27272a] bg-[#18181b] hover:bg-[#27272a]"
+          >
+            <Upload className="h-3 w-3 mr-1.5" />
+            Upload Screenshot
+          </Button>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// Need Button for ErrorBanner
+import { Button } from "@/components/ui/button";
+
+// ─── Empty History State ────────────────────────────────────────────────────
+
+function EmptyHistoryState() {
+  return (
+    <div className="p-6 text-center animate-[fadeSlideIn_0.3s_ease-out]">
+      <div className="w-12 h-12 rounded-full bg-[#27272a] flex items-center justify-center mx-auto mb-3">
+        <Sparkles className="h-5 w-5 text-muted-foreground/50" />
+      </div>
+      <p className="text-sm text-muted-foreground">No extractions yet</p>
+      <p className="text-xs text-muted-foreground/50 mt-1">
+        Extract your first design →
+      </p>
+    </div>
+  );
+}
+
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function DesignExtractPage() {
@@ -130,6 +231,7 @@ export default function DesignExtractPage() {
   const [match, params] = useRoute("/design-extract/:id?");
   const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const extractionIdRef = useRef<string | null>(null);
+  const [screenshotWarning, setScreenshotWarning] = useState(false);
 
   // Load history on mount
   useEffect(() => {
@@ -164,7 +266,7 @@ export default function DesignExtractPage() {
           markdown: result.markdown,
         });
       } else {
-        dispatch({ type: "SET_ERROR", error: "Extraction not found" });
+        dispatch({ type: "SET_ERROR", error: "Extraction not found", errorType: "general" });
       }
       return;
     }
@@ -184,8 +286,8 @@ export default function DesignExtractPage() {
           markdown: data.markdown,
         });
       })
-      .catch((err) => {
-        dispatch({ type: "SET_ERROR", error: err.message || "Failed to load extraction" });
+      .catch((err: Error) => {
+        dispatch({ type: "SET_ERROR", error: err.message || "Failed to load extraction", errorType: "url_fetch" });
       });
   }, [params?.id]);
 
@@ -221,7 +323,7 @@ export default function DesignExtractPage() {
           });
         } else if (data.status === "error") {
           stopPolling();
-          dispatch({ type: "SET_ERROR", error: data.error || "Extraction failed" });
+          dispatch({ type: "SET_ERROR", error: data.error || "Extraction failed", errorType: "llm" });
         }
       } catch {
         // Will retry on next poll
@@ -259,7 +361,9 @@ export default function DesignExtractPage() {
           }));
           dispatch({ type: "UPDATE_HISTORY", history: summaries });
         } catch (err: any) {
-          dispatch({ type: "SET_ERROR", error: err.message || "Extraction failed" });
+          const errorMsg = err.message || "Extraction failed";
+          const errorType = errorMsg.includes("screenshot") ? "screenshot" as const : "llm" as const;
+          dispatch({ type: "SET_ERROR", error: errorMsg, errorType });
         }
         return;
       }
@@ -277,7 +381,7 @@ export default function DesignExtractPage() {
         // URL sync
         window.location.hash = `/design-extract/${data.id}`;
       } catch (err: any) {
-        dispatch({ type: "SET_ERROR", error: err.message || "Failed to start extraction" });
+        dispatch({ type: "SET_ERROR", error: err.message || "Failed to start extraction", errorType: "url_fetch" });
       }
     },
     []
@@ -313,7 +417,6 @@ export default function DesignExtractPage() {
   // Handle apply to project
   const handleApplyToProject = useCallback(
     async (_projectId: string) => {
-      // Implementation would POST to API to apply tokens to a project
       if (!state.tokens) return;
       try {
         await fetch("/api/design-extract/apply", {
@@ -332,6 +435,16 @@ export default function DesignExtractPage() {
     window.location.hash = `/design-extract/${id}`;
   }, []);
 
+  const handleRetry = useCallback(() => {
+    dispatch({ type: "RESET" });
+  }, []);
+
+  const handleUploadScreenshot = useCallback(() => {
+    // Switch to input phase with focus on file upload
+    dispatch({ type: "RESET" });
+    setScreenshotWarning(true);
+  }, []);
+
   const isProcessing = state.phase === "processing";
   const showEditor = state.phase === "complete" && state.tokens;
 
@@ -341,7 +454,7 @@ export default function DesignExtractPage() {
       <div className="border-b border-[#27272a] px-4 md:px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center gap-3">
           <Sparkles className="h-5 w-5 text-[#3b82f6]" />
-          <h1 className="text-lg font-semibold">Design Extract</h1>
+          <h1 className="text-lg font-semibold font-display">Design Extract</h1>
           <span className="text-xs text-muted-foreground">
             {isStaticMode() ? "Browser Mode" : "Server Mode"}
           </span>
@@ -350,8 +463,9 @@ export default function DesignExtractPage() {
 
       {/* Main content */}
       <div className="max-w-7xl mx-auto p-4 md:p-6">
+        {/* Browser mode info */}
         {isStaticMode() && (
-          <Alert className="mb-4 border-[#3b82f6]/30 bg-[#3b82f6]/5">
+          <Alert className="mb-4 border-[#3b82f6]/30 bg-[#3b82f6]/5 animate-[fadeSlideIn_0.3s_ease-out]">
             <AlertCircle className="h-4 w-4 text-[#3b82f6]" />
             <AlertDescription className="text-xs text-[#3b82f6]">
               Browser mode — using Gemini API directly. Results stored locally.
@@ -359,18 +473,32 @@ export default function DesignExtractPage() {
           </Alert>
         )}
 
-        {state.phase === "error" && (
-          <Alert className="mb-4 border-red-500/30 bg-red-500/5" variant="destructive">
-            <AlertCircle className="h-4 w-4" />
-            <AlertDescription className="text-xs">
-              {state.error}
+        {/* Screenshot service warning */}
+        {screenshotWarning && (
+          <Alert className="mb-4 border-amber-500/30 bg-amber-500/5 animate-[fadeSlideIn_0.3s_ease-out]">
+            <AlertCircle className="h-4 w-4 text-amber-400" />
+            <AlertDescription className="text-xs text-amber-400">
+              Screenshot service unavailable — upload an image directly below.
             </AlertDescription>
           </Alert>
         )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Error state */}
+        {state.phase === "error" && (
+          <div className="mb-4">
+            <ErrorBanner
+              error={state.error || "Unknown error"}
+              errorType={state.errorType}
+              onRetry={handleRetry}
+              onUploadScreenshot={handleUploadScreenshot}
+            />
+          </div>
+        )}
+
+        {/* Two-column layout: stacks on mobile */}
+        <div className="flex flex-col lg:flex-row gap-6">
           {/* Left column */}
-          <div className="space-y-4">
+          <div className="flex-1 min-w-0 space-y-4">
             {state.phase === "input" && (
               <DesignExtractInput onSubmit={handleSubmit} isProcessing={false} />
             )}
@@ -380,9 +508,9 @@ export default function DesignExtractPage() {
             )}
 
             {state.phase === "complete" && (
-              <div className="space-y-4">
+              <div className="space-y-4 animate-[fadeSlideIn_0.4s_ease-out]">
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <span className="font-mono text-xs bg-[#27272a] px-2 py-1 rounded">
+                  <span className="font-mono text-xs bg-[#27272a] px-2 py-1 rounded truncate max-w-full">
                     {state.url}
                   </span>
                 </div>
@@ -401,21 +529,20 @@ export default function DesignExtractPage() {
 
             {state.phase === "error" && (
               <div className="space-y-4">
-                <p className="text-sm text-red-400">{state.error}</p>
                 <button
-                  onClick={() => dispatch({ type: "RESET" })}
-                  className="text-xs text-muted-foreground hover:text-foreground underline"
+                  onClick={handleRetry}
+                  className="text-xs text-muted-foreground hover:text-foreground underline transition-colors"
                 >
-                  Try again
+                  ← Back to input
                 </button>
               </div>
             )}
           </div>
 
           {/* Right column */}
-          <div className="space-y-4">
+          <div className="flex-1 min-w-0 space-y-4">
             {showEditor && (
-              <div className="border border-[#27272a] rounded-lg bg-[#18181b] p-4">
+              <div className="border border-[#27272a] rounded-lg bg-[#18181b] p-4 animate-[fadeSlideIn_0.4s_ease-out]">
                 <h2 className="text-sm font-medium mb-3 text-muted-foreground">
                   Token Editor
                 </h2>
@@ -429,11 +556,15 @@ export default function DesignExtractPage() {
                   Extraction History
                 </h2>
               </div>
-              <ExtractionHistory
-                extractions={state.history}
-                currentId={state.extractionId ?? undefined}
-                onSelect={handleHistorySelect}
-              />
+              {state.history.length === 0 ? (
+                <EmptyHistoryState />
+              ) : (
+                <ExtractionHistory
+                  extractions={state.history}
+                  currentId={state.extractionId ?? undefined}
+                  onSelect={handleHistorySelect}
+                />
+              )}
             </div>
           </div>
         </div>

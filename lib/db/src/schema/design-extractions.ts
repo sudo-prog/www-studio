@@ -17,4 +17,6 @@ export const designExtractions = pgTable('design_extractions', {
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull(),
   updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow().notNull(),
   savedToKb: boolean('saved_to_kb').default(false),
+  tokenHistory: jsonb('token_history').default([]),
+  // Array of { tokens: ExtractedTokens, timestamp: string, label?: string }
 });

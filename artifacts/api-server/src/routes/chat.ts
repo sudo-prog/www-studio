@@ -1,5 +1,5 @@
 import { Router, type IRouter, type Request, type Response } from "express";
-import { db, chatMessagesTable } from "@workspace/db";
+import { db, chatMessagesTable, knowledgeChunksTable } from "@workspace/db";
 import { eq, asc } from "drizzle-orm";
 import {
   chatComplete,
@@ -88,18 +88,35 @@ router.post("/chat", async (req: Request, res: Response) => {
     content: message,
   });
 
+  // Check for design context from knowledge base
+  let designContext = '';
+  if (projectId) {
+    const chunks = await db
+      .select()
+      .from(knowledgeChunksTable)
+      .where(eq(knowledgeChunksTable.projectId, projectId))
+      .limit(10);
+    if (chunks.length > 0) {
+      designContext =
+        "\n\nThis project uses the following design system:\n" +
+        chunks.map((c) => c.content).join("\n\n").slice(0, 500);
+    }
+  }
+
   // Try real LLM first, fall back to heuristic reply
   let reply: string;
   let codeChanges: string | null = null;
   let suggestions: string[];
 
   try {
+    const systemContent = `You are an AI web design assistant inside WWW Studio. Help the user modify their website.
+Respond with helpful, concise advice about web design changes. If the user asks for specific code changes, include them.
+Current provider: ${getLLMProvider()}. Model: ${LLM_MODEL}.${designContext}`;
+
     const messages: ChatMessage[] = [
       {
         role: "system",
-        content: `You are an AI web design assistant inside WWW Studio. Help the user modify their website.
-Respond with helpful, concise advice about web design changes. If the user asks for specific code changes, include them.
-Current provider: ${getLLMProvider()}. Model: ${LLM_MODEL}.`,
+        content: systemContent,
       },
     ];
     if (context) {
@@ -150,6 +167,21 @@ router.post("/chat/stream", async (req: Request, res: Response) => {
     content: message,
   });
 
+  // Check for design context from knowledge base
+  let designContext = "";
+  if (projectId) {
+    const chunks = await db
+      .select()
+      .from(knowledgeChunksTable)
+      .where(eq(knowledgeChunksTable.projectId, projectId))
+      .limit(10);
+    if (chunks.length > 0) {
+      designContext =
+        "\n\nThis project uses the following design system:\n" +
+        chunks.map((c) => c.content).join("\n\n").slice(0, 500);
+    }
+  }
+
   res.setHeader("Content-Type", "text/event-stream");
   res.setHeader("Cache-Control", "no-cache");
   res.setHeader("Connection", "keep-alive");
@@ -159,12 +191,14 @@ router.post("/chat/stream", async (req: Request, res: Response) => {
   let fullReply = "";
 
   try {
+    const systemContent = `You are an AI web design assistant inside WWW Studio. Help the user modify their website.
+Respond with helpful, concise advice about web design changes. If the user asks for specific code changes, include them.
+Current provider: ${getLLMProvider()}. Model: ${LLM_MODEL}.${designContext}`;
+
     const messages: ChatMessage[] = [
       {
         role: "system",
-        content: `You are an AI web design assistant inside WWW Studio. Help the user modify their website.
-Respond with helpful, concise advice about web design changes. If the user asks for specific code changes, include them.
-Current provider: ${getLLMProvider()}. Model: ${LLM_MODEL}.`,
+        content: systemContent,
       },
     ];
     if (context) {

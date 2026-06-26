@@ -20,6 +20,29 @@ interface DesignExtractInputProps {
   isProcessing: boolean;
 }
 
+function parseIntent(annotation: string): string {
+  const lower = annotation.toLowerCase();
+  if (lower.includes("color") || lower.includes("colour") || lower.includes("palette")) {
+    return "\uD83C\uDFA8 Color influence";
+  }
+  if (lower.includes("font") || lower.includes("type") || lower.includes("typograph")) {
+    return "✏️ Typography influence";
+  }
+  if (lower.includes("layout") || lower.includes("spacing") || lower.includes("grid")) {
+    return "\uD83D\uDCD0 Layout influence";
+  }
+  if (lower.includes("vibe") || lower.includes("feel") || lower.includes("mood")) {
+    return "\uD83C\uDF1F Vibe influence";
+  }
+  if (lower.includes("mobile") || lower.includes("responsive")) {
+    return "\uD83D\uDCF1 Mobile reference";
+  }
+  if (lower.includes("mix") || lower.includes("blend") || lower.includes("combine")) {
+    return "\uD83D\uDD00 Mix influence";
+  }
+  return "\uD83D\uDCCC Reference";
+}
+
 export default function DesignExtractInput({ onSubmit, isProcessing }: DesignExtractInputProps) {
   const [url, setUrl] = useState("");
   const [references, setReferences] = useState<Reference[]>([]);
@@ -44,7 +67,16 @@ export default function DesignExtractInput({ onSubmit, isProcessing }: DesignExt
   };
 
   const handleAddReference = (ref: Omit<Reference, "id">) => {
-    setReferences((prev) => [...prev, { ...ref, id: crypto.randomUUID() }]);
+    // Smart default: if this is a 2nd+ URL reference without annotation, pre-fill
+    const annotation =
+      !ref.annotation && references.length > 0 && ref.type === "url"
+        ? "Mix with primary"
+        : ref.annotation;
+
+    setReferences((prev) => [
+      ...prev,
+      { ...ref, annotation: annotation || ref.annotation, id: crypto.randomUUID() },
+    ]);
   };
 
   const handleRemoveReference = (id: string) => {
@@ -127,24 +159,29 @@ export default function DesignExtractInput({ onSubmit, isProcessing }: DesignExt
 
         {showRefs && (
           <div className="px-4 pb-4 space-y-3 border-t border-[#27272a]">
-            {/* Existing references */}
+            {/* Existing references with stagger animation */}
             {references.length > 0 && (
               <div className="space-y-2 pt-3">
-                {references.map((ref) => (
-                  <ReferenceItem
+                {references.map((ref, index) => (
+                  <div
                     key={ref.id}
-                    reference={ref}
-                    onRemove={() => handleRemoveReference(ref.id)}
-                    onUpdateAnnotation={(ann) =>
-                      handleUpdateReference(ref.id, ann)
-                    }
-                  />
+                    className="animate-[fadeSlideIn_0.4s_ease-out_both]"
+                    style={{ animationDelay: `${index * 50}ms` }}
+                  >
+                    <ReferenceItem
+                      reference={ref}
+                      onRemove={() => handleRemoveReference(ref.id)}
+                      onUpdateAnnotation={(ann) =>
+                        handleUpdateReference(ref.id, ann)
+                      }
+                    />
+                  </div>
                 ))}
               </div>
             )}
 
             {/* Add new reference */}
-            <ReferenceUploadPanel onAdd={handleAddReference} />
+            <ReferenceUploadPanel onAdd={handleAddReference} referenceCount={references.length} />
           </div>
         )}
       </div>

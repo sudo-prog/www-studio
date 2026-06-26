@@ -1,5 +1,5 @@
 // ─── DesignTokenEditor.tsx ─────────────────────────────────────────────────────
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ColorSwatchEditor from "./ColorSwatchEditor";
 import TypographyEditor from "./TypographyEditor";
@@ -26,6 +26,23 @@ interface DesignTokenEditorProps {
 
 export default function DesignTokenEditor({ tokens, onChange }: DesignTokenEditorProps) {
   const [activeTab, setActiveTab] = useState<"colors" | "typography" | "spacing" | "preview">("colors");
+  const [underlineStyle, setUnderlineStyle] = useState<{ left: number; width: number }>({ left: 0, width: 0 });
+  const tabsListRef = useRef<HTMLDivElement>(null);
+  const tabRefs = useRef<Map<string, HTMLButtonElement>>(new Map());
+
+  // Animated underline indicator
+  useEffect(() => {
+    const activeEl = tabRefs.current.get(activeTab);
+    const containerEl = tabsListRef.current;
+    if (activeEl && containerEl) {
+      const containerRect = containerEl.getBoundingClientRect();
+      const activeRect = activeEl.getBoundingClientRect();
+      setUnderlineStyle({
+        left: activeRect.left - containerRect.left,
+        width: activeRect.width,
+      });
+    }
+  }, [activeTab]);
 
   const handleColorChange = (name: string, hex: string) => {
     onChange({
@@ -87,35 +104,51 @@ export default function DesignTokenEditor({ tokens, onChange }: DesignTokenEdito
 
   return (
     <div className="space-y-3">
-      <Tabs value={activeTab} onValue={(v) => setActiveTab(typeof v === "string" ? (v as typeof activeTab) : "colors")}>
-        <TabsList className="grid grid-cols-4 bg-[#0a0a0b] border border-[#27272a]">
-          {tabItems.map(({ key, label }) => (
-            <TabsTrigger
-              key={key}
-              value={key}
-              className="data-[state=active]:bg-[#18181b] text-xs px-2"
-            >
-              {label}
-            </TabsTrigger>
-          ))}
-        </TabsList>
+      <Tabs value={activeTab} onValueChange={(v) => setActiveTab(typeof v === "string" ? (v as typeof activeTab) : "colors")}>
+        <div className="relative overflow-x-auto scrollbar-hide" ref={tabsListRef}>
+          <TabsList className="inline-flex w-auto min-w-full bg-[#0a0a0b] border border-[#27272a] relative">
+            {tabItems.map(({ key, label }) => (
+              <TabsTrigger
+                key={key}
+                value={key}
+                ref={(el) => { if (el) tabRefs.current.set(key, el); }}
+                className="data-[state=active]:bg-[#18181b] text-xs px-3 sm:px-4 relative z-10"
+              >
+                {label}
+              </TabsTrigger>
+            ))}
+            {/* Animated underline */}
+            <div
+              className="absolute bottom-0 h-0.5 bg-[#3b82f6] transition-all duration-300 ease-out rounded-full"
+              style={{
+                left: `${underlineStyle.left}px`,
+                width: `${underlineStyle.width}px`,
+              }}
+            />
+          </TabsList>
+        </div>
 
         {/* Colors Tab */}
-        <TabsContent value="colors" className="mt-4">
-          <div className="grid grid-cols-4 gap-2">
-            {Object.entries(tokens.colors).map(([name, hex]) => (
-              <ColorSwatchEditor
+        <TabsContent value="colors" className="mt-4 animate-[fadeSlideIn_0.3s_ease-out]">
+          <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+            {Object.entries(tokens.colors).map(([name, hex], index) => (
+              <div
                 key={name}
-                color={hex}
-                label={name}
-                onChange={(newHex) => handleColorChange(name, newHex)}
-              />
+                className="animate-[scaleIn_0.2s_ease-out_both]"
+                style={{ animationDelay: `${index * 50}ms` }}
+              >
+                <ColorSwatchEditor
+                  color={hex}
+                  label={name}
+                  onChange={(newHex) => handleColorChange(name, newHex)}
+                />
+              </div>
             ))}
           </div>
         </TabsContent>
 
         {/* Typography Tab */}
-        <TabsContent value="typography" className="mt-4 space-y-3">
+        <TabsContent value="typography" className="mt-4 space-y-3 animate-[fadeSlideIn_0.3s_ease-out]">
           <TypographyEditor
             role="Display"
             fontFamily={tokens.typography.display.family}
@@ -146,7 +179,7 @@ export default function DesignTokenEditor({ tokens, onChange }: DesignTokenEdito
         </TabsContent>
 
         {/* Spacing & Shape Tab */}
-        <TabsContent value="spacing" className="mt-4">
+        <TabsContent value="spacing" className="mt-4 animate-[fadeSlideIn_0.3s_ease-out]">
           <SpacingEditor
             spacing={Object.entries(tokens.spacing).map(([name, value]) => ({
               name,
@@ -167,7 +200,7 @@ export default function DesignTokenEditor({ tokens, onChange }: DesignTokenEdito
         </TabsContent>
 
         {/* Preview Tab */}
-        <TabsContent value="preview" className="mt-4">
+        <TabsContent value="preview" className="mt-4 animate-[fadeSlideIn_0.3s_ease-out]">
           <DesignMdPreview tokens={tokens} />
         </TabsContent>
       </Tabs>

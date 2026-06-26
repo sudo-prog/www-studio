@@ -102,7 +102,7 @@ export default function ColorSwatchEditor({
           </span>
         </button>
       </PopoverTrigger>
-      <PopoverContent className="w-72 bg-[#18181b] border-[#27272a]">
+      <PopoverContent className="w-72 bg-[#18181b] border-[#27272a] swatch-popover-content animate-[scaleIn_0.15s_ease-out]">
         <div className="space-y-3">
           <div className="flex items-center justify-between">
             <p className="text-sm font-medium text-foreground">{label}</p>

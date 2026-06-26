@@ -1,10 +1,10 @@
 // ─── ReferenceUploadPanel.tsx ──────────────────────────────────────────────
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useMemo } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Upload, X, Plus } from "lucide-react";
+import { Upload, X, Plus, Smartphone } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Reference } from "./DesignExtractInput";
 
@@ -15,15 +15,32 @@ const HELPER_CHIPS = [
   "Mobile layout",
 ];
 
+const MOST_RELEVANT_SECTIONS = [
+  "color palette",
+  "typography",
+  "layout & spacing",
+  "animations",
+  "brand voice",
+];
+
 const ACCEPTED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
 const MAX_SIZE = 5 * 1024 * 1024; // 5MB
 const MAX_REFS = 5;
 
-interface ReferenceUploadPanelProps {
-  onAdd: (ref: Omit<Reference, "id">) => void;
+function isIOSSafari(): boolean {
+  if (typeof navigator === "undefined") return false;
+  const ua = navigator.userAgent;
+  const isIOS = /iPad|iPhone|iPod/.test(ua);
+  const isSafari = /^((?!chrome|android).)*safari/i.test(ua);
+  return isIOS && isSafari;
 }
 
-export default function ReferenceUploadPanel({ onAdd }: ReferenceUploadPanelProps) {
+interface ReferenceUploadPanelProps {
+  onAdd: (ref: Omit<Reference, "id">) => void;
+  existingCount?: number;
+}
+
+export default function ReferenceUploadPanel({ onAdd, existingCount = 0 }: ReferenceUploadPanelProps) {
   const [activeTab, setActiveTab] = useState<"image" | "url">("image");
   const [dragOver, setDragOver] = useState(false);
   const [preview, setPreview] = useState<string | null>(null);
@@ -31,6 +48,18 @@ export default function ReferenceUploadPanel({ onAdd }: ReferenceUploadPanelProp
   const [urlValue, setUrlValue] = useState("");
   const [error, setError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const showIosHint = useMemo(() => isIOSSafari(), []);
+
+  // Smart default annotation suggestions
+  const smartSuggestion = useMemo(() => {
+    if (existingCount === 1) return "Mix with primary";
+    if (existingCount >= 2) {
+      const section = MOST_RELEVANT_SECTIONS[existingCount % MOST_RELEVANT_SECTIONS.length];
+      return `Use for ${section}`;
+    }
+    return null;
+  }, [existingCount]);
 
   const handleFiles = useCallback(
     (files: FileList) => {
@@ -98,7 +127,7 @@ export default function ReferenceUploadPanel({ onAdd }: ReferenceUploadPanelProp
     <div className="space-y-3">
       <Tabs
         value={activeTab}
-        onValue={(v) => {
+        onValueChange={(v: string) => {
           handleReset();
           setActiveTab(v as "image" | "url");
         }}
@@ -142,6 +171,7 @@ export default function ReferenceUploadPanel({ onAdd }: ReferenceUploadPanelProp
                 ref={fileInputRef}
                 type="file"
                 accept={ACCEPTED_TYPES.join(",")}
+                capture="environment"
                 className="hidden"
                 onChange={(e) => e.target.files && handleFiles(e.target.files)}
               />
@@ -159,6 +189,13 @@ export default function ReferenceUploadPanel({ onAdd }: ReferenceUploadPanelProp
               >
                 <X className="h-3.5 w-3.5 text-white" />
               </button>
+            </div>
+          )}
+          {/* iOS camera hint */}
+          {showIosHint && activeTab === "image" && (
+            <div className="flex items-center gap-2 text-[11px] text-muted-foreground/60">
+              <Smartphone className="h-3 w-3" />
+              <span>Long press to save images on iOS Safari</span>
             </div>
           )}
         </TabsContent>
@@ -197,12 +234,22 @@ export default function ReferenceUploadPanel({ onAdd }: ReferenceUploadPanelProp
               onClick={() =>
                 setAnnotation((prev) => (prev ? `${prev}, ${chip}` : chip))
               }
-              className="text-[11px] px-2 py-1 rounded-full bg-[#27272a] text-muted-foreground hover:text-foreground hover:bg-[#3b82f6]/20 transition-colors"
+              className="text-[11px] min-h-[44px] px-3 py-1 rounded-full bg-[#27272a] text-muted-foreground hover:text-foreground hover:bg-[#3b82f6]/20 transition-colors flex items-center"
             >
               + {chip}
             </button>
           ))}
         </div>
+        {/* Smart suggestion */}
+        {smartSuggestion && !annotation && (
+          <button
+            type="button"
+            onClick={() => setAnnotation(smartSuggestion)}
+            className="text-[11px] text-[#3b82f6] hover:text-[#3b82f6]/80 transition-colors"
+          >
+            💡 Suggested: {smartSuggestion}
+          </button>
+        )}
       </div>
 
       {/* Add button */}

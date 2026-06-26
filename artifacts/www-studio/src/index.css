@@ -194,3 +194,116 @@
   0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: var(--op, 0.7); transform: translateY(0); }
 }
+
+/* ── Design DNA Progress Bars ──────────────────────────────────────────── */
+
+@keyframes dna-bar-fill {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
+@keyframes dna-bar-pulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+@keyframes dna-label-fade {
+  0% { opacity: 0; transform: translateX(-8px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+.dna-bar-container {
+  transform-origin: left center;
+}
+
+.dna-bar-fill {
+  animation: dna-bar-fill 0.8s ease-out forwards;
+  transform-origin: left center;
+}
+
+.dna-bar-pulse {
+  animation: dna-bar-pulse 2s ease-in-out infinite;
+}
+
+.dna-label-animate {
+  animation: dna-label-fade 0.4s ease-out forwards;
+}
+
+/* ── Stagger slide-in for reference items ─────────────────────────────── */
+
+@keyframes stagger-slide-in {
+  0% { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.ref-item-stagger {
+  animation: stagger-slide-in 0.35s ease-out forwards;
+  opacity: 0;
+}
+
+/* ── Animated tab underline ────────────────────────────────────────────── */
+
+@keyframes tab-underline-enter {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
+.tab-underline-animated {
+  animation: tab-underline-enter 0.25s ease-out forwards;
+  transform-origin: left center;
+}
+
+/* ── Color swatch popover scale transition ─────────────────────────────── */
+
+@keyframes swatch-popover-enter {
+  0% { transform: scale(0.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.swatch-popover-content {
+  animation: swatch-popover-enter 0.15s ease-out forwards;
+}
+
+/* ── Intent pill appear ────────────────────────────────────────────────── */
+
+@keyframes pill-appear {
+  0% { opacity: 0; transform: scale(0.9) translateY(4px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.intent-pill-animate {
+  animation: pill-appear 0.2s ease-out forwards;
+}
+
+/* ── Font modal items stagger ──────────────────────────────────────────── */
+
+@keyframes font-item-enter {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.font-item-stagger {
+  animation: font-item-enter 0.25s ease-out forwards;
+  opacity: 0;
+}
+
+/* ── Phase C: Design Intelligence Module Animations ─────────────────────── */
+
+@keyframes fadeSlideIn {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  0% { opacity: 0; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Hide scrollbar for horizontal scroll tabs */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

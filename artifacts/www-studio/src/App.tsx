@@ -32,6 +32,7 @@ import SceneShare from "@/pages/scene-share";
 import FreeformEditor from "@/pages/freeform-editor";
 import FreeformShare from "@/pages/freeform-share";
 import DesignExtractPage from "@/pages/DesignExtractPage";
+import DesignExtractGallery from "@/pages/DesignExtractGallery";
 
 const queryClient = new QueryClient();
 
@@ -52,6 +53,7 @@ function Router() {
       <Route path="/freeform/:projectId?" component={FreeformEditor} />
       <Route path="/freeform/:pageId/share" component={FreeformShare} />
       <Route path="/design-extract" component={DesignExtractPage} />
+      <Route path="/design-extract/gallery" component={DesignExtractGallery} />
       <Route path="/design-extract/:id" component={DesignExtractPage} />
       <Route component={NotFound} />
     </Switch>

@@ -1,4 +1,5 @@
 // ─── ReferenceItem.tsx ───────────────────────────────────────────────────────
+import { useState } from "react";
 import { Pencil, Trash2, Link, Image } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -6,11 +7,12 @@ import type { Reference } from "./DesignExtractInput";
 
 interface ReferenceItemProps {
   reference: Reference;
+  index: number;
   onRemove: () => void;
   onUpdateAnnotation: (annotation: string) => void;
 }
 
-function parseIntent(annotation: string): string {
+export function parseIntent(annotation: string): string {
   const lower = annotation.toLowerCase();
   if (lower.includes("color") || lower.includes("colour") || lower.includes("palette")) {
     return "\uD83C\uDFA8 Color influence";
@@ -32,13 +34,31 @@ function parseIntent(annotation: string): string {
 
 export default function ReferenceItem({
   reference,
+  index,
   onRemove,
   onUpdateAnnotation,
 }: ReferenceItemProps) {
+  const [isEditing, setIsEditing] = useState(false);
+  const [showPill, setShowPill] = useState(false);
   const intent = parseIntent(reference.annotation);
 
+  const handleBlur = () => {
+    setIsEditing(false);
+    if (reference.annotation.trim()) {
+      setShowPill(true);
+    }
+  };
+
+  const handleFocus = () => {
+    setIsEditing(true);
+    setShowPill(false);
+  };
+
   return (
-    <div className="flex items-center gap-3 p-2 rounded-md bg-[#111113] border border-[#27272a] group">
+    <div
+      className="flex items-center gap-3 p-2 rounded-md bg-[#111113] border border-[#27272a] group ref-item-stagger"
+      style={{ animationDelay: `${index * 50}ms` }}
+    >
       {/* Thumbnail / Icon */}
       <div className="shrink-0 w-9 h-9 rounded bg-[#0a0a0b] border border-[#27272a] flex items-center justify-center overflow-hidden">
         {reference.thumbnail ? (
@@ -80,9 +100,15 @@ export default function ReferenceItem({
               : reference.annotation}
           </p>
         )}
+        {/* Intent pill shown after blur */}
+        {showPill && reference.annotation && (
+          <span className="intent-pill-animate inline-flex text-[11px] px-2 py-0.5 rounded-full bg-[#3b82f6]/10 text-[#3b82f6] mt-1">
+            {intent}
+          </span>
+        )}
       </div>
 
-      {/* Intent pill */}
+      {/* Intent pill (always visible on larger screens) */}
       <span className="hidden sm:inline-flex text-[11px] px-2 py-0.5 rounded-full bg-[#27272a] text-muted-foreground">
         {intent}
       </span>
@@ -97,6 +123,7 @@ export default function ReferenceItem({
             const newAnn = prompt("Edit annotation:", reference.annotation);
             if (newAnn !== null && newAnn !== reference.annotation) {
               onUpdateAnnotation(newAnn);
+              setShowPill(true);
             }
           }}
         >

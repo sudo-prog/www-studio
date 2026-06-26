@@ -12,6 +12,9 @@ import {
   Copy,
   CheckCheck,
   Loader2,
+  FileCode,
+  FileText,
+  Palette,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -21,6 +24,13 @@ interface ExportPanelProps {
   onApplyToProject: (projectId: string) => void;
   projects?: { id: string; name: string }[];
 }
+
+const DOWNLOAD_FORMATS = [
+  { key: "md", label: "design.md", icon: FileText },
+  { key: "tailwind", label: "tailwind.config.ts", icon: FileCode },
+  { key: "css", label: "tokens.css", icon: Palette },
+  { key: "zip", label: "All files (.zip)", icon: Archive },
+] as const;
 
 export default function ExportPanel({
   extractionId,
@@ -43,7 +53,7 @@ export default function ExportPanel({
     }
   };
 
-  const handleDraw = (format: string) => {
+  const handleDownload = (format: string) => {
     if (!extractionId) return;
     window.open(`/#/design-extract/${extractionId}/download/${format}`, "_blank");
   };
@@ -59,48 +69,21 @@ export default function ExportPanel({
 
   return (
     <div className="sticky bottom-0 border-t border-[#27272a] bg-[#18181b]/95 backdrop-blur supports-[backdrop-filter]:bg-[#18181b]/60 p-4 space-y-3 -mx-4 md:-mx-6">
-      {/* Download buttons */}
+      {/* Download buttons - responsive grid */}
       <div className="grid grid-cols-2 gap-2">
-        <Button
-          variant="outline"
-          size="sm"
-          className="h-8 text-xs border-[#27272a] bg-[#0a0a0b] hover:bg-[#27272a]"
-          onClick={() => handleDownload("md")}
-          disabled={!extractionId}
-        >
-          <Download className="h-3 w-3 mr-1" />
-          design.md
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          className="h-8 text-xs border-[#27272a] bg-[#0a0a0b] hover:bg-[#27272a]"
-          onClick={() => handleDownload("tailwind")}
-          disabled={!extractionId}
-        >
-          <Download className="h-3 w-3 mr-1" />
-          tailwind.config.ts
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          className="h-8 text-xs border-[#27272a] bg-[#0a0a0b] hover:bg-[#27272a]"
-          onClick={() => handleDownload("css")}
-          disabled={!extractionId}
-        >
-          <Download className="h-3 w-3 mr-1" />
-          tokens.css
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          className="h-8 text-xs border-[#27272a] bg-[#0a0a0b] hover:bg-[#27272a]"
-          onClick={() => handleDownload("zip")}
-          disabled={!extractionId}
-        >
-          <Archive className="h-3 w-3 mr-1" />
-          All files (.zip)
-        </Button>
+        {DOWNLOAD_FORMATS.map(({ key, label, icon: Icon }) => (
+          <Button
+            key={key}
+            variant="outline"
+            size="sm"
+            className="h-auto text-xs border-[#27272a] bg-[#0a0a0b] hover:bg-[#27272a] py-2.5 min-h-[44px]"
+            onClick={() => handleDownload(key)}
+            disabled={!extractionId}
+          >
+            <Icon className="h-3 w-3 mr-1.5 shrink-0" />
+            <span className="truncate">{label}</span>
+          </Button>
+        ))}
       </div>
 
       {/* Apply to project */}
@@ -120,7 +103,7 @@ export default function ExportPanel({
         <Button
           size="sm"
           variant="outline"
-          className="h-8 text-xs border-[#27272a] bg-[#0a0a0b] hover:bg-[#27272a]"
+          className="h-8 text-xs border-[#27272a] bg-[#0a0a0b] hover:bg-[#27272a] min-h-[44px]"
           disabled={!selectedProject || !extractionId}
           onClick={() => selectedProject && onApplyToProject(selectedProject)}
         >
@@ -133,7 +116,7 @@ export default function ExportPanel({
       <div className="flex gap-2">
         <Button
           size="sm"
-          className="flex-1 bg-[#3b82f6] hover:bg-[#3b82f6]/90 text-white h-8 text-xs"
+          className="flex-1 bg-[#3b82f6] hover:bg-[#3b82f6]/90 text-white h-8 text-xs min-h-[44px]"
           onClick={handleSave}
           disabled={!extractionId || saving}
         >
@@ -147,7 +130,7 @@ export default function ExportPanel({
         <Button
           size="sm"
           variant="outline"
-          className="h-8 text-xs border-[#27272a] bg-[#0a0a0b] hover:bg-[#27272a]"
+          className="h-8 text-xs border-[#27272a] bg-[#0a0a0b] hover:bg-[#27272a] min-h-[44px]"
           onClick={handleCopyLink}
           disabled={!extractionId}
         >

@@ -8,7 +8,7 @@
 // GET / — list user's extractions
 
 import { Router, type IRouter, type Request, type Response } from "express";
-import { db, designExtractions, projectsTable } from "@workspace/db";
+import { db, designExtractions, projectsTable, knowledgeChunksTable } from "@workspace/db";
 import { eq, and, desc } from "drizzle-orm";
 import { z } from "zod";
 import { visionComplete, LLM_VISION_MODEL } from "../lib/llm";
@@ -202,6 +202,30 @@ async function runExtraction(extractionId: string, req: Request): Promise<void> 
       })
       .where(eq(designExtractions.id, extractionId));
 
+    // Auto-ingest into RAG knowledge base
+    try {
+      const mdContent = designMd;
+      const sections = mdContent.split(/^## /m).filter(Boolean);
+      for (const section of sections) {
+        const title = section.split('\n')[0].trim();
+        await db.insert(knowledgeChunksTable).values({
+          projectId: extraction.projectId,
+          source: 'design_extraction',
+          sourceId: extractionId,
+          section: title,
+          content: section.trim(),
+          metadata: {
+            primaryUrl: extraction.primaryUrl,
+            extractionId,
+          },
+        });
+      }
+      await db.update(designExtractions).set({ savedToKb: true }).where(eq(designExtractions.id, extractionId));
+    } catch (ingestErr) {
+      console.error('[design-extract] RAG ingestion failed:', ingestErr);
+      // Non-fatal — extraction still succeeded
+    }
+
     job.status = "completed";
     job.tokens = tokens;
   } catch (err) {
@@ -354,6 +378,16 @@ router.patch("/:id/tokens", async (req: Request, res: Response) => {
 
   const tokens = body.data.tokens as Record<string, unknown>;
 
+  // Save current tokens to history before updating
+  let existingHistory: Array<{ tokens: Record<string, unknown>; timestamp: string }> = [];
+  try {
+    existingHistory = JSON.parse((extraction.tokenHistory as unknown as string) ?? "[]") || [];
+  } catch {
+    existingHistory = [];
+  }
+  existingHistory.push({ tokens: (extraction.extractedTokens as Record<string, unknown>) ?? {}, timestamp: new Date().toISOString() });
+  if (existingHistory.length > 20) existingHistory = existingHistory.slice(-20); // Cap at 20
+
   // Regenerate outputs from updated tokens
   const designMd = buildDesignMdFromTokens(tokens, extraction.primaryUrl || undefined);
   const tailwindConfig = buildTailwindConfigFromTokens(tokens);
@@ -368,6 +402,7 @@ router.patch("/:id/tokens", async (req: Request, res: Response) => {
       outputTailwindConfig: tailwindConfig,
       outputTokensCss: tokensCss,
       outputDesignTokensJson: designTokensJson,
+      tokenHistory: existingHistory,
       updatedAt: new Date(),
     })
     .where(eq(designExtractions.id, id));
@@ -461,6 +496,7 @@ router.post("/:id/apply-to-project", async (req: Request, res: Response) => {
     .update(projectsTable)
     .set({
       themeTokens: newTokens,
+      activeDesignExtractionId: id,
       updatedAt: new Date(),
     })
     .where(eq(projectsTable.id, projectId));
@@ -537,6 +573,107 @@ router.get("/:id/download/:format", async (req: Request, res: Response) => {
     `attachment; filename="${filename}"`,
   );
   res.send(content);
+});
+
+// POST /:id/undo — pop last token snapshot from history and restore
+router.post("/:id/undo", async (req: Request, res: Response) => {
+  const id = String(req.params.id);
+  const userId = getOrGuestUserId(req);
+
+  const [extraction] = await db
+    .select()
+    .from(designExtractions)
+    .where(and(eq(designExtractions.id, id), eq(designExtractions.userId, userId)));
+
+  if (!extraction) {
+    res.status(404).json({ error: "Extraction not found" });
+    return;
+  }
+
+  if (extraction.status !== "completed") {
+    res.status(400).json({ error: "Extraction is not completed yet" });
+    return;
+  }
+
+  // Parse history array
+  let history: Array<{ tokens: Record<string, unknown>; timestamp: string }> = [];
+  try {
+    history = JSON.parse((extraction.tokenHistory as unknown as string) ?? "[]") || [];
+  } catch {
+    history = [];
+  }
+
+  if (history.length === 0) {
+    res.status(400).json({ error: "No history available to undo" });
+    return;
+  }
+
+  // Pop last snapshot
+  const lastSnapshot = history.pop()!;
+  const restoredTokens = lastSnapshot.tokens;
+
+  // Regenerate outputs from restored tokens
+  const designMd = buildDesignMdFromTokens(restoredTokens, extraction.primaryUrl || undefined);
+  const tailwindConfig = buildTailwindConfigFromTokens(restoredTokens);
+  const tokensCss = buildTokensCssFromTokens(restoredTokens);
+  const designTokensJson = buildDesignTokensJsonFromTokens(restoredTokens);
+
+  await db
+    .update(designExtractions)
+    .set({
+      extractedTokens: restoredTokens,
+      outputDesignMd: designMd,
+      outputTailwindConfig: tailwindConfig,
+      outputTokensCss: tokensCss,
+      outputDesignTokensJson: designTokensJson,
+      tokenHistory: history,
+      updatedAt: new Date(),
+    })
+    .where(eq(designExtractions.id, id));
+
+  res.json({
+    id,
+    tokens: restoredTokens,
+    outputDesignMd: designMd,
+    outputTailwindConfig: tailwindConfig,
+    outputTokensCss: tokensCss,
+    outputDesignTokensJson: designTokensJson,
+    historyLength: history.length,
+  });
+});
+
+// GET /public/gallery — public gallery of saved extractions
+router.get("/public/gallery", async (req: Request, res: Response) => {
+  const limit = Math.min(parseInt(String(req.query.limit ?? "20"), 10) || 20, 50);
+  const offset = Math.max(parseInt(String(req.query.offset ?? "0"), 10) || 0, 0);
+
+  const rows = await db
+    .select({
+      id: designExtractions.id,
+      primaryUrl: designExtractions.primaryUrl,
+      extractedTokens: designExtractions.extractedTokens,
+      createdAt: designExtractions.createdAt,
+    })
+    .from(designExtractions)
+    .where(eq(designExtractions.savedToKb, true))
+    .limit(limit)
+    .offset(offset);
+
+  const result = rows.map((row) => ({
+    id: row.id,
+    primaryUrl: row.primaryUrl,
+    colors: (() => {
+      try {
+        const t = JSON.parse(row.extractedTokens as unknown as string);
+        return (t?.colors as Record<string, string>) ?? {};
+      } catch {
+        return {};
+      }
+    })(),
+    createdAt: row.createdAt,
+  }));
+
+  res.json(result);
 });
 
 export default router;

@@ -1,4 +1,4 @@
-import { pgTable, text, varchar, integer, boolean, timestamp, jsonb } from "drizzle-orm/pg-core";
+import { pgTable, text, varchar, integer, boolean, timestamp, jsonb, uuid } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod/v4";
 
@@ -21,10 +21,13 @@ export type Component = typeof componentsTable.$inferSelect;
 // ── Knowledge Chunks Table ────────────────────────────────────────────────────
 export const knowledgeChunksTable = pgTable("knowledge_chunks", {
   id: varchar("id", { length: 36 }).primaryKey().$defaultFn(() => crypto.randomUUID()),
+  projectId: uuid("project_id"),
+  source: text("source").notNull(), // "design_extraction", "document", etc.
+  sourceId: text("source_id"),       // extraction UUID
+  section: text("section"),          // "Colors", "Typography", etc.
   content: text("content").notNull(),
   embedding: text("embedding"), // JSON-encoded vector (for pgvector this would be vector type)
   metadata: jsonb("metadata").$defaultFn(() => ({})),
-  source: varchar("source", { length: 255 }),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
