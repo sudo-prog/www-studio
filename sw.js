@@ -1,4 +1,4 @@
-const CACHE_NAME = "www-studio-v1";
+const CACHE_NAME = "www-studio-v2";
 const STATIC_ASSETS = [
   "/",
   "/manifest.json",

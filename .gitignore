@@ -39,4 +39,9 @@ testem.log
 
 # System Files
 .DS_Store
-Thumbs.db.vscode
+Thumbs.db
+
+# Environment files — NEVER commit
+.env
+.env.local
+.env.*.local

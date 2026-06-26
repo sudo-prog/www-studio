@@ -29,10 +29,11 @@ jobs:
         run: cd artifacts/www-studio && pnpm run build
         env:
           GITHUB_PAGES: "true"
+          NODE_ENV: "production"
 
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./artifacts/www-studio/dist/public
+          publish_dir: ./artifacts/www-studio/dist
           publish_branch: gh-pages
