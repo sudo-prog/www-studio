@@ -1,0 +1,220 @@
+// ─── ReferenceUploadPanel.tsx ──────────────────────────────────────────────
+import { useState, useRef, useCallback } from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Upload, X, Plus } from "lucide-react";
+import { cn } from "@/lib/utils";
+import type { Reference } from "./DesignExtractInput";
+
+const HELPER_CHIPS = [
+  "Love this font",
+  "Use this colour",
+  "This vibe",
+  "Mobile layout",
+];
+
+const ACCEPTED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
+const MAX_SIZE = 5 * 1024 * 1024; // 5MB
+const MAX_REFS = 5;
+
+interface ReferenceUploadPanelProps {
+  onAdd: (ref: Omit<Reference, "id">) => void;
+}
+
+export default function ReferenceUploadPanel({ onAdd }: ReferenceUploadPanelProps) {
+  const [activeTab, setActiveTab] = useState<"image" | "url">("image");
+  const [dragOver, setDragOver] = useState(false);
+  const [preview, setPreview] = useState<string | null>(null);
+  const [annotation, setAnnotation] = useState("");
+  const [urlValue, setUrlValue] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFiles = useCallback(
+    (files: FileList) => {
+      setError(null);
+      const file = files[0];
+      if (!file) return;
+
+      if (!ACCEPTED_TYPES.includes(file.type)) {
+        setError("Only JPG, PNG, WEBP, GIF images are accepted.");
+        return;
+      }
+      if (file.size > MAX_SIZE) {
+        setError("Image must be under 5MB.");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        setPreview(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    },
+    []
+  );
+
+  const handleDrop = useCallback(
+    (e: React.DragEvent) => {
+      e.preventDefault();
+      setDragOver(false);
+      handleFiles(e.dataTransfer.files);
+    },
+    [handleFiles]
+  );
+
+  const handleReset = () => {
+    setPreview(null);
+    setAnnotation("");
+    setUrlValue("");
+    setError(null);
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  };
+
+  const handleAdd = () => {
+    if (activeTab === "image" && preview) {
+      onAdd({
+        type: "image",
+        value: "uploaded-image",
+        annotation: annotation || "Image reference",
+        thumbnail: preview,
+      });
+    } else if (activeTab === "url" && urlValue) {
+      onAdd({
+        type: "url",
+        value: urlValue,
+        annotation: annotation || "URL reference",
+      });
+    }
+    handleReset();
+  };
+
+  const canAdd =
+    activeTab === "image" ? !!preview : /^https?:\/\/.+/.test(urlValue);
+
+  return (
+    <div className="space-y-3">
+      <Tabs
+        value={activeTab}
+        onValue={(v) => {
+          handleReset();
+          setActiveTab(v as "image" | "url");
+        }}
+      >
+        <TabsList className="grid w-full grid-cols-2 bg-[#0a0a0b] border border-[#27272a]">
+          <TabsTrigger value="image" className="data-[state=active]:bg-[#18181b]">
+            Image
+          </TabsTrigger>
+          <TabsTrigger value="url" className="data-[state=active]:bg-[#18181b]">
+            URL
+          </TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="image" className="space-y-3 mt-3">
+          {/* Drop zone */}
+          {!preview ? (
+            <div
+              className={cn(
+                "border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors",
+                dragOver
+                  ? "border-[#3b82f6] bg-[#3b82f6]/5"
+                  : "border-[#27272a] hover:border-[#3b82f6]/50"
+              )}
+              onClick={() => fileInputRef.current?.click()}
+              onDragOver={(e) => {
+                e.preventDefault();
+                setDragOver(true);
+              }}
+              onDragLeave={() => setDragOver(false)}
+              onDrop={handleDrop}
+            >
+              <Upload className="h-8 w-8 mx-auto text-muted-foreground/50 mb-3" />
+              <p className="text-sm text-muted-foreground">
+                Drag & drop image here, or{" "}
+                <span className="text-[#3b82f6] underline">browse</span>
+              </p>
+              <p className="text-xs text-muted-foreground/50 mt-1">
+                JPG, PNG, WEBP, GIF — max 5MB, {MAX_REFS} total
+              </p>
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept={ACCEPTED_TYPES.join(",")}
+                className="hidden"
+                onChange={(e) => e.target.files && handleFiles(e.target.files)}
+              />
+            </div>
+          ) : (
+            <div className="relative">
+              <img
+                src={preview}
+                alt="Preview"
+                className="w-full h-32 object-cover rounded-lg border border-[#27272a]"
+              />
+              <button
+                onClick={handleReset}
+                className="absolute top-2 right-2 p-1 rounded-full bg-black/70 hover:bg-black/90 transition-colors"
+              >
+                <X className="h-3.5 w-3.5 text-white" />
+              </button>
+            </div>
+          )}
+        </TabsContent>
+
+        <TabsContent value="url" className="mt-3">
+          <Input
+            type="url"
+            placeholder="https://example.com/page"
+            value={urlValue}
+            onChange={(e) => {
+              setUrlValue(e.target.value);
+              setError(null);
+            }}
+            className="bg-[#0a0a0b] border-[#27272a] text-foreground placeholder:text-muted-foreground/50"
+          />
+        </TabsContent>
+      </Tabs>
+
+      {/* Error message */}
+      {error && <p className="text-xs text-red-400">{error}</p>}
+
+      {/* Annotation */}
+      <div className="space-y-2">
+        <Textarea
+          placeholder="Add annotation for this reference..."
+          value={annotation}
+          onChange={(e) => setAnnotation(e.target.value)}
+          rows={2}
+          className="bg-[#0a0a0b] border-[#27272a] text-foreground placeholder:text-muted-foreground/50 resize-none"
+        />
+        <div className="flex flex-wrap gap-1.5">
+          {HELPER_CHIPS.map((chip) => (
+            <button
+              key={chip}
+              type="button"
+              onClick={() =>
+                setAnnotation((prev) => (prev ? `${prev}, ${chip}` : chip))
+              }
+              className="text-[11px] px-2 py-1 rounded-full bg-[#27272a] text-muted-foreground hover:text-foreground hover:bg-[#3b82f6]/20 transition-colors"
+            >
+              + {chip}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Add button */}
+      <Button
+        size="sm"
+        disabled={!canAdd}
+        onClick={handleAdd}
+        className="w-full bg-[#3b82f6] hover:bg-[#3b82f6]/90 disabled:bg-[#27272a] text-white"
+      >
+        <Plus className="h-3.5 w-3.5 mr-1.5" />
+        Add Reference
+      </Button>
+    </div>
+  );
+}

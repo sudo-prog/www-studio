@@ -16,7 +16,6 @@ import designRouter           from "./design";
 import designExtractRouter    from "./design-extract";
 import scenesRouter           from "./scenes";
 import enhancedRouter         from "./enhanced";
-import designExtractRouter    from "./design-extract";
 
 const router: IRouter = Router();
 
