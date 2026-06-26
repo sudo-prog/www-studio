@@ -627,6 +627,141 @@ router.post("/:id/undo", async (req: Request, res: Response) => {
   });
 });
 
+// POST /batch — batch URL extraction (up to 5 URLs in parallel)
+router.post("/batch", async (req: Request, res: Response) => {
+  const userId = getOrGuestUserId(req);
+
+  const body = z
+    .object({
+      urls: z.array(z.string().url()).max(5, "Maximum 5 URLs allowed"),
+    })
+    .safeParse(req.body);
+
+  if (!body.success) {
+    res.status(400).json({ error: body.error.message });
+    return;
+  }
+
+  const { urls } = body.data;
+
+  // Create extraction records for all URLs
+  const extractionIds: string[] = [];
+
+  await Promise.all(
+    urls.map(async (url) => {
+      const extractionId = crypto.randomUUID();
+
+      await db.insert(designExtractions).values({
+        id: extractionId,
+        userId,
+        primaryUrl: url,
+        references: [],
+        status: "processing",
+      });
+
+      jobs.set(extractionId, {
+        id: extractionId,
+        status: "pending",
+        startTime: Date.now(),
+      });
+
+      // Fire-and-forget pipeline
+      runExtraction(extractionId, req).catch((err) => {
+        console.error(`[design-extract] Batch pipeline error for ${extractionId}:`, err);
+      });
+
+      extractionIds.push(extractionId);
+    }),
+  );
+
+  res.status(202).json({
+    ids: extractionIds,
+    count: extractionIds.length,
+    status: "processing",
+  });
+});
+
+// POST /:id/critique — AI taste critique with scores + suggestions
+router.post("/:id/critique", async (req: Request, res: Response) => {
+  const id = String(req.params.id);
+  const userId = getOrGuestUserId(req);
+
+  const [extraction] = await db
+    .select()
+    .from(designExtractions)
+    .where(and(eq(designExtractions.id, id), eq(designExtractions.userId, userId)));
+
+  if (!extraction) {
+    res.status(404).json({ error: "Extraction not found" });
+    return;
+  }
+
+  if (extraction.status !== "completed") {
+    res.status(400).json({ error: "Extraction is not completed yet" });
+    return;
+  }
+
+  const tokens = (extraction.extractedTokens as Record<string, unknown>) ?? {};
+
+  try {
+    const { chatComplete } = await import("../lib/llm");
+
+    const critiquePrompt = `You are a world-class design critic. Rate the following design token system on a scale of 1-10 for each category, and provide 3-5 specific improvement suggestions.
+
+Design tokens:
+${JSON.stringify(tokens, null, 2)}
+
+Rate on these categories:
+1. **distinctiveness** — How unique and memorable is this design? (1-10)
+2. **contrast** — How well do colors create visual hierarchy? (1-10)
+3. **type_quality** — How well-chosen is the typography system? (1-10)
+4. **color_harmony** — How well do the colors work together? (1-10)
+
+Also provide 3-5 specific, actionable improvement suggestions. Each suggestion should have:
+- A short title
+- A description of what to change
+- The token path to modify (e.g., "colors.primary")
+
+Return ONLY a valid JSON object:
+{
+  "scores": {
+    "distinctiveness": <number>,
+    "contrast": <number>,
+    "type_quality": <number>,
+    "color_harmony": <number>
+  },
+  "overall": <average of scores>,
+  "suggestions": [
+    {
+      "title": "<short title>",
+      "description": "<what to change>",
+      "tokenPath": "<dot.path.to.token>"
+    }
+  ]
+}`;
+
+    const raw = await chatComplete(
+      [
+        { role: "system", content: "You are a brutally honest but constructive design critic. Return only valid JSON." },
+        { role: "user", content: critiquePrompt },
+      ],
+      { temperature: 0.7, jsonMode: true },
+    );
+
+    const cleaned = raw.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "").trim();
+    const jsonMatch = cleaned.match(/\{[\s\S]*\}/);
+    if (!jsonMatch) {
+      throw new Error("LLM response did not contain valid JSON");
+    }
+
+    const critique = JSON.parse(jsonMatch[0]);
+    res.json(critique);
+  } catch (err) {
+    const errorMsg = err instanceof Error ? err.message : "Critique generation failed";
+    res.status(500).json({ error: errorMsg });
+  }
+});
+
 // GET /public/gallery — public gallery of saved extractions
 router.get("/public/gallery", async (req: Request, res: Response) => {
   const limit = Math.min(parseInt(String(req.query.limit ?? "20"), 10) || 20, 50);

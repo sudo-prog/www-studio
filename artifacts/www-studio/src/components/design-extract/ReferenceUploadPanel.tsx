@@ -4,8 +4,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Upload, X, Plus, Smartphone } from "lucide-react";
+import { Upload, X, Plus, Smartphone, Code } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { parseCssOrTailwind } from "@/lib/cssTokenParser";
 import type { Reference } from "./DesignExtractInput";
 
 const HELPER_CHIPS = [
@@ -38,14 +39,17 @@ function isIOSSafari(): boolean {
 interface ReferenceUploadPanelProps {
   onAdd: (ref: Omit<Reference, "id">) => void;
   existingCount?: number;
+  onCssImport?: (tokens: Record<string, unknown>) => void;
 }
 
-export default function ReferenceUploadPanel({ onAdd, existingCount = 0 }: ReferenceUploadPanelProps) {
-  const [activeTab, setActiveTab] = useState<"image" | "url">("image");
+export default function ReferenceUploadPanel({ onAdd, existingCount = 0, onCssImport }: ReferenceUploadPanelProps) {
+  const [activeTab, setActiveTab] = useState<"image" | "url" | "css">("image");
   const [dragOver, setDragOver] = useState(false);
   const [preview, setPreview] = useState<string | null>(null);
   const [annotation, setAnnotation] = useState("");
   const [urlValue, setUrlValue] = useState("");
+  const [cssInput, setCssInput] = useState("");
+  const [cssError, setCssError] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -94,10 +98,32 @@ export default function ReferenceUploadPanel({ onAdd, existingCount = 0 }: Refer
     [handleFiles]
   );
 
+  const handleCssImport = () => {
+    setCssError(null);
+    if (!cssInput.trim()) {
+      setCssError("Please paste CSS variables or Tailwind config.");
+      return;
+    }
+    try {
+      const parsed = parseCssOrTailwind(cssInput);
+      if (Object.keys(parsed).length === 0) {
+        setCssError("No design tokens found in input. Check format.");
+        return;
+      }
+      if (onCssImport) {
+        onCssImport(parsed as Record<string, unknown>);
+      }
+    } catch (err) {
+      setCssError(err instanceof Error ? err.message : "Failed to parse input.");
+    }
+  };
+
   const handleReset = () => {
     setPreview(null);
     setAnnotation("");
     setUrlValue("");
+    setCssInput("");
+    setCssError(null);
     setError(null);
     if (fileInputRef.current) fileInputRef.current.value = "";
   };
@@ -116,12 +142,16 @@ export default function ReferenceUploadPanel({ onAdd, existingCount = 0 }: Refer
         value: urlValue,
         annotation: annotation || "URL reference",
       });
+    } else if (activeTab === "css" && cssInput.trim()) {
+      handleCssImport();
     }
     handleReset();
   };
 
   const canAdd =
-    activeTab === "image" ? !!preview : /^https?:\/\/.+/.test(urlValue);
+    activeTab === "image" ? !!preview :
+    activeTab === "url" ? /^https?:\/\/.+/.test(urlValue) :
+    cssInput.trim().length > 0;
 
   return (
     <div className="space-y-3">
@@ -129,15 +159,18 @@ export default function ReferenceUploadPanel({ onAdd, existingCount = 0 }: Refer
         value={activeTab}
         onValueChange={(v: string) => {
           handleReset();
-          setActiveTab(v as "image" | "url");
+          setActiveTab(v as "image" | "url" | "css");
         }}
       >
-        <TabsList className="grid w-full grid-cols-2 bg-[#0a0a0b] border border-[#27272a]">
+        <TabsList className="grid w-full grid-cols-3 bg-[#0a0a0b] border border-[#27272a]">
           <TabsTrigger value="image" className="data-[state=active]:bg-[#18181b]">
             Image
           </TabsTrigger>
           <TabsTrigger value="url" className="data-[state=active]:bg-[#18181b]">
             URL
+          </TabsTrigger>
+          <TabsTrigger value="css" className="data-[state=active]:bg-[#18181b]">
+            CSS / Code
           </TabsTrigger>
         </TabsList>
 
@@ -212,10 +245,30 @@ export default function ReferenceUploadPanel({ onAdd, existingCount = 0 }: Refer
             className="bg-[#0a0a0b] border-[#27272a] text-foreground placeholder:text-muted-foreground/50"
           />
         </TabsContent>
+
+        <TabsContent value="css" className="mt-3 space-y-2">
+          <Textarea
+            placeholder={":root { --color-primary: #3b82f6; --font-display: 'Inter'; }"}
+            value={cssInput}
+            onChange={(e) => {
+              setCssInput(e.target.value);
+              setCssError(null);
+            }}
+            rows={5}
+            className="bg-[#0a0a0b] border-[#27272a] text-foreground placeholder:text-muted-foreground/50 resize-none font-mono text-xs"
+          />
+          <p className="text-[10px] text-muted-foreground/50 flex items-center gap-1">
+            <Code className="h-3 w-3" />
+            Paste CSS variables or Tailwind config snippet
+          </p>
+        </TabsContent>
       </Tabs>
 
+      {/* CSS error message */}
+      {cssError && activeTab === "css" && <p className="text-xs text-red-400">{cssError}</p>}
+
       {/* Error message */}
-      {error && <p className="text-xs text-red-400">{error}</p>}
+      {error && activeTab !== "css" && <p className="text-xs text-red-400">{error}</p>}
 
       {/* Annotation */}
       <div className="space-y-2">
@@ -260,7 +313,7 @@ export default function ReferenceUploadPanel({ onAdd, existingCount = 0 }: Refer
         className="w-full bg-[#3b82f6] hover:bg-[#3b82f6]/90 disabled:bg-[#27272a] text-white"
       >
         <Plus className="h-3.5 w-3.5 mr-1.5" />
-        Add Reference
+        {activeTab === "css" ? "Parse & Import Tokens" : "Add Reference"}
       </Button>
     </div>
   );
