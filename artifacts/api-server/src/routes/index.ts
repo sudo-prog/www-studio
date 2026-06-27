@@ -16,6 +16,7 @@ import designRouter           from "./design";
 import designExtractRouter    from "./design-extract";
 import scenesRouter           from "./scenes";
 import enhancedRouter         from "./enhanced";
+import knowledgeRouter        from "./knowledge";
 
 const router: IRouter = Router();
 
@@ -36,5 +37,6 @@ router.use(designRouter);
 router.use(designExtractRouter);
 router.use(scenesRouter);
 router.use(enhancedRouter);
+router.use(knowledgeRouter);
 
 export default router;
