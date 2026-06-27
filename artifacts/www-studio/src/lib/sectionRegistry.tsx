@@ -2,7 +2,7 @@
  * Section Registry — maps section type strings to their components.
  *
  * The 3D Studio module registers the '3d-scene' type here.
- * Stub components are replaced with full implementations in Phase 1+.
+ * Real ThreeDSection component replaces the Phase 0 stub.
  */
 
 import type { ComponentType } from "react";
@@ -29,31 +29,13 @@ export interface SectionEntry {
   PropertiesPanel: ComponentType<PropertiesPanelProps>;
 }
 
-// ── Stub Components ───────────────────────────────────────────────────────────
+// ── Real 3D Section Component ────────────────────────────────────────────────
 
-function ThreeDSectionStub({ sceneConfig }: SectionComponentProps) {
-  return (
-    <div className="flex items-center justify-center h-full min-h-[400px] bg-gradient-to-br from-[#0a0a0f] to-[#12121a] rounded-lg border border-border/50">
-      <div className="text-center space-y-3 p-8">
-        <div className="text-4xl">🎬</div>
-        <h3 className="text-lg font-semibold text-foreground">
-          3D Studio — {sceneConfig.name || "Untitled"}
-        </h3>
-        <p className="text-sm text-muted-foreground max-w-md">
-          3D scene editor coming soon. Add objects, materials, lighting, and
-          animations with the full React Three Fiber pipeline.
-        </p>
-        <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground/60">
-          <span className="px-2 py-0.5 bg-muted rounded">Phase 0</span>
-          <span>•</span>
-          <span>Stub Component</span>
-        </div>
-      </div>
-    </div>
-  );
-}
+import ThreeDSection from "@/components/three/ThreeDSection";
 
-function ThreeDPropertiesPanelStub({ sceneConfig, onConfigChange }: PropertiesPanelProps) {
+// ── Properties Panel (stub — full panel in Phase 9) ──────────────────────────
+
+function ThreeDPropertiesPanel({ sceneConfig, onConfigChange }: PropertiesPanelProps) {
   return (
     <div className="p-4 space-y-4">
       <div className="space-y-1">
@@ -125,7 +107,7 @@ function ThreeDPropertiesPanelStub({ sceneConfig, onConfigChange }: PropertiesPa
 
       <div className="pt-2 border-t border-border">
         <p className="text-[10px] text-muted-foreground/50 text-center">
-          Phase 0 stub — full panel in Phase 9
+          Real ThreeDSection active — full panel in Phase 9
         </p>
       </div>
     </div>
@@ -142,8 +124,8 @@ sectionRegistry.set("3d-scene", {
   label: "3D Scene",
   description: "Interactive 3D scene with React Three Fiber",
   icon: "🎬",
-  SectionComponent: ThreeDSectionStub,
-  PropertiesPanel: ThreeDPropertiesPanelStub,
+  SectionComponent: ThreeDSection,
+  PropertiesPanel: ThreeDPropertiesPanel,
 });
 
 // ── Public API ────────────────────────────────────────────────────────────────

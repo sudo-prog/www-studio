@@ -1,4 +1,4 @@
-import React, { useRef, Suspense } from 'react';
+import React, { useRef, Suspense, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import {
   Environment,
@@ -6,9 +6,8 @@ import {
   OrbitControls,
 } from '@react-three/drei';
 import { EffectComposer, Bloom, ChromaticAberration } from '@react-three/postprocessing';
-import { useControls } from 'leva';
 import * as THREE from 'three';
-import { type ThreeDSceneConfig } from '@/types/three';
+import type { ThreeDSceneConfig, ExtraObject } from '@/types/three';
 
 // ── Props ────────────────────────────────────────────────────────────────────
 
@@ -16,28 +15,126 @@ interface SceneContentProps {
   config: ThreeDSceneConfig;
 }
 
-// ── Rotating Group ───────────────────────────────────────────────────────────
+// ── Single Object Renderer ───────────────────────────────────────────────────
 
-function RotatingGroup({ config }: SceneContentProps) {
-  const groupRef = useRef<THREE.Group>(null);
+function ObjectMesh({ obj }: { obj: ExtraObject }) {
+  const meshRef = useRef<THREE.Mesh>(null);
 
   useFrame((_, delta) => {
-    if (groupRef.current) {
-      groupRef.current.rotation.y += 0.2 * delta;
+    if (meshRef.current && obj.visible !== false) {
+      meshRef.current.rotation.y += 0.1 * delta;
     }
   });
 
+  if (obj.visible === false) return null;
+
+  const position = obj.position ?? [0, 0, 0];
+  const rotation = obj.rotation ?? [0, 0, 0];
+  const scale = obj.scale ?? [1, 1, 1];
+
+  switch (obj.type) {
+    case 'shapeTool':
+      return (
+        <mesh
+          ref={meshRef}
+          position={position}
+          rotation={rotation}
+          scale={scale}
+          castShadow
+          receiveShadow
+        >
+          <boxGeometry args={[1, 1, 1]} />
+          <meshStandardMaterial
+            color={obj.color}
+            metalness={obj.metalness}
+            roughness={obj.roughness}
+          />
+        </mesh>
+      );
+    case 'objectTool':
+      return (
+        <mesh
+          ref={meshRef}
+          position={position}
+          rotation={rotation}
+          scale={scale}
+          castShadow
+          receiveShadow
+        >
+          <torusKnotGeometry args={[0.8, 0.25, 128, 32]} />
+          <meshStandardMaterial
+            color={obj.color}
+            metalness={obj.metalness}
+            roughness={obj.roughness}
+          />
+        </mesh>
+      );
+    case 'typeTool':
+      return (
+        <mesh
+          ref={meshRef}
+          position={position}
+          rotation={rotation}
+          scale={scale}
+          castShadow
+          receiveShadow
+        >
+          <sphereGeometry args={[0.7, 32, 32]} />
+          <meshStandardMaterial
+            color={obj.color}
+            metalness={obj.metalness}
+            roughness={obj.roughness}
+          />
+        </mesh>
+      );
+    case 'coverTool':
+      return (
+        <mesh
+          ref={meshRef}
+          position={position}
+          rotation={rotation}
+          scale={scale}
+          receiveShadow
+        >
+          <planeGeometry args={[3, 2]} />
+          <meshStandardMaterial
+            color={obj.color}
+            metalness={obj.metalness}
+            roughness={obj.roughness}
+            side={THREE.DoubleSide}
+          />
+        </mesh>
+      );
+    default:
+      return (
+        <mesh
+          ref={meshRef}
+          position={position}
+          rotation={rotation}
+          scale={scale}
+          castShadow
+          receiveShadow
+        >
+          <icosahedronGeometry args={[0.6, 0]} />
+          <meshStandardMaterial
+            color={obj.color}
+            metalness={obj.metalness}
+            roughness={obj.roughness}
+          />
+        </mesh>
+      );
+  }
+}
+
+// ── Scene Objects ────────────────────────────────────────────────────────────
+
+function SceneObjects({ config }: SceneContentProps) {
   return (
-    <group ref={groupRef}>
-      <mesh castShadow receiveShadow>
-        <torusKnotGeometry args={[1, 0.3, 128, 32]} />
-        <meshStandardMaterial
-          color="#8b5cf6"
-          metalness={0.8}
-          roughness={0.2}
-        />
-      </mesh>
-    </group>
+    <>
+      {config.extraObjects.map((obj) => (
+        <ObjectMesh key={obj.id} obj={obj} />
+      ))}
+    </>
   );
 }
 
@@ -48,28 +145,48 @@ function SceneLights({ config }: SceneContentProps) {
     <>
       <ambientLight intensity={config.ambientIntensity} color={config.ambientColor} />
       {config.lights.map((light) => {
-        if (light.type === 'directional') {
-          return (
-            <directionalLight
-              key={light.id}
-              color={light.color}
-              intensity={light.intensity}
-              position={light.position}
-              castShadow={light.castShadow}
-            />
-          );
+        switch (light.type) {
+          case 'directional':
+            return (
+              <directionalLight
+                key={light.id}
+                color={light.color}
+                intensity={light.intensity}
+                position={light.position}
+                castShadow={light.castShadow}
+                target-position={light.target}
+              />
+            );
+          case 'point':
+            return (
+              <pointLight
+                key={light.id}
+                color={light.color}
+                intensity={light.intensity}
+                position={light.position}
+                castShadow={light.castShadow}
+                distance={light.distance}
+                decay={light.decay}
+              />
+            );
+          case 'spot':
+            return (
+              <spotLight
+                key={light.id}
+                color={light.color}
+                intensity={light.intensity}
+                position={light.position}
+                target-position={light.target}
+                castShadow={light.castShadow}
+                angle={light.angle}
+                penumbra={light.penumbra}
+                distance={light.distance}
+                decay={light.decay}
+              />
+            );
+          default:
+            return null;
         }
-        if (light.type === 'point') {
-          return (
-            <pointLight
-              key={light.id}
-              color={light.color}
-              intensity={light.intensity}
-              position={light.position}
-            />
-          );
-        }
-        return null;
       })}
     </>
   );
@@ -78,61 +195,61 @@ function SceneLights({ config }: SceneContentProps) {
 // ── Post-Processing ──────────────────────────────────────────────────────────
 
 function PostProcessing({ config }: SceneContentProps) {
-  const effects = useControls('Effects', {
-    bloom: { value: config.postProcessing.bloom, label: 'Bloom' },
-    bloomIntensity: {
-      value: config.postProcessing.bloomIntensity,
-      min: 0,
-      max: 5,
-      step: 0.1,
-      label: 'Bloom Intensity',
-    },
-    chromatic: { value: config.postProcessing.chromaticAberration, label: 'Chromatic Aberration' },
-  });
+  const { postProcessing: pp } = config;
 
-  if (!effects.bloom) return null;
+  const effects = [];
 
-  return (
-    <EffectComposer>
+  if (pp.bloom) {
+    effects.push(
       <Bloom
-        intensity={effects.bloomIntensity}
-        luminanceThreshold={config.postProcessing.bloomThreshold}
-        luminanceSmoothing={config.postProcessing.bloomSmoothing}
+        key="bloom"
+        intensity={pp.bloomIntensity}
+        luminanceThreshold={pp.bloomThreshold}
+        luminanceSmoothing={pp.bloomSmoothing}
       />
-      {effects.chromatic && (
-        <ChromaticAberration
-          offset={new THREE.Vector2(
-            config.postProcessing.chromaticAberrationOffset[0],
-            config.postProcessing.chromaticAberrationOffset[1]
-          )}
-        />
-      )}
-    </EffectComposer>
-  );
+    );
+  }
+
+  if (pp.chromaticAberration) {
+    effects.push(
+      <ChromaticAberration
+        key="chromatic"
+        offset={new THREE.Vector2(
+          pp.chromaticAberrationOffset[0],
+          pp.chromaticAberrationOffset[1]
+        )}
+      />
+    );
+  }
+
+  if (effects.length === 0) {
+    return null;
+  }
+
+  return <EffectComposer>{effects}</EffectComposer>;
 }
 
 // ── Scene Content (inside Canvas) ────────────────────────────────────────────
 
 export default function SceneContent({ config }: SceneContentProps) {
-  // Leva controls
-  useControls('General', {
-    showText: { value: true, label: 'Show Text' },
-    text: { value: '3D Studio', label: 'Text' },
-  });
-
-  useControls('Material', {
-    color: { value: '#8b5cf6', label: 'Color' },
-    metalness: { value: 0.8, min: 0, max: 1, step: 0.01, label: 'Metalness' },
-    roughness: { value: 0.2, min: 0, max: 1, step: 0.01, label: 'Roughness' },
-  });
-
-  const cameraControls = useControls('Camera', {
-    fov: { value: config.camera.fov, min: 20, max: 120, step: 1, label: 'FOV' },
-    autoRotate: { value: config.camera.autoRotate, label: 'Auto Rotate' },
-  });
+  const bgColor = useMemo(
+    () => new THREE.Color(config.settings.backgroundColor),
+    [config.settings.backgroundColor]
+  );
 
   return (
     <>
+      {/* Background */}
+      <color attach="background" args={[bgColor]} />
+
+      {/* Fog */}
+      {config.settings.fogEnabled && (
+        <fog
+          attach="fog"
+          args={[config.settings.fogColor, config.settings.fogNear, config.settings.fogFar]}
+        />
+      )}
+
       {/* Lighting */}
       <SceneLights config={config} />
 
@@ -141,8 +258,8 @@ export default function SceneContent({ config }: SceneContentProps) {
         <Environment preset={config.envPreset} />
       </Suspense>
 
-      {/* Rotating Object */}
-      <RotatingGroup config={config} />
+      {/* Scene Objects */}
+      <SceneObjects config={config} />
 
       {/* Grid */}
       {config.settings.gridEnabled && (
@@ -167,7 +284,7 @@ export default function SceneContent({ config }: SceneContentProps) {
         minDistance={config.camera.minDistance}
         maxDistance={config.camera.maxDistance}
         maxPolarAngle={config.camera.maxPolarAngle}
-        autoRotate={cameraControls.autoRotate}
+        autoRotate={config.camera.autoRotate}
         autoRotateSpeed={config.camera.autoRotateSpeed}
         target={config.camera.target}
       />

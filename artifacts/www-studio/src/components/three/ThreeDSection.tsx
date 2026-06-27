@@ -1,13 +1,13 @@
 import React, { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import SceneContent from './SceneContent';
-import { type ThreeDSceneConfig } from '@/types/three';
+import type { ThreeDSceneConfig } from '@/types/three';
 import { DEFAULT_SCENE_CONFIG } from '@/types/three';
 
 interface ThreeDSectionProps {
-  config?: ThreeDSceneConfig;
+  sceneConfig: ThreeDSceneConfig;
+  onConfigChange: (config: Partial<ThreeDSceneConfig>) => void;
   isEditing?: boolean;
-  onUpdate?: (config: ThreeDSceneConfig) => void;
 }
 
 function LoadingFallback() {
@@ -18,19 +18,24 @@ function LoadingFallback() {
   );
 }
 
-export default function ThreeDSection({ config = DEFAULT_SCENE_CONFIG }: ThreeDSectionProps) {
+export default function ThreeDSection({ sceneConfig, isEditing }: ThreeDSectionProps) {
+  const config = sceneConfig ?? DEFAULT_SCENE_CONFIG;
+
   return (
-    <div className="w-full h-full relative rounded-lg overflow-hidden bg-[#050505]" style={{ aspectRatio: '16/9' }}>
+    <div
+      className="w-full h-full relative rounded-lg overflow-hidden bg-[#050505]"
+      style={{ aspectRatio: '16/9' }}
+    >
       <Canvas
-        shadows
-        dpr={[1, 2]}
+        shadows={config.settings.shadowsEnabled}
+        dpr={[1, Math.min(config.settings.pixelRatio, 2)]}
         camera={{
-          position: config.cameraPosition,
-          fov: config.cameraFov,
-          near: 0.1,
-          far: 1000,
+          position: config.camera.position,
+          fov: config.camera.fov,
+          near: config.camera.near,
+          far: config.camera.far,
         }}
-        gl={{ preserveDrawingBuffer: true, antialias: true }}
+        gl={{ preserveDrawingBuffer: true, antialias: config.settings.antialias }}
       >
         <Suspense fallback={null}>
           <SceneContent config={config} />
@@ -43,6 +48,18 @@ export default function ThreeDSection({ config = DEFAULT_SCENE_CONFIG }: ThreeDS
           <span className="text-xs bg-purple-600/80 text-white px-2 py-1 rounded backdrop-blur-sm">
             3D Scene Studio
           </span>
+        </div>
+      )}
+
+      {/* Text overlay */}
+      {config.showText && config.text && (
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <h2
+            className="text-4xl md:text-6xl font-bold text-white/90 tracking-tight"
+            style={{ textShadow: '0 2px 20px rgba(0,0,0,0.5)' }}
+          >
+            {config.text}
+          </h2>
         </div>
       )}
 
