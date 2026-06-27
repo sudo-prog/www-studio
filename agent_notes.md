@@ -262,3 +262,30 @@ Multi-source design synthesis engine. Accepts primary URL + optional secondary U
 3. **Edge Functions:** Move API server to edge for lower latency
 4. **Plugin System:** Design extensible architecture for third-party tools
 5. **Native Mobile:** Evaluate React Native Skia for mobile canvas performance
+
+---
+
+## Audit Completion (2026-06-27)
+
+### WWW_STUDIO_AUDIT_AND_DEPLOYMENT.md — Parts 3-6 completed
+
+**Batch A (3D Type System + Components):**
+- `ThreeDSection.tsx` — Real R3F component using @react-three/fiber + @react-three/drei
+- `SceneContent.tsx` — 3D scene renderer with geometry (box, sphere, torus, cone, plane, icosahedron), lighting (ambient, directional, point, spot), materials, fog, environment
+- `aiSceneMapper.ts` — Frontend RAG client calling API server via fetch (NOT importing llm.ts directly)
+- `sectionRegistry.tsx` — Updated to import real ThreeDSection
+
+**Batch B (Knowledge Base):**
+- 8 new files in `knowledge_base/`: project-overview, tech-stack, three-d-studio, api-server-routes, known-gotchas, 3 roadmaps
+- Verified: build output at `dist/public/` matches vercel.json
+- Verified: package name `@workspace/www-studio` matches vercel filter
+- Verified: root tsconfig.json now references app packages
+
+**Fixes:**
+- `tsconfig.json` — Added `artifacts/www-studio` and `artifacts/api-server` to references array (previously only checked lib/*)
+
+**Known pre-existing issues (not fixed, project-wide):**
+- 165 tsc errors — all pre-existing (JSX.IntrinsicElements with R3F, api-server type issues, sceneTemplates.ts)
+- Build passes cleanly (esbuild handles JSX, tsc errors are type-only)
+
+**Commit:** `0758e64` — pushed to main
