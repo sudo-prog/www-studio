@@ -3,7 +3,8 @@
   "outputDirectory": "artifacts/www-studio/dist/public",
   "installCommand": "pnpm install --no-frozen-lockfile",
   "env": {
-    "GITHUB_PAGES": "false"
+    "GITHUB_PAGES": "false",
+    "VERCEL_NODE_VERSION": "20"
   },
   "rewrites": [
     { "source": "/((?!api/).*)", "destination": "/index.html" }
