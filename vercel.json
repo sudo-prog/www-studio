@@ -1,10 +1,11 @@
 {
   "buildCommand": "pnpm --filter @workspace/www-studio run build",
   "outputDirectory": "artifacts/www-studio/dist/public",
-  "installCommand": "pnpm install --no-frozen-lockfile",
+  "installCommand": "npm install -g corepack@latest && corepack enable && corepack prepare pnpm@8.15.1 --activate && pnpm install --no-frozen-lockfile",
   "env": {
     "GITHUB_PAGES": "false",
-    "VERCEL_NODE_VERSION": "20"
+    "VERCEL_NODE_VERSION": "20",
+    "npm_config_fetch_implementation": "node"
   },
   "rewrites": [
     { "source": "/((?!api/).*)", "destination": "/index.html" }
