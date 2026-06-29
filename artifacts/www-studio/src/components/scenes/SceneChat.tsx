@@ -31,6 +31,46 @@ interface ChatMsg {
   applied:  boolean;
 }
 
+// ─── Provider configuration ──────────────────────────────────────────────────
+// Nous/Hermes inference API (OpenRouter-compatible) — primary
+const NOUS_BASE_URL = "https://inference-api.nousresearch.com/v1";
+const NOUS_MODEL = "openrouter/owl-alpha";
+const NOUS_API_KEY = import.meta.env.VITE_NOUS_API_KEY || "";
+
+// Gemini Web2API fallback proxy
+const WEB2API_FALLBACK = "https://saint-examine-clearance-growth.trycloudflare.com/v1/chat/completions";
+
+// Provider fallback helper — tries each URL+model combo, throws after last one fails
+async function callAiProvider(
+  url: string,
+  model: string,
+  messages: { role: string; content: string }[],
+  options: { max_tokens?: number; temperature?: number; authToken?: string } = {},
+): Promise<string> {
+  const { max, temperature = 0.8, authToken } = options;
+  const headers: Record<string, string> = { "Content-Type": "application/json" };
+  if (authToken) {
+    headers["Authorization"] = `Bearer ${authToken}`;
+  }
+
+  const res = await fetch(url, {
+    method: "POST",
+    mode: "cors",
+    headers,
+    signal: AbortSignal.timeout(30000),
+    body: JSON.stringify({ model, messages, max_tokens, temperature }),
+  });
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    const errMsg = (err as any)?.error?.message || `HTTP ${res.status}`;
+    throw new Error(errMsg);
+  }
+
+  const data = await res.json();
+  return data?.choices?.[0]?.message?.content || "";
+}
+
 const SUGGESTION_CHIPS = [
   "Add a floating sage orb",
   "Add a lavender blob background",
@@ -281,59 +321,42 @@ export function SceneChat({ sceneId, elements, selectedId, onApply, onClose }: P
     const fullPrompt = `You are a scene design AI. The current scene has these elements:\n${sceneContext}\n\nUser request: ${text}\n\nRespond with a brief description of what you'd like to do, and then provide a JSON object with { "text": "...", "actions": [...] }`;
 
     try {
-      // Try local API first (if running backend)
+      // Build messages for AI providers
+      const aiMessages = [
+        { role: "system", content: "You are a wellness scene design AI. Given a scene description and user request, suggest modifications. Respond ONLY with JSON: { \"text\": \"...\", \"actions\": [...] }" },
+        { role: "user", content: fullPrompt },
+      ];
+
       let data: { text: string; actions: SceneAction[] } | null = null;
 
+      // Try Nous/Hermes first
       try {
-        const res = await fetch(`/api/scenes/${sceneId}/chat`, {
-          method:  "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            message:    text.trim(),
-            elements:   elements.map((el) => ({
-              id: el.id, type: el.type, name: el.name,
-              x: el.x, y: el.y, width: el.width, height: el.height,
-              fill: el.fill, opacity: el.opacity, blur: el.blur,
-              animation: el.animation,
-            })),
-            selectedId,
-          }),
-          signal: AbortSignal.timeout(5000),
-        });
-        if (res.ok) data = await res.json() as any;
-      } catch { /* no backend — use local AI */ }
-
-      // Fallback: local AI via Gemini Web2API proxy (no API key needed)
-      if (!data) {
+        const result = await callAiProvider(
+          `${NOUS_BASE_URL}/chat/completions`,
+          NOUS_MODEL,
+          aiMessages,
+          { max_tokens: 1500, temperature: 0.8, authToken: NOUS_API_KEY }
+        );
+        const cleaned = result.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "").trim();
+        data = JSON.parse(cleaned);
+      } catch {
+        // Fallback: Gemini Web2API proxy (no API key needed)
         try {
-          const res = await fetch(
-            "https://saint-examine-clearance-growth.trycloudflare.com/v1/chat/completions",
-            {
-              method: "POST",
-              mode: "cors",
-              headers: { "Content-Type": "application/json" },
-              signal: AbortSignal.timeout(30000),
-              body: JSON.stringify({
-                model: "gemini-3.5-flash",
-                messages: [
-                  { role: "system", content: "You are a wellness scene design AI. Given a scene description and user request, suggest modifications. Respond ONLY with JSON: { \"text\": \"...\", \"actions\": [...] }" },
-                  { role: "user", content: fullPrompt },
-                ],
-                max_tokens: 1500,
-                temperature: 0.8,
-              }),
-            }
+          const result = await callAiProvider(
+            WEB2API_FALLBACK,
+            "gemini-3.5-flash",
+            aiMessages,
+            { max_tokens: 1500, temperature: 0.8 }
           );
-          if (!res.ok) throw new Error(`API ${res.status}`);
-          const geminiData = await res.json();
-          const raw = geminiData?.choices?.[0]?.message?.content ?? "";
-          const cleaned = raw.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "").trim();
+          const cleaned = result.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "").trim();
           data = JSON.parse(cleaned);
         } catch {
-          // Pure local fallback if proxy fails
+          // Pure local fallback if both providers fail
           data = generateLocalSceneResponse(text, elements);
         }
       }
+
+      data ??= generateLocalSceneResponse(text, elements);
 
       const assistantMsg: ChatMsg = {
         id:      crypto.randomUUID(),

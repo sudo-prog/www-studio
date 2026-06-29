@@ -7,6 +7,37 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sparkles, Wand2, LayoutGrid, Accessibility, MousePointer, RotateCcw, X, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+// Nous/Hermes inference API (OpenRouter-compatible) — primary
+const NOUS_BASE_URL = "https://inference-api.nousresearch.com/v1";
+const NOUS_MODEL = "openrouter/owl-alpha";
+const NOUS_API_KEY=import.meta.env.VITE_NOUS_API_KEY || "";
+
+// Gemini Web2API fallback proxy
+const WEB2API_FALLBACK = "https://saint-examine-clearance-growth.trycloudflare.com/v1/chat/completions";
+
+// ─── Provider fallback chain ────────────────────────────────────────────────
+async function callAiProvider(
+  url: string,
+  model: string,
+  messages: { role: string; content: string }[],
+  options: { max_tokens?: number; temperature?: number; authToken?: string } = {},
+): Promise<string> {
+  const { max_tokens = 4096, temperature = 0.7, authToken } = options;
+  const headers: Record<string, string> = { "Content-Type": "application/json" };
+  if (authToken) headers["Authorization"] = `Bearer ${authToken}`;
+
+  const res = await fetch(url, {
+    method: "POST",
+    mode: "cors",
+    headers,
+    signal: AbortSignal.timeout(30000),
+    body: JSON.stringify({ model, messages, max_tokens, temperature }),
+  });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const data = await res.json();
+  return data?.choices?.[0]?.message?.content ?? "";
+}
+
 interface Props {
   elements: FreeformElement[];
   page: FreeformPage;
@@ -90,56 +121,60 @@ export default function AiFreeformCommands({ elements, page, onApplyChanges, onU
     ]);
   };
 
-  const handleTextToSite = () => {
+  const handleTextToSite = async () => {
     const prompt = aiChat || "landing page with hero";
     setLoading(true);
 
-    // Use Gemini Web2API proxy (no API key needed)
     const msg = `Generate a freeform layout for: "${prompt}". Return ONLY a JSON array of elements with types: text, shape, button, image. Each element needs: type, x, y, width, height. Text elements need: text, fontSize, color, fontWeight. Shape elements need: fill, shapeKind. Keep it under 10 elements.`;
 
-    fetch("https://saint-examine-clearance-growth.trycloudflare.com/v1/chat/completions", {
-      method: "POST",
-      mode: "cors",
-      headers: { "Content-Type": "application/json" },
-      signal: AbortSignal.timeout(30000),
-      body: JSON.stringify({
-        model: "gemini-3.5-flash",
-        messages: [{ role: "user", content: msg }],
-        max_tokens: 4096,
-        temperature: 0.7,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        const text = data?.choices?.[0]?.message?.content;
-        if (text) {
-          try {
-            // Strip markdown fences if present
-            const cleaned = text.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "").trim();
-            const parsed = JSON.parse(cleaned);
-            // Add generated elements with IDs
-            const newElements = parsed.map((el: any) => ({
-              ...el,
-              id: crypto.randomUUID(),
-              zIndex: 0,
-              opacity: 1,
-              visible: true,
-              locked: false,
-              name: el.type,
-              scale: 1,
-              rotation: 0,
-            }));
-            onApplyChanges({ elements: [...elements, ...newElements] });
-            setChatMessages((prev) => [...prev, { role: "ai", text: `Generated ${newElements.length} elements from: "${prompt}"` }]);
-          } catch {
-            generateLocalLayout(prompt);
-          }
-        } else {
-          generateLocalLayout(prompt);
-        }
-      })
-      .catch(() => generateLocalLayout(prompt))
-      .finally(() => setLoading(false));
+    // Provider fallback chain: Nous → Gemini-web2api → local
+    let text: string | null = null;
+
+    try {
+      text = await callAiProvider(
+        `${NOUS_BASE_URL}/chat/completions`,
+        NOUS_MODEL,
+        [{ role: "user", content: msg }],
+        { max_tokens: 4096, temperature: 0.7, authToken: NOUS_API_KEY }
+      );
+    } catch {
+      try {
+        text = await callAiProvider(
+          WEB2API_FALLBACK,
+          "gemini-3.5-flash",
+          [{ role: "user", content: msg }],
+          { max_tokens: 4096, temperature: 0.7 }
+        );
+      } catch {
+        // Both providers failed — use local fallback
+      }
+    }
+
+    if (text) {
+      try {
+        const cleaned = text.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "").trim();
+        const parsed = JSON.parse(cleaned);
+        const newElements = parsed.map((el: any) => ({
+          ...el,
+          id: crypto.randomUUID(),
+          zIndex: 0,
+          opacity: 1,
+          visible: true,
+          locked: false,
+          name: el.type,
+          scale: 1,
+          rotation: 0,
+        }));
+        onApplyChanges({ elements: [...elements, ...newElements] });
+        setChatMessages((prev) => [...prev, { role: "ai", text: `Generated ${newElements.length} elements from: "${prompt}"` }]);
+      } catch {
+        generateLocalLayout(prompt);
+      }
+    } else {
+      generateLocalLayout(prompt);
+    }
+
+    setLoading(false);
   };
 
   const generateLocalLayout = (prompt: string) => {

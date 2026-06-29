@@ -38,7 +38,46 @@ interface ChatMsg {
 
 // ─── Constants ───────────────────────────────────────────────────────────────
 
+// Nous/Hermes inference API (OpenRouter-compatible) — primary
+const NOUS_BASE_URL = "https://inference-api.nousresearch.com/v1";
+const NOUS_MODEL = "openrouter/owl-alpha";
+const NOUS_API_KEY = import.meta.env.VITE_NOUS_API_KEY || "";
+
+// Gemini Web2API fallback proxy
 const WEB2API_PROXY = "https://saint-examine-clearance-growth.trycloudflare.com/v1/chat/completions";
+
+// ─── Provider fallback helper ───────────────────────────────────────────────
+// Try Nous/Hermes first, then fall back to gemini-web2api on failure.
+
+async function callAiProvider(
+  url: string,
+  model: string,
+  messages: { role: string; content: string }[],
+  options: { max_tokens?: number; temperature?: number; authToken?: string } = {},
+): Promise<string> {
+  const { max_tokens = 1024, temperature = 0.7, authToken } = options;
+  const headers: Record<string, string> = { "Content-Type": "application/json" };
+  if (authToken) {
+    headers["Authorization"] = `Bearer ${authToken}`;
+  }
+
+  const res = await fetch(url, {
+    method: "POST",
+    mode: "cors",
+    headers,
+    signal: AbortSignal.timeout(30000),
+    body: JSON.stringify({ model, messages, max_tokens, temperature }),
+  });
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    const errMsg = (err as any)?.error?.message || `HTTP ${res.status}`;
+    throw new Error(errMsg);
+  }
+
+  const data = await res.json();
+  return data?.choices?.[0]?.message?.content || "No response";
+}
 
 const SUGGESTION_CHIPS = [
   "Make this more chaotic",
@@ -275,27 +314,31 @@ async function callGemini(
   prompt: string,
   systemContext: string,
 ): Promise<string> {
-  const res = await fetch(
-    WEB2API_PROXY,
-    {
-      method: "POST",
-      mode: "cors",
-      headers: { "Content-Type": "application/json" },
-      signal: AbortSignal.timeout(30000),
-      body: JSON.stringify({
-        model: "gemini-3.5-flash",
-        messages: [
-          { role: "system", content: systemContext },
-          { role: "user", content: prompt },
-        ],
+  const messages = [
+    { role: "system", content: systemContext },
+    { role: "user", content: prompt },
+  ];
+
+  // Provider fallback chain: Nous/Hermes → gemini-web2api
+  const providers = [
+    { url: `${NOUS_BASE_URL}/chat/completions`, model: NOUS_MODEL, authToken: NOUS_API_KEY },
+    { url: WEB2API_PROXY, model: "gemini-3.5-flash", authToken: undefined },
+  ];
+
+  let lastError: Error | null = null;
+  for (const provider of providers) {
+    try {
+      return await callAiProvider(provider.url, provider.model, messages, {
         max_tokens: 1024,
-        temperature: 0.7,
-      }),
-    },
-  );
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  const data = await res.json();
-  return data?.choices?.[0]?.message?.content || "No response";
+        authToken: provider.authToken,
+      });
+    } catch (err: any) {
+      lastError = err;
+      // Try next provider
+    }
+  }
+
+  throw lastError || new Error("All AI providers failed");
 }
 
 // ─── Component ──────────────────────────────────────────────────────────────

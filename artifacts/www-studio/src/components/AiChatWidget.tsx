@@ -28,7 +28,46 @@ interface GeminiModel {
 
 const STORAGE_MODEL_KEY = "www-studio-selected-model";
 
+// Nous/Hermes inference API (OpenRouter-compatible)
+const NOUS_BASE_URL = "https://inference-api.nousresearch.com/v1";
+const NOUS_MODEL = "openrouter/owl-alpha";
+const NOUS_API_KEY = import.meta.env.VITE_NOUS_API_KEY || "";
+
+// Gemini Web2API fallback proxy
 const WEB2API_PROXY = "https://saint-examine-clearance-growth.trycloudflare.com/v1/chat/completions";
+
+// ─── Provider fallback chain ────────────────────────────────────────────────
+// Try Nous/Hermes first, then fall back to gemini-web2api on failure.
+
+async function callAiProvider(
+  url: string,
+  model: string,
+  messages: { content: string }[],
+  options: { max_tokens?: number; temperature?: number; authToken?: string } = {},
+): Promise<string> {
+  const { max_tokens = 4096, temperature = 0.7, authToken } = options;
+  const headers: Record<string, string> = { "Content-Type": "application/json" };
+  if (authToken) {
+    headers["Authorization"] = `Bearer ${authToken}`;
+  }
+
+  const res = await fetch(url, {
+    method: "POST",
+    mode: "cors",
+    headers,
+    signal: AbortSignal.timeout(30000),
+    body: JSON.stringify({ model, messages, max_tokens, temperature }),
+  });
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    const errMsg = (err as any)?.error?.message || `HTTP ${res.status}`;
+    throw new Error(errMsg);
+  }
+
+  const data = await res.json();
+  return data?.choices?.[0]?.message?.content ?? "Sorry, I couldn't generate a response.";
+}
 
 const WELCOME: Message = {
   id: "welcome",
@@ -79,27 +118,25 @@ async function callGeminiChat(
     openaiMessages.push({ role: m.role, content: m.content });
   }
 
-  const res = await fetch(WEB2API_PROXY, {
-    method: "POST",
-    mode: "cors",
-    headers: { "Content-Type": "application/json" },
-    signal: AbortSignal.timeout(30000),
-    body: JSON.stringify({
-      model,
-      messages: openaiMessages,
-      max_tokens: 4096,
-      temperature: 0.7,
-    }),
-  });
+  // Provider fallback chain: try Nous/Hermes first, then gemini-web2api
+  const providers = [
+    { url: `${NOUS_BASE_URL}/chat/completions`, model: NOUS_MODEL, authToken: NOUS_API_KEY },
+    { url: WEB2API_PROXY, model, authToken: undefined },
+  ];
 
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({}));
-    const errMsg = (err as any)?.error?.message || `HTTP ${res.status}`;
-    throw new Error(errMsg);
+  let lastError: Error | null = null;
+  for (const provider of providers) {
+    try {
+      return await callAiProvider(provider.url, provider.model, openaiMessages as any, {
+        authToken: provider.authToken,
+      });
+    } catch (err: any) {
+      lastError = err;
+      // Try next provider
+    }
   }
 
-  const data = await res.json();
-  return data?.choices?.[0]?.message?.content ?? "Sorry, I couldn't generate a response.";
+  throw lastError || new Error("All AI providers failed");
 }
 
 // ─── Component ───────────────────────────────────────────────────────────────

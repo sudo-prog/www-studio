@@ -4,7 +4,36 @@
 
 const RESULTS_KEY = "www-studio-design-extract-results";
 
+// Nous/Hermes inference API (OpenRouter-compatible) — primary
+const NOUS_BASE_URL = "https://inference-api.nousresearch.com/v1";
+const NOUS_MODEL = "openrouter/owl-alpha";
+const NOUS_API_KEY=import.meta.env.VITE_NOUS_API_KEY || "";
+
+// Gemini Web2API fallback proxy
 const WEB2API_PROXY = "https://saint-examine-clearance-growth.trycloudflare.com/v1/chat/completions";
+
+// ─── Provider fallback chain ────────────────────────────────────────────────
+async function callAiProvider(
+  url: string,
+  model: string,
+  messages: { role: string; content: any }[],
+  options: { max_tokens?: number; temperature?: number; authToken?: string } = {},
+): Promise<string> {
+  const { max_tokens = 4096, temperature = 0.7, authToken } = options;
+  const headers: Record<string, string> = { "Content-Type": "application/json" };
+  if (authToken) headers["Authorization"] = `Bearer ${authToken}`;
+
+  const res = await fetch(url, {
+    method: "POST",
+    mode: "cors",
+    headers,
+    signal: AbortSignal.timeout(30000),
+    body: JSON.stringify({ model, messages, max_tokens, temperature }),
+  });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const data = await res.json();
+  return data?.choices?.[0]?.message?.content ?? "";
+}
 
 export interface Reference {
   id: string;
@@ -102,30 +131,22 @@ async function callGeminiVision(
     });
   }
 
-  const res = await fetch(WEB2API_PROXY, {
-    method: "POST",
-    mode: "cors",
-    headers: { "Content-Type": "application/json" },
-    signal: AbortSignal.timeout(30000),
-    body: JSON.stringify({
-      model: "gemini-3.5-flash",
-      messages: [{ role: "user", content }],
-      max_tokens: 4096,
-      temperature: 0.7,
-    }),
-  });
-
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({}));
-    const errMsg = (err as any)?.error?.message || `HTTP ${res.status}`;
-    throw new Error(errMsg);
+  // Provider fallback chain: Nous → Gemini-web2api
+  try {
+    return await callAiProvider(
+      `${NOUS_BASE_URL}/chat/completions`,
+      NOUS_MODEL,
+      [{ role: "user", content }],
+      { max_tokens: 4096, temperature: 0.7, authToken: NOUS_API_KEY }
+    );
+  } catch {
+    return await callAiProvider(
+      WEB2API_PROXY,
+      "gemini-3.5-flash",
+      [{ role: "user", content }],
+      { max_tokens: 4096, temperature: 0.7 }
+    );
   }
-
-  const data = await res.json();
-  return (
-    data?.choices?.[0]?.message?.content ??
-    "Sorry, I couldn't generate a design analysis."
-  );
 }
 
 const DESIGN_ANALYSIS_PROMPT = `You are a design intelligence system. Analyze the provided image(s) and extract a comprehensive design system.
