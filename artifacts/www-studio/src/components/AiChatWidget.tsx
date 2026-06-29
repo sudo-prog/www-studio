@@ -3,6 +3,53 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
+
+// ─── AI Self-Heal: DOM snapshot + fix execution ──────────────────────────
+function buildDomSnapshot(): string {
+  const els: string[] = [];
+  const walk = (el: Element, depth: number) => {
+    if (depth > 3) return;
+    if (!el || el.nodeType !== 1) return;
+    const tag = el.tagName?.toLowerCase();
+    if (!tag || tag === "script" || tag === "style" || tag === "meta") return;
+    const cls = el.getAttribute("class") || "";
+    const id = el.id || "";
+    const text = el.children.length === 0 ? (el.textContent || "").trim().slice(0, 60) : "";
+    if (id || cls) {
+      els.push(`<${tag}${id ? ' id="' + id + '"' : ""}${cls ? ' class="' + cls.split(/\s+/).filter(c => c.length < 30).join(" ") + '"' : ""}>${text}</${tag}>`);
+    }
+    for (let i = 0; i < el.children.length; i++) walk(el.children[i], depth + 1);
+  };
+  walk(document.body, 0);
+  return els.slice(0, 60).join("\n");
+}
+
+function executeAIFix(code: string): string {
+  try { const r = new Function(code)(); return "Fixed: " + (r !== undefined ? String(r) : "done"); }
+  catch (e: any) { return "Fix error: " + e.message; }
+}
+
+const SELF_HEAL_PROMPT = `
+
+━━━ SELF-HEAL CAPABILITY ━━━
+When the user reports a bug or issue, you can fix it in the DOM.
+
+The user message includes a DOM_SNAPSHOT. Use it to target real elements.
+
+To fix issues, include a JSON block in your response like:
+\`\`\`fix
+{"type":"EVAL","code":"document.querySelectorAll('.stale').forEach(el=>el.remove())"}
+\`\`\`
+
+Operations:
+- EVAL: run JavaScript (fix logic, remove stuck UI, clear timers)
+- FIX_NOTIFICATIONS: remove stuck toasts: {"type":"FIX_NOTIFICATIONS"}
+- CLEAR_STALE: remove by selector: {"type":"CLEAR_STALE",".error-banner"}
+
+RULES:
+- Check DOM_SNAPSHOT first — NEVER guess selectors
+- Use EVAL for immediate fixes
+- Common fixes: removing stuck notifications, fixing scroll, clearing error states`;
 import {
   Wand2, Send, X, Loader2, Bot, User, Minimize2, Maximize2,
   AlertCircle, ChevronDown, Sparkles, Zap,
@@ -106,11 +153,10 @@ async function callGeminiChat(
   // Build system + user messages in OpenAI format
   const openaiMessages: { role: string; content: string }[] = [];
 
-  // Add system instruction as system message
+  // Add system instruction as system message (always include self-heal prompt)
   const systemMsg = messages.find((m) => m.role === "system");
-  if (systemMsg) {
-    openaiMessages.push({ role: "system", content: systemMsg.content });
-  }
+  const baseSystem = systemMsg ? systemMsg.content : "You are a helpful AI assistant for website design.";
+  openaiMessages.push({ role: "system", content: baseSystem + SELF_HEAL_PROMPT });
 
   // Add user/assistant messages
   for (const m of messages) {
@@ -195,9 +241,39 @@ export function AiChatWidget({ context, onNavigate }: AiChatWidgetProps) {
       const apiMessages = messages
         .filter((m) => !m.isError)
         .map((m) => ({ role: m.role, content: m.content }));
-      apiMessages.push({ role: "user", content: msg });
+      // Inject DOM snapshot + self-heal prompt into the message
+      const domSnapshot = buildDomSnapshot();
+      const enrichedMsg = msg + "\n\n[DOM_SNAPSHOT]\n" + domSnapshot + "\n[/DOM_SNAPSHOT]";
+      apiMessages.push({ role: "user", content: enrichedMsg });
 
-      const reply = await callGeminiChat(apiMessages, selectedModel);
+      let reply = await callGeminiChat(apiMessages, selectedModel);
+
+      // Parse self-heal fix blocks from AI response
+      const fixMatch = reply.match(/```fix\s*\n?([\s\S]*?)\n?```/);
+      if (fixMatch) {
+        try {
+          const fixOps = JSON.parse(fixMatch[1]);
+          const ops = Array.isArray(fixOps) ? fixOps : [fixOps];
+          for (const op of ops) {
+            if (op.type === "EVAL" && op.code) {
+              const fixResult = executeAIFix(op.code);
+              reply = reply.replace(/```fix[\s\S]*?```/, "").trim();
+              reply += "\n\n� **Auto-fix applied:** " + fixResult;
+            } else if (op.type === "FIX_NOTIFICATIONS") {
+              document.querySelectorAll('[class*="notification"], [class*="toast"], [role="alert"]').forEach((el: Element) => {
+                const s = window.getComputedStyle(el);
+                if (s.position === "fixed" || s.position === "absolute") el.remove();
+              });
+              reply += "\n\n� **Notifications cleared**";
+            } else if (op.type === "CLEAR_STALE" && op[0]) {
+              document.querySelectorAll(op[0]).forEach((el: Element) => el.remove());
+              reply += "\n\n🔧 **Cleared elements matching:** " + op[0];
+            }
+          }
+        } catch (e) { /* ignore malformed fix JSON */ }
+        // Remove fix blocks from displayed reply
+        reply = reply.replace(/```fix\s*\n?[\s\S]*?\n?```/g, "").trim();
+      }
 
       setMessages((prev) => [
         ...prev,
