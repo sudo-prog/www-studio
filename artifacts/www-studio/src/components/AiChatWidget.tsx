@@ -325,10 +325,10 @@ export function AiChatWidget({ context, onNavigate }: AiChatWidgetProps) {
       {!open && (
         <button
           onClick={handleOpen}
-          className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-primary shadow-lg shadow-primary/30 flex items-center justify-center hover:scale-110 transition-transform group"
+          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-14 h-14 rounded-full bg-primary shadow-lg shadow-primary/30 flex items-center justify-center hover:scale-110 transition-transform group"
         >
           <Wand2 className="w-6 h-6 text-white" />
-          <span className="absolute -top-8 right-0 text-xs bg-zinc-800 text-white px-2 py-1 rounded-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+          <span className="absolute -top-8 right-0 text-xs bg-zinc-800 text-white px-2 py-1 rounded-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none hidden sm:block">
             AI Assistant
           </span>
         </button>
@@ -338,8 +338,9 @@ export function AiChatWidget({ context, onNavigate }: AiChatWidgetProps) {
       {open && (
         <div
           className={cn(
-            "fixed bottom-6 right-6 z-50 w-80 bg-card border border-border/50 rounded-2xl shadow-2xl shadow-black/40 flex flex-col overflow-hidden transition-all duration-200",
-            minimized ? "h-14" : "h-[480px]"
+            "fixed z-50 bg-card border border-border/50 rounded-2xl shadow-2xl shadow-black/40 flex flex-col overflow-hidden transition-all duration-200",
+            "bottom-4 right-4 left-4 sm:left-auto sm:bottom-6 sm:right-6 sm:w-80",
+            minimized ? "h-14" : "h-[400px] sm:h-[480px]"
           )}
         >
           {/* Header */}

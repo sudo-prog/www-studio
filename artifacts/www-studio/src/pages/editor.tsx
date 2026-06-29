@@ -584,8 +584,8 @@ function PublishModal({ projectId, projectSlug, onClose }: { projectId: string; 
   const copy = (text: string) => { navigator.clipboard.writeText(text); setCopied(true); setTimeout(() => setCopied(false), 2000); };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-      <div className="bg-card border border-border/50 rounded-2xl shadow-2xl w-full max-w-md mx-4 p-6">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm overflow-y-auto">
+      <div className="bg-card border border-border/50 rounded-2xl shadow-2xl w-full max-w-md mx-4 p-6 m-4">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center"><Globe className="w-4 h-4 text-primary" /></div>
@@ -1187,6 +1187,12 @@ export default function Editor() {
   return (
     <div className="h-screen w-screen flex flex-col bg-background text-foreground overflow-hidden">
       {showPublishModal && <PublishModal projectId={project.id} projectSlug={project.slug} onClose={() => setShowPublishModal(false)} />}
+
+      {/* Mobile notice */}
+      <div className="lg:hidden flex items-center justify-center gap-2 px-3 py-2 bg-amber-500/10 border-b border-amber-500/20 text-amber-600 text-xs shrink-0">
+        <Monitor className="w-3.5 h-3.5 shrink-0" />
+        <span>Editor is best experienced on desktop</span>
+      </div>
 
       {/* Top Toolbar */}
       <header className="h-14 border-b border-border/50 bg-card/50 backdrop-blur flex items-center justify-between px-3 shrink-0 gap-2">

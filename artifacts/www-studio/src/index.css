@@ -133,6 +133,27 @@
   }
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+  }
+  /* Prevent horizontal overflow on small screens */
+  html, body {
+    max-width: 100vw;
+  }
+  /* Ensure images never overflow */
+  img, svg, video {
+    max-width: 100%;
+    height: auto;
+  }
+  /* Improve touch targets on mobile */
+  @media (max-width: 768px) {
+    button, a, input, select, textarea {
+      min-height: 44px;
+    }
+    /* But allow icon buttons in toolbars to be smaller */
+    [role="toolbar"] button, .toolbar button, header nav button {
+      min-height: unset;
+    }
   }
 }
 

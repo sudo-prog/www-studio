@@ -74,34 +74,34 @@ export default function Home() {
       <Navbar />
       <main className="flex-1">
         {/* Hero */}
-        <section className="px-4 py-20 md:py-28 flex flex-col items-center text-center max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/20 mb-6">
-            <WandSparkles className="w-3.5 h-3.5" />
+        <section className="px-4 py-12 sm:py-16 md:py-28 flex flex-col items-center text-center max-w-4xl mx-auto">
+          <div className="inline-flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/20 mb-4 sm:mb-6">
+            <WandSparkles className="w-3.5 h-3.5 shrink-0" />
             AI-Powered Visual Builder
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight mb-4 sm:mb-6">
             Clone any website.{" "}
             <span className="bg-gradient-to-r from-primary to-violet-400 bg-clip-text text-transparent">
               Edit like magic.
             </span>{" "}
             Own the code.
           </h1>
-          <p className="text-lg text-muted-foreground mb-10 max-w-2xl leading-relaxed">
+          <p className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-10 max-w-2xl leading-relaxed px-2">
             WWW Studio is the visual UI builder for developers. Paste a URL, describe your idea, or upload a screenshot — get an editable React + Tailwind codebase instantly.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <Button size="lg" className="h-12 px-8 text-base gap-2" asChild>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
+            <Button size="lg" className="h-12 px-8 text-base gap-2 w-full sm:w-auto justify-center" asChild>
               <Link href="/editor/new">
                 <WandSparkles className="w-5 h-5" />Start Building
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="h-12 px-8 text-base gap-2" asChild>
+            <Button size="lg" variant="outline" className="h-12 px-8 text-base gap-2 w-full sm:w-auto justify-center" asChild>
               <Link href="/scenes">
                 <Sparkles className="w-5 h-5" />Wellness Scenes
               </Link>
             </Button>
           </div>
-          <div className="flex flex-wrap justify-center gap-2 mt-10">
+          <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2 mt-6 sm:mt-10 px-2">
             {[
               { icon: <Code2 className="w-3.5 h-3.5" />,       label: "Screenshot → Code"  },
               { icon: <WandSparkles className="w-3.5 h-3.5" />, label: "Generate from Prompt"},
@@ -109,7 +109,7 @@ export default function Home() {
               { icon: <Blocks className="w-3.5 h-3.5" />,       label: "UI Library"          },
               { icon: <Sparkles className="w-3.5 h-3.5" />,     label: "AI Wellness Scenes"  },
             ].map(({ icon, label }) => (
-              <div key={label} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted/50 border border-border/50 text-xs text-muted-foreground">
+              <div key={label} className="flex items-center gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-muted/50 border border-border/50 text-[10px] sm:text-xs text-muted-foreground">
                 {icon}{label}
               </div>
             ))}
@@ -123,12 +123,12 @@ export default function Home() {
               <div>
                 <div className="flex items-center gap-2 mb-1">
                   <Sparkles className="h-5 w-5 text-primary" />
-                  <h2 className="text-2xl font-semibold tracking-tight">Wellness Scenes</h2>
+                  <h2 className="text-xl sm:text-2xl font-semibold tracking-tight">Wellness Scenes</h2>
                 </div>
-                <p className="text-sm text-muted-foreground">AI-generated SVG compositions with living animations — click to share</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">AI-generated SVG compositions with living animations — click to share</p>
               </div>
-              <div className="flex items-center gap-2">
-                <Button variant="outline" size="sm" asChild>
+              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                <Button variant="outline" size="sm" className="hidden sm:flex" asChild>
                   <Link href="/scenes/gallery" className="gap-1.5">
                     <Globe className="h-3.5 w-3.5" />Public Gallery
                   </Link>
@@ -142,14 +142,14 @@ export default function Home() {
             </div>
 
             {/* Wellness colors + stats */}
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
               <div className="flex gap-1.5">
                 {WELLNESS_COLORS.map((c) => (
-                  <div key={c} className="w-5 h-5 rounded-full border border-white/10 shrink-0" style={{ background: c }} />
+                  <div key={c} className="w-4 h-4 sm:w-5 sm:h-5 rounded-full border border-white/10 shrink-0" style={{ background: c }} />
                 ))}
               </div>
               {publicScenes.length > 0 && (
-                <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                <div className="flex items-center gap-3 sm:gap-4 text-[10px] sm:text-xs text-muted-foreground">
                   <span className="flex items-center gap-1">
                     <Globe className="h-3 w-3 text-green-400" />
                     {publicScenes.filter((s: any) => s.status === "published").length} published
@@ -161,7 +161,7 @@ export default function Home() {
               )}
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3">
               {showcaseScenes.map((scene: any) => (
                 <SceneShowcaseCard key={scene.id} scene={scene} />
               ))}
@@ -171,12 +171,12 @@ export default function Home() {
 
         {/* Templates Gallery */}
         <section className="px-4 md:px-6 pb-24 max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 sm:mb-8 gap-3 sm:gap-4">
             <div>
-              <h2 className="text-2xl font-semibold tracking-tight">Community Templates</h2>
-              <p className="text-sm text-muted-foreground mt-1">{safeTemplates.length} templates ready to fork</p>
+              <h2 className="text-xl sm:text-2xl font-semibold tracking-tight">Community Templates</h2>
+              <p className="text-xs sm:text-sm text-muted-foreground mt-1">{safeTemplates.length} templates ready to fork</p>
             </div>
-            <div className="relative w-full md:w-72">
+            <div className="relative w-full sm:w-72">
               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
               <Input
                 value={search}
