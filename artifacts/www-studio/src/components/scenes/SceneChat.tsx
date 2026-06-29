@@ -237,7 +237,7 @@ function generateLocalSceneResponse(userText: string, elements: SceneElement[]):
 
   // Default response
   return {
-    text: `I understand you want to "${userText}". With a Gemini API key, I can provide much more sophisticated responses. For now, try: "add orb", "add lavender", "add coral", "make muted", or "clear canvas".`,
+    text: `I understand you want to "${userText}". Try: "add orb", "add lavender", "add coral", "make muted", "add text in center", or "clear canvas".`,
     actions: [],
   };
 }
@@ -303,33 +303,33 @@ export function SceneChat({ sceneId, elements, selectedId, onApply, onClose }: P
         if (res.ok) data = await res.json() as any;
       } catch { /* no backend — use local AI */ }
 
-      // Fallback: local AI via Gemini API
+      // Fallback: local AI via Gemini Web2API proxy (no API key needed)
       if (!data) {
-        const apiKey = localStorage.getItem("www-studio-gemini-config")
-          ? JSON.parse(localStorage.getItem("www-studio-gemini-config")!).key
-          : "";
-
-        if (!apiKey) {
-          // Pure local fallback without API
-          data = generateLocalSceneResponse(text, elements);
-        } else {
+        try {
           const res = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
+            "https://saint-examine-clearance-growth.trycloudflare.com/v1/chat/completions",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({
-                system_instruction: { parts: [{ text: "You are a wellness scene design AI. Given a scene description and user request, suggest modifications. Respond ONLY with JSON: { \"text\": \"...\", \"actions\": [...] }" }] },
-                contents: [{ role: "user", parts: [{ text: fullPrompt }] }],
-                generationConfig: { temperature: 0.8, maxOutputTokens: 1500 },
+                model: "gemini-3.5-flash",
+                messages: [
+                  { role: "system", content: "You are a wellness scene design AI. Given a scene description and user request, suggest modifications. Respond ONLY with JSON: { \"text\": \"...\", \"actions\": [...] }" },
+                  { role: "user", content: fullPrompt },
+                ],
+                max_tokens: 1500,
+                temperature: 0.8,
               }),
             }
           );
           if (!res.ok) throw new Error(`API ${res.status}`);
           const geminiData = await res.json();
-          const raw = geminiData?.candidates?.[0]?.content?.parts?.[0]?.text ?? "";
+          const raw = geminiData?.choices?.[0]?.message?.content ?? "";
           const cleaned = raw.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "").trim();
           data = JSON.parse(cleaned);
+        } catch {
+          // Pure local fallback if proxy fails
+          data = generateLocalSceneResponse(text, elements);
         }
       }
 
@@ -483,7 +483,7 @@ export function SceneChat({ sceneId, elements, selectedId, onApply, onClose }: P
           </Button>
         </form>
         <p className="text-[9px] text-muted-foreground mt-1.5 text-center">
-          Works offline • Add Gemini API key for best results
+          Works offline • Powered by Gemini (no API key needed)
         </p>
       </div>
     </div>

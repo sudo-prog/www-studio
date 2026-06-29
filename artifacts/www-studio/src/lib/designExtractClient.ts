@@ -1,9 +1,10 @@
 // ─── designExtractClient.ts ──────────────────────────────────────────────────
 // Static frontend fallback client for GitHub Pages mode (no API server)
-// Calls Gemini Vision API directly from the browser.
+// Calls Gemini via Web2API proxy (no API key needed).
 
-const STORAGE_KEY = "www-studio-gemini-config";
 const RESULTS_KEY = "www-studio-design-extract-results";
+
+const WEB2API_PROXY = "https://saint-examine-clearance-growth.trycloudflare.com/v1/chat/completions";
 
 export interface Reference {
   id: string;
@@ -33,21 +34,6 @@ export interface ExtractionResult {
   markdown: string;
   createdAt: string;
   error?: string;
-}
-
-interface GeminiConfig {
-  key: string;
-  baseUrl: string;
-}
-
-function loadConfig(): GeminiConfig | null {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) return JSON.parse(raw);
-  } catch {
-    // ignore
-  }
-  return null;
 }
 
 export function saveResult(result: ExtractionResult): void {
@@ -102,36 +88,30 @@ function fileToBase64(file: File): Promise<string> {
 }
 
 async function callGeminiVision(
-  apiKey: string,
   prompt: string,
   imageBase64?: string,
   mimeType?: string
 ): Promise<string> {
-  const parts: any[] = [{ text: prompt }];
+  const content: any[] = [{ type: "text", text: prompt }];
 
   if (imageBase64 && mimeType) {
-    parts.push({
-      inline_data: {
-        mime_type: mimeType,
-        data: imageBase64,
-      },
+    const dataUrl = `data:${mimeType};base64,${imageBase64}`;
+    content.push({
+      type: "image_url",
+      image_url: { url: dataUrl },
     });
   }
 
-  const res = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        contents: [{ role: "user", parts }],
-        generationConfig: {
-          temperature: 0.7,
-          maxOutputTokens: 4096,
-        },
-      }),
-    }
-  );
+  const res = await fetch(WEB2API_PROXY, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      model: "gemini-3.5-flash",
+      messages: [{ role: "user", content }],
+      max_tokens: 4096,
+      temperature: 0.7,
+    }),
+  });
 
   if (!res.ok) {
     const err = await res.json().catch(() => ({}));
@@ -141,7 +121,7 @@ async function callGeminiVision(
 
   const data = await res.json();
   return (
-    data?.candidates?.[0]?.content?.parts?.[0]?.text ??
+    data?.choices?.[0]?.message?.content ??
     "Sorry, I couldn't generate a design analysis."
   );
 }
@@ -211,11 +191,6 @@ function safeParseTokens(json: string): TokenData {
 export async function extractDesignFromReferences(
   references: Reference[]
 ): Promise<ExtractionResult> {
-  const config = loadConfig();
-  if (!config?.key) {
-    throw new Error("No Gemini API key configured. Please set it first.");
-  }
-
   const id = crypto.randomUUID();
   const prompt = buildPrompt(references);
 
@@ -226,9 +201,9 @@ export async function extractDesignFromReferences(
   if (imageRef?.thumbnail) {
     // Convert data URL to base64 and call vision API
     const base64 = imageRef.thumbnail.split(",")[1];
-    response = await callGeminiVision(config.key, prompt, base64, "image/png");
+    response = await callGeminiVision(prompt, base64, "image/png");
   } else {
-    response = await callGeminiVision(config.key, prompt);
+    response = await callGeminiVision(prompt);
   }
 
   // Try to extract JSON from response (handle markdown fences)

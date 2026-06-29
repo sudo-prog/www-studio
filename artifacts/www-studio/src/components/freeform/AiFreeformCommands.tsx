@@ -94,53 +94,50 @@ export default function AiFreeformCommands({ elements, page, onApplyChanges, onU
     const prompt = aiChat || "landing page with hero";
     setLoading(true);
 
-    // Use Gemini API if available
-    const geminiConfig = localStorage.getItem("www-studio-gemini-config");
-    if (geminiConfig) {
-      const { key } = JSON.parse(geminiConfig);
-      const msg = `Generate a freeform layout for: "${prompt}". Return ONLY a JSON array of elements with types: text, shape, button, image. Each element needs: type, x, y, width, height. Text elements need: text, fontSize, color, fontWeight. Shape elements need: fill, shapeKind. Keep it under 10 elements.`;
+    // Use Gemini Web2API proxy (no API key needed)
+    const msg = `Generate a freeform layout for: "${prompt}". Return ONLY a JSON array of elements with types: text, shape, button, image. Each element needs: type, x, y, width, height. Text elements need: text, fontSize, color, fontWeight. Shape elements need: fill, shapeKind. Keep it under 10 elements.`;
 
-      fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${key}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: msg }] }],
-          generationConfig: { responseMimeType: "application/json" },
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-          if (text) {
-            try {
-              const parsed = JSON.parse(text);
-              // Add generated elements with IDs
-              const newElements = parsed.map((el: any) => ({
-                ...el,
-                id: crypto.randomUUID(),
-                zIndex: 0,
-                opacity: 1,
-                visible: true,
-                locked: false,
-                name: el.type,
-                scale: 1,
-                rotation: 0,
-              }));
-              onApplyChanges({ elements: [...elements, ...newElements] });
-              setChatMessages((prev) => [...prev, { role: "ai", text: `Generated ${newElements.length} elements from: "${prompt}"` }]);
-            } catch {
-              generateLocalLayout(prompt);
-            }
-          } else {
+    fetch("https://saint-examine-clearance-growth.trycloudflare.com/v1/chat/completions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "gemini-3.5-flash",
+        messages: [{ role: "user", content: msg }],
+        max_tokens: 4096,
+        temperature: 0.7,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const text = data?.choices?.[0]?.message?.content;
+        if (text) {
+          try {
+            // Strip markdown fences if present
+            const cleaned = text.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "").trim();
+            const parsed = JSON.parse(cleaned);
+            // Add generated elements with IDs
+            const newElements = parsed.map((el: any) => ({
+              ...el,
+              id: crypto.randomUUID(),
+              zIndex: 0,
+              opacity: 1,
+              visible: true,
+              locked: false,
+              name: el.type,
+              scale: 1,
+              rotation: 0,
+            }));
+            onApplyChanges({ elements: [...elements, ...newElements] });
+            setChatMessages((prev) => [...prev, { role: "ai", text: `Generated ${newElements.length} elements from: "${prompt}"` }]);
+          } catch {
             generateLocalLayout(prompt);
           }
-        })
-        .catch(() => generateLocalLayout(prompt))
-        .finally(() => setLoading(false));
-    } else {
-      generateLocalLayout(prompt);
-      setLoading(false);
-    }
+        } else {
+          generateLocalLayout(prompt);
+        }
+      })
+      .catch(() => generateLocalLayout(prompt))
+      .finally(() => setLoading(false));
   };
 
   const generateLocalLayout = (prompt: string) => {

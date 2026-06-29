@@ -38,10 +38,7 @@ interface ChatMsg {
 
 // ─── Constants ───────────────────────────────────────────────────────────────
 
-const STORAGE_KEY = "www-studio-gemini-config";
-const STORAGE_MODEL_KEY = "www-studio-selected-model";
-
-const GEMINI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta";
+const WEB2API_PROXY = "https://saint-examine-clearance-growth.trycloudflare.com/v1/chat/completions";
 
 const SUGGESTION_CHIPS = [
   "Make this more chaotic",
@@ -274,43 +271,29 @@ function generateLocalFreeformResponse(
 
 // ─── Gemini API ─────────────────────────────────────────────────────────────
 
-interface GeminiConfig {
-  key: string;
-  baseUrl: string;
-}
-
-function loadConfig(): GeminiConfig | null {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) return JSON.parse(raw);
-  } catch { /* ignore */ }
-  return null;
-}
-
 async function callGemini(
-  apiKey: string,
   prompt: string,
   systemContext: string,
 ): Promise<string> {
   const res = await fetch(
-    `${GEMINI_BASE_URL}/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
+    WEB2API_PROXY,
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        contents: [
-          { role: "user", parts: [{ text: `${systemContext}\n\nUser: ${prompt}` }] },
+        model: "gemini-3.5-flash",
+        messages: [
+          { role: "system", content: systemContext },
+          { role: "user", content: prompt },
         ],
-        generationConfig: {
-          temperature: 0.7,
-          maxOutputTokens: 1024,
-        },
+        max_tokens: 1024,
+        temperature: 0.7,
       }),
     },
   );
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const data = await res.json();
-  return data?.candidates?.[0]?.content?.parts?.[0]?.text || "No response";
+  return data?.choices?.[0]?.message?.content || "No response";
 }
 
 // ─── Component ──────────────────────────────────────────────────────────────
@@ -358,17 +341,17 @@ export default function FreeformAIChat({ elements, canvasWidth, canvasHeight, on
     setInput("");
     setLoading(true);
 
-    const config = loadConfig();
     const systemContext = `You are an AI design assistant for a freeform canvas editor. The canvas is ${canvasWidth}x${canvasHeight}px. Current elements: ${elements.length}. Element types: ${elements.map((e) => e.type).join(", ") || "none"}.
 
 You can suggest actions like adding elements, applying design tokens, creating layouts, optimizing for mobile, etc. Respond conversationally with design advice.`;
 
     try {
       let response: string;
-      if (config?.key) {
-        response = await callGemini(config.key, input.trim(), systemContext);
-      } else {
-        // Use local AI
+      // Always try the web2api proxy first (no API key needed)
+      try {
+        response = await callGemini(input.trim(), systemContext);
+      } catch {
+        // Use local AI if proxy fails
         const local = generateLocalFreeformResponse(input.trim(), elements, canvasWidth, canvasHeight);
         response = local.text;
         // Apply local actions
@@ -643,7 +626,7 @@ You can suggest actions like adding elements, applying design tokens, creating l
           </Button>
         </div>
         <p className="text-[9px] text-muted-foreground mt-1.5">
-          Gemini API key required for advanced AI • Falls back to local AI
+          Powered by Gemini (no API key needed) • Falls back to local AI
         </p>
       </div>
     </div>
