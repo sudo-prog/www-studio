@@ -104,7 +104,9 @@ async function callGeminiVision(
 
   const res = await fetch(WEB2API_PROXY, {
     method: "POST",
+    mode: "cors",
     headers: { "Content-Type": "application/json" },
+    signal: AbortSignal.timeout(30000),
     body: JSON.stringify({
       model: "gemini-3.5-flash",
       messages: [{ role: "user", content }],

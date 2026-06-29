@@ -310,7 +310,9 @@ export function SceneChat({ sceneId, elements, selectedId, onApply, onClose }: P
             "https://saint-examine-clearance-growth.trycloudflare.com/v1/chat/completions",
             {
               method: "POST",
+              mode: "cors",
               headers: { "Content-Type": "application/json" },
+              signal: AbortSignal.timeout(30000),
               body: JSON.stringify({
                 model: "gemini-3.5-flash",
                 messages: [
