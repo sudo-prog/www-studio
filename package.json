@@ -8,7 +8,7 @@
   },
   "scripts": {
     "typecheck": "tsc --build",
-    "build": "pnpm run typecheck && pnpm -r --if-present run build",
+    "build": "pnpm --filter @workspace/www-studio run build && cp -r api artifacts/www-studio/dist/public/",
     "kb:seed": "tsx scripts/seed-kb.ts"
   },
   "devDependencies": {
