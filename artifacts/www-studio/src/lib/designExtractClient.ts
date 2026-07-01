@@ -10,7 +10,7 @@ const NOUS_MODEL = "openrouter/owl-alpha";
 const NOUS_API_KEY=import.meta.env.VITE_NOUS_API_KEY || "";
 
 // Gemini Web2API fallback proxy
-const WEB2API_PROXY = "https://navigator-aim-disciplinary-couples.trycloudflare.com/v1/chat/completions";
+const WEB2API_PROXY = "/api/chat";
 
 // ─── Provider fallback chain ────────────────────────────────────────────────
 async function callAiProvider(
