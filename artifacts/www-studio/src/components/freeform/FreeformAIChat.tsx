@@ -44,7 +44,7 @@ const NOUS_MODEL = "openrouter/owl-alpha";
 const NOUS_API_KEY = import.meta.env.VITE_NOUS_API_KEY || "";
 
 // Gemini Web2API fallback proxy
-const WEB2API_PROXY = "https://saint-examine-clearance-growth.trycloudflare.com/v1/chat/completions";
+const WEB2API_PROXY = "https://https://navigator-aim-disciplinary-couples.trycloudflare.com/v1/chat/completions";
 
 // ─── Provider fallback helper ───────────────────────────────────────────────
 // Try Nous/Hermes first, then fall back to gemini-web2api on failure.
