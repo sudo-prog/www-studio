@@ -58,7 +58,8 @@ app.use("/api/design-extract",         aiLimiter);
 // Scene-specific AI routes matched by prefix
 app.use("/api/scenes", (req, _res, next) => {
   if (req.path.endsWith("/chat") || req.path === "/ai-generate") {
-    return aiLimiter(req, _res, next);
+    aiLimiter(req, _res, next);
+    return;
   }
   next();
 });

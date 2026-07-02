@@ -145,13 +145,14 @@ router.post("/rag/ingest", async (req: Request, res: Response) => {
   const inserted = [];
 
   for (const chunk of chunks) {
+    const values: Record<string, unknown> = {
+      content: chunk.trim(),
+      metadata: metadata || {},
+    };
+    if (source != null) values.source = source;
     const [row] = await db
       .insert(knowledgeChunksTable)
-      .values({
-        content: chunk.trim(),
-        source: source || null,
-        metadata: metadata || {},
-      })
+      .values(values)
       .returning();
     inserted.push(row);
   }
@@ -216,7 +217,7 @@ router.get("/pages/:projectId", async (req: Request, res: Response) => {
   const rows = await db
     .select()
     .from(pagesTable)
-    .where(eq(pagesTable.projectId, req.params.projectId))
+    .where(eq(pagesTable.projectId, req.params.projectId as string))
     .orderBy(desc(pagesTable.createdAt));
   res.json(rows);
 });

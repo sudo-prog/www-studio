@@ -2,6 +2,19 @@
 
 Architecture decisions, file structure, API patterns, and known issues for WWW Studio.
 
+**Last updated:** 2026-07-03
+
+---
+
+## AI Configuration
+- **Default Provider:** Gemini Web2API (model: `gemini-3.5-flash`) — runs locally via gemini-web2api proxy at `http://localhost:8081/v1`
+- **Fallback Provider:** OpenRouter — uses `OPENROUTER_API_KEY` env var, defaults to `openrouter/free` model
+- **Self-Heal:** `artifacts/www-studio/src/lib/ai-self-heal.ts` — provides DOM snapshot, EVAL, FIX_NOTIFICATIONS, and CLEAR_STALE operations
+- **Provider Fallback Order:** Gemini Web2API → OpenRouter → Ollama (local)
+- **Key Files:**
+  - `artifacts/api-server/src/lib/llm.ts` — LLM client with `chatCompleteWithFallback()` for automatic fallback
+  - `artifacts/www-studio/src/lib/ai-self-heal.ts` — Self-healing AI capability
+
 ---
 
 ## Architecture Decisions

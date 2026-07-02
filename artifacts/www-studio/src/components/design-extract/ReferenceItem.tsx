@@ -40,7 +40,15 @@ export default function ReferenceItem({
 }: ReferenceItemProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [showPill, setShowPill] = useState(false);
+  const [draft, setDraft] = useState(reference.annotation);
   const intent = parseIntent(reference.annotation);
+
+  const commitAnnotation = () => {
+    const trimmed = draft.trim();
+    if (trimmed && trimmed !== reference.annotation) onUpdateAnnotation(trimmed);
+    setShowPill(true);
+    setIsEditing(false);
+  };
 
   const handleBlur = () => {
     setIsEditing(false);
@@ -93,12 +101,25 @@ export default function ReferenceItem({
               : reference.value}
           </span>
         </div>
-        {reference.annotation && (
+        {reference.annotation && !isEditing && (
           <p className="text-xs text-muted-foreground/70 truncate mt-0.5 italic">
             {reference.annotation.length > 60
               ? reference.annotation.slice(0, 60) + "…"
               : reference.annotation}
           </p>
+        )}
+        {isEditing && (
+          <input
+            className="text-xs text-foreground mt-0.5 w-full rounded border border-border bg-background px-2 py-1"
+            value={draft}
+            onChange={(e) => setDraft(e.target.value)}
+            onBlur={commitAnnotation}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') commitAnnotation();
+              if (e.key === 'Escape') setIsEditing(false);
+            }}
+            autoFocus
+          />
         )}
         {/* Intent pill shown after blur */}
         {showPill && reference.annotation && (
@@ -120,11 +141,8 @@ export default function ReferenceItem({
           size="icon"
           className="h-7 w-7"
           onClick={() => {
-            const newAnn = prompt("Edit annotation:", reference.annotation);
-            if (newAnn !== null && newAnn !== reference.annotation) {
-              onUpdateAnnotation(newAnn);
-              setShowPill(true);
-            }
+            setDraft(reference.annotation);
+            setIsEditing(true);
           }}
         >
           <Pencil className="h-3.5 w-3.5" />

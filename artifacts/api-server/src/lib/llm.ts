@@ -1,28 +1,29 @@
 /**
- * Unified LLM client — works with Ollama, OpenRouter, LM Studio, OpenAI,
- * Gemini Web2API, or any OpenAI-compatible endpoint.
+ * Unified LLM client — works with Gemini Web2API, OpenRouter, Ollama, LM Studio, OpenAI,
+ * or any OpenAI-compatible endpoint.
+ *
+ * DEFAULT: Gemini Web2API (local proxy at localhost:8081)
+ * FALLBACK: OpenRouter (free tier: openrouter/free)
  *
  * Configure via environment variables:
- *   LLM_BASE_URL      default: http://localhost:11434/v1  (Ollama)
- *   LLM_API_KEY       default: "ollama"  (Ollama ignores the key)
- *   LLM_MODEL         default: "llama3.2"
- *   LLM_VISION_MODEL  default: LLM_MODEL  (use a vision-capable model for screenshot-to-code)
+ *   LLM_BASE_URL      default: http://localhost:8081/v1  (Gemini Web2API)
+ *   LLM_API_KEY       default: "gemini-web2api"
+ *   LLM_MODEL         default: "gemini-3.5-flash"
+ *   LLM_VISION_MODEL  default: LLM_MODEL
  *
  * Quick-start examples:
- *   Ollama (local):       LLM_BASE_URL=http://localhost:11434/v1  LLM_MODEL=llama3.2
- *   OpenRouter (free):    LLM_BASE_URL=https://openrouter.ai/api/v1  LLM_API_KEY=sk-or-...
- *                         LLM_MODEL=meta-llama/llama-3.3-70b-instruct:free
- *   LM Studio:            LLM_BASE_URL=http://localhost:1234/v1  LLM_MODEL=<your-model>
- *   OpenAI:               LLM_API_KEY=sk-...  LLM_MODEL=gpt-4o-mini
- *   Gemini Web2API:       LLM_BASE_URL=http://localhost:8081/v1  LLM_MODEL=gemini-2.0-flash
- *                         GEMINI_WEB2API_BASE_URL=http://localhost:8081/v1
+ *   Gemini Web2API (default): LLM_BASE_URL=http://localhost:8081/v1  LLM_MODEL=gemini-3.5-flash
+ *   OpenRouter (free):        LLM_BASE_URL=https://openrouter.ai/api/v1  LLM_API_KEY=sk-or-...
+ *                             LLM_MODEL=openrouter/free
+ *   Ollama (local):           LLM_BASE_URL=http://localhost:11434/v1  LLM_MODEL=llama3.2
+ *   OpenAI:                   LLM_API_KEY=sk-...  LLM_MODEL=gpt-4o-mini
  */
 
 import OpenAI from "openai";
 
-export const LLM_BASE_URL    = process.env.LLM_BASE_URL    ?? "http://localhost:11434/v1";
-export const LLM_API_KEY     = process.env.LLM_API_KEY     ?? "ollama";
-export const LLM_MODEL       = process.env.LLM_MODEL       ?? "llama3.2";
+export const LLM_BASE_URL    = process.env.LLM_BASE_URL    ?? "http://localhost:8081/v1";
+export const LLM_API_KEY     = process.env.LLM_API_KEY     ?? "gemini-web2api";
+export const LLM_MODEL       = process.env.LLM_MODEL       ?? "gemini-3.5-flash";
 export const LLM_VISION_MODEL = process.env.LLM_VISION_MODEL ?? LLM_MODEL;
 
 export const llm = new OpenAI({
@@ -33,10 +34,42 @@ export const llm = new OpenAI({
     : {}),
 });
 
+// ── OpenRouter fallback client ──────────────────────────────────────────────────
+let _openrouterClient: OpenAI | null = null;
+
+export function getOpenRouterClient(): OpenAI {
+  if (!_openrouterClient) {
+    _openrouterClient = new OpenAI({
+      baseURL: process.env.OPENROUTER_BASE_URL ?? "https://openrouter.ai/api/v1",
+      apiKey:  process.env.OPENROUTER_API_KEY ?? "",
+      defaultHeaders: {
+        "HTTP-Referer": process.env.OPENROUTER_REFERER ?? "https://www-studio.vercel.app",
+        "X-Title": "WWW Studio",
+      },
+    });
+  }
+  return _openrouterClient;
+}
+
+/** Check whether OpenRouter is configured and reachable. */
+export async function isOpenRouterReachable(): Promise<boolean> {
+  if (!process.env.OPENROUTER_API_KEY) return false;
+  try {
+    const client = getOpenRouterClient();
+    await Promise.race([
+      client.models.list(),
+      new Promise<never>((_, reject) => setTimeout(() => reject(new Error("timeout")), 3000)),
+    ]);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 // ── Gemini Web2API proxy ──────────────────────────────────────────────────────
 
 export const GEMINI_WEB2API_BASE_URL = process.env.GEMINI_WEB2API_BASE_URL ?? "http://localhost:8081/v1";
-export const GEMINI_WEB2API_MODEL     = process.env.GEMINI_WEB2API_MODEL     ?? "gemini-2.0-flash";
+export const GEMINI_WEB2API_MODEL     = process.env.GEMINI_WEB2API_MODEL     ?? "gemini-3.5-flash";
 
 let _geminiClient: OpenAI | null = null;
 
@@ -77,6 +110,44 @@ export function getLLMProvider(): string {
   if (LLM_BASE_URL.includes("localhost:1234")) return "LM Studio";
   if (LLM_BASE_URL.includes("localhost:8081") || LLM_BASE_URL.includes("gemini")) return "Gemini Web2API";
   return "Custom";
+}
+
+/**
+ * Try the primary LLM first, fall back to OpenRouter if available.
+ * Returns { content, provider } with the provider that succeeded.
+ */
+export async function chatCompleteWithFallback(
+  messages: ChatMessage[],
+  opts: {
+    model?:       string;
+    temperature?: number;
+    maxTokens?:   number;
+    jsonMode?:    boolean;
+  } = {},
+): Promise<{ content: string; provider: string }> {
+  try {
+    const content = await chatComplete(messages, opts);
+    return { content, provider: getLLMProvider() };
+  } catch (primaryErr) {
+    // Try OpenRouter fallback
+    if (process.env.OPENROUTER_API_KEY) {
+      try {
+        const client = getOpenRouterClient();
+        const res = await client.chat.completions.create({
+          model:       process.env.OPENROUTER_FALLBACK_MODEL ?? "openrouter/free",
+          messages,
+          temperature: opts.temperature ?? 0.7,
+          max_tokens:  opts.maxTokens   ?? 2048,
+          ...(opts.jsonMode ? { response_format: { type: "json_object" } } : {}),
+        });
+        const content = res.choices[0]?.message?.content ?? "";
+        return { content, provider: "OpenRouter (fallback)" };
+      } catch {
+        throw primaryErr;
+      }
+    }
+    throw primaryErr;
+  }
 }
 
 /** One-shot completion → full response text */

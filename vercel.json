@@ -1,21 +1,20 @@
 {
+  "framework": "vite",
   "buildCommand": "pnpm --filter @workspace/www-studio run build",
   "outputDirectory": "artifacts/www-studio/dist/public",
-  "installCommand": "npm install -g corepack@latest && corepack enable && corepack prepare pnpm@8.15.1 --activate && pnpm install --no-frozen-lockfile",
-  "env": {
-    "GITHUB_PAGES": "false",
-    "VERCEL_NODE_VERSION": "24",
-    "npm_config_fetch_implementation": "node"
-  },
+  "installCommand": "pnpm install --no-frozen-lockfile",
   "rewrites": [
-    { "source": "/((?!api/).*)", "destination": "/index.html" }
+    { "source": "/api/:path*", "destination": "/api/:path*" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [
     {
-      "source": "/sw.js",
+      "source": "/index.html",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" },
-        { "key": "Service-Worker-Allowed", "value": "/" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
       ]
     }
   ]

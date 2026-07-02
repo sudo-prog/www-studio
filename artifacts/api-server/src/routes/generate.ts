@@ -293,7 +293,7 @@ router.post("/generate-image", async (req: Request, res: Response) => {
         size: size as "1024x1024" | "1792x1024" | "1024x1792",
         response_format: "url",
       });
-      res.json({ url: response.data[0]?.url, prompt });
+      res.json({ url: response.data?.[0]?.url, prompt });
       return;
     } catch {
       // fall through to placeholder

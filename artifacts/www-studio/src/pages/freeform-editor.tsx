@@ -40,6 +40,8 @@ export default function FreeformEditor() {
   const [showCssJsPanel, setShowCssJsPanel] = useState(false);
   const [showScreenshotDialog, setShowScreenshotDialog] = useState(false);
   const [mobileWidth, setMobileWidth] = useState(375);
+  const [editingColor, setEditingColor] = useState<string | null>(null);
+  const [editingColorDraft, setEditingColorDraft] = useState("");
 
   const selectedEl = state.page.elements.find((e) => e.id === state.selectedId) ?? null;
 
@@ -357,16 +359,45 @@ export default function FreeformEditor() {
               <Label className="text-[10px] text-muted-foreground uppercase tracking-wider mb-1 block">Colors</Label>
               <div className="grid grid-cols-6 gap-1">
                 {Object.entries(tokens.colors).map(([name, value]) => (
-                  <button
-                    key={name}
-                    title={name}
-                    className="w-8 h-8 rounded border border-border hover:ring-1 hover:ring-primary"
-                    style={{ background: value as string }}
-                    onClick={() => {
-                      const newColor = prompt(`New color for "${name}" (current: ${value})`);
-                      if (newColor) dispatch({ type: "UPDATE_TOKEN", category: "colors", key: name, value: newColor });
-                    }}
-                  />
+                  <div key={name} className="relative">
+                    <button
+                      title={name}
+                      className="w-8 h-8 rounded border border-border hover:ring-1 hover:ring-primary"
+                      style={{ background: value as string }}
+                      onClick={() => {
+                        setEditingColor(name);
+                        setEditingColorDraft(String(value));
+                      }}
+                    />
+                    {editingColor === name && (
+                      <div className="absolute z-50 top-full mt-1 left-0 bg-background border border-border rounded shadow-lg p-2 flex gap-1">
+                        <input
+                          type="color"
+                          value={editingColorDraft}
+                          onChange={(e) => setEditingColorDraft(e.target.value)}
+                          className="w-8 h-8 rounded cursor-pointer border-0 p-0"
+                        />
+                        <input
+                          type="text"
+                          value={editingColorDraft}
+                          onChange={(e) => setEditingColorDraft(e.target.value)}
+                          onBlur={() => {
+                            dispatch({ type: "UPDATE_TOKEN", category: "colors", key: name, value: editingColorDraft });
+                            setEditingColor(null);
+                          }}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                              dispatch({ type: "UPDATE_TOKEN", category: "colors", key: name, value: editingColorDraft });
+                              setEditingColor(null);
+                            }
+                            if (e.key === 'Escape') setEditingColor(null);
+                          }}
+                          className="text-[10px] w-20 rounded border border-border bg-background px-1"
+                          autoFocus
+                        />
+                      </div>
+                    )}
+                  </div>
                 ))}
               </div>
             </div>

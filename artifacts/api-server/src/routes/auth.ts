@@ -1,4 +1,5 @@
 import { Router, type IRouter, type Request, type Response } from "express";
+import { eq } from "drizzle-orm";
 import { db, usersTable } from "@workspace/db";
 import {
   GetCurrentAuthUserResponse,
