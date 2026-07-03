@@ -4,7 +4,23 @@ Architecture decisions, file structure, API patterns, and known issues for WWW S
 
 **Last updated:** 2026-07-03
 
-## Audit Fixes Applied (2026-07-03)
+## Vercel Deployment Configuration Audit (2026-07-03)
+
+### GitHub Workflow Changes
+
+**www-studio/.github/workflows/deploy.yml**
+- Removed GitHub Pages deployment (peaceiris/actions-gh-pages)
+- Enabled Vercel deployment (amondnet/vercel-action@v25)
+- Added separate jobs for production and preview deployments
+- Requires GitHub secrets: `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`, `VERCEL_GITHUB_TOKEN`
+
+**www-studio/artifacts/api-server/vercel.json**
+- Created Node.js serverless function configuration
+- Framework: `none` (Express API server)
+- Build: `pnpm --filter @workspace/api-server run build`
+- Routes: All requests to `/index.mjs` (bundled Express server)
+
+### Audit Fixes Applied (2026-07-03)
 
 ### Completed
 - Removed nested `www-studio/` Git Pages build folder; migrated Vercel project config to root `.vercel/project.json`

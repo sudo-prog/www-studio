@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy to Vercel
 
 on:
   push:
@@ -15,36 +15,61 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
       - uses: pnpm/action-setup@v4
         with:
           version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
 
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
       - name: Build www-studio frontend
-        run: cd artifacts/www-studio && pnpm run build
+        run: pnpm --filter @workspace/www-studio run build
         env:
           NODE_ENV: "production"
-          GITHUB_PAGES: "true"
 
-      - name: Deploy to gh-pages branch
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./artifacts/www-studio/dist/public
-          publish_branch: gh-pages
-
-      - name: Deploy to Vercel (preview)
+      - name: Deploy to Vercel (production)
         uses: amondnet/vercel-action@v25
-        if: false  # Enable this after adding VERCEL_TOKEN to GitHub secrets
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-args: '--prod'
           working-directory: ./
+          vercel-args: '--prod'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          vercel-github-token: ${{ secrets.VERCEL_GITHUB_TOKEN }}
+
+  preview-deploy:
+    runs-on: ubuntu-latest
+    if: github.ref != 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Build www-studio frontend
+        run: pnpm --filter @workspace/www-studio run build
+        env:
+          NODE_ENV: "production"
+
+      - name: Deploy to Vercel (preview)
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: ./
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          vercel-github-token: ${{ secrets.VERCEL_GITHUB_TOKEN }}

@@ -1,0 +1,9 @@
+{
+  "framework": "none",
+  "buildCommand": "pnpm --filter @workspace/api-server run build",
+  "outputDirectory": "dist",
+  "installCommand": "pnpm install --no-frozen-lockfile",
+  "routes": [
+    { "src": "/(.*)", "dest": "/index.mjs" }
+  ]
+}
