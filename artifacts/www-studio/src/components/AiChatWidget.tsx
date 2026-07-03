@@ -24,32 +24,27 @@ function buildDomSnapshot(): string {
   return els.slice(0, 60).join("\n");
 }
 
-function executeAIFix(code: string): string {
-  try { const r = new Function(code)(); return "Fixed: " + (r !== undefined ? String(r) : "done"); }
-  catch (e: any) { return "Fix error: " + e.message; }
-}
-
 const SELF_HEAL_PROMPT = `
 
 ━━━ SELF-HEAL CAPABILITY ━━━
-When the user reports a bug or issue, you can fix it in the DOM.
+When the user reports a bug or issue, you can fix it in the DOM using safe operations.
 
 The user message includes a DOM_SNAPSHOT. Use it to target real elements.
 
 To fix issues, include a JSON block in your response like:
 \`\`\`fix
-{"type":"EVAL","code":"document.querySelectorAll('.stale').forEach(el=>el.remove())"}
+{"type":"FIX_NOTIFICATIONS"}
 \`\`\`
 
 Operations:
-- EVAL: run JavaScript (fix logic, remove stuck UI, clear timers)
 - FIX_NOTIFICATIONS: remove stuck toasts: {"type":"FIX_NOTIFICATIONS"}
-- CLEAR_STALE: remove by selector: {"type":"CLEAR_STALE",".error-banner"}
+- CLEAR_STALE: remove by selector: {"type":"CLEAR_STALE","selector":".error-banner"}
 
 RULES:
 - Check DOM_SNAPSHOT first — NEVER guess selectors
-- Use EVAL for immediate fixes
-- Common fixes: removing stuck notifications, fixing scroll, clearing error states`;
+- Use FIX_NOTIFICATIONS for stuck UI
+- Use CLEAR_STALE to remove broken/old UI by selector
+- Common fixes: removing stuck notifications, clearing error states`;
 import {
   Wand2, Send, X, Loader2, Bot, User, Minimize2, Maximize2,
   AlertCircle, ChevronDown, Sparkles, Zap,
@@ -81,7 +76,7 @@ const NOUS_MODEL = "openrouter/owl-alpha";
 const NOUS_API_KEY = import.meta.env.VITE_NOUS_API_KEY || "";
 
 // Gemini Web2API fallback proxy
-const WEB2API_PROXY = "/api/chat";
+const WEB2API_PROXY = "/api/ai/chat";
 
 // ─── Provider fallback chain ────────────────────────────────────────────────
 // Try Nous/Hermes first, then fall back to gemini-web2api on failure.
@@ -255,19 +250,15 @@ export function AiChatWidget({ context, onNavigate }: AiChatWidgetProps) {
           const fixOps = JSON.parse(fixMatch[1]);
           const ops = Array.isArray(fixOps) ? fixOps : [fixOps];
           for (const op of ops) {
-            if (op.type === "EVAL" && op.code) {
-              const fixResult = executeAIFix(op.code);
-              reply = reply.replace(/```fix[\s\S]*?```/, "").trim();
-              reply += "\n\n� **Auto-fix applied:** " + fixResult;
-            } else if (op.type === "FIX_NOTIFICATIONS") {
+            if (op.type === "FIX_NOTIFICATIONS") {
               document.querySelectorAll('[class*="notification"], [class*="toast"], [role="alert"]').forEach((el: Element) => {
                 const s = window.getComputedStyle(el);
                 if (s.position === "fixed" || s.position === "absolute") el.remove();
               });
-              reply += "\n\n� **Notifications cleared**";
-            } else if (op.type === "CLEAR_STALE" && op[0]) {
-              document.querySelectorAll(op[0]).forEach((el: Element) => el.remove());
-              reply += "\n\n🔧 **Cleared elements matching:** " + op[0];
+              reply += "\n\n🔧 **Notifications cleared**";
+            } else if (op.type === "CLEAR_STALE" && op.selector) {
+              document.querySelectorAll(op.selector).forEach((el: Element) => el.remove());
+              reply += "\n\n🔧 **Cleared elements matching:** " + op.selector;
             }
           }
         } catch (e) { /* ignore malformed fix JSON */ }

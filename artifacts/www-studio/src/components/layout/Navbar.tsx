@@ -1,7 +1,7 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@workspace/auth-web";
-import { Code2, WandSparkles, LogOut, User, Blocks, Layers, Globe, Sun, Moon, Menu, X } from "lucide-react";
+import { Code2, WandSparkles, LogOut, User, Blocks, Layers, Globe, Sun, Moon, Menu, X, PenLine } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,6 +26,7 @@ export function Navbar() {
     { href: "/gallery", label: "Gallery" },
     { href: "/ui-library", label: "Components" },
     { href: "/design-extract", label: "Design Extract" },
+    { href: "/freeform", label: "Freeform" },
     ...(isAuthenticated ? [{ href: "/projects", label: "My Projects" }] : []),
   ];
 

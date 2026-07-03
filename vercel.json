@@ -1,5 +1,4 @@
 {
-  "framework": "vite",
   "buildCommand": "pnpm --filter @workspace/www-studio run build",
   "outputDirectory": "artifacts/www-studio/dist/public",
   "installCommand": "pnpm install --no-frozen-lockfile",

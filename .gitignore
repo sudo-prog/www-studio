@@ -1,12 +1,26 @@
 # See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
-# compiled output
+# Build artifacts
 dist
 tmp
 out-tsc
 *.tsbuildinfo
 .expo
 .expo-shared
+/assets/
+/index.html
+/manifest.json
+/sw.js
+/www-studio/
+
+# Build artifacts
+/assets/*.js
+/assets/*.css
+/index.html
+/manifest.json
+/www-studio/
+/assets/
+dist/
 
 # dependencies
 node_modules

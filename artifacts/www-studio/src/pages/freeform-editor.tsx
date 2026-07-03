@@ -20,9 +20,11 @@ import {
   Smartphone, FileCode,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { makeFreeformElement, Artboard, ComponentMaster, type FreeformElement } from "@/lib/freeform-types";
+import { makeFreeformElement, Artboard, ComponentMaster, type FreeformElement, type FreeformPage } from "@/lib/freeform-types";
 import { DEFAULT_TOKENS, tokensToCSS } from "@/lib/design-tokens";
 import { GitHubSaveButton } from "@/components/freeform/GitHubSaveButton";
+import { loadProject, backupToFreeformPage } from "@/lib/github-storage";
+import { useEffect } from "react";
 
 export default function FreeformEditor() {
   const { projectId } = useParams();
@@ -42,6 +44,8 @@ export default function FreeformEditor() {
   const [mobileWidth, setMobileWidth] = useState(375);
   const [editingColor, setEditingColor] = useState<string | null>(null);
   const [editingColorDraft, setEditingColorDraft] = useState("");
+
+  const [drawingId, setDrawingId] = useState<string | null>(null);
 
   const selectedEl = state.page.elements.find((e) => e.id === state.selectedId) ?? null;
 
@@ -71,6 +75,27 @@ export default function FreeformEditor() {
   const handleDelete = useCallback(() => {
     if (state.selectedId) dispatch({ type: "DELETE_ELEMENT", id: state.selectedId });
   }, [state.selectedId]);
+
+  const handleDrawComplete = useCallback((id: string, drawData: string) => {
+    dispatch({ type: "UPDATE_ELEMENT", id, updates: { drawData } });
+    setDrawingId(null);
+  }, []);
+
+  // Load existing project on mount
+  useEffect(() => {
+    if (!projectId) return;
+    let cancelled = false;
+    loadProject(projectId).then((entry) => {
+      if (cancelled || !entry || !("elements" in entry)) return;
+      try {
+        const page = backupToFreeformPage(entry);
+        dispatch({ type: "LOAD_PAGE", page });
+      } catch {
+        // ignore malformed backup
+      }
+    });
+    return () => { cancelled = true; };
+  }, [projectId]);
 
   const handleExport = () => {
     const html = exportFreeformToHTML(state.page);
@@ -266,7 +291,7 @@ export default function FreeformEditor() {
 
           <div className="w-px h-5 bg-border mx-1" />
 
-          <GitHubSaveButton page={state.page} />
+          <GitHubSaveButton page={state.page} onLoad={(page) => dispatch({ type: "LOAD_PAGE", page })} />
 
           <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => setShowPreview(!showPreview)} title="Preview">
             <Eye className="w-3.5 h-3.5" />
@@ -281,7 +306,7 @@ export default function FreeformEditor() {
       {/* Main area */}
       <div className="flex-1 flex overflow-hidden">
         {/* Left toolbar */}
-        {!showPreview && <FreeformToolbar onAddElement={handleAddElement} />}
+        {!showPreview && <FreeformToolbar onAddElement={handleAddElement} onStartDraw={setDrawingId} />}
 
         {/* Canvas */}
         {showPreview ? (
@@ -319,6 +344,8 @@ export default function FreeformEditor() {
             artboards={state.page.artboards}
             activeArtboardId={state.activeArtboardId}
             isInfiniteCanvas={state.page.artboards && state.page.artboards.length > 1}
+            drawingId={drawingId}
+            onDrawComplete={handleDrawComplete}
             onSelect={handleSelect}
             onMove={handleMove}
             onResize={handleResize}

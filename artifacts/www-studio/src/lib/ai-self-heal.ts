@@ -8,8 +8,7 @@
  */
 
 export interface SelfHealOp {
-  type: 'EVAL' | 'DOM_SNAPSHOT' | 'FIX_NOTIFICATIONS' | 'CLEAR_STALE';
-  code?: string;
+  type: 'DOM_SNAPSHOT' | 'FIX_NOTIFICATIONS' | 'CLEAR_STALE';
   selector?: string;
   log?: (msg: string) => void;
 }
@@ -72,16 +71,6 @@ export function executeSelfHealOp(op: SelfHealOp): { ok: boolean; result: string
         return { ok: true, result: 'Found ' + snapshot.length + ' elements with id/class', snapshot };
       }
       
-      case 'EVAL': {
-        if (!op.code) return { ok: false, result: 'No code provided' };
-        // eslint-disable-next-line no-new-func
-        const fn = new Function(op.code);
-        const evalResult = fn();
-        const resultStr = evalResult !== undefined ? String(evalResult) : 'executed';
-        log('EVAL result: ' + resultStr);
-        return { ok: true, result: 'EVAL OK: ' + resultStr };
-      }
-      
       case 'FIX_NOTIFICATIONS': {
         const selectors = op.selector 
           ? [op.selector] 
@@ -133,12 +122,9 @@ export function getSelfHealSystemPrompt(): string {
   return [
     '',
     '━━━ SELF-HEAL CAPABILITY ━━━',
-    'You can fix ANY issue in this app using these operations:',
+    'You can fix issues in this app using these safe operations:',
     '',
-    'EVAL - run JavaScript to fix logic/state/DOM issues:',
-    '  {"type":"EVAL","code":"document.querySelectorAll(\'.stale\').forEach(el=>el.remove())"}',
-    '',
-    'DOM_SNAPSHOT - get all elements with their classes/ids:',
+    'DOM_SNAPSHOT - inspect all meaningful DOM elements:',
     '  {"type":"DOM_SNAPSHOT"}',
     '',
     'FIX_NOTIFICATIONS - auto-dismiss stuck toasts/alerts:',
@@ -150,8 +136,8 @@ export function getSelfHealSystemPrompt(): string {
     '',
     'RULES:',
     '- Always run DOM_SNAPSHOT first to see what exists.',
-    '- Use EVAL for logic fixes (state, timers, event handlers).',
     '- Use FIX_NOTIFICATIONS for stuck UI.',
+    '- Use CLEAR_STALE to remove broken/old UI by selector.',
     '- NEVER guess selectors - check DOM_SNAPSHOT output first.',
     ''
   ].join('\n');

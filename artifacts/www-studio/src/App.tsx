@@ -29,10 +29,12 @@ import Scenes from "@/pages/scenes";
 import SceneEditor from "@/pages/scene-editor";
 import ScenePreview from "@/pages/scene-preview";
 import SceneShare from "@/pages/scene-share";
+import SceneGallery from "@/pages/scene-gallery";
 import FreeformEditor from "@/pages/freeform-editor";
 import FreeformShare from "@/pages/freeform-share";
 import DesignExtractPage from "@/pages/DesignExtractPage";
 import DesignExtractGallery from "@/pages/DesignExtractGallery";
+import DesignExtractCompare from "@/pages/DesignExtractCompare";
 
 const queryClient = new QueryClient();
 
@@ -47,6 +49,7 @@ function Router() {
       <Route path="/profile" component={Profile} />
       <Route path="/gallery" component={Gallery} />
       <Route path="/scenes" component={Scenes} />
+      <Route path="/scenes/gallery" component={SceneGallery} />
       <Route path="/scenes/:id" component={SceneEditor} />
       <Route path="/scenes/:id/preview" component={ScenePreview} />
       <Route path="/scenes/:id/share" component={SceneShare} />
@@ -54,6 +57,7 @@ function Router() {
       <Route path="/freeform/:pageId/share" component={FreeformShare} />
       <Route path="/design-extract" component={DesignExtractPage} />
       <Route path="/design-extract/gallery" component={DesignExtractGallery} />
+      <Route path="/design-extract/:id/compare" component={DesignExtractCompare} />
       <Route path="/design-extract/:id" component={DesignExtractPage} />
       <Route component={NotFound} />
     </Switch>

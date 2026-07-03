@@ -30,6 +30,7 @@ jobs:
         run: cd artifacts/www-studio && pnpm run build
         env:
           NODE_ENV: "production"
+          GITHUB_PAGES: "true"
 
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4

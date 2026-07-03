@@ -441,30 +441,6 @@ export function createInitialFreeformState(page?: Partial<FreeformPage>): Freefo
   };
 }
 
-// ── Smart paste detector for embeds ──────────────────────────────────────────
-
-export function detectEmbedUrl(url: string): { embedUrl: string; embedType: "youtube" | "spotify" | "twitter" | "generic" } | null {
-  // YouTube
-  const ytMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
-  if (ytMatch) return { embedUrl: `https://www.youtube.com/embed/${ytMatch[1]}`, embedType: "youtube" };
-
-  // Spotify
-  const spMatch = url.match(/spify\.com\/(track|album|playlist)\/([a-zA-Z0-9]+)/);
-  if (spMatch) return { embedUrl: `https://open.spotify.com/embed/${spMatch[1]}/${spMatch[2]}`, embedType: "spotify" };
-
-  // Twitter/X
-  if (url.includes("twitter.com") || url.includes("x.com")) {
-    return { embedUrl: url, embedType: "twitter" };
-  }
-
-  // Generic iframe
-  if (url.startsWith("http")) {
-    return { embedUrl: url, embedType: "generic" };
-  }
-
-  return null;
-}
-
 // ── Export to HTML ───────────────────────────────────────────────────────────
 
 export function exportFreeformToHTML(page: FreeformPage): string {
@@ -501,7 +477,26 @@ export function exportFreeformToHTML(page: FreeformPage): string {
       case "embed":
         return `<iframe style="${style}" src="${el.embedUrl || ""}" frameborder="0" allowfullscreen title="${el.embedType || "embed"}"></iframe>`;
       case "draw":
-        return `<div style="${style};background:rgba(255,255,255,0.05);border-radius:8px"></div>`;
+        return `<svg style="${style}" viewBox="0 0 ${el.width} ${el.height}"><path d="${escapeHtml(el.drawData || "")}" fill="none" stroke="${el.color || "#ffffff"}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+      case "link-card":
+        return `<a style="${style};display:flex;flex-direction:column;justify-content:center;background:${el.background || "rgba(255,255,255,0.05)"};border-radius:${(el.borderRadius || 12)}px;border:1px solid rgba(255,255,255,0.1);padding:12px;text-decoration:none;color:#fff" href="${el.href || "#"}"><span style="font-size:14px;font-weight:600">${escapeHtml(el.label || "Link Card")}</span>${el.href ? `<span style="font-size:11px;color:#888;margin-top:4px">${escapeHtml(el.href)}</span>` : ""}</a>`;
+      case "form": {
+        const fields = parseFormFields(el.formFields);
+        const fieldsHtml = fields.map((f) => {
+          if (f.type === "text" || f.type === "email") {
+            return `<div style="display:flex;flex-direction:column;gap:4px"><label style="font-size:12px;color:#aaaaaa;font-weight:500">${escapeHtml(f.label)}${f.required ? `<span style="color:#ef4444;margin-left:2px">*</span>` : ""}</label><input type="${f.type}" placeholder="${escapeHtml(f.placeholder || "")}" ${f.required ? "required" : ""} style="padding:6px 10px;font-size:13px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);border-radius:6px;color:#ffffff;outline:none" /></div>`;
+          } else if (f.type === "textarea") {
+            return `<div style="display:flex;flex-direction:column;gap:4px"><label style="font-size:12px;color:#aaaaaa;font-weight:500">${escapeHtml(f.label)}${f.required ? `<span style="color:#ef4444;margin-left:2px">*</span>` : ""}</label><textarea placeholder="${escapeHtml(f.placeholder || "")}" rows="3" ${f.required ? "required" : ""} style="padding:6px 10px;font-size:13px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);border-radius:6px;color:#ffffff;outline:none;resize:vertical"></textarea></div>`;
+          } else if (f.type === "select") {
+            const opts = (f.options || []).map((o) => `<option value="${escapeHtml(o)}" style="background:#1a1a2e">${escapeHtml(o)}</option>`).join("");
+            return `<div style="display:flex;flex-direction:column;gap:4px"><label style="font-size:12px;color:#aaaaaa;font-weight:500">${escapeHtml(f.label)}${f.required ? `<span style="color:#ef4444;margin-left:2px">*</span>` : ""}</label><select style="padding:6px 10px;font-size:13px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);border-radius:6px;color:#ffffff;outline:none">${opts}</select></div>`;
+          } else if (f.type === "submit") {
+            return `<button type="submit" style="padding:8px 16px;font-size:13px;font-weight:600;background:#3b82f6;color:#ffffff;border:none;border-radius:8px;cursor:pointer;margin-top:4px">${escapeHtml(f.label)}</button>`;
+          }
+          return "";
+        }).join("");
+        return `<form style="${style}" onsubmit="return false;"><div style="font-size:16px;font-weight:600;color:#ffffff;margin-bottom:8px">${escapeHtml(el.text || "Contact Form")}</div>${fieldsHtml}</form>`;
+      }
       default:
         return `<div style="${style}"></div>`;
     }
@@ -547,4 +542,27 @@ export function exportFreeformToHTML(page: FreeformPage): string {
 
 function escapeHtml(str: string): string {
   return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+interface FormField {
+  type: "text" | "email" | "textarea" | "select" | "checkbox" | "submit";
+  label: string;
+  placeholder?: string;
+  options?: string[];
+  required?: boolean;
+}
+
+function parseFormFields(formFields?: string): FormField[] {
+  try {
+    if (formFields) {
+      const fields = JSON.parse(formFields);
+      if (Array.isArray(fields)) return fields;
+    }
+  } catch { /* use defaults */ }
+  return [
+    { type: "text", label: "Name", placeholder: "Your name", required: true },
+    { type: "email", label: "Email", placeholder: "you@example.com", required: true },
+    { type: "textarea", label: "Message", placeholder: "Your message..." },
+    { type: "submit", label: "Submit" },
+  ];
 }

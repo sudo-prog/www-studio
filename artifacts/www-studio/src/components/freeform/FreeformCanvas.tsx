@@ -3,6 +3,7 @@ import { useRef, useCallback, useState, useEffect } from "react";
 import { FreeformElement, AlignmentGuide, computeAlignmentGuides, LayoutMode, Artboard } from "@/lib/freeform-types";
 import { cn } from "@/lib/utils";
 import FormElementRenderer from "@/components/freeform/FormElementRenderer";
+import FreehandDraw from "@/components/freeform/FreehandDraw";
 
 interface Props {
   elements:      FreeformElement[];
@@ -18,6 +19,8 @@ interface Props {
   artboards?:    Artboard[];
   activeArtboardId?: string | null;
   isInfiniteCanvas?: boolean;
+  drawingId?: string | null;
+  onDrawComplete?: (id: string, drawData: string) => void;
   onSelect:      (id: string | null) => void;
   onMove:        (id: string, x: number, y: number) => void;
   onResize:      (id: string, w: number, h: number) => void;
@@ -29,7 +32,7 @@ function snapVal(n: number, grid: number, enabled: boolean) {
 
 export default function FreeformCanvas({
   elements, selectedId, canvasWidth, canvasHeight, background, zoom, snapGrid, showGuides, showRulers,
-  layoutMode = "absolute", artboards, activeArtboardId, isInfiniteCanvas,
+  layoutMode = "absolute", artboards, activeArtboardId, isInfiniteCanvas, drawingId, onDrawComplete,
   onSelect, onMove, onResize,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -293,6 +296,21 @@ export default function FreeformCanvas({
           />
         ))}
       </div>
+
+      {drawingId && onDrawComplete && (() => {
+        const drawEl = elements.find((e) => e.id === drawingId);
+        if (!drawEl || drawEl.type !== "draw") return null;
+        return (
+          <FreehandDraw
+            width={canvasWidth}
+            height={canvasHeight}
+            color={drawEl.color || "#ffffff"}
+            brushSize={3}
+            drawData={drawEl.drawData}
+            onComplete={(svgPath) => onDrawComplete(drawingId, svgPath)}
+          />
+        );
+      })()}
     </div>
   );
 }

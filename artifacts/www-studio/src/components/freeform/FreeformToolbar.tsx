@@ -9,6 +9,7 @@ import { useDropzone } from "react-dropzone";
 
 interface Props {
   onAddElement: (el: ReturnType<typeof makeFreeformElement>) => void;
+  onStartDraw?: (id: string) => void;
 }
 
 type ToolItem = {
@@ -29,7 +30,7 @@ const TOOLS: ToolItem[] = [
   { type: "form",      icon: FileText,    label: "Form" },
 ];
 
-export default function FreeformToolbar({ onAddElement }: Props) {
+export default function FreeformToolbar({ onAddElement, onStartDraw }: Props) {
   const [giphyQuery, setGiphyQuery] = useState("");
   const [giphyResults, setGiphyResults] = useState<{ url: string; alt: string }[]>([]);
   const [showGiphy, setShowGiphy] = useState(false);
@@ -124,7 +125,9 @@ export default function FreeformToolbar({ onAddElement }: Props) {
             } else if (type === "button") {
               onAddElement(makeFreeformElement("button"));
             } else if (type === "draw") {
-              onAddElement(makeFreeformElement("draw"));
+              const drawEl = makeFreeformElement("draw");
+              onAddElement(drawEl);
+              if (onStartDraw) onStartDraw(drawEl.id);
             } else if (type === "link-card") {
               onAddElement(makeFreeformElement("link-card"));
             } else if (type === "form") {

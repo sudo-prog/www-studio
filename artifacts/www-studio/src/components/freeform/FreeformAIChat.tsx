@@ -44,7 +44,7 @@ const NOUS_MODEL = "openrouter/owl-alpha";
 const NOUS_API_KEY = import.meta.env.VITE_NOUS_API_KEY || "";
 
 // Gemini Web2API fallback proxy
-const WEB2API_PROXY = "/api/chat";
+const WEB2API_PROXY = "/api/ai/chat";
 
 // ─── Provider fallback helper ───────────────────────────────────────────────
 // Try Nous/Hermes first, then fall back to gemini-web2api on failure.

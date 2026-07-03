@@ -38,7 +38,7 @@ const NOUS_MODEL = "openrouter/owl-alpha";
 const NOUS_API_KEY = import.meta.env.VITE_NOUS_API_KEY || "";
 
 // Gemini Web2API fallback proxy
-const WEB2API_FALLBACK = "/api/chat";
+const WEB2API_FALLBACK = "/api/ai/chat";
 
 // Provider fallback helper — tries each URL+model combo, throws after last one fails
 async function callAiProvider(

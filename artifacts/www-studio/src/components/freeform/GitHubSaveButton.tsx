@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FreeformPage } from "@/lib/freeform-types";
-import { saveFreeformProject, listProjects, FreeformBackup } from "@/lib/github-storage";
+import { saveFreeformProject, listProjects, loadProject, backupToFreeformPage, FreeformBackup } from "@/lib/github-storage";
 import { Button } from "@/components/ui/button";
 import {
   Github,
@@ -23,11 +23,12 @@ import { useToast } from "@/hooks/use-toast";
 
 interface Props {
   page: FreeformPage;
+  onLoad?: (page: FreeformPage) => void;
 }
 
 type SaveStatus = "idle" | "saving" | "saved" | "error";
 
-export function GitHubSaveButton({ page }: Props) {
+export function GitHubSaveButton({ page, onLoad }: Props) {
   const [status, setStatus] = useState<SaveStatus>("idle");
   const [showLoadModal, setShowLoadModal] = useState(false);
   const [backups, setBackups] = useState<FreeformBackup[]>([]);
@@ -145,8 +146,18 @@ export function GitHubSaveButton({ page }: Props) {
                   <button
                     key={backup.id}
                     className="w-full text-left p-3 rounded-lg border border-border/40 hover:border-primary/40 hover:bg-muted/30 transition-colors"
-                    onClick={() => {
-                      toast({ title: `Loaded "${backup.name}"`, description: "Reload the page to restore" });
+                    onClick={async () => {
+                      try {
+                        const entry = await loadProject(backup.id);
+                        if (entry && "elements" in entry && onLoad) {
+                          onLoad(backupToFreeformPage(entry));
+                          toast({ title: `Loaded "${entry.name}"` });
+                        } else {
+                          toast({ title: "Backup not found", variant: "destructive" });
+                        }
+                      } catch (e: any) {
+                        toast({ title: "Load failed", description: e.message, variant: "destructive" });
+                      }
                       setShowLoadModal(false);
                     }}
                   >

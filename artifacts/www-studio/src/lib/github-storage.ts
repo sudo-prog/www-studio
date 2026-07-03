@@ -355,3 +355,22 @@ export function getShareUrl(pageId: string, slug?: string): string {
   const base = window.location.origin;
   return `${base}/freeform/${pageId}/share`;
 }
+
+// ── Helpers ──────────────────────────────────────────────────────────────────
+
+export function backupToFreeformPage(entry: BackupEntry): import("@/lib/freeform-types").FreeformPage {
+  if ("elements" in entry) {
+    return {
+      id: entry.id,
+      name: entry.name,
+      userId: entry.userId,
+      elements: JSON.parse(entry.elements),
+      background: JSON.parse(entry.background),
+      canvasWidth: entry.canvasWidth,
+      canvasHeight: entry.canvasHeight,
+      status: entry.status,
+      slug: entry.slug,
+    };
+  }
+  throw new Error("Not a freeform backup");
+}

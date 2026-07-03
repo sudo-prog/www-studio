@@ -4,6 +4,32 @@ Architecture decisions, file structure, API patterns, and known issues for WWW S
 
 **Last updated:** 2026-07-03
 
+## Audit Fixes Applied (2026-07-03)
+
+### Completed
+- Removed nested `www-studio/` Git Pages build folder; migrated Vercel project config to root `.vercel/project.json`
+- Added `GITHUB_PAGES: "true"` to `.github/workflows/deploy.yml`
+- Removed `"framework": "vite"` from `vercel.json` to avoid Vercel monorepo build conflicts
+- Fixed `sw.js` registration to respect `import.meta.env.BASE_URL`
+- Updated `manifest.json` `start_url` and icon paths to relative paths
+- Removed stale root-level build artifacts (`index.html`, `assets/*.js`, `assets/*.css`) from Git tracking
+- Added missing `/scenes/gallery` route above `/scenes/:id` in `App.tsx`
+- Added `/design-extract/:id/compare` route for `DesignExtractCompare.tsx`
+- Implemented real Freeform load-by-id mount effect and fixed fake "Load from GitHub" button
+- Added Freeform navigation entry points (Navbar + Dashboard quick actions)
+- Added `link-card` and `form` cases to `exportFreeformToHTML()`
+- Fixed AI chat proxy fallback path from `/api/chat` to `/api/ai/chat` across all chat components
+- Implemented `api/ai/chat.js` Vercel serverless proxy (forwards to `LLM_BASE_URL`)
+- Removed unsafe `new Function()` EVAL from self-heal; allow-listed ops are now `DOM_SNAPSHOT`, `FIX_NOTIFICATIONS`, `CLEAR_STALE`
+- Wired `FreehandDraw.tsx` into Draw tool via `drawingId` state in `FreeformEditor`
+- Added GitHub token settings UI to `Profile.tsx` with save/remove and local storage
+- Removed duplicate/buggy `detectEmbedUrl` from `freeformStore.ts`
+
+### Deferred
+- 3D Studio module wiring (orphaned module — separate planning pass required)
+- Full dead-code cleanup (ChaosMonkeyV2, AiFreeformCommands, BackgroundPicker, CodeInspector, freeform/VersionHistory)
+- Supabase frontend wiring (currently inert per prior audit)
+
 ---
 
 ## AI Configuration

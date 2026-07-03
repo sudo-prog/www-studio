@@ -3,11 +3,21 @@ import { useAuth } from "@workspace/auth-web";
 import { useGetProjects } from "@workspace/api-client-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Code2, FolderGit2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Code2, FolderGit2, Github, Key } from "lucide-react";
+import { useState } from "react";
+import { setGitHubToken, hasGitHubToken } from "@/lib/github-storage";
+import { useToast } from "@/hooks/use-toast";
 
 export default function Profile() {
   const { user, isAuthenticated, isLoading: authLoading } = useAuth();
   const { data: projects = [] } = useGetProjects();
+  const { toast } = useToast();
+  const [ghToken, setGhToken] = useState(() => {
+    try { return localStorage.getItem("github_token") || ""; } catch { return ""; }
+  });
+  const [showToken, setShowToken] = useState(false);
 
   if (authLoading) return <div className="min-h-screen bg-background" />;
 
@@ -23,6 +33,11 @@ export default function Profile() {
   }
 
   const publishedProjects = projects.filter(p => p.status === 'published');
+
+  const handleSaveToken = () => {
+    setGitHubToken(ghToken.trim());
+    toast({ title: ghToken.trim() ? "GitHub token saved" : "GitHub token removed" });
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -50,6 +65,46 @@ export default function Profile() {
         </div>
 
         <div className="space-y-6">
+          <h2 className="text-xl font-semibold border-b pb-2">Settings</h2>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-base">
+                <Github className="h-4 w-4" />
+                GitHub Backup
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <p className="text-xs text-muted-foreground">
+                Connect a GitHub Personal Access Token to enable Save, Load, and Publish for Freeform pages.
+                The token is stored locally in your browser.
+              </p>
+              <div className="flex gap-2">
+                <Input
+                  type="password"
+                  placeholder="ghp_..."
+                  value={ghToken}
+                  onChange={(e) => setGhToken(e.target.value)}
+                  className="h-8 text-xs"
+                />
+                <Button size="sm" className="h-8 text-xs gap-1" onClick={handleSaveToken}>
+                  <Key className="h-3 w-3" />
+                  {hasGitHubToken() ? "Update" : "Save"}
+                </Button>
+              </div>
+              {hasGitHubToken() && (
+                <p className="text-[10px] text-green-400 flex items-center gap-1">
+                  ✓ Token connected
+                  <button
+                    className="text-muted-foreground hover:text-foreground underline ml-2"
+                    onClick={() => { setGhToken(""); handleSaveToken(); }}
+                  >
+                    Remove
+                  </button>
+                </p>
+              )}
+            </CardContent>
+          </Card>
+
           <h2 className="text-xl font-semibold border-b pb-2">Published Clones</h2>
           {publishedProjects.length === 0 ? (
             <div className="text-center py-12 text-muted-foreground border rounded-lg border-dashed">

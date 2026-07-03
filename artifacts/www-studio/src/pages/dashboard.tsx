@@ -4,7 +4,7 @@ import { Link, useLocation } from "wouter";
 import { useGetProjects, useDeleteProject, getGetProjectsQueryKey, useGetScenes } from "@workspace/api-client-react";
 import { useQueryClient } from "@tanstack/react-query";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Plus, MoreVertical, Trash2, Clock, Play, Globe, Layers, Download, BarChart3, FolderOpen, Sparkles, Zap, ArrowRight } from "lucide-react";
+import { Plus, MoreVertical, Trash2, Clock, Play, Globe, Layers, Download, BarChart3, FolderOpen, Sparkles, Zap, ArrowRight, PenLine } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@workspace/auth-web";
@@ -125,7 +125,7 @@ export default function Dashboard() {
             { icon: <Plus className="h-4 w-4" />,       label: "New Project",       sub: "Blank canvas",           href: "/editor/new",        color: "bg-blue-500/10 text-blue-400 border-blue-500/20" },
             { icon: <Zap className="h-4 w-4" />,         label: "AI Scene",          sub: "Generate with AI",       href: "/scenes",            color: "bg-purple-500/10 text-purple-400 border-purple-500/20" },
             { icon: <Globe className="h-4 w-4" />,       label: "Public Gallery",    sub: "Browse community",       href: "/scenes/gallery",    color: "bg-green-500/10 text-green-400 border-green-500/20" },
-            { icon: <Sparkles className="h-4 w-4" />,   label: "My Scenes",         sub: "All compositions",       href: "/scenes",            color: "bg-orange-500/10 text-orange-400 border-orange-500/20" },
+            { icon: <PenLine className="h-4 w-4" />,     label: "Freeform Canvas",   sub: "Visual editor",          href: "/freeform",          color: "bg-orange-500/10 text-orange-400 border-orange-500/20" },
           ].map(({ icon, label, sub, href, color }) => (
             <Link key={label} href={href}>
               <div className={`border rounded-xl p-4 hover:opacity-90 transition-all cursor-pointer h-full ${color}`}>
