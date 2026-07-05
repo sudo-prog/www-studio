@@ -378,5 +378,17 @@ Multi-source design synthesis engine. Accepts primary URL + optional secondary U
 - **RAG knowledge search UI** — `lib/knowledge.ts` search/embed functions exist but are not surfaced in the UI.
 - **`scenes.tsx` sort dropdown type** — `useState<"newest"|"oldest"|"name">` is missing `"likes"` and `"published"` options.
 
+### Additional Fixes (2026-07-05)
+
+**AI Chat Endpoint Added**
+- `artifacts/api-server/src/routes/ai.ts` — Created new `/api/ai/chat` and `/api/ai/chat/stream` endpoints to serve FreeformAIChat.tsx. Uses unified LLM client with fallback support. Routes are now registered in `routes/index.ts`.
+
+**Cross-Project Mobile/API Fixes**
+- `artifacts/family-office/src/main.tsx` — Added `setBaseUrl` wiring for API calls.
+- `artifacts/doom-gallery/src/main.tsx` — Added `setBaseUrl` wiring for API calls.
+- `artifacts/makerforge/src/main.tsx` — Added `setBaseUrl` wiring for API calls.
+- `artifacts/solaraforge-web/src/main.tsx` — Added `setBaseUrl` wiring for API calls.
+- `artifacts/makerforge-mobile/app/_layout.tsx` — Added `setBaseUrl` with `EXPO_PUBLIC_DOMAIN` check.
+
 **Commit reference:** Fixes applied on top of repo state around `24513be` (two commits past original `cab1633` audit).
 **Commit:** `0758e64` — pushed to main
