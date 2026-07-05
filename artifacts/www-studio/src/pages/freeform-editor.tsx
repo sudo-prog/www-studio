@@ -17,7 +17,7 @@ import {
   ArrowLeft, Download, Save, Cloud, CloudOff, Eye,
   Undo, Redo, ZoomIn, ZoomOut, Grid3x3, Ruler,
   Plus, Layers, Palette, Component, Sparkles, Camera,
-  Smartphone, FileCode,
+  Smartphone, FileCode, SlidersHorizontal,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { makeFreeformElement, Artboard, ComponentMaster, type FreeformElement, type FreeformPage } from "@/lib/freeform-types";
@@ -25,6 +25,8 @@ import { DEFAULT_TOKENS, tokensToCSS } from "@/lib/design-tokens";
 import { GitHubSaveButton } from "@/components/freeform/GitHubSaveButton";
 import { loadProject, backupToFreeformPage } from "@/lib/github-storage";
 import { useEffect } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export default function FreeformEditor() {
   const { projectId } = useParams();
@@ -46,6 +48,8 @@ export default function FreeformEditor() {
   const [editingColorDraft, setEditingColorDraft] = useState("");
 
   const [drawingId, setDrawingId] = useState<string | null>(null);
+  const isMobile = useIsMobile();
+  const [mobilePanelsOpen, setMobilePanelsOpen] = useState(false);
 
   const selectedEl = state.page.elements.find((e) => e.id === state.selectedId) ?? null;
 
@@ -195,6 +199,245 @@ export default function FreeformEditor() {
 
   const tokens = state.page.tokens || DEFAULT_TOKENS;
 
+  const rightPanelsContent = (
+    <>
+      <FreeformPropertiesPanel
+        selectedEl={selectedEl}
+        onUpdate={handleUpdate}
+        onDelete={handleDelete}
+        onDuplicate={() => {
+          if (state.selectedId)
+            dispatch({ type: "DUPLICATE_ELEMENT", id: state.selectedId });
+        }}
+        onSendForward={() => {
+          if (state.selectedId)
+            dispatch({ type: "SEND_FORWARD", id: state.selectedId });
+        }}
+        onSendBackward={() => {
+          if (state.selectedId)
+            dispatch({ type: "SEND_BACKWARD", id: state.selectedId });
+        }}
+        className={isMobile ? "w-full" : undefined}
+      />
+      {showTokenPanel && !showPreview && (
+        <div className={cn("shrink-0 border-l border-border bg-background overflow-y-auto p-3 space-y-3", isMobile ? "w-full border-l-0 border-t" : "w-64")}>
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-medium">Design Tokens</span>
+            <Button variant="ghost" size="icon" className="h-5 w-5" onClick={() => setShowTokenPanel(false)}>×</Button>
+          </div>
+
+          {/* Colors */}
+          <div>
+            <Label className="text-[10px] text-muted-foreground uppercase tracking-wider mb-1 block">Colors</Label>
+            <div className="grid grid-cols-6 gap-1">
+              {Object.entries(tokens.colors).map(([name, value]) => (
+                <div key={name} className="relative">
+                  <button
+                    title={name}
+                    className="w-8 h-8 rounded border border-border hover:ring-1 hover:ring-primary"
+                    style={{ background: value as string }}
+                    onClick={() => {
+                      setEditingColor(name);
+                      setEditingColorDraft(String(value));
+                    }}
+                  />
+                  {editingColor === name && (
+                    <div className="absolute z-50 top-full mt-1 left-0 bg-background border border-border rounded shadow-lg p-2 flex gap-1">
+                      <input
+                        type="color"
+                        value={editingColorDraft}
+                        onChange={(e) => setEditingColorDraft(e.target.value)}
+                        className="w-8 h-8 rounded cursor-pointer border-0 p-0"
+                      />
+                      <input
+                        type="text"
+                        value={editingColorDraft}
+                        onChange={(e) => setEditingColorDraft(e.target.value)}
+                        onBlur={() => {
+                          dispatch({ type: "UPDATE_TOKEN", category: "colors", key: name, value: editingColorDraft });
+                          setEditingColor(null);
+                        }}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter') {
+                            dispatch({ type: "UPDATE_TOKEN", category: "colors", key: name, value: editingColorDraft });
+                            setEditingColor(null);
+                          }
+                          if (e.key === 'Escape') setEditingColor(null);
+                        }}
+                        className="text-[10px] w-20 rounded border border-border bg-background px-1"
+                        autoFocus
+                      />
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Typography */}
+          <div>
+            <Label className="text-[10px] text-muted-foreground uppercase tracking-wider mb-1 block">Font Sizes</Label>
+            <div className="space-y-1">
+              {Object.entries(tokens.typography.fontSize).map(([name, value]) => (
+                <div key={name} className="flex items-center justify-between text-[10px]">
+                  <span className="text-muted-foreground">{name}</span>
+                  <span>{value as string}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Radii */}
+          <div>
+            <Label className="text-[10px] text-muted-foreground uppercase tracking-wider mb-1 block">Radii</Label>
+            <div className="flex flex-wrap gap-1">
+              {Object.entries(tokens.radii).map(([name, value]) => (
+                <div key={name} className="text-[10px] bg-muted/50 px-2 py-0.5 rounded">
+                  {name}: {value as number}px
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Export CSS */}
+          <Button
+            variant="outline"
+            size="sm"
+            className="w-full h-7 text-xs"
+            onClick={() => {
+              const css = tokensToCSS(tokens);
+              navigator.clipboard.writeText(css);
+              alert("CSS variables copied to clipboard!");
+            }}
+          >
+            Copy CSS Variables
+          </Button>
+        </div>
+      )}
+
+      {showComponentPanel && !showPreview && (
+        <div className={cn("shrink-0 border-l border-border bg-background overflow-y-auto p-3 space-y-3", isMobile ? "w-full border-l-0 border-t" : "w-64")}>
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-medium">Components</span>
+            <Button variant="ghost" size="icon" className="h-5 w-5" onClick={() => setShowComponentPanel(false)}>×</Button>
+          </div>
+
+          {selectedEl && (
+            <Button variant="outline" size="sm" className="w-full h-7 text-xs gap-1" onClick={handleCreateComponent}>
+              <Component className="w-3 h-3" /> Create Component from Selection
+            </Button>
+          )}
+
+          {(state.page.components || []).length === 0 ? (
+            <p className="text-[10px] text-muted-foreground">
+              No components yet. Select an element and click "Create Component" to create a master component.
+            </p>
+          ) : (
+            <div className="space-y-2">
+              {(state.page.components || []).map((comp) => (
+                <div key={comp.id} className="border border-border rounded-lg p-2 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-medium">{comp.name}</span>
+                    <Button variant="ghost" size="icon" className="h-4 w-4" onClick={() => dispatch({ type: "DELETE_COMPONENT", id: comp.id })}>×</Button>
+                  </div>
+                  <Button variant="outline" size="sm" className="w-full h-6 text-[10px]" onClick={() => handleCreateInstance(comp.id)}>
+                    + Create Instance
+                  </Button>
+                  {comp.variants.length > 0 && (
+                    <div className="text-[9px] text-muted-foreground">
+                      {comp.variants.length} variant(s)
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      {showAIChat && !showPreview && (
+        <FreeformAIChat
+          elements={state.page.elements}
+          canvasWidth={state.page.canvasWidth}
+          canvasHeight={state.page.canvasHeight}
+          onApplyActions={handleAIApplyActions}
+          onClose={() => setShowAIChat(false)}
+        />
+      )}
+
+      {showCssJsPanel && !showPreview && (
+        <CustomCodePanel
+          customCss={state.page.customCss || ""}
+          customJs={state.page.customJs || ""}
+          onCssChange={(css) => dispatch({ type: "SET_CUSTOM_CSS", css })}
+          onJsChange={(js) => dispatch({ type: "SET_CUSTOM_JS", js })}
+          onClose={() => setShowCssJsPanel(false)}
+        />
+      )}
+
+      {showMobilePreview && !showPreview && (
+        <div className={cn("shrink-0 border-l border-border bg-background overflow-y-auto p-3 space-y-3", isMobile ? "w-full border-l-0 border-t" : "w-80")}>
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-medium">Mobile Preview</span>
+            <Button variant="ghost" size="icon" className="h-5 w-5" onClick={() => setShowMobilePreview(false)}>×</Button>
+          </div>
+
+          <div className="flex gap-1">
+            {[
+              { label: "iPhone SE", w: 375 },
+              { label: "iPad Mini", w: 768 },
+              { label: "Pixel 7", w: 412 },
+            ].map((device) => (
+              <button
+                key={device.w}
+                className={cn(
+                  "text-[10px] px-2 py-1 rounded-lg transition-colors",
+                  mobileWidth === device.w ? "bg-primary/20 text-primary" : "bg-muted/50 text-muted-foreground hover:text-foreground"
+                )}
+                onClick={() => setMobileWidth(device.w)}
+              >
+                {device.label}
+              </button>
+            ))}
+          </div>
+
+          <div className="flex justify-center py-4">
+            <div
+              className="border-2 border-border rounded-2xl overflow-hidden bg-[#0d0d14] shadow-xl"
+              style={{ width: Math.min(mobileWidth, 360), height: 500 }}
+            >
+              <div
+                className="relative mx-auto"
+                style={{
+                  width: mobileWidth,
+                  height: 500,
+                  background:
+                    state.page.background.type === "color"
+                      ? state.page.background.value
+                      : state.page.background.type === "gradient"
+                      ? state.page.background.value
+                      : `url(${state.page.background.value})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  overflow: "hidden",
+                  transform: `scale(${Math.min(1, 340 / mobileWidth)})`,
+                  transformOrigin: "top center",
+                }}
+                dangerouslySetInnerHTML={{
+                  __html: exportFreeformToHTML({ ...state.page, canvasWidth: mobileWidth }),
+                }}
+              />
+            </div>
+          </div>
+
+          <p className="text-[9px] text-muted-foreground text-center">
+            Preview at {mobileWidth}px width • Touch handles enabled
+          </p>
+        </div>
+      )}
+    </>
+  );
+
   return (
     <div className="h-screen flex flex-col bg-[#0a0a0f] text-foreground overflow-hidden">
       {/* Top bar */}
@@ -293,6 +536,21 @@ export default function FreeformEditor() {
 
           <GitHubSaveButton page={state.page} onLoad={(page) => dispatch({ type: "LOAD_PAGE", page })} />
 
+          {isMobile && (
+            <Sheet open={mobilePanelsOpen} onOpenChange={setMobilePanelsOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="h-7 w-7" title="Panels">
+                  <SlidersHorizontal className="w-3.5 h-3.5" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="bottom" className="h-[75vh] overflow-y-auto">
+                <div className="space-y-6 mt-6">
+                  {rightPanelsContent}
+                </div>
+              </SheetContent>
+            </Sheet>
+          )}
+
           <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => setShowPreview(!showPreview)} title="Preview">
             <Eye className="w-3.5 h-3.5" />
           </Button>
@@ -352,248 +610,8 @@ export default function FreeformEditor() {
           />
         )}
 
-        {/* Right properties panel */}
-        {!showPreview && (
-          <FreeformPropertiesPanel
-            selectedEl={selectedEl}
-            onUpdate={handleUpdate}
-            onDelete={handleDelete}
-            onDuplicate={() => {
-              if (state.selectedId)
-                dispatch({ type: "DUPLICATE_ELEMENT", id: state.selectedId });
-            }}
-            onSendForward={() => {
-              if (state.selectedId)
-                dispatch({ type: "SEND_FORWARD", id: state.selectedId });
-            }}
-            onSendBackward={() => {
-              if (state.selectedId)
-                dispatch({ type: "SEND_BACKWARD", id: state.selectedId });
-            }}
-          />
-        )}
-
-        {/* Design Tokens Panel (slide-over) */}
-        {showTokenPanel && !showPreview && (
-          <div className="w-64 shrink-0 border-l border-border bg-background overflow-y-auto p-3 space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-medium">Design Tokens</span>
-              <Button variant="ghost" size="icon" className="h-5 w-5" onClick={() => setShowTokenPanel(false)}>×</Button>
-            </div>
-
-            {/* Colors */}
-            <div>
-              <Label className="text-[10px] text-muted-foreground uppercase tracking-wider mb-1 block">Colors</Label>
-              <div className="grid grid-cols-6 gap-1">
-                {Object.entries(tokens.colors).map(([name, value]) => (
-                  <div key={name} className="relative">
-                    <button
-                      title={name}
-                      className="w-8 h-8 rounded border border-border hover:ring-1 hover:ring-primary"
-                      style={{ background: value as string }}
-                      onClick={() => {
-                        setEditingColor(name);
-                        setEditingColorDraft(String(value));
-                      }}
-                    />
-                    {editingColor === name && (
-                      <div className="absolute z-50 top-full mt-1 left-0 bg-background border border-border rounded shadow-lg p-2 flex gap-1">
-                        <input
-                          type="color"
-                          value={editingColorDraft}
-                          onChange={(e) => setEditingColorDraft(e.target.value)}
-                          className="w-8 h-8 rounded cursor-pointer border-0 p-0"
-                        />
-                        <input
-                          type="text"
-                          value={editingColorDraft}
-                          onChange={(e) => setEditingColorDraft(e.target.value)}
-                          onBlur={() => {
-                            dispatch({ type: "UPDATE_TOKEN", category: "colors", key: name, value: editingColorDraft });
-                            setEditingColor(null);
-                          }}
-                          onKeyDown={(e) => {
-                            if (e.key === 'Enter') {
-                              dispatch({ type: "UPDATE_TOKEN", category: "colors", key: name, value: editingColorDraft });
-                              setEditingColor(null);
-                            }
-                            if (e.key === 'Escape') setEditingColor(null);
-                          }}
-                          className="text-[10px] w-20 rounded border border-border bg-background px-1"
-                          autoFocus
-                        />
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Typography */}
-            <div>
-              <Label className="text-[10px] text-muted-foreground uppercase tracking-wider mb-1 block">Font Sizes</Label>
-              <div className="space-y-1">
-                {Object.entries(tokens.typography.fontSize).map(([name, value]) => (
-                  <div key={name} className="flex items-center justify-between text-[10px]">
-                    <span className="text-muted-foreground">{name}</span>
-                    <span>{value as string}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Radii */}
-            <div>
-              <Label className="text-[10px] text-muted-foreground uppercase tracking-wider mb-1 block">Radii</Label>
-              <div className="flex flex-wrap gap-1">
-                {Object.entries(tokens.radii).map(([name, value]) => (
-                  <div key={name} className="text-[10px] bg-muted/50 px-2 py-0.5 rounded">
-                    {name}: {value as number}px
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Export CSS */}
-            <Button
-              variant="outline"
-              size="sm"
-              className="w-full h-7 text-xs"
-              onClick={() => {
-                const css = tokensToCSS(tokens);
-                navigator.clipboard.writeText(css);
-                alert("CSS variables copied to clipboard!");
-              }}
-            >
-              Copy CSS Variables
-            </Button>
-          </div>
-        )}
-
-        {/* Components Panel (slide-over) */}
-        {showComponentPanel && !showPreview && (
-          <div className="w-64 shrink-0 border-l border-border bg-background overflow-y-auto p-3 space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-medium">Components</span>
-              <Button variant="ghost" size="icon" className="h-5 w-5" onClick={() => setShowComponentPanel(false)}>×</Button>
-            </div>
-
-            {selectedEl && (
-              <Button variant="outline" size="sm" className="w-full h-7 text-xs gap-1" onClick={handleCreateComponent}>
-                <Component className="w-3 h-3" /> Create Component from Selection
-              </Button>
-            )}
-
-            {(state.page.components || []).length === 0 ? (
-              <p className="text-[10px] text-muted-foreground">
-                No components yet. Select an element and click "Create Component" to create a master component.
-              </p>
-            ) : (
-              <div className="space-y-2">
-                {(state.page.components || []).map((comp) => (
-                  <div key={comp.id} className="border border-border rounded-lg p-2 space-y-2">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[11px] font-medium">{comp.name}</span>
-                      <Button variant="ghost" size="icon" className="h-4 w-4" onClick={() => dispatch({ type: "DELETE_COMPONENT", id: comp.id })}>×</Button>
-                    </div>
-                    <Button variant="outline" size="sm" className="w-full h-6 text-[10px]" onClick={() => handleCreateInstance(comp.id)}>
-                      + Create Instance
-                    </Button>
-                    {comp.variants.length > 0 && (
-                      <div className="text-[9px] text-muted-foreground">
-                        {comp.variants.length} variant(s)
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* AI Chat Panel */}
-        {showAIChat && !showPreview && (
-          <FreeformAIChat
-            elements={state.page.elements}
-            canvasWidth={state.page.canvasWidth}
-            canvasHeight={state.page.canvasHeight}
-            onApplyActions={handleAIApplyActions}
-            onClose={() => setShowAIChat(false)}
-          />
-        )}
-
-        {/* Custom CSS/JS Panel */}
-        {showCssJsPanel && !showPreview && (
-          <CustomCodePanel
-            customCss={state.page.customCss || ""}
-            customJs={state.page.customJs || ""}
-            onCssChange={(css) => dispatch({ type: "SET_CUSTOM_CSS", css })}
-            onJsChange={(js) => dispatch({ type: "SET_CUSTOM_JS", js })}
-            onClose={() => setShowCssJsPanel(false)}
-          />
-        )}
-
-        {/* Mobile Preview Panel */}
-        {showMobilePreview && !showPreview && (
-          <div className="w-80 shrink-0 border-l border-border bg-background overflow-y-auto p-3 space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-medium">Mobile Preview</span>
-              <Button variant="ghost" size="icon" className="h-5 w-5" onClick={() => setShowMobilePreview(false)}>×</Button>
-            </div>
-
-            <div className="flex gap-1">
-              {[
-                { label: "iPhone SE", w: 375 },
-                { label: "iPad Mini", w: 768 },
-                { label: "Pixel 7", w: 412 },
-              ].map((device) => (
-                <button
-                  key={device.w}
-                  className={cn(
-                    "text-[10px] px-2 py-1 rounded-lg transition-colors",
-                    mobileWidth === device.w ? "bg-primary/20 text-primary" : "bg-muted/50 text-muted-foreground hover:text-foreground"
-                  )}
-                  onClick={() => setMobileWidth(device.w)}
-                >
-                  {device.label}
-                </button>
-              ))}
-            </div>
-
-            <div className="flex justify-center py-4">
-              <div
-                className="border-2 border-border rounded-2xl overflow-hidden bg-[#0d0d14] shadow-xl"
-                style={{ width: Math.min(mobileWidth, 360), height: 500 }}
-              >
-                <div
-                  className="relative mx-auto"
-                  style={{
-                    width: mobileWidth,
-                    height: 500,
-                    background:
-                      state.page.background.type === "color"
-                        ? state.page.background.value
-                        : state.page.background.type === "gradient"
-                        ? state.page.background.value
-                        : `url(${state.page.background.value})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    overflow: "hidden",
-                    transform: `scale(${Math.min(1, 340 / mobileWidth)})`,
-                    transformOrigin: "top center",
-                  }}
-                  dangerouslySetInnerHTML={{
-                    __html: exportFreeformToHTML({ ...state.page, canvasWidth: mobileWidth }),
-                  }}
-                />
-              </div>
-            </div>
-
-            <p className="text-[9px] text-muted-foreground text-center">
-              Preview at {mobileWidth}px width • Touch handles enabled
-            </p>
-          </div>
-        )}
+        {/* Right panels — desktop side columns */}
+        {!showPreview && !isMobile && rightPanelsContent}
       </div>
 
       {/* Status bar */}

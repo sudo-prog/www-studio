@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FreeformPage } from "@/lib/freeform-types";
-import { saveFreeformProject, listProjects, loadProject, backupToFreeformPage, FreeformBackup } from "@/lib/github-storage";
+import { saveFreeformProject, listProjects, loadProject, backupToFreeformPage, hasGitHubToken, FreeformBackup } from "@/lib/github-storage";
 import { Button } from "@/components/ui/button";
 import {
   Github,
@@ -36,6 +36,10 @@ export function GitHubSaveButton({ page, onLoad }: Props) {
   const { toast } = useToast();
 
   const handleSave = async () => {
+    if (!hasGitHubToken()) {
+      toast({ title: "Connect GitHub first", description: "Add a GitHub token in your Profile to enable Save/Load.", variant: "destructive" });
+      return;
+    }
     setStatus("saving");
     try {
       const backup: FreeformBackup = {
@@ -62,6 +66,10 @@ export function GitHubSaveButton({ page, onLoad }: Props) {
   };
 
   const handleLoadBackups = async () => {
+    if (!hasGitHubToken()) {
+      toast({ title: "Connect GitHub first", description: "Add a GitHub token in your Profile to load backups.", variant: "destructive" });
+      return;
+    }
     setShowLoadModal(true);
     setLoadingBackups(true);
     try {

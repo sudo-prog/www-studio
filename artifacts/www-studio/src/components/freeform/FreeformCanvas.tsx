@@ -54,7 +54,7 @@ export default function FreeformCanvas({
     bgStyle.backgroundPosition = "center";
   }
 
-  const handleMouseDown = useCallback((e: React.MouseEvent, el: FreeformElement) => {
+  const handlePointerDown = useCallback((e: React.PointerEvent, el: FreeformElement) => {
     if (el.locked || isPanning) return;
     e.stopPropagation();
     onSelect(el.id);
@@ -71,7 +71,7 @@ export default function FreeformCanvas({
     }
   }, [elements, onSelect, showGuides, isPanning]);
 
-  const handleResizeStart = useCallback((e: React.MouseEvent, el: FreeformElement, corner: string) => {
+  const handleResizeStart = useCallback((e: React.PointerEvent, el: FreeformElement, corner: string) => {
     e.stopPropagation();
     e.preventDefault();
     setResizing({
@@ -84,7 +84,7 @@ export default function FreeformCanvas({
     });
   }, []);
 
-  const handleCanvasMouseDown = (e: React.MouseEvent) => {
+  const handleCanvasPointerDown = (e: React.PointerEvent) => {
     if (e.button === 1 || (e.button === 0 && e.altKey)) {
       e.preventDefault();
       setIsPanning(true);
@@ -95,7 +95,7 @@ export default function FreeformCanvas({
   useEffect(() => {
     if (!dragging && !resizing && !isPanning) return;
 
-    const handleMouseMove = (e: MouseEvent) => {
+    const handlePointerMove = (e: PointerEvent) => {
       if (isPanning) {
         const dx = e.clientX - panStart.x;
         const dy = e.clientY - panStart.y;
@@ -121,18 +121,18 @@ export default function FreeformCanvas({
       }
     };
 
-    const handleMouseUp = () => {
+    const handlePointerUp = () => {
       setDragging(null);
       setResizing(null);
       setGuides([]);
       setIsPanning(false);
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mouseup", handleMouseUp);
+    window.addEventListener("pointermove", handlePointerMove);
+    window.addEventListener("pointerup", handlePointerUp);
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseup", handleMouseUp);
+      window.removeEventListener("pointermove", handlePointerMove);
+      window.removeEventListener("pointerup", handlePointerUp);
     };
   }, [dragging, resizing, isPanning, zoom, snapGrid, onMove, onResize, panStart]);
 
@@ -182,8 +182,9 @@ export default function FreeformCanvas({
       ref={containerRef}
       className={cn("relative flex-1 overflow-auto bg-[#0a0a0f]", isInfiniteCanvas && "cursor-grab")}
       onClick={handleCanvasClick}
-      onMouseDown={handleCanvasMouseDown}
+      onPointerDown={handleCanvasPointerDown}
       data-canvas="true"
+      style={{ touchAction: "none" }}
     >
       {snapGrid && (
         <div
@@ -256,15 +257,15 @@ export default function FreeformCanvas({
                 el.locked ? "cursor-not-allowed" : "cursor-move",
                 isSelected && "ring-2 ring-blue-500 ring-offset-1 ring-offset-transparent"
               )}
-              style={getContainerStyle(el)}
-              onMouseDown={(e) => handleMouseDown(e, el)}
+              style={{ ...getContainerStyle(el), touchAction: "none" }}
+              onPointerDown={(e) => handlePointerDown(e, el)}
             >
               {isContainer && getChildElements(el).map((child) => (
                 <div
                   key={child.id}
                   className="relative"
                   style={{ flex: layoutMode === "flex-col" ? "1 1 auto" : undefined }}
-                  onMouseDown={(e) => e.stopPropagation()}
+                  onPointerDown={(e) => e.stopPropagation()}
                 >
                   <FreeformElementRenderer el={child} zoom={zoom} />
                 </div>
@@ -274,10 +275,10 @@ export default function FreeformCanvas({
 
               {isSelected && !el.locked && (
                 <>
-                  <div className="absolute -top-1.5 -left-1.5 w-3 h-3 bg-white border-2 border-blue-500 rounded-full cursor-nw-resize z-50" onMouseDown={(e) => handleResizeStart(e, el, "tl")} />
-                  <div className="absolute -top-1.5 -right-1.5 w-3 h-3 bg-white border-2 border-blue-500 rounded-full cursor-ne-resize z-50" onMouseDown={(e) => handleResizeStart(e, el, "tr")} />
-                  <div className="absolute -bottom-1.5 -left-1.5 w-3 h-3 bg-white border-2 border-blue-500 rounded-full cursor-sw-resize z-50" onMouseDown={(e) => handleResizeStart(e, el, "bl")} />
-                  <div className="absolute -bottom-1.5 -right-1.5 w-3 h-3 bg-white border-2 border-blue-500 rounded-full cursor-se-resize z-50" onMouseDown={(e) => handleResizeStart(e, el, "br")} />
+                  <div className="absolute -top-1.5 -left-1.5 w-3 h-3 bg-white border-2 border-blue-500 rounded-full cursor-nw-resize z-50" style={{ touchAction: "none" }} onPointerDown={(e) => handleResizeStart(e, el, "tl")} />
+                  <div className="absolute -top-1.5 -right-1.5 w-3 h-3 bg-white border-2 border-blue-500 rounded-full cursor-ne-resize z-50" style={{ touchAction: "none" }} onPointerDown={(e) => handleResizeStart(e, el, "tr")} />
+                  <div className="absolute -bottom-1.5 -left-1.5 w-3 h-3 bg-white border-2 border-blue-500 rounded-full cursor-sw-resize z-50" style={{ touchAction: "none" }} onPointerDown={(e) => handleResizeStart(e, el, "bl")} />
+                  <div className="absolute -bottom-1.5 -right-1.5 w-3 h-3 bg-white border-2 border-blue-500 rounded-full cursor-se-resize z-50" style={{ touchAction: "none" }} onPointerDown={(e) => handleResizeStart(e, el, "br")} />
                 </>
               )}
             </div>

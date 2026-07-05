@@ -30,10 +30,10 @@ function getPolygonPoints(type: SceneElement["type"], w: number, h: number): str
   return "";
 }
 
-function SceneElementShape({ el, selected, onMouseDown }: {
+function SceneElementShape({ el, selected, onPointerDown }: {
   el: SceneElement;
   selected: boolean;
-  onMouseDown: (e: React.MouseEvent, id: string) => void;
+  onPointerDown: (e: React.PointerEvent, id: string) => void;
 }) {
   if (!el.visible) return null;
 
@@ -54,7 +54,7 @@ function SceneElementShape({ el, selected, onMouseDown }: {
 
   const svgProps: Record<string, unknown> & React.SVGAttributes<SVGElement> = {
     style,
-    onMouseDown: (e: React.MouseEvent) => { if (!el.locked) onMouseDown(e, el.id); },
+    onPointerDown: (e: React.PointerEvent) => { if (!el.locked) onPointerDown(e, el.id); },
     ...(transformStyle ? { transform: transformStyle } : {}),
   };
 
@@ -243,7 +243,7 @@ export function SceneCanvas({ elements, selectedId, canvasWidth, canvasHeight, b
     e.dataTransfer.dropEffect = "copy";
   };
 
-  function getSVGCoords(e: React.MouseEvent): { x: number; y: number } {
+  function getSVGCoords(e: React.PointerEvent): { x: number; y: number } {
     const svg  = svgRef.current;
     if (!svg) return { x: 0, y: 0 };
     const rect   = svg.getBoundingClientRect();
@@ -255,7 +255,7 @@ export function SceneCanvas({ elements, selectedId, canvasWidth, canvasHeight, b
     };
   }
 
-  const handleElementMouseDown = useCallback((e: React.MouseEvent, id: string) => {
+  const handleElementPointerDown = useCallback((e: React.PointerEvent, id: string) => {
     e.stopPropagation();
     onSelect(id);
     const el = elements.find((el) => el.id === id);
@@ -265,7 +265,7 @@ export function SceneCanvas({ elements, selectedId, canvasWidth, canvasHeight, b
     e.preventDefault();
   }, [elements, onSelect]);
 
-  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+  const handlePointerMove = useCallback((e: React.PointerEvent) => {
     if (!dragRef.current) return;
     const { id, startSvgX, startSvgY, origX, origY } = dragRef.current;
     const { x, y } = getSVGCoords(e);
@@ -274,7 +274,7 @@ export function SceneCanvas({ elements, selectedId, canvasWidth, canvasHeight, b
     onMove(id, newX, newY);
   }, [onMove]);
 
-  const handleMouseUp = useCallback(() => {
+  const handlePointerUp = useCallback(() => {
     dragRef.current = null;
   }, []);
 
@@ -307,11 +307,12 @@ export function SceneCanvas({ elements, selectedId, canvasWidth, canvasHeight, b
           maxHeight: "100%",
           background,
           boxShadow: "0 0 0 1px rgba(255,255,255,0.06)",
+          touchAction: "none",
         }}
-        onMouseDown={() => onSelect(null)}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseUp}
+        onPointerDown={() => onSelect(null)}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerLeave={handlePointerUp}
       >
         {/* Canvas background gradient */}
         <defs>
@@ -341,7 +342,7 @@ export function SceneCanvas({ elements, selectedId, canvasWidth, canvasHeight, b
             key={el.id}
             el={el}
             selected={el.id === selectedId}
-            onMouseDown={handleElementMouseDown}
+            onPointerDown={handleElementPointerDown}
           />
         ))}
       </svg>

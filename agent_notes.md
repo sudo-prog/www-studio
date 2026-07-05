@@ -343,4 +343,40 @@ Multi-source design synthesis engine. Accepts primary URL + optional secondary U
 - 165 tsc errors — all pre-existing (JSX.IntrinsicElements with R3F, api-server type issues, sceneTemplates.ts)
 - Build passes cleanly (esbuild handles JSX, tsc errors are type-only)
 
+---
+
+## AI Feature & Mobile Audit Fixes (2026-07-05)
+
+### Critical Fixes Applied
+
+**API Client Base URL wiring**
+- `artifacts/www-studio/src/main.tsx` — Added `setBaseUrl(import.meta.env.VITE_API_SERVER_URL)` call so the generated `api-client-react` hooks can actually reach the backend. Without this, every relative fetch (e.g. `/api/projects`, `/api/auth/user`) hit the static Vercel frontend and 404'd. This was the single highest-leverage fix in the audit.
+
+**Mobile / Touch support**
+- `artifacts/www-studio/src/components/freeform/FreeformCanvas.tsx` — Converted all drag/resize/pan handlers from mouse events (`mousemove`, `mouseup`) to Pointer Events (`pointermove`, `pointerup`). Added `touch-action: none` to every draggable element, resize handle, and the canvas container so mobile browsers don't hijack gestures for scrolling.
+- `artifacts/www-studio/src/components/scenes/SceneCanvas.tsx` — Same Pointer Event conversion for element drag handlers and canvas interactions.
+
+**Freeform editor responsive layout**
+- `artifacts/www-studio/src/pages/freeform-editor.tsx` — The right-side panels (properties, design tokens, components, mobile preview) were hardcoded `w-64`/`w-80` with no mobile variant. On screens below `md`, these now render inside a bottom `Sheet` instead of fixed side columns, ensuring the canvas remains usable on phones. Added a `SlidersHorizontal` trigger button in the top bar for mobile panel access.
+
+**Viewport accessibility**
+- `artifacts/www-studio/index.html` — Removed `maximum-scale=1` from the viewport meta tag. Pinch-to-zoom is now allowed app-wide. Accidental zoom during canvas gestures is prevented by the `touch-action: none` rules on canvas elements instead.
+
+### Bug Fixes & Type Safety
+
+**`backupToFreeformPage()` compiler error**
+- `artifacts/www-studio/src/lib/github-storage.ts` — The function was returning an incomplete `FreeformPage` literal (missing `isPrivate`, `likes`, `viewCount`, `tags`, `createdAt`, `updatedAt`) and had a `status` type mismatch (`string` vs `"draft" | "published"`). `tsc` confirmed a hard `TS2322` on `status`. Fixed by mapping `status` to the literal union and filling all required fields with defaults (`tags: []`, `likes: 0`, etc.).
+
+**GitHub token guard**
+- `artifacts/www-studio/src/components/freeform/GitHubSaveButton.tsx` — Added `hasGitHubToken()` checks before save and load operations. First-time users now see a clear "Connect GitHub first" toast instead of a raw 401 error.
+
+### Items Not Yet Fixed (per audit scope)
+
+- **API server deployment & CORS** — `setBaseUrl` is wired but the actual `artifacts/api-server` must be deployed to Railway/Render/Fly and CORS must allow the production Vercel origin. Also confirm `VITE_API_SERVER_URL`, `LLM_BASE_URL`, `LLM_API_KEY`, `LLM_MODEL`, and `VITE_NOUS_API_KEY` are set in the Vercel dashboard.
+- **3D Studio module** — Still 100% orphaned; requires its own dedicated pass.
+- **Dead code cleanup** — `ChaosMonkeyV2.tsx`, `AiFreeformCommands.tsx`, `BackgroundPicker.tsx`, `CodeInspector.tsx`, `freeform/VersionHistory.tsx`, etc.
+- **RAG knowledge search UI** — `lib/knowledge.ts` search/embed functions exist but are not surfaced in the UI.
+- **`scenes.tsx` sort dropdown type** — `useState<"newest"|"oldest"|"name">` is missing `"likes"` and `"published"` options.
+
+**Commit reference:** Fixes applied on top of repo state around `24513be` (two commits past original `cab1633` audit).
 **Commit:** `0758e64` — pushed to main

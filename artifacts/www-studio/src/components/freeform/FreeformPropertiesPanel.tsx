@@ -17,6 +17,7 @@ interface Props {
   onDuplicate: () => void;
   onSendForward: () => void;
   onSendBackward: () => void;
+  className?: string;
 }
 
 function NumberField({
@@ -114,10 +115,11 @@ export default function FreeformPropertiesPanel({
   onDuplicate,
   onSendForward,
   onSendBackward,
+  className,
 }: Props) {
   if (!selectedEl) {
     return (
-      <div className="w-64 shrink-0 border-l border-border bg-background p-4 flex flex-col items-center justify-center text-center">
+      <div className={cn("shrink-0 border-l border-border bg-background p-4 flex flex-col items-center justify-center text-center", className)}>
         <div className="w-12 h-12 rounded-xl bg-muted/30 flex items-center justify-center mb-3">
           <MousePointer className="w-5 h-5 text-muted-foreground/40" />
         </div>
@@ -141,7 +143,7 @@ export default function FreeformPropertiesPanel({
   }[el.type];
 
   return (
-    <div className="w-64 shrink-0 border-l border-border bg-background flex flex-col overflow-hidden">
+    <div className={cn("shrink-0 border-l border-border bg-background flex flex-col overflow-hidden w-64 md:w-auto", className)}>
       {/* Header */}
       <div className="p-3 border-b border-border flex items-center justify-between">
         <div className="flex items-center gap-2">

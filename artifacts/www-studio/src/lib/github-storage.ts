@@ -6,6 +6,8 @@
  * Requires a GitHub personal access token with 'repo' scope.
  */
 
+import type { FreeformPage } from "@/lib/freeform-types";
+
 const GITHUB_REPO = "sudo-prog/www-studio-backup";
 const BRANCH = "main";
 const BACKUP_FOLDER = "projects";
@@ -358,19 +360,24 @@ export function getShareUrl(pageId: string, slug?: string): string {
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
-export function backupToFreeformPage(entry: BackupEntry): import("@/lib/freeform-types").FreeformPage {
-  if ("elements" in entry) {
-    return {
-      id: entry.id,
-      name: entry.name,
-      userId: entry.userId,
-      elements: JSON.parse(entry.elements),
-      background: JSON.parse(entry.background),
-      canvasWidth: entry.canvasWidth,
-      canvasHeight: entry.canvasHeight,
-      status: entry.status,
-      slug: entry.slug,
-    };
-  }
-  throw new Error("Not a freeform backup");
+export function backupToFreeformPage(entry: BackupEntry): FreeformPage {
+  if (!("elements" in entry)) throw new Error("Not a freeform backup");
+  const now = new Date().toISOString();
+  return {
+    id: entry.id,
+    name: entry.name,
+    userId: entry.userId,
+    slug: entry.slug,
+    elements: JSON.parse(entry.elements),
+    background: JSON.parse(entry.background),
+    canvasWidth: entry.canvasWidth,
+    canvasHeight: entry.canvasHeight,
+    status: entry.status === "published" ? "published" : "draft",
+    isPrivate: false,
+    likes: 0,
+    viewCount: 0,
+    tags: [],
+    createdAt: (entry as any).savedAt ?? now,
+    updatedAt: (entry as any).savedAt ?? now,
+  };
 }
