@@ -24,7 +24,7 @@ function setSessionCookie(res: Response, sid: string) {
   res.cookie(SESSION_COOKIE, sid, {
     httpOnly: true,
     secure: true,
-    sameSite: "lax",
+    sameSite: "none",
     path: "/",
     maxAge: SESSION_TTL,
   });
@@ -262,6 +262,45 @@ router.get("/auth/github/callback", async (req: Request, res: Response) => {
     console.error("GitHub OAuth error:", err);
     res.redirect("/?error=github_auth_failed");
   }
+});
+
+// ── Password-Only Login (no email, just a master password) ──
+router.post("/auth/password-login", async (req: Request, res: Response) => {
+  const { password } = req.body as { password?: string };
+  if (!password) {
+    res.status(400).json({ error: "password is required" });
+    return;
+  }
+
+  const masterPassword = process.env.MASTER_PASSWORD;
+  if (!masterPassword) {
+    res.status(500).json({ error: "Master password not configured on server" });
+    return;
+  }
+
+  const hashedInput = crypto.createHash("sha256").update(password).digest("hex");
+  const hashedMaster = crypto.createHash("sha256").update(masterPassword).digest("hex");
+
+  if (hashedInput !== hashedMaster) {
+    res.status(401).json({ error: "Invalid password" });
+    return;
+  }
+
+  // Create a session for a generic "master" user
+  const sessionData: SessionData = {
+    user: {
+      id: "master-user",
+      email: "master@www.studio",
+      firstName: "Master",
+      lastName: "User",
+      profileImageUrl: null,
+    },
+    created_at: Date.now(),
+  };
+
+  const sid = await createSession(sessionData);
+  setSessionCookie(res, sid);
+  res.json({ user: sessionData.user, token: sid });
 });
 
 // ── Logout ──

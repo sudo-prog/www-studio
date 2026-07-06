@@ -18,10 +18,12 @@ import scenesRouter           from "./scenes";
 import enhancedRouter         from "./enhanced";
 import knowledgeRouter        from "./knowledge";
 import aiRouter               from "./ai";
+import browserRouter          from "./browser";
 
 const router: IRouter = Router();
 
 router.use(healthRouter);
+router.use(browserRouter);
 router.use(authRouter);
 router.use(galleryRouter);
 router.use(projectsRouter);

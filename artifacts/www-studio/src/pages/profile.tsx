@@ -5,10 +5,11 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Code2, FolderGit2, Github, Key } from "lucide-react";
+import { Code2, FolderGit2, Github, Key, Lock } from "lucide-react";
 import { useState } from "react";
 import { setGitHubToken, hasGitHubToken } from "@/lib/github-storage";
 import { useToast } from "@/hooks/use-toast";
+import { PasswordLogin } from "@/components/PasswordLogin";
 
 export default function Profile() {
   const { user, isAuthenticated, isLoading: authLoading } = useAuth();
@@ -25,8 +26,17 @@ export default function Profile() {
     return (
       <div className="min-h-screen flex flex-col bg-background">
         <Navbar />
-        <main className="flex-1 flex flex-col items-center justify-center p-8 text-center">
-          <h2 className="text-2xl font-semibold mb-2">Please log in to view your profile</h2>
+        <main className="flex-1 flex flex-col items-center justify-center p-8 text-center max-w-sm mx-auto w-full">
+          <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+            <Lock className="w-8 h-8 text-primary" />
+          </div>
+          <h2 className="text-2xl font-semibold mb-2">Log in to WWW Studio</h2>
+          <p className="text-sm text-muted-foreground mb-6">
+            Enter the master password to access your profile and projects.
+          </p>
+          <div className="w-full">
+            <PasswordLogin />
+          </div>
         </main>
       </div>
     );

@@ -250,10 +250,6 @@ export async function extractDesignFromReferences(
 
 export function isStaticMode(): boolean {
   // In static mode we don't have an api-server
-  // Heuristic: if running from file:// or GitHub Pages domain, or if API is unreachable
-  return (
-    window.location.protocol === "file:" ||
-    window.location.hostname.includes("github.io") ||
-    window.location.hostname.includes("localhost") === false
-  );
+  // Use VITE_API_SERVER_URL to determine if a backend is available
+  return !import.meta.env.VITE_API_SERVER_URL;
 }

@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
+import { useToast } from "@/hooks/use-toast";
+import { extractPage, pageElementsToFreeform, BROWSER_TOOL_PROMPT } from "@/lib/ai/browser-tool";
 
 // ─── AI Self-Heal: DOM snapshot + fix execution ──────────────────────────
 function buildDomSnapshot(): string {
@@ -44,7 +46,7 @@ RULES:
 - Check DOM_SNAPSHOT first — NEVER guess selectors
 - Use FIX_NOTIFICATIONS for stuck UI
 - Use CLEAR_STALE to remove broken/old UI by selector
-- Common fixes: removing stuck notifications, clearing error states`;
+- Common fixes: removing stuck notifications, clearing error states` + BROWSER_TOOL_PROMPT;
 import {
   Wand2, Send, X, Loader2, Bot, User, Minimize2, Maximize2,
   AlertCircle, ChevronDown, Sparkles, Zap,
@@ -194,6 +196,7 @@ export function AiChatWidget({ context, onNavigate }: AiChatWidgetProps) {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const { dismiss } = useToast();
 
   // Models
   const [models] = useState<GeminiModel[]>(GEMINI_MODELS);
@@ -243,6 +246,35 @@ export function AiChatWidget({ context, onNavigate }: AiChatWidgetProps) {
 
       let reply = await callGeminiChat(apiMessages, selectedModel);
 
+      // Check for browser tool invocation in the reply
+      const browseMatch = reply.match(/```browse\s*\n?([\s\S]*?)\n?```/);
+      if (browseMatch) {
+        try {
+          const browseParams = JSON.parse(browseMatch[1]);
+          if (browseParams.url) {
+            reply += `\n\n🌐 **Browsing:** ${browseParams.url}...`;
+            setMessages((prev) => [
+              ...prev,
+              {
+                id: crypto.randomUUID(),
+                role: "assistant",
+                content: reply,
+              },
+            ]);
+            const result = await extractPage(browseParams.url);
+            if (result.success) {
+              const pageSummary = pageElementsToFreeform(result.elements, result.html);
+              reply = `## 📄 Page Analysis: ${result.title}\n\n**URL:** ${result.url}\n\n### Extracted Elements\n\n${pageSummary}\n\n${result.screenshot ? `![Screenshot](${result.screenshot})` : ""}\n\nI've extracted the page structure above. Would you like me to add these elements to the canvas?`;
+            } else {
+              reply = `❌ **Failed to browse URL:** ${result.error}`;
+            }
+          }
+        } catch (e) {
+          reply += `\n\n⚠️ Could not parse browse parameters.`;
+        }
+        reply = reply.replace(/```browse\s*\n?[\s\S]*?\n?```/g, "").trim();
+      }
+
       // Parse self-heal fix blocks from AI response
       const fixMatch = reply.match(/```fix\s*\n?([\s\S]*?)\n?```/);
       if (fixMatch) {
@@ -251,13 +283,11 @@ export function AiChatWidget({ context, onNavigate }: AiChatWidgetProps) {
           const ops = Array.isArray(fixOps) ? fixOps : [fixOps];
           for (const op of ops) {
             if (op.type === "FIX_NOTIFICATIONS") {
-              document.querySelectorAll('[class*="notification"], [class*="toast"], [role="alert"]').forEach((el: Element) => {
-                const s = window.getComputedStyle(el);
-                if (s.position === "fixed" || s.position === "absolute") el.remove();
-              });
+              dismiss(); // clears toasts through React state — never touch the DOM directly
               reply += "\n\n🔧 **Notifications cleared**";
             } else if (op.type === "CLEAR_STALE" && op.selector) {
-              document.querySelectorAll(op.selector).forEach((el: Element) => el.remove());
+              // Scope to elements explicitly opted-in with data-ai-dismissable
+              document.querySelectorAll(`[data-ai-dismissable="true"]${op.selector}`).forEach((el: Element) => el.remove());
               reply += "\n\n🔧 **Cleared elements matching:** " + op.selector;
             }
           }

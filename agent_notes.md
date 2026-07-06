@@ -2,7 +2,7 @@
 
 Architecture decisions, file structure, API patterns, and known issues for WWW Studio.
 
-**Last updated:** 2026-07-03
+**Last updated:** 2026-07-06
 
 ## Vercel Deployment Configuration Audit (2026-07-03)
 
@@ -369,6 +369,26 @@ Multi-source design synthesis engine. Accepts primary URL + optional secondary U
 
 **GitHub token guard**
 - `artifacts/www-studio/src/components/freeform/GitHubSaveButton.tsx` — Added `hasGitHubToken()` checks before save and load operations. First-time users now see a clear "Connect GitHub first" toast instead of a raw 401 error.
+
+## AI Browser Agent + Password Login + Vercel Build (2026-07-06)
+
+### Agent Browser Integration
+- **`artifacts/api-server/src/routes/browser.ts`** — New API route wrapping the `agent-browser` CLI. Provides endpoints: `/api/browser/open`, `/api/browser/snapshot`, `/api/browser/html`, `/api/browser/text`, `/api/browser/screenshot`, `/api/browser/click`, `/api/browser/fill`, `/api/browser/close`, and `/api/browser/extract` (full page extraction in one call).
+- **`artifacts/www-studio/src/lib/ai/browser-tool.ts`** — Frontend browser tool module. Exports `extractPage()` to call the API, `pageElementsToFreeform()` to convert extracted elements to structured text, `BROWSER_TOOL_DEFINITION` for OpenAI function calling, and `BROWSER_TOOL_PROMPT` for the AI system message.
+- **`artifacts/www-studio/src/components/AiChatWidget.tsx`** — Updated to parse ` ```browse ` blocks from AI responses. When the AI returns a browse block with a URL, it calls `extractPage()` and displays the structured page analysis (headings, links, text, buttons, HTML, screenshot).
+- **`artifacts/api-server/src/routes/index.ts`** — Registered the browser router.
+
+### Password-Only Login
+- **`artifacts/api-server/src/routes/auth.ts`** — Added `POST /api/auth/password-login` endpoint. Accepts a password, compares it (SHA-256) against `MASTER_PASSWORD` env var, creates a session for a generic "master" user.
+- **`lib/auth-web/src/use-auth.ts`** — Added `loginWithPassword()`, `hasSavedPassword`, `clearSavedPassword`. Password is stored in localStorage (base64 obfuscated). Auto-login on mount if saved password exists.
+- **`lib/auth-web/src/index.ts`** — Exported `clearSavedPassword`.
+- **`artifacts/www-studio/src/components/PasswordLogin.tsx`** — New login UI component with password input, show/hide toggle, saved password indicator, error handling.
+- **`artifacts/www-studio/src/pages/profile.tsx`** — Updated unauthenticated view to show PasswordLogin component with lock icon and instructions.
+
+### Vercel Build Verification
+- Vercel CLI build confirmed passing: `vercel build --yes` completed successfully (21s).
+- Project linked to `superpowerstudio/www-studio`.
+- Build output: `dist/public/` (HTML, CSS, JS) + API serverless functions compiled.
 
 ### Items Not Yet Fixed (per audit scope)
 
