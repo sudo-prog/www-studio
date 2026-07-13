@@ -2,7 +2,7 @@
 
 Architecture decisions, file structure, API patterns, and known issues for WWW Studio.
 
-**Last updated:** 2026-07-06
+**Last updated:** 2026-07-14
 
 ## Vercel Deployment Configuration Audit (2026-07-03)
 
@@ -57,6 +57,27 @@ Architecture decisions, file structure, API patterns, and known issues for WWW S
 - `index.html` viewport meta `maximum-scale=1` removed so mobile zoom works.
 
 **Verification pending:** `vercel build` run 2026-07-14 (see OPS_LOG). Mobile re-measure (iPhone 16 Pro, 402px) target: horizontalScrollContainers==0, offscreen==0.
+
+### AI Repoint + Codebase Audit — 2026-07-14 (cont.)
+
+**AI provider repoint (dead proxy → live gemini-web2api tunnel):**
+- All 5 AI components (`AiChatWidget.tsx`, `FreeformAIChat.tsx`, `SceneChat.tsx`, `AiFreeformCommands.tsx`, `designExtractClient.ts`) were hardcoded to dead `https://inference-api.nousresearch.com/v1` (model `openrouter/owl-alpha`) with a fallback to a non-existent `/api/chat` Vercel proxy (404 in static build). Repointed to `PRIMARY_PROXY = <cloudflared quick-tunnel URL>/v1/chat/completions`, `PRIMARY_MODEL = "gemini-3.5-flash"`. Added `stream: false` to every request body (gemini-web2api defaults to streaming; browser `res.json()` needs non-stream). Fixed a real pre-existing bug in `SceneChat.tsx` (`max` undefined → `max_tokens`).
+- `GEMINI_WEB2API_URL` env on Vercel is the tunnel URL; `sync-tunnel.sh` (in 20_Projects root) re-points LG env + WWW 5 files + redeploys both after any tunnel restart. **Durable fix = named Cloudflare tunnel (needs one-time `cloudflared login`).**
+- AI 502 root cause = Google free-tier 429 rate-limit (transient, not a code bug). LG `/api/chat` correctly reaches tunnel (0 connection failures in logs).
+
+**Codebase Audit (user-supplied `www-studio audit report 2026-07-14.md`, base `bff39b5`):** verified every claim against CURRENT main (674c45b). Audit was **partially STALE**:
+- §1 api-server `</write_to_file>` build-breaker — NOT PRESENT (browser.ts ends clean at `export default router`); api-server builds clean.
+- §3 `MASTER_PASSWORD` unguarded — STALE: auth.ts:275-279 already guards.
+- §5a `clearSavedPassword` not exported (use-auth.ts:39) — **FIXED** (added export).
+- §5b `ExtractionSummary` not exported (ExtractionHistory.tsx:8) — **FIXED** (added export).
+- §5c `scenes.tsx` sortBy union missing `"likes"|"published"` + `as any` — **FIXED** (widened union, typed cast).
+- §2 browser.ts shells out to global `agent-browser` CLI (absent on Vercel) — **FIXED** with graceful guard: `isAgentBrowserAvailable()` checks `command -v agent-browser` before exec, throws clear "unavailable" error instead of raw 500. (Full Playwright/Puppeteer rewrite deferred — needs persistent backend host.)
+- §5e root `typecheck` script `tsc --build` fails (api-client-react dist not built) — **FIXED** (now builds api-client-react first).
+- §4 3D Studio orphaned + doesn't type-check if wired — CONFIRMED orphaned feature; deferred as separate feature task.
+- §6 five dead freeform components (ChaosMonkeyV2, AiFreeformCommands, BackgroundPicker, CodeInspector, freeform/VersionHistory) — CONFIRMED zero importers (intentional in-progress); NOT deleted (avoid destroying user work).
+- §7 RAG `lib/knowledge` zero importers — CONFIRMED; client built, no UI. Feature-add, deferred.
+- §5d/5f/5g, §8 — polish (nullable string, implicit-any, calendar CSS, docs); deferred.
+- Web app + api-server BUILD CLEAN. Committed+pushed (674c45b), redeployed to www-studio-red (studio-o6oo9583j).
 - Added GitHub token settings UI to `Profile.tsx` with save/remove and local storage
 - Removed duplicate/buggy `detectEmbedUrl` from `freeformStore.ts`
 
