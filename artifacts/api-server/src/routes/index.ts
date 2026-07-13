@@ -19,6 +19,7 @@ import enhancedRouter         from "./enhanced";
 import knowledgeRouter        from "./knowledge";
 import aiRouter               from "./ai";
 import browserRouter          from "./browser";
+import logRouter              from "./log";
 
 const router: IRouter = Router();
 
@@ -42,5 +43,6 @@ router.use(scenesRouter);
 router.use(enhancedRouter);
 router.use(knowledgeRouter);
 router.use(aiRouter);
+router.use(logRouter);
 
 export default router;
