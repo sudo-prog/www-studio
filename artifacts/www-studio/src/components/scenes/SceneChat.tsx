@@ -33,7 +33,7 @@ interface ChatMsg {
 
 // ─── Provider configuration ──────────────────────────────────────────────────
 // Primary AI endpoint: local gemini-web2api tunnel (OpenAI-compatible, free)
-const PRIMARY_PROXY = "https://textbooks-careful-shut-dev.trycloudflare.com/v1/chat/completions";
+const PRIMARY_PROXY = "https://dressed-integer-strain-powerpoint.trycloudflare.com/v1/chat/completions";
 const PRIMARY_MODEL = "gemini-3.5-flash";
 
 // Provider fallback helper — tries each URL+model combo, throws after last one fails

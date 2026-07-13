@@ -73,7 +73,7 @@ interface GeminiModel {
 const STORAGE_MODEL_KEY = "www-studio-selected-model";
 
 // Primary AI endpoint: local gemini-web2api tunnel (OpenAI-compatible, free)
-const PRIMARY_PROXY = "https://textbooks-careful-shut-dev.trycloudflare.com/v1/chat/completions";
+const PRIMARY_PROXY = "https://dressed-integer-strain-powerpoint.trycloudflare.com/v1/chat/completions";
 const PRIMARY_MODEL = "gemini-3.5-flash";
 
 // ─── Provider fallback chain ────────────────────────────────────────────────
