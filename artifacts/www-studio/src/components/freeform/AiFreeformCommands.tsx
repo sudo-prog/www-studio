@@ -7,13 +7,9 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sparkles, Wand2, LayoutGrid, Accessibility, MousePointer, RotateCcw, X, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-// Nous/Hermes inference API (OpenRouter-compatible) — primary
-const NOUS_BASE_URL = "https://inference-api.nousresearch.com/v1";
-const NOUS_MODEL = "openrouter/owl-alpha";
-const NOUS_API_KEY=import.meta.env.VITE_NOUS_API_KEY || "";
-
-// Gemini Web2API fallback proxy
-const WEB2API_FALLBACK = "/api/chat";
+// Primary AI endpoint: local gemini-web2api tunnel (OpenAI-compatible, free)
+const PRIMARY_PROXY = "https://textbooks-careful-shut-dev.trycloudflare.com/v1/chat/completions";
+const PRIMARY_MODEL = "gemini-3.5-flash";
 
 // ─── Provider fallback chain ────────────────────────────────────────────────
 async function callAiProvider(
@@ -31,7 +27,7 @@ async function callAiProvider(
     mode: "cors",
     headers,
     signal: AbortSignal.timeout(30000),
-    body: JSON.stringify({ model, messages, max_tokens, temperature }),
+    body: JSON.stringify({ model, messages, max_tokens, temperature, stream: false }),
   });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const data = await res.json();
@@ -127,27 +123,18 @@ export default function AiFreeformCommands({ elements, page, onApplyChanges, onU
 
     const msg = `Generate a freeform layout for: "${prompt}". Return ONLY a JSON array of elements with types: text, shape, button, image. Each element needs: type, x, y, width, height. Text elements need: text, fontSize, color, fontWeight. Shape elements need: fill, shapeKind. Keep it under 10 elements.`;
 
-    // Provider fallback chain: Nous → Gemini-web2api → local
+    // Primary AI endpoint (OpenAI-compatible, free)
     let text: string | null = null;
 
     try {
       text = await callAiProvider(
-        `${NOUS_BASE_URL}/chat/completions`,
-        NOUS_MODEL,
+        PRIMARY_PROXY,
+        PRIMARY_MODEL,
         [{ role: "user", content: msg }],
-        { max_tokens: 4096, temperature: 0.7, authToken: NOUS_API_KEY }
+        { max_tokens: 4096, temperature: 0.7 }
       );
     } catch {
-      try {
-        text = await callAiProvider(
-          WEB2API_FALLBACK,
-          "gemini-3.5-flash",
-          [{ role: "user", content: msg }],
-          { max_tokens: 4096, temperature: 0.7 }
-        );
-      } catch {
-        // Both providers failed — use local fallback
-      }
+      // Endpoint failed (e.g. rate limit 429) — fall through to local generator
     }
 
     if (text) {

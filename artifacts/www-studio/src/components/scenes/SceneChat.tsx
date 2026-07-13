@@ -32,13 +32,9 @@ interface ChatMsg {
 }
 
 // ─── Provider configuration ──────────────────────────────────────────────────
-// Nous/Hermes inference API (OpenRouter-compatible) — primary
-const NOUS_BASE_URL = "https://inference-api.nousresearch.com/v1";
-const NOUS_MODEL = "openrouter/owl-alpha";
-const NOUS_API_KEY = import.meta.env.VITE_NOUS_API_KEY || "";
-
-// Gemini Web2API fallback proxy
-const WEB2API_FALLBACK = "/api/ai/chat";
+// Primary AI endpoint: local gemini-web2api tunnel (OpenAI-compatible, free)
+const PRIMARY_PROXY = "https://textbooks-careful-shut-dev.trycloudflare.com/v1/chat/completions";
+const PRIMARY_MODEL = "gemini-3.5-flash";
 
 // Provider fallback helper — tries each URL+model combo, throws after last one fails
 async function callAiProvider(
@@ -47,7 +43,7 @@ async function callAiProvider(
   messages: { role: string; content: string }[],
   options: { max_tokens?: number; temperature?: number; authToken?: string } = {},
 ): Promise<string> {
-  const { max, temperature = 0.8, authToken } = options;
+  const { max_tokens, temperature = 0.8, authToken } = options;
   const headers: Record<string, string> = { "Content-Type": "application/json" };
   if (authToken) {
     headers["Authorization"] = `Bearer ${authToken}`;
@@ -58,7 +54,7 @@ async function callAiProvider(
     mode: "cors",
     headers,
     signal: AbortSignal.timeout(30000),
-    body: JSON.stringify({ model, messages, max_tokens, temperature }),
+    body: JSON.stringify({ model, messages, max_tokens, temperature, stream: false }),
   });
 
   if (!res.ok) {
@@ -329,31 +325,19 @@ export function SceneChat({ sceneId, elements, selectedId, onApply, onClose }: P
 
       let data: { text: string; actions: SceneAction[] } | null = null;
 
-      // Try Nous/Hermes first
+      // Primary AI endpoint (OpenAI-compatible, free)
       try {
         const result = await callAiProvider(
-          `${NOUS_BASE_URL}/chat/completions`,
-          NOUS_MODEL,
+          PRIMARY_PROXY,
+          PRIMARY_MODEL,
           aiMessages,
-          { max_tokens: 1500, temperature: 0.8, authToken: NOUS_API_KEY }
+          { max_tokens: 1500, temperature: 0.8 }
         );
         const cleaned = result.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "").trim();
         data = JSON.parse(cleaned);
       } catch {
-        // Fallback: Gemini Web2API proxy (no API key needed)
-        try {
-          const result = await callAiProvider(
-            WEB2API_FALLBACK,
-            "gemini-3.5-flash",
-            aiMessages,
-            { max_tokens: 1500, temperature: 0.8 }
-          );
-          const cleaned = result.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "").trim();
-          data = JSON.parse(cleaned);
-        } catch {
-          // Pure local fallback if both providers fail
-          data = generateLocalSceneResponse(text, elements);
-        }
+        // Pure local fallback if the endpoint fails (e.g. rate limit 429)
+        data = generateLocalSceneResponse(text, elements);
       }
 
       data ??= generateLocalSceneResponse(text, elements);

@@ -4,13 +4,9 @@
 
 const RESULTS_KEY = "www-studio-design-extract-results";
 
-// Nous/Hermes inference API (OpenRouter-compatible) — primary
-const NOUS_BASE_URL = "https://inference-api.nousresearch.com/v1";
-const NOUS_MODEL = "openrouter/owl-alpha";
-const NOUS_API_KEY=import.meta.env.VITE_NOUS_API_KEY || "";
-
-// Gemini Web2API fallback proxy
-const WEB2API_PROXY = "/api/ai/chat";
+// Primary AI endpoint: local gemini-web2api tunnel (OpenAI-compatible, free)
+const PRIMARY_PROXY = "https://textbooks-careful-shut-dev.trycloudflare.com/v1/chat/completions";
+const PRIMARY_MODEL = "gemini-3.5-flash";
 
 // ─── Provider fallback chain ────────────────────────────────────────────────
 async function callAiProvider(
@@ -28,7 +24,7 @@ async function callAiProvider(
     mode: "cors",
     headers,
     signal: AbortSignal.timeout(30000),
-    body: JSON.stringify({ model, messages, max_tokens, temperature }),
+    body: JSON.stringify({ model, messages, max_tokens, temperature, stream: false }),
   });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const data = await res.json();
@@ -131,21 +127,17 @@ async function callGeminiVision(
     });
   }
 
-  // Provider fallback chain: Nous → Gemini-web2api
+  // Primary AI endpoint (OpenAI-compatible, free)
   try {
     return await callAiProvider(
-      `${NOUS_BASE_URL}/chat/completions`,
-      NOUS_MODEL,
-      [{ role: "user", content }],
-      { max_tokens: 4096, temperature: 0.7, authToken: NOUS_API_KEY }
-    );
-  } catch {
-    return await callAiProvider(
-      WEB2API_PROXY,
-      "gemini-3.5-flash",
+      PRIMARY_PROXY,
+      PRIMARY_MODEL,
       [{ role: "user", content }],
       { max_tokens: 4096, temperature: 0.7 }
     );
+  } catch {
+    // Endpoint failed (e.g. rate limit 429) — return empty result
+    return "";
   }
 }
 
