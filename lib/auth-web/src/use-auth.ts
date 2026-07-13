@@ -36,7 +36,7 @@ function savePassword(password: string): void {
   }
 }
 
-function clearSavedPassword(): void {
+export function clearSavedPassword(): void {
   try {
     localStorage.removeItem(PASSWORD_STORAGE_KEY);
   } catch {

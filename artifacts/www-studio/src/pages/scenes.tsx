@@ -243,7 +243,7 @@ export default function Scenes() {
   const updateScene = useUpdateScene();
   const aiGenerate  = useAiGenerateScene();
 
-  const [sortBy, setSortBy] = useState<"newest"|"oldest"|"name">("newest");
+  const [sortBy, setSortBy] = useState<"newest"|"oldest"|"name"|"likes"|"published">("newest");
   const [stats, setStats]   = useState<{ total: number; published: number; totalViews: number; totalLikes: number } | null>(null);
 
   useEffect(() => {
@@ -426,7 +426,7 @@ export default function Scenes() {
           </div>
           <select
             value={sortBy}
-            onChange={(e) => setSortBy(e.target.value as any)}
+            onChange={(e) => setSortBy(e.target.value as "newest"|"oldest"|"name"|"likes"|"published")}
             className="text-xs border border-border rounded-lg px-2 py-1.5 bg-background text-foreground"
           >
             <option value="newest">Newest</option>

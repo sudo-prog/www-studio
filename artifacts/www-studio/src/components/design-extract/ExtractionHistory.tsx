@@ -5,7 +5,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Clock, ChevronRight, AlertCircle, CheckCircle2, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-interface ExtractionSummary {
+export interface ExtractionSummary {
   id: string;
   url: string;
   status: "pending" | "processing" | "complete" | "error";

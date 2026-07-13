@@ -13,7 +13,22 @@ const router: IRouter = Router();
 const AGENT_BROWSER = "agent-browser";
 const SCREENSHOT_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "agent-browser-"));
 
+// The browser agent shells out to the `agent-browser` CLI. On serverless
+// hosts (Vercel) that binary is not present, so detect it up-front and fail
+// gracefully instead of throwing a raw 500 on every call.
+function isAgentBrowserAvailable(): boolean {
+  try {
+    execSync("command -v agent-browser", { stdio: "ignore", timeout: 5000 });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 function runAgentBrowser(args: string[]): string {
+  if (!isAgentBrowserAvailable()) {
+    throw new Error("agent-browser unavailable: CLI not installed on this host (browser automation requires a backend with the agent-browser binary)");
+  }
   try {
     const output = execSync(`${AGENT_BROWSER} ${args.join(" ")}`, {
       encoding: "utf-8",

@@ -7,7 +7,7 @@
     "node": ">=20.19"
   },
   "scripts": {
-    "typecheck": "tsc --build",
+    "typecheck": "pnpm --filter @workspace/api-client-react run build && tsc --build",
     "build": "pnpm --filter @workspace/www-studio run build && cp -r api artifacts/www-studio/dist/public/",
     "kb:seed": "tsx scripts/seed-kb.ts"
   },
