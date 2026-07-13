@@ -270,4 +270,3 @@ router.post("/browser/extract", async (req: Request, res: Response) => {
 });
 
 export default router;
-</write_to_file>

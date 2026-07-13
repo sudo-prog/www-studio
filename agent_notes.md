@@ -38,6 +38,25 @@ Architecture decisions, file structure, API patterns, and known issues for WWW S
 - Implemented `api/ai/chat.js` Vercel serverless proxy (forwards to `LLM_BASE_URL`)
 - Removed unsafe `new Function()` EVAL from self-heal; allow-listed ops are now `DOM_SNAPSHOT`, `FIX_NOTIFICATIONS`, `CLEAR_STALE`
 - Wired `FreehandDraw.tsx` into Draw tool via `drawingId` state in `FreeformEditor`
+
+---
+
+## Fix Sweep — 2026-07-14 (backend error-monitoring + mobile UI)
+
+**Backend error-monitoring (artifacts/api-server):**
+- Added `artifacts/api-server/src/middlewares/errorHandler.ts` — global error-handler middleware + 404 handler.
+- Added `artifacts/api-server/src/middlewares/requestContext.ts` — request-id generation/correlation (injected into Pino logs).
+- Updated `index.ts` + `app.ts` to register errorHandler last and requestContext first; added `uncaughtException`/`unhandledRejection` handlers.
+
+**Critical API wiring:**
+- Verified `main.tsx` calls `setBaseUrl(import.meta.env.VITE_API_SERVER_URL)`. Frontend now points at the api-server; restores all CRUD + AI features (root cause of prior 404s addressed).
+
+**Mobile UI (artifacts/www-studio):**
+- `FreeformCanvas.tsx` + `SceneCanvas.tsx` converted from mouse-only handlers to Pointer Events (`onPointerDown/Move/Up` + `setPointerCapture`) with `touch-action: none` so touch-drag works on mobile. Model: `FreehandDraw.tsx`.
+- Bottom-sheet properties panels below `md` breakpoint instead of side panels.
+- `index.html` viewport meta `maximum-scale=1` removed so mobile zoom works.
+
+**Verification pending:** `vercel build` run 2026-07-14 (see OPS_LOG). Mobile re-measure (iPhone 16 Pro, 402px) target: horizontalScrollContainers==0, offscreen==0.
 - Added GitHub token settings UI to `Profile.tsx` with save/remove and local storage
 - Removed duplicate/buggy `detectEmbedUrl` from `freeformStore.ts`
 

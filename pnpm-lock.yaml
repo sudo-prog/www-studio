@@ -633,6 +633,9 @@ importers:
       next-themes:
         specifier: ^0.4.6
         version: 0.4.6(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      playwright:
+        specifier: ^1.61.1
+        version: 1.61.1
       react-day-picker:
         specifier: ^9.11.1
         version: 9.14.0(react@19.1.0)
@@ -20300,15 +20303,13 @@ snapshots:
       exsolve: 1.1.0
       pathe: 2.0.3
 
-  playwright-core@1.61.1:
-    optional: true
+  playwright-core@1.61.1: {}
 
   playwright@1.61.1:
     dependencies:
       playwright-core: 1.61.1
     optionalDependencies:
       fsevents: 2.3.2
-    optional: true
 
   plist@3.1.1:
     dependencies:

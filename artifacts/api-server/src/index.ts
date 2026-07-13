@@ -4,6 +4,21 @@ import { db } from "@workspace/db";
 import { usersTable, scenesTable } from "@workspace/db";
 import { eq } from "drizzle-orm";
 
+// ── Process-level crash guards ──────────────────────────────────────────────
+// Catch the two process-wide failure modes that Express error handlers can't
+// reach. We log with full context and exit non-zero so the process manager
+// (systemd / Vercel / Docker) restarts us — a silent hang is worse than a
+// clean crash with a logged cause.
+process.on("uncaughtException", (err) => {
+  logger.error({ err }, "uncaughtException — crashing process");
+  process.exit(1);
+});
+
+process.on("unhandledRejection", (reason) => {
+  logger.error({ err: reason }, "unhandledRejection — crashing process");
+  process.exit(1);
+});
+
 const GUEST_USER_ID = "00000000-0000-0000-0000-000000000000";
 
 async function ensureGuestUser() {

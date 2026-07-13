@@ -6,18 +6,33 @@ import rateLimit from "express-rate-limit";
 import router from "./routes";
 import { logger } from "./lib/logger";
 import { authMiddleware } from "./middlewares/authMiddleware";
+import { requestIdEcho } from "./middlewares/requestContext";
+import { notFoundHandler, errorHandler } from "./middlewares/errorHandler";
+
+const REQUEST_ID_HEADER = "x-request-id";
 
 const app: Express = express();
 
 app.use(
   pinoHttp({
     logger,
+    // Reuse a caller-supplied request id (proxy/other service) or mint a new
+    // UUID. This id is what requestContext.ts echoes back on `x-request-id`
+    // and attaches to every downstream log line via pino-http.
+    genReqId: (req, res) => {
+      const incoming =
+        req.headers[REQUEST_ID_HEADER] ??
+        (req.headers["x-request-id"] as string | undefined);
+      const id = (incoming as string | undefined) ?? crypto.randomUUID();
+      res.setHeader(REQUEST_ID_HEADER, id);
+      return id;
+    },
     serializers: {
       req(req) {
         return { id: req.id, method: req.method, url: req.url?.split("?")[0] };
       },
       res(res) {
-        return { statusCode: res.statusCode };
+        return { statusCode: res.statusCode, requestId: res.getHeader(REQUEST_ID_HEADER) };
       },
     },
   }),
@@ -65,5 +80,16 @@ app.use("/api/scenes", (req, _res, next) => {
 });
 
 app.use("/api", router);
+
+// Echo the correlation id on every response (belt-and-suspenders with the
+// genReqId above, and covers the /health routes served outside /api).
+app.use(requestIdEcho);
+
+// 404 catch-all — registered AFTER all routers so it only matches when no
+// earlier route handled the request.
+app.use(notFoundHandler);
+
+// Global error handler — MUST be the last middleware (keep all 4 args).
+app.use(errorHandler);
 
 export default app;
