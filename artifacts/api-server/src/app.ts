@@ -13,6 +13,10 @@ const REQUEST_ID_HEADER = "x-request-id";
 
 const app: Express = express();
 
+// Captured request id so the response serializer doesn't need res.getHeader
+// (which is not a function on the object pino-http passes to the serializer).
+let currentReqId: string | undefined;
+
 app.use(
   pinoHttp({
     logger,
@@ -24,6 +28,7 @@ app.use(
         req.headers[REQUEST_ID_HEADER] ??
         (req.headers["x-request-id"] as string | undefined);
       const id = (incoming as string | undefined) ?? crypto.randomUUID();
+      currentReqId = id;
       res.setHeader(REQUEST_ID_HEADER, id);
       return id;
     },
@@ -32,7 +37,13 @@ app.use(
         return { id: req.id, method: req.method, url: req.url?.split("?")[0] };
       },
       res(res) {
-        return { statusCode: res.statusCode, requestId: res.getHeader(REQUEST_ID_HEADER) };
+        const statusCode = (res as { statusCode?: number })?.statusCode ?? 0;
+        const requestId =
+          typeof (res as { getHeader?: (h: string) => unknown })?.getHeader ===
+          "function"
+            ? (res as { getHeader: (h: string) => unknown }).getHeader(REQUEST_ID_HEADER)
+            : currentReqId;
+        return { statusCode, requestId };
       },
     },
   }),
