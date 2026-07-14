@@ -84,7 +84,33 @@ Architecture decisions, file structure, API patterns, and known issues for WWW S
 ### Deferred
 - 3D Studio module wiring (orphaned module — separate planning pass required)
 - Full dead-code cleanup (ChaosMonkeyV2, AiFreeformCommands, BackgroundPicker, CodeInspector, freeform/VersionHistory)
-- Supabase frontend wiring (currently inert per prior audit)
+- Supabase backend wiring (currently inert per prior audit) — **RESOLVED 2026-07-14**: backend `artifacts/api-server` is connected to Supabase via `DATABASE_URL` env var (see Supabase Integration section below). Frontend Supabase client still not wired (deferred).
+
+---
+
+## Supabase Integration (2026-07-14, chief-of-staff agent)
+
+**Status: BACKEND CONNECTED.** The api-server reaches Supabase (project ref `iumpshuwufeotschxfob`). Verified: `/api/health` returns `200 {"status":"ok"}`, no DB/connection/password errors in Vercel logs.
+
+**What's configured:**
+- `DATABASE_URL` — set as an **encrypted** Vercel env var on the `www-studio-api-server` backend project (Production). Source of truth = Bitwarden item **"WWW Studio - Supabase"** (id `41aa6b40-9ef8-4f75-94cf-b48700626d5a`), field `DATABASE_URL`. The value is pulled from Bitwarden at deploy time and never stored in git/repo/chat.
+- `PORT=3000` — required by `src/index.ts` (hard-requires `process.env.PORT`); set as non-secret Vercel env var on the backend.
+- Backend Vercel project `framework` = `node` (NOT `vite`/`none` — a Node Express server; `vite`/`none` break the deploy with "framework should be equal to one of the allowed values"). `vercel.json` in `artifacts/api-server` also has `"framework": "node"`.
+- SSO protection restored to `all_except_custom_domains` (so `www-studio-red.vercel.app` custom domain is publicly reachable; the `*.vercel.app` alias still prompts for auth).
+
+**Secret-handling rule (do not violate):** the Supabase `DATABASE_URL` (contains the DB password) lives ONLY in (a) Bitwarden (encrypted vault) and (b) Vercel's encrypted env. It must NEVER be pasted into the desktop txt, git, repo files, or chat. To rotate/redeploy: pull from Bitwarden → `vercel env add DATABASE_URL production` (via stdin) → `vercel deploy --prod`.
+
+**NOT done (separate, deferred):**
+- AI provider: backend `llm.ts` still defaults to Gemini Web2API at `localhost:8081` (reachable:false from Vercel). User opted not to repoint to litellm. Local/dev or a tunnel needed for AI features on the deployed backend.
+- Frontend Supabase client wiring (the `lib/db` Drizzle schema exists; frontend doesn't yet call Supabase directly).
+- The `www-studio-red.vercel.app` frontend still embeds `VITE_API_SERVER_URL` = `https://www-studio-api-server-superpowerstudio.vercel.app` (set earlier; removed during a rollback then the backend re-deployed — re-add `VITE_API_SERVER_URL` to the frontend project if the SPA needs to call the backend from the browser).
+
+**Reference (non-secret):**
+- Supabase project URL: `https://iumpshuwufeotschxfob.supabase.co`
+- MCP: `https://mcp.supabase.com/mcp?project_ref=iumpshuwufeotschxfob`
+- CLI: `supabase link --project-ref iumpshuwufeotschxfob`
+- Agent skill: `npx skills add supabase/agent-skills`
+- Full setup notes (no secrets): desktop `WWW STUDIO SUPABASE.txt`
 
 ---
 

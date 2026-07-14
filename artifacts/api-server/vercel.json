@@ -1,5 +1,5 @@
 {
-  "framework": "none",
+  "framework": "node",
   "buildCommand": "pnpm --filter @workspace/api-server run build",
   "outputDirectory": "dist",
   "installCommand": "pnpm install --no-frozen-lockfile",
