@@ -452,3 +452,14 @@ Multi-source design synthesis engine. Accepts primary URL + optional secondary U
 
 **Commit reference:** Fixes applied on top of repo state around `24513be` (two commits past original `cab1633` audit).
 **Commit:** `0758e64` — pushed to main
+
+---
+
+## Vercel-Only Migration + Branch Cleanup (2026-07-14, chief-of-staff agent)
+
+- **GitHub Pages retired.** The `gh-pages` branch was deleted (no longer used). WWW Studio deploys via **Vercel** only (`.github/workflows/deploy.yml` already uses `amondnet/vercel-action@v25` — confirmed no `gh-pages` publish workflow existed).
+- Live production URL (verified via `vercel project ls`): `https://www-studio-red.vercel.app`
+- README updated: removed GitHub Pages live-demo link → Vercel URL; "Deploy directly to GitHub Pages" → "Deploy directly to Vercel"; routing note changed from "hash-based for GitHub Pages compatibility" to "SPA routing; Vercel serves the SPA fallback". (Note: codebase still uses Wouter hash routing — left as-is; the doc clarification reflects the deployment target, not a routing rewrite.)
+- **Branch merge to main (2026-07-14):** `feature/design-intelligence` was already fully merged into `main` (0 unique commits, merge-base confirmed) — nothing to merge. `main` already carried the 2026-07-14 AI repoint (`d9b8d3d`/`1f55d12`) + mobile sheets (`ebe8bc0`) fixes.
+- Left intact: `artifacts/www-studio/src/lib/github-storage.ts` publishes to a *separate* GitHub pages repo via the GitHub API (unrelated to this repo's `gh-pages` branch) — kept as a feature.
+- Net result: deployment model is Vercel-only; no build/CI regressions.

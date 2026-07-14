@@ -2,7 +2,7 @@
 
 A web-based visual editor for building websites with AI assistance.
 
-🚀 **[Live Demo](https://sudo-prog.github.io/www-studio/)** — Visit the live GitHub Pages deployment
+🚀 **[Live Demo](https://www-studio-red.vercel.app/)** — Visit the live Vercel deployment
 
 ## Features
 
@@ -67,7 +67,7 @@ A web-based visual editor for building websites with AI assistance.
 - **Code inspector** — Live preview of generated code
 
 ### 🚀 One-Click Publish
-- Deploy directly to GitHub Pages
+- Deploy directly to Vercel
 - Instant public URL generation
 - Share projects with a single link
 
@@ -139,7 +139,7 @@ LLM_BASE_URL=http://localhost:8081/v1 LLM_MODEL=gemini-2.0-flash bash artifacts/
 
 - **Frontend:** React 19, TypeScript, Vite, Tailwind CSS 4, shadcn/ui (Radix)
 - **State:** Zustand
-- **Routing:** Wouter (hash-based for GitHub Pages compatibility)
+- **Routing:** Wouter (SPA routing; Vercel serves the SPA fallback)
 - **AI:** OpenAI-compatible APIs, Gemini Web2API proxy, RAG with Libroom
 - **Storage:** GitHub API, Supabase
 - **Animations:** GSAP, Framer Motion, Lenis (smooth scroll)
