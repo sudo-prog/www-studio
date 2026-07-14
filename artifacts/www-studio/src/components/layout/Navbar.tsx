@@ -14,7 +14,7 @@ import { useTheme } from "@/components/theme-provider";
 import { useState } from "react";
 
 export function Navbar() {
-  const { user, isAuthenticated, loginWithGitHub, logout } = useAuth();
+  const { user, isAuthenticated, logout } = useAuth();
   const [location] = useLocation();
   const { theme, setTheme } = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -127,7 +127,7 @@ export function Navbar() {
                       <Button
                         size="sm"
                         className="w-full"
-                        onClick={() => { loginWithGitHub(); setMobileOpen(false); }}
+                        onClick={() => { window.location.href = "/profile"; setMobileOpen(false); }}
                       >
                         Log in with GitHub
                       </Button>
@@ -165,7 +165,7 @@ export function Navbar() {
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
-              <Button size="sm" className="hidden sm:inline-flex" onClick={loginWithGitHub}>Log in</Button>
+              <Button size="sm" className="hidden sm:inline-flex" onClick={() => { window.location.href = "/profile"; }}>Log in</Button>
             )}
           </div>
         </div>

@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@workspace/auth-web";
-import { Lock, Loader2, CheckCircle2, Eye, EyeOff } from "lucide-react";
+import { Lock, Loader2, CheckCircle2, Eye, EyeOff, KeyRound } from "lucide-react";
 
 interface PasswordLoginProps {
   onSuccess?: () => void;
@@ -14,7 +14,7 @@ export function PasswordLogin({ onSuccess }: PasswordLoginProps) {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const { loginWithPassword, hasSavedPassword, clearSavedPassword } = useAuth();
+  const { passwordSet, setPassword: setOwnerPassword, loginWithPassword, hasSavedPassword, clearSavedPassword } = useAuth();
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -25,18 +25,20 @@ export function PasswordLogin({ onSuccess }: PasswordLoginProps) {
     setError(null);
 
     try {
-      const success = await loginWithPassword(password);
+      const success = passwordSet
+        ? await loginWithPassword(password)
+        : await setOwnerPassword(password);
       if (success) {
         toast({
-          title: "Logged in",
+          title: passwordSet ? "Logged in" : "Password created",
           description: "Password saved for future sessions.",
         });
         onSuccess?.();
       } else {
-        setError("Invalid password. Check your MASTER_PASSWORD environment variable.");
+        setError(passwordSet ? "Invalid password." : "Could not set password. Try again.");
       }
     } catch (err: any) {
-      setError(err.message || "Login failed");
+      setError(err.message || "Operation failed");
     } finally {
       setLoading(false);
     }
@@ -66,7 +68,7 @@ export function PasswordLogin({ onSuccess }: PasswordLoginProps) {
             type={showPassword ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter master password"
+            placeholder={passwordSet ? "Enter password" : "Create a password (8+ chars)"}
             className="pl-9 pr-9"
             disabled={loading}
             autoFocus
@@ -88,20 +90,28 @@ export function PasswordLogin({ onSuccess }: PasswordLoginProps) {
           {loading ? (
             <>
               <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-              Logging in...
+              {passwordSet ? "Logging in..." : "Setting password..."}
             </>
           ) : (
             <>
-              <Lock className="w-4 h-4 mr-2" />
-              Login with Password
+              {passwordSet ? (
+                <>
+                  <Lock className="w-4 h-4 mr-2" />
+                  Login with Password
+                </>
+              ) : (
+                <>
+                  <KeyRound className="w-4 h-4 mr-2" />
+                  Set password
+                </>
+              )}
             </>
           )}
         </Button>
       </form>
 
       <p className="text-[10px] text-muted-foreground text-center">
-        Password is saved locally and auto-login on next visit.
-        Set <code className="bg-black/10 px-1 rounded">MASTER_PASSWORD</code> on the server.
+        Password is stored on the server and saved locally for auto-login on next visit.
       </p>
     </div>
   );

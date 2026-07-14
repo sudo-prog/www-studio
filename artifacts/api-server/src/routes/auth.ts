@@ -10,6 +10,7 @@ import {
 import {
   clearSession,
   getSessionId,
+  getSession,
   createSession,
   deleteSession,
   SESSION_COOKIE,
@@ -17,6 +18,8 @@ import {
   type SessionData,
 } from "../lib/auth";
 import crypto from "crypto";
+
+const OWNER_ID = "owner";
 
 const router: IRouter = Router();
 
@@ -56,6 +59,11 @@ async function upsertUser(userData: {
     })
     .returning();
   return user;
+}
+
+async function getOwnerUser() {
+  const [u] = await db.select().from(usersTable).where(eq(usersTable.id, OWNER_ID));
+  return u;
 }
 
 // ── Get current user ──
@@ -264,43 +272,83 @@ router.get("/auth/github/callback", async (req: Request, res: Response) => {
   }
 });
 
-// ── Password-Only Login (no email, just a master password) ──
+// ── Password status / methods ──
+router.get("/auth/methods", async (_req: Request, res: Response) => {
+  const owner = await getOwnerUser();
+  res.json({ passwordSet: !!owner?.passwordHash, githubAvailable: !!process.env.GITHUB_CLIENT_ID });
+});
+
+// ── First-run password set (creates owner account) ──
+router.post("/auth/password-set", async (req: Request, res: Response) => {
+  const { password } = req.body as { password?: string };
+  if (!password || password.length < 8) {
+    res.status(400).json({ error: "Password must be at least 8 characters" });
+    return;
+  }
+  const owner = await getOwnerUser();
+  if (owner?.passwordHash) {
+    res.status(409).json({ error: "Password already set" });
+    return;
+  }
+  const hashed = crypto.createHash("sha256").update(password).digest("hex");
+  if (owner) {
+    await db.update(usersTable).set({ passwordHash: hashed, updatedAt: new Date() }).where(eq(usersTable.id, OWNER_ID));
+  } else {
+    await db.insert(usersTable).values({ id: OWNER_ID, email: "owner@www.studio", firstName: "Owner", passwordHash: hashed } as any);
+  }
+  const sessionData: SessionData = {
+    user: { id: OWNER_ID, email: "owner@www.studio", firstName: "Owner", lastName: null, profileImageUrl: null },
+    created_at: Date.now(),
+  };
+  const sid = await createSession(sessionData);
+  setSessionCookie(res, sid);
+  res.json({ user: sessionData.user });
+});
+
+// ── Password login (DB-backed owner) ──
 router.post("/auth/password-login", async (req: Request, res: Response) => {
   const { password } = req.body as { password?: string };
   if (!password) {
     res.status(400).json({ error: "password is required" });
     return;
   }
-
-  const masterPassword = process.env.MASTER_PASSWORD;
-  if (!masterPassword) {
-    res.status(500).json({ error: "Master password not configured on server" });
+  const owner = await getOwnerUser();
+  if (!owner?.passwordHash) {
+    res.status(401).json({ error: "No password set. Please set one first." });
     return;
   }
-
-  const hashedInput = crypto.createHash("sha256").update(password).digest("hex");
-  const hashedMaster = crypto.createHash("sha256").update(masterPassword).digest("hex");
-
-  if (hashedInput !== hashedMaster) {
+  const hashed = crypto.createHash("sha256").update(password).digest("hex");
+  if (owner.passwordHash !== hashed) {
     res.status(401).json({ error: "Invalid password" });
     return;
   }
-
-  // Create a session for a generic "master" user
   const sessionData: SessionData = {
-    user: {
-      id: "master-user",
-      email: "master@www.studio",
-      firstName: "Master",
-      lastName: "User",
-      profileImageUrl: null,
-    },
+    user: { id: owner.id, email: owner.email, firstName: owner.firstName, lastName: owner.lastName, profileImageUrl: owner.profileImageUrl },
     created_at: Date.now(),
   };
-
   const sid = await createSession(sessionData);
   setSessionCookie(res, sid);
-  res.json({ user: sessionData.user, token: sid });
+  res.json({ user: sessionData.user });
+});
+
+// ── Password reset (auth required) ──
+router.post("/auth/password-reset", async (req: Request, res: Response) => {
+  const sid = getSessionId(req);
+  if (!sid) { res.status(401).json({ error: "Not authenticated" }); return; }
+  const session = await getSession(sid);
+  if (!session?.user) { res.status(401).json({ error: "Not authenticated" }); return; }
+  const { currentPassword, newPassword } = req.body as { currentPassword?: string; newPassword?: string };
+  if (!currentPassword || !newPassword || newPassword.length < 8) {
+    res.status(400).json({ error: "Current and new (>=8 char) passwords required" });
+    return;
+  }
+  const owner = await getOwnerUser();
+  if (!owner?.passwordHash) { res.status(400).json({ error: "No password set" }); return; }
+  const curHash = crypto.createHash("sha256").update(currentPassword).digest("hex");
+  if (owner.passwordHash !== curHash) { res.status(401).json({ error: "Current password incorrect" }); return; }
+  const newHash = crypto.createHash("sha256").update(newPassword).digest("hex");
+  await db.update(usersTable).set({ passwordHash: newHash, updatedAt: new Date() }).where(eq(usersTable.id, OWNER_ID));
+  res.json({ success: true });
 });
 
 // ── Logout ──

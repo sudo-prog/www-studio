@@ -12,13 +12,18 @@ import { useToast } from "@/hooks/use-toast";
 import { PasswordLogin } from "@/components/PasswordLogin";
 
 export default function Profile() {
-  const { user, isAuthenticated, isLoading: authLoading } = useAuth();
+  const { user, isAuthenticated, isLoading: authLoading, githubAvailable, loginWithGitHub } = useAuth();
   const { data: projects = [] } = useGetProjects();
   const { toast } = useToast();
   const [ghToken, setGhToken] = useState(() => {
     try { return localStorage.getItem("github_token") || ""; } catch { return ""; }
   });
   const [showToken, setShowToken] = useState(false);
+  const [currentPw, setCurrentPw] = useState("");
+  const [newPw, setNewPw] = useState("");
+  const [confirmPw, setConfirmPw] = useState("");
+  const [resetLoading, setResetLoading] = useState(false);
+  const { resetPassword } = useAuth();
 
   if (authLoading) return <div className="min-h-screen bg-background" />;
 
@@ -37,6 +42,15 @@ export default function Profile() {
           <div className="w-full">
             <PasswordLogin />
           </div>
+          {githubAvailable && (
+            <button
+              onClick={loginWithGitHub}
+              className="flex items-center justify-center gap-2 mt-4 w-full rounded-lg border border-border py-2 text-sm font-medium hover:bg-accent transition-colors"
+            >
+              <Github className="w-4 h-4" />
+              Continue with GitHub
+            </button>
+          )}
         </main>
       </div>
     );
@@ -47,6 +61,33 @@ export default function Profile() {
   const handleSaveToken = () => {
     setGitHubToken(ghToken.trim());
     toast({ title: ghToken.trim() ? "GitHub token saved" : "GitHub token removed" });
+  };
+
+  const handleResetPassword = async () => {
+    if (newPw.length < 8) {
+      toast({ title: "New password must be at least 8 characters", variant: "destructive" });
+      return;
+    }
+    if (newPw !== confirmPw) {
+      toast({ title: "New passwords do not match", variant: "destructive" });
+      return;
+    }
+    setResetLoading(true);
+    try {
+      const ok = await resetPassword(currentPw, newPw);
+      if (ok) {
+        toast({ title: "Password updated successfully" });
+        setCurrentPw("");
+        setNewPw("");
+        setConfirmPw("");
+      } else {
+        toast({ title: "Current password incorrect", variant: "destructive" });
+      }
+    } catch (err: any) {
+      toast({ title: err?.message || "Failed to reset password", variant: "destructive" });
+    } finally {
+      setResetLoading(false);
+    }
   };
 
   return (
@@ -112,6 +153,45 @@ export default function Profile() {
                   </button>
                 </p>
               )}
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-base">
+                <Lock className="h-4 w-4" />
+                Reset Password
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <p className="text-xs text-muted-foreground">
+                Change the password used to access WWW Studio.
+              </p>
+              <Input
+                type="password"
+                placeholder="Current password"
+                value={currentPw}
+                onChange={(e) => setCurrentPw(e.target.value)}
+                className="h-8 text-xs"
+              />
+              <Input
+                type="password"
+                placeholder="New password (8+ chars)"
+                value={newPw}
+                onChange={(e) => setNewPw(e.target.value)}
+                className="h-8 text-xs"
+              />
+              <Input
+                type="password"
+                placeholder="Confirm new password"
+                value={confirmPw}
+                onChange={(e) => setConfirmPw(e.target.value)}
+                className="h-8 text-xs"
+              />
+              <Button size="sm" className="h-8 text-xs gap-1" onClick={handleResetPassword} disabled={resetLoading}>
+                <Key className="h-3 w-3" />
+                Save
+              </Button>
             </CardContent>
           </Card>
 

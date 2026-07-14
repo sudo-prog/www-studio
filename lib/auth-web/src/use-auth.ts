@@ -15,6 +15,10 @@ interface AuthState {
   logout: () => void;
   hasSavedPassword: boolean;
   clearSavedPassword: () => void;
+  passwordSet: boolean;
+  githubAvailable: boolean;
+  setPassword: (password: string) => Promise<boolean>;
+  resetPassword: (current: string, newPassword: string) => Promise<boolean>;
 }
 
 function getSavedPassword(): string | null {
@@ -47,6 +51,7 @@ export function clearSavedPassword(): void {
 export function useAuth(): AuthState {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [methods, setMethods] = useState<{ passwordSet: boolean; githubAvailable: boolean }>({ passwordSet: false, githubAvailable: false });
 
   const API_BASE = import.meta.env.VITE_API_SERVER_URL || "";
   const hasBackend = !!API_BASE;
@@ -81,6 +86,15 @@ export function useAuth(): AuthState {
     return () => {
       cancelled = true;
     };
+  }, [API_BASE, hasBackend]);
+
+  // Fetch available auth methods (password set? github available?)
+  useEffect(() => {
+    if (!hasBackend) return;
+    fetch(`${API_BASE}/api/auth/methods`, { credentials: "include" })
+      .then((res) => res.json() as Promise<{ passwordSet: boolean; githubAvailable: boolean }>)
+      .then((data) => setMethods(data))
+      .catch(() => setMethods({ passwordSet: false, githubAvailable: false }));
   }, [API_BASE, hasBackend]);
 
   const login = useCallback(() => {
@@ -124,6 +138,45 @@ export function useAuth(): AuthState {
     }
   }, [API_BASE, hasBackend]);
 
+  const setPassword = useCallback(async (password: string): Promise<boolean> => {
+    if (!hasBackend || !API_BASE) return false;
+    try {
+      const res = await fetch(`${API_BASE}/api/auth/password-set`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password }),
+        credentials: "include",
+      });
+      if (!res.ok) return false;
+      const data = await res.json();
+      if (data.user) {
+        setUser(data.user);
+        savePassword(password);
+        setMethods((m) => ({ ...m, passwordSet: true }));
+        return true;
+      }
+      return false;
+    } catch {
+      return false;
+    }
+  }, [API_BASE, hasBackend]);
+
+  const resetPassword = useCallback(async (currentPassword: string, newPassword: string): Promise<boolean> => {
+    if (!hasBackend || !API_BASE) return false;
+    try {
+      const res = await fetch(`${API_BASE}/api/auth/password-reset`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ currentPassword, newPassword }),
+        credentials: "include",
+      });
+      if (!res.ok) return false;
+      return true;
+    } catch {
+      return false;
+    }
+  }, [API_BASE, hasBackend]);
+
   // Auto-login with saved password on mount
   useEffect(() => {
     if (!hasBackend || !API_BASE) return;
@@ -151,5 +204,9 @@ export function useAuth(): AuthState {
     logout,
     hasSavedPassword: !!getSavedPassword(),
     clearSavedPassword,
+    passwordSet: methods.passwordSet,
+    githubAvailable: methods.githubAvailable,
+    setPassword,
+    resetPassword,
   };
 }
