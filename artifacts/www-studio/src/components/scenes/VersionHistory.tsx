@@ -124,7 +124,7 @@ export function VersionHistory({ scene, onRestore }: Props) {
                 <p className="text-xs font-medium truncate">{cp.name}</p>
                 <p className="text-[10px] text-muted-foreground">{formatTime(cp.createdAt)} · {cp.elementCount} elements</p>
               </div>
-              <div className="flex gap-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="flex gap-0.5 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
                 <Button
                   size="icon"
                   variant="ghost"

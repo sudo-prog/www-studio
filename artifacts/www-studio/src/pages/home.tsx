@@ -1,3 +1,4 @@
+import { apiFetch } from "@/lib/apiFetch";
 import { Navbar } from "@/components/layout/Navbar";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "wouter";
@@ -53,7 +54,7 @@ export default function Home() {
 
   // Fetch public scenes for showcase
   useEffect(() => {
-    fetch("/api/scenes/public?limit=6")
+    apiFetch("/api/scenes/public?limit=6")
       .then((r) => r.ok ? r.json() : [])
       .then((d) => setPublicScenes(d.slice(0, 6)))
       .catch(() => {});
@@ -208,7 +209,7 @@ export default function Home() {
                     ) : (
                       <div className="absolute inset-0 flex items-center justify-center text-muted-foreground text-sm">No Preview</div>
                     )}
-                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <div className="absolute inset-0 bg-black/60 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex items-center justify-center">
                       <Button variant="secondary" size="sm" asChild>
                         <Link href={`/editor/new?templateId=${template.id}`}>
                           <Eye className="w-4 h-4 mr-2" />Fork Template

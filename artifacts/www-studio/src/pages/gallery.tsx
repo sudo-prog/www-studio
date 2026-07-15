@@ -82,7 +82,7 @@ function GallerySceneCard({ scene, onFork, onEmbed, onPreview }: {
         </svg>
 
         {/* Hover overlay */}
-        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+        <div className="absolute inset-0 bg-black/50 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
           <Button size="sm" variant="secondary" className="gap-1.5 text-xs h-8" onClick={(e) => { e.stopPropagation(); onPreview(); }}>
             <Eye className="h-3.5 w-3.5" />Preview
           </Button>

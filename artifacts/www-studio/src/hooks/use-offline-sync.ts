@@ -1,3 +1,4 @@
+import { apiFetch } from "@/lib/apiFetch";
 import { useEffect, useRef, useCallback, useState } from "react";
 
 interface PendingSave {
@@ -37,10 +38,9 @@ export function useOfflineSync() {
 
     for (const item of queue) {
       try {
-        await fetch(`/api/projects/${item.projectId}/snapshots`, {
+        await apiFetch(`/api/projects/${item.projectId}/snapshots`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          credentials: "include",
           body: JSON.stringify({
             label: item.label,
             componentTree: item.componentTree,
@@ -59,10 +59,9 @@ export function useOfflineSync() {
 
   const enqueue = useCallback((item: Omit<PendingSave, "queuedAt">) => {
     if (navigator.onLine) {
-      fetch(`/api/projects/${item.projectId}/snapshots`, {
+      apiFetch(`/api/projects/${item.projectId}/snapshots`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        credentials: "include",
         body: JSON.stringify({
           label: item.label,
           componentTree: item.componentTree,

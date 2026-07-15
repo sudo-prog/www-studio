@@ -1,3 +1,4 @@
+import { apiFetch } from "@/lib/apiFetch";
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 
@@ -21,7 +22,7 @@ export default function DesignExtractGallery() {
   async function loadGallery() {
     try {
       setLoading(true);
-      const res = await fetch("/api/design-extract/public/gallery?limit=20");
+      const res = await apiFetch("/api/design-extract/public/gallery?limit=20");
       if (!res.ok) throw new Error("Failed to load gallery");
       const data = await res.json();
       setItems(data);

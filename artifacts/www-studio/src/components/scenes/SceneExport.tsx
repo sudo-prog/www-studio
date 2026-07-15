@@ -1,3 +1,4 @@
+import { apiFetch } from "@/lib/apiFetch";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
@@ -37,7 +38,7 @@ export function SceneExport({ sceneId }: Props) {
     setLoading(true);
     setCode(null);
     try {
-      const res = await fetch(`/api/scenes/${sceneId}/export`, {
+      const res = await apiFetch(`/api/scenes/${sceneId}/export`, {
         method:  "POST",
         headers: { "Content-Type": "application/json" },
         body:    JSON.stringify({ format }),

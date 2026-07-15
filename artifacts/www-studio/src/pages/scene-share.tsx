@@ -1,3 +1,4 @@
+import { apiFetch } from "@/lib/apiFetch";
 import { useEffect, useState } from "react";
 import { useParams, useLocation } from "wouter";
 import { useGetScene } from "@workspace/api-client-react";
@@ -113,7 +114,7 @@ export default function SceneShare() {
 
   useEffect(() => {
     if (!sceneId) return;
-    fetch(`/api/scenes/${sceneId}/similar`)
+    apiFetch(`/api/scenes/${sceneId}/similar`)
       .then((r) => r.ok ? r.json() : [])
       .then((d) => setSimilar(d))
       .catch(() => {});
@@ -129,13 +130,13 @@ export default function SceneShare() {
 
   useEffect(() => {
     if (sceneId) {
-      fetch(`/api/scenes/${sceneId}/view`, { method: "POST" }).catch(() => {});
+      apiFetch(`/api/scenes/${sceneId}/view`, { method: "POST" }).catch(() => {});
     }
   }, [sceneId]);
 
   function handleLike() {
     if (liked) return;
-    fetch(`/api/scenes/${sceneId}/like`, { method: "POST" }).catch(() => {});
+    apiFetch(`/api/scenes/${sceneId}/like`, { method: "POST" }).catch(() => {});
     setLiked(true);
     setLikes((n) => n + 1);
   }
@@ -351,7 +352,7 @@ export default function SceneShare() {
               variant="outline"
               className="w-full gap-2"
               onClick={() => {
-                fetch(`/api/scenes/${sceneId}/fork`, { method: "POST" })
+                apiFetch(`/api/scenes/${sceneId}/fork`, { method: "POST" })
                   .then((r) => r.ok ? r.json() : null)
                   .then((forked) => forked && navigate(`/scenes/${forked.id}`))
                   .catch(() => {});
@@ -375,7 +376,7 @@ export default function SceneShare() {
               variant="outline"
               className="w-full gap-2"
               onClick={() => {
-                fetch(`/api/scenes/${sceneId}/remix`, { method: "POST" })
+                apiFetch(`/api/scenes/${sceneId}/remix`, { method: "POST" })
                   .then((r) => r.ok ? r.json() : null)
                   .then((remixed) => remixed && navigate(`/scenes/${remixed.id}`))
                   .catch(() => {});

@@ -1,3 +1,4 @@
+import { apiFetch } from "@/lib/apiFetch";
 import { useParams } from "wouter";
 import {
   useGetProject,
@@ -154,7 +155,7 @@ function AssetsPanel({ projectId }: { projectId: string }) {
                     <span className="text-[10px] text-muted-foreground text-center break-all line-clamp-2">{asset.name}</span>
                   </div>
                 )}
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-1.5 p-1">
+                <div className="absolute inset-0 bg-black/60 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-1.5 p-1">
                   <p className="text-[9px] text-white/70 text-center truncate w-full px-1">{asset.name}</p>
                   <p className="text-[9px] text-white/50">{formatSize(asset.size)}</p>
                   <div className="flex gap-1">
@@ -234,7 +235,7 @@ function StockImagesPanel() {
           {images.map((img) => (
             <div key={img.id} className="group relative rounded-lg overflow-hidden border border-border/40 aspect-video bg-muted">
               <img src={img.thumb} alt="" className="w-full h-full object-cover" loading="lazy" />
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1.5">
+              <div className="absolute inset-0 bg-black/60 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1.5">
                 <Button size="sm" variant="secondary" className="h-6 text-[10px] px-2 gap-1" onClick={() => copy(img.url)}>
                   {copied === img.url ? <Check className="w-2.5 h-2.5 text-green-500" /> : <Copy className="w-2.5 h-2.5" />}Copy URL
                 </Button>
@@ -304,7 +305,7 @@ function AIImagesPanel({ projectId }: { projectId: string }) {
                 {images.map((img, i) => (
                   <div key={i} className="rounded-lg overflow-hidden border border-border/40 group relative">
                     <img src={img.url} alt={img.prompt} className="w-full aspect-video object-cover" />
-                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+                    <div className="absolute inset-0 bg-black/60 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
                       <Button size="sm" variant="secondary" className="h-7 text-xs gap-1" onClick={() => navigator.clipboard.writeText(img.url)}><Copy className="w-3 h-3" />Copy URL</Button>
                       <Button size="sm" variant="secondary" className="h-7 text-xs gap-1" asChild><a href={img.url} target="_blank" rel="noopener noreferrer"><ExternalLink className="w-3 h-3" />Open</a></Button>
                     </div>
@@ -379,7 +380,7 @@ function AnimationsPanel() {
                   {preset.tag}
                 </span>
               </div>
-              <Button variant="ghost" size="icon" className="h-6 w-6 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" onClick={() => copy(preset)} title="Copy animation code">
+              <Button variant="ghost" size="icon" className="h-6 w-6 shrink-0 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity" onClick={() => copy(preset)} title="Copy animation code">
                 {copied === preset.id ? <Check className="w-3 h-3 text-green-500" /> : <Copy className="w-3 h-3" />}
               </Button>
             </div>
@@ -499,7 +500,7 @@ function ContentPanel({ projectId, componentTree }: { projectId: string; compone
             <div key={i} className="group rounded-lg border border-border/40 overflow-hidden">
               <div className="flex items-center justify-between px-2 py-1 bg-muted/30">
                 <span className="text-[10px] font-mono text-muted-foreground">&lt;{node.path}&gt;</span>
-                <Button variant="ghost" size="icon" className="h-5 w-5 opacity-0 group-hover:opacity-100 transition-opacity" onClick={() => setEditingIndex(editingIndex === i ? null : i)}>
+                <Button variant="ghost" size="icon" className="h-5 w-5 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity" onClick={() => setEditingIndex(editingIndex === i ? null : i)}>
                   <Settings2 className="w-3 h-3" />
                 </Button>
               </div>
@@ -559,7 +560,7 @@ function HistoryPanel({ projectId }: { projectId: string }) {
           <div key={snap.id} className="group flex items-start gap-2.5 rounded-lg px-2.5 py-2 hover:bg-muted/50 transition-colors">
             <div className="shrink-0 mt-0.5">{snap.label === "Auto-save" ? <Clock className="w-3.5 h-3.5 text-muted-foreground" /> : <Save className="w-3.5 h-3.5 text-primary" />}</div>
             <div className="flex-1 min-w-0"><p className="text-xs font-medium truncate">{snap.label}</p><p className="text-xs text-muted-foreground">{timeAgo(snap.createdAt)}</p></div>
-            <Button variant="ghost" size="icon" className="h-6 w-6 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" title="Restore" onClick={() => handleRestore(snap.id, snap.label)} disabled={restoringId === snap.id}>
+            <Button variant="ghost" size="icon" className="h-6 w-6 shrink-0 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity" title="Restore" onClick={() => handleRestore(snap.id, snap.label)} disabled={restoringId === snap.id}>
               {restoringId === snap.id ? <Loader2 className="w-3 h-3 animate-spin" /> : <RotateCcw className="w-3 h-3" />}
             </Button>
           </div>
@@ -932,7 +933,7 @@ export default function Editor() {
     }
     setIsFetchingCode(true);
     try {
-      const res = await fetch(`/api/projects/${projectId}/preview-html`);
+      const res = await apiFetch(`/api/projects/${projectId}/preview-html`);
       const html = await res.text();
       setLocalCode(html);
       setCodeDirty(false);

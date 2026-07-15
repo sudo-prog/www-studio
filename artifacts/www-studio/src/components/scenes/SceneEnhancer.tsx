@@ -1,3 +1,4 @@
+import { apiFetch } from "@/lib/apiFetch";
 import { useState } from "react";
 import {
   Dialog, DialogContent, DialogHeader, DialogTitle,
@@ -83,7 +84,7 @@ export function SceneEnhancer({ open, onClose, sceneId, onApply }: Props) {
   async function enhance(mode: EnhanceMode) {
     setLoading(mode);
     try {
-      const res = await fetch(`/api/scenes/${sceneId}/enhance`, {
+      const res = await apiFetch(`/api/scenes/${sceneId}/enhance`, {
         method:  "POST",
         headers: { "Content-Type": "application/json" },
         body:    JSON.stringify({ mode }),

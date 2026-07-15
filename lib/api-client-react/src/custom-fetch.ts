@@ -30,6 +30,17 @@ export function setBaseUrl(url: string | null): void {
 }
 
 /**
+ * Returns the currently configured base URL (or `""` when none is set).
+ *
+ * Exposed so callers that build requests manually (e.g. a thin `apiFetch`
+ * wrapper) can prepend the same base URL the generated `customFetch` hooks
+ * use, keeping relative `/api/...` paths working against a remote server.
+ */
+export function getBaseUrl(): string {
+  return _baseUrl ?? "";
+}
+
+/**
  * Register a getter that supplies a bearer auth token.  Before every fetch
  * the getter is invoked; when it returns a non-null string, an
  * `Authorization: Bearer <token>` header is attached to the request.

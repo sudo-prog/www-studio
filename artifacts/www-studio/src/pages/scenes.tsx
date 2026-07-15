@@ -1,3 +1,4 @@
+import { apiFetch } from "@/lib/apiFetch";
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { Navbar } from "@/components/layout/Navbar";
@@ -58,7 +59,7 @@ function SceneCard({ scene, onEdit, onDelete, onFork, onTogglePublish, selected,
       {onSelect && (
         <button
           onClick={(e) => { e.stopPropagation(); onSelect(); }}
-          className="absolute top-2 right-2 z-20 opacity-0 group-hover:opacity-100 transition-opacity"
+          className="absolute top-2 right-2 z-20 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity"
           style={selected ? { opacity: 1 } : {}}
         >
           {selected
@@ -98,7 +99,7 @@ function SceneCard({ scene, onEdit, onDelete, onFork, onTogglePublish, selected,
         )}
 
         {/* Actions */}
-        <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="absolute top-2 right-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button size="icon" variant="secondary" className="h-7 w-7 bg-black/60 hover:bg-black/80 border-0">
@@ -206,7 +207,7 @@ export default function Scenes() {
   const [tagCloud, setTagCloud] = useState<Array<{tag: string; count: number}>>([]);
 
   useEffect(() => {
-    fetch("/api/scenes/tags")
+    apiFetch("/api/scenes/tags")
       .then((r) => r.ok ? r.json() : [])
       .then((d) => setTagCloud(d.slice(0, 12)))
       .catch(() => {});
@@ -224,7 +225,7 @@ export default function Scenes() {
     const ids = Array.from(selected);
     if (action === "delete" && !confirm(`Delete ${ids.length} scenes?`)) return;
     try {
-      await fetch("/api/scenes/batch", {
+      await apiFetch("/api/scenes/batch", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ids, action }),
@@ -247,7 +248,7 @@ export default function Scenes() {
   const [stats, setStats]   = useState<{ total: number; published: number; totalViews: number; totalLikes: number } | null>(null);
 
   useEffect(() => {
-    fetch("/api/scenes/stats")
+    apiFetch("/api/scenes/stats")
       .then((r) => r.ok ? r.json() : null)
       .then((d) => d && setStats(d))
       .catch(() => {});

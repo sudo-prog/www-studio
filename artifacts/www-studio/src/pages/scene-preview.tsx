@@ -1,3 +1,4 @@
+import { apiFetch } from "@/lib/apiFetch";
 import { useEffect, useRef } from "react";
 import { useRoute } from "wouter";
 import { useGetScene } from "@workspace/api-client-react";
@@ -80,7 +81,7 @@ export default function ScenePreviewPage() {
 
   useEffect(() => {
     if (sceneId) {
-      fetch(`/api/scenes/${sceneId}/view`, { method: "POST" }).catch(() => {});
+      apiFetch(`/api/scenes/${sceneId}/view`, { method: "POST" }).catch(() => {});
     }
   }, [sceneId]);
 

@@ -1,3 +1,4 @@
+import { apiFetch } from "@/lib/apiFetch";
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { Navbar } from "@/components/layout/Navbar";
@@ -19,19 +20,19 @@ async function fetchPublicScenes(tag?: string, q?: string) {
   const params = new URLSearchParams();
   if (tag) params.set("tag", tag);
   if (q)   params.set("q", q);
-  const r = await fetch(`/api/scenes/public?${params}`);
+  const r = await apiFetch(`/api/scenes/public?${params}`);
   if (!r.ok) throw new Error("Failed to load");
   return r.json();
 }
 
 async function likeScene(id: string) {
-  const r = await fetch(`/api/scenes/${id}/like`, { method: "POST" });
+  const r = await apiFetch(`/api/scenes/${id}/like`, { method: "POST" });
   if (!r.ok) throw new Error("Failed to like");
   return r.json();
 }
 
 async function forkScene(id: string) {
-  const r = await fetch(`/api/scenes/${id}/fork`, { method: "POST" });
+  const r = await apiFetch(`/api/scenes/${id}/fork`, { method: "POST" });
   if (!r.ok) throw new Error("Failed to fork");
   return r.json();
 }
@@ -102,7 +103,7 @@ function GalleryCard({ scene, onLike, liked }: { scene: any; onLike: () => void;
         <ScenePreviewSvg scene={scene} />
 
         {/* Overlay actions */}
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100">
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100">
           <Button size="sm" variant="secondary" className="h-8 bg-white/90 text-black hover:bg-white border-0 shadow-lg gap-1.5 text-xs"
             onClick={() => window.open(`/scenes/${scene.id}/share`, "_blank")}>
             <Eye className="h-3.5 w-3.5" />Share
@@ -184,7 +185,7 @@ export default function SceneGallery() {
 
   // fetch trending
   useEffect(() => {
-    fetch("/api/scenes/trending")
+    apiFetch("/api/scenes/trending")
       .then((r) => r.ok ? r.json() : [])
       .then((d) => setTrending(d))
       .catch(() => {});
@@ -246,7 +247,7 @@ export default function SceneGallery() {
               size="sm"
               className="gap-1.5 text-xs"
               onClick={() => {
-                fetch("/api/scenes/random")
+                apiFetch("/api/scenes/random")
                   .then((r) => r.ok ? r.json() : null)
                   .then((s) => s && window.open(`/scenes/${s.id}/share`, "_blank"))
                   .catch(() => {});

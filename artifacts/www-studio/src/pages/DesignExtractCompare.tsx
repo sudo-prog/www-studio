@@ -1,3 +1,5 @@
+import { apiFetch } from "@/lib/apiFetch";
+
 // ─── DesignExtractCompare.tsx ──────────────────────────────────────────────
 // Design comparison mode — two-column layout showing token differences.
 
@@ -71,7 +73,7 @@ export default function DesignExtractCompare() {
       try {
         const results = await Promise.all(
           ids.map(async (id) => {
-            const res = await fetch(`/api/design-extract/${id}`);
+            const res = await apiFetch(`/api/design-extract/${id}`);
             if (!res.ok) throw new Error(`Failed to load extraction ${id}`);
             return res.json();
           }),
@@ -105,7 +107,7 @@ export default function DesignExtractCompare() {
       };
 
       // Create new extraction with merged tokens
-      const res = await fetch("/api/design-extract", {
+      const res = await apiFetch("/api/design-extract", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -117,7 +119,7 @@ export default function DesignExtractCompare() {
       const newExtraction = await res.json();
 
       // Update with merged tokens
-      await fetch(`/api/design-extract/${newExtraction.id}/tokens`, {
+      await apiFetch(`/api/design-extract/${newExtraction.id}/tokens`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ tokens: merged }),

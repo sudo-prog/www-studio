@@ -1,3 +1,5 @@
+import { apiFetch } from "@/lib/apiFetch";
+
 // ── MCP (Model Context Protocol) Integration ─────────────────────────────────
 // Integrates codebase-memory-mcp and other MCP tools
 
@@ -62,7 +64,7 @@ mcpRegistry.register(
   },
   async (args) => {
     // Client-side implementation: search via API
-    const res = await fetch(`/api/mcp/search?q=${encodeURIComponent(args.query)}&limit=${args.limit ?? 5}`);
+    const res = await apiFetch(`/api/mcp/search?q=${encodeURIComponent(args.query)}&limit=${args.limit ?? 5}`);
     const data = await res.json();
     return { content: JSON.stringify(data) };
   }
@@ -81,7 +83,7 @@ mcpRegistry.register(
     },
   },
   async (args) => {
-    const res = await fetch(`/api/rag/search?q=${encodeURIComponent(args.query)}`);
+    const res = await apiFetch(`/api/rag/search?q=${encodeURIComponent(args.query)}`);
     const data = await res.json();
     return { content: JSON.stringify(data) };
   }
@@ -103,7 +105,7 @@ mcpRegistry.register(
   async (args) => {
     const params = new URLSearchParams({ name: args.name });
     if (args.category) params.set("category", args.category);
-    const res = await fetch(`/api/components?${params}`);
+    const res = await apiFetch(`/api/components?${params}`);
     const data = await res.json();
     return { content: JSON.stringify(data) };
   }

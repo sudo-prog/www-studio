@@ -72,7 +72,7 @@ function SortableLayerItem({
       onClick={onSelect}
     >
       <button
-        className="shrink-0 opacity-0 group-hover:opacity-100 cursor-grab active:cursor-grabbing text-muted-foreground hover:text-foreground transition-opacity p-0.5 rounded"
+        className="shrink-0 opacity-100 md:opacity-0 md:group-hover:opacity-100 cursor-grab active:cursor-grabbing text-muted-foreground hover:text-foreground transition-opacity p-0.5 rounded"
         {...attributes}
         {...listeners}
         onClick={(e) => e.stopPropagation()}

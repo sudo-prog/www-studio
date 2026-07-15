@@ -1,3 +1,4 @@
+import { apiFetch } from "@/lib/apiFetch";
 import { useState, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -173,7 +174,7 @@ export function DesignPanel({ projectId, themeTokens, iframeRef }: Props) {
       if (mode === "url") { body.url = url; body.prompt = prompt; }
       if (mode === "images") { body.prompt = prompt || "Extract a design system from these images"; }
 
-      const res = await fetch(`/api/projects/${projectId}/design-md`, {
+      const res = await apiFetch(`/api/projects/${projectId}/design-md`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
@@ -194,7 +195,7 @@ export function DesignPanel({ projectId, themeTokens, iframeRef }: Props) {
     if (!parsedTokens) return;
     setIsApplying(true);
     try {
-      const res = await fetch(`/api/projects/${projectId}/design-md/apply`, {
+      const res = await apiFetch(`/api/projects/${projectId}/design-md/apply`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ tokens: parsedTokens }),

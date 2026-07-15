@@ -567,7 +567,7 @@ export default function SceneEditor() {
                       {el.animation?.preset !== "none" && (
                         <span className="text-[8px] text-primary/60 shrink-0 hidden group-hover:hidden">anim</span>
                       )}
-                      <div className="flex items-center gap-0.5 opacity-0 group-hover:opacity-100">
+                      <div className="flex items-center gap-0.5 opacity-100 md:opacity-0 md:group-hover:opacity-100">
                         <button onClick={(e) => { e.stopPropagation(); dispatch({ type: "REORDER_UP",   id: el.id }); }} className="p-0.5 hover:text-foreground" title="Move up"><ChevronUp   className="h-3 w-3" /></button>
                         <button onClick={(e) => { e.stopPropagation(); dispatch({ type: "REORDER_DOWN", id: el.id }); }} className="p-0.5 hover:text-foreground" title="Move down"><ChevronDown className="h-3 w-3" /></button>
                         <button onClick={(e) => { e.stopPropagation(); handleUpdate(el.id, { visible: !el.visible }); }} className="p-0.5 hover:text-foreground" title={el.visible?"Hide":"Show"}>{el.visible ? <Eye className="h-3 w-3" /> : <EyeOff className="h-3 w-3" />}</button>

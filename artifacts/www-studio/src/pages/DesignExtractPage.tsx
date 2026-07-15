@@ -1,3 +1,5 @@
+import { apiFetch } from "@/lib/apiFetch";
+
 // ─── DesignExtractPage.tsx ────────────────────────────────────────────────────
 // Main page for the Design Intelligence Module — state machine driving:
 //   input → processing → complete | error
@@ -272,7 +274,7 @@ export default function DesignExtractPage() {
     }
 
     // API mode: fetch from server
-    fetch(`/api/design-extract/${id}`)
+    apiFetch(`/api/design-extract/${id}`)
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
@@ -310,7 +312,7 @@ export default function DesignExtractPage() {
       if (!id) return;
 
       try {
-        const res = await fetch(`/api/design-extract/${id}`);
+        const res = await apiFetch(`/api/design-extract/${id}`);
         if (!res.ok) return;
         const data = await res.json();
 
@@ -370,7 +372,7 @@ export default function DesignExtractPage() {
 
       // API mode: POST to server
       try {
-        const res = await fetch("/api/design-extract", {
+        const res = await apiFetch("/api/design-extract", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ url, references }),
@@ -406,7 +408,7 @@ export default function DesignExtractPage() {
   const handleSave = useCallback(async () => {
     if (!state.extractionId || isStaticMode()) return;
     try {
-      await fetch(`/api/design-extract/${state.extractionId}/save`, {
+      await apiFetch(`/api/design-extract/${state.extractionId}/save`, {
         method: "POST",
       });
     } catch {
@@ -419,7 +421,7 @@ export default function DesignExtractPage() {
     async (_projectId: string) => {
       if (!state.tokens) return;
       try {
-        await fetch("/api/design-extract/apply", {
+        await apiFetch("/api/design-extract/apply", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ projectId: _projectId, tokens: state.tokens }),
