@@ -38,7 +38,7 @@ router.use(exportRouter);
 router.use(publishRouter);
 router.use(snapshotsRouter);
 router.use(designRouter);
-router.use(designExtractRouter);
+router.use("/design-extract", designExtractRouter);
 router.use(scenesRouter);
 router.use(enhancedRouter);
 router.use(knowledgeRouter);
