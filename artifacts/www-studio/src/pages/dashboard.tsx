@@ -1,4 +1,3 @@
-import { Navbar } from "@/components/layout/Navbar";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "wouter";
 import { useGetProjects, useDeleteProject, getGetProjectsQueryKey, useGetScenes } from "@workspace/api-client-react";
@@ -36,8 +35,7 @@ export default function Dashboard() {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen flex flex-col bg-background">
-        <Navbar />
+      <div className="min-h-screen flex flex-col bg-background overflow-x-hidden">
         <main className="flex-1 flex flex-col items-center justify-center p-8 text-center">
           <h2 className="text-2xl font-semibold mb-2">Please log in to view your projects</h2>
         </main>
@@ -56,9 +54,8 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
-      <Navbar />
-      <main className="flex-1 p-6 md:p-8 max-w-7xl mx-auto w-full">
+    <div className="min-h-screen flex flex-col bg-background overflow-x-hidden">
+      <main className="flex-1 p-6 md:p-8 max-w-4xl mx-auto w-full">
 
         {/* Stats bar */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">

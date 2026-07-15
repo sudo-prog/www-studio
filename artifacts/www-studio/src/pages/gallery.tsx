@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
-import { Navbar } from "@/components/layout/Navbar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useGetScenes, useCreateScene } from "@workspace/api-client-react";
@@ -154,8 +153,7 @@ export default function Gallery() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
+    <div className="min-h-screen bg-background overflow-x-hidden">
       {embedScene && <EmbedModal scene={embedScene} onClose={() => setEmbedScene(null)} />}
 
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-8">

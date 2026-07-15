@@ -199,6 +199,10 @@ export default function SceneShare() {
           <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => navigate("/scenes")}>
             <ArrowLeft className="h-4 w-4" />
           </Button>
+          <Link href="/" className="shrink-0 flex items-center gap-1.5 font-semibold text-sm tracking-tight hover:text-primary transition-colors">
+            <Code2 className="h-4 w-4 text-primary" />
+            <span className="hidden sm:inline">WWW Studio</span>
+          </Link>
           <div className="h-5 w-px bg-border" />
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 rounded-md bg-primary/20 flex items-center justify-center shrink-0">

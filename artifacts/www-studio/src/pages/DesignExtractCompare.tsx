@@ -1,4 +1,5 @@
 import { apiFetch } from "@/lib/apiFetch";
+import { Navbar } from "@/components/layout/Navbar";
 
 // ─── DesignExtractCompare.tsx ──────────────────────────────────────────────
 // Design comparison mode — two-column layout showing token differences.
@@ -159,6 +160,7 @@ export default function DesignExtractCompare() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0b] text-foreground">
+      <Navbar />
       {/* Header */}
       <div className="border-b border-[#27272a] px-4 md:px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">

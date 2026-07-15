@@ -73,6 +73,7 @@ export default function DesignExtractGallery() {
 
   return (
     <div className="min-h-screen bg-background p-6">
+      <Navbar />
       <div className="max-w-5xl mx-auto">
         <header className="mb-8">
           <h1 className="text-3xl font-bold tracking-tight">Design Gallery</h1>

@@ -1186,7 +1186,7 @@ export default function Editor() {
   const iframeSrcDoc = currentPageId !== "home" ? (currentPageHtml ?? DEFAULT_PAGE_HTML) : localCode;
 
   return (
-    <div className="h-screen w-screen flex flex-col bg-background text-foreground overflow-hidden">
+    <div className="h-screen w-screen max-w-screen flex flex-col bg-background text-foreground overflow-hidden">
       {showPublishModal && <PublishModal projectId={project.id} projectSlug={project.slug} onClose={() => setShowPublishModal(false)} />}
 
       {/* Mobile notice */}
@@ -1196,20 +1196,24 @@ export default function Editor() {
       </div>
 
       {/* Top Toolbar */}
-      <header className="h-14 border-b border-border/50 bg-card/50 backdrop-blur flex items-center justify-between px-3 shrink-0 gap-2">
+      <header className="h-14 border-b border-border/50 bg-card/50 backdrop-blur flex items-center justify-between px-3 shrink-0 gap-2 overflow-x-auto">
         {/* Left */}
         <div className="flex items-center gap-2 min-w-0">
           <Button variant="ghost" size="icon" asChild className="shrink-0 h-8 w-8">
             <Link href="/projects"><ArrowLeft className="w-4 h-4" /></Link>
           </Button>
+          <Link href="/" className="shrink-0 flex items-center gap-1.5 font-semibold text-sm tracking-tight hover:text-primary transition-colors">
+            <Code2 className="h-4 w-4 text-primary" />
+            <span className="hidden sm:inline">WWW Studio</span>
+          </Link>
           <div className="font-medium text-sm truncate max-w-[140px]">{project.name}</div>
           {project.status === "published" && (
             <span className="text-xs px-2 py-0.5 rounded-full bg-green-500/10 text-green-500 border border-green-500/20 shrink-0">Live</span>
           )}
         </div>
 
-        {/* Center: device + view modes */}
-        <div className="flex items-center gap-1.5 shrink-0">
+        {/* Center: device + view modes — secondary on mobile, scroll/hidden there */}
+        <div className="hidden sm:flex items-center gap-1.5 shrink-0">
           {/* Device toggle */}
           <div className="flex items-center gap-0.5 border border-border/50 rounded-md p-0.5 bg-background/50">
             {(["desktop", "tablet", "mobile"] as DeviceMode[]).map((mode) => (

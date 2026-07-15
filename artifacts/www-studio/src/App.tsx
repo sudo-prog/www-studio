@@ -24,6 +24,7 @@ import NewProject from "@/pages/new-project";
 import Editor from "@/pages/editor";
 import Profile from "@/pages/profile";
 import Components from "@/pages/components";
+import { AppLayout } from "@/components/layout/AppLayout";
 import Gallery from "@/pages/gallery";
 import Scenes from "@/pages/scenes";
 import SceneEditor from "@/pages/scene-editor";
@@ -41,25 +42,27 @@ const queryClient = new QueryClient();
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/projects" component={Dashboard} />
-      <Route path="/ui-library" component={Components} />
-      <Route path="/editor/new" component={NewProject} />
-      <Route path="/editor/:projectId" component={Editor} />
-      <Route path="/profile" component={Profile} />
-      <Route path="/gallery" component={Gallery} />
-      <Route path="/scenes" component={Scenes} />
-      <Route path="/scenes/gallery" component={SceneGallery} />
-      <Route path="/scenes/:id" component={SceneEditor} />
-      <Route path="/scenes/:id/preview" component={ScenePreview} />
-      <Route path="/scenes/:id/share" component={SceneShare} />
-      <Route path="/freeform/:projectId?" component={FreeformEditor} />
-      <Route path="/freeform/:pageId/share" component={FreeformShare} />
-      <Route path="/design-extract" component={DesignExtractPage} />
-      <Route path="/design-extract/gallery" component={DesignExtractGallery} />
-      <Route path="/design-extract/:id/compare" component={DesignExtractCompare} />
-      <Route path="/design-extract/:id" component={DesignExtractPage} />
-      <Route component={NotFound} />
+      <Route path="/"><AppLayout><Home /></AppLayout></Route>
+      <Route path="/projects"><AppLayout><Dashboard /></AppLayout></Route>
+      <Route path="/ui-library"><AppLayout><Components /></AppLayout></Route>
+      <Route path="/editor/new"><AppLayout><NewProject /></AppLayout></Route>
+      {/* Full-screen editor / share / preview pages render their own header (with a
+          working Back control) so a bare variant is used — no double navbar. */}
+      <Route path="/editor/:projectId"><AppLayout variant="bare"><Editor /></AppLayout></Route>
+      <Route path="/profile"><AppLayout><Profile /></AppLayout></Route>
+      <Route path="/gallery"><AppLayout><Gallery /></AppLayout></Route>
+      <Route path="/scenes"><AppLayout><Scenes /></AppLayout></Route>
+      <Route path="/scenes/gallery"><AppLayout><SceneGallery /></AppLayout></Route>
+      <Route path="/scenes/:id"><AppLayout variant="bare"><SceneEditor /></AppLayout></Route>
+      <Route path="/scenes/:id/preview"><AppLayout variant="bare"><ScenePreview /></AppLayout></Route>
+      <Route path="/scenes/:id/share"><AppLayout variant="bare"><SceneShare /></AppLayout></Route>
+      <Route path="/freeform/:projectId?"><AppLayout variant="bare"><FreeformEditor /></AppLayout></Route>
+      <Route path="/freeform/:pageId/share"><AppLayout variant="bare"><FreeformShare /></AppLayout></Route>
+      <Route path="/design-extract"><AppLayout><DesignExtractPage /></AppLayout></Route>
+      <Route path="/design-extract/gallery"><AppLayout><DesignExtractGallery /></AppLayout></Route>
+      <Route path="/design-extract/:id/compare"><AppLayout><DesignExtractCompare /></AppLayout></Route>
+      <Route path="/design-extract/:id"><AppLayout><DesignExtractPage /></AppLayout></Route>
+      <Route><AppLayout><NotFound /></AppLayout></Route>
     </Switch>
   );
 }

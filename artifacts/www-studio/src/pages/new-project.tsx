@@ -1,5 +1,4 @@
 import { useState, useRef } from "react";
-import { Navbar } from "@/components/layout/Navbar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -109,8 +108,7 @@ export default function NewProject() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
-      <Navbar />
+    <div className="min-h-screen flex flex-col bg-background overflow-x-hidden">
       <main className="flex-1 flex items-start justify-center p-6 pt-12">
         <div className="w-full max-w-xl">
           <div className="text-center mb-8">

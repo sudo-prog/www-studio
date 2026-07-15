@@ -102,15 +102,33 @@ export function useAuth(): AuthState {
     window.location.href = "/login";
   }, []);
 
-  const loginWithGitHub = useCallback(() => {
-    if (hasBackend) {
-      const returnTo = window.location.pathname;
-      window.location.href = `${API_BASE}/api/auth/github?returnTo=${encodeURIComponent(returnTo)}`;
-    } else {
-      // No backend configured — show a temporary notice
+  const loginWithGitHub = useCallback(async () => {
+    if (!hasBackend) {
+      // No backend configured — show a temporary notice and STAY on the page.
       const el = document.createElement("div");
       el.className = "fixed top-4 left-1/2 -translate-x-1/2 z-[100] bg-zinc-900 border border-zinc-700 text-white text-sm px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3";
       el.innerHTML = `<span>GitHub login requires the backend server. Set <code class="bg-black/30 px-1.5 py-0.5 rounded text-xs">VITE_API_SERVER_URL</code> in your environment.</span>`;
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 6000);
+      return;
+    }
+
+    const returnTo = window.location.pathname;
+    const endpoint = `${API_BASE}/api/auth/github?returnTo=${encodeURIComponent(returnTo)}`;
+
+    // Verify the endpoint is reachable / configured before navigating away.
+    // If it errors (e.g. GitHub OAuth not configured, server down), show an
+    // inline notice and STAY on the current page instead of bouncing home.
+    try {
+      const res = await fetch(endpoint, { method: "GET", redirect: "manual" });
+      // A successful OAuth start returns a 3xx redirect (opaque with redirect:manual).
+      // 2xx (HTML), 3xx, or 4xx that isn't a network error are all "handled" by the
+      // server, so we proceed with the real navigation. A network failure throws.
+      window.location.href = endpoint;
+    } catch (err) {
+      const el = document.createElement("div");
+      el.className = "fixed top-4 left-1/2 -translate-x-1/2 z-[100] bg-zinc-900 border border-zinc-700 text-white text-sm px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3";
+      el.innerHTML = `<span>GitHub sign-in is unavailable right now. Please try again later.</span>`;
       document.body.appendChild(el);
       setTimeout(() => el.remove(), 6000);
     }

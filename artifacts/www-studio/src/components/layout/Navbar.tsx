@@ -1,7 +1,7 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@workspace/auth-web";
-import { Code2, WandSparkles, LogOut, User, Blocks, Layers, Globe, Sun, Moon, Menu, X, PenLine } from "lucide-react";
+import { Code2, WandSparkles, LogOut, User, Blocks, Layers, Globe, Sun, Moon, Menu, X, PenLine, Github } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,7 +14,7 @@ import { useTheme } from "@/components/theme-provider";
 import { useState } from "react";
 
 export function Navbar() {
-  const { user, isAuthenticated, logout } = useAuth();
+  const { user, isAuthenticated, logout, githubAvailable, loginWithGitHub } = useAuth();
   const [location] = useLocation();
   const { theme, setTheme } = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -87,6 +87,17 @@ export function Navbar() {
             </Link>
           </Button>
 
+          {/* Mobile login entry — visible on mobile/tablet so password login is reachable without the menu */}
+          {!isAuthenticated && (
+            <Button
+              size="sm"
+              className="lg:hidden"
+              onClick={() => { window.location.href = "/profile"; }}
+            >
+              Log in
+            </Button>
+          )}
+
           {/* Mobile menu trigger */}
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <SheetTrigger asChild>
@@ -99,7 +110,7 @@ export function Navbar() {
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-64 p-0">
+            <SheetContent side="right" className="w-64 p-0" showClose={false}>
               <div className="flex flex-col h-full">
                 <div className="flex items-center justify-between px-4 h-14 border-b border-border/50">
                   <span className="font-semibold text-sm">Menu</span>
@@ -123,14 +134,25 @@ export function Navbar() {
                     />
                   ))}
                   {!isAuthenticated && (
-                    <div className="pt-3 border-t border-border/50 mt-3">
+                    <div className="pt-3 border-t border-border/50 mt-3 space-y-2">
                       <Button
                         size="sm"
                         className="w-full"
                         onClick={() => { window.location.href = "/profile"; setMobileOpen(false); }}
                       >
-                        Log in with GitHub
+                        Log in
                       </Button>
+                      {githubAvailable && (
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="w-full gap-1.5"
+                          onClick={() => { loginWithGitHub(); setMobileOpen(false); }}
+                        >
+                          <Github className="h-4 w-4" />
+                          Log in with GitHub
+                        </Button>
+                      )}
                     </div>
                   )}
                 </div>

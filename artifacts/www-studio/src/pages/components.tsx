@@ -1,5 +1,4 @@
 import { useState, useMemo } from "react";
-import { Navbar } from "@/components/layout/Navbar";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { COMPONENT_LIBRARY, CATEGORIES, makePreviewHtml, type Category } from "@/data/component-library";
@@ -104,9 +103,8 @@ export default function Components() {
   );
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
-      <Navbar />
-      <main className="flex-1 max-w-7xl mx-auto w-full px-4 md:px-6 py-8">
+    <div className="min-h-screen flex flex-col bg-background overflow-x-hidden">
+      <main className="flex-1 max-w-7xl mx-auto w-full px-4 md:px-6 py-8 overflow-x-hidden">
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold tracking-tight mb-2">Component Library</h1>

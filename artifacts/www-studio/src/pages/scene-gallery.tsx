@@ -1,7 +1,6 @@
 import { apiFetch } from "@/lib/apiFetch";
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
-import { Navbar } from "@/components/layout/Navbar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -222,8 +221,7 @@ export default function SceneGallery() {
     });
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
+    <div className="min-h-screen bg-background overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-8">
         {/* Header */}
         <div className="flex items-center gap-4 mb-8">

@@ -7,6 +7,7 @@ import { apiFetch } from "@/lib/apiFetch";
 
 import { useReducer, useEffect, useCallback, useRef, useState } from "react";
 import { useRoute } from "wouter";
+import { Navbar } from "@/components/layout/Navbar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Sparkles, AlertCircle, Upload, RefreshCw, WifiOff, Image } from "lucide-react";
@@ -452,6 +453,7 @@ export default function DesignExtractPage() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0b] text-foreground">
+      <Navbar />
       {/* Header */}
       <div className="border-b border-[#27272a] px-4 md:px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center gap-3">

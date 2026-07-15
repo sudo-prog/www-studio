@@ -17,7 +17,7 @@ import {
   ArrowLeft, Download, Save, Cloud, CloudOff, Eye,
   Undo, Redo, ZoomIn, ZoomOut, Grid3x3, Ruler,
   Plus, Layers, Palette, Component, Sparkles, Camera,
-  Smartphone, FileCode, SlidersHorizontal,
+  Smartphone, FileCode, SlidersHorizontal, Code2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { makeFreeformElement, Artboard, ComponentMaster, type FreeformElement, type FreeformPage } from "@/lib/freeform-types";
@@ -441,10 +441,14 @@ export default function FreeformEditor() {
   return (
     <div className="h-screen flex flex-col bg-[#0a0a0f] text-foreground overflow-hidden">
       {/* Top bar */}
-      <header className="h-12 shrink-0 border-b border-border bg-background flex items-center justify-between px-4 gap-3 z-50">
+      <header className="h-12 shrink-0 border-b border-border bg-background flex items-center justify-between px-4 gap-3 z-50 overflow-x-auto">
         <div className="flex items-center gap-3">
           <Link href="/projects" className="text-muted-foreground hover:text-foreground transition-colors">
             <ArrowLeft className="w-4 h-4" />
+          </Link>
+          <Link href="/" className="flex items-center gap-1.5 font-semibold text-sm tracking-tight hover:text-primary transition-colors shrink-0">
+            <Code2 className="h-4 w-4 text-primary" />
+            <span className="hidden sm:inline">WWW Studio</span>
           </Link>
           <Input
             value={pageName}
@@ -452,7 +456,7 @@ export default function FreeformEditor() {
               setPageName(e.target.value);
               dispatch({ type: "SET_NAME", name: e.target.value });
             }}
-            className="h-7 text-sm w-48 bg-transparent border-transparent hover:border-border focus:border-border"
+            className="h-7 text-sm w-48 min-w-0 flex-1 sm:w-48 sm:flex-none bg-transparent border-transparent hover:border-border focus:border-border"
           />
         </div>
 

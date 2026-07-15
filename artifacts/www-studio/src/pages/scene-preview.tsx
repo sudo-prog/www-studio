@@ -1,6 +1,7 @@
 import { apiFetch } from "@/lib/apiFetch";
 import { useEffect, useRef } from "react";
-import { useRoute } from "wouter";
+import { useRoute, Link } from "wouter";
+import { Code2 } from "lucide-react";
 import { useGetScene } from "@workspace/api-client-react";
 import { type SceneElement } from "@/lib/scene-types";
 
@@ -119,6 +120,13 @@ export default function ScenePreviewPage() {
   return (
     <>
       <style>{ANIM_KEYFRAMES}</style>
+      <Link
+        href="/"
+        className="fixed top-3 left-3 z-50 flex items-center gap-1.5 px-2.5 h-8 rounded-full bg-background/80 backdrop-blur border border-border shadow-sm font-semibold text-sm tracking-tight hover:text-primary transition-colors"
+      >
+        <Code2 className="h-4 w-4 text-primary" />
+        <span className="hidden sm:inline">WWW Studio</span>
+      </Link>
       <div
         className="w-full min-h-screen overflow-y-auto"
         style={{ background: "linear-gradient(135deg, #0d1117 0%, #161b22 100%)" }}

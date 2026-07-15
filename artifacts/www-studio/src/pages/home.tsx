@@ -1,5 +1,4 @@
 import { apiFetch } from "@/lib/apiFetch";
-import { Navbar } from "@/components/layout/Navbar";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "wouter";
 import { useGetGalleryTemplates, useGetScenes } from "@workspace/api-client-react";
@@ -71,8 +70,7 @@ export default function Home() {
   const showcaseScenes = (Array.isArray(publicScenes) && publicScenes.length > 0) ? publicScenes : safeScenes.slice(0, 6);
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar />
+    <div className="min-h-screen flex flex-col overflow-x-hidden">
       <main className="flex-1">
         {/* Hero */}
         <section className="px-4 py-12 sm:py-16 md:py-28 flex flex-col items-center text-center max-w-4xl mx-auto">

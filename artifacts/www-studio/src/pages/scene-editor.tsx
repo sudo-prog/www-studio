@@ -1,5 +1,5 @@
 import { useState, useReducer, useCallback, useEffect, useRef } from "react";
-import { useRoute, useLocation } from "wouter";
+import { useRoute, useLocation, Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -348,15 +348,19 @@ export default function SceneEditor() {
 
       <div className="h-screen flex flex-col bg-background overflow-hidden">
         {/* ── Top bar ── */}
-        <div className="h-12 flex items-center gap-1.5 px-2 border-b border-border shrink-0 bg-background/95 backdrop-blur">
+        <div className="h-12 flex items-center gap-1.5 px-2 border-b border-border shrink-0 bg-background/95 backdrop-blur overflow-x-auto">
           <Button variant="ghost" size="icon" className="h-8 w-8 shrink-0" onClick={() => navigate("/scenes")} title="Back to Scenes">
             <ArrowLeft className="h-4 w-4" />
           </Button>
+          <Link href="/" className="shrink-0 flex items-center gap-1.5 font-semibold text-sm tracking-tight hover:text-primary transition-colors">
+            <Code2 className="h-4 w-4 text-primary" />
+            <span className="hidden sm:inline">WWW Studio</span>
+          </Link>
 
           <Input
             value={state.scene.name}
             onChange={(e) => dispatch({ type: "SET_NAME", name: e.target.value })}
-            className="h-8 w-44 text-sm font-medium border-transparent bg-transparent hover:bg-muted focus:bg-muted focus:border-border shrink-0"
+            className="h-8 w-44 min-w-0 sm:w-44 text-sm font-medium border-transparent bg-transparent hover:bg-muted focus:bg-muted focus:border-border shrink-0"
           />
 
           {state.isDirty && !autoSavedAt && (
