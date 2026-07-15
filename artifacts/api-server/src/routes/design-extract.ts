@@ -155,16 +155,18 @@ async function runExtraction(extractionId: string, req: Request): Promise<void> 
     const raw = await visionComplete(
       primaryShot.base64,
       primaryShot.mimeType,
-    messages.map((m) =>
-      m.role === "system"
-        ? m.content
-        : Array.isArray(m.content)
-          ? (m.content as Array<{ type: string; text?: string }>)
-              .filter((c) => c.type === "text")
-              .map((c) => c.text)
-              .join("\n\n")
-          : (m.content as string),
-    ),
+      messages
+        .map((m) =>
+          m.role === "system"
+            ? m.content
+            : Array.isArray(m.content)
+              ? (m.content as Array<{ type: string; text?: string }>)
+                  .filter((c) => c.type === "text")
+                  .map((c) => c.text)
+                  .join("\n\n")
+              : (m.content as string),
+        )
+        .join("\n\n"),
       { model: LLM_VISION_MODEL },
     );
 

@@ -145,11 +145,11 @@ router.post("/rag/ingest", async (req: Request, res: Response) => {
   const inserted = [];
 
   for (const chunk of chunks) {
-    const values: Record<string, unknown> = {
+    const values: typeof knowledgeChunksTable.$inferInsert = {
       content: chunk.trim(),
+      source: source ?? "manual",
       metadata: metadata || {},
     };
-    if (source != null) values.source = source;
     const [row] = await db
       .insert(knowledgeChunksTable)
       .values(values)

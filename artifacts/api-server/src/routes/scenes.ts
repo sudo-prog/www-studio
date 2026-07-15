@@ -598,7 +598,7 @@ router.post("/scenes/:id/export", async (req: Request, res: Response) => {
     lines.push(`    const inner = el.type === "text"`);
     lines.push(`      ? <span style={{ color: el.fill, fontSize: el.fontSize ?? 24, fontWeight: el.fontWeight ?? 400 }}>{el.text}</span>`);
     lines.push(`      : null;`);
-    lines.push('    return <' + tag + ' key={el.id} id={el.id} style={{ ...s, borderRadius: el.type === "circle" ? "50%" : 12 }}>' + inner + '</' + tag + '>;');
+    lines.push(`    return <\${tag} key={el.id} id={el.id} style={{ ...s, borderRadius: el.type === "circle" ? "50%" : 12 }}>\${inner}</\${tag}>;`);
     lines.push(`  };`);
     lines.push(``);
     lines.push(`  return (`);
