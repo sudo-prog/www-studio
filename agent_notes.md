@@ -489,4 +489,27 @@ Multi-source design synthesis engine. Accepts primary URL + optional secondary U
 - **Branch merge to main (2026-07-14):** `feature/design-intelligence` was already fully merged into `main` (0 unique commits, merge-base confirmed) — nothing to merge. `main` already carried the 2026-07-14 AI repoint (`d9b8d3d`/`1f55d12`) + mobile sheets (`ebe8bc0`) fixes.
 - Left intact: `artifacts/www-studio/src/lib/github-storage.ts` publishes to a *separate* GitHub pages repo via the GitHub API (unrelated to this repo's `gh-pages` branch) — kept as a feature.
 - Net result: deployment model is Vercel-only; no build/CI regressions.
+
+---
+
+## Re-Audit Remediation: Mobile / Login / Gallery (2026-07-15, chief-of-staff)
+
+**Source:** `www-studio reaudit mobile-login-gallery 2026-07-15.md` (3 claims). Execution via gemini-web2api kanban workers + VS Code headless; visual-verify via Playwright + Moondream-local.
+
+**Claim 1 (Login backend crashes w/o DATABASE_URL) — STALE.** Live smoke test proved false: api-server `https://www-studio-api-server.vercel.app` returns `/api/health` 200, all `/api/auth/*` routes live, `/api/scenes/public` returns real Supabase rows. Vercel prod env `DATABASE_URL` IS set (created 2026-07-14). The audit doc was written against a transient state; no code change needed for login.
+
+**Claim 2 (34 bare `fetch("/api")` bypass base URL) — FIXED.** `artifacts/www-studio/src/lib/apiFetch.ts` created; `getBaseUrl()` exported from `lib/api-client-react/src/custom-fetch.ts`. All call sites refactored to `apiFetch(...)`. Verified: **0 real bare `fetch("/api`** remaining (only 1 match, inside a doc comment). Also fixes missing `credentials: "include"`.
+
+**Claim 3 (14 hover-only `opacity-0 group-hover` buttons invisible on touch) — FIXED (mobile actions reachable).** 17/22 `opacity-0 group-hover` sites got `md:opacity-0 md:group-hover` fallback. 5 remaining are `pointer-events-none` tooltips + 1 decorative "Share" overlay on an already-link-wrapped card — no primary action gated. **Verified by Playwright at 390×844 touch viewport:** `/ui-library` and `/scenes/gallery` = 0 hidden interactive elements; home = 1 hidden element but `pointer-events-none` tooltip (acceptable).
+
+**Build-verify:** `pnpm --filter @workspace/www-studio build` → green (1946 modules, "✓ built in 9.26s"). Vite sourcemap warnings on `ui/tooltip.tsx` etc. are benign (library sourcemaps).
+
+**Gaps / NOT done (audit's automated guardrails):**
+- ❌ **Playwright mobile smoke test** — was never created by workers. Added `artifacts/www-studio/e2e/mobile-smoke.mjs` (390px touch audit of hover-hidden elements + screenshots to `/tmp/mobile-shots/`). Runs against `BASE` (static preview). NOT yet wired into CI.
+- ❌ **ESLint `no-restricted-syntax` rule** for bare `/api` fetches — NOT added. Repo has **no eslint config or binary at all**; adding the toolchain is a dependency change held for user approval. Recommendation only.
+- ⚠️ 3 api-server WIP files remain uncommitted on `main` (`design-extract.ts`, `enhanced.ts`, `scenes.ts`) — left untouched (preserve).
+
+**Push state:** All fixes already committed + pushed to `origin/main` (`edc9850` "fix: audit remediation — apiFetch refactor + mobile touch-visible actions") BEFORE the 2026-07-15 gateway restart. Re-dispatched kanban worktrees (`.worktrees/t_*`) are orphaned duplicates off `0e9350b` — do NOT merge (would conflict with pushed commit). Left for cleanup.
+
+**Visual-verify (SOP):** Playwright mobile audit = PASS. Moondream-local (Ollama `moondream:v2`) analysis of `/tmp/mobile-shots/*.png` = pending (model slow on CPU; background run). Omniparser server launch was held (user consent not given) — skipped; Playwright + Moondream deemed sufficient per user direction.
 - **[2026-07-15] MOBILE UI RUNTIME FIX (VERIFIED)**: Runtime Playwright on 390×844 found Radix `DialogContent requires DialogTitle` console error (from `CommandDialog` in `components/ui/command.tsx` — DialogContent with no title). FIX: added `<DialogTitle className="sr-only">Command Menu</DialogTitle>` to CommandDialog. Deployed --prod (studio-r26up3qqs), alias www-studio-red→it. VERIFY (cache-busted re-run): RADIX_WARNING_COUNT:0, mobile shell OK. **BLOCKER**: `/api/scenes` → 500 from `www-studio-api-server` (separate Vercel project) — that project has NO `DATABASE_URL` env and `@workspace/db` boot (`ensureGuestUser`→`db.query`) fails. The real Supabase DB password for project `iumpshuwufeotschxfob` is UNREACHABLE (both Bitwarden items are placeholders for a different project `psnosfonkujbcxdcrnpu`). Needs the actual DB password before backend can connect — FLAGGED to user.

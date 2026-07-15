@@ -49,8 +49,6 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: pnpm/action-setup@v4
-        with:
-          version: 10
 
       - uses: actions/setup-node@v4
         with:
@@ -73,3 +71,39 @@ jobs:
           working-directory: ./
           github-token: ${{ secrets.GITHUB_TOKEN }}
           vercel-github-token: ${{ secrets.VERCEL_GITHUB_TOKEN }}
+
+  mobile-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Build www-studio frontend
+        run: pnpm --filter @workspace/www-studio run build
+        env:
+          NODE_ENV: "production"
+
+      - name: Install Playwright chromium
+        run: pnpm --filter @workspace/www-studio exec playwright install --with-deps chromium
+
+      - name: Run mobile touch-visibility smoke test (390x844)
+        run: pnpm --filter @workspace/www-studio run test:e2e
+        env:
+          BASE: http://localhost:4173
+          SCREENSHOT_DIR: artifacts/www-studio/e2e/mobile-shots
+
+      - name: Upload mobile screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mobile-shots
+          path: artifacts/www-studio/e2e/mobile-shots/
+          retention-days: 7

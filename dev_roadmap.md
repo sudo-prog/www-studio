@@ -245,6 +245,21 @@ WWW Studio audit (WWW_STUDIO_AUDIT_AND_DEPLOYMENT.md) is now **complete**. All 6
 
 ---
 
+## Re-Audit Remediation Phase (2026-07-15) — COMPLETE (code) / partial (guardrails)
+
+**Triggered by:** `www-studio reaudit mobile-login-gallery 2026-07-15.md` (3 claims).
+
+- [x] **Claim 1 (login backend) — STALE, no fix needed.** Live probe: api-server 200, `DATABASE_URL` set on Vercel prod. Audit was against a transient state.
+- [x] **Claim 2 (bare `/api` fetches) — FIXED.** `apiFetch.ts` + `getBaseUrl()`; 0 real bare fetches remain. Pushed `edc9850`.
+- [x] **Claim 3 (mobile hover-only buttons) — FIXED.** `md:` touch fallback on 17/22 sites; 5 leftovers are non-interactive tooltips/overlay. Playwright 390px audit = 0 hidden actions.
+- [x] **Build-verify — PASS.** `pnpm build` green.
+- [x] **Push — DONE.** `origin/main` = `edc9850`.
+- [~] **Playwright smoke test** — created `e2e/mobile-smoke.mjs` (not yet in CI).
+- [ ] **ESLint `no-restricted-syntax` rule** — HELD (no eslint in repo; needs approval to add toolchain).
+- [ ] **Omniparser visual pass** — skipped (user consent not given); Playwright+Moondream used instead.
+
+---
+
 ## Key Metrics & Success Criteria
 
 | Metric | Target | Current |
