@@ -145,14 +145,24 @@
     max-width: 100%;
     height: auto;
   }
-  /* Improve touch targets on mobile */
-  @media (max-width: 768px) {
-    button, a, input, select, textarea {
+  /* Improve touch targets on mobile / coarse pointers — enforce >= 44x44 (MOBILE-UI-STANDARD T-1) */
+  @media (pointer: coarse), (max-width: 767px) {
+    button,
+    a[role="button"],
+    [role="button"],
+    input[type="button"],
+    input[type="submit"],
+    .btn,
+    [class*="btn"],
+    [class*="button"],
+    [class*="nav-item"],
+    [class*="toolbar"] [class*="button"] {
       min-height: 44px;
+      min-width: 44px;
     }
-    /* But allow icon buttons in toolbars to be smaller */
-    [role="toolbar"] button, .toolbar button, header nav button {
-      min-height: unset;
+    /* Form controls also need a generous touch height */
+    input, select, textarea {
+      min-height: 44px;
     }
   }
 }
