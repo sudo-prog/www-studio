@@ -302,3 +302,6 @@ WWW Studio audit (WWW_STUDIO_AUDIT_AND_DEPLOYMENT.md) is now **complete**. All 6
 - **Bi-weekly:** Update roadmap progress
 - **Monthly:** Release planning and milestone review
 - **Quarterly:** Architecture review and tech debt assessment
+
+## 2026-07-17 (evening) — Deploy reconciliation
+- Redeployed to prod after the 17:13 crash left the live URL at HTTP 404 (deploy was stale; code was already pushed). `vercel deploy --prod --yes` → www-studio-superpowerstudio.vercel.app now HTTP 200. No worker re-dispatch; orchestrator-only deploy.
