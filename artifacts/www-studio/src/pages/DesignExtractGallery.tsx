@@ -1,6 +1,7 @@
 import { apiFetch } from "@/lib/apiFetch";
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
+import { Navbar } from "@/components/layout/Navbar";
 
 interface GalleryItem {
   id: string;
