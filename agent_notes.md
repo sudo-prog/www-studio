@@ -544,3 +544,7 @@ User reported (390px phone): cannot log in — "Log in with GitHub" crashes to h
 **RULE (user directive 2026-07-16):** Only run Moondream (local Ollama `moondream:v2`) when headless VS Code is NOT running — both are RAM-heavy, concurrent run risks OOM. Moondream itself is near-unusable on CPU (1-token/invalid responses) → prefer Playwright DOM extraction for factual mobile verification.
 
 **OpenAuth (github.com/anomalyco/openauth):** User suggested as api-server auth replacement — **DEFERRED / NOT started** (user said "don't worry about OpenAuth" 2026-07-16).
+## Mobile UI Compliance (MOBILE-UI-STANDARD.md)
+- **Status:** PASS (live: www-studio-superpowerstudio.vercel.app)
+- **Verified:** 2026-07-17 via /tmp/mobile_audit.mjs @390x844 (tap-target >=44px T-1, overflow, safe-area, console errors)
+- **T-1 fix:** enforce 44x44px on touch/coarse + <=767px; backend API queries gated behind DEV||VITE_API_ENABLED to silence 404s on static Vercel deploy.
