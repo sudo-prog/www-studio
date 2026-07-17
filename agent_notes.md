@@ -512,4 +512,35 @@ Multi-source design synthesis engine. Accepts primary URL + optional secondary U
 **Push state:** All fixes already committed + pushed to `origin/main` (`edc9850` "fix: audit remediation — apiFetch refactor + mobile touch-visible actions") BEFORE the 2026-07-15 gateway restart. Re-dispatched kanban worktrees (`.worktrees/t_*`) are orphaned duplicates off `0e9350b` — do NOT merge (would conflict with pushed commit). Left for cleanup.
 
 **Visual-verify (SOP):** Playwright mobile audit = PASS. Moondream-local (Ollama `moondream:v2`) analysis of `/tmp/mobile-shots/*.png` = pending (model slow on CPU; background run). Omniparser server launch was held (user consent not given) — skipped; Playwright + Moondream deemed sufficient per user direction.
-- **[2026-07-15] MOBILE UI RUNTIME FIX (VERIFIED)**: Runtime Playwright on 390×844 found Radix `DialogContent requires DialogTitle` console error (from `CommandDialog` in `components/ui/command.tsx` — DialogContent with no title). FIX: added `<DialogTitle className="sr-only">Command Menu</DialogTitle>` to CommandDialog. Deployed --prod (studio-r26up3qqs), alias www-studio-red→it. VERIFY (cache-busted re-run): RADIX_WARNING_COUNT:0, mobile shell OK. **BLOCKER**: `/api/scenes` → 500 from `www-studio-api-server` (separate Vercel project) — that project has NO `DATABASE_URL` env and `@workspace/db` boot (`ensureGuestUser`→`db.query`) fails. The real Supabase DB password for project `iumpshuwufeotschxfob` is UNREACHABLE (both Bitwarden items are placeholders for a different project `psnosfonkujbcxdcrnpu`). Needs the actual DB password before backend can connect — FLAGGED to user.
+
+---
+
+## Mobile Login + Navigation Fix (2026-07-16, chief-of-staff)
+
+User reported (390px phone): cannot log in — "Log in with GitHub" crashes to home; many pages have NO nav (must close app to get back); header row extends off-screen; two overlapping X buttons on the menu sheet; component buttons take up the whole screen.
+
+**Root causes (proven from source + live API, NOT from screenshots — vision tool was broken):**
+- `lib/auth-web/src/use-auth.ts:loginWithGitHub()` hard-redirected `window.location.href = ${API_BASE}/api/auth/github?returnTo=...` with no error handling. Live `curl /api/auth/github` → **HTTP 500**; `/api/auth/methods` → `{"githubAvailable":false}` (no `GITHUB_CLIENT_ID`/`GITHUB_CLIENT_SECRET` in `www-studio-api-server` Vercel env). → bounce to home = the "crash".
+- `<Navbar>` imported on only 7/17 pages (home, components, profile, gallery, scenes, scene-gallery, new-project). Missing on: editor, scene-editor, scene-preview, scene-share, freeform-editor, freeform-share, DesignExtract{Page,Gallery,Compare}, not-found → user trapped.
+- Mobile "Log in" button was `hidden sm:inline-flex` (desktop-only) → NO password login reachable on phone. (Password auth itself was already functional: `/api/auth/methods` → `passwordSet:true`.)
+- `ui/sheet.tsx` (Radix Dialog) renders a default close `<X>`; `Navbar.tsx` added a SECOND manual X → two overlapping close buttons.
+- editor/scene/freeform headers used unconstrained `flex` rows → horizontal overflow at 390px.
+
+**Fixes (commit `ab92290`, origin/main) — built via VS Code headless + subagent, verified by chief-of-staff:**
+- `AppLayout.tsx` wraps all 17 `<Route>` components → Navbar/back reachable on every page.
+- `Navbar.tsx`: added visible mobile "Log in" button (`opacity-100` not `hidden sm:`); GitHub button now gated on `githubAvailable` (hidden when false).
+- `use-auth.ts:loginWithGitHub()` → async, try/catch, on error stays on page + shows inline notice (no redirect/bounce).
+- `ui/sheet.tsx`: `showClose` prop dedupe → exactly one X.
+- `editor.tsx` / `scene-editor.tsx` / `freeform-editor.tsx` headers → `overflow-x-auto`; `components.tsx` / `gallery.tsx` → `overflow-x-hidden`.
+
+**Deployment target (verified):** `vercel deploy` from repo root builds the FRONTEND project `www-studio` (`.vercel/project.json` → `prj_6Wq7lyOGAUULnS3GB2FQkKWb3OIr`, output `artifacts/www-studio/dist/public`). The api-server is a SEPARATE Vercel project (`www-studio-api-server`, `prj_TjG1Bf3PwVnFw4Eq6QdMHsrvI8iT`) — deploy command does NOT touch it. Frontend aliased `www-studio-red.vercel.app`.
+
+**Verification status (2026-07-16):**
+- [x] Code committed + pushed (`ab92290`).
+- [~] `vercel build` CLI re-verify running in background (RAM-limited box; foreground SIGKILL'd at OOM).
+- [ ] Redeploy `--prod --force` + live 390px Playwright re-assert pending build verify.
+- GitHub OAuth still non-functional server-side (creds absent) — frontend fails gracefully now.
+
+**RULE (user directive 2026-07-16):** Only run Moondream (local Ollama `moondream:v2`) when headless VS Code is NOT running — both are RAM-heavy, concurrent run risks OOM. Moondream itself is near-unusable on CPU (1-token/invalid responses) → prefer Playwright DOM extraction for factual mobile verification.
+
+**OpenAuth (github.com/anomalyco/openauth):** User suggested as api-server auth replacement — **DEFERRED / NOT started** (user said "don't worry about OpenAuth" 2026-07-16).

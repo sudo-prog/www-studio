@@ -146,6 +146,7 @@
     height: auto;
   }
   /* Improve touch targets on mobile / coarse pointers — enforce >= 44x44 (MOBILE-UI-STANDARD T-1) */
+  /* !important so this wins over Tailwind utility classes like min-h-8 (32px) */
   @media (pointer: coarse), (max-width: 767px) {
     button,
     a[role="button"],
@@ -156,9 +157,12 @@
     [class*="btn"],
     [class*="button"],
     [class*="nav-item"],
-    [class*="toolbar"] [class*="button"] {
-      min-height: 44px;
-      min-width: 44px;
+    [class*="toolbar"] [class*="button"],
+    /* nav/logo action links that carry classes (e.g. logo + "My Scenes").
+       Excludes inline prose <a> (no class) so we never force min-width and overflow. */
+    a[href][class] {
+      min-height: 44px !important;
+      min-width: 44px !important;
     }
     /* Form controls also need a generous touch height */
     input, select, textarea {

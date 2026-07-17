@@ -246,9 +246,6 @@ WWW Studio audit (WWW_STUDIO_AUDIT_AND_DEPLOYMENT.md) is now **complete**. All 6
 ---
 
 ## Re-Audit Remediation Phase (2026-07-15) — COMPLETE (code) / partial (guardrails)
-
-**Triggered by:** `www-studio reaudit mobile-login-gallery 2026-07-15.md` (3 claims).
-
 - [x] **Claim 1 (login backend) — STALE, no fix needed.** Live probe: api-server 200, `DATABASE_URL` set on Vercel prod. Audit was against a transient state.
 - [x] **Claim 2 (bare `/api` fetches) — FIXED.** `apiFetch.ts` + `getBaseUrl()`; 0 real bare fetches remain. Pushed `edc9850`.
 - [x] **Claim 3 (mobile hover-only buttons) — FIXED.** `md:` touch fallback on 17/22 sites; 5 leftovers are non-interactive tooltips/overlay. Playwright 390px audit = 0 hidden actions.
@@ -259,6 +256,34 @@ WWW Studio audit (WWW_STUDIO_AUDIT_AND_DEPLOYMENT.md) is now **complete**. All 6
 - [ ] **Omniparser visual pass** — skipped (user consent not given); Playwright+Moondream used instead.
 
 ---
+
+## Mobile Login + Navigation Fix Phase (2026-07-16) — COMMITTED, build re-verify pending
+
+**Triggered by:** User reported on a 390px phone — cannot log in (GitHub button crashes to home), no nav on most pages (must close app), header overflows screen, two overlapping X buttons, component buttons take full screen.
+
+**Root causes (proven from source + live API):**
+- `use-auth.ts:loginWithGitHub()` hard-redirected to `/api/auth/github` with no error handling; live endpoint = HTTP 500 (`githubAvailable:false`, no GITHUB_CLIENT_ID/SECRET in api-server Vercel env) → crash-to-home.
+- `<Navbar>` imported on only 7 of 17 pages; 9 pages (all editors + DesignExtract*) + not-found had no way back.
+- Mobile "Log in" button was `hidden sm:inline-flex` → invisible on phone (no password login reachable).
+- `Sheet` (Radix Dialog) rendered its default close `<X>` AND `Navbar` added a second → two overlapping X's.
+- Editor/scene/freeform headers used unconstrained flex rows → horizontal overflow at 390px.
+
+**Fixes (commit `ab92290`, origin/main):**
+- [x] `AppLayout.tsx` wraps all 17 routes → Navbar/back reachable everywhere.
+- [x] `Navbar.tsx` — added visible mobile "Log in" button; GitHub button gated on `githubAvailable`.
+- [x] `use-auth.ts:loginWithGitHub()` now async, stays on page + shows notice on error (no bounce).
+- [x] `sheet.tsx` — `showClose` dedupe → single X.
+- [x] `editor.tsx` / `scene-editor.tsx` / `freeform-editor.tsx` headers `overflow-x-auto`; `components.tsx` / `gallery.tsx` `overflow-x-hidden`.
+
+**Verification:**
+- [x] Code committed + pushed (`ab92290`).
+- [~] **Vercel CLI `vercel build` re-verify** — running 2026-07-16 (background). Targets FRONTEND project `www-studio` (`prj_6Wq7lyOGAUULnS3GB2FQkKWb3OIr`), NOT api-server.
+- [ ] **Redeploy `--prod --force` after build verify** + live 390px Playwright re-assert.
+- [ ] **GitHub OAuth backend** — BLOCKED: requires `GITHUB_CLIENT_ID`/`GITHUB_CLIENT_SECRET` in `www-studio-api-server` Vercel env (absent). Frontend now fails gracefully; real OAuth needs creds (separate task, not OpenAuth).
+
+**Notes:**
+- OpenAuth (anomalyco/openauth) suggested by user as api-server auth replacement — **NOT started**; user deferred it 2026-07-16.
+- Moondream (local Ollama `moondream:v2`) UNUSABLE on CPU — switched to Playwright DOM extraction for factual 390px verification. RULE: only run Moondream when headless VS Code is NOT running (both RAM-heavy).
 
 ## Key Metrics & Success Criteria
 
