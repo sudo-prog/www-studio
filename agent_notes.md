@@ -2,7 +2,24 @@
 
 Architecture decisions, file structure, API patterns, and known issues for WWW Studio.
 
-**Last updated:** 2026-07-14
+**Last updated:** 2026-07-22
+
+## 3D Asset (GLB/GLTF) Upload Fix (2026-07-22)
+
+### Root cause
+The `ThreeDAssetLibrary` file picker used `<input accept="...">` with only
+MIME types. Browsers do NOT map `.glb`/`.gltf` reliably to a selectable MIME
+(`model/gltf-binary` is often unknown), so the OS file dialog filtered GLB
+files out entirely — the upload "didn't allow .glb files."
+
+### Fix
+- `src/utils/three/supabaseAssets.ts` (and the `components/three` copy):
+  `ACCEPTED_MIME_TYPES` now also matches by extension (`/\.(glb|gltf|...)$/i`),
+  and the accept attribute lists explicit extensions.
+- `src/components/three/ThreeDAssetLibrary.tsx`: added size validation on
+  upload (200MB GLB/GLTF, 50MB tex, 100MB hdr, 10MB font) with inline error text.
+- NOTE: a 60MB custom GLB is well under the 200MB limit, so size was never the
+  blocker — it was the extension/MIME accept filter.
 
 ## Vercel Deployment Configuration Audit (2026-07-03)
 

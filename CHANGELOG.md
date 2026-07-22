@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-07-22
+
+### Fixed
+- **3D asset (GLB/GLTF) upload** — `.glb`/`.gltf` files were rejected by the asset
+  library picker because the `<input accept>` only listed browser-recognized MIME
+  types (browsers ignore the `model/gltf-binary` MIME for `.glb`). Added explicit
+  file extensions to the accept list plus `.png/.jpg/.webp/.hdr/.exr/.ttf/.otf/
+  .woff/.woff2`. Added size validation: 200MB GLB/GLTF, 50MB textures, 100MB HDR,
+  10MB fonts — shown inline in the asset library UI.
+
 ## [0.4.0] - 2025-01-XX
 
 ### Added
