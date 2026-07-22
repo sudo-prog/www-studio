@@ -9,14 +9,36 @@ interface ThreeDAssetLibraryProps {
 
 const ASSET_TYPES: AssetType[] = ['glb', 'texture', 'hdr', 'font'];
 
+// Max file sizes per asset type (in bytes)
+const MAX_FILE_SIZES: Record<AssetType, number> = {
+  glb: 200 * 1024 * 1024,      // 200MB for GLB/GLTF models
+  texture: 50 * 1024 * 1024,   // 50MB for textures
+  hdr: 100 * 1024 * 1024,      // 100MB for HDR environments
+  font: 10 * 1024 * 1024,      // 10MB for fonts
+};
+
 export default function ThreeDAssetLibrary({ isOpen, onModelSelect, onClose }: ThreeDAssetLibraryProps) {
   const [activeTab, setActiveTab] = useState<AssetType>('glb');
   const [assets, setAssets] = useState<ThreeAsset[]>([]);
   const [uploading, setUploading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleFileUpload = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (!files || files.length === 0) return;
+    
+    const maxSize = MAX_FILE_SIZES[activeTab];
+    const sizeLabel = activeTab === 'glb' ? '200MB' : activeTab === 'texture' ? '50MB' : activeTab === 'hdr' ? '100MB' : '10MB';
+    
+    // Validate file sizes
+    const oversizedFiles = Array.from(files).filter(f => f.size > maxSize);
+    if (oversizedFiles.length > 0) {
+      setError(`${oversizedFiles.map(f => f.name).join(', ')} exceed${oversizedFiles.length === 1 ? 's' : ''} the ${sizeLabel} limit for ${ASSET_TYPE_LABELS[activeTab].toLowerCase()}.`);
+      e.target.value = '';
+      return;
+    }
+    
+    setError(null);
     setUploading(true);
     // Upload placeholder — actual Supabase Storage upload requires auth context
     // In production: upload to 'three-assets' bucket, insert into three_assets table
@@ -81,6 +103,9 @@ export default function ThreeDAssetLibrary({ isOpen, onModelSelect, onClose }: T
               disabled={uploading}
             />
           </label>
+          {error && (
+            <p className="mt-2 text-sm text-red-400 text-center">{error}</p>
+          )}
         </div>
 
         <div className="flex-1 overflow-y-auto p-4">
