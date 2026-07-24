@@ -158,11 +158,31 @@
     [class*="button"],
     [class*="nav-item"],
     [class*="toolbar"] [class*="button"],
+    [class*="toolbar-btn"],
+    .toolbar-btn,
     /* nav/logo action links that carry classes (e.g. logo + "My Scenes").
        Excludes inline prose <a> (no class) so we never force min-width and overflow. */
     a[href][class] {
       min-height: 44px !important;
       min-width: 44px !important;
+    }
+    /* The bare-DIV-wrapped floating toolbar buttons (Search/Ctrl+K, Zoom, Export,
+       Import, Fit-to-view) render their icon at 32x32 but the *hit area* must be
+       >=44x44 on mobile. Keep the 32px visual icon, enforce a 44px tappable box.
+       `!important` overrides any inline/utility width+height (e.g. h-8 w-8). */
+    .toolbar-btn,
+    .toolbar-hide-mobile,
+    [class*="toolbar-btn"],
+    [class*="ToolbarBtn"],
+    [class*="toolbar"] button,
+    [class*="toolbar"] [role="button"],
+    [class*="toolbar"] a {
+      min-width: 44px !important;
+      min-height: 44px !important;
+      /* let the icon stay centered inside the larger hit area */
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
     /* Form controls also need a generous touch height */
     input, select, textarea {
