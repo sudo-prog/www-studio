@@ -126,7 +126,23 @@ export default function Components() {
           </div>
         </div>
 
-        <div className="flex gap-6">
+        <div className="flex flex-col md:flex-row gap-6">
+          {/* Mobile category pills */}
+          <div className="md:hidden flex flex-wrap gap-2 mb-2 w-full">
+            {CATEGORIES.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={cn(
+                  "px-3 py-1.5 rounded-full text-xs font-medium transition-colors",
+                  activeCategory === cat ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:text-foreground"
+                )}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
           {/* Left category sidebar */}
           <nav className="hidden md:flex flex-col gap-1 w-44 shrink-0">
             {CATEGORIES.map((cat) => (
@@ -148,24 +164,8 @@ export default function Components() {
             ))}
           </nav>
 
-          {/* Mobile category pills */}
-          <div className="md:hidden flex flex-wrap gap-2 mb-6 w-full">
-            {CATEGORIES.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={cn(
-                  "px-3 py-1.5 rounded-full text-xs font-medium transition-colors",
-                  activeCategory === cat ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:text-foreground"
-                )}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-
           {/* Grid */}
-          <div className="flex-1 min-w-0">
+          <div className="flex-1 min-w-0 overflow-x-hidden">
             {filtered.length === 0 ? (
               <div className="text-center py-20 text-muted-foreground">
                 <Search className="w-10 h-10 mx-auto mb-3 opacity-30" />

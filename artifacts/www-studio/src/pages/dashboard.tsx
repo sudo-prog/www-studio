@@ -18,9 +18,11 @@ export default function Dashboard() {
   const { isAuthenticated, isLoading: authLoading } = useAuth();
   const [, setLocation] = useLocation();
 
-  const publishedCount = (projects as any[]).filter((p: any) => p.status === "published").length;
-  const scenesCount = (scenes as any[]).length;
-  const publishedScenes = (scenes as any[]).filter((s: any) => s.status === "published").length;
+  const safeProjects = Array.isArray(projects) ? projects : [];
+  const safeScenes = Array.isArray(scenes) ? scenes : [];
+  const publishedCount = safeProjects.filter((p: any) => p.status === "published").length;
+  const scenesCount = safeScenes.length;
+  const publishedScenes = safeScenes.filter((s: any) => s.status === "published").length;
 
   const handleDelete = (id: string) => {
     deleteProject.mutate({ id }, {
@@ -60,7 +62,7 @@ export default function Dashboard() {
         {/* Stats bar */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
           {[
-            { icon: <FolderOpen className="h-4 w-4" />, label: "Projects", value: (projects as any[]).length, color: "text-blue-400" },
+            { icon: <FolderOpen className="h-4 w-4" />, label: "Projects", value: safeProjects.length, color: "text-blue-400" },
             { icon: <Globe className="h-4 w-4" />,       label: "Published", value: publishedCount,              color: "text-green-400" },
             { icon: <Layers className="h-4 w-4" />,      label: "Scenes",    value: scenesCount,                  color: "text-purple-400" },
             { icon: <BarChart3 className="h-4 w-4" />,   label: "Live Scenes", value: publishedScenes,           color: "text-orange-400" },
@@ -76,7 +78,7 @@ export default function Dashboard() {
         </div>
 
         {/* Recent Scenes strip */}
-        {(scenes as any[]).length > 0 && (
+        {safeScenes.length > 0 && (
           <div className="mb-8">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-sm font-semibold flex items-center gap-2">
@@ -87,7 +89,7 @@ export default function Dashboard() {
               </Link>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {(scenes as any[]).slice(0, 4).map((scene: any) => {
+              {safeScenes.slice(0, 4).map((scene: any) => {
                 let elements: any[] = [];
                 try { elements = JSON.parse(scene.elements ?? "[]"); } catch {}
                 const colors = elements.slice(0, 4).map((e: any) => e.fill).filter(Boolean);
@@ -138,7 +140,7 @@ export default function Dashboard() {
           <div>
             <h1 className="text-3xl font-bold tracking-tight">My Projects</h1>
             <p className="text-muted-foreground mt-1">
-              {(projects as any[]).length} project{(projects as any[]).length !== 1 ? "s" : ""} — manage and edit your websites.
+              {safeProjects.length} project{safeProjects.length !== 1 ? "s" : ""} — manage and edit your websites.
             </p>
           </div>
           <Button asChild>

@@ -1,6 +1,6 @@
 import { apiFetch } from "@/lib/apiFetch";
 import { useState, useEffect } from "react";
-import { useLocation } from "wouter";
+import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -58,7 +58,7 @@ function SceneCard({ scene, onEdit, onDelete, onFork, onTogglePublish, selected,
       {onSelect && (
         <button
           onClick={(e) => { e.stopPropagation(); onSelect(); }}
-          className="absolute top-2 right-2 z-20 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity"
+          className="absolute top-2 right-2 z-20 min-h-11 min-w-11 flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity"
           style={selected ? { opacity: 1 } : {}}
         >
           {selected
@@ -101,8 +101,8 @@ function SceneCard({ scene, onEdit, onDelete, onFork, onTogglePublish, selected,
         <div className="absolute top-2 right-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button size="icon" variant="secondary" className="h-7 w-7 bg-black/60 hover:bg-black/80 border-0">
-                <MoreHorizontal className="h-4 w-4" />
+              <Button size="icon" variant="secondary" className="h-11 w-11 bg-black/60 hover:bg-black/80 border-0">
+                <MoreHorizontal className="h-5 w-5" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
@@ -253,7 +253,8 @@ export default function Scenes() {
       .catch(() => {});
   }, []);
 
-  const filtered = (scenes as any[])
+  const safeScenes = Array.isArray(scenes) ? scenes : [];
+  const filtered = safeScenes
     .filter((s: any) => s.name.toLowerCase().includes(search.toLowerCase()))
     .filter((s: any) => {
       if (!tagFilter) return true;
@@ -342,7 +343,7 @@ export default function Scenes() {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-8">
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-8">
           <div>
             <h1 className="text-3xl font-bold tracking-tight mb-1">Scenes</h1>
             <p className="text-muted-foreground">Visual SVG compositions with wellness animations</p>
@@ -436,9 +437,9 @@ export default function Scenes() {
           </select>
           <span className="text-sm text-muted-foreground">{filtered.length} scenes</span>
           <Button variant="ghost" size="sm" asChild>
-            <a href="/scenes/gallery" className="gap-1.5 text-xs">
+            <Link href="/scenes/gallery" className="gap-1.5 text-xs">
               <Globe className="h-3.5 w-3.5" />Public Gallery
-            </a>
+            </Link>
           </Button>
         </div>
 

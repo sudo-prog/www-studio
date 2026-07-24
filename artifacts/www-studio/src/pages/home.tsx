@@ -55,7 +55,7 @@ export default function Home() {
   useEffect(() => {
     apiFetch("/api/scenes/public?limit=6")
       .then((r) => r.ok ? r.json() : [])
-      .then((d) => setPublicScenes(d.slice(0, 6)))
+      .then((d) => setPublicScenes(Array.isArray(d) ? d.slice(0, 6) : []))
       .catch(() => {});
   }, []);
 

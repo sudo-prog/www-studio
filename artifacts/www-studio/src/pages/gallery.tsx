@@ -112,7 +112,7 @@ function GallerySceneCard({ scene, onFork, onEmbed, onPreview }: {
           <span className="text-xs text-muted-foreground">{elements.length} elements</span>
           <button
             onClick={onEmbed}
-            className="text-[10px] text-muted-foreground hover:text-foreground flex items-center gap-1 transition-colors"
+            className="min-h-11 min-w-11 flex items-center justify-center text-[10px] text-muted-foreground hover:text-foreground gap-1 transition-colors"
           >
             <Code2 className="h-3 w-3" />Embed
           </button>
@@ -131,7 +131,8 @@ export default function Gallery() {
   const { data: allScenes = [], refetch } = useGetScenes();
   const createScene = useCreateScene();
 
-  const published = (allScenes as any[]).filter(
+  const safeScenes = Array.isArray(allScenes) ? allScenes : [];
+  const published = safeScenes.filter(
     (s: any) => s.status === "published" && (!search || s.name.toLowerCase().includes(search.toLowerCase()))
   );
 

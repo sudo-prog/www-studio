@@ -333,9 +333,10 @@ export function AiChatWidget({ context, onNavigate }: AiChatWidgetProps) {
         <button
           onClick={handleOpen}
           className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-14 h-14 rounded-full bg-primary shadow-lg shadow-primary/30 flex items-center justify-center hover:scale-110 transition-transform group"
+          style={{ bottom: 'max(1rem, calc(env(safe-area-inset-bottom, 0px) + 1rem))' }}
         >
           <Wand2 className="w-6 h-6 text-white" />
-          <span className="absolute -top-8 right-0 text-xs bg-zinc-800 text-white px-2 py-1 rounded-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none hidden sm:block">
+          <span className="absolute -top-8 right-0 text-xs bg-zinc-800 text-white px-2 py-1 rounded-md whitespace-nowrap opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity pointer-events-none hidden sm:block">
             AI Assistant
           </span>
         </button>
@@ -349,6 +350,7 @@ export function AiChatWidget({ context, onNavigate }: AiChatWidgetProps) {
             "bottom-4 right-4 left-4 sm:left-auto sm:bottom-6 sm:right-6 sm:w-80",
             minimized ? "h-14" : "h-[400px] sm:h-[480px]"
           )}
+          style={{ bottom: 'max(1rem, calc(env(safe-area-inset-bottom, 0px) + 1rem))' }}
         >
           {/* Header */}
           <div className="h-14 flex items-center justify-between px-4 border-b border-border/50 bg-muted/30 shrink-0">
