@@ -163,7 +163,7 @@ export default function DesignExtractCompare() {
       <Navbar />
       {/* Header */}
       <div className="border-b border-[#27272a] px-4 md:px-6 py-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <div className="max-w-7xl mx-auto flex items-center justify-between flex-wrap">
           <div className="flex items-center gap-3">
             <GitCompare className="h-5 w-5 text-[#3b82f6]" />
             <h1 className="text-lg font-semibold font-display">Compare Designs</h1>
@@ -172,7 +172,7 @@ export default function DesignExtractCompare() {
             size="sm"
             onClick={handleMerge}
             disabled={merging}
-            className="bg-[#3b82f6] hover:bg-[#3b82f6]/90 text-white"
+            className="bg-[#3b82f6] hover:bg-[#3b82f6]/90 text-white min-h-[44px]"
           >
             {merging ? (
               <Loader2 className="h-3 w-3 mr-1.5 animate-spin" />
@@ -197,7 +197,7 @@ export default function DesignExtractCompare() {
               <div className="space-y-4">
                 <div>
                   <h3 className="text-xs font-medium text-muted-foreground mb-2">Colors</h3>
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-2 gap-2 overflow-x-auto">
                     {Object.entries(colorsA).map(([name, hex]) => {
                       const isDifferent = colorDiff.different.includes(name);
                       const isOnlyHere = colorDiff.onlyInA.includes(name);
@@ -233,7 +233,7 @@ export default function DesignExtractCompare() {
               <div className="space-y-4">
                 <div>
                   <h3 className="text-xs font-medium text-muted-foreground mb-2">Colors</h3>
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-2 gap-2 overflow-x-auto">
                     {Object.entries(colorsB).map(([name, hex]) => {
                       const isDifferent = colorDiff.different.includes(name);
                       const isOnlyHere = colorDiff.onlyInB.includes(name);

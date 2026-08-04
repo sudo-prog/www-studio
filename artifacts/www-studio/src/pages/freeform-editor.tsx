@@ -303,7 +303,7 @@ export default function FreeformEditor() {
           <Button
             variant="outline"
             size="sm"
-            className="w-full h-7 text-xs"
+            className="w-full min-h-[44px] text-xs"
             onClick={() => {
               const css = tokensToCSS(tokens);
               navigator.clipboard.writeText(css);
@@ -323,7 +323,7 @@ export default function FreeformEditor() {
           </div>
 
           {selectedEl && (
-            <Button variant="outline" size="sm" className="w-full h-7 text-xs gap-1" onClick={handleCreateComponent}>
+            <Button variant="outline" size="sm" className="w-full min-h-[44px] text-xs gap-1" onClick={handleCreateComponent}>
               <Component className="w-3 h-3" /> Create Component from Selection
             </Button>
           )}
@@ -340,7 +340,7 @@ export default function FreeformEditor() {
                     <span className="text-[11px] font-medium">{comp.name}</span>
                     <Button variant="ghost" size="icon" className="h-4 w-4" onClick={() => dispatch({ type: "DELETE_COMPONENT", id: comp.id })}>×</Button>
                   </div>
-                  <Button variant="outline" size="sm" className="w-full h-6 text-[10px]" onClick={() => handleCreateInstance(comp.id)}>
+                  <Button variant="outline" size="sm" className="w-full min-h-[44px] text-[10px]" onClick={() => handleCreateInstance(comp.id)}>
                     + Create Instance
                   </Button>
                   {comp.variants.length > 0 && (
@@ -470,49 +470,49 @@ export default function FreeformEditor() {
 
           <div className="w-px h-5 bg-border mx-1" />
 
-          <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => dispatch({ type: "SET_ZOOM", zoom: Math.max(0.25, state.zoom - 0.1) })} title="Zoom out">
+          <Button variant="ghost" size="icon" className="min-h-[44px] min-w-[44px]" onClick={() => dispatch({ type: "SET_ZOOM", zoom: Math.max(0.25, state.zoom - 0.1) })} title="Zoom out">
             <ZoomOut className="w-3.5 h-3.5" />
           </Button>
           <span className="text-[10px] text-muted-foreground w-10 text-center tabular-nums">
             {Math.round(state.zoom * 100)}%
           </span>
-          <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => dispatch({ type: "SET_ZOOM", zoom: Math.min(3, state.zoom + 0.1) })} title="Zoom in">
+          <Button variant="ghost" size="icon" className="min-h-[44px] min-w-[44px]" onClick={() => dispatch({ type: "SET_ZOOM", zoom: Math.min(3, state.zoom + 0.1) })} title="Zoom in">
             <ZoomIn className="w-3.5 h-3.5" />
           </Button>
 
           <div className="w-px h-5 bg-border mx-1" />
 
-          <Button variant="ghost" size="icon" className={cn("h-7 w-7", state.snapGrid && "text-primary")} onClick={() => dispatch({ type: "TOGGLE_SNAP" })} title="Snap to grid">
+          <Button variant="ghost" size="icon" className={cn("min-h-[44px] min-w-[44px]", state.snapGrid && "text-primary")} onClick={() => dispatch({ type: "TOGGLE_SNAP" })} title="Snap to grid">
             <Grid3x3 className="w-3.5 h-3.5" />
           </Button>
-          <Button variant="ghost" size="icon" className={cn("h-7 w-7", state.showGuides && "text-primary")} onClick={() => dispatch({ type: "TOGGLE_GUIDES" })} title="Alignment guides">
+          <Button variant="ghost" size="icon" className={cn("min-h-[44px] min-w-[44px]", state.showGuides && "text-primary")} onClick={() => dispatch({ type: "TOGGLE_GUIDES" })} title="Alignment guides">
             <Ruler className="w-3.5 h-3.5" />
           </Button>
-          <Button variant="ghost" size="icon" className={cn("h-7 w-7", state.showRulers && "text-primary")} onClick={() => dispatch({ type: "TOGGLE_RULERS" })} title="Rulers">
+          <Button variant="ghost" size="icon" className={cn("min-h-[44px] min-w-[44px]", state.showRulers && "text-primary")} onClick={() => dispatch({ type: "TOGGLE_RULERS" })} title="Rulers">
             <Layers className="w-3.5 h-3.5" />
           </Button>
 
           <div className="w-px h-5 bg-border mx-1" />
 
           {/* Artboard button */}
-          <Button variant="ghost" size="icon" className="h-7 w-7" onClick={handleAddArtboard} title="Add artboard">
+          <Button variant="ghost" size="icon" className="min-h-[44px] min-w-[44px]" onClick={handleAddArtboard} title="Add artboard">
             <Plus className="w-3.5 h-3.5" />
           </Button>
 
           {/* Design tokens */}
-          <Button variant="ghost" size="icon" className={cn("h-7 w-7", showTokenPanel && "text-primary")} onClick={() => { setShowTokenPanel(!showTokenPanel); setShowComponentPanel(false); }} title="Design tokens">
+          <Button variant="ghost" size="icon" className={cn("min-h-[44px] min-w-[44px]", showTokenPanel && "text-primary")} onClick={() => { setShowTokenPanel(!showTokenPanel); setShowComponentPanel(false); }} title="Design tokens">
             <Palette className="w-3.5 h-3.5" />
           </Button>
 
           {/* Components */}
-          <Button variant="ghost" size="icon" className={cn("h-7 w-7", showComponentPanel && "text-primary")} onClick={() => { setShowComponentPanel(!showComponentPanel); setShowTokenPanel(false); }} title="Components">
+          <Button variant="ghost" size="icon" className={cn("min-h-[44px] min-w-[44px]", showComponentPanel && "text-primary")} onClick={() => { setShowComponentPanel(!showComponentPanel); setShowTokenPanel(false); }} title="Components">
             <Component className="w-3.5 h-3.5" />
           </Button>
 
           <div className="w-px h-5 bg-border mx-1" />
 
           {/* AI Chat */}
-          <Button variant="ghost" size="icon" className={cn("h-7 w-7", showAIChat && "text-primary")} onClick={() => setShowAIChat(!showAIChat)} title="AI Chat">
+          <Button variant="ghost" size="icon" className={cn("min-h-[44px] min-w-[44px]", showAIChat && "text-primary")} onClick={() => setShowAIChat(!showAIChat)} title="AI Chat">
             <Sparkles className="w-3.5 h-3.5" />
           </Button>
 
@@ -527,12 +527,12 @@ export default function FreeformEditor() {
           />
 
           {/* Mobile Preview */}
-          <Button variant="ghost" size="icon" className={cn("h-7 w-7", showMobilePreview && "text-primary")} onClick={() => setShowMobilePreview(!showMobilePreview)} title="Mobile Preview">
+          <Button variant="ghost" size="icon" className={cn("min-h-[44px] min-w-[44px]", showMobilePreview && "text-primary")} onClick={() => setShowMobilePreview(!showMobilePreview)} title="Mobile Preview">
             <Smartphone className="w-3.5 h-3.5" />
           </Button>
 
           {/* Custom CSS/JS */}
-          <Button variant="ghost" size="icon" className={cn("h-7 w-7", showCssJsPanel && "text-primary")} onClick={() => setShowCssJsPanel(!showCssJsPanel)} title="Custom CSS/JS">
+          <Button variant="ghost" size="icon" className={cn("min-h-[44px] min-w-[44px]", showCssJsPanel && "text-primary")} onClick={() => setShowCssJsPanel(!showCssJsPanel)} title="Custom CSS/JS">
             <FileCode className="w-3.5 h-3.5" />
           </Button>
 
@@ -543,7 +543,7 @@ export default function FreeformEditor() {
           {isMobile && (
             <Sheet open={mobilePanelsOpen} onOpenChange={setMobilePanelsOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="h-7 w-7" title="Panels">
+                <Button variant="ghost" size="icon" className="min-h-[44px] min-w-[44px]" title="Panels">
                   <SlidersHorizontal className="w-3.5 h-3.5" />
                 </Button>
               </SheetTrigger>
@@ -555,10 +555,10 @@ export default function FreeformEditor() {
             </Sheet>
           )}
 
-          <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => setShowPreview(!showPreview)} title="Preview">
+          <Button variant="ghost" size="icon" className="min-h-[44px] min-w-[44px]" onClick={() => setShowPreview(!showPreview)} title="Preview">
             <Eye className="w-3.5 h-3.5" />
           </Button>
-          <Button variant="ghost" size="sm" className="h-7 text-xs gap-1" onClick={handleExport}>
+          <Button variant="ghost" size="sm" className="min-h-[44px] text-xs gap-1" onClick={handleExport}>
             <Download className="w-3.5 h-3.5" />
             Export
           </Button>

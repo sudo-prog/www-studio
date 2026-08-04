@@ -117,13 +117,13 @@ export default function NewProject() {
           </div>
 
           {/* Tab Switcher */}
-          <div className="flex rounded-xl border border-border/50 bg-card/30 p-1 mb-6 gap-1">
+          <div className="flex flex-wrap rounded-xl border border-border/50 bg-card/30 p-1 mb-6 gap-1">
             {TABS.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={cn(
-                  "flex-1 flex flex-col items-center gap-1 px-2 py-2.5 rounded-lg text-xs font-medium transition-all",
+                  "flex-1 flex flex-col items-center gap-1 px-2 py-2.5 min-h-[48px] rounded-lg text-xs font-medium transition-all",
                   activeTab === tab.id ? "bg-primary text-primary-foreground shadow-sm" : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                 )}
               >
@@ -148,7 +148,7 @@ export default function NewProject() {
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {["stripe.com", "linear.app", "vercel.com", "apple.com"].map((u) => (
-                      <button key={u} type="button" onClick={() => setUrl(`https://${u}`)} className="text-xs px-3 py-1 rounded-full border border-border/50 text-muted-foreground hover:text-foreground hover:border-primary/50 transition-colors">{u}</button>
+                      <button key={u} type="button" onClick={() => setUrl(`https://${u}`)} className="text-xs px-3 py-1 min-h-[44px] rounded-full border border-border/50 text-muted-foreground hover:text-foreground hover:border-primary/50 transition-colors">{u}</button>
                     ))}
                   </div>
                   <Button type="submit" className="w-full h-12 text-base font-medium" disabled={cloneMutation.isPending || !url}>
@@ -173,7 +173,7 @@ export default function NewProject() {
                     <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Examples</p>
                     <div className="space-y-1.5">
                       {PROMPT_EXAMPLES.map((ex) => (
-                        <button key={ex} type="button" onClick={() => setPrompt(ex)} className="w-full text-left text-xs px-3 py-2 rounded-lg border border-border/40 text-muted-foreground hover:text-foreground hover:border-primary/40 hover:bg-primary/5 transition-all">{ex}</button>
+                        <button key={ex} type="button" onClick={() => setPrompt(ex)} className="w-full text-left text-xs px-3 py-2 min-h-[44px] rounded-lg border border-border/40 text-muted-foreground hover:text-foreground hover:border-primary/40 hover:bg-primary/5 transition-all">{ex}</button>
                       ))}
                     </div>
                   </div>
@@ -202,7 +202,7 @@ export default function NewProject() {
                   ) : (
                     <div className="relative rounded-xl overflow-hidden border border-border/50">
                       <img src={imagePreview} alt="Preview" className="w-full max-h-64 object-cover" />
-                      <button type="button" onClick={() => { setImagePreview(null); setImageData(null); }} className="absolute top-2 right-2 w-8 h-8 rounded-full bg-background/80 backdrop-blur flex items-center justify-center hover:bg-background transition-colors"><X className="w-4 h-4" /></button>
+                      <button type="button" onClick={() => { setImagePreview(null); setImageData(null); }} className="absolute top-2 right-2 min-w-[44px] min-h-[44px] rounded-full bg-background/80 backdrop-blur flex items-center justify-center hover:bg-background transition-colors"><X className="w-4 h-4" /></button>
                     </div>
                   )}
                   <input ref={fileInputRef} type="file" accept="image/*" className="hidden" onChange={(e) => { const f = e.target.files?.[0]; if (f) processFile(f); }} />
@@ -232,7 +232,7 @@ export default function NewProject() {
                     <div className="relative rounded-xl border border-border/50 bg-muted/20 p-4 flex items-center gap-3">
                       <Figma className="w-8 h-8 text-primary shrink-0" />
                       <div className="flex-1 min-w-0"><p className="text-sm font-medium truncate">{figmaFilename}</p><p className="text-xs text-muted-foreground">{(figmaJson.length / 1024).toFixed(1)} KB parsed</p></div>
-                      <button type="button" onClick={() => { setFigmaJson(null); setFigmaFilename(null); }} className="w-8 h-8 rounded-full bg-background/80 flex items-center justify-center hover:bg-background transition-colors shrink-0"><X className="w-4 h-4" /></button>
+                      <button type="button" onClick={() => { setFigmaJson(null); setFigmaFilename(null); }} className="min-w-[44px] min-h-[44px] rounded-full bg-background/80 flex items-center justify-center hover:bg-background transition-colors shrink-0"><X className="w-4 h-4" /></button>
                     </div>
                   )}
                   <input ref={figmaInputRef} type="file" accept=".json,application/json" className="hidden" onChange={(e) => { const f = e.target.files?.[0]; if (f) processFigmaFile(f); }} />

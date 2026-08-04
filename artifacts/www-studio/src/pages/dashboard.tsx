@@ -84,7 +84,7 @@ export default function Dashboard() {
               <h2 className="text-sm font-semibold flex items-center gap-2">
                 <Layers className="h-4 w-4 text-purple-400" />Recent Scenes
               </h2>
-              <Link href="/scenes" className="text-xs text-muted-foreground hover:text-foreground flex items-center gap-1">
+              <Link href="/scenes" className="text-xs text-muted-foreground hover:text-foreground flex items-center gap-1 min-h-[44px]">
                 View all →
               </Link>
             </div>
@@ -136,14 +136,14 @@ export default function Dashboard() {
           ))}
         </div>
 
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between flex-wrap gap-3 mb-8">
           <div>
             <h1 className="text-3xl font-bold tracking-tight">My Projects</h1>
             <p className="text-muted-foreground mt-1">
               {safeProjects.length} project{safeProjects.length !== 1 ? "s" : ""} — manage and edit your websites.
             </p>
           </div>
-          <Button asChild>
+          <Button asChild className="min-h-[48px]">
             <Link href="/editor/new" className="gap-2">
               <Plus className="h-4 w-4" />New Project
             </Link>
@@ -165,7 +165,7 @@ export default function Dashboard() {
             <p className="text-muted-foreground max-w-sm mb-6 text-sm">
               Create your first project by cloning a website, generating from a prompt, or converting a screenshot.
             </p>
-            <Button asChild>
+            <Button asChild className="min-h-[48px]">
               <Link href="/editor/new">Create Project</Link>
             </Button>
           </div>
@@ -180,7 +180,7 @@ export default function Dashboard() {
                     <div className="absolute inset-0 flex items-center justify-center text-muted-foreground text-sm">No Preview</div>
                   )}
                   <div className="absolute inset-0 bg-black/60 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
-                    <Button variant="secondary" size="sm" asChild>
+                    <Button variant="secondary" size="sm" asChild className="min-h-[48px]">
                       <Link href={`/editor/${project.id}`}>
                         <Play className="w-4 h-4 mr-2" />Open Editor
                       </Link>
@@ -205,7 +205,7 @@ export default function Dashboard() {
                     </div>
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" size="icon" className="h-8 w-8 -mr-2 text-muted-foreground hover:text-foreground shrink-0">
+                        <Button variant="ghost" size="icon" className="h-8 w-8 -mr-2 min-h-[44px] min-w-[44px] text-muted-foreground hover:text-foreground shrink-0">
                           <MoreVertical className="h-4 w-4" />
                         </Button>
                       </DropdownMenuTrigger>

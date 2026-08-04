@@ -360,7 +360,7 @@ export default function SceneEditor() {
           <Input
             value={state.scene.name}
             onChange={(e) => dispatch({ type: "SET_NAME", name: e.target.value })}
-            className="h-8 w-44 min-w-0 sm:w-44 text-sm font-medium border-transparent bg-transparent hover:bg-muted focus:bg-muted focus:border-border shrink-0"
+            className="h-8 w-44 min-w-0 sm:w-44 text-sm font-medium border-transparent bg-transparent hover:bg-muted focus:bg-muted focus:border-border shrink-0 min-h-[44px]"
           />
 
           {state.isDirty && !autoSavedAt && (
@@ -439,7 +439,7 @@ export default function SceneEditor() {
             variant={showChat ? "secondary" : "ghost"}
             size="sm"
             onClick={() => setShowChat((v) => !v)}
-            className="gap-1.5 h-8"
+            className="gap-1.5 h-8 min-h-[44px]"
             title="AI Chat (Space)"
           >
             <MessageSquare className="h-3.5 w-3.5" />
@@ -470,7 +470,7 @@ export default function SceneEditor() {
             size="sm"
             onClick={handleSave}
             disabled={!state.isDirty || updateScene.isPending}
-            className="gap-1.5 h-8"
+            className="gap-1.5 h-8 min-h-[44px]"
           >
             <Save className="h-3.5 w-3.5" />
             {updateScene.isPending ? "Saving…" : "Save"}
@@ -597,13 +597,13 @@ export default function SceneEditor() {
                     <>
                       <div className="space-y-1.5">
                         <Label className="text-xs text-muted-foreground">Name</Label>
-                        <Input value={selectedEl.name} onChange={(e) => handleUpdate(selectedEl.id, { name: e.target.value })} className="h-7 text-xs" />
+                        <Input value={selectedEl.name} onChange={(e) => handleUpdate(selectedEl.id, { name: e.target.value })} className="h-7 text-xs min-h-[44px]" />
                       </div>
-                      <div className="grid grid-cols-2 gap-2">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         {(["x","y","width","height"] as const).map((field) => (
                           <div key={field} className="space-y-1">
                             <Label className="text-xs text-muted-foreground">{field === "width" ? "W" : field === "height" ? "H" : field.toUpperCase()}</Label>
-                            <Input type="number" value={(selectedEl as any)[field]} onChange={(e) => handleUpdate(selectedEl.id, { [field]: Number(e.target.value) })} className="h-7 text-xs" />
+                            <Input type="number" value={(selectedEl as any)[field]} onChange={(e) => handleUpdate(selectedEl.id, { [field]: Number(e.target.value) })} className="h-7 text-xs min-h-[44px]" />
                           </div>
                         ))}
                       </div>
@@ -611,7 +611,7 @@ export default function SceneEditor() {
                         <Label className="text-xs text-muted-foreground">Fill</Label>
                         <div className="flex gap-2 items-center">
                           <input type="color" value={selectedEl.fill} onChange={(e) => handleUpdate(selectedEl.id, { fill: e.target.value })} className="w-8 h-7 rounded border border-border cursor-pointer bg-transparent" />
-                          <Input value={selectedEl.fill} onChange={(e) => handleUpdate(selectedEl.id, { fill: e.target.value })} className="h-7 text-xs font-mono flex-1" />
+                          <Input value={selectedEl.fill} onChange={(e) => handleUpdate(selectedEl.id, { fill: e.target.value })} className="h-7 text-xs min-h-[44px] font-mono flex-1" />
                         </div>
                       </div>
                       {[
@@ -631,7 +631,7 @@ export default function SceneEditor() {
                         <>
                           <div className="space-y-1.5">
                             <Label className="text-xs text-muted-foreground">Text</Label>
-                            <Input value={selectedEl.text ?? ""} onChange={(e) => handleUpdate(selectedEl.id, { text: e.target.value })} className="h-7 text-xs" />
+                            <Input value={selectedEl.text ?? ""} onChange={(e) => handleUpdate(selectedEl.id, { text: e.target.value })} className="h-7 text-xs min-h-[44px]" />
                           </div>
                           <div className="space-y-1.5">
                             <div className="flex items-center justify-between">
@@ -651,18 +651,18 @@ export default function SceneEditor() {
                         <Switch checked={selectedEl.locked} onCheckedChange={(v) => handleUpdate(selectedEl.id, { locked: v })} />
                       </div>
                       <div className="pt-2 flex gap-2">
-                        <Button variant="ghost" size="sm" className="flex-1 gap-1.5 text-xs h-8" onClick={() => {
+                        <Button variant="ghost" size="sm" className="flex-1 gap-1.5 text-xs h-8 min-h-[44px]" onClick={() => {
                           const dup = { ...selectedEl, id: crypto.randomUUID(), x: selectedEl.x + 20, y: selectedEl.y + 20, name: selectedEl.name + " copy" };
                           dispatch({ type: "ADD_ELEMENT", el: dup });
                         }} title="Duplicate (Ctrl+D)">
                           <Copy className="h-3.5 w-3.5" />Duplicate
                         </Button>
-                        <Button variant="ghost" size="sm" className="flex-1 gap-1.5 text-xs h-8 text-destructive hover:text-destructive" onClick={() => dispatch({ type: "DELETE_ELEMENT", id: selectedEl.id })} title="Delete (Del)">
+                        <Button variant="ghost" size="sm" className="flex-1 gap-1.5 text-xs h-8 min-h-[44px] text-destructive hover:text-destructive" onClick={() => dispatch({ type: "DELETE_ELEMENT", id: selectedEl.id })} title="Delete (Del)">
                           <Trash2 className="h-3.5 w-3.5" />Delete
                         </Button>
                       </div>
                       <div className="pt-1">
-                        <Button variant="outline" size="sm" className="w-full gap-1.5 text-xs h-7" onClick={() => { setShowEnhancer(true); }}>
+                        <Button variant="outline" size="sm" className="w-full gap-1.5 text-xs h-7 min-h-[44px]" onClick={() => { setShowEnhancer(true); }}>
                           <Sparkles className="h-3 w-3" />AI Enhance scene
                         </Button>
                       </div>

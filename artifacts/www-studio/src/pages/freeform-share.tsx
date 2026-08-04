@@ -134,7 +134,7 @@ export default function FreeformSharePage() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       {/* Top bar */}
-      <div className="h-14 flex items-center justify-between px-4 border-b border-border bg-background/95 backdrop-blur shrink-0">
+      <div className="h-14 flex items-center justify-between px-4 border-b border-border bg-background/95 backdrop-blur shrink-0 min-h-[44px]">
         <div className="flex items-center gap-3">
           <Button variant="ghost" size="icon" className="h-8 w-8" asChild>
             <Link href="/projects">
@@ -152,7 +152,7 @@ export default function FreeformSharePage() {
             </span>
           </div>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
           <button
             onClick={handleLike}
             className={cn(

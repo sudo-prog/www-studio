@@ -70,7 +70,7 @@ export default function Home() {
   const showcaseScenes = (Array.isArray(publicScenes) && publicScenes.length > 0) ? publicScenes : safeScenes.slice(0, 6);
 
   return (
-    <div className="min-h-screen flex flex-col overflow-x-hidden">
+    <div className="min-h-dvh flex flex-col overflow-x-hidden">
       <main className="flex-1">
         {/* Hero */}
         <section className="px-4 py-12 sm:py-16 md:py-28 flex flex-col items-center text-center max-w-4xl mx-auto">
@@ -118,7 +118,7 @@ export default function Home() {
         {/* Scenes Showcase */}
         {showcaseScenes.length > 0 && (
           <section className="px-4 md:px-6 pb-16 max-w-7xl mx-auto">
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex flex-wrap items-center justify-between mb-6">
               <div>
                 <div className="flex items-center gap-2 mb-1">
                   <Sparkles className="h-5 w-5 text-primary" />
@@ -132,7 +132,7 @@ export default function Home() {
                     <Globe className="h-3.5 w-3.5" />Public Gallery
                   </Link>
                 </Button>
-                <Button size="sm" asChild>
+                <Button size="sm" className="min-h-[44px]" asChild>
                   <Link href="/scenes" className="gap-1.5">
                     My Scenes<ArrowRight className="h-3.5 w-3.5" />
                   </Link>
@@ -160,7 +160,7 @@ export default function Home() {
               )}
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3">
               {showcaseScenes.map((scene: any) => (
                 <SceneShowcaseCard key={scene.id} scene={scene} />
               ))}
@@ -181,7 +181,7 @@ export default function Home() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search templates..."
-                className="pl-9"
+                className="pl-9 min-h-[44px]"
               />
             </div>
           </div>
@@ -208,7 +208,7 @@ export default function Home() {
                       <div className="absolute inset-0 flex items-center justify-center text-muted-foreground text-sm">No Preview</div>
                     )}
                     <div className="absolute inset-0 bg-black/60 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <Button variant="secondary" size="sm" asChild>
+                      <Button variant="secondary" size="sm" className="min-h-[44px]" asChild>
                         <Link href={`/editor/new?templateId=${template.id}`}>
                           <Eye className="w-4 h-4 mr-2" />Fork Template
                         </Link>

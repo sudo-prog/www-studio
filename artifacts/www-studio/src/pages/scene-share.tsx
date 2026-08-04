@@ -192,11 +192,11 @@ export default function SceneShare() {
   }
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-dvh bg-background flex flex-col">
       {/* Top bar */}
       <div className="h-14 flex items-center justify-between px-4 border-b border-border bg-background/95 backdrop-blur shrink-0">
         <div className="flex items-center gap-3">
-          <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => navigate("/scenes")}>
+          <Button variant="ghost" size="icon" className="h-8 w-8 min-h-[44px] min-w-[44px]" onClick={() => navigate("/scenes")}>
             <ArrowLeft className="h-4 w-4" />
           </Button>
           <Link href="/" className="shrink-0 flex items-center gap-1.5 font-semibold text-sm tracking-tight hover:text-primary transition-colors">
@@ -220,7 +220,7 @@ export default function SceneShare() {
           <button
             onClick={handleLike}
             className={cn(
-              "flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs border transition-all",
+              "flex items-center gap-1.5 px-3 py-1.5 min-h-[44px] rounded-full text-xs border transition-all",
               liked
                 ? "bg-rose-500/20 border-rose-500/40 text-rose-400"
                 : "bg-card border-border text-muted-foreground hover:text-foreground"
@@ -286,7 +286,7 @@ export default function SceneShare() {
                   key={mode}
                   onClick={() => setEmbedMode(mode)}
                   className={cn(
-                    "flex-1 py-1.5 text-xs rounded-md border transition-colors",
+                    "flex-1 py-1.5 min-h-[44px] text-xs rounded-md border transition-colors",
                     embedMode === mode
                       ? "bg-primary text-primary-foreground border-primary"
                       : "border-border text-muted-foreground hover:text-foreground"
@@ -351,10 +351,10 @@ export default function SceneShare() {
           )}
 
           {/* Footer actions */}
-          <div className="p-4 border-t border-border flex flex-col gap-2">
+          <div className="px-4 pt-4 pb-[max(1rem,env(safe-area-inset-bottom))] border-t border-border flex flex-col gap-2">
             <Button
               variant="outline"
-              className="w-full gap-2"
+              className="w-full gap-2 min-h-[44px]"
               onClick={() => {
                 apiFetch(`/api/scenes/${sceneId}/fork`, { method: "POST" })
                   .then((r) => r.ok ? r.json() : null)
@@ -366,7 +366,7 @@ export default function SceneShare() {
             </Button>
             <Button
               variant="outline"
-              className="w-full gap-2"
+              className="w-full gap-2 min-h-[44px]"
               onClick={() => {
                 const a = document.createElement("a");
                 a.href = `/api/scenes/${sceneId}/export-html`;
@@ -378,7 +378,7 @@ export default function SceneShare() {
             </Button>
             <Button
               variant="outline"
-              className="w-full gap-2"
+              className="w-full gap-2 min-h-[44px]"
               onClick={() => {
                 apiFetch(`/api/scenes/${sceneId}/remix`, { method: "POST" })
                   .then((r) => r.ok ? r.json() : null)
@@ -388,7 +388,7 @@ export default function SceneShare() {
             >
               🎛 Remix
             </Button>
-            <Button className="w-full gap-2" asChild>
+            <Button className="w-full gap-2 min-h-[44px]" asChild>
               <Link href={`/scenes/${sceneId}`}>
                 <Sparkles className="h-4 w-4" />Open Editor
               </Link>

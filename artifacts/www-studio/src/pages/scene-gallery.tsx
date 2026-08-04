@@ -103,11 +103,11 @@ function GalleryCard({ scene, onLike, liked }: { scene: any; onLike: () => void;
 
         {/* Overlay actions */}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100">
-          <Button size="sm" variant="secondary" className="h-8 bg-white/90 text-black hover:bg-white border-0 shadow-lg gap-1.5 text-xs"
+          <Button size="sm" variant="secondary" className="h-8 min-h-[44px] bg-white/90 text-black hover:bg-white border-0 shadow-lg gap-1.5 text-xs"
             onClick={() => window.open(`/scenes/${scene.id}/share`, "_blank")}>
             <Eye className="h-3.5 w-3.5" />Share
           </Button>
-          <Button size="sm" variant="secondary" className="h-8 bg-white/90 text-black hover:bg-white border-0 shadow-lg gap-1.5 text-xs"
+          <Button size="sm" variant="secondary" className="h-8 min-h-[44px] bg-white/90 text-black hover:bg-white border-0 shadow-lg gap-1.5 text-xs"
             onClick={() => forkMut.mutate()} disabled={forkMut.isPending}>
             <Sparkles className="h-3.5 w-3.5" />Fork
           </Button>
@@ -127,7 +127,7 @@ function GalleryCard({ scene, onLike, liked }: { scene: any; onLike: () => void;
           <h3 className="font-semibold text-sm truncate">{scene.name}</h3>
           <button
             onClick={onLike}
-            className={cn("shrink-0 flex items-center gap-1 text-xs transition-colors",
+            className={cn("shrink-0 flex items-center gap-1 text-xs min-h-[44px] px-1 transition-colors",
               liked ? "text-red-400" : "text-muted-foreground hover:text-red-400")}
           >
             <Heart className={cn("h-3.5 w-3.5", liked && "fill-current")} />
@@ -161,7 +161,7 @@ function GalleryCard({ scene, onLike, liked }: { scene: any; onLike: () => void;
           </span>
           <button
             onClick={copyLink}
-            className="text-muted-foreground hover:text-foreground transition-colors"
+            className="inline-flex items-center justify-center min-h-[44px] min-w-[44px] text-muted-foreground hover:text-foreground transition-colors"
             title="Copy share link"
           >
             {copied ? <Check className="h-3.5 w-3.5 text-green-400" /> : <Copy className="h-3.5 w-3.5" />}
@@ -224,9 +224,9 @@ export default function SceneGallery() {
     <div className="min-h-screen bg-background overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-8">
         {/* Header */}
-        <div className="flex items-center gap-4 mb-8">
+        <div className="flex items-center gap-4 mb-8 flex-wrap">
           <Link href="/scenes">
-            <Button variant="ghost" size="icon" className="h-9 w-9">
+            <Button variant="ghost" size="icon" className="h-9 w-9 min-h-[44px] min-w-[44px]">
               <ArrowLeft className="h-4 w-4" />
             </Button>
           </Link>
@@ -243,7 +243,7 @@ export default function SceneGallery() {
             <Button
               variant="outline"
               size="sm"
-              className="gap-1.5 text-xs"
+              className="gap-1.5 text-xs min-h-[44px]"
               onClick={() => {
                 apiFetch("/api/scenes/random")
                   .then((r) => r.ok ? r.json() : null)
@@ -310,13 +310,13 @@ export default function SceneGallery() {
               placeholder="Search scenes…"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="pl-9"
+              className="pl-9 min-h-[48px]"
             />
           </div>
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as any)}
-            className="text-xs border border-border rounded-lg px-2 py-1.5 bg-background text-foreground"
+            className="text-xs border border-border rounded-lg px-2 py-1.5 min-h-[44px] bg-background text-foreground"
           >
             <option value="likes">Most Liked</option>
             <option value="views">Most Viewed</option>

@@ -24,11 +24,11 @@ export default function Profile() {
   const [resetLoading, setResetLoading] = useState(false);
   const { resetPassword } = useAuth();
 
-  if (authLoading) return <div className="min-h-screen bg-background" />;
+  if (authLoading) return <div className="min-h-dvh bg-background" />;
 
   if (!isAuthenticated || !user) {
     return (
-      <div className="min-h-screen flex flex-col bg-background overflow-x-hidden">
+      <div className="min-h-dvh flex flex-col bg-background overflow-x-hidden">
         <main className="flex-1 flex flex-col items-center justify-center p-8 text-center max-w-sm mx-auto w-full">
           <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
             <Lock className="w-8 h-8 text-primary" />
@@ -43,7 +43,7 @@ export default function Profile() {
           {githubAvailable && (
             <button
               onClick={loginWithGitHub}
-              className="flex items-center justify-center gap-2 mt-4 w-full rounded-lg border border-border py-2 text-sm font-medium hover:bg-accent transition-colors"
+              className="flex items-center justify-center gap-2 mt-4 w-full min-h-[48px] rounded-lg border border-border py-2 text-sm font-medium hover:bg-accent transition-colors"
             >
               <Github className="w-4 h-4" />
               Continue with GitHub
@@ -89,9 +89,9 @@ export default function Profile() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-background overflow-x-hidden">
+    <div className="min-h-dvh flex flex-col bg-background overflow-x-hidden">
       <main className="flex-1 p-6 md:p-8 max-w-4xl mx-auto w-full">
-        <div className="flex items-start gap-6 mb-12">
+        <div className="flex flex-wrap items-start gap-6 mb-12">
           <Avatar className="w-24 h-24 border-2 border-primary/20">
             <AvatarImage src={user.profileImageUrl || ""} alt={[user.firstName, user.lastName].filter(Boolean).join(" ") || "User"} />
             <AvatarFallback className="text-2xl">{user.firstName?.charAt(0) || "U"}</AvatarFallback>
@@ -99,7 +99,7 @@ export default function Profile() {
           <div>
             <h1 className="text-3xl font-bold tracking-tight mb-2">{[user.firstName, user.lastName].filter(Boolean).join(" ") || "User"}</h1>
             <p className="text-muted-foreground text-lg mb-4">@{user.id || "user"}</p>
-            <div className="flex gap-4">
+            <div className="flex flex-wrap gap-4">
               <div className="flex items-center gap-2 text-sm">
                 <FolderGit2 className="w-4 h-4 text-muted-foreground" />
                 <span className="font-medium">{projects.length}</span> Projects
@@ -126,15 +126,15 @@ export default function Profile() {
                 Connect a GitHub Personal Access Token to enable Save, Load, and Publish for Freeform pages.
                 The token is stored locally in your browser.
               </p>
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2">
                 <Input
                   type="password"
                   placeholder="ghp_..."
                   value={ghToken}
                   onChange={(e) => setGhToken(e.target.value)}
-                  className="h-8 text-xs"
+                  className="min-h-[44px] text-xs"
                 />
-                <Button size="sm" className="h-8 text-xs gap-1" onClick={handleSaveToken}>
+                <Button size="sm" className="min-h-[48px] text-xs gap-1" onClick={handleSaveToken}>
                   <Key className="h-3 w-3" />
                   {hasGitHubToken() ? "Update" : "Save"}
                 </Button>
@@ -143,7 +143,7 @@ export default function Profile() {
                 <p className="text-[10px] text-green-400 flex items-center gap-1">
                   ✓ Token connected
                   <button
-                    className="text-muted-foreground hover:text-foreground underline ml-2"
+                    className="inline-flex items-center min-h-[44px] text-muted-foreground hover:text-foreground underline ml-2"
                     onClick={() => { setGhToken(""); handleSaveToken(); }}
                   >
                     Remove
@@ -169,23 +169,23 @@ export default function Profile() {
                 placeholder="Current password"
                 value={currentPw}
                 onChange={(e) => setCurrentPw(e.target.value)}
-                className="h-8 text-xs"
+                className="min-h-[44px] text-xs"
               />
               <Input
                 type="password"
                 placeholder="New password (8+ chars)"
                 value={newPw}
                 onChange={(e) => setNewPw(e.target.value)}
-                className="h-8 text-xs"
+                className="min-h-[44px] text-xs"
               />
               <Input
                 type="password"
                 placeholder="Confirm new password"
                 value={confirmPw}
                 onChange={(e) => setConfirmPw(e.target.value)}
-                className="h-8 text-xs"
+                className="min-h-[44px] text-xs"
               />
-              <Button size="sm" className="h-8 text-xs gap-1" onClick={handleResetPassword} disabled={resetLoading}>
+              <Button size="sm" className="min-h-[48px] text-xs gap-1" onClick={handleResetPassword} disabled={resetLoading}>
                 <Key className="h-3 w-3" />
                 Save
               </Button>

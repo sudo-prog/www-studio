@@ -103,7 +103,7 @@ export default function ScenePreviewPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0d1117]">
+      <div className="min-h-[100dvh] flex items-center justify-center bg-[#0d1117]">
         <div className="w-5 h-5 rounded-full border-2 border-white/20 border-t-white/80 animate-spin" />
       </div>
     );
@@ -111,7 +111,7 @@ export default function ScenePreviewPage() {
 
   if (isError) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0d1117] text-white/40 text-sm">
+      <div className="min-h-[100dvh] flex items-center justify-center bg-[#0d1117] text-white/40 text-sm">
         Scene not found
       </div>
     );
@@ -122,13 +122,13 @@ export default function ScenePreviewPage() {
       <style>{ANIM_KEYFRAMES}</style>
       <Link
         href="/"
-        className="fixed top-3 left-3 z-50 flex items-center gap-1.5 px-2.5 h-8 rounded-full bg-background/80 backdrop-blur border border-border shadow-sm font-semibold text-sm tracking-tight hover:text-primary transition-colors"
+        className="fixed top-3 left-3 z-50 flex flex-wrap items-center gap-1.5 px-3 min-h-[44px] rounded-full bg-background/80 backdrop-blur border border-border shadow-sm font-semibold text-sm tracking-tight hover:text-primary transition-colors"
       >
         <Code2 className="h-4 w-4 text-primary" />
         <span className="hidden sm:inline">WWW Studio</span>
       </Link>
       <div
-        className="w-full min-h-screen overflow-y-auto"
+        className="w-full min-h-[100dvh] overflow-y-auto pb-[env(safe-area-inset-bottom)]"
         style={{ background: "linear-gradient(135deg, #0d1117 0%, #161b22 100%)" }}
       >
         <div

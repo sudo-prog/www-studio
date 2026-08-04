@@ -144,7 +144,7 @@ function AssetsPanel({ projectId }: { projectId: string }) {
             <p className="text-xs">No assets yet. Upload images or fonts to use in your design.</p>
           </div>
         ) : (
-          <div className="p-2 grid grid-cols-2 gap-2">
+          <div className="p-2 grid grid-cols-1 sm:grid-cols-2 gap-2">
             {assets.map((asset) => (
               <div key={asset.id} className="group relative rounded-lg overflow-hidden border border-border/40 bg-muted/30 aspect-square">
                 {asset.type.startsWith("image/") ? (
@@ -231,7 +231,7 @@ function StockImagesPanel() {
         </div>
       </div>
       <ScrollArea className="flex-1">
-        <div className="grid grid-cols-2 gap-2 p-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 p-2">
           {images.map((img) => (
             <div key={img.id} className="group relative rounded-lg overflow-hidden border border-border/40 aspect-video bg-muted">
               <img src={img.thumb} alt="" className="w-full h-full object-cover" loading="lazy" />
@@ -281,7 +281,7 @@ function AIImagesPanel({ projectId }: { projectId: string }) {
     <div className="flex flex-col h-full">
       <div className="flex border-b border-border/50 shrink-0">
         {TABS.map((t) => (
-          <button key={t.id} onClick={() => setActiveTab(t.id)} className={cn("flex-1 h-8 text-xs font-medium transition-colors border-b-2", activeTab === t.id ? "border-primary text-foreground" : "border-transparent text-muted-foreground hover:text-foreground")}>
+          <button key={t.id} onClick={() => setActiveTab(t.id)} className={cn("flex-1 h-8 min-h-[44px] text-xs font-medium transition-colors border-b-2", activeTab === t.id ? "border-primary text-foreground" : "border-transparent text-muted-foreground hover:text-foreground")}>
             {t.label}
           </button>
         ))}
@@ -380,7 +380,7 @@ function AnimationsPanel() {
                   {preset.tag}
                 </span>
               </div>
-              <Button variant="ghost" size="icon" className="h-6 w-6 shrink-0 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity" onClick={() => copy(preset)} title="Copy animation code">
+              <Button variant="ghost" size="icon" className="min-h-[44px] min-w-[44px] shrink-0 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity" onClick={() => copy(preset)} title="Copy animation code">
                 {copied === preset.id ? <Check className="w-3 h-3 text-green-500" /> : <Copy className="w-3 h-3" />}
               </Button>
             </div>
@@ -1186,7 +1186,7 @@ export default function Editor() {
   const iframeSrcDoc = currentPageId !== "home" ? (currentPageHtml ?? DEFAULT_PAGE_HTML) : localCode;
 
   return (
-    <div className="h-screen w-screen max-w-screen flex flex-col bg-background text-foreground overflow-hidden">
+    <div className="min-h-[100dvh] w-screen max-w-screen flex flex-col bg-background text-foreground overflow-hidden">
       {showPublishModal && <PublishModal projectId={project.id} projectSlug={project.slug} onClose={() => setShowPublishModal(false)} />}
 
       {/* Mobile notice */}
@@ -1442,7 +1442,7 @@ export default function Editor() {
                 </div>
 
                 {/* AI Chat Bar */}
-                <div className="h-13 border-t border-border/50 bg-card/50 backdrop-blur flex items-center px-4 shrink-0 gap-3 py-2">
+                <div className="h-13 border-t border-border/50 bg-card/50 backdrop-blur flex items-center px-4 shrink-0 gap-3 py-2 pb-[calc(theme(spacing.2)+env(safe-area-inset-bottom,0px))]">
                   <Wand2 className="w-4 h-4 text-primary shrink-0" />
                   <form onSubmit={handleSendChat} className="flex-1 flex items-center gap-2">
                     <Input

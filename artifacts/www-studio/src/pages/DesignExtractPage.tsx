@@ -175,7 +175,7 @@ function ErrorBanner({
 
   return (
     <div className="animate-[fadeSlideIn_0.3s_ease-out] border border-red-500/30 bg-red-500/5 rounded-lg p-4 space-y-3">
-      <div className="flex items-start gap-3">
+      <div className="flex flex-wrap items-start gap-3">
         <Icon className="h-5 w-5 text-red-400 shrink-0 mt-0.5" />
         <div className="flex-1 min-w-0">
           <p className="text-sm font-medium text-red-400">{config.title}</p>
@@ -452,7 +452,7 @@ export default function DesignExtractPage() {
   const showEditor = state.phase === "complete" && state.tokens;
 
   return (
-    <div className="min-h-screen bg-[#0a0a0b] text-foreground">
+    <div className="min-h-dvh bg-[#0a0a0b] text-foreground">
       <Navbar />
       {/* Header */}
       <div className="border-b border-[#27272a] px-4 md:px-6 py-4">
@@ -513,7 +513,7 @@ export default function DesignExtractPage() {
 
             {state.phase === "complete" && (
               <div className="space-y-4 animate-[fadeSlideIn_0.4s_ease-out]">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
                   <span className="font-mono text-xs bg-[#27272a] px-2 py-1 rounded truncate max-w-full">
                     {state.url}
                   </span>
@@ -535,7 +535,7 @@ export default function DesignExtractPage() {
               <div className="space-y-4">
                 <button
                   onClick={handleRetry}
-                  className="text-xs text-muted-foreground hover:text-foreground underline transition-colors"
+                  className="min-h-[48px] text-xs text-muted-foreground hover:text-foreground underline transition-colors"
                 >
                   ← Back to input
                 </button>

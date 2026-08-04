@@ -349,10 +349,10 @@ export default function Scenes() {
             <p className="text-muted-foreground">Visual SVG compositions with wellness animations</p>
           </div>
           <div className="flex gap-2">
-            <Button variant="outline" onClick={() => setShowAI(true)} className="gap-2">
+            <Button variant="outline" onClick={() => setShowAI(true)} className="gap-2 min-h-[44px]">
               <Sparkles className="h-4 w-4" />AI Generate
             </Button>
-            <Button onClick={() => setShowNew(true)} className="gap-2">
+            <Button onClick={() => setShowNew(true)} className="gap-2 min-h-[44px]">
               <Plus className="h-4 w-4" />New Scene
             </Button>
           </div>
@@ -395,7 +395,7 @@ export default function Scenes() {
             <button
               onClick={() => setTagFilter(null)}
               className={cn(
-                "text-xs px-2.5 py-1 rounded-full border transition-colors",
+                "text-xs px-2.5 py-1 rounded-full border transition-colors min-h-[44px] flex items-center",
                 tagFilter === null ? "bg-primary text-primary-foreground border-primary" : "border-border text-muted-foreground hover:border-primary/40"
               )}
             >All</button>
@@ -404,7 +404,7 @@ export default function Scenes() {
                 key={tag}
                 onClick={() => setTagFilter(tagFilter === tag ? null : tag)}
                 className={cn(
-                  "text-xs px-2.5 py-1 rounded-full border transition-colors",
+                  "text-xs px-2.5 py-1 rounded-full border transition-colors min-h-[44px] flex items-center",
                   tagFilter === tag ? "bg-primary/10 border-primary/40 text-primary" : "border-border text-muted-foreground hover:border-primary/30"
                 )}
               >
@@ -422,7 +422,7 @@ export default function Scenes() {
                 placeholder="Search scenes…"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="pl-9"
+                className="pl-9 min-h-[44px]"
               />
             </div>
             <select
@@ -447,7 +447,7 @@ export default function Scenes() {
 
         {/* Batch action bar */}
         {selected.size > 0 && (
-          <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 bg-card border border-border rounded-2xl shadow-xl px-4 py-2.5">
+          <div className="fixed bottom-[calc(env(safe-area-inset-bottom)+1.5rem)] left-1/2 -translate-x-1/2 z-50 flex flex-wrap items-center justify-center gap-2 bg-card border border-border rounded-2xl shadow-xl px-4 py-2.5 max-w-[calc(100vw-2rem)]">
             <span className="text-sm font-medium text-muted-foreground mr-1">{selected.size} selected</span>
             <Button size="sm" variant="outline" onClick={() => batchAction("publish")} className="gap-1.5 text-xs min-h-[44px]">
               <Globe className="h-3.5 w-3.5" />Publish all
@@ -470,10 +470,10 @@ export default function Scenes() {
             <p className="text-lg font-medium mb-2">No scenes yet</p>
             <p className="text-sm mb-6">Create your first visual scene with wellness animations</p>
             <div className="flex gap-3 justify-center">
-              <Button variant="outline" onClick={() => setShowAI(true)} className="gap-2">
+              <Button variant="outline" onClick={() => setShowAI(true)} className="gap-2 min-h-[44px]">
                 <Sparkles className="h-4 w-4" />AI Generate
               </Button>
-              <Button onClick={() => setShowNew(true)} className="gap-2">
+              <Button onClick={() => setShowNew(true)} className="gap-2 min-h-[44px]">
                 <Plus className="h-4 w-4" />New Scene
               </Button>
             </div>
@@ -507,11 +507,12 @@ export default function Scenes() {
               onChange={(e) => setNewName(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleCreate()}
               autoFocus
+              className="min-h-[44px]"
             />
           </div>
           <DialogFooter>
-            <Button variant="ghost" onClick={() => setShowNew(false)}>Cancel</Button>
-            <Button onClick={handleCreate} disabled={!newName.trim() || createScene.isPending}>
+            <Button variant="ghost" onClick={() => setShowNew(false)} className="min-h-[44px]">Cancel</Button>
+            <Button onClick={handleCreate} disabled={!newName.trim() || createScene.isPending} className="min-h-[44px]">
               {createScene.isPending ? "Creating…" : "Create Scene"}
             </Button>
           </DialogFooter>
@@ -536,6 +537,7 @@ export default function Scenes() {
               onChange={(e) => setAiPrompt(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleAIGenerate()}
               autoFocus
+              className="min-h-[44px]"
             />
             {/* Quick prompt suggestions */}
             <div className="space-y-1.5">
