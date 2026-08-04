@@ -63,3 +63,15 @@ Thumbs.db
 .env*
 .agent-skills/
 .opencode/
+
+# agent probe/verify scripts (leftover from audit runs, not app source)
+artifacts/www-studio/cov2.mjs
+artifacts/www-studio/e2e/mobile-gate.mjs
+artifacts/www-studio/probe-coverage.mjs
+artifacts/www-studio/probe-ids.mjs
+artifacts/www-studio/probe-live.mjs
+artifacts/www-studio/probe-taps.mjs
+artifacts/www-studio/ws_audit.mjs
+artifacts/www-studio/ws_live.mjs
+artifacts/www-studio/ws_probe.mjs
+artifacts/www-studio/ws_verify2.mjs
