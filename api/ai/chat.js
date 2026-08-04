@@ -4,9 +4,10 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
-  const LLM_BASE_URL = process.env.LLM_BASE_URL || process.env.NEXT_PUBLIC_LLM_BASE_URL || 'http://localhost:8081/v1';
-  const LLM_API_KEY = process.env.LLM_API_KEY || process.env.NEXT_PUBLIC_LLM_API_KEY || '';
-  const LLM_MODEL = process.env.LLM_MODEL || process.env.NEXT_PUBLIC_LLM_MODEL || 'gemini-3.5-flash';
+  // OmniRoute primary (tailnet — serverless runs off localhost, so use tailnet IP)
+  const LLM_BASE_URL = process.env.LLM_BASE_URL || process.env.NEXT_PUBLIC_LLM_BASE_URL || 'http://100.125.198.47:20128/v1';
+  const LLM_API_KEY = process.env.LLM_API_KEY || process.env.NEXT_PUBLIC_LLM_API_KEY || 'omniroute';
+  const LLM_MODEL = process.env.LLM_MODEL || process.env.NEXT_PUBLIC_LLM_MODEL || 'auto/best-coding-fast';
 
   let body;
   try {

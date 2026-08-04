@@ -346,10 +346,10 @@ export default function SceneEditor() {
         else if (cmd.id === "enhance") setShowEnhancer(true);
       }} />
 
-      <div className="h-screen flex flex-col bg-background overflow-hidden">
+      <div className="h-[100dvh] flex flex-col bg-background overflow-hidden">
         {/* ── Top bar ── */}
         <div className="h-12 flex items-center gap-1.5 px-2 border-b border-border shrink-0 bg-background/95 backdrop-blur overflow-x-auto">
-          <Button variant="ghost" size="icon" className="h-8 w-8 shrink-0" onClick={() => navigate("/scenes")} title="Back to Scenes">
+          <Button variant="ghost" size="icon" className="h-8 w-8 shrink-0 min-h-[44px] min-w-[44px]" onClick={() => navigate("/scenes")} title="Back to Scenes">
             <ArrowLeft className="h-4 w-4" />
           </Button>
           <Link href="/" className="shrink-0 flex items-center gap-1.5 font-semibold text-sm tracking-tight hover:text-primary transition-colors">
@@ -386,43 +386,43 @@ export default function SceneEditor() {
           <div className="w-px h-5 bg-border mx-0.5 hidden sm:block" />
 
           <div className="flex items-center gap-0.5">
-            <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => dispatch({ type: "UNDO" })} disabled={!state.past.length} title="Undo (Ctrl+Z)">
+            <Button variant="ghost" size="icon" className="h-8 w-8 min-h-[44px] min-w-[44px]" onClick={() => dispatch({ type: "UNDO" })} disabled={!state.past.length} title="Undo (Ctrl+Z)">
               <Undo2 className="h-4 w-4" />
             </Button>
-            <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => dispatch({ type: "REDO" })} disabled={!state.future.length} title="Redo (Ctrl+Y)">
+            <Button variant="ghost" size="icon" className="h-8 w-8 min-h-[44px] min-w-[44px]" onClick={() => dispatch({ type: "REDO" })} disabled={!state.future.length} title="Redo (Ctrl+Y)">
               <Redo2 className="h-4 w-4" />
             </Button>
           </div>
 
           <div className="w-px h-5 bg-border mx-0.5" />
 
-          <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => setShowShortcuts(true)} title="Keyboard shortcuts (?)">
-            <Keyboard className="h-3.5 w-3.5" />
-          </Button>
+          <Button variant="ghost" size="icon" className="h-8 w-8 min-h-[44px] min-w-[44px]" onClick={() => setShowShortcuts(true)} title="Keyboard shortcuts (?)" >
+                      <Keyboard className="h-3.5 w-3.5" />
+                    </Button>
 
-          <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => setShowCommand(true)} title="Command palette (Ctrl+/)">
-            <Terminal className="h-3.5 w-3.5" />
-          </Button>
+                    <Button variant="ghost" size="icon" className="h-8 w-8 min-h-[44px] min-w-[44px]" onClick={() => setShowCommand(true)} title="Command palette (Ctrl+/)" >
+                      <Terminal className="h-3.5 w-3.5" />
+                    </Button>
 
-          {/* View/like stats */}
-          {rawScene && (
-            <div className="hidden lg:flex items-center gap-2 text-[10px] text-muted-foreground shrink-0">
-              <span className="flex items-center gap-0.5"><span>👁</span>{(rawScene as any).viewCount ?? 0}</span>
-              <span className="flex items-center gap-0.5"><span>♥</span>{(rawScene as any).likes ?? 0}</span>
-            </div>
-          )}
+                    {/* View/like stats */}
+                    {rawScene && (
+                      <div className="hidden lg:flex items-center gap-2 text-[10px] text-muted-foreground shrink-0">
+                        <span className="flex items-center gap-0.5"><span>👁</span>{(rawScene as any).viewCount ?? 0}</span>
+                        <span className="flex items-center gap-0.5"><span>♥</span>{(rawScene as any).likes ?? 0}</span>
+                      </div>
+                    )}
 
-          <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => window.open(`/scenes/${sceneId}/preview`, "_blank")} title="Preview (Ctrl+P)">
-            <ExternalLink className="h-3.5 w-3.5" />
-          </Button>
+                    <Button variant="ghost" size="icon" className="h-8 w-8 min-h-[44px] min-w-[44px]" onClick={() => window.open(`/scenes/${sceneId}/preview`, "_blank")} title="Preview (Ctrl+P)">
+                      <ExternalLink className="h-3.5 w-3.5" />
+                    </Button>
 
-          <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => window.open(`/scenes/${sceneId}/share`, "_blank")} title="Share scene">
-            <Globe className="h-3.5 w-3.5" />
-          </Button>
+                    <Button variant="ghost" size="icon" className="h-8 w-8 min-h-[44px] min-w-[44px]" onClick={() => window.open(`/scenes/${sceneId}/share`, "_blank")} title="Share scene">
+                      <Globe className="h-3.5 w-3.5" />
+                    </Button>
 
-          <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => setShowCursor(true)} title="Send to Cursor (Ctrl+K)">
-            <Terminal className="h-3.5 w-3.5" />
-          </Button>
+                    <Button variant="ghost" size="icon" className="h-8 w-8 min-h-[44px] min-w-[44px]" onClick={() => setShowCursor(true)} title="Send to Cursor (Ctrl+K)">
+                      <Terminal className="h-3.5 w-3.5" />
+                    </Button>
 
           <Button
             variant={showEnhancer ? "secondary" : "ghost"}
@@ -527,10 +527,11 @@ export default function SceneEditor() {
                   key={tab}
                   onClick={() => setRightTab(tab)}
                   className={cn(
-                    "px-2 py-2 transition-colors whitespace-nowrap",
+                    "px-2 py-2 transition-colors whitespace-nowrap min-h-[44px] min-w-[44px]",
                     rightTab === tab ? "text-foreground border-b-2 border-primary -mb-px" : "text-muted-foreground hover:text-foreground"
                   )}
                   title={tab}
+                  role="tab"
                 >
                   {tab === "layers"     && <Layers        className="h-3.5 w-3.5 mx-auto" />}
                   {tab === "properties" && <Palette       className="h-3.5 w-3.5 mx-auto" />}
@@ -572,11 +573,11 @@ export default function SceneEditor() {
                         <span className="text-[8px] text-primary/60 shrink-0 hidden group-hover:hidden">anim</span>
                       )}
                       <div className="flex items-center gap-0.5 opacity-100 md:opacity-0 md:group-hover:opacity-100">
-                        <button onClick={(e) => { e.stopPropagation(); dispatch({ type: "REORDER_UP",   id: el.id }); }} className="p-0.5 hover:text-foreground" title="Move up"><ChevronUp   className="h-3 w-3" /></button>
-                        <button onClick={(e) => { e.stopPropagation(); dispatch({ type: "REORDER_DOWN", id: el.id }); }} className="p-0.5 hover:text-foreground" title="Move down"><ChevronDown className="h-3 w-3" /></button>
-                        <button onClick={(e) => { e.stopPropagation(); handleUpdate(el.id, { visible: !el.visible }); }} className="p-0.5 hover:text-foreground" title={el.visible?"Hide":"Show"}>{el.visible ? <Eye className="h-3 w-3" /> : <EyeOff className="h-3 w-3" />}</button>
-                        <button onClick={(e) => { e.stopPropagation(); handleUpdate(el.id, { locked: !el.locked }); }} className="p-0.5 hover:text-foreground" title={el.locked?"Unlock":"Lock"}>{el.locked ? <Lock className="h-3 w-3" /> : <Unlock className="h-3 w-3" />}</button>
-                        <button onClick={(e) => { e.stopPropagation(); dispatch({ type: "DELETE_ELEMENT", id: el.id }); }} className="p-0.5 hover:text-destructive" title="Delete"><Trash2 className="h-3 w-3" /></button>
+                        <button onClick={(e) => { e.stopPropagation(); dispatch({ type: "REORDER_UP",   id: el.id }); }} className="p-0.5 hover:text-foreground min-h-[44px] min-w-[44px]" title="Move up"><ChevronUp   className="h-3 w-3" /></button>
+                        <button onClick={(e) => { e.stopPropagation(); dispatch({ type: "REORDER_DOWN", id: el.id }); }} className="p-0.5 hover:text-foreground min-h-[44px] min-w-[44px]" title="Move down"><ChevronDown className="h-3 w-3" /></button>
+                        <button onClick={(e) => { e.stopPropagation(); handleUpdate(el.id, { visible: !el.visible }); }} className="p-0.5 hover:text-foreground min-h-[44px] min-w-[44px]" title={el.visible?"Hide":"Show"}>{el.visible ? <Eye className="h-3 w-3" /> : <EyeOff className="h-3 w-3" />}</button>
+                        <button onClick={(e) => { e.stopPropagation(); handleUpdate(el.id, { locked: !el.locked }); }} className="p-0.5 hover:text-foreground min-h-[44px] min-w-[44px]" title={el.locked?"Unlock":"Lock"}>{el.locked ? <Lock className="h-3 w-3" /> : <Unlock className="h-3 w-3" />}</button>
+                        <button onClick={(e) => { e.stopPropagation(); dispatch({ type: "DELETE_ELEMENT", id: el.id }); }} className="p-0.5 hover:text-destructive min-h-[44px] min-w-[44px]" title="Delete"><Trash2 className="h-3 w-3" /></button>
                       </div>
                     </div>
                   ))}

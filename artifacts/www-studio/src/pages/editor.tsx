@@ -455,7 +455,7 @@ function SeoPanel({ projectId, themeTokens }: { projectId: string; themeTokens?:
             </select>
           </div>
         </div>
-        <Button size="sm" className="w-full gap-2" onClick={handleSave} disabled={patchProject.isPending}>
+        <Button size="sm" className="w-full gap-2 min-h-[44px]" onClick={handleSave} disabled={patchProject.isPending}>
           {patchProject.isPending ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Tag className="w-3.5 h-3.5" />}Save SEO Metadata
         </Button>
       </div>
@@ -500,7 +500,7 @@ function ContentPanel({ projectId, componentTree }: { projectId: string; compone
             <div key={i} className="group rounded-lg border border-border/40 overflow-hidden">
               <div className="flex items-center justify-between px-2 py-1 bg-muted/30">
                 <span className="text-[10px] font-mono text-muted-foreground">&lt;{node.path}&gt;</span>
-                <Button variant="ghost" size="icon" className="h-5 w-5 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity" onClick={() => setEditingIndex(editingIndex === i ? null : i)}>
+                <Button variant="ghost" size="icon" className="h-5 w-5 min-h-[44px] min-w-[44px] opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity" onClick={() => setEditingIndex(editingIndex === i ? null : i)}>
                   <Settings2 className="w-3 h-3" />
                 </Button>
               </div>
@@ -508,8 +508,8 @@ function ContentPanel({ projectId, componentTree }: { projectId: string; compone
                 <div className="p-2 space-y-2">
                   <Textarea defaultValue={node.text} className="text-xs resize-none min-h-[52px]" id={`cms-${i}`} />
                   <div className="flex gap-1.5">
-                    <Button size="sm" className="flex-1 h-7 text-xs" onClick={() => { toast({ title: "Content updated" }); setEditingIndex(null); }}>Save</Button>
-                    <Button size="sm" variant="ghost" className="h-7 text-xs" onClick={() => setEditingIndex(null)}>Cancel</Button>
+                    <Button size="sm" className="flex-1 h-7 min-h-[44px] text-xs" onClick={() => { toast({ title: "Content updated" }); setEditingIndex(null); }}>Save</Button>
+                    <Button size="sm" variant="ghost" className="h-7 min-h-[44px] text-xs" onClick={() => setEditingIndex(null)}>Cancel</Button>
                   </div>
                 </div>
               ) : (
@@ -560,7 +560,7 @@ function HistoryPanel({ projectId }: { projectId: string }) {
           <div key={snap.id} className="group flex items-start gap-2.5 rounded-lg px-2.5 py-2 hover:bg-muted/50 transition-colors">
             <div className="shrink-0 mt-0.5">{snap.label === "Auto-save" ? <Clock className="w-3.5 h-3.5 text-muted-foreground" /> : <Save className="w-3.5 h-3.5 text-primary" />}</div>
             <div className="flex-1 min-w-0"><p className="text-xs font-medium truncate">{snap.label}</p><p className="text-xs text-muted-foreground">{timeAgo(snap.createdAt)}</p></div>
-            <Button variant="ghost" size="icon" className="h-6 w-6 shrink-0 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity" title="Restore" onClick={() => handleRestore(snap.id, snap.label)} disabled={restoringId === snap.id}>
+            <Button variant="ghost" size="icon" className="h-6 w-6 min-h-[44px] min-w-[44px] shrink-0 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity" title="Restore" onClick={() => handleRestore(snap.id, snap.label)} disabled={restoringId === snap.id}>
               {restoringId === snap.id ? <Loader2 className="w-3 h-3 animate-spin" /> : <RotateCcw className="w-3 h-3" />}
             </Button>
           </div>
@@ -592,13 +592,13 @@ function PublishModal({ projectId, projectSlug, onClose }: { projectId: string; 
             <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center"><Globe className="w-4 h-4 text-primary" /></div>
             <h2 className="font-semibold text-lg">Publish Project</h2>
           </div>
-          <Button variant="ghost" size="icon" onClick={onClose}><X className="w-4 h-4" /></Button>
+          <Button variant="ghost" size="icon" className="min-h-[44px] min-w-[44px]" onClick={onClose}><X className="w-4 h-4" /></Button>
         </div>
         {!liveUrl ? (
           <>
             <p className="text-muted-foreground text-sm mb-6 leading-relaxed">Publishing makes your project live at a public URL rendered as HTML with Tailwind CSS.</p>
             <div className="bg-muted/30 rounded-lg p-3 mb-6 font-mono text-xs text-muted-foreground">/api/s/{projectSlug}</div>
-            <Button className="w-full h-11 gap-2" onClick={handlePublish} disabled={publishMutation.isPending}>
+            <Button className="w-full h-11 min-h-[44px] gap-2" onClick={handlePublish} disabled={publishMutation.isPending}>
               {publishMutation.isPending ? <><Loader2 className="w-4 h-4 animate-spin" />Publishing...</> : <><Globe className="w-4 h-4" />Publish Now</>}
             </Button>
           </>

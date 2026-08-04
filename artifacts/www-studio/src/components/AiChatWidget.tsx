@@ -72,9 +72,12 @@ interface GeminiModel {
 
 const STORAGE_MODEL_KEY = "www-studio-selected-model";
 
-// Primary AI endpoint: local gemini-web2api tunnel (OpenAI-compatible, free)
-const PRIMARY_PROXY = "https://dressed-integer-strain-powerpoint.trycloudflare.com/v1/chat/completions";
-const PRIMARY_MODEL = "gemini-3.5-flash";
+// Primary AI endpoint: OmniRoute local gateway (OpenAI-compatible, free)
+const PRIMARY_PROXY = "http://127.0.0.1:20128/v1/chat/completions";
+const PRIMARY_MODEL = "auto/best-coding-fast";
+// Fallback: dead gemini-web2api tunnel (kept for chain completeness)
+const FALLBACK_PROXY = "https://dressed-integer-strain-powerpoint.trycloudflare.com/v1/chat/completions";
+const FALLBACK_MODEL = "gemini-3.5-flash";
 
 // ─── Provider fallback chain ────────────────────────────────────────────────
 // Try Nous/Hermes first, then fall back to gemini-web2api on failure.
@@ -160,6 +163,7 @@ async function callGeminiChat(
   // Primary AI endpoint (OpenAI-compatible, free)
   const providers = [
     { url: PRIMARY_PROXY, model, authToken: undefined },
+    { url: FALLBACK_PROXY, model: FALLBACK_MODEL, authToken: undefined },
   ];
 
   let lastError: Error | null = null;

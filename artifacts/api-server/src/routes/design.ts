@@ -223,21 +223,14 @@ ${JSON.stringify({
 `;
 }
 
-// ── Try OpenAI if key is set ──────────────────────────────────────────
-async function generateWithOpenAI(prompt: string, projectName: string): Promise<string | null> {
-  const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) return null;
-
+// ── Try LLM (defaults to OmniRoute via llm.ts; fallback to heuristics) ───
+async function generateWithLLM(prompt: string, projectName: string): Promise<string | null> {
   try {
-    const { default: OpenAI } = await import("openai");
-    const openai = new OpenAI({ apiKey });
-
-    const completion = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages: [
-        {
-          role: "system",
-          content: `You are a world-class design systems expert. Generate a comprehensive Design.md file for a web project.
+    const { chatComplete } = await import("../lib/llm");
+    const result = await chatComplete([
+      {
+        role: "system",
+        content: `You are a world-class design systems expert. Generate a comprehensive Design.md file for a web project.
 
 Output a Markdown document with these sections:
 1. Brand Identity (style, personality, tone)
@@ -258,16 +251,13 @@ The Design Tokens JSON block must follow this exact format:
 \`\`\`
 
 Make the design system cohesive, professional, and directly applicable with Tailwind CSS.`,
-        },
-        {
-          role: "user",
-          content: `Create a Design.md for project "${projectName}" with this design direction:\n\n${prompt}`,
-        },
-      ],
-      max_tokens: 2000,
-    });
-
-    return completion.choices[0]?.message?.content ?? null;
+      },
+      {
+        role: "user",
+        content: `Create a Design.md for project "${projectName}" with this design direction:\n\n${prompt}`,
+      },
+    ], { maxTokens: 2000, temperature: 0.7 });
+    return result || null;
   } catch {
     return null;
   }
@@ -291,7 +281,7 @@ router.post("/projects/:id/design-md", async (req: Request, res: Response) => {
   const userPrompt = url ? `Inspired by website: ${url}\n\nAdditional notes: ${prompt}` : prompt || "modern, clean, professional web design";
 
   // Try OpenAI first, fall back to heuristics
-  let designMd = await generateWithOpenAI(userPrompt, projectName);
+  let designMd = await generateWithLLM(userPrompt, projectName);
 
   if (!designMd) {
     const profile = detectProfile(userPrompt);

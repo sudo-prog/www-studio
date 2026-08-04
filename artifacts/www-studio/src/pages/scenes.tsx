@@ -414,49 +414,51 @@ export default function Scenes() {
           </div>
         )}
 
-        <div className="flex items-center gap-3 mb-6">
-          <div className="relative flex-1 max-w-sm">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input
-              placeholder="Search scenes…"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="pl-9"
-            />
+        <div className="overflow-x-auto">
+          <div className="flex items-center gap-3 mb-6 min-w-max">
+            <div className="relative flex-1 max-w-sm">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input
+                placeholder="Search scenes…"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="pl-9"
+              />
+            </div>
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value as "newest"|"oldest"|"name"|"likes"|"published")}
+              className="text-xs border border-border rounded-lg px-2 py-1.5 bg-background text-foreground min-h-[44px]"
+            >
+              <option value="newest">Newest</option>
+              <option value="oldest">Oldest</option>
+              <option value="name">Name A→Z</option>
+              <option value="likes">Most Liked</option>
+              <option value="published">Published</option>
+            </select>
+            <span className="text-sm text-muted-foreground">{filtered.length} scenes</span>
+            <Button variant="ghost" size="sm" asChild className="min-h-[44px]">
+              <Link href="/scenes/gallery" className="gap-1.5 text-xs">
+                <Globe className="h-3.5 w-3.5" />Public Gallery
+              </Link>
+            </Button>
           </div>
-          <select
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value as "newest"|"oldest"|"name"|"likes"|"published")}
-            className="text-xs border border-border rounded-lg px-2 py-1.5 bg-background text-foreground"
-          >
-            <option value="newest">Newest</option>
-            <option value="oldest">Oldest</option>
-            <option value="name">Name A→Z</option>
-            <option value="likes">Most Liked</option>
-            <option value="published">Published</option>
-          </select>
-          <span className="text-sm text-muted-foreground">{filtered.length} scenes</span>
-          <Button variant="ghost" size="sm" asChild>
-            <Link href="/scenes/gallery" className="gap-1.5 text-xs">
-              <Globe className="h-3.5 w-3.5" />Public Gallery
-            </Link>
-          </Button>
         </div>
 
         {/* Batch action bar */}
         {selected.size > 0 && (
           <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 bg-card border border-border rounded-2xl shadow-xl px-4 py-2.5">
             <span className="text-sm font-medium text-muted-foreground mr-1">{selected.size} selected</span>
-            <Button size="sm" variant="outline" onClick={() => batchAction("publish")} className="gap-1.5 text-xs">
+            <Button size="sm" variant="outline" onClick={() => batchAction("publish")} className="gap-1.5 text-xs min-h-[44px]">
               <Globe className="h-3.5 w-3.5" />Publish all
             </Button>
-            <Button size="sm" variant="outline" onClick={() => batchAction("unpublish")} className="gap-1.5 text-xs">
+            <Button size="sm" variant="outline" onClick={() => batchAction("unpublish")} className="gap-1.5 text-xs min-h-[44px]">
               <EyeOff className="h-3.5 w-3.5" />Unpublish all
             </Button>
-            <Button size="sm" variant="destructive" onClick={() => batchAction("delete")} className="gap-1.5 text-xs">
+            <Button size="sm" variant="destructive" onClick={() => batchAction("delete")} className="gap-1.5 text-xs min-h-[44px]">
               <Trash2 className="h-3.5 w-3.5" />Delete all
             </Button>
-            <button onClick={() => setSelected(new Set())} className="ml-2 text-muted-foreground hover:text-foreground">
+            <button onClick={() => setSelected(new Set())} className="ml-2 text-muted-foreground hover:text-foreground min-h-[44px] min-w-[44px]">
               <XIcon className="h-4 w-4" />
             </button>
           </div>

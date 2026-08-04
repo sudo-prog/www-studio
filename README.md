@@ -111,10 +111,11 @@ Required for API server:
 - `DATABASE_URL` - PostgreSQL connection string
 
 Optional:
-- `OPENAI_API_KEY` - OpenAI API key for AI features (generation, screenshot-to-code, image generation)
-- `LLM_BASE_URL` - Unified LLM base URL (default: http://localhost:11434/v1)
-- `LLM_MODEL` - LLM model name
-- `GEMINI_WEB2API_BASE_URL` - Gemini Web2API proxy URL (default: http://localhost:8081/v1)
+- `LLM_BASE_URL` - **Primary AI backend: OmniRoute gateway** (OpenAI-compatible). Default `http://127.0.0.1:20128/v1` (tailnet `http://100.125.198.47:20128/v1` for remote/CI). Set `LLM_API_KEY=omniroute` (no real key needed).
+- `LLM_MODEL` - OmniRoute virtual model (default `auto/best-coding-fast`; also `auto/best-coding`, `auto/best-reasoning`)
+- `LLM_API_KEY` - OmniRoute key — literal `omniroute` (no real key required)
+- `OPENAI_API_KEY` - Unused — OmniRoute is the only AI backend (kept for parity)
+- `GEMINI_WEB2API_BASE_URL` - Optional Gemini Web2API proxy fallback (default: http://localhost:8081/v1)
 - `GEMINI_WEB2API_MODEL` - Gemini model (default: gemini-2.0-flash)
 - `GITHUB_CLIENT_ID` - GitHub OAuth client ID for GitHub login
 - `GITHUB_CLIENT_SECRET` - GitHub OAuth client secret for GitHub login

@@ -439,7 +439,7 @@ export default function FreeformEditor() {
   );
 
   return (
-    <div className="h-screen flex flex-col bg-[#0a0a0f] text-foreground overflow-hidden">
+    <div className="h-[100dvh] flex flex-col bg-[#0a0a0f] text-foreground overflow-hidden">
       {/* Top bar */}
       <header className="h-12 shrink-0 border-b border-border bg-background flex items-center justify-between px-4 gap-3 z-50 overflow-x-auto">
         <div className="flex items-center gap-3">
@@ -456,15 +456,15 @@ export default function FreeformEditor() {
               setPageName(e.target.value);
               dispatch({ type: "SET_NAME", name: e.target.value });
             }}
-            className="h-7 text-sm w-48 min-w-0 flex-1 sm:w-48 sm:flex-none bg-transparent border-transparent hover:border-border focus:border-border"
+            className="min-h-[44px] text-sm w-48 min-w-0 flex-1 sm:w-48 sm:flex-none bg-transparent border-transparent hover:border-border focus:border-border"
           />
         </div>
 
         <div className="flex items-center gap-1">
-          <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => dispatch({ type: "UNDO" })} disabled={state.past.length === 0} title="Undo">
+          <Button variant="ghost" size="icon" className="min-h-[44px] min-w-[44px]" onClick={() => dispatch({ type: "UNDO" })} disabled={state.past.length === 0} title="Undo">
             <Undo className="w-3.5 h-3.5" />
           </Button>
-          <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => dispatch({ type: "REDO" })} disabled={state.future.length === 0} title="Redo">
+          <Button variant="ghost" size="icon" className="min-h-[44px] min-w-[44px]" onClick={() => dispatch({ type: "REDO" })} disabled={state.future.length === 0} title="Redo">
             <Redo className="w-3.5 h-3.5" />
           </Button>
 

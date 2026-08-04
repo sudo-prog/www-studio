@@ -182,12 +182,12 @@ function ErrorBanner({
           <p className="text-xs text-red-400/70 mt-1">{config.description}</p>
         </div>
       </div>
-      <div className="flex gap-2 pl-8">
+      <div className="flex flex-wrap gap-2 pl-8">
         <Button
           size="sm"
           variant="outline"
           onClick={onRetry}
-          className="h-8 text-xs border-red-500/30 bg-transparent hover:bg-red-500/10 text-red-400"
+          className="h-8 min-h-[44px] text-xs border-red-500/30 bg-transparent hover:bg-red-500/10 text-red-400"
         >
           <RefreshCw className="h-3 w-3 mr-1.5" />
           Try again
@@ -197,7 +197,7 @@ function ErrorBanner({
             size="sm"
             variant="outline"
             onClick={onUploadScreenshot}
-            className="h-8 text-xs border-[#27272a] bg-[#18181b] hover:bg-[#27272a]"
+            className="h-8 min-h-[44px] text-xs border-[#27272a] bg-[#18181b] hover:bg-[#27272a]"
           >
             <Upload className="h-3 w-3 mr-1.5" />
             Upload Screenshot
@@ -456,7 +456,7 @@ export default function DesignExtractPage() {
       <Navbar />
       {/* Header */}
       <div className="border-b border-[#27272a] px-4 md:px-6 py-4">
-        <div className="max-w-7xl mx-auto flex items-center gap-3">
+        <div className="max-w-7xl mx-auto flex flex-wrap items-center gap-3">
           <Sparkles className="h-5 w-5 text-[#3b82f6]" />
           <h1 className="text-lg font-semibold font-display">Design Extract</h1>
           <span className="text-xs text-muted-foreground">
@@ -500,7 +500,7 @@ export default function DesignExtractPage() {
         )}
 
         {/* Two-column layout: stacks on mobile */}
-        <div className="flex flex-col lg:flex-row gap-6">
+        <div className="flex flex-wrap flex-col lg:flex-row gap-6">
           {/* Left column */}
           <div className="flex-1 min-w-0 space-y-4">
             {state.phase === "input" && (

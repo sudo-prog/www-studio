@@ -6,7 +6,7 @@ import { type SceneElement } from "@/lib/scene-types";
 import { Button } from "@/components/ui/button";
 import {
   Heart, Eye, Copy, Check, ExternalLink, ArrowLeft, Layers,
-  Code, Globe, Sparkles, Download,
+  Code, Code2, Globe, Sparkles, Download,
 } from "lucide-react";
 import { Link } from "wouter";
 import { cn } from "@/lib/utils";
@@ -204,7 +204,7 @@ export default function SceneShare() {
             <span className="hidden sm:inline">WWW Studio</span>
           </Link>
           <div className="h-5 w-px bg-border" />
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 overflow-x-auto">
             <div className="w-6 h-6 rounded-md bg-primary/20 flex items-center justify-center shrink-0">
               <Sparkles className="h-3.5 w-3.5 text-primary" />
             </div>
@@ -216,7 +216,7 @@ export default function SceneShare() {
             )}
           </div>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 overflow-x-auto">
           <button
             onClick={handleLike}
             className={cn(
@@ -304,7 +304,7 @@ export default function SceneShare() {
               </pre>
               <button
                 onClick={() => handleCopy(embedMode === "iframe" ? "iframe" : "link")}
-                className="absolute top-2 right-2 p-1.5 rounded-md bg-background border border-border hover:bg-muted transition-colors"
+                className="absolute top-2 right-2 p-1.5 rounded-md bg-background border border-border hover:bg-muted transition-colors min-h-[44px] min-w-[44px]"
               >
                 {copied ? <Check className="h-3.5 w-3.5 text-green-500" /> : <Copy className="h-3.5 w-3.5" />}
               </button>
@@ -319,7 +319,7 @@ export default function SceneShare() {
           {similar.length > 0 && (
             <div className="px-5 pb-4 border-b border-border">
               <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-3">You might also like</p>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                 {similar.map((s: any) => {
                   let els: any[] = [];
                   try { els = JSON.parse(s.elements ?? "[]"); } catch { /* */ }

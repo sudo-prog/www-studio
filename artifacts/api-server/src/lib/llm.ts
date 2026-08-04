@@ -2,17 +2,18 @@
  * Unified LLM client — works with Gemini Web2API, OpenRouter, Ollama, LM Studio, OpenAI,
  * or any OpenAI-compatible endpoint.
  *
- * DEFAULT: Gemini Web2API (local proxy at localhost:8081)
- * FALLBACK: OpenRouter (free tier: openrouter/free)
+ * DEFAULT: OmniRoute local gateway (OpenAI-compatible, port 20128)
+ * FALLBACK: Gemini Web2API (local proxy at localhost:8081), then OpenRouter (free tier)
  *
  * Configure via environment variables:
- *   LLM_BASE_URL      default: http://localhost:8081/v1  (Gemini Web2API)
- *   LLM_API_KEY       default: "gemini-web2api"
- *   LLM_MODEL         default: "gemini-3.5-flash"
+ *   LLM_BASE_URL      default: http://127.0.0.1:20128/v1  (OmniRoute)
+ *   LLM_API_KEY       default: "omniroute"
+ *   LLM_MODEL         default: "auto/best-coding-fast"
  *   LLM_VISION_MODEL  default: LLM_MODEL
  *
  * Quick-start examples:
- *   Gemini Web2API (default): LLM_BASE_URL=http://localhost:8081/v1  LLM_MODEL=gemini-3.5-flash
+ *   OmniRoute (default):     LLM_BASE_URL=http://127.0.0.1:20128/v1 LLM_MODEL=auto/best-coding-fast
+ *   Gemini Web2API (local):  LLM_BASE_URL=http://localhost:8081/v1  LLM_MODEL=gemini-3.5-flash
  *   OpenRouter (free):        LLM_BASE_URL=https://openrouter.ai/api/v1  LLM_API_KEY=sk-or-...
  *                             LLM_MODEL=openrouter/free
  *   Ollama (local):           LLM_BASE_URL=http://localhost:11434/v1  LLM_MODEL=llama3.2
@@ -21,9 +22,9 @@
 
 import OpenAI from "openai";
 
-export const LLM_BASE_URL    = process.env.LLM_BASE_URL    ?? "http://localhost:8081/v1";
-export const LLM_API_KEY     = process.env.LLM_API_KEY     ?? "gemini-web2api";
-export const LLM_MODEL       = process.env.LLM_MODEL       ?? "gemini-3.5-flash";
+export const LLM_BASE_URL    = process.env.LLM_BASE_URL    ?? "http://127.0.0.1:20128/v1";
+export const LLM_API_KEY     = process.env.LLM_API_KEY     ?? "omniroute";
+export const LLM_MODEL       = process.env.LLM_MODEL       ?? "auto/best-coding-fast";
 export const LLM_VISION_MODEL = process.env.LLM_VISION_MODEL ?? LLM_MODEL;
 
 export const llm = new OpenAI({
@@ -104,6 +105,7 @@ export interface ChatMessage {
 }
 
 export function getLLMProvider(): string {
+  if (LLM_BASE_URL.includes("20128")) return "OmniRoute";
   if (LLM_BASE_URL.includes("openrouter")) return "OpenRouter";
   if (LLM_BASE_URL.includes("openai.com")) return "OpenAI";
   if (LLM_BASE_URL.includes("localhost:11434")) return "Ollama";

@@ -32,9 +32,9 @@ interface ChatMsg {
 }
 
 // ─── Provider configuration ──────────────────────────────────────────────────
-// Primary AI endpoint: local gemini-web2api tunnel (OpenAI-compatible, free)
-const PRIMARY_PROXY = "https://dressed-integer-strain-powerpoint.trycloudflare.com/v1/chat/completions";
-const PRIMARY_MODEL = "gemini-3.5-flash";
+// Primary AI endpoint: OmniRoute local gateway (OpenAI-compatible, free)
+const PRIMARY_PROXY = "http://127.0.0.1:20128/v1/chat/completions";
+const PRIMARY_MODEL = "auto/best-coding-fast";
 
 // Provider fallback helper — tries each URL+model combo, throws after last one fails
 async function callAiProvider(
