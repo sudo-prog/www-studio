@@ -132,7 +132,7 @@ export default function FreeformSharePage() {
   }
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-[100dvh] bg-background flex flex-col">
       {/* Top bar */}
       <div className="h-14 flex items-center justify-between px-4 border-b border-border bg-background/95 backdrop-blur shrink-0 min-h-[44px]">
         <div className="flex items-center gap-3">
@@ -156,7 +156,7 @@ export default function FreeformSharePage() {
           <button
             onClick={handleLike}
             className={cn(
-              "flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs border transition-all",
+              "flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs border transition-all min-h-[44px]",
               liked
                 ? "bg-rose-500/20 border-rose-500/40 text-rose-400"
                 : "bg-card border-border text-muted-foreground hover:text-foreground"
@@ -176,7 +176,7 @@ export default function FreeformSharePage() {
         </div>
       </div>
 
-      <div className="flex flex-1 min-h-0">
+      <div className="flex flex-col md:flex-row flex-1 min-h-0">
         {/* Page preview */}
         <div className="flex-1 bg-[#0d0d1a] relative overflow-hidden">
           <FreeformPageRenderer page={page} />
@@ -192,7 +192,7 @@ export default function FreeformSharePage() {
         </div>
 
         {/* Sidebar */}
-        <div className="w-[320px] border-l border-border bg-card/50 flex flex-col overflow-y-auto shrink-0">
+        <div className="w-full md:w-[320px] border-l border-border bg-card/50 flex flex-col overflow-y-auto shrink-0">
           {/* Info */}
           <div className="p-5 border-b border-border">
             <h2 className="font-bold text-lg mb-1">{page.name}</h2>
@@ -213,7 +213,7 @@ export default function FreeformSharePage() {
                   key={mode}
                   onClick={() => setEmbedMode(mode)}
                   className={cn(
-                    "flex-1 py-1.5 text-xs rounded-md border transition-colors",
+                    "flex-1 py-1.5 min-h-[44px] text-xs rounded-md border transition-colors",
                     embedMode === mode
                       ? "bg-primary text-primary-foreground border-primary"
                       : "border-border text-muted-foreground hover:text-foreground"
@@ -230,7 +230,7 @@ export default function FreeformSharePage() {
               </pre>
               <button
                 onClick={() => handleCopy(embedMode === "iframe" ? "iframe" : "link")}
-                className="absolute top-2 right-2 p-1.5 rounded-md bg-background border border-border hover:bg-muted transition-colors"
+                className="absolute top-2 right-2 min-h-[44px] min-w-[44px] p-1.5 rounded-md bg-background border border-border hover:bg-muted transition-colors"
               >
                 {copied ? <Check className="h-3.5 w-3.5 text-green-500" /> : <Copy className="h-3.5 w-3.5" />}
               </button>
@@ -242,7 +242,7 @@ export default function FreeformSharePage() {
           </div>
 
           {/* Footer actions */}
-          <div className="p-4 border-t border-border flex flex-col gap-2">
+          <div className="p-4 pb-[env(safe-area-inset-bottom)] border-t border-border flex flex-col gap-2">
             <Button
               variant="outline"
               className="w-full gap-2"

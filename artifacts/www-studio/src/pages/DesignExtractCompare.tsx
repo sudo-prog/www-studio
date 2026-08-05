@@ -269,7 +269,7 @@ export default function DesignExtractCompare() {
         {/* Diff summary */}
         <div className="mt-6 border border-[#27272a] rounded-lg bg-[#18181b] p-4">
           <h3 className="text-sm font-medium mb-3">Difference Summary</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-center">
             <div>
               <p className="text-2xl font-bold text-amber-400">{colorDiff.different.length}</p>
               <p className="text-[10px] text-muted-foreground">Different</p>
