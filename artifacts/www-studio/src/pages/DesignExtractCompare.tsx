@@ -197,7 +197,7 @@ export default function DesignExtractCompare() {
               <div className="space-y-4">
                 <div>
                   <h3 className="text-xs font-medium text-muted-foreground mb-2">Colors</h3>
-                  <div className="grid grid-cols-2 gap-2 overflow-x-auto">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 overflow-x-auto">
                     {Object.entries(colorsA).map(([name, hex]) => {
                       const isDifferent = colorDiff.different.includes(name);
                       const isOnlyHere = colorDiff.onlyInA.includes(name);
@@ -233,7 +233,7 @@ export default function DesignExtractCompare() {
               <div className="space-y-4">
                 <div>
                   <h3 className="text-xs font-medium text-muted-foreground mb-2">Colors</h3>
-                  <div className="grid grid-cols-2 gap-2 overflow-x-auto">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 overflow-x-auto">
                     {Object.entries(colorsB).map(([name, hex]) => {
                       const isDifferent = colorDiff.different.includes(name);
                       const isOnlyHere = colorDiff.onlyInB.includes(name);

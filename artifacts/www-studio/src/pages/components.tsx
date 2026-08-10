@@ -47,13 +47,13 @@ function ComponentCard({ item }: { item: typeof COMPONENT_LIBRARY[number] }) {
           <Button
             size="sm"
             variant="secondary"
-            className="h-7 min-h-[44px] text-xs gap-1"
+            className="h-7 min-h-[48px] text-xs gap-1"
             onClick={() => setView(view === "preview" ? "code" : "preview")}
           >
             {view === "preview" ? <Code2 className="w-3 h-3" /> : <Eye className="w-3 h-3" />}
             {view === "preview" ? "Code" : "Preview"}
           </Button>
-          <Button size="sm" variant="secondary" className="h-7 min-h-[44px] text-xs gap-1" onClick={copy}>
+          <Button size="sm" variant="secondary" className="h-7 min-h-[48px] text-xs gap-1" onClick={copy}>
             {copied ? <Check className="w-3 h-3 text-green-500" /> : <Copy className="w-3 h-3" />}
             {copied ? "Copied!" : "Copy"}
           </Button>
@@ -72,7 +72,7 @@ function ComponentCard({ item }: { item: typeof COMPONENT_LIBRARY[number] }) {
             ))}
           </div>
         </div>
-        <Button size="sm" variant="ghost" className="h-7 w-7 min-h-[44px] min-w-[44px] shrink-0" onClick={copy}>
+        <Button size="sm" variant="ghost" className="h-7 w-7 min-h-[48px] min-w-[44px] shrink-0" onClick={copy}>
           {copied ? <Check className="w-3.5 h-3.5 text-green-500" /> : <Copy className="w-3.5 h-3.5 text-muted-foreground" />}
         </Button>
       </div>
@@ -103,7 +103,7 @@ export default function Components() {
   );
 
   return (
-    <div className="min-h-screen flex flex-col bg-background overflow-x-hidden">
+    <div className="min-h-[100dvh] flex flex-col bg-background overflow-x-hidden">
       <main className="flex-1 max-w-7xl mx-auto w-full px-4 md:px-6 py-8 overflow-x-hidden">
         {/* Header */}
         <div className="mb-8">
@@ -121,7 +121,7 @@ export default function Components() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search loading, glassmorphism, buttons..."
-              className="pl-9 min-h-[44px]"
+              className="pl-9 min-h-[48px]"
             />
           </div>
         </div>
@@ -134,7 +134,7 @@ export default function Components() {
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
                 className={cn(
-                  "px-3 py-1.5 min-h-[44px] rounded-full text-xs font-medium transition-colors",
+                  "px-3 py-1.5 min-h-[48px] rounded-full text-xs font-medium transition-colors",
                   activeCategory === cat ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:text-foreground"
                 )}
               >
@@ -150,7 +150,7 @@ export default function Components() {
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
                 className={cn(
-                  "flex items-center justify-between px-3 py-2 min-h-[44px] rounded-lg text-sm text-left transition-colors",
+                  "flex items-center justify-between px-3 py-2 min-h-[48px] rounded-lg text-sm text-left transition-colors",
                   activeCategory === cat
                     ? "bg-primary/10 text-primary font-medium"
                     : "text-muted-foreground hover:text-foreground hover:bg-muted/50"

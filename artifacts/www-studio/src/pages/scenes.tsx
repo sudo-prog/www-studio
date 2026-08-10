@@ -359,7 +359,7 @@ export default function Scenes() {
         </div>
 
         {/* Wellness palette strips */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 mb-8">
           {WELLNESS_PRESETS.map((preset) => (
             <button
               key={preset.name}
@@ -381,7 +381,7 @@ export default function Scenes() {
 
         {/* Stats strip */}
         {stats && (
-          <div className="flex items-center gap-4 mb-6 text-xs text-muted-foreground">
+          <div className="flex flex-wrap items-center gap-4 mb-6 text-xs text-muted-foreground">
             <span className="flex items-center gap-1"><Layers className="h-3 w-3" />{stats.total} total</span>
             <span className="flex items-center gap-1"><Globe className="h-3 w-3 text-green-400" />{stats.published} published</span>
             <span>👁 {stats.totalViews.toLocaleString()} views</span>
@@ -548,7 +548,7 @@ export default function Scenes() {
                     const prompts = ["serene ocean at dawn","lavender dreamscape for sleep","forest mist at sunrise","cosmic meditation galaxy","golden hour warmth","deep breathing mindfulness","energy boost morning","chakra alignment flow","evening wind-down with amber","mountain peak clarity"];
                     setAiPrompt(prompts[Math.floor(Math.random() * prompts.length)]);
                   }}
-                  className="text-[10px] text-primary hover:opacity-70 transition-opacity"
+                  className="text-[10px] text-primary hover:opacity-70 transition-opacity min-h-[44px] flex items-center"
                 >🎲 Surprise me</button>
               </div>
               <div className="flex flex-wrap gap-1.5">
@@ -566,7 +566,7 @@ export default function Scenes() {
                     key={p}
                     onClick={() => setAiPrompt(p)}
                     className={cn(
-                      "text-[10px] px-2 py-1 rounded-full border transition-colors text-left",
+                      "text-[10px] px-2 py-1 rounded-full border transition-colors text-left min-h-[44px] flex items-center",
                       aiPrompt === p ? "border-primary/50 bg-primary/10 text-primary" : "border-border text-muted-foreground hover:border-primary/30 hover:text-foreground"
                     )}
                   >{p}</button>
@@ -575,8 +575,8 @@ export default function Scenes() {
             </div>
           </div>
           <DialogFooter>
-            <Button variant="ghost" onClick={() => setShowAI(false)}>Cancel</Button>
-            <Button onClick={handleAIGenerate} disabled={!aiPrompt.trim() || aiGenerate.isPending}>
+            <Button variant="ghost" onClick={() => setShowAI(false)} className="min-h-[44px]">Cancel</Button>
+            <Button onClick={handleAIGenerate} disabled={!aiPrompt.trim() || aiGenerate.isPending} className="min-h-[44px]">
               {aiGenerate.isPending ? "Generating…" : "Generate Scene"}
             </Button>
           </DialogFooter>

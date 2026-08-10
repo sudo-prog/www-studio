@@ -180,7 +180,7 @@ export default function SceneShare() {
   // Embed-only mode — show full-screen scene with no chrome
   if (isEmbed) {
     return (
-      <div className="w-full h-screen overflow-hidden bg-[#0d0d1a] relative">
+      <div className="w-full h-dvh overflow-hidden bg-[#0d0d1a] relative">
         <AnimatedScene scene={scene} />
         <div className="absolute bottom-3 right-3 flex items-center gap-2">
           <span className="text-white/40 text-[10px] font-medium px-2 py-0.5 bg-black/40 backdrop-blur rounded-full">
@@ -229,10 +229,10 @@ export default function SceneShare() {
             <Heart className={cn("h-3.5 w-3.5", liked && "fill-rose-400")} />
             {likes}
           </button>
-          <Button variant="outline" size="sm" className="gap-1.5" onClick={() => window.open(`/scenes/${sceneId}/preview`, "_blank")}>
+          <Button variant="outline" size="sm" className="gap-1.5 min-h-[44px]" onClick={() => window.open(`/scenes/${sceneId}/preview`, "_blank")}>
             <ExternalLink className="h-3.5 w-3.5" />Preview
           </Button>
-          <Button size="sm" className="gap-1.5" asChild>
+          <Button size="sm" className="gap-1.5 min-h-[44px]" asChild>
             <Link href={`/scenes/${sceneId}`}>
               Edit Scene
             </Link>
@@ -240,12 +240,12 @@ export default function SceneShare() {
         </div>
       </div>
 
-      <div className="flex flex-1 min-h-0">
+      <div className="flex flex-col md:flex-row flex-1 min-h-0">
         {/* Scene preview - left/main */}
         <div className="flex-1 bg-[#0d0d1a] relative overflow-hidden">
           <AnimatedScene scene={scene} />
           {/* Stats overlay */}
-          <div className="absolute bottom-4 left-4 flex items-center gap-3">
+          <div className="absolute bottom-4 left-4 flex flex-wrap items-center gap-3">
             <div className="flex items-center gap-1.5 text-white/60 text-xs bg-black/40 backdrop-blur px-2.5 py-1.5 rounded-full">
               <Eye className="h-3 w-3" />{views.toLocaleString()} views
             </div>
@@ -256,7 +256,7 @@ export default function SceneShare() {
         </div>
 
         {/* Sidebar */}
-        <div className="w-[320px] border-l border-border bg-card/50 flex flex-col overflow-y-auto shrink-0">
+        <div className="w-full md:w-[320px] border-l border-border bg-card/50 flex flex-col overflow-y-auto shrink-0">
           {/* Info */}
           <div className="p-5 border-b border-border">
             <h2 className="font-bold text-lg mb-1">{scene.name}</h2>

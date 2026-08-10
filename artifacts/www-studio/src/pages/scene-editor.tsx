@@ -428,7 +428,7 @@ export default function SceneEditor() {
             variant={showEnhancer ? "secondary" : "ghost"}
             size="sm"
             onClick={() => setShowEnhancer(true)}
-            className="gap-1.5 h-8 hidden sm:flex"
+            className="gap-1.5 h-8 min-h-[44px] hidden sm:flex"
             title="AI Enhance (Ctrl+Enter)"
           >
             <Sparkles className="h-3.5 w-3.5" />
@@ -451,7 +451,7 @@ export default function SceneEditor() {
             variant="outline"
             size="sm"
             className={cn(
-              "gap-1.5 h-8 hidden sm:flex",
+              "gap-1.5 h-8 min-h-[44px] hidden sm:flex",
               state.scene.status === "published" ? "text-green-400 border-green-500/30 hover:bg-green-500/10" : ""
             )}
             onClick={() => {
@@ -563,7 +563,7 @@ export default function SceneEditor() {
                       key={el.id}
                       onClick={() => { handleSelect(el.id); setRightTab("properties"); }}
                       className={cn(
-                        "group flex items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer text-sm transition-colors",
+                        "group flex flex-wrap items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer text-sm transition-colors",
                         state.selectedId === el.id ? "bg-primary/15 text-foreground" : "hover:bg-muted text-muted-foreground hover:text-foreground"
                       )}
                     >
@@ -610,7 +610,7 @@ export default function SceneEditor() {
                       <div className="space-y-1.5">
                         <Label className="text-xs text-muted-foreground">Fill</Label>
                         <div className="flex gap-2 items-center">
-                          <input type="color" value={selectedEl.fill} onChange={(e) => handleUpdate(selectedEl.id, { fill: e.target.value })} className="w-8 h-7 rounded border border-border cursor-pointer bg-transparent" />
+                          <input type="color" value={selectedEl.fill} onChange={(e) => handleUpdate(selectedEl.id, { fill: e.target.value })} className="w-8 h-7 min-h-[44px] min-w-[44px] rounded border border-border cursor-pointer bg-transparent" />
                           <Input value={selectedEl.fill} onChange={(e) => handleUpdate(selectedEl.id, { fill: e.target.value })} className="h-7 text-xs min-h-[44px] font-mono flex-1" />
                         </div>
                       </div>

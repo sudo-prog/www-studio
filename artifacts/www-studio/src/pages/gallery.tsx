@@ -112,7 +112,7 @@ function GallerySceneCard({ scene, onFork, onEmbed, onPreview }: {
           <span className="text-xs text-muted-foreground">{elements.length} elements</span>
           <button
             onClick={onEmbed}
-            className="min-h-11 min-w-11 flex items-center justify-center text-[10px] text-muted-foreground hover:text-foreground gap-1 transition-colors"
+            className="min-h-12 min-w-12 flex items-center justify-center text-[10px] text-muted-foreground hover:text-foreground gap-1 transition-colors"
           >
             <Code2 className="h-3 w-3" />Embed
           </button>
@@ -154,7 +154,7 @@ export default function Gallery() {
   }
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
+    <div className="min-h-dvh bg-background overflow-x-hidden">
       {embedScene && <EmbedModal scene={embedScene} onClose={() => setEmbedScene(null)} />}
 
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-8">

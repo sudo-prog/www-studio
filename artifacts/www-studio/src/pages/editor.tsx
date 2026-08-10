@@ -162,7 +162,7 @@ function AssetsPanel({ projectId }: { projectId: string }) {
                     <Button
                       size="icon"
                       variant="secondary"
-                      className="h-6 w-6"
+                      className="h-6 w-6 min-h-[44px] min-w-[44px]"
                       onClick={() => copyUrl(asset.url)}
                       title="Copy URL"
                     >
@@ -171,7 +171,7 @@ function AssetsPanel({ projectId }: { projectId: string }) {
                     <Button
                       size="icon"
                       variant="secondary"
-                      className="h-6 w-6"
+                      className="h-6 w-6 min-h-[44px] min-w-[44px]"
                       onClick={() => removeAsset(asset.id)}
                       title="Delete"
                     >
@@ -239,7 +239,7 @@ function StockImagesPanel() {
                 <Button size="sm" variant="secondary" className="h-6 text-[10px] px-2 gap-1" onClick={() => copy(img.url)}>
                   {copied === img.url ? <Check className="w-2.5 h-2.5 text-green-500" /> : <Copy className="w-2.5 h-2.5" />}Copy URL
                 </Button>
-                <Button size="sm" variant="secondary" className="h-6 w-6 p-0" asChild>
+                <Button size="sm" variant="secondary" className="h-6 w-6 min-h-[44px] min-w-[44px] p-0" asChild>
                   <a href={img.url} target="_blank" rel="noopener noreferrer"><ExternalLink className="w-2.5 h-2.5" /></a>
                 </Button>
               </div>
@@ -306,8 +306,8 @@ function AIImagesPanel({ projectId }: { projectId: string }) {
                   <div key={i} className="rounded-lg overflow-hidden border border-border/40 group relative">
                     <img src={img.url} alt={img.prompt} className="w-full aspect-video object-cover" />
                     <div className="absolute inset-0 bg-black/60 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
-                      <Button size="sm" variant="secondary" className="h-7 text-xs gap-1" onClick={() => navigator.clipboard.writeText(img.url)}><Copy className="w-3 h-3" />Copy URL</Button>
-                      <Button size="sm" variant="secondary" className="h-7 text-xs gap-1" asChild><a href={img.url} target="_blank" rel="noopener noreferrer"><ExternalLink className="w-3 h-3" />Open</a></Button>
+                      <Button size="sm" variant="secondary" className="h-7 min-h-[44px] text-xs gap-1" onClick={() => navigator.clipboard.writeText(img.url)}><Copy className="w-3 h-3" />Copy URL</Button>
+                      <Button size="sm" variant="secondary" className="h-7 min-h-[44px] text-xs gap-1" asChild><a href={img.url} target="_blank" rel="noopener noreferrer"><ExternalLink className="w-3 h-3" />Open</a></Button>
                     </div>
                     <p className="text-xs text-muted-foreground truncate px-2 py-1">{img.prompt}</p>
                   </div>
@@ -607,7 +607,7 @@ function PublishModal({ projectId, projectSlug, onClose }: { projectId: string; 
             <div className="flex items-center gap-2 mb-3"><div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" /><span className="text-sm font-medium text-green-500">Live</span></div>
             <div className="flex items-center gap-2 bg-muted/30 rounded-lg p-3 mb-4">
               <code className="flex-1 text-xs font-mono text-foreground break-all">{liveUrl}</code>
-              <Button variant="ghost" size="icon" className="shrink-0 h-7 w-7" onClick={() => copy(liveUrl)}>
+              <Button variant="ghost" size="icon" className="shrink-0 h-7 w-7 min-h-[44px] min-w-[44px]" onClick={() => copy(liveUrl)}>
                 {copied ? <Check className="w-3.5 h-3.5 text-green-500" /> : <Copy className="w-3.5 h-3.5" />}
               </Button>
             </div>
@@ -1450,9 +1450,9 @@ export default function Editor() {
                       onChange={(e) => setChatInput(e.target.value)}
                       placeholder={editMode ? "Exit edit mode to use AI chat…" : "Ask AI to modify the design…"}
                       disabled={editMode}
-                      className="flex-1 bg-transparent border-0 focus-visible:ring-0 shadow-none px-0 h-8 text-sm disabled:opacity-40"
+                      className="flex-1 bg-transparent border-0 focus-visible:ring-0 shadow-none px-0 h-8 min-h-[44px] text-sm disabled:opacity-40"
                     />
-                    <Button type="submit" size="icon" variant="ghost" className="h-8 w-8 shrink-0" disabled={!chatInput.trim() || sendMessage.isPending || editMode}>
+                    <Button type="submit" size="icon" variant="ghost" className="h-8 w-8 shrink-0 min-h-[44px] min-w-[44px]" disabled={!chatInput.trim() || sendMessage.isPending || editMode}>
                       {sendMessage.isPending ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
                     </Button>
                   </form>

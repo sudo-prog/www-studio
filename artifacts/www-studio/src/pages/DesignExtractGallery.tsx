@@ -116,7 +116,7 @@ export default function DesignExtractGallery() {
                   </div>
                   <button
                     onClick={() => navigate(`/design-extract/${item.id}`)}
-                    className="w-full mt-2 px-3 py-1.5 text-sm min-h-[44px] bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
+                    className="w-full mt-2 px-3 py-1.5 text-sm min-h-[48px] bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
                   >
                     View
                   </button>

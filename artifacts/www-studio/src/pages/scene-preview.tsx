@@ -122,7 +122,7 @@ export default function ScenePreviewPage() {
       <style>{ANIM_KEYFRAMES}</style>
       <Link
         href="/"
-        className="fixed top-3 left-3 z-50 flex flex-wrap items-center gap-1.5 px-3 min-h-[44px] rounded-full bg-background/80 backdrop-blur border border-border shadow-sm font-semibold text-sm tracking-tight hover:text-primary transition-colors"
+        className="fixed top-3 left-3 z-50 flex flex-wrap items-center gap-1.5 px-3 min-h-[48px] rounded-full bg-background/80 backdrop-blur border border-border shadow-sm font-semibold text-sm tracking-tight hover:text-primary transition-colors"
       >
         <Code2 className="h-4 w-4 text-primary" />
         <span className="hidden sm:inline">WWW Studio</span>

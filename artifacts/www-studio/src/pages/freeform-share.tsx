@@ -124,7 +124,7 @@ export default function FreeformSharePage() {
       <div className="h-screen bg-background flex flex-col items-center justify-center gap-4">
         <Globe className="h-12 w-12 text-muted-foreground" />
         <p className="text-muted-foreground">Page not found</p>
-        <Button variant="outline" asChild>
+        <Button variant="outline" className="min-h-[44px]" asChild>
           <Link href="/projects">← Back to Dashboard</Link>
         </Button>
       </div>
@@ -136,7 +136,7 @@ export default function FreeformSharePage() {
       {/* Top bar */}
       <div className="h-14 flex items-center justify-between px-4 border-b border-border bg-background/95 backdrop-blur shrink-0 min-h-[44px]">
         <div className="flex items-center gap-3">
-          <Button variant="ghost" size="icon" className="h-8 w-8" asChild>
+          <Button variant="ghost" size="icon" className="h-8 w-8 min-h-[44px] min-w-[44px]" asChild>
             <Link href="/projects">
               <ArrowLeft className="h-4 w-4" />
             </Link>
@@ -165,10 +165,10 @@ export default function FreeformSharePage() {
             <Heart className={cn("h-3.5 w-3.5", liked && "fill-rose-400")} />
             {likes}
           </button>
-          <Button variant="outline" size="sm" className="gap-1.5" onClick={() => window.open(shareUrl, "_blank")}>
+          <Button variant="outline" size="sm" className="gap-1.5 min-h-[44px]" onClick={() => window.open(shareUrl, "_blank")}>
             <ExternalLink className="h-3.5 w-3.5" />Open
           </Button>
-          <Button size="sm" className="gap-1.5" asChild>
+          <Button size="sm" className="gap-1.5 min-h-[44px]" asChild>
             <Link href={`/freeform/${pageId}`}>
               Edit Page
             </Link>
@@ -245,7 +245,7 @@ export default function FreeformSharePage() {
           <div className="p-4 pb-[env(safe-area-inset-bottom)] border-t border-border flex flex-col gap-2">
             <Button
               variant="outline"
-              className="w-full gap-2"
+              className="w-full gap-2 min-h-[44px]"
               onClick={() => {
                 const html = exportFreeformToHTML(page);
                 const blob = new Blob([html], { type: "text/html" });
@@ -259,7 +259,7 @@ export default function FreeformSharePage() {
             >
               <Download className="h-4 w-4" />Download HTML
             </Button>
-            <Button className="w-full gap-2" asChild>
+            <Button className="w-full gap-2 min-h-[44px]" asChild>
               <Link href={`/freeform/${pageId}`}>
                 <Sparkles className="h-4 w-4" />Open Editor
               </Link>

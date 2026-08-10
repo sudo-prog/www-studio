@@ -17,7 +17,7 @@ export default function NotFound() {
             Did you forget to add the page to the router?
           </p>
 
-          <Button asChild className="mt-6 w-full min-h-[44px]">
+          <Button asChild className="mt-6 w-full min-h-[48px]">
             <Link href="/">
               <Home className="h-4 w-4 mr-2" />
               Go home

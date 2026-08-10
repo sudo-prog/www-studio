@@ -223,7 +223,7 @@ export default function FreeformEditor() {
         <div className={cn("shrink-0 border-l border-border bg-background overflow-y-auto p-3 space-y-3", isMobile ? "w-full border-l-0 border-t" : "w-64")}>
           <div className="flex items-center justify-between">
             <span className="text-xs font-medium">Design Tokens</span>
-            <Button variant="ghost" size="icon" className="h-5 w-5" onClick={() => setShowTokenPanel(false)}>×</Button>
+            <Button variant="ghost" size="icon" className="min-h-[44px] min-w-[44px]" onClick={() => setShowTokenPanel(false)}>×</Button>
           </div>
 
           {/* Colors */}
@@ -234,7 +234,7 @@ export default function FreeformEditor() {
                 <div key={name} className="relative">
                   <button
                     title={name}
-                    className="w-8 h-8 rounded border border-border hover:ring-1 hover:ring-primary"
+                    className="w-8 min-h-[44px] rounded border border-border hover:ring-1 hover:ring-primary"
                     style={{ background: value as string }}
                     onClick={() => {
                       setEditingColor(name);
@@ -319,7 +319,7 @@ export default function FreeformEditor() {
         <div className={cn("shrink-0 border-l border-border bg-background overflow-y-auto p-3 space-y-3", isMobile ? "w-full border-l-0 border-t" : "w-64")}>
           <div className="flex items-center justify-between">
             <span className="text-xs font-medium">Components</span>
-            <Button variant="ghost" size="icon" className="h-5 w-5" onClick={() => setShowComponentPanel(false)}>×</Button>
+            <Button variant="ghost" size="icon" className="min-h-[44px] min-w-[44px]" onClick={() => setShowComponentPanel(false)}>×</Button>
           </div>
 
           {selectedEl && (
@@ -338,7 +338,7 @@ export default function FreeformEditor() {
                 <div key={comp.id} className="border border-border rounded-lg p-2 space-y-2">
                   <div className="flex items-center justify-between">
                     <span className="text-[11px] font-medium">{comp.name}</span>
-                    <Button variant="ghost" size="icon" className="h-4 w-4" onClick={() => dispatch({ type: "DELETE_COMPONENT", id: comp.id })}>×</Button>
+                    <Button variant="ghost" size="icon" className="min-h-[44px] min-w-[44px]" onClick={() => dispatch({ type: "DELETE_COMPONENT", id: comp.id })}>×</Button>
                   </div>
                   <Button variant="outline" size="sm" className="w-full min-h-[44px] text-[10px]" onClick={() => handleCreateInstance(comp.id)}>
                     + Create Instance
@@ -379,7 +379,7 @@ export default function FreeformEditor() {
         <div className={cn("shrink-0 border-l border-border bg-background overflow-y-auto p-3 space-y-3", isMobile ? "w-full border-l-0 border-t" : "w-80")}>
           <div className="flex items-center justify-between">
             <span className="text-xs font-medium">Mobile Preview</span>
-            <Button variant="ghost" size="icon" className="h-5 w-5" onClick={() => setShowMobilePreview(false)}>×</Button>
+            <Button variant="ghost" size="icon" className="min-h-[44px] min-w-[44px]" onClick={() => setShowMobilePreview(false)}>×</Button>
           </div>
 
           <div className="flex gap-1">
@@ -391,7 +391,7 @@ export default function FreeformEditor() {
               <button
                 key={device.w}
                 className={cn(
-                  "text-[10px] px-2 py-1 rounded-lg transition-colors",
+                  "text-[10px] px-2 py-1 min-h-[44px] rounded-lg transition-colors",
                   mobileWidth === device.w ? "bg-primary/20 text-primary" : "bg-muted/50 text-muted-foreground hover:text-foreground"
                 )}
                 onClick={() => setMobileWidth(device.w)}

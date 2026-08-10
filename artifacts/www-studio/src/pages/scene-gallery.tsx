@@ -266,7 +266,7 @@ export default function SceneGallery() {
             <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-3 flex items-center gap-1.5">
               <Heart className="h-3 w-3 text-rose-400" />Trending This Week
             </p>
-            <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-6 gap-2">
               {trending.map((scene: any) => {
                 let els: any[] = [];
                 try { els = JSON.parse(scene.elements ?? "[]"); } catch { /* */ }
@@ -326,7 +326,7 @@ export default function SceneGallery() {
             <button
               onClick={() => setActiveTag(null)}
               className={cn(
-                "text-xs px-3 py-1.5 rounded-full border transition-colors",
+                "text-xs px-3 py-1.5 rounded-full border transition-colors min-h-[48px]",
                 !activeTag ? "bg-primary text-primary-foreground border-primary" : "border-border text-muted-foreground hover:border-primary/50"
               )}
             >
@@ -337,7 +337,7 @@ export default function SceneGallery() {
                 key={tag}
                 onClick={() => setActiveTag(activeTag === tag ? null : tag)}
                 className={cn(
-                  "text-xs px-3 py-1.5 rounded-full border transition-colors",
+                  "text-xs px-3 py-1.5 rounded-full border transition-colors min-h-[48px]",
                   activeTag === tag ? "bg-primary text-primary-foreground border-primary" : "border-border text-muted-foreground hover:border-primary/50"
                 )}
               >

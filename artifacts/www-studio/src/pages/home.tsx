@@ -127,7 +127,7 @@ export default function Home() {
                 <p className="text-xs sm:text-sm text-muted-foreground">AI-generated SVG compositions with living animations — click to share</p>
               </div>
               <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-                <Button variant="outline" size="sm" className="hidden sm:flex" asChild>
+                <Button variant="outline" size="sm" className="hidden sm:flex min-h-[44px]" asChild>
                   <Link href="/scenes/gallery" className="gap-1.5">
                     <Globe className="h-3.5 w-3.5" />Public Gallery
                   </Link>

@@ -132,7 +132,7 @@ export default function Profile() {
                   placeholder="ghp_..."
                   value={ghToken}
                   onChange={(e) => setGhToken(e.target.value)}
-                  className="min-h-[44px] text-xs"
+                  className="min-h-[48px] text-xs"
                 />
                 <Button size="sm" className="min-h-[48px] text-xs gap-1" onClick={handleSaveToken}>
                   <Key className="h-3 w-3" />
@@ -143,7 +143,7 @@ export default function Profile() {
                 <p className="text-[10px] text-green-400 flex items-center gap-1">
                   ✓ Token connected
                   <button
-                    className="inline-flex items-center min-h-[44px] text-muted-foreground hover:text-foreground underline ml-2"
+                    className="inline-flex items-center min-h-[48px] text-muted-foreground hover:text-foreground underline ml-2"
                     onClick={() => { setGhToken(""); handleSaveToken(); }}
                   >
                     Remove
@@ -169,21 +169,21 @@ export default function Profile() {
                 placeholder="Current password"
                 value={currentPw}
                 onChange={(e) => setCurrentPw(e.target.value)}
-                className="min-h-[44px] text-xs"
+                className="min-h-[48px] text-xs"
               />
               <Input
                 type="password"
                 placeholder="New password (8+ chars)"
                 value={newPw}
                 onChange={(e) => setNewPw(e.target.value)}
-                className="min-h-[44px] text-xs"
+                className="min-h-[48px] text-xs"
               />
               <Input
                 type="password"
                 placeholder="Confirm new password"
                 value={confirmPw}
                 onChange={(e) => setConfirmPw(e.target.value)}
-                className="min-h-[44px] text-xs"
+                className="min-h-[48px] text-xs"
               />
               <Button size="sm" className="min-h-[48px] text-xs gap-1" onClick={handleResetPassword} disabled={resetLoading}>
                 <Key className="h-3 w-3" />

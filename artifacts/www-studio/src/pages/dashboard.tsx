@@ -33,11 +33,11 @@ export default function Dashboard() {
     });
   };
 
-  if (authLoading) return <div className="min-h-screen bg-background" />;
+  if (authLoading) return <div className="min-h-dvh bg-background" />;
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen flex flex-col bg-background overflow-x-hidden">
+      <div className="min-h-dvh flex flex-col bg-background overflow-x-hidden">
         <main className="flex-1 flex flex-col items-center justify-center p-8 text-center">
           <h2 className="text-2xl font-semibold mb-2">Please log in to view your projects</h2>
         </main>
@@ -56,11 +56,11 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-background overflow-x-hidden">
+    <div className="min-h-dvh flex flex-col bg-background overflow-x-hidden">
       <main className="flex-1 p-6 md:p-8 max-w-4xl mx-auto w-full">
 
         {/* Stats bar */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 mb-8">
           {[
             { icon: <FolderOpen className="h-4 w-4" />, label: "Projects", value: safeProjects.length, color: "text-blue-400" },
             { icon: <Globe className="h-4 w-4" />,       label: "Published", value: publishedCount,              color: "text-green-400" },
@@ -88,7 +88,7 @@ export default function Dashboard() {
                 View all →
               </Link>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
               {safeScenes.slice(0, 4).map((scene: any) => {
                 let elements: any[] = [];
                 try { elements = JSON.parse(scene.elements ?? "[]"); } catch {}
@@ -119,7 +119,7 @@ export default function Dashboard() {
         )}
 
         {/* Quick actions */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 mb-8">
           {[
             { icon: <Plus className="h-4 w-4" />,       label: "New Project",       sub: "Blank canvas",           href: "/editor/new",        color: "bg-blue-500/10 text-blue-400 border-blue-500/20" },
             { icon: <Zap className="h-4 w-4" />,         label: "AI Scene",          sub: "Generate with AI",       href: "/scenes",            color: "bg-purple-500/10 text-purple-400 border-purple-500/20" },
@@ -210,17 +210,17 @@ export default function Dashboard() {
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
-                        <DropdownMenuItem asChild>
+                        <DropdownMenuItem asChild className="min-h-[44px]">
                           <Link href={`/editor/${project.id}`}>
                             <Play className="w-4 h-4 mr-2" />Edit
                           </Link>
                         </DropdownMenuItem>
-                        <DropdownMenuItem onClick={() => downloadProjectHtml(project.id, project.name)}>
+                        <DropdownMenuItem onClick={() => downloadProjectHtml(project.id, project.name)} className="min-h-[44px]">
                           <Download className="w-4 h-4 mr-2" />Download HTML
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem
-                          className="text-destructive focus:text-destructive"
+                          className="text-destructive focus:text-destructive min-h-[44px]"
                           onClick={() => handleDelete(project.id)}
                         >
                           <Trash2 className="w-4 h-4 mr-2" />Delete
