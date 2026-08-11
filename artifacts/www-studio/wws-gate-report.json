@@ -1,0 +1,126 @@
+{
+  "/#/": {
+    "overflow": [],
+    "tapTargets": [],
+    "swallowed": [],
+    "docOverflow": 0,
+    "gateVisible": false,
+    "errors": []
+  },
+  "/#/projects": {
+    "overflow": [],
+    "tapTargets": [],
+    "swallowed": [],
+    "docOverflow": 0,
+    "gateVisible": false,
+    "errors": []
+  },
+  "/#/ui-library": {
+    "overflow": [],
+    "tapTargets": [],
+    "swallowed": [],
+    "docOverflow": 0,
+    "gateVisible": false,
+    "errors": []
+  },
+  "/#/editor/new": {
+    "overflow": [],
+    "tapTargets": [],
+    "swallowed": [],
+    "docOverflow": 0,
+    "gateVisible": false,
+    "errors": []
+  },
+  "/#/profile": {
+    "overflow": [],
+    "tapTargets": [],
+    "swallowed": [],
+    "docOverflow": 0,
+    "gateVisible": false,
+    "errors": []
+  },
+  "/#/gallery": {
+    "overflow": [],
+    "tapTargets": [],
+    "swallowed": [],
+    "docOverflow": 0,
+    "gateVisible": false,
+    "errors": []
+  },
+  "/#/scenes": {
+    "overflow": [],
+    "tapTargets": [],
+    "swallowed": [],
+    "docOverflow": 0,
+    "gateVisible": false,
+    "errors": []
+  },
+  "/#/scenes/gallery": {
+    "overflow": [],
+    "tapTargets": [],
+    "swallowed": [],
+    "docOverflow": 0,
+    "gateVisible": false,
+    "errors": []
+  },
+  "/#/design-extract": {
+    "overflow": [],
+    "tapTargets": [],
+    "swallowed": [],
+    "docOverflow": 0,
+    "gateVisible": false,
+    "errors": []
+  },
+  "/#/design-extract/gallery": {
+    "overflow": [],
+    "tapTargets": [],
+    "swallowed": [],
+    "docOverflow": 0,
+    "gateVisible": false,
+    "errors": []
+  },
+  "/#/freeform": {
+    "overflow": [],
+    "tapTargets": [
+      {
+        "tag": "input",
+        "w": 1,
+        "h": 44,
+        "cls": "",
+        "label": ""
+      }
+    ],
+    "swallowed": [],
+    "docOverflow": 0,
+    "gateVisible": false,
+    "errors": []
+  },
+  "/#/editor/123": {
+    "overflow": [],
+    "tapTargets": [],
+    "swallowed": [],
+    "docOverflow": 0,
+    "gateVisible": false,
+    "errors": [
+      "Failed to load resource: the server responded with a status of 404 ()"
+    ]
+  },
+  "/#/scenes/123": {
+    "overflow": [],
+    "tapTargets": [],
+    "swallowed": [],
+    "docOverflow": 0,
+    "gateVisible": false,
+    "errors": [
+      "Failed to load resource: the server responded with a status of 404 ()"
+    ]
+  },
+  "/#/nonexistent-route": {
+    "overflow": [],
+    "tapTargets": [],
+    "swallowed": [],
+    "docOverflow": 0,
+    "gateVisible": false,
+    "errors": []
+  }
+}

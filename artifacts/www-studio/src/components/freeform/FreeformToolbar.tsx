@@ -108,7 +108,7 @@ export default function FreeformToolbar({ onAddElement, onStartDraw }: Props) {
       className="w-16 shrink-0 border-r border-border bg-background flex flex-col items-center py-3 gap-1 overflow-y-auto"
       {...getRootProps()}
     >
-      <input {...getInputProps()} />
+      <input {...getInputProps({ className: 'hidden' })} />
 
       {TOOLS.map(({ type, icon: Icon, label }) => (
         <button
