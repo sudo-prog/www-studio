@@ -229,7 +229,7 @@ export default function FreeformEditor() {
           {/* Colors */}
           <div>
             <Label className="text-[10px] text-muted-foreground uppercase tracking-wider mb-1 block">Colors</Label>
-            <div className="grid grid-cols-6 gap-1">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-1">
               {Object.entries(tokens.colors).map(([name, value]) => (
                 <div key={name} className="relative">
                   <button
@@ -242,12 +242,12 @@ export default function FreeformEditor() {
                     }}
                   />
                   {editingColor === name && (
-                    <div className="absolute z-50 top-full mt-1 left-0 bg-background border border-border rounded shadow-lg p-2 flex gap-1">
+                    <div className="absolute z-50 top-full mt-1 left-0 bg-background border border-border rounded shadow-lg p-2 flex flex-wrap gap-1">
                       <input
                         type="color"
                         value={editingColorDraft}
                         onChange={(e) => setEditingColorDraft(e.target.value)}
-                        className="w-8 h-8 rounded cursor-pointer border-0 p-0"
+                        className="w-8 h-8 min-h-[44px] min-w-[44px] rounded cursor-pointer border-0 p-0"
                       />
                       <input
                         type="text"
@@ -264,7 +264,7 @@ export default function FreeformEditor() {
                           }
                           if (e.key === 'Escape') setEditingColor(null);
                         }}
-                        className="text-[10px] w-20 rounded border border-border bg-background px-1"
+                        className="text-[10px] w-20 min-h-[44px] rounded border border-border bg-background px-1"
                         autoFocus
                       />
                     </div>
@@ -382,7 +382,7 @@ export default function FreeformEditor() {
             <Button variant="ghost" size="icon" className="min-h-[44px] min-w-[44px]" onClick={() => setShowMobilePreview(false)}>×</Button>
           </div>
 
-          <div className="flex gap-1">
+          <div className="flex flex-wrap gap-1">
             {[
               { label: "iPhone SE", w: 375 },
               { label: "iPad Mini", w: 768 },
@@ -443,7 +443,7 @@ export default function FreeformEditor() {
       {/* Top bar */}
       <header className="h-12 shrink-0 border-b border-border bg-background flex items-center justify-between px-4 gap-3 z-50 overflow-x-auto">
         <div className="flex items-center gap-3">
-          <Link href="/projects" className="text-muted-foreground hover:text-foreground transition-colors">
+          <Link href="/projects" className="min-h-[44px] min-w-[44px] flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors">
             <ArrowLeft className="w-4 h-4" />
           </Link>
           <Link href="/" className="flex items-center gap-1.5 font-semibold text-sm tracking-tight hover:text-primary transition-colors shrink-0">
@@ -619,7 +619,7 @@ export default function FreeformEditor() {
       </div>
 
       {/* Status bar */}
-      <footer className="h-6 shrink-0 border-t border-border bg-background flex items-center justify-between px-3 text-[10px] text-muted-foreground">
+      <footer className="h-6 shrink-0 border-t border-border bg-background flex items-center justify-between px-3 text-[10px] text-muted-foreground pb-safe pb-[env(safe-area-inset-bottom)]">
         <div className="flex items-center gap-3">
           <span>{state.page.elements.length} elements</span>
           <span>Canvas: {state.page.canvasWidth}×{state.page.canvasHeight}</span>

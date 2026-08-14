@@ -428,7 +428,7 @@ function SeoPanel({ projectId, themeTokens }: { projectId: string; themeTokens?:
         <div className="space-y-3">
           <div className="space-y-1.5">
             <label className="text-xs text-muted-foreground flex justify-between"><span>Page Title</span><span className={cn("tabular-nums", seo.title.length > 60 ? "text-red-400" : "")}>{seo.title.length}/60</span></label>
-            <Input value={seo.title} onChange={update("title")} placeholder="My Awesome Site" className="h-8 text-xs" />
+            <Input value={seo.title} onChange={update("title")} placeholder="My Awesome Site" className="h-8 text-xs min-h-[44px]" />
           </div>
           <div className="space-y-1.5">
             <label className="text-xs text-muted-foreground flex justify-between"><span>Meta Description</span><span className={cn("tabular-nums", descLen > 160 ? "text-red-400" : descLen > 130 ? "text-yellow-400" : "")}>{descLen}/160</span></label>
@@ -436,18 +436,18 @@ function SeoPanel({ projectId, themeTokens }: { projectId: string; themeTokens?:
           </div>
           <div className="space-y-1.5">
             <label className="text-xs text-muted-foreground">Keywords</label>
-            <Input value={seo.keywords} onChange={update("keywords")} placeholder="design, ui, builder, tailwind" className="h-8 text-xs" />
+            <Input value={seo.keywords} onChange={update("keywords")} placeholder="design, ui, builder, tailwind" className="h-8 text-xs min-h-[44px]" />
           </div>
           <div className="w-full h-px bg-border/50" />
           <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Open Graph</p>
-          <div className="space-y-1.5"><label className="text-xs text-muted-foreground">OG Title</label><Input value={seo.ogTitle} onChange={update("ogTitle")} placeholder="Same as page title" className="h-8 text-xs" /></div>
+          <div className="space-y-1.5"><label className="text-xs text-muted-foreground">OG Title</label><Input value={seo.ogTitle} onChange={update("ogTitle")} placeholder="Same as page title" className="h-8 text-xs min-h-[44px]" /></div>
           <div className="space-y-1.5"><label className="text-xs text-muted-foreground">OG Description</label><Textarea value={seo.ogDescription} onChange={update("ogDescription")} placeholder="Social share description" className="text-xs resize-none min-h-[52px]" /></div>
-          <div className="space-y-1.5"><label className="text-xs text-muted-foreground">OG Image URL</label><Input value={seo.ogImage} onChange={update("ogImage")} placeholder="https://..." className="h-8 text-xs" /></div>
+          <div className="space-y-1.5"><label className="text-xs text-muted-foreground">OG Image URL</label><Input value={seo.ogImage} onChange={update("ogImage")} placeholder="https://..." className="h-8 text-xs min-h-[44px]" /></div>
           <div className="w-full h-px bg-border/50" />
-          <div className="space-y-1.5"><label className="text-xs text-muted-foreground">Canonical URL</label><Input value={seo.canonical} onChange={update("canonical")} placeholder="https://yoursite.com/page" className="h-8 text-xs" /></div>
+          <div className="space-y-1.5"><label className="text-xs text-muted-foreground">Canonical URL</label><Input value={seo.canonical} onChange={update("canonical")} placeholder="https://yoursite.com/page" className="h-8 text-xs min-h-[44px]" /></div>
           <div className="space-y-1.5">
             <label className="text-xs text-muted-foreground">Robots</label>
-            <select value={seo.robots} onChange={update("robots")} className="w-full h-8 px-2 text-xs rounded-md border border-input bg-background text-foreground">
+            <select value={seo.robots} onChange={update("robots")} className="w-full h-8 px-2 text-xs rounded-md border border-input bg-background text-foreground min-h-[44px]">
               <option value="index, follow">index, follow (default)</option>
               <option value="noindex, follow">noindex, follow</option>
               <option value="index, nofollow">index, nofollow</option>

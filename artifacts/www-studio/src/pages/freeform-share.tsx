@@ -113,7 +113,7 @@ export default function FreeformSharePage() {
 
   if (isLoading) {
     return (
-      <div className="h-screen bg-background flex items-center justify-center">
+      <div className="min-h-[100dvh] bg-background flex items-center justify-center">
         <div className="w-6 h-6 rounded-full border-2 border-primary/30 border-t-primary animate-spin" />
       </div>
     );
@@ -121,7 +121,7 @@ export default function FreeformSharePage() {
 
   if (!page) {
     return (
-      <div className="h-screen bg-background flex flex-col items-center justify-center gap-4">
+      <div className="min-h-[100dvh] bg-background flex flex-col items-center justify-center gap-4">
         <Globe className="h-12 w-12 text-muted-foreground" />
         <p className="text-muted-foreground">Page not found</p>
         <Button variant="outline" className="min-h-[44px]" asChild>
@@ -135,7 +135,7 @@ export default function FreeformSharePage() {
     <div className="min-h-[100dvh] bg-background flex flex-col">
       {/* Top bar */}
       <div className="h-14 flex items-center justify-between px-4 border-b border-border bg-background/95 backdrop-blur shrink-0 min-h-[44px]">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 flex-wrap">
           <Button variant="ghost" size="icon" className="h-8 w-8 min-h-[44px] min-w-[44px]" asChild>
             <Link href="/projects">
               <ArrowLeft className="h-4 w-4" />
@@ -156,10 +156,10 @@ export default function FreeformSharePage() {
           <button
             onClick={handleLike}
             className={cn(
-              "flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs border transition-all min-h-[44px]",
+              "flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs border transition-colors min-h-[44px]",
               liked
-                ? "bg-rose-500/20 border-rose-500/40 text-rose-400"
-                : "bg-card border-border text-muted-foreground hover:text-foreground"
+                ? "bg-red-500/10 text-red-500 border-red-500/30"
+                : "border-border text-muted-foreground hover:text-foreground hover:bg-muted"
             )}
           >
             <Heart className={cn("h-3.5 w-3.5", liked && "fill-rose-400")} />
@@ -176,7 +176,7 @@ export default function FreeformSharePage() {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row flex-1 min-h-0">
+      <div className="flex flex-col md:flex-row flex-1 min-h-0 flex-wrap">
         {/* Page preview */}
         <div className="flex-1 bg-[#0d0d1a] relative overflow-hidden">
           <FreeformPageRenderer page={page} />
@@ -207,7 +207,7 @@ export default function FreeformSharePage() {
               <Code className="h-4 w-4 text-primary" />Embed this page
             </p>
 
-            <div className="flex gap-1 mb-3">
+            <div className="flex gap-1 mb-3 flex-wrap">
               {(["link", "iframe", "react"] as const).map((mode) => (
                 <button
                   key={mode}

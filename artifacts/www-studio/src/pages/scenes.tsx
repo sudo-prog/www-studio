@@ -101,18 +101,18 @@ function SceneCard({ scene, onEdit, onDelete, onFork, onTogglePublish, selected,
         <div className="absolute top-2 right-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button size="icon" variant="secondary" className="h-11 w-11 bg-black/60 hover:bg-black/80 border-0">
+              <Button size="icon" variant="secondary" className="h-11 w-11 bg-black/60 hover:bg-black/80 border-0 min-h-[44px] min-w-[44px]">
                 <MoreHorizontal className="h-5 w-5" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={onEdit}>
+              <DropdownMenuItem onClick={onEdit} className="min-h-[44px]">
                 <Pencil className="h-4 w-4 mr-2" />Edit
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => window.open(`/scenes/${scene.id}/share`, "_blank")}>
+              <DropdownMenuItem onClick={() => window.open(`/scenes/${scene.id}/share`, "_blank")} className="min-h-[44px]">
                 <ExternalLink className="h-4 w-4 mr-2" />Share Page
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => window.open(`/scenes/${scene.id}/preview`, "_blank")}>
+              <DropdownMenuItem onClick={() => window.open(`/scenes/${scene.id}/preview`, "_blank")} className="min-h-[44px]">
                 <ExternalLink className="h-4 w-4 mr-2" />Preview
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => {
@@ -122,20 +122,20 @@ function SceneCard({ scene, onEdit, onDelete, onFork, onTogglePublish, selected,
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
-              }}>
+              }} className="min-h-[44px]">
                 <Download className="h-4 w-4 mr-2" />Download HTML
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={onFork}>
+              <DropdownMenuItem onClick={onFork} className="min-h-[44px]">
                 <Copy className="h-4 w-4 mr-2" />Fork / Duplicate
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={onTogglePublish}>
+              <DropdownMenuItem onClick={onTogglePublish} className="min-h-[44px]">
                 {isPublished
                   ? <><EyeOff className="h-4 w-4 mr-2" />Unpublish</>
                   : <><Globe   className="h-4 w-4 mr-2" />Publish</>}
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={onDelete} className="text-destructive focus:text-destructive">
+              <DropdownMenuItem onClick={onDelete} className="text-destructive focus:text-destructive min-h-[44px]">
                 <Trash2 className="h-4 w-4 mr-2" />Delete
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -341,7 +341,7 @@ export default function Scenes() {
   }
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
+    <div className="min-h-[100dvh] bg-background overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-8">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-8">
           <div>
@@ -364,7 +364,7 @@ export default function Scenes() {
             <button
               key={preset.name}
               onClick={() => { setNewName(preset.name); setShowNew(true); }}
-              className="group flex items-center gap-3 p-3 bg-card border border-border rounded-xl hover:border-primary/30 text-left transition-all"
+              className="group flex items-center gap-3 p-3 bg-card border border-border rounded-xl hover:border-primary/30 text-left transition-all min-h-[44px]"
             >
               <div className="flex gap-1">
                 {preset.colors.map((c, i) => (

@@ -452,7 +452,7 @@ export default function DesignExtractPage() {
   const showEditor = state.phase === "complete" && state.tokens;
 
   return (
-    <div className="min-h-dvh bg-[#0a0a0b] text-foreground">
+    <div className="min-h-[100dvh] bg-[#0a0a0b] text-foreground">
       <Navbar />
       {/* Header */}
       <div className="border-b border-[#27272a] px-4 md:px-6 py-4">

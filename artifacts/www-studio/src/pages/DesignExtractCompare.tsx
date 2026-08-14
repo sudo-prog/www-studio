@@ -136,7 +136,7 @@ export default function DesignExtractCompare() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#0a0a0b] text-foreground flex items-center justify-center">
+      <div className="min-h-[100dvh] bg-[#0a0a0b] text-foreground flex items-center justify-center">
         <Loader2 className="h-6 w-6 animate-spin text-[#3b82f6]" />
       </div>
     );
@@ -144,7 +144,7 @@ export default function DesignExtractCompare() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-[#0a0a0b] text-foreground p-6">
+      <div className="min-h-[100dvh] bg-[#0a0a0b] text-foreground p-6">
         <Alert className="max-w-lg mx-auto border-red-500/30 bg-red-500/5">
           <AlertCircle className="h-4 w-4 text-red-400" />
           <AlertDescription className="text-red-400">{error}</AlertDescription>
@@ -159,7 +159,7 @@ export default function DesignExtractCompare() {
   const colorDiff = getColorDiff(colorsA, colorsB);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0b] text-foreground">
+    <div className="min-h-[100dvh] bg-[#0a0a0b] text-foreground">
       <Navbar />
       {/* Header */}
       <div className="border-b border-[#27272a] px-4 md:px-6 py-4">

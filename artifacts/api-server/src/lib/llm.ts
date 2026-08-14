@@ -105,7 +105,7 @@ export interface ChatMessage {
 }
 
 export function getLLMProvider(): string {
-  if (LLM_BASE_URL.includes("20128")) return "OmniRoute";
+  if (LLM_BASE_URL.includes("20128") || LLM_BASE_URL.includes("trycloudflare.com")) return "OmniRoute";
   if (LLM_BASE_URL.includes("openrouter")) return "OpenRouter";
   if (LLM_BASE_URL.includes("openai.com")) return "OpenAI";
   if (LLM_BASE_URL.includes("localhost:11434")) return "Ollama";

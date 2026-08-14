@@ -108,7 +108,7 @@ function GallerySceneCard({ scene, onFork, onEmbed, onPreview }: {
             ))}
           </div>
         )}
-        <div className="flex items-center justify-between pt-1">
+        <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
           <span className="text-xs text-muted-foreground">{elements.length} elements</span>
           <button
             onClick={onEmbed}

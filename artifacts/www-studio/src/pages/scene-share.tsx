@@ -180,7 +180,7 @@ export default function SceneShare() {
   // Embed-only mode — show full-screen scene with no chrome
   if (isEmbed) {
     return (
-      <div className="w-full h-dvh overflow-hidden bg-[#0d0d1a] relative">
+      <div className="w-full h-[100dvh] overflow-hidden bg-[#0d0d1a] relative">
         <AnimatedScene scene={scene} />
         <div className="absolute bottom-3 right-3 flex items-center gap-2">
           <span className="text-white/40 text-[10px] font-medium px-2 py-0.5 bg-black/40 backdrop-blur rounded-full">
@@ -192,7 +192,7 @@ export default function SceneShare() {
   }
 
   return (
-    <div className="min-h-dvh bg-background flex flex-col">
+    <div className="min-h-[100dvh] bg-background flex flex-col">
       {/* Top bar */}
       <div className="h-14 flex items-center justify-between px-4 border-b border-border bg-background/95 backdrop-blur shrink-0">
         <div className="flex items-center gap-3">
@@ -240,7 +240,7 @@ export default function SceneShare() {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row flex-1 min-h-0">
+      <div className="flex flex-col md:flex-row flex-wrap flex-1 min-h-0">
         {/* Scene preview - left/main */}
         <div className="flex-1 bg-[#0d0d1a] relative overflow-hidden">
           <AnimatedScene scene={scene} />
@@ -280,7 +280,7 @@ export default function SceneShare() {
               <Code className="h-4 w-4 text-primary" />Embed this scene
             </p>
 
-            <div className="flex gap-1 mb-3">
+            <div className="flex flex-wrap gap-1 mb-3">
               {(["link","iframe","react"] as const).map((mode) => (
                 <button
                   key={mode}
@@ -319,6 +319,7 @@ export default function SceneShare() {
           {similar.length > 0 && (
             <div className="px-5 pb-4 border-b border-border">
               <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-3">You might also like</p>
+              <div className="overflow-x-auto">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                 {similar.map((s: any) => {
                   let els: any[] = [];
@@ -327,7 +328,7 @@ export default function SceneShare() {
                     <button
                       key={s.id}
                       onClick={() => navigate(`/scenes/${s.id}/share`)}
-                      className="group relative h-20 rounded-lg overflow-hidden border border-border hover:border-primary/40 transition-all text-left"
+                      className="group relative h-20 min-h-[44px] rounded-lg overflow-hidden border border-border hover:border-primary/40 transition-all text-left"
                       style={{ background: "linear-gradient(135deg,#0d1117,#1a1a2e)" }}
                     >
                       <svg viewBox={`0 0 ${s.canvasWidth ?? 1440} ${s.canvasHeight ?? 900}`} className="absolute inset-0 w-full h-full opacity-90">
@@ -346,6 +347,7 @@ export default function SceneShare() {
                     </button>
                   );
                 })}
+              </div>
               </div>
             </div>
           )}

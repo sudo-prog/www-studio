@@ -195,7 +195,7 @@ export default function NewProject() {
               <CardContent>
                 <form onSubmit={handleScreenshot} className="space-y-4">
                   {!imagePreview ? (
-                    <div onDragOver={(e) => { e.preventDefault(); setDragOver(true); }} onDragLeave={() => setDragOver(false)} onDrop={(e) => { e.preventDefault(); setDragOver(false); const f = e.dataTransfer.files[0]; if (f) processFile(f); }} onClick={() => fileInputRef.current?.click()} className={cn("border-2 border-dashed rounded-xl p-10 flex flex-col items-center justify-center gap-3 cursor-pointer transition-all", dragOver ? "border-primary bg-primary/5" : "border-border/50 hover:border-primary/50 hover:bg-muted/30")}>
+                    <div onDragOver={(e) => { e.preventDefault(); setDragOver(true); }} onDragLeave={() => setDragOver(false)} onDrop={(e) => { e.preventDefault(); setDragOver(false); const f = e.dataTransfer.files[0]; if (f) processFile(f); }} onClick={() => fileInputRef.current?.click()} className={cn("border-2 border-dashed rounded-xl p-10 min-h-[44px] flex flex-col items-center justify-center gap-3 cursor-pointer transition-all", dragOver ? "border-primary bg-primary/5" : "border-border/50 hover:border-primary/50 hover:bg-muted/30")}>
                       <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center"><Upload className="w-6 h-6 text-muted-foreground" /></div>
                       <div className="text-center"><p className="text-sm font-medium">Drop an image here</p><p className="text-xs text-muted-foreground mt-1">PNG, JPG, WebP up to 10MB</p></div>
                     </div>
@@ -224,7 +224,7 @@ export default function NewProject() {
               <CardContent>
                 <form onSubmit={handleFigmaImport} className="space-y-4">
                   {!figmaJson ? (
-                    <div onDragOver={(e) => { e.preventDefault(); setFigmaDragOver(true); }} onDragLeave={() => setFigmaDragOver(false)} onDrop={(e) => { e.preventDefault(); setFigmaDragOver(false); const f = e.dataTransfer.files[0]; if (f) processFigmaFile(f); }} onClick={() => figmaInputRef.current?.click()} className={cn("border-2 border-dashed rounded-xl p-10 flex flex-col items-center justify-center gap-3 cursor-pointer transition-all", figmaDragOver ? "border-primary bg-primary/5" : "border-border/50 hover:border-primary/50 hover:bg-muted/30")}>
+                    <div onDragOver={(e) => { e.preventDefault(); setFigmaDragOver(true); }} onDragLeave={() => setFigmaDragOver(false)} onDrop={(e) => { e.preventDefault(); setFigmaDragOver(false); const f = e.dataTransfer.files[0]; if (f) processFigmaFile(f); }} onClick={() => figmaInputRef.current?.click()} className={cn("border-2 border-dashed rounded-xl p-10 min-h-[44px] flex flex-col items-center justify-center gap-3 cursor-pointer transition-all", figmaDragOver ? "border-primary bg-primary/5" : "border-border/50 hover:border-primary/50 hover:bg-muted/30")}>
                       <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center"><Figma className="w-6 h-6 text-muted-foreground" /></div>
                       <div className="text-center"><p className="text-sm font-medium">Drop Figma JSON export here</p><p className="text-xs text-muted-foreground mt-1">From Figma: Plugins → Export → JSON</p></div>
                     </div>

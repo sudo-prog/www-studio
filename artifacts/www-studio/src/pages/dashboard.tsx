@@ -33,11 +33,11 @@ export default function Dashboard() {
     });
   };
 
-  if (authLoading) return <div className="min-h-dvh bg-background" />;
+  if (authLoading) return <div className="min-h-[100dvh] pb-[env(safe-area-inset-bottom)] bg-background" />;
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-dvh flex flex-col bg-background overflow-x-hidden">
+      <div className="min-h-[100dvh] pb-[env(safe-area-inset-bottom)] flex flex-col bg-background overflow-x-hidden">
         <main className="flex-1 flex flex-col items-center justify-center p-8 text-center">
           <h2 className="text-2xl font-semibold mb-2">Please log in to view your projects</h2>
         </main>
@@ -56,7 +56,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-dvh flex flex-col bg-background overflow-x-hidden">
+    <div className="min-h-[100dvh] pb-[env(safe-area-inset-bottom)] flex flex-col bg-background overflow-x-hidden">
       <main className="flex-1 p-6 md:p-8 max-w-4xl mx-auto w-full">
 
         {/* Stats bar */}

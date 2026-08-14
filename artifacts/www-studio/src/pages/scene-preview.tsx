@@ -128,7 +128,7 @@ export default function ScenePreviewPage() {
         <span className="hidden sm:inline">WWW Studio</span>
       </Link>
       <div
-        className="w-full min-h-[100dvh] overflow-y-auto pb-[env(safe-area-inset-bottom)]"
+        className="w-full min-h-[100dvh] overflow-x-auto overflow-y-auto pb-[env(safe-area-inset-bottom)]"
         style={{ background: "linear-gradient(135deg, #0d1117 0%, #161b22 100%)" }}
       >
         <div

@@ -348,7 +348,7 @@ export default function SceneEditor() {
 
       <div className="h-[100dvh] flex flex-col bg-background overflow-hidden">
         {/* ── Top bar ── */}
-        <div className="h-12 flex items-center gap-1.5 px-2 border-b border-border shrink-0 bg-background/95 backdrop-blur overflow-x-auto">
+        <div className="h-12 flex flex-wrap items-center gap-1.5 px-2 border-b border-border shrink-0 bg-background/95 backdrop-blur overflow-x-auto">
           <Button variant="ghost" size="icon" className="h-8 w-8 shrink-0 min-h-[44px] min-w-[44px]" onClick={() => navigate("/scenes")} title="Back to Scenes">
             <ArrowLeft className="h-4 w-4" />
           </Button>
@@ -478,9 +478,9 @@ export default function SceneEditor() {
         </div>
 
         {/* ── Main area ── */}
-        <div className="flex flex-1 min-h-0 relative">
+        <div className="flex flex-col sm:flex-row flex-1 min-h-0 relative">
           {/* ── Left: Element Library ── */}
-          <div className="w-[210px] shrink-0 border-r border-border bg-background flex flex-col overflow-hidden">
+          <div className="w-full sm:w-[210px] shrink-0 border-r border-border bg-background flex flex-col overflow-hidden">
             <WellnessLibrary onAdd={handleAdd} />
           </div>
 
@@ -496,7 +496,7 @@ export default function SceneEditor() {
               onMove={handleMove}
               onDropNew={handleAdd}
             />
-            <div className="absolute bottom-2 left-2 flex items-center gap-2 text-[10px] text-white/40 bg-black/40 px-2 py-1 rounded-md pointer-events-none backdrop-blur-sm">
+            <div className="absolute bottom-2 left-2 sm:left-auto sm:bottom-[calc(env(safe-area-inset-bottom)+0.5rem)] right-2 flex items-center gap-2 text-[10px] text-white/40 bg-black/40 px-2 py-1 rounded-md pointer-events-none backdrop-blur-sm">
               <span>{state.scene.canvasWidth}×{state.scene.canvasHeight}</span>
               <span>·</span>
               <span>{state.scene.elements.length} elements</span>
@@ -518,7 +518,7 @@ export default function SceneEditor() {
           {/* ── Right panel: Inspector ── */}
           <div className={cn(
             "shrink-0 border-l border-border bg-background flex flex-col overflow-hidden transition-all duration-200",
-            showChat ? "w-0 opacity-0 overflow-hidden" : "w-[260px]"
+            showChat ? "w-0 opacity-0 overflow-hidden" : "w-full sm:w-[260px]"
           )}>
             {/* Tab bar */}
             <div className="flex border-b border-border shrink-0 overflow-x-auto">
@@ -768,7 +768,7 @@ export default function SceneEditor() {
           {/* ── AI Chat panel ── */}
           <div className={cn(
             "shrink-0 border-l border-border bg-background flex flex-col overflow-hidden transition-all duration-200",
-            showChat ? "w-[300px]" : "w-0 opacity-0 overflow-hidden"
+            showChat ? "w-full sm:w-[300px]" : "w-0 opacity-0 overflow-hidden"
           )}>
             {showChat && (
               <SceneChat

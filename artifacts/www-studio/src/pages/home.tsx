@@ -70,7 +70,7 @@ export default function Home() {
   const showcaseScenes = (Array.isArray(publicScenes) && publicScenes.length > 0) ? publicScenes : safeScenes.slice(0, 6);
 
   return (
-    <div className="min-h-dvh flex flex-col overflow-x-hidden">
+    <div className="min-h-[100dvh] pb-safe flex flex-col overflow-x-hidden" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
       <main className="flex-1">
         {/* Hero */}
         <section className="px-4 py-12 sm:py-16 md:py-28 flex flex-col items-center text-center max-w-4xl mx-auto">
@@ -89,12 +89,12 @@ export default function Home() {
             WWW Studio is the visual UI builder for developers. Paste a URL, describe your idea, or upload a screenshot — get an editable React + Tailwind codebase instantly.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
-            <Button size="lg" className="h-12 px-8 text-base gap-2 w-full sm:w-auto justify-center" asChild>
+            <Button size="lg" className="h-12 px-8 text-base gap-2 w-full sm:w-auto justify-center min-h-[44px]" asChild>
               <Link href="/editor/new">
                 <WandSparkles className="w-5 h-5" />Start Building
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="h-12 px-8 text-base gap-2 w-full sm:w-auto justify-center" asChild>
+            <Button size="lg" variant="outline" className="h-12 px-8 text-base gap-2 w-full sm:w-auto justify-center min-h-[44px]" asChild>
               <Link href="/scenes">
                 <Sparkles className="w-5 h-5" />Wellness Scenes
               </Link>

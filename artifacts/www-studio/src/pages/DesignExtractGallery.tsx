@@ -58,7 +58,7 @@ export default function DesignExtractGallery() {
 
   if (loading) {
     return (
-      <div className="min-h-dvh bg-background flex items-center justify-center">
+      <div className="min-h-[100dvh] bg-background flex items-center justify-center">
         <div className="text-muted-foreground">Loading gallery…</div>
       </div>
     );
@@ -66,14 +66,14 @@ export default function DesignExtractGallery() {
 
   if (error) {
     return (
-      <div className="min-h-dvh bg-background flex items-center justify-center">
+      <div className="min-h-[100dvh] bg-background flex items-center justify-center">
         <div className="text-destructive">{error}</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-dvh bg-background px-6 pt-6 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
+    <div className="min-h-[100dvh] bg-background px-6 pt-6 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
       <Navbar />
       <div className="max-w-5xl mx-auto">
         <header className="mb-8">
