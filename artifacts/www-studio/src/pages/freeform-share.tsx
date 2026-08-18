@@ -25,7 +25,7 @@ function FreeformPageRenderer({ page }: Props) {
   const html = exportFreeformToHTML(page);
   return (
     <div
-      className="w-full h-full overflow-hidden"
+      className="w-full h-full overflow-auto"
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );
@@ -134,14 +134,14 @@ export default function FreeformSharePage() {
   return (
     <div className="min-h-[100dvh] bg-background flex flex-col">
       {/* Top bar */}
-      <div className="h-14 flex items-center justify-between px-4 border-b border-border bg-background/95 backdrop-blur shrink-0 min-h-[44px]">
+      <div className="min-h-14 py-2 flex items-center justify-between px-4 border-b border-border bg-background/95 backdrop-blur shrink-0 min-h-[44px]">
         <div className="flex items-center gap-3 flex-wrap">
           <Button variant="ghost" size="icon" className="h-8 w-8 min-h-[44px] min-w-[44px]" asChild>
             <Link href="/projects">
               <ArrowLeft className="h-4 w-4" />
             </Link>
           </Button>
-          <div className="h-5 w-px bg-border" />
+          <div className="hidden sm:block h-5 w-px bg-border" />
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 rounded-md bg-primary/20 flex items-center justify-center shrink-0">
               <Sparkles className="h-3.5 w-3.5 text-primary" />
@@ -245,7 +245,7 @@ export default function FreeformSharePage() {
           <div className="p-4 pb-[env(safe-area-inset-bottom)] border-t border-border flex flex-col gap-2">
             <Button
               variant="outline"
-              className="w-full gap-2 min-h-[44px]"
+              className="w-full gap-2 min-h-[48px]"
               onClick={() => {
                 const html = exportFreeformToHTML(page);
                 const blob = new Blob([html], { type: "text/html" });
@@ -259,7 +259,7 @@ export default function FreeformSharePage() {
             >
               <Download className="h-4 w-4" />Download HTML
             </Button>
-            <Button className="w-full gap-2 min-h-[44px]" asChild>
+            <Button className="w-full gap-2 min-h-[48px]" asChild>
               <Link href={`/freeform/${pageId}`}>
                 <Sparkles className="h-4 w-4" />Open Editor
               </Link>

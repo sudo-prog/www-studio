@@ -80,7 +80,7 @@ export default function Dashboard() {
         {/* Recent Scenes strip */}
         {safeScenes.length > 0 && (
           <div className="mb-8">
-            <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
               <h2 className="text-sm font-semibold flex items-center gap-2">
                 <Layers className="h-4 w-4 text-purple-400" />Recent Scenes
               </h2>
@@ -195,7 +195,7 @@ export default function Dashboard() {
                   )}
                 </div>
                 <CardContent className="p-4 flex-1">
-                  <div className="flex items-start justify-between gap-2">
+                  <div className="flex items-start justify-between gap-2 flex-wrap">
                     <div className="min-w-0">
                       <h3 className="font-semibold truncate mb-1" title={project.name}>{project.name}</h3>
                       <div className="flex items-center gap-2 text-xs text-muted-foreground">
@@ -205,7 +205,7 @@ export default function Dashboard() {
                     </div>
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" size="icon" className="h-8 w-8 -mr-2 min-h-[44px] min-w-[44px] text-muted-foreground hover:text-foreground shrink-0">
+                        <Button variant="ghost" size="icon" className="-mr-2 min-h-[44px] min-w-[44px] text-muted-foreground hover:text-foreground shrink-0">
                           <MoreVertical className="h-4 w-4" />
                         </Button>
                       </DropdownMenuTrigger>
@@ -229,7 +229,7 @@ export default function Dashboard() {
                     </DropdownMenu>
                   </div>
                 </CardContent>
-                <CardFooter className="p-4 pt-0 text-xs text-muted-foreground flex justify-between">
+                <CardFooter className="p-4 pt-0 text-xs text-muted-foreground flex justify-between flex-wrap gap-1">
                   <span className="capitalize">{project.status}</span>
                   {project.slug && <span className="font-mono truncate max-w-[80px]">/{project.slug}</span>}
                 </CardFooter>

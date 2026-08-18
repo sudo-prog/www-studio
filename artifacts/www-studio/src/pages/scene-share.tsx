@@ -153,7 +153,7 @@ export default function SceneShare() {
 
   if (isLoading) {
     return (
-      <div className="h-screen bg-background flex items-center justify-center">
+      <div className="min-h-[100dvh] bg-background flex items-center justify-center">
         <div className="w-6 h-6 rounded-full border-2 border-primary/30 border-t-primary animate-spin" />
       </div>
     );
@@ -161,10 +161,10 @@ export default function SceneShare() {
 
   if (isError || !raw) {
     return (
-      <div className="h-screen bg-background flex flex-col items-center justify-center gap-4">
+      <div className="min-h-[100dvh] bg-background flex flex-col items-center justify-center gap-4">
         <Layers className="h-12 w-12 text-muted-foreground" />
         <p className="text-muted-foreground">Scene not found</p>
-        <Button variant="outline" asChild><Link href="/scenes">← Back to Scenes</Link></Button>
+        <Button variant="outline" className="min-h-[44px]" asChild><Link href="/scenes">← Back to Scenes</Link></Button>
       </div>
     );
   }

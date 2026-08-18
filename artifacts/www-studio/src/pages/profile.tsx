@@ -100,11 +100,11 @@ export default function Profile() {
             <h1 className="text-3xl font-bold tracking-tight mb-2">{[user.firstName, user.lastName].filter(Boolean).join(" ") || "User"}</h1>
             <p className="text-muted-foreground text-lg mb-4">@{user.id || "user"}</p>
             <div className="flex flex-wrap gap-4">
-              <div className="flex items-center gap-2 text-sm">
+              <div className="flex flex-wrap items-center gap-2 text-sm">
                 <FolderGit2 className="w-4 h-4 text-muted-foreground" />
                 <span className="font-medium">{projects.length}</span> Projects
               </div>
-              <div className="flex items-center gap-2 text-sm">
+              <div className="flex flex-wrap items-center gap-2 text-sm">
                 <Code2 className="w-4 h-4 text-muted-foreground" />
                 <span className="font-medium">{publishedProjects.length}</span> Published
               </div>
@@ -140,7 +140,7 @@ export default function Profile() {
                 </Button>
               </div>
               {hasGitHubToken() && (
-                <p className="text-[10px] text-green-400 flex items-center gap-1">
+                <p className="text-[10px] text-green-400 flex flex-wrap items-center gap-1">
                   ✓ Token connected
                   <button
                     className="inline-flex items-center min-h-[48px] text-muted-foreground hover:text-foreground underline ml-2"

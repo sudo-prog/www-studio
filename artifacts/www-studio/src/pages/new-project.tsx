@@ -123,7 +123,7 @@ export default function NewProject() {
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={cn(
-                  "flex-1 flex flex-col items-center gap-1 px-2 py-2.5 min-h-[48px] rounded-lg text-xs font-medium transition-all",
+                  "flex-1 min-w-[44px] flex flex-col items-center gap-1 px-2 py-2.5 min-h-[48px] rounded-lg text-xs font-medium transition-all",
                   activeTab === tab.id ? "bg-primary text-primary-foreground shadow-sm" : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                 )}
               >
@@ -148,7 +148,7 @@ export default function NewProject() {
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {["stripe.com", "linear.app", "vercel.com", "apple.com"].map((u) => (
-                      <button key={u} type="button" onClick={() => setUrl(`https://${u}`)} className="text-xs px-3 py-1 min-h-[48px] rounded-full border border-border/50 text-muted-foreground hover:text-foreground hover:border-primary/50 transition-colors">{u}</button>
+                      <button key={u} type="button" onClick={() => setUrl(`https://${u}`)} className="text-xs px-3 py-1 min-w-[44px] min-h-[48px] rounded-full border border-border/50 text-muted-foreground hover:text-foreground hover:border-primary/50 transition-colors">{u}</button>
                     ))}
                   </div>
                   <Button type="submit" className="w-full h-12 text-base font-medium" disabled={cloneMutation.isPending || !url}>

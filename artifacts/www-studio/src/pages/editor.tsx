@@ -224,7 +224,7 @@ function StockImagesPanel() {
       <div className="p-2 border-b border-border/50">
         <div className="flex flex-wrap gap-1">
           {STOCK_CATEGORIES.map((cat) => (
-            <button key={cat} onClick={() => setCategory(cat)} className={cn("text-[10px] px-2 py-1 rounded-md font-medium transition-colors", category === cat ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground hover:bg-muted")}>
+            <button key={cat} onClick={() => setCategory(cat)} className={cn("text-[10px] px-2 py-1 rounded-md font-medium transition-colors min-h-[44px]", category === cat ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground hover:bg-muted")}>
               {cat}
             </button>
           ))}
@@ -236,7 +236,7 @@ function StockImagesPanel() {
             <div key={img.id} className="group relative rounded-lg overflow-hidden border border-border/40 aspect-video bg-muted">
               <img src={img.thumb} alt="" className="w-full h-full object-cover" loading="lazy" />
               <div className="absolute inset-0 bg-black/60 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1.5">
-                <Button size="sm" variant="secondary" className="h-6 text-[10px] px-2 gap-1" onClick={() => copy(img.url)}>
+                <Button size="sm" variant="secondary" className="h-6 text-[10px] px-2 gap-1 min-h-[44px]" onClick={() => copy(img.url)}>
                   {copied === img.url ? <Check className="w-2.5 h-2.5 text-green-500" /> : <Copy className="w-2.5 h-2.5" />}Copy URL
                 </Button>
                 <Button size="sm" variant="secondary" className="h-6 w-6 min-h-[44px] min-w-[44px] p-0" asChild>
@@ -279,7 +279,7 @@ function AIImagesPanel({ projectId }: { projectId: string }) {
 
   return (
     <div className="flex flex-col h-full">
-      <div className="flex border-b border-border/50 shrink-0">
+      <div className="flex overflow-x-auto border-b border-border/50 shrink-0">
         {TABS.map((t) => (
           <button key={t.id} onClick={() => setActiveTab(t.id)} className={cn("flex-1 h-8 min-h-[44px] text-xs font-medium transition-colors border-b-2", activeTab === t.id ? "border-primary text-foreground" : "border-transparent text-muted-foreground hover:text-foreground")}>
             {t.label}
@@ -291,7 +291,7 @@ function AIImagesPanel({ projectId }: { projectId: string }) {
         <div className="flex flex-col h-full">
           <form onSubmit={handleGenerate} className="p-3 border-b border-border/50 space-y-2">
             <Textarea value={imgPrompt} onChange={(e) => setImgPrompt(e.target.value)} placeholder="Describe an image to generate..." className="text-xs resize-none min-h-[60px]" />
-            <Button type="submit" size="sm" className="w-full gap-1.5" disabled={generateImage.isPending || !imgPrompt.trim()}>
+            <Button type="submit" size="sm" className="w-full gap-1.5 min-h-[44px]" disabled={generateImage.isPending || !imgPrompt.trim()}>
               {generateImage.isPending ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Sparkles className="w-3.5 h-3.5" />}Generate
             </Button>
           </form>
@@ -498,7 +498,7 @@ function ContentPanel({ projectId, componentTree }: { projectId: string; compone
         ) : (
           textNodes.map((node, i) => (
             <div key={i} className="group rounded-lg border border-border/40 overflow-hidden">
-              <div className="flex items-center justify-between px-2 py-1 bg-muted/30">
+              <div className="flex flex-wrap items-center justify-between px-2 py-1 bg-muted/30">
                 <span className="text-[10px] font-mono text-muted-foreground">&lt;{node.path}&gt;</span>
                 <Button variant="ghost" size="icon" className="h-5 w-5 min-h-[44px] min-w-[44px] opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity" onClick={() => setEditingIndex(editingIndex === i ? null : i)}>
                   <Settings2 className="w-3 h-3" />
@@ -1199,7 +1199,7 @@ export default function Editor() {
       <header className="h-14 border-b border-border/50 bg-card/50 backdrop-blur flex items-center justify-between px-3 shrink-0 gap-2 overflow-x-auto">
         {/* Left */}
         <div className="flex items-center gap-2 min-w-0">
-          <Button variant="ghost" size="icon" asChild className="shrink-0 h-8 w-8">
+          <Button variant="ghost" size="icon" asChild className="shrink-0 h-8 w-8 min-h-[44px] min-w-[44px]">
             <Link href="/projects"><ArrowLeft className="w-4 h-4" /></Link>
           </Button>
           <Link href="/" className="shrink-0 flex items-center gap-1.5 font-semibold text-sm tracking-tight hover:text-primary transition-colors">
@@ -1217,7 +1217,7 @@ export default function Editor() {
           {/* Device toggle */}
           <div className="flex items-center gap-0.5 border border-border/50 rounded-md p-0.5 bg-background/50">
             {(["desktop", "tablet", "mobile"] as DeviceMode[]).map((mode) => (
-              <Button key={mode} variant="ghost" size="icon" className={cn("w-7 h-7 rounded-sm", deviceMode === mode ? "bg-primary/15 text-primary" : "text-muted-foreground")} onClick={() => setDeviceMode(mode)}>
+              <Button key={mode} variant="ghost" size="icon" className={cn("w-7 h-7 rounded-sm min-h-[44px] min-w-[44px]", deviceMode === mode ? "bg-primary/15 text-primary" : "text-muted-foreground")} onClick={() => setDeviceMode(mode)}>
                 {mode === "desktop" && <Monitor className="w-3.5 h-3.5" />}
                 {mode === "tablet" && <Tablet className="w-3.5 h-3.5" />}
                 {mode === "mobile" && <Smartphone className="w-3.5 h-3.5" />}
@@ -1299,7 +1299,7 @@ export default function Editor() {
 
           {/* Save code edits */}
           {viewMode !== "preview" && codeDirty && (
-            <Button size="sm" className="h-8 gap-1.5 text-xs bg-green-600 hover:bg-green-700" onClick={saveCodeEdits} disabled={updateProject.isPending}>
+            <Button size="sm" className="h-8 gap-1.5 text-xs bg-green-600 hover:bg-green-700 min-h-[44px]" onClick={saveCodeEdits} disabled={updateProject.isPending}>
               {updateProject.isPending ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Save className="w-3.5 h-3.5" />}
               Save Code
             </Button>
@@ -1465,14 +1465,14 @@ export default function Editor() {
         {/* Right Inspector */}
         <aside className="w-64 border-l border-border/50 bg-card/30 flex flex-col shrink-0">
           {/* Tab header */}
-          <div className="flex border-b border-border/50 shrink-0">
+          <div className="flex overflow-x-auto border-b border-border/50 shrink-0">
             {RIGHT_TABS.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setRightPanel(tab.id)}
                 title={tab.title}
                 className={cn(
-                  "flex-1 flex flex-col items-center justify-center gap-0.5 h-10 text-[9px] font-medium transition-colors border-b-2",
+                  "flex-1 flex flex-col items-center justify-center gap-0.5 min-h-[44px] text-[9px] font-medium transition-colors border-b-2",
                   rightPanel === tab.id ? "border-primary text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"
                 )}
               >
@@ -1500,7 +1500,7 @@ export default function Editor() {
                   <p className="text-sm font-medium text-foreground">Select an element</p>
                   <p className="text-xs text-muted-foreground">Click <span className="font-mono text-violet-400">Select</span> in the toolbar, then click any element on the canvas to edit its properties.</p>
                 </div>
-                <Button variant="outline" size="sm" className="gap-1.5 mt-2 text-xs" onClick={toggleSelectionMode}>
+                <Button variant="outline" size="sm" className="gap-1.5 mt-2 text-xs min-h-[44px]" onClick={toggleSelectionMode}>
                   <MousePointer2 className="w-3.5 h-3.5" />
                   {selectionMode ? "Selection active" : "Enable selection"}
                 </Button>

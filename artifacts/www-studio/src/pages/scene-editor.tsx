@@ -385,26 +385,27 @@ export default function SceneEditor() {
 
           <div className="w-px h-5 bg-border mx-0.5 hidden sm:block" />
 
-          <div className="flex items-center gap-0.5">
-            <Button variant="ghost" size="icon" className="h-8 w-8 min-h-[44px] min-w-[44px]" onClick={() => dispatch({ type: "UNDO" })} disabled={!state.past.length} title="Undo (Ctrl+Z)">
+          <div className="flex items-center gap-0.5 flex-wrap">
+            <Button variant="ghost" size="icon" className="min-h-[44px] min-w-[44px]" onClick={() => dispatch({ type: "UNDO" })} disabled={!state.past.length} title="Undo (Ctrl+Z)">
               <Undo2 className="h-4 w-4" />
             </Button>
-            <Button variant="ghost" size="icon" className="h-8 w-8 min-h-[44px] min-w-[44px]" onClick={() => dispatch({ type: "REDO" })} disabled={!state.future.length} title="Redo (Ctrl+Y)">
+            <Button variant="ghost" size="icon" className="min-h-[44px] min-w-[44px]" onClick={() => dispatch({ type: "REDO" })} disabled={!state.future.length} title="Redo (Ctrl+Y)">
               <Redo2 className="h-4 w-4" />
             </Button>
           </div>
 
           <div className="w-px h-5 bg-border mx-0.5" />
 
-          <Button variant="ghost" size="icon" className="h-8 w-8 min-h-[44px] min-w-[44px]" onClick={() => setShowShortcuts(true)} title="Keyboard shortcuts (?)" >
-                      <Keyboard className="h-3.5 w-3.5" />
-                    </Button>
+                    <div className="flex items-center gap-0.5 flex-wrap">
+                      <Button variant="ghost" size="icon" className="min-h-[44px] min-w-[44px]" onClick={() => setShowShortcuts(true)} title="Keyboard shortcuts (?)" >
+                        <Keyboard className="h-3.5 w-3.5" />
+                      </Button>
 
-                    <Button variant="ghost" size="icon" className="h-8 w-8 min-h-[44px] min-w-[44px]" onClick={() => setShowCommand(true)} title="Command palette (Ctrl+/)" >
-                      <Terminal className="h-3.5 w-3.5" />
-                    </Button>
+                      <Button variant="ghost" size="icon" className="min-h-[44px] min-w-[44px]" onClick={() => setShowCommand(true)} title="Command palette (Ctrl+/)" >
+                        <Terminal className="h-3.5 w-3.5" />
+                      </Button>
 
-                    {/* View/like stats */}
+                      {/* View/like stats */}
                     {rawScene && (
                       <div className="hidden lg:flex items-center gap-2 text-[10px] text-muted-foreground shrink-0">
                         <span className="flex items-center gap-0.5"><span>👁</span>{(rawScene as any).viewCount ?? 0}</span>
@@ -412,23 +413,24 @@ export default function SceneEditor() {
                       </div>
                     )}
 
-                    <Button variant="ghost" size="icon" className="h-8 w-8 min-h-[44px] min-w-[44px]" onClick={() => window.open(`/scenes/${sceneId}/preview`, "_blank")} title="Preview (Ctrl+P)">
+                    <Button variant="ghost" size="icon" className="min-h-[44px] min-w-[44px]" onClick={() => window.open(`/scenes/${sceneId}/preview`, "_blank")} title="Preview (Ctrl+P)">
                       <ExternalLink className="h-3.5 w-3.5" />
                     </Button>
 
-                    <Button variant="ghost" size="icon" className="h-8 w-8 min-h-[44px] min-w-[44px]" onClick={() => window.open(`/scenes/${sceneId}/share`, "_blank")} title="Share scene">
+                    <Button variant="ghost" size="icon" className="min-h-[44px] min-w-[44px]" onClick={() => window.open(`/scenes/${sceneId}/share`, "_blank")} title="Share scene">
                       <Globe className="h-3.5 w-3.5" />
                     </Button>
 
-                    <Button variant="ghost" size="icon" className="h-8 w-8 min-h-[44px] min-w-[44px]" onClick={() => setShowCursor(true)} title="Send to Cursor (Ctrl+K)">
+                    <Button variant="ghost" size="icon" className="min-h-[44px] min-w-[44px]" onClick={() => setShowCursor(true)} title="Send to Cursor (Ctrl+K)">
                       <Terminal className="h-3.5 w-3.5" />
                     </Button>
+                    </div>
 
           <Button
             variant={showEnhancer ? "secondary" : "ghost"}
             size="sm"
             onClick={() => setShowEnhancer(true)}
-            className="gap-1.5 h-8 min-h-[44px] hidden sm:flex"
+            className="gap-1.5 min-h-[44px] hidden sm:flex"
             title="AI Enhance (Ctrl+Enter)"
           >
             <Sparkles className="h-3.5 w-3.5" />
@@ -439,7 +441,7 @@ export default function SceneEditor() {
             variant={showChat ? "secondary" : "ghost"}
             size="sm"
             onClick={() => setShowChat((v) => !v)}
-            className="gap-1.5 h-8 min-h-[44px]"
+            className="gap-1.5 min-h-[44px]"
             title="AI Chat (Space)"
           >
             <MessageSquare className="h-3.5 w-3.5" />
@@ -451,7 +453,7 @@ export default function SceneEditor() {
             variant="outline"
             size="sm"
             className={cn(
-              "gap-1.5 h-8 min-h-[44px] hidden sm:flex",
+              "gap-1.5 min-h-[44px] hidden sm:flex",
               state.scene.status === "published" ? "text-green-400 border-green-500/30 hover:bg-green-500/10" : ""
             )}
             onClick={() => {
@@ -470,7 +472,7 @@ export default function SceneEditor() {
             size="sm"
             onClick={handleSave}
             disabled={!state.isDirty || updateScene.isPending}
-            className="gap-1.5 h-8 min-h-[44px]"
+            className="gap-1.5 min-h-[44px]"
           >
             <Save className="h-3.5 w-3.5" />
             {updateScene.isPending ? "Saving…" : "Save"}
@@ -478,7 +480,7 @@ export default function SceneEditor() {
         </div>
 
         {/* ── Main area ── */}
-        <div className="flex flex-col sm:flex-row flex-1 min-h-0 relative">
+        <div className="flex flex-col sm:flex-row flex-wrap flex-1 min-h-0 relative">
           {/* ── Left: Element Library ── */}
           <div className="w-full sm:w-[210px] shrink-0 border-r border-border bg-background flex flex-col overflow-hidden">
             <WellnessLibrary onAdd={handleAdd} />
@@ -597,13 +599,13 @@ export default function SceneEditor() {
                     <>
                       <div className="space-y-1.5">
                         <Label className="text-xs text-muted-foreground">Name</Label>
-                        <Input value={selectedEl.name} onChange={(e) => handleUpdate(selectedEl.id, { name: e.target.value })} className="h-7 text-xs min-h-[44px]" />
+                        <Input value={selectedEl.name} onChange={(e) => handleUpdate(selectedEl.id, { name: e.target.value })} className="text-xs min-h-[44px]" />
                       </div>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         {(["x","y","width","height"] as const).map((field) => (
                           <div key={field} className="space-y-1">
                             <Label className="text-xs text-muted-foreground">{field === "width" ? "W" : field === "height" ? "H" : field.toUpperCase()}</Label>
-                            <Input type="number" value={(selectedEl as any)[field]} onChange={(e) => handleUpdate(selectedEl.id, { [field]: Number(e.target.value) })} className="h-7 text-xs min-h-[44px]" />
+                            <Input type="number" value={(selectedEl as any)[field]} onChange={(e) => handleUpdate(selectedEl.id, { [field]: Number(e.target.value) })} className="text-xs min-h-[44px]" />
                           </div>
                         ))}
                       </div>
@@ -611,7 +613,7 @@ export default function SceneEditor() {
                         <Label className="text-xs text-muted-foreground">Fill</Label>
                         <div className="flex gap-2 items-center">
                           <input type="color" value={selectedEl.fill} onChange={(e) => handleUpdate(selectedEl.id, { fill: e.target.value })} className="w-8 h-7 min-h-[44px] min-w-[44px] rounded border border-border cursor-pointer bg-transparent" />
-                          <Input value={selectedEl.fill} onChange={(e) => handleUpdate(selectedEl.id, { fill: e.target.value })} className="h-7 text-xs min-h-[44px] font-mono flex-1" />
+                          <Input value={selectedEl.fill} onChange={(e) => handleUpdate(selectedEl.id, { fill: e.target.value })} className="text-xs min-h-[44px] font-mono flex-1" />
                         </div>
                       </div>
                       {[
@@ -631,7 +633,7 @@ export default function SceneEditor() {
                         <>
                           <div className="space-y-1.5">
                             <Label className="text-xs text-muted-foreground">Text</Label>
-                            <Input value={selectedEl.text ?? ""} onChange={(e) => handleUpdate(selectedEl.id, { text: e.target.value })} className="h-7 text-xs min-h-[44px]" />
+                            <Input value={selectedEl.text ?? ""} onChange={(e) => handleUpdate(selectedEl.id, { text: e.target.value })} className="text-xs min-h-[44px]" />
                           </div>
                           <div className="space-y-1.5">
                             <div className="flex items-center justify-between">
@@ -650,14 +652,14 @@ export default function SceneEditor() {
                         <Label className="text-xs text-muted-foreground">Locked</Label>
                         <Switch checked={selectedEl.locked} onCheckedChange={(v) => handleUpdate(selectedEl.id, { locked: v })} />
                       </div>
-                      <div className="pt-2 flex gap-2">
-                        <Button variant="ghost" size="sm" className="flex-1 gap-1.5 text-xs h-8 min-h-[44px]" onClick={() => {
+                      <div className="pt-2 flex gap-2 flex-wrap">
+                        <Button variant="ghost" size="sm" className="flex-1 gap-1.5 text-xs min-h-[44px]" onClick={() => {
                           const dup = { ...selectedEl, id: crypto.randomUUID(), x: selectedEl.x + 20, y: selectedEl.y + 20, name: selectedEl.name + " copy" };
                           dispatch({ type: "ADD_ELEMENT", el: dup });
                         }} title="Duplicate (Ctrl+D)">
                           <Copy className="h-3.5 w-3.5" />Duplicate
                         </Button>
-                        <Button variant="ghost" size="sm" className="flex-1 gap-1.5 text-xs h-8 min-h-[44px] text-destructive hover:text-destructive" onClick={() => dispatch({ type: "DELETE_ELEMENT", id: selectedEl.id })} title="Delete (Del)">
+                        <Button variant="ghost" size="sm" className="flex-1 gap-1.5 text-xs min-h-[44px] text-destructive hover:text-destructive" onClick={() => dispatch({ type: "DELETE_ELEMENT", id: selectedEl.id })} title="Delete (Del)">
                           <Trash2 className="h-3.5 w-3.5" />Delete
                         </Button>
                       </div>

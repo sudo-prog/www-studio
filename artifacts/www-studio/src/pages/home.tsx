@@ -89,12 +89,12 @@ export default function Home() {
             WWW Studio is the visual UI builder for developers. Paste a URL, describe your idea, or upload a screenshot — get an editable React + Tailwind codebase instantly.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
-            <Button size="lg" className="h-12 px-8 text-base gap-2 w-full sm:w-auto justify-center min-h-[44px]" asChild>
+            <Button size="lg" className="h-12 px-8 text-base gap-2 w-full sm:w-auto justify-center min-h-[48px]" asChild>
               <Link href="/editor/new">
                 <WandSparkles className="w-5 h-5" />Start Building
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="h-12 px-8 text-base gap-2 w-full sm:w-auto justify-center min-h-[44px]" asChild>
+            <Button size="lg" variant="outline" className="h-12 px-8 text-base gap-2 w-full sm:w-auto justify-center min-h-[48px]" asChild>
               <Link href="/scenes">
                 <Sparkles className="w-5 h-5" />Wellness Scenes
               </Link>
@@ -132,7 +132,7 @@ export default function Home() {
                     <Globe className="h-3.5 w-3.5" />Public Gallery
                   </Link>
                 </Button>
-                <Button size="sm" className="min-h-[44px]" asChild>
+                <Button size="sm" className="min-h-[48px]" asChild>
                   <Link href="/scenes" className="gap-1.5">
                     My Scenes<ArrowRight className="h-3.5 w-3.5" />
                   </Link>
@@ -181,7 +181,7 @@ export default function Home() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search templates..."
-                className="pl-9 min-h-[44px]"
+                className="pl-9 min-h-[48px] min-w-[48px]"
               />
             </div>
           </div>
@@ -208,7 +208,7 @@ export default function Home() {
                       <div className="absolute inset-0 flex items-center justify-center text-muted-foreground text-sm">No Preview</div>
                     )}
                     <div className="absolute inset-0 bg-black/60 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <Button variant="secondary" size="sm" className="min-h-[44px]" asChild>
+                      <Button variant="secondary" size="sm" className="min-h-[48px]" asChild>
                         <Link href={`/editor/new?templateId=${template.id}`}>
                           <Eye className="w-4 h-4 mr-2" />Fork Template
                         </Link>

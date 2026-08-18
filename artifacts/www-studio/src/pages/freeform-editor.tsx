@@ -229,12 +229,12 @@ export default function FreeformEditor() {
           {/* Colors */}
           <div>
             <Label className="text-[10px] text-muted-foreground uppercase tracking-wider mb-1 block">Colors</Label>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-1">
               {Object.entries(tokens.colors).map(([name, value]) => (
                 <div key={name} className="relative">
                   <button
                     title={name}
-                    className="w-8 min-h-[44px] rounded border border-border hover:ring-1 hover:ring-primary"
+                    className="min-w-[44px] min-h-[44px] rounded border border-border hover:ring-1 hover:ring-primary"
                     style={{ background: value as string }}
                     onClick={() => {
                       setEditingColor(name);
@@ -442,11 +442,11 @@ export default function FreeformEditor() {
     <div className="h-[100dvh] flex flex-col bg-[#0a0a0f] text-foreground overflow-hidden">
       {/* Top bar */}
       <header className="h-12 shrink-0 border-b border-border bg-background flex items-center justify-between px-4 gap-3 z-50 overflow-x-auto">
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           <Link href="/projects" className="min-h-[44px] min-w-[44px] flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors">
             <ArrowLeft className="w-4 h-4" />
           </Link>
-          <Link href="/" className="flex items-center gap-1.5 font-semibold text-sm tracking-tight hover:text-primary transition-colors shrink-0">
+          <Link href="/" className="min-h-[44px] min-w-[44px] flex items-center gap-1.5 font-semibold text-sm tracking-tight hover:text-primary transition-colors shrink-0 px-2">
             <Code2 className="h-4 w-4 text-primary" />
             <span className="hidden sm:inline">WWW Studio</span>
           </Link>
@@ -460,7 +460,7 @@ export default function FreeformEditor() {
           />
         </div>
 
-        <div className="flex items-center gap-1">
+        <div className="flex flex-wrap items-center gap-1">
           <Button variant="ghost" size="icon" className="min-h-[44px] min-w-[44px]" onClick={() => dispatch({ type: "UNDO" })} disabled={state.past.length === 0} title="Undo">
             <Undo className="w-3.5 h-3.5" />
           </Button>
@@ -547,7 +547,7 @@ export default function FreeformEditor() {
                   <SlidersHorizontal className="w-3.5 h-3.5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="bottom" className="h-[75vh] overflow-y-auto">
+              <SheetContent side="bottom" className="h-[75vh] overflow-y-auto pb-[env(safe-area-inset-bottom)]">
                 <div className="space-y-6 mt-6">
                   {rightPanelsContent}
                 </div>
@@ -619,7 +619,7 @@ export default function FreeformEditor() {
       </div>
 
       {/* Status bar */}
-      <footer className="h-6 shrink-0 border-t border-border bg-background flex items-center justify-between px-3 text-[10px] text-muted-foreground pb-safe pb-[env(safe-area-inset-bottom)]">
+      <footer className="min-h-[24px] shrink-0 border-t border-border bg-background flex flex-wrap items-center justify-between px-3 text-[10px] text-muted-foreground pb-safe pb-[env(safe-area-inset-bottom)] gap-2">
         <div className="flex items-center gap-3">
           <span>{state.page.elements.length} elements</span>
           <span>Canvas: {state.page.canvasWidth}×{state.page.canvasHeight}</span>

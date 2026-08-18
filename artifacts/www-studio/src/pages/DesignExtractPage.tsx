@@ -452,7 +452,7 @@ export default function DesignExtractPage() {
   const showEditor = state.phase === "complete" && state.tokens;
 
   return (
-    <div className="min-h-[100dvh] bg-[#0a0a0b] text-foreground">
+    <div className="min-h-[100dvh] pb-[env(safe-area-inset-bottom)] bg-[#0a0a0b] text-foreground">
       <Navbar />
       {/* Header */}
       <div className="border-b border-[#27272a] px-4 md:px-6 py-4">
@@ -500,7 +500,7 @@ export default function DesignExtractPage() {
         )}
 
         {/* Two-column layout: stacks on mobile */}
-        <div className="flex flex-wrap flex-col lg:flex-row gap-6">
+        <div className="flex flex-col lg:flex-row gap-6">
           {/* Left column */}
           <div className="flex-1 min-w-0 space-y-4">
             {state.phase === "input" && (
@@ -563,11 +563,13 @@ export default function DesignExtractPage() {
               {state.history.length === 0 ? (
                 <EmptyHistoryState />
               ) : (
-                <ExtractionHistory
-                  extractions={state.history}
-                  currentId={state.extractionId ?? undefined}
-                  onSelect={handleHistorySelect}
-                />
+                <div className="overflow-x-auto">
+                  <ExtractionHistory
+                    extractions={state.history}
+                    currentId={state.extractionId ?? undefined}
+                    onSelect={handleHistorySelect}
+                  />
+                </div>
               )}
             </div>
           </div>

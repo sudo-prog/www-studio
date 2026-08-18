@@ -102,12 +102,12 @@ function GalleryCard({ scene, onLike, liked }: { scene: any; onLike: () => void;
         <ScenePreviewSvg scene={scene} />
 
         {/* Overlay actions */}
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100">
-          <Button size="sm" variant="secondary" className="h-8 min-h-[44px] bg-white/90 text-black hover:bg-white border-0 shadow-lg gap-1.5 text-xs"
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex flex-wrap items-center justify-center gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100">
+          <Button size="sm" variant="secondary" className="h-8 min-h-[44px] min-w-[44px] bg-white/90 text-black hover:bg-white border-0 shadow-lg gap-1.5 text-xs"
             onClick={() => window.open(`/scenes/${scene.id}/share`, "_blank")}>
             <Eye className="h-3.5 w-3.5" />Share
           </Button>
-          <Button size="sm" variant="secondary" className="h-8 min-h-[44px] bg-white/90 text-black hover:bg-white border-0 shadow-lg gap-1.5 text-xs"
+          <Button size="sm" variant="secondary" className="h-8 min-h-[44px] min-w-[44px] bg-white/90 text-black hover:bg-white border-0 shadow-lg gap-1.5 text-xs"
             onClick={() => forkMut.mutate()} disabled={forkMut.isPending}>
             <Sparkles className="h-3.5 w-3.5" />Fork
           </Button>
@@ -148,7 +148,7 @@ function GalleryCard({ scene, onLike, liked }: { scene: any; onLike: () => void;
         )}
 
         {colors.length > 0 && (
-          <div className="flex gap-1 mb-3">
+          <div className="flex flex-wrap gap-1 mb-3">
             {colors.map((c, i) => (
               <span key={i} className="w-4 h-4 rounded-full border border-white/10" style={{ background: c }} />
             ))}
@@ -243,7 +243,7 @@ export default function SceneGallery() {
             <Button
               variant="outline"
               size="sm"
-              className="gap-1.5 text-xs min-h-[44px]"
+              className="gap-1.5 text-xs min-h-[48px]"
               onClick={() => {
                 apiFetch("/api/scenes/random")
                   .then((r) => r.ok ? r.json() : null)
@@ -274,7 +274,7 @@ export default function SceneGallery() {
                   <button
                     key={scene.id}
                     onClick={() => window.open(`/scenes/${scene.id}/share`, "_blank")}
-                    className="group relative h-24 rounded-xl overflow-hidden border border-border hover:border-primary/40 transition-all"
+                    className="group relative h-24 rounded-xl overflow-hidden border border-border hover:border-primary/40 transition-all min-h-[44px]"
                     style={{ background: "linear-gradient(135deg,#0d1117,#1a1a2e)" }}
                   >
                     <svg viewBox={`0 0 ${scene.canvasWidth ?? 1440} ${scene.canvasHeight ?? 900}`} className="absolute inset-0 w-full h-full opacity-90">
@@ -366,7 +366,7 @@ export default function SceneGallery() {
             <p className="text-lg font-medium mb-2">No public scenes yet</p>
             <p className="text-sm mb-6">Publish your scenes to share them with the community</p>
             <Link href="/scenes">
-              <Button className="min-h-[44px]">Go to My Scenes</Button>
+              <Button className="min-h-[48px]">Go to My Scenes</Button>
             </Link>
           </div>
         ) : (

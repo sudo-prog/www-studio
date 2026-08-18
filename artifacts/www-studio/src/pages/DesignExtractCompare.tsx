@@ -172,7 +172,7 @@ export default function DesignExtractCompare() {
             size="sm"
             onClick={handleMerge}
             disabled={merging}
-            className="bg-[#3b82f6] hover:bg-[#3b82f6]/90 text-white min-h-[44px]"
+            className="bg-[#3b82f6] hover:bg-[#3b82f6]/90 text-white min-h-[48px]"
           >
             {merging ? (
               <Loader2 className="h-3 w-3 mr-1.5 animate-spin" />
@@ -197,7 +197,8 @@ export default function DesignExtractCompare() {
               <div className="space-y-4">
                 <div>
                   <h3 className="text-xs font-medium text-muted-foreground mb-2">Colors</h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 overflow-x-auto">
+                  <div className="overflow-x-auto">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {Object.entries(colorsA).map(([name, hex]) => {
                       const isDifferent = colorDiff.different.includes(name);
                       const isOnlyHere = colorDiff.onlyInA.includes(name);
@@ -218,6 +219,7 @@ export default function DesignExtractCompare() {
                       );
                     })}
                   </div>
+                  </div>
                 </div>
               </div>
             </ScrollArea>
@@ -233,7 +235,8 @@ export default function DesignExtractCompare() {
               <div className="space-y-4">
                 <div>
                   <h3 className="text-xs font-medium text-muted-foreground mb-2">Colors</h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 overflow-x-auto">
+                  <div className="overflow-x-auto">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {Object.entries(colorsB).map(([name, hex]) => {
                       const isDifferent = colorDiff.different.includes(name);
                       const isOnlyHere = colorDiff.onlyInB.includes(name);
@@ -259,6 +262,7 @@ export default function DesignExtractCompare() {
                         </div>
                       );
                     })}
+                  </div>
                   </div>
                 </div>
               </div>

@@ -58,7 +58,7 @@ function SceneCard({ scene, onEdit, onDelete, onFork, onTogglePublish, selected,
       {onSelect && (
         <button
           onClick={(e) => { e.stopPropagation(); onSelect(); }}
-          className="absolute top-2 right-2 z-20 min-h-11 min-w-11 flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity"
+          className="absolute top-2 right-2 z-20 min-h-[44px] min-w-[44px] flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity"
           style={selected ? { opacity: 1 } : {}}
         >
           {selected
@@ -145,7 +145,7 @@ function SceneCard({ scene, onEdit, onDelete, onFork, onTogglePublish, selected,
 
       {/* Body */}
       <div className="p-4">
-        <div className="flex items-start justify-between gap-2 mb-2">
+        <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
           <h3 className="font-medium text-sm truncate">{scene.name}</h3>
           <span className={cn(
             "text-xs px-2 py-0.5 rounded-full shrink-0",
@@ -168,7 +168,7 @@ function SceneCard({ scene, onEdit, onDelete, onFork, onTogglePublish, selected,
         )}
 
         {colors.length > 0 && (
-          <div className="flex gap-1 mb-3">
+          <div className="flex flex-wrap gap-1 mb-3">
             {colors.map((c, i) => (
               <span key={i} className="w-4 h-4 rounded-full border border-white/10" style={{ background: c }} />
             ))}
@@ -180,7 +180,7 @@ function SceneCard({ scene, onEdit, onDelete, onFork, onTogglePublish, selected,
             <Clock className="h-3 w-3" />
             {new Date(scene.updatedAt).toLocaleDateString()}
           </span>
-          <div className="flex items-center gap-2 text-[10px] text-muted-foreground">
+          <div className="flex flex-wrap items-center gap-2 text-[10px] text-muted-foreground">
             {(scene.viewCount ?? 0) > 0 && <span>👁 {scene.viewCount}</span>}
             {(scene.likes ?? 0) > 0 && <span>♥ {scene.likes}</span>}
             <span>{elements.length} els</span>
@@ -348,7 +348,7 @@ export default function Scenes() {
             <h1 className="text-3xl font-bold tracking-tight mb-1">Scenes</h1>
             <p className="text-muted-foreground">Visual SVG compositions with wellness animations</p>
           </div>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <Button variant="outline" onClick={() => setShowAI(true)} className="gap-2 min-h-[44px]">
               <Sparkles className="h-4 w-4" />AI Generate
             </Button>
@@ -415,7 +415,7 @@ export default function Scenes() {
         )}
 
         <div className="overflow-x-auto">
-          <div className="flex items-center gap-3 mb-6 min-w-max">
+          <div className="flex flex-wrap items-center gap-3 mb-6 min-w-max">
             <div className="relative flex-1 max-w-sm">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
@@ -469,7 +469,7 @@ export default function Scenes() {
             <Layers className="h-16 w-16 mx-auto mb-4 opacity-20" />
             <p className="text-lg font-medium mb-2">No scenes yet</p>
             <p className="text-sm mb-6">Create your first visual scene with wellness animations</p>
-            <div className="flex gap-3 justify-center">
+            <div className="flex flex-wrap gap-3 justify-center">
               <Button variant="outline" onClick={() => setShowAI(true)} className="gap-2 min-h-[44px]">
                 <Sparkles className="h-4 w-4" />AI Generate
               </Button>

@@ -81,11 +81,11 @@ function GallerySceneCard({ scene, onFork, onEmbed, onPreview }: {
         </svg>
 
         {/* Hover overlay */}
-        <div className="absolute inset-0 bg-black/50 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
-          <Button size="sm" variant="secondary" className="gap-1.5 text-xs h-8 min-h-[48px]" onClick={(e) => { e.stopPropagation(); onPreview(); }}>
+        <div className="absolute inset-0 bg-black/50 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex flex-wrap items-center justify-center gap-2">
+          <Button size="sm" variant="secondary" className="gap-1.5 text-xs min-h-[48px]" onClick={(e) => { e.stopPropagation(); onPreview(); }}>
             <Eye className="h-3.5 w-3.5" />Preview
           </Button>
-          <Button size="sm" className="gap-1.5 text-xs h-8 min-h-[48px]" onClick={(e) => { e.stopPropagation(); onFork(); }}>
+          <Button size="sm" className="gap-1.5 text-xs min-h-[48px]" onClick={(e) => { e.stopPropagation(); onFork(); }}>
             <Sparkles className="h-3.5 w-3.5" />Fork
           </Button>
         </div>
@@ -112,7 +112,7 @@ function GallerySceneCard({ scene, onFork, onEmbed, onPreview }: {
           <span className="text-xs text-muted-foreground">{elements.length} elements</span>
           <button
             onClick={onEmbed}
-            className="min-h-12 min-w-12 flex items-center justify-center text-[10px] text-muted-foreground hover:text-foreground gap-1 transition-colors"
+            className="min-h-[44px] min-w-[44px] flex items-center justify-center text-[10px] text-muted-foreground hover:text-foreground gap-1 transition-colors"
           >
             <Code2 className="h-3 w-3" />Embed
           </button>
@@ -154,7 +154,7 @@ export default function Gallery() {
   }
 
   return (
-    <div className="min-h-dvh bg-background overflow-x-hidden">
+    <div className="min-h-[100dvh] bg-background overflow-x-hidden">
       {embedScene && <EmbedModal scene={embedScene} onClose={() => setEmbedScene(null)} />}
 
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-8">
