@@ -1,9 +1,12 @@
 // ─── ExtractionHistory.tsx ───────────────────────────────────────────────────
-import { useState, useEffect } from "react";
+// History list for design-extract bookmarks. Uses the shared
+// `StatusBadge` + `timeAgo` primitives extracted from this file
+// itself.
 import { useLocation } from "wouter";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Clock, ChevronRight, AlertCircle, CheckCircle2, Loader2 } from "lucide-react";
+import { Clock, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { StatusBadge, timeAgo } from "@/components/shared";
 
 export interface ExtractionSummary {
   id: string;
@@ -18,47 +21,6 @@ interface ExtractionHistoryProps {
   extractions: ExtractionSummary[];
   currentId?: string;
   onSelect: (id: string) => void;
-}
-
-function timeAgo(dateStr: string): string {
-  const now = Date.now();
-  const then = new Date(dateStr).getTime();
-  const diff = now - then;
-  const mins = Math.floor(diff / 60000);
-  if (mins < 1) return "just now";
-  if (mins < 60) return `${mins}m ago`;
-  const hours = Math.floor(mins / 60);
-  if (hours < 24) return `${hours}h ago`;
-  const days = Math.floor(hours / 24);
-  if (days < 7) return `${days}d ago`;
-  return new Date(dateStr).toLocaleDateString();
-}
-
-function StatusBadge({ status }: { status: ExtractionSummary["status"] }) {
-  switch (status) {
-    case "complete":
-      return (
-        <span className="inline-flex items-center gap-1 text-[10px] px-1.5 py-0.5 rounded-full bg-[#22c55e]/10 text-[#22c55e]">
-          <CheckCircle2 className="h-2.5 w-2.5" />
-          Done
-        </span>
-      );
-    case "processing":
-    case "pending":
-      return (
-        <span className="inline-flex items-center gap-1 text-[10px] px-1.5 py-0.5 rounded-full bg-[#3b82f6]/10 text-[#3b82f6]">
-          <Loader2 className="h-2.5 w-2.5 animate-spin" />
-          {status === "pending" ? "Queued" : "Processing"}
-        </span>
-      );
-    case "error":
-      return (
-        <span className="inline-flex items-center gap-1 text-[10px] px-1.5 py-0.5 rounded-full bg-red-500/10 text-red-400">
-          <AlertCircle className="h-2.5 w-2.5" />
-          Error
-        </span>
-      );
-  }
 }
 
 export default function ExtractionHistory({
@@ -105,7 +67,10 @@ export default function ExtractionHistory({
                 {ex.url.length > 36 ? ex.url.slice(0, 36) + "…" : ex.url}
               </p>
               <div className="flex items-center gap-2 mt-0.5">
-                <StatusBadge status={ex.status} />
+                <StatusBadge
+                  status={ex.status}
+                  spinning={ex.status === "processing"}
+                />
                 <span className="text-[10px] text-muted-foreground/50">
                   {timeAgo(ex.createdAt)}
                 </span>

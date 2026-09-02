@@ -2,78 +2,52 @@ import { useState, useMemo } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { COMPONENT_LIBRARY, CATEGORIES, makePreviewHtml, type Category } from "@/data/component-library";
-import { Search, Copy, Check, Code2, Eye } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Search, Copy } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { AiChatWidget } from "@/components/AiChatWidget";
 import { useLocation } from "wouter";
+import {
+  PreviewCodeCard,
+  TagChip,
+  CategoryNav,
+  type CategoryItem,
+} from "@/components/shared";
 
 function ComponentCard({ item }: { item: typeof COMPONENT_LIBRARY[number] }) {
-  const [copied, setCopied] = useState(false);
-  const [view, setView] = useState<"preview" | "code">("preview");
   const { toast } = useToast();
-
-  const copy = () => {
-    navigator.clipboard.writeText(item.code);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-    toast({ title: "Code copied!" });
-  };
-
-  const previewSrc = useMemo(
-    () => `data:text/html;charset=utf-8,${encodeURIComponent(makePreviewHtml(item.code))}`,
-    [item.code]
-  );
 
   return (
     <div className="rounded-2xl border border-border/50 bg-card overflow-hidden flex flex-col group hover:border-primary/40 transition-colors">
-      {/* Preview / Code area */}
-      <div className="relative bg-zinc-950 h-44 overflow-hidden">
-        {view === "preview" ? (
-          <iframe
-            src={previewSrc}
-            className="w-full h-full border-0 pointer-events-none"
-            title={item.name}
-            sandbox="allow-scripts"
-          />
-        ) : (
-          <pre className="p-4 text-[11px] font-mono text-zinc-300 overflow-auto h-full leading-relaxed whitespace-pre-wrap break-words">
-            {item.code}
-          </pre>
-        )}
-
-        {/* Action overlay */}
-        <div className="absolute top-2 right-2 flex items-center gap-1.5 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
-          <Button
-            size="sm"
-            variant="secondary"
-            className="h-7 min-h-[48px] text-xs gap-1"
-            onClick={() => setView(view === "preview" ? "code" : "preview")}
-          >
-            {view === "preview" ? <Code2 className="w-3 h-3" /> : <Eye className="w-3 h-3" />}
-            {view === "preview" ? "Code" : "Preview"}
-          </Button>
-          <Button size="sm" variant="secondary" className="h-7 min-h-[48px] text-xs gap-1" onClick={copy}>
-            {copied ? <Check className="w-3 h-3 text-green-500" /> : <Copy className="w-3 h-3" />}
-            {copied ? "Copied!" : "Copy"}
-          </Button>
-        </div>
-      </div>
-
-      {/* Info */}
+      <PreviewCodeCard
+        code={item.code}
+        title={item.name}
+        previewHtml={makePreviewHtml(item.code)}
+        onCodeCopy={() => toast({ title: "Code copied!" })}
+        className="border-0 rounded-none bg-transparent"
+      />
+      {/* Info strip — title + tags + free-floating copy icon. Lives
+          beside the shared preview viewport so the same PreviewCodeCard
+          primitive can be reused without a built-in info footer. */}
       <div className="p-3 flex items-center justify-between gap-2">
         <div className="min-w-0">
           <p className="text-sm font-medium truncate">{item.name}</p>
           <div className="flex flex-wrap gap-1 mt-1">
             {item.tags.slice(0, 3).map((tag) => (
-              <span key={tag} className="text-[10px] px-1.5 py-0.5 rounded-md bg-muted text-muted-foreground">
-                {tag}
-              </span>
+              <TagChip key={tag}>{tag}</TagChip>
             ))}
           </div>
         </div>
-        <Button size="sm" variant="ghost" className="h-7 w-7 min-h-[48px] min-w-[44px] shrink-0" onClick={copy}>
-          {copied ? <Check className="w-3.5 h-3.5 text-green-500" /> : <Copy className="w-3.5 h-3.5 text-muted-foreground" />}
+        <Button
+          size="sm"
+          variant="ghost"
+          className="h-7 w-7 min-h-[48px] min-w-[44px] shrink-0"
+          onClick={() => {
+            navigator.clipboard.writeText(item.code);
+            toast({ title: "Code copied!" });
+          }}
+          aria-label={`Copy ${item.name} code`}
+        >
+          <Copy className="w-3.5 h-3.5 text-muted-foreground" />
         </Button>
       </div>
     </div>
@@ -97,9 +71,17 @@ export default function Components() {
     return items;
   }, [search, activeCategory]);
 
-  const countByCategory = useMemo(
-    () => Object.fromEntries(CATEGORIES.map((c) => [c, c === "All" ? COMPONENT_LIBRARY.length : COMPONENT_LIBRARY.filter((i) => i.category === c).length])),
-    []
+  const categoryItems: ReadonlyArray<CategoryItem<Category>> = useMemo(
+    () =>
+      CATEGORIES.map((c) => ({
+        id: c,
+        label: c,
+        count:
+          c === "All"
+            ? COMPONENT_LIBRARY.length
+            : COMPONENT_LIBRARY.filter((i) => i.category === c).length,
+      })),
+    [],
   );
 
   return (
@@ -128,41 +110,24 @@ export default function Components() {
 
         <div className="flex flex-col md:flex-row gap-6">
           {/* Mobile category pills */}
-          <div className="md:hidden flex flex-wrap gap-2 mb-2 w-full">
-            {CATEGORIES.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={cn(
-                  "px-3 py-1.5 min-h-[48px] rounded-full text-xs font-medium transition-colors",
-                  activeCategory === cat ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:text-foreground"
-                )}
-              >
-                {cat}
-              </button>
-            ))}
+          <div className="md:hidden">
+            <CategoryNav
+              items={categoryItems}
+              active={activeCategory}
+              onSelect={setActiveCategory}
+              layout="pills"
+              className="mb-2 w-full"
+            />
           </div>
 
           {/* Left category sidebar */}
-          <nav className="hidden md:flex flex-col gap-1 w-44 shrink-0">
-            {CATEGORIES.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={cn(
-                  "flex items-center justify-between px-3 py-2 min-h-[48px] rounded-lg text-sm text-left transition-colors",
-                  activeCategory === cat
-                    ? "bg-primary/10 text-primary font-medium"
-                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-                )}
-              >
-                <span>{cat}</span>
-                <span className={cn("text-xs tabular-nums", activeCategory === cat ? "text-primary" : "text-muted-foreground/50")}>
-                  {countByCategory[cat]}
-                </span>
-              </button>
-            ))}
-          </nav>
+          <CategoryNav
+            items={categoryItems}
+            active={activeCategory}
+            onSelect={setActiveCategory}
+            layout="sidebar"
+            className="hidden md:flex"
+          />
 
           {/* Grid */}
           <div className="flex-1 min-w-0 overflow-x-hidden">
