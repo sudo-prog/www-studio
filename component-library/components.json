@@ -1,5 +1,5 @@
 {
-  "version": "1.9.11",
+  "version": "1.10.12",
   "created": "2026-09-02",
   "source_count": 113,
   "categories": {
@@ -3817,6 +3817,554 @@
       ],
       "extraction_status": "verified",
       "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Infinite Scroll Gallery with GSAP Page Transitions",
+      "source_url": "https://tympanus.net/Tutorials/InfiniteScrollGSAPGallery/",
+      "registry_url": "https://tympanus.net/codrops/hub/",
+      "category": "gallery",
+      "tags": [
+        "animation",
+        "cinematic",
+        "gallery",
+        "gradient",
+        "gsap",
+        "javascript",
+        "page-transition",
+        "parallax",
+        "scroll"
+      ],
+      "description": "GSAP-driven infinite scroll gallery with parallax depth and fullscreen page transitions between items.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/07/infinitescrollGSAP-400x300.png.webp?x57826",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "3D Wave Grid Background",
+      "source_url": "https://projects.arkon.digital/threejs/wavy-cubes/",
+      "registry_url": "https://tympanus.net/codrops/hub/",
+      "category": "background",
+      "tags": [
+        "3d",
+        "background",
+        "javascript",
+        "minimal",
+        "shader",
+        "three.js",
+        "wave",
+        "webgl"
+      ],
+      "description": "Minimalistic customizable 3D wave-propagation cube grid background built with Three.js.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/06/franky_cover-400x300.png.webp?x57826",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "GSAP EaseReverse Clip Menu",
+      "source_url": "https://tympanus.net/Development/EaseReverseClipMenu",
+      "registry_url": "https://tympanus.net/codrops/hub/",
+      "category": "menu",
+      "tags": [
+        "animation",
+        "clip-path",
+        "css",
+        "elegant",
+        "gradient",
+        "gsap",
+        "menu",
+        "svg"
+      ],
+      "description": "Animated menu using GSAP EaseReverse and SVG clip-path for revealing/hiding items.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/04/ClipMenu_featured-400x300.webp?x57826",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Footballs in Motion",
+      "source_url": "https://footballs.nestorrig.com/",
+      "registry_url": "https://tympanus.net/codrops/hub/",
+      "category": "animation",
+      "tags": [
+        "3d",
+        "animation",
+        "fluid",
+        "gsap",
+        "organic",
+        "particles",
+        "physics",
+        "three.js",
+        "webgl"
+      ],
+      "description": "GSAP + Three.js physics demo with bouncing footballs responding to gravity and impact.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/08/balls-400x300.png.webp?x57826",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Interactive 3D Cluster",
+      "source_url": "https://tympanus.net/Tutorials/3DCluster/",
+      "registry_url": "https://tympanus.net/codrops/hub/",
+      "category": "3d",
+      "tags": [
+        "3d",
+        "animation",
+        "glow",
+        "procedural",
+        "shader",
+        "three.js",
+        "tsl",
+        "webgl",
+        "webgpu"
+      ],
+      "description": "Tutorial-driven icosahedron cluster built with Three.js TSL and WebGPU with noise, interaction, and post-processing.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/08/videoframe_8751-400x300.png.webp?x57826",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Dreamfold",
+      "source_url": "https://cityfold.vercel.app/",
+      "registry_url": "https://tympanus.net/codrops/hub/",
+      "category": "3d",
+      "tags": [
+        "3d",
+        "animation",
+        "dreamy",
+        "glow",
+        "javascript",
+        "shader",
+        "three.js",
+        "webgl"
+      ],
+      "description": "Interactive Three.js folding city-scape map rendering with WebGL.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/09/3dcesium-400x300.png.webp?x57826",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Sketch 013: Custom Cursor with Filter Effect",
+      "source_url": "https://tympanus.net/Sketches/013-custom-cursor-filter/",
+      "registry_url": "https://tympanus.net/codrops/hub/",
+      "category": "cursor",
+      "tags": [
+        "css-filter",
+        "cursor",
+        "filter",
+        "gooey",
+        "hover-effect",
+        "javascript",
+        "minimal",
+        "plain-css",
+        "svg"
+      ],
+      "description": "Two-circle custom cursor with an SVG/CSS filter blend effect that trails behind pointer movement.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2022/04/Sketch-013-400x300.jpg?x57826",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Crafting a Dice Roller with Three.js and Cannon-es",
+      "source_url": "http://tympanus.net/Tutorials/DiceRoller/",
+      "registry_url": "https://tympanus.net/codrops/hub/",
+      "category": "3d",
+      "tags": [
+        "3d",
+        "cannon-es",
+        "gsap",
+        "isometric",
+        "javascript",
+        "physics",
+        "three.js",
+        "webgl"
+      ],
+      "description": "Three.js + cannon-es physics dice roller with GSAP roll-and-bounce animation.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2023/01/diceroller-1-400x300.jpg?x57826",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "WebGL Snake Animation",
+      "source_url": "https://tympanus.net/Tutorials/WebGLSnakeAnimation/",
+      "registry_url": "https://tympanus.net/codrops/hub/",
+      "category": "animation",
+      "tags": [
+        "3d",
+        "animation",
+        "glow",
+        "organic",
+        "procedural",
+        "shader",
+        "three.js",
+        "webgl"
+      ],
+      "description": "Procedural WebGL/Three.js snake animation using shader-based vertex displacement.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/02/snake-400x300.webp?x57826",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "PS1-Inspired Jitter Shader with React Three Fiber",
+      "source_url": "https://tympanus.net/Tutorials/ps1-jitter-shader",
+      "registry_url": "https://tympanus.net/codrops/hub/",
+      "category": "3d",
+      "tags": [
+        "3d",
+        "distortion",
+        "pixel",
+        "react-three-fiber",
+        "retro",
+        "shader",
+        "three.js",
+        "webgl"
+      ],
+      "description": "React-Three-Fiber retro PS1-style jitter shader effect built with custom GLSL.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2024/09/thumbnail-400x300.png?x57826",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Sketch 027: Infinite Loop Scrolling Animation",
+      "source_url": "https://tympanus.net/Sketches/027-infinite-loop-scrolling-animation-2/",
+      "registry_url": "https://tympanus.net/codrops/hub/",
+      "category": "scroll-effect",
+      "tags": [
+        "animation",
+        "css",
+        "grid",
+        "javascript",
+        "minimal",
+        "monochrome",
+        "scroll",
+        "scroll-effect"
+      ],
+      "description": "Grid of items with infinite scrolling animation driven by scaleY and opacity loops.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2023/01/sketch27-400x300.jpg?x57826",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "On-Scroll SVG Mask Transitions",
+      "source_url": "https://tympanus.net/Tutorials/SVGMaskScrollTransition/",
+      "registry_url": "https://tympanus.net/codrops/hub/",
+      "category": "scroll-effect",
+      "tags": [
+        "cinematic",
+        "css",
+        "gradient",
+        "gsap",
+        "mask",
+        "scroll",
+        "scroll-effect",
+        "svg"
+      ],
+      "description": "GSAP-driven on-scroll SVG mask transitions between sections.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/03/kv-400x300.webp?x57826",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "How to Animate SVG Shapes on Scroll",
+      "source_url": "http://tympanus.net/Tutorials/OnScrollPathAnimations/",
+      "registry_url": "https://tympanus.net/codrops/hub/",
+      "category": "scroll-effect",
+      "tags": [
+        "animation",
+        "gsap",
+        "javascript",
+        "morph",
+        "morphing",
+        "organic",
+        "scroll",
+        "scroll-effect",
+        "svg"
+      ],
+      "description": "Tutorial animating SVG paths on scroll with GSAP ScrollTrigger morphing.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2022/06/OnScrollShapeAnimation_feat-400x300.jpg?x57826",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Mouse-Following Square Lens Distortion",
+      "source_url": "https://tympanus.net/Tutorials/PointerSquareLensDistortion",
+      "registry_url": "https://tympanus.net/codrops/hub/",
+      "category": "cursor",
+      "tags": [
+        "cursor",
+        "distortion",
+        "filter",
+        "glitch",
+        "shader",
+        "three.js",
+        "webgl"
+      ],
+      "description": "Mouse-following square lens distortion with RGB shift built in Three.js + GLSL.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/08/pointer-square-lens-distortion-with-rgb-Shift-400x300.webp?x57826",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Immersive 3D Weather Visualization",
+      "source_url": "https://3d-weather-codrops.vercel.app/",
+      "registry_url": "https://tympanus.net/codrops/hub/",
+      "category": "3d",
+      "tags": [
+        "3d",
+        "animation",
+        "cinematic",
+        "glow",
+        "javascript",
+        "react-three-fiber",
+        "shader",
+        "three.js",
+        "webgl"
+      ],
+      "description": "React Three Fiber immersive 3D weather visualization tutorial.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2025/09/3DWeather_featured-400x300.jpg?x57826",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Grid Layout Transitions with GSAP Flip",
+      "source_url": "https://tympanus.net/Tutorials/GridLayoutTransitions/",
+      "registry_url": "https://tympanus.net/codrops/hub/",
+      "category": "grid",
+      "tags": [
+        "animation",
+        "flat",
+        "flip",
+        "grid",
+        "gsap",
+        "javascript",
+        "minimal",
+        "page-transition"
+      ],
+      "description": "GSAP Flip-powered grid layout transitions between gallery views.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/01/GridLayoutTransition1-400x300.webp?x57826",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Codrops Fan Museum in Three.js",
+      "source_url": "https://tympanus.net/Tutorials/CodropsFanMuseum",
+      "registry_url": "https://tympanus.net/codrops/hub/",
+      "category": "3d",
+      "tags": [
+        "3d",
+        "animation",
+        "blender",
+        "cinematic",
+        "gsap",
+        "isometric",
+        "shader",
+        "three.js",
+        "webgl"
+      ],
+      "description": "Three.js + Blender fan museum world with GSAP-driven camera tour.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2025/04/Featured-Image-1-400x300.jpg?x57826",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Scroll-Driven SVG Graph Animation",
+      "source_url": "https://tympanus.net/Tutorials/ScrollGraph/",
+      "registry_url": "https://tympanus.net/codrops/hub/",
+      "category": "scroll-effect",
+      "tags": [
+        "animation",
+        "chart",
+        "gradient",
+        "gsap",
+        "javascript",
+        "minimal",
+        "scroll",
+        "scroll-effect",
+        "svg"
+      ],
+      "description": "GSAP ScrollTrigger-driven animated SVG graph responding to scroll progress.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/05/GraphAnimation-400x300.webp?x57826",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Morphing Effect of Luma Dream Machine",
+      "source_url": "https://tympanus.net/Tutorials/MorphingEffectCanvas2D/",
+      "registry_url": "https://tympanus.net/codrops/hub/",
+      "category": "transition",
+      "tags": [
+        "animation",
+        "canvas",
+        "dreamy",
+        "fluid",
+        "javascript",
+        "morph",
+        "morphing",
+        "plain-css",
+        "transition"
+      ],
+      "description": "Canvas2D morphing effect replicating the Luma Dream Machine homepage transition.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2024/12/canvas2d_Morphing_featuredimage-400x300.png?x57826",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "On-Scroll 3D Carousel",
+      "source_url": "https://tympanus.net/Development/3DCarousel",
+      "registry_url": "https://tympanus.net/codrops/hub/",
+      "category": "carousel",
+      "tags": [
+        "3d",
+        "carousel",
+        "cinematic",
+        "gradient",
+        "gsap",
+        "page-transition",
+        "scroll",
+        "three.js"
+      ],
+      "description": "On-scroll 3D carousel with GSAP-driven depth rotation and page transitions.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2025/05/scroll3dcarousel_featured_final-400x300.jpg?x57826",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "3D Text Scroll Animations",
+      "source_url": "https://tympanus.net/Tutorials/3DTextScroll/",
+      "registry_url": "https://tympanus.net/codrops/hub/",
+      "category": "scroll-effect",
+      "tags": [
+        "3d",
+        "gsap",
+        "javascript",
+        "minimal",
+        "scroll",
+        "scroll-effect",
+        "three.js",
+        "typography"
+      ],
+      "description": "GSAP + Three.js 3D text scroll animations revealing type on page scroll.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2025/10/Text_feature-400x300.jpg?x57826",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "On-Scroll 3D Stack Motion Effect",
+      "source_url": "https://tympanus.net/Development/3DStackMotion/",
+      "registry_url": "https://tympanus.net/codrops/hub/",
+      "category": "scroll-effect",
+      "tags": [
+        "3d",
+        "cinematic",
+        "gradient",
+        "gsap",
+        "page-transition",
+        "scroll",
+        "scroll-effect",
+        "stack",
+        "three.js"
+      ],
+      "description": "GSAP-driven on-scroll 3D stack motion effect with staggered depth transitions.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2024/03/3dstackmotion-400x300.jpg?x57826",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Experimental On-Scroll Text Animations with SVG Clip-Path",
+      "source_url": "https://tympanus.net/Development/TextClipScroll",
+      "registry_url": "https://tympanus.net/codrops/hub/",
+      "category": "scroll-effect",
+      "tags": [
+        "clip-path",
+        "elegant",
+        "gsap",
+        "mask",
+        "minimal",
+        "scroll",
+        "scroll-effect",
+        "svg",
+        "typography"
+      ],
+      "description": "Experimental GSAP-driven on-scroll text animations using SVG clip-path masking.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2024/01/clippathtext-400x300.jpg?x57826",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Origami: 12 Free Animated 3D Objects",
+      "source_url": "https://tympanus.net/Development/Origami",
+      "registry_url": "https://tympanus.net/codrops/hub/",
+      "category": "3d",
+      "tags": [
+        "3d",
+        "animation",
+        "glow",
+        "javascript",
+        "organic",
+        "react-three-fiber",
+        "three.js",
+        "webgl"
+      ],
+      "description": "12 free animated 3D origami-style objects built with React Three Fiber.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2024/07/3dmotiongraphic-featured_2_mo-400x300.jpg?x57826",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Distortion and Grain Effects on Scroll",
+      "source_url": "https://tympanus.net/Tutorials/ShaderOnScroll",
+      "registry_url": "https://tympanus.net/codrops/hub/",
+      "category": "scroll-effect",
+      "tags": [
+        "distortion",
+        "glitch",
+        "grain",
+        "noise",
+        "scroll-effect",
+        "shader",
+        "three.js",
+        "webgl"
+      ],
+      "description": "Shader-based distortion and grain effects triggered by scroll position in Three.js.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2024/07/grainonscroll-400x300.png?x57826",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "3D Particle Explorations",
+      "source_url": "http://tympanus.net/Development/3d-particle-explorations/",
+      "registry_url": "https://tympanus.net/codrops/hub/",
+      "category": "particles",
+      "tags": [
+        "animation",
+        "fluid",
+        "glow",
+        "javascript",
+        "particles",
+        "three.js",
+        "webgl"
+      ],
+      "description": "Exploration set of 3D particle effects and patterns built with Three.js.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2017/12/3dparticleexplorations-300x225.jpg?x57826",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Custom SVG Cursors with Emitter Effect",
+      "source_url": "https://tympanus.net/Development/EmitterCursor/",
+      "registry_url": "https://tympanus.net/codrops/hub/",
+      "category": "cursor",
+      "tags": [
+        "css-filter",
+        "cursor",
+        "filter",
+        "glow",
+        "javascript",
+        "particles",
+        "svg"
+      ],
+      "description": "Custom SVG cursors that emit an interactive particle trail following pointer movement.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2022/08/EmitterCursor-400x300.jpg?x57826",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
     }
   ],
   "tag_taxonomy_version": "TAG-TAX-5-zero-orphan",
@@ -3827,7 +4375,7 @@
   ],
   "extracted_at": "2026-09-03",
   "notes": "v1.2.1: canonical tags (neumorphism, liquid-glass), every entry has ≥1 type tag from 3-axis taxonomy. Search bar now supports e.g. tailwind+button, gsap+menu, neomorphism+card, liquid-glass+modal.",
-  "last_extraction_batch": "/tmp/extract-batch-r2.json",
-  "last_extraction_at": "2026-09-04T02:26:27.563716",
-  "total_components": 274
+  "last_extraction_batch": "/tmp/extract-batch-3.json",
+  "last_extraction_at": "2026-09-04T09:10:33.020998",
+  "total_components": 301
 }
