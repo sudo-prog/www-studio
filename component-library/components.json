@@ -1,19 +1,19 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "created": "2026-09-02",
-  "source_count": 79,
+  "source_count": 113,
   "categories": {
-    "animation": 22,
-    "component": 12,
-    "effect": 8,
+    "component": 25,
+    "animation": 23,
+    "effect": 16,
+    "background": 10,
+    "shader": 8,
+    "nav": 8,
     "input": 7,
-    "shader": 6,
     "card": 6,
-    "nav": 6,
-    "background": 5,
-    "3d": 4,
+    "3d": 6,
     "button": 2,
-    "loader": 1
+    "loader": 2
   },
   "components": [
     {
@@ -29,16 +29,16 @@
       "description": "Neumorphism CSS shadow generator"
     },
     {
-      "name": "magnifying image view with zoom \ud83d\udd0d +touch support",
+      "name": "magnifying image view with zoom 🔍 +touch support",
       "source_url": "https://codepen.io/creme/pen/gOYrvxM",
       "category": "component",
       "tags": [
         "loop"
       ],
-      "description": "magnifying image view with zoom \ud83d\udd0d +touch support"
+      "description": "magnifying image view with zoom 🔍 +touch support"
     },
     {
-      "name": "Halftone Dots Filter \u2022 Paper",
+      "name": "Halftone Dots Filter • Paper",
       "source_url": "https://shaders.paper.design/halftone-dots",
       "category": "shader",
       "tags": [
@@ -47,14 +47,14 @@
         "ink",
         "click"
       ],
-      "description": "Halftone Dots Filter \u2022 Paper"
+      "description": "Halftone Dots Filter • Paper"
     },
     {
-      "name": "Border Beam \u2013 Animated border beam component for React",
+      "name": "Border Beam – Animated border beam component for React",
       "source_url": "https://beam.jakubantalik.com/pulse",
       "category": "card",
       "tags": [],
-      "description": "Border Beam \u2013 Animated border beam component for React"
+      "description": "Border Beam – Animated border beam component for React"
     },
     {
       "name": "Zihan",
@@ -63,7 +63,7 @@
       "tags": [
         "ink"
       ],
-      "description": "Zihan \u2014 Zihan Huang, Design Engineer"
+      "description": "Zihan — Zihan Huang, Design Engineer"
     },
     {
       "name": "Originkit",
@@ -73,7 +73,7 @@
         "halo",
         "ink"
       ],
-      "description": "Originkit \u2014 Free Animated component library for modern websites"
+      "description": "Originkit — Free Animated component library for modern websites"
     },
     {
       "name": "Print Machine",
@@ -103,7 +103,7 @@
       "source_url": "https://pmndrs.github.io/examples/the-three-graces/",
       "category": "component",
       "tags": [],
-      "description": "The Three Graces \u2014 pmndrs examples"
+      "description": "The Three Graces — pmndrs examples"
     },
     {
       "name": "boytchev",
@@ -141,13 +141,13 @@
       "description": "Button Switches with Checkboxes and CSS3 Fanciness"
     },
     {
-      "name": "Tailwind FAB / Speed Dial Component \u2013 daisyUI",
+      "name": "Tailwind FAB / Speed Dial Component – daisyUI",
       "source_url": "https://daisyui.com/components/fab/",
       "category": "button",
       "tags": [
         "click"
       ],
-      "description": "Tailwind FAB / Speed Dial Component \u2013 daisyUI"
+      "description": "Tailwind FAB / Speed Dial Component – daisyUI"
     },
     {
       "name": "Uiverse",
@@ -173,7 +173,7 @@
       "source_url": "https://namethatui.com/",
       "category": "input",
       "tags": [],
-      "description": "NameThatUI \u2014 What Is This UI Element Called?"
+      "description": "NameThatUI — What Is This UI Element Called?"
     },
     {
       "name": "KokonutUI - Free Open Source UI Components for React and Tailwind CSS",
@@ -197,7 +197,7 @@
         "physics",
         "drag"
       ],
-      "description": "Kinetics \u2014 Spring-physics motion for web interfaces"
+      "description": "Kinetics — Spring-physics motion for web interfaces"
     },
     {
       "name": "Jelly UI",
@@ -207,28 +207,28 @@
         "physics",
         "scroll"
       ],
-      "description": "Jelly UI \u2014 Soft Web Components"
+      "description": "Jelly UI — Soft Web Components"
     },
     {
       "name": "Jitter",
       "source_url": "https://jitter.video/",
       "category": "animation",
       "tags": [],
-      "description": "Jitter \u00b7 A fast and simple motion design tool on the web"
+      "description": "Jitter · A fast and simple motion design tool on the web"
     },
     {
       "name": "Shaders",
       "source_url": "https://shaders.com/",
       "category": "shader",
       "tags": [],
-      "description": "Shaders \u2014 The design platform for web shaders"
+      "description": "Shaders — The design platform for web shaders"
     },
     {
       "name": "Componentry",
       "source_url": "https://componentry.dev/",
       "category": "animation",
       "tags": [],
-      "description": "Componentry \u2014 Beautiful Animated UI Components for React"
+      "description": "Componentry — Beautiful Animated UI Components for React"
     },
     {
       "name": "Free React & Next.js UI Components",
@@ -395,7 +395,7 @@
       "tags": [
         "ink"
       ],
-      "description": "Thinking orbs \u2014 Animated thinking orb component"
+      "description": "Thinking orbs — Animated thinking orb component"
     },
     {
       "name": "Aether CSS",
@@ -409,7 +409,7 @@
         "drag",
         "click"
       ],
-      "description": "Aether CSS \u2014 Liquid Glass & Glassmorphism Generator"
+      "description": "Aether CSS — Liquid Glass & Glassmorphism Generator"
     },
     {
       "name": "morphicons",
@@ -420,7 +420,7 @@
         "physics",
         "click"
       ],
-      "description": "morphicons \u2014 SVG icon morphing library for React, Vue & Svelte"
+      "description": "morphicons — SVG icon morphing library for React, Vue & Svelte"
     },
     {
       "name": "Components",
@@ -468,7 +468,7 @@
         "physics",
         "drag"
       ],
-      "description": "FeralUI \u00b7 playful, physics-driven React elements"
+      "description": "FeralUI · playful, physics-driven React elements"
     },
     {
       "name": "Let's talk about gradients",
@@ -488,7 +488,7 @@
         "halo",
         "liquid"
       ],
-      "description": "Liquid Gooey \u2014 liquid UI for React"
+      "description": "Liquid Gooey — liquid UI for React"
     },
     {
       "name": "Beautiful UI",
@@ -498,14 +498,14 @@
         "ink",
         "shimmer"
       ],
-      "description": "Beautiful UI \u2014 Crafted primitives for AI-native interfaces"
+      "description": "Beautiful UI — Crafted primitives for AI-native interfaces"
     },
     {
       "name": "Animated React Components",
       "source_url": "https://beui.dev/components/motion",
       "category": "animation",
       "tags": [],
-      "description": "Animated React Components \u2014 Copy-Paste Motion UI \u00b7 beUI"
+      "description": "Animated React Components — Copy-Paste Motion UI · beUI"
     },
     {
       "name": "Amicro",
@@ -514,7 +514,7 @@
       "tags": [
         "click"
       ],
-      "description": "Amicro \u2014 Premium React Micro-transitions & Interaction Components"
+      "description": "Amicro — Premium React Micro-transitions & Interaction Components"
     },
     {
       "name": "The Thoughtful List",
@@ -531,7 +531,7 @@
         "ink",
         "drag"
       ],
-      "description": "The Cotton Rag Press \u2014 ink bleed bench"
+      "description": "The Cotton Rag Press — ink bleed bench"
     },
     {
       "name": "Ink Object",
@@ -570,7 +570,7 @@
         "click",
         "tilt"
       ],
-      "description": "Folder component \u2014 Animated React Component | Rare UI"
+      "description": "Folder component — Animated React Component | Rare UI"
     },
     {
       "name": "Proximity Sidebar",
@@ -581,7 +581,7 @@
         "hover",
         "click"
       ],
-      "description": "Proximity Sidebar \u2014 Animated React Component | Rare UI"
+      "description": "Proximity Sidebar — Animated React Component | Rare UI"
     },
     {
       "name": "OTP Input",
@@ -590,14 +590,14 @@
       "tags": [
         "drag"
       ],
-      "description": "OTP Input \u2014 Animated React Component | Rare UI"
+      "description": "OTP Input — Animated React Component | Rare UI"
     },
     {
       "name": "Lab",
       "source_url": "https://anainsomnia.com/forge-dynamics",
       "category": "loader",
       "tags": [],
-      "description": "Lab \u2014 Forge Dynamics"
+      "description": "Lab — Forge Dynamics"
     },
     {
       "name": "Lab - Bakai Tolondu uulu",
@@ -621,18 +621,18 @@
       "description": "Turn Creative Vision into Living Design Tools | Brik AI"
     },
     {
-      "name": "UXSnaps \u2013 Actionable UI/UX Breakdowns from Top Apps",
+      "name": "UXSnaps – Actionable UI/UX Breakdowns from Top Apps",
       "source_url": "https://uxsnaps.com/",
       "category": "component",
       "tags": [],
-      "description": "UXSnaps \u2013 Actionable UI/UX Breakdowns from Top Apps"
+      "description": "UXSnaps – Actionable UI/UX Breakdowns from Top Apps"
     },
     {
-      "name": "Navbar Gallery \u2013 Navigation Design Inspiration",
+      "name": "Navbar Gallery – Navigation Design Inspiration",
       "source_url": "https://navbar.gallery/",
       "category": "nav",
       "tags": [],
-      "description": "Navbar Gallery \u2013 Navigation Design Inspiration"
+      "description": "Navbar Gallery – Navigation Design Inspiration"
     },
     {
       "name": "Three.js Components, Templates & Interactive Shaders",
@@ -667,14 +667,14 @@
       "tags": [
         "drag"
       ],
-      "description": "Orbit Field \u2014 spatial image editor"
+      "description": "Orbit Field — spatial image editor"
     },
     {
       "name": "CSS Grid Lanes / Masonry Lab",
       "source_url": "https://stella-create.co.jp/tools/css-grid-lanes/",
       "category": "animation",
       "tags": [],
-      "description": "CSS Grid Lanes / Masonry Lab | CSS\u3060\u3051\u306eWaterfall\u30ec\u30a4\u30a2\u30a6\u30c8"
+      "description": "CSS Grid Lanes / Masonry Lab | CSSだけのWaterfallレイアウト"
     },
     {
       "name": "GSAP Demo Hub",
@@ -690,23 +690,441 @@
       "source_url": "https://metalforge.xyz/",
       "category": "shader",
       "tags": [],
-      "description": "MetalForge \u2014 Beautiful Metal shaders for SwiftUI"
+      "description": "MetalForge — Beautiful Metal shaders for SwiftUI"
     },
     {
       "name": "movin.design",
       "source_url": "https://movin.design/",
       "category": "animation",
       "tags": [],
-      "description": "movin.design \u2014 motion design inspiration"
+      "description": "movin.design — motion design inspiration"
     },
     {
-      "name": "Example: rotating loader \u2022 The gooey effect for React",
+      "name": "Example: rotating loader • The gooey effect for React",
       "source_url": "https://gooey-react.netlify.app/examples/rotating-loader/",
       "category": "effect",
       "tags": [
         "gooey"
       ],
-      "description": "Example: rotating loader \u2022 The gooey effect for React"
+      "description": "Example: rotating loader • The gooey effect for React"
+    },
+    {
+      "name": "Anime.js JavaScript animation engine",
+      "source_url": "https://animejs.com/",
+      "category": "animation",
+      "tags": [
+        "animejs",
+        "javascript",
+        "engine",
+        "library"
+      ],
+      "description": "Anime.js — lightweight JavaScript animation library. Works with CSS, SVG, DOM attributes, JS objects. Animations, timelines, staggering, easing, callbacks."
+    },
+    {
+      "name": "Framer Marketplace Components",
+      "source_url": "https://www.framer.com/community/marketplace/components/",
+      "category": "component",
+      "tags": [
+        "framer",
+        "marketplace",
+        "templates",
+        "ui"
+      ],
+      "description": "Framer community marketplace with production-ready website components and templates for designers/developers."
+    },
+    {
+      "name": "Cool Radial Toggle Menu with Gooey Effect",
+      "source_url": "https://www.cssscript.com/demo/cool-radial-toggle-menu-with-gooey-effect/",
+      "category": "nav",
+      "tags": [
+        "radial",
+        "menu",
+        "gooey",
+        "svg-filter",
+        "css"
+      ],
+      "description": "Radial toggle menu that reveals options in a circular pattern with a gooey SVG filter morph between states."
+    },
+    {
+      "name": "Pixel-Perfect design tool",
+      "source_url": "https://www.pixel-perfect.space/",
+      "category": "effect",
+      "tags": [
+        "pixel",
+        "retro",
+        "effect",
+        "filter"
+      ],
+      "description": "Pixel-perfect design exploration with pixelation and retro effects for design prototyping."
+    },
+    {
+      "name": "OriginKit component library",
+      "source_url": "https://www.originkit.dev/",
+      "category": "component",
+      "tags": [
+        "originkit",
+        "ui-kit",
+        "components",
+        "react"
+      ],
+      "description": "OriginKit — curated collection of polished UI components and design elements for modern web apps."
+    },
+    {
+      "name": "DesignMinis design gallery",
+      "source_url": "https://www.designminis.com/",
+      "category": "component",
+      "tags": [
+        "gallery",
+        "inspiration",
+        "design",
+        "showcase"
+      ],
+      "description": "DesignMinis — curated collection of design micro-interactions, components, and inspiration for product designers."
+    },
+    {
+      "name": "Metal — circular shader visualizer",
+      "source_url": "https://metal.jakubantalik.com/",
+      "category": "shader",
+      "tags": [
+        "metal",
+        "shader",
+        "circular",
+        "three.js"
+      ],
+      "description": "Circular metal shader visualizer by Jakub Antalik — WebGL effect with metallic reflections."
+    },
+    {
+      "name": "Morphicons animated icon set",
+      "source_url": "https://www.morphicons.com/",
+      "category": "effect",
+      "tags": [
+        "icons",
+        "animated",
+        "morph",
+        "svg"
+      ],
+      "description": "Morphicons — collection of animated icons that morph between states with smooth transitions."
+    },
+    {
+      "name": "Beautiful UI Five — Vercel component showcase",
+      "source_url": "https://beautiful-ui-five.vercel.app/",
+      "category": "component",
+      "tags": [
+        "ui",
+        "showcase",
+        "vercel",
+        "components"
+      ],
+      "description": "Beautiful UI Five — showcase of beautifully designed UI components hosted on Vercel."
+    },
+    {
+      "name": "Beautiful UI component library",
+      "source_url": "https://www.beautifului.dev/",
+      "category": "component",
+      "tags": [
+        "ui",
+        "library",
+        "components",
+        "gallery"
+      ],
+      "description": "BeautifulUI — community-curated collection of well-designed UI components from real products."
+    },
+    {
+      "name": "Drawably drawing tool",
+      "source_url": "https://drawably-site.pages.dev/",
+      "category": "effect",
+      "tags": [
+        "drawing",
+        "tool",
+        "canvas",
+        "creative"
+      ],
+      "description": "Drawably — web-based drawing tool with a curated feature set for digital sketching."
+    },
+    {
+      "name": "Mark's overprint CSS generator",
+      "source_url": "https://thinkmake.github.io/overprinter.markhurrell.com/",
+      "category": "effect",
+      "tags": [
+        "overprint",
+        "css",
+        "generator",
+        "typography"
+      ],
+      "description": "Mark Hurrell's CSS overprint generator — creates print-style overprint effects with mix-blend-mode for type layering."
+    },
+    {
+      "name": "Holosticker SVG/PNG holo effect",
+      "source_url": "https://www.holosticker.dev/",
+      "category": "effect",
+      "tags": [
+        "holo",
+        "holographic",
+        "sticker",
+        "svg",
+        "png"
+      ],
+      "description": "Holosticker — turn SVG/PNG artwork into a holographic sticker with rotation, light, and shine effects."
+    },
+    {
+      "name": "ReceiptPrinter component",
+      "source_url": "https://www.dqnamo.com/experiments/receipt-printer",
+      "category": "component",
+      "tags": [
+        "receipt",
+        "printer",
+        "motion",
+        "react",
+        "phosrphor"
+      ],
+      "description": "ReceiptPrinter.tsx — multi-stage receipt printer machine with smooth/stepped paper feed motion, React + motion/react + Phosphor icons."
+    },
+    {
+      "name": "CSS-Tricks web design/development reference",
+      "source_url": "https://css-tricks.com/",
+      "category": "background",
+      "tags": [
+        "css",
+        "tricks",
+        "reference",
+        "tutorial"
+      ],
+      "description": "CSS-Tricks — long-running front-end design/development reference with articles on layout, animation, accessibility, and modern CSS features."
+    },
+    {
+      "name": "Warp — agentic SDLC platform",
+      "source_url": "https://www.warp.dev/",
+      "category": "component",
+      "tags": [
+        "warp",
+        "agentic",
+        "sdlc",
+        "platform",
+        "factory"
+      ],
+      "description": "Warp — open platform for automating development. Factories-as-code (factory.yaml) with agents, models, permissions, and checkpoints. CLI/SDK/MCP/API."
+    },
+    {
+      "name": "21st.dev community component library",
+      "source_url": "https://21st.dev/community",
+      "category": "component",
+      "tags": [
+        "21st",
+        "community",
+        "components",
+        "react"
+      ],
+      "description": "21st.dev community — open registry of modern React UI components and design primitives built on Tailwind / shadcn."
+    },
+    {
+      "name": "21st.dev Agent 21",
+      "source_url": "https://21st.dev/agent-21",
+      "category": "component",
+      "tags": [
+        "21st",
+        "agent",
+        "ai",
+        "generator"
+      ],
+      "description": "21st.dev Agent 21 — AI design agent that scaffolds React components from natural-language prompts."
+    },
+    {
+      "name": "v0 by Vercel — AI UI generator",
+      "source_url": "https://v0.app/",
+      "category": "component",
+      "tags": [
+        "v0",
+        "vercel",
+        "ai",
+        "generator",
+        "react"
+      ],
+      "description": "v0 — Vercel's AI UI generator that produces production-grade React/Tailwind components from natural-language descriptions."
+    },
+    {
+      "name": "Builder.io visual CMS",
+      "source_url": "https://www.builder.io/",
+      "category": "component",
+      "tags": [
+        "builder.io",
+        "cms",
+        "visual",
+        "drag-and-drop"
+      ],
+      "description": "Builder.io — visual headless CMS with drag-and-drop editor, Builder Agent for design-to-code, and component SDK."
+    },
+    {
+      "name": "Shadertoy community shader gallery",
+      "source_url": "https://www.shadertoy.com/",
+      "category": "shader",
+      "tags": [
+        "shadertoy",
+        "shader",
+        "glsl",
+        "gallery"
+      ],
+      "description": "Shadertoy — community GLSL shader gallery with weekly featured shaders, view/like counts, and patreon support."
+    },
+    {
+      "name": "Iconshock Social Media Icons pack",
+      "source_url": "https://www.iconshock.com/social-media-icons",
+      "category": "effect",
+      "tags": [
+        "icons",
+        "social-media",
+        "pack",
+        "png",
+        "svg",
+        "lottie"
+      ],
+      "description": "Iconshock Social Media Icons — 300 social media icons across 13 styles (NeuGlyph, Material, iOS, Fluent, 3D, etc.) in PNG, SVG, Lottie, and AE."
+    },
+    {
+      "name": "CSS-Loaders collection",
+      "source_url": "https://css-loaders.com/",
+      "category": "loader",
+      "tags": [
+        "loader",
+        "spinner",
+        "css",
+        "animation"
+      ],
+      "description": "CSS-Loaders — curated collection of pure-CSS loading spinners and animated loaders for every use case."
+    },
+    {
+      "name": "neumorphism.io full generator",
+      "source_url": "https://neumorphism.io/#e0e0e0",
+      "category": "background",
+      "tags": [
+        "neumorphism",
+        "generator",
+        "css-shadow"
+      ],
+      "description": "Direct anchor into the neumorphism.io generator with the #e0e0e0 default color preset (light grey surface)."
+    },
+    {
+      "name": "DaisyUI components directory",
+      "source_url": "https://daisyui.com/components/",
+      "category": "component",
+      "tags": [
+        "daisyui",
+        "tailwind",
+        "components",
+        "themable"
+      ],
+      "description": "DaisyUI components — full component directory (alerts, buttons, cards, modals, navbar, stats, etc.) on top of Tailwind CSS, fully themable."
+    },
+    {
+      "name": "Aicanvas component library",
+      "source_url": "https://aicanvas.me/components",
+      "category": "component",
+      "tags": [
+        "aicanvas",
+        "ai",
+        "components",
+        "library"
+      ],
+      "description": "Aicanvas — AI-curated component library, browse all at /components (covers the aicanvas.me/ root and component index)."
+    },
+    {
+      "name": "Navbar Gallery — navigation design inspiration",
+      "source_url": "https://www.navbar.gallery/",
+      "category": "nav",
+      "tags": [
+        "navbar",
+        "navigation",
+        "gallery",
+        "inspiration"
+      ],
+      "description": "Navbar Gallery — curated daily collection of real-product navigation patterns (dropdowns, sidebars, mega menus, tabs, search bars) for designers."
+    },
+    {
+      "name": "UXSnaps — UI/UX product teardowns",
+      "source_url": "https://www.uxsnaps.com/",
+      "category": "background",
+      "tags": [
+        "ux",
+        "teardown",
+        "ui",
+        "inspiration",
+        "product"
+      ],
+      "description": "UXSnaps — actionable UI/UX breakdowns from real apps used by millions; designer/PM/founder-oriented with proven patterns and quick wins."
+    },
+    {
+      "name": "Bakai Lab — design engineering portfolio",
+      "source_url": "https://www.bakai.me/lab",
+      "category": "background",
+      "tags": [
+        "portfolio",
+        "design-engineering",
+        "lab",
+        "next.js"
+      ],
+      "description": "Bakai Lab — design-engineering lab with project case studies (FOHE, Spina, Oymo, Sidebar series) showcasing UI/UX craft."
+    },
+    {
+      "name": "Forge Dynamics — text-driven scene",
+      "source_url": "https://www.anainsomnia.com/forge-dynamics",
+      "category": "effect",
+      "tags": [
+        "text",
+        "scene",
+        "procedural",
+        "playback"
+      ],
+      "description": "Forge Dynamics by anainsomnia — text-driven procedural scene with playback controls (pause/restart/frame) and color customization."
+    },
+    {
+      "name": "Dithered QR Code Generator",
+      "source_url": "https://www.andrewt.net/dithered-qr-codes/index.html",
+      "category": "effect",
+      "tags": [
+        "qr-code",
+        "dither",
+        "error-diffusion",
+        "generator"
+      ],
+      "description": "Andrew Taylor's dithered QR code generator — embeds an image into a QR code's redundant data area via error diffusion with gamma/contrast/brightness controls."
+    },
+    {
+      "name": "Paperlab Playground",
+      "source_url": "https://paperlab.nawwara.studio/playground/",
+      "category": "3d",
+      "tags": [
+        "paperlab",
+        "scene",
+        "3d",
+        "walk",
+        "banner"
+      ],
+      "description": "Paperlab playground — write a room from text; walkable scene with banners (Nave/Procession/Cloister/Threshold/Ribbon/Archive) you step between with arrow keys."
+    },
+    {
+      "name": "Paperlab Editor",
+      "source_url": "https://paperlab.nawwara.studio/editor/",
+      "category": "3d",
+      "tags": [
+        "paperlab",
+        "editor",
+        "canvas",
+        "preset-library"
+      ],
+      "description": "Paperlab editor — desktop canvas tool with preset library on the left, inspector on the right, and a sheet in the middle sculpted by dragging a paper handle."
+    },
+    {
+      "name": "AI UX Playground",
+      "source_url": "https://aiuxplayground.com/playground",
+      "category": "background",
+      "tags": [
+        "ai",
+        "ux",
+        "playground",
+        "shaders",
+        "motion",
+        "tools"
+      ],
+      "description": "AI UX Playground — curated third-party AI UI experiments and tools (Shaders, WebGPU, Motion, Tools, Components, Framer, Portfolios) for designers/eng building chat, agents, copilots."
     }
   ]
 }

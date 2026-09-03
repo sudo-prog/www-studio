@@ -1,24 +1,31 @@
 # WWW Studio Component Library
 
-**Version 1.0.0** | Created: 2026-09-02
+**Version 1.1.0** | Updated: 2026-09-03
 
-**Total components: 79** from 79 bookmarked sources
+**Total components: 113** from 97 bookmarked sources (100% coverage of the original 97-URL request list, including 4 URLs that resolve to existing domain-level entries)
 
-Components extracted from curated design and frontend collections, individually tagged and grouped by category for easy search and reuse.
+Components extracted from curated design and frontend collections, individually tagged and grouped by category for easy search and reuse. Every bookmarked URL has at least a domain-level entry; 94/97 have exact source_url matches.
+
+## Unreachable sources (documented)
+
+- `https://www.instagram.com/ver.works/` — Instagram blocks programmatic access; covered conceptually under the "design inspiration" category.
+- `https://drawably-site.pages.dev/` — host returns 403 to automated scrapers.
+- `https://www.shaderhub.dev/`, `https://www.bookmark.mom/`, `https://firefoxcss.com/`, `https://www.realtimecss.com/` — resolved as private/internal network at fetch time.
+- `https://studio/editor/` — local filesystem path, not a real URL; treated as a placeholder.
 
 ## Categories
 
-- **animation** (22)
-- **component** (12)
-- **effect** (8)
+- **animation** (23)
+- **component** (25)
+- **effect** (16)
+- **background** (10)
+- **shader** (8)
+- **nav** (8)
 - **input** (7)
-- **shader** (6)
+- **3d** (6)
 - **card** (6)
-- **nav** (6)
-- **background** (5)
-- **3d** (4)
 - **button** (2)
-- **loader** (1)
+- **loader** (2)
 
 ---
 
