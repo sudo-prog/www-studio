@@ -1,5 +1,5 @@
 {
-  "version": "1.4.6",
+  "version": "1.7.9",
   "created": "2026-09-02",
   "source_count": 113,
   "categories": {
@@ -1546,6 +1546,1801 @@
       "description": "Collection of pure-CSS loading spinners and skeleton loaders.",
       "extraction_status": "verified",
       "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Typewriter",
+      "source_url": "https://motion.dev/examples/react-typewriter",
+      "registry_url": "https://motion.dev/examples",
+      "description": "React typewriter animation using Motion's Typewriter component with text reveal effects.",
+      "tags": [
+        "animation",
+        "framer-motion",
+        "minimal",
+        "react",
+        "transition"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "iOS App Folder",
+      "source_url": "https://motion.dev/examples/react-ios-app-folder",
+      "registry_url": "https://motion.dev/examples",
+      "description": "iOS-style folder expansion animation for React using Motion for layout and spring physics.",
+      "tags": [
+        "animation",
+        "framer-motion",
+        "gradient",
+        "react",
+        "soft",
+        "transition"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Pokopia Modal",
+      "source_url": "https://motion.dev/examples/react-pokopia-modal",
+      "registry_url": "https://motion.dev/examples",
+      "description": "Pokopia modal animation demonstrating React shared-layout transitions.",
+      "tags": [
+        "framer-motion",
+        "modal",
+        "react",
+        "soft",
+        "transition"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Reorder Grid",
+      "source_url": "https://motion.dev/examples/react-reorder-grid",
+      "registry_url": "https://motion.dev/examples",
+      "description": "Multidimensional reorder grid demonstrating drag-to-reorder with Motion for React.",
+      "tags": [
+        "drag",
+        "framer-motion",
+        "grid",
+        "minimal",
+        "react"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Command Palette",
+      "source_url": "https://motion.dev/examples/vue-command-palette",
+      "registry_url": "https://motion.dev/examples",
+      "description": "Command palette animation built with Vue and Motion with keyboard-driven transitions.",
+      "tags": [
+        "dropdown",
+        "framer-motion",
+        "glass",
+        "modal",
+        "vue"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Mega Menu",
+      "source_url": "https://motion.dev/examples/vue-mega-menu",
+      "registry_url": "https://motion.dev/examples",
+      "description": "Vue mega menu with staggered nav entrance and smooth open/close animations.",
+      "tags": [
+        "framer-motion",
+        "menu",
+        "minimal",
+        "navbar",
+        "vue"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Sheet Modal",
+      "source_url": "https://motion.dev/examples/vue-sheet-modal",
+      "registry_url": "https://motion.dev/examples",
+      "description": "Bottom-sheet modal slide-in with backdrop fade using Vue + Motion.",
+      "tags": [
+        "drawer",
+        "framer-motion",
+        "modal",
+        "soft",
+        "vue"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Scroll Zoom Hero",
+      "source_url": "https://motion.dev/examples/vue-scroll-zoom-hero",
+      "registry_url": "https://motion.dev/examples",
+      "description": "Scroll-linked zoom hero effect on Vue powered by Motion's scroll utilities.",
+      "tags": [
+        "framer-motion",
+        "gradient",
+        "hero",
+        "scroll-effect",
+        "vue"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Rolling Text Button",
+      "source_url": "https://motion.dev/examples/react-rolling-text-button",
+      "registry_url": "https://motion.dev/examples",
+      "description": "Button with rolling text animation on hover using Motion for React.",
+      "tags": [
+        "button",
+        "framer-motion",
+        "hover-effect",
+        "minimal",
+        "react"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Scroll Velocity 3D Planes",
+      "source_url": "https://motion.dev/examples/vue-scroll-velocity-linked-offset",
+      "registry_url": "https://motion.dev/examples",
+      "description": "3D planes that translate with scroll velocity using linked offsets in Vue + Motion.",
+      "tags": [
+        "framer-motion",
+        "holo",
+        "parallax",
+        "scroll-effect",
+        "three.js",
+        "vue"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Ink Flow Field",
+      "source_url": "https://www.originkit.dev/components/ink-flow-field",
+      "registry_url": "https://www.originkit.dev/",
+      "description": "Animated ink flow field rendered with canvas particle motion for hero sections.",
+      "tags": [
+        "aurora",
+        "background",
+        "fluid",
+        "js",
+        "particles",
+        "particles.js"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Rotunda Carousel",
+      "source_url": "https://www.originkit.dev/components/rotunda-carousel",
+      "registry_url": "https://www.originkit.dev/",
+      "description": "3D rotunda-style carousel with depth and circular motion paths.",
+      "tags": [
+        "animation",
+        "gallery",
+        "gradient",
+        "holo",
+        "react",
+        "three.js"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Pixel Arc",
+      "source_url": "https://www.originkit.dev/components/pixel-arc",
+      "registry_url": "https://www.originkit.dev/",
+      "description": "Pixel-art arc gallery effect with stylized blocky animation.",
+      "tags": [
+        "animation",
+        "css",
+        "gallery",
+        "halftone",
+        "js",
+        "retro"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Cursor Ring Field",
+      "source_url": "https://www.originkit.dev/components/cursor-ring-field",
+      "registry_url": "https://www.originkit.dev/",
+      "description": "Animated cursor ring particles following pointer position on the screen.",
+      "tags": [
+        "cursor",
+        "glow",
+        "js",
+        "neon",
+        "particles",
+        "particles.js"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Particle Saturn",
+      "source_url": "https://www.originkit.dev/components/particle-saturn",
+      "registry_url": "https://www.originkit.dev/",
+      "description": "Saturn-style particle ring animation rendered with WebGL/canvas.",
+      "tags": [
+        "animation",
+        "aurora",
+        "js",
+        "metallic",
+        "particles",
+        "webgl"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Globe Mesh",
+      "source_url": "https://www.originkit.dev/components/globe-mesh",
+      "registry_url": "https://www.originkit.dev/",
+      "description": "Animated 3D wireframe globe with rotating mesh points.",
+      "tags": [
+        "animation",
+        "background",
+        "metallic",
+        "minimal",
+        "react-three-fiber",
+        "three.js"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Sphere Gallery 3D",
+      "source_url": "https://www.originkit.dev/components/sphere-gallery-3d",
+      "registry_url": "https://www.originkit.dev/",
+      "description": "3D sphere gallery with rotating thumbnails arranged on a spherical surface.",
+      "tags": [
+        "gallery",
+        "holo",
+        "metallic",
+        "react-three-fiber",
+        "three.js"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Water Ball",
+      "source_url": "https://www.originkit.dev/components/water-ball",
+      "registry_url": "https://www.originkit.dev/",
+      "description": "Realistic water-ball rendering with refraction and animated surface.",
+      "tags": [
+        "animation",
+        "fluid",
+        "metallic",
+        "shader",
+        "webgl"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Radial Reveal Button",
+      "source_url": "https://www.originkit.dev/components/radial-reveal-button",
+      "registry_url": "https://www.originkit.dev/",
+      "description": "Button with radial reveal hover effect expanding from the click point.",
+      "tags": [
+        "button",
+        "css",
+        "gradient",
+        "hover-effect",
+        "minimal"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Place Details (Corner)",
+      "source_url": "https://www.uxsnaps.com/",
+      "registry_url": "https://www.uxsnaps.com/",
+      "description": "Product listing detail page breakdown showcasing user control and social proof patterns.",
+      "tags": [
+        "card",
+        "css",
+        "hero",
+        "html",
+        "minimal"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Events Dashboard (Meetup)",
+      "source_url": "https://www.uxsnaps.com/",
+      "registry_url": "https://www.uxsnaps.com/",
+      "description": "Dashboard breakdown from Meetup demonstrating contextual design and CTAs.",
+      "tags": [
+        "css",
+        "dashboard",
+        "html",
+        "minimal"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Content Idea Board (Buffer)",
+      "source_url": "https://www.uxsnaps.com/",
+      "registry_url": "https://www.uxsnaps.com/",
+      "description": "Feed/timeline breakdown from Buffer showing onboarding and information architecture.",
+      "tags": [
+        "css",
+        "dashboard",
+        "grid",
+        "html",
+        "minimal"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "AI Workspace (Cofounder)",
+      "source_url": "https://www.uxsnaps.com/",
+      "registry_url": "https://www.uxsnaps.com/",
+      "description": "AI workspace breakdown highlighting affordance, visual hierarchy, and UX writing.",
+      "tags": [
+        "css",
+        "dashboard",
+        "glass",
+        "html"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "AI Outfit Planner (Alta)",
+      "source_url": "https://www.uxsnaps.com/",
+      "registry_url": "https://www.uxsnaps.com/",
+      "description": "Dashboard breakdown with personalization, real-world match, and storytelling patterns.",
+      "tags": [
+        "card",
+        "css",
+        "dashboard",
+        "gradient",
+        "html",
+        "soft"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Support Inbox (Plain)",
+      "source_url": "https://www.uxsnaps.com/",
+      "registry_url": "https://www.uxsnaps.com/",
+      "description": "Feed/timeline breakdown of Plain's support inbox focusing on UX writing and affordance.",
+      "tags": [
+        "css",
+        "dashboard",
+        "feed",
+        "html",
+        "minimal"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Daily Wellness Dashboard",
+      "source_url": "https://www.uxsnaps.com/",
+      "registry_url": "https://www.uxsnaps.com/",
+      "description": "Wellness dashboard breakdown demonstrating metrics, UX writing, and visual hierarchy.",
+      "tags": [
+        "chart",
+        "css",
+        "dashboard",
+        "gradient",
+        "html",
+        "soft"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Onboarding Dashboard (HoneyBook)",
+      "source_url": "https://www.uxsnaps.com/",
+      "registry_url": "https://www.uxsnaps.com/",
+      "description": "Advanced onboarding dashboard breakdown emphasizing feedback, clarity, and UX writing.",
+      "tags": [
+        "css",
+        "dashboard",
+        "gradient",
+        "hero",
+        "html",
+        "soft"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Crypto Wallet Portfolio (Solflare)",
+      "source_url": "https://www.uxsnaps.com/",
+      "registry_url": "https://www.uxsnaps.com/",
+      "description": "Crypto wallet portfolio breakdown with delight, user control, and real-world match patterns.",
+      "tags": [
+        "card",
+        "css",
+        "dark",
+        "dashboard",
+        "glow",
+        "html"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Homepage Summary Dashboard (Headway)",
+      "source_url": "https://www.uxsnaps.com/",
+      "registry_url": "https://www.uxsnaps.com/",
+      "description": "Advanced dashboard breakdown using gamification, CTAs, and personalization.",
+      "tags": [
+        "css",
+        "dashboard",
+        "gradient",
+        "hero",
+        "html",
+        "soft"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Weak Firefox Button",
+      "source_url": "https://uiverse.io/cssbuttons-io/weak-firefox-5",
+      "registry_url": "https://uiverse.io/buttons",
+      "description": "Open-source CSS/Tailwind button from Uiverse called 'Weak Firefox Button' with hover or click animations.",
+      "tags": [
+        "button",
+        "css",
+        "gradient",
+        "hover-effect",
+        "soft"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Red Crab Button",
+      "source_url": "https://uiverse.io/dexter-st/red-crab-98",
+      "registry_url": "https://uiverse.io/buttons",
+      "description": "Open-source CSS/Tailwind button from Uiverse called 'Red Crab Button' with hover or click animations.",
+      "tags": [
+        "brutalist",
+        "button",
+        "click-effect",
+        "css"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Warm Zebra Button",
+      "source_url": "https://uiverse.io/Mike11jr/warm-zebra-80",
+      "registry_url": "https://uiverse.io/buttons",
+      "description": "Open-source CSS/Tailwind button from Uiverse called 'Warm Zebra Button' with hover or click animations.",
+      "tags": [
+        "button",
+        "css",
+        "glass",
+        "hover-effect",
+        "minimal"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Stale Fireant Button",
+      "source_url": "https://uiverse.io/elijahgummer/stale-fireant-57",
+      "registry_url": "https://uiverse.io/buttons",
+      "description": "Open-source CSS/Tailwind button from Uiverse called 'Stale Fireant Button' with hover or click animations.",
+      "tags": [
+        "button",
+        "click-effect",
+        "css",
+        "glow",
+        "neon"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Good Dolphin Button",
+      "source_url": "https://uiverse.io/alshahwan/good-dolphin-78",
+      "registry_url": "https://uiverse.io/buttons",
+      "description": "Open-source CSS/Tailwind button from Uiverse called 'Good Dolphin Button' with hover or click animations.",
+      "tags": [
+        "button",
+        "css",
+        "gradient",
+        "hover-effect"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Lovely Fox Button",
+      "source_url": "https://uiverse.io/yaroslavas2001/lovely-fox-50",
+      "registry_url": "https://uiverse.io/buttons",
+      "description": "Open-source CSS/Tailwind button from Uiverse called 'Lovely Fox Button' with hover or click animations.",
+      "tags": [
+        "button",
+        "click-effect",
+        "css",
+        "hard",
+        "minimal"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Curly Wombat Button",
+      "source_url": "https://uiverse.io/adamgiebl/curly-wombat-58",
+      "registry_url": "https://uiverse.io/buttons",
+      "description": "Open-source CSS/Tailwind button from Uiverse called 'Curly Wombat Button' with hover or click animations.",
+      "tags": [
+        "button",
+        "css",
+        "hover-effect",
+        "morph"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Blue Dodo Button",
+      "source_url": "https://uiverse.io/krlozCJ/blue-dodo-17",
+      "registry_url": "https://uiverse.io/buttons",
+      "description": "Open-source CSS/Tailwind button from Uiverse called 'Blue Dodo Button' with hover or click animations.",
+      "tags": [
+        "button",
+        "click-effect",
+        "css",
+        "metallic"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Lazy Cow Button",
+      "source_url": "https://uiverse.io/Smit-Prajapati/lazy-cow-47",
+      "registry_url": "https://uiverse.io/buttons",
+      "description": "Open-source CSS/Tailwind button from Uiverse called 'Lazy Cow Button' with hover or click animations.",
+      "tags": [
+        "button",
+        "css",
+        "gradient",
+        "hover-effect",
+        "soft"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Spotty Goose Form",
+      "source_url": "https://uiverse.io/mi-series/spotty-goose-56",
+      "registry_url": "https://uiverse.io/forms",
+      "description": "Open-source form component from Uiverse named 'Spotty Goose Form' built with CSS or Tailwind.",
+      "tags": [
+        "css",
+        "form",
+        "input",
+        "minimal",
+        "soft"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Unlucky Rat Form",
+      "source_url": "https://uiverse.io/Galahhad/unlucky-rat-64",
+      "registry_url": "https://uiverse.io/forms",
+      "description": "Open-source form component from Uiverse named 'Unlucky Rat Form' built with CSS or Tailwind.",
+      "tags": [
+        "css",
+        "form",
+        "gradient",
+        "input"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Sour Dog Form",
+      "source_url": "https://uiverse.io/ayyjayy2/sour-dog-94",
+      "registry_url": "https://uiverse.io/forms",
+      "description": "Open-source form component from Uiverse named 'Sour Dog Form' built with CSS or Tailwind.",
+      "tags": [
+        "css",
+        "form",
+        "glass",
+        "input"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Selfish Dragon Form",
+      "source_url": "https://uiverse.io/Spacious74/selfish-dragon-64",
+      "registry_url": "https://uiverse.io/forms",
+      "description": "Open-source form component from Uiverse named 'Selfish Dragon Form' built with CSS or Tailwind.",
+      "tags": [
+        "css",
+        "form",
+        "glow",
+        "input",
+        "neon"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Brave Moose Form",
+      "source_url": "https://uiverse.io/Praashoo7/brave-moose-56",
+      "registry_url": "https://uiverse.io/forms",
+      "description": "Open-source form component from Uiverse named 'Brave Moose Form' built with CSS or Tailwind.",
+      "tags": [
+        "brutalist",
+        "css",
+        "form",
+        "input"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Fresh Newt Form",
+      "source_url": "https://uiverse.io/guilhermeyohan/fresh-newt-22",
+      "registry_url": "https://uiverse.io/forms",
+      "description": "Open-source form component from Uiverse named 'Fresh Newt Form' built with CSS or Tailwind.",
+      "tags": [
+        "css",
+        "form",
+        "input",
+        "minimal"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Chatty Ladybug Form",
+      "source_url": "https://uiverse.io/Javierrocadev/chatty-ladybug-95",
+      "registry_url": "https://uiverse.io/forms",
+      "description": "Open-source form component from Uiverse named 'Chatty Ladybug Form' built with CSS or Tailwind.",
+      "tags": [
+        "css",
+        "form",
+        "input",
+        "morph",
+        "soft"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Cold Lionfish Form",
+      "source_url": "https://uiverse.io/satyamchaudharydev/cold-lionfish-49",
+      "registry_url": "https://uiverse.io/forms",
+      "description": "Open-source form component from Uiverse named 'Cold Lionfish Form' built with CSS or Tailwind.",
+      "tags": [
+        "css",
+        "dark",
+        "form",
+        "input",
+        "neon"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Angry Shrimp Form",
+      "source_url": "https://uiverse.io/zanina-yassine/angry-shrimp-34",
+      "registry_url": "https://uiverse.io/forms",
+      "description": "Open-source form component from Uiverse named 'Angry Shrimp Form' built with CSS or Tailwind.",
+      "tags": [
+        "css",
+        "form",
+        "gradient",
+        "input",
+        "metallic"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Bitter Eagle Card",
+      "source_url": "https://uiverse.io/vinodjangid07/bitter-eagle-34",
+      "registry_url": "https://uiverse.io/cards",
+      "description": "Open-source card component from Uiverse called 'Bitter Eagle Card' built with CSS or Tailwind.",
+      "tags": [
+        "card",
+        "css",
+        "glass",
+        "hover-effect",
+        "minimal"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Empty Wolverine Card",
+      "source_url": "https://uiverse.io/Cybercom682/empty-wolverine-58",
+      "registry_url": "https://uiverse.io/cards",
+      "description": "Open-source card component from Uiverse called 'Empty Wolverine Card' built with CSS or Tailwind.",
+      "tags": [
+        "card",
+        "css",
+        "gradient",
+        "hover-effect",
+        "soft"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Ancient Starfish Card",
+      "source_url": "https://uiverse.io/gharsh11032000/ancient-starfish-68",
+      "registry_url": "https://uiverse.io/cards",
+      "description": "Open-source card component from Uiverse called 'Ancient Starfish Card' built with CSS or Tailwind.",
+      "tags": [
+        "brutalist",
+        "card",
+        "css",
+        "hover-effect"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Mean Dolphin Card",
+      "source_url": "https://uiverse.io/KSAplay/mean-dolphin-87",
+      "registry_url": "https://uiverse.io/cards",
+      "description": "Open-source card component from Uiverse called 'Mean Dolphin Card' built with CSS or Tailwind.",
+      "tags": [
+        "card",
+        "css",
+        "glow",
+        "hover-effect",
+        "neon"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Mean Vampirebat Card",
+      "source_url": "https://uiverse.io/Yaya12085/mean-vampirebat-50",
+      "registry_url": "https://uiverse.io/cards",
+      "description": "Open-source card component from Uiverse called 'Mean Vampirebat Card' built with CSS or Tailwind.",
+      "tags": [
+        "card",
+        "css",
+        "hover-effect",
+        "minimal"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Warm Hound Card",
+      "source_url": "https://uiverse.io/Spacious74/warm-hound-89",
+      "registry_url": "https://uiverse.io/cards",
+      "description": "Open-source card component from Uiverse called 'Warm Hound Card' built with CSS or Tailwind.",
+      "tags": [
+        "card",
+        "css",
+        "dark",
+        "gradient",
+        "hover-effect"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Dangerous Warthog Card",
+      "source_url": "https://uiverse.io/SteveBloX/dangerous-warthog-85",
+      "registry_url": "https://uiverse.io/cards",
+      "description": "Open-source card component from Uiverse called 'Dangerous Warthog Card' built with CSS or Tailwind.",
+      "tags": [
+        "card",
+        "css",
+        "holo",
+        "hover-effect",
+        "metallic"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Spotty Squid Card",
+      "source_url": "https://uiverse.io/Kemboi-Dun/spotty-squid-30",
+      "registry_url": "https://uiverse.io/cards",
+      "description": "Open-source card component from Uiverse called 'Spotty Squid Card' built with CSS or Tailwind.",
+      "tags": [
+        "card",
+        "css",
+        "hover-effect",
+        "morph"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Witty Squid Card",
+      "source_url": "https://uiverse.io/chase2k25/witty-squid-83",
+      "registry_url": "https://uiverse.io/cards",
+      "description": "Open-source card component from Uiverse called 'Witty Squid Card' built with CSS or Tailwind.",
+      "tags": [
+        "card",
+        "css",
+        "hover-effect",
+        "retro"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Spicy Starfish Checkbox",
+      "source_url": "https://uiverse.io/PriyanshuGupta28/spicy-starfish-71",
+      "registry_url": "https://uiverse.io/checkboxes",
+      "description": "Open-source checkbox component from Uiverse named 'Spicy Starfish Checkbox' with custom animated state.",
+      "tags": [
+        "click-effect",
+        "css",
+        "glow",
+        "neon",
+        "toggle"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Bright Rat Checkbox",
+      "source_url": "https://uiverse.io/shreyasm-dev/bright-rat-5",
+      "registry_url": "https://uiverse.io/checkboxes",
+      "description": "Open-source checkbox component from Uiverse named 'Bright Rat Checkbox' with custom animated state.",
+      "tags": [
+        "click-effect",
+        "css",
+        "gradient",
+        "soft",
+        "toggle"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Dry Robin Checkbox",
+      "source_url": "https://uiverse.io/catraco/dry-robin-61",
+      "registry_url": "https://uiverse.io/checkboxes",
+      "description": "Open-source checkbox component from Uiverse named 'Dry Robin Checkbox' with custom animated state.",
+      "tags": [
+        "click-effect",
+        "css",
+        "minimal",
+        "toggle"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Big Deer Checkbox",
+      "source_url": "https://uiverse.io/Shoh2008/big-deer-80",
+      "registry_url": "https://uiverse.io/checkboxes",
+      "description": "Open-source checkbox component from Uiverse named 'Big Deer Checkbox' with custom animated state.",
+      "tags": [
+        "brutalist",
+        "click-effect",
+        "css",
+        "toggle"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Mighty Warthog Checkbox",
+      "source_url": "https://uiverse.io/Galahhad/mighty-warthog-42",
+      "registry_url": "https://uiverse.io/checkboxes",
+      "description": "Open-source checkbox component from Uiverse named 'Mighty Warthog Checkbox' with custom animated state.",
+      "tags": [
+        "click-effect",
+        "css",
+        "glass",
+        "toggle"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Ugly Dog Checkbox",
+      "source_url": "https://uiverse.io/AbanoubMagdy1/ugly-dog-26",
+      "registry_url": "https://uiverse.io/checkboxes",
+      "description": "Open-source checkbox component from Uiverse named 'Ugly Dog Checkbox' with custom animated state.",
+      "tags": [
+        "click-effect",
+        "css",
+        "metallic",
+        "toggle"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Grumpy Panda Checkbox",
+      "source_url": "https://uiverse.io/Dev-MdTuhin/grumpy-panda-46",
+      "registry_url": "https://uiverse.io/checkboxes",
+      "description": "Open-source checkbox component from Uiverse named 'Grumpy Panda Checkbox' with custom animated state.",
+      "tags": [
+        "click-effect",
+        "css",
+        "morph",
+        "toggle"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Strange Frog Checkbox",
+      "source_url": "https://uiverse.io/mobinkakei/strange-frog-14",
+      "registry_url": "https://uiverse.io/checkboxes",
+      "description": "Open-source checkbox component from Uiverse named 'Strange Frog Checkbox' with custom animated state.",
+      "tags": [
+        "click-effect",
+        "css",
+        "gradient",
+        "toggle"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Sweet Ape Checkbox",
+      "source_url": "https://uiverse.io/Galahhad/sweet-ape-100",
+      "registry_url": "https://uiverse.io/checkboxes",
+      "description": "Open-source checkbox component from Uiverse named 'Sweet Ape Checkbox' with custom animated state.",
+      "tags": [
+        "click-effect",
+        "css",
+        "soft",
+        "toggle"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Chatty Zebra Loader",
+      "source_url": "https://uiverse.io/StealthWorm/chatty-zebra-11",
+      "registry_url": "https://uiverse.io/loaders",
+      "description": "CSS/Tailwind loader animation from Uiverse named 'Chatty Zebra Loader' for loading states.",
+      "tags": [
+        "animation",
+        "css",
+        "gradient",
+        "loader"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Orange Monkey Loader",
+      "source_url": "https://uiverse.io/andrew-demchenk0/orange-monkey-2",
+      "registry_url": "https://uiverse.io/loaders",
+      "description": "CSS/Tailwind loader animation from Uiverse named 'Orange Monkey Loader' for loading states.",
+      "tags": [
+        "animation",
+        "css",
+        "loader",
+        "minimal"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Weak Bobcat Loader",
+      "source_url": "https://uiverse.io/zanina-yassine/weak-bobcat-68",
+      "registry_url": "https://uiverse.io/loaders",
+      "description": "CSS/Tailwind loader animation from Uiverse named 'Weak Bobcat Loader' for loading states.",
+      "tags": [
+        "animation",
+        "css",
+        "glow",
+        "loader",
+        "neon"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Young Goat Loader",
+      "source_url": "https://uiverse.io/Nawsome/young-goat-78",
+      "registry_url": "https://uiverse.io/loaders",
+      "description": "CSS/Tailwind loader animation from Uiverse named 'Young Goat Loader' for loading states.",
+      "tags": [
+        "animation",
+        "css",
+        "loader",
+        "morph"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Lazy Quail Loader",
+      "source_url": "https://uiverse.io/AatreyuShau/lazy-quail-10",
+      "registry_url": "https://uiverse.io/loaders",
+      "description": "CSS/Tailwind loader animation from Uiverse named 'Lazy Quail Loader' for loading states.",
+      "tags": [
+        "animation",
+        "css",
+        "loader",
+        "metaball"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "New Walrus Loader",
+      "source_url": "https://uiverse.io/mrhyddenn/new-walrus-45",
+      "registry_url": "https://uiverse.io/loaders",
+      "description": "CSS/Tailwind loader animation from Uiverse named 'New Walrus Loader' for loading states.",
+      "tags": [
+        "animation",
+        "css",
+        "glass",
+        "loader"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Light Husky Loader",
+      "source_url": "https://uiverse.io/Nawsome/light-husky-91",
+      "registry_url": "https://uiverse.io/loaders",
+      "description": "CSS/Tailwind loader animation from Uiverse named 'Light Husky Loader' for loading states.",
+      "tags": [
+        "animation",
+        "css",
+        "fluid",
+        "loader"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Ugly Bullfrog Loader",
+      "source_url": "https://uiverse.io/jeremyssocial/ugly-bullfrog-62",
+      "registry_url": "https://uiverse.io/loaders",
+      "description": "CSS/Tailwind loader animation from Uiverse named 'Ugly Bullfrog Loader' for loading states.",
+      "tags": [
+        "animation",
+        "css",
+        "loader",
+        "soft"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Sweet Frog Loader",
+      "source_url": "https://uiverse.io/BlackisPlay/sweet-frog-67",
+      "registry_url": "https://uiverse.io/loaders",
+      "description": "CSS/Tailwind loader animation from Uiverse named 'Sweet Frog Loader' for loading states.",
+      "tags": [
+        "animation",
+        "css",
+        "duotone",
+        "loader"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Pink Deer Loader",
+      "source_url": "https://uiverse.io/mobinkakei/pink-deer-76",
+      "registry_url": "https://uiverse.io/loaders",
+      "description": "CSS/Tailwind loader animation from Uiverse named 'Pink Deer Loader' for loading states.",
+      "tags": [
+        "animation",
+        "brutalist",
+        "css",
+        "loader"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Young Horse Radio",
+      "source_url": "https://uiverse.io/elijahgummer/young-horse-7",
+      "registry_url": "https://uiverse.io/radio-buttons",
+      "description": "Custom radio button component from Uiverse named 'Young Horse Radio' with animated state.",
+      "tags": [
+        "click-effect",
+        "css",
+        "minimal",
+        "toggle"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Quiet Firefox Radio",
+      "source_url": "https://uiverse.io/xbeat_5120/quiet-firefox-74",
+      "registry_url": "https://uiverse.io/radio-buttons",
+      "description": "Custom radio button component from Uiverse named 'Quiet Firefox Radio' with animated state.",
+      "tags": [
+        "click-effect",
+        "css",
+        "glass",
+        "toggle"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Clever Elephant Radio",
+      "source_url": "https://uiverse.io/andrew-demchenk0/clever-elephant-35",
+      "registry_url": "https://uiverse.io/radio-buttons",
+      "description": "Custom radio button component from Uiverse named 'Clever Elephant Radio' with animated state.",
+      "tags": [
+        "click-effect",
+        "css",
+        "neon",
+        "toggle"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Little Wombat Radio",
+      "source_url": "https://uiverse.io/byllzz/little-wombat-0",
+      "registry_url": "https://uiverse.io/radio-buttons",
+      "description": "Custom radio button component from Uiverse named 'Little Wombat Radio' with animated state.",
+      "tags": [
+        "click-effect",
+        "css",
+        "gradient",
+        "toggle"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Bad Starfish Radio",
+      "source_url": "https://uiverse.io/Shoh2008/bad-starfish-74",
+      "registry_url": "https://uiverse.io/radio-buttons",
+      "description": "Custom radio button component from Uiverse named 'Bad Starfish Radio' with animated state.",
+      "tags": [
+        "click-effect",
+        "css",
+        "soft",
+        "toggle"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Fast Turtle Radio",
+      "source_url": "https://uiverse.io/nazar-gavrylyk/fast-turtle-85",
+      "registry_url": "https://uiverse.io/radio-buttons",
+      "description": "Custom radio button component from Uiverse named 'Fast Turtle Radio' with animated state.",
+      "tags": [
+        "click-effect",
+        "css",
+        "metallic",
+        "toggle"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Slimy Warthog Radio",
+      "source_url": "https://uiverse.io/Pradeepsaranbishnoi/slimy-warthog-37",
+      "registry_url": "https://uiverse.io/radio-buttons",
+      "description": "Custom radio button component from Uiverse named 'Slimy Warthog Radio' with animated state.",
+      "tags": [
+        "brutalist",
+        "click-effect",
+        "css",
+        "toggle"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Swift Chipmunk Radio",
+      "source_url": "https://uiverse.io/PriyanshuGupta28/swift-chipmunk-76",
+      "registry_url": "https://uiverse.io/radio-buttons",
+      "description": "Custom radio button component from Uiverse named 'Swift Chipmunk Radio' with animated state.",
+      "tags": [
+        "click-effect",
+        "css",
+        "morph",
+        "toggle"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Quick Panther Radio",
+      "source_url": "https://uiverse.io/Smit-Prajapati/quick-panther-98",
+      "registry_url": "https://uiverse.io/radio-buttons",
+      "description": "Custom radio button component from Uiverse named 'Quick Panther Radio' with animated state.",
+      "tags": [
+        "click-effect",
+        "css",
+        "glow",
+        "toggle"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Good Donkey Input",
+      "source_url": "https://uiverse.io/vinodjangid07/good-donkey-28",
+      "registry_url": "https://uiverse.io/inputs",
+      "description": "CSS/Tailwind input field from Uiverse named 'Good Donkey Input' with animated focus states.",
+      "tags": [
+        "css",
+        "hover-effect",
+        "input",
+        "minimal"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Curly Chipmunk Input",
+      "source_url": "https://uiverse.io/FColombati/curly-chipmunk-73",
+      "registry_url": "https://uiverse.io/inputs",
+      "description": "CSS/Tailwind input field from Uiverse named 'Curly Chipmunk Input' with animated focus states.",
+      "tags": [
+        "css",
+        "gradient",
+        "hover-effect",
+        "input"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Sour Quail Input",
+      "source_url": "https://uiverse.io/EcheverriaJesus/sour-quail-63",
+      "registry_url": "https://uiverse.io/inputs",
+      "description": "CSS/Tailwind input field from Uiverse named 'Sour Quail Input' with animated focus states.",
+      "tags": [
+        "css",
+        "glass",
+        "hover-effect",
+        "input"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Hot Cat Input",
+      "source_url": "https://uiverse.io/adamgiebl/hot-cat-14",
+      "registry_url": "https://uiverse.io/inputs",
+      "description": "CSS/Tailwind input field from Uiverse named 'Hot Cat Input' with animated focus states.",
+      "tags": [
+        "brutalist",
+        "css",
+        "hover-effect",
+        "input"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Sharp Rattlesnake Input",
+      "source_url": "https://uiverse.io/ozgeozkaraa01/sharp-rattlesnake-74",
+      "registry_url": "https://uiverse.io/inputs",
+      "description": "CSS/Tailwind input field from Uiverse named 'Sharp Rattlesnake Input' with animated focus states.",
+      "tags": [
+        "css",
+        "glow",
+        "hover-effect",
+        "input",
+        "neon"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Slippery Snail Input",
+      "source_url": "https://uiverse.io/alexruix/slippery-snail-18",
+      "registry_url": "https://uiverse.io/inputs",
+      "description": "CSS/Tailwind input field from Uiverse named 'Slippery Snail Input' with animated focus states.",
+      "tags": [
+        "css",
+        "hover-effect",
+        "input",
+        "soft"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Serious Lionfish Input",
+      "source_url": "https://uiverse.io/Jaareet/serious-lionfish-75",
+      "registry_url": "https://uiverse.io/inputs",
+      "description": "CSS/Tailwind input field from Uiverse named 'Serious Lionfish Input' with animated focus states.",
+      "tags": [
+        "css",
+        "hover-effect",
+        "input",
+        "metallic"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Tasty Dingo Input",
+      "source_url": "https://uiverse.io/satyamchaudharydev/tasty-dingo-5",
+      "registry_url": "https://uiverse.io/inputs",
+      "description": "CSS/Tailwind input field from Uiverse named 'Tasty Dingo Input' with animated focus states.",
+      "tags": [
+        "css",
+        "hover-effect",
+        "input",
+        "morph"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Friendly Rabbit Input",
+      "source_url": "https://uiverse.io/pharmacist-sabot/friendly-rabbit-86",
+      "registry_url": "https://uiverse.io/inputs",
+      "description": "CSS/Tailwind input field from Uiverse named 'Friendly Rabbit Input' with animated focus states.",
+      "tags": [
+        "css",
+        "halftone",
+        "hover-effect",
+        "input"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "MorphIcon Core",
+      "source_url": "https://github.com/guillermolg00/morphicons",
+      "registry_url": "https://www.morphicons.com/",
+      "description": "SVG icon morphing component library for React, Vue, Svelte, React Native, and Astro. Morphs any stroke icon (Lucide, Tabler, Heroicons, Iconoir, Akar, Untitled UI, Hugeicons, shadcn) into any other using closed-form 2D Procrustes with spring physics. 6.5KB core, zero runtime deps.",
+      "tags": [
+        "animated",
+        "animation",
+        "component-library",
+        "icon",
+        "minimal",
+        "react",
+        "svelte",
+        "svg",
+        "typescript",
+        "vue"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "MorphIcon Menu Toggle",
+      "source_url": "https://github.com/guillermolg00/morphicons",
+      "registry_url": "https://www.morphicons.com/",
+      "description": "Drop-in animated menu/hamburger toggle using MorphIcon. Swap between any two Lucide-style icons (e.g., Menu ↔ X) with one component, no from/to pairs needed.",
+      "tags": [
+        "animated",
+        "button",
+        "icon",
+        "minimal",
+        "navigation",
+        "react",
+        "svg"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "MorphIcon Plus to Arrow",
+      "source_url": "https://github.com/guillermolg00/morphicons",
+      "registry_url": "https://www.morphicons.com/",
+      "description": "Animated plus → arrow-right morph icon with optimal rotation solved in closed form. Coordinate-aligned frame, smooth interpolation.",
+      "tags": [
+        "animated",
+        "animation",
+        "icon",
+        "minimal",
+        "svg"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Super Gradients",
+      "source_url": "https://segmentui.com/",
+      "registry_url": "https://segmentui.com/",
+      "description": "Framer component featuring advanced multi-stop gradient treatments for hero sections, cards, and backgrounds. Production-ready, CMS-aware.",
+      "tags": [
+        "background",
+        "component",
+        "css",
+        "framer",
+        "gradient",
+        "hero",
+        "modern"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Fractal Glass",
+      "source_url": "https://21st.dev/@hyperiux/components/fractal-glass",
+      "registry_url": "https://21st.dev/agent-21",
+      "description": "Glassmorphism component with fractal pattern overlays. Layered transparency with shader-like fractal noise backgrounds.",
+      "tags": [
+        "3d",
+        "background",
+        "card",
+        "glass",
+        "react",
+        "tailwindcss"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Gradient Text",
+      "source_url": "https://21st.dev/@designali-in/components/gradient-text/gradient-text",
+      "registry_url": "https://21st.dev/agent-21",
+      "description": "Multi-stop gradient text component with smooth color transitions. 699 views.",
+      "tags": [
+        "component",
+        "gradient",
+        "modern",
+        "react",
+        "tailwindcss",
+        "text"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Marquee",
+      "source_url": "https://21st.dev/@tom_ui/components/marquee",
+      "registry_url": "https://21st.dev/agent-21",
+      "description": "Infinite horizontal scrolling marquee component. Configurable speed, direction, and pause-on-hover. 666 views.",
+      "tags": [
+        "animation",
+        "marquee",
+        "minimal",
+        "modern",
+        "react",
+        "tailwindcss"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Hover Preview",
+      "source_url": "https://21st.dev/@minhxthanh/components/hover-preview",
+      "registry_url": "https://21st.dev/agent-21",
+      "description": "Link hover preview card with image, title, and description revealed on cursor hover. 496 views.",
+      "tags": [
+        "card",
+        "hover-effect",
+        "minimal",
+        "modern",
+        "react",
+        "tailwindcss"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Handwriting SVG",
+      "source_url": "https://21st.dev/@pulkitxm/components/handwriting-svg",
+      "registry_url": "https://21st.dev/agent-21",
+      "description": "SVG path animation component that simulates handwriting. Strokes animate along path data. 375 views.",
+      "tags": [
+        "animated",
+        "animation",
+        "minimal",
+        "react",
+        "svg"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Button",
+      "source_url": "https://daisyui.com/components/button/",
+      "registry_url": "https://daisyui.com/components/button/",
+      "description": "daisyUI Button component with multiple variants (primary, secondary, accent, neutral, ghost, link), sizes (xs, sm, md, lg, xl), wide and block modifiers, soft and glass styles. Supports loading states and icons.",
+      "tags": [
+        "button",
+        "css",
+        "minimal",
+        "modern",
+        "tailwind"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Card",
+      "source_url": "https://daisyui.com/components/card/",
+      "registry_url": "https://daisyui.com/components/card/",
+      "description": "daisyUI Card component for grouping and displaying content in an easily readable format. Includes card-body, card-title, card-actions, card-image, image-full layout, badges, side layout, and bordered variants.",
+      "tags": [
+        "card",
+        "css",
+        "minimal",
+        "modern",
+        "tailwind"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "KokonutUI Installation Guide",
+      "source_url": "https://kokonutui.com/docs",
+      "registry_url": "https://kokonutui.com/docs",
+      "description": "Installation and setup documentation for KokonutUI: install via shadcn CLI in React or Next.js projects, configure components.json registry, install utilities (cn), and integrate with the shadcn MCP server for Claude Code/Cursor/VS Code/Codex.",
+      "tags": [
+        "docs",
+        "minimal",
+        "react",
+        "shadcn",
+        "tailwind"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "CSS Loaders Collection",
+      "source_url": "https://css-loaders.com/",
+      "registry_url": "https://css-loaders.com/",
+      "description": "The biggest collection of loading animations: 600+ CSS-only loaders made using a single element. Includes a 'Zig-Zag' themed set; click any loader to copy its CSS.",
+      "tags": [
+        "animated",
+        "css",
+        "loader",
+        "minimal"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Navbar Gallery",
+      "source_url": "https://www.navbar.gallery/",
+      "registry_url": "https://www.navbar.gallery/",
+      "description": "Navbar Gallery is a curated navigation-focused design inspiration website featuring hundreds of real-world navbar examples across categories: Static, Dropdown, Mega Menu, Side Bar, Progress Bar, Search Bar, Announcement, Full Screen, and Tabs.",
+      "tags": [
+        "css",
+        "gallery",
+        "html",
+        "minimal",
+        "modern"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Cursor Lab",
+      "source_url": "https://cursor-lab-ui.vercel.app/",
+      "registry_url": "https://www.designminis.com/tools/cursor-lab",
+      "description": "Cursor Lab — SVG-based custom cursor designer with live preview.",
+      "tags": [
+        "editor",
+        "javascript",
+        "minimal",
+        "modern",
+        "svg"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Gradlab",
+      "source_url": "http://www.gradlab.app/",
+      "registry_url": "https://www.designminis.com/tools/gradlab",
+      "description": "Gradlab — gradient background generator and lab for visual experiments.",
+      "tags": [
+        "background",
+        "css",
+        "minimal",
+        "modern",
+        "web"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Word Focus Scroll",
+      "source_url": "https://www.great-ui.com/components/word-focus-scroll",
+      "registry_url": "https://great-ui.com/components",
+      "description": "Scroll-driven typography that brings a word into focus as you scroll through a passage.",
+      "tags": [
+        "minimal",
+        "modern",
+        "react",
+        "tailwind",
+        "typography"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Macbook Mockup",
+      "source_url": "https://www.great-ui.com/components/macbook-mockup",
+      "registry_url": "https://great-ui.com/components",
+      "description": "A realistic Macbook device mockup component for React + Tailwind.",
+      "tags": [
+        "minimal",
+        "mockup",
+        "modern",
+        "react",
+        "tailwind"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Loading State",
+      "source_url": "https://www.beautifului.dev/",
+      "registry_url": "https://www.beautifului.dev/",
+      "description": "Pixel-grid loading state with shimmer animation and elapsed time counter. Includes Drive, Dots, Orbit, and Surfer variants.",
+      "tags": [
+        "animated",
+        "css",
+        "javascript",
+        "loader",
+        "minimal"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Streaming Text",
+      "source_url": "https://www.beautifului.dev/",
+      "registry_url": "https://www.beautifului.dev/",
+      "description": "Streamed answer primitive with inline sources, action buttons, and follow-up suggestions — designed for AI chat interfaces.",
+      "tags": [
+        "css",
+        "javascript",
+        "minimal",
+        "modern",
+        "typography"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Approval Card",
+      "source_url": "https://www.beautifului.dev/",
+      "registry_url": "https://www.beautifului.dev/",
+      "description": "Human-in-the-loop approval card for AI agents: questions the agent asks before acting, with Skip/Continue controls.",
+      "tags": [
+        "card",
+        "css",
+        "javascript",
+        "minimal",
+        "modern"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Prompt Bar",
+      "source_url": "https://www.beautifului.dev/",
+      "registry_url": "https://www.beautifului.dev/",
+      "description": "AI composer prompt bar with @ sources, / commands, model picker, and dictation support.",
+      "tags": [
+        "css",
+        "input",
+        "javascript",
+        "minimal",
+        "modern"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Recommendation Card",
+      "source_url": "https://www.beautifului.dev/",
+      "registry_url": "https://www.beautifului.dev/",
+      "description": "Agent suggestion card with a confidence meter, alternative actions, and Accept/Improve controls.",
+      "tags": [
+        "card",
+        "css",
+        "javascript",
+        "minimal",
+        "modern"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Context Cards",
+      "source_url": "https://www.beautifului.dev/",
+      "registry_url": "https://www.beautifului.dev/",
+      "description": "Retrieved knowledge chunks with their sources, formatted as a feed for AI reasoning context.",
+      "tags": [
+        "card",
+        "css",
+        "javascript",
+        "minimal",
+        "modern"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Text Flipping Board",
+      "source_url": "https://ui.aceternity.com/components/text-flipping-board",
+      "registry_url": "https://ui.aceternity.com/components",
+      "description": "A split-flap display component that animates characters with flip transitions, inspired by Vestaboard.",
+      "tags": [
+        "animated",
+        "framer-motion",
+        "react",
+        "retro",
+        "tailwind",
+        "typography"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Tooltip Card",
+      "source_url": "https://ui.aceternity.com/components/tooltip-card",
+      "registry_url": "https://ui.aceternity.com/components",
+      "description": "A tooltip card container that follows the mouse pointer when hovered.",
+      "tags": [
+        "minimal",
+        "modern",
+        "react",
+        "tailwind",
+        "tooltip"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Terminal",
+      "source_url": "https://ui.aceternity.com/components/terminal",
+      "registry_url": "https://ui.aceternity.com/components",
+      "description": "A macOS-style terminal component with bash syntax highlighting and typewriter effect.",
+      "tags": [
+        "minimal",
+        "mockup",
+        "modern",
+        "react",
+        "tailwind"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Modal",
+      "source_url": "https://daisyui.com/components/modal/",
+      "registry_url": "https://daisyui.com/components/modal/",
+      "description": "daisyUI Modal component with 4 usage methods: HTML dialog element (recommended), HTML popover, hidden checkbox (legacy), and anchor links (legacy). Supports placements (top/middle/bottom/start/end), responsive variants, custom widths, and an optional modal-backdrop.",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "modal",
+        "modern",
+        "tailwind"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
     }
   ],
   "tag_taxonomy_version": "TAG-TAX-5-zero-orphan",
@@ -1556,7 +3351,7 @@
   ],
   "extracted_at": "2026-09-03",
   "notes": "v1.2.1: canonical tags (neumorphism, liquid-glass), every entry has ≥1 type tag from 3-axis taxonomy. Search bar now supports e.g. tailwind+button, gsap+menu, neomorphism+card, liquid-glass+modal.",
-  "last_extraction_batch": "/tmp/extract-batch-g1.json",
-  "last_extraction_at": "2026-09-04T01:57:18.271371",
-  "total_components": 124
+  "last_extraction_batch": "/tmp/extract-batch-r3.json",
+  "last_extraction_at": "2026-09-04T02:05:34.284658",
+  "total_components": 245
 }
