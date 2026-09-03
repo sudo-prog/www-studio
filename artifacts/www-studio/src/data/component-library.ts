@@ -10,7 +10,7 @@ export interface ComponentItem {
   description?: string;
 }
 
-import extractedCatalog from "./extracted-catalog.json";
+import componentsJsonCatalog from "./components-json-catalog.json";
 
 export const CATEGORIES = [
   "All",
@@ -472,7 +472,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
 </div>`,
   },
   // ─────────── EXTRACTED CATALOG (113 sources, no runnable code — link only) ───────────
-  ...extractedCatalog,
+  ...componentsJsonCatalog,
 ];
 
 export function makePreviewHtml(code: string): string {
