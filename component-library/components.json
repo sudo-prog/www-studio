@@ -1,5 +1,5 @@
 {
-  "version": "1.7.9",
+  "version": "1.9.11",
   "created": "2026-09-02",
   "source_count": 113,
   "categories": {
@@ -3341,6 +3341,482 @@
       ],
       "extraction_status": "verified",
       "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Hero 03",
+      "source_url": "https://www.originkit.dev/sections/hero-03",
+      "registry_url": "https://www.originkit.dev/sections",
+      "description": "Animated Originkit section 'Hero 03' for marketing sites and landing pages.",
+      "tags": [
+        "framer-motion",
+        "gradient",
+        "hero",
+        "holo",
+        "react",
+        "scroll-effect",
+        "tailwind"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Hero 19",
+      "source_url": "https://www.originkit.dev/sections/hero-19",
+      "registry_url": "https://www.originkit.dev/sections",
+      "description": "Animated Originkit section 'Hero 19' for marketing sites and landing pages.",
+      "tags": [
+        "animation",
+        "dark",
+        "framer-motion",
+        "hero",
+        "neon",
+        "react",
+        "tailwind"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Features 02",
+      "source_url": "https://www.originkit.dev/sections/features-02",
+      "registry_url": "https://www.originkit.dev/sections",
+      "description": "Animated Originkit section 'Features 02' for marketing sites and landing pages.",
+      "tags": [
+        "card",
+        "framer-motion",
+        "grid",
+        "minimal",
+        "react",
+        "tailwind"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Hero 10",
+      "source_url": "https://www.originkit.dev/sections/hero-10",
+      "registry_url": "https://www.originkit.dev/sections",
+      "description": "Animated Originkit section 'Hero 10' for marketing sites and landing pages.",
+      "tags": [
+        "aurora",
+        "framer-motion",
+        "hero",
+        "particles",
+        "react",
+        "soft",
+        "tailwind"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Hero 23",
+      "source_url": "https://www.originkit.dev/sections/hero-23",
+      "registry_url": "https://www.originkit.dev/sections",
+      "description": "Animated Originkit section 'Hero 23' for marketing sites and landing pages.",
+      "tags": [
+        "3d",
+        "framer-motion",
+        "hero",
+        "holo",
+        "metallic",
+        "react",
+        "tailwind"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Hero 09",
+      "source_url": "https://www.originkit.dev/sections/hero-09",
+      "registry_url": "https://www.originkit.dev/sections",
+      "description": "Animated Originkit section 'Hero 09' for marketing sites and landing pages.",
+      "tags": [
+        "duotone",
+        "framer-motion",
+        "hero",
+        "minimal",
+        "react",
+        "scroll-effect",
+        "tailwind"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Hero 12",
+      "source_url": "https://www.originkit.dev/sections/hero-12",
+      "registry_url": "https://www.originkit.dev/sections",
+      "description": "Animated Originkit section 'Hero 12' for marketing sites and landing pages.",
+      "tags": [
+        "animation",
+        "framer-motion",
+        "glow",
+        "hero",
+        "neon",
+        "react",
+        "tailwind"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Hero 28",
+      "source_url": "https://www.originkit.dev/sections/hero-28",
+      "registry_url": "https://www.originkit.dev/sections",
+      "description": "Animated Originkit section 'Hero 28' for marketing sites and landing pages.",
+      "tags": [
+        "animation",
+        "framer-motion",
+        "glass",
+        "hero",
+        "react",
+        "tailwind"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Hero 25",
+      "source_url": "https://www.originkit.dev/sections/hero-25",
+      "registry_url": "https://www.originkit.dev/sections",
+      "description": "Animated Originkit section 'Hero 25' for marketing sites and landing pages.",
+      "tags": [
+        "fluid",
+        "framer-motion",
+        "gradient",
+        "hero",
+        "particles",
+        "react",
+        "tailwind"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Hero 17",
+      "source_url": "https://www.originkit.dev/sections/hero-17",
+      "registry_url": "https://www.originkit.dev/sections",
+      "description": "Animated Originkit section 'Hero 17' for marketing sites and landing pages.",
+      "tags": [
+        "framer-motion",
+        "halftone",
+        "hero",
+        "react",
+        "retro",
+        "scroll-effect",
+        "tailwind"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Super Gradients",
+      "source_url": "https://segmentui.com/uikit/super-gradients",
+      "registry_url": "https://segmentui.com/",
+      "description": "Framer component featuring advanced multi-stop gradient treatments for hero sections, cards, and backgrounds. Production-ready, CMS-aware.",
+      "tags": [
+        "background",
+        "component",
+        "css",
+        "framer",
+        "gradient",
+        "hero",
+        "modern"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Gradient Wave Text",
+      "source_url": "https://segmentui.com/uikit/gradient-wave-text",
+      "registry_url": "https://segmentui.com/",
+      "description": "Animated wave gradient text effect for Framer. Multi-color gradient sweeps across characters with smooth easing.",
+      "tags": [
+        "animated",
+        "animation",
+        "css",
+        "framer",
+        "gradient",
+        "modern",
+        "text"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Form Progress Bar",
+      "source_url": "https://segmentui.com/uikit/form-progress-bar",
+      "registry_url": "https://segmentui.com/",
+      "description": "Multi-step form progress bar component for Framer. Visualizes completion percentage across form sections.",
+      "tags": [
+        "css",
+        "form",
+        "framer",
+        "minimal",
+        "modern",
+        "progress"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Multi Select Dropdown for Forms",
+      "source_url": "https://segmentui.com/uikit/multi-select-dropdown-for-forms",
+      "registry_url": "https://segmentui.com/",
+      "description": "Multi-select dropdown input for Framer forms. Tag-style chips with remove buttons and search filtering.",
+      "tags": [
+        "css",
+        "form",
+        "framer",
+        "minimal",
+        "modern",
+        "select"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Curved Carousel",
+      "source_url": "https://segmentui.com/uikit/curved-carousel",
+      "registry_url": "https://segmentui.com/",
+      "description": "Curved-edge carousel layout for Framer. Items flow along an arc for visual rhythm.",
+      "tags": [
+        "carousel",
+        "css",
+        "framer",
+        "minimal",
+        "modern"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Testimonial",
+      "source_url": "https://21st.dev/@uilayout.contact/components/testimonial",
+      "registry_url": "https://21st.dev/community/components",
+      "description": "Standalone testimonial card component from UI Layouts library. Quote, author, avatar with consistent typography. 549 views.",
+      "tags": [
+        "card",
+        "minimal",
+        "modern",
+        "react",
+        "tailwindcss",
+        "testimonial"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Navbar 5",
+      "source_url": "https://21st.dev/@shadcnblockscom/components/navbar-5",
+      "registry_url": "https://21st.dev/community/components",
+      "description": "Navbar component from shadcnblocks.com - modern responsive top navigation with mobile drawer support. 120 views.",
+      "tags": [
+        "minimal",
+        "modern",
+        "navbar",
+        "navigation",
+        "react",
+        "shadcn",
+        "tailwindcss"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Gradient Backgrounds",
+      "source_url": "https://21st.dev/@meghtrix/components/gradient-backgrounds/gradient-background-pink-top",
+      "registry_url": "https://21st.dev/community/components",
+      "description": "Pink-top gradient background component with multiple color-stop variants. 16 views.",
+      "tags": [
+        "background",
+        "css",
+        "gradient",
+        "modern",
+        "react",
+        "tailwindcss"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Highlight Text",
+      "source_url": "https://21st.dev/@glasscn/components/highlight-text",
+      "registry_url": "https://21st.dev/community/components",
+      "description": "Text component with marker/brush highlight overlay behind words. 89 views.",
+      "tags": [
+        "component",
+        "minimal",
+        "modern",
+        "react",
+        "tailwindcss",
+        "text"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Status Badge",
+      "source_url": "https://21st.dev/@arihantcodes_1f7b8c4d/components/status-badge",
+      "registry_url": "https://21st.dev/community/components",
+      "description": "Status indicator badge component from Spectrum UI library. Multiple variants for online/away/offline/busy states. 253 views.",
+      "tags": [
+        "badge",
+        "minimal",
+        "modern",
+        "react",
+        "status",
+        "tailwindcss"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "COBE Globe",
+      "source_url": "https://21st.dev/@shuding/components/cobe-globe",
+      "registry_url": "https://21st.dev/community/components/s/3d",
+      "description": "Lightweight COBE-style WebGL globe component. Rotating wireframe sphere with customizable dots. By shuding.",
+      "tags": [
+        "3d",
+        "3d-scene",
+        "globe",
+        "minimal",
+        "react",
+        "tailwindcss",
+        "webgl"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Holo Card",
+      "source_url": "https://21st.dev/@rmahammad/components/holo-card",
+      "registry_url": "https://21st.dev/community/components/s/3d",
+      "description": "Holographic card component with shimmer/iridescent effect that tracks cursor. By Mehi.",
+      "tags": [
+        "animated",
+        "card",
+        "glass",
+        "hover-effect",
+        "modern",
+        "react",
+        "tailwindcss"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Course Design Cards",
+      "source_url": "https://21st.dev/@kristen17/components/course-design-cards",
+      "registry_url": "https://21st.dev/community/components/s/cards",
+      "description": "Course-themed card components with image, title, instructor, and progress meter. By kristen17.",
+      "tags": [
+        "card",
+        "education",
+        "minimal",
+        "modern",
+        "react",
+        "tailwindcss"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Statistics Card 10",
+      "source_url": "https://21st.dev/@sean0205/components/statistics-card-10",
+      "registry_url": "https://21st.dev/community/components/s/cards",
+      "description": "Statistics card variant with metric, label, trend indicator, and supporting chart. By Sean Hello.",
+      "tags": [
+        "card",
+        "minimal",
+        "modern",
+        "react",
+        "stat",
+        "tailwindcss"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Card Studio",
+      "source_url": "https://21st.dev/@ShadcnStudio/components/card-studio/fluid-gradient-flow-card",
+      "registry_url": "https://21st.dev/community/components/s/cards",
+      "description": "Fluid gradient flow card from Card Studio library. Animated gradient mesh inside card surface.",
+      "tags": [
+        "animated",
+        "card",
+        "gradient",
+        "modern",
+        "react",
+        "tailwindcss"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Liquid Glass Card",
+      "source_url": "https://21st.dev/@designali-in/components/liquid-glass-card",
+      "registry_url": "https://21st.dev/community/components/s/cards",
+      "description": "Glassmorphism card with liquid refraction effect, animated highlights, and translucent backdrop. By Ali Imam.",
+      "tags": [
+        "animated",
+        "card",
+        "glass",
+        "modern",
+        "react",
+        "tailwindcss"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Icon Link Card",
+      "source_url": "https://21st.dev/@cnippet.dev/components/v-card-14",
+      "registry_url": "https://21st.dev/community/components/s/cards",
+      "description": "Compact icon-link card with directional indicator. Useful for navigation menus and feature lists. By Cnippet.",
+      "tags": [
+        "card",
+        "link",
+        "minimal",
+        "modern",
+        "react",
+        "tailwindcss"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Pricing Cards",
+      "source_url": "https://21st.dev/@prebuiltui/components/pricing-cards/pricing-card",
+      "registry_url": "https://21st.dev/community/components/s/cards",
+      "description": "Pricing tier card with feature list, CTA button, and highlighted/recommended variant. By prebuiltui.",
+      "tags": [
+        "card",
+        "minimal",
+        "modern",
+        "pricing",
+        "react",
+        "tailwindcss"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "QR Code Card",
+      "source_url": "https://21st.dev/@anubra266/components/qr-code/qr-code-with-url",
+      "registry_url": "https://21st.dev/community/components/s/cards",
+      "description": "Card containing a QR code generated from URL with download button. By Abraham.",
+      "tags": [
+        "card",
+        "minimal",
+        "modern",
+        "qr-code",
+        "react",
+        "tailwindcss"
+      ],
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
     }
   ],
   "tag_taxonomy_version": "TAG-TAX-5-zero-orphan",
@@ -3351,7 +3827,7 @@
   ],
   "extracted_at": "2026-09-03",
   "notes": "v1.2.1: canonical tags (neumorphism, liquid-glass), every entry has ≥1 type tag from 3-axis taxonomy. Search bar now supports e.g. tailwind+button, gsap+menu, neomorphism+card, liquid-glass+modal.",
-  "last_extraction_batch": "/tmp/extract-batch-r3.json",
-  "last_extraction_at": "2026-09-04T02:05:34.284658",
-  "total_components": 245
+  "last_extraction_batch": "/tmp/extract-batch-r2.json",
+  "last_extraction_at": "2026-09-04T02:26:27.563716",
+  "total_components": 274
 }
