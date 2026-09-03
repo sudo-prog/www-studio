@@ -15,16 +15,35 @@ import {
 
 function ComponentCard({ item }: { item: typeof COMPONENT_LIBRARY[number] }) {
   const { toast } = useToast();
+  const hasCode = item.code && item.code.trim().length > 0;
 
   return (
     <div className="rounded-2xl border border-border/50 bg-card overflow-hidden flex flex-col group hover:border-primary/40 transition-colors">
-      <PreviewCodeCard
-        code={item.code}
-        title={item.name}
-        previewHtml={makePreviewHtml(item.code)}
-        onCodeCopy={() => toast({ title: "Code copied!" })}
-        className="border-0 rounded-none bg-transparent"
-      />
+      {hasCode ? (
+        <PreviewCodeCard
+          code={item.code}
+          title={item.name}
+          previewHtml={makePreviewHtml(item.code)}
+          onCodeCopy={() => toast({ title: "Code copied!" })}
+          className="border-0 rounded-none bg-transparent"
+        />
+      ) : (
+        /* Catalog-only entry: no runnable code, link to source instead. */
+        <a
+          href={item.sourceUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="aspect-[4/3] w-full bg-gradient-to-br from-zinc-900 to-zinc-950 flex flex-col items-center justify-center p-4 text-center gap-2 hover:from-zinc-800 hover:to-zinc-900 transition-colors"
+        >
+          <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </div>
+          <p className="text-sm font-medium text-white">Open source</p>
+          <p className="text-xs text-zinc-400 line-clamp-2 max-w-[20ch]">
+            {item.description ?? item.name}
+          </p>
+        </a>
+      )}
       {/* Info strip — title + tags + free-floating copy icon. Lives
           beside the shared preview viewport so the same PreviewCodeCard
           primitive can be reused without a built-in info footer. */}
@@ -37,18 +56,30 @@ function ComponentCard({ item }: { item: typeof COMPONENT_LIBRARY[number] }) {
             ))}
           </div>
         </div>
-        <Button
-          size="sm"
-          variant="ghost"
-          className="h-7 w-7 min-h-[48px] min-w-[44px] shrink-0"
-          onClick={() => {
-            navigator.clipboard.writeText(item.code);
-            toast({ title: "Code copied!" });
-          }}
-          aria-label={`Copy ${item.name} code`}
-        >
-          <Copy className="w-3.5 h-3.5 text-muted-foreground" />
-        </Button>
+        {hasCode ? (
+          <Button
+            size="sm"
+            variant="ghost"
+            className="h-7 w-7 min-h-[48px] min-w-[44px] shrink-0"
+            onClick={() => {
+              navigator.clipboard.writeText(item.code);
+              toast({ title: "Code copied!" });
+            }}
+            aria-label={`Copy ${item.name} code`}
+          >
+            <Copy className="w-3.5 h-3.5 text-muted-foreground" />
+          </Button>
+        ) : (
+          <a
+            href={item.sourceUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="h-7 w-7 min-h-[48px] min-w-[44px] shrink-0 inline-flex items-center justify-center text-muted-foreground hover:text-primary"
+            aria-label={`Open ${item.name} source`}
+          >
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </a>
+        )}
       </div>
     </div>
   );
@@ -91,7 +122,7 @@ export default function Components() {
         <div className="mb-8">
           <h1 className="text-3xl font-bold tracking-tight mb-2">Component Library</h1>
           <p className="text-muted-foreground">
-            {COMPONENT_LIBRARY.length} curated open-source components — copy code, then drop into any project.
+            {COMPONENT_LIBRARY.filter((c) => c.code).length} with live preview · {COMPONENT_LIBRARY.filter((c) => !c.code).length} curated references from across the web.
           </p>
         </div>
 

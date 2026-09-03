@@ -4,7 +4,13 @@ export interface ComponentItem {
   category: string;
   tags: string[];
   code: string;
+  /** Optional external source URL (for catalog-only entries without runnable code). */
+  sourceUrl?: string;
+  /** Optional longer description for catalog-only entries. */
+  description?: string;
 }
+
+import extractedCatalog from "./extracted-catalog.json";
 
 export const CATEGORIES = [
   "All",
@@ -16,6 +22,15 @@ export const CATEGORIES = [
   "Navigation",
   "Badges",
   "Modals",
+  "Component",
+  "Animation",
+  "Effect",
+  "Background",
+  "Shader",
+  "Nav",
+  "Input",
+  "3D",
+  "Loader",
 ] as const;
 
 export type Category = (typeof CATEGORIES)[number];
@@ -456,6 +471,8 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </button>
 </div>`,
   },
+  // ─────────── EXTRACTED CATALOG (113 sources, no runnable code — link only) ───────────
+  ...extractedCatalog,
 ];
 
 export function makePreviewHtml(code: string): string {
