@@ -1236,7 +1236,7 @@ export default function Editor() {
                 size="icon"
                 title={title}
                 disabled={isFetchingCode}
-                className={cn("w-7 h-7 rounded-sm", viewMode === id ? "bg-primary/15 text-primary" : "text-muted-foreground")}
+                className={cn("w-7 h-7 rounded-sm min-h-[44px] min-w-[44px]", viewMode === id ? "bg-primary/15 text-primary" : "text-muted-foreground")}
                 onClick={() => handleViewMode(id)}
               >
                 {isFetchingCode && id !== "preview" ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : icon}
@@ -1330,16 +1330,16 @@ export default function Editor() {
             <span>{!isOnline ? "Offline" : pendingCount > 0 ? `${pendingCount}` : lastSaved ? timeAgo(lastSaved.toISOString()) : ""}</span>
           </div>
 
-          <Button variant="outline" size="sm" className="gap-1.5 h-8 text-xs" onClick={() => saveSnapshot("Manual save")} disabled={isSaving}>
+          <Button variant="outline" size="sm" className="gap-1.5 h-8 text-xs min-h-[44px]" onClick={() => saveSnapshot("Manual save")} disabled={isSaving}>
             {isSaving ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Save className="w-3.5 h-3.5" />}
             <span className="hidden sm:inline">Save</span>
           </Button>
 
-          <Button variant="outline" size="sm" className="gap-1.5 h-8 text-xs hidden md:flex" onClick={() => window.open(`/api/projects/${project.id}/export`, "_blank")}>
+          <Button variant="outline" size="sm" className="gap-1.5 h-8 text-xs hidden md:flex min-h-[44px]" onClick={() => window.open(`/api/projects/${project.id}/export`, "_blank")}>
             <Download className="w-3.5 h-3.5" />Export
           </Button>
 
-          <Button size="sm" className="gap-1.5 h-8 text-xs" onClick={() => setShowPublishModal(true)}>
+          <Button size="sm" className="gap-1.5 h-8 text-xs min-h-[44px]" onClick={() => setShowPublishModal(true)}>
             <Globe className="w-3.5 h-3.5" /><span className="hidden sm:inline">Publish</span>
           </Button>
         </div>
