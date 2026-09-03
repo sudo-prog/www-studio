@@ -1744,5 +1744,1800 @@
     "code": "",
     "sourceUrl": "https://css-loaders.com/",
     "description": "Collection of pure-CSS loading spinners and skeleton loaders."
+  },
+  {
+    "id": "x-typewriter",
+    "name": "Typewriter",
+    "category": "Component",
+    "tags": [
+      "animation",
+      "framer-motion",
+      "minimal",
+      "react",
+      "transition"
+    ],
+    "code": "",
+    "sourceUrl": "https://motion.dev/examples/react-typewriter",
+    "description": "React typewriter animation using Motion's Typewriter component with text reveal effects."
+  },
+  {
+    "id": "x-ios-app-folder",
+    "name": "iOS App Folder",
+    "category": "Component",
+    "tags": [
+      "animation",
+      "framer-motion",
+      "gradient",
+      "react",
+      "soft",
+      "transition"
+    ],
+    "code": "",
+    "sourceUrl": "https://motion.dev/examples/react-ios-app-folder",
+    "description": "iOS-style folder expansion animation for React using Motion for layout and spring physics."
+  },
+  {
+    "id": "x-pokopia-modal",
+    "name": "Pokopia Modal",
+    "category": "Component",
+    "tags": [
+      "framer-motion",
+      "modal",
+      "react",
+      "soft",
+      "transition"
+    ],
+    "code": "",
+    "sourceUrl": "https://motion.dev/examples/react-pokopia-modal",
+    "description": "Pokopia modal animation demonstrating React shared-layout transitions."
+  },
+  {
+    "id": "x-reorder-grid",
+    "name": "Reorder Grid",
+    "category": "Component",
+    "tags": [
+      "drag",
+      "framer-motion",
+      "grid",
+      "minimal",
+      "react"
+    ],
+    "code": "",
+    "sourceUrl": "https://motion.dev/examples/react-reorder-grid",
+    "description": "Multidimensional reorder grid demonstrating drag-to-reorder with Motion for React."
+  },
+  {
+    "id": "x-command-palette",
+    "name": "Command Palette",
+    "category": "Component",
+    "tags": [
+      "dropdown",
+      "framer-motion",
+      "glass",
+      "modal",
+      "vue"
+    ],
+    "code": "",
+    "sourceUrl": "https://motion.dev/examples/vue-command-palette",
+    "description": "Command palette animation built with Vue and Motion with keyboard-driven transitions."
+  },
+  {
+    "id": "x-mega-menu",
+    "name": "Mega Menu",
+    "category": "Component",
+    "tags": [
+      "framer-motion",
+      "menu",
+      "minimal",
+      "navbar",
+      "vue"
+    ],
+    "code": "",
+    "sourceUrl": "https://motion.dev/examples/vue-mega-menu",
+    "description": "Vue mega menu with staggered nav entrance and smooth open/close animations."
+  },
+  {
+    "id": "x-sheet-modal",
+    "name": "Sheet Modal",
+    "category": "Component",
+    "tags": [
+      "drawer",
+      "framer-motion",
+      "modal",
+      "soft",
+      "vue"
+    ],
+    "code": "",
+    "sourceUrl": "https://motion.dev/examples/vue-sheet-modal",
+    "description": "Bottom-sheet modal slide-in with backdrop fade using Vue + Motion."
+  },
+  {
+    "id": "x-scroll-zoom-hero",
+    "name": "Scroll Zoom Hero",
+    "category": "Component",
+    "tags": [
+      "framer-motion",
+      "gradient",
+      "hero",
+      "scroll-effect",
+      "vue"
+    ],
+    "code": "",
+    "sourceUrl": "https://motion.dev/examples/vue-scroll-zoom-hero",
+    "description": "Scroll-linked zoom hero effect on Vue powered by Motion's scroll utilities."
+  },
+  {
+    "id": "x-rolling-text-button",
+    "name": "Rolling Text Button",
+    "category": "Component",
+    "tags": [
+      "button",
+      "framer-motion",
+      "hover-effect",
+      "minimal",
+      "react"
+    ],
+    "code": "",
+    "sourceUrl": "https://motion.dev/examples/react-rolling-text-button",
+    "description": "Button with rolling text animation on hover using Motion for React."
+  },
+  {
+    "id": "x-scroll-velocity-3d-planes",
+    "name": "Scroll Velocity 3D Planes",
+    "category": "Component",
+    "tags": [
+      "framer-motion",
+      "holo",
+      "parallax",
+      "scroll-effect",
+      "three.js",
+      "vue"
+    ],
+    "code": "",
+    "sourceUrl": "https://motion.dev/examples/vue-scroll-velocity-linked-offset",
+    "description": "3D planes that translate with scroll velocity using linked offsets in Vue + Motion."
+  },
+  {
+    "id": "x-ink-flow-field",
+    "name": "Ink Flow Field",
+    "category": "Component",
+    "tags": [
+      "aurora",
+      "background",
+      "fluid",
+      "js",
+      "particles",
+      "particles.js"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.originkit.dev/components/ink-flow-field",
+    "description": "Animated ink flow field rendered with canvas particle motion for hero sections."
+  },
+  {
+    "id": "x-rotunda-carousel",
+    "name": "Rotunda Carousel",
+    "category": "Component",
+    "tags": [
+      "animation",
+      "gallery",
+      "gradient",
+      "holo",
+      "react",
+      "three.js"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.originkit.dev/components/rotunda-carousel",
+    "description": "3D rotunda-style carousel with depth and circular motion paths."
+  },
+  {
+    "id": "x-pixel-arc",
+    "name": "Pixel Arc",
+    "category": "Component",
+    "tags": [
+      "animation",
+      "css",
+      "gallery",
+      "halftone",
+      "js",
+      "retro"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.originkit.dev/components/pixel-arc",
+    "description": "Pixel-art arc gallery effect with stylized blocky animation."
+  },
+  {
+    "id": "x-cursor-ring-field",
+    "name": "Cursor Ring Field",
+    "category": "Component",
+    "tags": [
+      "cursor",
+      "glow",
+      "js",
+      "neon",
+      "particles",
+      "particles.js"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.originkit.dev/components/cursor-ring-field",
+    "description": "Animated cursor ring particles following pointer position on the screen."
+  },
+  {
+    "id": "x-particle-saturn",
+    "name": "Particle Saturn",
+    "category": "Component",
+    "tags": [
+      "animation",
+      "aurora",
+      "js",
+      "metallic",
+      "particles",
+      "webgl"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.originkit.dev/components/particle-saturn",
+    "description": "Saturn-style particle ring animation rendered with WebGL/canvas."
+  },
+  {
+    "id": "x-globe-mesh",
+    "name": "Globe Mesh",
+    "category": "Component",
+    "tags": [
+      "animation",
+      "background",
+      "metallic",
+      "minimal",
+      "react-three-fiber",
+      "three.js"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.originkit.dev/components/globe-mesh",
+    "description": "Animated 3D wireframe globe with rotating mesh points."
+  },
+  {
+    "id": "x-sphere-gallery-3d",
+    "name": "Sphere Gallery 3D",
+    "category": "Component",
+    "tags": [
+      "gallery",
+      "holo",
+      "metallic",
+      "react-three-fiber",
+      "three.js"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.originkit.dev/components/sphere-gallery-3d",
+    "description": "3D sphere gallery with rotating thumbnails arranged on a spherical surface."
+  },
+  {
+    "id": "x-water-ball",
+    "name": "Water Ball",
+    "category": "Component",
+    "tags": [
+      "animation",
+      "fluid",
+      "metallic",
+      "shader",
+      "webgl"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.originkit.dev/components/water-ball",
+    "description": "Realistic water-ball rendering with refraction and animated surface."
+  },
+  {
+    "id": "x-radial-reveal-button",
+    "name": "Radial Reveal Button",
+    "category": "Component",
+    "tags": [
+      "button",
+      "css",
+      "gradient",
+      "hover-effect",
+      "minimal"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.originkit.dev/components/radial-reveal-button",
+    "description": "Button with radial reveal hover effect expanding from the click point."
+  },
+  {
+    "id": "x-place-details-corner",
+    "name": "Place Details (Corner)",
+    "category": "Component",
+    "tags": [
+      "card",
+      "css",
+      "hero",
+      "html",
+      "minimal"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.uxsnaps.com/",
+    "description": "Product listing detail page breakdown showcasing user control and social proof patterns."
+  },
+  {
+    "id": "x-events-dashboard-meetup",
+    "name": "Events Dashboard (Meetup)",
+    "category": "Component",
+    "tags": [
+      "css",
+      "dashboard",
+      "html",
+      "minimal"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.uxsnaps.com/",
+    "description": "Dashboard breakdown from Meetup demonstrating contextual design and CTAs."
+  },
+  {
+    "id": "x-content-idea-board-buffer",
+    "name": "Content Idea Board (Buffer)",
+    "category": "Component",
+    "tags": [
+      "css",
+      "dashboard",
+      "grid",
+      "html",
+      "minimal"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.uxsnaps.com/",
+    "description": "Feed/timeline breakdown from Buffer showing onboarding and information architecture."
+  },
+  {
+    "id": "x-ai-workspace-cofounder",
+    "name": "AI Workspace (Cofounder)",
+    "category": "Component",
+    "tags": [
+      "css",
+      "dashboard",
+      "glass",
+      "html"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.uxsnaps.com/",
+    "description": "AI workspace breakdown highlighting affordance, visual hierarchy, and UX writing."
+  },
+  {
+    "id": "x-ai-outfit-planner-alta",
+    "name": "AI Outfit Planner (Alta)",
+    "category": "Component",
+    "tags": [
+      "card",
+      "css",
+      "dashboard",
+      "gradient",
+      "html",
+      "soft"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.uxsnaps.com/",
+    "description": "Dashboard breakdown with personalization, real-world match, and storytelling patterns."
+  },
+  {
+    "id": "x-support-inbox-plain",
+    "name": "Support Inbox (Plain)",
+    "category": "Component",
+    "tags": [
+      "css",
+      "dashboard",
+      "feed",
+      "html",
+      "minimal"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.uxsnaps.com/",
+    "description": "Feed/timeline breakdown of Plain's support inbox focusing on UX writing and affordance."
+  },
+  {
+    "id": "x-daily-wellness-dashboard",
+    "name": "Daily Wellness Dashboard",
+    "category": "Component",
+    "tags": [
+      "chart",
+      "css",
+      "dashboard",
+      "gradient",
+      "html",
+      "soft"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.uxsnaps.com/",
+    "description": "Wellness dashboard breakdown demonstrating metrics, UX writing, and visual hierarchy."
+  },
+  {
+    "id": "x-onboarding-dashboard-honeybook",
+    "name": "Onboarding Dashboard (HoneyBook)",
+    "category": "Component",
+    "tags": [
+      "css",
+      "dashboard",
+      "gradient",
+      "hero",
+      "html",
+      "soft"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.uxsnaps.com/",
+    "description": "Advanced onboarding dashboard breakdown emphasizing feedback, clarity, and UX writing."
+  },
+  {
+    "id": "x-crypto-wallet-portfolio-solflare",
+    "name": "Crypto Wallet Portfolio (Solflare)",
+    "category": "Component",
+    "tags": [
+      "card",
+      "css",
+      "dark",
+      "dashboard",
+      "glow",
+      "html"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.uxsnaps.com/",
+    "description": "Crypto wallet portfolio breakdown with delight, user control, and real-world match patterns."
+  },
+  {
+    "id": "x-homepage-summary-dashboard-headway",
+    "name": "Homepage Summary Dashboard (Headway)",
+    "category": "Component",
+    "tags": [
+      "css",
+      "dashboard",
+      "gradient",
+      "hero",
+      "html",
+      "soft"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.uxsnaps.com/",
+    "description": "Advanced dashboard breakdown using gamification, CTAs, and personalization."
+  },
+  {
+    "id": "x-weak-firefox-button",
+    "name": "Weak Firefox Button",
+    "category": "Component",
+    "tags": [
+      "button",
+      "css",
+      "gradient",
+      "hover-effect",
+      "soft"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/cssbuttons-io/weak-firefox-5",
+    "description": "Open-source CSS/Tailwind button from Uiverse called 'Weak Firefox Button' with hover or click animations."
+  },
+  {
+    "id": "x-red-crab-button",
+    "name": "Red Crab Button",
+    "category": "Component",
+    "tags": [
+      "brutalist",
+      "button",
+      "click-effect",
+      "css"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/dexter-st/red-crab-98",
+    "description": "Open-source CSS/Tailwind button from Uiverse called 'Red Crab Button' with hover or click animations."
+  },
+  {
+    "id": "x-warm-zebra-button",
+    "name": "Warm Zebra Button",
+    "category": "Component",
+    "tags": [
+      "button",
+      "css",
+      "glass",
+      "hover-effect",
+      "minimal"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Mike11jr/warm-zebra-80",
+    "description": "Open-source CSS/Tailwind button from Uiverse called 'Warm Zebra Button' with hover or click animations."
+  },
+  {
+    "id": "x-stale-fireant-button",
+    "name": "Stale Fireant Button",
+    "category": "Component",
+    "tags": [
+      "button",
+      "click-effect",
+      "css",
+      "glow",
+      "neon"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/elijahgummer/stale-fireant-57",
+    "description": "Open-source CSS/Tailwind button from Uiverse called 'Stale Fireant Button' with hover or click animations."
+  },
+  {
+    "id": "x-good-dolphin-button",
+    "name": "Good Dolphin Button",
+    "category": "Component",
+    "tags": [
+      "button",
+      "css",
+      "gradient",
+      "hover-effect"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/alshahwan/good-dolphin-78",
+    "description": "Open-source CSS/Tailwind button from Uiverse called 'Good Dolphin Button' with hover or click animations."
+  },
+  {
+    "id": "x-lovely-fox-button",
+    "name": "Lovely Fox Button",
+    "category": "Component",
+    "tags": [
+      "button",
+      "click-effect",
+      "css",
+      "hard",
+      "minimal"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/yaroslavas2001/lovely-fox-50",
+    "description": "Open-source CSS/Tailwind button from Uiverse called 'Lovely Fox Button' with hover or click animations."
+  },
+  {
+    "id": "x-curly-wombat-button",
+    "name": "Curly Wombat Button",
+    "category": "Component",
+    "tags": [
+      "button",
+      "css",
+      "hover-effect",
+      "morph"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/adamgiebl/curly-wombat-58",
+    "description": "Open-source CSS/Tailwind button from Uiverse called 'Curly Wombat Button' with hover or click animations."
+  },
+  {
+    "id": "x-blue-dodo-button",
+    "name": "Blue Dodo Button",
+    "category": "Component",
+    "tags": [
+      "button",
+      "click-effect",
+      "css",
+      "metallic"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/krlozCJ/blue-dodo-17",
+    "description": "Open-source CSS/Tailwind button from Uiverse called 'Blue Dodo Button' with hover or click animations."
+  },
+  {
+    "id": "x-lazy-cow-button",
+    "name": "Lazy Cow Button",
+    "category": "Component",
+    "tags": [
+      "button",
+      "css",
+      "gradient",
+      "hover-effect",
+      "soft"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Smit-Prajapati/lazy-cow-47",
+    "description": "Open-source CSS/Tailwind button from Uiverse called 'Lazy Cow Button' with hover or click animations."
+  },
+  {
+    "id": "x-spotty-goose-form",
+    "name": "Spotty Goose Form",
+    "category": "Component",
+    "tags": [
+      "css",
+      "form",
+      "input",
+      "minimal",
+      "soft"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/mi-series/spotty-goose-56",
+    "description": "Open-source form component from Uiverse named 'Spotty Goose Form' built with CSS or Tailwind."
+  },
+  {
+    "id": "x-unlucky-rat-form",
+    "name": "Unlucky Rat Form",
+    "category": "Component",
+    "tags": [
+      "css",
+      "form",
+      "gradient",
+      "input"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Galahhad/unlucky-rat-64",
+    "description": "Open-source form component from Uiverse named 'Unlucky Rat Form' built with CSS or Tailwind."
+  },
+  {
+    "id": "x-sour-dog-form",
+    "name": "Sour Dog Form",
+    "category": "Component",
+    "tags": [
+      "css",
+      "form",
+      "glass",
+      "input"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/ayyjayy2/sour-dog-94",
+    "description": "Open-source form component from Uiverse named 'Sour Dog Form' built with CSS or Tailwind."
+  },
+  {
+    "id": "x-selfish-dragon-form",
+    "name": "Selfish Dragon Form",
+    "category": "Component",
+    "tags": [
+      "css",
+      "form",
+      "glow",
+      "input",
+      "neon"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Spacious74/selfish-dragon-64",
+    "description": "Open-source form component from Uiverse named 'Selfish Dragon Form' built with CSS or Tailwind."
+  },
+  {
+    "id": "x-brave-moose-form",
+    "name": "Brave Moose Form",
+    "category": "Component",
+    "tags": [
+      "brutalist",
+      "css",
+      "form",
+      "input"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Praashoo7/brave-moose-56",
+    "description": "Open-source form component from Uiverse named 'Brave Moose Form' built with CSS or Tailwind."
+  },
+  {
+    "id": "x-fresh-newt-form",
+    "name": "Fresh Newt Form",
+    "category": "Component",
+    "tags": [
+      "css",
+      "form",
+      "input",
+      "minimal"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/guilhermeyohan/fresh-newt-22",
+    "description": "Open-source form component from Uiverse named 'Fresh Newt Form' built with CSS or Tailwind."
+  },
+  {
+    "id": "x-chatty-ladybug-form",
+    "name": "Chatty Ladybug Form",
+    "category": "Component",
+    "tags": [
+      "css",
+      "form",
+      "input",
+      "morph",
+      "soft"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Javierrocadev/chatty-ladybug-95",
+    "description": "Open-source form component from Uiverse named 'Chatty Ladybug Form' built with CSS or Tailwind."
+  },
+  {
+    "id": "x-cold-lionfish-form",
+    "name": "Cold Lionfish Form",
+    "category": "Component",
+    "tags": [
+      "css",
+      "dark",
+      "form",
+      "input",
+      "neon"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/satyamchaudharydev/cold-lionfish-49",
+    "description": "Open-source form component from Uiverse named 'Cold Lionfish Form' built with CSS or Tailwind."
+  },
+  {
+    "id": "x-angry-shrimp-form",
+    "name": "Angry Shrimp Form",
+    "category": "Component",
+    "tags": [
+      "css",
+      "form",
+      "gradient",
+      "input",
+      "metallic"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/zanina-yassine/angry-shrimp-34",
+    "description": "Open-source form component from Uiverse named 'Angry Shrimp Form' built with CSS or Tailwind."
+  },
+  {
+    "id": "x-bitter-eagle-card",
+    "name": "Bitter Eagle Card",
+    "category": "Component",
+    "tags": [
+      "card",
+      "css",
+      "glass",
+      "hover-effect",
+      "minimal"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/vinodjangid07/bitter-eagle-34",
+    "description": "Open-source card component from Uiverse called 'Bitter Eagle Card' built with CSS or Tailwind."
+  },
+  {
+    "id": "x-empty-wolverine-card",
+    "name": "Empty Wolverine Card",
+    "category": "Component",
+    "tags": [
+      "card",
+      "css",
+      "gradient",
+      "hover-effect",
+      "soft"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Cybercom682/empty-wolverine-58",
+    "description": "Open-source card component from Uiverse called 'Empty Wolverine Card' built with CSS or Tailwind."
+  },
+  {
+    "id": "x-ancient-starfish-card",
+    "name": "Ancient Starfish Card",
+    "category": "Component",
+    "tags": [
+      "brutalist",
+      "card",
+      "css",
+      "hover-effect"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/gharsh11032000/ancient-starfish-68",
+    "description": "Open-source card component from Uiverse called 'Ancient Starfish Card' built with CSS or Tailwind."
+  },
+  {
+    "id": "x-mean-dolphin-card",
+    "name": "Mean Dolphin Card",
+    "category": "Component",
+    "tags": [
+      "card",
+      "css",
+      "glow",
+      "hover-effect",
+      "neon"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/KSAplay/mean-dolphin-87",
+    "description": "Open-source card component from Uiverse called 'Mean Dolphin Card' built with CSS or Tailwind."
+  },
+  {
+    "id": "x-mean-vampirebat-card",
+    "name": "Mean Vampirebat Card",
+    "category": "Component",
+    "tags": [
+      "card",
+      "css",
+      "hover-effect",
+      "minimal"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Yaya12085/mean-vampirebat-50",
+    "description": "Open-source card component from Uiverse called 'Mean Vampirebat Card' built with CSS or Tailwind."
+  },
+  {
+    "id": "x-warm-hound-card",
+    "name": "Warm Hound Card",
+    "category": "Component",
+    "tags": [
+      "card",
+      "css",
+      "dark",
+      "gradient",
+      "hover-effect"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Spacious74/warm-hound-89",
+    "description": "Open-source card component from Uiverse called 'Warm Hound Card' built with CSS or Tailwind."
+  },
+  {
+    "id": "x-dangerous-warthog-card",
+    "name": "Dangerous Warthog Card",
+    "category": "Component",
+    "tags": [
+      "card",
+      "css",
+      "holo",
+      "hover-effect",
+      "metallic"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/SteveBloX/dangerous-warthog-85",
+    "description": "Open-source card component from Uiverse called 'Dangerous Warthog Card' built with CSS or Tailwind."
+  },
+  {
+    "id": "x-spotty-squid-card",
+    "name": "Spotty Squid Card",
+    "category": "Component",
+    "tags": [
+      "card",
+      "css",
+      "hover-effect",
+      "morph"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Kemboi-Dun/spotty-squid-30",
+    "description": "Open-source card component from Uiverse called 'Spotty Squid Card' built with CSS or Tailwind."
+  },
+  {
+    "id": "x-witty-squid-card",
+    "name": "Witty Squid Card",
+    "category": "Component",
+    "tags": [
+      "card",
+      "css",
+      "hover-effect",
+      "retro"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/chase2k25/witty-squid-83",
+    "description": "Open-source card component from Uiverse called 'Witty Squid Card' built with CSS or Tailwind."
+  },
+  {
+    "id": "x-spicy-starfish-checkbox",
+    "name": "Spicy Starfish Checkbox",
+    "category": "Component",
+    "tags": [
+      "click-effect",
+      "css",
+      "glow",
+      "neon",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/PriyanshuGupta28/spicy-starfish-71",
+    "description": "Open-source checkbox component from Uiverse named 'Spicy Starfish Checkbox' with custom animated state."
+  },
+  {
+    "id": "x-bright-rat-checkbox",
+    "name": "Bright Rat Checkbox",
+    "category": "Component",
+    "tags": [
+      "click-effect",
+      "css",
+      "gradient",
+      "soft",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/shreyasm-dev/bright-rat-5",
+    "description": "Open-source checkbox component from Uiverse named 'Bright Rat Checkbox' with custom animated state."
+  },
+  {
+    "id": "x-dry-robin-checkbox",
+    "name": "Dry Robin Checkbox",
+    "category": "Component",
+    "tags": [
+      "click-effect",
+      "css",
+      "minimal",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/catraco/dry-robin-61",
+    "description": "Open-source checkbox component from Uiverse named 'Dry Robin Checkbox' with custom animated state."
+  },
+  {
+    "id": "x-big-deer-checkbox",
+    "name": "Big Deer Checkbox",
+    "category": "Component",
+    "tags": [
+      "brutalist",
+      "click-effect",
+      "css",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Shoh2008/big-deer-80",
+    "description": "Open-source checkbox component from Uiverse named 'Big Deer Checkbox' with custom animated state."
+  },
+  {
+    "id": "x-mighty-warthog-checkbox",
+    "name": "Mighty Warthog Checkbox",
+    "category": "Component",
+    "tags": [
+      "click-effect",
+      "css",
+      "glass",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Galahhad/mighty-warthog-42",
+    "description": "Open-source checkbox component from Uiverse named 'Mighty Warthog Checkbox' with custom animated state."
+  },
+  {
+    "id": "x-ugly-dog-checkbox",
+    "name": "Ugly Dog Checkbox",
+    "category": "Component",
+    "tags": [
+      "click-effect",
+      "css",
+      "metallic",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/AbanoubMagdy1/ugly-dog-26",
+    "description": "Open-source checkbox component from Uiverse named 'Ugly Dog Checkbox' with custom animated state."
+  },
+  {
+    "id": "x-grumpy-panda-checkbox",
+    "name": "Grumpy Panda Checkbox",
+    "category": "Component",
+    "tags": [
+      "click-effect",
+      "css",
+      "morph",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Dev-MdTuhin/grumpy-panda-46",
+    "description": "Open-source checkbox component from Uiverse named 'Grumpy Panda Checkbox' with custom animated state."
+  },
+  {
+    "id": "x-strange-frog-checkbox",
+    "name": "Strange Frog Checkbox",
+    "category": "Component",
+    "tags": [
+      "click-effect",
+      "css",
+      "gradient",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/mobinkakei/strange-frog-14",
+    "description": "Open-source checkbox component from Uiverse named 'Strange Frog Checkbox' with custom animated state."
+  },
+  {
+    "id": "x-sweet-ape-checkbox",
+    "name": "Sweet Ape Checkbox",
+    "category": "Component",
+    "tags": [
+      "click-effect",
+      "css",
+      "soft",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Galahhad/sweet-ape-100",
+    "description": "Open-source checkbox component from Uiverse named 'Sweet Ape Checkbox' with custom animated state."
+  },
+  {
+    "id": "x-chatty-zebra-loader",
+    "name": "Chatty Zebra Loader",
+    "category": "Component",
+    "tags": [
+      "animation",
+      "css",
+      "gradient",
+      "loader"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/StealthWorm/chatty-zebra-11",
+    "description": "CSS/Tailwind loader animation from Uiverse named 'Chatty Zebra Loader' for loading states."
+  },
+  {
+    "id": "x-orange-monkey-loader",
+    "name": "Orange Monkey Loader",
+    "category": "Component",
+    "tags": [
+      "animation",
+      "css",
+      "loader",
+      "minimal"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/andrew-demchenk0/orange-monkey-2",
+    "description": "CSS/Tailwind loader animation from Uiverse named 'Orange Monkey Loader' for loading states."
+  },
+  {
+    "id": "x-weak-bobcat-loader",
+    "name": "Weak Bobcat Loader",
+    "category": "Component",
+    "tags": [
+      "animation",
+      "css",
+      "glow",
+      "loader",
+      "neon"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/zanina-yassine/weak-bobcat-68",
+    "description": "CSS/Tailwind loader animation from Uiverse named 'Weak Bobcat Loader' for loading states."
+  },
+  {
+    "id": "x-young-goat-loader",
+    "name": "Young Goat Loader",
+    "category": "Component",
+    "tags": [
+      "animation",
+      "css",
+      "loader",
+      "morph"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Nawsome/young-goat-78",
+    "description": "CSS/Tailwind loader animation from Uiverse named 'Young Goat Loader' for loading states."
+  },
+  {
+    "id": "x-lazy-quail-loader",
+    "name": "Lazy Quail Loader",
+    "category": "Component",
+    "tags": [
+      "animation",
+      "css",
+      "loader",
+      "metaball"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/AatreyuShau/lazy-quail-10",
+    "description": "CSS/Tailwind loader animation from Uiverse named 'Lazy Quail Loader' for loading states."
+  },
+  {
+    "id": "x-new-walrus-loader",
+    "name": "New Walrus Loader",
+    "category": "Component",
+    "tags": [
+      "animation",
+      "css",
+      "glass",
+      "loader"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/mrhyddenn/new-walrus-45",
+    "description": "CSS/Tailwind loader animation from Uiverse named 'New Walrus Loader' for loading states."
+  },
+  {
+    "id": "x-light-husky-loader",
+    "name": "Light Husky Loader",
+    "category": "Component",
+    "tags": [
+      "animation",
+      "css",
+      "fluid",
+      "loader"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Nawsome/light-husky-91",
+    "description": "CSS/Tailwind loader animation from Uiverse named 'Light Husky Loader' for loading states."
+  },
+  {
+    "id": "x-ugly-bullfrog-loader",
+    "name": "Ugly Bullfrog Loader",
+    "category": "Component",
+    "tags": [
+      "animation",
+      "css",
+      "loader",
+      "soft"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/jeremyssocial/ugly-bullfrog-62",
+    "description": "CSS/Tailwind loader animation from Uiverse named 'Ugly Bullfrog Loader' for loading states."
+  },
+  {
+    "id": "x-sweet-frog-loader",
+    "name": "Sweet Frog Loader",
+    "category": "Component",
+    "tags": [
+      "animation",
+      "css",
+      "duotone",
+      "loader"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/BlackisPlay/sweet-frog-67",
+    "description": "CSS/Tailwind loader animation from Uiverse named 'Sweet Frog Loader' for loading states."
+  },
+  {
+    "id": "x-pink-deer-loader",
+    "name": "Pink Deer Loader",
+    "category": "Component",
+    "tags": [
+      "animation",
+      "brutalist",
+      "css",
+      "loader"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/mobinkakei/pink-deer-76",
+    "description": "CSS/Tailwind loader animation from Uiverse named 'Pink Deer Loader' for loading states."
+  },
+  {
+    "id": "x-young-horse-radio",
+    "name": "Young Horse Radio",
+    "category": "Component",
+    "tags": [
+      "click-effect",
+      "css",
+      "minimal",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/elijahgummer/young-horse-7",
+    "description": "Custom radio button component from Uiverse named 'Young Horse Radio' with animated state."
+  },
+  {
+    "id": "x-quiet-firefox-radio",
+    "name": "Quiet Firefox Radio",
+    "category": "Component",
+    "tags": [
+      "click-effect",
+      "css",
+      "glass",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/xbeat_5120/quiet-firefox-74",
+    "description": "Custom radio button component from Uiverse named 'Quiet Firefox Radio' with animated state."
+  },
+  {
+    "id": "x-clever-elephant-radio",
+    "name": "Clever Elephant Radio",
+    "category": "Component",
+    "tags": [
+      "click-effect",
+      "css",
+      "neon",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/andrew-demchenk0/clever-elephant-35",
+    "description": "Custom radio button component from Uiverse named 'Clever Elephant Radio' with animated state."
+  },
+  {
+    "id": "x-little-wombat-radio",
+    "name": "Little Wombat Radio",
+    "category": "Component",
+    "tags": [
+      "click-effect",
+      "css",
+      "gradient",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/byllzz/little-wombat-0",
+    "description": "Custom radio button component from Uiverse named 'Little Wombat Radio' with animated state."
+  },
+  {
+    "id": "x-bad-starfish-radio",
+    "name": "Bad Starfish Radio",
+    "category": "Component",
+    "tags": [
+      "click-effect",
+      "css",
+      "soft",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Shoh2008/bad-starfish-74",
+    "description": "Custom radio button component from Uiverse named 'Bad Starfish Radio' with animated state."
+  },
+  {
+    "id": "x-fast-turtle-radio",
+    "name": "Fast Turtle Radio",
+    "category": "Component",
+    "tags": [
+      "click-effect",
+      "css",
+      "metallic",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/nazar-gavrylyk/fast-turtle-85",
+    "description": "Custom radio button component from Uiverse named 'Fast Turtle Radio' with animated state."
+  },
+  {
+    "id": "x-slimy-warthog-radio",
+    "name": "Slimy Warthog Radio",
+    "category": "Component",
+    "tags": [
+      "brutalist",
+      "click-effect",
+      "css",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Pradeepsaranbishnoi/slimy-warthog-37",
+    "description": "Custom radio button component from Uiverse named 'Slimy Warthog Radio' with animated state."
+  },
+  {
+    "id": "x-swift-chipmunk-radio",
+    "name": "Swift Chipmunk Radio",
+    "category": "Component",
+    "tags": [
+      "click-effect",
+      "css",
+      "morph",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/PriyanshuGupta28/swift-chipmunk-76",
+    "description": "Custom radio button component from Uiverse named 'Swift Chipmunk Radio' with animated state."
+  },
+  {
+    "id": "x-quick-panther-radio",
+    "name": "Quick Panther Radio",
+    "category": "Component",
+    "tags": [
+      "click-effect",
+      "css",
+      "glow",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Smit-Prajapati/quick-panther-98",
+    "description": "Custom radio button component from Uiverse named 'Quick Panther Radio' with animated state."
+  },
+  {
+    "id": "x-good-donkey-input",
+    "name": "Good Donkey Input",
+    "category": "Component",
+    "tags": [
+      "css",
+      "hover-effect",
+      "input",
+      "minimal"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/vinodjangid07/good-donkey-28",
+    "description": "CSS/Tailwind input field from Uiverse named 'Good Donkey Input' with animated focus states."
+  },
+  {
+    "id": "x-curly-chipmunk-input",
+    "name": "Curly Chipmunk Input",
+    "category": "Component",
+    "tags": [
+      "css",
+      "gradient",
+      "hover-effect",
+      "input"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/FColombati/curly-chipmunk-73",
+    "description": "CSS/Tailwind input field from Uiverse named 'Curly Chipmunk Input' with animated focus states."
+  },
+  {
+    "id": "x-sour-quail-input",
+    "name": "Sour Quail Input",
+    "category": "Component",
+    "tags": [
+      "css",
+      "glass",
+      "hover-effect",
+      "input"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/EcheverriaJesus/sour-quail-63",
+    "description": "CSS/Tailwind input field from Uiverse named 'Sour Quail Input' with animated focus states."
+  },
+  {
+    "id": "x-hot-cat-input",
+    "name": "Hot Cat Input",
+    "category": "Component",
+    "tags": [
+      "brutalist",
+      "css",
+      "hover-effect",
+      "input"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/adamgiebl/hot-cat-14",
+    "description": "CSS/Tailwind input field from Uiverse named 'Hot Cat Input' with animated focus states."
+  },
+  {
+    "id": "x-sharp-rattlesnake-input",
+    "name": "Sharp Rattlesnake Input",
+    "category": "Component",
+    "tags": [
+      "css",
+      "glow",
+      "hover-effect",
+      "input",
+      "neon"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/ozgeozkaraa01/sharp-rattlesnake-74",
+    "description": "CSS/Tailwind input field from Uiverse named 'Sharp Rattlesnake Input' with animated focus states."
+  },
+  {
+    "id": "x-slippery-snail-input",
+    "name": "Slippery Snail Input",
+    "category": "Component",
+    "tags": [
+      "css",
+      "hover-effect",
+      "input",
+      "soft"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/alexruix/slippery-snail-18",
+    "description": "CSS/Tailwind input field from Uiverse named 'Slippery Snail Input' with animated focus states."
+  },
+  {
+    "id": "x-serious-lionfish-input",
+    "name": "Serious Lionfish Input",
+    "category": "Component",
+    "tags": [
+      "css",
+      "hover-effect",
+      "input",
+      "metallic"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Jaareet/serious-lionfish-75",
+    "description": "CSS/Tailwind input field from Uiverse named 'Serious Lionfish Input' with animated focus states."
+  },
+  {
+    "id": "x-tasty-dingo-input",
+    "name": "Tasty Dingo Input",
+    "category": "Component",
+    "tags": [
+      "css",
+      "hover-effect",
+      "input",
+      "morph"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/satyamchaudharydev/tasty-dingo-5",
+    "description": "CSS/Tailwind input field from Uiverse named 'Tasty Dingo Input' with animated focus states."
+  },
+  {
+    "id": "x-friendly-rabbit-input",
+    "name": "Friendly Rabbit Input",
+    "category": "Component",
+    "tags": [
+      "css",
+      "halftone",
+      "hover-effect",
+      "input"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/pharmacist-sabot/friendly-rabbit-86",
+    "description": "CSS/Tailwind input field from Uiverse named 'Friendly Rabbit Input' with animated focus states."
+  },
+  {
+    "id": "x-morphicon-core",
+    "name": "MorphIcon Core",
+    "category": "Component",
+    "tags": [
+      "animated",
+      "animation",
+      "component-library",
+      "icon",
+      "minimal",
+      "react",
+      "svelte",
+      "svg",
+      "typescript",
+      "vue"
+    ],
+    "code": "",
+    "sourceUrl": "https://github.com/guillermolg00/morphicons",
+    "description": "SVG icon morphing component library for React, Vue, Svelte, React Native, and Astro. Morphs any stroke icon (Lucide, Tabler, Heroicons, Iconoir, Akar, Untitled UI, Hugeicons, shadcn) into any other using closed-form 2D Procrustes with spring physics. 6.5KB core, zero runtime deps."
+  },
+  {
+    "id": "x-morphicon-menu-toggle",
+    "name": "MorphIcon Menu Toggle",
+    "category": "Component",
+    "tags": [
+      "animated",
+      "button",
+      "icon",
+      "minimal",
+      "navigation",
+      "react",
+      "svg"
+    ],
+    "code": "",
+    "sourceUrl": "https://github.com/guillermolg00/morphicons",
+    "description": "Drop-in animated menu/hamburger toggle using MorphIcon. Swap between any two Lucide-style icons (e.g., Menu \u2194 X) with one component, no from/to pairs needed."
+  },
+  {
+    "id": "x-morphicon-plus-to-arrow",
+    "name": "MorphIcon Plus to Arrow",
+    "category": "Component",
+    "tags": [
+      "animated",
+      "animation",
+      "icon",
+      "minimal",
+      "svg"
+    ],
+    "code": "",
+    "sourceUrl": "https://github.com/guillermolg00/morphicons",
+    "description": "Animated plus \u2192 arrow-right morph icon with optimal rotation solved in closed form. Coordinate-aligned frame, smooth interpolation."
+  },
+  {
+    "id": "x-super-gradients",
+    "name": "Super Gradients",
+    "category": "Component",
+    "tags": [
+      "background",
+      "component",
+      "css",
+      "framer",
+      "gradient",
+      "hero",
+      "modern"
+    ],
+    "code": "",
+    "sourceUrl": "https://segmentui.com/",
+    "description": "Framer component featuring advanced multi-stop gradient treatments for hero sections, cards, and backgrounds. Production-ready, CMS-aware."
+  },
+  {
+    "id": "x-fractal-glass",
+    "name": "Fractal Glass",
+    "category": "Component",
+    "tags": [
+      "3d",
+      "background",
+      "card",
+      "glass",
+      "react",
+      "tailwindcss"
+    ],
+    "code": "",
+    "sourceUrl": "https://21st.dev/@hyperiux/components/fractal-glass",
+    "description": "Glassmorphism component with fractal pattern overlays. Layered transparency with shader-like fractal noise backgrounds."
+  },
+  {
+    "id": "x-gradient-text",
+    "name": "Gradient Text",
+    "category": "Component",
+    "tags": [
+      "component",
+      "gradient",
+      "modern",
+      "react",
+      "tailwindcss",
+      "text"
+    ],
+    "code": "",
+    "sourceUrl": "https://21st.dev/@designali-in/components/gradient-text/gradient-text",
+    "description": "Multi-stop gradient text component with smooth color transitions. 699 views."
+  },
+  {
+    "id": "x-marquee",
+    "name": "Marquee",
+    "category": "Component",
+    "tags": [
+      "animation",
+      "marquee",
+      "minimal",
+      "modern",
+      "react",
+      "tailwindcss"
+    ],
+    "code": "",
+    "sourceUrl": "https://21st.dev/@tom_ui/components/marquee",
+    "description": "Infinite horizontal scrolling marquee component. Configurable speed, direction, and pause-on-hover. 666 views."
+  },
+  {
+    "id": "x-hover-preview",
+    "name": "Hover Preview",
+    "category": "Component",
+    "tags": [
+      "card",
+      "hover-effect",
+      "minimal",
+      "modern",
+      "react",
+      "tailwindcss"
+    ],
+    "code": "",
+    "sourceUrl": "https://21st.dev/@minhxthanh/components/hover-preview",
+    "description": "Link hover preview card with image, title, and description revealed on cursor hover. 496 views."
+  },
+  {
+    "id": "x-handwriting-svg",
+    "name": "Handwriting SVG",
+    "category": "Component",
+    "tags": [
+      "animated",
+      "animation",
+      "minimal",
+      "react",
+      "svg"
+    ],
+    "code": "",
+    "sourceUrl": "https://21st.dev/@pulkitxm/components/handwriting-svg",
+    "description": "SVG path animation component that simulates handwriting. Strokes animate along path data. 375 views."
+  },
+  {
+    "id": "x-button",
+    "name": "Button",
+    "category": "Component",
+    "tags": [
+      "button",
+      "css",
+      "minimal",
+      "modern",
+      "tailwind"
+    ],
+    "code": "",
+    "sourceUrl": "https://daisyui.com/components/button/",
+    "description": "daisyUI Button component with multiple variants (primary, secondary, accent, neutral, ghost, link), sizes (xs, sm, md, lg, xl), wide and block modifiers, soft and glass styles. Supports loading states and icons."
+  },
+  {
+    "id": "x-card",
+    "name": "Card",
+    "category": "Component",
+    "tags": [
+      "card",
+      "css",
+      "minimal",
+      "modern",
+      "tailwind"
+    ],
+    "code": "",
+    "sourceUrl": "https://daisyui.com/components/card/",
+    "description": "daisyUI Card component for grouping and displaying content in an easily readable format. Includes card-body, card-title, card-actions, card-image, image-full layout, badges, side layout, and bordered variants."
+  },
+  {
+    "id": "x-kokonutui-installation-guide",
+    "name": "KokonutUI Installation Guide",
+    "category": "Component",
+    "tags": [
+      "docs",
+      "minimal",
+      "react",
+      "shadcn",
+      "tailwind"
+    ],
+    "code": "",
+    "sourceUrl": "https://kokonutui.com/docs",
+    "description": "Installation and setup documentation for KokonutUI: install via shadcn CLI in React or Next.js projects, configure components.json registry, install utilities (cn), and integrate with the shadcn MCP server for Claude Code/Cursor/VS Code/Codex."
+  },
+  {
+    "id": "x-css-loaders-collection",
+    "name": "CSS Loaders Collection",
+    "category": "Component",
+    "tags": [
+      "animated",
+      "css",
+      "loader",
+      "minimal"
+    ],
+    "code": "",
+    "sourceUrl": "https://css-loaders.com/",
+    "description": "The biggest collection of loading animations: 600+ CSS-only loaders made using a single element. Includes a 'Zig-Zag' themed set; click any loader to copy its CSS."
+  },
+  {
+    "id": "x-navbar-gallery",
+    "name": "Navbar Gallery",
+    "category": "Component",
+    "tags": [
+      "css",
+      "gallery",
+      "html",
+      "minimal",
+      "modern"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.navbar.gallery/",
+    "description": "Navbar Gallery is a curated navigation-focused design inspiration website featuring hundreds of real-world navbar examples across categories: Static, Dropdown, Mega Menu, Side Bar, Progress Bar, Search Bar, Announcement, Full Screen, and Tabs."
+  },
+  {
+    "id": "x-cursor-lab",
+    "name": "Cursor Lab",
+    "category": "Component",
+    "tags": [
+      "editor",
+      "javascript",
+      "minimal",
+      "modern",
+      "svg"
+    ],
+    "code": "",
+    "sourceUrl": "https://cursor-lab-ui.vercel.app/",
+    "description": "Cursor Lab \u2014 SVG-based custom cursor designer with live preview."
+  },
+  {
+    "id": "x-gradlab",
+    "name": "Gradlab",
+    "category": "Component",
+    "tags": [
+      "background",
+      "css",
+      "minimal",
+      "modern",
+      "web"
+    ],
+    "code": "",
+    "sourceUrl": "http://www.gradlab.app/",
+    "description": "Gradlab \u2014 gradient background generator and lab for visual experiments."
+  },
+  {
+    "id": "x-word-focus-scroll",
+    "name": "Word Focus Scroll",
+    "category": "Component",
+    "tags": [
+      "minimal",
+      "modern",
+      "react",
+      "tailwind",
+      "typography"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.great-ui.com/components/word-focus-scroll",
+    "description": "Scroll-driven typography that brings a word into focus as you scroll through a passage."
+  },
+  {
+    "id": "x-macbook-mockup",
+    "name": "Macbook Mockup",
+    "category": "Component",
+    "tags": [
+      "minimal",
+      "mockup",
+      "modern",
+      "react",
+      "tailwind"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.great-ui.com/components/macbook-mockup",
+    "description": "A realistic Macbook device mockup component for React + Tailwind."
+  },
+  {
+    "id": "x-loading-state",
+    "name": "Loading State",
+    "category": "Component",
+    "tags": [
+      "animated",
+      "css",
+      "javascript",
+      "loader",
+      "minimal"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.beautifului.dev/",
+    "description": "Pixel-grid loading state with shimmer animation and elapsed time counter. Includes Drive, Dots, Orbit, and Surfer variants."
+  },
+  {
+    "id": "x-streaming-text",
+    "name": "Streaming Text",
+    "category": "Component",
+    "tags": [
+      "css",
+      "javascript",
+      "minimal",
+      "modern",
+      "typography"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.beautifului.dev/",
+    "description": "Streamed answer primitive with inline sources, action buttons, and follow-up suggestions \u2014 designed for AI chat interfaces."
+  },
+  {
+    "id": "x-approval-card",
+    "name": "Approval Card",
+    "category": "Component",
+    "tags": [
+      "card",
+      "css",
+      "javascript",
+      "minimal",
+      "modern"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.beautifului.dev/",
+    "description": "Human-in-the-loop approval card for AI agents: questions the agent asks before acting, with Skip/Continue controls."
+  },
+  {
+    "id": "x-prompt-bar",
+    "name": "Prompt Bar",
+    "category": "Component",
+    "tags": [
+      "css",
+      "input",
+      "javascript",
+      "minimal",
+      "modern"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.beautifului.dev/",
+    "description": "AI composer prompt bar with @ sources, / commands, model picker, and dictation support."
+  },
+  {
+    "id": "x-recommendation-card",
+    "name": "Recommendation Card",
+    "category": "Component",
+    "tags": [
+      "card",
+      "css",
+      "javascript",
+      "minimal",
+      "modern"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.beautifului.dev/",
+    "description": "Agent suggestion card with a confidence meter, alternative actions, and Accept/Improve controls."
+  },
+  {
+    "id": "x-context-cards",
+    "name": "Context Cards",
+    "category": "Component",
+    "tags": [
+      "card",
+      "css",
+      "javascript",
+      "minimal",
+      "modern"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.beautifului.dev/",
+    "description": "Retrieved knowledge chunks with their sources, formatted as a feed for AI reasoning context."
+  },
+  {
+    "id": "x-text-flipping-board",
+    "name": "Text Flipping Board",
+    "category": "Component",
+    "tags": [
+      "animated",
+      "framer-motion",
+      "react",
+      "retro",
+      "tailwind",
+      "typography"
+    ],
+    "code": "",
+    "sourceUrl": "https://ui.aceternity.com/components/text-flipping-board",
+    "description": "A split-flap display component that animates characters with flip transitions, inspired by Vestaboard."
+  },
+  {
+    "id": "x-tooltip-card",
+    "name": "Tooltip Card",
+    "category": "Component",
+    "tags": [
+      "minimal",
+      "modern",
+      "react",
+      "tailwind",
+      "tooltip"
+    ],
+    "code": "",
+    "sourceUrl": "https://ui.aceternity.com/components/tooltip-card",
+    "description": "A tooltip card container that follows the mouse pointer when hovered."
+  },
+  {
+    "id": "x-terminal",
+    "name": "Terminal",
+    "category": "Component",
+    "tags": [
+      "minimal",
+      "mockup",
+      "modern",
+      "react",
+      "tailwind"
+    ],
+    "code": "",
+    "sourceUrl": "https://ui.aceternity.com/components/terminal",
+    "description": "A macOS-style terminal component with bash syntax highlighting and typewriter effect."
+  },
+  {
+    "id": "x-modal",
+    "name": "Modal",
+    "category": "Component",
+    "tags": [
+      "css",
+      "html",
+      "minimal",
+      "modal",
+      "modern",
+      "tailwind"
+    ],
+    "code": "",
+    "sourceUrl": "https://daisyui.com/components/modal/",
+    "description": "daisyUI Modal component with 4 usage methods: HTML dialog element (recommended), HTML popover, hidden checkbox (legacy), and anchor links (legacy). Supports placements (top/middle/bottom/start/end), responsive variants, custom widths, and an optional modal-backdrop."
   }
 ]
