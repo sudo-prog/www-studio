@@ -1,5 +1,5 @@
 {
-  "version": "1.3.5",
+  "version": "1.4.6",
   "created": "2026-09-02",
   "source_count": 113,
   "categories": {
@@ -1408,6 +1408,144 @@
       "description": "Olivier Larose tutorial morphing SVG numeric characters via 30 circles animated along each number's SVG path, with feGaussianBlur + feColorMatrix gooey filter applied. Inspired by codepen.io/supah. Built in Next.js + Framer Motion + SASS. Source: github.com/olivierlarose/gooey-morph.",
       "extraction_status": "verified",
       "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Neon Border",
+      "source_url": "https://www.originkit.dev/components/neon-border",
+      "registry_url": "https://www.originkit.dev/",
+      "category": "effect",
+      "tags": [
+        "border",
+        "css",
+        "glow",
+        "neon"
+      ],
+      "description": "Neon-glow border effect from Originkit.",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Copy Button",
+      "source_url": "https://motion.dev/examples/vue-copy-button",
+      "registry_url": "https://motion.dev/examples",
+      "category": "button",
+      "tags": [
+        "button",
+        "framer-motion",
+        "minimal",
+        "vue"
+      ],
+      "description": "Vue copy-button animation example using Motion.",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Matrix Rain",
+      "source_url": "https://componentry.dev/docs",
+      "registry_url": "https://componentry.dev/",
+      "category": "effect",
+      "tags": [
+        "background",
+        "canvas",
+        "matrix",
+        "react",
+        "retro"
+      ],
+      "description": "Matrix-rain animated background from Componentry React UI library.",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "Dither Gradient",
+      "source_url": "https://componentry.dev/docs",
+      "registry_url": "https://componentry.dev/",
+      "category": "effect",
+      "tags": [
+        "background",
+        "dither",
+        "gradient",
+        "react",
+        "shader"
+      ],
+      "description": "Dither-gradient background effect from Componentry.",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "MorphIcon React",
+      "source_url": "https://github.com/guillermolg00/morphicons",
+      "registry_url": "https://www.morphicons.com/",
+      "category": "component",
+      "tags": [
+        "icon",
+        "minimal",
+        "procrustes",
+        "react",
+        "svg"
+      ],
+      "description": "Morph any SVG icon to any other via 2D Procrustes; React/Vue/Svelte/Astro support.",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "MorphIcon Vue",
+      "source_url": "https://github.com/guillermolg00/morphicons",
+      "registry_url": "https://www.morphicons.com/",
+      "category": "component",
+      "tags": [
+        "icon",
+        "minimal",
+        "svg",
+        "vue"
+      ],
+      "description": "Vue driver for MorphIcon — morph Lucide/Tabler/Heroicons with spring physics.",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "MorphIcon Svelte",
+      "source_url": "https://github.com/guillermolg00/morphicons",
+      "registry_url": "https://www.morphicons.com/",
+      "category": "component",
+      "tags": [
+        "icon",
+        "minimal",
+        "svelte",
+        "svg"
+      ],
+      "description": "Svelte driver for MorphIcon — zero-dependency icon morphing.",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "MorphIcon React Native",
+      "source_url": "https://github.com/guillermolg00/morphicons",
+      "registry_url": "https://www.morphicons.com/",
+      "category": "component",
+      "tags": [
+        "icon",
+        "minimal",
+        "react-native",
+        "svg"
+      ],
+      "description": "React Native driver for MorphIcon — 6.5KB core, zero runtime deps.",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
+    },
+    {
+      "name": "CSS Loaders",
+      "source_url": "https://css-loaders.com/",
+      "registry_url": "https://css-loaders.com/",
+      "category": "loader",
+      "tags": [
+        "animated",
+        "css",
+        "loader",
+        "minimal"
+      ],
+      "description": "Collection of pure-CSS loading spinners and skeleton loaders.",
+      "extraction_status": "verified",
+      "extracted_at": "2026-09-04"
     }
   ],
   "tag_taxonomy_version": "TAG-TAX-5-zero-orphan",
@@ -1418,7 +1556,7 @@
   ],
   "extracted_at": "2026-09-03",
   "notes": "v1.2.1: canonical tags (neumorphism, liquid-glass), every entry has ≥1 type tag from 3-axis taxonomy. Search bar now supports e.g. tailwind+button, gsap+menu, neomorphism+card, liquid-glass+modal.",
-  "last_extraction_batch": "/tmp/extract-batch-g3.json",
-  "last_extraction_at": "2026-09-04T01:52:06.717876",
-  "total_components": 115
+  "last_extraction_batch": "/tmp/extract-batch-g1.json",
+  "last_extraction_at": "2026-09-04T01:57:18.271371",
+  "total_components": 124
 }
