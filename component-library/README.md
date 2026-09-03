@@ -1,8 +1,25 @@
 # WWW Studio Component Library
 
-**Version 1.1.0** | Updated: 2026-09-03
+**Version 1.2.4** | Updated: 2026-09-03
 
 **Total components: 113** from 97 bookmarked sources (100% coverage of the original 97-URL request list, including 4 URLs that resolve to existing domain-level entries)
+
+**Search-bar ready:** every component is tagged along three axes (technology · visual-style · component-type). Examples that work today in the search bar:
+
+| Query | Results |
+|---|---|
+| `tailwind` | 5 |
+| `gsap` | 1 |
+| `framer-motion` | 6 |
+| `three.js` + `shader` | 2 |
+| `react` + `marketplace` | 10 |
+| `loader` | 3 |
+| `neumorphism` | 3 (legacy spelling kept for backwards-compat; canonical tag is `neumorphism`) |
+| `liquid-glass` | 1 |
+
+See `taxonomy` field for the full canonical tag list.
+
+**Auto-extraction (in progress):** an hourly cronjob (`bf6f6f3a899b`) deep-crawls the multi-component registries (21st.dev, Uiverse, Iconshock, Navbar.gallery, Shadertoy, Tympanus, BeautifulUI, Originkit, Anime.js, etc.) and adds one entry per real component, not one per source page. A 30-min watchdog (`4e0851312f0b`) verifies batches (JSON parse + URL HEAD check + dedup by source_url+name) and merges valid ones into `components.json` via `git commit && git push`. Vercel auto-deploys.
 
 Components extracted from curated design and frontend collections, individually tagged and grouped by category for easy search and reuse. Every bookmarked URL has at least a domain-level entry; 94/97 have exact source_url matches.
 
