@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.4",
   "created": "2026-09-02",
   "source_count": 113,
   "categories": {
@@ -21,10 +21,12 @@
       "source_url": "https://neumorphism.io/",
       "category": "background",
       "tags": [
-        "neumorphism",
         "blur",
+        "css",
+        "flat",
+        "generator",
         "morph",
-        "flat"
+        "neumorphism"
       ],
       "description": "Neumorphism CSS shadow generator"
     },
@@ -33,7 +35,9 @@
       "source_url": "https://codepen.io/creme/pen/gOYrvxM",
       "category": "component",
       "tags": [
-        "loop"
+        "loop",
+        "snippet",
+        "support"
       ],
       "description": "magnifying image view with zoom 🔍 +touch support"
     },
@@ -42,10 +46,14 @@
       "source_url": "https://shaders.paper.design/halftone-dots",
       "category": "shader",
       "tags": [
+        "art-tool",
+        "click",
         "gooey",
         "halftone",
         "ink",
-        "click"
+        "paper-engine",
+        "shader",
+        "snippet"
       ],
       "description": "Halftone Dots Filter • Paper"
     },
@@ -53,7 +61,10 @@
       "name": "Border Beam – Animated border beam component for React",
       "source_url": "https://beam.jakubantalik.com/pulse",
       "category": "card",
-      "tags": [],
+      "tags": [
+        "border",
+        "react"
+      ],
       "description": "Border Beam – Animated border beam component for React"
     },
     {
@@ -61,7 +72,10 @@
       "source_url": "https://www.z1han.com/shader/siriai",
       "category": "shader",
       "tags": [
-        "ink"
+        "art-tool",
+        "ink",
+        "shader",
+        "snippet"
       ],
       "description": "Zihan — Zihan Huang, Design Engineer"
     },
@@ -70,8 +84,10 @@
       "source_url": "https://originkit.dev/components/juiceeffect",
       "category": "card",
       "tags": [
+        "art-tool",
         "halo",
-        "ink"
+        "ink",
+        "template"
       ],
       "description": "Originkit — Free Animated component library for modern websites"
     },
@@ -79,7 +95,10 @@
       "name": "Print Machine",
       "source_url": "https://billstate.framer.ai/",
       "category": "component",
-      "tags": [],
+      "tags": [
+        "gallery",
+        "inspiration"
+      ],
       "description": "Print Machine"
     },
     {
@@ -87,7 +106,10 @@
       "source_url": "https://21st.dev/community/components/s/3d",
       "category": "3d",
       "tags": [
-        "3d"
+        "3d",
+        "marketplace",
+        "react",
+        "tailwind"
       ],
       "description": "116+ 3D Components for React & Tailwind | 21st"
     },
@@ -95,14 +117,22 @@
       "name": "Poimandres documentation",
       "source_url": "https://docs.pmnd.rs/",
       "category": "3d",
-      "tags": [],
+      "tags": [
+        "gallery",
+        "inspiration"
+      ],
       "description": "Poimandres documentation"
     },
     {
       "name": "The Three Graces",
       "source_url": "https://pmndrs.github.io/examples/the-three-graces/",
       "category": "component",
-      "tags": [],
+      "tags": [
+        "3d",
+        "animation",
+        "snippet",
+        "three.js"
+      ],
       "description": "The Three Graces — pmndrs examples"
     },
     {
@@ -110,7 +140,10 @@
       "source_url": "https://boytchev.github.io/disfigure/examples/entangled-space/",
       "category": "component",
       "tags": [
-        "isometric"
+        "3d",
+        "animation",
+        "isometric",
+        "snippet"
       ],
       "description": ""
     },
@@ -119,6 +152,7 @@
       "source_url": "https://tympanus.net/Tutorials/ShoppingCartAnimation/",
       "category": "animation",
       "tags": [
+        "animation",
         "drag"
       ],
       "description": "Shopping Cart Animation | Codrops"
@@ -127,7 +161,11 @@
       "name": "React Component Registry: Components, Blocks & Design Systems",
       "source_url": "https://aicanvas.me/",
       "category": "component",
-      "tags": [],
+      "tags": [
+        "ai-tool",
+        "marketplace",
+        "react"
+      ],
       "description": "React Component Registry: Components, Blocks & Design Systems | AI Canvas"
     },
     {
@@ -135,8 +173,10 @@
       "source_url": "https://tympanus.net/Tutorials/CSS3ButtonSwitches/",
       "category": "input",
       "tags": [
-        "ink",
-        "drag"
+        "animation",
+        "css",
+        "drag",
+        "ink"
       ],
       "description": "Button Switches with Checkboxes and CSS3 Fanciness"
     },
@@ -145,7 +185,10 @@
       "source_url": "https://daisyui.com/components/fab/",
       "category": "button",
       "tags": [
-        "click"
+        "ai-tool",
+        "click",
+        "library",
+        "tailwind"
       ],
       "description": "Tailwind FAB / Speed Dial Component – daisyUI"
     },
@@ -154,7 +197,8 @@
       "source_url": "https://uiverse.io/",
       "category": "background",
       "tags": [
-        "ink"
+        "ink",
+        "snippet"
       ],
       "description": "Uiverse | The Largest Library of Open-Source UI elements"
     },
@@ -163,8 +207,10 @@
       "source_url": "https://codepen.io/myacode/pen/PoqQQNM",
       "category": "effect",
       "tags": [
+        "loop",
         "morph",
-        "loop"
+        "morphic",
+        "snippet"
       ],
       "description": "Neumorphic Elements"
     },
@@ -172,21 +218,33 @@
       "name": "NameThatUI",
       "source_url": "https://namethatui.com/",
       "category": "input",
-      "tags": [],
+      "tags": [
+        "gallery",
+        "inspiration"
+      ],
       "description": "NameThatUI — What Is This UI Element Called?"
     },
     {
       "name": "KokonutUI - Free Open Source UI Components for React and Tailwind CSS",
       "source_url": "https://kokonutui.com/",
       "category": "component",
-      "tags": [],
+      "tags": [
+        "ai-tool",
+        "marketplace",
+        "react",
+        "snippet",
+        "tailwind"
+      ],
       "description": "KokonutUI - Free Open Source UI Components for React and Tailwind CSS"
     },
     {
       "name": "Examples: React, JavaScript, and Vue animation snippets",
       "source_url": "https://motion.dev/examples",
       "category": "animation",
-      "tags": [],
+      "tags": [
+        "animation",
+        "react"
+      ],
       "description": "Examples: React, JavaScript, and Vue animation snippets | Motion"
     },
     {
@@ -194,8 +252,10 @@
       "source_url": "https://kinetics.colorion.co/#library",
       "category": "animation",
       "tags": [
-        "physics",
-        "drag"
+        "color-palette",
+        "drag",
+        "motion",
+        "physics"
       ],
       "description": "Kinetics — Spring-physics motion for web interfaces"
     },
@@ -205,7 +265,8 @@
       "category": "input",
       "tags": [
         "physics",
-        "scroll"
+        "scroll",
+        "soft"
       ],
       "description": "Jelly UI — Soft Web Components"
     },
@@ -213,21 +274,34 @@
       "name": "Jitter",
       "source_url": "https://jitter.video/",
       "category": "animation",
-      "tags": [],
+      "tags": [
+        "animation",
+        "motion",
+        "video-player"
+      ],
       "description": "Jitter · A fast and simple motion design tool on the web"
     },
     {
       "name": "Shaders",
       "source_url": "https://shaders.com/",
       "category": "shader",
-      "tags": [],
+      "tags": [
+        "art-tool",
+        "form",
+        "shader",
+        "snippet"
+      ],
       "description": "Shaders — The design platform for web shaders"
     },
     {
       "name": "Componentry",
       "source_url": "https://componentry.dev/",
       "category": "animation",
-      "tags": [],
+      "tags": [
+        "library",
+        "marketplace",
+        "react"
+      ],
       "description": "Componentry — Beautiful Animated UI Components for React"
     },
     {
@@ -235,6 +309,8 @@
       "source_url": "https://ui.aceternity.com/components",
       "category": "animation",
       "tags": [
+        "marketplace",
+        "react",
         "tilt"
       ],
       "description": "Free React & Next.js UI Components | Aceternity UI"
@@ -244,9 +320,10 @@
       "source_url": "https://tympanus.net/Tutorials/GooeySearch/",
       "category": "effect",
       "tags": [
+        "animation",
+        "drag",
         "gooey",
-        "ink",
-        "drag"
+        "ink"
       ],
       "description": "Gooey Search Bar | Codrops"
     },
@@ -254,21 +331,29 @@
       "name": "Interactive dock-like navigation",
       "source_url": "https://dock-nav.framer.website/",
       "category": "nav",
-      "tags": [],
+      "tags": [
+        "navbar"
+      ],
       "description": "Interactive dock-like navigation"
     },
     {
       "name": "My Framer Site",
       "source_url": "https://peepin.framer.website/",
       "category": "nav",
-      "tags": [],
+      "tags": [
+        "framer-motion",
+        "snippet"
+      ],
       "description": "My Framer Site"
     },
     {
       "name": "Free Resources, Components & UI Kits for Framer & Figma",
       "source_url": "https://segmentui.com/",
       "category": "component",
-      "tags": [],
+      "tags": [
+        "figma-plugin",
+        "framer-motion"
+      ],
       "description": "Free Resources, Components & UI Kits for Framer & Figma"
     },
     {
@@ -277,6 +362,7 @@
       "category": "effect",
       "tags": [
         "gooey",
+        "menu",
         "morph"
       ],
       "description": "Creative Gooey Effects: Menu"
@@ -287,6 +373,7 @@
       "category": "effect",
       "tags": [
         "gooey",
+        "loader",
         "morph"
       ],
       "description": "Creative Gooey Effects: Loader"
@@ -295,14 +382,21 @@
       "name": "How to Make an Awwwards Navigation Menu using Nextjs and Framer Motion",
       "source_url": "https://blog.olivierlarose.com/tutorials/sliding-stairs-menu",
       "category": "animation",
-      "tags": [],
+      "tags": [
+        "framer-motion",
+        "menu",
+        "navbar"
+      ],
       "description": "How to Make an Awwwards Navigation Menu using Nextjs and Framer Motion"
     },
     {
       "name": "How to Make Creative Animated Buttons in React",
       "source_url": "https://blog.olivierlarose.com/tutorials/creative-buttons",
       "category": "button",
-      "tags": [],
+      "tags": [
+        "button",
+        "react"
+      ],
       "description": "How to Make Creative Animated Buttons in React"
     },
     {
@@ -310,7 +404,9 @@
       "source_url": "https://blog.olivierlarose.com/tutorials/gradient-mouse-move",
       "category": "animation",
       "tags": [
-        "gradient"
+        "framer-motion",
+        "gradient",
+        "gradient-generator"
       ],
       "description": "How to Animate a Linear Gradient using Framer Motion and Next.js"
     },
@@ -320,7 +416,9 @@
       "category": "effect",
       "tags": [
         "gooey",
-        "morph"
+        "morph",
+        "svg",
+        "text"
       ],
       "description": "How to Make a Text Gooey Morph Effect Using SVG Filters"
     },
@@ -328,7 +426,10 @@
       "name": "Build a Sticky Cursor Effect with Next.js, Framer Motion and Trigonometry",
       "source_url": "https://blog.olivierlarose.com/tutorials/sticky-cursor",
       "category": "animation",
-      "tags": [],
+      "tags": [
+        "cursor",
+        "framer-motion"
+      ],
       "description": "Build a Sticky Cursor Effect with Next.js, Framer Motion and Trigonometry"
     },
     {
@@ -338,7 +439,8 @@
       "tags": [
         "gradient",
         "hover",
-        "reveal"
+        "reveal",
+        "snippet"
       ],
       "description": "FreeFrontend\n"
     },
@@ -347,8 +449,11 @@
       "source_url": "https://aicanvas.me/components/glass-ai-compose",
       "category": "input",
       "tags": [
+        "ai-tool",
         "glass",
-        "morph"
+        "input",
+        "morph",
+        "react"
       ],
       "description": "Glass AI Composer - Animated Input React Component | AI Canvas"
     },
@@ -357,8 +462,10 @@
       "source_url": "https://annnimate.com/animations",
       "category": "animation",
       "tags": [
-        "scroll",
-        "reveal"
+        "animation",
+        "react",
+        "reveal",
+        "scroll"
       ],
       "description": "GSAP Animation Component Library for React & Vue | Annnimate"
     },
@@ -367,8 +474,9 @@
       "source_url": "https://canvasui.dev/docs/components/magnify",
       "category": "effect",
       "tags": [
-        "liquid",
-        "click"
+        "click",
+        "liquid-glass",
+        "marketplace"
       ],
       "description": "Magnify | Canvas UI"
     },
@@ -377,7 +485,9 @@
       "source_url": "https://designminis.com/",
       "category": "3d",
       "tags": [
-        "3d"
+        "3d",
+        "marker",
+        "template"
       ],
       "description": "Design Minis: the design tools you keep bookmarking"
     },
@@ -385,7 +495,9 @@
       "name": "Autocomplete - Appica UI",
       "source_url": "https://appica.dev/ui/components/react/autocomplete",
       "category": "input",
-      "tags": [],
+      "tags": [
+        "marketplace"
+      ],
       "description": "Autocomplete - Appica UI"
     },
     {
@@ -393,6 +505,7 @@
       "source_url": "https://orbs.jakubantalik.com/",
       "category": "background",
       "tags": [
+        "art-tool",
         "ink"
       ],
       "description": "Thinking orbs — Animated thinking orb component"
@@ -402,12 +515,13 @@
       "source_url": "https://aethercss.lovable.app/",
       "category": "card",
       "tags": [
-        "glass",
-        "neumorphism",
-        "liquid",
-        "morph",
+        "click",
+        "css",
         "drag",
-        "click"
+        "glass",
+        "liquid-glass",
+        "morph",
+        "neumorphism"
       ],
       "description": "Aether CSS — Liquid Glass & Glassmorphism Generator"
     },
@@ -416,9 +530,10 @@
       "source_url": "https://morphicons.com/",
       "category": "nav",
       "tags": [
+        "click",
         "morph",
         "physics",
-        "click"
+        "react"
       ],
       "description": "morphicons — SVG icon morphing library for React, Vue & Svelte"
     },
@@ -427,7 +542,8 @@
       "source_url": "https://great-ui.com/components",
       "category": "animation",
       "tags": [
-        "hover"
+        "hover",
+        "marketplace"
       ],
       "description": "Components | Great UI"
     },
@@ -435,28 +551,41 @@
       "name": "Deployment Paused",
       "source_url": "https://hexui.sh/blocks/sidebar",
       "category": "nav",
-      "tags": [],
+      "tags": [
+        "gallery",
+        "inspiration"
+      ],
       "description": "Deployment Paused"
     },
     {
       "name": "DesEngs: Resources for Design Engineers",
       "source_url": "https://desengs.com/",
       "category": "component",
-      "tags": [],
+      "tags": [
+        "gallery",
+        "inspiration"
+      ],
       "description": "DesEngs: Resources for Design Engineers"
     },
     {
       "name": "React Components, Dashboards & Blocks",
       "source_url": "https://ui.watermelon.sh/home",
       "category": "input",
-      "tags": [],
+      "tags": [
+        "dashboard",
+        "react",
+        "water"
+      ],
       "description": "React Components, Dashboards & Blocks | Watermelon UI"
     },
     {
       "name": "Jhey on CodePen",
       "source_url": "https://codepen.io/jh3y/pens/public",
       "category": "component",
-      "tags": [],
+      "tags": [
+        "codepen",
+        "snippet"
+      ],
       "description": "Jhey on CodePen"
     },
     {
@@ -464,9 +593,10 @@
       "source_url": "https://feralui.dev/",
       "category": "animation",
       "tags": [
+        "drag",
         "gradient",
         "physics",
-        "drag"
+        "react"
       ],
       "description": "FeralUI · playful, physics-driven React elements"
     },
@@ -475,7 +605,8 @@
       "source_url": "https://brainfunctioncollapse.com/projects/gradients",
       "category": "input",
       "tags": [
-        "gradient"
+        "gradient",
+        "gradient-generator"
       ],
       "description": "Let's talk about gradients"
     },
@@ -486,7 +617,8 @@
       "tags": [
         "gooey",
         "halo",
-        "liquid"
+        "liquid-glass",
+        "react"
       ],
       "description": "Liquid Gooey — liquid UI for React"
     },
@@ -495,7 +627,9 @@
       "source_url": "https://beautifului.dev/",
       "category": "card",
       "tags": [
+        "ai-tool",
         "ink",
+        "inspiration",
         "shimmer"
       ],
       "description": "Beautiful UI — Crafted primitives for AI-native interfaces"
@@ -504,7 +638,10 @@
       "name": "Animated React Components",
       "source_url": "https://beui.dev/components/motion",
       "category": "animation",
-      "tags": [],
+      "tags": [
+        "marketplace",
+        "react"
+      ],
       "description": "Animated React Components — Copy-Paste Motion UI · beUI"
     },
     {
@@ -512,7 +649,10 @@
       "source_url": "https://amicro.vercel.app/",
       "category": "animation",
       "tags": [
-        "click"
+        "click",
+        "docs",
+        "react",
+        "transition"
       ],
       "description": "Amicro — Premium React Micro-transitions & Interaction Components"
     },
@@ -520,7 +660,10 @@
       "name": "The Thoughtful List",
       "source_url": "https://thoughtful.charmiekapoor.com/",
       "category": "component",
-      "tags": [],
+      "tags": [
+        "gallery",
+        "inspiration"
+      ],
       "description": "The Thoughtful List"
     },
     {
@@ -528,8 +671,9 @@
       "source_url": "https://html.non.io/ink-bleed/",
       "category": "background",
       "tags": [
-        "ink",
-        "drag"
+        "art-tool",
+        "drag",
+        "ink"
       ],
       "description": "The Cotton Rag Press — ink bleed bench"
     },
@@ -538,9 +682,11 @@
       "source_url": "https://canvasui.dev/docs/components/ink-object",
       "category": "shader",
       "tags": [
-        "ink",
         "3d",
-        "drag"
+        "art-tool",
+        "drag",
+        "ink",
+        "marketplace"
       ],
       "description": "Ink Object | Canvas UI"
     },
@@ -549,7 +695,9 @@
       "source_url": "https://holosticker.dev/",
       "category": "nav",
       "tags": [
-        "drag"
+        "drag",
+        "holo",
+        "svg-tool"
       ],
       "description": "Holosticker"
     },
@@ -557,7 +705,9 @@
       "name": "Receipt Printer",
       "source_url": "https://dqnamo.com/experiments/receipt-printer",
       "category": "animation",
-      "tags": [],
+      "tags": [
+        "component"
+      ],
       "description": "Receipt Printer | dqnamo"
     },
     {
@@ -566,8 +716,10 @@
       "category": "3d",
       "tags": [
         "3d",
-        "hover",
         "click",
+        "hover",
+        "marketplace",
+        "react",
         "tilt"
       ],
       "description": "Folder component — Animated React Component | Rare UI"
@@ -577,9 +729,12 @@
       "source_url": "https://rareui.com/components/proximitysidebar",
       "category": "animation",
       "tags": [
-        "scroll",
+        "click",
         "hover",
-        "click"
+        "marketplace",
+        "react",
+        "scroll",
+        "sidebar"
       ],
       "description": "Proximity Sidebar — Animated React Component | Rare UI"
     },
@@ -588,7 +743,9 @@
       "source_url": "https://rareui.com/components/otpinput",
       "category": "animation",
       "tags": [
-        "drag"
+        "drag",
+        "marketplace",
+        "react"
       ],
       "description": "OTP Input — Animated React Component | Rare UI"
     },
@@ -596,7 +753,9 @@
       "name": "Lab",
       "source_url": "https://anainsomnia.com/forge-dynamics",
       "category": "loader",
-      "tags": [],
+      "tags": [
+        "physics"
+      ],
       "description": "Lab — Forge Dynamics"
     },
     {
@@ -604,10 +763,10 @@
       "source_url": "https://bakai.me/lab",
       "category": "card",
       "tags": [
-        "qr",
-        "warp",
         "drag",
-        "reveal"
+        "qr",
+        "reveal",
+        "warp"
       ],
       "description": "Lab - Bakai Tolondu uulu"
     },
@@ -616,7 +775,9 @@
       "source_url": "https://brik.space/",
       "category": "animation",
       "tags": [
-        "ink"
+        "ai-tool",
+        "ink",
+        "snippet"
       ],
       "description": "Turn Creative Vision into Living Design Tools | Brik AI"
     },
@@ -624,21 +785,33 @@
       "name": "UXSnaps – Actionable UI/UX Breakdowns from Top Apps",
       "source_url": "https://uxsnaps.com/",
       "category": "component",
-      "tags": [],
+      "tags": [
+        "gallery",
+        "inspiration"
+      ],
       "description": "UXSnaps – Actionable UI/UX Breakdowns from Top Apps"
     },
     {
       "name": "Navbar Gallery – Navigation Design Inspiration",
       "source_url": "https://navbar.gallery/",
       "category": "nav",
-      "tags": [],
+      "tags": [
+        "gallery",
+        "navbar"
+      ],
       "description": "Navbar Gallery – Navigation Design Inspiration"
     },
     {
       "name": "Three.js Components, Templates & Interactive Shaders",
       "source_url": "https://threeui.com/browse",
       "category": "shader",
-      "tags": [],
+      "tags": [
+        "art-tool",
+        "shader",
+        "snippet",
+        "template",
+        "three.js"
+      ],
       "description": "Three.js Components, Templates & Interactive Shaders | ThreeUI"
     },
     {
@@ -646,7 +819,11 @@
       "source_url": "https://great-ui.com/",
       "category": "animation",
       "tags": [
-        "scroll"
+        "ai-tool",
+        "react",
+        "scroll",
+        "snippet",
+        "tailwind"
       ],
       "description": "Great UI - Accessible React & Tailwind Components"
     },
@@ -665,7 +842,8 @@
       "source_url": "https://amirmushich.com/lab/orbit-field/",
       "category": "component",
       "tags": [
-        "drag"
+        "drag",
+        "snippet"
       ],
       "description": "Orbit Field — spatial image editor"
     },
@@ -673,7 +851,11 @@
       "name": "CSS Grid Lanes / Masonry Lab",
       "source_url": "https://stella-create.co.jp/tools/css-grid-lanes/",
       "category": "animation",
-      "tags": [],
+      "tags": [
+        "css",
+        "grid",
+        "water"
+      ],
       "description": "CSS Grid Lanes / Masonry Lab | CSSだけのWaterfallレイアウト"
     },
     {
@@ -681,7 +863,9 @@
       "source_url": "https://demos.gsap.com/",
       "category": "animation",
       "tags": [
-        "scroll"
+        "gsap",
+        "scroll",
+        "snippet"
       ],
       "description": "GSAP Demo Hub"
     },
@@ -689,14 +873,21 @@
       "name": "MetalForge",
       "source_url": "https://metalforge.xyz/",
       "category": "shader",
-      "tags": [],
+      "tags": [
+        "art-tool",
+        "shader",
+        "snippet"
+      ],
       "description": "MetalForge — Beautiful Metal shaders for SwiftUI"
     },
     {
       "name": "movin.design",
       "source_url": "https://movin.design/",
       "category": "animation",
-      "tags": [],
+      "tags": [
+        "motion",
+        "snippet"
+      ],
       "description": "movin.design — motion design inspiration"
     },
     {
@@ -704,7 +895,9 @@
       "source_url": "https://gooey-react.netlify.app/examples/rotating-loader/",
       "category": "effect",
       "tags": [
-        "gooey"
+        "gooey",
+        "loader",
+        "react"
       ],
       "description": "Example: rotating loader • The gooey effect for React"
     },
@@ -713,9 +906,10 @@
       "source_url": "https://animejs.com/",
       "category": "animation",
       "tags": [
+        "animation",
         "animejs",
-        "javascript",
         "engine",
+        "javascript",
         "library"
       ],
       "description": "Anime.js — lightweight JavaScript animation library. Works with CSS, SVG, DOM attributes, JS objects. Animations, timelines, staggering, easing, callbacks."
@@ -726,6 +920,8 @@
       "category": "component",
       "tags": [
         "framer",
+        "framer-motion",
+        "marker",
         "marketplace",
         "templates",
         "ui"
@@ -737,11 +933,11 @@
       "source_url": "https://www.cssscript.com/demo/cool-radial-toggle-menu-with-gooey-effect/",
       "category": "nav",
       "tags": [
-        "radial",
-        "menu",
+        "css",
         "gooey",
-        "svg-filter",
-        "css"
+        "menu",
+        "radial",
+        "svg-filter"
       ],
       "description": "Radial toggle menu that reveals options in a circular pattern with a gooey SVG filter morph between states."
     },
@@ -750,10 +946,11 @@
       "source_url": "https://www.pixel-perfect.space/",
       "category": "effect",
       "tags": [
-        "pixel",
-        "retro",
         "effect",
-        "filter"
+        "filter",
+        "pixel",
+        "pixel-art",
+        "retro"
       ],
       "description": "Pixel-perfect design exploration with pixelation and retro effects for design prototyping."
     },
@@ -762,10 +959,12 @@
       "source_url": "https://www.originkit.dev/",
       "category": "component",
       "tags": [
-        "originkit",
-        "ui-kit",
+        "art-tool",
         "components",
-        "react"
+        "originkit",
+        "react",
+        "template",
+        "ui-kit"
       ],
       "description": "OriginKit — curated collection of polished UI components and design elements for modern web apps."
     },
@@ -774,9 +973,9 @@
       "source_url": "https://www.designminis.com/",
       "category": "component",
       "tags": [
+        "design",
         "gallery",
         "inspiration",
-        "design",
         "showcase"
       ],
       "description": "DesignMinis — curated collection of design micro-interactions, components, and inspiration for product designers."
@@ -786,10 +985,15 @@
       "source_url": "https://metal.jakubantalik.com/",
       "category": "shader",
       "tags": [
-        "metal",
-        "shader",
+        "art-tool",
+        "audio-visualizer",
         "circular",
-        "three.js"
+        "metal",
+        "metallic",
+        "shader",
+        "snippet",
+        "three.js",
+        "visualizer"
       ],
       "description": "Circular metal shader visualizer by Jakub Antalik — WebGL effect with metallic reflections."
     },
@@ -798,10 +1002,12 @@
       "source_url": "https://www.morphicons.com/",
       "category": "effect",
       "tags": [
-        "icons",
         "animated",
+        "icon-set",
+        "icons",
         "morph",
-        "svg"
+        "svg",
+        "transition"
       ],
       "description": "Morphicons — collection of animated icons that morph between states with smooth transitions."
     },
@@ -810,10 +1016,11 @@
       "source_url": "https://beautiful-ui-five.vercel.app/",
       "category": "component",
       "tags": [
-        "ui",
+        "components",
+        "docs",
         "showcase",
-        "vercel",
-        "components"
+        "ui",
+        "vercel"
       ],
       "description": "Beautiful UI Five — showcase of beautifully designed UI components hosted on Vercel."
     },
@@ -822,10 +1029,10 @@
       "source_url": "https://www.beautifului.dev/",
       "category": "component",
       "tags": [
-        "ui",
-        "library",
         "components",
-        "gallery"
+        "gallery",
+        "library",
+        "ui"
       ],
       "description": "BeautifulUI — community-curated collection of well-designed UI components from real products."
     },
@@ -834,10 +1041,11 @@
       "source_url": "https://drawably-site.pages.dev/",
       "category": "effect",
       "tags": [
-        "drawing",
-        "tool",
         "canvas",
-        "creative"
+        "creative",
+        "drawing",
+        "snippet",
+        "tool"
       ],
       "description": "Drawably — web-based drawing tool with a curated feature set for digital sketching."
     },
@@ -846,9 +1054,11 @@
       "source_url": "https://thinkmake.github.io/overprinter.markhurrell.com/",
       "category": "effect",
       "tags": [
-        "overprint",
+        "art-tool",
         "css",
         "generator",
+        "marker",
+        "overprint",
         "typography"
       ],
       "description": "Mark Hurrell's CSS overprint generator — creates print-style overprint effects with mix-blend-mode for type layering."
@@ -860,9 +1070,10 @@
       "tags": [
         "holo",
         "holographic",
+        "png",
         "sticker",
         "svg",
-        "png"
+        "svg-tool"
       ],
       "description": "Holosticker — turn SVG/PNG artwork into a holographic sticker with rotation, light, and shine effects."
     },
@@ -871,11 +1082,13 @@
       "source_url": "https://www.dqnamo.com/experiments/receipt-printer",
       "category": "component",
       "tags": [
-        "receipt",
-        "printer",
+        "feed",
         "motion",
+        "phosrphor",
+        "printer",
         "react",
-        "phosrphor"
+        "receipt",
+        "snippet"
       ],
       "description": "ReceiptPrinter.tsx — multi-stage receipt printer machine with smooth/stepped paper feed motion, React + motion/react + Phosphor icons."
     },
@@ -884,9 +1097,10 @@
       "source_url": "https://css-tricks.com/",
       "category": "background",
       "tags": [
+        "article",
         "css",
-        "tricks",
         "reference",
+        "tricks",
         "tutorial"
       ],
       "description": "CSS-Tricks — long-running front-end design/development reference with articles on layout, animation, accessibility, and modern CSS features."
@@ -896,11 +1110,13 @@
       "source_url": "https://www.warp.dev/",
       "category": "component",
       "tags": [
-        "warp",
+        "agent",
         "agentic",
-        "sdlc",
+        "factory",
+        "form",
         "platform",
-        "factory"
+        "sdlc",
+        "warp"
       ],
       "description": "Warp — open platform for automating development. Factories-as-code (factory.yaml) with agents, models, permissions, and checkpoints. CLI/SDK/MCP/API."
     },
@@ -910,8 +1126,10 @@
       "category": "component",
       "tags": [
         "21st",
+        "ai-tool",
         "community",
         "components",
+        "marketplace",
         "react"
       ],
       "description": "21st.dev community — open registry of modern React UI components and design primitives built on Tailwind / shadcn."
@@ -924,7 +1142,9 @@
         "21st",
         "agent",
         "ai",
-        "generator"
+        "ai-tool",
+        "generator",
+        "react"
       ],
       "description": "21st.dev Agent 21 — AI design agent that scaffolds React components from natural-language prompts."
     },
@@ -933,11 +1153,12 @@
       "source_url": "https://v0.app/",
       "category": "component",
       "tags": [
-        "v0",
-        "vercel",
         "ai",
+        "ai-tool",
         "generator",
-        "react"
+        "react",
+        "v0",
+        "vercel"
       ],
       "description": "v0 — Vercel's AI UI generator that produces production-grade React/Tailwind components from natural-language descriptions."
     },
@@ -946,10 +1167,13 @@
       "source_url": "https://www.builder.io/",
       "category": "component",
       "tags": [
+        "agent",
         "builder.io",
         "cms",
-        "visual",
-        "drag-and-drop"
+        "drag",
+        "drag-and-drop",
+        "editor",
+        "visual"
       ],
       "description": "Builder.io — visual headless CMS with drag-and-drop editor, Builder Agent for design-to-code, and component SDK."
     },
@@ -958,10 +1182,13 @@
       "source_url": "https://www.shadertoy.com/",
       "category": "shader",
       "tags": [
-        "shadertoy",
-        "shader",
+        "art-tool",
+        "gallery",
         "glsl",
-        "gallery"
+        "playground",
+        "shader",
+        "shadertoy",
+        "snippet"
       ],
       "description": "Shadertoy — community GLSL shader gallery with weekly featured shaders, view/like counts, and patreon support."
     },
@@ -970,12 +1197,14 @@
       "source_url": "https://www.iconshock.com/social-media-icons",
       "category": "effect",
       "tags": [
+        "3d",
+        "icon-set",
         "icons",
-        "social-media",
+        "lottie",
         "pack",
         "png",
-        "svg",
-        "lottie"
+        "social-media",
+        "svg"
       ],
       "description": "Iconshock Social Media Icons — 300 social media icons across 13 styles (NeuGlyph, Material, iOS, Fluent, 3D, etc.) in PNG, SVG, Lottie, and AE."
     },
@@ -984,10 +1213,10 @@
       "source_url": "https://css-loaders.com/",
       "category": "loader",
       "tags": [
-        "loader",
-        "spinner",
+        "animation",
         "css",
-        "animation"
+        "loader",
+        "spinner"
       ],
       "description": "CSS-Loaders — curated collection of pure-CSS loading spinners and animated loaders for every use case."
     },
@@ -996,9 +1225,11 @@
       "source_url": "https://neumorphism.io/#e0e0e0",
       "category": "background",
       "tags": [
-        "neumorphism",
+        "color-palette",
+        "css-shadow",
         "generator",
-        "css-shadow"
+        "morph",
+        "neumorphism"
       ],
       "description": "Direct anchor into the neumorphism.io generator with the #e0e0e0 default color preset (light grey surface)."
     },
@@ -1007,9 +1238,14 @@
       "source_url": "https://daisyui.com/components/",
       "category": "component",
       "tags": [
-        "daisyui",
-        "tailwind",
+        "ai-tool",
+        "button",
+        "card",
         "components",
+        "daisyui",
+        "modal",
+        "navbar",
+        "tailwind",
         "themable"
       ],
       "description": "DaisyUI components — full component directory (alerts, buttons, cards, modals, navbar, stats, etc.) on top of Tailwind CSS, fully themable."
@@ -1019,9 +1255,11 @@
       "source_url": "https://aicanvas.me/components",
       "category": "component",
       "tags": [
-        "aicanvas",
         "ai",
+        "ai-tool",
+        "aicanvas",
         "components",
+        "gallery",
         "library"
       ],
       "description": "Aicanvas — AI-curated component library, browse all at /components (covers the aicanvas.me/ root and component index)."
@@ -1031,10 +1269,10 @@
       "source_url": "https://www.navbar.gallery/",
       "category": "nav",
       "tags": [
-        "navbar",
-        "navigation",
         "gallery",
-        "inspiration"
+        "inspiration",
+        "navbar",
+        "navigation"
       ],
       "description": "Navbar Gallery — curated daily collection of real-product navigation patterns (dropdowns, sidebars, mega menus, tabs, search bars) for designers."
     },
@@ -1043,11 +1281,12 @@
       "source_url": "https://www.uxsnaps.com/",
       "category": "background",
       "tags": [
-        "ux",
+        "inspiration",
+        "pattern",
+        "product",
         "teardown",
         "ui",
-        "inspiration",
-        "product"
+        "ux"
       ],
       "description": "UXSnaps — actionable UI/UX breakdowns from real apps used by millions; designer/PM/founder-oriented with proven patterns and quick wins."
     },
@@ -1056,10 +1295,10 @@
       "source_url": "https://www.bakai.me/lab",
       "category": "background",
       "tags": [
-        "portfolio",
         "design-engineering",
         "lab",
-        "next.js"
+        "next.js",
+        "portfolio"
       ],
       "description": "Bakai Lab — design-engineering lab with project case studies (FOHE, Spina, Oymo, Sidebar series) showcasing UI/UX craft."
     },
@@ -1068,10 +1307,13 @@
       "source_url": "https://www.anainsomnia.com/forge-dynamics",
       "category": "effect",
       "tags": [
-        "text",
-        "scene",
+        "color-palette",
+        "physics",
+        "playback",
         "procedural",
-        "playback"
+        "rive",
+        "scene",
+        "text"
       ],
       "description": "Forge Dynamics by anainsomnia — text-driven procedural scene with playback controls (pause/restart/frame) and color customization."
     },
@@ -1080,10 +1322,10 @@
       "source_url": "https://www.andrewt.net/dithered-qr-codes/index.html",
       "category": "effect",
       "tags": [
-        "qr-code",
         "dither",
         "error-diffusion",
-        "generator"
+        "generator",
+        "qr-code"
       ],
       "description": "Andrew Taylor's dithered QR code generator — embeds an image into a QR code's redundant data area via error diffusion with gamma/contrast/brightness controls."
     },
@@ -1092,11 +1334,12 @@
       "source_url": "https://paperlab.nawwara.studio/playground/",
       "category": "3d",
       "tags": [
+        "3d",
+        "banner",
+        "paper-engine",
         "paperlab",
         "scene",
-        "3d",
-        "walk",
-        "banner"
+        "walk"
       ],
       "description": "Paperlab playground — write a room from text; walkable scene with banners (Nave/Procession/Cloister/Threshold/Ribbon/Archive) you step between with arrow keys."
     },
@@ -1105,9 +1348,9 @@
       "source_url": "https://paperlab.nawwara.studio/editor/",
       "category": "3d",
       "tags": [
-        "paperlab",
-        "editor",
         "canvas",
+        "editor",
+        "paperlab",
         "preset-library"
       ],
       "description": "Paperlab editor — desktop canvas tool with preset library on the left, inspector on the right, and a sheet in the middle sculpted by dragging a paper handle."
@@ -1118,13 +1361,25 @@
       "category": "background",
       "tags": [
         "ai",
-        "ux",
-        "playground",
-        "shaders",
+        "ai-tool",
+        "art-tool",
         "motion",
-        "tools"
+        "playground",
+        "shader",
+        "shaders",
+        "snippet",
+        "tools",
+        "ux"
       ],
       "description": "AI UX Playground — curated third-party AI UI experiments and tools (Shaders, WebGPU, Motion, Tools, Components, Framer, Portfolios) for designers/eng building chat, agents, copilots."
     }
-  ]
+  ],
+  "tag_taxonomy_version": "TAG-TAX-5-zero-orphan",
+  "tag_axes": [
+    "tech",
+    "style",
+    "type"
+  ],
+  "extracted_at": "2026-09-03",
+  "notes": "v1.2.1: canonical tags (neumorphism, liquid-glass), every entry has ≥1 type tag from 3-axis taxonomy. Search bar now supports e.g. tailwind+button, gsap+menu, neomorphism+card, liquid-glass+modal."
 }
