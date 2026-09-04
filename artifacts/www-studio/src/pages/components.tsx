@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { COMPONENT_LIBRARY, CATEGORIES, makePreviewHtml, type Category } from "@/data/component-library";
@@ -85,10 +85,48 @@ function ComponentCard({ item }: { item: typeof COMPONENT_LIBRARY[number] }) {
   );
 }
 
+// Mobile uses paginated chunks; desktop shows everything in one scrollable grid.
+const MOBILE_PAGE_SIZE = 12;
+
+// True when viewport is <768px (Tailwind `md` breakpoint). Used to switch the
+// component grid between "show everything, scroll forever" (desktop) and
+// "12 per page, tap Next" (mobile) — 277 items is unscrollable on a phone.
+function useIsMobile(): boolean {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+  return isMobile;
+}
+
+type SvgProps = React.SVGProps<SVGSVGElement>;
+
+function ChevronLeft(props: SvgProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="m15 18-6-6 6-6" />
+    </svg>
+  );
+}
+
+function ChevronRight(props: SvgProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="m9 18 6-6-6-6" />
+    </svg>
+  );
+}
+
 export default function Components() {
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState<Category>("All");
+  const [page, setPage] = useState(1);
   const [, setLocation] = useLocation();
+  const isMobile = useIsMobile();
 
   const filtered = useMemo(() => {
     let items = COMPONENT_LIBRARY;
@@ -101,6 +139,21 @@ export default function Components() {
     }
     return items;
   }, [search, activeCategory]);
+
+  // Reset to page 1 when filters change so the user doesn't end up stranded
+  // on a page that no longer exists after a category/search change.
+  useEffect(() => {
+    setPage(1);
+  }, [search, activeCategory]);
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / MOBILE_PAGE_SIZE));
+  // Clamp page to valid range in case filtered shrinks after a search.
+  const safePage = Math.min(page, totalPages);
+  const pagedItems = useMemo(
+    () => filtered.slice((safePage - 1) * MOBILE_PAGE_SIZE, safePage * MOBILE_PAGE_SIZE),
+    [filtered, safePage],
+  );
+  const visibleItems = isMobile ? pagedItems : filtered;
 
   const categoryItems: ReadonlyArray<CategoryItem<Category>> = useMemo(
     () =>
@@ -122,7 +175,7 @@ export default function Components() {
         <div className="mb-8">
           <h1 className="text-3xl font-bold tracking-tight mb-2">Component Library</h1>
           <p className="text-muted-foreground">
-            {COMPONENT_LIBRARY.filter((c) => c.code).length} with live preview · {COMPONENT_LIBRARY.filter((c) => !c.code).length} curated references from across the web.
+            Curated references from across the web.
           </p>
         </div>
 
@@ -165,14 +218,60 @@ export default function Components() {
             {filtered.length === 0 ? (
               <div className="text-center py-20 text-muted-foreground">
                 <Search className="w-10 h-10 mx-auto mb-3 opacity-30" />
-                <p>No components found for "{search}"</p>
+                <p>No components found for &ldquo;{search}&rdquo;</p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                {filtered.map((item) => (
-                  <ComponentCard key={item.id} item={item} />
-                ))}
-              </div>
+              <>
+                <div
+                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+                  data-testid="component-grid"
+                >
+                  {visibleItems.map((item) => (
+                    <ComponentCard key={item.id} item={item} />
+                  ))}
+                </div>
+
+                {/* Mobile-only pagination controls. Desktop shows the full
+                    grid, so a pager would be redundant. 48px-tall buttons to
+                    meet the mobile tap-target standard. */}
+                {isMobile && totalPages > 1 && (
+                  <nav
+                    aria-label="Component library pages"
+                    className="mt-8 flex items-center justify-between gap-2"
+                  >
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      onClick={() => setPage((p) => Math.max(1, p - 1))}
+                      disabled={safePage === 1}
+                      className="min-h-[48px] px-4"
+                      aria-label="Previous page"
+                    >
+                      <ChevronLeft className="h-4 w-4 mr-1" />
+                      Prev
+                    </Button>
+
+                    <span
+                      className="text-sm text-muted-foreground tabular-nums"
+                      aria-live="polite"
+                    >
+                      Page {safePage} of {totalPages}
+                    </span>
+
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                      disabled={safePage === totalPages}
+                      className="min-h-[48px] px-4"
+                      aria-label="Next page"
+                    >
+                      Next
+                      <ChevronRight className="h-4 w-4 ml-1" />
+                    </Button>
+                  </nav>
+                )}
+              </>
             )}
           </div>
         </div>
