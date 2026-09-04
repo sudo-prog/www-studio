@@ -359,12 +359,12 @@ export default function Scenes() {
         </div>
 
         {/* Wellness palette strips */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
           {WELLNESS_PRESETS.map((preset) => (
             <button
               key={preset.name}
               onClick={() => { setNewName(preset.name); setShowNew(true); }}
-              className="group flex items-center gap-3 p-3 bg-card border border-border rounded-xl hover:border-primary/30 text-left transition-all min-h-[44px]"
+              className="group flex items-center gap-3 p-3 bg-card border border-border rounded-xl hover:border-primary/30 text-left transition-all min-h-[44px] min-w-[44px]"
             >
               <div className="flex gap-1">
                 {preset.colors.map((c, i) => (
@@ -395,7 +395,7 @@ export default function Scenes() {
             <button
               onClick={() => setTagFilter(null)}
               className={cn(
-                "text-xs px-2.5 py-1 rounded-full border transition-colors min-h-[44px] flex items-center",
+                "text-xs px-2.5 py-1 rounded-full border transition-colors min-h-[44px] min-w-[44px] flex items-center",
                 tagFilter === null ? "bg-primary text-primary-foreground border-primary" : "border-border text-muted-foreground hover:border-primary/40"
               )}
             >All</button>
@@ -404,7 +404,7 @@ export default function Scenes() {
                 key={tag}
                 onClick={() => setTagFilter(tagFilter === tag ? null : tag)}
                 className={cn(
-                  "text-xs px-2.5 py-1 rounded-full border transition-colors min-h-[44px] flex items-center",
+                  "text-xs px-2.5 py-1 rounded-full border transition-colors min-h-[44px] min-w-[44px] flex items-center",
                   tagFilter === tag ? "bg-primary/10 border-primary/40 text-primary" : "border-border text-muted-foreground hover:border-primary/30"
                 )}
               >
@@ -479,7 +479,7 @@ export default function Scenes() {
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {filtered.map((scene: any) => (
               <SceneCard
                 key={scene.id}
@@ -566,7 +566,7 @@ export default function Scenes() {
                     key={p}
                     onClick={() => setAiPrompt(p)}
                     className={cn(
-                      "text-[10px] px-2 py-1 rounded-full border transition-colors text-left min-h-[44px] flex items-center",
+                      "text-[10px] px-2 py-1 rounded-full border transition-colors text-left min-h-[44px] min-w-[44px] flex items-center",
                       aiPrompt === p ? "border-primary/50 bg-primary/10 text-primary" : "border-border text-muted-foreground hover:border-primary/30 hover:text-foreground"
                     )}
                   >{p}</button>

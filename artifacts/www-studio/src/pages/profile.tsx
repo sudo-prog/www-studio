@@ -96,8 +96,8 @@ export default function Profile() {
             <AvatarImage src={user.profileImageUrl || ""} alt={[user.firstName, user.lastName].filter(Boolean).join(" ") || "User"} />
             <AvatarFallback className="text-2xl">{user.firstName?.charAt(0) || "U"}</AvatarFallback>
           </Avatar>
-          <div>
-            <h1 className="text-3xl font-bold tracking-tight mb-2">{[user.firstName, user.lastName].filter(Boolean).join(" ") || "User"}</h1>
+          <div className="min-w-0 flex-1">
+            <h1 className="text-3xl font-bold tracking-tight mb-2 break-words">{[user.firstName, user.lastName].filter(Boolean).join(" ") || "User"}</h1>
             <p className="text-muted-foreground text-lg mb-4">@{user.id || "user"}</p>
             <div className="flex flex-wrap gap-4">
               <div className="flex flex-wrap items-center gap-2 text-sm">
@@ -134,7 +134,7 @@ export default function Profile() {
                   onChange={(e) => setGhToken(e.target.value)}
                   className="min-h-[48px] text-xs"
                 />
-                <Button size="sm" className="min-h-[48px] text-xs gap-1" onClick={handleSaveToken}>
+                <Button size="sm" className="min-h-[48px] text-xs gap-1 w-full sm:w-auto" onClick={handleSaveToken}>
                   <Key className="h-3 w-3" />
                   {hasGitHubToken() ? "Update" : "Save"}
                 </Button>
@@ -185,7 +185,7 @@ export default function Profile() {
                 onChange={(e) => setConfirmPw(e.target.value)}
                 className="min-h-[48px] text-xs"
               />
-              <Button size="sm" className="min-h-[48px] text-xs gap-1" onClick={handleResetPassword} disabled={resetLoading}>
+              <Button size="sm" className="min-h-[48px] text-xs gap-1 w-full sm:w-auto" onClick={handleResetPassword} disabled={resetLoading}>
                 <Key className="h-3 w-3" />
                 Save
               </Button>
@@ -198,9 +198,9 @@ export default function Profile() {
               You haven't published any projects yet.
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 min-w-0">
               {publishedProjects.map((project) => (
-                <Card key={project.id}>
+                <Card key={project.id} className="min-w-0">
                   <CardHeader>
                     <CardTitle className="text-lg">{project.name}</CardTitle>
                   </CardHeader>

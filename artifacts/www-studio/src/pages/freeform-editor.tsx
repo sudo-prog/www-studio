@@ -221,7 +221,7 @@ export default function FreeformEditor() {
       />
       {showTokenPanel && !showPreview && (
         <div className={cn("shrink-0 border-l border-border bg-background overflow-y-auto p-3 space-y-3", isMobile ? "w-full border-l-0 border-t" : "w-64")}>
-          <div className="flex items-center justify-between">
+          <div className="flex flex-wrap items-center justify-between gap-2">
             <span className="text-xs font-medium">Design Tokens</span>
             <Button variant="ghost" size="icon" className="min-h-[44px] min-w-[44px]" onClick={() => setShowTokenPanel(false)}>×</Button>
           </div>
@@ -229,7 +229,7 @@ export default function FreeformEditor() {
           {/* Colors */}
           <div>
             <Label className="text-[10px] text-muted-foreground uppercase tracking-wider mb-1 block">Colors</Label>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1">
               {Object.entries(tokens.colors).map(([name, value]) => (
                 <div key={name} className="relative">
                   <button
@@ -317,7 +317,7 @@ export default function FreeformEditor() {
 
       {showComponentPanel && !showPreview && (
         <div className={cn("shrink-0 border-l border-border bg-background overflow-y-auto p-3 space-y-3", isMobile ? "w-full border-l-0 border-t" : "w-64")}>
-          <div className="flex items-center justify-between">
+          <div className="flex flex-wrap items-center justify-between gap-2">
             <span className="text-xs font-medium">Components</span>
             <Button variant="ghost" size="icon" className="min-h-[44px] min-w-[44px]" onClick={() => setShowComponentPanel(false)}>×</Button>
           </div>
@@ -336,7 +336,7 @@ export default function FreeformEditor() {
             <div className="space-y-2">
               {(state.page.components || []).map((comp) => (
                 <div key={comp.id} className="border border-border rounded-lg p-2 space-y-2">
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
                     <span className="text-[11px] font-medium">{comp.name}</span>
                     <Button variant="ghost" size="icon" className="min-h-[44px] min-w-[44px]" onClick={() => dispatch({ type: "DELETE_COMPONENT", id: comp.id })}>×</Button>
                   </div>
@@ -377,7 +377,7 @@ export default function FreeformEditor() {
 
       {showMobilePreview && !showPreview && (
         <div className={cn("shrink-0 border-l border-border bg-background overflow-y-auto p-3 space-y-3", isMobile ? "w-full border-l-0 border-t" : "w-80")}>
-          <div className="flex items-center justify-between">
+          <div className="flex flex-wrap items-center justify-between gap-2">
             <span className="text-xs font-medium">Mobile Preview</span>
             <Button variant="ghost" size="icon" className="min-h-[44px] min-w-[44px]" onClick={() => setShowMobilePreview(false)}>×</Button>
           </div>
@@ -441,7 +441,7 @@ export default function FreeformEditor() {
   return (
     <div className="h-[100dvh] flex flex-col bg-[#0a0a0f] text-foreground overflow-hidden">
       {/* Top bar */}
-      <header className="h-12 shrink-0 border-b border-border bg-background flex items-center justify-between px-4 gap-3 z-50 overflow-x-auto">
+      <header className="h-12 shrink-0 border-b border-border bg-background flex items-center justify-between px-4 gap-3 z-50 overflow-x-auto pt-[env(safe-area-inset-top)]">
         <div className="flex flex-wrap items-center gap-3">
           <Link href="/projects" className="min-h-[44px] min-w-[44px] flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors">
             <ArrowLeft className="w-4 h-4" />
@@ -566,13 +566,13 @@ export default function FreeformEditor() {
       </header>
 
       {/* Main area */}
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex flex-wrap overflow-hidden">
         {/* Left toolbar */}
         {!showPreview && <FreeformToolbar onAddElement={handleAddElement} onStartDraw={setDrawingId} />}
 
         {/* Canvas */}
         {showPreview ? (
-          <div className="flex-1 overflow-auto p-8 bg-[#0d0d14]">
+          <div className="flex-1 overflow-auto p-4 sm:p-8 bg-[#0d0d14]">
             <div
               className="relative mx-auto shadow-2xl"
               style={{
@@ -619,7 +619,7 @@ export default function FreeformEditor() {
       </div>
 
       {/* Status bar */}
-      <footer className="min-h-[24px] shrink-0 border-t border-border bg-background flex flex-wrap items-center justify-between px-3 text-[10px] text-muted-foreground pb-safe pb-[env(safe-area-inset-bottom)] gap-2">
+      <footer className="min-h-[44px] shrink-0 border-t border-border bg-background flex flex-wrap items-center justify-between px-3 text-[10px] text-muted-foreground pb-[env(safe-area-inset-bottom)] gap-2">
         <div className="flex items-center gap-3">
           <span>{state.page.elements.length} elements</span>
           <span>Canvas: {state.page.canvasWidth}×{state.page.canvasHeight}</span>

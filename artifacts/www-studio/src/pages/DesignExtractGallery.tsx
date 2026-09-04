@@ -58,7 +58,7 @@ export default function DesignExtractGallery() {
 
   if (loading) {
     return (
-      <div className="min-h-[100dvh] bg-background flex items-center justify-center">
+      <div className="min-h-[100dvh] bg-background flex items-center justify-center pb-[max(1.5rem,env(safe-area-inset-bottom))]">
         <div className="text-muted-foreground">Loading gallery…</div>
       </div>
     );
@@ -66,7 +66,7 @@ export default function DesignExtractGallery() {
 
   if (error) {
     return (
-      <div className="min-h-[100dvh] bg-background flex items-center justify-center">
+      <div className="min-h-[100dvh] bg-background flex items-center justify-center pb-[max(1.5rem,env(safe-area-inset-bottom))]">
         <div className="text-destructive">{error}</div>
       </div>
     );

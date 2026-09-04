@@ -187,7 +187,7 @@ function ErrorBanner({
           size="sm"
           variant="outline"
           onClick={onRetry}
-          className="h-8 min-h-[48px] text-xs border-red-500/30 bg-transparent hover:bg-red-500/10 text-red-400"
+          className="min-h-[44px] text-xs border-red-500/30 bg-transparent hover:bg-red-500/10 text-red-400"
         >
           <RefreshCw className="h-3 w-3 mr-1.5" />
           Try again
@@ -197,7 +197,7 @@ function ErrorBanner({
             size="sm"
             variant="outline"
             onClick={onUploadScreenshot}
-            className="h-8 min-h-[48px] text-xs border-[#27272a] bg-[#18181b] hover:bg-[#27272a]"
+            className="min-h-[44px] text-xs border-[#27272a] bg-[#18181b] hover:bg-[#27272a]"
           >
             <Upload className="h-3 w-3 mr-1.5" />
             Upload Screenshot

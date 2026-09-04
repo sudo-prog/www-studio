@@ -194,8 +194,8 @@ export default function SceneShare() {
   return (
     <div className="min-h-[100dvh] bg-background flex flex-col">
       {/* Top bar */}
-      <div className="h-14 flex items-center justify-between px-4 border-b border-border bg-background/95 backdrop-blur shrink-0">
-        <div className="flex items-center gap-3">
+      <div className="min-h-[56px] flex flex-wrap items-center justify-between gap-2 px-4 py-2 border-b border-border bg-background/95 backdrop-blur shrink-0">
+        <div className="flex flex-wrap items-center gap-3 min-w-0">
           <Button variant="ghost" size="icon" className="h-8 w-8 min-h-[44px] min-w-[44px]" onClick={() => navigate("/scenes")}>
             <ArrowLeft className="h-4 w-4" />
           </Button>
@@ -204,7 +204,7 @@ export default function SceneShare() {
             <span className="hidden sm:inline">WWW Studio</span>
           </Link>
           <div className="h-5 w-px bg-border" />
-          <div className="flex items-center gap-2 overflow-x-auto">
+          <div className="flex flex-wrap items-center gap-2">
             <div className="w-6 h-6 rounded-md bg-primary/20 flex items-center justify-center shrink-0">
               <Sparkles className="h-3.5 w-3.5 text-primary" />
             </div>
@@ -216,7 +216,7 @@ export default function SceneShare() {
             )}
           </div>
         </div>
-        <div className="flex items-center gap-2 overflow-x-auto">
+        <div className="flex flex-wrap items-center gap-2">
           <button
             onClick={handleLike}
             className={cn(
@@ -240,12 +240,12 @@ export default function SceneShare() {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row flex-wrap flex-1 min-h-0">
+      <div className="flex flex-col md:flex-row flex-1 min-h-0">
         {/* Scene preview - left/main */}
         <div className="flex-1 bg-[#0d0d1a] relative overflow-hidden">
           <AnimatedScene scene={scene} />
           {/* Stats overlay */}
-          <div className="absolute bottom-4 left-4 flex flex-wrap items-center gap-3">
+          <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-center gap-3" style={{ marginBottom: "env(safe-area-inset-bottom, 0px)" }}>
             <div className="flex items-center gap-1.5 text-white/60 text-xs bg-black/40 backdrop-blur px-2.5 py-1.5 rounded-full">
               <Eye className="h-3 w-3" />{views.toLocaleString()} views
             </div>

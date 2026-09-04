@@ -512,7 +512,7 @@ export default function SceneEditor() {
             </div>
 
             {/* Press ? hint */}
-            <div className="absolute bottom-2 right-2 text-[10px] text-white/20 pointer-events-none">
+            <div className="absolute bottom-2 sm:bottom-[calc(env(safe-area-inset-bottom)+0.5rem)] right-2 text-[10px] text-white/20 pointer-events-none">
               Press <kbd className="text-[9px] bg-white/10 px-1 rounded">?</kbd> for shortcuts
             </div>
           </div>
@@ -549,7 +549,7 @@ export default function SceneEditor() {
               ))}
             </div>
 
-            <div className="flex-1 overflow-y-auto">
+            <div className="flex-1 overflow-y-auto pb-[calc(env(safe-area-inset-bottom)+0.5rem)]">
               {/* Layers */}
               {rightTab === "layers" && (
                 <div className="p-2 space-y-1">
@@ -611,9 +611,9 @@ export default function SceneEditor() {
                       </div>
                       <div className="space-y-1.5">
                         <Label className="text-xs text-muted-foreground">Fill</Label>
-                        <div className="flex gap-2 items-center">
+                        <div className="flex flex-wrap gap-2 items-center">
                           <input type="color" value={selectedEl.fill} onChange={(e) => handleUpdate(selectedEl.id, { fill: e.target.value })} className="w-8 h-7 min-h-[44px] min-w-[44px] rounded border border-border cursor-pointer bg-transparent" />
-                          <Input value={selectedEl.fill} onChange={(e) => handleUpdate(selectedEl.id, { fill: e.target.value })} className="text-xs min-h-[44px] font-mono flex-1" />
+                          <Input value={selectedEl.fill} onChange={(e) => handleUpdate(selectedEl.id, { fill: e.target.value })} className="text-xs min-h-[44px] font-mono flex-1 min-w-[140px]" />
                         </div>
                       </div>
                       {[
@@ -701,7 +701,7 @@ export default function SceneEditor() {
 
               {/* Scroll */}
               {rightTab === "scroll" && (
-                <div className="overflow-y-auto">
+                <div className="overflow-y-auto pb-[calc(env(safe-area-inset-bottom)+0.5rem)]">
                   {!selectedEl ? (
                     <div className="text-center py-8 space-y-2 p-3">
                       <MousePointer2 className="h-10 w-10 mx-auto text-muted-foreground/30" />
@@ -769,7 +769,7 @@ export default function SceneEditor() {
 
           {/* ── AI Chat panel ── */}
           <div className={cn(
-            "shrink-0 border-l border-border bg-background flex flex-col overflow-hidden transition-all duration-200",
+            "shrink-0 border-l border-border bg-background flex flex-col overflow-hidden transition-all duration-200 pb-[env(safe-area-inset-bottom)]",
             showChat ? "w-full sm:w-[300px]" : "w-0 opacity-0 overflow-hidden"
           )}>
             {showChat && (

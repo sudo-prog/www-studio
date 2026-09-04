@@ -108,7 +108,7 @@ export default function NewProject() {
   ];
 
   return (
-    <div className="min-h-[100dvh] flex flex-col bg-background overflow-x-hidden">
+    <div className="min-h-[100dvh] flex flex-col bg-background overflow-x-hidden pb-[env(safe-area-inset-bottom)]">
       <main className="flex-1 flex items-start justify-center p-6 pt-12">
         <div className="w-full max-w-xl">
           <div className="text-center mb-8">

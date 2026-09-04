@@ -20,7 +20,7 @@ function SceneShowcaseCard({ scene, href }: { scene: any; href?: string }) {
   const dest = href ?? `/scenes/${scene.id}/share`;
 
   return (
-    <Link href={dest}>
+    <Link href={dest} className="min-h-[44px] block">
       <div className="group relative h-36 rounded-2xl overflow-hidden cursor-pointer border border-border hover:border-primary/40 transition-all hover:shadow-lg hover:shadow-primary/10"
         style={{ background: "linear-gradient(135deg, #0d1117 0%, #161b22 100%)" }}>
         <svg viewBox={`0 0 ${scene.canvasWidth ?? 1440} ${scene.canvasHeight ?? 900}`} className="absolute inset-0 w-full h-full opacity-90">

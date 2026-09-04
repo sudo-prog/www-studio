@@ -134,7 +134,7 @@ export default function FreeformSharePage() {
   return (
     <div className="min-h-[100dvh] bg-background flex flex-col">
       {/* Top bar */}
-      <div className="min-h-14 py-2 flex items-center justify-between px-4 border-b border-border bg-background/95 backdrop-blur shrink-0 min-h-[44px]">
+      <div className="min-h-[44px] py-2 flex flex-wrap items-center justify-between gap-x-3 gap-y-2 px-4 border-b border-border bg-background/95 backdrop-blur shrink-0">
         <div className="flex items-center gap-3 flex-wrap">
           <Button variant="ghost" size="icon" className="h-8 w-8 min-h-[44px] min-w-[44px]" asChild>
             <Link href="/projects">
@@ -181,7 +181,7 @@ export default function FreeformSharePage() {
         <div className="flex-1 bg-[#0d0d1a] relative overflow-hidden">
           <FreeformPageRenderer page={page} />
           {/* Stats overlay */}
-          <div className="absolute bottom-4 left-4 flex items-center gap-3">
+          <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-center gap-x-3 gap-y-2">
             <div className="flex items-center gap-1.5 text-white/60 text-xs bg-black/40 backdrop-blur px-2.5 py-1.5 rounded-full">
               <Eye className="h-3 w-3" />{views.toLocaleString()} views
             </div>

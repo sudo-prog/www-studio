@@ -122,13 +122,13 @@ export default function ScenePreviewPage() {
       <style>{ANIM_KEYFRAMES}</style>
       <Link
         href="/"
-        className="fixed top-3 left-3 z-50 flex flex-wrap items-center gap-1.5 px-3 min-h-[48px] min-w-[44px] rounded-full bg-background/80 backdrop-blur border border-border shadow-sm font-semibold text-sm tracking-tight hover:text-primary transition-colors"
+        className="fixed top-[max(12px,env(safe-area-inset-top,0px))] left-3 z-50 flex flex-wrap items-center gap-1.5 px-3 min-h-[48px] min-w-[44px] rounded-full bg-background/80 backdrop-blur border border-border shadow-sm font-semibold text-sm tracking-tight hover:text-primary transition-colors"
       >
         <Code2 className="h-4 w-4 text-primary" />
         <span className="hidden sm:inline">WWW Studio</span>
       </Link>
       <div
-        className="w-full min-h-[100dvh] overflow-x-auto overflow-y-auto pb-[env(safe-area-inset-bottom)]"
+        className="w-full min-h-[100dvh] overflow-x-auto overflow-y-auto pt-[env(safe-area-inset-top,0px)] pb-[env(safe-area-inset-bottom,0px)]"
         style={{ background: "linear-gradient(135deg, #0d1117 0%, #161b22 100%)" }}
       >
         <div

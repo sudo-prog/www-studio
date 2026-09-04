@@ -1196,7 +1196,7 @@ export default function Editor() {
       </div>
 
       {/* Top Toolbar */}
-      <header className="h-14 border-b border-border/50 bg-card/50 backdrop-blur flex items-center justify-between px-3 shrink-0 gap-2 overflow-x-auto">
+      <header className="min-h-14 border-b border-border/50 bg-card/50 backdrop-blur flex flex-wrap items-center justify-between px-3 py-2 shrink-0 gap-2">
         {/* Left */}
         <div className="flex items-center gap-2 min-w-0">
           <Button variant="ghost" size="icon" asChild className="shrink-0 h-8 w-8 min-h-[44px] min-w-[44px]">
@@ -1251,7 +1251,7 @@ export default function Editor() {
           <Button
             variant={selectionMode ? "secondary" : "ghost"}
             size="sm"
-            className={cn("h-8 gap-1.5 text-xs", selectionMode ? "text-violet-400 border border-violet-400/30" : "text-muted-foreground")}
+            className={cn("h-8 gap-1.5 text-xs min-h-[44px]", selectionMode ? "text-violet-400 border border-violet-400/30" : "text-muted-foreground")}
             title="Click to select elements and edit properties"
             onClick={toggleSelectionMode}
           >
@@ -1276,7 +1276,7 @@ export default function Editor() {
           <Button
             variant={editMode ? "secondary" : "ghost"}
             size="sm"
-            className={cn("h-8 gap-1.5 text-xs", editMode ? "text-blue-400 border border-blue-400/30" : "text-muted-foreground")}
+            className={cn("h-8 gap-1.5 text-xs min-h-[44px]", editMode ? "text-blue-400 border border-blue-400/30" : "text-muted-foreground")}
             title="Toggle inline canvas editing"
             onClick={toggleEditMode}
           >
@@ -1311,7 +1311,7 @@ export default function Editor() {
           <Button
             variant={pixelOverlay ? "secondary" : "ghost"}
             size="icon"
-            className={cn("w-8 h-8", pixelOverlay && "text-blue-400")}
+            className={cn("w-8 h-8 min-h-[44px] min-w-[44px]", pixelOverlay && "text-blue-400")}
             title="Toggle pixel overlay"
             onClick={() => setPixelOverlay((v) => !v)}
           >
@@ -1319,8 +1319,8 @@ export default function Editor() {
           </Button>
 
           {/* Undo / Redo */}
-          <Button variant="ghost" size="icon" className="w-8 h-8"><Undo className="w-3.5 h-3.5" /></Button>
-          <Button variant="ghost" size="icon" className="w-8 h-8"><Redo className="w-3.5 h-3.5" /></Button>
+          <Button variant="ghost" size="icon" className="w-8 h-8 min-h-[44px] min-w-[44px]"><Undo className="w-3.5 h-3.5" /></Button>
+          <Button variant="ghost" size="icon" className="w-8 h-8 min-h-[44px] min-w-[44px]"><Redo className="w-3.5 h-3.5" /></Button>
 
           <div className="w-px h-5 bg-border mx-0.5" />
 
@@ -1346,7 +1346,7 @@ export default function Editor() {
       </header>
 
       {/* Main Layout */}
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex flex-col lg:flex-row overflow-hidden min-h-0">
 
         {/* Left Sidebar — Pages + Layers */}
         <aside className="w-52 border-r border-border/50 bg-card/30 flex flex-col shrink-0">
@@ -1463,7 +1463,7 @@ export default function Editor() {
         </main>
 
         {/* Right Inspector */}
-        <aside className="w-64 border-l border-border/50 bg-card/30 flex flex-col shrink-0">
+        <aside className="w-full lg:w-64 border-t lg:border-t-0 lg:border-l border-border/50 bg-card/30 flex flex-col shrink-0 max-h-[50vh] lg:max-h-none">
           {/* Tab header */}
           <div className="flex overflow-x-auto border-b border-border/50 shrink-0">
             {RIGHT_TABS.map((tab) => (

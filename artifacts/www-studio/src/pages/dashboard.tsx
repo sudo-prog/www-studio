@@ -94,7 +94,7 @@ export default function Dashboard() {
                 try { elements = JSON.parse(scene.elements ?? "[]"); } catch {}
                 const colors = elements.slice(0, 4).map((e: any) => e.fill).filter(Boolean);
                 return (
-                  <Link key={scene.id} href={`/scenes/${scene.id}`}>
+                  <Link key={scene.id} href={`/scenes/${scene.id}`} className="block min-h-[44px]">
                     <div className="bg-card border border-border rounded-xl overflow-hidden hover:border-primary/40 transition-colors group cursor-pointer">
                       <div
                         className="h-16 relative"
@@ -126,8 +126,8 @@ export default function Dashboard() {
             { icon: <Globe className="h-4 w-4" />,       label: "Public Gallery",    sub: "Browse community",       href: "/scenes/gallery",    color: "bg-green-500/10 text-green-400 border-green-500/20" },
             { icon: <PenLine className="h-4 w-4" />,     label: "Freeform Canvas",   sub: "Visual editor",          href: "/freeform",          color: "bg-orange-500/10 text-orange-400 border-orange-500/20" },
           ].map(({ icon, label, sub, href, color }) => (
-            <Link key={label} href={href}>
-              <div className={`border rounded-xl p-4 hover:opacity-90 transition-all cursor-pointer h-full ${color}`}>
+            <Link key={label} href={href} className="min-h-[44px]">
+              <div className={`border rounded-xl p-4 hover:opacity-90 transition-all cursor-pointer h-full min-h-[44px] ${color}`}>
                 <div className="mb-2">{icon}</div>
                 <p className="font-semibold text-sm">{label}</p>
                 <p className="text-xs opacity-70">{sub}</p>
@@ -151,7 +151,7 @@ export default function Dashboard() {
         </div>
 
         {isLoading ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {[1, 2, 3, 4].map((i) => (
               <div key={i} className="h-64 rounded-lg bg-muted animate-pulse" />
             ))}
@@ -170,7 +170,7 @@ export default function Dashboard() {
             </Button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {projects.map((project) => (
               <Card key={project.id} className="overflow-hidden group hover:border-primary/50 transition-colors flex flex-col">
                 <div className="aspect-video bg-muted relative overflow-hidden flex-shrink-0">

@@ -60,21 +60,21 @@ function ComponentCard({ item }: { item: typeof COMPONENT_LIBRARY[number] }) {
           <Button
             size="sm"
             variant="ghost"
-            className="h-7 w-7 min-h-[48px] min-w-[44px] shrink-0"
+            className="h-11 w-11 min-h-[44px] min-w-[44px] shrink-0 p-0"
             onClick={() => {
               navigator.clipboard.writeText(item.code);
               toast({ title: "Code copied!" });
             }}
             aria-label={`Copy ${item.name} code`}
           >
-            <Copy className="w-3.5 h-3.5 text-muted-foreground" />
+            <Copy className="w-4 h-4 text-muted-foreground" />
           </Button>
         ) : (
           <a
             href={item.sourceUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="h-7 w-7 min-h-[48px] min-w-[44px] shrink-0 inline-flex items-center justify-center text-muted-foreground hover:text-primary"
+            className="h-11 w-11 min-h-[44px] min-w-[44px] shrink-0 inline-flex items-center justify-center text-muted-foreground hover:text-primary"
             aria-label={`Open ${item.name} source`}
           >
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
@@ -169,8 +169,8 @@ export default function Components() {
   );
 
   return (
-    <div className="min-h-[100dvh] flex flex-col bg-background overflow-x-hidden">
-      <main className="flex-1 max-w-7xl mx-auto w-full px-4 md:px-6 py-8 overflow-x-hidden">
+    <div className="min-h-[100dvh] flex flex-col bg-background overflow-x-hidden pb-[env(safe-area-inset-bottom)]">
+      <main className="flex-1 max-w-7xl mx-auto w-full px-4 md:px-6 py-8 overflow-x-hidden pb-[max(1rem,env(safe-area-inset-bottom))]">
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold tracking-tight mb-2">Component Library</h1>
@@ -237,14 +237,14 @@ export default function Components() {
                 {isMobile && totalPages > 1 && (
                   <nav
                     aria-label="Component library pages"
-                    className="mt-8 flex items-center justify-between gap-2"
+                    className="mt-8 flex flex-wrap items-center justify-between gap-2"
                   >
                     <Button
                       variant="outline"
                       size="lg"
                       onClick={() => setPage((p) => Math.max(1, p - 1))}
                       disabled={safePage === 1}
-                      className="min-h-[48px] px-4"
+                      className="min-h-[44px] px-4"
                       aria-label="Previous page"
                     >
                       <ChevronLeft className="h-4 w-4 mr-1" />
@@ -252,7 +252,7 @@ export default function Components() {
                     </Button>
 
                     <span
-                      className="text-sm text-muted-foreground tabular-nums"
+                      className="text-sm text-muted-foreground tabular-nums order-3 w-full text-center sm:order-2 sm:w-auto"
                       aria-live="polite"
                     >
                       Page {safePage} of {totalPages}
@@ -263,7 +263,7 @@ export default function Components() {
                       size="lg"
                       onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                       disabled={safePage === totalPages}
-                      className="min-h-[48px] px-4"
+                      className="min-h-[44px] px-4"
                       aria-label="Next page"
                     >
                       Next

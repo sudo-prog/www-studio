@@ -239,11 +239,11 @@ export default function SceneGallery() {
               Browse and fork community-published wellness scenes
             </p>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 flex-wrap">
             <Button
               variant="outline"
               size="sm"
-              className="gap-1.5 text-xs min-h-[48px]"
+              className="gap-1.5 text-xs min-h-[44px]"
               onClick={() => {
                 apiFetch("/api/scenes/random")
                   .then((r) => r.ok ? r.json() : null)
@@ -266,7 +266,7 @@ export default function SceneGallery() {
             <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-3 flex items-center gap-1.5">
               <Heart className="h-3 w-3 text-rose-400" />Trending This Week
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-6 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-2">
               {trending.map((scene: any) => {
                 let els: any[] = [];
                 try { els = JSON.parse(scene.elements ?? "[]"); } catch { /* */ }
@@ -349,7 +349,7 @@ export default function SceneGallery() {
 
         {/* Grid */}
         {isLoading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {Array.from({ length: 8 }).map((_, i) => (
               <div key={i} className="bg-card border border-border rounded-2xl overflow-hidden animate-pulse">
                 <div className="h-48 bg-muted" />
@@ -370,7 +370,7 @@ export default function SceneGallery() {
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {filtered.map((scene: any) => (
               <GalleryCard
                 key={scene.id}

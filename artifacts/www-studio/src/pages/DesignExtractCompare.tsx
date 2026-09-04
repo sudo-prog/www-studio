@@ -159,12 +159,12 @@ export default function DesignExtractCompare() {
   const colorDiff = getColorDiff(colorsA, colorsB);
 
   return (
-    <div className="min-h-[100dvh] bg-[#0a0a0b] text-foreground">
+    <div className="min-h-[100dvh] bg-[#0a0a0b] text-foreground pb-[env(safe-area-inset-bottom)]">
       <Navbar />
       {/* Header */}
       <div className="border-b border-[#27272a] px-4 md:px-6 py-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between flex-wrap">
-          <div className="flex items-center gap-3">
+        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-3 min-h-[44px]">
             <GitCompare className="h-5 w-5 text-[#3b82f6]" />
             <h1 className="text-lg font-semibold font-display">Compare Designs</h1>
           </div>
@@ -172,7 +172,7 @@ export default function DesignExtractCompare() {
             size="sm"
             onClick={handleMerge}
             disabled={merging}
-            className="bg-[#3b82f6] hover:bg-[#3b82f6]/90 text-white min-h-[48px]"
+            className="bg-[#3b82f6] hover:bg-[#3b82f6]/90 text-white min-h-[44px]"
           >
             {merging ? (
               <Loader2 className="h-3 w-3 mr-1.5 animate-spin" />
@@ -186,14 +186,14 @@ export default function DesignExtractCompare() {
 
       {/* Comparison content */}
       <div className="max-w-7xl mx-auto p-4 md:p-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {/* Left: Extraction A */}
           <div className="border border-[#27272a] rounded-lg bg-[#18181b] overflow-hidden">
             <div className="px-4 py-3 border-b border-[#27272a] bg-[#0a0a0b]">
               <p className="text-xs text-muted-foreground truncate">{a?.primaryUrl}</p>
               <p className="text-[10px] text-muted-foreground/50 font-mono mt-0.5">{a?.id}</p>
             </div>
-            <ScrollArea className="h-[600px] p-4">
+            <ScrollArea className="h-[400px] sm:h-[600px] p-4">
               <div className="space-y-4">
                 <div>
                   <h3 className="text-xs font-medium text-muted-foreground mb-2">Colors</h3>
@@ -231,7 +231,7 @@ export default function DesignExtractCompare() {
               <p className="text-xs text-muted-foreground truncate">{b?.primaryUrl}</p>
               <p className="text-[10px] text-muted-foreground/50 font-mono mt-0.5">{b?.id}</p>
             </div>
-            <ScrollArea className="h-[600px] p-4">
+            <ScrollArea className="h-[400px] sm:h-[600px] p-4">
               <div className="space-y-4">
                 <div>
                   <h3 className="text-xs font-medium text-muted-foreground mb-2">Colors</h3>

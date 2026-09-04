@@ -32,9 +32,11 @@ function EmbedModal({ scene, onClose }: { scene: any; onClose: () => void }) {
       <div className="bg-card border border-border rounded-2xl p-6 w-full max-w-lg shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <h2 className="font-semibold text-base mb-1">Embed Scene</h2>
         <p className="text-xs text-muted-foreground mb-4">Paste this snippet into any HTML page</p>
-        <pre className="text-[11px] font-mono bg-muted/50 border border-border rounded-xl p-4 whitespace-pre-wrap break-words leading-relaxed">
-          {embedCode}
-        </pre>
+        <div className="overflow-x-auto">
+          <pre className="text-[11px] font-mono bg-muted/50 border border-border rounded-xl p-4 whitespace-pre-wrap break-words leading-relaxed">
+            {embedCode}
+          </pre>
+        </div>
         <div className="flex flex-wrap gap-2 mt-4">
           <Button size="sm" onClick={copy} className="flex-1 gap-1.5 min-h-[48px]">
             {copied ? "✓ Copied!" : <><Copy className="h-3.5 w-3.5" />Copy Embed Code</>}
@@ -154,7 +156,7 @@ export default function Gallery() {
   }
 
   return (
-    <div className="min-h-[100dvh] bg-background overflow-x-hidden">
+    <div className="min-h-[100dvh] bg-background overflow-x-hidden pb-[env(safe-area-inset-bottom)]">
       {embedScene && <EmbedModal scene={embedScene} onClose={() => setEmbedScene(null)} />}
 
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-8">
