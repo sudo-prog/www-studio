@@ -1478,5 +1478,118 @@
     "preview_image": "https://cdn.21st.dev/prashantsom75/scroll-morph-hero/default/preview.1765164297799.png",
     "extraction_status": "verified",
     "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Real-Time Datamosh Effect with Three.js",
+    "source_url": "https://tympanus.net/codrops/2026/09/02/breaking-the-frame-building-a-real-time-datamosh-effect-with-three-js/",
+    "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+    "category": "shader",
+    "tags": [
+      "datamosh",
+      "distortion",
+      "effect",
+      "glitch",
+      "post-processing",
+      "shaders",
+      "snippet",
+      "three.js",
+      "tutorial",
+      "webgl"
+    ],
+    "description": "Hands-on tutorial building a real-time datamosh transition effect with Three.js, GLSL shaders, and codec-inspired post-processing techniques.",
+    "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/08/datamoch_cover-1200x900.png.webp",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04",
+    "id": "x-f4d17c9690cc77a57b2bb359"
+  },
+  {
+    "name": "Interactive 3D Cluster with Three.js TSL and Three Start",
+    "source_url": "https://tympanus.net/codrops/2026/08/12/creating-an-interactive-3d-cluster-with-three-js-tsl-and-three-start/",
+    "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+    "category": "3d",
+    "tags": [
+      "3d",
+      "icosahedron",
+      "interaction",
+      "noise",
+      "snippet",
+      "three.js",
+      "tsl",
+      "tutorial",
+      "webgpu"
+    ],
+    "description": "Turns a simple icosahedron into a dynamic, interactive 3D cluster using Three.js, TSL, WebGPU, noise, and post-processing.",
+    "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/08/videoframe_8751.png.webp",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04",
+    "id": "x-fd2ddf8546cae6d4d7d7ad3f"
+  },
+  {
+    "name": "Endless Interactive Glass Xylophone with Three.js",
+    "source_url": "https://tympanus.net/codrops/2026/08/04/building-an-endless-interactive-glass-xylophone-with-three-js/",
+    "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+    "category": "3d",
+    "tags": [
+      "3d",
+      "audio",
+      "fluid",
+      "glass",
+      "instancing",
+      "shader",
+      "snippet",
+      "three.js",
+      "tutorial",
+      "webgl"
+    ],
+    "description": "Scrolling helix of frosted glass bars that ring as you sweep across them, built in Three.js with instancing, fluid simulation, and glass faked in the shader.",
+    "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/08/xylophone_cover.png.webp",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04",
+    "id": "x-2ef5b7b69c65fb89875c763a"
+  },
+  {
+    "name": "Interactive Wave Propagation Cube Grid with Three.js",
+    "source_url": "https://tympanus.net/codrops/2026/07/09/building-an-interactive-wave-propagation-cube-grid-with-three-js/",
+    "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+    "category": "background",
+    "tags": [
+      "3d",
+      "background",
+      "cube",
+      "grid",
+      "minimal",
+      "snippet",
+      "three.js",
+      "tutorial",
+      "wave",
+      "webgl"
+    ],
+    "description": "Creates a minimalistic and customizable 3D wave grid background with Three.js.",
+    "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/07/franky_cover.png.webp",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04",
+    "id": "x-def41cbc35876a5ec02b2e69"
+  },
+  {
+    "name": "Volatile Nexus — Glass, Caustics, Cubes and Sound in Three.js",
+    "source_url": "https://tympanus.net/codrops/2026/08/31/volatile-nexus-tinkering-with-glass-caustics-cubes-and-sound-in-three-js/",
+    "registry_url": "https://tympanus.net/codrops/category/playground/",
+    "category": "3d",
+    "tags": [
+      "3d",
+      "audio",
+      "caustics",
+      "glass",
+      "interactive",
+      "playground",
+      "snippet",
+      "three.js",
+      "webgl"
+    ],
+    "description": "Mesmerizing Three.js experiment where glass, wandering cubes, caustics, refractions, and sound come together in a fluid, interactive scene.",
+    "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/08/volatileNexus.jpg.webp",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04",
+    "id": "x-d5a92658ed286082c232c8a9"
   }
 ]
