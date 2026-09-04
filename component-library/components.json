@@ -624,5 +624,859 @@
     "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-04-11%20at%2015.56.54.avif",
     "extraction_status": "verified",
     "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "WebGL Shader",
+    "source_url": "https://21st.dev/@designali-in/components/web-gl-shader",
+    "registry_url": "https://21st.dev/",
+    "category": "shader",
+    "tags": [
+      "3d",
+      "background",
+      "glow",
+      "shader",
+      "webgl"
+    ],
+    "description": "WebGL fragment shader background rendered into a full-screen canvas.",
+    "preview_image": "https://21st.dev/_next/image?url=%2Flanding-videos%2Fdesignali-in-web-gl-shader.jpg&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Gradient Bar Hero Section",
+    "source_url": "https://21st.dev/@waleedkibhen/components/gradient-bar-hero-section",
+    "registry_url": "https://21st.dev/",
+    "category": "hero",
+    "tags": [
+      "flat",
+      "gradient",
+      "hero",
+      "react",
+      "tailwind"
+    ],
+    "description": "Hero section with animated gradient bar accents.",
+    "preview_image": "https://21st.dev/_next/image?url=%2Flanding-videos%2Fuser_2wXKnbD82Toyddx7d1YSlQ8DuJ5-gradient-bar-hero-section.jpg&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Hero Section 5",
+    "source_url": "https://21st.dev/@meschacirung/components/hero-section-5",
+    "registry_url": "https://21st.dev/",
+    "category": "hero",
+    "tags": [
+      "flat",
+      "hero",
+      "minimal",
+      "react",
+      "tailwind"
+    ],
+    "description": "Marketing hero section with centered headline and CTA.",
+    "preview_image": "https://21st.dev/_next/image?url=%2Flanding-videos%2Fuser_2tUYFzCDCVfrMrVC3TfB9DUBAyx-hero-section-5.jpg&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Vercel Hero",
+    "source_url": "https://21st.dev/@designali-in/components/vercel-hero",
+    "registry_url": "https://21st.dev/",
+    "category": "hero",
+    "tags": [
+      "gradient",
+      "hero",
+      "neon",
+      "react",
+      "tailwind"
+    ],
+    "description": "Vercel-style hero with grain background and bold typography.",
+    "preview_image": "https://21st.dev/_next/image?url=%2Flanding-videos%2Fdesignali-in-vercel-hero.jpg&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Waitlist Hero",
+    "source_url": "https://21st.dev/@minhxthanh/components/waitlist-hero",
+    "registry_url": "https://21st.dev/",
+    "category": "hero",
+    "tags": [
+      "gradient",
+      "hero",
+      "react",
+      "soft",
+      "tailwind"
+    ],
+    "description": "Waitlist landing hero, email capture + animated gradient backdrop.",
+    "preview_image": "https://21st.dev/_next/image?url=%2Flanding-videos%2Fminhxthanh-waitlist-hero.jpg&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Liquid Metal Hero",
+    "source_url": "https://21st.dev/@chowlol202/components/liquid-metal-hero",
+    "registry_url": "https://21st.dev/",
+    "category": "hero",
+    "tags": [
+      "fluid",
+      "hero",
+      "iridescent",
+      "metallic",
+      "react",
+      "shader",
+      "webgl"
+    ],
+    "description": "Hero with liquid-metal shader animation as the background.",
+    "preview_image": "https://21st.dev/_next/image?url=%2Flanding-videos%2Fchowlol202-liquid-metal-hero.jpg&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Hover Preview",
+    "source_url": "https://21st.dev/@minhxthanh/components/hover-preview",
+    "registry_url": "https://21st.dev/",
+    "category": "hover-effect",
+    "tags": [
+      "animation",
+      "hover-effect",
+      "minimal",
+      "react",
+      "tailwind"
+    ],
+    "description": "Hover-driven preview card animation.",
+    "preview_image": "https://21st.dev/_next/image?url=%2Flanding-videos%2Fminhxthanh-hover-preview.jpg&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Hero ASCII one",
+    "source_url": "https://21st.dev/@larsen66/components/hero-ascii-one",
+    "registry_url": "https://21st.dev/",
+    "category": "hero",
+    "tags": [
+      "ascii-art",
+      "hero",
+      "monochrome",
+      "react",
+      "tailwind"
+    ],
+    "description": "Hero built from live ASCII art rendering of the page content.",
+    "preview_image": "https://21st.dev/_next/image?url=%2Flanding-videos%2Flarsen66-hero-ascii-one.jpg&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Vapour Text Effect",
+    "source_url": "https://21st.dev/@jatin-yadav05/components/vapour-text-effect",
+    "registry_url": "https://21st.dev/",
+    "category": "text-effect",
+    "tags": [
+      "fluid",
+      "gsap",
+      "noise",
+      "react",
+      "text-effect"
+    ],
+    "description": "Vapour / smoke-style animated text effect using GSAP.",
+    "preview_image": "https://21st.dev/_next/image?url=%2Flanding-videos%2Fjatin-yadav05-vapour-text-effect.jpg&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Hover Footer",
+    "source_url": "https://21st.dev/@mdafsarx/components/hover-footer",
+    "registry_url": "https://21st.dev/",
+    "category": "footer",
+    "tags": [
+      "footer",
+      "hover-effect",
+      "minimal",
+      "react",
+      "tailwind"
+    ],
+    "description": "Footer with hover-triggered link reveal animations.",
+    "preview_image": "https://21st.dev/_next/image?url=%2Flanding-videos%2Fmdafsarx-hover-footer.jpg&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Animated Gradient Background",
+    "source_url": "https://21st.dev/@hammamikhairi/components/animated-gradient-background",
+    "registry_url": "https://21st.dev/",
+    "category": "background",
+    "tags": [
+      "aurora",
+      "background",
+      "fluid",
+      "gradient",
+      "particles",
+      "react",
+      "tailwind"
+    ],
+    "description": "Animated full-bleed gradient background with slow color drift.",
+    "preview_image": "https://21st.dev/_next/image?url=%2Flanding-videos%2Fuser_2raao7ewdsV3POoFtbzjac3ufnv-animated-gradient-background.jpg&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Wave Background",
+    "source_url": "https://21st.dev/@xubohuah/components/wave-background",
+    "registry_url": "https://21st.dev/",
+    "category": "background",
+    "tags": [
+      "background",
+      "fluid",
+      "particles",
+      "react",
+      "svg",
+      "wave"
+    ],
+    "description": "SVG-based wavy background animation.",
+    "preview_image": "https://21st.dev/_next/image?url=%2Flanding-videos%2Fuser_2vl1Dn19f2uJMuYVfUEcAh5qqyv-wave-background.jpg&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Rainbow Borders Button",
+    "source_url": "https://21st.dev/@muhammad-binsalman/components/rainbow-borders-button",
+    "registry_url": "https://21st.dev/",
+    "category": "button",
+    "tags": [
+      "button",
+      "gradient",
+      "neon",
+      "react",
+      "tailwind"
+    ],
+    "description": "Button with animated rainbow conic-gradient borders.",
+    "preview_image": "https://cdn.21st.dev/muhammad-binsalman/rainbow-borders-button/default/preview.1754474690576.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Star Button",
+    "source_url": "https://21st.dev/@aghasisahakyan1/components/star-button",
+    "registry_url": "https://21st.dev/",
+    "category": "button",
+    "tags": [
+      "button",
+      "glow",
+      "hover-effect",
+      "react",
+      "tailwind"
+    ],
+    "description": "Button that emits star bursts on interaction.",
+    "preview_image": "https://21st.dev/_next/image?url=%2Flanding-videos%2Faghasisahakyan1-star-button.jpg&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Hover Button",
+    "source_url": "https://21st.dev/@serafimcloud/components/hover-button",
+    "registry_url": "https://21st.dev/",
+    "category": "button",
+    "tags": [
+      "button",
+      "gradient",
+      "hover-effect",
+      "react",
+      "tailwind"
+    ],
+    "description": "Hover-animated button with smooth fill transition.",
+    "preview_image": "https://cdn.21st.dev/user_2nElBLvklOKlAURm6W1PTu6yYFh/hover-button/default/preview.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Button Colorful with Hover Effect",
+    "source_url": "https://21st.dev/@kokonutd/components/button-colorful",
+    "registry_url": "https://21st.dev/",
+    "category": "button",
+    "tags": [
+      "button",
+      "duotone",
+      "hover-effect",
+      "react",
+      "tailwind"
+    ],
+    "description": "Playful button with multi-color hover state.",
+    "preview_image": "https://21st.dev/_next/image?url=%2Flanding-videos%2Fuser_2rQ1QHrJyxpmWMHhqhANzWMc64n-button-colorful.jpg&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Gradient Button",
+    "source_url": "https://21st.dev/@serafimcloud/components/gradient-button",
+    "registry_url": "https://21st.dev/",
+    "category": "button",
+    "tags": [
+      "button",
+      "glow",
+      "gradient",
+      "react",
+      "tailwind"
+    ],
+    "description": "Tailwind button with shifting gradient surface.",
+    "preview_image": "https://21st.dev/_next/image?url=%2Flanding-videos%2Fuser_2nElBLvklOKlAURm6W1PTu6yYFh-gradient-button.jpg&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Background Boxes",
+    "source_url": "https://21st.dev/@manuarora700/components/background-boxes",
+    "registry_url": "https://21st.dev/",
+    "category": "background",
+    "tags": [
+      "animation",
+      "background",
+      "grid",
+      "minimal",
+      "react",
+      "tailwind"
+    ],
+    "description": "Grid of squares that highlight on hover as a hero background.",
+    "preview_image": "https://21st.dev/_next/image?url=%2Flanding-videos%2Fuser_aceternity-background-boxes.jpg&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Background Beams",
+    "source_url": "https://21st.dev/@manuarora700/components/background-beams",
+    "registry_url": "https://21st.dev/",
+    "category": "background",
+    "tags": [
+      "animation",
+      "background",
+      "framer-motion",
+      "glow",
+      "react"
+    ],
+    "description": "Animated beam strokes that flow behind content.",
+    "preview_image": "https://21st.dev/_next/image?url=%2Flanding-videos%2Fuser_aceternity-background-beams.jpg&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Not Found Page",
+    "source_url": "https://21st.dev/@sshahaider/components/not-found-page-1",
+    "registry_url": "https://21st.dev/",
+    "category": "404",
+    "tags": [
+      "404",
+      "error",
+      "minimal",
+      "react",
+      "tailwind"
+    ],
+    "description": "Custom 404 not-found page with branded illustration.",
+    "preview_image": "https://cdn.21st.dev/sshahaider/not-found-page-1/default/preview.1760383368876.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Footer Section",
+    "source_url": "https://21st.dev/@sshahaider/components/footer-section",
+    "registry_url": "https://21st.dev/",
+    "category": "footer",
+    "tags": [
+      "flat",
+      "footer",
+      "minimal",
+      "react",
+      "tailwind"
+    ],
+    "description": "Multi-column footer section with brand mark and links.",
+    "preview_image": "https://cdn.21st.dev/user_2tWTE0rCrloVAVylFPYfp10xU92/footer-section/default/preview.1758732413457.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Horizon Hero Section",
+    "source_url": "https://21st.dev/@lovesickfromthe6ix/components/horizon-hero-section",
+    "registry_url": "https://21st.dev/",
+    "category": "hero",
+    "tags": [
+      "aurora",
+      "glow",
+      "hero",
+      "react",
+      "tailwind"
+    ],
+    "description": "Hero section with horizon glow gradient and feature grid.",
+    "preview_image": "https://21st.dev/_next/image?url=%2Flanding-videos%2Fuser_2y0orG0S3NPUGUs5U6oQCBMLMkR-horizon-hero-section.jpg&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Agent Plan",
+    "source_url": "https://21st.dev/@isaiahbjork/components/agent-plan",
+    "registry_url": "https://21st.dev/",
+    "category": "pricing",
+    "tags": [
+      "ai-tool",
+      "minimal",
+      "pricing",
+      "react",
+      "tailwind"
+    ],
+    "description": "Pricing section tailored for AI agent plans.",
+    "preview_image": "https://21st.dev/_next/image?url=%2Flanding-videos%2Fuser_2tkbBPFWYn8YMjZNHwgIuP3yzvd-agent-plan.jpg&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Calendar",
+    "source_url": "https://21st.dev/@designali-in/components/calendar",
+    "registry_url": "https://21st.dev/",
+    "category": "date-picker",
+    "tags": [
+      "calendar",
+      "date-picker",
+      "minimal",
+      "react",
+      "tailwind"
+    ],
+    "description": "Calendar widget with month grid and event dots.",
+    "preview_image": "https://21st.dev/_next/image?url=%2Flanding-videos%2Fuser_2rO0IUQINTfBex4xN8Ghho5dpr4-calendar.jpg&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Sign In Flow",
+    "source_url": "https://21st.dev/@aghasisahakyan1/components/sign-in-flow-1",
+    "registry_url": "https://21st.dev/",
+    "category": "sign-in",
+    "tags": [
+      "auth",
+      "form",
+      "login",
+      "minimal",
+      "react",
+      "sign-in",
+      "tailwind"
+    ],
+    "description": "Multi-step sign-in flow with social providers.",
+    "preview_image": "https://21st.dev/_next/image?url=%2Flanding-videos%2Fnubmaster4568-sign-in-flow-1.jpg&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Scroll Media Expansion Hero",
+    "source_url": "https://21st.dev/@arunachalam/components/scroll-expansion-hero",
+    "registry_url": "https://21st.dev/components",
+    "category": "hero",
+    "tags": [
+      "framer-motion",
+      "hero",
+      "minimal",
+      "parallax",
+      "react",
+      "scroll-effect"
+    ],
+    "description": "Hero that expands media on scroll with pinned transforms.",
+    "preview_image": "https://cdn.21st.dev/user_2wfnj4jcSPR8JWRk7tpzrihdDV8/scroll-expansion-hero/default/preview.1746632883284.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Container Scroll Animation",
+    "source_url": "https://21st.dev/@manuarora700/components/container-scroll-animation",
+    "registry_url": "https://21st.dev/components",
+    "category": "scroll-effect",
+    "tags": [
+      "3d",
+      "animation",
+      "framer-motion",
+      "minimal",
+      "react",
+      "scroll-effect",
+      "tilt"
+    ],
+    "description": "Pinned container that rotates and skews on scroll.",
+    "preview_image": "https://cdn.21st.dev/user_aceternity/container-scroll-animation/default/preview.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Spline Scene",
+    "source_url": "https://21st.dev/@serafimcloud/components/splite",
+    "registry_url": "https://21st.dev/components",
+    "category": "3d",
+    "tags": [
+      "3d",
+      "minimal",
+      "react",
+      "scene",
+      "spline",
+      "three.js"
+    ],
+    "description": "Embeds an interactive Spline 3D scene into a React page.",
+    "preview_image": "https://cdn.21st.dev/user_2nElBLvklOKlAURm6W1PTu6yYFh/splite/default/preview.1788457500398.webp",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Spotlight Card",
+    "source_url": "https://21st.dev/@jahed/components/spotlight-card",
+    "registry_url": "https://21st.dev/components",
+    "category": "card",
+    "tags": [
+      "card",
+      "glow",
+      "hover-effect",
+      "react",
+      "tailwind"
+    ],
+    "description": "Card with a cursor-tracked spotlight reveal.",
+    "preview_image": "https://cdn.21st.dev/user_2xJxXqdwWohYrdd6fiMYrS9hbmO/spotlight-card/default/preview.1785940290519.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Fractal Glass",
+    "source_url": "https://21st.dev/@hyperiux/components/fractal-glass",
+    "registry_url": "https://21st.dev/components",
+    "category": "background",
+    "tags": [
+      "fractal",
+      "glass",
+      "react",
+      "shader",
+      "shader-art",
+      "webgl"
+    ],
+    "description": "Fractal-pattern glass shader background.",
+    "preview_image": "https://cdn.21st.dev/user_3IlVIzEF1oziaTRKTKA3Qak2f5C/fractal-glass/default/preview-light.1788446297698.webp",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Sparkles Title",
+    "source_url": "https://21st.dev/@uilayout.contact/components/sparkles-title3",
+    "registry_url": "https://21st.dev/components",
+    "category": "text-effect",
+    "tags": [
+      "framer-motion",
+      "glow",
+      "particles",
+      "react",
+      "text-effect"
+    ],
+    "description": "Headline title wrapped in animated sparkle particles.",
+    "preview_image": "https://cdn.21st.dev/user_2zAsvSHo1IeJGKtSjJ3uR1N1Cd7/sparkles-title3/default/preview.1788507638180.webp",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Velaris Shader",
+    "source_url": "https://21st.dev/@amanshakya307/components/velaris",
+    "registry_url": "https://21st.dev/components",
+    "category": "shader",
+    "tags": [
+      "aurora",
+      "iridescent",
+      "react",
+      "shader",
+      "shader-art",
+      "webgl"
+    ],
+    "description": "Aurora-style fragment shader as a hero background.",
+    "preview_image": "https://cdn.21st.dev/amanshakya307/velaris/default/preview.1783572820237.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Voice Powered Orb",
+    "source_url": "https://21st.dev/@isaiahbjork/components/voice-powered-orb",
+    "registry_url": "https://21st.dev/components",
+    "category": "audio-player",
+    "tags": [
+      "audio-player",
+      "glow",
+      "react",
+      "shader",
+      "webgl"
+    ],
+    "description": "Voice-reactive 3D orb that pulses with mic input.",
+    "preview_image": "https://cdn.21st.dev/isaiahbjork/voice-powered-orb/default/preview.1757897718443.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "WaterRippleImage",
+    "source_url": "https://21st.dev/@rahil1202/components/water-ripple-image",
+    "registry_url": "https://21st.dev/components",
+    "category": "image-effect",
+    "tags": [
+      "fluid",
+      "image-effect",
+      "react",
+      "ripple",
+      "shader"
+    ],
+    "description": "Image distorted with a water-style ripple shader.",
+    "preview_image": "https://cdn.21st.dev/rahil1202/water-ripple-image/default/preview.1760160835126.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Liquid Effect Animation",
+    "source_url": "https://21st.dev/@minhxthanh/components/liquid-effect-animation",
+    "registry_url": "https://21st.dev/components",
+    "category": "background",
+    "tags": [
+      "background",
+      "fluid",
+      "liquid-glass",
+      "particles",
+      "react",
+      "shader"
+    ],
+    "description": "Liquid distortion effect animated behind content.",
+    "preview_image": "https://cdn.21st.dev/minhxthanh/liquid-effect-animation/default/preview.1760769765612.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Sphere",
+    "source_url": "https://21st.dev/@designali-in/components/sphere",
+    "registry_url": "https://21st.dev/components",
+    "category": "3d",
+    "tags": [
+      "3d",
+      "iridescent",
+      "metallic",
+      "react",
+      "three.js"
+    ],
+    "description": "Animated 3D metallic sphere rendered with three.js.",
+    "preview_image": "https://cdn.21st.dev/designali-in/sphere/default/preview.1758130261160.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Siri Wave",
+    "source_url": "https://21st.dev/@40973894/components/siri-wave",
+    "registry_url": "https://21st.dev/components",
+    "category": "audio-player",
+    "tags": [
+      "animation",
+      "audio-player",
+      "canvas",
+      "react",
+      "wave"
+    ],
+    "description": "Siri-style waveform animation driven by sound input.",
+    "preview_image": "https://cdn.21st.dev/user_40973894/siri-wave/default/preview.1785861402007.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Shader Svg",
+    "source_url": "https://21st.dev/@reuno-ui/components/shader-svg",
+    "registry_url": "https://21st.dev/components",
+    "category": "shader",
+    "tags": [
+      "iridescent",
+      "react",
+      "shader",
+      "shader-art",
+      "svg",
+      "webgl"
+    ],
+    "description": "SVG filtered through a real-time fragment shader.",
+    "preview_image": "https://cdn.21st.dev/muhammadnadeemmn9485134/shader-svg/default/preview.1756045117930.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "ATC Shader",
+    "source_url": "https://21st.dev/@xordev/components/atc-shader",
+    "registry_url": "https://21st.dev/components",
+    "category": "shader",
+    "tags": [
+      "dither",
+      "monochrome",
+      "react",
+      "shader",
+      "shader-art",
+      "webgl"
+    ],
+    "description": "Dithered ASCII fragment shader background.",
+    "preview_image": "https://cdn.21st.dev/user_xordev/atc-shader/default/preview.1786146013849.webp",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Ethereal Shader",
+    "source_url": "https://21st.dev/@lovesickfromthe6ix/components/ethereal",
+    "registry_url": "https://21st.dev/components",
+    "category": "shader",
+    "tags": [
+      "aurora",
+      "fluid",
+      "react",
+      "shader",
+      "shader-art",
+      "webgl"
+    ],
+    "description": "Ethereal fog-like shader background.",
+    "preview_image": "https://cdn.21st.dev/lovesickfromthe6ix/ethereal/default/preview.1755896385015.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Image Stream Hero",
+    "source_url": "https://21st.dev/@ruixen.ui/components/image-stream-hero",
+    "registry_url": "https://21st.dev/components",
+    "category": "hero",
+    "tags": [
+      "animation",
+      "gallery",
+      "hero",
+      "minimal",
+      "react",
+      "tailwind"
+    ],
+    "description": "Hero with a continuous stream of thumbnail images.",
+    "preview_image": "https://cdn.21st.dev/ruixen.ui/image-stream-hero/default/preview.1786457825693-aec7ef9e-26de-4f80-96a2-74ee9afaa09a.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Black Hole Hero Section",
+    "source_url": "https://21st.dev/@yura/components/blackhole-hero-section",
+    "registry_url": "https://21st.dev/components",
+    "category": "hero",
+    "tags": [
+      "glow",
+      "hero",
+      "react",
+      "shader",
+      "webgl"
+    ],
+    "description": "Hero section with a black-hole shader centerpiece.",
+    "preview_image": "https://cdn.21st.dev/yura/blackhole-hero-section/default/preview.1785629994292-5accefa7-0f53-4c77-8bb4-5955246026e5.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Liquid Glass Button",
+    "source_url": "https://21st.dev/@designali-in/components/liquid-glass-button",
+    "registry_url": "https://21st.dev/",
+    "category": "button",
+    "tags": [
+      "button",
+      "glass",
+      "liquid-glass",
+      "react",
+      "tailwind"
+    ],
+    "description": "Button with a liquid-glass refraction surface.",
+    "preview_image": "https://cdn.21st.dev/designali-in/liquid-glass-button/default/preview.1750605472950.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Animated Hero",
+    "source_url": "https://21st.dev/@tommyjepsen/components/animated-hero",
+    "registry_url": "https://21st.dev/",
+    "category": "hero",
+    "tags": [
+      "animation",
+      "framer-motion",
+      "hero",
+      "minimal",
+      "react"
+    ],
+    "description": "Hero section with continuous animated visual elements.",
+    "preview_image": "https://cdn.21st.dev/user_2nElBLvklOKlAURm6W1PTu6yYFh/animated-hero/default/preview.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Background Paths",
+    "source_url": "https://21st.dev/@kokonutd/components/background-paths",
+    "registry_url": "https://21st.dev/",
+    "category": "background",
+    "tags": [
+      "animation",
+      "background",
+      "minimal",
+      "react",
+      "svg",
+      "tailwind"
+    ],
+    "description": "SVG path-based animated background with line motion.",
+    "preview_image": "https://cdn.21st.dev/user_2rQ1QHrJyxpmWMHhqhANzWMc64n/background-paths/default/preview.png?v=1",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Number Ticker",
+    "source_url": "https://21st.dev/community/components/s/number",
+    "registry_url": "https://21st.dev/components",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "framer-motion",
+      "minimal",
+      "react",
+      "text"
+    ],
+    "description": "Animated number ticker that counts up on view.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Testimonials Columns",
+    "source_url": "https://21st.dev/@efferd/components/testimonials-columns-1",
+    "registry_url": "https://21st.dev/components",
+    "category": "testimonial",
+    "tags": [
+      "card",
+      "grid",
+      "minimal",
+      "react",
+      "tailwind",
+      "testimonial"
+    ],
+    "description": "Multi-column testimonials layout with avatars and quotes.",
+    "preview_image": "https://cdn.21st.dev/user_2tWTE0rCrloVAVylFPYfp10xU92/testimonials-columns-1/default/preview.1746775320320.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Radial Orbital Timeline",
+    "source_url": "https://21st.dev/@jatin-yadav05/components/radial-orbital-timeline",
+    "registry_url": "https://21st.dev/components",
+    "category": "timeline",
+    "tags": [
+      "animation",
+      "glow",
+      "react",
+      "tailwind",
+      "timeline"
+    ],
+    "description": "Timeline laid out on a radial orbit around a center point.",
+    "preview_image": "https://cdn.21st.dev/user_2ra80vx0iKMyQWJ5AESmNfFbCHD/radial-orbital-timeline/default/preview.1745917317806.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Scroll Morph Hero",
+    "source_url": "https://21st.dev/@prashantsom75/components/scroll-morph-hero",
+    "registry_url": "https://21st.dev/components",
+    "category": "hero",
+    "tags": [
+      "framer-motion",
+      "hero",
+      "morph",
+      "react",
+      "scroll-effect"
+    ],
+    "description": "Hero that morphs shape and color as the page scrolls.",
+    "preview_image": "https://cdn.21st.dev/prashantsom75/scroll-morph-hero/default/preview.1765164297799.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
   }
 ]
