@@ -23,7 +23,7 @@ function ComponentCard({ item }: { item: typeof COMPONENT_LIBRARY[number] }) {
         <PreviewCodeCard
           code={item.code}
           title={item.name}
-          previewHtml={makePreviewHtml(item.code)}
+          previewHtml={makePreviewHtml(item.code, item.previewHtml)}
           onCodeCopy={() => toast({ title: "Code copied!" })}
           className="border-0 rounded-none bg-transparent"
         />

@@ -16,9 +16,18 @@ import { cn } from "@/lib/utils";
  * Default wrapper that turns a snippet of HTML/JSX into a stand-alone
  * document loadable inside a sandboxed <iframe>. Exposed so callers can
  * either use it directly or supply their own custom preview shim.
+ *
+ * Detects whether the code is plain HTML or React/JSX. For JSX, it
+ * loads React + ReactDOM + Babel from CDN and renders the component
+ * inside a `#root` mount node.
  */
-export const DEFAULT_PREVIEW_HTML = (code: string): string =>
-  `<!DOCTYPE html>
+export const DEFAULT_PREVIEW_HTML = (code: string): string => {
+  const isJsx = /^\s*(import\s|export\s|const\s+\w+\s*=|function\s+\w+|return\s*\(\s*<)/m.test(code) ||
+                /className\s*=/.test(code) ||
+                /ReactDOM\.createRoot/.test(code);
+
+  if (!isJsx) {
+    return `<!DOCTYPE html>
 <html class="dark">
 <head>
 <meta charset="UTF-8">
@@ -29,6 +38,29 @@ export const DEFAULT_PREVIEW_HTML = (code: string): string =>
 </head>
 <body>${code}</body>
 </html>`;
+  }
+
+  // JSX mode: load React + Babel, transpile and render
+  return `<!DOCTYPE html>
+<html class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={darkMode:'class'}</script>
+<style>body{margin:0;background:#09090b;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px;box-sizing:border-box;}#root{width:100%;}</style>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" data-type="module" data-presets="react,typescript">
+${code}
+</script>
+</body>
+</html>`;
+};
 
 export type PreviewCodeView = "preview" | "code";
 

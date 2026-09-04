@@ -8,9 +8,18 @@ export interface ComponentItem {
   sourceUrl?: string;
   /** Optional longer description for catalog-only entries. */
   description?: string;
+  /**
+   * Optional standalone HTML used as the iframe preview when the raw
+   * `code` field is React/JSX that can't run in a plain HTML sandbox
+   * (e.g. it imports third-party npm packages). When set, this is
+   * rendered in the preview viewport; the `code` field still appears
+   * verbatim in the "Code" view so users can see the real source.
+   */
+  previewHtml?: string;
 }
 
 import componentsJsonCatalog from "./components-json-catalog.json";
+import { REGISTRY_EXTRACTED_COMPONENTS } from "./registry-extracted-components";
 
 export const CATEGORIES = [
   "All",
@@ -1498,9 +1507,15 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   },
   // ─────────── EXTRACTED CATALOG (real code from upstream sources) ───────────
    ...componentsJsonCatalog,
+  // ─────────── REGISTRY EXTRACTED (libraries.dev + @appica/ui-react) ───────────
+   ...REGISTRY_EXTRACTED_COMPONENTS,
  ];
 
-export function makePreviewHtml(code: string): string {
+export function makePreviewHtml(code: string, previewHtmlOverride?: string): string {
+  // Use the override (a self-contained HTML snippet) if provided —
+  // this lets entries whose `code` is React/JSX with unresolvable
+  // npm imports still show a working visual demo in the iframe.
+  const inner = previewHtmlOverride ?? code;
   return `<!DOCTYPE html>
 <html class="dark">
 <head>
@@ -1510,6 +1525,6 @@ export function makePreviewHtml(code: string): string {
 <script>tailwind.config={darkMode:'class'}</script>
 <style>body{margin:0;background:#09090b;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px;box-sizing:border-box;}</style>
 </head>
-<body>${code}</body>
+<body>${inner}</body>
 </html>`;
 }
