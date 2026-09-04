@@ -123,5 +123,506 @@
     "code": "'use client'\n\nimport * as React from 'react'\nimport {\n  Autocomplete,\n  AutocompleteInput,\n  AutocompleteContent,\n  AutocompleteEmpty,\n  AutocompleteList,\n  AutocompleteItem,\n} from '@appica/ui-react/autocomplete'\nimport { CountryFlagRounded } from '@appica/country-flags-react'\n\ninterface Country {\n  code: string\n  name: string\n}\n\nconst countries: Country[] = [\\\n  { code: 'au', name: 'Australia' },\\\n  { code: 'br', name: 'Brazil' },\\\n  { code: 'ca', name: 'Canada' },\\\n  { code: 'fr', name: 'France' },\\\n  { code: 'de', name: 'Germany' },\\\n  { code: 'it', name: 'Italy' },\\\n  { code: 'jp', name: 'Japan' },\\\n  { code: 'es', name: 'Spain' },\\\n  { code: 'gb', name: 'United Kingdom' },\\\n  { code: 'us', name: 'United States' },\\\n]\n\nexport default function AutocompleteCountrySearch() {\n  const [value, setValue] = React.useState('')\n  const selected = countries.find((country) => country.name === value)\n\n  return (\n    <div className=\"w-full max-w-70\">\n      <Autocomplete\n        items={countries}\n        value={value}\n        onValueChange={(v: string) => setValue(v)}\n        itemToStringValue={(item) => (item as Country).name}\n        clearable\n        icon\n      >\n        <AutocompleteInput\n          placeholder=\"Search a country\"\n          aria-label=\"Search a country\"\n          startSlot={selected ? <CountryFlagRounded code={selected.code} aria-hidden /> : null}\n        />\n        <AutocompleteContent>\n          <AutocompleteEmpty>No countries found.</AutocompleteEmpty>\n          <AutocompleteList>\n            {(country: Country) => (\n              <AutocompleteItem key={country.code} value={country}>\n                <CountryFlagRounded code={country.code} data-icon=\"start\" aria-hidden />\n                {country.name}\n              </AutocompleteItem>\n            )}\n          </AutocompleteList>\n        </AutocompleteContent>\n      </Autocomplete>\n    </div>\n  )\n}",
     "sourceUrl": "https://appica.dev/ui/components/react/autocomplete",
     "description": "Autocomplete - Appica UI"
+  },
+  {
+    "name": "Supaste Navigation Bar",
+    "source_url": "https://www.navbar.gallery/navbar/supaste",
+    "registry_url": "https://www.navbar.gallery/",
+    "category": "navbar",
+    "tags": [
+      "css",
+      "dropdown",
+      "html",
+      "javascript",
+      "minimal",
+      "navbar",
+      "search-bar",
+      "soft"
+    ],
+    "description": "Supaste website navigation bar — modern SaaS-style top navigation with dropdown menus and search affordance. Showcased as inspiration #550 on Navbar Gallery.",
+    "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-06-06%20at%2019.49.17.avif",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Chesapeake Plywood Navigation Bar",
+    "source_url": "https://www.navbar.gallery/navbar/chesapeake-plywood",
+    "registry_url": "https://www.navbar.gallery/",
+    "category": "navbar",
+    "tags": [
+      "css",
+      "dropdown",
+      "html",
+      "javascript",
+      "minimal",
+      "navbar",
+      "static"
+    ],
+    "description": "Chesapeake Plywood site navigation — clean e-commerce navbar with product dropdowns. Showcased as #549 on Navbar Gallery.",
+    "preview_image": "https://cdn.navbar.gallery/nav%20.avif",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Velt Navigation Bar",
+    "source_url": "https://www.navbar.gallery/navbar/velt",
+    "registry_url": "https://www.navbar.gallery/",
+    "category": "navbar",
+    "tags": [
+      "css",
+      "dropdown",
+      "glow",
+      "javascript",
+      "minimal",
+      "navbar",
+      "react",
+      "tabs"
+    ],
+    "description": "Velt (developer SDK) navigation — modern docs/product navbar with dropdowns and tab-style secondary nav. Showcased as #548 on Navbar Gallery.",
+    "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-06-06%20at%2019.28.20.avif",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Clonix Navigation Bar",
+    "source_url": "https://www.navbar.gallery/navbar/clonix",
+    "registry_url": "https://www.navbar.gallery/",
+    "category": "navbar",
+    "tags": [
+      "css",
+      "dropdown",
+      "framer",
+      "glass",
+      "javascript",
+      "minimal",
+      "navbar",
+      "static"
+    ],
+    "description": "Clonix (Framer-built) navigation — agency-style top nav with dropdowns and minimal visual treatment. Showcased as #547 on Navbar Gallery.",
+    "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-06-06%20at%2018.39.28.avif",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Aveon Navigation Bar",
+    "source_url": "https://www.navbar.gallery/navbar/aveon",
+    "registry_url": "https://www.navbar.gallery/",
+    "category": "navbar",
+    "tags": [
+      "css",
+      "dropdown",
+      "framer",
+      "gradient",
+      "javascript",
+      "mega-menu",
+      "minimal",
+      "navbar"
+    ],
+    "description": "Aveon (Framer-built) navigation — modern brand-site navbar with mega-menu and gradient accents. Showcased as #546 on Navbar Gallery.",
+    "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-05-23%20at%2016.01.24.avif",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Orchid Navigation Bar",
+    "source_url": "https://www.navbar.gallery/navbar/orchid",
+    "registry_url": "https://www.navbar.gallery/",
+    "category": "navbar",
+    "tags": [
+      "css",
+      "dropdown",
+      "javascript",
+      "minimal",
+      "navbar",
+      "next.js",
+      "react",
+      "search-bar"
+    ],
+    "description": "Orchid AI navigation — startup product navbar with dropdown menus and search affordance. Showcased as #545 on Navbar Gallery.",
+    "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-05-23%20at%2016.05.24.avif",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Cloudflare Navigation Bar",
+    "source_url": "https://www.navbar.gallery/navbar/cloudflare",
+    "registry_url": "https://www.navbar.gallery/",
+    "category": "navbar",
+    "tags": [
+      "css",
+      "javascript",
+      "mega-menu",
+      "minimal",
+      "navbar",
+      "react",
+      "tabs"
+    ],
+    "description": "Cloudflare corporate navigation — enterprise-grade top nav with mega-menu and tabs. Showcased as #544 on Navbar Gallery.",
+    "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-05-23%20at%2015.57.50.avif",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Consensys Navigation Bar",
+    "source_url": "https://www.navbar.gallery/navbar/consensys",
+    "registry_url": "https://www.navbar.gallery/",
+    "category": "navbar",
+    "tags": [
+      "css",
+      "dropdown",
+      "javascript",
+      "mega-menu",
+      "minimal",
+      "navbar",
+      "react"
+    ],
+    "description": "Consensys (web3) corporate navigation — multi-product navbar with mega-menu structure. Showcased as #543 on Navbar Gallery.",
+    "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-05-23%20at%2016.09.09.avif",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Big Dirty Agency Navigation Bar",
+    "source_url": "https://www.navbar.gallery/navbar/big-dirty-agency",
+    "registry_url": "https://www.navbar.gallery/",
+    "category": "navbar",
+    "tags": [
+      "brutalist",
+      "css",
+      "html",
+      "javascript",
+      "navbar",
+      "static"
+    ],
+    "description": "Big Dirty Agency navigation — agency-style brutalist top nav. Showcased as #542 on Navbar Gallery.",
+    "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-05-16%20at%2021.36.27.avif",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Hosier Brown Navigation Bar",
+    "source_url": "https://www.navbar.gallery/navbar/hosier-brown",
+    "registry_url": "https://www.navbar.gallery/",
+    "category": "navbar",
+    "tags": [
+      "css",
+      "dropdown",
+      "framer",
+      "javascript",
+      "minimal",
+      "navbar",
+      "static"
+    ],
+    "description": "Hosier Brown (Framer-built) navigation — boutique-brand top nav with dropdowns. Showcased as #542 on Navbar Gallery.",
+    "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-05-16%20at%2021.31.51.avif",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Browserbase Navigation Bar",
+    "source_url": "https://www.navbar.gallery/navbar/browserbase",
+    "registry_url": "https://www.navbar.gallery/",
+    "category": "navbar",
+    "tags": [
+      "css",
+      "dropdown",
+      "javascript",
+      "minimal",
+      "navbar",
+      "react",
+      "tabs"
+    ],
+    "description": "Browserbase (developer infra) navigation — docs/dev-tooling navbar with dropdowns and tabs. Showcased as #536 on Navbar Gallery.",
+    "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-05-09%20at%2021.25.55%201%20(1).avif",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Asana Navigation Bar",
+    "source_url": "https://www.navbar.gallery/navbar/asana",
+    "registry_url": "https://www.navbar.gallery/",
+    "category": "navbar",
+    "tags": [
+      "css",
+      "dropdown",
+      "javascript",
+      "mega-menu",
+      "minimal",
+      "navbar",
+      "react"
+    ],
+    "description": "Asana (SaaS) navigation — product-led navbar with mega-menu structure. Showcased as #531 on Navbar Gallery.",
+    "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-05-16%20at%2021.28.48.avif",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Bud Navigation Bar",
+    "source_url": "https://www.navbar.gallery/navbar/bud",
+    "registry_url": "https://www.navbar.gallery/",
+    "category": "navbar",
+    "tags": [
+      "css",
+      "dropdown",
+      "javascript",
+      "minimal",
+      "navbar",
+      "react",
+      "search-bar"
+    ],
+    "description": "Bud (fintech) navigation — modern fintech navbar with dropdowns and search. Showcased as #530 on Navbar Gallery.",
+    "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-05-16%20at%2021.20.57.avif",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Function Navigation Bar",
+    "source_url": "https://www.navbar.gallery/navbar/function",
+    "registry_url": "https://www.navbar.gallery/",
+    "category": "navbar",
+    "tags": [
+      "css",
+      "dropdown",
+      "javascript",
+      "mega-menu",
+      "minimal",
+      "navbar",
+      "next.js",
+      "react"
+    ],
+    "description": "Function Health navigation — health-tech product navbar with mega-menu and dropdowns. Showcased as #522 on Navbar Gallery.",
+    "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-05-09%20at%2021.23.20.avif",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "HUTS Navigation Bar",
+    "source_url": "https://www.navbar.gallery/navbar/huts",
+    "registry_url": "https://www.navbar.gallery/",
+    "category": "navbar",
+    "tags": [
+      "css",
+      "dropdown",
+      "html",
+      "javascript",
+      "minimal",
+      "navbar",
+      "static"
+    ],
+    "description": "HUTS (furniture brand) navigation — clean e-commerce navbar with product dropdowns. Showcased as #521 on Navbar Gallery.",
+    "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-05-09%20at%2021.20.26.avif",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Hungry Tiger Navigation Bar",
+    "source_url": "https://www.navbar.gallery/navbar/hungry-tiger",
+    "registry_url": "https://www.navbar.gallery/",
+    "category": "navbar",
+    "tags": [
+      "css",
+      "dropdown",
+      "html",
+      "javascript",
+      "minimal",
+      "navbar",
+      "static"
+    ],
+    "description": "Hungry Tiger (restaurant) navigation — restaurant-brand navbar with menu dropdowns. Showcased as #520 on Navbar Gallery.",
+    "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-05-09%20at%2021.14.51%201.avif",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Integrated Biosciences Navigation Bar",
+    "source_url": "https://www.navbar.gallery/navbar/integrated-biosciences",
+    "registry_url": "https://www.navbar.gallery/",
+    "category": "navbar",
+    "tags": [
+      "css",
+      "dropdown",
+      "javascript",
+      "minimal",
+      "navbar",
+      "next.js",
+      "react",
+      "search-bar"
+    ],
+    "description": "Integrated Biosciences (biotech) navigation — startup product navbar with dropdowns and search. Showcased as #514 on Navbar Gallery.",
+    "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-04-26%20at%2021.27.32.avif",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Mistral Navigation Bar",
+    "source_url": "https://www.navbar.gallery/navbar/mistral",
+    "registry_url": "https://www.navbar.gallery/",
+    "category": "navbar",
+    "tags": [
+      "css",
+      "dropdown",
+      "javascript",
+      "mega-menu",
+      "minimal",
+      "navbar",
+      "next.js",
+      "react"
+    ],
+    "description": "Mistral AI navigation — AI-startup navbar with mega-menu structure for products and research. Showcased as #512 on Navbar Gallery.",
+    "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-04-26%20at%2021.22.52.avif",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Twenty Navigation Bar",
+    "source_url": "https://www.navbar.gallery/navbar/twenty",
+    "registry_url": "https://www.navbar.gallery/",
+    "category": "navbar",
+    "tags": [
+      "css",
+      "dropdown",
+      "javascript",
+      "minimal",
+      "navbar",
+      "react",
+      "tabs"
+    ],
+    "description": "Twenty (CRM) navigation — SaaS product navbar with dropdowns and tabs. Showcased as #511 on Navbar Gallery.",
+    "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-04-26%20at%2021.25.45.avif",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Ruul Navigation Bar",
+    "source_url": "https://www.navbar.gallery/navbar/ruul",
+    "registry_url": "https://www.navbar.gallery/",
+    "category": "navbar",
+    "tags": [
+      "css",
+      "dropdown",
+      "html",
+      "javascript",
+      "minimal",
+      "navbar",
+      "static"
+    ],
+    "description": "Ruul (freelancer platform) navigation — platform navbar with dropdowns. Showcased as #510 on Navbar Gallery.",
+    "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-04-26%20at%2021.05.47.avif",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "TUX Navigation Bar",
+    "source_url": "https://www.navbar.gallery/navbar/tux",
+    "registry_url": "https://www.navbar.gallery/",
+    "category": "navbar",
+    "tags": [
+      "css",
+      "dropdown",
+      "html",
+      "javascript",
+      "minimal",
+      "navbar",
+      "static"
+    ],
+    "description": "TUX (clothing brand) navigation — fashion-brand top nav with dropdowns. Showcased as #503 on Navbar Gallery.",
+    "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-04-19%20at%2022.33.37.avif",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "V7Labs Navigation Bar",
+    "source_url": "https://www.navbar.gallery/navbar/v7labs",
+    "registry_url": "https://www.navbar.gallery/",
+    "category": "navbar",
+    "tags": [
+      "css",
+      "dropdown",
+      "javascript",
+      "mega-menu",
+      "minimal",
+      "navbar",
+      "next.js",
+      "react"
+    ],
+    "description": "V7Labs (AI platform) navigation — enterprise AI-tool navbar with mega-menu. Showcased as #502 on Navbar Gallery.",
+    "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-04-19%20at%2022.37.35.avif",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Coterie Navigation Bar",
+    "source_url": "https://www.navbar.gallery/navbar/coterie",
+    "registry_url": "https://www.navbar.gallery/",
+    "category": "navbar",
+    "tags": [
+      "css",
+      "dropdown",
+      "html",
+      "javascript",
+      "minimal",
+      "navbar",
+      "search-bar"
+    ],
+    "description": "Coterie (lifestyle brand) navigation — D2C brand navbar with dropdowns and search. Showcased as #501 on Navbar Gallery.",
+    "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-04-11%20at%2016.16.04.avif",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Ayush Wanjari Navigation Bar",
+    "source_url": "https://www.navbar.gallery/navbar/ayush-wanjari",
+    "registry_url": "https://www.navbar.gallery/",
+    "category": "navbar",
+    "tags": [
+      "css",
+      "framer",
+      "javascript",
+      "minimal",
+      "navbar",
+      "static"
+    ],
+    "description": "Ayush Wanjari (designer portfolio) navigation — Framer-built portfolio navbar. Showcased as #502 on Navbar Gallery.",
+    "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-04-19%20at%2021.42.12.avif",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "Thonik Navigation Bar",
+    "source_url": "https://www.navbar.gallery/navbar/thonik",
+    "registry_url": "https://www.navbar.gallery/",
+    "category": "navbar",
+    "tags": [
+      "brutalist",
+      "css",
+      "html",
+      "javascript",
+      "navbar",
+      "static"
+    ],
+    "description": "Thonik (design studio) navigation — design-studio navbar with bold typographic treatment. Showcased as #500 on Navbar Gallery.",
+    "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-04-11%20at%2016.01.13.avif",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
+  },
+  {
+    "name": "AccessGrid Navigation Bar",
+    "source_url": "https://www.navbar.gallery/navbar/accessgrid",
+    "registry_url": "https://www.navbar.gallery/",
+    "category": "navbar",
+    "tags": [
+      "css",
+      "dropdown",
+      "javascript",
+      "minimal",
+      "navbar",
+      "next.js",
+      "react",
+      "search-bar"
+    ],
+    "description": "AccessGrid (identity platform) navigation — startup product navbar with dropdowns and search. Showcased as #499 on Navbar Gallery.",
+    "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-04-11%20at%2015.56.54.avif",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-04"
   }
 ]
