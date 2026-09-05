@@ -12655,5 +12655,408 @@
     "preview_image": "https://cdn.21st.dev/sshahaider/not-found-page-1/default/preview.1760383368876.png",
     "extraction_status": "verified",
     "extracted_at": "2026-09-06"
+  },
+  {
+    "name": "Anime.js Animatable",
+    "source_url": "https://animejs.com/documentation/animatable",
+    "registry_url": "https://animejs.com/",
+    "category": "animation",
+    "tags": [
+      "animatable",
+      "animation",
+      "anime.js",
+      "javascript",
+      "library",
+      "minimal"
+    ],
+    "description": "Standalone animatable object API for imperative animation control outside timelines.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-06"
+  },
+  {
+    "name": "Anime.js Scroll Observer",
+    "source_url": "https://animejs.com/documentation/events/onscroll",
+    "registry_url": "https://animejs.com/",
+    "category": "scroll-effect",
+    "tags": [
+      "animation",
+      "anime.js",
+      "javascript",
+      "observer",
+      "parallax",
+      "scroll",
+      "scroll-effect",
+      "soft"
+    ],
+    "description": "Trigger and synchronize animations based on scroll position with thresholds and callbacks.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-06"
+  },
+  {
+    "name": "Anime.js Stagger",
+    "source_url": "https://animejs.com/documentation/stagger",
+    "registry_url": "https://animejs.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "anime.js",
+      "grid",
+      "javascript",
+      "minimal",
+      "particles",
+      "stagger"
+    ],
+    "description": "Built-in stagger utility for time, value, and timeline-position staggering across multiple targets.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-06"
+  },
+  {
+    "name": "Anime.js Spring",
+    "source_url": "https://animejs.com/documentation/spring",
+    "registry_url": "https://animejs.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "anime.js",
+      "draggable",
+      "fluid",
+      "javascript",
+      "physics",
+      "spring"
+    ],
+    "description": "Physics-based spring solver for natural motion and draggable release easing.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-06"
+  },
+  {
+    "name": "GSAP gsap.to()",
+    "source_url": "https://gsap.com/docs/v3/GSAP/gsap.to()",
+    "registry_url": "https://gsap.com/docs/v3/Plugins",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "gsap",
+      "javascript",
+      "minimal",
+      "to",
+      "tween"
+    ],
+    "description": "Animate any object toward destination values with the most common GSAP tween method.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-06"
+  },
+  {
+    "name": "GSAP gsap.from()",
+    "source_url": "https://gsap.com/docs/v3/GSAP/gsap.from()",
+    "registry_url": "https://gsap.com/docs/v3/Plugins",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "from",
+      "gsap",
+      "javascript",
+      "minimal",
+      "tween"
+    ],
+    "description": "Animate from starting values back to current values — runs a tween backwards.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-06"
+  },
+  {
+    "name": "GSAP gsap.fromTo()",
+    "source_url": "https://gsap.com/docs/v3/GSAP/gsap.fromTo()",
+    "registry_url": "https://gsap.com/docs/v3/Plugins",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "fromto",
+      "gsap",
+      "javascript",
+      "minimal",
+      "tween"
+    ],
+    "description": "Animate from explicit start values to explicit end values for full control.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-06"
+  },
+  {
+    "name": "GSAP gsap.set()",
+    "source_url": "https://gsap.com/docs/v3/GSAP/gsap.set()",
+    "registry_url": "https://gsap.com/docs/v3/Plugins",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "gsap",
+      "instant",
+      "javascript",
+      "minimal",
+      "set",
+      "tween"
+    ],
+    "description": "Immediately set properties on targets without animating — instant tween helper.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-06"
+  },
+  {
+    "name": "GSAP ScrambleTextPlugin",
+    "source_url": "https://gsap.com/docs/v3/Plugins/ScrambleTextPlugin",
+    "registry_url": "https://gsap.com/docs/v3/Plugins",
+    "category": "text-effect",
+    "tags": [
+      "glitch",
+      "gsap",
+      "javascript",
+      "scramble",
+      "text",
+      "text-effect"
+    ],
+    "description": "Scramble text character-by-character revealing the new content with a randomized in-between.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-06"
+  },
+  {
+    "name": "GSAP TextPlugin",
+    "source_url": "https://gsap.com/docs/v3/Plugins/TextPlugin",
+    "registry_url": "https://gsap.com/docs/v3/Plugins",
+    "category": "text-effect",
+    "tags": [
+      "gsap",
+      "javascript",
+      "minimal",
+      "replacement",
+      "text",
+      "text-effect"
+    ],
+    "description": "Replace innerText character-by-character over time for typewriter-style reveals.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-06"
+  },
+  {
+    "name": "GSAP GSDevTools",
+    "source_url": "https://gsap.com/docs/v3/Plugins/GSDevTools",
+    "registry_url": "https://gsap.com/docs/v3/Plugins",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "debug",
+      "devtools",
+      "gsap",
+      "javascript",
+      "minimal"
+    ],
+    "description": "Visualize and control GSAP animations with recording, scrubbing, and time-scaling tools.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-06"
+  },
+  {
+    "name": "GSAP SteppedEase",
+    "source_url": "https://gsap.com/docs/v3/Eases/SteppedEase",
+    "registry_url": "https://gsap.com/docs/v3/Plugins",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "easing",
+      "gsap",
+      "javascript",
+      "minimal",
+      "stepped"
+    ],
+    "description": "Custom ease that advances in discrete steps instead of smooth interpolation.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-06"
+  },
+  {
+    "name": "GSAP RoughEase",
+    "source_url": "https://gsap.com/docs/v3/Eases/RoughEase",
+    "registry_url": "https://gsap.com/docs/v3/Plugins",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "easing",
+      "gsap",
+      "javascript",
+      "noise",
+      "rough"
+    ],
+    "description": "Adds randomized jitter to ease output for organic, sketchy motion.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-06"
+  },
+  {
+    "name": "GSAP SlowMo",
+    "source_url": "https://gsap.com/docs/v3/Eases/SlowMo",
+    "registry_url": "https://gsap.com/docs/v3/Plugins",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "easing",
+      "fluid",
+      "gsap",
+      "javascript",
+      "slowmo",
+      "yoyo"
+    ],
+    "description": "Slows the middle of an ease with configurable speed and yoyo behavior.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-06"
+  },
+  {
+    "name": "GSAP ExpoScaleEase",
+    "source_url": "https://gsap.com/docs/v3/Eases/ExpoScaleEase",
+    "registry_url": "https://gsap.com/docs/v3/Plugins",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "easing",
+      "expo",
+      "gsap",
+      "javascript",
+      "minimal",
+      "scale"
+    ],
+    "description": "Scales an ease into the upper or lower half of the input range with extra punch.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-06"
+  },
+  {
+    "name": "GSAP CSS Plugin",
+    "source_url": "https://gsap.com/docs/v3/GSAP/CorePlugins/CSS",
+    "registry_url": "https://gsap.com/docs/v3/Plugins",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "core",
+      "css",
+      "gsap",
+      "javascript",
+      "minimal"
+    ],
+    "description": "Auto-detect and animate CSS properties of DOM elements with intelligent parsing.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-06"
+  },
+  {
+    "name": "GSAP Attributes Plugin",
+    "source_url": "https://gsap.com/docs/v3/GSAP/CorePlugins/Attributes",
+    "registry_url": "https://gsap.com/docs/v3/Plugins",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "attributes",
+      "core",
+      "gsap",
+      "javascript",
+      "minimal"
+    ],
+    "description": "Animate arbitrary HTML attributes on any element — non-numeric friendly.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-06"
+  },
+  {
+    "name": "GSAP EndArray Plugin",
+    "source_url": "https://gsap.com/docs/v3/GSAP/CorePlugins/EndArray",
+    "registry_url": "https://gsap.com/docs/v3/Plugins",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "array",
+      "core",
+      "gsap",
+      "javascript",
+      "minimal"
+    ],
+    "description": "Animate across arrays of values where each value is reached in sequence.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-06"
+  },
+  {
+    "name": "GSAP Snap Plugin",
+    "source_url": "https://gsap.com/docs/v3/GSAP/CorePlugins/Snap",
+    "registry_url": "https://gsap.com/docs/v3/Plugins",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "core",
+      "gsap",
+      "javascript",
+      "minimal",
+      "snap"
+    ],
+    "description": "Snap animated values to integer increments or custom arrays during tweening.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-06"
+  },
+  {
+    "name": "GSAP Modifiers Plugin",
+    "source_url": "https://gsap.com/docs/v3/GSAP/CorePlugins/Modifiers",
+    "registry_url": "https://gsap.com/docs/v3/Plugins",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "callback",
+      "gsap",
+      "javascript",
+      "minimal",
+      "modifiers"
+    ],
+    "description": "Run a function that mutates animated values mid-tween for parallax, clamping, or dynamic behavior.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-06"
+  },
+  {
+    "name": "GSAP Staggers Guide",
+    "source_url": "https://gsap.com/resources/getting-started/Staggers",
+    "registry_url": "https://gsap.com/docs/v3/Plugins",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "gsap",
+      "guide",
+      "javascript",
+      "minimal",
+      "stagger"
+    ],
+    "description": "GSAP's stagger system for cascading animations across multiple targets with configurable grids.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-06"
+  },
+  {
+    "name": "GSAP Keyframes",
+    "source_url": "https://gsap.com/resources/keyframes",
+    "registry_url": "https://gsap.com/docs/v3/Plugins",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "gsap",
+      "guide",
+      "javascript",
+      "keyframes",
+      "minimal"
+    ],
+    "description": "Define keyframe-based animation sequences inside a single tween for multi-step motion.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-06"
   }
 ]
