@@ -5191,5 +5191,1090 @@
     "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-04-11%20at%2015.56.54.avif",
     "extraction_status": "verified",
     "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Mask Section Transition",
+    "source_url": "https://blog.olivierlarose.com/tutorials/mask-section-transition",
+    "registry_url": "https://blog.olivierlarose.com/tutorials",
+    "category": "scroll-effect",
+    "tags": [
+      "animation",
+      "framer-motion",
+      "mask",
+      "minimal",
+      "react",
+      "scroll-effect",
+      "svg"
+    ],
+    "description": "Scroll-driven section transition using SVG masks and Framer Motion in Next.js. Inspired by axelvanhessche.com.",
+    "preview_image": "https://blog.olivierlarose.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fjzzgtonmw9s6%2F2djMyqMDfiVZaFf9WuZ2Up%2F72a8c2ff0add655d39abee135e310238%2FScreenshot-2024-05-26-at-3.11.50_PM.jpg&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Mouse Image Distortion",
+    "source_url": "https://blog.olivierlarose.com/tutorials/mouse-image-distortion",
+    "registry_url": "https://blog.olivierlarose.com/tutorials",
+    "category": "effect",
+    "tags": [
+      "distorition",
+      "framer-motion",
+      "image-effect",
+      "minimal",
+      "react",
+      "react-three-fiber",
+      "three.js"
+    ],
+    "description": "Curved mouse-driven image distortion using sin function with React Three Fiber and Framer Motion.",
+    "preview_image": "https://blog.olivierlarose.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fjzzgtonmw9s6%2F3930fBVY2HnJvWzSomWn0d%2Fa670bc4b853f053cecd0ead1a406111c%2FScreenshot-2024-06-02-at-2.26.26_PM.jpg&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Background Image Parallax",
+    "source_url": "https://blog.olivierlarose.com/tutorials/background-image-parallax",
+    "registry_url": "https://blog.olivierlarose.com/tutorials",
+    "category": "scroll-effect",
+    "tags": [
+      "background",
+      "framer-motion",
+      "minimal",
+      "parallax",
+      "react",
+      "scroll-effect"
+    ],
+    "description": "Parallax background image scroll animation using Framer Motion in a Next.js app. Inspired by inkfishnyc.com.",
+    "preview_image": "https://blog.olivierlarose.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fjzzgtonmw9s6%2F1QWtPJ6r3MMHwVqEfiv7te%2F5ce6e3080f196776bd1766b48c87ab6c%2FScreenshot-2024-05-25-at-2.06.10_PM.jpg&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Text Parallax on Scroll",
+    "source_url": "https://blog.olivierlarose.com/tutorials/text-parallax",
+    "registry_url": "https://blog.olivierlarose.com/tutorials",
+    "category": "scroll-effect",
+    "tags": [
+      "framer-motion",
+      "minimal",
+      "parallax",
+      "react",
+      "scroll-effect",
+      "text-effect"
+    ],
+    "description": "Text parallax with sliding text on scroll using Framer Motion and React in Next.js.",
+    "preview_image": "https://blog.olivierlarose.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fjzzgtonmw9s6%2FAj68RfPSRIlbm6GRvfSwt%2F5c678010720987bef2099d8773e08cf2%2FScreenshot-2024-05-25-at-2.03.25_PM.jpg&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Sticky Footer Reveal",
+    "source_url": "https://blog.olivierlarose.com/tutorials/sticky-footer",
+    "registry_url": "https://blog.olivierlarose.com/tutorials",
+    "category": "footer",
+    "tags": [
+      "animation",
+      "css",
+      "footer",
+      "minimal",
+      "react",
+      "reveal",
+      "sticky"
+    ],
+    "description": "Sticky footer reveal effect using position:fixed and sticky with React and CSS.",
+    "preview_image": "https://blog.olivierlarose.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fjzzgtonmw9s6%2FDfDZSiGhyBzKi5yaPmTSZ%2Fbcfc601c67e518d46ea0d009093ecfe9%2FScreenshot_2024-05-21_at_12.21.22_AM.png&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Mask Entry Animation",
+    "source_url": "https://blog.olivierlarose.com/tutorials/mask-entry",
+    "registry_url": "https://blog.olivierlarose.com/tutorials",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "clip",
+      "framer-motion",
+      "mask",
+      "minimal",
+      "react"
+    ],
+    "description": "Entry animation with masked image clip-path, React and Framer Motion. Inspired by lightshiprv.com.",
+    "preview_image": "https://blog.olivierlarose.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fjzzgtonmw9s6%2FY8w4xTRnOJAULccQp8pjq%2F83814ed24cb299225aea2cdd60933be1%2FScreenshot-2024-05-17-at-8.20.24_PM.jpg&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Perspective Section Transition",
+    "source_url": "https://blog.olivierlarose.com/tutorials/perspective-section-transition",
+    "registry_url": "https://blog.olivierlarose.com/tutorials",
+    "category": "scroll-effect",
+    "tags": [
+      "animation",
+      "framer-motion",
+      "lenis",
+      "minimal",
+      "next.js",
+      "react",
+      "scroll-effect"
+    ],
+    "description": "Perspective scroll transition with smooth scroll (Lenis) in Next.js. Inspired by joinflowparty.com.",
+    "preview_image": "https://blog.olivierlarose.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fjzzgtonmw9s6%2F2sCmq3gTcZ9Vi8OUKG9QJS%2F1c1688c15d953cffcb3ff5715deb6106%2FScreenshot_2024-05-12_at_9.34.42_PM.png&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Ripple Shader Effect",
+    "source_url": "https://blog.olivierlarose.com/tutorials/ripple-shader",
+    "registry_url": "https://blog.olivierlarose.com/tutorials",
+    "category": "shader",
+    "tags": [
+      "animation",
+      "minimal",
+      "react",
+      "react-three-fiber",
+      "shader",
+      "three.js"
+    ],
+    "description": "Ripple shader effect using React Three Fiber + GLSL. Inspired by homunculus.jp / Yuri Artiukh.",
+    "preview_image": "https://blog.olivierlarose.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fjzzgtonmw9s6%2FsZNoBNZoqIBSzjHNVH4S4%2F97842c69391467e5645ace4537df43e8%2FScreenshot-2024-04-20-at-11.34.39_PM.jpg&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "3D Wave on Scroll",
+    "source_url": "https://blog.olivierlarose.com/tutorials/3d-wave-on-scroll",
+    "registry_url": "https://blog.olivierlarose.com/tutorials",
+    "category": "3d",
+    "tags": [
+      "framer-motion",
+      "minimal",
+      "react",
+      "react-three-fiber",
+      "scroll-effect",
+      "shader",
+      "three.js",
+      "wave"
+    ],
+    "description": "Vertex shader wave animation on a plane, scroll-driven with R3F + Framer Motion in Next.js.",
+    "preview_image": "https://blog.olivierlarose.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fjzzgtonmw9s6%2F2CarQtXooA8Qfi3hW2FkOW%2Faf182397cada20d8f037f6ece41ebcc7%2FScreenshot-2024-04-18-at-4.48.05_PM.jpg&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Blend Mode Cursor",
+    "source_url": "https://blog.olivierlarose.com/tutorials/blend-mode-cursor",
+    "registry_url": "https://blog.olivierlarose.com/tutorials",
+    "category": "effect",
+    "tags": [
+      "blend-mode",
+      "cursor",
+      "effect",
+      "gsap",
+      "minimal",
+      "react"
+    ],
+    "description": "Cursor on mouse move with CSS blend-mode: difference, built with React + GSAP. Inspired by trionn.com.",
+    "preview_image": "https://blog.olivierlarose.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fjzzgtonmw9s6%2FKDTsPoYj35D391L8DTwuU%2F5e595e53a5f2a9112a71b29d4fc88af1%2FScreenshot-2024-03-08-at-10.47.46_AM.jpg&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Creative Animated Buttons",
+    "source_url": "https://blog.olivierlarose.com/tutorials/creative-buttons",
+    "registry_url": "https://blog.olivierlarose.com/tutorials",
+    "category": "button",
+    "tags": [
+      "animation",
+      "button",
+      "hover-effect",
+      "minimal",
+      "react",
+      "sass"
+    ],
+    "description": "Awwwards-style animated buttons remade in React + SASS. Inspired by timestwo.design, cuberto.com, lusion.co.",
+    "preview_image": "https://blog.olivierlarose.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fjzzgtonmw9s6%2F1utBIUhyLoO7wtpr5xxLTx%2F2b02148a41e38645449cb70fe3e95dcf%2FScreenshot_2024-03-08_at_1.09.18_PM.png&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Text Along SVG Path",
+    "source_url": "https://blog.olivierlarose.com/tutorials/text-along-path",
+    "registry_url": "https://blog.olivierlarose.com/tutorials",
+    "category": "text-effect",
+    "tags": [
+      "framer-motion",
+      "minimal",
+      "react",
+      "scroll-effect",
+      "svg",
+      "text-effect"
+    ],
+    "description": "Animate text along an SVG path on scroll using React + Framer Motion + Lenis in Next.js.",
+    "preview_image": "https://blog.olivierlarose.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fjzzgtonmw9s6%2F6oAlkE4N1ckSSuQkQnVJju%2F34bff90b3537fb0854f1d23fb01e68e7%2FScreenshot-2024-02-22-at-10.55.57_PM.jpg&w=3840&q=75",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "CSS random() Function Polyfill",
+    "source_url": "https://css-tricks.com/css-random-function-polyfill/",
+    "registry_url": "https://css-tricks.com",
+    "category": "css-tool",
+    "tags": [
+      "css",
+      "css-generator",
+      "javascript",
+      "minimal",
+      "polyfill"
+    ],
+    "description": "Polyfill for the upcoming CSS random() function so it works across all browsers (Lee Meyer, Aug 2026).",
+    "preview_image": "https://css-tricks.com/wp-content/uploads/2026/08/random-stars-shuffle.webp",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Gap Decorations in CSS",
+    "source_url": "https://css-tricks.com/css-gap-decorations-now-available/",
+    "registry_url": "https://css-tricks.com",
+    "category": "layout",
+    "tags": [
+      "animation",
+      "css",
+      "gap",
+      "layout",
+      "minimal"
+    ],
+    "description": "CSS gap decorations now available: breakdown of new gap-edge painting features (Sam Davis Omekarajr, Aug 2026).",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Animating CSS border-image",
+    "source_url": "https://css-tricks.com/animating-css-border-image/",
+    "registry_url": "https://css-tricks.com",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "border",
+      "css",
+      "css-animation",
+      "minimal"
+    ],
+    "description": "How to animate the CSS border-image property with keyframes and @property (Preethi, Aug 2026).",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "CSS States vs JavaScript Events",
+    "source_url": "https://css-tricks.com/css-states-and-javascript-events/",
+    "registry_url": "https://css-tricks.com",
+    "category": "article",
+    "tags": [
+      "article",
+      "css",
+      "javascript",
+      "minimal",
+      "pseudo-elements",
+      "state"
+    ],
+    "description": "Where CSS states end and JavaScript events begin — pseudo-element state hooks explained (Daniel Schwarz).",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "The Siren Song of ariaNotify()",
+    "source_url": "https://css-tricks.com/the-siren-song-of-arianotify/",
+    "registry_url": "https://css-tricks.com",
+    "category": "article",
+    "tags": [
+      "a11y",
+      "accessibility",
+      "aria",
+      "article",
+      "javascript",
+      "minimal"
+    ],
+    "description": "Why the new ariaNotify() API matters for accessible live announcements (Mat Marquis, Aug 2026).",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Blocked aria-hidden: The Wrong Fixes",
+    "source_url": "https://css-tricks.com/blocked-aria-hidden-fix/",
+    "registry_url": "https://css-tricks.com",
+    "category": "article",
+    "tags": [
+      "a11y",
+      "accessibility",
+      "aria",
+      "article",
+      "javascript",
+      "minimal"
+    ],
+    "description": "Why every common fix for the blocked aria-hidden warning is wrong, and what to do (Durgesh Rajubhai Pawar).",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Dark Mode Toggles: Two States Are Enough",
+    "source_url": "https://css-tricks.com/dark-mode-toggles-two-states-are-enough/",
+    "registry_url": "https://css-tricks.com",
+    "category": "toggle",
+    "tags": [
+      "css",
+      "dark-mode",
+      "minimal",
+      "toggle",
+      "ui-ux"
+    ],
+    "description": "UX case for keeping dark-mode controls as a binary two-state toggle (Geoff Graham, Jul 2026).",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "CSS border-shape Property",
+    "source_url": "https://css-tricks.com/get-ready-for-the-powerful-css-border-shape-property/",
+    "registry_url": "https://css-tricks.com",
+    "category": "css-tool",
+    "tags": [
+      "border",
+      "css",
+      "css-shapes",
+      "css-tool",
+      "minimal"
+    ],
+    "description": "Introduction to the upcoming powerful CSS border-shape property (Temani Afif, Nov 2025).",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "cos() and sin() in CSS",
+    "source_url": "https://css-tricks.com/the-most-hated-css-feature-cos-and-sin/",
+    "registry_url": "https://css-tricks.com",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "css",
+      "css-animation",
+      "math",
+      "minimal"
+    ],
+    "description": "The most-hated CSS feature: trigonometric cos() and sin() functions explained (Juan Diego Rodríguez).",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "What's !important #18",
+    "source_url": "https://css-tricks.com/whats-important-18/",
+    "registry_url": "https://css-tricks.com",
+    "category": "article",
+    "tags": [
+      "article",
+      "css",
+      "javascript",
+      "minimal",
+      "newsletter"
+    ],
+    "description": "Edition 18 of CSS-Tricks What's !important digest covering geolocation, syntax highlighting, named-feature().",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Document Picture-in-Picture API Widgets",
+    "source_url": "https://css-tricks.com/creating-web-widgets-using-the-document-picture-in-picture-api/",
+    "registry_url": "https://css-tricks.com",
+    "category": "article",
+    "tags": [
+      "api",
+      "article",
+      "javascript",
+      "minimal",
+      "video-player"
+    ],
+    "description": "How to create always-on-top web widgets using the Document Picture-in-Picture API.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Diagonal Illusion Pattern in Pure CSS",
+    "source_url": "https://freefrontend.com/#diagonal-illusion-pattern-in-pure-css",
+    "registry_url": "https://freefrontend.com/",
+    "category": "background",
+    "tags": [
+      "animation",
+      "css",
+      "gradient",
+      "hover-effect",
+      "minimal",
+      "pattern"
+    ],
+    "description": "Pure CSS diagonal illusion using repeating-linear-gradient + conic-gradient + @property --color hover reveal.",
+    "preview_image": "https://freefrontend.com/img/2026/2026-07-23-diagonal-illusion-pattern-in-pure-css_hu4941558833882322364.webp",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Expanding CSS Grid Notched Accordion Gallery",
+    "source_url": "https://freefrontend.com/#expanding-css-grid-notched-accordion-gallery",
+    "registry_url": "https://freefrontend.com/",
+    "category": "gallery",
+    "tags": [
+      "accordion",
+      "css",
+      "gallery",
+      "grid",
+      "hover-effect",
+      "minimal"
+    ],
+    "description": "CSS Grid + :has() accordion gallery with corner-shape: notch and CSS counter() labels.",
+    "preview_image": "https://freefrontend.com/img/2026/2026-07-23-expanding-css-grid-notched-accordion-gallery_hu2885799030659105937.webp",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Futuristic CSS Theme Switcher with Corner Shaping",
+    "source_url": "https://freefrontend.com/#futuristic-css-theme-switcher-with-corner-shaping",
+    "registry_url": "https://freefrontend.com/",
+    "category": "toggle",
+    "tags": [
+      "corner-shape",
+      "css",
+      "dark-mode",
+      "minimal",
+      "theme",
+      "toggle"
+    ],
+    "description": "CSS theme switcher leveraging corner-shape and custom-property theming for futuristic look.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Holographic CSS Project Cards Grid",
+    "source_url": "https://freefrontend.com/#holographic-css-project-cards-grid",
+    "registry_url": "https://freefrontend.com/",
+    "category": "card",
+    "tags": [
+      "card",
+      "css",
+      "gradient",
+      "holo",
+      "holographic",
+      "iridescent",
+      "minimal"
+    ],
+    "description": "Holographic CSS project cards grid with iridescent gradient treatment.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Optical Illusion Pattern in Pure CSS",
+    "source_url": "https://freefrontend.com/#optical-illusion-pattern-in-pure-css",
+    "registry_url": "https://freefrontend.com/",
+    "category": "background",
+    "tags": [
+      "animation",
+      "background",
+      "css",
+      "minimal",
+      "pattern"
+    ],
+    "description": "Pure CSS optical illusion pattern; perfect companion to the diagonal-illusion demo.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Scroll-Driven Text Unscramble in CSS",
+    "source_url": "https://freefrontend.com/#scroll-driven-text-unscramble-in-css",
+    "registry_url": "https://freefrontend.com/",
+    "category": "text-effect",
+    "tags": [
+      "animation",
+      "css",
+      "minimal",
+      "scroll-effect",
+      "text-effect"
+    ],
+    "description": "Scroll-driven text unscramble animation implemented in pure CSS.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Advanced Sliding Radio Pill Selector",
+    "source_url": "https://freefrontend.com/#advanced-sliding-radio-pill-selector-with-css-anchor",
+    "registry_url": "https://freefrontend.com/",
+    "category": "form",
+    "tags": [
+      "animation",
+      "css",
+      "form",
+      "minimal",
+      "radio",
+      "selector"
+    ],
+    "description": "Sliding pill-style radio selector using the new CSS anchor positioning API.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "CSS Hyper-Realistic Animated Glowing Bell",
+    "source_url": "https://freefrontend.com/#css-hyper-realistic-animated-glowing-bell",
+    "registry_url": "https://freefrontend.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "css",
+      "glow",
+      "minimal",
+      "svg"
+    ],
+    "description": "Hyper-realistic animated glowing bell built with pure CSS.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Custom Curved SVG Border Radius Scrollbar",
+    "source_url": "https://freefrontend.com/#custom-curved-svg-border-radius-scrollbar",
+    "registry_url": "https://freefrontend.com/",
+    "category": "scrollbar",
+    "tags": [
+      "css",
+      "custom",
+      "minimal",
+      "scrollbar",
+      "svg"
+    ],
+    "description": "Custom curved SVG-border-radius scrollbar styling.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Customizable Circular Range Slider Web Component",
+    "source_url": "https://freefrontend.com/#customizable-circular-range-slider-web-component",
+    "registry_url": "https://freefrontend.com/",
+    "category": "slider",
+    "tags": [
+      "css",
+      "javascript",
+      "minimal",
+      "slider",
+      "web-component"
+    ],
+    "description": "Customizable circular range slider implemented as a web component.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Draggable Zoom Grid Gallery using GSAP",
+    "source_url": "https://freefrontend.com/#draggable-zoom-grid-gallery-using-gsap",
+    "registry_url": "https://freefrontend.com/",
+    "category": "gallery",
+    "tags": [
+      "drag",
+      "gallery",
+      "gsap",
+      "javascript",
+      "minimal",
+      "zoom"
+    ],
+    "description": "Draggable zoom grid gallery powered by GSAP.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "FLIP Drag Snap Floating Popover on GSAP",
+    "source_url": "https://freefrontend.com/#flip-drag-snap-floating-popover-on-gsap",
+    "registry_url": "https://freefrontend.com/",
+    "category": "popover",
+    "tags": [
+      "drag",
+      "flip",
+      "gsap",
+      "javascript",
+      "minimal",
+      "popover"
+    ],
+    "description": "FLIP-animated drag-snap floating popover built with GSAP.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Interactive Touch Hover Grid on GSAP",
+    "source_url": "https://freefrontend.com/#interactive-touch-hover-grid-on-gsap",
+    "registry_url": "https://freefrontend.com/",
+    "category": "grid",
+    "tags": [
+      "grid",
+      "gsap",
+      "hover-effect",
+      "javascript",
+      "minimal",
+      "touch"
+    ],
+    "description": "Touch + hover interactive grid built on GSAP timelines.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Playful Cookie Consent Widget",
+    "source_url": "https://freefrontend.com/#playful-cookie-consent-widget",
+    "registry_url": "https://freefrontend.com/",
+    "category": "modal",
+    "tags": [
+      "cookie",
+      "css",
+      "javascript",
+      "minimal",
+      "modal",
+      "notification"
+    ],
+    "description": "Playful cookie consent widget with animated CTA + dismiss flow.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Trip Invoice Card with Slotted Ticket Effect",
+    "source_url": "https://freefrontend.com/#trip-invoice-card-with-slotted-ticket-effect",
+    "registry_url": "https://freefrontend.com/",
+    "category": "card",
+    "tags": [
+      "animation",
+      "card",
+      "css",
+      "minimal",
+      "slot"
+    ],
+    "description": "Trip invoice card featuring slotted ticket visual effect.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "3D Pop-Out Character Card Hover",
+    "source_url": "https://freefrontend.com/#3d-pop-out-character-card-hover",
+    "registry_url": "https://freefrontend.com/",
+    "category": "card",
+    "tags": [
+      "3d",
+      "card",
+      "css",
+      "hover-effect",
+      "minimal",
+      "tilt"
+    ],
+    "description": "3D pop-out character card with hover tilt transitions.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Celebratory Robotic Toggle Switch Animation",
+    "source_url": "https://freefrontend.com/#celebratory-robotic-toggle-switch-animation",
+    "registry_url": "https://freefrontend.com/",
+    "category": "toggle",
+    "tags": [
+      "animation",
+      "gsap",
+      "javascript",
+      "minimal",
+      "svg",
+      "toggle"
+    ],
+    "description": "GSAP-driven celebratory robotic toggle switch with masked SVG hand gesture.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Cinematic Parallax Movie Presentation Slideshow",
+    "source_url": "https://freefrontend.com/#cinematic-parallax-movie-presentation-slideshow",
+    "registry_url": "https://freefrontend.com/",
+    "category": "slider",
+    "tags": [
+      "gsap",
+      "javascript",
+      "minimal",
+      "parallax",
+      "slider",
+      "text-effect"
+    ],
+    "description": "Cinematic parallax movie presentation slideshow on GSAP with text-scramble transitions.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Color Interpolated SVG Arc Time Slider",
+    "source_url": "https://freefrontend.com/#color-interpolated-svg-arc-time-slider",
+    "registry_url": "https://freefrontend.com/",
+    "category": "slider",
+    "tags": [
+      "gradient",
+      "javascript",
+      "minimal",
+      "slider",
+      "svg"
+    ],
+    "description": "SVG arc time slider with multi-stop RGB color interpolation for the thumb.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Dynamic CSS Shape Morphing Grid",
+    "source_url": "https://freefrontend.com/page/2/#dynamic-css-shape-morphing-grid",
+    "registry_url": "https://freefrontend.com/",
+    "category": "grid",
+    "tags": [
+      "animation",
+      "css",
+      "grid",
+      "minimal",
+      "morph"
+    ],
+    "description": "Dynamic CSS shape-morphing grid demo on freefrontend page 2.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Dynamic Sliding Dot Domino Clock",
+    "source_url": "https://freefrontend.com/page/2/#dynamic-sliding-dot-domino-clock",
+    "registry_url": "https://freefrontend.com/",
+    "category": "loader",
+    "tags": [
+      "animation",
+      "clock",
+      "css",
+      "loader",
+      "minimal"
+    ],
+    "description": "Dynamic sliding-dot domino clock animation in CSS.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Emoji Poop Rating Component",
+    "source_url": "https://freefrontend.com/page/2/#emoji-poop-rating-component",
+    "registry_url": "https://freefrontend.com/",
+    "category": "rating",
+    "tags": [
+      "css",
+      "emoji",
+      "javascript",
+      "minimal",
+      "rating"
+    ],
+    "description": "Emoji-based poop rating component (humorous UX pattern).",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Hyperspace Warp Canvas Button",
+    "source_url": "https://freefrontend.com/page/2/#hyperspace-warp-canvas-button",
+    "registry_url": "https://freefrontend.com/",
+    "category": "button",
+    "tags": [
+      "button",
+      "canvas",
+      "javascript",
+      "minimal",
+      "shader",
+      "warp"
+    ],
+    "description": "Hyperspace warp canvas button with WebGL particle streak.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Interactive 3D Sphere Image Gallery",
+    "source_url": "https://freefrontend.com/page/2/#interactive-3d-sphere-image-gallery",
+    "registry_url": "https://freefrontend.com/",
+    "category": "gallery",
+    "tags": [
+      "3d",
+      "gallery",
+      "javascript",
+      "minimal",
+      "sphere",
+      "three.js"
+    ],
+    "description": "Interactive 3D sphere image gallery using Three.js.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Interactive Cursor Image Trail Gallery",
+    "source_url": "https://freefrontend.com/page/2/#interactive-cursor-image-trail-gallery",
+    "registry_url": "https://freefrontend.com/",
+    "category": "gallery",
+    "tags": [
+      "cursor",
+      "gallery",
+      "javascript",
+      "minimal",
+      "trail"
+    ],
+    "description": "Cursor-driven image trail gallery (Hyperplexed-style).",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Interactive Keyframe-Scrubbing Face Rating Slider",
+    "source_url": "https://freefrontend.com/page/2/#interactive-keyframe-scrubbing-face-rating-slider",
+    "registry_url": "https://freefrontend.com/",
+    "category": "slider",
+    "tags": [
+      "animation",
+      "css",
+      "javascript",
+      "minimal",
+      "rating",
+      "slider"
+    ],
+    "description": "Keyframe-scrubbing face rating slider via negative animation-delay.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Isometric 3D Mechanical Numpad",
+    "source_url": "https://freefrontend.com/page/2/#isometric-3d-mechanical-numpad",
+    "registry_url": "https://freefrontend.com/",
+    "category": "input",
+    "tags": [
+      "3d",
+      "css",
+      "form",
+      "input",
+      "isometric",
+      "minimal"
+    ],
+    "description": "Isometric 3D mechanical numpad input.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Neon Glow Border Button",
+    "source_url": "https://freefrontend.com/page/2/#neon-glow-border-button",
+    "registry_url": "https://freefrontend.com/",
+    "category": "button",
+    "tags": [
+      "border",
+      "button",
+      "css",
+      "glow",
+      "minimal",
+      "neon"
+    ],
+    "description": "Neon glow border button with animated outline.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Overlapping Grid Editorial Reveal Cards",
+    "source_url": "https://freefrontend.com/page/2/#overlapping-grid-editorial-reveal-cards",
+    "registry_url": "https://freefrontend.com/",
+    "category": "card",
+    "tags": [
+      "card",
+      "css",
+      "editorial",
+      "grid",
+      "minimal",
+      "reveal"
+    ],
+    "description": "Overlapping grid editorial reveal cards with scroll-driven transitions.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Responsive Grid Slide-Carousel Gallery",
+    "source_url": "https://freefrontend.com/page/2/#responsive-grid-slide-carousel-gallery",
+    "registry_url": "https://freefrontend.com/",
+    "category": "gallery",
+    "tags": [
+      "carousel",
+      "css",
+      "gallery",
+      "grid",
+      "javascript",
+      "minimal"
+    ],
+    "description": "Responsive grid slide-carousel gallery.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Ribbon Hover CSS Leaderboard Widget",
+    "source_url": "https://freefrontend.com/page/2/#ribbon-hover-css-leaderboard-widget",
+    "registry_url": "https://freefrontend.com/",
+    "category": "component",
+    "tags": [
+      "css",
+      "hover-effect",
+      "leaderboard",
+      "minimal",
+      "ribbon"
+    ],
+    "description": "Ribbon-hover CSS leaderboard widget.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Rounded Inset Clip-Path Image Reveal",
+    "source_url": "https://freefrontend.com/page/3/#rounded-inset-clip-path-image-reveal",
+    "registry_url": "https://freefrontend.com/",
+    "category": "image-effect",
+    "tags": [
+      "clip",
+      "css",
+      "image-effect",
+      "minimal",
+      "reveal"
+    ],
+    "description": "Rounded inset clip-path image reveal animation.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Scroll-Driven SVG Map Editorial Gallery",
+    "source_url": "https://freefrontend.com/page/3/#scroll-driven-svg-map-editorial-gallery",
+    "registry_url": "https://freefrontend.com/",
+    "category": "gallery",
+    "tags": [
+      "css",
+      "editorial",
+      "javascript",
+      "map",
+      "minimal",
+      "scroll-effect",
+      "svg"
+    ],
+    "description": "Scroll-driven SVG map editorial gallery.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Skewed Perspective Drop Shadow Typography",
+    "source_url": "https://freefrontend.com/page/3/#skewed-perspective-drop-shadow-typography",
+    "registry_url": "https://freefrontend.com/",
+    "category": "text-effect",
+    "tags": [
+      "css",
+      "minimal",
+      "perspective",
+      "shadow",
+      "text-effect",
+      "typography"
+    ],
+    "description": "Skewed perspective drop-shadow typography.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Smart Home React Dashboard Interface",
+    "source_url": "https://freefrontend.com/page/3/#smart-home-react-dashboard-interface",
+    "registry_url": "https://freefrontend.com/",
+    "category": "dashboard",
+    "tags": [
+      "dashboard",
+      "minimal",
+      "react",
+      "ui"
+    ],
+    "description": "Smart home React dashboard interface demo.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Swooshing Bump-Curve D3.js Chart",
+    "source_url": "https://freefrontend.com/page/3/#swooshing-bump-curve-d3-js-chart",
+    "registry_url": "https://freefrontend.com/",
+    "category": "chart",
+    "tags": [
+      "animation",
+      "chart",
+      "curve",
+      "d3",
+      "javascript",
+      "minimal"
+    ],
+    "description": "Swooshing bump-curve D3.js chart.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "3D Folding Paper Receipt Card",
+    "source_url": "https://freefrontend.com/page/3/#3d-folding-paper-receipt-card",
+    "registry_url": "https://freefrontend.com/",
+    "category": "card",
+    "tags": [
+      "3d",
+      "card",
+      "css",
+      "fold",
+      "javascript",
+      "minimal",
+      "receipt"
+    ],
+    "description": "3D folding paper receipt card with multi-stage unfold sequence.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "3D Spinning Typography Cylinder",
+    "source_url": "https://freefrontend.com/page/3/#3d-spinning-typography-cylinder",
+    "registry_url": "https://freefrontend.com/",
+    "category": "text-effect",
+    "tags": [
+      "3d",
+      "css",
+      "cylinder",
+      "javascript",
+      "minimal",
+      "text-effect",
+      "typography"
+    ],
+    "description": "3D spinning typography cylinder with metallic sheen via background-clip gradient.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
   }
 ]
