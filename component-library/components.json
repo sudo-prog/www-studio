@@ -7073,5 +7073,636 @@
     "preview_image": "",
     "extraction_status": "verified",
     "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "GSAP ScrollTrigger",
+    "source_url": "https://gsap.com/docs/v3/Plugins/ScrollTrigger/",
+    "registry_url": "https://gsap.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "gsap",
+      "javascript",
+      "minimal",
+      "scroll-effect",
+      "transition",
+      "ts"
+    ],
+    "description": "Link any GSAP animation to scroll position with minimal config: scrub, pin, snap, batch, containerAnimation. Performance-optimised with debounced events and throttled resize recalc.",
+    "preview_image": "https://gsap.com/tf-assets/worm-d995fc59.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "GSAP ScrollSmoother",
+    "source_url": "https://gsap.com/docs/v3/Plugins/ScrollSmoother/",
+    "registry_url": "https://gsap.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "gsap",
+      "javascript",
+      "minimal",
+      "scroll-effect",
+      "smooth-scroll",
+      "ts"
+    ],
+    "description": "Members-only GSAP plugin that delivers buttery-smooth scrolling on top of native browser mechanics. Integrated with ScrollTrigger, supports data-speed parallax.",
+    "preview_image": "https://gsap.com/tf-assets/worm-2-afec0379.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "GSAP ScrollTo",
+    "source_url": "https://gsap.com/docs/v3/Plugins/ScrollToPlugin/",
+    "registry_url": "https://gsap.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "gsap",
+      "javascript",
+      "minimal",
+      "scroll-effect",
+      "ts"
+    ],
+    "description": "Animate the window scroll position to a target with automatic acceleration/deceleration. Combines with ScrollTrigger for anchor-link storytelling.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "GSAP Observer",
+    "source_url": "https://gsap.com/docs/v3/Plugins/Observer",
+    "registry_url": "https://gsap.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "gsap",
+      "hover-effect",
+      "javascript",
+      "minimal",
+      "scroll-effect",
+      "ts"
+    ],
+    "description": "Low-level event normaliser: tell Observer which event types to watch and it returns normalised delta values. Replaces wrestling with pointer/touch/wheel handlers.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "GSAP Flip",
+    "source_url": "https://gsap.com/docs/v3/Plugins/Flip/",
+    "registry_url": "https://gsap.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "gsap",
+      "javascript",
+      "layout",
+      "morph",
+      "transition",
+      "ts"
+    ],
+    "description": "FLIP technique (First/Last/Invert/Play) for seamless state transitions even when DOM structure changes. Handles nested transforms, scales, rotation, layout-absolute positioning.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "GSAP SplitText",
+    "source_url": "https://gsap.com/docs/v3/Plugins/SplitText/",
+    "registry_url": "https://gsap.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "gsap",
+      "javascript",
+      "minimal",
+      "text-effect",
+      "ts",
+      "typography"
+    ],
+    "description": "Splits HTML element text into chars/words/lines for staggered reveals. v3.13+ features: built-in aria support, autoSplit on font load, masking wrapper, deepSlice for nested elements.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "GSAP Draggable",
+    "source_url": "https://gsap.com/docs/v3/Plugins/Draggable",
+    "registry_url": "https://gsap.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "drag",
+      "drag-drop",
+      "gsap",
+      "javascript",
+      "minimal",
+      "physics",
+      "ts"
+    ],
+    "description": "Drag, spin, flick, or throw any DOM element. Supports inertia, snapping, bounds, hit-areas, velocity callbacks, type-based or x/y-only drag.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "GSAP InertiaPlugin",
+    "source_url": "https://gsap.com/docs/v3/Plugins/InertiaPlugin/",
+    "registry_url": "https://gsap.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "drag",
+      "gsap",
+      "javascript",
+      "minimal",
+      "physics",
+      "ts"
+    ],
+    "description": "Pairs with Draggable to add momentum/inertia to drag, toss, spin, or scroll. Snap-to-grid support and configurable resistance curves.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "GSAP MotionPathPlugin",
+    "source_url": "https://gsap.com/docs/v3/Plugins/MotionPathPlugin/",
+    "registry_url": "https://gsap.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "gsap",
+      "javascript",
+      "minimal",
+      "motion-path",
+      "svg",
+      "ts"
+    ],
+    "description": "Animate any object along an SVG path, raw coordinates, or property value sequence. autoRotate aligns to path tangent; align bends coordinate spaces across nested transforms.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "GSAP MotionPathHelper",
+    "source_url": "https://gsap.com/docs/v3/Plugins/MotionPathHelper/",
+    "registry_url": "https://gsap.com/",
+    "category": "animation",
+    "tags": [
+      "editor",
+      "gsap",
+      "javascript",
+      "minimal",
+      "motion-path",
+      "svg",
+      "ts"
+    ],
+    "description": "Interactive in-browser path editor for MotionPathPlugin. Drag control points to redraw the path; export the SVG path string ready to feed into MotionPath.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "GSAP DrawSVGPlugin",
+    "source_url": "https://gsap.com/docs/v3/Plugins/DrawSVGPlugin/",
+    "registry_url": "https://gsap.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "gsap",
+      "javascript",
+      "minimal",
+      "scroll-effect",
+      "svg",
+      "ts"
+    ],
+    "description": "Progressively reveal SVG strokes by length (0% to 100%). Works with any path, polyline, polygon, line, rect, circle, or ellipse.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "GSAP MorphSVGPlugin",
+    "source_url": "https://gsap.com/docs/v3/Plugins/MorphSVGPlugin/",
+    "registry_url": "https://gsap.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "gsap",
+      "javascript",
+      "morph",
+      "svg",
+      "ts"
+    ],
+    "description": "Morph any SVG shape into any other smoothly, with optional shapeIndex auto-matching and findShape utilities. Bonus: convertCoordinates for path/element alignment.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "GSAP Physics2DPlugin",
+    "source_url": "https://gsap.com/docs/v3/Plugins/Physics2DPlugin/",
+    "registry_url": "https://gsap.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "gsap",
+      "javascript",
+      "minimal",
+      "particles",
+      "physics",
+      "ts"
+    ],
+    "description": "Applies velocity and acceleration to objects (gravity, friction, x/y velocity) with auto-stop on bounds. Pairs with ThrowPropsPlugin for flick physics interactions.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "GSAP PhysicsPropsPlugin",
+    "source_url": "https://gsap.com/docs/v3/Plugins/PhysicsPropsPlugin/",
+    "registry_url": "https://gsap.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "gsap",
+      "javascript",
+      "minimal",
+      "physics",
+      "ts"
+    ],
+    "description": "Like Physics2D but for any property (rotation, scaleX, etc.). Velocity/acceleration per property with friction and max values.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "GSAP CSSRulePlugin",
+    "source_url": "https://gsap.com/docs/v3/Plugins/CSSRulePlugin/",
+    "registry_url": "https://gsap.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "css",
+      "css-filter",
+      "gsap",
+      "javascript",
+      "minimal",
+      "ts"
+    ],
+    "description": "Animate CSS rules (e.g. :before, :after, media queries) the same way GSAP tweens properties. Useful when a property can't be set inline.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "GSAP EaselPlugin",
+    "source_url": "https://gsap.com/docs/v3/Plugins/EaselPlugin/",
+    "registry_url": "https://gsap.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "canvas",
+      "gsap",
+      "javascript",
+      "minimal",
+      "ts"
+    ],
+    "description": "Tween EaselJS (CreateJS) display objects through GSAP. Bridges Adobe Animate-style canvas workflows with GSAP's tweening engine.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "GSAP PixiPlugin",
+    "source_url": "https://gsap.com/docs/v3/Plugins/PixiPlugin/",
+    "registry_url": "https://gsap.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "gradient",
+      "gsap",
+      "javascript",
+      "pixi.js",
+      "ts",
+      "webgl"
+    ],
+    "description": "Tween PIXI.js objects (filters, colour matrix, scale, position) through GSAP. Colour-matrix tweening and tint easing for performant WebGL display-object animation.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "GSAP useGSAP React Adapter",
+    "source_url": "https://gsap.com/resources/React",
+    "registry_url": "https://gsap.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "gsap",
+      "javascript",
+      "minimal",
+      "react",
+      "ts"
+    ],
+    "description": "React hook (`useGSAP()`) that auto-cleans GSAP animations on unmount and handles context() scope. Resolves the React strict-mode double-mount trap.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "GSAP CustomEase",
+    "source_url": "https://gsap.com/docs/v3/GSAP/CustomEase",
+    "registry_url": "https://gsap.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "generator",
+      "gsap",
+      "javascript",
+      "minimal",
+      "ts"
+    ],
+    "description": "Define and register custom easing curves by drawing them visually or providing cubic-bezier control points. Replaces the old CustomEase/CustomBounce/CustomWiggle trio.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "GSAP Easing Visualizer",
+    "source_url": "https://gsap.com/docs/v3/Eases",
+    "registry_url": "https://gsap.com/",
+    "category": "tool",
+    "tags": [
+      "animation",
+      "generator",
+      "gsap",
+      "javascript",
+      "minimal",
+      "playground",
+      "ts"
+    ],
+    "description": "Browse and visualise every GSAP easing function: power, expo, sine, back, elastic, bounce, steps, circ, expoScale, slow-mo, rough. Pick the right curve visually.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "GSAP CustomBounce / CustomWiggle",
+    "source_url": "https://gsap.com/docs/v3/GSAP/CustomBounce",
+    "registry_url": "https://gsap.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "gsap",
+      "javascript",
+      "minimal",
+      "physics",
+      "ts"
+    ],
+    "description": "Generates custom bounce (squash-and-stretch with settle) and wiggle (noise-driven oscillation) eases from a string. Part of the Club GreenSock easings.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "GSAP matchMedia",
+    "source_url": "https://gsap.com/docs/v3/GSAP/gsap.matchMedia()",
+    "registry_url": "https://gsap.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "gsap",
+      "javascript",
+      "minimal",
+      "scroll-effect",
+      "ts"
+    ],
+    "description": "Build responsive animations with standard media queries: gsap.matchMedia('(min-width: 800px)', () => ...). Auto-cleanup when condition becomes false.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "GSAP Context",
+    "source_url": "https://gsap.com/docs/v3/GSAP/gsap.context()",
+    "registry_url": "https://gsap.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "gsap",
+      "javascript",
+      "minimal",
+      "ts"
+    ],
+    "description": "Scope a block of GSAP setup/teardown. gsap.context() returns a function that reverts every tween, timeline, ScrollTrigger, and SplitText created within it.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Anime.js v4 Engine",
+    "source_url": "https://animejs.com/documentation",
+    "registry_url": "https://animejs.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "anime.js",
+      "engine",
+      "javascript",
+      "minimal",
+      "ts"
+    ],
+    "description": "Lightweight JavaScript animation engine: Timer, Animation, Timeline, Animatable, Draggable, Layout, Scope, Events, SVG, Text, Easings, WAAPI, Engine, Adapters.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Anime.js Timer",
+    "source_url": "https://animejs.com/documentation/timer",
+    "registry_url": "https://animejs.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "anime.js",
+      "javascript",
+      "minimal",
+      "timer",
+      "ts"
+    ],
+    "description": "Standalone timer primitive in Anime.js v4. Schedule callbacks at precise intervals and chain them with playback controls. Useful independent of full Animation API.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Anime.js Animation",
+    "source_url": "https://animejs.com/documentation/animation",
+    "registry_url": "https://animejs.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "anime.js",
+      "javascript",
+      "minimal",
+      "transition",
+      "ts"
+    ],
+    "description": "Core Animation primitive: target any JS object, tween properties, apply easings, compose with stagger/yoyo/repeat. Modern v4 API replacing v3 anime() defaults.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Anime.js Timeline",
+    "source_url": "https://animejs.com/documentation/timeline",
+    "registry_url": "https://animejs.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "anime.js",
+      "javascript",
+      "minimal",
+      "timeline",
+      "ts"
+    ],
+    "description": "Compose sequential and overlapping animations with the v4 Timeline. Position labels and relative offsets for choreographed sequences.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Anime.js Draggable",
+    "source_url": "https://animejs.com/documentation/draggable",
+    "registry_url": "https://animejs.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "anime.js",
+      "drag",
+      "drag-drop",
+      "javascript",
+      "minimal",
+      "physics",
+      "ts"
+    ],
+    "description": "Make any element draggable with bounds, friction, velocity, momentum, and snap. Built into Anime.js v4 core — no extra plugin.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Anime.js Layout",
+    "source_url": "https://animejs.com/documentation/layout",
+    "registry_url": "https://animejs.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "anime.js",
+      "javascript",
+      "layout",
+      "minimal",
+      "transition",
+      "ts"
+    ],
+    "description": "Animate layout properties (width, height, x, y) on flex/grid children with overlap-aware sequencing. Inspired by the FLIP technique.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Anime.js Scope",
+    "source_url": "https://animejs.com/documentation/scope",
+    "registry_url": "https://animejs.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "anime.js",
+      "javascript",
+      "minimal",
+      "react",
+      "ts"
+    ],
+    "description": "Scope selector and animation lifecycle to a DOM root. Pairs with React/Vue/Svelte adapter for clean mount/unmount of animations.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Anime.js SVG utilities",
+    "source_url": "https://animejs.com/documentation/svg",
+    "registry_url": "https://animejs.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "anime.js",
+      "javascript",
+      "minimal",
+      "morph",
+      "svg",
+      "ts"
+    ],
+    "description": "Animate SVG attributes (d, points, stroke-dasharray) with v4 SVG utilities. Includes `createMotionPath()` and `createSVGmorph()` helpers.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Anime.js Text effects",
+    "source_url": "https://animejs.com/documentation/text",
+    "registry_url": "https://animejs.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "anime.js",
+      "javascript",
+      "minimal",
+      "text-effect",
+      "ts",
+      "typography"
+    ],
+    "description": "v4 text-splitting primitives (`splitText`, `splitWords`, `splitChars`) for staggered reveals. Lighter alternative to GSAP SplitText for non-membership projects.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Anime.js Easings",
+    "source_url": "https://animejs.com/documentation/easings",
+    "registry_url": "https://animejs.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "anime.js",
+      "generator",
+      "javascript",
+      "minimal",
+      "ts"
+    ],
+    "description": "Built-in easing catalogue in Anime.js v4: linear, easeIn/Out/InOut for sine, cubic, quint, expo, circ, back, elastic, plus custom cubic-bezier.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Anime.js WAAPI adapter",
+    "source_url": "https://animejs.com/documentation/web-animation-api",
+    "registry_url": "https://animejs.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "anime.js",
+      "css",
+      "javascript",
+      "minimal",
+      "ts"
+    ],
+    "description": "Bridge Anime.js animations to the native Web Animations API engine. Drop-in for performance-critical work that needs browser-thread compositing.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
   }
 ]
