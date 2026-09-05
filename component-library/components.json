@@ -12486,5 +12486,82 @@
     "preview_image": "https://shaders.paper.design/_next/static/media/dot-grid.1a74aa0c.webp",
     "extraction_status": "verified",
     "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Paint Reveal",
+    "source_url": "https://blog.olivierlarose.com/tutorials/paint-reveal",
+    "registry_url": "https://blog.olivierlarose.com/tutorials",
+    "category": "hover-effect",
+    "tags": [
+      "grain",
+      "hover-effect",
+      "image-effect",
+      "javascript",
+      "minimal",
+      "next.js",
+      "react"
+    ],
+    "description": "Paint reveal / erasing effect using the destination-out blend mode of the canvas API, made with React and Next.js.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Bulge Effect",
+    "source_url": "https://blog.olivierlarose.com/tutorials/bulge-effect",
+    "registry_url": "https://blog.olivierlarose.com/tutorials",
+    "category": "distortion",
+    "tags": [
+      "distortion",
+      "image-effect",
+      "metaball",
+      "react",
+      "react-three-fiber",
+      "shader",
+      "three.js"
+    ],
+    "description": "Bulge distortion animation made with a shader in GLSL, using React Three Fiber, Next.js and React.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "3D Glass Effect",
+    "source_url": "https://blog.olivierlarose.com/tutorials/3d-glass-effect",
+    "registry_url": "https://blog.olivierlarose.com/tutorials",
+    "category": "3d",
+    "tags": [
+      "3d",
+      "distortion",
+      "glass",
+      "iridescent",
+      "liquid-glass",
+      "next.js",
+      "react",
+      "react-three-fiber",
+      "three.js"
+    ],
+    "description": "Create a glass-looking material with distortion using MeshTransmissionMaterial with Three.js, React, React Three Fiber and Next.js.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "MicroLighter: Syntax Highlighter",
+    "source_url": "https://css-tricks.com/microlighter-syntax-highlighter/",
+    "registry_url": "https://css-tricks.com/",
+    "category": "code-editor",
+    "tags": [
+      "code-editor",
+      "css",
+      "javascript",
+      "minimal",
+      "snippet",
+      "typescript"
+    ],
+    "description": "Syntax highlighting for code blocks without complicated markup, spans, classes, or bloated JavaScript.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
   }
 ]
