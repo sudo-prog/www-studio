@@ -6276,5 +6276,802 @@
     "preview_image": "",
     "extraction_status": "verified",
     "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "DotForge",
+    "source_url": "https://dotforge.vercel.app/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "css-tool",
+    "tags": [
+      "minimal",
+      "pattern",
+      "plain-css",
+      "svg"
+    ],
+    "description": "Generates dot-grid patterns and halftone-style SVG textures for web backgrounds and assets.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/63595a589781e0ab8351003f51379ebec1429c83-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Easings — CSS Cubic-Bezier Editor",
+    "source_url": "https://movin.design/easings/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "css",
+      "framer-motion",
+      "minimal"
+    ],
+    "description": "Interactive cubic-bezier curve playground to design and copy easing functions for CSS animations.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/9df695c01e7cb0e0b8e5b32525607bd2ab8902e6-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Light Stroke Tails",
+    "source_url": "https://light-stroke-rail.vercel.app/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "svg",
+    "tags": [
+      "generator",
+      "glow",
+      "plain-css",
+      "svg"
+    ],
+    "description": "Generates flowing stroke-tail motifs for use as accents, dividers, or animated SVG paths.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/4230ad372a319bba2fdfd1ec819caa03fc6f9788-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Causal",
+    "source_url": "https://causal.so/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "design-tool",
+    "tags": [
+      "generator",
+      "javascript",
+      "minimal",
+      "react"
+    ],
+    "description": "Numeric modelling and dashboarding tool for building live calculators, charts, and scenarios with a Notion-like editor.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/2bdc924bb396f3f99036500055ad656d06cb680c-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Shatter",
+    "source_url": "https://www.designminis.com/shatter",
+    "registry_url": "https://www.designminis.com/",
+    "category": "image-effect",
+    "tags": [
+      "glitch",
+      "image-effect",
+      "javascript",
+      "webgl"
+    ],
+    "description": "Web-based shatter/displacement image effect that breaks photos into fragments via shader-driven masking.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/b4f57535e83b29f5b9541ce96c491b24a70f65cd-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "GEOMETRIC",
+    "source_url": "https://geometric-art.com/en/easy",
+    "registry_url": "https://www.designminis.com/",
+    "category": "svg",
+    "tags": [
+      "generator",
+      "minimal",
+      "pattern",
+      "plain-css",
+      "svg"
+    ],
+    "description": "Browser tool to compose abstract geometric artworks from shapes, palettes, and procedural rules.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/4fbc62ce887e34011bd76cd7546e6fdd1ed4800e-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Liquid Orb Editor",
+    "source_url": "https://lersent001.github.io/orb/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "shader",
+    "tags": [
+      "gooey",
+      "shader",
+      "shader-art",
+      "webgl"
+    ],
+    "description": "Real-time liquid/blobby orb shader playground with editable uniforms for color, distortion, and motion.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/040eca6b6f3da5d6480e97f19669e8dcaa5db9e2-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Cursor Lab",
+    "source_url": "https://cursor-lab-ui.vercel.app/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "svg",
+    "tags": [
+      "css",
+      "generator",
+      "minimal",
+      "svg"
+    ],
+    "description": "SVG cursor design playground that exports custom CSS/SVG cursor sets for UI mockups.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/14c60347606b8a9e98a20fe1dc0ead79dfc41cd9-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "HalftonePro",
+    "source_url": "https://halftonepro.com/app",
+    "registry_url": "https://www.designminis.com/",
+    "category": "image-effect",
+    "tags": [
+      "filter",
+      "halftone",
+      "javascript",
+      "svg"
+    ],
+    "description": "Convert raster images to halftone, dithered, or risograph-style SVG illustrations in the browser.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/e29f5f05cc150fa81c8ee760d4b59aab65e4cbea-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Signal",
+    "source_url": "https://www.designminis.com/signal",
+    "registry_url": "https://www.designminis.com/",
+    "category": "image-effect",
+    "tags": [
+      "image-effect",
+      "javascript",
+      "noise",
+      "webgl"
+    ],
+    "description": "Generative noise/wave displacement playground for applying textured distortions to images.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/abff60bf4b0e3fd64289516672dc9f40d25c3f6d-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Refract",
+    "source_url": "https://www.designminis.com/refract",
+    "registry_url": "https://www.designminis.com/",
+    "category": "image-effect",
+    "tags": [
+      "blur-effect",
+      "distorition",
+      "glass",
+      "javascript",
+      "webgl"
+    ],
+    "description": "Glass-like refraction shader playground that bends light through a 2D image to fake glass surfaces.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/0e19a97a1f1e8b31d55deac22a7904c3f12dd493-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Gradient Builder",
+    "source_url": "https://feralui.dev/gradients",
+    "registry_url": "https://www.designminis.com/",
+    "category": "color-tool",
+    "tags": [
+      "css",
+      "gradient",
+      "gradient-generator",
+      "plain-css"
+    ],
+    "description": "Visual editor for layered CSS gradients with stops, angles, and export-ready snippets.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/4ad225f507812793866fb72b4838bb534db0d8ed-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Colour Contrast Checker",
+    "source_url": "https://colourcontrast.cc/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "accessibility",
+    "tags": [
+      "color-picker",
+      "css",
+      "html",
+      "minimal"
+    ],
+    "description": "WCAG-compliant contrast checker for foreground/background color pairs with AA/AAA scoring.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/d16b538a8184df26c41d38f7572f0dd65284e2a9-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "FontFreezer",
+    "source_url": "https://fontfreezer.com/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "font",
+    "tags": [
+      "css",
+      "font",
+      "javascript",
+      "minimal"
+    ],
+    "description": "Visual type-tester that locks custom font files and renders freeze-frame typography specimens.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/65daa7f9ed71ac419d49727249d582fd636db794-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Bloop",
+    "source_url": "https://bloop.wtf/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "animation",
+    "tags": [
+      "background",
+      "fluid",
+      "javascript",
+      "webgl"
+    ],
+    "description": "WebGL metaball/fluid background generator with color palette and motion controls.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/ebf8f8a5b0322998cd874b08967f530559d45538-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Gradlab",
+    "source_url": "http://www.gradlab.app/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "background",
+    "tags": [
+      "css",
+      "gradient",
+      "mesh-gradient",
+      "plain-css"
+    ],
+    "description": "Mesh and conic gradient background generator with editable anchor points and noise blending.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/8855216272541d2418f234025f1331bdf0a7a325-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "paperlab",
+    "source_url": "https://paperlab.nawwara.studio/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "3d",
+    "tags": [
+      "3d",
+      "isometric",
+      "paper-engine",
+      "three.js",
+      "webgl"
+    ],
+    "description": "Three.js paper-engine playground for folded/origami style 3D scenes with adjustable lighting.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/90182826ae06c220befab2dfc78e609a132139d3-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Merucav",
+    "source_url": "https://merucav.netlify.app/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "color-tool",
+    "tags": [
+      "color-palette",
+      "css",
+      "javascript",
+      "minimal"
+    ],
+    "description": "Generative color-palette tool that builds palettes from a seed color with WCAG contrast previews.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/fed662b6385ad19fcb0a03b56f98653c94281d56-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Presenta",
+    "source_url": "https://presenta.design/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "image-effect",
+    "tags": [
+      "css",
+      "image-effect",
+      "javascript",
+      "minimal"
+    ],
+    "description": "Web-based presentation/deck tool focused on image-driven slides with smooth transitions.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/f1b0efd698f968329663f505ddde0b516b3a0f6c-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "fxstudio",
+    "source_url": "https://fxstudio.site/app",
+    "registry_url": "https://www.designminis.com/",
+    "category": "css-tool",
+    "tags": [
+      "css",
+      "css-art",
+      "duotone",
+      "filter",
+      "webgl"
+    ],
+    "description": "Visual editor for CSS filter/blend chains applied to images and SVG artwork.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/e88f15b0131014632755abc8d15194f76bd9f097-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Ink",
+    "source_url": "https://ink.arnoldfrancisca.com/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "font",
+    "tags": [
+      "css",
+      "font-pairing",
+      "javascript",
+      "minimal"
+    ],
+    "description": "Type-pairing playground for hand-drawn/sketch fonts that lets designers preview and export pairings.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/442781bb1564eb594953c6c2a3593e6922ef9dc5-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Orby",
+    "source_url": "https://orby.studio/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "3d",
+    "tags": [
+      "3d",
+      "low-poly",
+      "three.js",
+      "webgl"
+    ],
+    "description": "Three.js orbit-based 3D editor that exports low-poly scenes as glTF or as embeddable web components.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/d3f6c2a5efea56c30aca5f8a071e4f54031b8725-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "teardown",
+    "source_url": "https://anishfn.qala.lol/experiments/teardown",
+    "registry_url": "https://www.designminis.com/",
+    "category": "3d",
+    "tags": [
+      "3d",
+      "minimal",
+      "three.js",
+      "webgl"
+    ],
+    "description": "Three.js experiment that breaks apart 3D models with a click-driven shatter interaction.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/3300e72e927d5d4836b73d910e5bc04b2b907ae1-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Hatchery",
+    "source_url": "https://www.designminis.com/hatchery",
+    "registry_url": "https://www.designminis.com/",
+    "category": "background",
+    "tags": [
+      "background",
+      "css",
+      "halftone",
+      "pattern",
+      "svg"
+    ],
+    "description": "Generates hatch and cross-hatch SVG backgrounds with adjustable density and palette.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/ea75df0a49b6ee55dcaae52436fd2db7afa89438-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Frametic",
+    "source_url": "https://frametic.app/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "video-player",
+    "tags": [
+      "css",
+      "javascript",
+      "minimal",
+      "video-player"
+    ],
+    "description": "Web-based frame-by-frame video editor and motion-graphics studio with timeline controls.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/3a4d6d88d67fc88e7d48dd6651abe587c67086ff-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Reelfolio",
+    "source_url": "https://reelfolio.io/dashboard",
+    "registry_url": "https://www.designminis.com/",
+    "category": "motion",
+    "tags": [
+      "css",
+      "framer-motion",
+      "javascript",
+      "minimal",
+      "portfolio"
+    ],
+    "description": "Motion portfolio builder for filmmakers and animators that outputs reel-style scrolling sites.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/bafb4b9af8ed665de926e38b8d6bfac9943c100d-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Paper Studio",
+    "source_url": "https://www.designminis.com/paper-studio",
+    "registry_url": "https://www.designminis.com/",
+    "category": "3d",
+    "tags": [
+      "3d",
+      "isometric",
+      "paper-engine",
+      "three.js",
+      "webgl"
+    ],
+    "description": "Three.js paper-engine scene editor for layered, foldable 3D paper compositions.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/7b9cc7250652782edc228f73e828e9692a5e1655-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Design System Studio",
+    "source_url": "https://balsa-ui.com/tools/design-studio",
+    "registry_url": "https://www.designminis.com/",
+    "category": "design-tool",
+    "tags": [
+      "css",
+      "design-tool",
+      "javascript",
+      "minimal"
+    ],
+    "description": "Generates token-based design system files (CSS variables, Tailwind config) from a visual editor.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/ed83aa8074b0b68f1d77283be20464f5db16a4ce-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Gradient studio",
+    "source_url": "https://balsa-ui.com/tools/gradient-studio",
+    "registry_url": "https://www.designminis.com/",
+    "category": "background",
+    "tags": [
+      "css",
+      "gradient",
+      "gradient-generator",
+      "javascript"
+    ],
+    "description": "Layered gradient studio for crafting CSS, Figma, and SVG-ready gradient palettes.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/027b70138c8c3e0fb7b91582a933799576c90b4f-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Hypergraph Plotter",
+    "source_url": "https://phileasdg.github.io/hypergraph-plotter/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "illustration",
+    "tags": [
+      "illustration",
+      "javascript",
+      "minimal",
+      "svg"
+    ],
+    "description": "Plots hypergraph/network diagrams with configurable node positioning and edge styling.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/1d68876b62afe36006d7372dd8989e5b20a9a348-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Marbler",
+    "source_url": "https://phileasdg.github.io/marbler/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "illustration",
+    "tags": [
+      "javascript",
+      "noise",
+      "pattern",
+      "svg"
+    ],
+    "description": "Generates marble/veined SVG textures with adjustable veining density and palette.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/ce081e22971d45a13ea1eb8441a68aa712d19575-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Weaver",
+    "source_url": "https://phileasdg.github.io/weaver/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "illustration",
+    "tags": [
+      "generator",
+      "javascript",
+      "minimal",
+      "pattern",
+      "svg"
+    ],
+    "description": "Procedural weaving-pattern generator that exports SVG stripes suitable for textile-style backgrounds.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/ab96b4e9b0a13f4ab2e4bed34ff3b7879d8fad6f-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "i3Dify",
+    "source_url": "https://i3dify.com/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "3d",
+    "tags": [
+      "3d",
+      "isometric",
+      "three.js",
+      "webgl"
+    ],
+    "description": "Converts 2D images into isometric 3D scenes using depth-map extrusion in the browser.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/eac3a0207210077ee2e11ae9644f8a0e6b7deacd-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "GeoLogo",
+    "source_url": "https://estudiokrill.com.ar/geologo/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "svg",
+    "tags": [
+      "javascript",
+      "logo",
+      "minimal",
+      "svg"
+    ],
+    "description": "Procedurally composes geometric logo marks from shape primitives with editable color palettes.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/25f543dbf125a6c30d013af2ec48216ccc12dc3e-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Benday",
+    "source_url": "https://benday.kacemmathlouthi.dev/playground",
+    "registry_url": "https://www.designminis.com/",
+    "category": "css-tool",
+    "tags": [
+      "css",
+      "generator",
+      "halftone",
+      "svg"
+    ],
+    "description": "Benday-dots / printer-halftone playground that generates dot patterns in SVG and CSS.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/28dccbc6f106e2838282a2b6789398b0913b94d1-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Spherium",
+    "source_url": "https://www.tryspherium.com/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "svg",
+    "tags": [
+      "generator",
+      "javascript",
+      "minimal",
+      "svg"
+    ],
+    "description": "Spherical/orb generator that exports SVG orb motifs and gradient-filled sphere icons.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/1f9ec591b595e27196be077f2eb4ca3a9a82d27c-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Ransom Note",
+    "source_url": "https://anishfn.vercel.app/experiments/ransom-note",
+    "registry_url": "https://www.designminis.com/",
+    "category": "font",
+    "tags": [
+      "css",
+      "javascript",
+      "minimal",
+      "text-effect"
+    ],
+    "description": "Generates ransom-note style typography by mixing cutout letters from a curated font set.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/66ad8f664245d358201ac7da9c63ff2fc930c327-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Prisma",
+    "source_url": "https://prisma.zip/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "image-effect",
+    "tags": [
+      "aurora",
+      "blur-effect",
+      "css",
+      "image-effect",
+      "javascript"
+    ],
+    "description": "Browser tool that applies prismatic / chromatic-aberration effects to uploaded images.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/33e20f6dab2f38c5e185307d0c3372a7eb81f628-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Springs Studio",
+    "source_url": "https://springs.studio/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "motion",
+    "tags": [
+      "css",
+      "framer-motion",
+      "javascript",
+      "minimal",
+      "physics"
+    ],
+    "description": "Spring-physics playground that visualizes damping/stiffness curves for UI motion design.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/6ec338d8f896133a3d3f89b8692fd5b3d106f395-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Dot Grid Builder",
+    "source_url": "https://playground.willnewton.dev/p/dot-grid-background",
+    "registry_url": "https://www.designminis.com/",
+    "category": "motion",
+    "tags": [
+      "background",
+      "css",
+      "halftone",
+      "javascript",
+      "pattern"
+    ],
+    "description": "Animated dot-grid background playground built on CSS keyframes with adjustable density.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/2bbd9bcc4fb1acdcefac31be6c437149e050b480-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "UI Camera",
+    "source_url": "https://ui.camera/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "3d",
+    "tags": [
+      "3d",
+      "isometric",
+      "three.js",
+      "webgl"
+    ],
+    "description": "3D camera/UI composer that frames 2D UI screenshots inside a virtual 3D scene for mockups.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/10d5c2b585e8f1a1d3a0e48fde4e1affe491f39e-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "ColorFlow",
+    "source_url": "https://colorflow.ls.graphics/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "color-tool",
+    "tags": [
+      "color-palette",
+      "css",
+      "gradient",
+      "javascript"
+    ],
+    "description": "Generates flowing multi-stop gradient palettes with WCAG contrast preview and export.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/c82b09f771e45848211730f535a23e4f67bae2b1-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Durves",
+    "source_url": "https://www.durves.com/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "svg",
+    "tags": [
+      "css",
+      "generator",
+      "minimal",
+      "svg"
+    ],
+    "description": "Curve-based SVG art generator that exports looping curve compositions for backgrounds.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/c26e4fb81ed180b59a1fb2ac1f9c1d6e14d32be9-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "ShaderGradient",
+    "source_url": "https://shadergradient.co/customize",
+    "registry_url": "https://www.designminis.com/",
+    "category": "background",
+    "tags": [
+      "aurora",
+      "mesh-gradient",
+      "shader",
+      "shader-art",
+      "webgl"
+    ],
+    "description": "Customizable GLSL gradient shader with live preview and React/Tailwind export snippets.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/0aa52c43565e1bd0f79277469b4f4717d6499076-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Shape Divider App",
+    "source_url": "https://www.shapedivider.app/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "svg",
+    "tags": [
+      "css",
+      "divider",
+      "minimal",
+      "svg"
+    ],
+    "description": "Generates SVG shape-dividers (waves, curves, triangles) for section transitions in web layouts.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/552df39bc754a44ff48cdfbccf3c001ec20cf832-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Sinwaver",
+    "source_url": "https://www.sinwaver.com/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "svg",
+    "tags": [
+      "generator",
+      "javascript",
+      "svg",
+      "wave"
+    ],
+    "description": "Sine-wave SVG generator for hero backgrounds, dividers, and rhythmic motion accents.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/6d90af018bded6694510e365ea200e567c5d3f6b-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Tabbied",
+    "source_url": "https://tabbied.com/patterns/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "background",
+    "tags": [
+      "generator",
+      "javascript",
+      "minimal",
+      "pattern",
+      "svg"
+    ],
+    "description": "Generates bold geometric patterns from grid templates with color palette controls.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/7773d05f9237bf7515e05b395cc8e37c197580b4-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "The Good Line-Height",
+    "source_url": "https://thegoodlineheight.com/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "font",
+    "tags": [
+      "css",
+      "javascript",
+      "minimal",
+      "typography"
+    ],
+    "description": "Interactive line-height visualizer that recommends optimal line-height per font size.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/515304c37d8daf03a5cb357674e1d0872b513f7c-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Typescale AI",
+    "source_url": "https://typescale.ai/",
+    "registry_url": "https://www.designminis.com/",
+    "category": "font",
+    "tags": [
+      "css",
+      "javascript",
+      "minimal",
+      "typography"
+    ],
+    "description": "Generates modular type scales (CSS variables + Tailwind config) from a base font size and ratio.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
   }
 ]
