@@ -12411,5 +12411,80 @@
     "preview_image": "",
     "extraction_status": "verified",
     "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Fluted Glass",
+    "source_url": "https://shaders.paper.design/fluted-glass",
+    "registry_url": "https://shaders.paper.design/",
+    "category": "background",
+    "tags": [
+      "blur-effect",
+      "css-art",
+      "filter",
+      "glass",
+      "shader",
+      "webgl"
+    ],
+    "description": "Glass fluting / vertical ribbing effect rendered as a fragment shader. Ultra-fast zero-dependency shader for design surfaces from @paper-design/shaders-react.",
+    "preview_image": "https://shaders.paper.design/_next/static/media/fluted-glass.a85e4f3b.webp",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Halftone Dots",
+    "source_url": "https://shaders.paper.design/halftone-dots",
+    "registry_url": "https://shaders.paper.design/",
+    "category": "background",
+    "tags": [
+      "css-art",
+      "dither",
+      "filter",
+      "halftone",
+      "pattern",
+      "shader",
+      "webgl"
+    ],
+    "description": "Single-channel halftone dot pattern produced by a GLSL fragment shader. Adjustable dot density and angle, paper.design React component.",
+    "preview_image": "https://shaders.paper.design/_next/static/media/halftone-dots.cbd8d540.webp",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Dot Orbit",
+    "source_url": "https://shaders.paper.design/dot-orbit",
+    "registry_url": "https://shaders.paper.design/",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "framer-motion",
+      "minimal",
+      "orbit",
+      "particles",
+      "pattern",
+      "shader",
+      "webgl"
+    ],
+    "description": "Animated dot pattern orbiting around a center; uses a fragment shader for the orbital motion. Configurable orbit count, radius and speed.",
+    "preview_image": "https://shaders.paper.design/_next/static/media/dot-orbit.8e262802.webp",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "Dot Grid",
+    "source_url": "https://shaders.paper.design/dot-grid",
+    "registry_url": "https://shaders.paper.design/",
+    "category": "background",
+    "tags": [
+      "flat",
+      "grid",
+      "minimal",
+      "pattern",
+      "shader",
+      "webgl"
+    ],
+    "description": "Static dot-grid background rendered with a GLSL fragment shader. Adjustable grid spacing and dot size, suitable for hero/backdrop surfaces.",
+    "preview_image": "https://shaders.paper.design/_next/static/media/dot-grid.1a74aa0c.webp",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
   }
 ]
