@@ -4229,5 +4229,447 @@
     "preview_image": "",
     "extraction_status": "verified",
     "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "paper texture",
+    "source_url": "https://shaders.paper.design/paper-texture",
+    "registry_url": "https://shaders.paper.design/",
+    "category": "background",
+    "tags": [
+      "background",
+      "minimal",
+      "react",
+      "shader",
+      "webgl"
+    ],
+    "description": "paper texture effect",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "water",
+    "source_url": "https://shaders.paper.design/water",
+    "registry_url": "https://shaders.paper.design/",
+    "category": "background",
+    "tags": [
+      "background",
+      "minimal",
+      "react",
+      "shader",
+      "webgl"
+    ],
+    "description": "water surface effect",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "image dithering",
+    "source_url": "https://shaders.paper.design/image-dithering",
+    "registry_url": "https://shaders.paper.design/",
+    "category": "filter",
+    "tags": [
+      "dither",
+      "filter",
+      "react",
+      "shader",
+      "webgl"
+    ],
+    "description": "image dithering filter",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "halftone cmyk",
+    "source_url": "https://shaders.paper.design/halftone-cmyk",
+    "registry_url": "https://shaders.paper.design/",
+    "category": "filter",
+    "tags": [
+      "filter",
+      "halftone",
+      "react",
+      "shader",
+      "webgl"
+    ],
+    "description": "CMYK halftone filter",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "lens distortion",
+    "source_url": "https://shaders.paper.design/lens-distortion",
+    "registry_url": "https://shaders.paper.design/",
+    "category": "filter",
+    "tags": [
+      "filter",
+      "fluid",
+      "react",
+      "shader",
+      "webgl"
+    ],
+    "description": "lens distortion effect",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "heatmap",
+    "source_url": "https://shaders.paper.design/heatmap",
+    "registry_url": "https://shaders.paper.design/",
+    "category": "background",
+    "tags": [
+      "background",
+      "minimal",
+      "react",
+      "shader",
+      "webgl"
+    ],
+    "description": "heatmap gradient animation",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "liquid metal",
+    "source_url": "https://shaders.paper.design/liquid-metal",
+    "registry_url": "https://shaders.paper.design/",
+    "category": "background",
+    "tags": [
+      "background",
+      "metallic",
+      "react",
+      "shader",
+      "webgl"
+    ],
+    "description": "liquid metal animation",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "gem smoke",
+    "source_url": "https://shaders.paper.design/gem-smoke",
+    "registry_url": "https://shaders.paper.design/",
+    "category": "background",
+    "tags": [
+      "background",
+      "minimal",
+      "react",
+      "shader",
+      "webgl"
+    ],
+    "description": "gem smoke animation",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "mesh gradient",
+    "source_url": "https://shaders.paper.design/mesh-gradient",
+    "registry_url": "https://shaders.paper.design/",
+    "category": "background",
+    "tags": [
+      "background",
+      "gradient",
+      "react",
+      "shader",
+      "webgl"
+    ],
+    "description": "animated mesh gradient",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "static mesh gradient",
+    "source_url": "https://shaders.paper.design/static-mesh-gradient",
+    "registry_url": "https://shaders.paper.design/",
+    "category": "background",
+    "tags": [
+      "background",
+      "gradient",
+      "react",
+      "shader",
+      "webgl"
+    ],
+    "description": "static mesh gradient",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "static radial gradient",
+    "source_url": "https://shaders.paper.design/static-radial-gradient",
+    "registry_url": "https://shaders.paper.design/",
+    "category": "background",
+    "tags": [
+      "background",
+      "gradient",
+      "react",
+      "shader",
+      "webgl"
+    ],
+    "description": "static radial gradient",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "dithering",
+    "source_url": "https://shaders.paper.design/dithering",
+    "registry_url": "https://shaders.paper.design/",
+    "category": "filter",
+    "tags": [
+      "dither",
+      "filter",
+      "react",
+      "shader",
+      "webgl"
+    ],
+    "description": "dithering effect",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "grain gradient",
+    "source_url": "https://shaders.paper.design/grain-gradient",
+    "registry_url": "https://shaders.paper.design/",
+    "category": "background",
+    "tags": [
+      "background",
+      "gradient",
+      "react",
+      "shader",
+      "webgl"
+    ],
+    "description": "grainy gradient",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "warp",
+    "source_url": "https://shaders.paper.design/warp",
+    "registry_url": "https://shaders.paper.design/",
+    "category": "background",
+    "tags": [
+      "background",
+      "fluid",
+      "react",
+      "shader",
+      "webgl"
+    ],
+    "description": "warp distortion",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "spiral",
+    "source_url": "https://shaders.paper.design/spiral",
+    "registry_url": "https://shaders.paper.design/",
+    "category": "background",
+    "tags": [
+      "background",
+      "react",
+      "shader",
+      "swirl",
+      "webgl"
+    ],
+    "description": "spiral animation",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "swirl",
+    "source_url": "https://shaders.paper.design/swirl",
+    "registry_url": "https://shaders.paper.design/",
+    "category": "background",
+    "tags": [
+      "background",
+      "react",
+      "shader",
+      "swirl",
+      "webgl"
+    ],
+    "description": "swirl effect",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "waves",
+    "source_url": "https://shaders.paper.design/waves",
+    "registry_url": "https://shaders.paper.design/",
+    "category": "background",
+    "tags": [
+      "background",
+      "fluid",
+      "react",
+      "shader",
+      "webgl"
+    ],
+    "description": "wave effect",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "neuro noise",
+    "source_url": "https://shaders.paper.design/neuro-noise",
+    "registry_url": "https://shaders.paper.design/",
+    "category": "background",
+    "tags": [
+      "background",
+      "noise",
+      "react",
+      "shader",
+      "webgl"
+    ],
+    "description": "neural noise",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "perlin",
+    "source_url": "https://shaders.paper.design/perlin-noise",
+    "registry_url": "https://shaders.paper.design/",
+    "category": "background",
+    "tags": [
+      "background",
+      "minimal",
+      "react",
+      "shader",
+      "webgl"
+    ],
+    "description": "perlin noise",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "simplex noise",
+    "source_url": "https://shaders.paper.design/simplex-noise",
+    "registry_url": "https://shaders.paper.design/",
+    "category": "background",
+    "tags": [
+      "background",
+      "noise",
+      "react",
+      "shader",
+      "webgl"
+    ],
+    "description": "simplex noise",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "voronoi",
+    "source_url": "https://shaders.paper.design/voronoi",
+    "registry_url": "https://shaders.paper.design/",
+    "category": "background",
+    "tags": [
+      "background",
+      "minimal",
+      "react",
+      "shader",
+      "webgl"
+    ],
+    "description": "voronoi pattern",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "pulsing border",
+    "source_url": "https://shaders.paper.design/pulsing-border",
+    "registry_url": "https://shaders.paper.design/",
+    "category": "border",
+    "tags": [
+      "border",
+      "minimal",
+      "react",
+      "shader",
+      "webgl"
+    ],
+    "description": "pulsing border effect",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "metaballs",
+    "source_url": "https://shaders.paper.design/metaballs",
+    "registry_url": "https://shaders.paper.design/",
+    "category": "background",
+    "tags": [
+      "background",
+      "minimal",
+      "react",
+      "shader",
+      "webgl"
+    ],
+    "description": "metaballs animation",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "color panels",
+    "source_url": "https://shaders.paper.design/color-panels",
+    "registry_url": "https://shaders.paper.design/",
+    "category": "background",
+    "tags": [
+      "background",
+      "minimal",
+      "react",
+      "shader",
+      "webgl"
+    ],
+    "description": "color panels",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "smoke ring",
+    "source_url": "https://shaders.paper.design/smoke-ring",
+    "registry_url": "https://shaders.paper.design/",
+    "category": "background",
+    "tags": [
+      "background",
+      "minimal",
+      "react",
+      "shader",
+      "webgl"
+    ],
+    "description": "smoke ring effect",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
+  },
+  {
+    "name": "god rays",
+    "source_url": "https://shaders.paper.design/god-rays",
+    "registry_url": "https://shaders.paper.design/",
+    "category": "background",
+    "tags": [
+      "background",
+      "glow",
+      "react",
+      "shader",
+      "webgl"
+    ],
+    "description": "god rays effect",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-05"
   }
 ]
