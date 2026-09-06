@@ -316,7 +316,7 @@ export default function SceneEditor() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
+      <div className="min-h-[100dvh] bg-background flex items-center justify-center">
         <div className="flex flex-col items-center gap-3 text-muted-foreground">
           <div className="w-6 h-6 rounded-full border-2 border-primary/30 border-t-primary animate-spin" />
           <span className="text-sm">Loading scene…</span>
@@ -626,7 +626,7 @@ export default function SceneEditor() {
                             <Label className="text-xs text-muted-foreground">{label}</Label>
                             <span className="text-xs text-muted-foreground font-mono">{fmt((selectedEl as any)[field] ?? 0)}</span>
                           </div>
-                          <Slider min={min} max={max} step={step} value={[(selectedEl as any)[field] ?? 0]} onValueChange={([v]) => handleUpdate(selectedEl.id, { [field]: v })} />
+                          <Slider min={min} max={max} step={step} value={[(selectedEl as any)[field] ?? 0]} onValueChange={([v]) => handleUpdate(selectedEl.id, { [field]: v })} className="min-h-[44px]" />
                         </div>
                       ))}
                       {selectedEl.type === "text" && (
@@ -640,17 +640,17 @@ export default function SceneEditor() {
                               <Label className="text-xs text-muted-foreground">Font Size</Label>
                               <span className="text-xs text-muted-foreground font-mono">{selectedEl.fontSize ?? 24}px</span>
                             </div>
-                            <Slider min={8} max={120} step={2} value={[selectedEl.fontSize ?? 24]} onValueChange={([v]) => handleUpdate(selectedEl.id, { fontSize: v })} />
+                            <Slider min={8} max={120} step={2} value={[selectedEl.fontSize ?? 24]} onValueChange={([v]) => handleUpdate(selectedEl.id, { fontSize: v })} className="min-h-[44px]" />
                           </div>
                         </>
                       )}
                       <div className="flex items-center justify-between">
                         <Label className="text-xs text-muted-foreground">Visible</Label>
-                        <Switch checked={selectedEl.visible} onCheckedChange={(v) => handleUpdate(selectedEl.id, { visible: v })} />
+                        <Switch checked={selectedEl.visible} onCheckedChange={(v) => handleUpdate(selectedEl.id, { visible: v })} className="min-h-[44px]" />
                       </div>
                       <div className="flex items-center justify-between">
                         <Label className="text-xs text-muted-foreground">Locked</Label>
-                        <Switch checked={selectedEl.locked} onCheckedChange={(v) => handleUpdate(selectedEl.id, { locked: v })} />
+                        <Switch checked={selectedEl.locked} onCheckedChange={(v) => handleUpdate(selectedEl.id, { locked: v })} className="min-h-[44px]" />
                       </div>
                       <div className="pt-2 flex gap-2 flex-wrap">
                         <Button variant="ghost" size="sm" className="flex-1 gap-1.5 text-xs min-h-[44px]" onClick={() => {

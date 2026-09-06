@@ -213,7 +213,7 @@ export default function FreeformSharePage() {
                   key={mode}
                   onClick={() => setEmbedMode(mode)}
                   className={cn(
-                    "flex-1 py-1.5 min-h-[44px] text-xs rounded-md border transition-colors",
+                    "flex-1 min-w-0 py-1.5 min-h-[44px] text-xs rounded-md border transition-colors",
                     embedMode === mode
                       ? "bg-primary text-primary-foreground border-primary"
                       : "border-border text-muted-foreground hover:text-foreground"

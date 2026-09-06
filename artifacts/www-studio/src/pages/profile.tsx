@@ -24,7 +24,7 @@ export default function Profile() {
   const [resetLoading, setResetLoading] = useState(false);
   const { resetPassword } = useAuth();
 
-  if (authLoading) return <div className="min-h-dvh bg-background" />;
+  if (authLoading) return <div className="min-h-[100dvh] bg-background" />;
 
   if (!isAuthenticated || !user) {
     return (

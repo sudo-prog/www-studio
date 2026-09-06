@@ -117,20 +117,22 @@ export default function NewProject() {
           </div>
 
           {/* Tab Switcher */}
-          <div className="flex flex-wrap rounded-xl border border-border/50 bg-card/30 p-1 mb-6 gap-1">
-            {TABS.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={cn(
-                  "flex-1 min-w-[44px] flex flex-col items-center gap-1 px-2 py-2.5 min-h-[48px] rounded-lg text-xs font-medium transition-all",
-                  activeTab === tab.id ? "bg-primary text-primary-foreground shadow-sm" : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-                )}
-              >
-                {tab.icon}
-                <span className="hidden sm:block">{tab.label}</span>
-              </button>
-            ))}
+          <div className="overflow-x-auto">
+            <div className="flex flex-wrap rounded-xl border border-border/50 bg-card/30 p-1 mb-6 gap-1 min-w-[max-content]">
+              {TABS.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={cn(
+                    "flex-1 min-w-[44px] flex flex-col items-center gap-1 px-2 py-2.5 min-h-[48px] rounded-lg text-xs font-medium transition-all",
+                    activeTab === tab.id ? "bg-primary text-primary-foreground shadow-sm" : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                  )}
+                >
+                  {tab.icon}
+                  <span className="hidden sm:block">{tab.label}</span>
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Clone URL */}

@@ -193,8 +193,8 @@ export default function Components() {
         </div>
 
         <div className="flex flex-col md:flex-row gap-6">
-          {/* Mobile category pills */}
-          <div className="md:hidden">
+          {/* Mobile category pills — overflow-x-auto so wide pill rows scroll at 390px */}
+          <div className="md:hidden overflow-x-auto">
             <CategoryNav
               items={categoryItems}
               active={activeCategory}

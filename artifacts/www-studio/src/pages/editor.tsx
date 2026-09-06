@@ -1417,7 +1417,7 @@ export default function Editor() {
                       "bg-background border border-border/50 rounded-lg shadow-2xl shadow-black/30 overflow-hidden transition-all duration-300",
                       editMode && "ring-2 ring-blue-500/40"
                     )}
-                    style={{ width: DEVICE_WIDTHS[deviceMode], maxWidth: "100%", height: "calc(100vh - 210px)" }}
+                    style={{ width: DEVICE_WIDTHS[deviceMode], maxWidth: "100%", height: "calc(100dvh - 210px)" }}
                   >
                     {usesSrcdoc ? (
                       <iframe

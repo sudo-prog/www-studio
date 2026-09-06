@@ -519,9 +519,11 @@ export default function DesignExtractPage() {
                   </span>
                 </div>
                 {state.markdown && (
-                  <ScrollArea className="h-[500px] border border-[#27272a] rounded-lg bg-[#18181b] p-4">
-                    <DesignMdPreview tokens={state.tokens!} />
-                  </ScrollArea>
+                  <div className="overflow-x-auto rounded-lg border border-[#27272a]">
+                    <ScrollArea className="h-[500px] bg-[#18181b] p-4">
+                      <DesignMdPreview tokens={state.tokens!} />
+                    </ScrollArea>
+                  </div>
                 )}
                 <ExportPanel
                   extractionId={state.extractionId}

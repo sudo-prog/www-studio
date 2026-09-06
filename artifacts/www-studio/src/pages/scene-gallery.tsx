@@ -316,7 +316,7 @@ export default function SceneGallery() {
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as any)}
-            className="text-xs border border-border rounded-lg px-2 py-1.5 min-h-[44px] bg-background text-foreground"
+            className="text-sm border border-border rounded-lg px-3 py-1.5 min-h-[44px] bg-background text-foreground"
           >
             <option value="likes">Most Liked</option>
             <option value="views">Most Viewed</option>

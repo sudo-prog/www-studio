@@ -33,7 +33,7 @@ function EmbedModal({ scene, onClose }: { scene: any; onClose: () => void }) {
         <h2 className="font-semibold text-base mb-1">Embed Scene</h2>
         <p className="text-xs text-muted-foreground mb-4">Paste this snippet into any HTML page</p>
         <div className="overflow-x-auto">
-          <pre className="text-[11px] font-mono bg-muted/50 border border-border rounded-xl p-4 whitespace-pre-wrap break-words leading-relaxed">
+          <pre className="text-[11px] font-mono bg-muted/50 border border-border rounded-xl p-4 whitespace-pre-wrap leading-relaxed max-w-full">
             {embedCode}
           </pre>
         </div>
