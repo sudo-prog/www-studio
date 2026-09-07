@@ -15304,5 +15304,287 @@
     "preview_image": "https://glslsandbox.com/thumbs/353771.png",
     "extraction_status": "verified",
     "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "A Complete CSS Flexbox Layout Guide",
+    "source_url": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/",
+    "registry_url": "https://css-tricks.com/snippets/",
+    "category": "docs",
+    "tags": [
+      "css",
+      "documentation",
+      "html",
+      "layout",
+      "minimal",
+      "snippet"
+    ],
+    "description": "Comprehensive CSS Flexbox layout reference covering container properties, item properties, and visual examples.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "CSS Grid Starter Layouts",
+    "source_url": "https://css-tricks.com/snippets/css/css-grid-starter-layouts/",
+    "registry_url": "https://css-tricks.com/snippets/",
+    "category": "docs",
+    "tags": [
+      "css",
+      "documentation",
+      "grid",
+      "html",
+      "layout",
+      "minimal",
+      "snippet"
+    ],
+    "description": "Ready-to-use CSS Grid starter layouts including basic, responsive, and named-area templates.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Accessible Logo Link",
+    "source_url": "https://css-tricks.com/snippets/html/accessible-logo-link/",
+    "registry_url": "https://css-tricks.com/snippets/",
+    "category": "snippet",
+    "tags": [
+      "accessibility",
+      "css",
+      "documentation",
+      "html",
+      "logo",
+      "minimal"
+    ],
+    "description": "HTML snippet for an accessible logo link with proper alt text, aria-label, and focus-visible styling.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Dynamic Table of Contents",
+    "source_url": "https://css-tricks.com/snippets/wordpress/dynamic-table-of-contents/",
+    "registry_url": "https://css-tricks.com/snippets/",
+    "category": "snippet",
+    "tags": [
+      "documentation",
+      "javascript",
+      "minimal",
+      "sidebar",
+      "wordpress"
+    ],
+    "description": "WordPress snippet to dynamically generate a table of contents from post headings.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Media Queries for Standard Devices",
+    "source_url": "https://css-tricks.com/snippets/css/media-queries-for-standard-devices/",
+    "registry_url": "https://css-tricks.com/snippets/",
+    "category": "docs",
+    "tags": [
+      "css",
+      "documentation",
+      "html",
+      "minimal",
+      "responsive",
+      "snippet"
+    ],
+    "description": "Comprehensive media query breakpoints for iPhone, iPad, desktop, laptop, and tablet devices.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Truncate String with Ellipsis",
+    "source_url": "https://css-tricks.com/snippets/css/truncate-string-with-ellipsis/",
+    "registry_url": "https://css-tricks.com/snippets/",
+    "category": "snippet",
+    "tags": [
+      "css",
+      "html",
+      "minimal",
+      "text-effect",
+      "typography"
+    ],
+    "description": "CSS technique to truncate text with ellipsis using text-overflow, overflow, and white-space properties.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Comments in HTML",
+    "source_url": "https://css-tricks.com/snippets/html/comments-in-html/",
+    "registry_url": "https://css-tricks.com/snippets/",
+    "category": "docs",
+    "tags": [
+      "documentation",
+      "html",
+      "minimal",
+      "snippet"
+    ],
+    "description": "Reference for HTML comment syntax, conditional IE comments, and best practices.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Basic Multi-Page View Transition",
+    "source_url": "https://css-tricks.com/snippets/css/basic-view-transition/",
+    "registry_url": "https://css-tricks.com/snippets/",
+    "category": "snippet",
+    "tags": [
+      "css",
+      "documentation",
+      "html",
+      "javascript",
+      "minimal",
+      "transition"
+    ],
+    "description": "Minimal example of CSS multi-page view transitions API for SPA-like navigations.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Custom Checkboxes and Radio Buttons",
+    "source_url": "https://css-tricks.com/snippets/css/custom-checkboxes-and-radio-buttons/",
+    "registry_url": "https://css-tricks.com/snippets/",
+    "category": "form",
+    "tags": [
+      "css",
+      "documentation",
+      "html",
+      "minimal",
+      "snippet",
+      "toggle"
+    ],
+    "description": "CSS-only custom-styled checkboxes and radio buttons using :checked pseudo-class and label tricks.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "System Font Stack",
+    "source_url": "https://css-tricks.com/snippets/css/system-font-stack/",
+    "registry_url": "https://css-tricks.com/snippets/",
+    "category": "snippet",
+    "tags": [
+      "css",
+      "documentation",
+      "font",
+      "minimal",
+      "typography"
+    ],
+    "description": "Native font stack using -apple-system, BlinkMacSystemFont, Segoe UI, Roboto for zero-load OS fonts.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "How to use @font-face in CSS",
+    "source_url": "https://css-tricks.com/snippets/css/using-font-face-in-css/",
+    "registry_url": "https://css-tricks.com/snippets/",
+    "category": "snippet",
+    "tags": [
+      "css",
+      "documentation",
+      "font",
+      "html",
+      "minimal",
+      "typography"
+    ],
+    "description": "CSS @font-face syntax for loading custom fonts with src, format, font-display, and unicode-range.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Custom File Input Styling",
+    "source_url": "https://css-tricks.com/snippets/css/custom-file-input-styling-webkitblink/",
+    "registry_url": "https://css-tricks.com/snippets/",
+    "category": "form",
+    "tags": [
+      "css",
+      "documentation",
+      "file-upload",
+      "html",
+      "minimal"
+    ],
+    "description": "CSS technique to style file inputs across Webkit, Firefox, and IE using opacity and label wrappers.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Smooth Scrolling",
+    "source_url": "https://css-tricks.com/snippets/jquery/smooth-scrolling/",
+    "registry_url": "https://css-tricks.com/snippets/",
+    "category": "scroll-effect",
+    "tags": [
+      "css",
+      "documentation",
+      "javascript",
+      "jquery",
+      "minimal",
+      "scroll-effect"
+    ],
+    "description": "Smooth scroll behavior using CSS scroll-behavior and jQuery animate for anchor links.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Image Illustration Filter",
+    "source_url": "https://css-tricks.com/snippets/css/image-illustration-filter/",
+    "registry_url": "https://css-tricks.com/snippets/",
+    "category": "snippet",
+    "tags": [
+      "css",
+      "css-filter",
+      "documentation",
+      "html",
+      "image-effect",
+      "minimal"
+    ],
+    "description": "CSS filter recipe to convert photos into illustration-style art using grayscale, contrast, and sepia.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Standard CSS Image Replacement",
+    "source_url": "https://css-tricks.com/snippets/css/standard-css-image-replacement/",
+    "registry_url": "https://css-tricks.com/snippets/",
+    "category": "snippet",
+    "tags": [
+      "css",
+      "documentation",
+      "html",
+      "logo",
+      "minimal"
+    ],
+    "description": "CSS image replacement techniques (FIR, Phark, Gilder/Levin) for logo text that stays accessible.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Sticky Footer",
+    "source_url": "https://blog.olivierlarose.com/tutorials/sticky-footer",
+    "registry_url": "https://blog.olivierlarose.com/tutorials",
+    "category": "scroll-effect",
+    "tags": [
+      "css",
+      "footer",
+      "html",
+      "minimal",
+      "react",
+      "sticky"
+    ],
+    "description": "Sticky footer animation with reveal effect using position fixed and sticky CSS in React.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
   }
 ]
