@@ -32,15 +32,11 @@ jobs:
           NODE_ENV: "production"
 
       - name: Deploy to Vercel (production)
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          working-directory: ./
-          vercel-args: '--prod'
-          vercel-version: 'latest'
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npx vercel@latest --prod -t ${{ secrets.VERCEL_TOKEN }} --yes
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
   preview-deploy:
     runs-on: ubuntu-latest
@@ -65,13 +61,11 @@ jobs:
           NODE_ENV: "production"
 
       - name: Deploy to Vercel (preview)
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          working-directory: ./
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npx vercel@latest -t ${{ secrets.VERCEL_TOKEN }} --yes
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
   mobile-smoke:
     runs-on: ubuntu-latest
