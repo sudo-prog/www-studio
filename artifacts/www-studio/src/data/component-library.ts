@@ -1453,6 +1453,124 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </div>
 </div>`,
   },
+
+  // ─────────── LIQUID GOOEY (https://github.com/Jakubantalik/Libraries.dev) ───────────
+
+  // Liquid Gooey Morph • FAB Menu
+  {
+    id: 'liquid-gooey-morph',
+    name: 'Liquid Gooey Morph \u2022 FAB Menu',
+    category: 'Animation',
+    tags: ['gooey', 'liquid', 'morph', 'menu', 'spring', 'animation', 'react'],
+    code: `import { Liquid } from 'liquid-gooey'
+
+<Liquid fill="#fff" blur={6} contrast={18}>
+  <Liquid.Item x={0} y={open ? -60 : 0} transition="bouncy" delay={0}>
+    <button onClick={() => setOpen(false)}>🏠</button>
+  </Liquid.Item>
+  <Liquid.Item x={0} y={open ? -120 : 0} transition="bouncy" delay={40}>
+    <button onClick={() => setOpen(false)}>🔍</button>
+  </Liquid.Item>
+  <Liquid.Item x={0} y={open ? -180 : 0} transition="bouncy" delay={80}>
+    <button onClick={() => setOpen(false)}>⭐</button>
+  </Liquid.Item>
+</Liquid>
+
+{/* Trigger button sits above the Liquid group — outside the SVG filter isolation */}
+<button onClick={() => setOpen(o => !o)}>
+  {open ? '✕' : '+'}
+</button>`,
+    previewHtml: `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>* { box-sizing: border-box; margin: 0; padding: 0; } body { background: #09090b; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 24px; font-family: system-ui, sans-serif; }</style></head><body><div id="root"><p style="color:#a1a1aa">Loading\u2026</p></div>\n<script type="module">\nimport React from 'https://esm.sh/react@18.3.1';\nimport {createRoot} from 'https://esm.sh/react-dom@18.3.1/client';\nimport {Liquid} from 'https://esm.sh/liquid-gooey@0.2.1?deps=react@18.3.1,react-dom@18.3.1';\nconst R = createRoot(document.getElementById('root'));\nfunction Demo() {\n  const [open, setOpen] = React.useState(false);\n  const btn = { width:48, height:48, borderRadius:'50%', background:'#fff', display:'flex', alignItems:'center', justifyContent:'center', fontSize:18, cursor:'pointer', boxShadow:'0 2px 8px rgba(0,0,0,.15)' };\n  return React.createElement('div', {style:{position:'relative',display:'flex',flexDirection:'column',alignItems:'center',gap:16}},[\n    React.createElement(Liquid,{fill:'#fff',blur:6,contrast:18},[\n      React.createElement(Liquid.Item,{x:0,y:open?-60:0,transition:'bouncy',delay:0}, React.createElement('div',{style:btn,onClick:()=>setOpen(o=>!o)},'\ud83c\udfe0')),\n      React.createElement(Liquid.Item,{x:0,y:open?-120:0,transition:'bouncy',delay:40}, React.createElement('div',{style:btn,onClick:()=>setOpen(false)},'\ud83d\udd0d')),\n      React.createElement(Liquid.Item,{x:0,y:open?-180:0,transition:'bouncy',delay:80}, React.createElement('div',{style:btn,onClick:()=>setOpen(false)},'\u2b50'))\n    ]),\n    React.createElement('button',{onClick:()=>setOpen(o=>!o), style:{width:64,height:64,borderRadius:'50%',border:'none', background:'#fff',color:'#000',fontSize:28,fontWeight:700,cursor:'pointer',position:'relative',zIndex:1}}, open ? '\u2715' : '+'),\n    React.createElement('p',{style:{color:'#a1a1aa',fontSize:13,marginTop:8}}, open ? 'Menu open \u2014 gooey merge active' : 'Click + to see morph')\n  ]);\n}\nR.render(React.createElement(Demo));\n<\\/script></body></html>`,
+    sourceUrl: 'https://github.com/Jakubantalik/Libraries.dev/tree/main/packages/liquid-gooey',
+    description: 'Liquid Gooey Morph \u2022 FAB Menu \u2014 touching pieces merge gooily and change shape like jelly. Perfect for menus, avatar groups, morphing panels.',
+  },
+
+  // Liquid Gooey Dissolve • Contact Melt
+  {
+    id: 'liquid-gooey-dissolve',
+    name: 'Liquid Gooey Dissolve \u2022 Contact Melt',
+    category: 'Animation',
+    tags: ['gooey', 'liquid', 'dissolve', 'melt', 'image', 'animation', 'react'],
+    code: `import { Liquid } from 'liquid-gooey'
+
+<Liquid fill="#fff" blur={6} contrast={18}>
+  {/* dissolve=true: imagery melts at the contact point */}
+  <Liquid.Item x={open ? 60 : 0} y={0} transition="bouncy" dissolve>
+    <div style={{ width: 52, height: 52, borderRadius: '50%', background: '#fff' }}>
+      📌
+    </div>
+  </Liquid.Item>
+  <Liquid.Item x={open ? 0 : 0} y={0} transition="bouncy" dissolve>
+    <div style={{ width: 52, height: 52, borderRadius: '50%', background: '#e0e7ff' }}>
+      🎯
+    </div>
+  </Liquid.Item>
+</Liquid>`,
+    previewHtml: `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>* { box-sizing: border-box; margin: 0; padding: 0; } body { background: #09090b; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 24px; font-family: system-ui, sans-serif; }</style></head><body><div id="root"><p style="color:#a1a1aa">Loading\u2026</p></div>\n<script type="module">\nimport React from 'https://esm.sh/react@18.3.1';\nimport {createRoot} from 'https://esm.sh/react-dom@18.3.1/client';\nimport {Liquid} from 'https://esm.sh/liquid-gooey@0.2.1?deps=react@18.3.1,react-dom@18.3.1';\nconst R = createRoot(document.getElementById('root'));\nfunction Demo() {\n  const [open, setOpen] = React.useState(false);\n  const b = { width:52, height:52, borderRadius:'50%', background:'#fff', display:'flex', alignItems:'center', justifyContent:'center', fontSize:20, cursor:'pointer', boxShadow:'0 2px 8px rgba(0,0,0,.15)' };\n  return React.createElement('div',{style:{display:'flex',flexDirection:'column',alignItems:'center',gap:16}},[\n    React.createElement(Liquid,{fill:'#fff',blur:6,contrast:18},[\n      React.createElement(Liquid.Item,{x:0,y:0,transition:'bouncy',delay:0,dissolve:true}, React.createElement('div',{style:b,onClick:()=>setOpen(o=>!o)}, open ? '\ud83c\udfe0' : '\ud83c\udfaf')),\n      React.createElement(Liquid.Item,{x:open?60:0,y:0,transition:'bouncy',delay:20,dissolve:true}, React.createElement('div',{style:{...b,background:'#e0e7ff'},onClick:()=>setOpen(o=>!o)}, open ? '\ud83d\udd35' : '\ud83d\udccc'))\n    ]),\n    React.createElement('button',{onClick:()=>setOpen(o=>!o), style:{padding:'10px 24px',borderRadius:9999,border:'none', background:'#fff',color:'#000',fontSize:14,fontWeight:600,cursor:'pointer',marginTop:8}}, open ? 'Separate' : 'Merge & Dissolve'),\n    React.createElement('p',{style:{color:'#a1a1aa',fontSize:13,marginTop:4}}, 'Touch items together \u2014 the image melts at the contact point')\n  ]);\n}\nR.render(React.createElement(Demo));\n<\\/script></body></html>`,
+    sourceUrl: 'https://github.com/Jakubantalik/Libraries.dev/tree/main/packages/liquid-gooey',
+    description: 'Liquid Gooey Dissolve \u2022 Contact Melt \u2014 imagery melts into a touching neighbour at the contact point with SVG displacement warp.',
+  },
+
+  // Liquid Gooey Move • Tab Indicator / Slider
+  {
+    id: 'liquid-gooey-move',
+    name: 'Liquid Gooey Move \u2022 Tab Indicator',
+    category: 'Animation',
+    tags: ['gooey', 'liquid', 'move', 'slider', 'spring', 'animation', 'react'],
+    code: `import { Liquid } from 'liquid-gooey'
+
+{/* The thumb sits INSIDE Liquid.Item with effect="move" */}
+<div style={{ display: 'flex', gap: 8 }}>
+  {tabs.map((label, i) => (
+    <button key={label} onClick={() => setActive(i)}>
+      {label}
+    </button>
+  ))}
+</div>
+
+<Liquid fill="#3f3f46" blur={5} contrast={16}>
+  <Liquid.Item
+    effect="move"
+    move={{ springiness: 0.45, wobble: 0.6, trail: 0.5 }}
+    observe
+    style={{ transform: \`translateX(\${active * 68}px)\` }}
+  >
+    <div style={{
+      width: 64, height: 36, borderRadius: 9999,
+      background: '#71717a', color: '#fff', display: 'flex',
+      alignItems: 'center', justifyContent: 'center'
+    }}>
+      {tabs[active]}
+    </div>
+  </Liquid.Item>
+</Liquid>`,
+    previewHtml: `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>* { box-sizing: border-box; margin: 0; padding: 0; } body { background: #09090b; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 24px; font-family: system-ui, sans-serif; }</style></head><body><div id="root"><p style="color:#a1a1aa">Loading\u2026</p></div>\n<script type="module">\nimport React from 'https://esm.sh/react@18.3.1';\nimport {createRoot} from 'https://esm.sh/react-dom@18.3.1/client';\nimport {Liquid} from 'https://esm.sh/liquid-gooey@0.2.1?deps=react@18.3.1,react-dom@18.3.1';\nconst R = createRoot(document.getElementById('root'));\nfunction Demo() {\n  const [x, setX] = React.useState(0);\n  const labels = ['Home','Search','Star','Bell','User'];\n  const pos = x * 50;\n  return React.createElement('div',{style:{display:'flex',flexDirection:'column',alignItems:'center',gap:24}},[\n    React.createElement('div',{style:{position:'relative',padding:'4px',background:'#18181b',borderRadius:9999}},[\n      React.createElement(Liquid,{fill:'#3f3f46',blur:5,contrast:16},[\n        React.createElement(Liquid.Item,{effect:'move',move:{springiness:0.45,wobble:0.6,trail:0.5}, observe:true,style:{transform:\`translateX(\${pos}px)\`}},\n          React.createElement('div',{style:{width:64,height:36,borderRadius:9999,background:'#71717a',display:'flex',alignItems:'center',justifyContent:'center',color:'#fff',fontSize:12,fontWeight:600}}, labels[x] || 'Tab'))\n        )\n      ])\n    ]),\n    React.createElement('div',{style:{display:'flex',gap:8}},\n      labels.map((l,i) => React.createElement('button',{key:i, onClick:()=>setX(i), style:{padding:'8px 16px',borderRadius:9999,border:'none', background: x===i ? '#fff' : '#27272a', color: x===i ? '#000':'#a1a1aa', fontSize:12, fontWeight:500, cursor:'pointer'}}, l)),\n    ),\n    React.createElement('p',{style:{color:'#a1a1aa',fontSize:13}}, 'The liquid thumb trails behind \u2014 click tabs to see stretch & wobble')\n  ]);\n}\nR.render(React.createElement(Demo));\n<\\/script></body></html>`,
+    sourceUrl: 'https://github.com/Jakubantalik/Libraries.dev/tree/main/packages/liquid-gooey',
+    description: 'Liquid Gooey Move \u2022 Tab Indicator \u2014 the surface trails a moving element as liquid rubber with a droplet tail. Perfect for sliders and tab bars.',
+  },
+
+  // Liquid Gooey Melt • Image Marbling
+  {
+    id: 'liquid-gooey-melt',
+    name: 'Liquid Gooey Melt \u2022 Image Marbling',
+    category: 'Animation',
+    tags: ['gooey', 'liquid', 'melt', 'image', 'marble', 'animation', 'react'],
+    code: `import { Liquid } from 'liquid-gooey'
+
+<Liquid fill="#fff" blur={6} contrast={18}>
+  {/* effect="melt": two images run molten into each other */}
+  <Liquid.Item effect="melt" melt={{ src: imageA }} observe>
+    <img src={imageA} alt="A" style={{ width: 80, height: 80, borderRadius: 12 }} />
+  </Liquid.Item>
+  <Liquid.Item effect="melt" melt={{ src: imageB }} observe>
+    <img src={imageB} alt="B" style={{ width: 80, height: 80, borderRadius: 12 }} />
+  </Liquid.Item>
+</Liquid>`,
+    previewHtml: `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>* { box-sizing: border-box; margin: 0; padding: 0; } body { background: #09090b; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 24px; font-family: system-ui, sans-serif; }</style></head><body><div id="root"><p style="color:#a1a1aa">Loading\u2026</p></div>\n<script type="module">\nimport React from 'https://esm.sh/react@18.3.1';\nimport {createRoot} from 'https://esm.sh/react-dom@18.3.1/client';\nimport {Liquid} from 'https://esm.sh/liquid-gooey@0.2.1?deps=react@18.3.1,react-dom@18.3.1';\nconst R = createRoot(document.getElementById('root'));\nconst IMG = (src, alt) => React.createElement('img',{src,alt,style:{width:80,height:80,objectFit:'cover',borderRadius:12,display:'block'}});\nfunction Demo() {\n  const [offset, setOffset] = React.useState(0);\n  return React.createElement('div',{style:{display:'flex',flexDirection:'column',alignItems:'center',gap:16}},[\n    React.createElement('div',{style:{display:'flex',alignItems:'center',gap:0,position:'relative'}},[\n      React.createElement(Liquid,{fill:'#fff',blur:6,contrast:18},[\n        React.createElement(Liquid.Item,{effect:'melt',melt:{src:'https://picsum.photos/seed/fire/200/200'},observe:true,style:{transform:\`translateX(\${offset}px)\`}}, IMG('https://picsum.photos/seed/fire/200/200','Fire')),\n        React.createElement(Liquid.Item,{effect:'melt',melt:{src:'https://picsum.photos/seed/ice/200/200'},observe:true,style:{transform:\`translateX(\${offset}px)\`}}, IMG('https://picsum.photos/seed/ice/200/200','Ice'))\n      ])\n    ]),\n    React.createElement('div',{style:{display:'flex',gap:8}},\n      React.createElement('button',{onClick:()=>setOffset(-20),style:{padding:'8px 16px',borderRadius:9999,border:'none',background:'#27272a',color:'#fff',fontSize:12,cursor:'pointer'}},'\u2190 Slide'),\n      React.createElement('button',{onClick:()=>setOffset(0),style:{padding:'8px 16px',borderRadius:9999,border:'none',background:'#27272a',color:'#fff',fontSize:12,cursor:'pointer'}},'Reset'),\n      React.createElement('button',{onClick:()=>setOffset(20),style:{padding:'8px 16px',borderRadius:9999,border:'none',background:'#27272a',color:'#fff',fontSize:12,cursor:'pointer'}},'Slide \u2192')\n    ),\n    React.createElement('p',{style:{color:'#a1a1aa',fontSize:13}}, 'Two images run molten \u2014 the seam averages colours and dissolves back')\n  ]);\n}\nR.render(React.createElement(Demo));\n<\\/script></body></html>`,
+    sourceUrl: 'https://github.com/Jakubantalik/Libraries.dev/tree/main/packages/liquid-gooey',
+    description: 'Liquid Gooey Melt \u2022 Image Marbling \u2014 two images run molten into each other with colour averaging, crisp dissolution at the seam, and marbling.',
+  },
+
   // ─────────── EXTRACTED CATALOG (real code from upstream sources) ───────────
    ...componentsJsonCatalog,
   // ─────────── REGISTRY EXTRACTED (libraries.dev + @appica/ui-react) ───────────
