@@ -13809,5 +13809,53 @@
     "preview_image": "https://cdn.navbar.gallery/daytona%20desktop.avif",
     "extraction_status": "verified",
     "extracted_at": "2026-09-07"
+  },
+  {
+    "name": "Image Flow",
+    "source_url": "https://jinero.online/images/studio?ref=designminis.com",
+    "registry_url": "https://www.designminis.com/",
+    "category": "image",
+    "tags": [
+      "css",
+      "flat",
+      "image-effect",
+      "javascript"
+    ],
+    "description": "Image Flow is an image effect tool listed on Designminis.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/a0238f9835ecd04084977bfa4fbbc58275f56238-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-07"
+  },
+  {
+    "name": "Mirrors",
+    "source_url": "https://www.designminis.com/mirrors",
+    "registry_url": "https://www.designminis.com/",
+    "category": "motion",
+    "tags": [
+      "animation",
+      "css",
+      "fluid",
+      "javascript"
+    ],
+    "description": "Mirrors is a motion and animation tool listed on Designminis.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/931657596c1867774c747fae68bc02fab7a9056a-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-07"
+  },
+  {
+    "name": "bookofshapes",
+    "source_url": "https://www.bookofshapes.com/?ref=designminis.com",
+    "registry_url": "https://www.designminis.com/",
+    "category": "svg",
+    "tags": [
+      "css",
+      "flat",
+      "svg",
+      "svg-generator"
+    ],
+    "description": "bookofshapes is an SVG tool listed on Designminis.",
+    "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/33e20f6dab2f38c5e185307d0c3372a7eb81f628-1600x1000.jpg?w=520&fit=max&auto=format",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-07"
   }
 ]
