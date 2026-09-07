@@ -58,16 +58,26 @@ jobs:
           DEPLOY_URL=$(npx vercel@latest --prod \
             --project=www-studio \
             --token=${{ secrets.VERCEL_TOKEN }} \
-            --yes 2>&1 | tee /dev/stderr | grep -oE 'https://[^ ]+\.vercel\.app' | head -1)
+            --yes 2>&1 | tee /tmp/deploy.log | grep -oE 'https://[a-z0-9-]+-[a-z0-9]+\.vercel\.app' | head -1)
           echo "Deployed to: $DEPLOY_URL"
-          # Set www-studio-red alias via Vercel API
-          DEPLOY_ID=$(echo "$DEPLOY_URL" | grep -oE '[a-z0-9]+-[a-z0-9]+-[a-z0-9]+' | head -1)
-          echo "Deployment ID: $DEPLOY_ID"
-          curl -s -X POST \
-            "https://api.vercel.com/v13/deployments/${DEPLOY_ID}/aliases" \
+          # Get the deployment ID from the URL via Vercel API
+          DEPLOY_ID=$(curl -s \
+            "https://api.vercel.com/v13/deployments?url=${DEPLOY_URL#https://}&limit=1" \
             -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
-            -H "Content-Type: application/json" \
-            -d '{"alias":"www-studio-red.vercel.app"}' | python3 -c "import sys,json; d=json.load(sys.stdin); print('Alias result:', d.get('alias',''), d.get('redirect',''))"
+            -H "Content-Type: application/json" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('deployments',[{}])[0].get('uid',''))")
+          echo "Deployment ID: $DEPLOY_ID"
+          # Set www-studio-red alias
+          if [ -n "$DEPLOY_ID" ]; then
+            curl -s -X POST \
+              "https://api.vercel.com/v13/deployments/${DEPLOY_ID}/aliases" \
+              -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
+              -H "Content-Type: application/json" \
+              -d '{"alias":"www-studio-red.vercel.app"}' | tee /tmp/alias.json | python3 -c "import sys,json; d=json.load(sys.stdin); print('Alias result:', d.get('alias') or d.get('error',{}).get('message','unknown'))"
+          else
+            echo "ERROR: no deployment ID extracted"
+            cat /tmp/deploy.log
+            exit 1
+          fi
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
