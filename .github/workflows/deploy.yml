@@ -54,13 +54,27 @@ jobs:
 
       - name: Deploy to Vercel (prod + www-studio-red alias)
         run: |
-          # vercel.json alias=[] handles the custom-domain auto-alias on --prod deploys.
+          # vercel.json `alias=[]` configures the custom-domain auto-alias on prod.
           # --project=www-studio ensures we hit the right Vercel project regardless of cwd.
-          npx vercel@latest --prod \
+          DEPLOY_URL=$(npx vercel@latest --prod \
             --project=www-studio \
-            --alias=www-studio-red.vercel.app \
             --token=${{ secrets.VERCEL_TOKEN }} \
-            --yes
+            --yes 2>&1 | grep -oE 'https://[a-z0-9-]+-[a-z0-9]+\.vercel\.app' | head -1)
+          echo "Production URL: $DEPLOY_URL"
+          # Set www-studio-red alias via REST API in one shot
+          DEPLOY_ID=$(npx vercel@latest inspect "$DEPLOY_URL" --token=${{ secrets.VERCEL_TOKEN }} --format=json 2>/dev/null | python3 -c "import sys,json; print(json.load(sys.stdin).get('id',''))")
+          echo "Deployment ID: $DEPLOY_ID"
+          if [ -n "$DEPLOY_ID" ]; then
+            curl -fsS -X POST \
+              "https://api.vercel.com/v2/deployments/${DEPLOY_ID}/aliases" \
+              -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
+              -H "Content-Type: application/json" \
+              -d '{"alias":"www-studio-red.vercel.app"}' \
+            | python3 -c "import sys,json; d=json.load(sys.stdin); print('Alias set:', d.get('alias') or d.get('error',{}).get('message','unknown'))"
+          else
+            echo "ERROR: failed to get deployment ID"
+            exit 1
+          fi
 
   deploy-preview:
     runs-on: ubuntu-latest
