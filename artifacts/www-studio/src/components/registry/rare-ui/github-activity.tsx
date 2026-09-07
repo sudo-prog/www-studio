@@ -676,7 +676,4 @@ const GitHubActivity = ({
   );
 };
 
-export { GitHubActivity };
-export default GitHubActivity;
-export { GitHubActivity as GithubActivity };
 export { GitHubActivity as RareUIGithubActivity };

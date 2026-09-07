@@ -367,7 +367,4 @@ const ScrollProgress = ({
   )
 }
 
-export { ScrollProgress }
-export default ScrollProgress
-export { ScrollProgress as ScrollProgress };
 export { ScrollProgress as RareUIScrollProgress };

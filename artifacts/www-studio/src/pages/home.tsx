@@ -144,7 +144,7 @@ export default function Home() {
             <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
               <div className="flex gap-1.5">
                 {WELLNESS_COLORS.map((c) => (
-                  <div key={c} className="w-4 h-4 sm:w-5 sm:h-5 rounded-full border border-white/10 shrink-0" style={{ background: c }} />
+                  <div className="w-4 h-4 min-w-[44px] min-h-[44px] sm:w-5 sm:h-5 rounded-full border border-white/10 shrink-0" style={{ background: c }} />
                 ))}
               </div>
               {publicScenes.length > 0 && (
@@ -222,7 +222,7 @@ export default function Home() {
                     <p className="text-xs text-muted-foreground mb-3">by {template.creator}</p>
                     <div className="flex flex-wrap gap-1">
                       {template.tags?.slice(0, 3).map((tag) => (
-                        <span key={tag} className="text-[10px] px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground">{tag}</span>
+                        <span key={tag} className="text-[10px] px-2 min-h-[44px] py-0.5 rounded-full bg-secondary text-secondary-foreground">{tag}</span>
                       ))}
                     </div>
                   </CardContent>

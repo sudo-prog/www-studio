@@ -15,87 +15,58 @@
 //   "code"    — formatted source code view.
 
 import * as React from "react";
-import { Code2, Copy, Check, Eye, Zap } from "lucide-react";
+import { createPortal } from "react-dom";
+import { Code2, Copy, Check, Eye, Zap, Maximize2, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import type { ComponentItem } from "@/data/component-library";
 
-/**
- * Default wrapper that turns a snippet of HTML/JSX into a stand-alone
- * document loadable inside a sandboxed <iframe>. Exposed so callers can
- * either use it directly or supply their own custom preview shim.
- *
- * Detects whether the code is plain HTML or React/JSX. For JSX, it
- * loads React + ReactDOM + Babel from CDN and renders the component
- * inside a `#root` mount node.
- */
-export const DEFAULT_PREVIEW_HTML = (code: string): string => {
-  const isJsx = /^\s*(import\s|export\s|const\s+\w+\s*=|function\s+\w+|return\s*\(\s*<)/m.test(code) ||
-                /className\s*=/.test(code) ||
-                /ReactDOM\.createRoot/.test(code);
+// ─── Inline preview HTML template ──────────────────────────────────────────
 
-  if (!isJsx) {
-    return `<!DOCTYPE html>
-<html class="dark">
+export const DEFAULT_PREVIEW_HTML = (code: string) => `<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<script src="https://cdn.tailwindcss.com"></script>
-<script>tailwind.config={darkMode:'class'}</script>
-<style>body{margin:0;background:#09090b;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px;box-sizing:border-box;}</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] }
+        }
+      }
+    };
+  </script>
+  <style>
+    body { margin: 0; background: #09090b; color: #fff; min-height: 100vh; display: flex; align-items: center; justify-content: center; font-family: system-ui, sans-serif; }
+    * { box-sizing: border-box; }
+  </style>
 </head>
-<body>${code}</body>
-</html>`;
-  }
-
-  // JSX mode: load React + Babel, transpile and render
-  return `<!DOCTYPE html>
-<html class="dark">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<script src="https://cdn.tailwindcss.com"></script>
-<script>tailwind.config={darkMode:'class'}</script>
-<style>body{margin:0;background:#09090b;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px;box-sizing:border-box;}#root{width:100%;}</style>
-<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-</head>
-<body>
-<div id="root"></div>
-<script type="text/babel" data-type="module" data-presets="react,typescript">
+<body class="dark">
+  <div id="root"></div>
+  <script type="text/babel" data-presets="react,typescript">
 ${code}
-
-// Forward clicks inside the sandboxed preview up to the parent so the
-// host page can hook interaction telemetry. Bound passively so it
-// never blocks scrolling, and guarded against cross-origin failures
-// (the sandbox attribute is the only thing that controls access).
-(function() {
-  function notify() {
-    try {
-      window.parent.postMessage({ type: 'interaction', component: document.title }, '*');
-    } catch (e) { /* sandbox may forbid parent access */ }
-  }
-  document.addEventListener('click', notify, { passive: true });
-  // Also notify once after the first paint so the parent can observe
-  // that the preview finished mounting, not just clicks.
-  if (document.readyState === 'complete') {
-    setTimeout(notify, 0);
-  } else {
-    window.addEventListener('load', function() { setTimeout(notify, 0); }, { once: true });
-  }
-})();
-</script>
+  </script>
+  <script type="text/babel">
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(App));
+  </script>
 </body>
 </html>`;
-};
+
+// ─── Types ────────────────────────────────────────────────────────────────
 
 export type PreviewCodeView = "live" | "preview" | "code";
 
-export interface PreviewCodeCardProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, "title" | "onCopy"> {
-  /** Raw code snippet (HTML or JSX) shown in the "code" view. */
+export interface PreviewCodeCardProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Source code to show in the code view and wrap in the default preview iframe. */
   code: string;
-  /** Optional title rendered in the iframe's `title` attribute. */
+  /** Optional human-readable title (used as iframe title / aria-label). */
   title?: string;
   /** Optional override for the rendered preview document. */
   previewHtml?: string;
@@ -120,7 +91,7 @@ export interface PreviewCodeCardProps
    */
   onIframeMessage?: (msg: unknown) => void;
   /** Optional ComponentItem for live-preview mode (uses PreviewRenderer). */
-  componentItem?: import("@/data/component-library").ComponentItem;
+  componentItem?: ComponentItem;
 }
 
 const VIEW_LABEL: Record<PreviewCodeView, { swap: PreviewCodeView; text: string; icon: React.ComponentType<{ className?: string }> }> = {
@@ -128,6 +99,8 @@ const VIEW_LABEL: Record<PreviewCodeView, { swap: PreviewCodeView; text: string;
   preview: { swap: "live",    text: "Live",    icon: Zap },
   code:    { swap: "preview", text: "Preview", icon: Eye },
 };
+
+// ─── Component ────────────────────────────────────────────────────────────
 
 /**
  * Card with a 3-way toggle (live / preview / code) and copy-to-clipboard.
@@ -151,6 +124,7 @@ export function PreviewCodeCard({
 }: PreviewCodeCardProps) {
   const [view, setView] = React.useState<PreviewCodeView>(defaultView);
   const [copied, setCopied] = React.useState(false);
+  const [expanded, setExpanded] = React.useState(false);
   const iframeRef = React.useRef<HTMLIFrameElement>(null);
 
   // Forward postMessage events from the sandboxed preview document up
@@ -198,95 +172,183 @@ export function PreviewCodeCard({
 
   const next = VIEW_LABEL[view];
 
-  return (
-    <div
-      className={cn(
-        "rounded-2xl border border-border/50 bg-card overflow-hidden flex flex-col group hover:border-primary/40 transition-colors",
-        className,
-      )}
-      {...rest}
-    >
-      <div
-        className={cn(
-          "relative bg-zinc-950 h-44 overflow-hidden",
-          viewportClassName,
-        )}
-      >
+  // ── Render a preview pane (used for both inline and fullscreen) ──────────
+  const PreviewPane = React.useCallback(
+    ({ heightClass = "h-44" }: { heightClass?: string }) => (
+      <>
         {view === "live" ? (
           componentItem ? (
             <React.Suspense fallback={<div className="w-full h-full flex items-center justify-center text-zinc-500 text-sm">Loading live preview…</div>}>
-              <PreviewRendererLazy item={componentItem} height={176} />
+              <PreviewRendererLazy item={componentItem} height={heightClass === "h-44" ? 176 : undefined} />
             </React.Suspense>
           ) : (
-            // No componentItem — fall back to iframe
-            <iframe
-              ref={iframeRef}
-              src={docSrc}
-              className="w-full h-full border-0"
-              title={title}
-              sandbox={sandbox}
-            />
+            <iframe ref={iframeRef} src={docSrc} className="w-full h-full border-0" title={title} sandbox={sandbox} />
           )
         ) : view === "preview" ? (
-          <iframe
-            ref={iframeRef}
-            src={docSrc}
-            className="w-full h-full border-0"
-            title={title}
-            sandbox={sandbox}
-          />
+          <iframe ref={iframeRef} src={docSrc} className="w-full h-full border-0" title={title} sandbox={sandbox} />
         ) : (
           <pre className="p-4 text-[11px] font-mono text-zinc-300 overflow-auto h-full leading-relaxed whitespace-pre-wrap break-words">
             {code}
           </pre>
         )}
+      </>
+    ),
+    [view, componentItem, docSrc, title, sandbox, code, iframeRef],
+  );
 
-        <div className="absolute top-2 right-2 flex items-center gap-1.5 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
-          {view !== "live" && componentItem && (
+  // ── Portal-based fullscreen modal ────────────────────────────────────────
+  const modal = React.useMemo(
+    () =>
+      expanded && typeof document !== "undefined"
+        ? createPortal(
+            <div
+              className="fixed inset-0 z-[9999] flex flex-col bg-black/95"
+              onClick={() => setExpanded(false)}
+            >
+              {/* Header bar */}
+              <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 shrink-0">
+                <span className="text-sm text-zinc-400 font-medium">{title ?? "Live Preview"}</span>
+                <div className="flex items-center gap-2">
+                  {/* View toggle in modal */}
+                  <div className="flex items-center bg-zinc-800 rounded-lg p-0.5 gap-0.5">
+                    {(["live", "preview", "code"] as PreviewCodeView[]).map((v) => (
+                      <button
+                        key={v}
+                        onClick={(e) => { e.stopPropagation(); setView(v); }}
+                        className={cn(
+                          "px-3 py-1.5 rounded-md text-xs font-medium transition-colors capitalize",
+                          view === v ? "bg-zinc-700 text-white" : "text-zinc-400 hover:text-white",
+                        )}
+                      >
+                        {v}
+                      </button>
+                    ))}
+                  </div>
+                  <Button
+                    size="icon"
+                    variant="ghost"
+                    className="h-8 w-8 text-zinc-400 hover:text-white"
+                    onClick={(e) => { e.stopPropagation(); setExpanded(false); }}
+                  >
+                    <X className="w-4 h-4" />
+                  </Button>
+                </div>
+              </div>
+
+              {/* Full-size preview */}
+              <div
+                className="flex-1 overflow-hidden bg-zinc-950 cursor-default"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {view === "live" ? (
+                  componentItem ? (
+                    <React.Suspense fallback={<div className="w-full h-full flex items-center justify-center text-zinc-500 text-sm">Loading…</div>}>
+                      <PreviewRendererLazy item={componentItem} />
+                    </React.Suspense>
+                  ) : (
+                    <iframe ref={iframeRef} src={docSrc} className="w-full h-full border-0" title={title} sandbox={sandbox} />
+                  )
+                ) : view === "preview" ? (
+                  <iframe ref={iframeRef} src={docSrc} className="w-full h-full border-0" title={title} sandbox={sandbox} />
+                ) : (
+                  <pre className="p-6 text-sm font-mono text-zinc-300 overflow-auto h-full leading-relaxed whitespace-pre-wrap">
+                    {code}
+                  </pre>
+                )}
+              </div>
+            </div>,
+            document.body,
+          )
+        : null,
+    [expanded, view, componentItem, docSrc, title, sandbox, code, iframeRef],
+  );
+
+  return (
+    <>
+      <div
+        className={cn(
+          "rounded-2xl border border-border/50 bg-card overflow-hidden flex flex-col group hover:border-primary/40 transition-colors",
+          className,
+        )}
+        {...rest}
+      >
+        {/* Preview area — clickable to open fullscreen modal */}
+        <div
+          className={cn(
+            "relative bg-zinc-950 overflow-hidden cursor-pointer group/preview",
+            viewportClassName,
+          )}
+          onClick={() => setExpanded(true)}
+        >
+          <div className="h-44">
+            <PreviewPane heightClass="h-44" />
+          </div>
+
+          {/* Fullscreen hint icon */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/preview:opacity-100 transition-opacity pointer-events-none">
+            <div className="bg-black/60 rounded-xl px-3 py-1.5 flex items-center gap-1.5 text-white text-xs backdrop-blur-sm">
+              <Maximize2 className="w-3 h-3" />
+              Tap to expand
+            </div>
+          </div>
+
+          {/* Top-right controls — stop click propagation so buttons don't open modal */}
+          <div
+            className="absolute top-2 right-2 flex items-center gap-1.5 opacity-0 group-hover/preview:opacity-100 transition-opacity"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {view !== "live" && componentItem && (
+              <Button
+                size="sm"
+                variant="secondary"
+                className="h-7 min-h-[48px] text-xs gap-1"
+                onClick={() => setView("live")}
+                aria-label="Switch to live view"
+              >
+                <Zap className="w-3 h-3" />
+                Live
+              </Button>
+            )}
             <Button
               size="sm"
               variant="secondary"
               className="h-7 min-h-[48px] text-xs gap-1"
-              onClick={() => setView("live")}
-              aria-label="Switch to live view"
+              onClick={() => setView(next.swap)}
+              aria-label={`Switch to ${next.swap} view`}
             >
-              <Zap className="w-3 h-3" />
-              Live
+              {(() => {
+                const Icon = next.icon;
+                return <Icon className="w-3 h-3" />;
+              })()}
+              {next.text}
             </Button>
-          )}
-          <Button
-            size="sm"
-            variant="secondary"
-            className="h-7 min-h-[48px] text-xs gap-1"
-            onClick={() => setView(next.swap)}
-            aria-label={`Switch to ${next.swap} view`}
-          >
-            {(() => {
-              const Icon = next.icon;
-              return <Icon className="w-3 h-3" />;
-            })()}
-            {next.text}
-          </Button>
-        </div>
+          </div>
 
-        {/* Bottom bar: small icon-only copy button */}
-        <div className="flex items-center justify-end px-3 py-1.5 border-t border-border/30 bg-zinc-950/50">
-          <Button
-            size="sm"
-            variant="ghost"
-            className="h-6 w-6 p-0 text-zinc-400 hover:text-white"
-            onClick={handleCopy}
-            aria-label="Copy code"
+          {/* Bottom bar: small icon-only copy button */}
+          <div
+            className="absolute bottom-0 left-0 right-0 flex items-center justify-end px-3 py-1.5 border-t border-white/5 bg-gradient-to-t from-zinc-950/80 to-transparent"
+            onClick={(e) => e.stopPropagation()}
           >
-            {copied ? (
-              <Check className="w-3 h-3 text-green-500" />
-            ) : (
-              <Copy className="w-3 h-3" />
-            )}
-          </Button>
+            <Button
+              size="icon"
+              variant="ghost"
+              className="h-7 w-7 text-zinc-400 hover:text-white"
+              onClick={handleCopy}
+              aria-label="Copy code"
+            >
+              {copied ? (
+                <Check className="w-3 h-3 text-green-500" />
+              ) : (
+                <Copy className="w-3 h-3" />
+              )}
+            </Button>
+          </div>
         </div>
       </div>
-    </div>
+
+      {/* Fullscreen modal portal */}
+      {modal}
+    </>
   );
 }
 
@@ -295,7 +357,7 @@ export function PreviewCodeCard({
 // when they only use the code view.
 const PreviewRendererLazy = React.lazy(() =>
   import("@/components/registry/PreviewRenderer").then(m => ({
-    default: ({ item, height }: { item: import("@/data/component-library").ComponentItem; height?: number }) => (
+    default: ({ item, height }: { item: ComponentItem; height?: number }) => (
       <m.PreviewRenderer item={item} height={height ?? 176} />
     ),
   }))

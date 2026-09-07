@@ -338,7 +338,4 @@ function StepPlayer({
     )
 }
 
-export { StepPlayer }
-export default StepPlayer
-export { StepPlayer as StepPlayer };
 export { StepPlayer as RareUIStepPlayer };

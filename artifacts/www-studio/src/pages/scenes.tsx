@@ -101,7 +101,7 @@ function SceneCard({ scene, onEdit, onDelete, onFork, onTogglePublish, selected,
         <div className="absolute top-2 right-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button size="icon" variant="secondary" className="h-11 w-11 bg-black/60 hover:bg-black/80 border-0 min-h-[44px] min-w-[44px]">
+              <Button size="icon" variant="secondary" className="h-11 w-11 bg-black/60 hover:bg-black/80 border-0 min-h-[48px] min-w-[48px]">
                 <MoreHorizontal className="h-5 w-5" />
               </Button>
             </DropdownMenuTrigger>
@@ -341,7 +341,7 @@ export default function Scenes() {
   }
 
   return (
-    <div className="min-h-[100dvh] bg-background overflow-x-hidden">
+    <div className="min-h-[100dvh] bg-background">
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-8">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-8">
           <div>
@@ -349,10 +349,10 @@ export default function Scenes() {
             <p className="text-muted-foreground">Visual SVG compositions with wellness animations</p>
           </div>
           <div className="flex flex-wrap gap-2">
-            <Button variant="outline" onClick={() => setShowAI(true)} className="gap-2 min-h-[44px]">
+            <Button variant="outline" onClick={() => setShowAI(true)} className="gap-2 min-h-[48px]">
               <Sparkles className="h-4 w-4" />AI Generate
             </Button>
-            <Button onClick={() => setShowNew(true)} className="gap-2 min-h-[44px]">
+            <Button onClick={() => setShowNew(true)} className="gap-2 min-h-[48px]">
               <Plus className="h-4 w-4" />New Scene
             </Button>
           </div>
@@ -364,7 +364,7 @@ export default function Scenes() {
             <button
               key={preset.name}
               onClick={() => { setNewName(preset.name); setShowNew(true); }}
-              className="group flex items-center gap-3 p-3 bg-card border border-border rounded-xl hover:border-primary/30 text-left transition-all min-h-[44px] min-w-[44px]"
+              className="group flex items-center gap-3 p-3 bg-card border border-border rounded-xl hover:border-primary/30 text-left transition-all min-h-[48px] min-w-[44px]"
             >
               <div className="flex gap-1">
                 {preset.colors.map((c, i) => (
@@ -415,7 +415,7 @@ export default function Scenes() {
         )}
 
         <div className="overflow-x-auto">
-          <div className="flex flex-wrap items-center gap-3 mb-6 min-w-max">
+          <div className="flex flex-wrap items-center gap-3 mb-6">
             <div className="relative flex-1 max-w-sm">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
@@ -470,10 +470,10 @@ export default function Scenes() {
             <p className="text-lg font-medium mb-2">No scenes yet</p>
             <p className="text-sm mb-6">Create your first visual scene with wellness animations</p>
             <div className="flex flex-wrap gap-3 justify-center">
-              <Button variant="outline" onClick={() => setShowAI(true)} className="gap-2 min-h-[44px]">
+              <Button variant="outline" onClick={() => setShowAI(true)} className="gap-2 min-h-[48px]">
                 <Sparkles className="h-4 w-4" />AI Generate
               </Button>
-              <Button onClick={() => setShowNew(true)} className="gap-2 min-h-[44px]">
+              <Button onClick={() => setShowNew(true)} className="gap-2 min-h-[48px]">
                 <Plus className="h-4 w-4" />New Scene
               </Button>
             </div>

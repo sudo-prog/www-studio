@@ -552,7 +552,7 @@ export default function SceneEditor() {
             <div className="flex-1 overflow-y-auto pb-[calc(env(safe-area-inset-bottom)+0.5rem)]">
               {/* Layers */}
               {rightTab === "layers" && (
-                <div className="p-2 space-y-1">
+                <div className="p-2 space-y-1 overflow-x-auto">
                   {state.scene.elements.length === 0 && (
                     <div className="text-center py-8 space-y-2">
                       <Layers className="h-10 w-10 mx-auto text-muted-foreground/30" />
@@ -574,12 +574,12 @@ export default function SceneEditor() {
                       {el.animation?.preset !== "none" && (
                         <span className="text-[8px] text-primary/60 shrink-0 hidden group-hover:hidden">anim</span>
                       )}
-                      <div className="flex items-center gap-0.5 opacity-100 md:opacity-0 md:group-hover:opacity-100">
-                        <button onClick={(e) => { e.stopPropagation(); dispatch({ type: "REORDER_UP",   id: el.id }); }} className="p-0.5 hover:text-foreground min-h-[44px] min-w-[44px]" title="Move up"><ChevronUp   className="h-3 w-3" /></button>
-                        <button onClick={(e) => { e.stopPropagation(); dispatch({ type: "REORDER_DOWN", id: el.id }); }} className="p-0.5 hover:text-foreground min-h-[44px] min-w-[44px]" title="Move down"><ChevronDown className="h-3 w-3" /></button>
-                        <button onClick={(e) => { e.stopPropagation(); handleUpdate(el.id, { visible: !el.visible }); }} className="p-0.5 hover:text-foreground min-h-[44px] min-w-[44px]" title={el.visible?"Hide":"Show"}>{el.visible ? <Eye className="h-3 w-3" /> : <EyeOff className="h-3 w-3" />}</button>
-                        <button onClick={(e) => { e.stopPropagation(); handleUpdate(el.id, { locked: !el.locked }); }} className="p-0.5 hover:text-foreground min-h-[44px] min-w-[44px]" title={el.locked?"Unlock":"Lock"}>{el.locked ? <Lock className="h-3 w-3" /> : <Unlock className="h-3 w-3" />}</button>
-                        <button onClick={(e) => { e.stopPropagation(); dispatch({ type: "DELETE_ELEMENT", id: el.id }); }} className="p-0.5 hover:text-destructive min-h-[44px] min-w-[44px]" title="Delete"><Trash2 className="h-3 w-3" /></button>
+                      <div className="flex flex-wrap items-center gap-0.5 opacity-100 md:opacity-0 md:group-hover:opacity-100">
+                        <button onClick={(e) => { e.stopPropagation(); dispatch({ type: "REORDER_UP",   id: el.id }); }} className="p-0.5 hover:text-foreground min-h-[48px] min-w-[48px]" title="Move up"><ChevronUp   className="h-3 w-3" /></button>
+                        <button onClick={(e) => { e.stopPropagation(); dispatch({ type: "REORDER_DOWN", id: el.id }); }} className="p-0.5 hover:text-foreground min-h-[48px] min-w-[48px]" title="Move down"><ChevronDown className="h-3 w-3" /></button>
+                        <button onClick={(e) => { e.stopPropagation(); handleUpdate(el.id, { visible: !el.visible }); }} className="p-0.5 hover:text-foreground min-h-[48px] min-w-[48px]" title={el.visible?"Hide":"Show"}>{el.visible ? <Eye className="h-3 w-3" /> : <EyeOff className="h-3 w-3" />}</button>
+                        <button onClick={(e) => { e.stopPropagation(); handleUpdate(el.id, { locked: !el.locked }); }} className="p-0.5 hover:text-foreground min-h-[48px] min-w-[48px]" title={el.locked?"Unlock":"Lock"}>{el.locked ? <Lock className="h-3 w-3" /> : <Unlock className="h-3 w-3" />}</button>
+                        <button onClick={(e) => { e.stopPropagation(); dispatch({ type: "DELETE_ELEMENT", id: el.id }); }} className="p-0.5 hover:text-destructive min-h-[48px] min-w-[48px]" title="Delete"><Trash2 className="h-3 w-3" /></button>
                       </div>
                     </div>
                   ))}
@@ -599,21 +599,23 @@ export default function SceneEditor() {
                     <>
                       <div className="space-y-1.5">
                         <Label className="text-xs text-muted-foreground">Name</Label>
-                        <Input value={selectedEl.name} onChange={(e) => handleUpdate(selectedEl.id, { name: e.target.value })} className="text-xs min-h-[44px]" />
+                        <Input value={selectedEl.name} onChange={(e) => handleUpdate(selectedEl.id, { name: e.target.value })} className="text-xs min-h-[48px]" />
                       </div>
+                      <div className="overflow-x-auto">
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         {(["x","y","width","height"] as const).map((field) => (
                           <div key={field} className="space-y-1">
                             <Label className="text-xs text-muted-foreground">{field === "width" ? "W" : field === "height" ? "H" : field.toUpperCase()}</Label>
-                            <Input type="number" value={(selectedEl as any)[field]} onChange={(e) => handleUpdate(selectedEl.id, { [field]: Number(e.target.value) })} className="text-xs min-h-[44px]" />
+                            <Input type="number" value={(selectedEl as any)[field]} onChange={(e) => handleUpdate(selectedEl.id, { [field]: Number(e.target.value) })} className="text-xs min-h-[48px]" />
                           </div>
                         ))}
                       </div>
+                      </div>
                       <div className="space-y-1.5">
                         <Label className="text-xs text-muted-foreground">Fill</Label>
-                        <div className="flex flex-wrap gap-2 items-center">
-                          <input type="color" value={selectedEl.fill} onChange={(e) => handleUpdate(selectedEl.id, { fill: e.target.value })} className="w-8 h-7 min-h-[44px] min-w-[44px] rounded border border-border cursor-pointer bg-transparent" />
-                          <Input value={selectedEl.fill} onChange={(e) => handleUpdate(selectedEl.id, { fill: e.target.value })} className="text-xs min-h-[44px] font-mono flex-1 min-w-[140px]" />
+                        <div className="flex flex-wrap gap-2 items-center overflow-x-auto">
+                          <input type="color" value={selectedEl.fill} onChange={(e) => handleUpdate(selectedEl.id, { fill: e.target.value })} className="w-8 h-7 min-h-[48px] min-w-[48px] rounded border border-border cursor-pointer bg-transparent shrink-0" />
+                          <Input value={selectedEl.fill} onChange={(e) => handleUpdate(selectedEl.id, { fill: e.target.value })} className="text-xs min-h-[48px] font-mono flex-1 min-w-[140px]" />
                         </div>
                       </div>
                       {[
@@ -621,19 +623,19 @@ export default function SceneEditor() {
                         { label:"Blur",     field:"blur",     min:0,   max:120, step:2,    fmt:(v:number)=>`${v}px` },
                         { label:"Rotation", field:"rotation", min:0,   max:360, step:1,    fmt:(v:number)=>`${v}°`  },
                       ].map(({ label, field, min, max, step, fmt }) => (
-                        <div key={field} className="space-y-1.5">
+                        <div key={field} className="space-y-1.5 overflow-x-auto">
                           <div className="flex items-center justify-between">
                             <Label className="text-xs text-muted-foreground">{label}</Label>
                             <span className="text-xs text-muted-foreground font-mono">{fmt((selectedEl as any)[field] ?? 0)}</span>
                           </div>
-                          <Slider min={min} max={max} step={step} value={[(selectedEl as any)[field] ?? 0]} onValueChange={([v]) => handleUpdate(selectedEl.id, { [field]: v })} className="min-h-[44px]" />
+                          <Slider min={min} max={max} step={step} value={[(selectedEl as any)[field] ?? 0]} onValueChange={([v]) => handleUpdate(selectedEl.id, { [field]: v })} className="min-h-[48px]" />
                         </div>
                       ))}
                       {selectedEl.type === "text" && (
                         <>
                           <div className="space-y-1.5">
                             <Label className="text-xs text-muted-foreground">Text</Label>
-                            <Input value={selectedEl.text ?? ""} onChange={(e) => handleUpdate(selectedEl.id, { text: e.target.value })} className="text-xs min-h-[44px]" />
+                            <Input value={selectedEl.text ?? ""} onChange={(e) => handleUpdate(selectedEl.id, { text: e.target.value })} className="text-xs min-h-[48px]" />
                           </div>
                           <div className="space-y-1.5">
                             <div className="flex items-center justify-between">

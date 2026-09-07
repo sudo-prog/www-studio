@@ -28,7 +28,7 @@ export default function Profile() {
 
   if (!isAuthenticated || !user) {
     return (
-      <div className="min-h-[100dvh] flex flex-col bg-background overflow-x-hidden">
+      <div className="min-h-[100dvh] flex flex-col bg-background overflow-x-hidden pb-[env(safe-area-inset-bottom)]">
         <main className="flex-1 flex flex-col items-center justify-center p-8 text-center max-w-sm mx-auto w-full">
           <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
             <Lock className="w-8 h-8 text-primary" />
@@ -89,7 +89,7 @@ export default function Profile() {
   };
 
   return (
-    <div className="min-h-[100dvh] flex flex-col bg-background overflow-x-hidden">
+    <div className="min-h-[100dvh] flex flex-col bg-background overflow-x-hidden pb-[env(safe-area-inset-bottom)]">
       <main className="flex-1 p-6 md:p-8 max-w-4xl mx-auto w-full">
         <div className="flex flex-wrap items-start gap-6 mb-12">
           <Avatar className="w-24 h-24 border-2 border-primary/20">
@@ -116,7 +116,7 @@ export default function Profile() {
           <h2 className="text-xl font-semibold border-b pb-2">Settings</h2>
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-base">
+              <CardTitle className="flex flex-wrap items-center gap-2 text-base">
                 <Github className="h-4 w-4" />
                 GitHub Backup
               </CardTitle>
@@ -155,7 +155,7 @@ export default function Profile() {
 
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-base">
+              <CardTitle className="flex flex-wrap items-center gap-2 text-base">
                 <Lock className="h-4 w-4" />
                 Reset Password
               </CardTitle>

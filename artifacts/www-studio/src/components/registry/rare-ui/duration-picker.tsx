@@ -285,7 +285,4 @@ function fieldText(value: DurationValue | undefined, field: keyof DurationValue)
     return n === undefined || n === 0 ? '' : String(n)
 }
 
-export { DurationPicker }
-export default DurationPicker
-export { DurationPicker as DurationPicker };
 export { DurationPicker as RareUIDurationPicker };

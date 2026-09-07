@@ -58,7 +58,7 @@ const RareUIEmojiReaction = React.lazy(() =>
   import('./rare-ui/emoji-reaction').then(m => ({ default: m.EmojiReaction as React.ComponentType<Record<string, unknown>> }))
 );
 const RareUIFamilyDrawer = React.lazy(() =>
-  import('./rare-ui/family-drawer').then(m => ({ default: m.FamilyDrawer as React.ComponentType<Record<string, unknown>> }))
+  import('./rare-ui/family-drawer').then(m => ({ default: m.default as unknown as React.ComponentType<Record<string, unknown>> }))
 );
 const RareUIFluidOrb = React.lazy(() =>
   import('./rare-ui/fluid-orb').then(m => ({ default: m.FluidOrb as React.ComponentType<Record<string, unknown>> }))
@@ -67,7 +67,7 @@ const RareUIFolderComponent = React.lazy(() =>
   import('./rare-ui/folder-component').then(m => ({ default: m.FolderComponent as React.ComponentType<Record<string, unknown>> }))
 );
 const RareUIGithubActivity = React.lazy(() =>
-  import('./rare-ui/github-activity').then(m => ({ default: m.GithubActivity as React.ComponentType<Record<string, unknown>> }))
+  import('./rare-ui/github-activity').then(m => ({ default: m.RareUIGitHubActivity as React.ComponentType<Record<string, unknown>> }))
 );
 const RareUIGooeyNav = React.lazy(() =>
   import('./rare-ui/gooey-nav').then(m => ({ default: m.GooeyNav as React.ComponentType<Record<string, unknown>> }))
