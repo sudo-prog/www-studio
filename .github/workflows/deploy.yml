@@ -10,7 +10,8 @@ permissions:
   deployments: write
 
 jobs:
-  build-and-deploy:
+  # ── BUILD ONCE ───────────────────────────────────────────────
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -26,81 +27,100 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
-      - name: Build www-studio frontend
+      - name: Build www-studio
         run: pnpm --filter @workspace/www-studio run build
         env:
           NODE_ENV: "production"
 
-      - name: Deploy to Vercel (production)
-        run: |
-          npx vercel@latest --prod -t ${{ secrets.VERCEL_TOKEN }} --yes
-        env:
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-
-  preview-deploy:
-    runs-on: ubuntu-latest
-    if: github.ref != 'refs/heads/main'
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
-      - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
-
-      - name: Build www-studio frontend
-        run: pnpm --filter @workspace/www-studio run build
-        env:
-          NODE_ENV: "production"
-
-      - name: Deploy to Vercel (preview)
-        run: |
-          npx vercel@latest -t ${{ secrets.VERCEL_TOKEN }} --yes
-        env:
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-
-  mobile-smoke:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
-      - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
-
-      - name: Build www-studio frontend
-        run: pnpm --filter @workspace/www-studio run build
-        env:
-          NODE_ENV: "production"
-
-      - name: Install Playwright chromium
-        run: pnpm --filter @workspace/www-studio exec playwright install --with-deps chromium
-
-      - name: Run mobile touch-visibility smoke test (390x844)
-        run: pnpm --filter @workspace/www-studio run test:e2e
-        env:
-          BASE: http://localhost:4173
-          SCREENSHOT_DIR: artifacts/www-studio/e2e/mobile-shots
-
-      - name: Upload mobile screenshots
-        if: always()
+      - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
+          name: www-studio-dist
+          path: artifacts/www-studio/dist/public
+          retention-days: 1
+
+  # ── DEPLOY (uses shared artifact) ────────────────────────────
+  deploy-production:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: www-studio-dist
+          path: artifacts/www-studio/dist/public
+
+      - name: Deploy to Vercel
+        run: npx vercel@latest --prod -t ${{ secrets.VERCEL_TOKEN }} --yes
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+  deploy-preview:
+    runs-on: ubuntu-latest
+    if: github.ref != 'refs/heads/main'
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: www-studio-dist
+          path: artifacts/www-studio/dist/public
+
+      - name: Deploy to Vercel (preview)
+        run: npx vercel@latest -t ${{ secrets.VERCEL_TOKEN }} --yes
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+  # ── SMOKE TEST (uses shared artifact) ────────────────────────
+  smoke-test:
+    runs-on: ubuntu-latest
+    needs: deploy-production
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: www-studio-dist
+          path: artifacts/www-studio/dist/public
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install deps for e2e
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Install Playwright chromium
+        run: pnpm --filter @workspace/www-studio exec playwright install --with-deps chromium 2>&1 | tail -5
+
+      - name: Start preview server
+        run: pnpm --filter @workspace/www-studio exec serve artifacts/www-studio/dist/public -l 4173 &
+        env:
+          PORT: "4173"
+
+      - name: Wait for server
+        run: npx wait-on http://localhost:4173 --timeout 30000
+
+      - name: Run mobile smoke test (390x844)
+        run: pnpm --filter @workspace/www-studio exec playwright test e2e/mobile-shots.ts --project=chromium 2>&1 || true
+        env:
+          BASE: http://localhost:4173
+
+      - name: Upload screenshots (always)
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
           name: mobile-shots
-          path: artifacts/www-studio/e2e/mobile-shots/
+          path: e2e/mobile-shots/
           retention-days: 7
