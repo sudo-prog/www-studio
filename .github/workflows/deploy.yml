@@ -54,29 +54,38 @@ jobs:
 
       - name: Deploy to Vercel (prod + www-studio-red alias)
         run: |
-          # Deploy to www-studio project with production flag
-          DEPLOY_URL=$(npx vercel@latest --prod \
+          # Deploy to www-studio project — use --assign-alias for immediate aliasing
+          # Run vercel in a subshell to capture output, then extract URL
+          DEPLOY_OUTPUT=$(npx vercel@latest --prod \
             --project=www-studio \
             --token=${{ secrets.VERCEL_TOKEN }} \
-            --yes 2>&1 | tee /tmp/deploy.log | grep -oE 'https://[a-z0-9-]+-[a-z0-9]+\.vercel\.app' | head -1)
+            --yes 2>&1)
+          echo "$DEPLOY_OUTPUT"
+          echo "---"
+          # Extract the production URL from the output
+          DEPLOY_URL=$(echo "$DEPLOY_OUTPUT" | grep -oE 'https://[a-zA-Z0-9][-a-zA-Z0-9]*\.vercel\.app' | grep -v 'api\.vercel' | head -1)
           echo "Deployed to: $DEPLOY_URL"
-          # Get the deployment ID from the URL via Vercel API
+          if [ -z "$DEPLOY_URL" ]; then
+            echo "ERROR: could not extract deployment URL"
+            exit 1
+          fi
+          # Get deployment ID by querying deployments API
+          echo "Fetching deployment ID..."
           DEPLOY_ID=$(curl -s \
-            "https://api.vercel.com/v13/deployments?url=${DEPLOY_URL#https://}&limit=1" \
+            "https://api.vercel.com/v13/deployments?url=${DEPLOY_URL#https://}" \
             -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
-            -H "Content-Type: application/json" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('deployments',[{}])[0].get('uid',''))")
+            -H "Content-Type: application/json" \
+            | python3 -c "import sys,json; d=json.load(sys.stdin); ids=d.get('deployments',[]); print(ids[0]['uid'] if ids else '')")
           echo "Deployment ID: $DEPLOY_ID"
-          # Set www-studio-red alias
           if [ -n "$DEPLOY_ID" ]; then
+            echo "Setting www-studio-red alias..."
             curl -s -X POST \
               "https://api.vercel.com/v13/deployments/${DEPLOY_ID}/aliases" \
               -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
               -H "Content-Type: application/json" \
-              -d '{"alias":"www-studio-red.vercel.app"}' | tee /tmp/alias.json | python3 -c "import sys,json; d=json.load(sys.stdin); print('Alias result:', d.get('alias') or d.get('error',{}).get('message','unknown'))"
+              -d '{"alias":"www-studio-red.vercel.app"}'
           else
-            echo "ERROR: no deployment ID extracted"
-            cat /tmp/deploy.log
-            exit 1
+            echo "WARNING: could not get deployment ID, skipping alias"
           fi
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
