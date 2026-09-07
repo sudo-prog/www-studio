@@ -20,6 +20,7 @@ export interface ComponentItem {
 
 import componentsJsonCatalog from "./components-json-catalog.json";
 import { REGISTRY_EXTRACTED_COMPONENTS } from "./registry-extracted-components";
+import { NAVBAR_GALLERY_COMPONENTS } from "./catalog-navbar-gallery";
 
 export const CATEGORIES = [
   "All",
@@ -1508,8 +1509,10 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   // ─────────── EXTRACTED CATALOG (real code from upstream sources) ───────────
    ...componentsJsonCatalog,
   // ─────────── REGISTRY EXTRACTED (libraries.dev + @appica/ui-react) ───────────
-   ...REGISTRY_EXTRACTED_COMPONENTS,
- ];
+  ...REGISTRY_EXTRACTED_COMPONENTS,
+  // ─────────── NAVBAR GALLERY (discovered via watchdog, 2026-09-07) ───────────
+  ...NAVBAR_GALLERY_COMPONENTS,
+];
 
 export function makePreviewHtml(code: string, previewHtmlOverride?: string): string {
   // Use the override (a self-contained HTML snippet) if provided —
