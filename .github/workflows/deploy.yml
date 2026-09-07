@@ -69,13 +69,9 @@ jobs:
             echo "ERROR: could not extract deployment URL"
             exit 1
           fi
-          # Get deployment ID by querying deployments API
-          echo "Fetching deployment ID..."
-          DEPLOY_ID=$(curl -s \
-            "https://api.vercel.com/v13/deployments?url=${DEPLOY_URL#https://}" \
-            -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
-            -H "Content-Type: application/json" \
-            | python3 -c "import sys,json; d=json.load(sys.stdin); ids=d.get('deployments',[]); print(ids[0]['uid'] if ids else '')")
+          # Get deployment ID via vercel inspect
+          echo "Fetching deployment ID via vercel inspect..."
+          DEPLOY_ID=$(npx vercel@latest inspect "$DEPLOY_URL" --token=${{ secrets.VERCEL_TOKEN }} --format=json 2>/dev/null | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('id',''))")
           echo "Deployment ID: $DEPLOY_ID"
           if [ -n "$DEPLOY_ID" ]; then
             echo "Setting www-studio-red alias..."
