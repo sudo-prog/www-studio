@@ -4,7 +4,8 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription } from "@/components/ui/dialog";
 import { COMPONENT_LIBRARY, CATEGORIES, makePreviewHtml, type Category, type ComponentItem } from "@/data/component-library";
-import { Search, Copy, Github, Loader2 } from "lucide-react";
+import { Search, Copy, Github, Loader2, Star } from "lucide-react";
+import { useRatings, StarRatingDisplay, parseRatingQuery, matchesRating, type ParsedRatingQuery } from "@/lib/ratings";
 import { useToast } from "@/hooks/use-toast";
 import { AiChatWidget } from "@/components/AiChatWidget";
 import { useLocation } from "wouter";
@@ -18,6 +19,7 @@ import {
 
 function ComponentCard({ item }: { item: typeof COMPONENT_LIBRARY[number] }) {
   const { toast } = useToast();
+  const ratingApi = useRatings();
   const hasCode = item.code && item.code.trim().length > 0;
 
   return (
@@ -48,16 +50,30 @@ function ComponentCard({ item }: { item: typeof COMPONENT_LIBRARY[number] }) {
           </p>
         </a>
       )}
-      {/* Info strip — title + tags + free-floating copy icon. Lives
-          beside the shared preview viewport so the same PreviewCodeCard
-          primitive can be reused without a built-in info footer. */}
+      {/* Info strip — title + tags + rating + copy icon. */}
       <div className="p-3 flex items-center justify-between gap-2">
-        <div className="min-w-0">
+        <div className="min-w-0 flex-1">
           <p className="text-sm font-medium truncate">{item.name}</p>
           <div className="flex flex-wrap gap-1 mt-1">
             {item.tags.slice(0, 3).map((tag) => (
               <TagChip key={tag}>{tag}</TagChip>
             ))}
+          </div>
+          <div className="mt-1.5 flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
+            <StarRatingDisplay
+              average={ratingApi.getAverage(item.id)}
+              count={ratingApi.getCount(item.id)}
+              size={11}
+            />
+            <StarRating
+              value={ratingApi.get(item.id)}
+              size={14}
+              onChange={(v) => {
+                ratingApi.set(item.id, v);
+                toast({ title: v > 0 ? `Rated ${item.name} ${v}★` : `Cleared rating` });
+              }}
+              ariaLabel={`Rate ${item.name}`}
+            />
           </div>
         </div>
         {hasCode ? (
@@ -128,7 +144,9 @@ function ChevronRight(props: SvgProps) {
 export default function Components() {
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState<Category>("All");
-  const [sortBy, setSortBy] = useState<"newest" | "oldest" | "az" | "za">("newest");
+  const [sortBy, setSortBy] = useState<"newest" | "oldest" | "az" | "za" | "rating-high" | "rating-low">("newest");
+  const [minRating, setMinRating] = useState<0 | 1 | 2 | 3 | 4 | 5>(0);
+  const ratingApi = useRatings();
   const [page, setPage] = useState(1);
   const [, setLocation] = useLocation();
   const isMobile = useIsMobile();
@@ -167,14 +185,29 @@ export default function Components() {
     }
   };
 
+  // Parse "4 stars" / "5+ stars" etc. from the search box.
+  const parsedRating = React.useMemo<ParsedRatingQuery>(
+    () => parseRatingQuery(search),
+    [search],
+  );
+  const searchText = parsedRating.cleanQuery;
+
   const filtered = useMemo(() => {
     let items = [...COMPONENT_LIBRARY]; // clone to avoid mutation
     if (activeCategory !== "All") items = items.filter((c) => c.category === activeCategory);
-    if (search.trim()) {
-      const q = search.toLowerCase();
+    if (searchText.trim()) {
+      const q = searchText.toLowerCase();
       items = items.filter(
         (c) => c.name.toLowerCase().includes(q) || c.tags.some((t) => t.includes(q)) || c.category.toLowerCase().includes(q)
       );
+    }
+    // Apply min-rating chip filter.
+    if (minRating > 0) {
+      items = items.filter((c) => ratingApi.getAverage(c.id) >= minRating);
+    }
+    // Apply parsed rating phrase from search box.
+    if (parsedRating.threshold > 0) {
+      items = items.filter((c) => matchesRating(parsedRating, ratingApi.getAverage(c.id)));
     }
     switch (sortBy) {
       case "az":
@@ -183,6 +216,12 @@ export default function Components() {
       case "za":
         items.sort((a, b) => b.name.localeCompare(a.name));
         break;
+      case "rating-high":
+        items.sort((a, b) => ratingApi.getAverage(b.id) - ratingApi.getAverage(a.id));
+        break;
+      case "rating-low":
+        items.sort((a, b) => ratingApi.getAverage(a.id) - ratingApi.getAverage(b.id));
+        break;
       case "newest":
         items.reverse();
         break;
@@ -190,13 +229,13 @@ export default function Components() {
         break;
     }
     return items;
-  }, [search, activeCategory, sortBy]);
+  }, [searchText, activeCategory, sortBy, minRating, ratingApi, parsedRating]);
 
   // Reset to page 1 when filters change so the user doesn't end up stranded
   // on a page that no longer exists after a category/search change.
   useEffect(() => {
     setPage(1);
-  }, [search, activeCategory, sortBy]);
+  }, [search, activeCategory, sortBy, minRating]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / MOBILE_PAGE_SIZE));
   // Clamp page to valid range in case filtered shrinks after a search.
@@ -238,7 +277,7 @@ export default function Components() {
             <Input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search loading, glassmorphism, buttons..."
+              placeholder="Search loading, glassmorphism... or `4+ stars`"
               className="pl-9 min-h-[48px]"
             />
           </div>
@@ -246,12 +285,49 @@ export default function Components() {
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
             className="h-12 px-3 rounded-xl border border-border bg-card text-sm cursor-pointer min-h-[48px]"
+            aria-label="Sort components"
           >
             <option value="newest">Newest First</option>
             <option value="oldest">Oldest First</option>
             <option value="az">A → Z</option>
             <option value="za">Z → A</option>
+            <option value="rating-high">★ Highest Rated</option>
+            <option value="rating-low">★ Lowest Rated</option>
           </select>
+          {/* Minimum-stars filter chip row. Tapping a chip sets the minimum
+              star threshold; tapping "All" clears it. Mirrors the pattern
+              of the existing CategoryNav. */}
+          <div className="flex items-center gap-1.5 overflow-x-auto" role="group" aria-label="Minimum star rating">
+            <button
+              type="button"
+              onClick={() => setMinRating(0)}
+              className={`shrink-0 px-3 h-9 min-h-[36px] rounded-full text-xs font-medium border transition-colors ${
+                minRating === 0
+                  ? "bg-primary text-primary-foreground border-primary"
+                  : "border-border text-muted-foreground hover:text-foreground"
+              }`}
+              aria-pressed={minRating === 0}
+            >
+              All ratings
+            </button>
+            {([1, 2, 3, 4, 5] as const).map((n) => (
+              <button
+                key={n}
+                type="button"
+                onClick={() => setMinRating(minRating === n ? 0 : n)}
+                className={`shrink-0 px-3 h-9 min-h-[36px] rounded-full text-xs font-medium border inline-flex items-center gap-1 transition-colors ${
+                  minRating === n
+                    ? "bg-amber-500/20 text-amber-300 border-amber-500/50"
+                    : "border-border text-muted-foreground hover:text-foreground"
+                }`}
+                aria-pressed={minRating === n}
+                aria-label={`${n} stars or more`}
+              >
+                <Star className={`w-3 h-3 ${minRating === n ? "fill-amber-400 text-amber-400" : ""}`} strokeWidth={1.5} />
+                {n}+
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="flex flex-col md:flex-row gap-6">
