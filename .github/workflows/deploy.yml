@@ -105,12 +105,14 @@ jobs:
         run: pnpm --filter @workspace/www-studio exec playwright install --with-deps chromium 2>&1 | tail -5
 
       - name: Start preview server
-        run: pnpm --filter @workspace/www-studio exec serve artifacts/www-studio/dist/public -l 4173 &
+        run: |
+          python3 -m http.server 4173 --directory artifacts/www-studio/dist/public &
+          echo $! > /tmp/server.pid
         env:
           PORT: "4173"
 
       - name: Wait for server
-        run: npx wait-on http://localhost:4173 --timeout 30000
+        run: npx wait-on http://localhost:4173 --timeout 60000
 
       - name: Run mobile smoke test (390x844)
         run: pnpm --filter @workspace/www-studio exec playwright test e2e/mobile-shots.ts --project=chromium 2>&1 || true
@@ -118,8 +120,8 @@ jobs:
           BASE: http://localhost:4173
 
       - name: Upload screenshots (always)
-        uses: actions/upload-artifact@v4
         if: always()
+        uses: actions/upload-artifact@v4
         with:
           name: mobile-shots
           path: e2e/mobile-shots/
