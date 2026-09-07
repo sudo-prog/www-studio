@@ -85,24 +85,10 @@ export const NAVBAR_GALLERY_COMPONENTS: import('./component-library').ComponentI
     sourceUrl: `https://appica.dev/ui/components/react/autocomplete`,
     description: `Autocomplete - Appica UI`,
   },
-  {
-    id: `supaste-navigation-bar`,
-    name: `Supaste Navigation Bar`,
-    category: `Navbar`,
-    tags: ["css", "dropdown", "html", "javascript", "minimal", "search-bar", "soft"],
-    code: `<div style="width:100%;height:100%;background:#0f0f0f;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;box-sizing:border-box;"><img src="https://cdn.navbar.gallery/Screenshot%202026-06-06%20at%2019.49.17.avif" alt="Supaste Navigation Bar" style="max-width:100%;max-height:80%;object-fit:contain;border-radius:8px;border:1px solid rgba(255,255,255,0.1);" onerror="this.style.display='none'" /><p style="color:#888;font-size:12px;margin-top:12px;">Supaste Navigation Bar</p></div>`,
-    sourceUrl: `https://www.navbar.gallery/navbar/supaste`,
-    description: `Supaste website navigation bar — modern SaaS-style top navigation with dropdown menus and search affordance. Showcased as inspiration #550 on Navbar Gallery.`,
-  },
-  {
-    id: `chesapeake-plywood-navigation-bar`,
-    name: `Chesapeake Plywood Navigation Bar`,
-    category: `Navbar`,
-    tags: ["css", "dropdown", "html", "javascript", "minimal", "static"],
-    code: `<div style="width:100%;height:100%;background:#0f0f0f;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;box-sizing:border-box;"><img src="https://cdn.navbar.gallery/nav%20.avif" alt="Chesapeake Plywood Navigation Bar" style="max-width:100%;max-height:80%;object-fit:contain;border-radius:8px;border:1px solid rgba(255,255,255,0.1);" onerror="this.style.display='none'" /><p style="color:#888;font-size:12px;margin-top:12px;">Chesapeake Plywood Navigation Bar</p></div>`,
-    sourceUrl: `https://www.navbar.gallery/navbar/chesapeake-plywood`,
-    description: `Chesapeake Plywood site navigation — clean e-commerce navbar with product dropdowns. Showcased as #549 on Navbar Gallery.`,
-  },
+  // REMOVED: supaste-navigation-bar and chesapeake-plywood-navigation-bar
+  // These entries had no actual component implementation code - only placeholder HTML with image URLs
+  // They were scraped from navbar.gallery but actual component code was never downloaded
+  // TODO: Download actual implementations from https://www.navbar.gallery/ if needed
   {
     id: `velt-navigation-bar`,
     name: `Velt Navigation Bar`,
@@ -2415,24 +2401,6 @@ export const NAVBAR_GALLERY_COMPONENTS: import('./component-library').ComponentI
     code: `<div style="width:100%;height:100%;background:#0f0f0f;display:flex;align-items:center;justify-content:center;"><p style="color:#555;font-size:14px;">god rays</p></div>`,
     sourceUrl: `https://shaders.paper.design/god-rays`,
     description: `god rays effect`,
-  },
-  {
-    id: `supaste-navbar`,
-    name: `Supaste Navbar`,
-    category: `Navbar`,
-    tags: ["css", "dropdown", "html", "minimal", "plain-css", "soft", "static"],
-    code: `<div style="width:100%;height:100%;background:#0f0f0f;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;box-sizing:border-box;"><img src="https://cdn.navbar.gallery/Screenshot%202026-06-06%20at%2019.49.17.avif" alt="Supaste Navbar" style="max-width:100%;max-height:80%;object-fit:contain;border-radius:8px;border:1px solid rgba(255,255,255,0.1);" onerror="this.style.display='none'" /><p style="color:#888;font-size:12px;margin-top:12px;">Supaste Navbar</p></div>`,
-    sourceUrl: `https://www.navbar.gallery/navbar/supaste`,
-    description: `Supaste static navbar with dropdown menu captured by Navbar Gallery.`,
-  },
-  {
-    id: `chesapeake-plywood-navbar`,
-    name: `Chesapeake Plywood Navbar`,
-    category: `Navbar`,
-    tags: ["css", "dropdown", "html", "minimal", "plain-css", "soft", "static"],
-    code: `<div style="width:100%;height:100%;background:#0f0f0f;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;box-sizing:border-box;"><img src="https://cdn.navbar.gallery/nav%20.avif" alt="Chesapeake Plywood Navbar" style="max-width:100%;max-height:80%;object-fit:contain;border-radius:8px;border:1px solid rgba(255,255,255,0.1);" onerror="this.style.display='none'" /><p style="color:#888;font-size:12px;margin-top:12px;">Chesapeake Plywood Navbar</p></div>`,
-    sourceUrl: `https://www.navbar.gallery/navbar/chesapeake-plywood`,
-    description: `Chesapeake Plywood navbar with announcement bar and dropdowns.`,
   },
   {
     id: `velt-navbar`,
