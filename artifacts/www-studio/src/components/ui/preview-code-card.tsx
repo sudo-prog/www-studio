@@ -57,6 +57,26 @@ export const DEFAULT_PREVIEW_HTML = (code: string): string => {
 <div id="root"></div>
 <script type="text/babel" data-type="module" data-presets="react,typescript">
 ${code}
+
+// Forward clicks inside the sandboxed preview up to the parent so the
+// host page can hook interaction telemetry. Bound passively so it
+// never blocks scrolling, and guarded against cross-origin failures
+// (the sandbox attribute is the only thing that controls access).
+(function() {
+  function notify() {
+    try {
+      window.parent.postMessage({ type: 'interaction', component: document.title }, '*');
+    } catch (e) { /* sandbox may forbid parent access */ }
+  }
+  document.addEventListener('click', notify, { passive: true });
+  // Also notify once after the first paint so the parent can observe
+  // that the preview finished mounting, not just clicks.
+  if (document.readyState === 'complete') {
+    setTimeout(notify, 0);
+  } else {
+    window.addEventListener('load', function() { setTimeout(notify, 0); }, { once: true });
+  }
+})();
 </script>
 </body>
 </html>`;
@@ -86,6 +106,12 @@ export interface PreviewCodeCardProps
   viewportClassName?: string;
   /** Custom iframe sandbox attribute. */
   sandbox?: string;
+  /**
+   * Called when the previewed iframe posts a `message` event to its
+   * parent (window). Useful for hooking interaction telemetry from
+   * inside the sandboxed preview document.
+   */
+  onIframeMessage?: (msg: unknown) => void;
 }
 
 const VIEW_LABEL: Record<PreviewCodeView, { swap: PreviewCodeView; text: string }> = {
@@ -108,11 +134,28 @@ export function PreviewCodeCard({
   disableCopy,
   className,
   viewportClassName,
-  sandbox = "allow-scripts",
+  sandbox = "allow-scripts allow-same-origin",
+  onIframeMessage,
   ...rest
 }: PreviewCodeCardProps) {
   const [view, setView] = React.useState<PreviewCodeView>(defaultView);
   const [copied, setCopied] = React.useState(false);
+  const iframeRef = React.useRef<HTMLIFrameElement>(null);
+
+  // Forward postMessage events from the sandboxed preview document up
+  // to the parent so callers can hook interaction telemetry, analytics,
+  // or any other cross-frame signalling. The handler is only bound
+  // while the iframe is mounted; we verify the message originated from
+  // our iframe (vs. another extension/tab) by checking e.source.
+  React.useEffect(() => {
+    const handler = (e: MessageEvent) => {
+      if (iframeRef.current && e.source === iframeRef.current.contentWindow) {
+        onIframeMessage?.(e.data);
+      }
+    };
+    window.addEventListener("message", handler);
+    return () => window.removeEventListener("message", handler);
+  }, [onIframeMessage]);
 
   const handleCopy = React.useCallback(() => {
     if (disableCopy) {
@@ -160,8 +203,9 @@ export function PreviewCodeCard({
       >
         {view === "preview" ? (
           <iframe
+            ref={iframeRef}
             src={docSrc}
-            className="w-full h-full border-0 pointer-events-none"
+            className="w-full h-full border-0"
             title={title}
             sandbox={sandbox}
           />

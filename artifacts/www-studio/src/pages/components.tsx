@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
+import * as React from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { COMPONENT_LIBRARY, CATEGORIES, makePreviewHtml, type Category } from "@/data/component-library";
@@ -124,12 +125,13 @@ function ChevronRight(props: SvgProps) {
 export default function Components() {
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState<Category>("All");
+  const [sortBy, setSortBy] = useState<"newest" | "oldest" | "az" | "za">("newest");
   const [page, setPage] = useState(1);
   const [, setLocation] = useLocation();
   const isMobile = useIsMobile();
 
   const filtered = useMemo(() => {
-    let items = COMPONENT_LIBRARY;
+    let items = [...COMPONENT_LIBRARY]; // clone to avoid mutation
     if (activeCategory !== "All") items = items.filter((c) => c.category === activeCategory);
     if (search.trim()) {
       const q = search.toLowerCase();
@@ -137,14 +139,27 @@ export default function Components() {
         (c) => c.name.toLowerCase().includes(q) || c.tags.some((t) => t.includes(q)) || c.category.toLowerCase().includes(q)
       );
     }
+    switch (sortBy) {
+      case "az":
+        items.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+      case "za":
+        items.sort((a, b) => b.name.localeCompare(a.name));
+        break;
+      case "newest":
+        items.reverse();
+        break;
+      case "oldest":
+        break;
+    }
     return items;
-  }, [search, activeCategory]);
+  }, [search, activeCategory, sortBy]);
 
   // Reset to page 1 when filters change so the user doesn't end up stranded
   // on a page that no longer exists after a category/search change.
   useEffect(() => {
     setPage(1);
-  }, [search, activeCategory]);
+  }, [search, activeCategory, sortBy]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / MOBILE_PAGE_SIZE));
   // Clamp page to valid range in case filtered shrinks after a search.
@@ -190,6 +205,16 @@ export default function Components() {
               className="pl-9 min-h-[48px]"
             />
           </div>
+          <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
+            className="h-12 px-3 rounded-xl border border-border bg-card text-sm cursor-pointer"
+          >
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+            <option value="az">A → Z</option>
+            <option value="za">Z → A</option>
+          </select>
         </div>
 
         <div className="flex flex-col md:flex-row gap-6">
