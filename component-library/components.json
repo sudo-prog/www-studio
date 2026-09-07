@@ -14740,5 +14740,569 @@
     "preview_image": "",
     "extraction_status": "verified",
     "extracted_at": "2026-09-07"
+  },
+  {
+    "name": "What is a shader?",
+    "source_url": "https://thebookofshaders.com/01/",
+    "registry_url": "https://thebookofshaders.com/",
+    "category": "shader",
+    "tags": [
+      "javascript",
+      "minimal",
+      "shader",
+      "shader-art",
+      "tutorial"
+    ],
+    "description": "Article teaching the foundations of fragment shaders and the GLSL pipeline.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Hello world fragment shader",
+    "source_url": "https://thebookofshaders.com/02/",
+    "registry_url": "https://thebookofshaders.com/",
+    "category": "shader",
+    "tags": [
+      "javascript",
+      "minimal",
+      "shader",
+      "shader-art",
+      "tutorial"
+    ],
+    "description": "Canonical first fragment shader program with step-by-step explanation.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "GLSL Uniforms",
+    "source_url": "https://thebookofshaders.com/03/",
+    "registry_url": "https://thebookofshaders.com/",
+    "category": "shader",
+    "tags": [
+      "javascript",
+      "minimal",
+      "shader",
+      "shader-art",
+      "tutorial"
+    ],
+    "description": "Guide to GLSL uniforms — passing variables from CPU to GPU shader code.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Running your shader",
+    "source_url": "https://thebookofshaders.com/04/",
+    "registry_url": "https://thebookofshaders.com/",
+    "category": "shader",
+    "tags": [
+      "javascript",
+      "minimal",
+      "shader",
+      "shader-art",
+      "tutorial"
+    ],
+    "description": "Chapter on running GLSL shaders in different environments and platforms.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Shaping functions",
+    "source_url": "https://thebookofshaders.com/05/",
+    "registry_url": "https://thebookofshaders.com/",
+    "category": "shader",
+    "tags": [
+      "javascript",
+      "minimal",
+      "pattern",
+      "shader",
+      "shader-art",
+      "tutorial"
+    ],
+    "description": "Collection of shaping functions for procedural drawing in shaders.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Colors in shaders",
+    "source_url": "https://thebookofshaders.com/06/",
+    "registry_url": "https://thebookofshaders.com/",
+    "category": "shader",
+    "tags": [
+      "gradient",
+      "javascript",
+      "shader",
+      "shader-art",
+      "tutorial"
+    ],
+    "description": "Color space, mixing, and manipulation in fragment shaders.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Drawing Shapes in GLSL",
+    "source_url": "https://thebookofshaders.com/07/",
+    "registry_url": "https://thebookofshaders.com/",
+    "category": "shader",
+    "tags": [
+      "flat",
+      "javascript",
+      "shader",
+      "shader-art",
+      "tutorial"
+    ],
+    "description": "Drawing 2D shapes — circles, rectangles, polygons — in fragment shaders.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Matrix math for shaders",
+    "source_url": "https://thebookofshaders.com/08/",
+    "registry_url": "https://thebookofshaders.com/",
+    "category": "shader",
+    "tags": [
+      "javascript",
+      "minimal",
+      "pattern",
+      "shader",
+      "shader-art",
+      "tutorial"
+    ],
+    "description": "Matrix math primer for shader transformations and coordinate spaces.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Pattern generation",
+    "source_url": "https://thebookofshaders.com/09/",
+    "registry_url": "https://thebookofshaders.com/",
+    "category": "shader",
+    "tags": [
+      "javascript",
+      "minimal",
+      "pattern",
+      "shader",
+      "shader-art",
+      "tutorial"
+    ],
+    "description": "Algorithmic pattern generation in fragment shaders.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Randomness in shaders",
+    "source_url": "https://thebookofshaders.com/10/",
+    "registry_url": "https://thebookofshaders.com/",
+    "category": "shader",
+    "tags": [
+      "javascript",
+      "noise",
+      "shader",
+      "shader-art",
+      "tutorial"
+    ],
+    "description": "Pseudo-random and noise-based techniques for shader randomness.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Noise functions",
+    "source_url": "https://thebookofshaders.com/11/",
+    "registry_url": "https://thebookofshaders.com/",
+    "category": "shader",
+    "tags": [
+      "javascript",
+      "noise",
+      "shader",
+      "shader-art",
+      "tutorial"
+    ],
+    "description": "Classic noise functions (value, gradient, simplex) for GLSL.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Cellular noise",
+    "source_url": "https://thebookofshaders.com/12/",
+    "registry_url": "https://thebookofshaders.com/",
+    "category": "shader",
+    "tags": [
+      "javascript",
+      "noise",
+      "shader",
+      "shader-art",
+      "tutorial"
+    ],
+    "description": "Cellular (Worley) noise algorithm and shader examples.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Fractional Brownian Motion",
+    "source_url": "https://thebookofshaders.com/13/",
+    "registry_url": "https://thebookofshaders.com/",
+    "category": "shader",
+    "tags": [
+      "fluid",
+      "javascript",
+      "shader",
+      "shader-art",
+      "tutorial"
+    ],
+    "description": "FBM chapter — layered noise for natural textures and terrains.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Book of Shaders Gallery",
+    "source_url": "https://thebookofshaders.com/examples/",
+    "registry_url": "https://thebookofshaders.com/",
+    "category": "shader",
+    "tags": [
+      "gallery",
+      "javascript",
+      "minimal",
+      "shader",
+      "shader-art"
+    ],
+    "description": "Community-submitted example shaders indexed by the Book of Shaders.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "GLSL Glossary",
+    "source_url": "https://thebookofshaders.com/glossary/",
+    "registry_url": "https://thebookofshaders.com/",
+    "category": "shader",
+    "tags": [
+      "docs",
+      "javascript",
+      "minimal",
+      "shader",
+      "shader-art"
+    ],
+    "description": "Glossary of GLSL and graphics terminology used throughout the book.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "GLSL Sandbox #370395",
+    "source_url": "https://glslsandbox.com/e#370395",
+    "registry_url": "https://glslsandbox.com/",
+    "category": "shader",
+    "tags": [
+      "noise",
+      "shader",
+      "shader-art",
+      "shader-playground",
+      "webgl"
+    ],
+    "description": "Community fragment shader effect #370395 from the GLSL Sandbox gallery.",
+    "preview_image": "https://glslsandbox.com/thumbs/370395.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "GLSL Sandbox #370394",
+    "source_url": "https://glslsandbox.com/e#370394",
+    "registry_url": "https://glslsandbox.com/",
+    "category": "shader",
+    "tags": [
+      "noise",
+      "shader",
+      "shader-art",
+      "shader-playground",
+      "webgl"
+    ],
+    "description": "Community fragment shader effect #370394 from the GLSL Sandbox gallery.",
+    "preview_image": "https://glslsandbox.com/thumbs/370394.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "GLSL Sandbox #370393",
+    "source_url": "https://glslsandbox.com/e#370393",
+    "registry_url": "https://glslsandbox.com/",
+    "category": "shader",
+    "tags": [
+      "noise",
+      "shader",
+      "shader-art",
+      "shader-playground",
+      "webgl"
+    ],
+    "description": "Community fragment shader effect #370393 from the GLSL Sandbox gallery.",
+    "preview_image": "https://glslsandbox.com/thumbs/370393.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "GLSL Sandbox #370392",
+    "source_url": "https://glslsandbox.com/e#370392",
+    "registry_url": "https://glslsandbox.com/",
+    "category": "shader",
+    "tags": [
+      "noise",
+      "shader",
+      "shader-art",
+      "shader-playground",
+      "webgl"
+    ],
+    "description": "Community fragment shader effect #370392 from the GLSL Sandbox gallery.",
+    "preview_image": "https://glslsandbox.com/thumbs/370392.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "GLSL Sandbox #370391",
+    "source_url": "https://glslsandbox.com/e#370391",
+    "registry_url": "https://glslsandbox.com/",
+    "category": "shader",
+    "tags": [
+      "noise",
+      "shader",
+      "shader-art",
+      "shader-playground",
+      "webgl"
+    ],
+    "description": "Community fragment shader effect #370391 from the GLSL Sandbox gallery.",
+    "preview_image": "https://glslsandbox.com/thumbs/370391.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "GLSL Sandbox #370390",
+    "source_url": "https://glslsandbox.com/e#370390",
+    "registry_url": "https://glslsandbox.com/",
+    "category": "shader",
+    "tags": [
+      "noise",
+      "shader",
+      "shader-art",
+      "shader-playground",
+      "webgl"
+    ],
+    "description": "Community fragment shader effect #370390 from the GLSL Sandbox gallery.",
+    "preview_image": "https://glslsandbox.com/thumbs/370390.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "GLSL Sandbox #353965",
+    "source_url": "https://glslsandbox.com/e#353965",
+    "registry_url": "https://glslsandbox.com/",
+    "category": "shader",
+    "tags": [
+      "noise",
+      "shader",
+      "shader-art",
+      "shader-playground",
+      "webgl"
+    ],
+    "description": "Community fragment shader effect #353965 from the GLSL Sandbox gallery.",
+    "preview_image": "https://glslsandbox.com/thumbs/353965.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "GLSL Sandbox #366567",
+    "source_url": "https://glslsandbox.com/e#366567",
+    "registry_url": "https://glslsandbox.com/",
+    "category": "shader",
+    "tags": [
+      "noise",
+      "shader",
+      "shader-art",
+      "shader-playground",
+      "webgl"
+    ],
+    "description": "Community fragment shader effect #366567 from the GLSL Sandbox gallery.",
+    "preview_image": "https://glslsandbox.com/thumbs/366567.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "GLSL Sandbox #366566",
+    "source_url": "https://glslsandbox.com/e#366566",
+    "registry_url": "https://glslsandbox.com/",
+    "category": "shader",
+    "tags": [
+      "noise",
+      "shader",
+      "shader-art",
+      "shader-playground",
+      "webgl"
+    ],
+    "description": "Community fragment shader effect #366566 from the GLSL Sandbox gallery.",
+    "preview_image": "https://glslsandbox.com/thumbs/366566.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "GLSL Sandbox #366565",
+    "source_url": "https://glslsandbox.com/e#366565",
+    "registry_url": "https://glslsandbox.com/",
+    "category": "shader",
+    "tags": [
+      "noise",
+      "shader",
+      "shader-art",
+      "shader-playground",
+      "webgl"
+    ],
+    "description": "Community fragment shader effect #366565 from the GLSL Sandbox gallery.",
+    "preview_image": "https://glslsandbox.com/thumbs/366565.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "GLSL Sandbox #362696",
+    "source_url": "https://glslsandbox.com/e#362696",
+    "registry_url": "https://glslsandbox.com/",
+    "category": "shader",
+    "tags": [
+      "noise",
+      "shader",
+      "shader-art",
+      "shader-playground",
+      "webgl"
+    ],
+    "description": "Community fragment shader effect #362696 from the GLSL Sandbox gallery.",
+    "preview_image": "https://glslsandbox.com/thumbs/362696.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "GLSL Sandbox #362695",
+    "source_url": "https://glslsandbox.com/e#362695",
+    "registry_url": "https://glslsandbox.com/",
+    "category": "shader",
+    "tags": [
+      "noise",
+      "shader",
+      "shader-art",
+      "shader-playground",
+      "webgl"
+    ],
+    "description": "Community fragment shader effect #362695 from the GLSL Sandbox gallery.",
+    "preview_image": "https://glslsandbox.com/thumbs/362695.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "GLSL Sandbox #362694",
+    "source_url": "https://glslsandbox.com/e#362694",
+    "registry_url": "https://glslsandbox.com/",
+    "category": "shader",
+    "tags": [
+      "noise",
+      "shader",
+      "shader-art",
+      "shader-playground",
+      "webgl"
+    ],
+    "description": "Community fragment shader effect #362694 from the GLSL Sandbox gallery.",
+    "preview_image": "https://glslsandbox.com/thumbs/362694.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "GLSL Sandbox #362693",
+    "source_url": "https://glslsandbox.com/e#362693",
+    "registry_url": "https://glslsandbox.com/",
+    "category": "shader",
+    "tags": [
+      "noise",
+      "shader",
+      "shader-art",
+      "shader-playground",
+      "webgl"
+    ],
+    "description": "Community fragment shader effect #362693 from the GLSL Sandbox gallery.",
+    "preview_image": "https://glslsandbox.com/thumbs/362693.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "GLSL Sandbox #362692",
+    "source_url": "https://glslsandbox.com/e#362692",
+    "registry_url": "https://glslsandbox.com/",
+    "category": "shader",
+    "tags": [
+      "noise",
+      "shader",
+      "shader-art",
+      "shader-playground",
+      "webgl"
+    ],
+    "description": "Community fragment shader effect #362692 from the GLSL Sandbox gallery.",
+    "preview_image": "https://glslsandbox.com/thumbs/362692.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "GLSL Sandbox #362691",
+    "source_url": "https://glslsandbox.com/e#362691",
+    "registry_url": "https://glslsandbox.com/",
+    "category": "shader",
+    "tags": [
+      "noise",
+      "shader",
+      "shader-art",
+      "shader-playground",
+      "webgl"
+    ],
+    "description": "Community fragment shader effect #362691 from the GLSL Sandbox gallery.",
+    "preview_image": "https://glslsandbox.com/thumbs/362691.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "GLSL Sandbox #362690",
+    "source_url": "https://glslsandbox.com/e#362690",
+    "registry_url": "https://glslsandbox.com/",
+    "category": "shader",
+    "tags": [
+      "noise",
+      "shader",
+      "shader-art",
+      "shader-playground",
+      "webgl"
+    ],
+    "description": "Community fragment shader effect #362690 from the GLSL Sandbox gallery.",
+    "preview_image": "https://glslsandbox.com/thumbs/362690.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "GLSL Sandbox #353771",
+    "source_url": "https://glslsandbox.com/e#353771",
+    "registry_url": "https://glslsandbox.com/",
+    "category": "shader",
+    "tags": [
+      "noise",
+      "shader",
+      "shader-art",
+      "shader-playground",
+      "webgl"
+    ],
+    "description": "Community fragment shader effect #353771 from the GLSL Sandbox gallery.",
+    "preview_image": "https://glslsandbox.com/thumbs/353771.png",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
   }
 ]
