@@ -58,6 +58,7 @@ jobs:
           # --project=www-studio ensures we hit the right Vercel project regardless of cwd.
           npx vercel@latest --prod \
             --project=www-studio \
+            --alias=www-studio-red.vercel.app \
             --token=${{ secrets.VERCEL_TOKEN }} \
             --yes
 
