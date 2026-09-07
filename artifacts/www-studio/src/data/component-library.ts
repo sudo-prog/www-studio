@@ -43,7 +43,6 @@ export const CATEGORIES = [
 export type Category = (typeof CATEGORIES)[number];
 
 export const COMPONENT_LIBRARY: ComponentItem[] = [
-  // ─────────── LOADING UI ───────────
   {
     id: "spinner-ring",
     name: "Ring Spinner",
@@ -53,6 +52,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <div class="w-10 h-10 rounded-full border-4 border-zinc-700 border-t-blue-500 animate-spin"></div>
 </div>`,
   },
+
   {
     id: "spinner-dots",
     name: "Bouncing Dots",
@@ -64,6 +64,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <div class="w-2.5 h-2.5 rounded-full bg-blue-500 animate-bounce"></div>
 </div>`,
   },
+
   {
     id: "skeleton-card",
     name: "Skeleton Card",
@@ -79,6 +80,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </div>
 </div>`,
   },
+
   {
     id: "progress-bar",
     name: "Gradient Progress Bar",
@@ -94,6 +96,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </div>
 </div>`,
   },
+
   {
     id: "pulse-circle",
     name: "Pulse Indicator",
@@ -107,6 +110,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <span class="text-sm text-zinc-300">System Online</span>
 </div>`,
   },
+
   {
     id: "shimmer-text",
     name: "Shimmer Text",
@@ -120,7 +124,6 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
 </style>`,
   },
 
-  // ─────────── BUTTONS ───────────
   {
     id: "btn-gradient",
     name: "Gradient Button",
@@ -130,6 +133,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   Get Started
 </button>`,
   },
+
   {
     id: "btn-glow",
     name: "Glow Button",
@@ -139,6 +143,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   ✨ Launch App
 </button>`,
   },
+
   {
     id: "btn-glass",
     name: "Glassmorphism Button",
@@ -148,6 +153,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   Learn More
 </button>`,
   },
+
   {
     id: "btn-3d",
     name: "3D Push Button",
@@ -157,6 +163,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   Click Me
 </button>`,
   },
+
   {
     id: "btn-outline-animated",
     name: "Animated Outline Button",
@@ -167,6 +174,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <span class="absolute inset-0 bg-blue-500/10 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
 </button>`,
   },
+
   {
     id: "btn-icon",
     name: "Icon Button Group",
@@ -179,7 +187,6 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
 </div>`,
   },
 
-  // ─────────── CARDS ───────────
   {
     id: "card-glass",
     name: "Glassmorphism Card",
@@ -193,6 +200,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <p class="text-zinc-400 text-sm">Ship to production in seconds with zero config needed.</p>
 </div>`,
   },
+
   {
     id: "card-stats",
     name: "Stats Card",
@@ -207,6 +215,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <p class="text-xs text-zinc-500">vs $42,900 last month</p>
 </div>`,
   },
+
   {
     id: "card-pricing",
     name: "Pricing Card",
@@ -226,6 +235,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <button class="w-full py-2 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-500 transition-colors">Get Pro</button>
 </div>`,
   },
+
   {
     id: "card-testimonial",
     name: "Testimonial Card",
@@ -249,6 +259,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </div>
 </div>`,
   },
+
   {
     id: "card-feature",
     name: "Feature Card with Icon",
@@ -263,7 +274,6 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
 </div>`,
   },
 
-  // ─────────── FORMS ───────────
   {
     id: "form-input-float",
     name: "Floating Label Input",
@@ -274,6 +284,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <label for="email" class="absolute left-4 top-3.5 text-zinc-500 text-sm transition-all peer-placeholder-shown:top-3.5 peer-focus:-top-0 peer-focus:text-xs peer-focus:text-blue-400 peer-[&:not(:placeholder-shown)]:-top-0 peer-[&:not(:placeholder-shown)]:text-xs">Email address</label>
 </div>`,
   },
+
   {
     id: "form-toggle",
     name: "Custom Toggle Switch",
@@ -288,6 +299,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <span class="text-sm text-zinc-300">Enable notifications</span>
 </label>`,
   },
+
   {
     id: "form-search",
     name: "Search Input",
@@ -299,6 +311,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <kbd class="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-zinc-500 border border-zinc-700 rounded px-1.5 py-0.5">⌘K</kbd>
 </div>`,
   },
+
   {
     id: "form-select",
     name: "Styled Select",
@@ -314,6 +327,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
 </div>`,
   },
+
   {
     id: "form-otp",
     name: "OTP Input",
@@ -327,7 +341,6 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
 </div>`,
   },
 
-  // ─────────── TOOLTIPS ───────────
   {
     id: "tooltip-dark",
     name: "Dark Tooltip",
@@ -341,6 +354,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </div>
 </div>`,
   },
+
   {
     id: "tooltip-colored",
     name: "Colored Tooltip",
@@ -354,6 +368,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </div>
 </div>`,
   },
+
   {
     id: "tooltip-left",
     name: "Side Tooltip",
@@ -370,7 +385,6 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
 </div>`,
   },
 
-  // ─────────── NAVIGATION ───────────
   {
     id: "nav-pills",
     name: "Pill Tabs",
@@ -383,6 +397,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <button class="px-4 py-1.5 rounded-lg text-zinc-400 text-sm font-medium hover:text-white transition-colors">Settings</button>
 </div>`,
   },
+
   {
     id: "nav-breadcrumb",
     name: "Breadcrumb",
@@ -396,6 +411,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <span class="text-white font-medium">Editor</span>
 </nav>`,
   },
+
   {
     id: "nav-sidebar-mini",
     name: "Mini Sidebar",
@@ -408,7 +424,6 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
 </div>`,
   },
 
-  // ─────────── BADGES ───────────
   {
     id: "badge-status",
     name: "Status Badges",
@@ -429,6 +444,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </span>
 </div>`,
   },
+
   {
     id: "badge-gradient",
     name: "Gradient Badges",
@@ -442,7 +458,6 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
 </div>`,
   },
 
-  // ─────────── MODALS ───────────
   {
     id: "modal-confirm",
     name: "Confirm Dialog",
@@ -460,6 +475,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </div>
 </div>`,
   },
+
   {
     id: "modal-notification",
     name: "Notification Toast",
@@ -478,7 +494,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </button>
 </div>`,
   },
-  // ─────────── NEW HAND-CRAFTED COMPONENTS ───────────
+
   {
     id: "loader-wave-bars",
     name: "Wave Bars Loader",
@@ -493,6 +509,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
 </div>
 <style>@keyframes wave{0%,100%{height:10%}50%{height:100%}}</style>`,
   },
+
   {
     id: "loader-orbit-dots",
     name: "Orbit Dots",
@@ -508,6 +525,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <div class="absolute inset-3 rounded-full bg-zinc-900 border border-zinc-700"></div>
 </div>`,
   },
+
   {
     id: "loader-progress-bar",
     name: "Indeterminate Progress",
@@ -518,6 +536,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
 </div>
 <style>@keyframes indeterminate{0%{transform:translateX(-100%)}100%{transform:translateX(400%)}}</style>`,
   },
+
   {
     id: "loader-pulse-circle",
     name: "Pulse Circle",
@@ -528,6 +547,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <div class="absolute inset-2 rounded-full bg-blue-500 animate-pulse"></div>
 </div>`,
   },
+
   {
     id: "button-shimmer",
     name: "Shimmer Button",
@@ -539,6 +559,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
 </button>
 <style>@keyframes shimmer{100%{transform:translateX(200%)}}</style>`,
   },
+
   {
     id: "button-ripple",
     name: "Ripple Effect Button",
@@ -549,6 +570,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <span class="absolute inset-0 rounded-xl bg-white/20 opacity-0 hover:opacity-100 transition-opacity"></span>
 </button>`,
   },
+
   {
     id: "button-gradient-border",
     name: "Gradient Border Button",
@@ -559,6 +581,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <span class="relative block px-6 py-3 rounded-xl bg-zinc-900 text-white font-medium">Gradient Border</span>
 </button>`,
   },
+
   {
     id: "button-icon-morph",
     name: "Icon Morph Button",
@@ -570,6 +593,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </svg>
 </button>`,
   },
+
   {
     id: "card-3d-hover",
     name: "3D Hover Card",
@@ -583,6 +607,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <p class="text-zinc-400 text-sm">Hover to see the 3D perspective tilt in action.</p>
 </div>`,
   },
+
   {
     id: "card-glassmorphism",
     name: "Glassmorphism Card",
@@ -593,6 +618,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <p class="text-zinc-300 text-sm">Frosted glass effect with backdrop blur and subtle border.</p>
 </div>`,
   },
+
   {
     id: "card-gradient-glow",
     name: "Gradient Glow Card",
@@ -607,6 +633,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </div>
 </div>`,
   },
+
   {
     id: "input-floating-label",
     name: "Floating Label Input",
@@ -617,6 +644,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <label for="floating" class="absolute left-4 top-4 text-zinc-500 text-sm transition-all peer-focus:top-1 peer-focus:text-xs peer-focus:text-blue-400 peer-[:not(:placeholder-shown)]:top-1 peer-[:not(:placeholder-shown)]:text-xs">Email address</label>
 </div>`,
   },
+
   {
     id: "input-search-icon",
     name: "Search Input",
@@ -629,6 +657,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <input type="text" placeholder="Search..." class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-white placeholder-zinc-500 focus:border-blue-500 focus:outline-none">
 </div>`,
   },
+
   {
     id: "input-toggle",
     name: "Toggle Switch",
@@ -639,6 +668,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <div class="w-11 h-6 bg-zinc-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
 </label>`,
   },
+
   {
     id: "input-checkbox",
     name: "Custom Checkbox",
@@ -652,6 +682,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <span class="text-white text-sm">Accept terms</span>
 </label>`,
   },
+
   {
     id: "badge-status-online",
     name: "Status Badge",
@@ -665,6 +696,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <span class="text-white text-sm">Online</span>
 </div>`,
   },
+
   {
     id: "badge-gradient-pill",
     name: "Gradient Pill Badge",
@@ -674,6 +706,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   New Feature
 </span>`,
   },
+
   {
     id: "badge-count",
     name: "Count Badge",
@@ -686,6 +719,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <span class="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center font-semibold">3</span>
 </div>`,
   },
+
   {
     id: "effect-text-gradient",
     name: "Gradient Text",
@@ -695,6 +729,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   Gradient Text
 </h1>`,
   },
+
   {
     id: "effect-text-shimmer",
     name: "Shimmer Text",
@@ -705,6 +740,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
 </h1>
 <style>@keyframes shimmer-text{0%{background-position:200% 0}100%{background-position:-200% 0}}</style>`,
   },
+
   {
     id: "effect-glass-blur",
     name: "Glass Blur",
@@ -717,6 +753,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </div>
 </div>`,
   },
+
   {
     id: "effect-noise",
     name: "Noise Texture",
@@ -729,6 +766,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </div>
 </div>`,
   },
+
   {
     id: "effect-glow-border",
     name: "Glow Border",
@@ -741,6 +779,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </div>
 </div>`,
   },
+
   {
     id: "nav-tabs",
     name: "Tab Bar",
@@ -752,19 +791,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <button class="px-4 py-1.5 rounded-lg text-zinc-400 text-sm hover:text-white transition-colors">Inactive</button>
 </div>`,
   },
-  {
-    id: "nav-breadcrumb",
-    name: "Breadcrumb",
-    category: "Navigation",
-    tags: ["breadcrumb", "nav", "path"],
-    code: `<nav class="flex items-center gap-2 text-sm">
-  <a href="#" class="text-zinc-400 hover:text-white transition-colors">Home</a>
-  <svg class="w-3 h-3 text-zinc-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-  <a href="#" class="text-zinc-400 hover:text-white transition-colors">Projects</a>
-  <svg class="w-3 h-3 text-zinc-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-  <span class="text-white">Current</span>
-</nav>`,
-  },
+
   {
     id: "nav-pagination",
     name: "Pagination",
@@ -782,6 +809,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </button>
 </nav>`,
   },
+
   {
     id: "modal-drawer",
     name: "Side Drawer",
@@ -798,6 +826,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </div>
 </div>`,
   },
+
   {
     id: "modal-popover",
     name: "Popover",
@@ -811,6 +840,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </div>
 </div>`,
   },
+
   {
     id: "tooltip-hover",
     name: "Hover Tooltip",
@@ -823,6 +853,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </div>
 </div>`,
   },
+
   {
     id: "form-newsletter",
     name: "Newsletter Form",
@@ -833,6 +864,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <button class="px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-500 transition-colors">Subscribe</button>
 </form>`,
   },
+
   {
     id: "form-contact",
     name: "Contact Form",
@@ -850,6 +882,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <button class="w-full py-2.5 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-500 transition-colors">Send</button>
 </form>`,
   },
+
   {
     id: "nav-sidebar-mini-v2",
     name: "Icon Sidebar",
@@ -867,6 +900,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </button>
 </div>`,
   },
+
   {
     id: "animation-marquee",
     name: "Marquee Text",
@@ -887,6 +921,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
 </div>
 <style>@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}</style>`,
   },
+
   {
     id: "animation-fade-in",
     name: "Fade In Stagger",
@@ -899,6 +934,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
 </div>
 <style>@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}</style>`,
   },
+
   {
     id: "shader-aurora",
     name: "Aurora Gradient",
@@ -913,6 +949,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
 </div>
 <style>@keyframes aurora{0%{transform:translate(-20%,0) rotate(0deg)}100%{transform:translate(20%,0) rotate(15deg)}}</style>`,
   },
+
   {
     id: "shader-mesh-gradient",
     name: "Mesh Gradient",
@@ -927,6 +964,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </div>
 </div>`,
   },
+
   {
     id: "background-grid",
     name: "Grid Background",
@@ -938,6 +976,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </div>
 </div>`,
   },
+
   {
     id: "background-dots",
     name: "Dot Pattern",
@@ -949,6 +988,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </div>
 </div>`,
   },
+
   {
     id: "3d-card-tilt",
     name: "3D Tilt Card",
@@ -961,6 +1001,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </div>
 </div>`,
   },
+
   {
     id: "3d-cube",
     name: "3D Cube",
@@ -978,6 +1019,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
 </div>
 <style>@keyframes spin3d{0%{transform:rotateX(0) rotateY(0)}100%{transform:rotateX(360deg) rotateY(360deg)}}</style>`,
   },
+
   {
     id: "3d-sphere",
     name: "3D Sphere Gradient",
@@ -985,6 +1027,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
     tags: ["3d", "sphere", "gradient"],
     code: `<div class="w-40 h-40 rounded-full" style="background:radial-gradient(circle at 30% 30%,#fff,#3b82f6 30%,#1e3a8a 100%);box-shadow:inset -20px -20px 50px rgba(0,0,0,0.5),0 20px 40px rgba(0,0,0,0.3)"></div>`,
   },
+
   {
     id: "3d-flip-card",
     name: "3D Flip Card",
@@ -1003,6 +1046,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </div>
 </div>`,
   },
+
   {
     id: "3d-prism",
     name: "3D Prism Bar",
@@ -1012,6 +1056,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <div class="w-full h-full bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600" style="transform:rotateY(-25deg) rotateX(15deg);box-shadow:20px 20px 40px rgba(0,0,0,0.4)"></div>
 </div>`,
   },
+
   {
     id: "animation-marquee-v2",
     name: "Marquee Logos",
@@ -1029,6 +1074,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
 </div>
 <style>@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}</style>`,
   },
+
   {
     id: "animation-slide-in",
     name: "Slide In From Right",
@@ -1041,6 +1087,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
 </div>
 <style>@keyframes slideInRight{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}</style>`,
   },
+
   {
     id: "animation-pulse-scale",
     name: "Pulse Scale",
@@ -1049,6 +1096,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
     code: `<div class="w-20 h-20 rounded-full bg-rose-500 animate-[pulseScale_1.2s_ease-in-out_infinite] flex items-center justify-center text-white text-2xl">♥</div>
 <style>@keyframes pulseScale{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}</style>`,
   },
+
   {
     id: "animation-flip",
     name: "Coin Flip",
@@ -1059,6 +1107,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
 </div>
 <style>@keyframes coinFlip{0%{transform:rotateY(0)}50%{transform:rotateY(180deg) scaleY(-1)}100%{transform:rotateY(360deg)}}</style>`,
   },
+
   {
     id: "animation-rotate-x",
     name: "Rotate X Wiggle",
@@ -1067,6 +1116,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
     code: `<div class="w-20 h-20 rounded-xl bg-gradient-to-br from-pink-500 to-violet-500 animate-[wiggleX_2s_ease-in-out_infinite]" style="transform-style:preserve-3d"></div>
 <style>@keyframes wiggleX{0%,100%{transform:rotateX(0)}25%{transform:rotateX(20deg)}75%{transform:rotateX(-20deg)}}</style>`,
   },
+
   {
     id: "animation-bounce-in",
     name: "Bounce In",
@@ -1075,6 +1125,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
     code: `<div class="w-20 h-20 rounded-full bg-emerald-500 animate-[bounceIn_1s_ease-out]"></div>
 <style>@keyframes bounceIn{0%{opacity:0;transform:scale(0.3)}50%{transform:scale(1.1)}70%{transform:scale(0.95)}100%{opacity:1;transform:scale(1)}}</style>`,
   },
+
   {
     id: "animation-typing",
     name: "Typing Dots",
@@ -1087,6 +1138,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
 </div>
 <style>@keyframes typingBounce{0%,60%,100%{transform:translateY(0);opacity:0.4}30%{transform:translateY(-8px);opacity:1}}</style>`,
   },
+
   {
     id: "shader-noise",
     name: "Noise Texture",
@@ -1099,6 +1151,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </div>
 </div>`,
   },
+
   {
     id: "shader-plasma",
     name: "Plasma Gradient",
@@ -1112,6 +1165,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
 </div>
 <style>@keyframes plasma{0%{transform:rotate(0) scale(1)}50%{transform:rotate(180deg) scale(1.3)}100%{transform:rotate(360deg) scale(1)}}</style>`,
   },
+
   {
     id: "shader-rainbow",
     name: "Rainbow Wave",
@@ -1125,6 +1179,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
 </div>
 <style>@keyframes rainbow{0%{background-position:0% 50%}100%{background-position:200% 50%}}</style>`,
   },
+
   {
     id: "shader-noise-grain",
     name: "Film Grain",
@@ -1138,6 +1193,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
 </div>
 <style>@keyframes grain{0%{transform:translate(0,0)}33%{transform:translate(-5%,5%)}66%{transform:translate(5%,-5%)}100%{transform:translate(0,0)}}</style>`,
   },
+
   {
     id: "background-lines",
     name: "Diagonal Lines",
@@ -1149,6 +1205,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </div>
 </div>`,
   },
+
   {
     id: "background-checker",
     name: "Checker Pattern",
@@ -1160,6 +1217,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </div>
 </div>`,
   },
+
   {
     id: "background-circuit",
     name: "Circuit Pattern",
@@ -1181,6 +1239,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </div>
 </div>`,
   },
+
   {
     id: "background-stars",
     name: "Star Field",
@@ -1198,6 +1257,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
 </div>
 <style>@keyframes twinkle{0%,100%{opacity:0.3}50%{opacity:1}}</style>`,
   },
+
   {
     id: "badge-pulse",
     name: "Pulsing Badge",
@@ -1211,13 +1271,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </span>
 </div>`,
   },
-  {
-    id: "badge-gradient",
-    name: "Gradient Badge",
-    category: "Badges",
-    tags: ["badge", "gradient", "pill"],
-    code: `<span class="px-3 py-1 rounded-full text-xs font-semibold text-white bg-gradient-to-r from-blue-500 to-purple-500">New Feature</span>`,
-  },
+
   {
     id: "badge-dot",
     name: "Status Dot",
@@ -1238,22 +1292,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </div>
 </div>`,
   },
-  {
-    id: "badge-count",
-    name: "Count Badge",
-    category: "Badges",
-    tags: ["badge", "count", "number"],
-    code: `<div class="flex gap-4">
-  <div class="relative">
-    <button class="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 text-white">M</button>
-    <span class="absolute -top-1 -right-1 min-w-[20px] h-5 px-1 rounded-full bg-rose-500 text-white text-xs font-bold flex items-center justify-center">3</span>
-  </div>
-  <div class="relative">
-    <button class="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 text-white">N</button>
-    <span class="absolute -top-1 -right-1 min-w-[20px] h-5 px-1 rounded-full bg-rose-500 text-white text-xs font-bold flex items-center justify-center">12</span>
-  </div>
-</div>`,
-  },
+
   {
     id: "tooltip-arrow",
     name: "Tooltip with Arrow",
@@ -1267,6 +1306,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </div>
 </div>`,
   },
+
   {
     id: "tooltip-light",
     name: "Light Tooltip",
@@ -1279,6 +1319,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </div>
 </div>`,
   },
+
   {
     id: "tooltip-bubble",
     name: "Speech Bubble",
@@ -1289,35 +1330,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <div class="absolute bottom-0 left-6 w-3 h-3 bg-blue-500 translate-y-1/2 rotate-45"></div>
 </div>`,
   },
-  {
-    id: "modal-confirm",
-    name: "Confirm Modal",
-    category: "Modals",
-    tags: ["modal", "confirm", "dialog"],
-    code: `<div class="w-80 rounded-2xl bg-zinc-900 border border-zinc-800 p-6 shadow-2xl">
-  <div class="w-12 h-12 rounded-full bg-rose-500/10 flex items-center justify-center mb-4">
-    <svg class="w-6 h-6 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-  </div>
-  <h3 class="text-white font-semibold text-lg">Delete item?</h3>
-  <p class="text-zinc-400 text-sm mt-2">This action cannot be undone.</p>
-  <div class="flex gap-2 mt-6">
-    <button class="flex-1 px-4 py-2 rounded-lg bg-zinc-800 text-white text-sm hover:bg-zinc-700">Cancel</button>
-    <button class="flex-1 px-4 py-2 rounded-lg bg-rose-500 text-white text-sm hover:bg-rose-600">Delete</button>
-  </div>
-</div>`,
-  },
-  {
-    id: "modal-drawer",
-    name: "Side Drawer",
-    category: "Modals",
-    tags: ["modal", "drawer", "side"],
-    code: `<div class="w-72 h-80 rounded-2xl bg-zinc-900 border border-zinc-800 flex overflow-hidden">
-  <div class="w-64 p-6 border-r border-zinc-800">
-    <h3 class="text-white font-semibold">Drawer</h3>
-    <p class="text-zinc-400 text-sm mt-2">Slides from side</p>
-  </div>
-</div>`,
-  },
+
   {
     id: "modal-sheet",
     name: "Bottom Sheet",
@@ -1329,6 +1342,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <p class="text-zinc-400 text-sm mt-2">Mobile-friendly modal</p>
 </div>`,
   },
+
   {
     id: "input-floating",
     name: "Floating Label Input",
@@ -1339,6 +1353,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <label for="floating" class="absolute left-4 top-1 text-xs text-zinc-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-placeholder-shown:text-zinc-500 peer-focus:top-1 peer-focus:text-xs peer-focus:text-blue-400">Email address</label>
 </div>`,
   },
+
   {
     id: "input-search",
     name: "Search Input",
@@ -1349,34 +1364,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <input type="text" placeholder="Search..." class="w-full pl-10 pr-4 py-2 rounded-lg bg-zinc-900 border border-zinc-800 text-white text-sm focus:outline-none focus:border-blue-500">
 </div>`,
   },
-  {
-    id: "input-toggle",
-    name: "Toggle Switch",
-    category: "Inputs",
-    tags: ["input", "toggle", "switch"],
-    code: `<div class="flex items-center gap-3">
-  <label class="relative inline-flex items-center cursor-pointer">
-    <input type="checkbox" class="sr-only peer">
-    <div class="w-11 h-6 bg-zinc-800 rounded-full peer peer-checked:bg-blue-500 peer-focus:ring-2 peer-focus:ring-blue-500/20 transition-colors after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-transform peer-checked:after:translate-x-5"></div>
-  </label>
-  <span class="text-sm text-zinc-300">Toggle me</span>
-</div>`,
-  },
-  {
-    id: "input-checkbox",
-    name: "Custom Checkbox",
-    category: "Inputs",
-    tags: ["input", "checkbox", "custom"],
-    code: `<div class="space-y-2">
-  <label class="flex items-center gap-3 cursor-pointer group">
-    <div class="relative w-5 h-5 rounded border-2 border-zinc-700 group-hover:border-zinc-500 transition-colors">
-      <input type="checkbox" class="peer absolute inset-0 opacity-0 cursor-pointer">
-      <svg class="absolute inset-0 w-full h-full text-blue-500 opacity-0 peer-checked:opacity-100" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-    </div>
-    <span class="text-sm text-zinc-300">Accept terms</span>
-  </label>
-</div>`,
-  },
+
   {
     id: "form-floating",
     name: "Login Form",
@@ -1395,16 +1383,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <button type="button" class="w-full py-2 rounded-lg bg-blue-500 text-white text-sm font-medium hover:bg-blue-600">Sign in</button>
 </form>`,
   },
-  {
-    id: "form-search",
-    name: "Search Form",
-    category: "Forms",
-    tags: ["form", "search", "filter"],
-    code: `<form class="w-72 p-3 rounded-2xl bg-zinc-900 border border-zinc-800 flex gap-2">
-  <input type="text" placeholder="Search anything..." class="flex-1 px-3 py-2 rounded-lg bg-zinc-950 text-white text-sm focus:outline-none">
-  <button type="button" class="px-4 py-2 rounded-lg bg-blue-500 text-white text-sm font-medium hover:bg-blue-600">Go</button>
-</form>`,
-  },
+
   {
     id: "form-newsletter-v2",
     name: "Inline Newsletter",
@@ -1415,43 +1394,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <button type="button" class="px-4 py-2 rounded-full bg-blue-500 text-white text-sm font-medium hover:bg-blue-600">Subscribe</button>
 </form>`,
   },
-  {
-    id: "nav-tabs",
-    name: "Tab Navigation",
-    category: "Navigation",
-    tags: ["nav", "tabs", "menu"],
-    code: `<div class="w-72 p-1 rounded-xl bg-zinc-900 border border-zinc-800 flex gap-1">
-  <button class="flex-1 py-2 rounded-lg bg-zinc-800 text-white text-sm font-medium">Overview</button>
-  <button class="flex-1 py-2 rounded-lg text-zinc-400 text-sm hover:text-white">Analytics</button>
-  <button class="flex-1 py-2 rounded-lg text-zinc-400 text-sm hover:text-white">Settings</button>
-</div>`,
-  },
-  {
-    id: "nav-breadcrumb",
-    name: "Breadcrumb",
-    category: "Navigation",
-    tags: ["nav", "breadcrumb", "path"],
-    code: `<nav class="flex items-center gap-2 text-sm">
-  <a href="#" class="text-zinc-400 hover:text-white">Home</a>
-  <span class="text-zinc-600">/</span>
-  <a href="#" class="text-zinc-400 hover:text-white">Products</a>
-  <span class="text-zinc-600">/</span>
-  <span class="text-white">Details</span>
-</nav>`,
-  },
-  {
-    id: "nav-pagination",
-    name: "Pagination",
-    category: "Navigation",
-    tags: ["nav", "pagination", "pages"],
-    code: `<nav class="flex items-center gap-1">
-  <button class="w-9 h-9 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 text-sm hover:text-white">‹</button>
-  <button class="w-9 h-9 rounded-lg bg-blue-500 text-white text-sm font-medium">1</button>
-  <button class="w-9 h-9 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 text-sm hover:text-white">2</button>
-  <button class="w-9 h-9 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 text-sm hover:text-white">3</button>
-  <button class="w-9 h-9 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 text-sm hover:text-white">›</button>
-</nav>`,
-  },
+
   {
     id: "nav-dots",
     name: "Dot Navigator",
@@ -1465,6 +1408,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <div class="w-2 h-2 rounded-full bg-zinc-700"></div>
 </div>`,
   },
+
   {
     id: "effect-glass",
     name: "Glass Effect",
@@ -1476,6 +1420,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   </div>
 </div>`,
   },
+
   {
     id: "effect-gradient-text",
     name: "Gradient Text",
@@ -1483,6 +1428,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
     tags: ["text", "gradient", "animated"],
     code: `<h2 class="text-4xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">Gradient Text</h2>`,
   },
+
   {
     id: "effect-glow",
     name: "Glow Border",
@@ -1492,6 +1438,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   <span class="text-blue-300 font-semibold">Glow Effect</span>
 </div>`,
   },
+
   {
     id: "effect-blur-bg",
     name: "Blur Background",
@@ -1513,6 +1460,7 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
   // ─────────── NAVBAR GALLERY (discovered via watchdog, 2026-09-07) ───────────
   ...NAVBAR_GALLERY_COMPONENTS,
 ];
+
 
 export function makePreviewHtml(code: string, previewHtmlOverride?: string): string {
   // Use the override (a self-contained HTML snippet) if provided —
