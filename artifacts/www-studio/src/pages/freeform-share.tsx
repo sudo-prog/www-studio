@@ -113,7 +113,7 @@ export default function FreeformSharePage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-[100dvh] bg-background flex items-center justify-center">
+      <div className="min-h-[100dvh] bg-background flex items-center justify-center px-4">
         <div className="w-6 h-6 rounded-full border-2 border-primary/30 border-t-primary animate-spin" />
       </div>
     );
@@ -121,7 +121,7 @@ export default function FreeformSharePage() {
 
   if (!page) {
     return (
-      <div className="min-h-[100dvh] bg-background flex flex-col items-center justify-center gap-4">
+      <div className="min-h-[100dvh] bg-background flex flex-col items-center justify-center gap-4 px-4 pb-[env(safe-area-inset-bottom)]">
         <Globe className="h-12 w-12 text-muted-foreground" />
         <p className="text-muted-foreground">Page not found</p>
         <Button variant="outline" className="min-h-[44px]" asChild>
@@ -132,7 +132,7 @@ export default function FreeformSharePage() {
   }
 
   return (
-    <div className="min-h-[100dvh] bg-background flex flex-col">
+    <div className="min-h-[100dvh] bg-background flex flex-col pb-[env(safe-area-inset-bottom)]">
       {/* Top bar */}
       <div className="min-h-[44px] py-2 flex flex-wrap items-center justify-between gap-x-3 gap-y-2 px-4 border-b border-border bg-background/95 backdrop-blur shrink-0">
         <div className="flex items-center gap-3 flex-wrap">
@@ -176,12 +176,12 @@ export default function FreeformSharePage() {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row flex-1 min-h-0 flex-wrap">
+      <div className="flex flex-col md:flex-row flex-1 min-h-0">
         {/* Page preview */}
         <div className="flex-1 bg-[#0d0d1a] relative overflow-hidden">
           <FreeformPageRenderer page={page} />
           {/* Stats overlay */}
-          <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-center gap-x-3 gap-y-2">
+          <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-center gap-x-3 gap-y-2 max-w-full overflow-x-auto">
             <div className="flex items-center gap-1.5 text-white/60 text-xs bg-black/40 backdrop-blur px-2.5 py-1.5 rounded-full">
               <Eye className="h-3 w-3" />{views.toLocaleString()} views
             </div>
@@ -242,7 +242,7 @@ export default function FreeformSharePage() {
           </div>
 
           {/* Footer actions */}
-          <div className="p-4 pb-[env(safe-area-inset-bottom)] border-t border-border flex flex-col gap-2">
+          <div className="p-4 pb-[calc(env(safe-area-inset-bottom)+16px)] border-t border-border flex flex-col gap-2">
             <Button
               variant="outline"
               className="w-full gap-2 min-h-[48px]"

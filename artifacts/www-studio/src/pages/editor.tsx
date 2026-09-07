@@ -611,11 +611,11 @@ function PublishModal({ projectId, projectSlug, onClose }: { projectId: string; 
                 {copied ? <Check className="w-3.5 h-3.5 text-green-500" /> : <Copy className="w-3.5 h-3.5" />}
               </Button>
             </div>
-            <div className="flex gap-2">
-              <Button variant="outline" className="flex-1 gap-2" asChild>
+            <div className="flex flex-wrap gap-2">
+              <Button variant="outline" className="flex-1 gap-2 min-h-[48px]" asChild>
                 <a href={liveUrl} target="_blank" rel="noopener noreferrer"><ExternalLink className="w-4 h-4" />Open Site</a>
               </Button>
-              <Button variant="outline" className="flex-1" onClick={() => copy(liveUrl)}>{copied ? "Copied!" : "Copy URL"}</Button>
+              <Button variant="outline" className="flex-1 min-h-[48px]" onClick={() => copy(liveUrl)}>{copied ? "Copied!" : "Copy URL"}</Button>
             </div>
           </>
         )}
@@ -1442,9 +1442,9 @@ export default function Editor() {
                 </div>
 
                 {/* AI Chat Bar */}
-                <div className="h-13 border-t border-border/50 bg-card/50 backdrop-blur flex items-center px-4 shrink-0 gap-3 py-2 pb-[calc(theme(spacing.2)+env(safe-area-inset-bottom,0px))]">
+                <div className="min-h-14 border-t border-border/50 bg-card/50 backdrop-blur flex items-center px-4 shrink-0 gap-3 pt-2 pb-[calc(theme(spacing.2)+env(safe-area-inset-bottom,0px))]">
                   <Wand2 className="w-4 h-4 text-primary shrink-0" />
-                  <form onSubmit={handleSendChat} className="flex-1 flex items-center gap-2">
+                  <form onSubmit={handleSendChat} className="flex-1 flex flex-wrap items-center gap-2 min-w-0">
                     <Input
                       value={chatInput}
                       onChange={(e) => setChatInput(e.target.value)}

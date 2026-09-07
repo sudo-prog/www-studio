@@ -164,7 +164,7 @@ export default function DesignExtractCompare() {
       {/* Header */}
       <div className="border-b border-[#27272a] px-4 md:px-6 py-4">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-3 min-h-[44px]">
+          <div className="flex items-center gap-3 min-h-[48px]">
             <GitCompare className="h-5 w-5 text-[#3b82f6]" />
             <h1 className="text-lg font-semibold font-display">Compare Designs</h1>
           </div>
@@ -172,7 +172,7 @@ export default function DesignExtractCompare() {
             size="sm"
             onClick={handleMerge}
             disabled={merging}
-            className="bg-[#3b82f6] hover:bg-[#3b82f6]/90 text-white min-h-[44px]"
+            className="bg-[#3b82f6] hover:bg-[#3b82f6]/90 text-white min-h-[48px]"
           >
             {merging ? (
               <Loader2 className="h-3 w-3 mr-1.5 animate-spin" />

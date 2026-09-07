@@ -57,7 +57,7 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-[100dvh] pb-[env(safe-area-inset-bottom)] flex flex-col bg-background overflow-x-hidden">
-      <main className="flex-1 p-6 md:p-8 max-w-4xl mx-auto w-full">
+      <main className="flex-1 p-4 sm:p-6 md:p-8 max-w-4xl mx-auto w-full pb-[calc(env(safe-area-inset-bottom)+6rem)]">
 
         {/* Stats bar */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 mb-8">
@@ -84,7 +84,7 @@ export default function Dashboard() {
               <h2 className="text-sm font-semibold flex items-center gap-2">
                 <Layers className="h-4 w-4 text-purple-400" />Recent Scenes
               </h2>
-              <Link href="/scenes" className="text-xs text-muted-foreground hover:text-foreground flex items-center gap-1 min-h-[44px]">
+              <Link href="/scenes" className="text-xs text-muted-foreground hover:text-foreground flex items-center gap-1 min-h-[48px] px-2">
                 View all →
               </Link>
             </div>
@@ -94,7 +94,7 @@ export default function Dashboard() {
                 try { elements = JSON.parse(scene.elements ?? "[]"); } catch {}
                 const colors = elements.slice(0, 4).map((e: any) => e.fill).filter(Boolean);
                 return (
-                  <Link key={scene.id} href={`/scenes/${scene.id}`} className="block min-h-[44px]">
+                  <Link key={scene.id} href={`/scenes/${scene.id}`} className="block min-h-[48px]">
                     <div className="bg-card border border-border rounded-xl overflow-hidden hover:border-primary/40 transition-colors group cursor-pointer">
                       <div
                         className="h-16 relative"
@@ -126,8 +126,8 @@ export default function Dashboard() {
             { icon: <Globe className="h-4 w-4" />,       label: "Public Gallery",    sub: "Browse community",       href: "/scenes/gallery",    color: "bg-green-500/10 text-green-400 border-green-500/20" },
             { icon: <PenLine className="h-4 w-4" />,     label: "Freeform Canvas",   sub: "Visual editor",          href: "/freeform",          color: "bg-orange-500/10 text-orange-400 border-orange-500/20" },
           ].map(({ icon, label, sub, href, color }) => (
-            <Link key={label} href={href} className="min-h-[44px]">
-              <div className={`border rounded-xl p-4 hover:opacity-90 transition-all cursor-pointer h-full min-h-[44px] ${color}`}>
+            <Link key={label} href={href} className="min-h-[48px]">
+              <div className={`border rounded-xl p-4 hover:opacity-90 transition-all cursor-pointer h-full min-h-[48px] ${color}`}>
                 <div className="mb-2">{icon}</div>
                 <p className="font-semibold text-sm">{label}</p>
                 <p className="text-xs opacity-70">{sub}</p>
@@ -205,7 +205,7 @@ export default function Dashboard() {
                     </div>
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" size="icon" className="-mr-2 min-h-[44px] min-w-[44px] text-muted-foreground hover:text-foreground shrink-0">
+                        <Button variant="ghost" size="icon" className="-mr-2 min-h-[48px] min-w-[48px] text-muted-foreground hover:text-foreground shrink-0">
                           <MoreVertical className="h-4 w-4" />
                         </Button>
                       </DropdownMenuTrigger>

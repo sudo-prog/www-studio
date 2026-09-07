@@ -1,3 +1,5 @@
+export type ComponentKind = 'react' | 'three' | 'shader' | 'html' | 'iframe';
+
 export interface ComponentItem {
   id: string;
   name: string;
@@ -16,6 +18,20 @@ export interface ComponentItem {
    * verbatim in the "Code" view so users can see the real source.
    */
   previewHtml?: string;
+  /**
+   * Rendering kind for the live preview. 'react' renders a real React
+   * component from the registry; 'three' initializes a Three.js scene;
+   * 'shader' compiles GLSL; 'html' renders raw HTML; 'iframe' (default)
+   * falls back to the sandboxed iframe.
+   */
+  kind?: ComponentKind;
+  /**
+   * For kind='react': the named export from the component registry to render.
+   * e.g. 'RareUIAnimatedCounter' for the animated-counter component.
+   */
+  component?: string;
+  /** Optional thumbnail URL for catalog-only entries. */
+  thumbnail?: string;
 }
 
 import componentsJsonCatalog from "./components-json-catalog.json";

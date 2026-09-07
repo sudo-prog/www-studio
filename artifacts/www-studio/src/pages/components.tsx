@@ -2,11 +2,13 @@ import { useState, useMemo, useEffect } from "react";
 import * as React from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { COMPONENT_LIBRARY, CATEGORIES, makePreviewHtml, type Category } from "@/data/component-library";
-import { Search, Copy } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription } from "@/components/ui/dialog";
+import { COMPONENT_LIBRARY, CATEGORIES, makePreviewHtml, type Category, type ComponentItem } from "@/data/component-library";
+import { Search, Copy, Github, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { AiChatWidget } from "@/components/AiChatWidget";
 import { useLocation } from "wouter";
+import { extractFromUrl } from "@/lib/ingest";
 import {
   PreviewCodeCard,
   TagChip,
@@ -27,6 +29,7 @@ function ComponentCard({ item }: { item: typeof COMPONENT_LIBRARY[number] }) {
           previewHtml={makePreviewHtml(item.code, item.previewHtml)}
           onCodeCopy={() => toast({ title: "Code copied!" })}
           className="border-0 rounded-none bg-transparent"
+          componentItem={item}
         />
       ) : (
         /* Catalog-only entry: no runnable code, link to source instead. */
@@ -130,6 +133,40 @@ export default function Components() {
   const [, setLocation] = useLocation();
   const isMobile = useIsMobile();
 
+  // GitHub ingest state
+  const [githubDialogOpen, setGithubDialogOpen] = useState(false);
+  const [githubUrl, setGithubUrl] = useState("");
+  const [ingesting, setIngesting] = useState(false);
+  const [ingestedComponents, setIngestedComponents] = useState<ComponentItem[]>([]);
+  const [ingestErrors, setIngestErrors] = useState<string[]>([]);
+  const { toast: mainToast } = useToast();
+
+  const handleGithubIngest = async () => {
+    if (!githubUrl.trim()) return;
+    setIngesting(true);
+    setIngestErrors([]);
+    setIngestedComponents([]);
+    try {
+      const result = await extractFromUrl({ url: githubUrl.trim() });
+      setIngestedComponents(result.components);
+      setIngestErrors(result.errors);
+      if (result.components.length > 0) {
+        mainToast({
+          title: `Found ${result.components.length} component${result.components.length !== 1 ? "s" : ""}`,
+          description: result.errors.length > 0 ? `${result.errors.length} file(s) skipped` : undefined,
+        });
+      } else {
+        mainToast({ title: "No components found", variant: "destructive" });
+      }
+    } catch (e: unknown) {
+      const msg = e instanceof Error ? e.message : String(e);
+      setIngestErrors([msg]);
+      mainToast({ title: "Ingest failed", description: msg, variant: "destructive" });
+    } finally {
+      setIngesting(false);
+    }
+  };
+
   const filtered = useMemo(() => {
     let items = [...COMPONENT_LIBRARY]; // clone to avoid mutation
     if (activeCategory !== "All") items = items.filter((c) => c.category === activeCategory);
@@ -208,7 +245,7 @@ export default function Components() {
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
-            className="h-12 px-3 rounded-xl border border-border bg-card text-sm cursor-pointer"
+            className="h-12 px-3 rounded-xl border border-border bg-card text-sm cursor-pointer min-h-[48px]"
           >
             <option value="newest">Newest First</option>
             <option value="oldest">Oldest First</option>
@@ -248,7 +285,7 @@ export default function Components() {
             ) : (
               <>
                 <div
-                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 overflow-x-auto"
                   data-testid="component-grid"
                 >
                   {visibleItems.map((item) => (

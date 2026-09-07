@@ -109,9 +109,9 @@ export default function NewProject() {
 
   return (
     <div className="min-h-[100dvh] flex flex-col bg-background overflow-x-hidden pb-[env(safe-area-inset-bottom)]">
-      <main className="flex-1 flex items-start justify-center p-6 pt-12">
+      <main className="flex-1 flex items-start justify-center p-4 pt-8 sm:p-6 sm:pt-12">
         <div className="w-full max-w-xl">
-          <div className="text-center mb-8">
+          <div className="text-center mb-6 sm:mb-8">
             <h1 className="text-3xl font-bold tracking-tight mb-2">New Project</h1>
             <p className="text-muted-foreground">Clone a site, generate from a prompt, convert a screenshot, or import from Figma.</p>
           </div>
@@ -170,7 +170,7 @@ export default function NewProject() {
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleGenerate} className="space-y-4">
-                  <Textarea placeholder="A dark SaaS landing page for a project management tool..." value={prompt} onChange={(e) => setPrompt(e.target.value)} className="min-h-[120px] text-base resize-none" required />
+                  <Textarea placeholder="A dark SaaS landing page for a project management tool..." value={prompt} onChange={(e) => setPrompt(e.target.value)} className="min-h-[48px] min-h-[120px] text-base resize-none" required />
                   <div className="space-y-1.5">
                     <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Examples</p>
                     <div className="space-y-1.5">

@@ -108,7 +108,7 @@ export default function Home() {
               { icon: <Blocks className="w-3.5 h-3.5" />,       label: "UI Library"          },
               { icon: <Sparkles className="w-3.5 h-3.5" />,     label: "AI Wellness Scenes"  },
             ].map(({ icon, label }) => (
-              <div key={label} className="flex items-center gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-muted/50 border border-border/50 text-[10px] sm:text-xs text-muted-foreground">
+              <div key={label} className="flex items-center gap-1.5 px-2.5 py-1 min-h-[44px] sm:px-3 sm:py-1.5 rounded-full bg-muted/50 border border-border/50 text-[10px] sm:text-xs text-muted-foreground">
                 {icon}{label}
               </div>
             ))}
@@ -160,10 +160,12 @@ export default function Home() {
               )}
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3">
-              {showcaseScenes.map((scene: any) => (
-                <SceneShowcaseCard key={scene.id} scene={scene} />
-              ))}
+            <div className="overflow-x-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3 min-w-[640px]">
+                {showcaseScenes.map((scene: any) => (
+                  <SceneShowcaseCard key={scene.id} scene={scene} />
+                ))}
+              </div>
             </div>
           </section>
         )}

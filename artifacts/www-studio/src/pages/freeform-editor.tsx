@@ -547,7 +547,7 @@ export default function FreeformEditor() {
                   <SlidersHorizontal className="w-3.5 h-3.5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="bottom" className="h-[75vh] overflow-y-auto pb-[env(safe-area-inset-bottom)]">
+              <SheetContent side="bottom" className="h-[75dvh] overflow-y-auto pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]">
                 <div className="space-y-6 mt-6">
                   {rightPanelsContent}
                 </div>
@@ -572,7 +572,7 @@ export default function FreeformEditor() {
 
         {/* Canvas */}
         {showPreview ? (
-          <div className="flex-1 overflow-auto p-4 sm:p-8 bg-[#0d0d14]">
+          <div className="flex-1 min-w-0 overflow-auto p-4 sm:p-8 bg-[#0d0d14]">
             <div
               className="relative mx-auto shadow-2xl"
               style={{
@@ -593,6 +593,7 @@ export default function FreeformEditor() {
             />
           </div>
         ) : (
+          <div className="flex-1 min-w-0 overflow-hidden">
           <FreeformCanvas
             elements={state.page.elements}
             selectedId={state.selectedId}
@@ -612,6 +613,7 @@ export default function FreeformEditor() {
             onMove={handleMove}
             onResize={handleResize}
           />
+          </div>
         )}
 
         {/* Right panels — desktop side columns */}
@@ -619,7 +621,7 @@ export default function FreeformEditor() {
       </div>
 
       {/* Status bar */}
-      <footer className="min-h-[44px] shrink-0 border-t border-border bg-background flex flex-wrap items-center justify-between px-3 text-[10px] text-muted-foreground pb-[env(safe-area-inset-bottom)] gap-2">
+      <footer className="min-h-[48px] shrink-0 border-t border-border bg-background flex flex-wrap items-center justify-between px-3 text-[10px] text-muted-foreground pb-[env(safe-area-inset-bottom)] gap-2">
         <div className="flex items-center gap-3">
           <span>{state.page.elements.length} elements</span>
           <span>Canvas: {state.page.canvasWidth}×{state.page.canvasHeight}</span>

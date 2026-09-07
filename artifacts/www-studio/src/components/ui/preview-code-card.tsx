@@ -1,14 +1,21 @@
 // ─── preview-code-card.tsx ──────────────────────────────────────────────────
-// Generic preview/code toggle card extracted from the bookmarks
-// component library page (`pages/components.tsx`, `ComponentCard`).
+// Generic live-preview / iframe-preview / code toggle card extracted from the
+// bookmarks component library page (`pages/components.tsx`, `ComponentCard`).
 //
 // Domain-agnostic: callers pass the `code` string and an optional
 // `previewHtml` override. If `previewHtml` is omitted, the component
 // wraps `code` in a minimal HTML document so it can be sandbox-loaded
 // in an <iframe>.
+//
+// Three render modes:
+//   "live"  — renders the component natively via PreviewRenderer (React, Three.js,
+//              WebGL, HTML). Falls back to iframe if kind is not 'react' or no
+//              component is registered.
+//   "preview" — sandboxed iframe (the classic approach).
+//   "code"    — formatted source code view.
 
 import * as React from "react";
-import { Code2, Copy, Check, Eye } from "lucide-react";
+import { Code2, Copy, Check, Eye, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -82,7 +89,7 @@ ${code}
 </html>`;
 };
 
-export type PreviewCodeView = "preview" | "code";
+export type PreviewCodeView = "live" | "preview" | "code";
 
 export interface PreviewCodeCardProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, "title" | "onCopy"> {
@@ -92,7 +99,7 @@ export interface PreviewCodeCardProps
   title?: string;
   /** Optional override for the rendered preview document. */
   previewHtml?: string;
-  /** Initial view. Defaults to `"preview"`. */
+  /** Initial view. Defaults to `"live"` so users see real components by default. */
   defaultView?: PreviewCodeView;
   /**
    * Called when the user copies the code. Use this to surface a toast or
@@ -112,30 +119,34 @@ export interface PreviewCodeCardProps
    * inside the sandboxed preview document.
    */
   onIframeMessage?: (msg: unknown) => void;
+  /** Optional ComponentItem for live-preview mode (uses PreviewRenderer). */
+  componentItem?: import("@/data/component-library").ComponentItem;
 }
 
-const VIEW_LABEL: Record<PreviewCodeView, { swap: PreviewCodeView; text: string }> = {
-  preview: { swap: "code", text: "Code" },
-  code: { swap: "preview", text: "Preview" },
+const VIEW_LABEL: Record<PreviewCodeView, { swap: PreviewCodeView; text: string; icon: React.ComponentType<{ className?: string }> }> = {
+  live:    { swap: "code",    text: "Code",    icon: Code2 },
+  preview: { swap: "live",    text: "Live",    icon: Zap },
+  code:    { swap: "preview", text: "Preview", icon: Eye },
 };
 
 /**
- * Card with a code/preview toggle and a copy-to-clipboard action. The
- * "Code" view shows a formatted `<pre>`; the "Preview" view runs the
- * snippet in a sandboxed iframe so untrusted HTML can be rendered
- * safely.
+ * Card with a 3-way toggle (live / preview / code) and copy-to-clipboard.
+ * The "Live" view uses PreviewRenderer to mount the actual React/Three.js/
+ * WebGL component. "Preview" falls back to a sandboxed iframe for
+ * compatibility. "Code" shows the formatted source.
  */
 export function PreviewCodeCard({
   code,
   title,
   previewHtml,
-  defaultView = "preview",
+  defaultView = "live",
   onCodeCopy,
   disableCopy,
   className,
   viewportClassName,
   sandbox = "allow-scripts allow-same-origin",
   onIframeMessage,
+  componentItem,
   ...rest
 }: PreviewCodeCardProps) {
   const [view, setView] = React.useState<PreviewCodeView>(defaultView);
@@ -201,7 +212,22 @@ export function PreviewCodeCard({
           viewportClassName,
         )}
       >
-        {view === "preview" ? (
+        {view === "live" ? (
+          componentItem ? (
+            <React.Suspense fallback={<div className="w-full h-full flex items-center justify-center text-zinc-500 text-sm">Loading live preview…</div>}>
+              <PreviewRendererLazy item={componentItem} height={176} />
+            </React.Suspense>
+          ) : (
+            // No componentItem — fall back to iframe
+            <iframe
+              ref={iframeRef}
+              src={docSrc}
+              className="w-full h-full border-0"
+              title={title}
+              sandbox={sandbox}
+            />
+          )
+        ) : view === "preview" ? (
           <iframe
             ref={iframeRef}
             src={docSrc}
@@ -216,6 +242,18 @@ export function PreviewCodeCard({
         )}
 
         <div className="absolute top-2 right-2 flex items-center gap-1.5 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+          {view !== "live" && componentItem && (
+            <Button
+              size="sm"
+              variant="secondary"
+              className="h-7 min-h-[48px] text-xs gap-1"
+              onClick={() => setView("live")}
+              aria-label="Switch to live view"
+            >
+              <Zap className="w-3 h-3" />
+              Live
+            </Button>
+          )}
           <Button
             size="sm"
             variant="secondary"
@@ -223,17 +261,20 @@ export function PreviewCodeCard({
             onClick={() => setView(next.swap)}
             aria-label={`Switch to ${next.swap} view`}
           >
-            {view === "preview" ? (
-              <Code2 className="w-3 h-3" />
-            ) : (
-              <Eye className="w-3 h-3" />
-            )}
+            {(() => {
+              const Icon = next.icon;
+              return <Icon className="w-3 h-3" />;
+            })()}
             {next.text}
           </Button>
+        </div>
+
+        {/* Bottom bar: small icon-only copy button */}
+        <div className="flex items-center justify-end px-3 py-1.5 border-t border-border/30 bg-zinc-950/50">
           <Button
             size="sm"
-            variant="secondary"
-            className="h-7 min-h-[48px] text-xs gap-1"
+            variant="ghost"
+            className="h-6 w-6 p-0 text-zinc-400 hover:text-white"
             onClick={handleCopy}
             aria-label="Copy code"
           >
@@ -242,10 +283,20 @@ export function PreviewCodeCard({
             ) : (
               <Copy className="w-3 h-3" />
             )}
-            {copied ? "Copied!" : "Copy"}
           </Button>
         </div>
       </div>
     </div>
   );
 }
+
+// Lazy-imported PreviewRenderer to avoid forcing every consumer of
+// PreviewCodeCard to bundle the entire registry (Three.js, motion, etc.)
+// when they only use the code view.
+const PreviewRendererLazy = React.lazy(() =>
+  import("@/components/registry/PreviewRenderer").then(m => ({
+    default: ({ item, height }: { item: import("@/data/component-library").ComponentItem; height?: number }) => (
+      <m.PreviewRenderer item={item} height={height ?? 176} />
+    ),
+  }))
+);
