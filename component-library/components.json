@@ -15586,5 +15586,1411 @@
     "preview_image": "",
     "extraction_status": "verified",
     "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Accordion Collection",
+    "source_url": "https://21st.dev/community/components/s/accordion",
+    "registry_url": "https://21st.dev/community",
+    "category": "accordion",
+    "tags": [
+      "accordion",
+      "component",
+      "flat",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Accordion — collapsible content panel with single or multiple open sections.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Alert Collection",
+    "source_url": "https://21st.dev/community/components/s/alert",
+    "registry_url": "https://21st.dev/community",
+    "category": "alert",
+    "tags": [
+      "component",
+      "flat",
+      "minimal",
+      "notification",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Alert banner for inline messages — info, success, warning, or error states.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Announcement Collection",
+    "source_url": "https://21st.dev/community/components/s/announcement",
+    "registry_url": "https://21st.dev/community",
+    "category": "announcement",
+    "tags": [
+      "component",
+      "flat",
+      "minimal",
+      "notification",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Announcement banner component for promoting site updates, news, or limited-time offers across the top of a page.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Avatar Collection",
+    "source_url": "https://21st.dev/community/components/s/avatar",
+    "registry_url": "https://21st.dev/community",
+    "category": "avatar",
+    "tags": [
+      "avatar",
+      "component",
+      "flat",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Avatar component with image, initials, status indicator, and group stacking.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Background Collection",
+    "source_url": "https://21st.dev/community/components/s/background",
+    "registry_url": "https://21st.dev/community",
+    "category": "background",
+    "tags": [
+      "background",
+      "component",
+      "flat",
+      "gradient",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Animated or static background component — gradient, mesh, particles, or shader-based visuals behind page content.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Badge Collection",
+    "source_url": "https://21st.dev/community/components/s/badge",
+    "registry_url": "https://21st.dev/community",
+    "category": "badge",
+    "tags": [
+      "badge",
+      "component",
+      "flat",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Badge — small label for status, count, or category tagging.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Border Collection",
+    "source_url": "https://21st.dev/community/components/s/border",
+    "registry_url": "https://21st.dev/community",
+    "category": "border",
+    "tags": [
+      "border",
+      "component",
+      "flat",
+      "gradient",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Decorative border component with gradient, glow, or animated edge effects.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Button Collection",
+    "source_url": "https://21st.dev/community/components/s/button",
+    "registry_url": "https://21st.dev/community",
+    "category": "button",
+    "tags": [
+      "button",
+      "component",
+      "flat",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Button component with hover, active, and disabled states.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Calendar Collection",
+    "source_url": "https://21st.dev/community/components/s/calendar",
+    "registry_url": "https://21st.dev/community",
+    "category": "calendar",
+    "tags": [
+      "component",
+      "date-picker",
+      "flat",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Calendar component for date display, range picking, or event scheduling.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Card Collection",
+    "source_url": "https://21st.dev/community/components/s/card",
+    "registry_url": "https://21st.dev/community",
+    "category": "card",
+    "tags": [
+      "card",
+      "component",
+      "flat",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Card container — boxed content with header, body, and optional footer.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Carousel Collection",
+    "source_url": "https://21st.dev/community/components/s/carousel",
+    "registry_url": "https://21st.dev/community",
+    "category": "carousel",
+    "tags": [
+      "carousel",
+      "component",
+      "flat",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Carousel with sliding panels, autoplay, and navigation arrows/dots.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Checkbox Collection",
+    "source_url": "https://21st.dev/community/components/s/checkbox",
+    "registry_url": "https://21st.dev/community",
+    "category": "form",
+    "tags": [
+      "component",
+      "flat",
+      "form",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Checkbox input with label and indeterminate state support.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Chip Collection",
+    "source_url": "https://21st.dev/community/components/s/chip",
+    "registry_url": "https://21st.dev/community",
+    "category": "badge",
+    "tags": [
+      "badge",
+      "component",
+      "flat",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Chip — compact tag with optional close button.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Clients Collection",
+    "source_url": "https://21st.dev/community/components/s/clients",
+    "registry_url": "https://21st.dev/community",
+    "category": "logo",
+    "tags": [
+      "component",
+      "flat",
+      "logo",
+      "minimal",
+      "monochrome",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Client logos strip — display partner/brand logos in a horizontal scroller or grid.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Comparison Collection",
+    "source_url": "https://21st.dev/community/components/s/comparison",
+    "registry_url": "https://21st.dev/community",
+    "category": "card",
+    "tags": [
+      "card",
+      "component",
+      "flat",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Comparison table or side-by-side card layout for pricing plans, features, or product variants.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Cta Collection",
+    "source_url": "https://21st.dev/community/components/s/cta",
+    "registry_url": "https://21st.dev/community",
+    "category": "button",
+    "tags": [
+      "button",
+      "component",
+      "flat",
+      "gradient",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Call-to-action button or section designed to drive user engagement and conversions.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Cursor Collection",
+    "source_url": "https://21st.dev/community/components/s/cursor",
+    "registry_url": "https://21st.dev/community",
+    "category": "cursor",
+    "tags": [
+      "component",
+      "cursor",
+      "flat",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Custom cursor component — animated, contextual, or interactive hover effects.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Dashboard Collection",
+    "source_url": "https://21st.dev/community/components/s/dashboard",
+    "registry_url": "https://21st.dev/community",
+    "category": "dashboard",
+    "tags": [
+      "component",
+      "dashboard",
+      "flat",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Dashboard layout — sidebar, KPI tiles, charts, and tables.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Data Visualization Collection",
+    "source_url": "https://21st.dev/community/components/s/data-visualization",
+    "registry_url": "https://21st.dev/community",
+    "category": "chart",
+    "tags": [
+      "chart",
+      "component",
+      "flat",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Data viz — chart, graph, or interactive dashboard widget.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Date Picker Collection",
+    "source_url": "https://21st.dev/community/components/s/date-picker",
+    "registry_url": "https://21st.dev/community",
+    "category": "date-picker",
+    "tags": [
+      "component",
+      "date-picker",
+      "flat",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Date picker dropdown with calendar widget and range selection.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Dropdown Collection",
+    "source_url": "https://21st.dev/community/components/s/dropdown",
+    "registry_url": "https://21st.dev/community",
+    "category": "dropdown",
+    "tags": [
+      "component",
+      "dropdown",
+      "flat",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Dropdown menu with trigger, items, and keyboard navigation.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Empty State Collection",
+    "source_url": "https://21st.dev/community/components/s/empty-state",
+    "registry_url": "https://21st.dev/community",
+    "category": "empty-state",
+    "tags": [
+      "card",
+      "component",
+      "flat",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Empty state component — illustration + message + CTA when no data is present.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Faq Collection",
+    "source_url": "https://21st.dev/community/components/s/faq",
+    "registry_url": "https://21st.dev/community",
+    "category": "accordion",
+    "tags": [
+      "accordion",
+      "component",
+      "flat",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "FAQ accordion component with collapsible Q&A items, often used in help centers and product pages.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Features Collection",
+    "source_url": "https://21st.dev/community/components/s/features",
+    "registry_url": "https://21st.dev/community",
+    "category": "card",
+    "tags": [
+      "card",
+      "component",
+      "flat",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Features grid component showcasing product capabilities with icons, titles, and descriptions.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Footer Collection",
+    "source_url": "https://21st.dev/community/components/s/footer",
+    "registry_url": "https://21st.dev/community",
+    "category": "footer",
+    "tags": [
+      "component",
+      "flat",
+      "footer",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Site footer component with links, social icons, newsletter signup, and copyright info.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Form Collection",
+    "source_url": "https://21st.dev/community/components/s/form",
+    "registry_url": "https://21st.dev/community",
+    "category": "form",
+    "tags": [
+      "component",
+      "flat",
+      "form",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Form layout with labeled inputs, validation, and submit handling.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Gallery Collection",
+    "source_url": "https://21st.dev/community/components/s/gallery",
+    "registry_url": "https://21st.dev/community",
+    "category": "gallery",
+    "tags": [
+      "component",
+      "flat",
+      "gallery",
+      "grid",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Image gallery component with grid, masonry, or carousel layouts for showcasing visual content.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Globe Collection",
+    "source_url": "https://21st.dev/community/components/s/globe",
+    "registry_url": "https://21st.dev/community",
+    "category": "globe",
+    "tags": [
+      "3d",
+      "component",
+      "flat",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui",
+      "wireframe"
+    ],
+    "description": "3D rotating globe with markers for locations or data points.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Grid Collection",
+    "source_url": "https://21st.dev/community/components/s/grid",
+    "registry_url": "https://21st.dev/community",
+    "category": "grid",
+    "tags": [
+      "component",
+      "flat",
+      "grid",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Grid or bento layout — responsive multi-cell tile arrangement.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Hero Collection",
+    "source_url": "https://21st.dev/community/components/s/hero",
+    "registry_url": "https://21st.dev/community",
+    "category": "hero",
+    "tags": [
+      "component",
+      "flat",
+      "gradient",
+      "hero",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Hero section component — full-viewport intro with headline, subtext, and CTA.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Hook Collection",
+    "source_url": "https://21st.dev/community/components/s/hook",
+    "registry_url": "https://21st.dev/community",
+    "category": "hook",
+    "tags": [
+      "component",
+      "flat",
+      "hero",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Marketing hook section for lead capture or sign-up prompts.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Icon Collection",
+    "source_url": "https://21st.dev/community/components/s/icon",
+    "registry_url": "https://21st.dev/community",
+    "category": "icon",
+    "tags": [
+      "component",
+      "flat",
+      "icon",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Icon component or icon set for use across UI.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Image Collection",
+    "source_url": "https://21st.dev/community/components/s/image",
+    "registry_url": "https://21st.dev/community",
+    "category": "image",
+    "tags": [
+      "component",
+      "flat",
+      "image-effect",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Image display component with hover effects, zoom, parallax, or comparison sliders.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Input Collection",
+    "source_url": "https://21st.dev/community/components/s/input",
+    "registry_url": "https://21st.dev/community",
+    "category": "input",
+    "tags": [
+      "component",
+      "flat",
+      "input",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Text input with label, placeholder, validation, and helper text.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Menu Collection",
+    "source_url": "https://21st.dev/community/components/s/menu",
+    "registry_url": "https://21st.dev/community",
+    "category": "menu",
+    "tags": [
+      "component",
+      "flat",
+      "menu",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Menu component — vertical sidebar menu or hamburger menu.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Modal Collection",
+    "source_url": "https://21st.dev/community/components/s/modal",
+    "registry_url": "https://21st.dev/community",
+    "category": "modal",
+    "tags": [
+      "component",
+      "flat",
+      "glass",
+      "minimal",
+      "modal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Modal dialog overlay with backdrop, focus trap, and slide/fade animations.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Navigation Menu Collection",
+    "source_url": "https://21st.dev/community/components/s/navigation-menu",
+    "registry_url": "https://21st.dev/community",
+    "category": "navbar",
+    "tags": [
+      "component",
+      "flat",
+      "minimal",
+      "navbar",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Navigation menu component — header nav, sidebar menu, or contextual links.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Notification Collection",
+    "source_url": "https://21st.dev/community/components/s/notification",
+    "registry_url": "https://21st.dev/community",
+    "category": "notification",
+    "tags": [
+      "component",
+      "flat",
+      "minimal",
+      "notification",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Toast or notification system with auto-dismiss and action buttons.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Onboarding Collection",
+    "source_url": "https://21st.dev/community/components/s/onboarding",
+    "registry_url": "https://21st.dev/community",
+    "category": "onboarding",
+    "tags": [
+      "component",
+      "flat",
+      "minimal",
+      "onboarding",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Onboarding flow — guided tour, product intro, or first-run experience.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Pagination Collection",
+    "source_url": "https://21st.dev/community/components/s/pagination",
+    "registry_url": "https://21st.dev/community",
+    "category": "pagination",
+    "tags": [
+      "component",
+      "flat",
+      "minimal",
+      "pagination",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Pagination controls — prev/next + page numbers or infinite scroll trigger.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Popover Collection",
+    "source_url": "https://21st.dev/community/components/s/popover",
+    "registry_url": "https://21st.dev/community",
+    "category": "popover",
+    "tags": [
+      "component",
+      "flat",
+      "glass",
+      "minimal",
+      "popover",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Popover — floating panel anchored to a trigger element.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Pricing Section Collection",
+    "source_url": "https://21st.dev/community/components/s/pricing-section",
+    "registry_url": "https://21st.dev/community",
+    "category": "pricing",
+    "tags": [
+      "component",
+      "flat",
+      "minimal",
+      "pricing",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Pricing section with tiered plans, feature lists, and call-to-action buttons.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Profile Collection",
+    "source_url": "https://21st.dev/community/components/s/profile",
+    "registry_url": "https://21st.dev/community",
+    "category": "profile",
+    "tags": [
+      "component",
+      "flat",
+      "minimal",
+      "profile",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Profile card with avatar, name, role, stats, and CTA.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Progress Collection",
+    "source_url": "https://21st.dev/community/components/s/progress",
+    "registry_url": "https://21st.dev/community",
+    "category": "progress",
+    "tags": [
+      "component",
+      "flat",
+      "minimal",
+      "progress-bar",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Progress bar — linear or circular indicator for completion.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Radio Group Collection",
+    "source_url": "https://21st.dev/community/components/s/radio-group",
+    "registry_url": "https://21st.dev/community",
+    "category": "radio",
+    "tags": [
+      "component",
+      "flat",
+      "form",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Radio button group with single-select and keyboard navigation.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Scroll Area Collection",
+    "source_url": "https://21st.dev/community/components/s/scroll-area",
+    "registry_url": "https://21st.dev/community",
+    "category": "scroll",
+    "tags": [
+      "component",
+      "flat",
+      "minimal",
+      "react",
+      "scroll-effect",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Custom-styled scrollable container with custom scrollbar styling.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Search Collection",
+    "source_url": "https://21st.dev/community/components/s/search",
+    "registry_url": "https://21st.dev/community",
+    "category": "search",
+    "tags": [
+      "component",
+      "flat",
+      "minimal",
+      "react",
+      "search-bar",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Search bar with input, clear button, and result dropdown.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Select Collection",
+    "source_url": "https://21st.dev/community/components/s/select",
+    "registry_url": "https://21st.dev/community",
+    "category": "select",
+    "tags": [
+      "component",
+      "flat",
+      "form",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Select dropdown with searchable, multi-select, and option grouping.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Sidebar Collection",
+    "source_url": "https://21st.dev/community/components/s/sidebar",
+    "registry_url": "https://21st.dev/community",
+    "category": "sidebar",
+    "tags": [
+      "component",
+      "flat",
+      "minimal",
+      "react",
+      "sidebar",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Sidebar navigation with collapsible sections and menu items.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Sign In Collection",
+    "source_url": "https://21st.dev/community/components/s/sign-in",
+    "registry_url": "https://21st.dev/community",
+    "category": "auth",
+    "tags": [
+      "component",
+      "flat",
+      "login",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Sign-in form — email/password with social auth options.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Sign Up Collection",
+    "source_url": "https://21st.dev/community/components/s/sign-up",
+    "registry_url": "https://21st.dev/community",
+    "category": "auth",
+    "tags": [
+      "component",
+      "flat",
+      "minimal",
+      "react",
+      "signup",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Sign-up form with registration fields and TOS acceptance.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Slider Collection",
+    "source_url": "https://21st.dev/community/components/s/slider",
+    "registry_url": "https://21st.dev/community",
+    "category": "slider",
+    "tags": [
+      "component",
+      "flat",
+      "minimal",
+      "react",
+      "slider",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Slider input — single value or range with min/max.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Spinner Collection",
+    "source_url": "https://21st.dev/community/components/s/spinner",
+    "registry_url": "https://21st.dev/community",
+    "category": "loader",
+    "tags": [
+      "component",
+      "flat",
+      "loader",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Spinner loader — animated indicator for loading states.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Stat Collection",
+    "source_url": "https://21st.dev/community/components/s/stat",
+    "registry_url": "https://21st.dev/community",
+    "category": "stat",
+    "tags": [
+      "component",
+      "dashboard",
+      "flat",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Stats & KPI tile — single metric with label, value, and optional trend indicator.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Steps Collection",
+    "source_url": "https://21st.dev/community/components/s/steps",
+    "registry_url": "https://21st.dev/community",
+    "category": "stepper",
+    "tags": [
+      "component",
+      "flat",
+      "minimal",
+      "react",
+      "stepper",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Stepper component for multi-step workflows, onboarding, or checkout flows.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Table Collection",
+    "source_url": "https://21st.dev/community/components/s/table",
+    "registry_url": "https://21st.dev/community",
+    "category": "table",
+    "tags": [
+      "component",
+      "dashboard",
+      "flat",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Data table with sortable columns, pagination, and row actions.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Tabs Collection",
+    "source_url": "https://21st.dev/community/components/s/tabs",
+    "registry_url": "https://21st.dev/community",
+    "category": "tabs",
+    "tags": [
+      "component",
+      "flat",
+      "minimal",
+      "react",
+      "tab",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Tabs — segmented control or tab bar with active indicator.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Team Collection",
+    "source_url": "https://21st.dev/community/components/s/team",
+    "registry_url": "https://21st.dev/community",
+    "category": "team",
+    "tags": [
+      "component",
+      "flat",
+      "minimal",
+      "profile",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Team section — avatars with names, roles, and social links.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Testimonials Collection",
+    "source_url": "https://21st.dev/community/components/s/testimonials",
+    "registry_url": "https://21st.dev/community",
+    "category": "testimonial",
+    "tags": [
+      "component",
+      "flat",
+      "minimal",
+      "react",
+      "tailwind",
+      "testimonial",
+      "typescript",
+      "ui"
+    ],
+    "description": "Testimonial carousel or grid showcasing customer quotes and ratings.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Text Collection",
+    "source_url": "https://21st.dev/community/components/s/text",
+    "registry_url": "https://21st.dev/community",
+    "category": "text",
+    "tags": [
+      "component",
+      "flat",
+      "minimal",
+      "react",
+      "tailwind",
+      "text-effect",
+      "typescript",
+      "ui"
+    ],
+    "description": "Text animation effect — typewriter, gradient fill, glitch, or scroll-driven typography.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Textarea Collection",
+    "source_url": "https://21st.dev/community/components/s/textarea",
+    "registry_url": "https://21st.dev/community",
+    "category": "input",
+    "tags": [
+      "component",
+      "flat",
+      "form",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Multi-line text input with autoresize and character count.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Timeline Collection",
+    "source_url": "https://21st.dev/community/components/s/timeline",
+    "registry_url": "https://21st.dev/community",
+    "category": "timeline",
+    "tags": [
+      "component",
+      "flat",
+      "minimal",
+      "react",
+      "tailwind",
+      "timeline",
+      "typescript",
+      "ui"
+    ],
+    "description": "Vertical or horizontal timeline component for chronological events or process steps.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Toast Collection",
+    "source_url": "https://21st.dev/community/components/s/toast",
+    "registry_url": "https://21st.dev/community",
+    "category": "toast",
+    "tags": [
+      "component",
+      "flat",
+      "glass",
+      "minimal",
+      "notification",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "Toast notification — slide-in alert with auto-dismiss.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Toggle Collection",
+    "source_url": "https://21st.dev/community/components/s/toggle",
+    "registry_url": "https://21st.dev/community",
+    "category": "toggle",
+    "tags": [
+      "component",
+      "flat",
+      "minimal",
+      "react",
+      "tailwind",
+      "toggle",
+      "typescript",
+      "ui"
+    ],
+    "description": "Toggle switch with on/off states and label.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Tooltip Collection",
+    "source_url": "https://21st.dev/community/components/s/tooltip",
+    "registry_url": "https://21st.dev/community",
+    "category": "tooltip",
+    "tags": [
+      "component",
+      "flat",
+      "glass",
+      "minimal",
+      "react",
+      "tailwind",
+      "tooltip",
+      "typescript",
+      "ui"
+    ],
+    "description": "Tooltip — hover/focus popup with arrow and content.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Upload Download Collection",
+    "source_url": "https://21st.dev/community/components/s/upload-download",
+    "registry_url": "https://21st.dev/community",
+    "category": "upload",
+    "tags": [
+      "component",
+      "file-upload",
+      "flat",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui"
+    ],
+    "description": "File upload zone with drag-drop, progress, and preview thumbnails.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Video Collection",
+    "source_url": "https://21st.dev/community/components/s/video",
+    "registry_url": "https://21st.dev/community",
+    "category": "video",
+    "tags": [
+      "component",
+      "flat",
+      "minimal",
+      "react",
+      "tailwind",
+      "typescript",
+      "ui",
+      "video-player"
+    ],
+    "description": "Video player component with custom controls, captions, and preview thumbnails.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "ASCII Art Gallery",
+    "source_url": "https://21st.dev/community/ascii",
+    "registry_url": "https://21st.dev/community",
+    "category": "ascii-art",
+    "tags": [
+      "ascii-art",
+      "background",
+      "gradient",
+      "react",
+      "shader",
+      "shader-art",
+      "webgl"
+    ],
+    "description": "ASCII art generator and gallery with text-based visual renderings on 21st.dev.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Mesh Gradient Gallery",
+    "source_url": "https://21st.dev/community/gradients",
+    "registry_url": "https://21st.dev/community",
+    "category": "gradient",
+    "tags": [
+      "background",
+      "gradient",
+      "react",
+      "shader",
+      "shader-art",
+      "webgl"
+    ],
+    "description": "Mesh gradient generator and gallery for creating multi-point radial gradients on 21st.dev.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
+  },
+  {
+    "name": "Shader Art Gallery",
+    "source_url": "https://21st.dev/community/shaders",
+    "registry_url": "https://21st.dev/community",
+    "category": "shader",
+    "tags": [
+      "background",
+      "gradient",
+      "react",
+      "shader",
+      "shader-art",
+      "webgl"
+    ],
+    "description": "GLSL/WebGL shader art gallery — full-screen GPU-accelerated visuals on 21st.dev.",
+    "preview_image": "",
+    "extraction_status": "verified",
+    "extracted_at": "2026-09-08"
   }
 ]
