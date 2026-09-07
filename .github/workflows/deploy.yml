@@ -54,38 +54,12 @@ jobs:
 
       - name: Deploy to Vercel (prod + www-studio-red alias)
         run: |
-          # Deploy to www-studio project — use --assign-alias for immediate aliasing
-          # Run vercel in a subshell to capture output, then extract URL
-          DEPLOY_OUTPUT=$(npx vercel@latest --prod \
+          # vercel.json alias=[] handles the custom-domain auto-alias on --prod deploys.
+          # --project=www-studio ensures we hit the right Vercel project regardless of cwd.
+          npx vercel@latest --prod \
             --project=www-studio \
             --token=${{ secrets.VERCEL_TOKEN }} \
-            --yes 2>&1)
-          echo "$DEPLOY_OUTPUT"
-          echo "---"
-          # Extract the production URL from the output
-          DEPLOY_URL=$(echo "$DEPLOY_OUTPUT" | grep -oE 'https://[a-zA-Z0-9][-a-zA-Z0-9]*\.vercel\.app' | grep -v 'api\.vercel' | head -1)
-          echo "Deployed to: $DEPLOY_URL"
-          if [ -z "$DEPLOY_URL" ]; then
-            echo "ERROR: could not extract deployment URL"
-            exit 1
-          fi
-          # Get deployment ID via vercel inspect
-          echo "Fetching deployment ID via vercel inspect..."
-          DEPLOY_ID=$(npx vercel@latest inspect "$DEPLOY_URL" --token=${{ secrets.VERCEL_TOKEN }} --format=json 2>/dev/null | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('id',''))")
-          echo "Deployment ID: $DEPLOY_ID"
-          if [ -n "$DEPLOY_ID" ]; then
-            echo "Setting www-studio-red alias..."
-            curl -s -X POST \
-              "https://api.vercel.com/v13/deployments/${DEPLOY_ID}/aliases" \
-              -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
-              -H "Content-Type: application/json" \
-              -d '{"alias":"www-studio-red.vercel.app"}'
-          else
-            echo "WARNING: could not get deployment ID, skipping alias"
-          fi
-        env:
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+            --yes
 
   deploy-preview:
     runs-on: ubuntu-latest
