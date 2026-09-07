@@ -53,7 +53,18 @@ jobs:
           path: artifacts/www-studio/dist/public
 
       - name: Deploy to Vercel
-        run: npx vercel@latest --prod -t ${{ secrets.VERCEL_TOKEN }} --yes
+        run: |
+          # Deploy explicitly to www-studio project, then set production alias
+          npx vercel@latest --prod \
+            --project=www-studio \
+            --token=${{ secrets.VERCEL_TOKEN }} \
+            --yes
+          # Also deploy and alias to www-studio-red
+          npx vercel@latest --prod \
+            --project=www-studio \
+            --token=${{ secrets.VERCEL_TOKEN }} \
+            --alias=www-studio-red.vercel.app \
+            --yes
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
