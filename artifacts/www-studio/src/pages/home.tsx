@@ -97,7 +97,7 @@ function WebsiteTemplatesSection() {
     <section className="px-4 md:px-6 pb-16 max-w-7xl mx-auto">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 sm:mb-8 gap-3 sm:gap-4">
         <div>
-          <h2 className="text-xl sm:text-2xl font-semibold tracking-tight">Aura Website Templates</h2>
+          <h2 className="text-xl sm:text-2xl font-semibold tracking-tight">Website Templates</h2>
           <p className="text-xs sm:text-sm text-muted-foreground mt-1">
             {WEBSITE_TEMPLATES.length} full-site templates ready to preview — HTML/CSS/JS, Tailwind, GSAP, Three.js
           </p>
