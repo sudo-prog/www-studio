@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription } from "@/components/ui/dialog";
 import { COMPONENT_LIBRARY, CATEGORIES, makePreviewHtml, type Category, type ComponentItem } from "@/data/component-library";
 import { Search, Copy, Github, Loader2, Star } from "lucide-react";
-import { useRatings, StarRatingDisplay, parseRatingQuery, matchesRating, type ParsedRatingQuery } from "@/lib/ratings";
+import { useRatings, StarRating, StarRatingDisplay, parseRatingQuery, matchesRating, type ParsedRatingQuery } from "@/lib/ratings";
 import { useToast } from "@/hooks/use-toast";
 import { AiChatWidget } from "@/components/AiChatWidget";
 import { useLocation } from "wouter";
