@@ -1,0 +1,800 @@
+<html lang="en" class="scroll-smooth"><head>
+<script>
+try{if(window.parent&&window.parent!==window){window.parent.promotekit_referral="1fd2949a-d22c-431b-92bf-02d4ad04ee24";window.parent.document.cookie="promotekit_referral=1fd2949a-d22c-431b-92bf-02d4ad04ee24;path=/;domain=.aura.build;max-age=31536000"}}catch(e){}
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXUS // OS | Enterprise AI Infrastructure</title>
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- GSAP & Lenis -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.29/dist/lenis.min.js"></script>
+<!-- Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+accent: '#FF3B00',
+surface: '#0F0F0F',
+},
+fontFamily: {
+sans: ['Inter', 'sans-serif'],
+display: ['Space Grotesk', 'sans-serif'],
+mono: ['JetBrains Mono', 'monospace'],
+},
+animation: {
+'spin-slow': 'spin 15s linear infinite',
+'reverse-spin': 'spin 20s linear infinite reverse',
+'marquee': 'marquee 30s linear infinite',
+'scan': 'scan 4s linear infinite',
+'blink': 'blink 2s ease-in-out infinite',
+'dash': 'dash 20s linear infinite',
+'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+},
+keyframes: {
+marquee: {
+'0%': { transform: 'translateX(0)' },
+'100%': { transform: 'translateX(-33.333%)' },
+},
+scan: {
+'0%': { top: '-20%' },
+'100%': { top: '120%' },
+},
+blink: {
+'0%, 100%': { opacity: 1 },
+'50%': { opacity: 0.3 },
+},
+dash: {
+to: { 'stroke-dashoffset': '1000' }
+}
+}
+}
+}
+}
+</script>
+<style>
+/* --- CORE SETTINGS --- */
+html {
+/* DO NOT PUT OVERFLOW HERE - IT BREAKS STICKY */
+background-color: #050505;
+}
+body {
+margin: 0; padding: 0;
+background-color: transparent;
+color: #e0e0e0;
+overflow-x: hidden; /* Only apply horizontal hidden to body */
+cursor: auto;
+}
+/* --- UTILS --- */
+.glass-panel {
+background: rgba(10, 10, 10, 0.8);
+backdrop-filter: blur(12px);
+border: 1px solid rgba(255,255,255,0.08);
+position: relative;
+overflow: hidden;
+}
+/* Spotlight Effect */
+.spotlight-card::before {
+content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+border-radius: inherit;
+background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.04), transparent 40%);
+z-index: 2; opacity: 0; transition: opacity 0.5s; pointer-events: none;
+}
+.spotlight-card:hover::before { opacity: 1; }
+.spotlight-card::after {
+content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+border-radius: inherit; padding: 1px;
+background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(255, 59, 0, 0.3), transparent 40%);
+-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+-webkit-mask-composite: xor; mask-composite: exclude;
+z-index: 3; opacity: 0; transition: opacity 0.5s; pointer-events: none;
+}
+.spotlight-card:hover::after { opacity: 1; }
+.marquee-mask {
+mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+-webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+.scan-line {
+position: absolute; left: 0; width: 100%; height: 50px;
+background: linear-gradient(to bottom, transparent, rgba(255, 59, 0, 0.3), transparent);
+opacity: 0.5; animation: scan 3s linear infinite; z-index: 10; pointer-events: none;
+}
+.noise-overlay {
+position: fixed; inset: 0; z-index: 9000; pointer-events: none; opacity: 0.04;
+background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+.btn-magnetic { display: inline-block; }
+.dot-grid {
+background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px);
+background-size: 20px 20px;
+}
+.skew-target { will-change: transform; }
+/* Mobile Menu Transitions */
+#mobile-menu {
+transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+#mobile-menu.menu-open {
+opacity: 1;
+visibility: visible;
+pointer-events: auto;
+}
+#mobile-menu.menu-closed {
+opacity: 0;
+visibility: hidden;
+pointer-events: none;
+}
+</style>
+<link id="all-fonts-link-font-geist" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist">.font-geist { font-family: 'Geist', sans-serif !important; }</style><link id="all-fonts-link-font-roboto" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-roboto">.font-roboto { font-family: 'Roboto', sans-serif !important; }</style><link id="all-fonts-link-font-montserrat" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-montserrat">.font-montserrat { font-family: 'Montserrat', sans-serif !important; }</style><link id="all-fonts-link-font-poppins" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-poppins">.font-poppins { font-family: 'Poppins', sans-serif !important; }</style><link id="all-fonts-link-font-playfair" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&amp;display=swap"><style id="all-fonts-style-font-playfair">.font-playfair { font-family: 'Playfair Display', serif !important; }</style><link id="all-fonts-link-font-instrument-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-instrument-serif">.font-instrument-serif { font-family: 'Instrument Serif', serif !important; }</style><link id="all-fonts-link-font-merriweather" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&amp;display=swap"><style id="all-fonts-style-font-merriweather">.font-merriweather { font-family: 'Merriweather', serif !important; }</style><link id="all-fonts-link-font-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-bricolage">.font-bricolage { font-family: 'Bricolage Grotesque', sans-serif !important; }</style><link id="all-fonts-link-font-jakarta" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-jakarta">.font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif !important; }</style><link id="all-fonts-link-font-manrope" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-manrope">.font-manrope { font-family: 'Manrope', sans-serif !important; }</style><link id="all-fonts-link-font-space-grotesk" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-space-grotesk">.font-space-grotesk { font-family: 'Space Grotesk', sans-serif !important; }</style><link id="all-fonts-link-font-work-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-work-sans">.font-work-sans { font-family: 'Work Sans', sans-serif !important; }</style><link id="all-fonts-link-font-pt-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-pt-serif">.font-pt-serif { font-family: 'PT Serif', serif !important; }</style><link id="all-fonts-link-font-geist-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist-mono">.font-geist-mono { font-family: 'Geist Mono', monospace !important; }</style><link id="all-fonts-link-font-space-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-space-mono">.font-space-mono { font-family: 'Space Mono', monospace !important; }</style><link id="all-fonts-link-font-quicksand" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-quicksand">.font-quicksand { font-family: 'Quicksand', sans-serif !important; }</style><link id="all-fonts-link-font-nunito" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-nunito">.font-nunito { font-family: 'Nunito', sans-serif !important; }</style><link id="all-fonts-link-font-newsreader" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..800&amp;display=swap"><style id="all-fonts-style-font-newsreader">.font-newsreader { font-family: 'Newsreader', serif !important; }</style><link id="all-fonts-link-font-google-sans-flex" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-google-sans-flex">.font-google-sans-flex { font-family: 'Google Sans Flex', sans-serif !important; }</style><link id="all-fonts-link-font-oswald" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-oswald">.font-oswald { font-family: 'Oswald', sans-serif !important; }</style><link id="all-fonts-link-font-dm-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-dm-sans">.font-dm-sans { font-family: 'DM Sans', sans-serif !important; }</style></head>
+<body class="antialiased selection:bg-accent selection:text-white">
+
+    <!-- GLOBAL BACKDROP -->
+    <div class="fixed inset-0 bg-[#050505] -z-50"></div>
+
+    <!-- 3D BACKGROUND (Unicorn Studio) -->
+    <div class="aura-background-component fixed top-0 w-full h-screen -z-10" data-alpha-mask="80" style="mask-image: linear-gradient(to bottom, transparent, black 0%, black 80%, transparent); -webkit-mask-image: linear-gradient(to bottom, transparent, black 0%, black 80%, transparent)">
+        <div class="aura-background-component top-0 w-full -z-10 absolute h-full">
+            <div data-us-project="NMlvqnkICwYYJ6lYb064" class="absolute w-full h-full left-0 top-0 -z-10"></div>
+            <script type="text/javascript">
+                !function(){if(!window.UnicornStudio){window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.29/dist/unicornStudio.umd.js",i.onload=function(){window.UnicornStudio.isInitialized||(UnicornStudio.init(),window.UnicornStudio.isInitialized=!0)},(document.head || document.body).appendChild(i)}}();
+            </script>
+        </div>
+    </div>
+
+    <!-- NOISE LAYER -->
+    <div class="noise-overlay"></div>
+    
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-[#050505]/80 backdrop-blur-md">
+        <div class="flex h-20 max-w-7xl mr-auto ml-auto pr-6 pl-6 items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="group hover-trigger z-50">
+                <span class="group-hover:text-accent transition-colors text-xl font-bold text-white tracking-tighter font-display" onclick="window.location.href='/home'" role="button">NEXUS<span class="text-accent group-hover:text-white transition-colors">//</span>OS</span>
+            </a>
+
+            <!-- Desktop Links -->
+            <div class="hidden md:flex gap-8 text-xs font-mono tracking-widest text-gray-400">
+                <a href="/about" class="hover:text-white transition-colors hover-trigger">ABOUT</a>
+                <a href="/pricing" class="hover:text-white transition-colors hover-trigger">PRICING</a>
+                <a href="/documentation" class="hover:text-white transition-colors hover-trigger">DOCUMENTATION</a>
+                <a href="/changelog" class="hover:text-white transition-colors hover-trigger">CHANGELOG</a>
+            </div>
+
+            <!-- Desktop Actions -->
+            <div class="hidden md:flex gap-4 items-center">
+                <span class="hidden lg:block text-[10px] flex items-center gap-2 text-green-500 font-mono">
+                    <span class="w-1.5 h-1.5 animate-pulse bg-green-500 rounded-full"></span>
+                    SYSTEM ONLINE
+                </span>
+                <button class="uppercase hover:bg-white hover:text-black transition-all hover-trigger btn-magnetic text-xs font-bold text-white tracking-wider border-white/20 border pt-2 pr-6 pb-2 pl-6" onclick="window.location.href='/login-signup'" role="button">
+                    Login
+                </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden z-50 text-white p-2 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="menu" class="lucide lucide-menu w-6 h-6"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-[#050505]/95 backdrop-blur-xl menu-closed flex flex-col items-center justify-center">
+        <div class="flex flex-col gap-8 text-center">
+            <a href="/about" class="text-2xl font-display font-bold text-white hover:text-accent transition-colors mobile-link">ABOUT</a>
+            <a href="/pricing" class="text-2xl font-display font-bold text-white hover:text-accent transition-colors mobile-link">PRICING</a>
+            <a href="/documentation" class="text-2xl font-display font-bold text-white hover:text-accent transition-colors mobile-link">DOCUMENTATION</a>
+            <a href="/changelog" class="text-2xl font-display font-bold text-white hover:text-accent transition-colors mobile-link">CHANGELOG</a>
+            <div class="w-12 h-[1px] bg-white/10 mx-auto my-4"></div>
+            <button class="text-xl font-mono text-accent hover:text-white transition-colors" onclick="window.location.href='/login-signup'">
+                LOGIN_TERMINAL
+            </button>
+        </div>
+    </div>
+
+    <main class="">
+        <!-- HERO SECTION -->
+        <section class="skew-target relative min-h-screen w-full flex flex-col justify-center items-center overflow-hidden pt-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#050505] z-10 pointer-events-none"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-[#050505] z-10 pointer-events-none"></div>
+
+            <div class="relative z-20 text-center max-w-5xl px-6 py-12">
+                <div class="inline-flex items-center gap-3 border border-white/10 bg-white/5 px-4 py-1.5 rounded-full mb-8 backdrop-blur-sm">
+                    <span class="font-mono text-[10px] text-accent tracking-widest uppercase">v4.0.2 Stable Release</span>
+                </div>
+                <h1 class="font-display font-bold text-5xl sm:text-6xl md:text-9xl tracking-tighter mb-6 leading-[0.9] text-white mix-blend-screen scramble-text">
+                    SYNTHETIC <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-400 to-gray-600">COGNITION</span>
+                </h1>
+                <p class="text-gray-400 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10 font-light">
+                    The enterprise infrastructure layer for autonomous agents. <br class="hidden md:block">
+                    Zero latency. Zero hallucinations. Pure deterministic compute.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center w-full sm:w-auto">
+                    <button class="bg-accent text-black px-8 py-4 font-bold text-sm uppercase tracking-widest hover:bg-white transition-all hover-trigger w-full sm:w-auto btn-magnetic">
+                        Start Instance
+                    </button>
+                    <button class="px-8 py-4 border border-white/20 text-white font-bold text-sm uppercase tracking-widest hover:bg-white/10 transition-all hover-trigger w-full sm:w-auto btn-magnetic">
+                        Read Whitepaper
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- MARQUEE -->
+        <div class="border-y border-white/5 bg-[#080808] py-8 relative z-20 overflow-hidden marquee-mask w-full">
+            <div class="flex whitespace-nowrap animate-marquee w-[max-content]">
+                <div class="flex gap-12 md:gap-20 px-6 md:px-10 items-center">
+                    <span class="font-display font-bold text-xl md:text-2xl text-white/30 hover:text-white transition-colors">ORBITAL</span>
+                    <span class="font-display font-bold text-xl md:text-2xl text-white/30 hover:text-white transition-colors">SYNTHETICS</span>
+                    <span class="font-display font-bold text-xl md:text-2xl text-white/30 hover:text-white transition-colors">HYPERION</span>
+                    <span class="font-display font-bold text-xl md:text-2xl text-white/30 hover:text-white transition-colors">VERTEX</span>
+                    <span class="font-display font-bold text-xl md:text-2xl text-white/30 hover:text-white transition-colors">QUANTUM</span>
+                    <span class="font-display font-bold text-xl md:text-2xl text-white/30 hover:text-white transition-colors">NVIDIA</span>
+                </div>
+                <div class="flex gap-12 md:gap-20 px-6 md:px-10 items-center">
+                    <span class="font-display font-bold text-xl md:text-2xl text-white/30 hover:text-white transition-colors">ORBITAL</span>
+                    <span class="font-display font-bold text-xl md:text-2xl text-white/30 hover:text-white transition-colors">SYNTHETICS</span>
+                    <span class="font-display font-bold text-xl md:text-2xl text-white/30 hover:text-white transition-colors">HYPERION</span>
+                    <span class="font-display font-bold text-xl md:text-2xl text-white/30 hover:text-white transition-colors">VERTEX</span>
+                    <span class="font-display font-bold text-xl md:text-2xl text-white/30 hover:text-white transition-colors">QUANTUM</span>
+                    <span class="font-display font-bold text-xl md:text-2xl text-white/30 hover:text-white transition-colors">NVIDIA</span>
+                </div>
+                <div class="flex gap-12 md:gap-20 px-6 md:px-10 items-center">
+                    <span class="font-display font-bold text-xl md:text-2xl text-white/30 hover:text-white transition-colors">ORBITAL</span>
+                    <span class="font-display font-bold text-xl md:text-2xl text-white/30 hover:text-white transition-colors">SYNTHETICS</span>
+                    <span class="font-display font-bold text-xl md:text-2xl text-white/30 hover:text-white transition-colors">HYPERION</span>
+                    <span class="font-display font-bold text-xl md:text-2xl text-white/30 hover:text-white transition-colors">VERTEX</span>
+                    <span class="font-display font-bold text-xl md:text-2xl text-white/30 hover:text-white transition-colors">QUANTUM</span>
+                    <span class="font-display font-bold text-xl md:text-2xl text-white/30 hover:text-white transition-colors">NVIDIA</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- BENTO FEATURES -->
+        <section id="features" class="skew-target py-24 md:py-32 px-6 relative z-20">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 border-b border-white/10 pb-8 gap-6 md:gap-0">
+                    <div>
+                        <span class="text-accent font-mono text-xs tracking-widest block mb-2">/// CORE MODULES</span>
+                        <h2 class="font-display font-bold text-white text-4xl md:text-5xl scramble-text">Neural Engine</h2>
+                    </div>
+                    <div class="text-left md:text-right w-full md:w-auto">
+                        <div class="flex items-center md:justify-end gap-2 mb-1">
+                            <span class="w-2 h-2 bg-green-500 rounded-full animate-blink"></span>
+                            <span class="font-mono text-xs text-white">GRID: ACTIVE</span>
+                        </div>
+                        <p class="text-gray-500 font-mono text-xs uppercase tracking-widest">
+                            Nodes Online: 8,492
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 grid-rows-auto md:grid-rows-3 gap-6 h-auto md:h-[900px]">
+                    <!-- Vector Synthesis -->
+                    <div class="md:col-span-2 md:row-span-2 min-h-[300px] glass-panel spotlight-card rounded-xl overflow-hidden relative group">
+                        <div class="scan-line"></div>
+                        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/61d6ed66-a853-4d7e-b477-0127a02a7694_1600w.webp" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-105 transition-transform duration-700" alt="Processor">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                        <div class="absolute top-6 right-6 border border-white/20 bg-black/50 px-3 py-1 rounded text-[10px] font-mono text-accent">PROCESSING_BATCH_04</div>
+                        <div class="absolute bottom-0 left-0 p-8 z-10 w-full">
+                            <div class="w-10 h-10 bg-accent flex items-center justify-center mb-4 text-black font-bold">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="cpu" class="lucide lucide-cpu w-6 h-6"><path d="M12 20v2"></path><path d="M12 2v2"></path><path d="M17 20v2"></path><path d="M17 2v2"></path><path d="M2 12h2"></path><path d="M2 17h2"></path><path d="M2 7h2"></path><path d="M20 12h2"></path><path d="M20 17h2"></path><path d="M20 7h2"></path><path d="M7 20v2"></path><path d="M7 2v2"></path><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="8" y="8" width="8" height="8" rx="1"></rect></svg>
+                            </div>
+                            <h3 class="font-display font-bold text-2xl text-white mb-2">Vector Synthesis</h3>
+                            <p class="text-gray-300 text-sm max-w-sm">Embedding generation at 400k tokens/sec on dedicated H100 clusters.</p>
+                        </div>
+                    </div>
+
+                    <!-- Uptime -->
+                    <div class="md:col-span-1 md:row-span-1 glass-panel spotlight-card rounded-xl p-6 flex flex-col justify-between h-40 md:h-auto">
+                        <div class="flex justify-between items-start">
+                            <span class="font-mono text-[10px] text-gray-500 uppercase">Uptime</span>
+                            <div class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
+                        </div>
+                        <div class="text-center py-2">
+                            <div class="text-4xl font-display font-bold text-white counter" data-target="99.99">99.99</div>
+                            <div class="text-[10px] text-gray-500 mt-1">SLA Guarantee</div>
+                        </div>
+                    </div>
+
+                    <!-- Encryption -->
+                    <div class="md:col-span-1 md:row-span-1 glass-panel spotlight-card rounded-xl p-6 flex flex-col justify-between overflow-hidden h-40 md:h-auto">
+                        <div class="flex items-center gap-2 text-white mb-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="lock" class="lucide lucide-lock w-3.5 h-3.5"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                            <span class="font-display font-bold text-sm">Enclave</span>
+                        </div>
+                        <div class="relative h-12 overflow-hidden font-mono text-[9px] text-gray-600 leading-relaxed">
+                            <div class="animate-[marquee_5s_linear_infinite_reverse] flex flex-col">
+                                <span>0x7f8d9a2b3c4d5e6f</span>
+                                <span>0x1a2b3c4d5e6f7a8b</span>
+                                <span>0x9c8d7e6f5a4b3c2d</span>
+                                <span>0x1f2e3d4c5b6a7988</span>
+                            </div>
+                        </div>
+                        <div class="text-[10px] text-accent mt-2 flex items-center gap-1">
+                            <span class="w-1 h-1 bg-accent rounded-full"></span> SOC2 TYPE II
+                        </div>
+                    </div>
+
+                    <!-- Rate Limit -->
+                    <div class="md:col-span-1 md:row-span-1 glass-panel spotlight-card rounded-xl p-6 flex flex-col justify-between h-40 md:h-auto">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-mono text-[10px] text-gray-500 uppercase">Throughput</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="activity" class="lucide lucide-activity w-3.5 h-3.5 text-white"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"></path></svg>
+                        </div>
+                        <div class="flex-grow flex items-center">
+                            <div class="w-full bg-white/10 h-16 rounded flex items-end px-1 gap-1">
+                                <div class="w-1/5 bg-accent/20 h-[40%] rounded-sm"></div>
+                                <div class="w-1/5 bg-accent/40 h-[60%] rounded-sm"></div>
+                                <div class="w-1/5 bg-accent/60 h-[30%] rounded-sm"></div>
+                                <div class="w-1/5 bg-accent/80 h-[80%] rounded-sm"></div>
+                                <div class="w-1/5 bg-accent h-[50%] rounded-sm"></div>
+                            </div>
+                        </div>
+                        <div class="text-right text-[10px] text-white font-mono mt-2">4.2M REQ/S</div>
+                    </div>
+
+                    <!-- Anomaly -->
+                    <div class="md:col-span-1 md:row-span-1 glass-panel spotlight-card rounded-xl p-6 relative overflow-hidden group h-40 md:h-auto">
+                        <div class="absolute inset-0 bg-red-900/10 z-0"></div>
+                        <div class="relative z-10 flex flex-col h-full justify-between">
+                            <div class="flex justify-between items-start">
+                                <span class="font-display font-bold text-sm text-white">Threat Shield</span>
+                                <div class="w-2 h-2 rounded-full bg-red-500 animate-pulse-fast"></div>
+                            </div>
+                            <div class="font-mono text-[10px] text-red-300/70">
+                                <div>&gt; SCANNING...</div>
+                                <div>&gt; NO THREATS</div>
+                                <div>&gt; PACKET_LOSS: 0%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Context -->
+                    <div class="md:col-span-2 md:row-span-1 glass-panel spotlight-card rounded-xl p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between hover-trigger h-auto">
+                         <div class="mb-4 sm:mb-0">
+                            <h3 class="font-display font-bold text-xl text-white mb-2">128k Context</h3>
+                            <p class="text-gray-300 text-xs font-mono">RAG-Optimized Memory Layer</p>
+                         </div>
+                         <div class="flex flex-col gap-1.5 w-full sm:w-40">
+                            <div class="flex justify-between text-[8px] text-gray-500 font-mono mb-1">
+                                <span>USAGE</span>
+                                <span>82%</span>
+                            </div>
+                            <div class="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-accent to-yellow-500 w-[82%] rounded-full"></div>
+                            </div>
+                         </div>
+                    </div>
+
+                    <!-- Global Map -->
+                    <div class="md:col-span-2 md:row-span-1 glass-panel spotlight-card rounded-xl p-6 relative overflow-hidden flex flex-col justify-center min-h-[200px]">
+                        <div class="absolute inset-0 dot-grid opacity-30"></div>
+                        <div class="flex justify-between items-center mb-2 z-10 absolute top-6 left-6 right-6">
+                            <span class="font-display font-bold text-white text-lg">Edge Nodes</span>
+                            <span class="text-accent text-xs font-mono border border-accent/30 px-2 py-0.5 rounded">LIVE</span>
+                        </div>
+                        <div class="relative w-full h-full z-0 mt-8 opacity-60">
+                            <div class="absolute top-[30%] left-[20%] w-1.5 h-1.5 bg-white rounded-full animate-pulse shadow-[0_0_10px_white]"></div>
+                            <div class="absolute top-[40%] right-[30%] w-1 h-1 bg-gray-500 rounded-full"></div>
+                            <div class="absolute top-[60%] left-[40%] w-1 h-1 bg-gray-500 rounded-full"></div>
+                            <div class="absolute top-[25%] right-[20%] w-1.5 h-1.5 bg-white rounded-full animate-pulse delay-75 shadow-[0_0_10px_white]"></div>
+                            <svg class="absolute inset-0 w-full h-full" style="pointer-events: none;">
+                                <line x1="20%" y1="30%" x2="40%" y2="60%" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"></line>
+                                <line x1="20%" y1="30%" x2="80%" y2="25%" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"></line>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DEVELOPER SECTION -->
+        <section id="developers" class="skew-target py-24 bg-[#050505] border-t border-white/5 relative z-20">
+            <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1">
+                    <span class="text-accent font-mono text-xs tracking-widest block mb-4">/// DEVELOPER EXPERIENCE</span>
+                    <h2 class="font-display font-bold text-4xl md:text-5xl mb-6 text-white scramble-text">Built for Builders</h2>
+                    <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                        Don't wrestle with Docker containers. Our SDK abstracts the complexity of cluster management into a simple Python interface.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="group flex gap-4 p-4 border border-transparent hover:border-white/10 rounded-lg transition-all cursor-pointer hover-trigger">
+                            <div class="font-mono text-gray-600 text-sm group-hover:text-accent">01</div>
+                            <div>
+                                <h4 class="font-bold text-white">Pip Install</h4>
+                                <p class="text-sm text-gray-500">Get up and running in 30 seconds.</p>
+                            </div>
+                        </div>
+                        <div class="group flex gap-4 p-4 border border-transparent hover:border-white/10 rounded-lg transition-all cursor-pointer hover-trigger">
+                            <div class="font-mono text-gray-600 text-sm group-hover:text-accent">02</div>
+                            <div>
+                                <h4 class="font-bold text-white">Authenticate</h4>
+                                <p class="text-sm text-gray-500">Zero-trust API key management.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative group hover-trigger order-1 lg:order-2">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-accent to-purple-600 rounded-lg blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                    <div class="relative bg-[#0a0a0a] border border-white/10 rounded-lg p-6 font-mono text-xs sm:text-sm shadow-2xl overflow-x-auto min-h-[300px]">
+                        <div class="flex gap-2 mb-6 border-b border-white/5 pb-4">
+                            <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
+                        </div>
+                        <div class="text-gray-400 whitespace-pre">
+                            <span class="text-purple-400">import</span> nexus <span class="text-purple-400">as</span> nx
+                            <span class="text-gray-600"># Connect to the grid</span>
+                            client = nx.Client(api_key=<span class="text-green-400">"nx_live_..."</span>)
+                            <span class="text-gray-600"># Run deterministic inference</span>
+                            response = client.generate(
+                            &nbsp;&nbsp;model=<span class="text-green-400">"nexus-v4-turbo"</span>,
+                            &nbsp;&nbsp;prompt=<span class="text-green-400">"Optimize this SVG..."</span>,
+                            &nbsp;&nbsp;temperature=<span class="text-blue-400">0.0</span>
+                            )
+                            print(response.content)
+                        </div>
+                        <div class="mt-2 text-accent animate-pulse">_</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PIPELINE SECTION (STICKY FIXED) -->
+        <section id="pipeline" class="py-24 bg-[#050505] relative z-20 border-t border-white/5">
+            <div class="max-w-[1400px] mx-auto px-6">
+                <!-- IMPORTANT: items-start allows left col to stick, while right col scrolls -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 relative">
+                    
+                    <!-- Left Column: Sticky Visual -->
+                    <div class="order-2 lg:order-1 relative">
+                        <!-- top-24 pushes it down just below header. max-h constraint ensures it fits viewport. -->
+                        <div class="sticky top-24 w-full aspect-square max-h-[50vh] lg:max-h-[60vh] bg-[#080808] border border-white/10 rounded-2xl overflow-hidden flex items-center justify-center p-10 group shadow-2xl">
+                            <!-- Background Grid -->
+                            <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
+                            
+                            <!-- Central Node -->
+                            <div class="relative w-32 h-32 md:w-40 md:h-40 border border-accent rounded-full flex items-center justify-center z-10 shadow-[0_0_50px_rgba(255,59,0,0.3)] bg-black/50 backdrop-blur-sm">
+                                <div class="w-24 h-24 md:w-32 md:h-32 bg-accent/10 rounded-full animate-pulse"></div>
+                                <div class="absolute text-white font-mono text-[10px] md:text-xs tracking-widest">PROCESSING</div>
+                            </div>
+
+                            <!-- Orbiting Nodes -->
+                            <div class="absolute w-[70%] h-[70%] border border-white/5 rounded-full animate-spin-slow">
+                                <div class="w-4 h-4 bg-white rounded-full absolute -top-2 left-1/2 -translate-x-1/2 shadow-[0_0_15px_white]"></div>
+                            </div>
+                            <div class="absolute w-[90%] h-[90%] border border-white/5 rounded-full animate-reverse-spin">
+                                <div class="w-3 h-3 bg-accent rounded-full absolute -top-1.5 left-1/2 -translate-x-1/2"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Scrollable Text Steps -->
+                    <div class="order-1 lg:order-2 lg:py-20 pb-0">
+                        <span class="text-accent font-mono text-xs tracking-widest block mb-10">/// THE PIPELINE</span>
+                        
+                        <!-- MB-48 (approx 200px) creates clean separation without massive empty space -->
+                        <div class="step-item mb-24 md:mb-48 opacity-30 transition-opacity duration-500">
+                            <h3 class="text-3xl md:text-4xl font-display font-bold mb-4 text-white">01. Ingestion</h3>
+                            <p class="text-lg md:text-xl text-white leading-relaxed font-light">
+                                Connect your data lakes. We index documents into vector embeddings automatically.
+                            </p>
+                        </div>
+
+                        <div class="step-item mb-24 md:mb-48 opacity-30 transition-opacity duration-500">
+                            <h3 class="text-3xl md:text-4xl font-display font-bold mb-4 text-white">02. Reasoning</h3>
+                            <p class="text-lg md:text-xl text-white leading-relaxed font-light">
+                                Requests hit our routing layer. Complex logic is routed to H100 clusters for "Chain of Thought" processing.
+                            </p>
+                        </div>
+
+                        <div class="step-item opacity-30 transition-opacity duration-500">
+                            <h3 class="text-3xl md:text-4xl font-display font-bold mb-4 text-white">03. Synthesis</h3>
+                            <p class="text-lg md:text-xl text-white leading-relaxed font-light">
+                                The answer is formatted into JSON and delivered via streaming API in sub-20ms.
+                            </p>
+                        </div>
+                        
+                        <!-- Spacer to allow scroll past last item -->
+                        <div class="h-20 lg:h-40"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRICING TABLE -->
+        <section id="pricing" class="skew-target py-32 px-6 bg-[#050505] relative z-20 border-t border-white/5">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="font-display font-bold text-4xl text-white text-center mb-16 scramble-text">Compute Tiers</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="border border-white/10 p-8 rounded-2xl hover:bg-white/5 transition-colors hover-trigger spotlight-card glass-panel">
+                        <div class="font-mono text-xs text-gray-500 mb-4 z-10 relative">/ DEVELOPER</div>
+                        <div class="text-3xl font-bold text-white mb-6 z-10 relative">$0<span class="text-sm font-normal text-gray-500">/mo</span></div>
+                        <ul class="space-y-4 text-sm text-gray-300 mb-8 font-mono z-10 relative">
+                            <li class="flex gap-3"><span>✓</span> 5,000 Tokens</li>
+                            <li class="flex gap-3"><span>✓</span> 2 Concurrent</li>
+                        </ul>
+                        <button class="w-full py-3 border border-white/20 rounded font-bold uppercase text-xs tracking-wider text-white hover:bg-white hover:text-black transition-all z-10 relative">Start Free</button>
+                    </div>
+
+                    <div class="border border-accent bg-[#0a0a0a] p-8 rounded-2xl relative hover-trigger transform md:-translate-y-4 shadow-[0_0_30px_rgba(255,59,0,0.1)] spotlight-card">
+                        <div class="absolute top-0 right-0 bg-accent text-black text-[10px] font-bold px-3 py-1 uppercase rounded-bl-lg z-10">Popular</div>
+                        <div class="font-mono text-xs text-accent mb-4 z-10 relative">/ PRODUCTION</div>
+                        <div class="text-3xl font-bold text-white mb-6 z-10 relative">$0.02<span class="text-sm font-normal text-gray-500">/1k tokens</span></div>
+                        <ul class="space-y-4 text-sm text-gray-300 mb-8 font-mono z-10 relative">
+                            <li class="flex gap-3"><span class="text-accent">✓</span> Unlimited Tokens</li>
+                            <li class="flex gap-3"><span class="text-accent">✓</span> 50 Concurrent</li>
+                        </ul>
+                        <button class="w-full py-3 bg-accent text-black rounded font-bold uppercase text-xs tracking-wider hover:bg-white transition-all z-10 relative">Deploy Key</button>
+                    </div>
+
+                    <div class="border border-white/10 p-8 rounded-2xl hover:bg-white/5 transition-colors hover-trigger spotlight-card glass-panel">
+                        <div class="font-mono text-xs text-gray-500 mb-4 z-10 relative">/ CLUSTER</div>
+                        <div class="text-3xl font-bold text-white mb-6 z-10 relative">Custom</div>
+                        <ul class="space-y-4 text-sm text-gray-300 mb-8 font-mono z-10 relative">
+                            <li class="flex gap-3"><span>✓</span> Dedicated GPUs</li>
+                            <li class="flex gap-3"><span>✓</span> Custom Fine-tuning</li>
+                        </ul>
+                        <button class="w-full py-3 border border-white/20 rounded font-bold uppercase text-xs tracking-wider text-white hover:bg-white hover:text-black transition-all z-10 relative">Contact Sales</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="bg-[#020202] pt-32 pb-10 px-6 border-t border-white/10 relative overflow-hidden">
+            <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none select-none pointer-events-none opacity-5">
+                <span class="text-[20vw] font-display font-black text-white whitespace-nowrap -ml-10">NEXUS</span>
+            </div>
+
+            <div class="max-w-[1400px] mx-auto relative z-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
+                <div>
+                    <h3 class="text-2xl font-display font-bold text-white mb-6">Ready to scale?</h3>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <input type="email" placeholder="email@company.com" class="bg-white/5 border border-white/10 px-4 py-3 rounded text-sm w-full sm:w-64 focus:outline-none focus:border-accent text-white">
+                        <button class="bg-accent text-black px-6 py-3 rounded font-bold text-sm hover:bg-white transition-colors">JOIN</button>
+                    </div>
+                </div>
+                
+                <div class="flex gap-12 text-sm text-gray-500 font-mono tracking-wider uppercase">
+                    <div class="flex flex-col gap-3">
+                        <span class="text-white">Platform</span>
+                        <a href="#" class="hover:text-accent transition-colors">API</a>
+                        <a href="#" class="hover:text-accent transition-colors">Docs</a>
+                        <a href="#" class="hover:text-accent transition-colors">Status</a>
+                    </div>
+                    <div class="flex flex-col gap-3">
+                        <span class="text-white">Legal</span>
+                        <a href="#" class="hover:text-accent transition-colors">Privacy</a>
+                        <a href="#" class="hover:text-accent transition-colors">Terms</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="max-w-[1400px] mx-auto mt-20 pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-[10px] text-gray-600 font-mono uppercase gap-4 md:gap-0">
+                <span>© 2025 NEXUS LABS INC.</span>
+                <span class="md:mt-0">TOKYO / SAN FRANCISCO / BERLIN</span>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        // --- 0. LUCIDE ICONS ---
+        lucide.createIcons();
+
+        // --- 1. SETUP LENIS & SCROLL SKEW ---
+        const lenis = new Lenis({
+            lerp: 0.1,
+            smooth: true,
+            direction: 'vertical',
+        });
+        
+        let currentSkew = 0;
+        function raf(time) {
+            lenis.raf(time);
+            
+            // Interaction: Liquid Scroll Skew
+            // Only apply to specific sections with class 'skew-target'
+            const skewTarget = lenis.velocity * 0.1; 
+            currentSkew += (skewTarget - currentSkew) * 0.1;
+            const clampedSkew = Math.max(Math.min(currentSkew, 5), -5);
+            
+            document.querySelectorAll('.skew-target').forEach(el => {
+                el.style.transform = `skewY(${clampedSkew}deg)`;
+            });
+
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // --- 2. SPOTLIGHT INTERACTION ---
+        document.addEventListener('mousemove', (e) => {
+            document.querySelectorAll('.spotlight-card').forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // --- 3. TEXT SCRAMBLE INTERACTION ---
+        class ScrambleText {
+            constructor(el) {
+                this.el = el;
+                this.chars = '!<>-_\\/[]{}—=+*^?#________';
+                this.update = this.update.bind(this);
+            }
+            setText(newText) {
+                const oldText = this.el.innerText;
+                const length = Math.max(oldText.length, newText.length);
+                const promise = new Promise((resolve) => this.resolve = resolve);
+                this.queue = [];
+                for (let i = 0; i < length; i++) {
+                    const from = oldText[i] || '';
+                    const to = newText[i] || '';
+                    const start = Math.floor(Math.random() * 40);
+                    const end = start + Math.floor(Math.random() * 40);
+                    this.queue.push({ from, to, start, end });
+                }
+                cancelAnimationFrame(this.frameRequest);
+                this.frame = 0;
+                this.update();
+                return promise;
+            }
+            update() {
+                let output = '';
+                let complete = 0;
+                for (let i = 0, n = this.queue.length; i < n; i++) {
+                    let { from, to, start, end, char } = this.queue[i];
+                    if (this.frame >= end) {
+                        complete++;
+                        output += to;
+                    } else if (this.frame >= start) {
+                        if (!char || Math.random() < 0.28) {
+                            char = this.randomChar();
+                            this.queue[i].char = char;
+                        }
+                        output += `<span class="opacity-50">${char}</span>`;
+                    } else {
+                        output += from;
+                    }
+                }
+                this.el.innerHTML = output;
+                if (complete === this.queue.length) {
+                    this.resolve();
+                } else {
+                    this.frameRequest = requestAnimationFrame(this.update);
+                    this.frame++;
+                }
+            }
+            randomChar() {
+                return this.chars[Math.floor(Math.random() * this.chars.length)];
+            }
+        }
+
+        const scrambleElements = document.querySelectorAll('.scramble-text');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const fx = new ScrambleText(el);
+                    fx.setText(el.innerText);
+                    observer.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        scrambleElements.forEach(el => observer.observe(el));
+
+        // --- 4. MAGNETIC BUTTONS ---
+        const buttons = document.querySelectorAll('.btn-magnetic');
+        buttons.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                gsap.to(btn, { x: x * 0.3, y: y * 0.3, duration: 0.2 });
+            });
+            btn.addEventListener('mouseleave', () => {
+                gsap.to(btn, { x: 0, y: 0, duration: 0.2 });
+            });
+        });
+
+        // --- 5. ANIMATIONS ---
+        gsap.registerPlugin(ScrollTrigger);
+
+        const counter = document.querySelector('.counter');
+        if(counter) {
+            gsap.from(counter, {
+                textContent: 90.00,
+                duration: 2,
+                ease: "power1.out",
+                snap: { textContent: 0.01 },
+                scrollTrigger: {
+                    trigger: counter,
+                    start: "top 85%",
+                    once: true
+                },
+                onUpdate: function() {
+                    this.targets()[0].innerHTML = parseFloat(this.targets()[0].textContent).toFixed(2);
+                }
+            });
+        }
+
+        const stepItems = document.querySelectorAll('.step-item');
+        stepItems.forEach((item) => {
+            gsap.to(item, {
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top 80%", 
+                    end: "bottom center",
+                    onEnter: () => gsap.to(item, { opacity: 1, duration: 0.5 }),
+                    onLeave: () => gsap.to(item, { opacity: 0.3, duration: 0.5 }),
+                    onEnterBack: () => gsap.to(item, { opacity: 1, duration: 0.5 }),
+                    onLeaveBack: () => gsap.to(item, { opacity: 0.3, duration: 0.5 }),
+                }
+            });
+        });
+
+        gsap.utils.toArray('.glass-panel').forEach((panel, i) => {
+            gsap.from(panel, {
+                scrollTrigger: {
+                    trigger: panel,
+                    start: "top 90%"
+                },
+                y: 30,
+                opacity: 0,
+                duration: 0.8,
+                delay: i * 0.05,
+                ease: "power3.out"
+            });
+        });
+
+        // --- 6. MOBILE MENU ---
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        let isMenuOpen = false;
+
+        menuBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('menu-closed');
+                mobileMenu.classList.add('menu-open');
+                menuBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6"></i>';
+                lucide.createIcons();
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileMenu.classList.remove('menu-open');
+                mobileMenu.classList.add('menu-closed');
+                menuBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+                lucide.createIcons();
+                document.body.style.overflow = '';
+            }
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                isMenuOpen = false;
+                mobileMenu.classList.remove('menu-open');
+                mobileMenu.classList.add('menu-closed');
+                menuBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+                lucide.createIcons();
+                document.body.style.overflow = '';
+            });
+        });
+
+    </script>
+
+</body></html>

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full antialiased">
+<head>
+<script>
+try{if(window.parent&&window.parent!==window){window.parent.promotekit_referral="1fd2949a-d22c-431b-92bf-02d4ad04ee24";window.parent.document.cookie="promotekit_referral=1fd2949a-d22c-431b-92bf-02d4ad04ee24;path=/;domain=.aura.build;max-age=31536000"}}catch(e){}
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SoundForge Pro Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script defer src="https://unpkg.com/lucide@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // Suppress Tailwind CDN production warning BEFORE Tailwind loads
+  (function() {
+    if (window._tailwindWarningsSuppressed) return;
+    window._tailwindWarningsSuppressed = true;
+    
+    const originalWarn = console.warn;
+    console.warn = function(...args) {
+      const message = args.join(' ');
+      if (message.includes('cdn.tailwindcss.com should not be used in production')) {
+        return; // Suppress this specific warning
+      }
+      originalWarn.apply(console, args);
+    };
+  })();
+</script>
+<script>
+  // Suppress Tailwind CDN production warning BEFORE Tailwind loads
+  (function() {
+    if (window._tailwindWarningsSuppressed) return;
+    window._tailwindWarningsSuppressed = true;
+    
+    const originalWarn = console.warn;
+    console.warn = function(...args) {
+      const message = args.join(' ');
+      if (message.includes('cdn.tailwindcss.com should not be used in production')) {
+        return; // Suppress this specific warning
+      }
+      originalWarn.apply(console, args);
+    };
+  })();
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600;700&family=Inter&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600;700&family=Inter&display=swap" rel="stylesheet">
+</head>
+<body class="h-full bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0c1425] text-white font-inter">
+<div class="flex h-full">
+    <!-- Mobile Menu Button -->
+    <button id="mobileMenuBtn" class="lg:hidden fixed top-4 left-4 z-50 p-2 bg-slate-800/80 backdrop-blur-lg rounded-lg border border-white/10">
+        <i data-lucide="menu" class="h-5 w-5"></i>
+    </button>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed lg:relative inset-y-0 left-0 z-40 w-64 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out flex flex-col gap-6 border-r border-white/10 bg-slate-900/50 backdrop-blur-lg p-6">
+        <div class="flex items-center gap-3">
+            <div class="h-8 w-8 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg grid place-content-center">
+                <i data-lucide="waveform" class="h-5 w-5"></i>
+            </div>
+            <span class="text-lg font-semibold tracking-tight">SoundForge</span>
+        </div>
+
+        <button class="flex items-center justify-between gap-3 text-sm font-medium bg-blue-600/20 hover:bg-blue-600/30 transition p-3 rounded-lg">
+            <span class="flex items-center gap-3">
+                <i data-lucide="plus" class="h-4 w-4"></i>
+                New Track
+            </span>
+            <kbd class="text-xs text-white/60 hidden sm:block">⌘N</kbd>
+        </button>
+
+        <nav class="flex flex-col gap-1 text-sm">
+            <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/10 transition">
+                <i data-lucide="layout-dashboard" class="h-4 w-4"></i>
+                Studio
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/10 transition">
+                <i data-lucide="music" class="h-4 w-4"></i>
+                Beats
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/10 transition">
+                <i data-lucide="radio" class="h-4 w-4"></i>
+                <span class="flex-1">Streaming</span>
+                <span class="ml-auto text-xs bg-emerald-500/20 text-emerald-300 px-1.5 py-0.5 rounded-md">LIVE</span>
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/10 transition">
+                <i data-lucide="file-audio" class="h-4 w-4"></i>
+                Samples
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-lg bg-white/10">
+                <i data-lucide="users" class="h-4 w-4"></i>
+                Artists
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/10 transition">
+                <i data-lucide="sliders-horizontal" class="h-4 w-4"></i>
+                Mixer Settings
+            </a>
+        </nav>
+
+        <div class="mt-auto bg-gradient-to-br from-blue-600/20 to-cyan-600/20 p-4 rounded-xl">
+            <p class="text-sm leading-snug">Upgrade to Studio PRO for up to <span class="font-semibold text-cyan-400">100GB</span> storage and unlimited tracks!</p>
+            <div class="flex items-center justify-between mt-4 text-sm">
+                <button class="hover:underline text-white/70">Maybe Later</button>
+                <button class="bg-white/10 hover:bg-white/20 transition px-3 py-1.5 rounded-md font-medium">Go Premium</button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Overlay for mobile -->
+    <div id="overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-30 lg:hidden hidden"></div>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+        <!-- Top bar -->
+        <header class="flex items-center justify-between gap-4 px-4 lg:px-6 py-4 border-b border-white/10 bg-slate-900/30 backdrop-blur-lg">
+            <div class="flex items-center gap-4">
+                <div class="lg:hidden w-8"></div>
+                <div>
+                    <h1 class="text-base lg:text-lg font-medium">Studio Analytics</h1>
+                    <p class="text-xs lg:text-sm text-white/60">12 active collaborators • Studio Elite</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <button class="relative hidden sm:block">
+                    <i data-lucide="bell" class="h-5 w-5"></i>
+                    <span class="absolute -top-1 -right-1 h-2 w-2 rounded-full bg-cyan-500"></span>
+                </button>
+                <i data-lucide="help-circle" class="h-5 w-5 hidden sm:block"></i>
+                <div class="h-8 w-8 rounded-full bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=facearea&facepad=2.5&w=256&h=256&q=80')"></div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <section class="flex-1 overflow-y-auto p-4 lg:p-6 space-y-6">
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-slate-900/40 backdrop-blur-lg border border-white/10 rounded-xl p-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-xs text-white/60">Total Tracks</p>
+                            <p class="text-2xl font-semibold">247</p>
+                        </div>
+                        <div class="h-10 w-10 bg-blue-600/20 rounded-lg flex items-center justify-center">
+                            <i data-lucide="music" class="h-5 w-5 text-blue-400"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-900/40 backdrop-blur-lg border border-white/10 rounded-xl p-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-xs text-white/60">Storage Used</p>
+                            <p class="text-2xl font-semibold">84GB</p>
+                        </div>
+                        <div class="h-10 w-10 bg-cyan-600/20 rounded-lg flex items-center justify-center">
+                            <i data-lucide="hard-drive" class="h-5 w-5 text-cyan-400"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-900/40 backdrop-blur-lg border border-white/10 rounded-xl p-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-xs text-white/60">Active Sessions</p>
+                            <p class="text-2xl font-semibold">12</p>
+                        </div>
+                        <div class="h-10 w-10 bg-green-600/20 rounded-lg flex items-center justify-center">
+                            <i data-lucide="activity" class="h-5 w-5 text-green-400"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-900/40 backdrop-blur-lg border border-white/10 rounded-xl p-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-xs text-white/60">Revenue</p>
+                            <p class="text-2xl font-semibold">$12.4K</p>
+                        </div>
+                        <div class="h-10 w-10 bg-purple-600/20 rounded-lg flex items-center justify-center">
+                            <i data-lucide="dollar-sign" class="h-5 w-5 text-purple-400"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-6">
+                <!-- Monthly Revenue Trends -->
+                <div class="lg:col-span-2 bg-slate-900/40 backdrop-blur-lg border border-white/10 rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="font-medium">Monthly Revenue Trends</h2>
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs text-emerald-400 flex items-center gap-1">
+                                <i data-lucide="trending-up" class="h-3 w-3"></i>
+                                +12.5%
+                            </span>
+                            <select class="text-xs bg-slate-800/50 border border-white/10 rounded px-2 py-1">
+                                <option>2024</option>
+                                <option>2023</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="h-48">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Genre Distribution -->
+                <div class="bg-slate-900/40 backdrop-blur-lg border border-white/10 rounded-xl p-6">
+                    <h2 class="font-medium mb-4">Genre Distribution</h2>
+                    <div class="h-48">
+                        <canvas id="genreChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Studio Usage & Artists table -->
+            <div class="grid lg:grid-cols-3 gap-6">
+                <!-- Studio Usage Chart -->
+                <div class="bg-slate-900/40 backdrop-blur-lg border border-white/10 rounded-xl p-6">
+                    <h2 class="font-medium mb-4">Studio Usage (7 days)</h2>
+                    <div class="h-48">
+                        <canvas id="usageChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Artists table -->
+                <div class="lg:col-span-2 bg-slate-900/40 backdrop-blur-lg border border-white/10 rounded-xl overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full text-sm">
+                            <thead class="text-left text-white/60 border-b border-white/10">
+                                <tr>
+                                    <th class="py-4 px-3 lg:px-5">Artist</th>
+                                    <th class="py-4 px-3 lg:px-5 hidden sm:table-cell">Genre</th>
+                                    <th class="py-4 px-3 lg:px-5 hidden md:table-cell">Status</th>
+                                    <th class="py-4 px-3 lg:px-5 hidden lg:table-cell">Location</th>
+                                    <th class="py-4 px-3 lg:px-5"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="hover:bg-white/5 transition">
+                                    <td class="py-3 px-3 lg:px-5 flex items-center gap-2">
+                                        <img src="https://randomuser.me/api/portraits/women/32.jpg" class="h-6 w-6 rounded-full" alt="">
+                                        <span class="truncate">Maya Chen</span>
+                                    </td>
+                                    <td class="py-3 px-3 lg:px-5 hidden sm:table-cell">Electronic</td>
+                                    <td class="py-3 px-3 lg:px-5 hidden md:table-cell">
+                                        <span class="inline-flex items-center gap-1 text-xs bg-green-500/20 text-green-300 px-2 py-1 rounded-full">
+                                            <i data-lucide="circle" class="h-2 w-2 fill-current"></i>
+                                            Online
+                                        </span>
+                                    </td>
+                                    <td class="py-3 px-3 lg:px-5 hidden lg:table-cell">Tokyo</td>
+                                    <td class="py-3 px-3 lg:px-5 text-right"><i data-lucide="more-horizontal" class="h-4 w-4"></i></td>
+                                </tr>
+                                <tr class="hover:bg-white/5 transition">
+                                    <td class="py-3 px-3 lg:px-5 flex items-center gap-2">
+                                        <img src="https://randomuser.me/api/portraits/men/85.jpg" class="h-6 w-6 rounded-full" alt="">
+                                        <span class="truncate">Marcus Rivera</span>
+                                    </td>
+                                    <td class="py-3 px-3 lg:px-5 hidden sm:table-cell">Hip-Hop <span class="text-cyan-400">★</span></td>
+                                    <td class="py-3 px-3 lg:px-5 hidden md:table-cell">
+                                        <span class="inline-flex items-center gap-1 text-xs bg-yellow-500/20 text-yellow-300 px-2 py-1 rounded-full">
+                                            <i data-lucide="circle" class="h-2 w-2 fill-current"></i>
+                                            Recording
+                                        </span>
+                                    </td>
+                                    <td class="py-3 px-3 lg:px-5 hidden lg:table-cell">LA</td>
+                                    <td class="py-3 px-3 lg:px-5 text-right"><i data-lucide="more-horizontal" class="h-4 w-4"></i></td>
+                                </tr>
+                                <tr class="hover:bg-white/5 transition">
+                                    <td class="py-3 px-3 lg:px-5 flex items-center gap-2">
+                                        <img src="https://randomuser.me/api/portraits/women/29.jpg" class="h-6 w-6 rounded-full" alt="">
+                                        <span class="truncate">Zara Kim</span>
+                                    </td>
+                                    <td class="py-3 px-3 lg:px-5 hidden sm:table-cell">Pop</td>
+                                    <td class="py-3 px-3 lg:px-5 hidden md:table-cell">
+                                        <span class="inline-flex items-center gap-1 text-xs bg-green-500/20 text-green-300 px-2 py-1 rounded-full">
+                                            <i data-lucide="circle" class="h-2 w-2 fill-current"></i>
+                                            Online
+                                        </span>
+                                    </td>
+                                    <td class="py-3 px-3 lg:px-5 hidden lg:table-cell">Seoul</td>
+                                    <td class="py-3 px-3 lg:px-5 text-right"><i data-lucide="more-horizontal" class="h-4 w-4"></i></td>
+                                </tr>
+                                <tr class="hover:bg-white/5 transition">
+                                    <td class="py-3 px-3 lg:px-5 flex items-center gap-2">
+                                        <img src="https://randomuser.me/api/portraits/women/91.jpg" class="h-6 w-6 rounded-full" alt="">
+                                        <span class="truncate">Luna Dubois</span>
+                                    </td>
+                                    <td class="py-3 px-3 lg:px-5 hidden sm:table-cell">Jazz <span class="text-cyan-400">★</span></td>
+                                    <td class="py-3 px-3 lg:px-5 hidden md:table-cell">
+                                        <span class="inline-flex items-center gap-1 text-xs bg-gray-500/20 text-gray-300 px-2 py-1 rounded-full">
+                                            <i data-lucide="circle" class="h-2 w-2 fill-current"></i>
+                                            Away
+                                        </span>
+                                    </td>
+                                    <td class="py-3 px-3 lg:px-5 hidden lg:table-cell">Paris</td>
+                                    <td class="py-3 px-3 lg:px-5 text-right"><i data-lucide="more-horizontal" class="h-4 w-4"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Frequency Spectrum -->
+            <div class="bg-slate-900/40 backdrop-blur-lg border border-white/10 rounded-xl p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="font-medium">Frequency Spectrum Analysis</h2>
+                    <button class="text-xs text-white/60 hover:text-white transition">View Details</button>
+                </div>
+                <div class="h-64">
+                    <canvas id="spectrumChart"></canvas>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    lucide.createIcons();
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+
+    function toggleMobileMenu() {
+        sidebar.classList.toggle('-translate-x-full');
+        overlay.classList.toggle('hidden');
+    }
+
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    overlay.addEventListener('click', toggleMobileMenu);
+
+    // Chart.js configurations
+    Chart.defaults.color = 'rgba(255, 255, 255, 0.6)';
+    Chart.defaults.borderColor = 'rgba(255, 255, 255, 0.1)';
+
+    // Monthly Revenue Chart
+    const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+    new Chart(revenueCtx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            datasets: [{
+                label: 'Revenue',
+                data: [8500, 9200, 11800, 10400, 12600, 13900, 15200, 14100, 16800, 18200, 17500, 19800],
+                borderColor: '#06b6d4',
+                backgroundColor: 'rgba(6, 182, 212, 0.1)',
+                fill: true,
+                tension: 0.4,
+                pointBackgroundColor: '#06b6d4',
+                pointBorderColor: '#ffffff',
+                pointBorderWidth: 2,
+                pointRadius: 4
+            }, {
+                label: 'Target',
+                data: [10000, 10500, 11000, 11500, 12000, 12500, 13000, 13500, 14000, 14500, 15000, 15500],
+                borderColor: 'rgba(139, 92, 246, 0.5)',
+                backgroundColor: 'transparent',
+                borderDash: [5, 5],
+                pointRadius: 0,
+                tension: 0.2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                    labels: { usePointStyle: true, padding: 20 }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: false,
+                    ticks: {
+                        callback: function(value) {
+                            return '$' + (value / 1000) + 'k';
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    // Genre Distribution
+    const genreCtx = document.getElementById('genreChart').getContext('2d');
+    new Chart(genreCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Hip-Hop', 'Electronic', 'Pop', 'Jazz', 'Rock'],
+            datasets: [{
+                data: [30, 25, 20, 15, 10],
+                backgroundColor: ['#3b82f6', '#06b6d4', '#8b5cf6', '#10b981', '#f59e0b'],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: { padding: 20, usePointStyle: true }
+                }
+            }
+        }
+    });
+
+    // Studio Usage Chart
+    const usageCtx = document.getElementById('usageChart').getContext('2d');
+    new Chart(usageCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            datasets: [{
+                data: [8, 12, 6, 15, 10, 14, 9],
+                backgroundColor: 'rgba(59, 130, 246, 0.8)',
+                borderRadius: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+                y: { beginAtZero: true, ticks: { stepSize: 5 } }
+            }
+        }
+    });
+
+    // Frequency Spectrum
+    const spectrumCtx = document.getElementById('spectrumChart').getContext('2d');
+    const frequencies = Array.from({length: 20}, () => Math.random() * 100);
+    
+    new Chart(spectrumCtx, {
+        type: 'bar',
+        data: {
+            labels: ['20', '40', '80', '160', '320', '640', '1.2k', '2.5k', '5k', '10k', '20k'],
+            datasets: [{
+                data: frequencies,
+                backgroundColor: frequencies.map(val => 
+                    val > 70 ? '#ef4444' : val > 40 ? '#f59e0b' : '#10b981'
+                ),
+                borderRadius: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+                x: { title: { display: true, text: 'Frequency (Hz)' } },
+                y: { title: { display: true, text: 'Amplitude (dB)' }, beginAtZero: true }
+            }
+        }
+    });
+});
+</script>
+</body>
+</html>

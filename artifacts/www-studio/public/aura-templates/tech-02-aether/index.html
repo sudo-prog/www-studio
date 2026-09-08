@@ -1,0 +1,391 @@
+<html lang="en"><head>
+<script>
+try{if(window.parent&&window.parent!==window){window.parent.promotekit_referral="1fd2949a-d22c-431b-92bf-02d4ad04ee24";window.parent.document.cookie="promotekit_referral=1fd2949a-d22c-431b-92bf-02d4ad04ee24;path=/;domain=.aura.build;max-age=31536000"}}catch(e){}
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AETHER | Kinetic Library</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+/* --- CORE SETTINGS --- */
+:root { --bg: #050505; --text: #ffffff; }
+body { background-color: var(--bg); color: var(--text); font-family: 'Space Grotesk', sans-serif; margin: 0; overflow-x: hidden; width: 100%; cursor: crosshair; }
+/* --- UTILS --- */
+.section-label { position: absolute; top: 2rem; left: 2rem; z-index: 20; font-family: 'Space Grotesk', monospace; font-size: 10px; letter-spacing: 0.1em; color: #666; border: 1px solid #222; padding: 4px 8px; border-radius: 4px; text-transform: uppercase; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); }
+.code-modal { display: none; position: fixed; bottom: 2rem; right: 2rem; width: 400px; background: #111; border: 1px solid #333; border-radius: 8px; padding: 1.5rem; z-index: 100; box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
+.code-modal.active { display: block; }
+pre { white-space: pre-wrap; word-wrap: break-word; font-size: 0.7rem; color: #888; font-family: monospace; }
+.nav-link { font-size: 10px; font-weight: bold; color: #666; letter-spacing: 0.1em; transition: color 0.3s; text-decoration: none; }
+.nav-link:hover { color: #fff; }
+/* --- 1. VELOCITY SCROLL --- */
+.skew-wrapper { will-change: transform; transition: transform 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+/* --- 2. FRACTURED PARALLAX --- */
+.fracture-section { position: relative; height: 100vh; width: 100%; background: #000; overflow: hidden; display: flex; align-items: center; justify-content: center; border-top: 1px solid #222; }
+.fracture-container { display: flex; width: 80%; height: 70vh; gap: 4px; }
+.f-slice { flex: 1; position: relative; overflow: hidden; height: 100%; background: #111; transition: transform 0.1s linear; }
+.f-bg { position: absolute; top: -20%; left: 0; width: 100%; height: 140%; background-image: url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2600'); background-size: cover; background-position: center; filter: grayscale(100%); transition: filter 0.5s; }
+.fracture-container:hover .f-bg { filter: grayscale(0%); }
+.f-slice:nth-child(1) .f-bg { background-position: 5% 50%; } .f-slice:nth-child(2) .f-bg { background-position: 27% 50%; } .f-slice:nth-child(3) .f-bg { background-position: 50% 50%; } .f-slice:nth-child(4) .f-bg { background-position: 73% 50%; } .f-slice:nth-child(5) .f-bg { background-position: 95% 50%; }
+/* --- 3. LIQUID DISTORTION --- */
+.liquid-section { position: relative; height: 100vh; background: #050505; display: flex; align-items: center; justify-content: center; border-top: 1px solid #222; overflow: hidden; }
+.liquid-container { position: relative; width: 500px; height: 700px; overflow: hidden; border: 1px solid #333; }
+.liquid-img { width: 100%; height: 100%; object-fit: cover; filter: url('#liquid-filter'); transform: scale(1.1); transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
+.liquid-container:hover .liquid-img { transform: scale(1.05); }
+.liquid-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; mix-blend-mode: overlay; }
+/* --- 4. HOLOGRAPHIC SPOTLIGHT (TEXTURED) --- */
+.spotlight-section { position: relative; padding: 120px 0; background: #050505; border-top: 1px solid #222; }
+.spotlight-card {
+background-color: rgba(255, 255, 255, 0.02);
+border: 1px solid rgba(255, 255, 255, 0.05);
+border-radius: 16px;
+position: relative; overflow: hidden;
+--mouse-x: -100px; --mouse-y: -100px;
+/* RESTORED TEXTURE */
+background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+background-size: 20px 20px;
+background-position: center center;
+}
+.spotlight-card::before { content: ""; position: absolute; inset: 0; background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40%); opacity: 0; transition: opacity 0.5s; z-index: 1; pointer-events: none; }
+.spotlight-card::after { content: ""; position: absolute; inset: 0; background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.4), transparent 40%); opacity: 0; transition: opacity 0.5s; z-index: 2; pointer-events: none; mask-image: linear-gradient(#fff 0 0); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; padding: 1px; }
+.spotlight-card:hover::before, .spotlight-card:hover::after { opacity: 1; }
+.card-content { position: relative; z-index: 10; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; }
+/* --- 5. DIGITAL PIXEL WAVE --- */
+.pixel-section { position: relative; height: 100vh; width: 100%; background: #050505; display: flex; align-items: center; justify-content: center; border-top: 1px solid #222; overflow: hidden; }
+.pixel-grid { display: grid; grid-template-columns: repeat(20, 1fr); gap: 1px; width: 90%; max-width: 1000px; aspect-ratio: 16/9; }
+.pixel { background: rgba(255,255,255,0.03); transition: background 0.2s ease, transform 0.2s ease; border-radius: 2px; }
+.pixel.active { background: #fff; transform: scale(0.5); box-shadow: 0 0 10px rgba(255,255,255,0.8); z-index: 10; }
+/* --- 6. VOXEL ELEVATION --- */
+.voxel-section { position: relative; height: 100vh; width: 100%; background: #050505; display: flex; align-items: center; justify-content: center; border-top: 1px solid #222; overflow: hidden; perspective: 1000px; }
+.voxel-stage { transform-style: preserve-3d; transform: rotateX(60deg) rotateZ(45deg); width: 600px; height: 600px; display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; }
+.voxel { width: 100%; height: 100%; background: #111; border: 1px solid #222; transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease; position: relative; }
+.voxel::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 100%; height: 10px; background: inherit; filter: brightness(0.5); transform: skewX(45deg); transform-origin: bottom; opacity: 0; transition: opacity 0.2s; }
+.voxel.lift { transform: translateZ(60px); background: linear-gradient(135deg, #06b6d4, #3b82f6); box-shadow: 0 0 30px rgba(6, 182, 212, 0.4); z-index: 50; border-color: transparent; }
+.voxel.lift::after { opacity: 1; }
+/* --- 7. FOCUS LENS (FIXED TEXT CONTRAST) --- */
+.lens-section { position: relative; height: 100vh; background: #000; overflow: hidden; border-top: 1px solid #222; --lens-x: 50%; --lens-y: 50%; }
+/* Layer 1: The "Blur" State (Background) */
+.lens-blur-layer {
+position: absolute; inset: 0;
+background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2672');
+background-size: cover; background-position: center;
+filter: grayscale(100%) blur(8px) brightness(0.4);
+}
+/* Layer 2: The "Clear" State (Foreground - Masked) */
+.lens-focus-layer {
+position: absolute; inset: 0;
+background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2672');
+background-size: cover; background-position: center;
+/* The mask creates the hole for both image AND text */
+mask-image: radial-gradient(250px circle at var(--lens-x) var(--lens-y), black 0%, transparent 100%);
+-webkit-mask-image: radial-gradient(250px circle at var(--lens-x) var(--lens-y), black 0%, transparent 100%);
+}
+/* Text Layout (Duplicated in both layers) */
+.lens-ui {
+position: absolute; inset: 0;
+display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 4rem; padding: 4rem;
+align-content: center; pointer-events: none;
+}
+/* Dim Text (Blur Layer) */
+.dim-text h2 { font-size: 8vw; font-weight: 900; color: #333; }
+.dim-text .data { color: #444; font-family: monospace; border-bottom: 1px solid #222; padding: 1rem 0; display: flex; justify-content: space-between; }
+/* Bright Text (Focus Layer) */
+.bright-text h2 { font-size: 8vw; font-weight: 900; color: #fff; text-shadow: 0 0 30px rgba(255,255,255,0.5); }
+.bright-text .data { color: #06b6d4; font-family: monospace; border-bottom: 1px solid rgba(255,255,255,0.2); padding: 1rem 0; display: flex; justify-content: space-between; font-weight: bold; }
+.bright-text .data span { color: #fff; }
+/* HUD Ring */
+.lens-hud {
+position: absolute; top: calc(var(--lens-y) - 125px); left: calc(var(--lens-x) - 125px);
+width: 250px; height: 250px; border: 1px solid rgba(255,255,255,0.5); border-radius: 50%;
+z-index: 50; pointer-events: none; animation: spin 10s linear infinite;
+}
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+/* Main Wrapper */
+.main-content { position: relative; z-index: 10; background: var(--bg); margin-bottom: 50vh; box-shadow: 0 50px 100px #000; }
+.footer-fixed { position: fixed; bottom: 0; left: 0; width: 100%; height: 50vh; z-index: 1; display: flex; align-items: center; justify-content: center; }
+</style></head>
+<body class="antialiased">
+
+    <!-- SVG FILTER -->
+    <svg class="absolute w-0 h-0 overflow-hidden" aria-hidden="true">
+        <defs>
+            <filter id="liquid-filter">
+                <feTurbulence id="turb" type="fractalNoise" baseFrequency="0.0" numOctaves="2" result="noise"></feTurbulence>
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="60" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+            </filter>
+        </defs>
+    </svg>
+
+    <nav class="fixed top-0 w-full z-50 px-8 py-6 flex justify-between items-center bg-black/50 backdrop-blur-md border-b border-white/5">
+        <div class="font-bold text-xl tracking-tighter text-white">AETHER</div>
+        <div class="hidden md:flex gap-6 uppercase text-xs font-bold text-neutral-500">
+            <a href="#velocity" class="hover:text-white transition-colors">01. Velocity</a>
+            <a href="#fracture" class="hover:text-white transition-colors">02. Fracture</a>
+            <a href="#liquid" class="hover:text-white transition-colors">03. Liquid</a>
+            <a href="#spotlight" class="hover:text-white transition-colors">04. Spotlight</a>
+            <a href="#pixel" class="hover:text-white transition-colors">05. Pixel</a>
+            <a href="#voxel" class="hover:text-white transition-colors">06. Voxel</a>
+            <a href="#lens" class="hover:text-white transition-colors text-white">07. Lens</a>
+        </div>
+        <button class="text-xs font-bold border border-white/20 px-4 py-2 rounded hover:bg-white hover:text-black transition-colors">MENU</button>
+    </nav>
+
+    <main class="flex flex-col w-full relative z-10 bg-[#050505] mb-[50vh] shadow-2xl shadow-black">
+
+        <!-- SECTION 1: VELOCITY TEXT -->
+        <section id="velocity" class="h-screen flex flex-col justify-center items-center relative overflow-hidden">
+            <div class="absolute top-32 text-center"><span class="text-xs font-mono text-neutral-500 uppercase tracking-widest">[ SCROLL TO DEFORM ]</span></div>
+            <div class="text-center space-y-4">
+                <h1 class="velocity-text text-[12vw] font-black leading-[0.8] tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-neutral-600 will-change-transform">KINETIC</h1>
+                <h1 class="velocity-text text-[12vw] font-black leading-[0.8] tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-neutral-600 to-neutral-900 will-change-transform">ENGINE</h1>
+            </div>
+        </section>
+
+        <!-- SECTION 2: FRACTURED GLASS -->
+        <section id="fracture" class="fracture-section">
+            <div class="section-label">[ 02. MOUSE FRACTURE ]</div>
+            <div class="absolute top-12 right-12 z-10"><button onclick="showCode('fracture')" class="text-xs font-bold bg-white text-black px-3 py-1 rounded hover:scale-105 transition-transform">CODE</button></div>
+            <div class="fracture-container" id="fracture-container">
+                <div class="f-slice" data-dir="1.5"><div class="f-bg"></div></div><div class="f-slice" data-dir="-1.2"><div class="f-bg"></div></div><div class="f-slice" data-dir="2"><div class="f-bg"></div></div><div class="f-slice" data-dir="-1.5"><div class="f-bg"></div></div><div class="f-slice" data-dir="1"><div class="f-bg"></div></div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: LIQUID DISTORTION -->
+        <section id="liquid" class="liquid-section">
+            <div class="section-label">[ 03. SVG TURBULENCE ]</div>
+            <div class="absolute top-12 right-12 z-10"><button onclick="showCode('liquid')" class="text-xs font-bold bg-white text-black px-3 py-1 rounded hover:scale-105 transition-transform">CODE</button></div>
+            <div class="flex flex-col md:flex-row gap-20 items-center justify-center w-full px-6">
+                <div class="text-right max-w-sm order-2 md:order-1">
+                    <h2 class="text-6xl font-bold mb-6 tracking-tighter">LIQUID<br>REALITY</h2>
+                    <p class="text-neutral-400 text-sm leading-relaxed">Hover the image. A dynamically generated noise map displaces the pixels in real-time.</p>
+                </div>
+                <div class="liquid-container order-1 md:order-2" id="liquid-trigger">
+                    <img src="https://images.unsplash.com/photo-1574169208507-84376144848b?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" class="liquid-img" alt="Liquid">
+                    <div class="liquid-overlay"><h3 class="text-9xl font-black text-white opacity-20 tracking-tighter">FLUX</h3></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: HOLOGRAPHIC SPOTLIGHT (TEXTURE RESTORED) -->
+        <section id="spotlight" class="spotlight-section">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex justify-between items-end mb-16">
+                    <div><span class="text-xs font-mono text-neutral-500 uppercase tracking-widest">[ 04. INTELLIGENT LIGHTING ]</span><h2 class="text-5xl font-bold mt-4 tracking-tighter">GRID<br>SYSTEM</h2></div>
+                    <button onclick="showCode('spotlight')" class="text-xs font-bold bg-white text-black px-3 py-1 rounded hover:scale-105 transition-transform">CODE</button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="spotlight-card h-[400px] group cursor-default"><div class="card-content"><i data-lucide="scan-line" class="text-white w-5 h-5 mb-6"></i><h3 class="text-2xl font-bold mb-2">Raycasting</h3><p class="text-neutral-400 text-sm leading-relaxed">Light follows cursor coordinates.</p></div></div>
+                    <div class="spotlight-card h-[400px] group cursor-default"><div class="card-content"><i data-lucide="layers" class="text-white w-5 h-5 mb-6"></i><h3 class="text-2xl font-bold mb-2">Depth Map</h3><p class="text-neutral-400 text-sm leading-relaxed">Gradient masking for borders.</p></div></div>
+                    <div class="spotlight-card h-[400px] group cursor-default"><div class="card-content"><i data-lucide="zap" class="text-white w-5 h-5 mb-6"></i><h3 class="text-2xl font-bold mb-2">Zero Latency</h3><p class="text-neutral-400 text-sm leading-relaxed">GPU accelerated composition.</p></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: DIGITAL PIXEL WAVE -->
+        <section id="pixel" class="pixel-section">
+            <div class="section-label">[ 05. DIGITAL FIELD ]</div>
+            <div class="absolute top-12 right-12 z-10"><button onclick="showCode('pixel')" class="text-xs font-bold bg-white text-black px-3 py-1 rounded hover:scale-105 transition-transform">CODE</button></div>
+            <div class="pixel-grid" id="pixel-grid"></div>
+            <div class="absolute bottom-12 w-full text-center pointer-events-none"><p class="text-neutral-500 text-sm">Move cursor to disturb the digital field</p></div>
+        </section>
+
+        <!-- SECTION 6: VOXEL ELEVATION -->
+        <section id="voxel" class="voxel-section">
+            <div class="section-label">[ 06. 3D VOXEL TERRAIN ]</div>
+            <div class="absolute top-12 right-12 z-10"><button onclick="showCode('voxel')" class="text-xs font-bold bg-white text-black px-3 py-1 rounded hover:scale-105 transition-transform">CODE</button></div>
+            <div class="voxel-stage" id="voxel-grid"></div>
+            <div class="absolute bottom-12 w-full text-center pointer-events-none"><p class="text-neutral-500 text-sm">Hover to elevate data landscape</p></div>
+        </section>
+
+        <!-- SECTION 7: FOCUS LENS (DUAL LAYER REVEAL) -->
+        <section id="lens" class="lens-section">
+            <div class="section-label text-white border-white">[ 07. FOCUS LENS ]</div>
+            <div class="absolute top-12 right-12 z-20"><button onclick="showCode('lens')" class="text-xs font-bold bg-white text-black px-3 py-1 rounded hover:scale-105 transition-transform">CODE</button></div>
+            
+            <!-- LAYER 1: BLURRED & DIMMED (Passive State) -->
+            <div class="lens-blur-layer"></div>
+            <div class="lens-ui dim-text">
+                <div class="flex flex-col justify-between h-full py-20 border-r border-white/5 pr-10">
+                    <div class="space-y-4">
+                        <div class="data"><span>SYS_ID</span><span>--</span></div>
+                        <div class="data"><span>STATUS</span><span>OFFLINE</span></div>
+                    </div>
+                </div>
+                <div class="flex justify-center"><h2>DATA</h2></div>
+                <div class="flex flex-col justify-end h-full py-20 border-l border-white/5 pl-10 text-right"><div class="data"><span>ENCRYPTED</span></div></div>
+            </div>
+
+            <!-- LAYER 2: FOCUSED & COLORED (Revealed by Mask) -->
+            <div class="lens-focus-layer"></div>
+            <div class="lens-ui bright-text" style="mask-image: radial-gradient(250px circle at var(--lens-x) var(--lens-y), black 0%, transparent 100%); -webkit-mask-image: radial-gradient(250px circle at var(--lens-x) var(--lens-y), black 0%, transparent 100%);">
+                <div class="flex flex-col justify-between h-full py-20 border-r border-white/20 pr-10">
+                    <div class="space-y-4">
+                        <div class="data"><span>SYS_ID</span><span>AE-9000</span></div>
+                        <div class="data"><span>STATUS</span><span class="text-emerald-400">ONLINE</span></div>
+                    </div>
+                </div>
+                <div class="flex justify-center"><h2>DATA</h2></div>
+                <div class="flex flex-col justify-end h-full py-20 border-l border-white/20 pl-10 text-right">
+                     <div class="data"><span>PACKET_01</span><span>0x44...F2</span></div>
+                </div>
+            </div>
+
+            <!-- HUD Ring -->
+            <div class="lens-hud" id="lens-hud"></div>
+        </section>
+
+    </main>
+
+    <footer class="fixed bottom-0 left-0 w-full h-[50vh] flex flex-col justify-center items-center bg-black text-white z-0">
+        <h2 class="text-[15vw] font-display font-bold leading-none tracking-tighter text-neutral-800">AETHER</h2>
+        <div class="mt-8 text-neutral-600 text-xs">© 2024 GEMINI MOTION.</div>
+    </footer>
+
+    <!-- CODE MODAL -->
+    <div id="code-modal" class="code-modal">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-white font-bold text-sm">Standalone Code</h3>
+            <button onclick="document.getElementById('code-modal').classList.remove('active')" class="text-neutral-500 hover:text-white">×</button>
+        </div>
+        <button onclick="copyToClipboard()" class="w-full bg-white text-black py-2 rounded text-xs font-bold mb-4 hover:bg-neutral-200">COPY TO CLIPBOARD</button>
+        <pre id="code-content"></pre>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if(typeof lucide !== 'undefined') lucide.createIcons();
+
+            /* 1. VELOCITY */
+            const velocityTexts = document.querySelectorAll('.velocity-text');
+            let currentScroll = 0, targetScroll = 0;
+            function updateVelocity() {
+                targetScroll = window.scrollY;
+                currentScroll += (targetScroll - currentScroll) * 0.1;
+                const skew = Math.min(Math.max((targetScroll - currentScroll) * 0.15, -10), 10);
+                velocityTexts.forEach((text, i) => text.style.transform = `skewX(${skew * (i % 2 === 0 ? 1 : -1)}deg)`);
+                requestAnimationFrame(updateVelocity);
+            }
+            updateVelocity();
+
+            /* 2. FRACTURE */
+            const fractureContainer = document.getElementById('fracture-container');
+            if(fractureContainer) {
+                const slices = fractureContainer.querySelectorAll('.f-slice');
+                fractureContainer.addEventListener('mousemove', (e) => {
+                    const rect = fractureContainer.getBoundingClientRect();
+                    const yVal = (e.clientY - rect.top - (rect.height / 2)) / (rect.height / 2);
+                    slices.forEach(slice => slice.style.transform = `translateY(${yVal * 40 * parseFloat(slice.getAttribute('data-dir'))}px)`);
+                });
+                fractureContainer.addEventListener('mouseleave', () => slices.forEach(s => s.style.transform = `translateY(0)`));
+            }
+
+            /* 3. LIQUID */
+            const liquidTrigger = document.getElementById('liquid-trigger');
+            const turb = document.getElementById('turb');
+            let val = 0.00, target = 0.00;
+            if (liquidTrigger && turb) {
+                liquidTrigger.onmouseenter = () => target = 0.03;
+                liquidTrigger.onmouseleave = () => target = 0.00;
+                function loopLiquid() {
+                    val += (target - val) * 0.05;
+                    turb.setAttribute('baseFrequency', `${val} ${val}`);
+                    requestAnimationFrame(loopLiquid);
+                }
+                loopLiquid();
+            }
+
+            /* 4. SPOTLIGHT */
+            document.querySelectorAll('.spotlight-card').forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                    card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+                });
+            });
+
+            /* 5. PIXEL WAVE */
+            const pixelGrid = document.getElementById('pixel-grid');
+            if(pixelGrid) {
+                for(let i=0; i<200; i++) {
+                    const d = document.createElement('div');
+                    d.className = 'pixel';
+                    pixelGrid.appendChild(d);
+                }
+                const pixels = document.querySelectorAll('.pixel');
+                pixelGrid.addEventListener('mousemove', (e) => {
+                    const rect = pixelGrid.getBoundingClientRect();
+                    const mx = e.clientX - rect.left;
+                    const my = e.clientY - rect.top;
+                    pixels.forEach(p => {
+                        const pr = p.getBoundingClientRect();
+                        const dist = Math.sqrt(Math.pow(mx - ((pr.left - rect.left) + pr.width/2), 2) + Math.pow(my - ((pr.top - rect.top) + pr.height/2), 2));
+                        if(dist < 100) {
+                            p.classList.add('active');
+                            clearTimeout(p.timer);
+                            p.timer = setTimeout(() => p.classList.remove('active'), 400);
+                        }
+                    });
+                });
+            }
+
+            /* 6. VOXEL ELEVATION */
+            const voxelSection = document.getElementById('voxel');
+            const voxelGrid = document.getElementById('voxel-grid');
+            if(voxelGrid && voxelSection) {
+                for(let i=0; i<100; i++) {
+                    const v = document.createElement('div');
+                    v.className = 'voxel';
+                    voxelGrid.appendChild(v);
+                }
+                const voxels = document.querySelectorAll('.voxel');
+                voxelSection.addEventListener('mousemove', (e) => {
+                    const rect = voxelGrid.getBoundingClientRect();
+                    const mx = e.clientX; const my = e.clientY;
+                    voxels.forEach(v => {
+                        const r = v.getBoundingClientRect();
+                        const d = Math.sqrt(Math.pow(mx - (r.left + r.width/2), 2) + Math.pow(my - (r.top + r.height/2), 2));
+                        if(d < 120) {
+                            v.classList.add('lift');
+                            clearTimeout(v.t);
+                            v.t = setTimeout(() => v.classList.remove('lift'), 300);
+                        }
+                    });
+                });
+            }
+
+            /* 7. FOCUS LENS */
+            const lensSection = document.getElementById('lens');
+            const lensHud = document.getElementById('lens-hud');
+            if(lensSection) {
+                lensSection.addEventListener('mousemove', (e) => {
+                    const rect = lensSection.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    lensSection.style.setProperty('--lens-x', x + 'px');
+                    lensSection.style.setProperty('--lens-y', y + 'px');
+                    if(lensHud) {
+                        lensHud.style.left = (x - 125) + 'px';
+                        lensHud.style.top = (y - 125) + 'px';
+                    }
+                });
+            }
+        });
+
+        /* CODE GEN */
+        function copyToClipboard() {
+            const code = document.getElementById('code-content').innerText;
+            navigator.clipboard.writeText(code).then(() => alert('Code copied!'));
+        }
+
+        function showCode(type) {
+            let code = "";
+            if (type === 'lens') code = `<!DOCTYPE html><html><head><style>body{margin:0;height:100vh;background:#000;overflow:hidden;position:relative}.layer{position:absolute;inset:0;background-size:cover;background-position:center}.blur{background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=2600');filter:grayscale(1) blur(8px) brightness(0.4)}.clear{background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=2600');mask-image:radial-gradient(250px circle at var(--x,50%) var(--y,50%),black 0%,transparent 100%);-webkit-mask-image:radial-gradient(250px circle at var(--x,50%) var(--y,50%),black 0%,transparent 100%)}.ui{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:5rem;font-weight:bold;pointer-events:none;mix-blend-mode:overlay}</style></head><body><div class="layer blur"></div><div class="layer clear"></div><div class="ui">FOCUS</div><script>document.body.onmousemove=e=>{document.body.style.setProperty('--x',e.clientX+'px');document.body.style.setProperty('--y',e.clientY+'px')}<\/script></body></html>`;
+            else if (type === 'voxel') code = `<!DOCTYPE html><html><head><style>body{background:#000;height:100vh;display:flex;align-items:center;justify-content:center;perspective:1000px;overflow:hidden}.stage{transform-style:preserve-3d;transform:rotateX(60deg) rotateZ(45deg);width:400px;height:400px;display:grid;grid-template-columns:repeat(10,1fr);gap:4px}.v{background:#111;border:1px solid #222;transition:0.2s;position:relative}.v::after{content:'';position:absolute;bottom:-10px;left:0;width:100%;height:10px;background:#000;transform:skewX(45deg);transform-origin:bottom;opacity:0;transition:0.2s}.v.lift{transform:translateZ(60px);background:linear-gradient(135deg,#06b6d4,#3b82f6);box-shadow:0 0 30px rgba(6,182,212,0.4);z-index:50}.v.lift::after{opacity:1}</style></head><body><div class="stage" id="stage"></div><script>const s=document.getElementById('stage');for(let i=0;i<100;i++){const d=document.createElement('div');d.className='v';s.appendChild(d)}const vs=document.querySelectorAll('.v');document.body.onmousemove=e=>{vs.forEach(v=>{const r=v.getBoundingClientRect();const d=Math.sqrt(Math.pow(e.clientX-(r.left+r.width/2),2)+Math.pow(e.clientY-(r.top+r.height/2),2));if(d<100){v.classList.add('lift');clearTimeout(v.t);v.t=setTimeout(()=>v.classList.remove('lift'),300)}})}<\/script></body></html>`;
+            
+            document.getElementById('code-content').textContent = code;
+            document.getElementById('code-modal').classList.add('active');
+        }
+    </script>
+
+</body></html>

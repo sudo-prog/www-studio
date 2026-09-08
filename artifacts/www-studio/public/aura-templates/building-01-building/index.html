@@ -1,0 +1,455 @@
+<html lang="en"><head>
+<script>
+try{if(window.parent&&window.parent!==window){window.parent.promotekit_referral="1fd2949a-d22c-431b-92bf-02d4ad04ee24";window.parent.document.cookie="promotekit_referral=1fd2949a-d22c-431b-92bf-02d4ad04ee24;path=/;domain=.aura.build;max-age=31536000"}}catch(e){}
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AETHEREAL | Future Living</title>
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- GSAP / Lenis -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+<style>
+/* --- CORE --- */
+:root {
+--c-bg: #E3E1DC; /* Stone/Concrete */
+--c-dark: #121212;
+--c-accent: #374336; /* Deep Moss */
+--font-display: 'Syncopate', sans-serif;
+--font-body: 'Manrope', sans-serif;
+}
+body {
+background-color: var(--c-bg);
+color: var(--c-dark);
+font-family: var(--font-body);
+margin: 0;
+overflow-x: hidden;
+cursor: auto;
+opacity: 0; /* JS fade in */
+}
+/* --- LAYOUT UTILS --- */
+.wrapper {
+position: relative;
+z-index: 10;
+background-color: var(--c-bg);
+/* The margin ensures we can scroll "past" the content to reveal the footer */
+margin-bottom: 100vh;
+box-shadow: 0 50px 100px rgba(0,0,0,0.5);
+}
+/* --- TEXT REVEAL UTILS --- */
+.word-wrap {
+display: inline-block;
+overflow: hidden;
+vertical-align: top;
+padding-bottom: 0.1em;
+}
+.word-inner {
+display: inline-block;
+transform: translateY(110%);
+}
+/* --- PRELOADER --- */
+.loader {
+position: fixed;
+inset: 0;
+background: #000;
+z-index: 10000;
+display: flex;
+justify-content: center;
+align-items: center;
+color: #fff;
+}
+.loader-text {
+font-family: var(--font-display);
+font-size: 5vw;
+font-weight: 700;
+}
+.loader-bar {
+position: absolute;
+bottom: 0;
+left: 0;
+height: 4px;
+background: #fff;
+width: 0%;
+}
+/* --- CARD STACK SECTION --- */
+.stack-section {
+padding: 10vh 0;
+background: var(--c-dark);
+color: #E3E1DC;
+position: relative;
+}
+.stack-container {
+width: 100%;
+max-width: 1400px;
+margin: 0 auto;
+position: relative;
+padding-bottom: 10vh;
+}
+.card-item {
+position: sticky;
+top: 10vh; /* Cards stick here */
+height: 80vh;
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-bottom: 5vh;
+}
+.card-inner {
+width: 90%;
+height: 100%;
+background: #1a1a1a;
+border: 1px solid rgba(255,255,255,0.1);
+position: relative;
+overflow: hidden;
+display: grid;
+grid-template-columns: 1fr 1.2fr;
+box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+}
+.card-content {
+padding: 4rem;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+background: #1a1a1a;
+z-index: 2;
+}
+.card-img-wrap {
+position: relative;
+width: 100%;
+height: 100%;
+overflow: hidden;
+}
+.card-img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: transform 1.5s ease;
+}
+.card-inner:hover .card-img {
+transform: scale(1.1);
+}
+/* Mobile adjustment */
+@media (max-width: 768px) {
+.card-inner { grid-template-columns: 1fr; }
+.card-item { top: 5vh; height: 85vh; }
+.card-img-wrap { height: 50%; order: -1; }
+.card-content { padding: 2rem; }
+}
+/* --- FOOTER REVEAL --- */
+.footer-sticky {
+position: fixed;
+bottom: 0;
+left: 0;
+width: 100%;
+height: 100vh;
+z-index: 1;
+background: #111;
+color: #fff;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+/* --- TYPOGRAPHY --- */
+.display { font-family: var(--font-display); }
+/* --- NOISE --- */
+.noise-overlay {
+position: fixed;
+inset: 0;
+pointer-events: none;
+z-index: 9000;
+opacity: 0.05;
+background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E");
+}
+</style></head>
+<body class="">
+
+    <!-- UTILS -->
+    <div class="noise-overlay"></div>
+
+    <!-- PRELOADER -->
+    <div class="loader">
+        <div class="loader-text">AETHEREAL</div>
+        <div class="loader-bar"></div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 w-full p-8 flex justify-between items-center z-50 mix-blend-difference text-white">
+        <div class="display font-bold text-xl tracking-tighter">AETHEREAL</div>
+        <div class="hidden md:flex gap-10 text-xs uppercase tracking-widest">
+            <a href="#" class="hover:text-gray-300 transition-colors">Work</a>
+            <a href="#" class="hover:text-gray-300 transition-colors">Studio</a>
+            <a href="#" class="hover:text-gray-300 transition-colors">Contact</a>
+        </div>
+        <div class="md:hidden">MENU</div>
+    </nav>
+
+    <!-- WRAPPER (Z-INDEX 10) -->
+    <div class="wrapper">
+        
+        <!-- HERO -->
+        <section class="h-screen relative flex items-center justify-center overflow-hidden">
+            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/482e7b6a-168c-4d0d-b35d-0e2ff4014577_3840w.webp" class="absolute inset-0 w-full h-full object-cover brightness-75 hero-img" alt="Hero">
+            <!-- Added mix-blend-difference to the parent container so ALL text inverts -->
+            <div class="relative z-10 text-center text-white mix-blend-difference">
+                <h1 class="display text-[12vw] leading-none hero-text overflow-hidden">
+                    <span class="block translate-y-full">CONCRETE</span>
+                </h1>
+                <h1 class="display text-[12vw] leading-none hero-text overflow-hidden">
+                    <span class="block translate-y-full">DREAMS</span>
+                </h1>
+                <!-- Subtitle now inverts correctly -->
+                <p class="mt-8 text-sm uppercase tracking-[0.5em] opacity-0 hero-fade mix-blend-difference">Future Architecture</p>
+            </div>
+        </section>
+
+        <!-- INTRO (Text Reveal) -->
+        <section class="py-32 px-6 md:px-20 grid md:grid-cols-2 gap-16 max-w-[1800px] mx-auto bg-[var(--c-bg)]">
+            <div>
+                <h2 class="display text-4xl md:text-5xl leading-tight split-animate">
+                    Structure as <br><span class="text-[var(--c-accent)]">sculpture.</span>
+                </h2>
+            </div>
+            <div class="text-xl font-light leading-relaxed text-gray-700">
+                <p class="mb-8 split-animate">We believe that architecture is frozen music. Our studio specializes in brutalist forms softened by biophilic integration. We create spaces that do not just shelter, but inspire.</p>
+                <div class="h-px w-full bg-black/10 my-8"></div>
+                <div class="flex gap-12 text-sm uppercase tracking-widest split-animate">
+                    <div>Est. 2024</div>
+                    <div>Tokyo / London</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CARD STACK SECTION (RECENT WORKS) -->
+        <section class="stack-section">
+            <div class="text-center mb-20 px-6">
+                <div class="text-xs uppercase tracking-widest mb-4 opacity-50">Selected Works</div>
+                <h2 class="display text-5xl md:text-7xl">RECENT PROJECTS</h2>
+            </div>
+
+            <div class="stack-container">
+                
+                <!-- Card 1 -->
+                <div class="card-item">
+                    <div class="card-inner">
+                        <div class="card-content">
+                            <div>
+                                <div class="text-5xl display mb-2 text-[var(--c-bg)] opacity-30">01</div>
+                                <h3 class="text-3xl font-bold">THE VOID HOUSE</h3>
+                                <p class="text-sm mt-4 opacity-70 uppercase tracking-widest">Kyoto, Japan</p>
+                            </div>
+                            <div class="text-gray-400 font-light">
+                                A minimal concrete residence focused on negative space and light manipulation. Designed for meditation and silence.
+                            </div>
+                            <button class="text-left uppercase tracking-widest text-xs border-b border-white/30 pb-2 w-max hover:text-white transition-colors">View Project</button>
+                        </div>
+                        <div class="card-img-wrap">
+                            <!-- New Working Image -->
+                            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/0dccab47-16b0-4716-9e1a-b97f124e3031_1600w.webp" class="card-img object-cover w-full h-auto" alt="Project 1">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card-item">
+                    <div class="card-inner">
+                        <div class="card-content">
+                            <div>
+                                <div class="text-5xl display mb-2 text-[var(--c-bg)] opacity-30">02</div>
+                                <h3 class="text-3xl font-bold">MOSS BUNKER</h3>
+                                <p class="text-sm mt-4 opacity-70 uppercase tracking-widest">Berlin, Germany</p>
+                            </div>
+                            <div class="text-gray-400 font-light">
+                                Adaptive reuse of a WWII bunker into a sustainable vertical farm and living space.
+                            </div>
+                            <button class="text-left uppercase tracking-widest text-xs border-b border-white/30 pb-2 w-max hover:text-white transition-colors">View Project</button>
+                        </div>
+                        <div class="card-img-wrap">
+                            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/952269bf-60f5-48dc-afce-13953bead1eb_1600w.webp" class="card-img object-cover w-full h-auto" alt="Project 2">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card-item">
+                    <div class="card-inner">
+                        <div class="card-content">
+                            <div>
+                                <div class="text-5xl display mb-2 text-[var(--c-bg)] opacity-30">03</div>
+                                <h3 class="text-3xl font-bold">SKY CLIFF</h3>
+                                <p class="text-sm mt-4 opacity-70 uppercase tracking-widest">Reykjavik, Iceland</p>
+                            </div>
+                            <div class="text-gray-400 font-light">
+                                A glass and steel structure cantilevered over the volcanic landscape, blending danger with luxury.
+                            </div>
+                            <button class="text-left uppercase tracking-widest text-xs border-b border-white/30 pb-2 w-max hover:text-white transition-colors">View Project</button>
+                        </div>
+                        <div class="card-img-wrap">
+                            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/aa5ed4de-1a7e-4bb7-b0ea-1a4c511663df_1600w.webp" class="card-img object-cover w-full h-auto" alt="Project 3">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- FINAL SECTION (Replaces "Scroll to Reveal") -->
+        <section class="py-40 bg-[#E3E1DC] text-center flex flex-col items-center justify-center relative z-10">
+            <h2 class="display text-3xl md:text-5xl mb-8">Designing for Eternity</h2>
+            <div class="max-w-xl text-gray-600 font-light mb-12 leading-relaxed">
+                Our philosophy is rooted in the belief that buildings should age, not deteriorate. We use materials that develop a patina, recording the passage of time.
+            </div>
+            <div class="h-16 w-px bg-black/20"></div>
+        </section>
+
+    </div> 
+    <!-- END WRAPPER -->
+
+    <!-- FOOTER (FIXED BEHIND) -->
+    <footer class="footer-sticky">
+        <div class="relative z-10 text-center">
+            <div class="text-xs uppercase tracking-[0.3em] mb-4 text-gray-500">Have a project?</div>
+            <a href="mailto:hello@aethereal.com" class="display text-[8vw] leading-none hover:text-gray-400 transition-colors">
+                LET'S TALK
+            </a>
+            <div class="flex justify-center gap-8 mt-12 text-sm uppercase tracking-widest text-gray-400">
+                <a href="#" class="hover:text-white">Instagram</a>
+                <a href="#" class="hover:text-white">LinkedIn</a>
+                <a href="#" class="hover:text-white">Behance</a>
+            </div>
+            <div class="mt-20 text-[10px] text-gray-700">
+                © 2025 AETHEREAL ARCHITECTURE
+            </div>
+        </div>
+        <!-- Footer Background Image -->
+        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/1c6b6980-54e4-4d8c-9ff6-e09b844d7b01_3840w.webp" class="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none">
+    </footer>
+
+    <script>
+        // --- SETUP ---
+        gsap.registerPlugin(ScrollTrigger);
+
+        // --- LENIS SCROLL ---
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            smooth: true,
+        });
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // --- TEXT SPLITTER UTILITY ---
+        function splitTextToWords(element) {
+            const text = element.innerText;
+            const words = text.split(' ');
+            element.innerHTML = '';
+            words.forEach(word => {
+                const wordWrap = document.createElement('span');
+                wordWrap.classList.add('word-wrap');
+                wordWrap.innerHTML = `<span class="word-inner">${word}&nbsp;</span>`;
+                element.appendChild(wordWrap);
+            });
+        }
+
+        // Apply split to all elements with class .split-animate
+        document.querySelectorAll('.split-animate').forEach(el => {
+            splitTextToWords(el);
+        });
+
+        // --- LOADER ---
+        const loadTl = gsap.timeline({
+            onComplete: () => {
+                document.body.style.opacity = 1;
+                initSite();
+            }
+        });
+
+        loadTl.to('.loader-bar', { width: '100%', duration: 1.5, ease: 'power2.inOut' })
+              .to('.loader-text', { y: -50, opacity: 0, duration: 0.5 })
+              .to('.loader', { yPercent: -100, duration: 1, ease: 'power4.inOut' });
+
+        function initSite() {
+            // Hero Animations
+            gsap.to('.hero-text span', { 
+                y: 0, 
+                stagger: 0.1, 
+                duration: 1.5, 
+                ease: 'power4.out' 
+            });
+            gsap.to('.hero-fade', { opacity: 1, duration: 1, delay: 0.5 });
+            
+            // Hero Parallax
+            gsap.to('.hero-img', {
+                yPercent: 30,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '.hero-img',
+                    start: 'top top',
+                    end: 'bottom top',
+                    scrub: true
+                }
+            });
+
+            // --- TEXT REVEAL ON SCROLL ---
+            const splitElements = document.querySelectorAll('.split-animate');
+            splitElements.forEach(el => {
+                const words = el.querySelectorAll('.word-inner');
+                gsap.to(words, {
+                    y: "0%",
+                    duration: 1,
+                    ease: "power3.out",
+                    stagger: 0.02,
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 85%", 
+                        toggleActions: "play none none reverse"
+                    }
+                });
+            });
+
+            // --- CARD STACK ANIMATION ---
+            const cards = gsap.utils.toArray('.card-item');
+            
+            cards.forEach((card, i) => {
+                const nextCard = cards[i+1];
+                if (nextCard) {
+                    gsap.to(card.querySelector('.card-inner'), {
+                        scale: 0.9,
+                        opacity: 0.4, 
+                        ease: "none",
+                        scrollTrigger: {
+                            trigger: nextCard,
+                            start: "top bottom", 
+                            end: "top 10vh",    
+                            scrub: true
+                        }
+                    });
+                }
+            });
+
+            // Footer Parallax Effect
+            gsap.from('.footer-sticky > div', {
+                y: 100,
+                opacity: 0.5,
+                scale: 0.9,
+                scrollTrigger: {
+                    trigger: '.footer-sticky',
+                    start: 'top bottom',
+                    end: 'bottom bottom',
+                    scrub: true
+                }
+            });
+        }
+    </script>
+
+</body></html>

@@ -1,0 +1,2332 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script>
+try{if(window.parent&&window.parent!==window){window.parent.promotekit_referral="1fd2949a-d22c-431b-92bf-02d4ad04ee24";window.parent.document.cookie="promotekit_referral=1fd2949a-d22c-431b-92bf-02d4ad04ee24;path=/;domain=.aura.build;max-age=31536000"}}catch(e){}
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aura | Spatial Intelligence</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Base Configuration & Keyframes */
+body {
+font-family: 'Inter', sans-serif;
+background-color: #000000;
+color: #ededed;
+}
+.font-mono {
+font-family: 'JetBrains Mono', monospace;
+}
+.bg-gradient-mesh {
+position: fixed;
+top: 0; left: 0; width: 100vw; height: 100vh;
+z-index: -1;
+background:
+radial-gradient(circle at 15% 0%, rgba(255, 255, 255, 0.04), transparent 40%),
+radial-gradient(circle at 85% 100%, rgba(255, 255, 255, 0.03), transparent 40%);
+filter: blur(80px);
+pointer-events: none;
+}
+/* Subtle animated background grid */
+.bg-grid {
+background-size: 40px 40px;
+background-image:
+linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+-webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+animation: gridMove 20s linear infinite;
+}
+.bg-grid-small {
+background-size: 10px 10px;
+background-image:
+linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+@keyframes gridMove {
+0% { transform: translateY(0); }
+100% { transform: translateY(40px); }
+}
+@keyframes float {
+0%, 100% { transform: translateY(0px); }
+50% { transform: translateY(-8px); }
+}
+@keyframes marquee {
+0% { transform: translateX(0); }
+100% { transform: translateX(-50%); }
+}
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.fade-up {
+opacity: 0;
+transform: translateY(30px);
+transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fade-up.visible {
+opacity: 1;
+transform: translateY(0);
+}
+.scale-in {
+opacity: 0;
+transform: scale(0.95);
+transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.scale-in.visible {
+opacity: 1;
+transform: scale(1);
+}
+/* Custom UI Elements Form Adjustments */
+input[type="range"] {
+-webkit-appearance: none;
+background: transparent;
+}
+input[type="range"]::-webkit-slider-thumb {
+-webkit-appearance: none;
+height: 12px;
+width: 12px;
+border-radius: 50%;
+background: #ffffff;
+cursor: pointer;
+margin-top: -4px;
+box-shadow: 0 0 10px rgba(255,255,255,0.4);
+}
+input[type="range"]::-webkit-slider-runnable-track {
+width: 100%;
+height: 4px;
+cursor: pointer;
+background: rgba(255, 255, 255, 0.1);
+border-radius: 2px;
+}
+/* Custom Utilities */
+.glass-panel {
+background: rgba(255, 255, 255, 0.02);
+backdrop-filter: blur(16px);
+-webkit-backdrop-filter: blur(16px);
+border: 1px solid rgba(255, 255, 255, 0.08);
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+/* Connecting Lines Gradient */
+.line-gradient {
+background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+}
+/* Text Shimmer Effect */
+.text-shimmer {
+background: linear-gradient(to right, #64748b 20%, #ffffff 40%, #ffffff 60%, #64748b 80%);
+background-size: 200% auto;
+color: transparent;
+-webkit-background-clip: text;
+background-clip: text;
+animation: shimmer 4s linear infinite;
+}
+@keyframes shimmer {
+to { background-position: 200% center; }
+}
+/* Continuous Bar Animations */
+.anim-bar-1 { animation: barPulse1 2s ease-in-out infinite alternate; }
+.anim-bar-2 { animation: barPulse2 2.5s ease-in-out infinite alternate; }
+.anim-bar-3 { animation: barPulse3 1.8s ease-in-out infinite alternate; }
+.anim-bar-4 { animation: barPulse4 2.2s ease-in-out infinite alternate; }
+.anim-bar-5 { animation: barPulse5 2.7s ease-in-out infinite alternate; }
+@keyframes barPulse1 { 0% { height: 30%; } 100% { height: 70%; } }
+@keyframes barPulse2 { 0% { height: 60%; } 100% { height: 95%; } }
+@keyframes barPulse3 { 0% { height: 40%; } 100% { height: 80%; } }
+@keyframes barPulse4 { 0% { height: 75%; } 100% { height: 45%; } }
+@keyframes barPulse5 { 0% { height: 50%; } 100% { height: 85%; } }
+/* Scanline Effect */
+.scanline {
+position: absolute;
+inset: 0;
+background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.05), transparent);
+height: 10%;
+width: 100%;
+animation: scan 4s linear infinite;
+pointer-events: none;
+}
+@keyframes scan {
+0% { top: -10%; opacity: 0; }
+10% { opacity: 1; }
+90% { opacity: 1; }
+100% { top: 110%; opacity: 0; }
+}
+/* Dot Grid Pulse */
+.dot-grid {
+background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px);
+background-size: 12px 12px;
+}
+/* Animated SVG lines */
+.path-line {
+stroke-dasharray: 100;
+animation: dashDraw 20s linear infinite;
+}
+@keyframes dashDraw {
+to { stroke-dashoffset: -1000; }
+}
+/* Floating Layers */
+.layer-float-1 { animation: floatLayer 4s ease-in-out infinite; }
+.layer-float-2 { animation: floatLayer 4s ease-in-out infinite 0.5s; }
+.layer-float-3 { animation: floatLayer 4s ease-in-out infinite 1s; }
+@keyframes floatLayer {
+0%, 100% { transform: translateY(0) rotateX(45deg) rotateZ(-45deg); }
+50% { transform: translateY(-10px) rotateX(45deg) rotateZ(-45deg); }
+}
+/* Spinner */
+.spin-slow { animation: spin 12s linear infinite; }
+.spin-slow-reverse { animation: spin 16s linear infinite reverse; }
+</style>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+fontFamily: {
+sans: ['Inter', 'system-ui', 'sans-serif'],
+},
+colors: {
+brand: {
+bg: '#000000',
+surface: 'rgba(255, 255, 255, 0.03)',
+border: 'rgba(255, 255, 255, 0.08)',
+}
+},
+animation: {
+'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+'spin-slow': 'spin 8s linear infinite',
+'data-stream': 'dataStream 1s linear infinite',
+},
+keyframes: {
+dataStream: {
+'0%': { transform: 'translateY(-100%)' },
+'100%': { transform: 'translateY(100%)' },
+}
+}
+}
+}
+}
+</script>
+<style>
+/* Schema Animations */
+.schema-layer {
+position: absolute;
+inset: 0;
+pointer-events: none;
+z-index: 0;
+}
+.schema-fade {
+position: absolute;
+inset: 0;
+background: radial-gradient(circle at center, transparent 30%, #050505 70%);
+z-index: 10;
+}
+.schema-scan {
+position: absolute;
+inset: 0;
+background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.05), transparent);
+height: 20%;
+animation: scanDown 6s linear infinite;
+z-index: 5;
+}
+@keyframes scanDown {
+0% { top: -20%; opacity: 0; }
+10% { opacity: 1; }
+90% { opacity: 1; }
+100% { top: 100%; opacity: 0; }
+}
+.schema-node {
+position: absolute;
+width: 6px;
+height: 6px;
+background: #fff;
+border-radius: 50%;
+box-shadow: 0 0 10px #fff;
+transform: translate(-50%, -50%);
+animation: nodePulse 2s infinite alternate;
+}
+@keyframes nodePulse {
+0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.5; }
+100% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+}
+.schema-line {
+position: absolute;
+height: 1px;
+background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+transform-origin: left;
+animation: lineDraw 3s ease-in-out infinite alternate;
+}
+.schema-vert {
+position: absolute;
+width: 1px;
+background: linear-gradient(180deg, transparent, rgba(255,255,255,0.3), transparent);
+transform-origin: top;
+animation: vertDraw 3s ease-in-out infinite alternate;
+}
+@keyframes lineDraw {
+0% { transform: scaleX(0); opacity: 0; }
+100% { transform: scaleX(1); opacity: 1; }
+}
+@keyframes vertDraw {
+0% { transform: scaleY(0); opacity: 0; }
+100% { transform: scaleY(1); opacity: 1; }
+}
+.mesh-ring {
+position: absolute;
+border: 1px solid rgba(255, 255, 255, 0.1);
+border-radius: 50%;
+transform: translate(-50%, -50%);
+animation: ringSpin 20s linear infinite;
+}
+.mesh-ring.r2 { border-style: dashed; animation-direction: reverse; animation-duration: 25s; }
+.mesh-ring.r3 { border-color: rgba(255, 255, 255, 0.2); animation-duration: 15s; }
+@keyframes ringSpin {
+0% { transform: translate(-50%, -50%) rotate(0deg); }
+100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+.mesh-link {
+position: absolute;
+height: 1px;
+background: rgba(255,255,255,0.15);
+transform-origin: left center;
+animation: linkPulse 2s infinite alternate;
+}
+@keyframes linkPulse {
+0% { opacity: 0.2; }
+100% { opacity: 1; box-shadow: 0 0 8px rgba(255,255,255,0.5); }
+}
+</style><!-- aura-ga4-start -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2M6V79H761"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-2M6V79H761');
+</script>
+<!-- aura-ga4-end -->
+</head>
+  <body class="text-neutral-200 antialiased overflow-x-hidden selection:bg-white/20 selection:text-white">
+    <!-- Background (component) -->
+    <div class="fixed top-0 w-full h-screen -z-10" style="mask-image: linear-gradient(to bottom, transparent, black 10%, black 80%, transparent); -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 80%, transparent)">
+      <div class="absolute inset-0 bg-grid opacity-[0.15]"></div>
+    </div>
+
+    <div class="bg-gradient-mesh opacity-80"></div>
+    <div class="fixed inset-0 z-0 pointer-events-none flex justify-center px-6 md:px-12 select-none">
+      <div class="w-full max-w-7xl h-full border-x border-white/[0.04] grid grid-cols-4 relative">
+        <div class="border-r border-white/[0.04] h-full hidden md:block relative">
+          <div class="absolute top-0 right-0 w-[1px] h-32 bg-gradient-to-b from-transparent via-white/20 to-transparent animate-[dataStream_3s_linear_infinite]"></div>
+        </div>
+        <div class="border-r border-white/[0.04] h-full hidden md:block relative">
+          <div class="absolute top-[20%] right-0 w-[1px] h-32 bg-gradient-to-b from-transparent via-white/20 to-transparent animate-[dataStream_4s_linear_infinite_1s]"></div>
+        </div>
+        <div class="border-r border-white/[0.04] h-full hidden md:block relative">
+          <div class="absolute top-[60%] right-0 w-[1px] h-32 bg-gradient-to-b from-transparent via-white/20 to-transparent animate-[dataStream_2.5s_linear_infinite_0.5s]"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full flex justify-between items-center px-6 md:px-12 h-24 z-50 border-b border-white/[0.05] bg-black/50 backdrop-blur-xl transition-all duration-300">
+      <div class="flex gap-3 bg-center text-white bg-[url(https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/53e40404-d9d0-4f28-9e82-7f2f45062936_1600w.png)] bg-cover pt-6 pr-12 pb-6 pl-12 gap-x-3 gap-y-3 items-center">
+  
+
+</div>
+      <div class="hidden md:flex items-center gap-8 text-xs font-mono text-neutral-400">
+        <a href="#" class="hover:text-white transition-colors duration-300 flex items-center gap-1.5 group">
+          <span class="w-1.5 h-1.5 rounded-full bg-neutral-600 group-hover:bg-white transition-colors"></span>
+          ENGINE
+        </a>
+        <a href="#" class="hover:text-white transition-colors duration-300 flex items-center gap-1.5 group">
+          <span class="w-1.5 h-1.5 rounded-full bg-neutral-600 group-hover:bg-white transition-colors"></span>
+          STUDIO
+        </a>
+        <a href="#" class="hover:text-white transition-colors duration-300 flex items-center gap-1.5 group">
+          <span class="w-1.5 h-1.5 rounded-full bg-neutral-600 group-hover:bg-white transition-colors"></span>
+          RESEARCH
+        </a>
+      </div>
+      <div class="flex items-center gap-4">
+        <div class="hidden md:flex flex-col text-[9px] font-mono text-neutral-500 text-right uppercase">
+          <span class="">System: Online</span>
+          <span class="text-neutral-300">Ping: 12ms</span>
+        </div>
+        <button class="px-5 py-2.5 text-xs font-semibold text-neutral-900 bg-white border border-white rounded-full hover:bg-neutral-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.2)] flex items-center gap-2">
+          Initialize
+          <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="overflow-hidden selection:bg-white/20 selection:text-white flex flex-col text-[#ededed] font-sans bg-[#0a0a0a] w-screen h-screen relative" id="nexus-engine-hero">
+  <div class="w-full max-w-[1400px] mx-auto min-h-[800px] flex flex-col relative border-x border-white/5 bg-[#030303] overflow-hidden" style="font-family: 'Inter', sans-serif; background: radial-gradient(ellipse at top, rgba(255,255,255,0.02) 0%, transparent 100%);">
+    <!-- External Dependencies -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Corner Decorative Markers -->
+    <div class="absolute -top-1.5 -left-1.5 w-3 h-3 text-white/20 z-50"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 4v16m8-8H4"></path>
+        </svg></div>
+    <div class="absolute -top-1.5 -right-1.5 w-3 h-3 text-white/20 z-50"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 4v16m8-8H4"></path>
+        </svg></div>
+    <div class="absolute -bottom-1.5 -left-1.5 w-3 h-3 text-white/20 z-50"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 4v16m8-8H4"></path>
+        </svg></div>
+    <div class="absolute -bottom-1.5 -right-1.5 w-3 h-3 text-white/20 z-50"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 4v16m8-8H4"></path>
+        </svg></div>
+
+    <div class="w-full max-w-[1400px] mx-auto min-h-[800px] flex flex-col relative border-x border-white/5 bg-[#030303] overflow-hidden" style="font-family: 'Inter', sans-serif; background: radial-gradient(ellipse at top, rgba(255,255,255,0.02) 0%, transparent 100%);">
+    <!-- External Dependencies -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    
+
+    <div class="w-full max-w-[1400px] mx-auto min-h-[800px] flex flex-col relative border-x border-white/5 bg-[#030303] overflow-hidden"
+    style="font-family: 'Inter', sans-serif; background: radial-gradient(ellipse at top, rgba(255,255,255,0.02) 0%, transparent 100%);">
+    <!-- External Dependencies -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Corner Decorative Markers -->
+    <div class="absolute -top-1.5 -left-1.5 w-3 h-3 text-white/20 z-50"><svg fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" stroke-width="1.5">
+            <path d="M12 4v16m8-8H4" />
+        </svg></div>
+    <div class="absolute -top-1.5 -right-1.5 w-3 h-3 text-white/20 z-50"><svg fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" stroke-width="1.5">
+            <path d="M12 4v16m8-8H4" />
+        </svg></div>
+    <div class="absolute -bottom-1.5 -left-1.5 w-3 h-3 text-white/20 z-50"><svg fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" stroke-width="1.5">
+            <path d="M12 4v16m8-8H4" />
+        </svg></div>
+    <div class="absolute -bottom-1.5 -right-1.5 w-3 h-3 text-white/20 z-50"><svg fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" stroke-width="1.5">
+            <path d="M12 4v16m8-8H4" />
+        </svg></div>
+
+    <div class="flex-1 flex flex-col p-4 sm:p-6 lg:p-10">
+        <div id="telemetry-viewport"
+            class="relative flex-1 w-full rounded-3xl overflow-hidden flex flex-col items-center justify-center min-h-[650px]"
+            style="background: linear-gradient(#0a0a0a, #0a0a0a) padding-box, linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.02) 100%) border-box; border: 1px solid transparent;">
+
+            <!-- Atmospheric Glows -->
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+                <div
+                    class="w-[60vw] max-w-[600px] aspect-square bg-blue-500/10 rounded-full blur-[120px] mix-blend-screen opacity-70">
+                </div>
+                <div
+                    class="absolute w-[30vw] max-w-[300px] aspect-square bg-indigo-500/10 rounded-full blur-[80px] mix-blend-screen opacity-50 translate-y-10">
+                </div>
+            </div>
+
+            <!-- 3D Tunnel Scene -->
+            <div id="telemetry-scene"
+                class="absolute inset-0 z-0 pointer-events-none flex items-center justify-center overflow-hidden opacity-80"
+                style="perspective: 900px;">
+                <div id="telemetry-tunnel" class="relative w-full h-full" style="transform-style: preserve-3d;"></div>
+            </div>
+
+            <!-- Content Overlay -->
+            <main
+                class="relative z-40 flex-1 flex flex-col items-center justify-center text-center px-6 w-full max-w-5xl mx-auto">
+                <a href="#"
+                    class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-normal text-gray-300 mb-8 hover:bg-white/[0.08] transition-all backdrop-blur-md"
+                    style="background: linear-gradient(#111, #111) padding-box, linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 100%) border-box; border: 1px solid transparent;">
+                    <span class="flex h-1.5 w-1.5 relative">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-blue-500"></span>
+                    </span>
+                    Core Infrastructure v3.0 deployed
+                    <iconify-icon icon="solar:alt-arrow-right-bold-duotone"
+                        class="text-xs text-gray-400"></iconify-icon>
+                </a>
+
+                <h1 id="telemetry-title"
+                    class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-white mb-6 leading-[1.05]"
+                    style="text-shadow: 0 4px 40px rgba(0,0,0,0.5);"></h1>
+
+                <p id="telemetry-subtitle"
+                    class="text-sm md:text-base text-neutral-400 mb-10 max-w-2xl leading-relaxed opacity-0">
+                    A dimensional telemetry engine that translates complex microservices, databases, and edge networks
+                    into an intuitive, explorable topology.
+                </p>
+
+                <div id="telemetry-actions"
+                    class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto opacity-0">
+                    <button class="w-full sm:w-auto px-8 py-4 rounded-xl bg-white text-black font-semibold text-sm hover:bg-neutral-200 transition-all active:scale-95 shadow-[0_0_30px_rgba(255,255,255,0.15)] flex items-center justify-center gap-2.5">
+                        <iconify-icon icon="solar:rocket-bold-duotone" class="text-lg"></iconify-icon> Initialize Instance
+                    </button>
+                    <button class="w-full sm:w-auto px-8 py-4 rounded-xl bg-neutral-900/40 text-white font-normal text-sm hover:bg-neutral-800 transition-all backdrop-blur-md flex items-center justify-center gap-2.5"
+                        style="background: linear-gradient(rgba(20,20,20,0.4), rgba(20,20,20,0.4)) padding-box, linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 100%) border-box; border: 1px solid transparent;">
+                        API Reference
+                    </button>
+                </div>
+            </main>
+
+            <div
+                class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black to-transparent z-20 pointer-events-none">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const tunnel = document.getElementById('telemetry-tunnel');
+            const scene = document.getElementById('telemetry-scene');
+            const title = document.getElementById('telemetry-title');
+            const text = "Navigate your architecture in absolute clarity.";
+            
+            // GSAP Title Reveal
+            title.innerHTML = text.split(' ').map(w => `<span class="inline-block overflow-hidden pb-1"><span class="t-word inline-block translate-y-full opacity-0">${w}</span></span>`).join(' ');
+            
+            const tl = gsap.timeline({delay: 0.5});
+            tl.to('.t-word', {y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: 'power4.out'})
+              .to(['#telemetry-subtitle', '#telemetry-actions'], {opacity: 1, y: 0, duration: 0.8}, "-=0.5");
+
+            // 3D Engine
+            const generators = {
+                chart: () => `<div class="flex items-center justify-between mb-3"><span class="text-[10px] text-neutral-400">Latency</span><iconify-icon icon="solar:chart-square-bold-duotone" class="text-blue-400"></iconify-icon></div><div class="flex items-end gap-1 h-12">${Array.from({length:6}).map(()=>`<div class="flex-1 bg-blue-500/20 rounded-t-sm" style="height:${Math.random()*100}%"></div>`).join('')}</div>`,
+                stats: () => `<div class="text-[10px] text-neutral-500 mb-1">Nodes Active</div><div class="text-2xl font-mono text-white">1,024</div><div class="mt-2 text-[9px] text-emerald-400 bg-emerald-400/10 px-1.5 py-0.5 rounded w-fit">+12.5%</div>`,
+                status: () => `<div class="flex justify-between items-center mb-4"><span class="text-[10px] text-neutral-200">DB Sync</span><div class="h-1.5 w-1.5 rounded-full bg-indigo-500 animate-pulse shadow-[0_0_8px_#6366f1]"></div></div><div class="h-1 w-full bg-white/5 rounded-full overflow-hidden"><div class="h-full bg-indigo-500 w-[85%]"></div></div>`
+            };
+
+            const numPanels = window.innerWidth < 768 ? 12 : 30;
+            const panels = [];
+            const types = Object.keys(generators);
+
+            for (let i = 0; i < numPanels; i++) {
+                const el = document.createElement('div');
+                el.className = 'absolute top-1/2 left-1/2 w-48 p-4 rounded-xl backdrop-blur-xl border border-white/10 flex flex-col will-change-transform';
+                el.style.background = 'rgba(10,10,10,0.8)';
+                el.innerHTML = generators[types[Math.floor(Math.random() * types.length)]]();
+                tunnel.appendChild(el);
+
+                panels.push({
+                    el,
+                    x: (Math.random() - 0.5) * (window.innerWidth < 768 ? 400 : 800),
+                    y: (Math.random() - 0.5) * (window.innerWidth < 768 ? 400 : 600),
+                    z: -Math.random() * 3000
+                });
+            }
+
+            function animate() {
+                panels.forEach(p => {
+                    p.z += 1.5;
+                    if (p.z > 200) p.z = -3000;
+                    
+                    const opacity = p.z > -200 ? (200 - p.z) / 400 : p.z < -2500 ? (p.z + 3000) / 500 : 1;
+                    const blur = p.z < -1500 ? Math.min(8, (Math.abs(p.z) - 1500) / 200) : 0;
+                    
+                    p.el.style.transform = `translate(-50%, -50%) translate3d(${p.x}px, ${p.y}px, ${p.z}px)`;
+                    p.el.style.opacity = Math.max(0, opacity);
+                    p.el.style.filter = `blur(${blur}px)`;
+                });
+                requestAnimationFrame(animate);
+            }
+            animate();
+
+            // Parallax
+            document.getElementById('telemetry-viewport').addEventListener('mousemove', (e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width;
+                const y = (e.clientY - rect.top) / rect.height;
+                gsap.to(scene, { perspectiveOrigin: `${45 + x*10}% ${45 + y*10}%`, duration: 2, ease: 'power2.out' });
+            });
+        })();
+    </script>
+</div>
+
+    <script>
+        (function() {
+            const tunnel = document.getElementById('telemetry-tunnel');
+            const scene = document.getElementById('telemetry-scene');
+            const title = document.getElementById('telemetry-title');
+            const text = "Navigate your architecture in absolute clarity.";
+            
+            // GSAP Title Reveal
+            title.innerHTML = text.split(' ').map(w => `<span class="inline-block overflow-hidden pb-1"><span class="t-word inline-block translate-y-full opacity-0">${w}</span></span>`).join(' ');
+            
+            const tl = gsap.timeline({delay: 0.5});
+            tl.to('.t-word', {y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: 'power4.out'})
+              .to(['#telemetry-subtitle', '#telemetry-actions'], {opacity: 1, y: 0, duration: 0.8}, "-=0.5");
+
+            // 3D Engine
+            const generators = {
+                chart: () => `<div class="flex items-center justify-between mb-3"><span class="text-[10px] text-neutral-400">Latency</span><iconify-icon icon="solar:chart-square-bold-duotone" class="text-blue-400"></iconify-icon></div><div class="flex items-end gap-1 h-12">${Array.from({length:6}).map(()=>`<div class="flex-1 bg-blue-500/20 rounded-t-sm" style="height:${Math.random()*100}%"></div>`).join('')}</div>`,
+                stats: () => `<div class="text-[10px] text-neutral-500 mb-1">Nodes Active</div><div class="text-2xl font-mono text-white">1,024</div><div class="mt-2 text-[9px] text-emerald-400 bg-emerald-400/10 px-1.5 py-0.5 rounded w-fit">+12.5%</div>`,
+                status: () => `<div class="flex justify-between items-center mb-4"><span class="text-[10px] text-neutral-200">DB Sync</span><div class="h-1.5 w-1.5 rounded-full bg-indigo-500 animate-pulse shadow-[0_0_8px_#6366f1]"></div></div><div class="h-1 w-full bg-white/5 rounded-full overflow-hidden"><div class="h-full bg-indigo-500 w-[85%]"></div></div>`
+            };
+
+            const numPanels = window.innerWidth < 768 ? 12 : 30;
+            const panels = [];
+            const types = Object.keys(generators);
+
+            for (let i = 0; i < numPanels; i++) {
+                const el = document.createElement('div');
+                el.className = 'absolute top-1/2 left-1/2 w-48 p-4 rounded-xl backdrop-blur-xl border border-white/10 flex flex-col will-change-transform';
+                el.style.background = 'rgba(10,10,10,0.8)';
+                el.innerHTML = generators[types[Math.floor(Math.random() * types.length)]]();
+                tunnel.appendChild(el);
+
+                panels.push({
+                    el,
+                    x: (Math.random() - 0.5) * (window.innerWidth < 768 ? 400 : 800),
+                    y: (Math.random() - 0.5) * (window.innerWidth < 768 ? 400 : 600),
+                    z: -Math.random() * 3000
+                });
+            }
+
+            function animate() {
+                panels.forEach(p => {
+                    p.z += 1.5;
+                    if (p.z > 200) p.z = -3000;
+                    
+                    const opacity = p.z > -200 ? (200 - p.z) / 400 : p.z < -2500 ? (p.z + 3000) / 500 : 1;
+                    const blur = p.z < -1500 ? Math.min(8, (Math.abs(p.z) - 1500) / 200) : 0;
+                    
+                    p.el.style.transform = `translate(-50%, -50%) translate3d(${p.x}px, ${p.y}px, ${p.z}px)`;
+                    p.el.style.opacity = Math.max(0, opacity);
+                    p.el.style.filter = `blur(${blur}px)`;
+                });
+                requestAnimationFrame(animate);
+            }
+            animate();
+
+            // Parallax
+            document.getElementById('telemetry-viewport').addEventListener('mousemove', (e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width;
+                const y = (e.clientY - rect.top) / rect.height;
+                gsap.to(scene, { perspectiveOrigin: `${45 + x*10}% ${45 + y*10}%`, duration: 2, ease: 'power2.out' });
+            });
+        })();
+    </script>
+</div>
+</section>
+
+    <!-- Capabilities Section -->
+    <section class="bg-[#000] z-10 pt-32 pr-6 pb-32 pl-6 relative" id="capabilities">
+      <div class="max-w-7xl mx-auto border-t border-white/10 pt-20">
+        <div class="flex items-center gap-6 mb-20 fade-up">
+          <h2 class="text-xs font-mono font-bold uppercase tracking-[0.2em] text-white">
+            Core Primitives
+          </h2>
+          <div class="h-px bg-white/20 flex-1"></div>
+          <span class="text-[10px] font-mono text-neutral-500">
+            SYS_CAPABILITIES
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Card 1 -->
+          <div class="relative group fade-up h-full" style="perspective: 1200px;">
+            <div class="w-full h-full relative transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:[transform:rotateX(10deg)_rotateY(-10deg)]" style="transform-style: preserve-3d;">
+              <!-- Depth Layer 2 -->
+              <div class="absolute inset-0 rounded-3xl bg-neutral-900 border border-white/5 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:[transform:translate3d(24px,-24px,-60px)] opacity-0 group-hover:opacity-100 flex flex-col justify-start p-6 overflow-hidden shadow-2xl">
+                <div class="absolute inset-0 bg-grid opacity-10 pointer-events-none"></div>
+                <div class="font-mono text-[9px] text-neutral-500 uppercase flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-neutral-500"></span>
+                  Memory Alloc
+                </div>
+                <div class="h-1 w-full bg-neutral-800 rounded mt-3 overflow-hidden">
+                  <div class="h-full bg-neutral-500 w-3/4"></div>
+                </div>
+              </div>
+
+              <!-- Depth Layer 1 -->
+              <div class="absolute inset-0 rounded-3xl bg-[#0a0a0a] border border-white/[0.08] transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:[transform:translate3d(12px,-12px,-30px)] opacity-0 group-hover:opacity-100 flex flex-col justify-start p-6 overflow-hidden shadow-xl">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.05),transparent_50%)]"></div>
+                <div class="font-mono text-[9px] text-neutral-400 uppercase">
+                  Buffer State
+                </div>
+                <div class="font-mono text-[10px] text-white mt-1">
+                  OPTIMIZED
+                </div>
+              </div>
+
+              <!-- Main Card -->
+              <div class="relative p-10 rounded-3xl bg-black border border-white/[0.05] overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:border-white/20 group-hover:shadow-[-30px_30px_50px_rgba(0,0,0,0.8)] group-hover:bg-white/[0.04] z-10 h-full flex flex-col group-hover:[transform:translateZ(20px)]">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-[50px] pointer-events-none group-hover:bg-white/10 transition-colors"></div>
+                <div class="flex justify-between items-start mb-8">
+                  <div class="w-12 h-12 rounded-xl bg-black border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-inner">
+                    <iconify-icon icon="solar:box-minimalistic-linear" class="text-2xl text-neutral-300 group-hover:text-white"></iconify-icon>
+                  </div>
+                  <div class="text-[9px] font-mono text-neutral-500 border border-white/10 px-2 py-1 rounded bg-black/50">
+                    MOD_01
+                  </div>
+                </div>
+                <h3 class="text-xl font-semibold text-white mb-3 tracking-tight">
+                  Spatial Interfaces
+                </h3>
+                <p class="text-sm text-neutral-400 font-light leading-relaxed mb-8 flex-1">
+                  Constructing multi-dimensional web planes. Moving beyond flat
+                  coordinate systems into true Z-axis awareness.
+                </p>
+                <div class="flex items-center gap-2 mt-auto">
+                  <div class="flex-1 h-[2px] bg-white/10 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 h-full w-1/3 bg-white animate-[shimmerLine_2s_linear_infinite]"></div>
+                  </div>
+                  <span class="text-[10px] font-mono text-neutral-500 uppercase">
+                    Active
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="relative group fade-up h-full md:mt-12" style="perspective: 1200px; transition-delay: 100ms;">
+            <div class="w-full h-full relative transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:[transform:rotateX(10deg)_rotateY(-10deg)]" style="transform-style: preserve-3d;">
+              <!-- Depth Layer 2 -->
+              <div class="absolute inset-0 rounded-3xl bg-neutral-900 border border-white/5 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:[transform:translate3d(24px,-24px,-60px)] opacity-0 group-hover:opacity-100 flex flex-col justify-start p-6 overflow-hidden shadow-2xl">
+                <div class="absolute inset-0 bg-grid opacity-10 pointer-events-none"></div>
+                <div class="font-mono text-[9px] text-neutral-500 uppercase flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-neutral-500"></span>
+                  Thread Count
+                </div>
+                <div class="flex items-end gap-1.5 mt-3 h-4">
+                  <div class="h-2 w-1.5 bg-neutral-600 rounded-sm"></div>
+                  <div class="h-4 w-1.5 bg-neutral-500 rounded-sm"></div>
+                  <div class="h-3 w-1.5 bg-neutral-600 rounded-sm"></div>
+                  <div class="h-2 w-1.5 bg-neutral-600 rounded-sm"></div>
+                </div>
+              </div>
+
+              <!-- Depth Layer 1 -->
+              <div class="absolute inset-0 rounded-3xl bg-[#0a0a0a] border border-white/[0.08] transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:[transform:translate3d(12px,-12px,-30px)] opacity-0 group-hover:opacity-100 flex flex-col justify-start p-6 overflow-hidden shadow-xl">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.05),transparent_50%)]"></div>
+                <div class="font-mono text-[9px] text-neutral-400 uppercase">
+                  Model Sync
+                </div>
+                <div class="font-mono text-[10px] text-emerald-400 mt-1">
+                  SYNCED
+                </div>
+              </div>
+
+              <!-- Main Card -->
+              <div class="relative p-10 rounded-3xl bg-black border border-white/[0.05] overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:border-white/20 group-hover:shadow-[-30px_30px_50px_rgba(0,0,0,0.8)] group-hover:bg-white/[0.04] z-10 h-full flex flex-col group-hover:[transform:translateZ(20px)]">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.05),transparent_50%)]"></div>
+                <div class="flex justify-between items-start mb-8 relative z-10">
+                  <div class="w-12 h-12 rounded-xl bg-black border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-inner">
+                    <iconify-icon icon="solar:cpu-bolt-linear" class="text-2xl text-neutral-300 group-hover:text-white"></iconify-icon>
+                  </div>
+                  <div class="text-[9px] font-mono text-neutral-500 border border-white/10 px-2 py-1 rounded bg-black/50 flex items-center gap-1">
+                    <div class="w-1 h-1 bg-white rounded-full animate-pulse"></div>
+                    MOD_02
+                  </div>
+                </div>
+                <h3 class="text-xl font-semibold text-white mb-3 tracking-tight relative z-10">
+                  Neural Integration
+                </h3>
+                <p class="text-sm text-neutral-400 font-light leading-relaxed mb-8 flex-1 relative z-10">
+                  Embedded deterministic models enabling predictive rendering
+                  and autonomous state resolution.
+                </p>
+                <div class="flex items-center gap-1 mt-auto relative z-10">
+                  <div class="h-3 w-1 bg-white/20 group-hover:bg-white anim-bar-1"></div>
+                  <div class="h-4 w-1 bg-white/20 group-hover:bg-white anim-bar-2"></div>
+                  <div class="h-2 w-1 bg-white/20 group-hover:bg-white anim-bar-3"></div>
+                  <div class="h-5 w-1 bg-white/20 group-hover:bg-white anim-bar-4"></div>
+                  <div class="h-3 w-1 bg-white/20 group-hover:bg-white anim-bar-5"></div>
+                  <span class="text-[10px] font-mono text-neutral-500 uppercase ml-2">
+                    Processing
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="relative group fade-up h-full md:mt-24" style="perspective: 1200px; transition-delay: 200ms;">
+            <div class="w-full h-full relative transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:[transform:rotateX(10deg)_rotateY(-10deg)]" style="transform-style: preserve-3d;">
+              <!-- Depth Layer 2 -->
+              <div class="absolute inset-0 rounded-3xl bg-neutral-900 border border-white/5 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:[transform:translate3d(24px,-24px,-60px)] opacity-0 group-hover:opacity-100 flex flex-col justify-start p-6 overflow-hidden shadow-2xl">
+                <div class="absolute inset-0 bg-grid opacity-10 pointer-events-none"></div>
+                <div class="font-mono text-[9px] text-neutral-500 uppercase flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-neutral-500"></span>
+                  Hardware Accel
+                </div>
+                <div class="font-mono text-[10px] text-white mt-2">ENABLED</div>
+              </div>
+
+              <!-- Depth Layer 1 -->
+              <div class="absolute inset-0 rounded-3xl bg-[#0a0a0a] border border-white/[0.08] transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:[transform:translate3d(12px,-12px,-30px)] opacity-0 group-hover:opacity-100 flex flex-col justify-start p-6 overflow-hidden shadow-xl">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.05),transparent_50%)]"></div>
+                <div class="font-mono text-[9px] text-neutral-400 uppercase">
+                  Latency Target
+                </div>
+                <div class="font-mono text-[10px] text-emerald-400 mt-1">
+                  &lt;1.2MS
+                </div>
+              </div>
+
+              <!-- Main Card -->
+              <div class="relative p-10 rounded-3xl bg-black border border-white/[0.05] overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:border-white/20 group-hover:shadow-[-30px_30px_50px_rgba(0,0,0,0.8)] group-hover:bg-white/[0.04] z-10 h-full flex flex-col group-hover:[transform:translateZ(20px)]">
+                <div class="absolute inset-0 bg-grid-small opacity-10 pointer-events-none group-hover:opacity-30 transition-opacity"></div>
+                <div class="flex justify-between items-start mb-8 relative z-10">
+                  <div class="w-12 h-12 rounded-xl bg-black border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-inner">
+                    <iconify-icon icon="solar:code-scan-linear" class="text-2xl text-neutral-300 group-hover:text-white"></iconify-icon>
+                  </div>
+                  <div class="text-[9px] font-mono text-neutral-500 border border-white/10 px-2 py-1 rounded bg-black/50">
+                    MOD_03
+                  </div>
+                </div>
+                <h3 class="text-xl font-semibold text-white mb-3 tracking-tight relative z-10">
+                  Low-Level Arch
+                </h3>
+                <p class="text-sm text-neutral-400 font-light leading-relaxed mb-8 flex-1 relative z-10">
+                  Compiling direct to browser APIs. Stripping abstractions to
+                  deliver bare-metal performance for graphic pipelines.
+                </p>
+                <div class="font-mono text-[10px] text-neutral-500 flex flex-col gap-1 relative z-10 mt-auto">
+                  <span class="group-hover:text-white transition-colors">
+                    &gt; compile_shaders()
+                  </span>
+                  <span class="opacity-50 group-hover:opacity-100 transition-opacity delay-75">
+                    &gt; init_webgl_ctx()
+                  </span>
+                  <span class="opacity-25 group-hover:opacity-100 transition-opacity delay-150">
+                    &gt; OK
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bento Intelligence Grid -->
+    <section class="z-10 py-32 relative bg-[#000]">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col items-start mb-16 fade-up">
+          <h2 class="text-3xl md:text-5xl font-semibold tracking-tight mb-4 text-white">
+            Architecture Topology
+          </h2>
+          <p class="text-base text-neutral-400 max-w-xl font-light leading-relaxed">
+            A precise mapping of interconnected systems operating synchronously.
+            Zero latency, total observability.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[300px] fade-up">
+          <!-- Main Graph Box -->
+          <div class="col-span-1 md:col-span-2 row-span-2 p-8 rounded-[2rem] bg-[#050505] border border-white/10 relative overflow-hidden group hover:border-white/20 transition-all duration-500">
+            <div class="absolute inset-0 bg-grid opacity-[0.05] pointer-events-none group-hover:opacity-[0.15] transition-opacity"></div>
+            <div class="h-full flex flex-col justify-between relative z-10">
+              <div class="flex justify-between items-start">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-white/5 border border-white/10">
+                  <div class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></div>
+                  <span class="text-[10px] font-mono text-white uppercase tracking-widest">
+                    Live Feed
+                  </span>
+                </div>
+                <iconify-icon icon="solar:chart-square-linear" class="text-neutral-500 text-xl group-hover:text-white transition-colors"></iconify-icon>
+              </div>
+
+              <!-- Animated Chart Center -->
+              <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[250px] h-32 flex items-end justify-between gap-1">
+                <div class="w-full bg-white/5 border border-white/10 relative overflow-hidden anim-bar-1">
+                  <div class="absolute top-0 inset-x-0 h-[1px] bg-white shadow-[0_0_10px_#fff]"></div>
+                </div>
+                <div class="w-full bg-white/5 border border-white/10 relative overflow-hidden anim-bar-2">
+                  <div class="absolute top-0 inset-x-0 h-[1px] bg-white shadow-[0_0_10px_#fff]"></div>
+                </div>
+                <div class="w-full bg-white border border-white relative overflow-hidden anim-bar-3 shadow-[0_0_20px_rgba(255,255,255,0.2)]"></div>
+                <div class="w-full bg-white/10 border border-white/20 relative overflow-hidden anim-bar-4">
+                  <div class="absolute top-0 inset-x-0 h-[1px] bg-white shadow-[0_0_10px_#fff]"></div>
+                </div>
+                <div class="w-full bg-white/5 border border-white/10 relative overflow-hidden anim-bar-5">
+                  <div class="absolute top-0 inset-x-0 h-[1px] bg-white shadow-[0_0_10px_#fff]"></div>
+                </div>
+                <div class="w-full bg-white/5 border border-white/10 relative overflow-hidden anim-bar-1">
+                  <div class="absolute top-0 inset-x-0 h-[1px] bg-white shadow-[0_0_10px_#fff]"></div>
+                </div>
+                <div class="w-full bg-white/10 border border-white/20 relative overflow-hidden anim-bar-2">
+                  <div class="absolute top-0 inset-x-0 h-[1px] bg-white shadow-[0_0_10px_#fff]"></div>
+                </div>
+              </div>
+
+              <div class="">
+                <h3 class="text-xl font-semibold mb-2 tracking-tight text-white group-hover:translate-x-1 transition-transform">
+                  Data Telemetry
+                </h3>
+                <div class="flex gap-8 pt-4 border-t border-white/10">
+                  <div>
+                    <div class="text-[10px] text-neutral-500 font-mono mb-1">
+                      THROUGHPUT
+                    </div>
+                    <div class="text-sm font-mono text-white">840.2 TB/s</div>
+                  </div>
+                  <div>
+                    <div class="text-[10px] text-neutral-500 font-mono mb-1">
+                      LATENCY
+                    </div>
+                    <div class="text-sm font-mono text-white">3.4 ms</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Deep Stack Box -->
+          <div class="col-span-1 md:col-span-1 row-span-2 p-8 rounded-[2rem] bg-[#050505] border border-white/10 relative overflow-hidden group hover:border-white/20 transition-all duration-500 flex flex-col justify-between">
+            <div class="flex justify-between items-start">
+              <iconify-icon icon="solar:layers-minimalistic-linear" class="text-neutral-500 text-xl group-hover:text-white transition-colors"></iconify-icon>
+              <div class="text-[10px] font-mono text-neutral-500">Z-AXIS</div>
+            </div>
+
+            <!-- Floating 3D Layers -->
+            <div class="relative w-full h-40 flex flex-col items-center justify-center my-auto">
+              <div class="w-24 h-24 border border-white/20 bg-black/80 backdrop-blur-md absolute layer-float-1 flex items-center justify-center text-[10px] font-mono text-white/50">
+                L3
+              </div>
+              <div class="w-24 h-24 border border-white/10 bg-white/5 absolute layer-float-2 mt-8 flex items-center justify-center text-[10px] font-mono text-white/30">
+                L2
+              </div>
+              <div class="w-24 h-24 border border-white/5 bg-white/[0.02] absolute layer-float-3 mt-16 flex items-center justify-center text-[10px] font-mono text-white/10">
+                L1
+              </div>
+            </div>
+
+            <div class="">
+              <h3 class="text-lg font-semibold mb-2 tracking-tight text-white">
+                Deep Stack
+              </h3>
+              <div class="space-y-1.5 pt-4 border-t border-white/10">
+                <div class="flex justify-between text-[10px] font-mono text-neutral-400">
+                  <span>DOM_LAYER</span>
+                  <span class="text-white">OK</span>
+                </div>
+                <div class="flex justify-between text-[10px] font-mono text-neutral-400">
+                  <span>WEBGL_CTX</span>
+                  <span class="text-white">OK</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Small Square 1 -->
+          <div class="col-span-1 row-span-1 p-6 rounded-[2rem] bg-[#050505] border border-white/10 relative overflow-hidden group hover:border-white/20 transition-all duration-500 flex flex-col justify-between">
+            <div class="flex justify-between items-start">
+              <iconify-icon icon="solar:shield-check-linear" class="text-neutral-500 text-xl group-hover:text-white transition-colors"></iconify-icon>
+              <div class="w-2 h-2 rounded-full bg-white animate-pulse shadow-[0_0_10px_#fff]"></div>
+            </div>
+            <div>
+              <div class="text-3xl font-semibold text-white tracking-tighter mb-1 font-mono counter" data-target="99.99">
+                99.99
+                <span class="text-lg">%</span>
+              </div>
+              <h3 class="text-xs font-mono text-neutral-500 uppercase">
+                Uptime Integrity
+              </h3>
+            </div>
+          </div>
+
+          <!-- Small Square 2 -->
+          <div class="col-span-1 row-span-1 p-6 rounded-[2rem] bg-[#050505] border border-white/10 relative overflow-hidden group hover:border-white/20 transition-all duration-500 flex flex-col justify-between">
+            <div class="flex justify-between items-start">
+              <iconify-icon icon="solar:radar-linear" class="text-neutral-500 text-xl group-hover:text-white transition-colors"></iconify-icon>
+            </div>
+            <div class="relative w-full h-12 border-b border-white/10 mb-2 overflow-hidden">
+              <svg class="absolute bottom-0 w-[200%] h-full path-line" preserveAspectRatio="none" viewBox="0 0 100 20">
+                <path d="M0,10 Q5,20 10,10 T20,10 T30,10 T40,10 T50,10 T60,10 T70,10 T80,10 T90,10 T100,10" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1"></path>
+              </svg>
+            </div>
+            <h3 class="text-xs font-mono text-neutral-500 uppercase">
+              Signal Noise
+            </h3>
+          </div>
+
+          <!-- Wide Bottom Box -->
+          <div class="col-span-1 md:col-span-4 row-span-1 p-8 rounded-[2rem] bg-[#050505] border border-white/10 relative overflow-hidden group hover:border-white/20 transition-all duration-500 flex flex-col md:flex-row gap-8 items-center justify-between">
+            <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white/5 to-transparent pointer-events-none group-hover:from-white/10 transition-colors"></div>
+            <div class="relative z-10 max-w-lg">
+              <h3 class="text-xl font-semibold text-white mb-2 tracking-tight">
+                Global Infrastructure
+              </h3>
+              <p class="text-sm text-neutral-400 font-light">
+                Distributed state synchronization ensuring sub-millisecond data
+                availability across all active nodes.
+              </p>
+            </div>
+            <div class="flex gap-12 relative z-10 w-full md:w-auto justify-between md:justify-end">
+              <div>
+                <div class="text-3xl font-semibold text-white tracking-tighter font-mono">
+                  24
+                </div>
+                <div class="text-[10px] text-neutral-500 font-mono uppercase mt-1">
+                  Regions
+                </div>
+              </div>
+              <div class="">
+                <div class="text-3xl font-semibold text-white tracking-tighter font-mono">
+                  400
+                  <span class="text-lg text-neutral-500">ms</span>
+                </div>
+                <div class="text-[10px] text-neutral-500 font-mono uppercase mt-1">
+                  Replication
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Horizontal Scroll Architecture -->
+    <div class="bg-[#000] relative" style="height: 2424.3px;" id="h-scroll-section">
+      <div class="sticky overflow-hidden flex bg-[#000] h-screen top-0 items-center">
+        <div class="absolute top-12 left-6 md:left-12 z-20 flex items-center gap-4">
+          <div class="w-12 h-[1px] bg-white/20"></div>
+          <span class="text-[10px] font-mono font-bold tracking-widest text-white uppercase">
+            Engine Mechanics
+          </span>
+        </div>
+
+        <div class="absolute bottom-12 left-6 md:left-12 z-20 w-48 h-1 bg-white/10 rounded-full overflow-hidden">
+          <div class="h-full bg-white w-0 transition-all duration-100 ease-out" id="h-scroll-progress" style="width: 0%;"></div>
+        </div>
+
+        <div class="flex will-change-transform pr-[20vw] pl-[10vw] gap-x-8 gap-y-8 items-center" style="width: max-content;" id="h-scroll-track">
+          <!-- Card 1 -->
+          <div class="schema-card schema-card-enhanced w-[85vw] md:w-[450px] aspect-square rounded-[2rem] p-10 flex flex-col relative overflow-hidden flex-shrink-0 group transition-all duration-500 shadow-2xl">
+            <div class="absolute inset-0 bg-grid opacity-[0.07] pointer-events-none"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03),transparent_70%)] pointer-events-none"></div>
+
+            <div class="schema-layer opacity-90">
+              <div class="schema-vignette"></div>
+
+              <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[170px] h-[170px] rounded-full border border-white/[0.08] schema-ring-spin"></div>
+
+              <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[92px] h-[92px] rounded-2xl border border-white/[0.14] bg-white/[0.03] backdrop-blur-sm flex items-center justify-center schema-box-spin">
+                <div class="w-3 h-3 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.75)] schema-pulse-dot"></div>
+              </div>
+
+              <div class="absolute top-1/2 left-[22%] w-[28%] h-px bg-gradient-to-r from-white/0 via-white/20 to-white/0 schema-line-h-center"></div>
+              <div class="absolute top-1/2 right-[22%] w-[28%] h-px bg-gradient-to-r from-white/0 via-white/20 to-white/0 schema-line-h-center" style="animation-delay: 1s;"></div>
+              <div class="absolute left-1/2 top-[22%] h-[28%] w-px bg-gradient-to-b from-white/0 via-white/20 to-white/0 schema-line-v-center" style="animation-delay: 2s;"></div>
+              <div class="absolute left-1/2 bottom-[22%] h-[28%] w-px bg-gradient-to-b from-white/0 via-white/20 to-white/0 schema-line-v-center" style="animation-delay: 3s;"></div>
+
+              <div class="schema-node-clean" style="top: 50%; left: 22%;"></div>
+              <div class="schema-node-clean" style="top: 50%; left: 78%; animation-delay: 0.5s;"></div>
+              <div class="schema-node-clean" style="top: 22%; left: 50%; animation-delay: 1s;"></div>
+              <div class="schema-node-clean" style="top: 78%; left: 50%; animation-delay: 1.5s;"></div>
+            </div>
+
+            <span class="text-6xl font-light text-white/[0.05] absolute top-6 right-8 tracking-tighter font-mono group-hover:text-white/[0.08] transition-colors">
+              01
+            </span>
+
+            <div class="w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center mb-auto mt-2 relative z-10">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                <path d="m12 19 7-7 3 3-7 7-3-3z"></path>
+                <path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                <path d="m2 2 7.586 7.586"></path>
+                <circle cx="11" cy="11" r="2"></circle>
+              </svg>
+            </div>
+
+            <div class="relative z-10 mt-auto">
+              <h3 class="text-2xl font-semibold mb-4 tracking-tight text-white">
+                Deterministic Rendering
+              </h3>
+              <p class="text-sm text-neutral-400 font-light leading-relaxed mb-8">
+                Frame-perfect fidelity mapped directly to execution cycles.
+                Every pixel shift is calculated and predictable.
+              </p>
+              <div class="p-4 bg-black border border-white/[0.08] rounded-lg flex justify-between items-center group-hover:border-white/15 transition-colors">
+                <span class="text-[10px] font-mono text-neutral-500 uppercase">
+                  Shader Config
+                </span>
+                <span class="text-[10px] font-mono text-white">
+                  STRICT_MODE
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="schema-card schema-card-enhanced w-[85vw] md:w-[450px] aspect-square rounded-[2rem] p-10 flex flex-col relative overflow-hidden flex-shrink-0 group transition-all duration-500 shadow-2xl">
+            <div class="absolute inset-0 dot-grid opacity-[0.12] pointer-events-none"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.025),transparent_72%)] pointer-events-none"></div>
+
+            <div class="schema-layer opacity-90">
+              <div class="schema-vignette"></div>
+
+              <div class="absolute top-[28%] left-[20%] right-[20%] h-px bg-gradient-to-r from-white/0 via-white/22 to-white/0 schema-line-h-center"></div>
+              <div class="absolute top-[50%] left-[16%] right-[16%] h-px bg-gradient-to-r from-white/0 via-white/28 to-white/0 schema-line-h-center" style="animation-delay: 1.5s;"></div>
+              <div class="absolute top-[72%] left-[20%] right-[20%] h-px bg-gradient-to-r from-white/0 via-white/22 to-white/0 schema-line-h-center" style="animation-delay: 3s;"></div>
+
+              <div class="absolute top-[28%] left-[64%] w-px h-[44%] bg-gradient-to-b from-white/0 via-white/12 to-white/0 schema-line-v-center"></div>
+
+              <div class="absolute top-1/2 left-[64%] -translate-x-1/2 -translate-y-1/2 w-[70px] h-[70px] rounded-full border border-white/[0.12] flex items-center justify-center schema-ring-spin">
+                <div class="w-[28px] h-[28px] rounded-full border border-white/[0.18] bg-white/[0.03] flex items-center justify-center schema-ring-spin-reverse">
+                  <div class="w-1.5 h-1.5 rounded-full bg-white schema-pulse-dot"></div>
+                </div>
+              </div>
+
+              <div class="schema-node-clean" style="top: 28%; left: 20%;"></div>
+              <div class="schema-node-clean" style="top: 50%; left: 16%; animation-delay: 0.5s;"></div>
+              <div class="schema-node-clean" style="top: 72%; left: 20%; animation-delay: 1s;"></div>
+            </div>
+
+            <span class="text-6xl font-light text-white/[0.05] absolute top-6 right-8 tracking-tighter font-mono group-hover:text-white/[0.08] transition-colors">
+              02
+            </span>
+
+            <div class="flex z-10 bg-white/[0.04] w-12 h-12 border-white/[0.08] border rounded-xl mt-2 mb-auto relative items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                <path d="M14 4.1 12 6"></path>
+                <path d="m5.1 8-2.9-.8"></path>
+                <path d="m6 12-1.9 2"></path>
+                <path d="M7.2 2.2 8 5.1"></path>
+                <path d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z"></path>
+              </svg>
+            </div>
+
+            <div class="relative z-10 mt-auto">
+              <h3 class="text-2xl font-semibold mb-4 tracking-tight text-white">
+                Input Arbitration
+              </h3>
+              <p class="text-sm text-neutral-400 font-light leading-relaxed mb-8">
+                Coalescing multi-modal inputs into a single authoritative event
+                stream with zero-delay processing.
+              </p>
+              <div class="p-4 bg-black border border-white/[0.08] rounded-lg flex justify-between items-center group-hover:border-white/15 transition-colors">
+                <span class="text-[10px] font-mono text-neutral-500 uppercase">
+                  Polling Rate
+                </span>
+                <span class="text-[10px] font-mono text-white">1000 HZ</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="schema-card schema-card-enhanced w-[85vw] md:w-[450px] aspect-square rounded-[2rem] p-10 flex flex-col relative overflow-hidden flex-shrink-0 group transition-all duration-500 shadow-2xl">
+            <div class="absolute inset-0 bg-gradient-to-tr from-white/[0.015] to-transparent pointer-events-none"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03),transparent_74%)] pointer-events-none"></div>
+
+            <div class="schema-layer opacity-95">
+              <div class="schema-vignette"></div>
+
+              <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] h-[220px] rounded-full border border-white/[0.08] schema-ring-spin"></div>
+              <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140px] h-[140px] rounded-full border border-white/[0.08] schema-ring-spin-reverse"></div>
+
+              <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-white schema-pulse-dot-pos"></div>
+
+              <div class="absolute top-1/2 left-1/2 -translate-x-1/2 w-[220px] h-px bg-gradient-to-r from-white/0 via-white/18 to-white/0 schema-line-h-center"></div>
+              <div class="absolute top-1/2 left-1/2 -translate-y-1/2 h-[220px] w-px bg-gradient-to-b from-white/0 via-white/18 to-white/0 schema-line-v-center" style="animation-delay: 2s;"></div>
+
+              <div class="schema-node-clean" style="top: 50%; left: 18%;"></div>
+              <div class="schema-node-clean" style="top: 50%; left: 82%; animation-delay: 0.5s;"></div>
+              <div class="schema-node-clean" style="top: 18%; left: 50%; animation-delay: 1s;"></div>
+              <div class="schema-node-clean" style="top: 82%; left: 50%; animation-delay: 1.5s;"></div>
+            </div>
+
+            <span class="text-6xl font-light text-white/[0.05] absolute top-6 right-8 tracking-tighter font-mono group-hover:text-white/[0.08] transition-colors">
+              03
+            </span>
+
+            <div class="w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center mb-auto mt-2 relative z-10">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                <rect x="16" y="16" width="6" height="6" rx="1"></rect>
+                <rect x="2" y="16" width="6" height="6" rx="1"></rect>
+                <rect x="9" y="2" width="6" height="6" rx="1"></rect>
+                <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path>
+                <path d="M12 12V8"></path>
+              </svg>
+            </div>
+
+            <div class="relative z-10 mt-auto">
+              <h3 class="text-2xl font-semibold mb-4 tracking-tight text-white">
+                Mesh Synchronization
+              </h3>
+              <p class="text-sm text-neutral-400 font-light leading-relaxed mb-8">
+                CRDT-based state reconciliation ensuring all connected endpoints
+                reflect truth instantaneously.
+              </p>
+              <div class="p-4 bg-black border border-white/[0.08] rounded-lg flex justify-between items-center group-hover:border-white/15 transition-colors">
+                <span class="text-[10px] font-mono text-neutral-500 uppercase">
+                  Topology
+                </span>
+                <span class="text-[10px] font-mono text-white">
+                  PEER_2_PEER
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="schema-card schema-card-enhanced w-[85vw] md:w-[450px] aspect-square rounded-[2rem] p-10 flex flex-col relative overflow-hidden flex-shrink-0 group transition-all duration-500 shadow-2xl">
+            <div class="absolute inset-0 bg-grid opacity-[0.07] pointer-events-none"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.025),transparent_72%)] pointer-events-none"></div>
+
+            <div class="schema-layer opacity-90">
+              <div class="schema-vignette"></div>
+
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="grid grid-cols-4 gap-3 p-5 border border-white/[0.10] rounded-xl bg-black/45 backdrop-blur-sm">
+                  <div class="w-6 h-6 rounded border border-white/[0.18] bg-white/[0.04] schema-flash"></div>
+                  <div class="w-6 h-6 rounded bg-white shadow-[0_0_14px_rgba(255,255,255,0.75)] schema-flash-1"></div>
+                  <div class="w-6 h-6 rounded border border-white/[0.18] bg-white/[0.04] schema-flash-2"></div>
+                  <div class="w-6 h-6 rounded border border-white/[0.18] bg-white/[0.06] schema-flash-3"></div>
+
+                  <div class="w-6 h-6 rounded border border-white/[0.18] bg-white/[0.04] schema-flash-2"></div>
+                  <div class="w-6 h-6 rounded border border-white/[0.18] bg-white/[0.06] schema-flash-1"></div>
+                  <div class="w-6 h-6 rounded bg-white shadow-[0_0_14px_rgba(255,255,255,0.75)] schema-flash-3"></div>
+                  <div class="w-6 h-6 rounded border border-white/[0.18] bg-white/[0.04] schema-flash"></div>
+
+                  <div class="w-6 h-6 rounded border border-white/[0.18] bg-white/[0.06] schema-flash-3"></div>
+                  <div class="w-6 h-6 rounded border border-white/[0.18] bg-white/[0.04] schema-flash"></div>
+                  <div class="w-6 h-6 rounded border border-white/[0.18] bg-white/[0.06] schema-flash-2"></div>
+                  <div class="w-6 h-6 rounded bg-white shadow-[0_0_14px_rgba(255,255,255,0.75)] schema-flash-1"></div>
+
+                  <div class="w-6 h-6 rounded bg-white shadow-[0_0_14px_rgba(255,255,255,0.75)] schema-flash-2"></div>
+                  <div class="w-6 h-6 rounded border border-white/[0.18] bg-white/[0.06] schema-flash-3"></div>
+                  <div class="w-6 h-6 rounded border border-white/[0.18] bg-white/[0.04] schema-flash"></div>
+                  <div class="w-6 h-6 rounded border border-white/[0.18] bg-white/[0.06] schema-flash-1"></div>
+                </div>
+              </div>
+
+              <div class="absolute h-px bg-gradient-to-r from-white/0 via-white/16 to-white/0 top-1/2 left-[10%] right-[10%] schema-line-h-center"></div>
+              <div class="absolute w-px bg-gradient-to-b from-white/0 via-white/16 to-white/0 left-1/2 top-[12%] bottom-[12%] schema-line-v-center" style="animation-delay: 1.5s;"></div>
+            </div>
+
+            <span class="text-6xl font-light text-white/[0.05] absolute top-6 right-8 tracking-tighter font-mono group-hover:text-white/[0.08] transition-colors">
+              04
+            </span>
+
+            <div class="w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center mb-auto mt-2 relative z-10">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                <path d="M3 5v14a9 3 0 0 0 18 0V5"></path>
+                <path d="M3 12a9 3 0 0 0 18 0"></path>
+              </svg>
+            </div>
+
+            <div class="relative z-10 mt-auto">
+              <h3 class="text-2xl font-semibold mb-4 tracking-tight text-white">
+                Memory Allocation
+              </h3>
+              <p class="text-sm text-neutral-400 font-light leading-relaxed mb-8">
+                Dynamic heap management and memory pooling ensuring zero garbage
+                collection pauses during peak loads.
+              </p>
+              <div class="p-4 bg-black border border-white/[0.08] rounded-lg flex justify-between items-center group-hover:border-white/15 transition-colors">
+                <span class="text-[10px] font-mono text-neutral-500 uppercase">
+                  Buffer Size
+                </span>
+                <span class="text-[10px] font-mono text-white">2048 MB</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="schema-card schema-card-enhanced w-[85vw] md:w-[450px] aspect-square rounded-[2rem] p-10 flex flex-col relative overflow-hidden flex-shrink-0 group transition-all duration-500 shadow-2xl">
+            <div class="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent pointer-events-none"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.025),transparent_72%)] pointer-events-none"></div>
+
+            <div class="schema-layer opacity-95">
+              <div class="schema-vignette"></div>
+
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="relative w-[240px] h-[240px]">
+                  <div class="absolute inset-[36px] rounded-full border border-white/[0.08] schema-ring-spin-inset"></div>
+                  <div class="absolute inset-[72px] rounded-full border border-white/[0.08] schema-ring-spin-inset-reverse"></div>
+                  <div class="absolute inset-[108px] rounded-full border border-white/[0.12] schema-ring-spin-inset"></div>
+
+                  <div class="absolute top-1/2 left-1/2 w-3 h-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white schema-pulse-dot-pos"></div>
+
+                  <div class="absolute inset-0 schema-ring-spin-inset">
+                    <div class="absolute top-0 left-1/2 w-2 h-2 -translate-x-1/2 rounded-full bg-white/90 shadow-[0_0_10px_rgba(255,255,255,0.6)]"></div>
+                  </div>
+                  <div class="absolute inset-0 schema-ring-spin-inset-reverse">
+                    <div class="absolute bottom-0 left-1/2 w-2 h-2 -translate-x-1/2 rounded-full bg-white/90 shadow-[0_0_10px_rgba(255,255,255,0.6)]"></div>
+                  </div>
+                  <div class="absolute inset-0 schema-ring-spin-inset" style="animation-duration: 15s;">
+                    <div class="absolute top-1/2 left-0 w-2 h-2 -translate-y-1/2 rounded-full bg-white/90 shadow-[0_0_10px_rgba(255,255,255,0.6)]"></div>
+                  </div>
+                  <div class="absolute inset-0 schema-ring-spin-inset-reverse" style="animation-duration: 18s;">
+                    <div class="absolute top-1/2 right-0 w-2 h-2 -translate-y-1/2 rounded-full bg-white/90 shadow-[0_0_10px_rgba(255,255,255,0.6)]"></div>
+                  </div>
+
+                  <div class="absolute top-1/2 left-[12%] right-[12%] h-px bg-gradient-to-r from-white/0 via-white/16 to-white/0 schema-line-h-center"></div>
+                  <div class="absolute left-1/2 top-[12%] bottom-[12%] w-px bg-gradient-to-b from-white/0 via-white/16 to-white/0 schema-line-v-center" style="animation-delay: 2s;"></div>
+                </div>
+              </div>
+            </div>
+
+            <span class="text-6xl font-light text-white/[0.05] absolute top-6 right-8 tracking-tighter font-mono group-hover:text-white/[0.08] transition-colors">
+              05
+            </span>
+
+            <div class="w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center mb-auto mt-2 relative z-10">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                <path d="M2 12h20"></path>
+              </svg>
+            </div>
+
+            <div class="relative z-10 mt-auto">
+              <h3 class="text-2xl font-semibold mb-4 tracking-tight text-white">
+                Global Propagation
+              </h3>
+              <p class="text-sm text-neutral-400 font-light leading-relaxed mb-8">
+                Instantaneous state broadcast to edge nodes worldwide using
+                hyper-optimized binary protocols.
+              </p>
+              <div class="p-4 bg-black border border-white/[0.08] rounded-lg flex justify-between items-center group-hover:border-white/15 transition-colors">
+                <span class="text-[10px] font-mono text-neutral-500 uppercase">
+                  Target Latency
+                </span>
+                <span class="text-[10px] font-mono text-white">~12 MS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <style>
+        .schema-layer {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+        }
+
+        .schema-vignette {
+          position: absolute;
+          inset: 0;
+          background:
+            radial-gradient(circle at center,
+              rgba(0, 0, 0, 0) 30%,
+              rgba(0, 0, 0, 0.18) 58%,
+              rgba(0, 0, 0, 0.42) 80%,
+              rgba(0, 0, 0, 0.72) 100%);
+          z-index: 10;
+        }
+
+        .schema-node-clean {
+          position: absolute;
+          width: 7px;
+          height: 7px;
+          transform: translate(-50%, -50%);
+          border-radius: 9999px;
+          background: rgba(255, 255, 255, 0.92);
+          box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+          animation: schemaNodePulse 2s infinite alternate;
+        }
+
+        @keyframes schemaNodePulse {
+          0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.5; }
+          100% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; box-shadow: 0 0 15px rgba(255,255,255,0.8); }
+        }
+        .schema-ring-spin { animation: schemaRingSpin 20s linear infinite; }
+        .schema-ring-spin-reverse { animation: schemaRingSpin 25s linear infinite reverse; }
+        @keyframes schemaRingSpin {
+          0% { transform: translate(-50%, -50%) rotate(0deg); }
+          100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        .schema-box-spin { animation: schemaBoxSpin 15s linear infinite; }
+        @keyframes schemaBoxSpin {
+          0% { transform: translate(-50%, -50%) rotate(0deg); }
+          100% { transform: translate(-50%, -50%) rotate(90deg); }
+        }
+        .schema-line-h-center { animation: schemaLineHCenter 4s ease-in-out infinite alternate; transform-origin: center; }
+        .schema-line-v-center { animation: schemaLineVCenter 4s ease-in-out infinite alternate; transform-origin: center; }
+        @keyframes schemaLineHCenter { 0% { transform: scaleX(0); opacity: 0; } 100% { transform: scaleX(1); opacity: 1; } }
+        @keyframes schemaLineVCenter { 0% { transform: scaleY(0); opacity: 0; } 100% { transform: scaleY(1); opacity: 1; } }
+        .schema-flash { animation: schemaFlash 2s infinite alternate; }
+        .schema-flash-1 { animation: schemaFlash 2s infinite alternate 0.5s; }
+        .schema-flash-2 { animation: schemaFlash 2s infinite alternate 1s; }
+        .schema-flash-3 { animation: schemaFlash 2s infinite alternate 1.5s; }
+        @keyframes schemaFlash {
+          0%, 40% { opacity: 0.3; background: rgba(255,255,255,0.04); box-shadow: none; }
+          100% { opacity: 1; background: #fff; box-shadow: 0 0 14px rgba(255,255,255,0.75); }
+        }
+        .schema-pulse-dot { animation: schemaPulseDot 1.5s ease-in-out infinite alternate; }
+        @keyframes schemaPulseDot { 0% { transform: scale(0.8); opacity: 0.5; } 100% { transform: scale(1.5); opacity: 1; box-shadow: 0 0 20px rgba(255,255,255,1); } }
+        .schema-pulse-dot-pos { animation: schemaPulseDotPos 1.5s ease-in-out infinite alternate; }
+        @keyframes schemaPulseDotPos {
+          0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.5; }
+          100% { transform: translate(-50%, -50%) scale(1.5); opacity: 1; box-shadow: 0 0 20px rgba(255,255,255,1); }
+        }
+        .schema-ring-spin-inset { animation: schemaRingSpinInset 20s linear infinite; }
+        .schema-ring-spin-inset-reverse { animation: schemaRingSpinInset 25s linear infinite reverse; }
+        @keyframes schemaRingSpinInset { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+      </style>
+      <style>
+        .schema-card-enhanced {
+          background-color: #161616;
+          background-image: linear-gradient(#161616, #161616), linear-gradient(to bottom right, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.05));
+          background-origin: padding-box, border-box;
+          background-clip: padding-box, border-box;
+          border: 1px solid transparent;
+        }
+        .schema-card-enhanced:hover {
+          background-color: #1c1c1c;
+          background-image: linear-gradient(#1c1c1c, #1c1c1c), linear-gradient(to bottom right, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.15));
+        }
+        .schema-card-enhanced > span.text-6xl {
+          color: rgba(255, 255, 255, 0.12) !important;
+        }
+        .schema-card-enhanced:hover > span.text-6xl {
+          color: rgba(255, 255, 255, 0.3) !important;
+        }
+      </style>
+
+      <script>
+        (() => {
+          const section = document.getElementById("h-scroll-section");
+          const track = document.getElementById("h-scroll-track");
+          const progress = document.getElementById("h-scroll-progress");
+
+          if (!section || !track || !progress) return;
+
+          let ticking = false;
+
+          function updateMetrics() {
+            const maxTranslate = Math.max(0, track.scrollWidth - window.innerWidth);
+            const totalHeight = window.innerHeight + maxTranslate + window.innerHeight * 0.35;
+            section.style.height = `${totalHeight}px`;
+          }
+
+          function updateScroll() {
+            const rect = section.getBoundingClientRect();
+            const maxTranslate = Math.max(0, track.scrollWidth - window.innerWidth);
+            const scrollable = Math.max(1, section.offsetHeight - window.innerHeight);
+
+            const passed = Math.min(Math.max(-rect.top, 0), scrollable);
+            const progressRatio = passed / scrollable;
+            const x = maxTranslate * progressRatio;
+
+            track.style.transform = `translate3d(${-x}px, 0, 0)`;
+            progress.style.width = `${progressRatio * 100}%`;
+
+            ticking = false;
+          }
+
+          function onScroll() {
+            if (!ticking) {
+              requestAnimationFrame(updateScroll);
+              ticking = true;
+            }
+          }
+
+          function onResize() {
+            updateMetrics();
+            updateScroll();
+          }
+
+          window.addEventListener("scroll", onScroll, { passive: true });
+          window.addEventListener("resize", onResize);
+          window.addEventListener("load", onResize);
+
+          updateMetrics();
+          updateScroll();
+        })();
+      </script>
+    </div>
+
+    <!-- Selected Work Marquee & Grid -->
+    <section class="z-10 overflow-hidden group bg-[#000] border-white/10 border-t pt-40 pb-40 relative">
+      <div class="flex flex-col items-center justify-center fade-up">
+        <div class="relative w-full overflow-hidden mb-24 flex items-center opacity-20 group-hover:opacity-40 transition-opacity duration-1000">
+          <div class="flex whitespace-nowrap animate-[marquee_25s_linear_infinite]">
+            <h2 class="text-[10vw] font-bold uppercase tracking-tighter text-white mx-8">
+              DEPLOYMENTS
+            </h2>
+            <h2 class="text-[10vw] font-bold uppercase tracking-tighter text-transparent mx-8" style="-webkit-text-stroke: 1px rgba(255,255,255,0.8);">
+              DEPLOYMENTS
+            </h2>
+            <h2 class="text-[10vw] font-bold uppercase tracking-tighter text-white mx-8">
+              DEPLOYMENTS
+            </h2>
+            <h2 class="text-[10vw] font-bold uppercase tracking-tighter text-transparent mx-8" style="-webkit-text-stroke: 1px rgba(255,255,255,0.8);">
+              DEPLOYMENTS
+            </h2>
+          </div>
+        </div>
+
+        <div class="w-full max-w-6xl mx-auto -mt-32 grid grid-cols-1 md:grid-cols-2 gap-8 px-6 relative z-10">
+          <a href="#" class="group/proj block relative rounded-[2rem] overflow-hidden aspect-[4/3] border border-white/10 hover:border-white/30 transition-all duration-500 shadow-2xl bg-[#050505] p-2">
+            <div class="absolute top-6 right-6 z-20 bg-black/50 backdrop-blur-md border border-white/20 text-white font-mono text-[10px] px-3 py-1 rounded-full opacity-0 group-hover/proj:opacity-100 translate-y-2 group-hover/proj:translate-y-0 transition-all duration-300 flex items-center gap-2">
+              <div class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></div>
+              LIVE
+            </div>
+            <div class="relative w-full h-full rounded-[1.5rem] overflow-hidden bg-neutral-900">
+              <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/variants/468eeec1-e10c-4305-ad63-50cff0e023dc/1600w.png" alt="Work 1" class="w-full h-full object-cover filter grayscale opacity-40 group-hover/proj:opacity-80 group-hover/proj:scale-105 transition-all duration-700 mix-blend-luminosity">
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex flex-col justify-end p-8">
+                <div class="translate-y-4 group-hover/proj:translate-y-0 transition-transform duration-500">
+                  <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-neutral-400 mb-2 block opacity-0 group-hover/proj:opacity-100 transition-opacity duration-500">
+                    Fintech System
+                  </span>
+                  <h3 class="text-3xl font-semibold tracking-tight text-white">
+                    Quantum Ledger
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <a href="#" class="group/proj block relative rounded-[2rem] overflow-hidden aspect-[4/3] border border-white/10 hover:border-white/30 transition-all duration-500 shadow-2xl md:mt-24 bg-[#050505] p-2">
+            <div class="absolute top-6 right-6 z-20 bg-black/50 backdrop-blur-md border border-white/20 text-white font-mono text-[10px] px-3 py-1 rounded-full opacity-0 group-hover/proj:opacity-100 translate-y-2 group-hover/proj:translate-y-0 transition-all duration-300 flex items-center gap-2">
+              <div class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></div>
+              LIVE
+            </div>
+            <div class="relative w-full h-full rounded-[1.5rem] overflow-hidden bg-neutral-900">
+              <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/variants/823f2b22-afcd-4c1d-b3f6-c025e505e98c/1600w.jpg" alt="Work 2" class="w-full h-full object-cover filter grayscale opacity-40 group-hover/proj:opacity-80 group-hover/proj:scale-105 transition-all duration-700 mix-blend-luminosity">
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex flex-col justify-end p-8">
+                <div class="translate-y-4 group-hover/proj:translate-y-0 transition-transform duration-500">
+                  <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-neutral-400 mb-2 block opacity-0 group-hover/proj:opacity-100 transition-opacity duration-500">
+                    AI Platform
+                  </span>
+                  <h3 class="text-3xl font-semibold tracking-tight text-white">
+                    Synthetix Core
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Orbital Feature System -->
+    <section class="overflow-hidden flex flex-col min-h-screen select-none text-white bg-[#000] border-white/10 border-t pt-32 pb-32 relative items-center justify-center">
+      <div class="absolute inset-0 bg-grid opacity-[0.08] pointer-events-none"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.06),transparent_42%)] pointer-events-none"></div>
+      <div class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none"></div>
+      <div class="relative z-20 flex flex-col items-center text-center px-6 mb-20">
+  <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/15 bg-white/[0.04] backdrop-blur-xl mb-6 shadow-[0_0_20px_rgba(255,255,255,0.04)]">
+    <span class="h-1.5 w-1.5 rounded-full bg-white/80 animate-pulse"></span>
+    <span class="text-[10px] font-mono uppercase tracking-[0.22em] text-white/90">
+            Unified System
+          </span>
+  </div>
+
+  <h2 class="md:text-5xl text-4xl font-semibold text-white tracking-tight mb-4">
+    Data Convergence
+  </h2>
+
+  <p class="max-w-md mx-auto text-sm text-neutral-400 font-light leading-relaxed">
+    Multiple scattered elements, fragmented workflows, and disparate
+    interfaces are pulled into a singular cognitive core. Complexity
+    compressed into absolute control.
+  </p>
+</div>
+
+      <div class="relative z-10 w-[640px] h-[640px] max-w-[94vw] max-h-[94vw] flex items-center justify-center scale-[0.72] md:scale-100">
+        <!-- Ambient Base Glow -->
+        <div class="absolute w-[300px] h-[300px] rounded-full bg-white/[0.04] blur-[60px] opacity-80 pointer-events-none"></div>
+
+        <!-- Radar Pull Rings -->
+        <div class="absolute top-1/2 left-1/2 w-[600px] h-[600px] border-white/20 border-solid rounded-full pointer-events-none" style="animation: radar-pull-anim 4s cubic-bezier(0.5, 0, 0.8, 1) infinite; animation-delay: 0s;"></div>
+        <div class="absolute top-1/2 left-1/2 w-[600px] h-[600px] border-white/20 border-solid rounded-full pointer-events-none" style="animation: radar-pull-anim 4s cubic-bezier(0.5, 0, 0.8, 1) infinite; animation-delay: 1.33s;"></div>
+        <div class="absolute top-1/2 left-1/2 w-[600px] h-[600px] border-white/20 border-solid rounded-full pointer-events-none" style="animation: radar-pull-anim 4s cubic-bezier(0.5, 0, 0.8, 1) infinite; animation-delay: 2.66s;"></div>
+
+        <!-- Central Converging Core -->
+        <div class="absolute top-1/2 left-1/2 z-30 pointer-events-none" style="animation: core-pulse-anim 2s ease-in-out infinite;">
+          <div class="absolute inset-0 rounded-full bg-white opacity-20 blur-xl animate-pulse"></div>
+          <div class="relative w-20 h-20 bg-white text-black rounded-full flex items-center justify-center shadow-[0_0_60px_rgba(255,255,255,0.9),inset_0_0_20px_rgba(0,0,0,0.2)] before:content-[''] before:absolute before:-inset-4 before:border before:border-dashed before:border-white/40 before:rounded-full before:animate-[spin_6s_linear_infinite]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="black" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="animate-pulse">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Scattered Converging Elements -->
+
+        <!-- Element 1: Code Block -->
+        <div class="absolute top-1/2 left-1/2 p-3 bg-white/[0.02] border border-white/10 rounded-xl backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex flex-col gap-1.5 w-32 z-20" style="--tx: -240px; --ty: -240px; --rot: 15deg; animation: gravity-well-anim 4.8s cubic-bezier(0.5, 0, 0.8, 1) infinite both; animation-delay: 0.2s;">
+          <div class="h-1.5 w-1/2 bg-white/20 rounded"></div>
+          <div class="h-1.5 w-3/4 bg-white/40 rounded"></div>
+          <div class="h-1.5 w-2/3 bg-white/20 rounded"></div>
+        </div>
+
+        <!-- Element 2: Database -->
+        <div class="absolute top-1/2 left-1/2 p-3 bg-white/[0.02] border border-white/10 rounded-xl backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.5)] z-20 text-neutral-300" style="--tx: 260px; --ty: -180px; --rot: -20deg; animation: gravity-well-anim 4.8s cubic-bezier(0.5, 0, 0.8, 1) infinite both; animation-delay: 0.6s;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+            <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
+            <path d="M3 12A9 3 0 0 0 21 12"></path>
+          </svg>
+        </div>
+
+        <!-- Element 3: Custom Toggle -->
+        <div class="absolute top-1/2 left-1/2 p-2.5 bg-white/[0.02] border border-white/10 rounded-xl backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.5)] z-20" style="--tx: -180px; --ty: 260px; --rot: 30deg; animation: gravity-well-anim 4.8s cubic-bezier(0.5, 0, 0.8, 1) infinite both; animation-delay: 1.0s;">
+          <div class="w-8 h-4 bg-white/20 rounded-full relative">
+            <div class="absolute right-1 top-[2px] w-3 h-3 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.8)]"></div>
+          </div>
+        </div>
+
+        <!-- Element 4: Metric -->
+        <div class="absolute top-1/2 left-1/2 px-4 py-2 bg-white/[0.02] border border-white/10 rounded-xl backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex items-center gap-2 z-20" style="--tx: 220px; --ty: 220px; --rot: -10deg; animation: gravity-well-anim 4.8s cubic-bezier(0.5, 0, 0.8, 1) infinite both; animation-delay: 1.4s;">
+          <div class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.5)]"></div>
+          <span class="text-xs font-mono text-white">99.9%</span>
+        </div>
+
+        <!-- Element 5: Bar Chart -->
+        <div class="absolute top-1/2 left-1/2 p-3 bg-white/[0.02] border border-white/10 rounded-xl backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex items-end gap-1.5 h-12 w-16 z-20" style="--tx: -320px; --ty: 20px; --rot: 25deg; animation: gravity-well-anim 4.8s cubic-bezier(0.5, 0, 0.8, 1) infinite both; animation-delay: 1.8s;">
+          <div class="w-2 bg-white/20 rounded-t h-1/3"></div>
+          <div class="w-2 bg-white/40 rounded-t h-2/3"></div>
+          <div class="w-2 bg-white/60 rounded-t h-1/2"></div>
+          <div class="w-2 bg-white/80 rounded-t h-full shadow-[0_0_8px_rgba(255,255,255,0.4)]"></div>
+        </div>
+
+        <!-- Element 6: Settings -->
+        <div class="absolute top-1/2 left-1/2 p-3 bg-white/[0.02] border border-white/10 rounded-xl backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.5)] z-20 text-neutral-300" style="--tx: 300px; --ty: 60px; --rot: -25deg; animation: gravity-well-anim 4.8s cubic-bezier(0.5, 0, 0.8, 1) infinite both; animation-delay: 2.2s;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+        </div>
+
+        <!-- Element 7: User Profile Placeholder -->
+        <div class="absolute top-1/2 left-1/2 p-2 bg-white/[0.02] border border-white/10 rounded-xl backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex items-center gap-2 z-20" style="--tx: -80px; --ty: -300px; --rot: 40deg; animation: gravity-well-anim 4.8s cubic-bezier(0.5, 0, 0.8, 1) infinite both; animation-delay: 2.6s;">
+          <div class="w-6 h-6 rounded-full bg-gradient-to-tr from-white/20 to-white/5 border border-white/20"></div>
+          <div class="h-1.5 w-8 bg-white/20 rounded"></div>
+        </div>
+
+        <!-- Element 8: Security Shield -->
+        <div class="absolute top-1/2 left-1/2 p-3 bg-white/[0.02] border border-white/10 rounded-xl backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.5)] z-20 text-emerald-400" style="--tx: 100px; --ty: -280px; --rot: -15deg; animation: gravity-well-anim 4.8s cubic-bezier(0.5, 0, 0.8, 1) infinite both; animation-delay: 3.0s;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2-1 4-2 8-2 2 0 6 1 8 2a1 1 0 0 1 1 1z"></path>
+            <path d="m9 12 2 2 4-4"></path>
+          </svg>
+        </div>
+
+        <!-- Element 9: Custom Slider -->
+        <div class="absolute top-1/2 left-1/2 p-3 bg-white/[0.02] border border-white/10 rounded-xl backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.5)] w-24 z-20" style="--tx: -120px; --ty: 320px; --rot: 20deg; animation: gravity-well-anim 4.8s cubic-bezier(0.5, 0, 0.8, 1) infinite both; animation-delay: 3.4s;">
+          <div class="w-full h-1 bg-white/10 rounded-full relative">
+            <div class="absolute left-1/3 top-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-white rounded-full shadow-[0_0_8px_rgba(255,255,255,0.6)]"></div>
+          </div>
+        </div>
+
+        <!-- Element 10: CPU Node -->
+        <div class="absolute top-1/2 left-1/2 p-3 bg-white/[0.02] border border-white/10 rounded-xl backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.5)] z-20 text-neutral-300" style="--tx: 160px; --ty: 300px; --rot: -35deg; animation: gravity-well-anim 4.8s cubic-bezier(0.5, 0, 0.8, 1) infinite both; animation-delay: 3.8s;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="16" height="16" x="4" y="4" rx="2"></rect>
+            <rect width="6" height="6" x="9" y="9" rx="1"></rect>
+            <path d="M15 2v2"></path>
+            <path d="M15 20v2"></path>
+            <path d="M2 15h2"></path>
+            <path d="M2 9h2"></path>
+            <path d="M20 15h2"></path>
+            <path d="M20 9h2"></path>
+            <path d="M9 2v2"></path>
+            <path d="M9 20v2"></path>
+          </svg>
+        </div>
+
+        <!-- Element 11: Line Graph -->
+        <div class="absolute top-1/2 left-1/2 p-3 bg-white/[0.02] border border-white/10 rounded-xl backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.5)] w-20 z-20" style="--tx: -340px; --ty: -120px; --rot: 10deg; animation: gravity-well-anim 4.8s cubic-bezier(0.5, 0, 0.8, 1) infinite both; animation-delay: 4.2s;">
+          <svg viewBox="0 0 100 20" class="w-full h-4 overflow-visible">
+            <path d="M0,10 Q15,20 25,10 T50,10 T75,5 T100,10" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2"></path>
+          </svg>
+        </div>
+
+        <!-- Element 12: Code Block 2 -->
+        <div class="absolute top-1/2 left-1/2 p-3 bg-white/[0.02] border border-white/10 rounded-xl backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex flex-col gap-1.5 w-24 z-20" style="--tx: 340px; --ty: -80px; --rot: -5deg; animation: gravity-well-anim 4.8s cubic-bezier(0.5, 0, 0.8, 1) infinite both; animation-delay: 4.6s;">
+          <div class="h-1.5 w-full bg-emerald-400/40 rounded"></div>
+          <div class="h-1.5 w-2/3 bg-white/20 rounded"></div>
+        </div>
+      </div>
+
+      <style>
+        @keyframes core-pulse-anim {
+          0%, 100% {
+            transform: translate(-50%, -50%) scale(1);
+            box-shadow: 0 0 40px rgba(255,255,255,0.15), inset 0 0 20px rgba(255,255,255,0.1);
+          }
+          50% {
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 0 80px rgba(255,255,255,0.7), inset 0 0 40px rgba(255,255,255,0.3);
+          }
+        }
+
+        @keyframes radar-pull-anim {
+          0% { transform: translate(-50%, -50%) scale(1.2); opacity: 0; }
+          10% { opacity: 0.2; }
+          80% { opacity: 0.6; border-width: 1px; }
+          100% { transform: translate(-50%, -50%) scale(0); opacity: 0; border-width: 3px; }
+        }
+
+        @keyframes gravity-well-anim {
+          0% {
+            transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(1.1) rotate(calc(var(--rot) * -1));
+            opacity: 0;
+            filter: blur(4px);
+          }
+          15% {
+            opacity: 1;
+            filter: blur(0px);
+            transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(1) rotate(0deg);
+          }
+          60% {
+            transform: translate(calc(-50% + var(--tx)*0.6), calc(-50% + var(--ty)*0.6)) scale(0.85) rotate(var(--rot));
+            opacity: 1;
+            filter: blur(0px);
+          }
+          85% {
+            transform: translate(calc(-50% + var(--tx)*0.2), calc(-50% + var(--ty)*0.2)) scale(0.4) rotate(calc(var(--rot) * 2));
+            opacity: 0.8;
+            filter: blur(2px);
+          }
+          100% {
+            transform: translate(-50%, -50%) scale(0) rotate(calc(var(--rot) * 3));
+            opacity: 0;
+            filter: blur(8px);
+          }
+        }
+      </style>
+    </section>
+
+    <section class="antialiased selection:bg-neutral-800 selection:text-white flex flex-col min-h-screen w-full items-center">
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+      <style>
+        /* Base typography configuration matching the premium aesthetic */
+        body {
+          font-family: 'Inter', sans-serif;
+          background-color: #0a0a0a;
+          color: #ededed;
+        }
+
+        /* Top Progressive Blur Skill Snippet */
+        .gradient-blur {
+          position: fixed;
+          z-index: 40;
+          inset: 0 0 auto 0;
+          height: 12%;
+          pointer-events: none;
+        }
+
+        .gradient-blur>div,
+        .gradient-blur::before,
+        .gradient-blur::after {
+          position: absolute;
+          inset: 0;
+        }
+
+        .gradient-blur::before {
+          content: "";
+          z-index: 1;
+          backdrop-filter: blur(0.5px);
+          -webkit-mask: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 12.5%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0) 37.5%);
+          mask: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 12.5%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0) 37.5%);
+        }
+
+        .gradient-blur>div:nth-of-type(1) {
+          z-index: 2;
+          backdrop-filter: blur(1px);
+          -webkit-mask: linear-gradient(to top, rgba(0, 0, 0, 0) 12.5%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 1) 37.5%, rgba(0, 0, 0, 0) 50%);
+          mask: linear-gradient(to top, rgba(0, 0, 0, 0) 12.5%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 1) 37.5%, rgba(0, 0, 0, 0) 50%);
+        }
+
+        .gradient-blur>div:nth-of-type(2) {
+          z-index: 3;
+          backdrop-filter: blur(2px);
+          -webkit-mask: linear-gradient(to top, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 1) 37.5%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 62.5%);
+          mask: linear-gradient(to top, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 1) 37.5%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 62.5%);
+        }
+
+        .gradient-blur>div:nth-of-type(3) {
+          z-index: 4;
+          backdrop-filter: blur(4px);
+          -webkit-mask: linear-gradient(to top, rgba(0, 0, 0, 0) 37.5%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 1) 62.5%, rgba(0, 0, 0, 0) 75%);
+          mask: linear-gradient(to top, rgba(0, 0, 0, 0) 37.5%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 1) 62.5%, rgba(0, 0, 0, 0) 75%);
+        }
+
+        .gradient-blur>div:nth-of-type(4) {
+          z-index: 5;
+          backdrop-filter: blur(8px);
+          -webkit-mask: linear-gradient(to top, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 62.5%, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0) 87.5%);
+          mask: linear-gradient(to top, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 62.5%, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0) 87.5%);
+        }
+
+        .gradient-blur>div:nth-of-type(5) {
+          z-index: 6;
+          backdrop-filter: blur(16px);
+          -webkit-mask: linear-gradient(to top, rgba(0, 0, 0, 0) 62.5%, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 1) 87.5%, rgba(0, 0, 0, 0) 100%);
+          mask: linear-gradient(to top, rgba(0, 0, 0, 0) 62.5%, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 1) 87.5%, rgba(0, 0, 0, 0) 100%);
+        }
+
+        .gradient-blur>div:nth-of-type(6) {
+          z-index: 7;
+          backdrop-filter: blur(32px);
+          -webkit-mask: linear-gradient(to top, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 1) 87.5%, rgba(0, 0, 0, 1) 100%);
+          mask: linear-gradient(to top, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 1) 87.5%, rgba(0, 0, 0, 1) 100%);
+        }
+
+        .gradient-blur::after {
+          content: "";
+          z-index: 8;
+          backdrop-filter: blur(64px);
+          -webkit-mask: linear-gradient(to top, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 1) 100%);
+          mask: linear-gradient(to top, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 1) 100%);
+        }
+
+        /* Utilities for JS animations */
+        .mask-word {
+        display: inline-block;
+        overflow: hidden;
+        vertical-align: top;
+        margin-right: 0.18em;
+        margin-bottom: 0.08em;
+        }
+
+        .mask-word-inner {
+        display: inline-block;
+        transform: translateY(110%);
+        will-change: transform;
+        }
+
+        /* Smooth hiding for scroll elements */
+        .initially-hidden {
+          opacity: 0;
+          visibility: hidden;
+        }
+      </style>
+
+      <div class="gradient-blur">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+
+      <main class="w-full max-w-6xl mx-auto border-x border-neutral-900 relative min-h-screen flex flex-col">
+        <!-- Outer Corner Markers -->
+        <svg class="absolute -top-[12px] -left-[12px] w-6 h-6 text-neutral-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 4v16m8-8H4"></path>
+        </svg>
+        <svg class="absolute -top-[12px] -right-[12px] w-6 h-6 text-neutral-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 4v16m8-8H4"></path>
+        </svg>
+
+        <!-- Hero Section with Masked Reveal -->
+        <header class="pt-40 pb-24 px-6 md:px-12 relative z-10 flex flex-col items-center text-center w-full overflow-hidden">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/30 text-xs font-normal text-neutral-400 mb-8 opacity-0" id="hero-badge">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></span>
+            System initialization complete
+          </div>
+
+          <h1 class="text-4xl md:text-6xl lg:text-7xl font-medium tracking-tight text-white w-full max-w-[1100px] leading-[1.06] masked-reveal-target break-words whitespace-normal"><span class="mask-word"><span class="mask-word-inner">Architecturethatscalesorganicallywithyourcomplexity.</span></span></h1>
+
+          <p class="mt-8 text-base md:text-lg text-neutral-400 max-w-2xl font-normal opacity-0" id="hero-desc">
+            Begin with a single core. As data flows increase, the system
+            progressively reveals deeper layers, connections, and autonomous
+            sub-routines. Scroll to initiate expansion.
+          </p>
+        </header>
+
+        <!-- Nested Inner Container Frame (The Expansion Area) -->
+        <div class="mx-4 md:mx-10 mb-32 p-6 md:p-16 border border-neutral-800/60 rounded-3xl bg-neutral-950/40 relative z-10 overflow-hidden" id="expansion-container">
+          <!-- Inner Corner Markers -->
+          <svg class="absolute top-4 left-4 w-4 h-4 text-neutral-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path>
+          </svg>
+          <svg class="absolute top-4 right-4 w-4 h-4 text-neutral-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path>
+          </svg>
+          <svg class="absolute bottom-4 left-4 w-4 h-4 text-neutral-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path>
+          </svg>
+          <svg class="absolute bottom-4 right-4 w-4 h-4 text-neutral-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path>
+          </svg>
+
+          <!-- Grid Sequence Wrapper -->
+          <div class="relative flex flex-col items-center w-full min-h-[1200px] py-10">
+            <!-- LEVEL 1: Minimal Start -->
+            <div class="w-full max-w-sm z-20 seq-node opacity-0" style="transform: translateY(20px);">
+              <!-- Border Gradient Wrapper -->
+              <div class="p-[1px] rounded-2xl bg-gradient-to-b from-neutral-600/60 via-neutral-800/30 to-transparent w-full">
+                <!-- Inner Surface -->
+                <div class="bg-neutral-900 h-full w-full rounded-[15px] p-6 flex flex-col items-center text-center shadow-2xl shadow-black/50">
+                  <div class="w-12 h-12 rounded-xl bg-neutral-800/50 border border-neutral-700 flex items-center justify-center mb-4">
+                    <iconify-icon icon="solar:cpu-bolt-bold-duotone" class="text-2xl text-neutral-300"></iconify-icon>
+                  </div>
+                  <h3 class="text-lg font-medium tracking-tight text-neutral-100">
+                    Primary Core
+                  </h3>
+                  <p class="mt-2 text-sm text-neutral-500 font-normal">
+                    Single point of origin. Awaiting data saturation to expand
+                    network topography.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Connection Line L1 -> L2 -->
+            <div class="w-[1px] h-32 bg-gradient-to-b from-neutral-700 to-neutral-800 z-10 seq-line" style="transform-origin: top; transform: scaleY(0);"></div>
+
+            <!-- LEVEL 2: Branching Out (More Detail) -->
+            <div class="w-full relative z-20 mt-[-1px]">
+              <!-- Horizontal split line -->
+              <div class="absolute top-0 left-1/4 right-1/4 h-[1px] bg-neutral-800 seq-line-h" style="transform-origin: center; transform: scaleX(0);"></div>
+
+              <div class="flex flex-col md:flex-row justify-center gap-8 md:gap-32 pt-8">
+                <!-- Node 2A -->
+                <div class="w-full max-w-sm seq-node opacity-0" style="transform: translateY(20px);">
+                  <div class="p-[1px] rounded-2xl bg-gradient-to-br from-neutral-700/50 via-neutral-800/20 to-transparent w-full">
+                    <div class="bg-neutral-900/90 backdrop-blur-sm h-full w-full rounded-[15px] p-6 text-left border border-white/5">
+                      <iconify-icon icon="solar:database-bold-duotone" class="text-xl text-neutral-400 mb-3"></iconify-icon>
+                      <h3 class="text-base font-medium tracking-tight text-neutral-200">
+                        Data Persistence
+                      </h3>
+                      <p class="mt-1 text-xs text-neutral-500 font-normal leading-relaxed">
+                        State is separated from execution. Local cache clusters
+                        begin forming to handle increased read throughput.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Node 2B -->
+                <div class="w-full max-w-sm seq-node opacity-0" style="transform: translateY(20px);">
+                  <div class="p-[1px] rounded-2xl bg-gradient-to-bl from-neutral-700/50 via-neutral-800/20 to-transparent w-full">
+                    <div class="bg-neutral-900/90 backdrop-blur-sm h-full w-full rounded-[15px] p-6 text-left border border-white/5">
+                      <iconify-icon icon="solar:network-bold-duotone" class="text-xl text-neutral-400 mb-3"></iconify-icon>
+                      <h3 class="text-base font-medium tracking-tight text-neutral-200">
+                        Load Distribution
+                      </h3>
+                      <p class="mt-1 text-xs text-neutral-500 font-normal leading-relaxed">
+                        Traffic is dynamically routed. Edge nodes are deployed
+                        to minimize latency for incoming external requests.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Connection Lines L2 -> L3 (Using flex to align with nodes above) -->
+            <div class="w-full flex justify-center gap-8 md:gap-32 relative z-10 mt-[-1px]">
+              <div class="w-[1px] h-32 bg-gradient-to-b from-neutral-800 to-neutral-800/50 seq-line" style="transform-origin: top; transform: scaleY(0);"></div>
+              <div class="w-[1px] h-32 bg-gradient-to-b from-neutral-800 to-neutral-800/50 seq-line hidden md:block" style="transform-origin: top; transform: scaleY(0);"></div>
+            </div>
+
+            <!-- LEVEL 3: Complex Metrics & Status (Highest Detail) -->
+            <div class="w-full relative z-20 mt-[-1px]">
+              <!-- Horizontal split line for bottom row -->
+              <div class="absolute top-0 left-[10%] right-[10%] h-[1px] bg-neutral-800/50 seq-line-h" style="transform-origin: center; transform: scaleX(0);"></div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 w-full max-w-5xl mx-auto px-4 md:px-0">
+                <!-- Complex Node 3A -->
+                <div class="w-full seq-node opacity-0" style="transform: translateY(20px);">
+                  <div class="p-[1px] rounded-xl bg-gradient-to-b from-neutral-700/30 to-transparent w-full h-full">
+                    <div class="bg-neutral-950/80 h-full w-full rounded-[11px] p-5 text-left border border-neutral-800/50 flex flex-col justify-between">
+                      <div>
+                        <div class="flex justify-between items-center mb-3">
+                          <iconify-icon icon="solar:shield-keyhole-bold-duotone" class="text-lg text-neutral-400"></iconify-icon>
+                          <span class="text-[10px] font-medium tracking-wide text-neutral-500 uppercase px-2 py-0.5 rounded bg-neutral-900 border border-neutral-800">
+                            Active
+                          </span>
+                        </div>
+                        <h3 class="text-sm font-medium tracking-tight text-neutral-200">
+                          Security Layers
+                        </h3>
+                        <p class="mt-1 text-xs text-neutral-600 font-normal">
+                          Automated threat mitigation.
+                        </p>
+                      </div>
+                      <div class="mt-4 pt-4 border-t border-neutral-800/50">
+                        <div class="flex justify-between text-xs mb-1">
+                          <span class="text-neutral-500">Integrity</span>
+                          <span class="text-neutral-300 font-medium">
+                            99.9%
+                          </span>
+                        </div>
+                        <div class="w-full h-1 bg-neutral-900 rounded-full overflow-hidden">
+                          <div class="h-full bg-neutral-500 w-[99%]"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Complex Node 3B -->
+                <div class="w-full seq-node opacity-0" style="transform: translateY(20px);">
+                  <div class="p-[1px] rounded-xl bg-gradient-to-b from-neutral-700/30 to-transparent w-full h-full">
+                    <div class="bg-neutral-950/80 h-full w-full rounded-[11px] p-5 text-left border border-neutral-800/50 flex flex-col justify-between">
+                      <div>
+                        <div class="flex justify-between items-center mb-3">
+                          <iconify-icon icon="solar:widget-add-bold-duotone" class="text-lg text-neutral-400"></iconify-icon>
+                          <span class="flex items-center gap-1 text-[10px] font-medium tracking-wide text-neutral-500 uppercase px-2 py-0.5 rounded bg-neutral-900 border border-neutral-800">
+                            <span class="w-1 h-1 rounded-full bg-blue-500"></span>
+                            Syncing
+                          </span>
+                        </div>
+                        <h3 class="text-sm font-medium tracking-tight text-neutral-200">
+                          Micro-services
+                        </h3>
+                        <p class="mt-1 text-xs text-neutral-600 font-normal">
+                          Spinning up isolated containers.
+                        </p>
+                      </div>
+                      <div class="mt-4 pt-4 border-t border-neutral-800/50 flex gap-1">
+                        <!-- Mini bar chart -->
+                        <div class="flex-1 h-6 bg-neutral-800/30 rounded flex items-end p-[1px]">
+                          <div class="w-full bg-neutral-600 rounded-[2px]" style="height: 40%"></div>
+                        </div>
+                        <div class="flex-1 h-6 bg-neutral-800/30 rounded flex items-end p-[1px]">
+                          <div class="w-full bg-neutral-600 rounded-[2px]" style="height: 70%"></div>
+                        </div>
+                        <div class="flex-1 h-6 bg-neutral-800/30 rounded flex items-end p-[1px]">
+                          <div class="w-full bg-neutral-500 rounded-[2px]" style="height: 90%"></div>
+                        </div>
+                        <div class="flex-1 h-6 bg-neutral-800/30 rounded flex items-end p-[1px]">
+                          <div class="w-full bg-neutral-600 rounded-[2px]" style="height: 60%"></div>
+                        </div>
+                        <div class="flex-1 h-6 bg-neutral-800/30 rounded flex items-end p-[1px]">
+                          <div class="w-full bg-neutral-600 rounded-[2px]" style="height: 85%"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Complex Node 3C -->
+                <div class="w-full seq-node opacity-0" style="transform: translateY(20px);">
+                  <div class="p-[1px] rounded-xl bg-gradient-to-b from-neutral-700/30 to-transparent w-full h-full">
+                    <div class="bg-neutral-950/80 h-full w-full rounded-[11px] p-5 text-left border border-neutral-800/50 flex flex-col justify-between">
+                      <div>
+                        <div class="flex justify-between items-center mb-3">
+                          <iconify-icon icon="solar:chart-square-bold-duotone" class="text-lg text-neutral-400"></iconify-icon>
+                          <span class="text-[10px] font-medium tracking-wide text-neutral-500 uppercase px-2 py-0.5 rounded bg-neutral-900 border border-neutral-800">
+                            Live
+                          </span>
+                        </div>
+                        <h3 class="text-sm font-medium tracking-tight text-neutral-200">
+                          Telemetry
+                        </h3>
+                        <p class="mt-1 text-xs text-neutral-600 font-normal">
+                          Aggregating system logs &amp; traces.
+                        </p>
+                      </div>
+                      <div class="mt-4 pt-4 border-t border-neutral-800/50">
+                        <div class="flex justify-between items-center">
+                          <span class="text-xs text-neutral-500">Latency</span>
+                          <span class="text-sm font-medium text-neutral-200">
+                            12
+                            <span class="text-xs text-neutral-600 ml-0.5">
+                              ms
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Subtle fade out at bottom of container to imply infinite depth -->
+            <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-neutral-950/40 to-transparent pointer-events-none z-30"></div>
+          </div>
+        </div>
+      </main>
+
+      <script src="https://cdn.tailwindcss.com"></script>
+      <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+      <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+                gsap.registerPlugin(ScrollTrigger);
+
+                // 1. Masked Reveal Logic for Hero Text
+                const maskedTargets = document.querySelectorAll('.masked-reveal-target');
+
+                maskedTargets.forEach(target => {
+                    // Split text into words and wrap
+                    const text = target.innerText;
+                    target.innerHTML = ''; // Clear original
+
+                    const words = text.trim().split(/\s+/);
+                    words.forEach(word => {
+                    const outerSpan = document.createElement('span');
+                    outerSpan.className = 'mask-word';
+
+                    const innerSpan = document.createElement('span');
+                    innerSpan.className = 'mask-word-inner';
+                    innerSpan.textContent = word;
+
+                    outerSpan.appendChild(innerSpan);
+                    target.appendChild(outerSpan);
+                    });
+                });
+
+                // Hero Animation Timeline (runs on load)
+                const heroTl = gsap.timeline({ delay: 0.2 });
+
+                heroTl.to('#hero-badge', { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" })
+                      .to('.mask-word-inner', {
+                          y: "0%",
+                          duration: 1.2,
+                          stagger: 0.04,
+                          ease: "power4.out"
+                      }, "-=0.4")
+                      .to('#hero-desc', { opacity: 1, y: 0, duration: 1, ease: "power2.out" }, "-=0.6");
+
+
+                // 2. Progressive Grid Expansion Logic via Scroll
+                const container = document.getElementById('expansion-container');
+
+                // We use a timeline linked to the scroll position of the inner container
+                const expandTl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: container,
+                        start: "top 60%", // Start animating when container is 60% down the viewport
+                        end: "bottom 80%", // End when bottom of container is near bottom
+                        scrub: 1, // Smooth scrubbing
+                    }
+                });
+
+                // Level 1 Node fades in
+                expandTl.to('.seq-node:nth-of-type(1)', { opacity: 1, y: 0, duration: 1 })
+
+                // Level 1 to 2 Vertical Line draws
+                .to('.seq-line:nth-of-type(1)', { scaleY: 1, duration: 1.5, ease: "none" })
+
+                // Level 2 Horizontal Line draws out from center
+                .to('.seq-line-h:nth-of-type(1)', { scaleX: 1, duration: 1, ease: "power1.inOut" }, "-=0.5")
+
+                // Level 2 Nodes fade in
+                .to('.seq-node:nth-of-type(2), .seq-node:nth-of-type(3)', { opacity: 1, y: 0, duration: 1, stagger: 0.2 }, "-=0.2")
+
+                // Level 2 to 3 Vertical Lines draw down
+                .to('.seq-line:nth-of-type(2), .seq-line:nth-of-type(3)', { scaleY: 1, duration: 1.5, ease: "none", stagger: 0.1 })
+
+                // Level 3 Horizontal Line draws
+                .to('.seq-line-h:nth-of-type(2)', { scaleX: 1, duration: 1, ease: "power1.inOut" }, "-=0.5")
+
+                // Level 3 Complex Nodes fade in
+                .to('.seq-node:nth-of-type(4), .seq-node:nth-of-type(5), .seq-node:nth-of-type(6)', {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    stagger: 0.15
+                }, "-=0.2");
+            });
+      </script>
+    </section>
+
+    <!-- Final CTA / Footer -->
+    <footer class="flex flex-col w-full bg-[#000]">
+  <!-- CTA Section -->
+  <div class="overflow-hidden w-full border-white/10 border-t pt-32 pb-32 relative">
+    <div class="absolute inset-0 bg-grid opacity-10 pointer-events-none" style="mask-image: linear-gradient(to bottom, black 20%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 100%);"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-white/[0.03] blur-[100px] rounded-full pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto px-6 relative z-10 flex flex-col items-center text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-neutral-300 text-[10px] font-mono uppercase tracking-widest mb-6 backdrop-blur-md">
+        <div class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></div>
+        <span>Kernel Ready</span>
+      </div>
+
+      <style>
+        @keyframes type {
+          0%, 10% { width: 0; }
+          40%, 90% { width: 19ch; }
+          100% { width: 0; }
+        }
+        @keyframes blink {
+          0%, 100% { border-color: transparent; }
+          50% { border-color: #fff; }
+        }
+        .typewriter-text {
+          display: inline-block;
+          overflow: hidden;
+          white-space: nowrap;
+          border-right: 3px solid #fff;
+          width: 19ch;
+          animation: type 5s steps(19, end) infinite, blink 0.8s step-end infinite;
+        }
+      </style>
+      
+      <h2 class="text-4xl md:text-5xl font-normal text-white tracking-tight mb-6 font-mono typewriter-text">
+        &gt; init_workspace()
+      </h2>
+
+      <p class="text-neutral-400 max-w-lg font-light leading-relaxed mb-10">
+        Instantiate a new spatial computing node. Connect to the global mesh
+        network with deterministic state synchronization.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center gap-4">
+        <button class="w-full sm:w-auto group relative inline-flex items-center justify-center px-8 py-3.5 text-sm font-medium text-black bg-white rounded-full transition-all duration-300 hover:scale-105 hover:bg-neutral-200 shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+          <span class="relative z-10 flex items-center gap-2">
+            Deploy Node
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right transition-transform duration-300 group-hover:translate-x-1">
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </span>
+        </button>
+        <button class="w-full sm:w-auto group relative inline-flex items-center justify-center px-8 py-3.5 text-sm font-medium text-white bg-white/5 border border-white/10 rounded-full transition-all duration-300 hover:bg-white/10 backdrop-blur-sm">
+          <span class="relative z-10 flex items-center gap-2 text-neutral-300 group-hover:text-white transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code-2">
+              <path d="m18 16 4-4-4-4"></path>
+              <path d="m6 8-4 4 4 4"></path>
+              <path d="m14.5 4-5 16"></path>
+            </svg>
+            API Reference
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <div class="overflow-hidden bg-[#050505] w-full border-white/5 border-t pt-16 pb-12 relative">
+    <div class="max-w-7xl mx-auto px-6 relative z-10 flex flex-col w-full">
+      <div class="grid grid-cols-2 md:grid-cols-6 gap-x-8 gap-y-12 pb-16 border-b border-white/10 w-full">
+        <div class="col-span-2 md:col-span-2 lg:col-span-3 flex flex-col items-start gap-4">
+          <div class="flex gap-3 bg-center text-white bg-[url(https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/53e40404-d9d0-4f28-9e82-7f2f45062936_1600w.png)] bg-cover pt-6 pr-12 pb-6 pl-12 gap-x-3 gap-y-3 items-center">
+  
+
+</div>
+          <p class="text-sm text-neutral-500 max-w-sm font-light leading-relaxed mt-2">
+            A purely deterministic ecosystem designed for scale. Construct,
+            monitor, and deploy with tactile precision across the global mesh
+            network.
+          
+            Platform
+          
+          <a href="#" class="text-sm text-neutral-500 hover:text-white transition-colors duration-200">Engine</a>
+          <a href="#" class="text-sm text-neutral-500 hover:text-white transition-colors duration-200">Studio</a>
+          <a href="#" class="text-sm text-neutral-500 hover:text-white transition-colors duration-200">Research</a>
+          <a href="#" class="text-sm text-neutral-500 hover:text-white transition-colors duration-200">Network Map</a>
+        </p></div>
+
+        <div class="flex flex-col gap-4">
+          <h4 class="text-[10px] font-mono font-medium text-white uppercase tracking-widest mb-2">
+            Resources
+          </h4>
+          <a href="#" class="text-sm text-neutral-500 hover:text-white transition-colors duration-200">Documentation</a>
+          <a href="#" class="text-sm text-neutral-500 hover:text-white transition-colors duration-200">API Reference</a>
+          <a href="#" class="text-sm text-neutral-500 hover:text-white transition-colors duration-200">Changelog</a>
+          <a href="#" class="text-sm text-neutral-500 hover:text-white transition-colors duration-200">System Status</a>
+        </div>
+
+        <div class="flex flex-col gap-4">
+          <h4 class="text-[10px] font-mono font-medium text-white uppercase tracking-widest mb-2">
+            Company
+          </h4>
+          <a href="#" class="text-sm text-neutral-500 hover:text-white transition-colors duration-200">About</a>
+          <a href="#" class="text-sm text-neutral-500 hover:text-white transition-colors duration-200">Blog</a>
+          <a href="#" class="text-sm text-neutral-500 hover:text-white transition-colors duration-200">Careers</a>
+          <a href="#" class="text-sm text-neutral-500 hover:text-white transition-colors duration-200">Contact</a>
+        </div>
+      </div>
+
+      <div class="w-full flex flex-col md:flex-row justify-between items-center gap-6 pt-8">
+        <div class="flex flex-col md:flex-row items-center gap-6">
+          <div class="flex items-center gap-2 border border-white/10 bg-white/5 rounded-full px-3 py-1.5 backdrop-blur-sm">
+            <div class="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)] animate-pulse"></div>
+            <span class="text-[10px] font-mono text-neutral-300 uppercase tracking-widest">
+              All systems nominal
+            </span>
+          </div>
+          <div class="flex gap-6 text-xs font-mono text-neutral-500 uppercase">
+            <a href="#" class="hover:text-white transition-colors duration-300 flex items-center gap-1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter">
+                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+              </svg>
+              Twitter
+            </a>
+            <a href="#" class="hover:text-white transition-colors duration-300 flex items-center gap-1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github">
+                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                <path d="M9 18c-4.51 2-5-2-7-2"></path>
+              </svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4 text-[10px] text-neutral-600 font-mono uppercase tracking-widest">
+          <span>© 2024 Aura_SYS.</span>
+          <span class="px-2 py-0.5 border border-white/10 rounded">
+            v4.0.0
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <!-- Interactivity scripts -->
+    <script>
+      // Reveal elements on scroll
+      const observerOptions = {
+          root: null,
+          rootMargin: '0px',
+          threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  entry.target.classList.add('visible');
+                  observer.unobserve(entry.target);
+              }
+          });
+      }, observerOptions);
+
+      document.querySelectorAll('.fade-up, .scale-in').forEach(el => observer.observe(el));
+
+      // Horizontal scrolling section logic
+      const hSection = document.getElementById('h-scroll-section');
+      const hTrack = document.getElementById('h-scroll-track');
+      const hProgress = document.getElementById('h-scroll-progress');
+
+      window.addEventListener('scroll', () => {
+          if(!hSection || !hTrack || !hProgress) return;
+
+          const rect = hSection.getBoundingClientRect();
+          if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
+              const scrollProgress = Math.abs(rect.top) / (rect.height - window.innerHeight);
+              const maxScroll = hTrack.scrollWidth - window.innerWidth;
+              hTrack.style.transform = `translate3d(-${scrollProgress * maxScroll}px, 0, 0)`;
+              hProgress.style.width = `${scrollProgress * 100}%`;
+          } else if (rect.top > 0) {
+              hTrack.style.transform = `translate3d(0, 0, 0)`;
+              hProgress.style.width = `0%`;
+          } else if (rect.bottom < window.innerHeight) {
+              const maxScroll = hTrack.scrollWidth - window.innerWidth;
+              hTrack.style.transform = `translate3d(-${maxScroll}px, 0, 0)`;
+              hProgress.style.width = `100%`;
+          }
+      });
+
+      // Counter animation
+      const counters = document.querySelectorAll('.counter');
+      counters.forEach(counter => {
+          const target = parseFloat(counter.getAttribute('data-target'));
+          let current = target - 0.5; // Start slightly below
+
+          setInterval(() => {
+              // Add tiny jitter to make it look live
+              const jitter = (Math.random() - 0.5) * 0.02;
+              let val = current + jitter;
+              if (val > target) val = target;
+              if (val < target - 0.1) val = target - 0.1;
+              current = val;
+              counter.innerHTML = current.toFixed(2) + '<span class="text-lg text-neutral-500">%</span>';
+          }, 150);
+      });
+    </script>
+  
+</body></html>

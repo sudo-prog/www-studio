@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+try{if(window.parent&&window.parent!==window){window.parent.promotekit_referral="1fd2949a-d22c-431b-92bf-02d4ad04ee24";window.parent.document.cookie="promotekit_referral=1fd2949a-d22c-431b-92bf-02d4ad04ee24;path=/;domain=.aura.build;max-age=31536000"}}catch(e){}
+</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Pricing Cards</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body, html {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #111;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      min-height: 100vh;
+      min-width: 100vw;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Manrope', sans-serif !important;
+      font-weight: 200 !important;
+      letter-spacing: -0.03em !important;
+    }
+    #shader-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: block;
+      z-index: 0;
+      background: #111;
+    }
+    .glass-effect {
+      backdrop-filter: blur(14px) brightness(0.91);
+      -webkit-backdrop-filter: blur(14px) brightness(0.91);
+    }
+    .gradient-text {
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .card-divider {
+      height: 1px;
+      background-image: linear-gradient(90deg,
+        transparent,
+        rgba(255,255,255,0.09) 20%,
+        rgba(255,255,255,0.22) 50%,
+        rgba(255,255,255,0.09) 80%,
+        transparent
+      );
+    }
+    .icon-circle {
+      height: 2rem;
+      width: 2rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    .pricing-badge {
+      position: absolute;
+      top: -2px;
+      right: 30px;
+      padding: 4px 10px;
+      background: rgba(37, 99, 235, 0.9);
+      color: white;
+      font-size: 12px;
+      font-weight: 500;
+      border-radius: 0 0 6px 6px;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+    }
+    .card-vertical-divider {
+      width: 1px;
+      background-image: linear-gradient(180deg,
+        transparent,
+        rgba(255,255,255,0.09) 20%,
+        rgba(255,255,255,0.22) 50%,
+        rgba(255,255,255,0.09) 80%,
+        transparent
+      );
+    }
+  </style>
+  <script>
+    window.onload = function() {
+      const canvas = document.getElementById('shader-canvas');
+      const gl = canvas.getContext('webgl');
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      const vertexShaderSource = `
+        attribute vec2 aPosition;
+        void main() {
+          gl_Position = vec4(aPosition, 0.0, 1.0);
+        }
+      `;
+      const fragmentShaderSource = `
+        precision highp float;
+        uniform float iTime;
+        uniform vec2 iResolution;
+        mat2 rotate2d(float angle){
+          float c = cos(angle), s = sin(angle);
+          return mat2(c, -s, s, c);
+        }
+        float variation(vec2 v1, vec2 v2, float strength, float speed) {
+          return sin(
+              dot(normalize(v1), normalize(v2)) * strength + iTime * speed
+          ) / 100.0;
+        }
+        vec3 paintCircle (vec2 uv, vec2 center, float rad, float width) {
+          vec2 diff = center-uv;
+          float len = length(diff);
+          len += variation(diff, vec2(0.0, 1.0), 5.0, 2.0);
+          len -= variation(diff, vec2(1.0, 0.0), 5.0, 2.0);
+          float circle = smoothstep(rad-width, rad, len) - smoothstep(rad, rad+width, len);
+          return vec3(circle);
+        }
+        void main() {
+          vec2 uv = gl_FragCoord.xy / iResolution.xy;
+          uv.x *= 1.5;
+          uv.x -= 0.25;
+          vec3 color = vec3(0.0);
+          float radius = 0.35;
+          vec2 center = vec2(0.5);
+          color += paintCircle(uv, center, radius, 0.035);
+          color += paintCircle(uv, center, radius - 0.018, 0.01);
+          color += paintCircle(uv, center, radius + 0.018, 0.005);
+          vec2 v = rotate2d(iTime) * uv;
+          color *= vec3(v.x, v.y, 0.7-v.y*v.x);
+          color += paintCircle(uv, center, radius, 0.003);
+          gl_FragColor = vec4(color, 1.0);
+        }
+      `;
+      function compileShader(type, source) {
+        const shader = gl.createShader(type);
+        gl.shaderSource(shader, source);
+        gl.compileShader(shader);
+        if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+          throw new Error(gl.getShaderInfoLog(shader));
+        }
+        return shader;
+      }
+      const vertexShader = compileShader(gl.VERTEX_SHADER, vertexShaderSource);
+      const fragmentShader = compileShader(gl.FRAGMENT_SHADER, fragmentShaderSource);
+      const program = gl.createProgram();
+      gl.attachShader(program, vertexShader);
+      gl.attachShader(program, fragmentShader);
+      gl.linkProgram(program);
+      if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+        throw new Error(gl.getProgramInfoLog(program));
+      }
+      gl.useProgram(program);
+      const buffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+        -1, -1,
+         1, -1,
+        -1,  1,
+        -1,  1,
+         1, -1,
+         1,  1,
+      ]), gl.STATIC_DRAW);
+      const aPosition = gl.getAttribLocation(program, 'aPosition');
+      gl.enableVertexAttribArray(aPosition);
+      gl.vertexAttribPointer(aPosition, 2, gl.FLOAT, false, 0, 0);
+      const iTimeLoc = gl.getUniformLocation(program, 'iTime');
+      const iResLoc = gl.getUniformLocation(program, 'iResolution');
+      function render(time) {
+        gl.uniform1f(iTimeLoc, time * 0.001);
+        gl.uniform2f(iResLoc, canvas.width, canvas.height);
+        gl.drawArrays(gl.TRIANGLES, 0, 6);
+        requestAnimationFrame(render);
+      }
+      requestAnimationFrame(render);
+    };
+  </script>
+</head>
+<body>
+  <canvas id="shader-canvas"></canvas>
+  
+  <div class="relative z-10 w-full min-h-screen flex flex-col items-center justify-center px-4 py-12">
+    <!-- Header Section -->
+    <div class="w-full max-w-5xl mx-auto text-center mb-16">
+      <h1 class="text-[42px] md:text-[56px] lg:text-[64px] font-[200] leading-tight tracking-[-0.03em] gradient-text bg-gradient-to-r from-white via-blue-300 to-indigo-400">
+        Flexible AI Solutions
+      </h1>
+      <p class="mt-4 text-[16px] md:text-[18px] text-white/70 max-w-2xl mx-auto">
+        Choose the plan that works for your workflow. All plans include core features with flexible scaling options.
+      </p>
+    </div>
+    
+    <!-- Toggle -->
+    <div class="mb-10 flex items-center justify-center gap-4">
+      <span class="text-white/70 text-sm">Monthly</span>
+      <div class="relative inline-block w-14 h-7 bg-white/10 rounded-full cursor-pointer">
+        <div class="absolute left-1 top-1 w-5 h-5 bg-blue-500 rounded-full transition-transform"></div>
+      </div>
+      <span class="text-white text-sm">Annual <span class="text-blue-400 text-xs">Save 20%</span></span>
+    </div>
+    
+    <!-- Pricing Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl">
+      
+      <!-- Basic Plan -->
+      <div class="glass-effect bg-gradient-to-br from-white/10 to-white/5 border border-white/10 rounded-2xl shadow-xl p-6 flex flex-col h-full relative">
+        <!-- Top Badge -->
+        <div class="flex items-center mb-4">
+          <div class="icon-circle">
+            <i class="fas fa-rocket text-blue-400 text-xs"></i>
+          </div>
+          <h3 class="ml-3 text-xl text-white">Starter</h3>
+        </div>
+        
+        <!-- Price -->
+        <div class="mt-2 mb-6">
+          <div class="flex items-baseline">
+            <span class="text-4xl font-[200] text-white">$19</span>
+            <span class="text-sm text-white/60 ml-2">/month</span>
+          </div>
+          <p class="text-white/60 text-sm mt-1">Perfect for individuals and small projects</p>
+        </div>
+        
+        <div class="card-divider w-full mb-6"></div>
+        
+        <!-- Features -->
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-center text-white/80 text-sm">
+            <i class="fas fa-check text-blue-400 mr-3 w-4"></i>
+            <span>1 million tokens/month</span>
+          </li>
+          <li class="flex items-center text-white/80 text-sm">
+            <i class="fas fa-check text-blue-400 mr-3 w-4"></i>
+            <span>5 custom AI models</span>
+          </li>
+          <li class="flex items-center text-white/80 text-sm">
+            <i class="fas fa-check text-blue-400 mr-3 w-4"></i>
+            <span>Basic API access</span>
+          </li>
+          <li class="flex items-center text-white/80 text-sm">
+            <i class="fas fa-check text-blue-400 mr-3 w-4"></i>
+            <span>Email support</span>
+          </li>
+          <li class="flex items-center text-white/50 text-sm">
+            <i class="fas fa-minus text-white/30 mr-3 w-4"></i>
+            <span>No custom training</span>
+          </li>
+          <li class="flex items-center text-white/50 text-sm">
+            <i class="fas fa-minus text-white/30 mr-3 w-4"></i>
+            <span>No dedicated resources</span>
+          </li>
+        </ul>
+        
+        <!-- Stats -->
+        <div class="grid grid-cols-2 gap-4 my-6">
+          <div class="bg-white/5 rounded-lg p-3 text-center">
+            <div class="text-2xl font-[300] text-white">99.9%</div>
+            <div class="text-xs text-white/60 mt-1">Uptime</div>
+          </div>
+          <div class="bg-white/5 rounded-lg p-3 text-center">
+            <div class="text-2xl font-[300] text-white">120ms</div>
+            <div class="text-xs text-white/60 mt-1">Latency</div>
+          </div>
+        </div>
+        
+        <!-- CTA -->
+        <div class="mt-auto pt-4">
+          <button class="w-full py-3 rounded-xl bg-white/10 hover:bg-white/15 text-white text-sm font-medium transition-all duration-200 border border-white/10">
+            Start Free Trial
+          </button>
+          <p class="text-white/50 text-xs text-center mt-3">No credit card required</p>
+        </div>
+      </div>
+      
+      <!-- Pro Plan -->
+      <div class="glass-effect bg-gradient-to-br from-white/15 to-white/5 border border-blue-500/30 rounded-2xl shadow-xl p-6 flex flex-col h-full relative z-10 transform scale-105">
+        <!-- Popular Badge -->
+        <div class="pricing-badge">MOST POPULAR</div>
+        
+        <!-- Top Badge -->
+        <div class="flex items-center mb-4">
+          <div class="icon-circle bg-blue-500/20 border-blue-400/30">
+            <i class="fas fa-bolt text-blue-400 text-xs"></i>
+          </div>
+          <h3 class="ml-3 text-xl text-white">Professional</h3>
+        </div>
+        
+        <!-- Price -->
+        <div class="mt-2 mb-6">
+          <div class="flex items-baseline">
+            <span class="text-4xl font-[200] text-white">$49</span>
+            <span class="text-sm text-white/60 ml-2">/month</span>
+          </div>
+          <p class="text-white/60 text-sm mt-1">For teams with advanced AI needs</p>
+        </div>
+        
+        <div class="card-divider w-full mb-6"></div>
+        
+        <!-- Features -->
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-center text-white/80 text-sm">
+            <i class="fas fa-check text-blue-400 mr-3 w-4"></i>
+            <span>10 million tokens/month</span>
+          </li>
+          <li class="flex items-center text-white/80 text-sm">
+            <i class="fas fa-check text-blue-400 mr-3 w-4"></i>
+            <span>20 custom AI models</span>
+          </li>
+          <li class="flex items-center text-white/80 text-sm">
+            <i class="fas fa-check text-blue-400 mr-3 w-4"></i>
+            <span>Advanced API access</span>
+          </li>
+          <li class="flex items-center text-white/80 text-sm">
+            <i class="fas fa-check text-blue-400 mr-3 w-4"></i>
+            <span>Priority support</span>
+          </li>
+          <li class="flex items-center text-white/80 text-sm">
+            <i class="fas fa-check text-blue-400 mr-3 w-4"></i>
+            <span>Basic custom training</span>
+          </li>
+          <li class="flex items-center text-white/50 text-sm">
+            <i class="fas fa-minus text-white/30 mr-3 w-4"></i>
+            <span>No dedicated resources</span>
+          </li>
+        </ul>
+        
+        <!-- Stats -->
+        <div class="grid grid-cols-2 gap-4 my-6">
+          <div class="bg-blue-500/10 rounded-lg p-3 text-center">
+            <div class="text-2xl font-[300] text-white">99.95%</div>
+            <div class="text-xs text-white/60 mt-1">Uptime</div>
+          </div>
+          <div class="bg-blue-500/10 rounded-lg p-3 text-center">
+            <div class="text-2xl font-[300] text-white">80ms</div>
+            <div class="text-xs text-white/60 mt-1">Latency</div>
+          </div>
+        </div>
+        
+        <!-- CTA -->
+        <div class="mt-auto pt-4">
+          <button class="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium transition-all duration-200">
+            Get Started
+          </button>
+          <p class="text-white/50 text-xs text-center mt-3">14-day free trial included</p>
+        </div>
+      </div>
+      
+      <!-- Enterprise Plan -->
+      <div class="glass-effect bg-gradient-to-br from-white/10 to-white/5 border border-white/10 rounded-2xl shadow-xl p-6 flex flex-col h-full relative">
+        <!-- Top Badge -->
+        <div class="flex items-center mb-4">
+          <div class="icon-circle">
+            <i class="fas fa-building text-indigo-400 text-xs"></i>
+          </div>
+          <h3 class="ml-3 text-xl text-white">Enterprise</h3>
+        </div>
+        
+        <!-- Price -->
+        <div class="mt-2 mb-6">
+          <div class="flex items-baseline">
+            <span class="text-4xl font-[200] text-white">$199</span>
+            <span class="text-sm text-white/60 ml-2">/month</span>
+          </div>
+          <p class="text-white/60 text-sm mt-1">For organizations with advanced requirements</p>
+        </div>
+        
+        <div class="card-divider w-full mb-6"></div>
+        
+        <!-- Features -->
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-center text-white/80 text-sm">
+            <i class="fas fa-check text-blue-400 mr-3 w-4"></i>
+            <span>Unlimited tokens</span>
+          </li>
+          <li class="flex items-center text-white/80 text-sm">
+            <i class="fas fa-check text-blue-400 mr-3 w-4"></i>
+            <span>Unlimited custom AI models</span>
+          </li>
+          <li class="flex items-center text-white/80 text-sm">
+            <i class="fas fa-check text-blue-400 mr-3 w-4"></i>
+            <span>Full API ecosystem</span>
+          </li>
+          <li class="flex items-center text-white/80 text-sm">
+            <i class="fas fa-check text-blue-400 mr-3 w-4"></i>
+            <span>24/7 dedicated support</span>
+          </li>
+          <li class="flex items-center text-white/80 text-sm">
+            <i class="fas fa-check text-blue-400 mr-3 w-4"></i>
+            <span>Advanced custom training</span>
+          </li>
+          <li class="flex items-center text-white/80 text-sm">
+            <i class="fas fa-check text-blue-400 mr-3 w-4"></i>
+            <span>Dedicated resources</span>
+          </li>
+        </ul>
+        
+        <!-- Stats -->
+        <div class="grid grid-cols-2 gap-4 my-6">
+          <div class="bg-white/5 rounded-lg p-3 text-center">
+            <div class="text-2xl font-[300] text-white">99.99%</div>
+            <div class="text-xs text-white/60 mt-1">Uptime</div>
+          </div>
+          <div class="bg-white/5 rounded-lg p-3 text-center">
+            <div class="text-2xl font-[300] text-white">50ms</div>
+            <div class="text-xs text-white/60 mt-1">Latency</div>
+          </div>
+        </div>
+        
+        <!-- CTA -->
+        <div class="mt-auto pt-4">
+          <button class="w-full py-3 rounded-xl bg-white/10 hover:bg-white/15 text-white text-sm font-medium transition-all duration-200 border border-white/10">
+            Contact Sales
+          </button>
+          <p class="text-white/50 text-xs text-center mt-3">Custom pricing available</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Bottom Text -->
+    <div class="mt-16 text-center max-w-2xl">
+      <p class="text-white/50 text-sm">All plans include core features: Standard AI models, REST API, 99.9% uptime SLA, Standard encryption, and Community access.</p>
+      <div class="flex flex-wrap justify-center gap-4 mt-6">
+        <span class="text-[12px] text-white/70 px-3 py-1 rounded-full bg-white/5 border border-white/10">GDPR COMPLIANT</span>
+        <span class="text-[12px] text-white/70 px-3 py-1 rounded-full bg-white/5 border border-white/10">SOC 2 CERTIFIED</span>
+        <span class="text-[12px] text-white/70 px-3 py-1 rounded-full bg-white/5 border border-white/10">HIPAA READY</span>
+        <span class="text-[12px] text-white/70 px-3 py-1 rounded-full bg-white/5 border border-white/10">ISO 27001</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

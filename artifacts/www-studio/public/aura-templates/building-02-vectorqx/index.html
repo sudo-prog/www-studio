@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script>
+try{if(window.parent&&window.parent!==window){window.parent.promotekit_referral="1fd2949a-d22c-431b-92bf-02d4ad04ee24";window.parent.document.cookie="promotekit_referral=1fd2949a-d22c-431b-92bf-02d4ad04ee24;path=/;domain=.aura.build;max-age=31536000"}}catch(e){}
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VectorQX - Precision Engineering</title>
+<!-- Bootstrap 5 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Icons -->
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<style>
+:root {
+--dark-blue: #0B1E36;
+--cyan: #00AEEF;
+--slate-50: #F8FAFC;
+--slate-100: #F1F5F9;
+--slate-200: #E2E8F0;
+--slate-300: #CBD5E1;
+--slate-400: #94A3B8;
+--slate-500: #64748B;
+--slate-600: #475569;
+--slate-800: #1E293B;
+--font-family-base: 'Inter', sans-serif;
+}
+body {
+font-family: var(--font-family-base);
+color: var(--slate-800);
+background-color: #ffffff;
+-webkit-font-smoothing: antialiased;
+scroll-behavior: smooth;
+}
+/* Typography */
+h1, h2, h3, h4, h5, h6, .tracking-tight {
+letter-spacing: -0.03rem;
+}
+.fw-semibold { font-weight: 600 !important; }
+.fw-medium { font-weight: 500 !important; }
+.fs-xs { font-size: 0.75rem !important; }
+.fs-sm { font-size: 0.875rem !important; }
+.fs-base { font-size: 1rem !important; }
+.fs-lg { font-size: 1.125rem !important; }
+.fs-xl { font-size: 1.25rem !important; }
+.fs-2xl { font-size: 1.5rem !important; }
+.fs-3xl { font-size: 1.875rem !important; }
+.fs-4xl { font-size: 2.25rem !important; }
+.fs-5xl { font-size: 3rem !important; }
+.fs-6xl { font-size: 3.75rem !important; }
+.fs-7xl { font-size: 4.5rem !important; }
+/* Colors & Backgrounds */
+.text-cyan { color: var(--cyan) !important; }
+.text-dark-blue { color: var(--dark-blue) !important; }
+.text-slate-200 { color: var(--slate-200) !important; }
+.text-slate-300 { color: var(--slate-300) !important; }
+.text-slate-400 { color: var(--slate-400) !important; }
+.text-slate-500 { color: var(--slate-500) !important; }
+.text-slate-600 { color: var(--slate-600) !important; }
+.bg-cyan { background-color: var(--cyan) !important; }
+.bg-cyan-50 { background-color: #ecfeff !important; }
+.bg-dark-blue { background-color: var(--dark-blue) !important; }
+.bg-slate-50 { background-color: var(--slate-50) !important; }
+.bg-slate-100 { background-color: var(--slate-100) !important; }
+/* Layout & Spacing */
+.container-custom {
+max-width: 1400px;
+margin: 0 auto;
+padding: 0 1.5rem;
+}
+.py-section { padding-top: 8rem; padding-bottom: 8rem; }
+.pt-section { padding-top: 8rem; }
+.pb-section { padding-bottom: 8rem; }
+/* Buttons & Links */
+a { text-decoration: none; }
+.btn-custom {
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+padding: 0.625rem 1.5rem;
+border-radius: 9999px;
+font-size: 0.875rem;
+font-weight: 500;
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
+border: none;
+z-index: 1;
+}
+.btn-cyan {
+background-color: var(--cyan);
+color: #ffffff;
+}
+.btn-cyan:hover {
+background-color: #06b6d4;
+transform: translateY(-2px);
+box-shadow: 0 10px 15px -3px rgba(6, 182, 212, 0.3);
+color: #ffffff;
+}
+.btn-dark {
+background-color: var(--dark-blue);
+color: #ffffff;
+}
+.btn-dark:hover {
+transform: translateY(-2px);
+box-shadow: 0 20px 25px -5px rgba(11, 30, 54, 0.2);
+color: #ffffff;
+}
+.btn-outline-custom {
+background-color: #ffffff;
+color: var(--dark-blue);
+border: 1px solid var(--slate-200);
+}
+.btn-outline-custom:hover {
+background-color: var(--slate-50);
+transform: translateY(-2px);
+box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+.btn-white {
+background-color: #ffffff;
+color: var(--dark-blue);
+}
+.btn-white:hover {
+background-color: var(--slate-50);
+transform: translateY(-2px);
+box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+/* Group Hover Utilities */
+.group { cursor: pointer; }
+.group:hover .group-hover-translate-x { transform: translateX(0.25rem); }
+.group:hover .group-hover-translate-xy { transform: translate(0.25rem, -0.25rem); }
+.group:hover .group-hover-rotate { transform: rotate(180deg); }
+.group:hover .group-hover-scale { transform: scale(1.1); }
+.group:hover .group-hover-opacity { opacity: 1; }
+.group:hover .group-hover-text-cyan { color: var(--cyan) !important; }
+.group:hover .group-hover-text-white { color: #ffffff !important; }
+.group:hover .group-hover-bg-cyan { background-color: var(--cyan) !important; }
+/* Custom Shapes & Utilities */
+.rounded-xl { border-radius: 0.75rem; }
+.rounded-2xl { border-radius: 1rem; }
+.rounded-3xl { border-radius: 1.5rem; }
+.rounded-full { border-radius: 9999px; }
+.aspect-4-3 { aspect-ratio: 4/3; }
+.aspect-16-9 { aspect-ratio: 16/9; }
+.aspect-video { aspect-ratio: 16/9; }
+.object-cover { object-fit: cover; }
+.mix-blend-multiply { mix-blend-mode: multiply; }
+.backdrop-blur { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+/* Forms */
+.form-control-custom {
+width: 100%;
+padding: 1rem 1.5rem;
+border-radius: 0.75rem;
+border: 1px solid rgba(0, 174, 239, 0.4);
+background-color: #ffffff;
+color: var(--slate-800);
+transition: all 0.3s ease;
+}
+.form-control-custom:focus {
+outline: none;
+border-color: var(--cyan);
+box-shadow: 0 0 0 1px var(--cyan);
+}
+.form-control-custom::placeholder {
+color: var(--slate-400);
+}
+/* Custom Overlays & Gradients */
+.bg-overlay-dark {
+background: linear-gradient(to top, rgba(11,30,54,0.9), rgba(11,30,54,0.2), transparent);
+}
+.bg-gradient-animated {
+background: linear-gradient(to right, rgba(0,174,239,0.9), rgba(11,30,54,0.9), var(--dark-blue));
+background-size: 200% 200%;
+animation: gradient 8s ease infinite;
+}
+/* Animations */
+@keyframes marquee {
+0% { transform: translateX(0%); }
+100% { transform: translateX(-100%); }
+}
+.animate-marquee {
+animation: marquee 40s linear infinite;
+}
+@keyframes float {
+0%, 100% { transform: translateY(0); }
+50% { transform: translateY(-20px); }
+}
+.animate-float {
+animation: float 6s ease-in-out infinite;
+}
+@keyframes pulse-soft {
+0%, 100% { transform: scale(1); opacity: 1; }
+50% { transform: scale(1.05); opacity: 0.8; }
+}
+.animate-pulse-soft {
+animation: pulse-soft 3s ease-in-out infinite;
+}
+@keyframes shimmer {
+100% { transform: translateX(100%); }
+}
+.animate-shimmer::before {
+content: '';
+position: absolute;
+top: 0; left: 0; right: 0; bottom: 0;
+background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
+transform: translateX(-100%);
+z-index: 0;
+}
+.group:hover .animate-shimmer::before {
+animation: shimmer 1.5s infinite;
+}
+@keyframes gradient {
+0% { background-position: 0% 50%; }
+50% { background-position: 100% 50%; }
+100% { background-position: 0% 50%; }
+}
+@keyframes slideInRight {
+from { transform: translate(100%, -50%); opacity: 0; }
+to { transform: translate(0, -50%); opacity: 1; }
+}
+.animate-slide-in {
+animation: slideInRight 1s ease-out forwards;
+}
+/* Scroll Animations */
+.scroll-animate {
+opacity: 0;
+transform: translateY(2rem);
+transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.scroll-animate.show {
+opacity: 1;
+transform: translateY(0);
+}
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+/* Floating Nav */
+.floating-contact {
+position: fixed;
+right: 0;
+top: 50%;
+transform: translateY(-50%);
+z-index: 1050;
+background: #ffffff;
+box-shadow: 0 0 20px rgba(0,0,0,0.1);
+border-radius: 1rem 0 0 1rem;
+padding: 0.5rem;
+display: flex;
+flex-direction: column;
+gap: 1rem;
+}
+.floating-contact a {
+color: var(--slate-400);
+transition: all 0.3s;
+padding: 0.5rem;
+}
+.floating-contact a:hover {
+color: var(--cyan);
+transform: translateX(-0.25rem);
+}
+/* Utilities */
+.transition-all-custom { transition: all 0.5s ease; }
+.shadow-hover:hover { box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); }
+.hover-lift:hover { transform: translateY(-0.5rem); }
+.filter-grayscale { filter: grayscale(100%); }
+.filter-grayscale:hover { filter: grayscale(0%); }
+.opacity-60 { opacity: 0.6; }
+</style>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- aura-ga4-start -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2M6V79H761"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-2M6V79H761');
+</script>
+<!-- aura-ga4-end -->
+</head>
+<body class="">
+
+    <!-- Floating Contact Bar -->
+    <div class="floating-contact animate-slide-in">
+        <a href="#"><iconify-icon icon="solar:phone-linear" class="fs-xl"></iconify-icon></a>
+        <a href="#"><iconify-icon icon="solar:letter-linear" class="fs-xl"></iconify-icon></a>
+        <a href="#" style="color: #22c55e;"><iconify-icon icon="solar:chat-round-dots-linear" class="fs-xl"></iconify-icon></a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="sticky-top bg-white backdrop-blur border-bottom border-light z-3" style="background-color: rgba(255,255,255,0.9) !important;">
+        <div class="container-custom d-flex align-items-center justify-content-between" style="height: 5rem;">
+            <!-- Logo -->
+            <div class="d-flex align-items-center gap-1 cursor-pointer" style="transition: opacity 0.3s;">
+                <span class="fs-3xl fw-semibold text-dark-blue tracking-tight">Vector</span>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="d-none d-lg-flex align-items-center gap-4 fs-sm fw-medium text-slate-600">
+                <a href="#" class="text-slate-600 text-decoration-none group">
+                    <span class="group-hover-text-cyan transition-all-custom">About Us</span>
+                </a>
+                <div class="d-flex align-items-center gap-1 cursor-pointer group">
+                    <span class="group-hover-text-cyan transition-all-custom">Services</span>
+                    <iconify-icon icon="solar:alt-arrow-down-linear" class="fs-base group-hover-rotate transition-all-custom"></iconify-icon>
+                </div>
+                <div class="d-flex align-items-center gap-1 cursor-pointer group">
+                    <span class="group-hover-text-cyan transition-all-custom">Industries</span>
+                    <iconify-icon icon="solar:alt-arrow-down-linear" class="fs-base group-hover-rotate transition-all-custom"></iconify-icon>
+                </div>
+                <div class="d-flex align-items-center gap-1 cursor-pointer group">
+                    <span class="group-hover-text-cyan transition-all-custom">Insights</span>
+                    <iconify-icon icon="solar:alt-arrow-down-linear" class="fs-base group-hover-rotate transition-all-custom"></iconify-icon>
+                </div>
+                <a href="#" class="text-slate-600 text-decoration-none group">
+                    <span class="group-hover-text-cyan transition-all-custom">Careers</span>
+                </a>
+                <a href="#" class="text-slate-600 text-decoration-none group">
+                    <span class="group-hover-text-cyan transition-all-custom">Contact Us</span>
+                </a>
+            </div>
+
+            <!-- CTA -->
+            <div class="d-none d-md-block">
+                <a href="#" class="btn-custom btn-cyan group animate-shimmer">
+                    <span class="position-relative z-1 d-flex align-items-center">
+                        Schedule a Call 
+                        <iconify-icon icon="solar:arrow-right-up-linear" class="ms-1 fs-base group-hover-translate-xy transition-all-custom"></iconify-icon>
+                    </span>
+                </a>
+            </div>
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="btn d-lg-none border-0 p-0 text-slate-600">
+                <iconify-icon icon="solar:hamburger-menu-linear" class="fs-2xl"></iconify-icon>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="position-relative overflow-hidden bg-slate-50 pt-section pb-section">
+        <div class="container-custom position-relative z-1">
+            <div class="row align-items-center gy-5">
+                <div class="col-lg-6">
+                    <p class="scroll-animate fs-base fw-medium fst-italic text-cyan mb-3">Your Trusted Partner</p>
+                    <h1 class="scroll-animate delay-100 fs-5xl fw-semibold text-dark-blue tracking-tight lh-sm mb-4">
+                        Precision Engineering.<br>Future-Ready Results.
+                    </h1>
+                    <p class="scroll-animate delay-200 fs-lg text-slate-600 mb-5 lh-lg" style="max-width: 500px;">
+                        Partnering with global industries to deliver end-to-end engineering excellence across Building, Infrastructure, and BIM services.
+                    </p>
+                    <div class="scroll-animate delay-300 d-flex flex-wrap gap-3">
+                        <a href="#" class="btn-custom btn-dark group animate-shimmer">
+                            <span class="position-relative z-1 d-flex align-items-center gap-2">
+                                Explore Our Services 
+                                <iconify-icon icon="solar:arrow-right-up-linear" class="fs-lg group-hover-translate-xy transition-all-custom"></iconify-icon>
+                            </span>
+                        </a>
+                        <a href="#" class="btn-custom btn-outline-custom group">
+                            View Case Studies 
+                            <iconify-icon icon="solar:arrow-right-up-linear" class="fs-lg text-slate-400 group-hover-text-dark-blue group-hover-translate-xy transition-all-custom"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Hero Abstract Graphic -->
+                <div class="col-lg-6 d-none d-lg-block position-relative" style="height: 500px;">
+                    <div class="scroll-animate delay-200 position-relative w-100 h-100" style="transform: translateX(3rem);">
+                        <div class="position-absolute top-0 start-0 w-100 h-100 bg-cyan rounded-circle animate-pulse-soft" style="opacity: 0.15; filter: blur(40px);"></div>
+                        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/4e2b37b2-08cf-43de-9152-b5896f65690d_1600w.png" alt="Abstract Building Structure" class="animate-float position-absolute start-0 mix-blend-multiply w-100 h-100 object-cover top-0" style="clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); transition: transform 0.7s">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Logos (Marquee) -->
+    <section class="border-top border-bottom border-light bg-white py-4 overflow-hidden">
+        <div class="container-custom d-flex position-relative w-100">
+            <div class="d-flex align-items-center animate-marquee opacity-60 filter-grayscale" style="gap: 6rem; padding-right: 6rem;">
+                <span class="fs-xl fw-semibold tracking-tight transition-all-custom group cursor-default"><span class="group-hover-text-cyan">ATKINS</span></span>
+                <span class="fs-xl fw-semibold tracking-tight transition-all-custom group cursor-default"><span class="group-hover-text-cyan">BIM Road</span></span>
+                <span class="fs-xl fw-semibold tracking-tight transition-all-custom group cursor-default d-flex align-items-center gap-2"><iconify-icon icon="solar:buildings-linear" class="fs-2xl"></iconify-icon> <span class="group-hover-text-cyan">Falcon</span></span>
+                <span class="fs-xl fw-semibold tracking-tight transition-all-custom group cursor-default"><span class="group-hover-text-cyan">omnix</span></span>
+                <span class="fs-xl fw-semibold tracking-tight transition-all-custom group cursor-default"><span class="group-hover-text-cyan">SIEMENS</span></span>
+                <span class="fs-xl fw-semibold tracking-tight transition-all-custom group cursor-default d-flex align-items-center gap-2"><iconify-icon icon="solar:record-circle-linear" class="fs-2xl"></iconify-icon> <span class="group-hover-text-cyan">DMX</span></span>
+                <span class="fs-xl fw-semibold tracking-tight transition-all-custom group cursor-default"><span class="group-hover-text-cyan">VOLTAS</span></span>
+            </div>
+            <!-- Duplicated for seamless loop -->
+            <div class="d-flex align-items-center animate-marquee opacity-60 filter-grayscale" style="gap: 6rem; padding-right: 6rem;" aria-hidden="true">
+                <span class="fs-xl fw-semibold tracking-tight transition-all-custom group cursor-default"><span class="group-hover-text-cyan">ATKINS</span></span>
+                <span class="fs-xl fw-semibold tracking-tight transition-all-custom group cursor-default"><span class="group-hover-text-cyan">BIM Road</span></span>
+                <span class="fs-xl fw-semibold tracking-tight transition-all-custom group cursor-default d-flex align-items-center gap-2"><iconify-icon icon="solar:buildings-linear" class="fs-2xl"></iconify-icon> <span class="group-hover-text-cyan">Falcon</span></span>
+                <span class="fs-xl fw-semibold tracking-tight transition-all-custom group cursor-default"><span class="group-hover-text-cyan">omnix</span></span>
+                <span class="fs-xl fw-semibold tracking-tight transition-all-custom group cursor-default"><span class="group-hover-text-cyan">SIEMENS</span></span>
+                <span class="fs-xl fw-semibold tracking-tight transition-all-custom group cursor-default d-flex align-items-center gap-2"><iconify-icon icon="solar:record-circle-linear" class="fs-2xl"></iconify-icon> <span class="group-hover-text-cyan">DMX</span></span>
+                <span class="fs-xl fw-semibold tracking-tight transition-all-custom group cursor-default"><span class="group-hover-text-cyan">VOLTAS</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="text-center bg-white py-section">
+        <div class="container-custom">
+            <div class="scroll-animate mx-auto" style="max-width: 56rem;">
+                <p class="text-cyan fst-italic fw-medium mb-3 fs-base">About Us</p>
+                <h2 class="fs-4xl fw-semibold text-dark-blue tracking-tight lh-sm mb-4">
+                    Delivering world-class BIM and CAD solutions from our global delivery centre in India to leading AEC firms worldwide.
+                </h2>
+                <p class="fs-lg text-slate-600 mb-5 lh-lg mx-auto" style="max-width: 48rem;">
+                    VectorQX is a global provider of advanced BIM and CAD services, helping architecture, engineering, and construction (AEC) firms streamline design and documentation through precision, quality, and scalability.
+                </p>
+                <a href="#" class="btn-custom btn-dark group animate-shimmer">
+                    <span class="position-relative z-1 d-flex align-items-center gap-2">
+                        Know More 
+                        <iconify-icon icon="solar:arrow-right-up-linear" class="fs-lg group-hover-translate-xy transition-all-custom"></iconify-icon>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="position-relative bg-dark-blue py-section overflow-hidden group">
+        <!-- Background -->
+        <div class="position-absolute top-0 start-0 w-100 h-100 object-cover transition-all-custom group-hover-scale" style="background-image: url('https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/cfe046db-efac-4e2f-8e85-034a6088f5d8_3840w.png'); background-size: cover; background-position: center; transition-duration: 20s;"></div>
+        
+        <!-- Abstract overlay -->
+        <div class="position-absolute top-0 start-0 w-100 h-100 pointer-events-none transition-all-custom group-hover-scale" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.1) 10px, rgba(255,255,255,0.1) 11px); opacity: 0.2; transition-duration: 20s;"></div>
+        
+        <div class="container-custom position-relative z-1">
+            <div class="row align-items-center gy-5">
+                <div class="col-lg-6">
+                    <div class="scroll-animate pe-lg-5">
+                        <p class="fs-sm fw-medium fst-italic text-cyan mb-3">Success</p>
+                        <h2 class="fs-4xl text-white fw-semibold tracking-tight lh-sm mb-4">
+                            Excellence Without Compromise
+                        </h2>
+                        <p class="fs-base text-slate-300 mb-5 lh-lg">
+                            At VectorQX, our leadership brings over 31 years of experience delivering 20+ million sq.ft of petroleum, retail, logistics, and commercial infrastructure across multiple countries for global leaders.
+                        </p>
+                        <a href="#" class="btn-custom btn-white group">
+                            <span class="position-relative z-1 d-flex align-items-center gap-2">
+                                Know More 
+                                <iconify-icon icon="solar:arrow-right-up-linear" class="fs-lg group-hover-translate-xy transition-all-custom"></iconify-icon>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="row g-5 ps-lg-5 border-start-lg border-secondary" style="border-color: rgba(255,255,255,0.2) !important;">
+                        <div class="col-6 scroll-animate delay-100 group hover-lift transition-all-custom">
+                            <div class="fs-5xl fw-semibold text-white tracking-tight mb-2 d-flex align-items-center group-hover-text-cyan transition-all-custom">20<span class="text-cyan ms-1">+</span></div>
+                            <p class="text-slate-400 fs-sm m-0 group-hover-text-white transition-all-custom">Million sq.ft delivered</p>
+                        </div>
+                        <div class="col-6 scroll-animate delay-200 group hover-lift transition-all-custom">
+                            <div class="fs-5xl fw-semibold text-white tracking-tight mb-2 d-flex align-items-center group-hover-text-cyan transition-all-custom">98<span class="text-cyan ms-1">%</span></div>
+                            <p class="text-slate-400 fs-sm m-0 group-hover-text-white transition-all-custom">On-time completion</p>
+                        </div>
+                        <div class="col-6 scroll-animate delay-300 group hover-lift transition-all-custom">
+                            <div class="fs-5xl fw-semibold text-white tracking-tight mb-2 d-flex align-items-center group-hover-text-cyan transition-all-custom">$80M<span class="text-cyan ms-1">+</span></div>
+                            <p class="text-slate-400 fs-sm m-0 group-hover-text-white transition-all-custom">Cumulative savings</p>
+                        </div>
+                        <div class="col-6 scroll-animate delay-300 group hover-lift transition-all-custom">
+                            <div class="fs-5xl fw-semibold text-white tracking-tight mb-2 d-flex align-items-center group-hover-text-cyan transition-all-custom">$500M<span class="text-cyan ms-1">+</span></div>
+                            <p class="text-slate-400 fs-sm m-0 group-hover-text-white transition-all-custom">Portfolio managed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="bg-slate-50 py-section">
+        <div class="container-custom">
+            <div class="row justify-content-between align-items-end scroll-animate mb-5 pb-3">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <p class="text-cyan fst-italic fw-medium mb-2 fs-sm">Services</p>
+                    <h2 class="fs-4xl fw-semibold text-dark-blue tracking-tight lh-sm m-0">
+                        Comprehensive Engineering Capabilities
+                    </h2>
+                </div>
+                <div class="col-lg-5">
+                    <p class="fs-base text-slate-600 m-0">
+                        With decades of combined expertise and a commitment to technical excellence, we serve as a strategic partner for global firms tackling complex engineering challenges.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <!-- Service Cards -->
+                <div class="col-md-6 col-lg-4 scroll-animate">
+                    <div class="position-relative rounded-3xl overflow-hidden aspect-4-3 bg-white shadow-sm shadow-hover group transition-all-custom">
+                        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/35d6a449-5b14-4957-b16e-cf1bb840823d_800w.png" alt="Manufacturing Engineering" class="w-100 h-100 object-cover transition-all-custom group-hover-scale" style="transition-duration: 0.7s;">
+                        <div class="position-absolute top-0 start-0 w-100 h-100 bg-overlay-dark opacity-75 group-hover-opacity transition-all-custom"></div>
+                        <div class="position-absolute bottom-0 start-0 w-100 p-4 d-flex justify-content-between align-items-end transition-all-custom" style="transform: translateY(0.5rem);">
+                            <h3 class="fs-xl fw-semibold text-white tracking-tight m-0" style="max-width: 70%;">Manufacturing Engineering</h3>
+                            <div class="rounded-circle d-flex align-items-center justify-content-center transition-all-custom group-hover-bg-cyan group-hover-rotate group-hover-scale" style="width: 2.5rem; height: 2.5rem; background: rgba(255,255,255,0.2); backdrop-filter: blur(4px);">
+                                <iconify-icon icon="solar:arrow-right-up-linear" class="text-white fs-xl"></iconify-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 scroll-animate delay-100">
+                    <div class="position-relative rounded-3xl overflow-hidden aspect-4-3 bg-white shadow-sm shadow-hover group transition-all-custom">
+                        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/d1c9009a-e841-4098-abe8-05bbbd93ec3c_800w.png" alt="Construction Engineering" class="w-100 h-100 object-cover transition-all-custom group-hover-scale" style="transition-duration: 0.7s;">
+                        <div class="position-absolute top-0 start-0 w-100 h-100 bg-overlay-dark opacity-75 group-hover-opacity transition-all-custom"></div>
+                        <div class="position-absolute bottom-0 start-0 w-100 p-4 d-flex justify-content-between align-items-end transition-all-custom" style="transform: translateY(0.5rem);">
+                            <h3 class="fs-xl fw-semibold text-white tracking-tight m-0" style="max-width: 70%;">Construction Engineering</h3>
+                            <div class="rounded-circle d-flex align-items-center justify-content-center transition-all-custom group-hover-bg-cyan group-hover-rotate group-hover-scale" style="width: 2.5rem; height: 2.5rem; background: rgba(255,255,255,0.2); backdrop-filter: blur(4px);">
+                                <iconify-icon icon="solar:arrow-right-up-linear" class="text-white fs-xl"></iconify-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 scroll-animate delay-200">
+                    <div class="position-relative rounded-3xl overflow-hidden aspect-4-3 bg-white shadow-sm shadow-hover group transition-all-custom">
+                        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/107fa3d4-ebbe-442b-a9ef-f900b427ddeb_800w.png" alt="Infrastructure Engineering" class="w-100 h-100 object-cover transition-all-custom group-hover-scale" style="transition-duration: 0.7s;">
+                        <div class="position-absolute top-0 start-0 w-100 h-100 bg-overlay-dark opacity-75 group-hover-opacity transition-all-custom"></div>
+                        <div class="position-absolute bottom-0 start-0 w-100 p-4 d-flex justify-content-between align-items-end transition-all-custom" style="transform: translateY(0.5rem);">
+                            <h3 class="fs-xl fw-semibold text-white tracking-tight m-0" style="max-width: 70%;">Infrastructure Engineering</h3>
+                            <div class="rounded-circle d-flex align-items-center justify-content-center transition-all-custom group-hover-bg-cyan group-hover-rotate group-hover-scale" style="width: 2.5rem; height: 2.5rem; background: rgba(255,255,255,0.2); backdrop-filter: blur(4px);">
+                                <iconify-icon icon="solar:arrow-right-up-linear" class="text-white fs-xl"></iconify-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 scroll-animate">
+                    <div class="position-relative rounded-3xl overflow-hidden aspect-4-3 bg-white shadow-sm shadow-hover group transition-all-custom">
+                        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/f349ca08-4b8a-469d-89c1-d1b5fd70cb47_800w.png" alt="Building Services" class="w-100 h-100 object-cover transition-all-custom group-hover-scale" style="transition-duration: 0.7s;">
+                        <div class="position-absolute top-0 start-0 w-100 h-100 bg-overlay-dark opacity-75 group-hover-opacity transition-all-custom"></div>
+                        <div class="position-absolute bottom-0 start-0 w-100 p-4 d-flex justify-content-between align-items-end transition-all-custom" style="transform: translateY(0.5rem);">
+                            <h3 class="fs-xl fw-semibold text-white tracking-tight m-0" style="max-width: 70%;">Building Services</h3>
+                            <div class="rounded-circle d-flex align-items-center justify-content-center transition-all-custom group-hover-bg-cyan group-hover-rotate group-hover-scale" style="width: 2.5rem; height: 2.5rem; background: rgba(255,255,255,0.2); backdrop-filter: blur(4px);">
+                                <iconify-icon icon="solar:arrow-right-up-linear" class="text-white fs-xl"></iconify-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 scroll-animate delay-100">
+                    <div class="position-relative rounded-3xl overflow-hidden aspect-4-3 bg-white shadow-sm shadow-hover group transition-all-custom">
+                        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/80951af5-621b-4fa9-a825-5cb7a7e75940_800w.png" alt="BIM Services" class="w-100 h-100 object-cover transition-all-custom group-hover-scale" style="transition-duration: 0.7s;">
+                        <div class="position-absolute top-0 start-0 w-100 h-100 bg-overlay-dark opacity-75 group-hover-opacity transition-all-custom"></div>
+                        <div class="position-absolute bottom-0 start-0 w-100 p-4 d-flex justify-content-between align-items-end transition-all-custom" style="transform: translateY(0.5rem);">
+                            <h3 class="fs-xl fw-semibold text-white tracking-tight m-0" style="max-width: 70%;">BIM Services</h3>
+                            <div class="rounded-circle d-flex align-items-center justify-content-center transition-all-custom group-hover-bg-cyan group-hover-rotate group-hover-scale" style="width: 2.5rem; height: 2.5rem; background: rgba(255,255,255,0.2); backdrop-filter: blur(4px);">
+                                <iconify-icon icon="solar:arrow-right-up-linear" class="text-white fs-xl"></iconify-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 scroll-animate delay-200">
+                    <div class="position-relative rounded-3xl overflow-hidden aspect-4-3 bg-white shadow-sm shadow-hover group transition-all-custom">
+                        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/b968ddfe-e0eb-4cfd-9657-049a646b1ce1_800w.png" alt="Signage Engineering" class="w-100 h-100 object-cover transition-all-custom group-hover-scale" style="transition-duration: 0.7s;">
+                        <div class="position-absolute top-0 start-0 w-100 h-100 bg-overlay-dark opacity-75 group-hover-opacity transition-all-custom"></div>
+                        <div class="position-absolute bottom-0 start-0 w-100 p-4 d-flex justify-content-between align-items-end transition-all-custom" style="transform: translateY(0.5rem);">
+                            <h3 class="fs-xl fw-semibold text-white tracking-tight m-0" style="max-width: 70%;">Signage Engineering</h3>
+                            <div class="rounded-circle d-flex align-items-center justify-content-center transition-all-custom group-hover-bg-cyan group-hover-rotate group-hover-scale" style="width: 2.5rem; height: 2.5rem; background: rgba(255,255,255,0.2); backdrop-filter: blur(4px);">
+                                <iconify-icon icon="solar:arrow-right-up-linear" class="text-white fs-xl"></iconify-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-section bg-white">
+        <div class="container-custom">
+            <div class="row gy-5">
+                <div class="col-lg-6 pe-lg-5">
+                    <div class="scroll-animate position-sticky top-0 pt-5">
+                        <p class="text-cyan fst-italic fw-medium mb-2 fs-sm">Why Choose Us</p>
+                        <h2 class="fs-4xl fw-semibold text-dark-blue tracking-tight lh-sm mb-4">
+                            VectorQX Advantage
+                        </h2>
+                        <p class="fs-base text-slate-600 mb-5 lh-lg">
+                            With a strong technical foundation, disciplined processes, and a commitment to excellence, VectorQX serves as an extension of your in-house team — delivering consistent, high-quality results across projects of any scale.
+                        </p>
+                        <a href="#" class="btn-custom btn-dark group animate-shimmer">
+                            <span class="position-relative z-1 d-flex align-items-center gap-2">
+                                Contact Us 
+                                <iconify-icon icon="solar:arrow-right-up-linear" class="fs-lg group-hover-translate-xy transition-all-custom"></iconify-icon>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 ps-lg-4">
+                    <div class="d-flex flex-column gap-5">
+                        <div class="d-flex gap-4 group scroll-animate">
+                            <div class="rounded-circle bg-cyan-50 d-flex align-items-center justify-content-center text-cyan flex-shrink-0 transition-all-custom group-hover-bg-cyan group-hover-text-white group-hover-scale" style="width: 3.5rem; height: 3.5rem;">
+                                <iconify-icon icon="solar:medal-ribbon-linear" class="fs-2xl"></iconify-icon>
+                            </div>
+                            <div>
+                                <h3 class="fs-xl fw-semibold text-dark-blue mb-2 tracking-tight transition-all-custom group-hover-text-cyan">Technical Excellence</h3>
+                                <p class="fs-base text-slate-600 m-0 lh-lg">Our teams are certified across leading AEC software platforms—Autodesk Revit, AutoCAD, Civil 3D, Navisworks, Tekla Structures, and Bentley MicroStation—and trained in global BIM standards.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-4 group scroll-animate delay-100">
+                            <div class="rounded-circle bg-cyan-50 d-flex align-items-center justify-content-center text-cyan flex-shrink-0 transition-all-custom group-hover-bg-cyan group-hover-text-white group-hover-scale" style="width: 3.5rem; height: 3.5rem;">
+                                <iconify-icon icon="solar:global-linear" class="fs-2xl"></iconify-icon>
+                            </div>
+                            <div>
+                                <h3 class="fs-xl fw-semibold text-dark-blue mb-2 tracking-tight transition-all-custom group-hover-text-cyan">Global Experience</h3>
+                                <p class="fs-base text-slate-600 m-0 lh-lg">VectorQX is led by professionals with over two decades of delivery experience across North America, the UK, the Middle East, and Europe.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-4 group scroll-animate delay-200">
+                            <div class="rounded-circle bg-cyan-50 d-flex align-items-center justify-content-center text-cyan flex-shrink-0 transition-all-custom group-hover-bg-cyan group-hover-text-white group-hover-scale" style="width: 3.5rem; height: 3.5rem;">
+                                <iconify-icon icon="solar:check-circle-linear" class="fs-2xl"></iconify-icon>
+                            </div>
+                            <div>
+                                <h3 class="fs-xl fw-semibold text-dark-blue mb-2 tracking-tight transition-all-custom group-hover-text-cyan">Quality Assurance</h3>
+                                <p class="fs-base text-slate-600 m-0 lh-lg">Every project goes through a multi-tiered QA/QC framework—automated clash detection, peer review, and documented approval cycles.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-4 group scroll-animate delay-300">
+                            <div class="rounded-circle bg-cyan-50 d-flex align-items-center justify-content-center text-cyan flex-shrink-0 transition-all-custom group-hover-bg-cyan group-hover-text-white group-hover-scale" style="width: 3.5rem; height: 3.5rem;">
+                                <iconify-icon icon="solar:bolt-linear" class="fs-2xl"></iconify-icon>
+                            </div>
+                            <div>
+                                <h3 class="fs-xl fw-semibold text-dark-blue mb-2 tracking-tight transition-all-custom group-hover-text-cyan">Execution Velocity</h3>
+                                <p class="fs-base text-slate-600 m-0 lh-lg">Through optimized workflows, secure cloud-based collaboration, and highly skilled offshore delivery teams, VectorQX ensures rapid project turnaround without compromising quality.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner 1 -->
+    <section class="py-5 px-3 scroll-animate">
+        <div class="container-custom">
+            <div class="position-relative rounded-3xl p-5 text-center overflow-hidden shadow-lg group bg-gradient-animated" style="padding-top: 5rem !important; padding-bottom: 5rem !important;">
+                <div class="position-absolute top-0 start-0 w-100 h-100 object-cover transition-all-custom group-hover-scale mix-blend-multiply" style="background-image: url('https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/7d312dd9-bc22-4676-ac4f-ee8cd66598fd_3840w.png'); background-size: cover; background-position: center; transition-duration: 1s;"></div>
+                
+                <div class="position-relative z-1 mx-auto" style="max-width: 48rem;">
+                    <p class="text-white fst-italic fw-medium mb-3 fs-sm opacity-75">Enquire Now</p>
+                    <h2 class="fs-4xl text-white fw-semibold tracking-tight lh-sm mb-4">
+                        Ready to Optimize Your Next Project?
+                    </h2>
+                    <p class="fs-lg text-slate-200 mb-5 lh-lg">
+                        Let our team of expert engineers handle the complexity while you focus on growth.
+                    </p>
+                    <a href="#" class="btn-custom btn-white group">
+                        Enquire Now 
+                        <iconify-icon icon="solar:arrow-right-up-linear" class="fs-lg group-hover-translate-xy transition-all-custom"></iconify-icon>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="bg-slate-50 py-section">
+        <div class="container-custom" style="max-width: 1200px;">
+            <div class="position-relative rounded-3xl overflow-hidden aspect-video shadow-lg group cursor-pointer scroll-animate transition-all-custom shadow-hover">
+                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop" alt="Video Thumbnail" class="w-100 h-100 object-cover transition-all-custom group-hover-scale" style="transition-duration: 1s;">
+                <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark transition-all-custom" style="opacity: 0.3;"></div>
+                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
+                    <div class="bg-white rounded-circle d-flex align-items-center justify-content-center animate-pulse-soft transition-all-custom group-hover-scale" style="width: 5rem; height: 5rem; box-shadow: 0 0 30px rgba(0,174,239,0.5);">
+                        <iconify-icon icon="solar:play-linear" class="fs-4xl text-dark-blue ms-1"></iconify-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-section bg-slate-50">
+        <div class="container-custom">
+            <div class="text-center mx-auto mb-5 pb-3 scroll-animate" style="max-width: 48rem;">
+                <p class="text-cyan fst-italic fw-medium mb-3 fs-sm">Testimonials</p>
+                <h2 class="fs-4xl fw-semibold text-dark-blue tracking-tight lh-sm">
+                    Proven Approach to Transform Your Business
+                </h2>
+            </div>
+
+            <div class="row align-items-stretch g-4">
+                <!-- Video Testimonial Card -->
+                <div class="col-lg-4 scroll-animate group hover-lift transition-all-custom">
+                    <div class="position-relative rounded-3xl overflow-hidden h-100 shadow-sm shadow-hover cursor-pointer" style="min-height: 400px;">
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1932&auto=format&fit=crop" alt="Client Video" class="position-absolute w-100 h-100 object-cover transition-all-custom group-hover-scale" style="transition-duration: 0.7s;">
+                        <div class="position-absolute w-100 h-100 bg-dark transition-all-custom" style="opacity: 0.2;"></div>
+                        <div class="position-absolute w-100 h-100 d-flex align-items-center justify-content-center">
+                            <div class="bg-white rounded-circle d-flex align-items-center justify-content-center shadow transition-all-custom group-hover-scale" style="width: 4rem; height: 4rem;">
+                                <iconify-icon icon="solar:play-linear" class="fs-2xl text-dark-blue ms-1"></iconify-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Testimonial Card 1 -->
+                <div class="col-lg-4 scroll-animate delay-100 group">
+                    <div class="bg-white p-5 rounded-3xl shadow-sm hover-lift shadow-hover d-flex flex-column justify-content-between h-100 transition-all-custom" style="min-height: 400px;">
+                        <div>
+                            <div class="mb-4 fs-xl fw-semibold tracking-tight text-dark-blue opacity-75 transition-all-custom group-hover-text-cyan">ATKINS</div>
+                            <p class="fs-xl text-dark-blue fw-medium lh-lg tracking-tight">
+                                "VectorQX delivered infrastructure designs that were both future-ready and flawlessly compliant."
+                            </p>
+                        </div>
+                        <div class="fs-sm text-slate-500 mt-4 fw-medium">Sara John</div>
+                    </div>
+                </div>
+
+                <!-- Text Testimonial Card 2 -->
+                <div class="col-lg-4 scroll-animate delay-200 group">
+                    <div class="bg-white p-5 rounded-3xl shadow-sm hover-lift shadow-hover d-flex flex-column justify-content-between h-100 transition-all-custom" style="min-height: 400px;">
+                        <div>
+                            <div class="mb-4 fs-xl fw-semibold tracking-tight text-dark-blue opacity-75 transition-all-custom group-hover-text-cyan">BIM Road</div>
+                            <p class="fs-xl text-dark-blue fw-medium lh-lg tracking-tight">
+                                "Their BIM coordination transformed our project workflow, eliminating onsite clashes before they happened."
+                            </p>
+                        </div>
+                        <div class="fs-sm text-slate-500 mt-4 fw-medium">James Philip</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end gap-2 mt-5 scroll-animate">
+                <button class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center p-0 hover-lift transition-all-custom" style="width: 2.5rem; height: 2.5rem; background-color: var(--dark-blue); border:none;"><iconify-icon icon="solar:alt-arrow-left-linear" class="fs-lg text-white"></iconify-icon></button>
+                <button class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center p-0 hover-lift transition-all-custom" style="width: 2.5rem; height: 2.5rem; background-color: var(--dark-blue); border:none;"><iconify-icon icon="solar:alt-arrow-right-linear" class="fs-lg text-white"></iconify-icon></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section class="py-section bg-slate-50 border-top border-light">
+        <div class="container-custom">
+            <div class="row justify-content-between align-items-end mb-5 pb-3 scroll-animate">
+                <div class="col-md-8">
+                    <p class="text-cyan fst-italic fw-medium mb-2 fs-sm">Case Studies</p>
+                    <h2 class="fs-4xl fw-semibold text-dark-blue tracking-tight lh-sm m-0">
+                        Proven Results for Complex Challenges
+                    </h2>
+                </div>
+                <div class="col-md-4 text-md-end mt-4 mt-md-0">
+                    <a href="#" class="btn-custom btn-dark group d-none d-md-inline-flex">
+                        View All 
+                        <iconify-icon icon="solar:arrow-right-up-linear" class="fs-lg group-hover-translate-xy transition-all-custom"></iconify-icon>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row g-5">
+                <!-- Case Study 1 -->
+                <div class="col-md-6 group cursor-pointer scroll-animate">
+                    <div class="rounded-3xl overflow-hidden aspect-16-9 mb-4 shadow-sm shadow-hover transition-all-custom">
+                        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/2eff4742-ac66-44bb-b160-5c2142b975c6_800w.png" alt="Train" class="w-100 h-100 object-cover transition-all-custom group-hover-scale" style="transition-duration: 0.7s;">
+                    </div>
+                    <h3 class="fs-2xl fw-semibold text-dark-blue tracking-tight transition-all-custom group-hover-text-cyan group-hover-translate-x d-inline-block">Scan to CAD for Railway Stations</h3>
+                </div>
+                <!-- Case Study 2 -->
+                <div class="col-md-6 group cursor-pointer scroll-animate delay-100">
+                    <div class="rounded-3xl overflow-hidden aspect-16-9 mb-4 shadow-sm shadow-hover transition-all-custom">
+                        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/63c877aa-f624-4e8b-9295-97887054989f_1600w.png" alt="Server Room" class="w-100 h-100 object-cover transition-all-custom group-hover-scale" style="transition-duration: 0.7s;">
+                    </div>
+                    <h3 class="fs-2xl fw-semibold text-dark-blue tracking-tight transition-all-custom group-hover-text-cyan group-hover-translate-x d-inline-block">BOQ Preparation for Data Centre Project</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="py-section" style="background-color: #F4F5F7;">
+        <div class="container-custom" style="max-width: 1200px;">
+            <div class="row gy-5 align-items-start">
+                
+                <!-- Left: Contact Info -->
+                <div class="col-lg-5 pe-lg-5 scroll-animate">
+                    <p class="text-cyan fst-italic fw-medium mb-3 fs-base">Contact Us</p>
+                    <h2 class="fs-4xl fw-semibold text-dark-blue tracking-tight lh-sm mb-5 pb-3">
+                        Get In Touch With Us
+                    </h2>
+                    
+                    <div class="d-flex flex-column gap-5">
+                        <div>
+                            <p class="text-cyan fs-base mb-2 fw-medium">Call us</p>
+                            <div class="fs-3xl fw-semibold text-dark-blue tracking-tight d-flex flex-column gap-1">
+                                <p class="m-0">+91 12442 85001</p>
+                                <p class="m-0">+44 20 4542 6066</p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <p class="text-cyan fs-base mb-2 fw-medium">Drop a mail</p>
+                            <p class="fs-3xl fw-semibold text-dark-blue tracking-tight m-0">
+                                info@vectorqx.com
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Form -->
+                <div class="col-lg-7 ps-lg-5 scroll-animate delay-100">
+                    <form class="d-flex flex-column gap-4 pt-lg-2">
+                        <div>
+                            <input type="text" placeholder="Name" class="form-control-custom fs-base">
+                        </div>
+                        <div>
+                            <input type="email" placeholder="Email Address" class="form-control-custom fs-base">
+                        </div>
+                        <div>
+                            <input type="tel" placeholder="Contact Number" class="form-control-custom fs-base">
+                        </div>
+                        <div>
+                            <input type="text" placeholder="Company Name" class="form-control-custom fs-base">
+                        </div>
+                        
+                        <div class="d-flex justify-content-end pt-3">
+                            <button type="submit" class="btn-custom btn-dark group">
+                                Submit <iconify-icon icon="solar:arrow-right-up-linear" class="fs-lg group-hover-translate-xy transition-all-custom"></iconify-icon>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Insights Section -->
+    <section class="py-section bg-white">
+        <div class="container-custom">
+            <div class="row justify-content-between align-items-end mb-5 pb-3 scroll-animate">
+                <div class="col-md-8">
+                    <p class="text-cyan fst-italic fw-medium mb-2 fs-sm">Insights</p>
+                    <h2 class="fs-4xl fw-semibold text-dark-blue tracking-tight lh-sm m-0">
+                        Engineering Insights &amp; Industry Trends
+                    </h2>
+                </div>
+                <div class="col-md-4 text-md-end mt-4 mt-md-0">
+                    <a href="#" class="btn-custom btn-dark group d-none d-md-inline-flex">
+                        View All 
+                        <iconify-icon icon="solar:arrow-right-up-linear" class="fs-lg group-hover-translate-xy transition-all-custom"></iconify-icon>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row g-5">
+                <!-- Blog 1 -->
+                <div class="col-md-4 group cursor-pointer scroll-animate">
+                    <div class="rounded-3xl overflow-hidden aspect-4-3 mb-4 shadow-sm shadow-hover transition-all-custom">
+                        <img src="https://images.unsplash.com/photo-1516216628859-9bccecab13ca?q=80&w=2069&auto=format&fit=crop" alt="Domino effect" class="w-100 h-100 object-cover transition-all-custom group-hover-scale" style="transition-duration: 0.7s;">
+                    </div>
+                    <p class="fs-sm text-slate-500 mb-2 transition-all-custom group-hover-translate-x d-inline-block">Blogs • 10 February 2026</p>
+                    <h3 class="fs-xl fw-semibold text-dark-blue tracking-tight lh-sm transition-all-custom group-hover-text-cyan group-hover-translate-x">VectorQX Surpasses $550M in Total Project Value</h3>
+                </div>
+                <!-- Blog 2 -->
+                <div class="col-md-4 group cursor-pointer scroll-animate delay-100">
+                    <div class="rounded-3xl overflow-hidden aspect-4-3 mb-4 shadow-sm shadow-hover transition-all-custom">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop" alt="Workspace" class="w-100 h-100 object-cover transition-all-custom group-hover-scale" style="transition-duration: 0.7s;">
+                    </div>
+                    <p class="fs-sm text-slate-500 mb-2 transition-all-custom group-hover-translate-x d-inline-block">Blogs • 10 February 2026</p>
+                    <h3 class="fs-xl fw-semibold text-dark-blue tracking-tight lh-sm transition-all-custom group-hover-text-cyan group-hover-translate-x">Full Integration of Vectorworks 2026 Workflows</h3>
+                </div>
+                <!-- Blog 3 -->
+                <div class="col-md-4 group cursor-pointer scroll-animate delay-200">
+                    <div class="rounded-3xl overflow-hidden aspect-4-3 mb-4 shadow-sm shadow-hover transition-all-custom">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" alt="Building under construction" class="w-100 h-100 object-cover transition-all-custom group-hover-scale" style="transition-duration: 0.7s;">
+                    </div>
+                    <p class="fs-sm text-slate-500 mb-2 transition-all-custom group-hover-translate-x d-inline-block">Blogs • 10 February 2026</p>
+                    <h3 class="fs-xl fw-semibold text-dark-blue tracking-tight lh-sm transition-all-custom group-hover-text-cyan group-hover-translate-x">New Scan-to-BIM Framework Reduces Rework by 15%</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="py-5 px-3 scroll-animate">
+        <div class="container-custom">
+            <div class="position-relative rounded-3xl p-5 text-center overflow-hidden shadow-lg group" style="padding-top: 6rem !important; padding-bottom: 6rem !important;">
+                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2071&auto=format&fit=crop" class="position-absolute top-0 start-0 w-100 h-100 object-cover transition-all-custom group-hover-scale" style="transition-duration: 15s; z-index: 0;" alt="Background architecture">
+                
+                <div class="position-absolute top-0 start-0 w-100 h-100 bg-overlay-dark transition-all-custom mix-blend-multiply" style="z-index: 1;"></div>
+                
+                <div class="position-absolute top-0 start-0 w-100 h-100 transition-all-custom mix-blend-multiply opacity-75 group-hover-opacity" style="background-image: url('https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/7d312dd9-bc22-4676-ac4f-ee8cd66598fd_1600w.png'); background-size: cover; background-position: center; transition-duration: 0.7s; z-index: 2;"></div>
+                
+                <div class="position-relative z-3 mx-auto" style="max-width: 56rem;">
+                    <p class="text-cyan fst-italic fw-medium mb-3 fs-sm animate-pulse-soft">Enquire Now</p>
+                    <h2 class="fs-4xl text-white fw-semibold tracking-tight lh-sm mb-4">
+                        Engineering Excellence is Just a Conversation Away
+                    </h2>
+                    <p class="fs-lg text-slate-200 mb-5 lh-lg mx-auto" style="max-width: 42rem;">
+                        Whether it's a large-scale infrastructure project or specialized manufacturing support, VectorQX has the technical precision you need.
+                    </p>
+                    <a href="#" class="btn-custom btn-white group">
+                        Request a Callback 
+                        <iconify-icon icon="solar:arrow-right-up-linear" class="fs-lg group-hover-translate-xy transition-all-custom"></iconify-icon>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-top border-light py-5 scroll-animate pt-section">
+        <div class="container-custom">
+            <div class="row g-5 mb-5 pb-4">
+                <div class="col-lg-4 pe-lg-5">
+                    <div class="d-flex align-items-center gap-1 mb-4 cursor-pointer transition-all-custom" style="opacity: 1;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1">
+                        <span class="fs-3xl fw-semibold tracking-tight text-dark-blue">Vector</span><span class="fs-3xl fw-semibold tracking-tight text-cyan">QX</span>
+                    </div>
+                    <p class="fs-sm text-slate-500 mb-4" style="max-width: 20rem;">Excellence in Architecture &amp; Engineering Services</p>
+                    <div class="d-flex gap-3 text-dark-blue">
+                        <a href="#" class="rounded-circle border border-light d-flex align-items-center justify-content-center text-dark-blue transition-all-custom group-hover-bg-cyan group-hover-text-white hover-lift" style="width: 2.5rem; height: 2.5rem;"><iconify-icon icon="mdi:facebook" class="fs-xl"></iconify-icon></a>
+                        <a href="#" class="rounded-circle border border-light d-flex align-items-center justify-content-center text-dark-blue transition-all-custom group-hover-bg-cyan group-hover-text-white hover-lift" style="width: 2.5rem; height: 2.5rem;"><iconify-icon icon="mdi:twitter" class="fs-xl"></iconify-icon></a>
+                        <a href="#" class="rounded-circle border border-light d-flex align-items-center justify-content-center text-dark-blue transition-all-custom group-hover-bg-cyan group-hover-text-white hover-lift" style="width: 2.5rem; height: 2.5rem;"><iconify-icon icon="mdi:linkedin" class="fs-xl"></iconify-icon></a>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 col-lg-2">
+                    <h4 class="text-cyan fw-semibold mb-4 fs-sm tracking-tight">Quick Links</h4>
+                    <ul class="list-unstyled d-flex flex-column gap-3 fs-sm text-slate-600 m-0">
+                        <li><a href="#" class="text-slate-600 transition-all-custom d-inline-block hover-lift group-hover-text-cyan">Home</a></li>
+                        <li><a href="#" class="text-slate-600 transition-all-custom d-inline-block hover-lift group-hover-text-cyan">About Us</a></li>
+                        <li><a href="#" class="text-slate-600 transition-all-custom d-inline-block hover-lift group-hover-text-cyan">Careers</a></li>
+                        <li><a href="#" class="text-slate-600 transition-all-custom d-inline-block hover-lift group-hover-text-cyan">Blogs</a></li>
+                        <li><a href="#" class="text-slate-600 transition-all-custom d-inline-block hover-lift group-hover-text-cyan">News and Events</a></li>
+                        <li><a href="#" class="text-slate-600 transition-all-custom d-inline-block hover-lift group-hover-text-cyan">Case Studies</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 col-lg-3">
+                    <h4 class="text-cyan fw-semibold mb-4 fs-sm tracking-tight">Services</h4>
+                    <ul class="list-unstyled d-flex flex-column gap-3 fs-sm text-slate-600 m-0">
+                        <li><a href="#" class="text-slate-600 transition-all-custom d-inline-block hover-lift group-hover-text-cyan">Building Services</a></li>
+                        <li><a href="#" class="text-slate-600 transition-all-custom d-inline-block hover-lift group-hover-text-cyan">Construction Engineering</a></li>
+                        <li><a href="#" class="text-slate-600 transition-all-custom d-inline-block hover-lift group-hover-text-cyan">Infrastructure Engineering</a></li>
+                        <li><a href="#" class="text-slate-600 transition-all-custom d-inline-block hover-lift group-hover-text-cyan">BIM Services</a></li>
+                        <li><a href="#" class="text-slate-600 transition-all-custom d-inline-block hover-lift group-hover-text-cyan">Signage Engineering</a></li>
+                        <li><a href="#" class="text-slate-600 transition-all-custom d-inline-block hover-lift group-hover-text-cyan">Manufacturing Engineering</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 col-lg-3">
+                    <h4 class="text-cyan fw-semibold mb-4 fs-sm tracking-tight">Industries</h4>
+                    <ul class="list-unstyled d-flex flex-column gap-3 fs-sm text-slate-600 m-0">
+                        <li><a href="#" class="text-slate-600 transition-all-custom d-inline-block hover-lift group-hover-text-cyan">Commercial Real Estate</a></li>
+                        <li><a href="#" class="text-slate-600 transition-all-custom d-inline-block hover-lift group-hover-text-cyan">Industrial &amp; Energy</a></li>
+                        <li><a href="#" class="text-slate-600 transition-all-custom d-inline-block hover-lift group-hover-text-cyan">Government &amp; Public Works</a></li>
+                        <li><a href="#" class="text-slate-600 transition-all-custom d-inline-block hover-lift group-hover-text-cyan">Healthcare &amp; Biotech</a></li>
+                        <li><a href="#" class="text-slate-600 transition-all-custom d-inline-block hover-lift group-hover-text-cyan">Transportation</a></li>
+                        <li><a href="#" class="text-slate-600 transition-all-custom d-inline-block hover-lift group-hover-text-cyan">Retail &amp; Hospitality</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-top border-light pt-4 d-flex flex-column flex-md-row justify-content-between align-items-center gap-3 fs-xs text-slate-500">
+                <p class="m-0">Copyright © 2026 VectorQX - All Rights Reserved.</p>
+                <div class="d-flex gap-4">
+                    <a href="#" class="text-slate-500 transition-all-custom group-hover-text-cyan">Privacy Policy</a>
+                    <a href="#" class="text-slate-500 transition-all-custom group-hover-text-cyan">Terms and Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.scroll-animate').forEach((element) => {
+                observer.observe(element);
+            });
+        });
+    </script>
+
+
+
+        
+</body></html>

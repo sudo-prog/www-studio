@@ -53,6 +53,7 @@ export const CATEGORIES = [
   "Modals",
   "Navigation",
   "Shaders",
+  "Templates",
   "Tooltips",
 ] as const;
 
@@ -1585,6 +1586,535 @@ export const COMPONENT_LIBRARY: ComponentItem[] = [
     previewHtml: `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>* { box-sizing: border-box; margin: 0; padding: 0; } body { background: #09090b; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 24px; font-family: system-ui, sans-serif; }</style></head><body><div id="root"><p style="color:#a1a1aa">Loading\u2026</p></div>\n<script type="module">\nimport React from 'https://esm.sh/react@18.3.1';\nimport {createRoot} from 'https://esm.sh/react-dom@18.3.1/client';\nimport {Liquid} from 'https://esm.sh/liquid-gooey@0.2.1?deps=react@18.3.1,react-dom@18.3.1';\nconst R = createRoot(document.getElementById('root'));\nconst IMG = (src, alt) => React.createElement('img',{src,alt,style:{width:80,height:80,objectFit:'cover',borderRadius:12,display:'block'}});\nfunction Demo() {\n  const [offset, setOffset] = React.useState(0);\n  return React.createElement('div',{style:{display:'flex',flexDirection:'column',alignItems:'center',gap:16}},[\n    React.createElement('div',{style:{display:'flex',alignItems:'center',gap:0,position:'relative'}},[\n      React.createElement(Liquid,{fill:'#fff',blur:6,contrast:18},[\n        React.createElement(Liquid.Item,{effect:'melt',melt:{src:'https://picsum.photos/seed/fire/200/200'},observe:true,style:{transform:\`translateX(\${offset}px)\`}}, IMG('https://picsum.photos/seed/fire/200/200','Fire')),\n        React.createElement(Liquid.Item,{effect:'melt',melt:{src:'https://picsum.photos/seed/ice/200/200'},observe:true,style:{transform:\`translateX(\${offset}px)\`}}, IMG('https://picsum.photos/seed/ice/200/200','Ice'))\n      ])\n    ]),\n    React.createElement('div',{style:{display:'flex',gap:8}},\n      React.createElement('button',{onClick:()=>setOffset(-20),style:{padding:'8px 16px',borderRadius:9999,border:'none',background:'#27272a',color:'#fff',fontSize:12,cursor:'pointer'}},'\u2190 Slide'),\n      React.createElement('button',{onClick:()=>setOffset(0),style:{padding:'8px 16px',borderRadius:9999,border:'none',background:'#27272a',color:'#fff',fontSize:12,cursor:'pointer'}},'Reset'),\n      React.createElement('button',{onClick:()=>setOffset(20),style:{padding:'8px 16px',borderRadius:9999,border:'none',background:'#27272a',color:'#fff',fontSize:12,cursor:'pointer'}},'Slide \u2192')\n    ),\n    React.createElement('p',{style:{color:'#a1a1aa',fontSize:13}}, 'Two images run molten \u2014 the seam averages colours and dissolves back')\n  ]);\n}\nR.render(React.createElement(Demo));\n<\\/script></body></html>`,
     sourceUrl: 'https://github.com/Jakubantalik/Libraries.dev/tree/main/packages/liquid-gooey',
     description: 'Liquid Gooey Melt \u2022 Image Marbling \u2014 two images run molten into each other with colour averaging, crisp dissolution at the seam, and marbling.',
+  },
+
+  // ─────────── AURA WEBSITE TEMPLATES (22 full-site templates) ───────────
+  {
+    id: "aura-building-01-building",
+    name: "AETHEREAL | Future Living",
+    category: "Templates",
+    tags: ["aura", "template", "building", "construction", "real-estate"],
+    code: `/* AETHEREAL | Future Living - Full website template */
+// Live preview: /aura-templates/building-01-building/
+// This is a full AURA template from the reference collection.`,
+    previewHtml: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>body{margin:0;background:#09090b;overflow:hidden}</style>
+</head>
+<body>
+<iframe src="/aura-templates/building-01-building/" width="100%" height="100%" style="border:0;width:100vw;height:100vh" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+</body>
+</html>`,
+    sourceUrl: "https://www.aura.build/building-01-building/",
+    description: "AURA Website Template • Building category • Full responsive site with Tailwind CSS/GSAP/Three.js",
+    kind: "html",
+  },
+
+  {
+    id: "aura-building-02-vectorqx",
+    name: "VectorQX - Precision Engineering",
+    category: "Templates",
+    tags: ["aura", "template", "building", "construction", "real-estate"],
+    code: `/* VectorQX - Precision Engineering - Full website template */
+// Live preview: /aura-templates/building-02-vectorqx/
+// This is a full AURA template from the reference collection.`,
+    previewHtml: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>body{margin:0;background:#09090b;overflow:hidden}</style>
+</head>
+<body>
+<iframe src="/aura-templates/building-02-vectorqx/" width="100%" height="100%" style="border:0;width:100vw;height:100vh" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+</body>
+</html>`,
+    sourceUrl: "https://www.aura.build/building-02-vectorqx/",
+    description: "AURA Website Template • Building category • Full responsive site with Tailwind CSS/GSAP/Three.js",
+    kind: "html",
+  },
+
+  {
+    id: "aura-building-03-luxe",
+    name: "LuxeEstate - Premium Real Estate Ecosystem",
+    category: "Templates",
+    tags: ["aura", "template", "building", "construction", "real-estate"],
+    code: `/* LuxeEstate - Premium Real Estate Ecosystem - Full website template */
+// Live preview: /aura-templates/building-03-luxe/
+// This is a full AURA template from the reference collection.`,
+    previewHtml: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>body{margin:0;background:#09090b;overflow:hidden}</style>
+</head>
+<body>
+<iframe src="/aura-templates/building-03-luxe/" width="100%" height="100%" style="border:0;width:100vw;height:100vh" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+</body>
+</html>`,
+    sourceUrl: "https://www.aura.build/building-03-luxe/",
+    description: "AURA Website Template • Building category • Full responsive site with Tailwind CSS/GSAP/Three.js",
+    kind: "html",
+  },
+
+  {
+    id: "aura-building-04",
+    name: "RenovAlgarve — Premium Property Transformation",
+    category: "Templates",
+    tags: ["aura", "template", "building", "construction", "real-estate"],
+    code: `/* RenovAlgarve — Premium Property Transformation - Full website template */
+// Live preview: /aura-templates/building-04/
+// This is a full AURA template from the reference collection.`,
+    previewHtml: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>body{margin:0;background:#09090b;overflow:hidden}</style>
+</head>
+<body>
+<iframe src="/aura-templates/building-04/" width="100%" height="100%" style="border:0;width:100vw;height:100vh" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+</body>
+</html>`,
+    sourceUrl: "https://www.aura.build/building-04/",
+    description: "AURA Website Template • Building category • Full responsive site with Tailwind CSS/GSAP/Three.js",
+    kind: "html",
+  },
+
+  {
+    id: "aura-building-05",
+    name: "T&T Pergola | Sydney's Outdoor Living Experts",
+    category: "Templates",
+    tags: ["aura", "template", "building", "construction", "real-estate"],
+    code: `/* T&T Pergola | Sydney's Outdoor Living Experts - Full website template */
+// Live preview: /aura-templates/building-05/
+// This is a full AURA template from the reference collection.`,
+    previewHtml: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>body{margin:0;background:#09090b;overflow:hidden}</style>
+</head>
+<body>
+<iframe src="/aura-templates/building-05/" width="100%" height="100%" style="border:0;width:100vw;height:100vh" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+</body>
+</html>`,
+    sourceUrl: "https://www.aura.build/building-05/",
+    description: "AURA Website Template • Building category • Full responsive site with Tailwind CSS/GSAP/Three.js",
+    kind: "html",
+  },
+
+  {
+    id: "aura-building-06",
+    name: "Silva Bau",
+    category: "Templates",
+    tags: ["aura", "template", "building", "construction", "real-estate"],
+    code: `/* Silva Bau - Full website template */
+// Live preview: /aura-templates/building-06/
+// This is a full AURA template from the reference collection.`,
+    previewHtml: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>body{margin:0;background:#09090b;overflow:hidden}</style>
+</head>
+<body>
+<iframe src="/aura-templates/building-06/" width="100%" height="100%" style="border:0;width:100vw;height:100vh" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+</body>
+</html>`,
+    sourceUrl: "https://www.aura.build/building-06/",
+    description: "AURA Website Template • Building category • Full responsive site with Tailwind CSS/GSAP/Three.js",
+    kind: "html",
+  },
+
+  {
+    id: "aura-building-07-elyse",
+    name: "Elyse Residence",
+    category: "Templates",
+    tags: ["aura", "template", "building", "construction", "real-estate"],
+    code: `/* Elyse Residence - Full website template */
+// Live preview: /aura-templates/building-07-elyse/
+// This is a full AURA template from the reference collection.`,
+    previewHtml: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>body{margin:0;background:#09090b;overflow:hidden}</style>
+</head>
+<body>
+<iframe src="/aura-templates/building-07-elyse/" width="100%" height="100%" style="border:0;width:100vw;height:100vh" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+</body>
+</html>`,
+    sourceUrl: "https://www.aura.build/building-07-elyse/",
+    description: "AURA Website Template • Building category • Full responsive site with Tailwind CSS/GSAP/Three.js",
+    kind: "html",
+  },
+
+  {
+    id: "aura-building-08-alta",
+    name: "Alta Fencing | Architectural Boundaries",
+    category: "Templates",
+    tags: ["aura", "template", "building", "construction", "real-estate"],
+    code: `/* Alta Fencing | Architectural Boundaries - Full website template */
+// Live preview: /aura-templates/building-08-alta/
+// This is a full AURA template from the reference collection.`,
+    previewHtml: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>body{margin:0;background:#09090b;overflow:hidden}</style>
+</head>
+<body>
+<iframe src="/aura-templates/building-08-alta/" width="100%" height="100%" style="border:0;width:100vw;height:100vh" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+</body>
+</html>`,
+    sourceUrl: "https://www.aura.build/building-08-alta/",
+    description: "AURA Website Template • Building category • Full responsive site with Tailwind CSS/GSAP/Three.js",
+    kind: "html",
+  },
+
+  {
+    id: "aura-building-09-aaaaa",
+    name: "KRYPTOS | High-Yield Real Estate Intelligence",
+    category: "Templates",
+    tags: ["aura", "template", "building", "construction", "real-estate"],
+    code: `/* KRYPTOS | High-Yield Real Estate Intelligence - Full website template */
+// Live preview: /aura-templates/building-09-aaaaa/
+// This is a full AURA template from the reference collection.`,
+    previewHtml: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>body{margin:0;background:#09090b;overflow:hidden}</style>
+</head>
+<body>
+<iframe src="/aura-templates/building-09-aaaaa/" width="100%" height="100%" style="border:0;width:100vw;height:100vh" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+</body>
+</html>`,
+    sourceUrl: "https://www.aura.build/building-09-aaaaa/",
+    description: "AURA Website Template • Building category • Full responsive site with Tailwind CSS/GSAP/Three.js",
+    kind: "html",
+  },
+
+  {
+    id: "aura-building-10-sleek",
+    name: "MAISON BRUT | Structural Luxury",
+    category: "Templates",
+    tags: ["aura", "template", "building", "construction", "real-estate"],
+    code: `/* MAISON BRUT | Structural Luxury - Full website template */
+// Live preview: /aura-templates/building-10-sleek/
+// This is a full AURA template from the reference collection.`,
+    previewHtml: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>body{margin:0;background:#09090b;overflow:hidden}</style>
+</head>
+<body>
+<iframe src="/aura-templates/building-10-sleek/" width="100%" height="100%" style="border:0;width:100vw;height:100vh" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+</body>
+</html>`,
+    sourceUrl: "https://www.aura.build/building-10-sleek/",
+    description: "AURA Website Template • Building category • Full responsive site with Tailwind CSS/GSAP/Three.js",
+    kind: "html",
+  },
+
+  {
+    id: "aura-building-11-uslu-immobilien",
+    name: "USLU IMMOBILIEN | Projektentwicklung & Management",
+    category: "Templates",
+    tags: ["aura", "template", "building", "construction", "real-estate"],
+    code: `/* USLU IMMOBILIEN | Projektentwicklung & Management - Full website template */
+// Live preview: /aura-templates/building-11-uslu-immobilien/
+// This is a full AURA template from the reference collection.`,
+    previewHtml: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>body{margin:0;background:#09090b;overflow:hidden}</style>
+</head>
+<body>
+<iframe src="/aura-templates/building-11-uslu-immobilien/" width="100%" height="100%" style="border:0;width:100vw;height:100vh" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+</body>
+</html>`,
+    sourceUrl: "https://www.aura.build/building-11-uslu-immobilien/",
+    description: "AURA Website Template • Building category • Full responsive site with Tailwind CSS/GSAP/Three.js",
+    kind: "html",
+  },
+
+  {
+    id: "aura-building-12-svrn",
+    name: "SVRN | Global Estate Platform",
+    category: "Templates",
+    tags: ["aura", "template", "building", "construction", "real-estate"],
+    code: `/* SVRN | Global Estate Platform - Full website template */
+// Live preview: /aura-templates/building-12-svrn/
+// This is a full AURA template from the reference collection.`,
+    previewHtml: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>body{margin:0;background:#09090b;overflow:hidden}</style>
+</head>
+<body>
+<iframe src="/aura-templates/building-12-svrn/" width="100%" height="100%" style="border:0;width:100vw;height:100vh" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+</body>
+</html>`,
+    sourceUrl: "https://www.aura.build/building-12-svrn/",
+    description: "AURA Website Template • Building category • Full responsive site with Tailwind CSS/GSAP/Three.js",
+    kind: "html",
+  },
+
+  {
+    id: "aura-design-01-designstudio",
+    name: "DesignStudio — Web Design Services",
+    category: "Templates",
+    tags: ["aura", "template", "design", "studio", "creative"],
+    code: `/* DesignStudio — Web Design Services - Full website template */
+// Live preview: /aura-templates/design-01-designstudio/
+// This is a full AURA template from the reference collection.`,
+    previewHtml: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>body{margin:0;background:#09090b;overflow:hidden}</style>
+</head>
+<body>
+<iframe src="/aura-templates/design-01-designstudio/" width="100%" height="100%" style="border:0;width:100vw;height:100vh" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+</body>
+</html>`,
+    sourceUrl: "https://www.aura.build/design-01-designstudio/",
+    description: "AURA Website Template • Design category • Full responsive site with Tailwind CSS/GSAP/Three.js",
+    kind: "html",
+  },
+
+  {
+    id: "aura-e-commerce-01-pricingcards",
+    name: "Modern Pricing Cards",
+    category: "Templates",
+    tags: ["aura", "template", "e-commerce", "shop", "pricing"],
+    code: `/* Modern Pricing Cards - Full website template */
+// Live preview: /aura-templates/e-commerce-01-pricingcards/
+// This is a full AURA template from the reference collection.`,
+    previewHtml: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>body{margin:0;background:#09090b;overflow:hidden}</style>
+</head>
+<body>
+<iframe src="/aura-templates/e-commerce-01-pricingcards/" width="100%" height="100%" style="border:0;width:100vw;height:100vh" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+</body>
+</html>`,
+    sourceUrl: "https://www.aura.build/e-commerce-01-pricingcards/",
+    description: "AURA Website Template • E-commerce category • Full responsive site with Tailwind CSS/GSAP/Three.js",
+    kind: "html",
+  },
+
+  {
+    id: "aura-e-commerce-02-lusine",
+    name: "Lusine | Solde d'après Noël",
+    category: "Templates",
+    tags: ["aura", "template", "e-commerce", "shop", "pricing"],
+    code: `/* Lusine | Solde d'après Noël - Full website template */
+// Live preview: /aura-templates/e-commerce-02-lusine/
+// This is a full AURA template from the reference collection.`,
+    previewHtml: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>body{margin:0;background:#09090b;overflow:hidden}</style>
+</head>
+<body>
+<iframe src="/aura-templates/e-commerce-02-lusine/" width="100%" height="100%" style="border:0;width:100vw;height:100vh" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+</body>
+</html>`,
+    sourceUrl: "https://www.aura.build/e-commerce-02-lusine/",
+    description: "AURA Website Template • E-commerce category • Full responsive site with Tailwind CSS/GSAP/Three.js",
+    kind: "html",
+  },
+
+  {
+    id: "aura-tech-01-nexus",
+    name: "NEXUS // OS | Enterprise AI Infrastructure",
+    category: "Templates",
+    tags: ["aura", "template", "tech", "dashboard", "ai"],
+    code: `/* NEXUS // OS | Enterprise AI Infrastructure - Full website template */
+// Live preview: /aura-templates/tech-01-nexus/
+// This is a full AURA template from the reference collection.`,
+    previewHtml: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>body{margin:0;background:#09090b;overflow:hidden}</style>
+</head>
+<body>
+<iframe src="/aura-templates/tech-01-nexus/" width="100%" height="100%" style="border:0;width:100vw;height:100vh" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+</body>
+</html>`,
+    sourceUrl: "https://www.aura.build/tech-01-nexus/",
+    description: "AURA Website Template • Tech category • Full responsive site with Tailwind CSS/GSAP/Three.js",
+    kind: "html",
+  },
+
+  {
+    id: "aura-tech-02-aether",
+    name: "AETHER | Kinetic Library",
+    category: "Templates",
+    tags: ["aura", "template", "tech", "dashboard", "ai"],
+    code: `/* AETHER | Kinetic Library - Full website template */
+// Live preview: /aura-templates/tech-02-aether/
+// This is a full AURA template from the reference collection.`,
+    previewHtml: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>body{margin:0;background:#09090b;overflow:hidden}</style>
+</head>
+<body>
+<iframe src="/aura-templates/tech-02-aether/" width="100%" height="100%" style="border:0;width:100vw;height:100vh" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+</body>
+</html>`,
+    sourceUrl: "https://www.aura.build/tech-02-aether/",
+    description: "AURA Website Template • Tech category • Full responsive site with Tailwind CSS/GSAP/Three.js",
+    kind: "html",
+  },
+
+  {
+    id: "aura-tech-03-dashboard",
+    name: "SoundForge Pro Dashboard",
+    category: "Templates",
+    tags: ["aura", "template", "tech", "dashboard", "ai"],
+    code: `/* SoundForge Pro Dashboard - Full website template */
+// Live preview: /aura-templates/tech-03-dashboard/
+// This is a full AURA template from the reference collection.`,
+    previewHtml: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>body{margin:0;background:#09090b;overflow:hidden}</style>
+</head>
+<body>
+<iframe src="/aura-templates/tech-03-dashboard/" width="100%" height="100%" style="border:0;width:100vw;height:100vh" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+</body>
+</html>`,
+    sourceUrl: "https://www.aura.build/tech-03-dashboard/",
+    description: "AURA Website Template • Tech category • Full responsive site with Tailwind CSS/GSAP/Three.js",
+    kind: "html",
+  },
+
+  {
+    id: "aura-tech-04-spatialintelligencetech",
+    name: "Aura | Spatial Intelligence",
+    category: "Templates",
+    tags: ["aura", "template", "tech", "dashboard", "ai"],
+    code: `/* Aura | Spatial Intelligence - Full website template */
+// Live preview: /aura-templates/tech-04-spatialintelligencetech/
+// This is a full AURA template from the reference collection.`,
+    previewHtml: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>body{margin:0;background:#09090b;overflow:hidden}</style>
+</head>
+<body>
+<iframe src="/aura-templates/tech-04-spatialintelligencetech/" width="100%" height="100%" style="border:0;width:100vw;height:100vh" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+</body>
+</html>`,
+    sourceUrl: "https://www.aura.build/tech-04-spatialintelligencetech/",
+    description: "AURA Website Template • Tech category • Full responsive site with Tailwind CSS/GSAP/Three.js",
+    kind: "html",
+  },
+
+  {
+    id: "aura-tech-05-webglanimatedneuronoise",
+    name: "Neural Noise",
+    category: "Templates",
+    tags: ["aura", "template", "tech", "dashboard", "ai"],
+    code: `/* Neural Noise - Full website template */
+// Live preview: /aura-templates/tech-05-webglanimatedneuronoise/
+// This is a full AURA template from the reference collection.`,
+    previewHtml: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>body{margin:0;background:#09090b;overflow:hidden}</style>
+</head>
+<body>
+<iframe src="/aura-templates/tech-05-webglanimatedneuronoise/" width="100%" height="100%" style="border:0;width:100vw;height:100vh" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+</body>
+</html>`,
+    sourceUrl: "https://www.aura.build/tech-05-webglanimatedneuronoise/",
+    description: "AURA Website Template • Tech category • Full responsive site with Tailwind CSS/GSAP/Three.js",
+    kind: "html",
+  },
+
+  {
+    id: "aura-travel-01-sirocco",
+    name: "01 SIROCCO",
+    category: "Templates",
+    tags: ["aura", "template", "travel", "hotel", "parallax"],
+    code: `/* 01 SIROCCO - Full website template */
+// Live preview: /aura-templates/travel-01-sirocco/
+// This is a full AURA template from the reference collection.`,
+    previewHtml: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>body{margin:0;background:#09090b;overflow:hidden}</style>
+</head>
+<body>
+<iframe src="/aura-templates/travel-01-sirocco/" width="100%" height="100%" style="border:0;width:100vw;height:100vh" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+</body>
+</html>`,
+    sourceUrl: "https://www.aura.build/travel-01-sirocco/",
+    description: "AURA Website Template • Travel category • Full responsive site with Tailwind CSS/GSAP/Three.js",
+    kind: "html",
+  },
+
+  {
+    id: "aura-travel-02",
+    name: "EVM Grand Cinemas | Luxury Hotel & Resort",
+    category: "Templates",
+    tags: ["aura", "template", "travel", "hotel", "parallax"],
+    code: `/* EVM Grand Cinemas | Luxury Hotel & Resort - Full website template */
+// Live preview: /aura-templates/travel-02/
+// This is a full AURA template from the reference collection.`,
+    previewHtml: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>body{margin:0;background:#09090b;overflow:hidden}</style>
+</head>
+<body>
+<iframe src="/aura-templates/travel-02/" width="100%" height="100%" style="border:0;width:100vw;height:100vh" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+</body>
+</html>`,
+    sourceUrl: "https://www.aura.build/travel-02/",
+    description: "AURA Website Template • Travel category • Full responsive site with Tailwind CSS/GSAP/Three.js",
+    kind: "html",
   },
 
   // ─────────── EXTRACTED CATALOG (real code from upstream sources) ───────────

@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<script>
+try{if(window.parent&&window.parent!==window){window.parent.promotekit_referral="1fd2949a-d22c-431b-92bf-02d4ad04ee24";window.parent.document.cookie="promotekit_referral=1fd2949a-d22c-431b-92bf-02d4ad04ee24;path=/;domain=.aura.build;max-age=31536000"}}catch(e){}
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SVRN | Global Estate Platform</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
+
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+--bg-dark: #0A0A0A;
+--text-light: #E6E6E6;
+--text-dim: #888888;
+}
+body {
+font-family: 'Inter', sans-serif;
+background-color: var(--bg-dark);
+color: var(--text-light);
+overflow-x: hidden;
+}
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0A0A0A; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+/* Animation Utilities */
+.reveal-text {
+opacity: 0;
+transform: translateY(20px);
+transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-text.visible { opacity: 1; transform: translateY(0); }
+.reveal-image-wrapper { overflow: hidden; }
+.reveal-image {
+transform: scale(1.1);
+transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-image-wrapper:hover .reveal-image { transform: scale(1.05); }
+/* Input Styling */
+.input-underline {
+background: transparent;
+border: none;
+border-bottom: 1px solid rgba(255,255,255,0.2);
+transition: border-color 0.3s ease;
+}
+.input-underline:focus {
+outline: none;
+border-bottom: 1px solid rgba(255,255,255,0.8);
+}
+/* Modal Transitions */
+.modal {
+opacity: 0;
+pointer-events: none;
+transition: opacity 0.3s ease;
+}
+.modal.active {
+opacity: 1;
+pointer-events: all;
+}
+html { scroll-behavior: smooth; }
+</style></head>
+<body class="antialiased selection:bg-white/20 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-40 mix-blend-difference px-6 py-6 md:px-12 md:py-8 flex justify-between items-center bg-gradient-to-b from-[#0A0A0A]/90 to-transparent backdrop-blur-[2px]">
+        <a href="#" class="text-xl font-medium tracking-tighter uppercase z-50">SVRN.</a>
+        
+        <div class="hidden md:flex gap-12 text-sm font-medium tracking-wide items-center">
+            <a href="#philosophy" class="opacity-70 hover:opacity-100 transition-opacity">Philosophy</a>
+            <a href="#properties" class="opacity-70 hover:opacity-100 transition-opacity">Residences</a>
+            <a href="#expertise" class="opacity-70 hover:opacity-100 transition-opacity">Expertise</a>
+            <a href="#contact" class="opacity-70 hover:opacity-100 transition-opacity">Contact</a>
+            
+            <!-- Auth / Admin Link -->
+            <button id="authBtn" class="border border-white/20 px-4 py-2 hover:bg-white hover:text-black transition-colors uppercase text-xs tracking-widest">
+                Member Login
+            </button>
+        </div>
+
+        <button class="md:hidden text-white">
+             <iconify-icon icon="solar:hamburger-menu-linear" width="24" stroke-width="1.5"></iconify-icon>
+        </button>
+    </nav>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed top-24 right-6 z-50 transform translate-x-full transition-transform duration-500 bg-white text-black px-6 py-4 flex items-center gap-3 shadow-2xl">
+        <iconify-icon icon="solar:bell-linear" width="20"></iconify-icon>
+        <span id="toastMsg" class="text-sm font-medium">Notification</span>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm">
+        <div class="bg-[#111] border border-white/10 p-12 max-w-md w-full relative">
+            <button onclick="closeModal('loginModal')" class="absolute top-6 right-6 text-gray-500 hover:text-white"><iconify-icon icon="solar:close-circle-linear" width="24"></iconify-icon></button>
+            <h2 class="text-2xl font-light tracking-tight mb-8">Member Access</h2>
+            <form id="loginForm" class="space-y-6">
+                <div>
+                    <label class="block text-xs text-gray-500 uppercase tracking-widest mb-2">Email</label>
+                    <input type="email" id="loginEmail" class="w-full bg-transparent text-white py-2 input-underline font-light" placeholder="admin@svrn.com" value="admin@svrn.com">
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-500 uppercase tracking-widest mb-2">Password</label>
+                    <input type="password" id="loginPass" class="w-full bg-transparent text-white py-2 input-underline font-light" placeholder="admin" value="admin">
+                </div>
+                <button type="submit" class="w-full py-4 bg-white text-black hover:bg-gray-200 transition-colors uppercase text-xs tracking-widest mt-4">
+                    Sign In
+                </button>
+                <p class="text-center text-xs text-gray-600 mt-4">Demo: admin@svrn.com / admin</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard Modal -->
+    <div id="adminModal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md overflow-y-auto py-12">
+        <div class="bg-[#0A0A0A] border border-white/10 w-full max-w-6xl min-h-[80vh] relative flex flex-col md:flex-row">
+            <button onclick="closeModal('adminModal')" class="absolute top-6 right-6 text-gray-500 hover:text-white z-50"><iconify-icon icon="solar:close-circle-linear" width="24"></iconify-icon></button>
+            
+            <!-- Sidebar -->
+            <div class="w-full md:w-64 border-r border-white/10 p-8 flex flex-col">
+                <div class="mb-12">
+                    <h3 class="text-xl font-light tracking-tight">SVRN.<br><span class="text-xs text-gray-500 uppercase tracking-widest">Admin Panel</span></h3>
+                </div>
+                <nav class="space-y-6 flex-1">
+                    <button onclick="switchAdminTab('listings')" class="admin-tab-btn w-full text-left text-sm uppercase tracking-widest hover:text-white text-white transition-colors flex items-center gap-3">
+                        <iconify-icon icon="solar:buildings-linear"></iconify-icon> Listings
+                    </button>
+                    <button onclick="switchAdminTab('leads')" class="admin-tab-btn w-full text-left text-sm uppercase tracking-widest text-gray-500 hover:text-white transition-colors flex items-center gap-3">
+                        <iconify-icon icon="solar:inbox-linear"></iconify-icon> Leads <span id="leadCountBadge" class="ml-auto bg-white text-black text-[10px] px-1.5 py-0.5 rounded-full">0</span>
+                    </button>
+                    <button onclick="logout()" class="w-full text-left text-sm uppercase tracking-widest text-red-400 hover:text-red-300 transition-colors mt-auto pt-12 flex items-center gap-3">
+                        <iconify-icon icon="solar:logout-linear"></iconify-icon> Logout
+                    </button>
+                </nav>
+            </div>
+
+            <!-- Content Area -->
+            <div class="flex-1 p-8 md:p-12 overflow-y-auto">
+                <!-- Listings Tab -->
+                <div id="tab-listings" class="admin-tab-content">
+                    <div class="flex justify-between items-end mb-8 border-b border-white/10 pb-6">
+                        <h2 class="text-3xl font-light">Property Inventory</h2>
+                        <button onclick="openAddPropertyModal()" class="bg-white text-black px-4 py-2 text-xs uppercase tracking-widest hover:bg-gray-200 transition-colors flex items-center gap-2">
+                            <iconify-icon icon="solar:add-circle-linear" width="16"></iconify-icon> Add Property
+                        </button>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm">
+                            <thead class="text-xs text-gray-500 uppercase tracking-widest border-b border-white/10">
+                                <tr>
+                                    <th class="pb-4 font-normal">Property</th>
+                                    <th class="pb-4 font-normal">Location</th>
+                                    <th class="pb-4 font-normal">Price</th>
+                                    <th class="pb-4 font-normal text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminPropertiesList" class="divide-y divide-white/5">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Leads Tab -->
+                <div id="tab-leads" class="admin-tab-content hidden">
+                    <div class="mb-8 border-b border-white/10 pb-6">
+                        <h2 class="text-3xl font-light">Inquiries</h2>
+                    </div>
+                    <div id="adminLeadsList" class="space-y-4">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Property Modal (Nested) -->
+    <div id="addPropModal" class="modal fixed inset-0 z-[60] flex items-center justify-center bg-black/90 backdrop-blur-sm">
+        <div class="bg-[#111] border border-white/10 p-12 max-w-lg w-full relative">
+            <button onclick="closeModal('addPropModal')" class="absolute top-6 right-6 text-gray-500 hover:text-white"><iconify-icon icon="solar:close-circle-linear" width="24"></iconify-icon></button>
+            <h2 class="text-xl font-light mb-8">New Listing</h2>
+            <form id="addPropertyForm" class="space-y-6">
+                <div>
+                    <label class="block text-xs text-gray-500 uppercase tracking-widest mb-2">Title</label>
+                    <input name="title" type="text" required class="w-full bg-transparent text-white py-2 input-underline font-light">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs text-gray-500 uppercase tracking-widest mb-2">Location</label>
+                        <input name="location" type="text" required class="w-full bg-transparent text-white py-2 input-underline font-light">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-500 uppercase tracking-widest mb-2">Price</label>
+                        <input name="price" type="text" required class="w-full bg-transparent text-white py-2 input-underline font-light">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-500 uppercase tracking-widest mb-2">Details (Sq Ft / Beds)</label>
+                    <input name="details" type="text" required class="w-full bg-transparent text-white py-2 input-underline font-light">
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-500 uppercase tracking-widest mb-2">Image URL</label>
+                    <input name="image" type="url" required class="w-full bg-transparent text-white py-2 input-underline font-light" placeholder="https://...">
+                </div>
+                <button type="submit" class="w-full py-4 bg-white text-black hover:bg-gray-200 transition-colors uppercase text-xs tracking-widest mt-4">
+                    Publish Listing
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    
+    <!-- Hero Section -->
+    <header class="relative w-full h-screen flex flex-col justify-end pb-12 md:pb-24 px-6 md:px-12 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2700&auto=format&fit=crop" 
+                 alt="Luxury Architecture" 
+                 class="w-full h-full object-cover opacity-60 grayscale-[30%] brightness-[0.7]">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl w-full mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
+            <div class="col-span-1 md:col-span-8">
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-light tracking-tighter leading-[0.9] text-white reveal-text">
+                    ARCHITECTURE.<br>VALUE.<br>LEGACY.
+                </h1>
+            </div>
+            <div class="col-span-1 md:col-span-4 flex flex-col justify-end items-start md:items-end mb-2">
+                <p class="text-sm md:text-base text-gray-300 font-light max-w-xs md:text-right leading-relaxed reveal-text" style="transition-delay: 100ms;">
+                    Curating the world's most exceptional properties for the discerning few.
+                </p>
+                <a href="#properties" class="mt-8 group flex items-center gap-3 text-sm tracking-widest uppercase hover:text-white transition-colors reveal-text" style="transition-delay: 200ms;">
+                    View Collection
+                    <iconify-icon icon="solar:arrow-right-linear" class="group-hover:translate-x-2 transition-transform duration-500" width="18" stroke-width="1.5"></iconify-icon>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Brand Philosophy -->
+    <section id="philosophy" class="py-24 md:py-40 px-6 md:px-12 bg-[#0A0A0A]">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
+            <div class="col-span-1 md:col-span-3">
+                <span class="text-xs uppercase tracking-[0.2em] text-gray-500 border-t border-gray-800 pt-4 block w-fit reveal-text">The Philosophy</span>
+            </div>
+            <div class="col-span-1 md:col-span-9">
+                <h2 class="text-2xl md:text-4xl lg:text-5xl font-light leading-tight tracking-tight text-[#CCCCCC] reveal-text">
+                    We believe true luxury is silent. It is defined by space, light, and materiality. Our portfolio represents a curated selection of architectural masterpieces designed to stand the test of time.
+                </h2>
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="reveal-text" style="transition-delay: 100ms;">
+                        <iconify-icon icon="solar:shield-check-linear" width="32" class="text-gray-400 mb-6" stroke-width="1"></iconify-icon>
+                        <h3 class="text-lg font-normal mb-2">Uncompromising Privacy</h3>
+                        <p class="text-sm text-gray-500 leading-relaxed">Secure estates designed for complete solitude and peace of mind.</p>
+                    </div>
+                    <div class="reveal-text" style="transition-delay: 200ms;">
+                        <iconify-icon icon="solar:ruler-pen-linear" width="32" class="text-gray-400 mb-6" stroke-width="1"></iconify-icon>
+                        <h3 class="text-lg font-normal mb-2">Architectural Merit</h3>
+                        <p class="text-sm text-gray-500 leading-relaxed">Properties selected for their design significance and structural integrity.</p>
+                    </div>
+                    <div class="reveal-text" style="transition-delay: 300ms;">
+                        <iconify-icon icon="solar:graph-up-linear" width="32" class="text-gray-400 mb-6" stroke-width="1"></iconify-icon>
+                        <h3 class="text-lg font-normal mb-2">Enduring Value</h3>
+                        <p class="text-sm text-gray-500 leading-relaxed">Assets that appreciate through scarcity and location desirability.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Properties (Dynamic) -->
+    <section id="properties" class="py-12 px-6 md:px-12 bg-[#0A0A0A]">
+        <div class="max-w-7xl mx-auto mb-16 flex justify-between items-end border-b border-white/10 pb-6 reveal-text">
+            <h2 class="text-3xl md:text-4xl font-light tracking-tight">Selected Residences</h2>
+            <div class="flex gap-4">
+                 <!-- Filter placeholder (Visual only for this demo) -->
+                <button class="text-xs uppercase tracking-widest text-white border-b border-white">All</button>
+                <button class="text-xs uppercase tracking-widest text-gray-500 hover:text-white transition-colors">Europe</button>
+                <button class="text-xs uppercase tracking-widest text-gray-500 hover:text-white transition-colors">Americas</button>
+            </div>
+        </div>
+
+        <div id="propertyGrid" class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-24">
+            <!-- Properties rendered here via JS -->
+            <div class="text-white text-center w-full col-span-2 py-12">Loading inventory...</div>
+        </div>
+    </section>
+
+    <!-- Services / Trust Indicators -->
+    <section id="expertise" class="py-24 px-6 md:px-12 bg-[#0B0B0B] border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="reveal-text">
+                    <h2 class="text-3xl md:text-5xl font-light tracking-tighter mb-8 text-white">
+                        Global Reach.<br>Local Nuance.
+                    </h2>
+                    <p class="text-gray-400 font-light mb-8 max-w-md">
+                        Our expertise spans continents. We navigate complex international markets with the precision of a financial institution.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-4 text-sm text-gray-300">
+                            <iconify-icon icon="solar:check-circle-linear" class="text-gray-500"></iconify-icon> Off-market acquisition
+                        </li>
+                        <li class="flex items-center gap-4 text-sm text-gray-300">
+                            <iconify-icon icon="solar:check-circle-linear" class="text-gray-500"></iconify-icon> Architectural consultancy
+                        </li>
+                        <li class="flex items-center gap-4 text-sm text-gray-300">
+                            <iconify-icon icon="solar:check-circle-linear" class="text-gray-500"></iconify-icon> Investment analysis
+                        </li>
+                    </ul>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-[#111] p-8 aspect-square flex flex-col justify-between border border-white/5 hover:border-white/20 transition-colors duration-500 reveal-text">
+                        <iconify-icon icon="solar:buildings-linear" width="32" stroke-width="1" class="text-gray-400"></iconify-icon>
+                        <div><span class="text-2xl font-light block mb-1">50+</span><span class="text-xs text-gray-500 uppercase tracking-widest">Global Cities</span></div>
+                    </div>
+                    <div class="bg-[#111] p-8 aspect-square flex flex-col justify-between border border-white/5 hover:border-white/20 transition-colors duration-500 reveal-text" style="transition-delay: 100ms;">
+                        <iconify-icon icon="solar:wallet-linear" width="32" stroke-width="1" class="text-gray-400"></iconify-icon>
+                        <div><span class="text-2xl font-light block mb-1">$4B+</span><span class="text-xs text-gray-500 uppercase tracking-widest">In Sales</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="py-32 px-6 md:px-12 bg-[#0A0A0A] relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+        <div class="max-w-5xl mx-auto text-center reveal-text">
+            <iconify-icon icon="solar:quote-up-linear" width="40" class="text-gray-700 mb-8 mx-auto" stroke-width="1"></iconify-icon>
+            <p class="text-2xl md:text-4xl font-light italic leading-snug text-gray-200 mb-8">
+                "SVRN does not just sell properties; they curate lifestyles. The attention to architectural detail and the discretion of their service is unmatched."
+            </p>
+            <div class="flex flex-col items-center">
+                <span class="text-sm font-medium tracking-wide text-white">Alexander V.</span>
+                <span class="text-xs text-gray-500 mt-1 uppercase tracking-widest">Managing Partner, Zurich</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 md:px-12 bg-[#080808]">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div class="reveal-text">
+                <h2 class="text-4xl md:text-6xl font-light tracking-tighter mb-6">Inquire.</h2>
+                <p class="text-gray-400 font-light mb-12 max-w-sm">Connect with our private office to discuss buying or selling significant assets.</p>
+                <div class="space-y-6">
+                    <div>
+                        <span class="text-xs text-gray-600 uppercase tracking-widest block mb-1">Global HQ</span>
+                        <p class="text-sm text-gray-300">Bahnhofstrasse 21, 8001 Zurich</p>
+                    </div>
+                    <div>
+                        <span class="text-xs text-gray-600 uppercase tracking-widest block mb-1">Americas</span>
+                        <p class="text-sm text-gray-300">432 Park Avenue, New York, NY</p>
+                    </div>
+                    <div class="pt-8">
+                         <a href="mailto:private@svrn.com" class="text-lg text-white hover:text-gray-400 transition-colors border-b border-white/20 pb-1">private@svrn.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <form id="leadForm" class="space-y-12 mt-8 md:mt-0 reveal-text" style="transition-delay: 200ms;">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="group">
+                        <label class="block text-xs text-gray-500 uppercase tracking-widest mb-2 group-hover:text-gray-300 transition-colors">First Name</label>
+                        <input name="firstName" type="text" required class="w-full bg-transparent text-white py-2 input-underline font-light">
+                    </div>
+                    <div class="group">
+                        <label class="block text-xs text-gray-500 uppercase tracking-widest mb-2 group-hover:text-gray-300 transition-colors">Last Name</label>
+                        <input name="lastName" type="text" required class="w-full bg-transparent text-white py-2 input-underline font-light">
+                    </div>
+                </div>
+                <div class="group">
+                    <label class="block text-xs text-gray-500 uppercase tracking-widest mb-2 group-hover:text-gray-300 transition-colors">Email Address</label>
+                    <input name="email" type="email" required class="w-full bg-transparent text-white py-2 input-underline font-light">
+                </div>
+                
+                <div class="group">
+                    <label class="block text-xs text-gray-500 uppercase tracking-widest mb-2 group-hover:text-gray-300 transition-colors">Budget (USD)</label>
+                    <input type="range" name="budget" min="1000000" max="50000000" class="w-full h-1 bg-gray-800 rounded-lg appearance-none cursor-pointer">
+                    <div class="flex justify-between mt-3 text-xs text-gray-500 font-mono">
+                        <span>$1M</span>
+                        <span>$50M+</span>
+                    </div>
+                </div>
+
+                <div class="group">
+                    <label class="block text-xs text-gray-500 uppercase tracking-widest mb-2 group-hover:text-gray-300 transition-colors">Message</label>
+                    <textarea name="message" rows="4" class="w-full bg-transparent text-white py-2 input-underline font-light resize-none"></textarea>
+                </div>
+
+                <button type="submit" class="group flex items-center justify-between w-full py-4 border-b border-white hover:bg-white hover:text-black transition-all duration-300">
+                    <span class="text-sm uppercase tracking-widest">Send Inquiry</span>
+                    <iconify-icon icon="solar:arrow-right-linear" width="20" stroke-width="1.5"></iconify-icon>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 md:px-12 bg-[#050505] border-t border-white/5 text-gray-600">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-xs tracking-widest uppercase">&copy; 2024 SVRN Estates.</div>
+            <div class="flex gap-8">
+                <a href="#" class="text-xs tracking-widest uppercase hover:text-white transition-colors">Legal</a>
+                <a href="#" class="text-xs tracking-widest uppercase hover:text-white transition-colors">Privacy</a>
+                <a href="#" class="text-xs tracking-widest uppercase hover:text-white transition-colors">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BACKEND SIMULATION SCRIPT -->
+    <script>
+        // --- 1. MOCK DATABASE (Stored in LocalStorage) ---
+        const DEFAULT_PROPERTIES = [
+            { id: 1, title: "The Glass Pavilion", price: "$24,500,000", location: "Montecito, CA", details: "12,000 SQ FT", image: "https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/917d6f93-fb36-439a-8c48-884b67b35381_1600w.jpg", tag: "Off Market" },
+            { id: 2, title: "Kyoto Stone House", price: "Price on Request", location: "Kyoto, Japan", details: "6,500 SQ FT", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2600&auto=format&fit=crop" },
+            { id: 3, title: "Alpine Brutalist", price: "₣18,200,000", location: "Zermatt, Switzerland", details: "Ski-in / Ski-out", image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=2600&auto=format&fit=crop" },
+            { id: 4, title: "Penthouse One", price: "$32,000,000", location: "Tribeca, New York", details: "Private Terrace", image: "https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?q=80&w=2600&auto=format&fit=crop" }
+        ];
+
+        const mockDB = {
+            getProperties: () => JSON.parse(localStorage.getItem('svrn_properties')) || DEFAULT_PROPERTIES,
+            saveProperties: (props) => localStorage.setItem('svrn_properties', JSON.stringify(props)),
+            getLeads: () => JSON.parse(localStorage.getItem('svrn_leads')) || [],
+            saveLead: (lead) => {
+                const leads = mockDB.getLeads();
+                leads.unshift({ ...lead, id: Date.now(), date: new Date().toLocaleDateString() });
+                localStorage.setItem('svrn_leads', JSON.stringify(leads));
+            }
+        };
+
+        // Initialize if empty
+        if (!localStorage.getItem('svrn_properties')) {
+            mockDB.saveProperties(DEFAULT_PROPERTIES);
+        }
+
+        // --- 2. STATE MANAGEMENT ---
+        const state = {
+            user: null, // { email, role: 'admin' | 'visitor' }
+            properties: [],
+            leads: []
+        };
+
+        // --- 3. API LAYER (Mock Fetch) ---
+        async function mockApi(endpoint, method, data) {
+            // Simulate network delay
+            await new Promise(r => setTimeout(r, 600));
+
+            if (endpoint === '/api/login' && method === 'POST') {
+                if (data.email === 'admin@svrn.com' && data.password === 'admin') {
+                    return { success: true, user: { email: data.email, role: 'admin', name: 'Admin User' } };
+                }
+                throw new Error('Invalid credentials');
+            }
+
+            if (endpoint === '/api/properties' && method === 'GET') {
+                return mockDB.getProperties();
+            }
+
+            if (endpoint === '/api/properties' && method === 'POST') {
+                const props = mockDB.getProperties();
+                const newProp = { ...data, id: Date.now() };
+                props.unshift(newProp);
+                mockDB.saveProperties(props);
+                return newProp;
+            }
+
+            if (endpoint === '/api/properties' && method === 'DELETE') {
+                let props = mockDB.getProperties();
+                props = props.filter(p => p.id !== data.id);
+                mockDB.saveProperties(props);
+                return { success: true };
+            }
+
+            if (endpoint === '/api/contact' && method === 'POST') {
+                mockDB.saveLead(data);
+                return { success: true, message: "Inquiry received" };
+            }
+
+            if (endpoint === '/api/leads' && method === 'GET') {
+                return mockDB.getLeads();
+            }
+        }
+
+        // --- 4. APP CONTROLLER ---
+        
+        // Render Properties to Grid
+        function renderProperties() {
+            const grid = document.getElementById('propertyGrid');
+            grid.innerHTML = '';
+            
+            state.properties.forEach((prop, index) => {
+                const isOffset = index % 2 !== 0; // Simple layout logic
+                const html = `
+                    <div class="group cursor-pointer ${isOffset ? 'md:mt-24' : ''} reveal-text visible">
+                        <div class="reveal-image-wrapper aspect-[4/3] w-full bg-gray-900 mb-6 relative overflow-hidden">
+                            <img src="${prop.image}" alt="${prop.title}" class="w-full h-full object-cover grayscale-[20%] opacity-80 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 reveal-image">
+                            ${prop.tag ? `<div class="absolute top-4 right-4 bg-black/50 backdrop-blur-md px-3 py-1 text-xs text-white border border-white/10">${prop.tag}</div>` : ''}
+                        </div>
+                        <div class="flex justify-between items-start border-t border-white/10 pt-4">
+                            <div>
+                                <h3 class="text-xl font-light tracking-tight mb-1 text-white">${prop.title}</h3>
+                                <p class="text-sm text-gray-500">${prop.location}</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-lg font-light text-white">${prop.price}</p>
+                                <p class="text-xs text-gray-500 mt-1">${prop.details}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += html;
+            });
+        }
+
+        // Render Admin Tables
+        function renderAdminData() {
+            // Properties Table
+            const propList = document.getElementById('adminPropertiesList');
+            propList.innerHTML = state.properties.map(p => `
+                <tr class="hover:bg-white/5 transition-colors">
+                    <td class="py-4 pr-4">
+                        <div class="flex items-center gap-3">
+                            <img src="${p.image}" class="w-10 h-10 object-cover bg-gray-800">
+                            <span class="text-white">${p.title}</span>
+                        </div>
+                    </td>
+                    <td class="py-4 text-gray-400">${p.location}</td>
+                    <td class="py-4 text-gray-400">${p.price}</td>
+                    <td class="py-4 text-right">
+                        <button onclick="deleteProperty(${p.id})" class="text-red-400 hover:text-white transition-colors text-xs uppercase tracking-widest">Delete</button>
+                    </td>
+                </tr>
+            `).join('');
+
+            // Leads List
+            const leadList = document.getElementById('adminLeadsList');
+            document.getElementById('leadCountBadge').innerText = state.leads.length;
+            
+            if(state.leads.length === 0) {
+                leadList.innerHTML = '<div class="text-gray-500 italic">No inquiries yet.</div>';
+            } else {
+                leadList.innerHTML = state.leads.map(l => `
+                    <div class="bg-[#111] p-6 border border-white/5 flex flex-col md:flex-row justify-between gap-4">
+                        <div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-white font-medium">${l.firstName} ${l.lastName}</span>
+                                <span class="text-xs text-gray-500 bg-gray-900 px-2 py-0.5 rounded">${l.budget ? 'Budget: $' + (l.budget/1000000).toFixed(1) + 'M' : 'No Budget'}</span>
+                            </div>
+                            <a href="mailto:${l.email}" class="text-sm text-blue-400 hover:underline mb-2 block">${l.email}</a>
+                            <p class="text-sm text-gray-400 font-light">"${l.message}"</p>
+                        </div>
+                        <div class="text-right text-xs text-gray-600 uppercase tracking-widest whitespace-nowrap">
+                            ${l.date}
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Init App
+        async function init() {
+            try {
+                // Fetch Properties
+                state.properties = await mockApi('/api/properties', 'GET');
+                renderProperties();
+                
+                // Animation observer re-trigger for dynamic content
+                setTimeout(() => {
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) entry.target.classList.add('visible');
+                        });
+                    }, { threshold: 0.1 });
+                    document.querySelectorAll('.reveal-text, .reveal-image').forEach(el => observer.observe(el));
+                }, 100);
+
+            } catch (e) {
+                console.error("Init error", e);
+            }
+        }
+
+        // Auth Logic
+        document.getElementById('authBtn').addEventListener('click', () => {
+            if (state.user) {
+                openModal('adminModal');
+                refreshAdminData();
+            } else {
+                openModal('loginModal');
+            }
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const pass = document.getElementById('loginPass').value;
+            
+            try {
+                const response = await mockApi('/api/login', 'POST', { email, pass });
+                state.user = response.user;
+                closeModal('loginModal');
+                showToast(`Welcome back, ${state.user.name}`);
+                document.getElementById('authBtn').innerText = 'Dashboard';
+                openModal('adminModal');
+                refreshAdminData();
+            } catch (err) {
+                showToast('Invalid Credentials', true);
+            }
+        });
+
+        function logout() {
+            state.user = null;
+            document.getElementById('authBtn').innerText = 'Member Login';
+            closeModal('adminModal');
+            showToast('Logged out successfully');
+        }
+
+        // Lead Form Logic
+        document.getElementById('leadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+            
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = 'Sending...';
+            
+            await mockApi('/api/contact', 'POST', data);
+            
+            btn.innerHTML = originalText;
+            e.target.reset();
+            showToast('Inquiry Sent. We will be in touch.');
+        });
+
+        // Admin Actions
+        async function refreshAdminData() {
+            if(!state.user) return;
+            state.leads = await mockApi('/api/leads', 'GET');
+            renderAdminData();
+        }
+
+        async function deleteProperty(id) {
+            if(confirm('Are you sure you want to remove this listing?')) {
+                await mockApi('/api/properties', 'DELETE', { id });
+                state.properties = await mockApi('/api/properties', 'GET'); // Refresh local
+                renderProperties(); // Update frontend
+                renderAdminData(); // Update admin
+                showToast('Property Removed');
+            }
+        }
+
+        document.getElementById('addPropertyForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+            
+            await mockApi('/api/properties', 'POST', data);
+            state.properties = await mockApi('/api/properties', 'GET');
+            
+            renderProperties();
+            renderAdminData();
+            closeModal('addPropModal');
+            e.target.reset();
+            showToast('Property Listed Successfully');
+        });
+
+        // UI Utilities
+        function openModal(id) { document.getElementById(id).classList.add('active'); }
+        function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+        function openAddPropertyModal() { openModal('addPropModal'); }
+        
+        function switchAdminTab(tabName) {
+            document.querySelectorAll('.admin-tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`tab-${tabName}`).classList.remove('hidden');
+            
+            // Update active state style on buttons (simplified)
+            document.querySelectorAll('.admin-tab-btn').forEach(btn => btn.classList.add('text-gray-500'));
+            // In a real framework we'd bind classes better, here we trust the click interaction
+        }
+
+        function showToast(msg, isError = false) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').innerText = msg;
+            toast.classList.remove('translate-x-full');
+            if(isError) toast.classList.add('border-red-500', 'border-l-4');
+            else toast.classList.remove('border-red-500', 'border-l-4');
+            
+            setTimeout(() => toast.classList.add('translate-x-full'), 3000);
+        }
+
+        // Start
+        init();
+
+    </script>
+
+        
+</body>
+</html>

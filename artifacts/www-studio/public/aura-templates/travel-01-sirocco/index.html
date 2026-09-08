@@ -1,0 +1,432 @@
+import React, { useState, useEffect, useRef } from 'react';
+
+function App() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isNavDark, setIsNavDark] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [stars, setStars] = useState([]);
+  const heroBgRef = useRef(null);
+
+  // Scroll logic for Nav and Parallax
+  useEffect(() => {
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          const transitionSection = document.getElementById('transition');
+          
+          setIsScrolled(scrollY > 60);
+
+          if (transitionSection) {
+            setIsNavDark(scrollY > transitionSection.offsetTop - 200);
+          } else {
+            setIsNavDark(false);
+          }
+
+          if (heroBgRef.current && scrollY < window.innerHeight) {
+            heroBgRef.current.style.transform = `translateY(${scrollY * 0.25}px)`;
+          }
+
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Body overflow toggle for mobile menu
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
+
+  // Intersection Observers for reveals
+  useEffect(() => {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    const elements = document.querySelectorAll('.reveal, .reveal-left, .stagger-up');
+    elements.forEach((el) => revealObserver.observe(el));
+
+    return () => revealObserver.disconnect();
+  }, []);
+
+  // Counter animation
+  useEffect(() => {
+    const animateCounter = (el) => {
+      const target = parseInt(el.getAttribute('data-count'), 10);
+      const duration = 1800;
+      const start = performance.now();
+      
+      const update = (now) => {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(target * eased);
+        if (progress < 1) requestAnimationFrame(update);
+      };
+      requestAnimationFrame(update);
+    };
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('[data-count]').forEach(animateCounter);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    const statsStrip = document.querySelector('.stats-strip');
+    if (statsStrip) counterObserver.observe(statsStrip);
+
+    return () => counterObserver.disconnect();
+  }, []);
+
+  // Generate stars array once on mount
+  useEffect(() => {
+    const generatedStars = Array.from({ length: 70 }).map((_, i) => ({
+      id: i,
+      left: `${Math.random() * 100}%`,
+      top: `${35 + Math.random() * 60}%`,
+      dur: `${2 + Math.random() * 4}s`,
+      del: `${Math.random() * 3}s`,
+      size: `${1 + Math.random() * 2}px`
+    }));
+    setStars(generatedStars);
+  }, []);
+
+  const closeMenu = () => setIsMenuOpen(false);
+
+  return (
+    <>
+      {/* NAV */}
+      <nav className={`nav ${isScrolled ? 'scrolled' : ''} ${isNavDark ? 'nav-dark' : ''}`} id="nav">
+        <div className="nav-inner">
+          <a href="#" className="nav-logo">SIROCCO</a>
+          <div className="nav-links">
+            <a href="#philosophy">Story</a>
+            <a href="#suites">Suites</a>
+            <a href="#wellness">Wellness</a>
+            <a href="#cuisine">Dining</a>
+            <a href="#excursions">Experiences</a>
+          </div>
+          <a href="#reserve" className="nav-cta">Reserve</a>
+          <button 
+            className={`nav-hamburger ${isMenuOpen ? 'active' : ''}`} 
+            onClick={() => setIsMenuOpen(!isMenuOpen)} 
+            aria-label="Toggle menu"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </nav>
+
+      {/* MOBILE OVERLAY */}
+      <div className={`mobile-overlay ${isMenuOpen ? 'active' : ''}`} id="mobileOverlay">
+        <a href="#philosophy" className="mobile-link" onClick={closeMenu}>Story</a>
+        <a href="#suites" className="mobile-link" onClick={closeMenu}>Suites</a>
+        <a href="#wellness" className="mobile-link" onClick={closeMenu}>Wellness</a>
+        <a href="#cuisine" className="mobile-link" onClick={closeMenu}>Dining</a>
+        <a href="#excursions" className="mobile-link" onClick={closeMenu}>Experiences</a>
+        <a href="#reserve" className="mobile-link" onClick={closeMenu}>Reserve</a>
+      </div>
+
+      {/* HERO */}
+      <section className="hero" id="hero">
+        <img 
+          ref={heroBgRef}
+          className="hero-bg" 
+          src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/7b9a060d-112b-4bb3-aa79-79572cda559f_1600w.webp" 
+          alt="Sirocco Desert Resort aerial view at golden hour" 
+          loading="eager" 
+        />
+        <div className="hero-overlay"></div>
+        <div className="hero-content">
+          <p className="hero-location">
+            <iconify-icon icon="lucide:map-pin"></iconify-icon>
+            Merzouga, Morocco
+          </p>
+          <h1 className="hero-title">SIROCCO</h1>
+          <p className="hero-subtitle">Luxury Desert Retreat</p>
+          <div className="hero-line"></div>
+          <a href="#reserve" className="hero-cta">Begin Your Journey</a>
+        </div>
+        <div className="scroll-indicator">
+          <span>Scroll</span>
+          <div className="scroll-line"></div>
+        </div>
+      </section>
+
+      {/* PHILOSOPHY */}
+      <section className="philosophy day-section" id="philosophy">
+        <div className="container">
+          <div className="philosophy-grid">
+            <div className="philosophy-text reveal-left">
+              <span className="section-label">Our Story</span>
+              <h2>Born from the ancient whisper of desert winds</h2>
+              <p>Sirocco emerged from a reverence for the Sahara's timeless beauty — a place where the vastness of the dunes meets the intimacy of Moroccan hospitality. Founded in 2018, our retreat was built with local artisans using centuries-old techniques, every zellige tile placed by hand, every archway shaped with purpose.</p>
+              <p>Here, the desert is not a backdrop — it is the experience itself. From the first light painting the dunes gold to the Milky Way stretching overhead, each moment at Sirocco unfolds like a story written in sand.</p>
+            </div>
+            <div className="philosophy-image reveal">
+              <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/73bce808-f5c2-4189-ae6a-f18a1da1c369_1600w.webp" alt="Traditional Moroccan riad courtyard with fountain and orange trees" loading="lazy" />
+            </div>
+          </div>
+          <div className="stats-strip stagger-up">
+            <div className="stat reveal-child">
+              <span className="stat-value" data-count="2018">0</span>
+              <span className="stat-label">Founded</span>
+            </div>
+            <div className="stat reveal-child">
+              <span className="stat-value" data-count="24">0</span>
+              <span className="stat-label">Suites</span>
+            </div>
+            <div className="stat reveal-child">
+              <span className="stat-value" data-count="200">0</span>
+              <span className="stat-label">Hectares</span>
+            </div>
+            <div className="stat reveal-child">
+              <span className="stat-value" data-count="5">0</span>
+              <span className="stat-label">Stars</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="section-divider"></div>
+
+      {/* SUITES */}
+      <section className="suites day-section" id="suites">
+        <div className="container">
+          <span className="section-label reveal">Accommodations</span>
+          <h2 className="section-title reveal">Where Desert Meets Comfort</h2>
+          <div className="suites-grid stagger-up">
+            <div className="suite-card reveal-child">
+              <div className="suite-image">
+                <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/11adc7f8-ec99-4e48-af98-53f2707ec331_800w.jpg" alt="Dune Suite with panoramic desert views" loading="lazy" />
+              </div>
+              <div className="suite-info">
+                <h3>Dune Suite</h3>
+                <p>Panoramic desert views from floor-to-ceiling windows, private terrace with daybed, handcrafted furnishings</p>
+                <span className="suite-price">From €480 / night</span>
+              </div>
+            </div>
+            <div className="suite-card reveal-child">
+              <div className="suite-image">
+                <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/a525c23d-793c-4594-bbc2-088bd9a84510_800w.jpg" alt="Oasis Suite with private plunge pool" loading="lazy" />
+              </div>
+              <div className="suite-info">
+                <h3>Oasis Suite</h3>
+                <p>Private plunge pool overlooking the dunes, lush garden courtyard access, outdoor rain shower</p>
+                <span className="suite-price">From €720 / night</span>
+              </div>
+            </div>
+            <div className="suite-card reveal-child">
+              <div className="suite-image">
+                <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/be54afda-54aa-403c-a8b6-d9eecf415473_800w.jpg" alt="Traditional Moroccan riad suite with ornate plaster and mosaic tiles" loading="lazy" />
+              </div>
+              <div className="suite-info">
+                <h3>Riad Suite</h3>
+                <p>Traditional courtyard living, rooftop terrace with 360° views, hammam-style bathroom</p>
+                <span className="suite-price">From €560 / night</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* TRANSITION — DAY TO NIGHT */}
+      <section className="transition-section" id="transition">
+        <div id="stars">
+          {stars.map((star) => (
+            <div 
+              key={star.id} 
+              className="star" 
+              style={{
+                left: star.left,
+                top: star.top,
+                '--dur': star.dur,
+                '--del': star.del,
+                width: star.size,
+                height: star.size
+              }}
+            ></div>
+          ))}
+        </div>
+        <div className="transition-content reveal">
+          <div className="transition-line"></div>
+          <p className="transition-quote">Where the desert whispers<br/>and the stars ignite</p>
+          <div className="transition-line"></div>
+        </div>
+      </section>
+
+      {/* WELLNESS */}
+      <section className="wellness night-section" id="wellness">
+        <div className="night-glow"></div>
+        <div className="container">
+          <div className="wellness-hero reveal">
+            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/5456b531-01fe-4da5-8be1-a0deca8b6f75_1600w.webp" alt="Traditional Moroccan hammam spa with brass lanterns" loading="lazy" />
+            <div className="wellness-overlay">
+              <span className="section-label">Wellness</span>
+              <h2>Ancient Rituals, Timeless Renewal</h2>
+              <p>Our hammam draws from centuries of Moroccan bathing tradition. Warm marble, eucalyptus steam, and the practiced hands of our therapists guide you into deep restoration.</p>
+            </div>
+          </div>
+          <div className="treatments-grid stagger-up">
+            <div className="treatment-card reveal-child">
+              <div className="treatment-icon">
+                <iconify-icon icon="lucide:droplets"></iconify-icon>
+              </div>
+              <h3>Hammam Ritual</h3>
+              <p>Traditional steam bathing with black soap and ghassoul clay, followed by an argan oil moisturizing treatment</p>
+              <span className="treatment-duration">90 minutes</span>
+            </div>
+            <div className="treatment-card reveal-child">
+              <div className="treatment-icon">
+                <iconify-icon icon="lucide:hand"></iconify-icon>
+              </div>
+              <h3>Argan Oil Massage</h3>
+              <p>Deep restoration using locally pressed argan oils, warm stone placement, and pressure point therapy</p>
+              <span className="treatment-duration">75 minutes</span>
+            </div>
+            <div className="treatment-card reveal-child">
+              <div className="treatment-icon">
+                <iconify-icon icon="lucide:sun"></iconify-icon>
+              </div>
+              <h3>Desert Yoga</h3>
+              <p>Sunrise meditation and vinyasa flow on the dunes, guided breathwork, and tea ceremony to close</p>
+              <span className="treatment-duration">60 minutes</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CUISINE */}
+      <section className="cuisine night-section" id="cuisine">
+        <div className="container">
+          <span className="section-label reveal">Dining</span>
+          <h2 className="section-title reveal">A Feast Under the Stars</h2>
+          <div className="cuisine-bento reveal">
+            <div className="bento-large">
+              <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/9f24c8ed-3c97-4161-8026-45c10fe6d2d0_1600w.webp" alt="Moroccan rooftop dinner terrace at dusk" loading="lazy" />
+              <div className="bento-overlay">
+                <h3>The Terrace</h3>
+                <p>Traditional Moroccan cuisine prepared with local ingredients, served under open skies</p>
+              </div>
+            </div>
+            <div className="bento-text-card">
+              <h3>Private Dining</h3>
+              <p>Intimate desert dinner experiences curated by our chef — set amid the dunes with lantern light and a personal sommelier</p>
+            </div>
+            <div className="bento-text-card">
+              <h3>Tea Ceremony</h3>
+              <p>The traditional Moroccan mint tea ritual at sunset — three pours, each carrying its own meaning: life, love, and death</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* EXCURSIONS */}
+      <section className="excursions night-section" id="excursions">
+        <div className="container">
+          <span className="section-label reveal">Desert Experiences</span>
+          <h2 className="section-title reveal">Written in the Sands</h2>
+          <div className="excursions-list">
+            <div className="excursion-card reveal">
+              <div className="excursion-image">
+                <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/16395f98-0c75-4274-a276-c5dde90b340e_800w.jpg" alt="Camel caravan crossing golden sand dunes" loading="lazy" />
+              </div>
+              <div className="excursion-info">
+                <h3>Saharan Caravan</h3>
+                <p>A timeless journey across the dunes at golden hour. Ride through the Erg Chebbi on Berber-guided camels, stopping at a nomadic camp for traditional tea.</p>
+                <span className="excursion-duration"><iconify-icon icon="lucide:clock"></iconify-icon> 3 hours</span>
+              </div>
+            </div>
+            <div className="excursion-card reveal">
+              <div className="excursion-image">
+                <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/2ee2b945-66af-4e08-9f32-81d17986dc66_800w.jpg" alt="Desert stargazing camp under Milky Way" loading="lazy" />
+              </div>
+              <div className="excursion-info">
+                <h3>Desert Stargazing</h3>
+                <p>Guided astronomy under some of the clearest skies on Earth. Our resident astronomer reveals constellations, planets, and the stories woven between them.</p>
+                <span className="excursion-duration"><iconify-icon icon="lucide:clock"></iconify-icon> 2 hours</span>
+              </div>
+            </div>
+            <div className="excursion-card reveal">
+              <div className="excursion-image">
+                  <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/variants/0d8211a4-26b5-4807-a318-341fc553887f/800w.png" alt="Sandboarding down golden Sahara dunes at sunset" loading="lazy" />
+              </div>
+              <div className="excursion-info">
+                <h3>Dune Surfing</h3>
+                <p>Adrenaline meets landscape on Erg Chebbi's tallest dunes. Board the sand at sunrise when the light is golden and the temperature is kind.</p>
+                <span className="excursion-duration"><iconify-icon icon="lucide:clock"></iconify-icon> 2 hours</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* RESERVE */}
+      <section className="reserve night-section" id="reserve">
+        <div className="reserve-bg">
+          <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/2129efee-d6e5-40da-82f5-72efea83e763_1600w.jpg" alt="" loading="lazy" />
+        </div>
+        <div className="reserve-overlay"></div>
+        <div className="reserve-content reveal">
+          <span className="section-label">Reserve</span>
+          <h2>Begin Your Journey</h2>
+          <p>Experience the magic of the Sahara — where silence speaks, sands shift, and time surrenders to the sky.</p>
+          <a href="#" className="reserve-cta">Book Your Stay</a>
+          <div className="reserve-contact">
+            <span>+212 535 578 200</span>
+            <span>reservations@sirocco.ma</span>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="footer">
+        <div className="container">
+          <div className="footer-grid">
+            <div className="footer-col">
+              <h4>SIROCCO</h4>
+              <p>Luxury Desert Retreat<br/>Route de Merzouga, Erg Chebbi<br/>Merzouga 52202, Morocco</p>
+            </div>
+            <div className="footer-col">
+              <h4>Explore</h4>
+              <a href="#philosophy">Our Story</a>
+              <a href="#suites">Suites</a>
+              <a href="#wellness">Wellness</a>
+              <a href="#cuisine">Dining</a>
+              <a href="#excursions">Experiences</a>
+            </div>
+            <div className="footer-col">
+              <h4>Connect</h4>
+              <a href="#">Instagram</a>
+              <a href="#">Facebook</a>
+              <a href="#">Pinterest</a>
+              <a href="#">TripAdvisor</a>
+            </div>
+          </div>
+          <div className="footer-bottom">
+            <p>© {new Date().getFullYear()} Sirocco. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </>
+  );
+}
+
+export default App;
