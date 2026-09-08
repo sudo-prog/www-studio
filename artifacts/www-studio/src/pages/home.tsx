@@ -46,22 +46,56 @@ function SceneShowcaseCard({ scene, href }: { scene: any; href?: string }) {
 }
 
 function WebsiteTemplateCard({ item }: { item: WebsiteTemplateItem }) {
+  const [loaded, setLoaded] = useState(false);
+
   return (
-    <Link href={item.previewUrl} target="_blank" rel="noopener noreferrer" className="block min-h-[44px]">
+    <div className="block min-h-[44px]">
       <div className="group relative aspect-[16/9] rounded-xl overflow-hidden border border-border bg-muted hover:border-primary/40 transition-all hover:shadow-lg hover:shadow-primary/10">
-        <iframe
-          src={item.previewUrl}
-          className="absolute inset-0 w-full h-full border-0"
-          title={item.name}
-          loading="lazy"
-          sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-presentation"
-        />
+        {!loaded ? (
+          <div
+            className="absolute inset-0 flex items-center justify-center bg-muted/50 backdrop-blur-sm cursor-pointer"
+            onClick={() => setLoaded(true)}
+            role="button"
+            aria-label={`Preview ${item.name}`}
+          >
+            <div className="text-center">
+              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-3">
+                <Eye className="h-5 w-5 text-primary" />
+              </div>
+              <p className="text-sm font-medium text-foreground mb-1">Click to Preview</p>
+              <p className="text-xs text-muted-foreground max-w-[180px]">Load interactive template preview</p>
+            </div>
+          </div>
+        ) : (
+          <iframe
+            src={item.previewUrl}
+            className="absolute inset-0 w-full h-full border-0"
+            title={item.name}
+            loading="lazy"
+            referrerPolicy="no-referrer"
+            sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-presentation"
+          />
+        )}
+        {/* Overlay with info — always visible on hover */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity flex items-end p-4">
           <div>
             <h3 className="text-white font-semibold text-sm mb-1 line-clamp-1">{item.name}</h3>
             <p className="text-zinc-300 text-xs line-clamp-1 max-w-xs">{item.description}</p>
           </div>
         </div>
+        {/* View Full Site button — only visible before preview loads */}
+        {!loaded && (
+          <div className="absolute bottom-2 right-2 z-10">
+            <a
+              href={item.previewUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 px-2.5 py-1 min-h-[44px] text-xs font-medium rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm transition-colors"
+            >
+              <Globe className="w-3 h-3" />Open
+            </a>
+          </div>
+        )}
       </div>
       <div className="p-3">
         <h3 className="font-medium text-sm mb-1 line-clamp-1">{item.name}</h3>
@@ -73,7 +107,7 @@ function WebsiteTemplateCard({ item }: { item: WebsiteTemplateItem }) {
           ))}
         </div>
       </div>
-    </Link>
+    </div>
   );
 }
 
