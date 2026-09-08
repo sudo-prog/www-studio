@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kaleido — Symmetric Mandala Studio</title>
+<style>
+  :root {
+    --bg: #1a1b1e;
+    --bg2: #0d0e10;
+    --ink: #e8e6df;
+    --muted: #8b8c91;
+    --glass: rgba(255,255,255,.06);
+    --glass-border: rgba(255,255,255,.14);
+    --accent: #f0b35a;
+    --font: ui-sans-serif, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Courier New", monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; overflow: hidden; }
+  body {
+    background: radial-gradient(ellipse at 50% 45%, var(--bg) 0%, var(--bg2) 100%);
+    color: var(--ink);
+    font-family: var(--font);
+    -webkit-font-smoothing: antialiased;
+    touch-action: none;
+  }
+  canvas#board {
+    position: fixed; inset: 0;
+    width: 100%; height: 100%;
+    display: block;
+    cursor: crosshair;
+  }
+  .vignette {
+    position: fixed; inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at 50% 50%, transparent 45%, rgba(0,0,0,.55) 100%);
+  }
+
+  /* Title block */
+  .brand {
+    position: fixed; top: 22px; left: 26px;
+    pointer-events: none;
+    z-index: 5;
+    line-height: 1.1;
+  }
+  .brand h1 {
+    font-weight: 300;
+    font-size: 22px;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+  }
+  .brand p {
+    margin-top: 6px;
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+  }
+  .status {
+    position: fixed; top: 24px; right: 26px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: .06em;
+    text-align: right;
+    z-index: 5;
+    pointer-events: none;
+  }
+  .status b { color: var(--accent); font-weight: 500; }
+
+  /* Floating toolbar */
+  .toolbar {
+    position: fixed;
+    left: 50%; bottom: 26px;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px;
+    border-radius: 999px;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    box-shadow: 0 20px 50px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.08);
+    z-index: 10;
+    max-width: calc(100vw - 24px);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .tb {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: var(--ink);
+    font: 500 12px/1 var(--font);
+    letter-spacing: .06em;
+    padding: 10px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background .25s ease, transform .2s ease, color .25s ease;
+    white-space: nowrap;
+    position: relative;
+  }
+  .tb svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .tb:hover { background: rgba(255,255,255,.1); transform: translateY(-1px); }
+  .tb:active { transform: translateY(0) scale(.97); }
+  .tb[aria-pressed="true"] { background: var(--accent); color: #1a1208; }
+  .tb:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .sep { width: 1px; height: 22px; background: var(--glass-border); margin: 0 2px; }
+
+  /* Popovers */
+  .pop {
+    position: absolute;
+    bottom: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    opacity: 0;
+    pointer-events: none;
+    background: rgba(24,25,28,.92);
+    border: 1px solid var(--glass-border);
+    border-radius: 14px;
+    padding: 8px;
+    display: flex;
+    gap: 6px;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 12px 30px rgba(0,0,0,.5);
+    transition: opacity .2s ease, transform .25s cubic-bezier(.2,.8,.2,1);
+    white-space: nowrap;
+  }
+  .tb-wrap { position: relative; display: inline-flex; }
+  .tb-wrap.open .pop { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+  .tb-wrap.open .tb { background: rgba(255,255,255,.12); }
+  .chip {
+    appearance: none; border: 0;
+    background: rgba(255,255,255,.06);
+    color: var(--ink);
+    font: 500 12px var(--mono);
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background .2s;
+  }
+  .chip:hover { background: rgba(255,255,255,.14); }
+  .chip[aria-pressed="true"] { background: var(--accent); color: #1a1208; }
+  .swatch {
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: transform .2s, border-color .2s;
+    padding: 0;
+  }
+  .swatch:hover { transform: scale(1.1); }
+  .swatch[aria-pressed="true"] { border-color: #fff; }
+  .swatch.hue { background: conic-gradient(#f00, #ff0, #0f0, #0ff, #00f, #f0f, #f00); }
+
+  .hint {
+    position: fixed; left: 50%; bottom: 92px;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: .08em;
+    pointer-events: none;
+    transition: opacity .8s;
+    z-index: 4;
+    text-align: center;
+    padding: 0 16px;
+  }
+  .hint.hide { opacity: 0; }
+  .label { display: inline; }
+
+  @media (max-width: 640px) {
+    .brand h1 { font-size: 16px; }
+    .status { display: none; }
+    .tb { padding: 10px 11px; }
+    .label { display: none; }
+    .toolbar { bottom: 14px; }
+    .hint { bottom: 80px; font-size: 11px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tb, .pop, .swatch, .hint { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="board" aria-label="Mandala drawing canvas. Drag to paint with radial symmetry." role="img"></canvas>
+<div class="vignette" aria-hidden="true"></div>
+
+<div class="brand">
+  <h1>Kaleido</h1>
+  <p>Symmetric mandala studio</p>
+</div>
+
+<div class="status" aria-live="polite">
+  <div>symmetry <b id="stSym">8</b>-fold · mirror <b id="stMirror">on</b></div>
+  <div>strokes <b id="stStrokes">0</b> · palette <b id="stPal">drift</b></div>
+</div>
+
+<p class="hint" id="hint">Draw anywhere — strokes bloom around the centre. Press <kbd>A</kbd> to let the machine dream.</p>
+
+<nav class="toolbar" aria-label="Tools">
+  <button class="tb" id="btnClear" type="button" title="Clear (C)">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg><span class="label">Clear</span>
+  </button>
+  <button class="tb" id="btnUndo" type="button" title="Undo (Z)">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14 4 9l5-5M4 9h10a6 6 0 0 1 0 12h-3"/></svg><span class="label">Undo</span>
+  </button>
+  <button class="tb" id="btnSave" type="button" title="Save PNG (S)">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg><span class="label">Save PNG</span>
+  </button>
+  <span class="sep" aria-hidden="true"></span>
+  <div class="tb-wrap">
+    <button class="tb" id="btnSym" type="button" aria-haspopup="true" aria-expanded="false" title="Symmetry">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/></svg><span class="label">Symmetry <span id="symLabel">8</span></span>
+    </button>
+    <div class="pop" role="group" aria-label="Symmetry">
+      <button class="chip" type="button" data-sym="6" aria-pressed="false">6</button>
+      <button class="chip" type="button" data-sym="8" aria-pressed="true">8</button>
+      <button class="chip" type="button" data-sym="12" aria-pressed="false">12</button>
+      <button class="chip" type="button" data-sym="16" aria-pressed="false">16</button>
+    </div>
+  </div>
+  <button class="tb" id="btnMirror" type="button" aria-pressed="true" title="Mirror (M)">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M4 7l5 5-5 5V7zM20 7l-5 5 5 5V7z"/></svg><span class="label">Mirror</span>
+  </button>
+  <div class="tb-wrap">
+    <button class="tb" id="btnPal" type="button" aria-haspopup="true" aria-expanded="false" title="Palette">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18c1.5 0 2-1 2-2s-1-2 0-3 3 0 4-1a9 9 0 0 0-6-12z"/><circle cx="8" cy="10" r="1.2"/><circle cx="12" cy="7" r="1.2"/><circle cx="16" cy="10" r="1.2"/></svg><span class="label">Palette</span>
+    </button>
+    <div class="pop" role="group" aria-label="Palette">
+      <button class="swatch hue" type="button" data-pal="drift" aria-pressed="true" title="Drifting hue"></button>
+      <button class="swatch" type="button" data-pal="ember" aria-pressed="false" title="Ember" style="background: linear-gradient(135deg,#ffb347,#ff5e3a,#c81d5a)"></button>
+      <button class="swatch" type="button" data-pal="lagoon" aria-pressed="false" title="Lagoon" style="background: linear-gradient(135deg,#a7f3d0,#22d3ee,#1e3a8a)"></button>
+      <button class="swatch" type="button" data-pal="gold" aria-pressed="false" title="Gilded" style="background: linear-gradient(135deg,#fff6d5,#f0b35a,#7a4b12)"></button>
+      <button class="swatch" type="button" data-pal="mono" aria-pressed="false" title="Ivory" style="background: linear-gradient(135deg,#ffffff,#c9c6bd,#7a7873)"></button>
+    </div>
+  </div>
+  <span class="sep" aria-hidden="true"></span>
+  <button class="tb" id="btnAuto" type="button" aria-pressed="false" title="Auto-draw (A)">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.6L18 9l-4.2 1.4L12 15l-1.8-4.6L6 9l4.2-1.4zM5 17l.8 2 2 .8-2 .8L5 22l-.8-1.4-2-.8 2-.8zM19 15l.6 1.5 1.5.6-1.5.6L19 19l-.6-1.3-1.5-.6 1.5-.6z"/></svg><span class="label">Auto-draw</span>
+  </button>
+</nav>
+
+<script>
+(function () {
+  'use strict';
+  var canvas = document.getElementById('board');
+  var ctx = canvas.getContext('2d');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var state = {
+    sym: 8,
+    mirror: true,
+    palette: 'drift',
+    hue: 30,
+    strokes: [],         // committed strokes for undo
+    current: null,       // stroke being drawn
+    drawing: false,
+    auto: false,
+    dpr: 1,
+    w: 0, h: 0, cx: 0, cy: 0
+  };
+
+  var palettes = {
+    ember:  ['#ffb347', '#ff7a3a', '#ff5e3a', '#e0335a', '#c81d5a', '#ffd9a0'],
+    lagoon: ['#a7f3d0', '#5eead4', '#22d3ee', '#3b82f6', '#1e3a8a', '#e0fbff'],
+    gold:   ['#fff6d5', '#f7dd9a', '#f0b35a', '#c98a2c', '#7a4b12', '#fffaf0'],
+    mono:   ['#ffffff', '#e6e4dd', '#c9c6bd', '#a3a09a', '#7a7873', '#f3f1ea']
+  };
+
+  /* ---------- Canvas sizing (DPR aware, preserves drawing) ---------- */
+  function resize() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 3);
+    var w = window.innerWidth, h = window.innerHeight;
+    state.dpr = dpr; state.w = w; state.h = h; state.cx = w / 2; state.cy = h / 2;
+    canvas.width = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    redraw();
+  }
+
+  function clearSurface() {
+    ctx.save();
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.restore();
+  }
+
+  function redraw() {
+    clearSurface();
+    for (var i = 0; i < state.strokes.length; i++) drawStroke(state.strokes[i], true);
+    if (state.current) drawStroke(state.current, true);
+    updateStatus();
+  }
+
+  /* ---------- Colour ---------- */
+  function strokeColor(t) {
+    if (state.palette === 'drift') {
+      return 'hsl(' + ((state.hue + t * 40) % 360) + ' 85% 62%)';
+    }
+    var list = palettes[state.palette];
+    var idx = Math.floor((t * 0.6) % list.length);
+    return list[idx];
+  }
+
+  /* ---------- Stroke rendering with radial symmetry ---------- */
+  function drawSegment(p0, p1, p2, width, color, alpha) {
+    // Quadratic curve from midpoint(p0,p1) to midpoint(p1,p2), control p1 — smooth interpolation
+    var n = state.sym, mirror = state.mirror;
+    var mx0 = (p0.x + p1.x) / 2, my0 = (p0.y + p1.y) / 2;
+    var mx1 = (p1.x + p2.x) / 2, my1 = (p1.y + p2.y) / 2;
+    ctx.save();
+    ctx.translate(state.cx, state.cy);
+    ctx.globalAlpha = alpha;
+    ctx.strokeStyle = color;
+    ctx.lineWidth = width;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.shadowColor = color;
+    ctx.shadowBlur = width * 1.6;
+    for (var i = 0; i < n; i++) {
+      var a = (i / n) * Math.PI * 2;
+      var ca = Math.cos(a), sa = Math.sin(a);
+      for (var m = 0; m < (mirror ? 2 : 1); m++) {
+        var s = m === 0 ? 1 : -1;
+        ctx.setTransform(state.dpr * ca, state.dpr * sa, -state.dpr * sa * s, state.dpr * ca * s, state.cx * state.dpr, state.cy * state.dpr);
+        // The above sets rotation + optional mirror about the x axis around the centre
+        ctx.beginPath();
+        ctx.moveTo(mx0, my0);
+        ctx.quadraticCurveTo(p1.x, p1.y, mx1, my1);
+        ctx.stroke();
+      }
+    }
+    ctx.restore();
+    ctx.setTransform(state.dpr, 0, 0, state.dpr, 0, 0);
+  }
+
+  function drawStroke(stroke, all) {
+    var pts = stroke.pts;
+    if (pts.length < 3) {
+      if (pts.length) {
+        var p = pts[0];
+        drawSegment(p, p, pts[pts.length - 1], pts[0].w, pts[0].c, stroke.alpha);
+      }
+      return;
+    }
+    var start = all ? 1 : Math.max(1, pts.length - 2);
+    for (var i = start; i < pts.length - 1; i++) {
+      drawSegment(pts[i - 1], pts[i], pts[i + 1], pts[i].w, pts[i].c, stroke.alpha);
+    }
+  }
+
+  /* ---------- Pointer input ---------- */
+  var last = null, lastT = 0;
+  function toLocal(e) {
+    return { x: e.clientX - state.cx, y: e.clientY - state.cy };
+  }
+  function widthFromSpeed(speed) {
+    // fast = thin, slow = thick
+    var w = 14 - Math.min(11, speed * 0.028);
+    return Math.max(1.2, w);
+  }
+
+  function pointerDown(e) {
+    if (e.target !== canvas) return;
+    if (state.auto) toggleAuto(false);
+    canvas.setPointerCapture(e.pointerId);
+    state.drawing = true;
+    var p = toLocal(e);
+    last = p; lastT = performance.now();
+    p.w = 6; p.c = strokeColor(0); p.t = 0;
+    state.current = { pts: [p], alpha: 0.92 };
+    hideHint();
+  }
+  function pointerMove(e) {
+    if (!state.drawing || !state.current) return;
+    var now = performance.now();
+    var p = toLocal(e);
+    var dx = p.x - last.x, dy = p.y - last.y;
+    var dist = Math.hypot(dx, dy);
+    if (dist < 1.5) return;
+    var dt = Math.max(1, now - lastT);
+    var speed = dist / dt * 16;
+    var prevW = state.current.pts[state.current.pts.length - 1].w;
+    p.w = prevW * 0.7 + widthFromSpeed(speed) * 0.3;
+    p.t = state.current.pts.length;
+    state.hue = (state.hue + 0.6) % 360;
+    p.c = strokeColor(p.t);
+    state.current.pts.push(p);
+    drawStroke(state.current, false);
+    last = p; lastT = now;
+  }
+  function pointerUp() {
+    if (!state.drawing) return;
+    state.drawing = false;
+    if (state.current) {
+      state.strokes.push(state.current);
+      if (state.strokes.length > 400) state.strokes.shift();
+      state.current = null;
+    }
+    updateStatus();
+  }
+  canvas.addEventListener('pointerdown', pointerDown);
+  canvas.addEventListener('pointermove', pointerMove);
+  canvas.addEventListener('pointerup', pointerUp);
+  canvas.addEventListener('pointercancel', pointerUp);
+  canvas.addEventListener('pointerleave', pointerUp);
+
+  /* ---------- Auto-draw: noise-driven paths in layered rings ---------- */
+  // Small value-noise implementation
+  var perm = [];
+  (function () { for (var i = 0; i < 512; i++) perm[i] = Math.floor(Math.random() * 256); })();
+  function hashNoise(x, y) {
+    var xi = Math.floor(x) & 255, yi = Math.floor(y) & 255;
+    var xf = x - Math.floor(x), yf = y - Math.floor(y);
+    function g(ix, iy) { return perm[(perm[ix & 255] + iy) & 255] / 255; }
+    var u = xf * xf * (3 - 2 * xf), v = yf * yf * (3 - 2 * yf);
+    var a = g(xi, yi), b = g(xi + 1, yi), c = g(xi, yi + 1), d = g(xi + 1, yi + 1);
+    return (a + (b - a) * u) + ((c + (d - c) * u) - (a + (b - a) * u)) * v;
+  }
+
+  var autoStroke = null, autoTick = 0, autoRing = 0, autoRaf = 0, seedX = 0;
+  function newAutoStroke() {
+    var minDim = Math.min(state.w, state.h);
+    var ringCount = 5;
+    var r0 = (0.08 + (autoRing % ringCount) * 0.09) * minDim;
+    autoRing++;
+    seedX = Math.random() * 1000;
+    autoStroke = {
+      pts: [], alpha: 0.85,
+      r: r0, spread: minDim * 0.05 * (1 + (autoRing % 3)),
+      ang: Math.random() * Math.PI * 2,
+      life: 120 + Math.floor(Math.random() * 160),
+      dir: Math.random() > 0.5 ? 1 : -1,
+      baseW: 2 + Math.random() * 6
+    };
+    state.current = autoStroke;
+  }
+  function autoStep() {
+    if (!state.auto) return;
+    if (!autoStroke || autoStroke.pts.length > autoStroke.life) {
+      if (autoStroke) { state.strokes.push(autoStroke); if (state.strokes.length > 400) state.strokes.shift(); }
+      newAutoStroke();
+    }
+    var s = autoStroke;
+    var steps = reduceMotion ? 1 : 3;
+    for (var k = 0; k < steps; k++) {
+      autoTick += 0.012;
+      var n1 = hashNoise(seedX + autoTick * 3, s.r * 0.01);
+      var n2 = hashNoise(seedX + 40 + autoTick * 2.2, autoRing);
+      s.ang += s.dir * (0.02 + n1 * 0.05);
+      var rr = s.r + (n2 - 0.5) * s.spread * 2;
+      var p = { x: Math.cos(s.ang) * rr, y: Math.sin(s.ang) * rr };
+      p.t = s.pts.length;
+      state.hue = (state.hue + 0.25) % 360;
+      p.c = strokeColor(p.t);
+      p.w = s.baseW * (0.6 + n1 * 0.9);
+      s.pts.push(p);
+      drawStroke(s, false);
+    }
+    updateStatus();
+    autoRaf = requestAnimationFrame(autoStep);
+  }
+  function toggleAuto(on) {
+    state.auto = on;
+    btnAuto.setAttribute('aria-pressed', on ? 'true' : 'false');
+    if (on) { hideHint(); autoStroke = null; autoStep(); }
+    else {
+      cancelAnimationFrame(autoRaf);
+      if (autoStroke && autoStroke.pts.length) state.strokes.push(autoStroke);
+      autoStroke = null; state.current = null;
+      updateStatus();
+    }
+  }
+
+  /* ---------- UI ---------- */
+  var btnAuto = document.getElementById('btnAuto');
+  var btnSym = document.getElementById('btnSym');
+  var btnPal = document.getElementById('btnPal');
+  var btnMirror = document.getElementById('btnMirror');
+  var hint = document.getElementById('hint');
+  function hideHint() { hint.classList.add('hide'); }
+
+  function updateStatus() {
+    document.getElementById('stSym').textContent = state.sym;
+    document.getElementById('stMirror').textContent = state.mirror ? 'on' : 'off';
+    document.getElementById('stStrokes').textContent = state.strokes.length + (state.current ? 1 : 0);
+    document.getElementById('stPal').textContent = state.palette;
+    document.getElementById('symLabel').textContent = state.sym;
+  }
+
+  function closePops() {
+    [btnSym, btnPal].forEach(function (b) { b.parentNode.classList.remove('open'); b.setAttribute('aria-expanded', 'false'); });
+  }
+  function togglePop(btn) {
+    var wrap = btn.parentNode;
+    var open = wrap.classList.contains('open');
+    closePops();
+    if (!open) { wrap.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+  }
+  btnSym.addEventListener('click', function () { togglePop(btnSym); });
+  btnPal.addEventListener('click', function () { togglePop(btnPal); });
+  document.querySelectorAll('.chip[data-sym]').forEach(function (chip) {
+    chip.addEventListener('click', function (e) {
+      e.stopPropagation();
+      state.sym = parseInt(chip.getAttribute('data-sym'), 10);
+      document.querySelectorAll('.chip[data-sym]').forEach(function (c) { c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'); });
+      closePops();
+      redraw();
+    });
+  });
+  document.querySelectorAll('.swatch[data-pal]').forEach(function (sw) {
+    sw.addEventListener('click', function (e) {
+      e.stopPropagation();
+      state.palette = sw.getAttribute('data-pal');
+      document.querySelectorAll('.swatch[data-pal]').forEach(function (c) { c.setAttribute('aria-pressed', c === sw ? 'true' : 'false'); });
+      closePops();
+      updateStatus();
+    });
+  });
+  btnMirror.addEventListener('click', function () {
+    state.mirror = !state.mirror;
+    btnMirror.setAttribute('aria-pressed', state.mirror ? 'true' : 'false');
+    redraw();
+  });
+  btnAuto.addEventListener('click', function () { toggleAuto(!state.auto); });
+
+  document.getElementById('btnClear').addEventListener('click', function () {
+    state.strokes = []; state.current = null; autoStroke = null;
+    clearSurface(); updateStatus();
+  });
+  document.getElementById('btnUndo').addEventListener('click', function () {
+    if (state.auto && autoStroke) { autoStroke = null; state.current = null; }
+    else state.strokes.pop();
+    redraw();
+  });
+  document.getElementById('btnSave').addEventListener('click', function () {
+    // Composite over the background so the PNG is not transparent
+    var out = document.createElement('canvas');
+    out.width = canvas.width; out.height = canvas.height;
+    var octx = out.getContext('2d');
+    var grad = octx.createRadialGradient(out.width / 2, out.height / 2, 0, out.width / 2, out.height / 2, Math.max(out.width, out.height) * 0.7);
+    grad.addColorStop(0, '#1a1b1e'); grad.addColorStop(1, '#0d0e10');
+    octx.fillStyle = grad; octx.fillRect(0, 0, out.width, out.height);
+    octx.drawImage(canvas, 0, 0);
+    var a = document.createElement('a');
+    a.download = 'kaleido-mandala-' + state.sym + 'fold.png';
+    a.href = out.toDataURL('image/png');
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.tb-wrap')) closePops();
+  });
+  document.addEventListener('keydown', function (e) {
+    var k = e.key.toLowerCase();
+    if (k === 'a') toggleAuto(!state.auto);
+    else if (k === 'c') document.getElementById('btnClear').click();
+    else if (k === 'z') document.getElementById('btnUndo').click();
+    else if (k === 's' && !e.metaKey && !e.ctrlKey) document.getElementById('btnSave').click();
+    else if (k === 'm') btnMirror.click();
+    else if (k === 'escape') closePops();
+  });
+
+  window.addEventListener('resize', resize);
+  resize();
+})();
+</script>
+</body>
+</html>

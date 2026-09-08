@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Word Clock — A Typographic Time Poem</title>
+<style>
+  :root {
+    --bg-a: #0b1020;
+    --bg-b: #1c2541;
+    --bg-c: #3a2a4d;
+    --lit: #ffd68a;
+    --lit-glow: rgba(255, 214, 138, 0.55);
+    --dim: rgba(255, 255, 255, 0.10);
+    --ink: rgba(255, 255, 255, 0.86);
+    --muted: rgba(255, 255, 255, 0.46);
+    --panel: rgba(8, 10, 20, 0.36);
+    --border: rgba(255, 255, 255, 0.12);
+    --ease: cubic-bezier(.22, 1, .36, 1);
+  }
+  [data-theme="moon"] {
+    --lit: #e6f0ff;
+    --lit-glow: rgba(190, 215, 255, 0.55);
+    --dim: rgba(190, 210, 255, 0.10);
+  }
+  [data-theme="verdigris"] {
+    --lit: #a8f0d4;
+    --lit-glow: rgba(120, 240, 200, 0.5);
+    --dim: rgba(160, 240, 210, 0.10);
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    font-family: "Helvetica Neue", "Avenir Next", Futura, "Segoe UI", system-ui, ui-sans-serif, sans-serif;
+    color: var(--ink);
+    background: var(--bg-a);
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  .sky {
+    position: fixed; inset: 0; z-index: 0;
+    background:
+      radial-gradient(120% 80% at 50% 110%, var(--bg-c) 0%, transparent 60%),
+      linear-gradient(180deg, var(--bg-a) 0%, var(--bg-b) 100%);
+    transition: background 3s linear;
+  }
+  .sky::after {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,.35) 50%, transparent 51%),
+      radial-gradient(1px 1px at 78% 12%, rgba(255,255,255,.28) 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 60% 34%, rgba(255,255,255,.22) 50%, transparent 51%),
+      radial-gradient(1px 1px at 30% 62%, rgba(255,255,255,.2) 50%, transparent 51%),
+      radial-gradient(1px 1px at 88% 70%, rgba(255,255,255,.3) 50%, transparent 51%),
+      radial-gradient(1.2px 1.2px at 45% 85%, rgba(255,255,255,.18) 50%, transparent 51%);
+    opacity: var(--stars, 0.6);
+    transition: opacity 3s linear;
+  }
+  .grain {
+    position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: .045;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+  }
+  canvas#rain { position: fixed; inset: 0; z-index: 2; pointer-events: none; }
+
+  main {
+    position: relative; z-index: 3;
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    padding: clamp(12px, 2vh, 32px) clamp(14px, 4vw, 48px);
+  }
+  header {
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    font-size: clamp(10px, 1.1vw, 13px);
+    letter-spacing: .28em; text-transform: uppercase; color: var(--muted);
+  }
+  header .brand { display: flex; align-items: center; gap: 12px; }
+  header .brand i {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--lit);
+    box-shadow: 0 0 12px 2px var(--lit-glow);
+    animation: pulse 3.2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { transform: scale(1); opacity: 1;} 50% { transform: scale(.7); opacity: .6;} }
+  header time { font-variant-numeric: tabular-nums; letter-spacing: .12em; }
+
+  .stage {
+    display: grid; place-items: center; align-content: center; gap: clamp(14px, 3vh, 44px); min-height: 0;
+  }
+  .frame {
+    position: relative;
+    padding: clamp(14px, 2.6vh, 40px) clamp(18px, 3.2vw, 44px);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--panel);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 30px 80px -30px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.06);
+  }
+  .frame::before, .frame::after {
+    content: ""; position: absolute; width: 18px; height: 18px; border: 1px solid var(--lit); opacity: .5;
+  }
+  .frame::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
+  .frame::after { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    gap: clamp(2px, .5vh, 10px) clamp(4px, 1vw, 16px);
+    font-weight: 800;
+    font-size: clamp(13px, min(4.6vw, 3.5vh), 58px);
+    letter-spacing: 0;
+    line-height: 1;
+    text-transform: uppercase;
+    user-select: none;
+  }
+  .grid span {
+    display: grid; place-items: center;
+    width: 1.35em; height: 1.2em;
+    color: var(--dim);
+    transition: color 1.1s var(--ease), text-shadow 1.1s var(--ease), transform .8s var(--ease);
+  }
+  .grid span.on {
+    color: var(--lit);
+    text-shadow: 0 0 10px var(--lit-glow), 0 0 28px var(--lit-glow), 0 0 60px var(--lit-glow);
+    transform: translateY(-1px);
+  }
+  .dots {
+    position: absolute; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--dim); transition: background 1s, box-shadow 1s;
+  }
+  .dots.on { background: var(--lit); box-shadow: 0 0 10px var(--lit-glow); }
+  .d1 { top: 8px; left: 8px; } .d2 { top: 8px; right: 8px; } .d3 { bottom: 8px; right: 8px; } .d4 { bottom: 8px; left: 8px; }
+
+  .poem {
+    width: 100%; max-width: 62ch; text-align: center;
+    font-family: Georgia, "Iowan Old Style", Palatino, "Book Antiqua", ui-serif, serif;
+    font-style: italic; font-weight: 400;
+    font-size: clamp(15px, min(2.2vw, 2.6vh), 26px);
+    line-height: 1.5;
+    color: var(--ink);
+    min-height: 3.4em;
+    position: relative;
+  }
+  .poem .line {
+    position: absolute; left: 0; right: 0; top: 0;
+    opacity: 0; transform: translateY(10px) ;
+    transition: opacity 2.4s var(--ease), transform 2.4s var(--ease);
+    filter: blur(3px);
+  }
+  .poem .line.show { opacity: 1; transform: none; filter: blur(0); }
+  .poem .period {
+    display: block; margin-top: .9em; font-style: normal; font-family: inherit;
+    font-size: .5em; letter-spacing: .32em; text-transform: uppercase; color: var(--muted);
+  }
+
+  footer {
+    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px;
+    color: var(--muted); font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+  }
+  .controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .seg { display: inline-flex; border: 1px solid var(--border); border-radius: 999px; overflow: hidden; background: var(--panel); }
+  .seg button, .btn {
+    font: inherit; letter-spacing: inherit; text-transform: inherit;
+    color: var(--muted); background: transparent; border: 0; cursor: pointer;
+    padding: 9px 14px; transition: color .3s, background .3s;
+  }
+  .seg button:hover, .btn:hover { color: var(--ink); }
+  .seg button[aria-pressed="true"] { color: #0a0a0f; background: var(--lit); box-shadow: 0 0 18px var(--lit-glow); }
+  .swatch { width: 12px; height: 12px; border-radius: 50%; display: inline-block; vertical-align: -1px; margin-right: 6px; }
+  .btn { border: 1px solid var(--border); border-radius: 999px; background: var(--panel); }
+  .scrub { display: flex; align-items: center; gap: 10px; }
+  .scrub input[type="range"] { accent-color: var(--lit); width: clamp(100px, 18vw, 220px); cursor: ew-resize; }
+  .hint { opacity: .7; }
+
+  @media (max-width: 560px) {
+    header time { display: none; }
+    footer { justify-content: center; text-align: center; }
+    .grid span { width: 1.25em; height: 1.3em; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition-duration: .01ms !important; animation: none !important; }
+    canvas#rain { display: none; }
+  }
+</style>
+</head>
+<body data-theme="ember">
+<div class="sky" id="sky"></div>
+<div class="grain"></div>
+<canvas id="rain" aria-hidden="true"></canvas>
+
+<main>
+  <header>
+    <div class="brand"><i></i><span>Word Clock</span></div>
+    <time id="digital" datetime="00:00">00:00</time>
+  </header>
+
+  <section class="stage">
+    <div class="frame" id="frame" aria-live="polite" aria-label="Word clock">
+      <span class="dots d1" id="dot1"></span><span class="dots d2" id="dot2"></span>
+      <span class="dots d3" id="dot3"></span><span class="dots d4" id="dot4"></span>
+      <div class="grid" id="grid"></div>
+    </div>
+    <div class="poem" id="poem">
+      <p class="line show" id="lineA"></p>
+      <p class="line" id="lineB"></p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="controls">
+      <div class="seg" role="group" aria-label="Hour format">
+        <button type="button" data-fmt="12" aria-pressed="true">12h</button>
+        <button type="button" data-fmt="24" aria-pressed="false">24h</button>
+      </div>
+      <div class="seg" role="group" aria-label="Colour theme">
+        <button type="button" data-theme="ember" aria-pressed="true"><span class="swatch" style="background:#ffd68a"></span>Ember</button>
+        <button type="button" data-theme="moon" aria-pressed="false"><span class="swatch" style="background:#e6f0ff"></span>Moon</button>
+        <button type="button" data-theme="verdigris" aria-pressed="false"><span class="swatch" style="background:#a8f0d4"></span>Verdigris</button>
+      </div>
+    </div>
+    <div class="scrub">
+      <label for="scrubber" class="hint">Time travel</label>
+      <input type="range" id="scrubber" min="0" max="1439" step="1" value="0" aria-label="Preview another time of day">
+      <button type="button" class="btn" id="now">Now</button>
+    </div>
+  </footer>
+</main>
+
+<script>
+(function () {
+  'use strict';
+  const ROWS = [
+    'ITLISASAMPM',
+    'ACQUARTERDC',
+    'TWENTYFIVEX',
+    'HALFSTENFTO',
+    'PASTERUNINE',
+    'ONESIXTHREE',
+    'FOURFIVETWO',
+    'EIGHTELEVEN',
+    'SEVENTWELVE',
+    'TENSEOCLOCK'
+  ];
+  // word => [row, col, length]
+  const W = {
+    IT: [0,0,2], IS: [0,3,2], AM: [0,7,2], PM: [0,9,2],
+    A: [1,0,1], QUARTER: [1,2,7],
+    TWENTY: [2,0,6], MFIVE: [2,6,4],
+    HALF: [3,0,4], MTEN: [3,5,3], TO: [3,9,2],
+    PAST: [4,0,4], NINE: [4,7,4],
+    ONE: [5,0,3], SIX: [5,3,3], THREE: [5,6,5],
+    FOUR: [6,0,4], FIVE: [6,4,4], TWO: [6,8,3],
+    EIGHT: [7,0,5], ELEVEN: [7,5,6],
+    SEVEN: [8,0,5], TWELVE: [8,5,6],
+    TEN: [9,0,3], OCLOCK: [9,5,6]
+  };
+  const HOURS = ['TWELVE','ONE','TWO','THREE','FOUR','FIVE','SIX','SEVEN','EIGHT','NINE','TEN','ELEVEN'];
+
+  const grid = document.getElementById('grid');
+  const cells = [];
+  ROWS.forEach((row, r) => {
+    [...row].forEach((ch, c) => {
+      const s = document.createElement('span');
+      s.textContent = ch;
+      s.dataset.rc = r + '-' + c;
+      grid.appendChild(s);
+      cells.push(s);
+    });
+  });
+  const cell = (r, c) => cells[r * 11 + c];
+
+  let format = 12;
+  let override = null; // minutes since midnight or null
+  let lastMinute = -1;
+  let lastPoemAt = 0;
+  let poemFlip = false;
+
+  function wordsFor(h, m) {
+    const on = ['IT', 'IS'];
+    const rounded = Math.floor(m / 5) * 5;
+    let hour = h;
+    if (rounded > 30) hour = (h + 1) % 24;
+    const past = rounded <= 30;
+    switch (rounded) {
+      case 0: break;
+      case 5: case 55: on.push('MFIVE'); break;
+      case 10: case 50: on.push('MTEN'); break;
+      case 15: case 45: on.push('A', 'QUARTER'); break;
+      case 20: case 40: on.push('TWENTY'); break;
+      case 25: case 35: on.push('TWENTY', 'MFIVE'); break;
+      case 30: on.push('HALF'); break;
+    }
+    if (rounded !== 0) on.push(past ? 'PAST' : 'TO');
+    on.push(HOURS[hour % 12]);
+    if (rounded === 0) on.push('OCLOCK');
+    if (format === 12) on.push(h < 12 ? 'AM' : 'PM');
+    return on;
+  }
+
+  function render(h, m) {
+    const lit = new Set();
+    wordsFor(h, m).forEach(w => {
+      const [r, c, len] = W[w];
+      for (let i = 0; i < len; i++) lit.add(r + '-' + (c + i));
+    });
+    cells.forEach(s => s.classList.toggle('on', lit.has(s.dataset.rc)));
+    const extra = m % 5;
+    for (let i = 1; i <= 4; i++) document.getElementById('dot' + i).classList.toggle('on', i <= extra);
+    const dig = document.getElementById('digital');
+    const hh = format === 24 ? String(h).padStart(2, '0') : String(((h + 11) % 12) + 1);
+    dig.textContent = hh + ':' + String(m).padStart(2, '0') + (format === 12 ? (h < 12 ? ' am' : ' pm') : '');
+    dig.setAttribute('datetime', String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0'));
+  }
+
+  /* ---------- Sky: hue shifts across 24h ---------- */
+  const SKY = [
+    // hour, [a, b, c], stars
+    [0,  ['#070a16', '#0f1630', '#241c3d'], .9],
+    [4,  ['#0a0f22', '#1b2140', '#3b2a4f'], .8],
+    [6,  ['#2b2a55', '#8d4f6d', '#f2a06b'], .25],
+    [8,  ['#4f7fc4', '#9fc3e8', '#f6d9b2'], 0],
+    [12, ['#4a8ad8', '#8fc0ee', '#dbe9f5'], 0],
+    [16, ['#3e6fb0', '#a9a0c8', '#f0b48a'], 0],
+    [18, ['#26314f', '#6b3d66', '#e0693f'], .15],
+    [20, ['#0e1430', '#2a2350', '#5a2a4a'], .55],
+    [24, ['#070a16', '#0f1630', '#241c3d'], .9]
+  ];
+  const hex = h => [parseInt(h.slice(1,3),16), parseInt(h.slice(3,5),16), parseInt(h.slice(5,7),16)];
+  const mix = (a, b, t) => a.map((v, i) => Math.round(v + (b[i] - v) * t));
+  const rgb = c => `rgb(${c[0]},${c[1]},${c[2]})`;
+  function paintSky(hf) {
+    let i = 0;
+    while (SKY[i + 1][0] <= hf) i++;
+    const [h0, c0, s0] = SKY[i], [h1, c1, s1] = SKY[i + 1];
+    const t = (hf - h0) / (h1 - h0);
+    const root = document.documentElement.style;
+    root.setProperty('--bg-a', rgb(mix(hex(c0[0]), hex(c1[0]), t)));
+    root.setProperty('--bg-b', rgb(mix(hex(c0[1]), hex(c1[1]), t)));
+    root.setProperty('--bg-c', rgb(mix(hex(c0[2]), hex(c1[2]), t)));
+    root.setProperty('--stars', (s0 + (s1 - s0) * t).toFixed(2));
+  }
+
+  /* ---------- Poem ---------- */
+  const PERIODS = [
+    { until: 5,  name: 'deep night',
+      s: ['the city','the harbour','the last train','a single window','the river'],
+      v: ['holds its breath','is dreaming in monochrome','counts the streetlamps','keeps a low light burning','moves without being seen'],
+      o: ['while the clocks confer','and no one is awake to notice','under a sky the colour of ink','until the milk vans come','beneath the patient stars'] },
+    { until: 7,  name: 'dawn',
+      s: ['the light','a blackbird','the first bus','the cold','the eastern edge of everything'],
+      v: ['is finding the rooftops','rehearses a single phrase','arrives without a passenger','loosens its grip','turns the colour of apricots'],
+      o: ['one chimney at a time','before anyone asks it to','and the day is still unspoken','as kettles begin to hum','while the dew remembers the night'] },
+    { until: 11, name: 'morning',
+      s: ['the morning','coffee','the postman','sunlight','a stack of letters'],
+      v: ['is spending its gold carelessly','steams in quiet kitchens','writes his route in footsteps','lies flat across the floorboards','waits for a decision'],
+      o: ['across the whole grateful town','and the day feels possible','past hedges still wet with dew','like a cat that owns the house','on the corner of the desk'] },
+    { until: 14, name: 'midday',
+      s: ['the noon','the shadow','the market','the heat','every clock in town'],
+      v: ['stands perfectly still','has shrunk to almost nothing','argues cheerfully with itself','presses down on the awnings','agrees for one brief moment'],
+      o: ['like a held note','beneath the feet that cast them','over the price of peaches','and the pigeons give up flying','before drifting apart again'] },
+    { until: 17, name: 'afternoon',
+      s: ['the afternoon','a long slant of light','the schoolbell','the garden','somebody\'s radio'],
+      v: ['leans back in its chair','crosses the kitchen wall','sets loose a flood of voices','is drowsy with bees','plays something from long ago'],
+      o: ['and considers doing nothing','slow as honey','into the waiting streets','and does not mind the hour','through an open upstairs window'] },
+    { until: 20, name: 'dusk',
+      s: ['the light','the last rooftop','the sky','a flock of starlings','the day'],
+      v: ['is leaving the rooftops','gives back the warmth it kept','is bruising into violet','writes cursive over the station','folds itself away'],
+      o: ['one tile at a time','to a sky that has stopped asking','while the first lamps blink awake','and vanishes behind the gasworks','like a letter never sent'] },
+    { until: 23, name: 'evening',
+      s: ['the evening','the lamplight','a late meal','the street','the moon'],
+      v: ['settles like dust in a beam of light','is stitching the avenues with gold','is being laughed over','is emptying its pockets','climbs a ladder of chimney smoke'],
+      o: ['and asks for nothing more','from here to the river','in a room the colour of wine','of the last people going home','to see who is still awake'] },
+    { until: 24, name: 'deep night',
+      s: ['the night','the last light','a fox','the town','the hour'],
+      v: ['closes over the town like water','goes out in a top-floor flat','crosses the empty square','is a ship at anchor','moves so slowly it seems to stop'],
+      o: ['and everything is forgiven','without ceremony','as if it owned the place','with every porthole dark','while the letters glow on the wall'] }
+  ];
+  const pick = a => a[Math.floor(Math.random() * a.length)];
+  function period(h) { return PERIODS.find(p => h < p.until); }
+  function makeSentence(h) {
+    const p = period(h);
+    return { text: pick(p.s) + ' ' + pick(p.v) + ' ' + pick(p.o) + '.', name: p.name };
+  }
+  function showPoem(h) {
+    const a = document.getElementById('lineA'), b = document.getElementById('lineB');
+    const [out, into] = poemFlip ? [b, a] : [a, b];
+    const s = makeSentence(h);
+    into.innerHTML = s.text + '<span class="period">' + s.name + '</span>';
+    out.classList.remove('show');
+    into.classList.add('show');
+    poemFlip = !poemFlip;
+  }
+
+  /* ---------- Rain of letters ---------- */
+  const canvas = document.getElementById('rain');
+  const ctx = canvas.getContext('2d');
+  let dpr = 1, drops = [];
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.floor(innerWidth * dpr);
+    canvas.height = Math.floor(innerHeight * dpr);
+    canvas.style.width = innerWidth + 'px';
+    canvas.style.height = innerHeight + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  addEventListener('resize', resize);
+  resize();
+  const ALPHA = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  function rainBurst() {
+    if (reduced) return;
+    const n = Math.min(90, Math.floor(innerWidth / 12));
+    for (let i = 0; i < n; i++) {
+      drops.push({
+        x: Math.random() * innerWidth, y: -20 - Math.random() * innerHeight * .6,
+        vy: 40 + Math.random() * 90, vx: (Math.random() - .5) * 10,
+        ch: ALPHA[Math.floor(Math.random() * 26)], size: 10 + Math.random() * 16,
+        life: 1, rot: (Math.random() - .5) * .6, spin: (Math.random() - .5) * .8
+      });
+    }
+  }
+  let prev = performance.now();
+  function tickRain(now) {
+    const dt = Math.min(.05, (now - prev) / 1000); prev = now;
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+    if (drops.length) {
+      const lit = getComputedStyle(document.body).getPropertyValue('--lit').trim();
+      ctx.font = '800 16px "Helvetica Neue", system-ui, sans-serif';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillStyle = lit;
+      ctx.shadowColor = lit; ctx.shadowBlur = 12;
+      drops = drops.filter(d => {
+        d.y += d.vy * dt; d.x += d.vx * dt; d.vy += 20 * dt; d.rot += d.spin * dt;
+        if (d.y > innerHeight * .55) d.life -= dt * 1.4;
+        if (d.life <= 0) return false;
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, d.life) * .8;
+        ctx.translate(d.x, d.y); ctx.rotate(d.rot); ctx.scale(d.size / 16, d.size / 16);
+        ctx.fillText(d.ch, 0, 0);
+        ctx.restore();
+        return true;
+      });
+    }
+    requestAnimationFrame(tickRain);
+  }
+  requestAnimationFrame(tickRain);
+
+  /* ---------- Main loop ---------- */
+  function currentHM() {
+    if (override !== null) return [Math.floor(override / 60), override % 60, override / 60];
+    const d = new Date();
+    return [d.getHours(), d.getMinutes(), d.getHours() + d.getMinutes() / 60 + d.getSeconds() / 3600];
+  }
+  function update(force) {
+    const [h, m, hf] = currentHM();
+    const key = h * 60 + m;
+    if (key !== lastMinute || force) {
+      if (lastMinute !== -1 && !force) rainBurst();
+      lastMinute = key;
+      render(h, m);
+    }
+    paintSky(hf);
+    if (performance.now() - lastPoemAt > 18000 || force) {
+      lastPoemAt = performance.now();
+      showPoem(h);
+    }
+  }
+  update(true);
+  setInterval(() => update(false), 1000);
+
+  /* ---------- Controls ---------- */
+  document.querySelectorAll('[data-fmt]').forEach(b => b.addEventListener('click', () => {
+    format = +b.dataset.fmt;
+    document.querySelectorAll('[data-fmt]').forEach(x => x.setAttribute('aria-pressed', x === b));
+    update(true);
+  }));
+  document.querySelectorAll('[data-theme]').forEach(b => b.addEventListener('click', () => {
+    document.body.dataset.theme = b.dataset.theme;
+    document.querySelectorAll('button[data-theme]').forEach(x => x.setAttribute('aria-pressed', x === b));
+  }));
+  const scrubber = document.getElementById('scrubber');
+  const d0 = new Date();
+  scrubber.value = d0.getHours() * 60 + d0.getMinutes();
+  scrubber.addEventListener('input', () => { override = +scrubber.value; update(true); });
+  document.getElementById('now').addEventListener('click', () => {
+    override = null;
+    const d = new Date(); scrubber.value = d.getHours() * 60 + d.getMinutes();
+    update(true);
+  });
+  document.getElementById('frame').addEventListener('click', () => { rainBurst(); showPoem(currentHM()[0]); lastPoemAt = performance.now(); });
+})();
+</script>
+</body>
+</html>

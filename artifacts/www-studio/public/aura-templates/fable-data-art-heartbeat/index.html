@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse — A Portrait of One Heartbeat</title>
+<style>
+  :root {
+    --navy-0: #050914;
+    --navy-1: #0a1226;
+    --navy-2: #111b36;
+    --line: rgba(125, 249, 194, 0.12);
+    --mint: #7df9c2;
+    --mint-dim: rgba(125, 249, 194, 0.55);
+    --coral: #ff8a7a;
+    --coral-dim: rgba(255, 138, 122, 0.5);
+    --ink: #e9f0ff;
+    --ink-2: rgba(233, 240, 255, 0.6);
+    --ink-3: rgba(233, 240, 255, 0.32);
+    --accent: var(--mint);
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --radius: 18px;
+  }
+  body[data-mode="active"] { --accent: var(--coral); --line: rgba(255, 138, 122, 0.12); }
+  body[data-mode="sleep"]  { --accent: #9db4ff; --line: rgba(157, 180, 255, 0.10); }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    background:
+      radial-gradient(1200px 700px at 80% -10%, rgba(125,249,194,0.06), transparent 60%),
+      radial-gradient(900px 600px at -10% 110%, rgba(255,138,122,0.05), transparent 60%),
+      linear-gradient(180deg, var(--navy-0), var(--navy-1) 60%, #070d1c);
+    color: var(--ink);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    font-variant-numeric: tabular-nums;
+    -webkit-font-smoothing: antialiased;
+    transition: background 1.2s ease;
+  }
+
+  .wrap {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: clamp(18px, 3vw, 44px);
+    display: grid;
+    gap: clamp(14px, 1.6vw, 22px);
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: minmax(0, auto);
+  }
+
+  header.top {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 18px;
+    padding-bottom: 6px;
+  }
+  .title h1 {
+    margin: 0;
+    font-weight: 200;
+    font-size: clamp(30px, 4.2vw, 56px);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .title h1 em {
+    font-style: normal;
+    color: var(--accent);
+    transition: color 0.8s ease;
+  }
+  .title p {
+    margin: 10px 0 0;
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .modes {
+    display: inline-flex;
+    padding: 4px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    position: relative;
+  }
+  .modes button {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: var(--ink-2);
+    font: inherit;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 9px 18px;
+    border-radius: 999px;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    transition: color 0.4s ease;
+  }
+  .modes button[aria-pressed="true"] { color: var(--navy-0); font-weight: 500; }
+  .modes .pill {
+    position: absolute;
+    top: 4px; bottom: 4px;
+    left: 4px;
+    width: 0;
+    border-radius: 999px;
+    background: var(--accent);
+    box-shadow: 0 0 24px color-mix(in srgb, var(--accent) 60%, transparent);
+    transition: left 0.5s var(--ease), width 0.5s var(--ease), background 0.8s ease;
+  }
+
+  .card {
+    position: relative;
+    background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.012));
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: var(--radius);
+    padding: clamp(16px, 1.8vw, 24px);
+    overflow: hidden;
+    box-shadow: 0 30px 60px -40px rgba(0,0,0,0.9);
+    animation: enter 0.9s var(--ease) both;
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  }
+  .card h2 {
+    margin: 0 0 4px;
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .card h2 span { color: var(--accent); transition: color 0.8s ease; letter-spacing: 0.1em; }
+
+  .ecg { grid-column: 1 / -1; padding-bottom: 12px; }
+  .ecg .stat-row {
+    display: flex;
+    align-items: baseline;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin: 6px 0 10px;
+  }
+  .big {
+    font-size: clamp(56px, 8vw, 112px);
+    font-weight: 100;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    display: inline-flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .big small {
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, auto));
+    gap: 6px 26px;
+    font-size: 12px;
+    color: var(--ink-3);
+    letter-spacing: 0.08em;
+  }
+  .meta b { display: block; font-weight: 300; font-size: 18px; color: var(--ink); letter-spacing: 0; }
+
+  .heart {
+    width: 18px; height: 18px;
+    fill: var(--accent);
+    filter: drop-shadow(0 0 8px var(--accent));
+    transform-origin: center;
+    animation: beat 1s ease-in-out infinite;
+    transition: fill 0.8s ease;
+    vertical-align: middle;
+  }
+
+  #ecg {
+    display: block;
+    width: 100%;
+    height: clamp(160px, 26vw, 300px);
+    border-radius: 12px;
+  }
+
+  .spo2 { grid-column: span 4; display: grid; grid-template-rows: auto 1fr; }
+  .gauge-wrap { display: grid; place-items: center; padding: 8px 0 2px; }
+  .gauge { width: min(100%, 240px); aspect-ratio: 1; overflow: visible; }
+  .gauge .track { fill: none; stroke: rgba(255,255,255,0.06); stroke-width: 10; }
+  .gauge .arc {
+    fill: none;
+    stroke: url(#arcGrad);
+    stroke-width: 10;
+    stroke-linecap: round;
+    filter: drop-shadow(0 0 10px color-mix(in srgb, var(--accent) 50%, transparent));
+    transition: stroke-dashoffset 1.2s var(--ease);
+  }
+  .gauge .ticks line { stroke: rgba(255,255,255,0.14); stroke-width: 1; }
+  .gauge .tick-major { stroke: rgba(255,255,255,0.35) !important; }
+  .gauge text { fill: var(--ink); font-weight: 100; }
+  .gauge .label { fill: var(--ink-3); font-size: 8px; letter-spacing: 0.3em; text-transform: uppercase; font-weight: 300; }
+  .gauge .num { font-size: 48px; letter-spacing: -0.04em; }
+  .gauge .pct { fill: var(--ink-2); font-size: 14px; font-weight: 200; }
+
+  .breath { grid-column: span 4; display: grid; grid-template-rows: auto 1fr; }
+  .breath-stage { display: grid; place-items: center; min-height: 220px; position: relative; }
+  .orb {
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, color-mix(in srgb, var(--accent) 85%, white), var(--accent) 45%, color-mix(in srgb, var(--accent) 30%, transparent) 75%, transparent 100%);
+    box-shadow: 0 0 60px color-mix(in srgb, var(--accent) 40%, transparent), 0 0 120px color-mix(in srgb, var(--accent) 15%, transparent);
+    transform: scale(var(--s, 0.7));
+    transition: background 0.8s ease, box-shadow 0.8s ease;
+    will-change: transform;
+  }
+  .ring {
+    position: absolute;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.06);
+    pointer-events: none;
+  }
+  .ring.r2 { width: 240px; height: 240px; border-style: dashed; opacity: 0.5; }
+  .breath-label {
+    position: absolute;
+    bottom: 4px;
+    left: 0; right: 0;
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    transition: color 0.6s ease;
+  }
+  .breath-label b { display: block; font-weight: 100; font-size: 30px; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 4px; }
+
+  .vitals { grid-column: span 4; display: grid; gap: 14px; align-content: start; }
+  .vital {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 6px 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .vital:last-child { border-bottom: 0; }
+  .vital .k { grid-column: 1 / -1; font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--ink-3); }
+  .vital .v { font-size: 34px; font-weight: 100; letter-spacing: -0.03em; line-height: 1; }
+  .vital .v small { font-size: 12px; font-weight: 300; color: var(--ink-3); margin-left: 6px; letter-spacing: 0.1em; }
+  .vital .bar { grid-column: 1 / -1; height: 2px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
+  .vital .bar i { display: block; height: 100%; width: var(--w, 50%); background: var(--accent); transition: width 1.2s var(--ease), background 0.8s ease; }
+  .trend { font-size: 12px; color: var(--accent); letter-spacing: 0.1em; transition: color 0.8s ease; }
+
+  .day { grid-column: 1 / -1; }
+  .day svg { display: block; width: 100%; height: clamp(150px, 22vw, 240px); overflow: visible; }
+  .day .axis text { fill: var(--ink-3); font-size: 10px; letter-spacing: 0.14em; }
+  .day .axis line { stroke: rgba(255,255,255,0.06); }
+  .day .area { fill: url(#dayGrad); transition: d 1s ease; }
+  .day .line { fill: none; stroke: var(--accent); stroke-width: 1.5; stroke-linejoin: round; filter: drop-shadow(0 0 6px color-mix(in srgb, var(--accent) 50%, transparent)); transition: stroke 0.8s ease; }
+  .day .cursor { stroke: rgba(255,255,255,0.35); stroke-dasharray: 2 4; }
+  .day .dot { fill: var(--accent); transition: fill 0.8s ease; }
+  .day .readout { fill: var(--ink); font-size: 12px; font-weight: 300; }
+  .legend { display: flex; gap: 22px; margin-top: 6px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); flex-wrap: wrap; }
+  .legend i { display: inline-block; width: 18px; height: 1px; background: var(--accent); vertical-align: middle; margin-right: 8px; }
+  .legend i.zone { background: rgba(255,255,255,0.18); height: 8px; opacity: 0.6; }
+
+  footer {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    padding-top: 8px;
+  }
+
+  @keyframes enter { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  @keyframes beat { 0%, 100% { transform: scale(1); } 14% { transform: scale(1.22); } 28% { transform: scale(1); } 42% { transform: scale(1.12); } }
+
+  .card:nth-child(2) { animation-delay: 0.05s; }
+  .card:nth-child(3) { animation-delay: 0.15s; }
+  .card:nth-child(4) { animation-delay: 0.25s; }
+  .card:nth-child(5) { animation-delay: 0.35s; }
+  .card:nth-child(6) { animation-delay: 0.45s; }
+
+  @media (max-width: 1000px) {
+    .spo2, .breath { grid-column: span 6; }
+    .vitals { grid-column: 1 / -1; grid-template-columns: repeat(3, 1fr); }
+    .vital { border-bottom: 0; }
+  }
+  @media (max-width: 620px) {
+    .spo2, .breath { grid-column: 1 / -1; }
+    .vitals { grid-template-columns: 1fr; }
+    .modes button { padding: 8px 12px; font-size: 11px; }
+    .meta { gap: 6px 16px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card { animation: none; }
+    .heart { animation: none; }
+    .orb, .modes .pill, .gauge .arc { transition: none; }
+  }
+</style>
+</head>
+<body data-mode="resting">
+<main class="wrap">
+  <header class="top">
+    <div class="title">
+      <h1>A portrait of <em>one heartbeat</em></h1>
+      <p>Subject 07 · continuous telemetry · fictional record</p>
+    </div>
+    <nav class="modes" aria-label="Activity mode">
+      <span class="pill" aria-hidden="true"></span>
+      <button type="button" data-mode="resting" aria-pressed="true">Resting</button>
+      <button type="button" data-mode="active" aria-pressed="false">Active</button>
+      <button type="button" data-mode="sleep" aria-pressed="false">Sleep</button>
+    </nav>
+  </header>
+
+  <section class="card ecg" aria-labelledby="ecg-title">
+    <h2 id="ecg-title">Lead II electrocardiogram <span id="rhythm">Normal sinus rhythm</span></h2>
+    <div class="stat-row">
+      <div class="big"><span id="bpm">72</span><small>bpm <svg class="heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.4 2.6 4.9 6.1 4.4c2-.3 3.9.6 5.9 2.9 2-2.3 3.9-3.2 5.9-2.9 3.5.5 5.2 4 3.7 7.3C19.5 16.4 12 21 12 21z"/></svg></small></div>
+      <div class="meta">
+        <div>R–R interval<b id="rr">833 ms</b></div>
+        <div>HRV (RMSSD)<b id="hrv">48 ms</b></div>
+        <div>QT interval<b id="qt">392 ms</b></div>
+        <div>Sweep<b>25 mm/s</b></div>
+      </div>
+    </div>
+    <canvas id="ecg" aria-label="Live electrocardiogram trace" role="img"></canvas>
+  </section>
+
+  <section class="card spo2" aria-labelledby="spo2-title">
+    <h2 id="spo2-title">Oxygen saturation <span id="spo2-state">Optimal</span></h2>
+    <div class="gauge-wrap">
+      <svg class="gauge" viewBox="0 0 200 200" aria-label="SpO2 ring gauge" role="img">
+        <defs>
+          <linearGradient id="arcGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+            <stop offset="1" stop-color="var(--accent)"/>
+          </linearGradient>
+        </defs>
+        <g class="ticks" id="ticks" transform="translate(100 100)"></g>
+        <circle class="track" cx="100" cy="100" r="78" transform="rotate(135 100 100)" stroke-dasharray="367.6 122.5"/>
+        <circle class="arc" id="arc" cx="100" cy="100" r="78" transform="rotate(135 100 100)" stroke-dasharray="367.6 490.1" stroke-dashoffset="0"/>
+        <text class="num" id="spo2" x="100" y="112" text-anchor="middle">98</text>
+        <text class="pct" x="100" y="134" text-anchor="middle">% SpO₂</text>
+        <text class="label" x="100" y="170" text-anchor="middle">PERFUSION INDEX <tspan id="pi" fill="#e9f0ff">4.1</tspan></text>
+      </svg>
+    </div>
+  </section>
+
+  <section class="card breath" aria-labelledby="breath-title">
+    <h2 id="breath-title">Respiration <span id="breath-rate">14 / min</span></h2>
+    <div class="breath-stage">
+      <div class="ring" aria-hidden="true"></div>
+      <div class="ring r2" aria-hidden="true"></div>
+      <div class="orb" id="orb" aria-hidden="true"></div>
+      <div class="breath-label"><b id="breath-phase">Inhale</b>tidal volume <span id="tidal">0.50</span> L</div>
+    </div>
+  </section>
+
+  <section class="card vitals" aria-label="Additional vitals">
+    <div class="vital">
+      <span class="k">Blood pressure</span>
+      <span class="v" id="bp">118<small>/ 76 mmHg</small></span>
+      <span class="trend" id="bp-trend">steady</span>
+      <span class="bar"><i id="bp-bar" style="--w: 58%"></i></span>
+    </div>
+    <div class="vital">
+      <span class="k">Core temperature</span>
+      <span class="v" id="temp">36.7<small>°C</small></span>
+      <span class="trend" id="temp-trend">nominal</span>
+      <span class="bar"><i id="temp-bar" style="--w: 64%"></i></span>
+    </div>
+    <div class="vital">
+      <span class="k">Skin conductance</span>
+      <span class="v" id="eda">2.4<small>µS</small></span>
+      <span class="trend" id="eda-trend">calm</span>
+      <span class="bar"><i id="eda-bar" style="--w: 28%"></i></span>
+    </div>
+  </section>
+
+  <section class="card day" aria-labelledby="day-title">
+    <h2 id="day-title">Last 24 hours · heart rate <span id="day-range">51 – 142 bpm</span></h2>
+    <svg id="dayChart" viewBox="0 0 1000 240" preserveAspectRatio="none" aria-label="24-hour heart rate area chart" role="img">
+      <defs>
+        <linearGradient id="dayGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="var(--accent)" stop-opacity="0.45"/>
+          <stop offset="0.6" stop-color="var(--accent)" stop-opacity="0.08"/>
+          <stop offset="1" stop-color="var(--accent)" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <g class="axis" id="dayAxis"></g>
+      <rect id="sleepZone" x="0" y="0" width="0" height="240" fill="rgba(157,180,255,0.05)"/>
+      <polygon class="area" id="dayArea" points=""></polygon>
+      <polyline class="line" id="dayLine" points=""></polyline>
+      <line class="cursor" id="dayCursor" x1="0" y1="0" x2="0" y2="240" opacity="0"/>
+      <circle class="dot" id="dayDot" r="4" opacity="0"/>
+      <text class="readout" id="dayReadout" opacity="0"></text>
+    </svg>
+    <div class="legend">
+      <span><i></i>Heart rate</span>
+      <span><i class="zone"></i>Sleep window 23:10 – 06:40</span>
+      <span>Hover the chart to inspect</span>
+    </div>
+  </section>
+
+  <footer>
+    <span>All data synthesized in-browser · not medical advice</span>
+    <span id="clock">—</span>
+  </footer>
+</main>
+
+<script>
+(function () {
+  'use strict';
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---------- Mode definitions ----------
+  var MODES = {
+    resting: { bpm: 72,  jitter: 3,  breath: 14, spo2: 98, rhythm: 'Normal sinus rhythm', bp: [118, 76], temp: 36.7, eda: 2.4, tidal: 0.50, state: 'Optimal', trend: ['steady', 'nominal', 'calm'] },
+    active:  { bpm: 138, jitter: 8,  breath: 28, spo2: 96, rhythm: 'Sinus tachycardia (exertional)', bp: [152, 84], temp: 37.4, eda: 7.8, tidal: 1.60, state: 'Nominal', trend: ['rising', 'warm', 'aroused'] },
+    sleep:   { bpm: 54,  jitter: 2,  breath: 11, spo2: 97, rhythm: 'Sinus bradycardia (sleep)', bp: [104, 66], temp: 36.3, eda: 1.1, tidal: 0.42, state: 'Optimal', trend: ['low', 'cooling', 'quiet'] }
+  };
+  var mode = 'resting';
+  var target = MODES[mode];
+  var bpm = target.bpm;
+  var breathRate = target.breath;
+  var spo2 = target.spo2;
+
+  // ---------- ECG canvas ----------
+  var canvas = document.getElementById('ecg');
+  var ctx = canvas.getContext('2d');
+  var W = 0, H = 0, dpr = 1;
+  var head = 0;            // x position of the writing head in CSS px
+  var lastY = null;
+  var beatPhase = 0;       // 0..1 within current beat
+  var trace = null;        // offscreen canvas holding the drawn trace
+
+  function sizeCanvas() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var rect = canvas.getBoundingClientRect();
+    W = Math.max(1, Math.round(rect.width));
+    H = Math.max(1, Math.round(rect.height));
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    trace = document.createElement('canvas');
+    trace.width = W * dpr; trace.height = H * dpr;
+    trace.getContext('2d').setTransform(dpr, 0, 0, dpr, 0, 0);
+    head = 0; lastY = null;
+  }
+
+  // Synthetic PQRST waveform for a beat phase in [0,1)
+  function ecgSample(p, intensity) {
+    function gauss(c, w, a) { var d = (p - c) / w; return a * Math.exp(-d * d); }
+    var v = 0;
+    v += gauss(0.16, 0.030, 0.12);                 // P wave
+    v += gauss(0.255, 0.010, -0.10);               // Q
+    v += gauss(0.275, 0.011, 1.00 * intensity);    // R
+    v += gauss(0.298, 0.012, -0.22);               // S
+    v += gauss(0.52, 0.055, 0.28);                 // T wave
+    v += gauss(0.70, 0.03, 0.03);                  // U (tiny)
+    return v;
+  }
+
+  function drawGrid() {
+    var g = ctx;
+    var small = 8, big = 40;
+    g.save();
+    g.strokeStyle = getComputedStyle(document.body).getPropertyValue('--line').trim() || 'rgba(125,249,194,0.12)';
+    g.lineWidth = 1;
+    g.beginPath();
+    for (var x = 0; x <= W; x += small) { g.moveTo(x + 0.5, 0); g.lineTo(x + 0.5, H); }
+    for (var y = 0; y <= H; y += small) { g.moveTo(0, y + 0.5); g.lineTo(W, y + 0.5); }
+    g.globalAlpha = 0.35; g.stroke();
+    g.beginPath();
+    for (x = 0; x <= W; x += big) { g.moveTo(x + 0.5, 0); g.lineTo(x + 0.5, H); }
+    for (y = 0; y <= H; y += big) { g.moveTo(0, y + 0.5); g.lineTo(W, y + 0.5); }
+    g.globalAlpha = 1; g.stroke();
+    g.restore();
+  }
+
+  var accent = '#7df9c2';
+  function readAccent() {
+    accent = getComputedStyle(document.body).getPropertyValue('--accent').trim() || '#7df9c2';
+  }
+
+  function stepEcg(dtSec) {
+    var tctx = trace.getContext('2d');
+    var speed = W / 6;                   // ~6 seconds across the screen
+    var dx = speed * dtSec;
+    var beatsPerSec = bpm / 60;
+    var baseline = H * 0.62;
+    var amp = H * 0.42;
+    var steps = Math.max(1, Math.ceil(dx));
+    tctx.save();
+    tctx.lineWidth = 1.8;
+    tctx.lineCap = 'round';
+    tctx.lineJoin = 'round';
+    tctx.strokeStyle = accent;
+    tctx.shadowColor = accent;
+    tctx.shadowBlur = 10;
+    for (var s = 0; s < steps; s++) {
+      var sub = dtSec / steps;
+      beatPhase += beatsPerSec * sub;
+      if (beatPhase >= 1) beatPhase -= 1;
+      var noise = (Math.random() - 0.5) * 0.012 + Math.sin(head * 0.05) * 0.008;
+      var y = baseline - (ecgSample(beatPhase, 1) + noise) * amp;
+      var x = head + dx / steps;
+      // erase a strip ahead of the head so old trace vanishes gradually
+      tctx.clearRect(x + 2, 0, 14, H);
+      if (lastY !== null && x >= head) {
+        tctx.beginPath(); tctx.moveTo(head, lastY); tctx.lineTo(x, y); tctx.stroke();
+      }
+      head = x; lastY = y;
+      if (head >= W) { head = 0; lastY = null; }
+    }
+    tctx.restore();
+  }
+
+  function renderEcg() {
+    ctx.clearRect(0, 0, W, H);
+    drawGrid();
+    ctx.drawImage(trace, 0, 0, W, H);
+    // writing head glow
+    if (lastY !== null) {
+      var grd = ctx.createRadialGradient(head, lastY, 0, head, lastY, 14);
+      grd.addColorStop(0, accent); grd.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = grd; ctx.globalAlpha = 0.9;
+      ctx.beginPath(); ctx.arc(head, lastY, 14, 0, Math.PI * 2); ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+  }
+
+  // ---------- SpO2 gauge ----------
+  var ARC_LEN = 2 * Math.PI * 78 * 0.75; // 270 degrees
+  var arc = document.getElementById('arc');
+  var ticks = document.getElementById('ticks');
+  (function buildTicks() {
+    var frag = document.createDocumentFragment();
+    for (var i = 0; i <= 54; i++) {
+      var a = (135 + i * 5) * Math.PI / 180;
+      var major = i % 9 === 0;
+      var r1 = major ? 62 : 66, r2 = 70;
+      var ln = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      ln.setAttribute('x1', (Math.cos(a) * r1).toFixed(2)); ln.setAttribute('y1', (Math.sin(a) * r1).toFixed(2));
+      ln.setAttribute('x2', (Math.cos(a) * r2).toFixed(2)); ln.setAttribute('y2', (Math.sin(a) * r2).toFixed(2));
+      if (major) ln.setAttribute('class', 'tick-major');
+      frag.appendChild(ln);
+    }
+    ticks.appendChild(frag);
+  })();
+  function setGauge(value) {
+    // map 85..100 onto the arc
+    var f = Math.min(1, Math.max(0, (value - 85) / 15));
+    arc.setAttribute('stroke-dashoffset', (ARC_LEN * (1 - f)).toFixed(1));
+    document.getElementById('spo2').textContent = Math.round(value);
+  }
+
+  // ---------- 24h chart ----------
+  var dayData = [];
+  function buildDay() {
+    dayData = [];
+    var seedv = 1234;
+    function rnd() { seedv = (seedv * 16807) % 2147483647; return (seedv - 1) / 2147483646; }
+    for (var i = 0; i < 288; i++) {           // 5-minute samples
+      var hour = i / 12;
+      var base = 62;
+      var sleep = (hour > 23.16 || hour < 6.66) ? -12 : 0;
+      var morning = Math.exp(-Math.pow((hour - 7.5) / 0.6, 2)) * 60;   // run
+      var lunch = Math.exp(-Math.pow((hour - 13) / 1.2, 2)) * 10;
+      var evening = Math.exp(-Math.pow((hour - 18.3) / 0.9, 2)) * 45;  // gym
+      var circ = Math.sin((hour - 4) / 24 * Math.PI * 2) * 6;
+      var v = base + sleep + morning + lunch + evening + circ + (rnd() - 0.5) * 6;
+      dayData.push(Math.round(v));
+    }
+  }
+  var dayW = 1000, dayH = 240, padB = 26, padT = 12;
+  function yFor(v) { return padT + (dayH - padB - padT) * (1 - (v - 40) / 120); }
+  function drawDay() {
+    var pts = [];
+    for (var i = 0; i < dayData.length; i++) {
+      pts.push((i / (dayData.length - 1) * dayW).toFixed(1) + ',' + yFor(dayData[i]).toFixed(1));
+    }
+    document.getElementById('dayLine').setAttribute('points', pts.join(' '));
+    document.getElementById('dayArea').setAttribute('points', '0,' + (dayH - padB) + ' ' + pts.join(' ') + ' ' + dayW + ',' + (dayH - padB));
+    var axis = document.getElementById('dayAxis');
+    axis.innerHTML = '';
+    var ns = 'http://www.w3.org/2000/svg';
+    for (var h = 0; h <= 24; h += 3) {
+      var x = h / 24 * dayW;
+      var ln = document.createElementNS(ns, 'line');
+      ln.setAttribute('x1', x); ln.setAttribute('x2', x); ln.setAttribute('y1', padT); ln.setAttribute('y2', dayH - padB);
+      axis.appendChild(ln);
+      var tx = document.createElementNS(ns, 'text');
+      tx.setAttribute('x', Math.min(dayW - 30, Math.max(0, x - 12)));
+      tx.setAttribute('y', dayH - 8);
+      tx.textContent = (h % 24 < 10 ? '0' : '') + (h % 24) + ':00';
+      axis.appendChild(tx);
+    }
+    [60, 100, 140].forEach(function (v) {
+      var y = yFor(v);
+      var ln = document.createElementNS(ns, 'line');
+      ln.setAttribute('x1', 0); ln.setAttribute('x2', dayW); ln.setAttribute('y1', y); ln.setAttribute('y2', y);
+      axis.appendChild(ln);
+      var tx = document.createElementNS(ns, 'text');
+      tx.setAttribute('x', 4); tx.setAttribute('y', y - 4); tx.textContent = v;
+      axis.appendChild(tx);
+    });
+    var zone = document.getElementById('sleepZone');
+    zone.setAttribute('x', 0); zone.setAttribute('width', (6.66 / 24 * dayW).toFixed(1));
+    var zone2 = zone.cloneNode();
+    zone2.removeAttribute('id');
+    zone2.setAttribute('x', (23.16 / 24 * dayW).toFixed(1)); zone2.setAttribute('width', ((24 - 23.16) / 24 * dayW).toFixed(1));
+    zone.parentNode.insertBefore(zone2, zone.nextSibling);
+    var min = Math.min.apply(null, dayData), max = Math.max.apply(null, dayData);
+    document.getElementById('day-range').textContent = min + ' – ' + max + ' bpm';
+  }
+  var daySvg = document.getElementById('dayChart');
+  daySvg.addEventListener('pointermove', function (e) {
+    var rect = daySvg.getBoundingClientRect();
+    var f = Math.min(1, Math.max(0, (e.clientX - rect.left) / rect.width));
+    var i = Math.round(f * (dayData.length - 1));
+    var x = i / (dayData.length - 1) * dayW, y = yFor(dayData[i]);
+    var cur = document.getElementById('dayCursor'), dot = document.getElementById('dayDot'), ro = document.getElementById('dayReadout');
+    cur.setAttribute('x1', x); cur.setAttribute('x2', x); cur.setAttribute('opacity', 1);
+    dot.setAttribute('cx', x); dot.setAttribute('cy', y); dot.setAttribute('opacity', 1);
+    var hh = Math.floor(i / 12), mm = (i % 12) * 5;
+    ro.textContent = dayData[i] + ' bpm · ' + (hh < 10 ? '0' : '') + hh + ':' + (mm < 10 ? '0' : '') + mm;
+    ro.setAttribute('x', x > dayW - 150 ? x - 10 : x + 10);
+    ro.setAttribute('text-anchor', x > dayW - 150 ? 'end' : 'start');
+    ro.setAttribute('y', Math.max(padT + 12, y - 12));
+    ro.setAttribute('opacity', 1);
+  });
+  daySvg.addEventListener('pointerleave', function () {
+    ['dayCursor', 'dayDot', 'dayReadout'].forEach(function (id) { document.getElementById(id).setAttribute('opacity', 0); });
+  });
+
+  // ---------- Mode switching ----------
+  var pill = document.querySelector('.modes .pill');
+  var modeButtons = Array.prototype.slice.call(document.querySelectorAll('.modes button'));
+  function placePill(btn) {
+    pill.style.left = btn.offsetLeft + 'px';
+    pill.style.width = btn.offsetWidth + 'px';
+  }
+  function setMode(m) {
+    mode = m; target = MODES[m];
+    document.body.setAttribute('data-mode', m);
+    modeButtons.forEach(function (b) {
+      var on = b.getAttribute('data-mode') === m;
+      b.setAttribute('aria-pressed', String(on));
+      if (on) placePill(b);
+    });
+    document.getElementById('rhythm').textContent = target.rhythm;
+    document.getElementById('spo2-state').textContent = target.state;
+    document.getElementById('bp').innerHTML = target.bp[0] + '<small>/ ' + target.bp[1] + ' mmHg</small>';
+    document.getElementById('temp').innerHTML = target.temp.toFixed(1) + '<small>°C</small>';
+    document.getElementById('eda').innerHTML = target.eda.toFixed(1) + '<small>µS</small>';
+    document.getElementById('tidal').textContent = target.tidal.toFixed(2);
+    document.getElementById('bp-trend').textContent = target.trend[0];
+    document.getElementById('temp-trend').textContent = target.trend[1];
+    document.getElementById('eda-trend').textContent = target.trend[2];
+    document.getElementById('bp-bar').style.setProperty('--w', ((target.bp[0] - 80) / 100 * 100).toFixed(0) + '%');
+    document.getElementById('temp-bar').style.setProperty('--w', ((target.temp - 35) / 3 * 100).toFixed(0) + '%');
+    document.getElementById('eda-bar').style.setProperty('--w', (target.eda / 10 * 100).toFixed(0) + '%');
+    setTimeout(readAccent, 850);
+  }
+  modeButtons.forEach(function (b) { b.addEventListener('click', function () { setMode(b.getAttribute('data-mode')); }); });
+  window.addEventListener('resize', function () {
+    modeButtons.forEach(function (b) { if (b.getAttribute('aria-pressed') === 'true') placePill(b); });
+    sizeCanvas();
+  });
+
+  // ---------- Main loop ----------
+  var last = performance.now(), acc = 0, breathT = 0, hrvT = 0;
+  var orb = document.getElementById('orb');
+  var phaseEl = document.getElementById('breath-phase');
+  var lastPhase = '';
+  function frame(now) {
+    var dt = Math.min(0.05, (now - last) / 1000); last = now;
+
+    // ease vitals toward the mode target with a slow respiratory-sinus wobble
+    hrvT += dt;
+    var wobble = Math.sin(hrvT * 2 * Math.PI * breathRate / 60) * target.jitter * 0.5;
+    var wander = Math.sin(hrvT * 0.13) * target.jitter;
+    var desired = target.bpm + wobble + wander;
+    bpm += (desired - bpm) * Math.min(1, dt * 1.2);
+    breathRate += (target.breath - breathRate) * Math.min(1, dt * 0.8);
+    spo2 += (target.spo2 + Math.sin(hrvT * 0.4) * 0.6 - spo2) * Math.min(1, dt * 0.5);
+
+    // ECG
+    stepEcg(dt);
+    renderEcg();
+
+    // Breathing orb (sinusoidal, phase-tracked)
+    breathT += dt * breathRate / 60;
+    var b = 0.5 - 0.5 * Math.cos(breathT * Math.PI * 2);
+    orb.style.setProperty('--s', (0.55 + b * 0.75).toFixed(3));
+    var ph = (breathT % 1) < 0.5 ? 'Inhale' : 'Exhale';
+    if (ph !== lastPhase) { phaseEl.textContent = ph; lastPhase = ph; }
+
+    // Text readouts at ~4 Hz to keep numbers legible
+    acc += dt;
+    if (acc > 0.25) {
+      acc = 0;
+      var rb = Math.round(bpm);
+      document.getElementById('bpm').textContent = rb;
+      document.getElementById('rr').textContent = Math.round(60000 / bpm) + ' ms';
+      document.getElementById('hrv').textContent = Math.round(target.jitter * 12 + Math.sin(hrvT) * 4) + ' ms';
+      document.getElementById('qt').textContent = Math.round(410 * Math.sqrt(60 / bpm) * 0.96) + ' ms';
+      document.getElementById('breath-rate').textContent = Math.round(breathRate) + ' / min';
+      document.getElementById('pi').textContent = (3.2 + Math.sin(hrvT * 0.3) * 0.9).toFixed(1);
+      document.querySelector('.heart').style.animationDuration = (60 / bpm).toFixed(3) + 's';
+      setGauge(spo2);
+      var d = new Date();
+      document.getElementById('clock').textContent = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    }
+    requestAnimationFrame(frame);
+  }
+
+  // ---------- Boot ----------
+  sizeCanvas();
+  readAccent();
+  buildDay();
+  drawDay();
+  setGauge(spo2);
+  setMode('resting');
+  if (reduceMotion) { orb.style.setProperty('--s', '0.9'); }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pixel Art Studio — Sprite Editor</title>
+<style>
+  :root {
+    --bg: #0d0e13;
+    --panel: #151720;
+    --panel-2: #1c1f2a;
+    --line: rgba(255,255,255,0.07);
+    --text: #e9ecf5;
+    --muted: #8a90a6;
+    --accent: #8b7cff;
+    --accent-2: #5ff2c1;
+    --danger: #ff5f7a;
+    --radius: 16px;
+    --sans: ui-sans-serif, system-ui, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+  body {
+    min-height: 100vh;
+    background-image:
+      radial-gradient(900px 500px at 20% -10%, rgba(139,124,255,0.18), transparent 60%),
+      radial-gradient(700px 400px at 100% 100%, rgba(95,242,193,0.12), transparent 60%);
+  }
+  header {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    padding: 18px clamp(14px, 3vw, 32px); border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 10; background: rgba(13,14,19,0.7);
+  }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand .mark { width: 34px; height: 34px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; padding: 4px; background: var(--panel-2); border-radius: 10px; border: 1px solid var(--line); }
+  .brand .mark i { display: block; border-radius: 2px; background: var(--accent); }
+  .brand .mark i:nth-child(2), .brand .mark i:nth-child(4), .brand .mark i:nth-child(9) { background: var(--accent-2); }
+  .brand .mark i:nth-child(5) { background: #ff77a8; }
+  .brand h1 { font-size: 16px; margin: 0; letter-spacing: 0.01em; font-weight: 600; }
+  .brand small { display: block; color: var(--muted); font-size: 11px; font-weight: 400; font-family: var(--mono); letter-spacing: 0.1em; text-transform: uppercase; }
+  .header-actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+
+  .pill {
+    font: inherit; font-size: 13px; font-weight: 500; color: var(--text); cursor: pointer;
+    background: var(--panel-2); border: 1px solid var(--line); border-radius: 999px; padding: 9px 16px;
+    display: inline-flex; align-items: center; gap: 8px; line-height: 1;
+    transition: transform .2s cubic-bezier(.2,.8,.2,1), background .2s, border-color .2s, box-shadow .2s;
+    position: relative;
+  }
+  .pill:hover { transform: translateY(-1px); border-color: rgba(255,255,255,0.18); background: #232634; }
+  .pill:active { transform: translateY(0) scale(0.98); }
+  .pill:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+  .pill.primary { background: linear-gradient(135deg, var(--accent), #6f5cff); border-color: transparent; color: #fff; box-shadow: 0 10px 24px -12px rgba(139,124,255,0.8); }
+  .pill.primary:hover { box-shadow: 0 14px 28px -12px rgba(139,124,255,1); }
+  .pill[aria-pressed="true"] { background: rgba(139,124,255,0.18); border-color: var(--accent); color: #fff; box-shadow: inset 0 0 0 1px rgba(139,124,255,0.4); }
+  .pill kbd { font-family: var(--mono); font-size: 10px; color: var(--muted); background: rgba(0,0,0,0.35); border-radius: 6px; padding: 3px 6px; margin-left: 2px; }
+  .pill[aria-pressed="true"] kbd { color: #d9d3ff; }
+  .pill svg { width: 16px; height: 16px; }
+  .pill:focus-visible, .swatch:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 2px; }
+
+  main {
+    display: grid; gap: 18px; padding: 18px clamp(14px, 3vw, 32px) 40px;
+    grid-template-columns: 220px minmax(0, 1fr) 300px;
+    align-items: start;
+  }
+  @media (max-width: 1100px) { main { grid-template-columns: 200px minmax(0, 1fr); } .right { grid-column: 1 / -1; } }
+  @media (max-width: 720px) { main { grid-template-columns: 1fr; } .left, .right { grid-column: 1; } }
+
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
+  .card h2 { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; font-family: var(--mono); display: flex; justify-content: space-between; }
+  .card + .card { margin-top: 14px; }
+  .tools { display: grid; gap: 8px; }
+  .tools .pill { justify-content: space-between; width: 100%; padding: 11px 14px; }
+  .tools .pill span { display: inline-flex; align-items: center; gap: 10px; }
+  .divider { height: 1px; background: var(--line); margin: 6px 0; }
+
+  .field { display: grid; gap: 8px; margin-top: 12px; }
+  .field label { font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; }
+  .field .readout { font-family: var(--mono); color: var(--text); }
+  select {
+    font: inherit; font-size: 13px; color: var(--text); background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; padding: 9px 12px; cursor: pointer;
+  }
+  input[type="range"] { -webkit-appearance: none; appearance: none; width: 100%; height: 24px; background: transparent; margin: 0; cursor: pointer; }
+  input[type="range"]::-webkit-slider-runnable-track { height: 4px; border-radius: 4px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+  input[type="range"]::-moz-range-track { height: 4px; border-radius: 4px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+  input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; margin-top: -7px; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.5); transition: transform .2s cubic-bezier(.34,1.56,.64,1); }
+  input[type="range"]::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; border: none; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.5); }
+  input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.2); }
+
+  /* ===== Canvas stage ===== */
+  .stage {
+    background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 16px; display: grid; gap: 12px; min-width: 0;
+  }
+  .stage-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.08em; }
+  .stage-bar b { color: var(--text); font-weight: 500; }
+  .stage-bar .dot { display: inline-block; width: 12px; height: 12px; border-radius: 4px; vertical-align: -2px; margin-right: 6px; border: 1px solid rgba(255,255,255,0.2); }
+  .scroller {
+    overflow: auto; display: grid; place-items: center; min-height: 360px; max-height: calc(100vh - 220px);
+    background:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px) 0 0 / 24px 24px,
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px) 0 0 / 24px 24px, #0f1117;
+    border-radius: 12px; border: 1px solid var(--line); padding: 20px;
+  }
+  #grid {
+    image-rendering: pixelated; image-rendering: crisp-edges; cursor: crosshair; touch-action: none;
+    box-shadow: 0 30px 60px -30px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,255,255,0.08);
+    border-radius: 2px;
+  }
+  #grid.picking { cursor: cell; }
+
+  /* ===== Palette ===== */
+  .palette { display: grid; grid-template-columns: repeat(8, 1fr); gap: 6px; }
+  .swatch {
+    aspect-ratio: 1; border-radius: 8px; border: 2px solid transparent; cursor: pointer; padding: 0;
+    background: var(--c); position: relative; transition: transform .18s cubic-bezier(.34,1.56,.64,1), box-shadow .2s;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+  }
+  .swatch:hover { transform: scale(1.12); z-index: 1; }
+  .swatch[aria-pressed="true"] { border-color: #fff; box-shadow: 0 0 0 3px rgba(139,124,255,0.55); transform: scale(1.08); }
+  .custom-row { display: flex; align-items: center; gap: 10px; margin-top: 12px; }
+  .custom-row label { flex: 1; display: flex; align-items: center; gap: 10px; background: var(--panel-2); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px 6px 6px; cursor: pointer; }
+  .custom-row input[type="color"] { -webkit-appearance: none; appearance: none; width: 30px; height: 30px; border: none; padding: 0; border-radius: 50%; background: none; cursor: pointer; overflow: hidden; }
+  .custom-row input[type="color"]::-webkit-color-swatch-wrapper { padding: 0; }
+  .custom-row input[type="color"]::-webkit-color-swatch { border: none; border-radius: 50%; }
+  .custom-row input[type="color"]::-moz-color-swatch { border: none; border-radius: 50%; }
+  .custom-row code { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .current { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .current .big { width: 44px; height: 44px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.15); background: var(--cur); box-shadow: 0 8px 20px -10px var(--cur); transition: background .2s; }
+  .current code { font-family: var(--mono); font-size: 13px; }
+  .current small { display: block; color: var(--muted); font-size: 11px; }
+
+  /* ===== Previews ===== */
+  .previews { display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: center; }
+  .actual { display: grid; gap: 6px; justify-items: center; font-family: var(--mono); font-size: 10px; color: var(--muted); }
+  .actual canvas { image-rendering: pixelated; image-rendering: crisp-edges; border: 1px solid var(--line); background: #0f1117; }
+  .hero-wrap { display: grid; gap: 10px; }
+  .hero {
+    position: relative; border-radius: 14px; overflow: hidden; aspect-ratio: 1; background: #0a0b10;
+    border: 1px solid var(--line); display: grid; place-items: center;
+    background-image: radial-gradient(circle at 50% 40%, #1b1e2c, #0a0b10 70%);
+  }
+  .hero canvas { image-rendering: pixelated; image-rendering: crisp-edges; width: 82%; height: 82%; }
+  .hero.crt { border-radius: 18px / 22px; box-shadow: inset 0 0 40px rgba(0,0,0,0.9), inset 0 0 4px rgba(255,255,255,0.15); }
+  .hero.crt canvas { filter: contrast(1.15) saturate(1.25) brightness(1.05) blur(0.35px); }
+  .hero.crt::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 2;
+    background: repeating-linear-gradient(180deg, rgba(0,0,0,0) 0 1px, rgba(0,0,0,0.32) 1px 3px);
+    mix-blend-mode: multiply;
+  }
+  .hero.crt::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 3;
+    background: linear-gradient(115deg, rgba(255,255,255,0.10), transparent 40%), radial-gradient(ellipse at 50% 50%, transparent 60%, rgba(0,0,0,0.6) 100%);
+    animation: flicker 4s steps(20) infinite;
+  }
+  .hero.crt .rgb { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: repeating-linear-gradient(90deg, rgba(255,0,0,0.06) 0 1px, rgba(0,255,0,0.06) 1px 2px, rgba(0,0,255,0.06) 2px 3px); }
+  @keyframes flicker { 0%, 100% { opacity: 1; } 50% { opacity: 0.92; } }
+  .hero-wrap .pill { justify-self: start; }
+  .status { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.06em; min-height: 16px; }
+  .shortcuts { display: grid; grid-template-columns: 1fr; gap: 7px; font-size: 12px; color: var(--muted); }
+  .shortcuts span { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+  .shortcuts kbd { font-family: var(--mono); font-size: 11px; background: var(--panel-2); border: 1px solid var(--line); border-radius: 6px; padding: 2px 6px; color: var(--text); }
+  .toast {
+    position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 20px); opacity: 0; pointer-events: none;
+    background: var(--panel-2); border: 1px solid var(--line); color: var(--text); font-size: 13px; padding: 10px 16px; border-radius: 999px;
+    transition: transform .35s cubic-bezier(.2,.8,.2,1), opacity .35s; z-index: 20;
+  }
+  .toast.show { transform: translate(-50%, 0); opacity: 1; }
+  @media (prefers-reduced-motion: reduce) {
+    .hero.crt::after { animation: none; }
+    .pill, .swatch, .toast, input[type="range"]::-webkit-slider-thumb { transition: none; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <div class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <h1>Pixel Art Studio <small>sprite editor · v0.39</small></h1>
+  </div>
+  <div class="header-actions">
+    <button class="pill" id="undo" type="button" title="Undo (Z)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/></svg>Undo<kbd>Z</kbd>
+    </button>
+    <button class="pill" id="redo" type="button" title="Redo (Shift+Z)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 14 5-5-5-5"/><path d="M20 9H10a6 6 0 0 0 0 12h3"/></svg>Redo<kbd>⇧Z</kbd>
+    </button>
+    <button class="pill" id="clear" type="button">Clear</button>
+    <button class="pill primary" id="export" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 21h16"/></svg>Export PNG ×10
+    </button>
+  </div>
+</header>
+
+<main>
+  <aside class="left">
+    <section class="card">
+      <h2>Tools</h2>
+      <div class="tools" id="tools" role="toolbar" aria-label="Drawing tools">
+        <button class="pill" type="button" data-tool="pencil" aria-pressed="true"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Pencil</span><kbd>B</kbd></button>
+        <button class="pill" type="button" data-tool="eraser" aria-pressed="false"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 21-4-4a2 2 0 0 1 0-3L14 3l7 7-11 11Z"/><path d="M5 12l7 7"/></svg>Eraser</span><kbd>E</kbd></button>
+        <button class="pill" type="button" data-tool="fill" aria-pressed="false"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m19 11-8-8-8 8 8 8Z"/><path d="M21 18a2 2 0 1 1-4 0c0-1.5 2-3.5 2-3.5s2 2 2 3.5Z"/></svg>Fill bucket</span><kbd>G</kbd></button>
+        <button class="pill" type="button" data-tool="eyedropper" aria-pressed="false"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 22 1-1h3l9-9"/><path d="M3 21v-3l9-9"/><path d="m15 6 3.4-3.4a2.1 2.1 0 1 1 3 3L18 9l.4.4a2.1 2.1 0 1 1-3 3l-3.8-3.8a2.1 2.1 0 1 1 3-3z"/></svg>Eyedropper</span><kbd>I</kbd></button>
+        <button class="pill" type="button" data-tool="line" aria-pressed="false"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 19 19 5"/><circle cx="5" cy="19" r="1.5"/><circle cx="19" cy="5" r="1.5"/></svg>Line</span><kbd>L</kbd></button>
+        <div class="divider"></div>
+        <button class="pill" type="button" id="mirror" aria-pressed="false"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18"/><path d="M8 7 4 12l4 5"/><path d="m16 7 4 5-4 5"/></svg>Mirror X</span><kbd>M</kbd></button>
+      </div>
+    </section>
+    <section class="card">
+      <h2>Canvas</h2>
+      <div class="field">
+        <label for="size">Grid size</label>
+        <select id="size">
+          <option value="16">16 × 16</option>
+          <option value="32" selected>32 × 32</option>
+          <option value="64">64 × 64</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="zoom">Zoom <span class="readout" id="zoom-out">14 px</span></label>
+        <input type="range" id="zoom" min="4" max="28" value="14" step="1">
+      </div>
+    </section>
+    <section class="card">
+      <h2>Shortcuts</h2>
+      <div class="shortcuts">
+        <span><kbd>B</kbd> pencil</span><span><kbd>E</kbd> eraser</span>
+        <span><kbd>G</kbd> fill</span><span><kbd>I</kbd> eyedropper</span>
+        <span><kbd>L</kbd> line</span><span><kbd>M</kbd> mirror</span>
+        <span><kbd>Z</kbd> undo</span><span><kbd>⇧Z</kbd> redo</span>
+        <span><kbd>[</kbd> <kbd>]</kbd> zoom</span><span><kbd>Alt</kbd>+click pick</span>
+      </div>
+    </section>
+  </aside>
+
+  <section class="stage" aria-label="Drawing canvas">
+    <div class="stage-bar">
+      <span id="coords">x — · y —</span>
+      <span><span class="dot" id="hover-dot"></span><b id="tool-name">Pencil</b></span>
+      <span id="grid-info">32 × 32 · 14 px</span>
+    </div>
+    <div class="scroller">
+      <canvas id="grid" aria-label="Pixel drawing surface"></canvas>
+    </div>
+    <div class="status" id="status">Loaded starter sprite. Draw with the left mouse button; hold Alt to sample a colour.</div>
+  </section>
+
+  <aside class="right">
+    <section class="card">
+      <h2>Palette <span id="palette-count">32 + custom</span></h2>
+      <div class="current">
+        <div class="big" id="current-swatch"></div>
+        <div><code id="current-code">#ff77a8</code><small>current colour</small></div>
+      </div>
+      <div class="palette" id="palette" role="listbox" aria-label="Colour palette"></div>
+      <div class="custom-row">
+        <label><input type="color" id="custom" value="#8b7cff" aria-label="Custom colour"><code>custom</code></label>
+        <button class="pill" id="add-custom" type="button">Use</button>
+      </div>
+    </section>
+    <section class="card">
+      <h2>Preview</h2>
+      <div class="previews">
+        <div class="actual">
+          <canvas id="actual1" width="32" height="32" aria-label="Actual size preview"></canvas>
+          <span>1×</span>
+          <canvas id="actual2" width="32" height="32" aria-label="Double size preview"></canvas>
+          <span>2×</span>
+        </div>
+        <div class="hero-wrap">
+          <div class="hero" id="hero">
+            <div class="rgb"></div>
+            <canvas id="hero-canvas" width="256" height="256" aria-label="Large preview"></canvas>
+          </div>
+          <button class="pill" id="crt" type="button" aria-pressed="false">CRT display</button>
+        </div>
+      </div>
+    </section>
+  </aside>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  'use strict';
+  const PALETTE = ['#000000','#1d2b53','#7e2553','#008751','#ab5236','#5f574f','#c2c3c7','#fff1e8','#ff004d','#ffa300','#ffec27','#00e436','#29adff','#83769c','#ff77a8','#ffccaa','#291814','#111d35','#422136','#125359','#742f29','#49333b','#a28879','#f3ef7d','#be1250','#ff6c24','#a8e72e','#00b543','#065ab5','#754665','#ff6e59','#ff9d81'];
+  const $ = id => document.getElementById(id);
+  const grid = $('grid'), gctx = grid.getContext('2d');
+  const actual1 = $('actual1'), actual2 = $('actual2'), heroCv = $('hero-canvas');
+  const dpr = Math.min(window.devicePixelRatio || 1, 3);
+
+  let N = 32, zoom = 14, tool = 'pencil', prevTool = 'pencil', mirror = false, color = '#ff77a8';
+  let cells = new Array(N * N).fill(null);
+  let history = [], future = [], drawing = false, lastCell = null, lineStart = null, lineEnd = null, hover = null, snapshotBefore = null;
+
+  // Starter sprite: 16x16 slime, scaled 2x onto the 32 grid
+  const SPRITE = [
+    '................',
+    '......####......',
+    '....##pppp##....',
+    '...#pppppppp#...',
+    '..#pppLpppppp#..',
+    '..#pLLppppppp#..',
+    '.#pppppppppppp#.',
+    '.#ppWWppppWWpp#.',
+    '.#ppWKppppWKpp#.',
+    '.#pppppppppppp#.',
+    '.#ppppRppRpppp#.',
+    '.#pppppRRppppp#.',
+    '..#pppppppppp#..',
+    '...##pppppp##...',
+    '.....######.....',
+    '................'
+  ];
+  const KEY = { '#': '#2b1d3a', p: '#ff77a8', L: '#ffccaa', W: '#fff1e8', K: '#1d2b53', R: '#be1250' };
+  function loadSprite() {
+    const scale = N / 16;
+    for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) {
+      const ch = SPRITE[Math.floor(y / scale)][Math.floor(x / scale)];
+      cells[y * N + x] = KEY[ch] || null;
+    }
+  }
+
+  // ---------- Rendering ----------
+  function sizeCanvas() {
+    grid.width = N * zoom * dpr; grid.height = N * zoom * dpr;
+    grid.style.width = grid.style.height = (N * zoom) + 'px';
+    gctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    actual1.width = actual1.height = N; actual2.width = actual2.height = N;
+    actual1.style.width = actual1.style.height = N + 'px';
+    actual2.style.width = actual2.style.height = (N * 2) + 'px';
+    $('grid-info').textContent = `${N} × ${N} · ${zoom} px`;
+  }
+
+  function render() {
+    const z = zoom;
+    gctx.clearRect(0, 0, N * z, N * z);
+    // checkerboard
+    for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) {
+      gctx.fillStyle = (x + y) % 2 ? '#1a1d27' : '#20232f';
+      gctx.fillRect(x * z, y * z, z, z);
+    }
+    for (let i = 0; i < cells.length; i++) {
+      if (!cells[i]) continue;
+      gctx.fillStyle = cells[i];
+      gctx.fillRect((i % N) * z, Math.floor(i / N) * z, z, z);
+    }
+    // line preview
+    if (lineStart && lineEnd) {
+      gctx.fillStyle = tool === 'eraser' ? 'rgba(255,255,255,0.35)' : color;
+      for (const [x, y] of bresenham(lineStart.x, lineStart.y, lineEnd.x, lineEnd.y)) {
+        gctx.fillRect(x * z, y * z, z, z);
+        if (mirror) gctx.fillRect((N - 1 - x) * z, y * z, z, z);
+      }
+    }
+    // grid lines
+    if (z >= 8) {
+      gctx.strokeStyle = 'rgba(255,255,255,0.06)'; gctx.lineWidth = 1;
+      gctx.beginPath();
+      for (let i = 1; i < N; i++) { gctx.moveTo(i * z + 0.5, 0); gctx.lineTo(i * z + 0.5, N * z); gctx.moveTo(0, i * z + 0.5); gctx.lineTo(N * z, i * z + 0.5); }
+      gctx.stroke();
+      if (mirror) { gctx.strokeStyle = 'rgba(95,242,193,0.5)'; gctx.beginPath(); gctx.moveTo(N * z / 2 + 0.5, 0); gctx.lineTo(N * z / 2 + 0.5, N * z); gctx.stroke(); }
+    }
+    // hover
+    if (hover) {
+      gctx.strokeStyle = '#fff'; gctx.lineWidth = 2;
+      gctx.strokeRect(hover.x * z + 1, hover.y * z + 1, z - 2, z - 2);
+      if (mirror) { gctx.strokeStyle = 'rgba(95,242,193,0.9)'; gctx.strokeRect((N - 1 - hover.x) * z + 1, hover.y * z + 1, z - 2, z - 2); }
+    }
+    renderPreviews();
+  }
+
+  function paintTo(c) {
+    const ctx = c.getContext('2d');
+    ctx.clearRect(0, 0, N, N);
+    for (let i = 0; i < cells.length; i++) if (cells[i]) { ctx.fillStyle = cells[i]; ctx.fillRect(i % N, Math.floor(i / N), 1, 1); }
+  }
+  function renderPreviews() {
+    paintTo(actual1); paintTo(actual2);
+    const h = heroCv.getContext('2d');
+    h.imageSmoothingEnabled = false;
+    h.clearRect(0, 0, heroCv.width, heroCv.height);
+    h.drawImage(actual1, 0, 0, heroCv.width, heroCv.height);
+  }
+
+  // ---------- Editing ----------
+  function idx(x, y) { return y * N + x; }
+  function inBounds(x, y) { return x >= 0 && y >= 0 && x < N && y < N; }
+  function setCell(x, y, c) {
+    if (!inBounds(x, y)) return;
+    cells[idx(x, y)] = c;
+    if (mirror) cells[idx(N - 1 - x, y)] = c;
+  }
+  function bresenham(x0, y0, x1, y1) {
+    const pts = []; let dx = Math.abs(x1 - x0), dy = -Math.abs(y1 - y0), sx = x0 < x1 ? 1 : -1, sy = y0 < y1 ? 1 : -1, err = dx + dy;
+    for (;;) { pts.push([x0, y0]); if (x0 === x1 && y0 === y1) break; const e2 = 2 * err; if (e2 >= dy) { err += dy; x0 += sx; } if (e2 <= dx) { err += dx; y0 += sy; } }
+    return pts;
+  }
+  function floodFill(x, y, c) {
+    const target = cells[idx(x, y)];
+    if (target === c) return;
+    const stack = [[x, y]], seen = new Uint8Array(N * N);
+    while (stack.length) {
+      const [cx, cy] = stack.pop();
+      if (!inBounds(cx, cy) || seen[idx(cx, cy)]) continue;
+      if (cells[idx(cx, cy)] !== target) continue;
+      seen[idx(cx, cy)] = 1; cells[idx(cx, cy)] = c;
+      stack.push([cx + 1, cy], [cx - 1, cy], [cx, cy + 1], [cx, cy - 1]);
+    }
+    if (mirror) { const mx = N - 1 - x; if (cells[idx(mx, y)] === target) floodFillNoMirror(mx, y, c, target); }
+  }
+  function floodFillNoMirror(x, y, c, target) {
+    const stack = [[x, y]];
+    while (stack.length) {
+      const [cx, cy] = stack.pop();
+      if (!inBounds(cx, cy) || cells[idx(cx, cy)] !== target) continue;
+      cells[idx(cx, cy)] = c;
+      stack.push([cx + 1, cy], [cx - 1, cy], [cx, cy + 1], [cx, cy - 1]);
+    }
+  }
+
+  function pushHistory(snapshot) {
+    history.push(snapshot); if (history.length > 80) history.shift();
+    future = []; updateHistoryButtons();
+  }
+  function undo() { if (!history.length) return; future.push(cells.slice()); cells = history.pop(); render(); updateHistoryButtons(); toast('Undo'); }
+  function redo() { if (!future.length) return; history.push(cells.slice()); cells = future.pop(); render(); updateHistoryButtons(); toast('Redo'); }
+  function updateHistoryButtons() { $('undo').disabled = !history.length; $('redo').disabled = !future.length; }
+
+  function cellFromEvent(e) {
+    const r = grid.getBoundingClientRect();
+    const x = Math.floor((e.clientX - r.left) / r.width * N), y = Math.floor((e.clientY - r.top) / r.height * N);
+    return inBounds(x, y) ? { x, y } : null;
+  }
+
+  function applyTool(c, e) {
+    const t = e.altKey ? 'eyedropper' : tool;
+    if (t === 'pencil' || t === 'eraser') {
+      const paint = t === 'eraser' ? null : color;
+      if (lastCell) for (const [x, y] of bresenham(lastCell.x, lastCell.y, c.x, c.y)) setCell(x, y, paint);
+      else setCell(c.x, c.y, paint);
+      lastCell = c;
+    } else if (t === 'fill') {
+      floodFill(c.x, c.y, color);
+    } else if (t === 'eyedropper') {
+      const picked = cells[idx(c.x, c.y)];
+      if (picked) { setColor(picked); toast('Picked ' + picked); }
+      if (!e.altKey) setTool(prevTool);
+    }
+  }
+
+  grid.addEventListener('pointerdown', (e) => {
+    if (e.button !== 0) return;
+    const c = cellFromEvent(e); if (!c) return;
+    grid.setPointerCapture(e.pointerId);
+    drawing = true; snapshotBefore = cells.slice(); lastCell = null;
+    if (tool === 'line' && !e.altKey) { lineStart = c; lineEnd = c; render(); return; }
+    applyTool(c, e); render();
+  });
+  grid.addEventListener('pointermove', (e) => {
+    const c = cellFromEvent(e);
+    hover = c;
+    if (c) $('coords').textContent = `x ${String(c.x).padStart(2, '0')} · y ${String(c.y).padStart(2, '0')}`;
+    if (drawing && c) {
+      if (lineStart) lineEnd = c;
+      else if (tool === 'pencil' || tool === 'eraser') applyTool(c, e);
+    }
+    render();
+  });
+  grid.addEventListener('pointerleave', () => { hover = null; $('coords').textContent = 'x — · y —'; render(); });
+  function finishStroke() {
+    if (!drawing) return;
+    drawing = false;
+    if (lineStart && lineEnd) {
+      const paint = tool === 'eraser' ? null : color;
+      for (const [x, y] of bresenham(lineStart.x, lineStart.y, lineEnd.x, lineEnd.y)) setCell(x, y, paint);
+      lineStart = lineEnd = null;
+    }
+    lastCell = null;
+    if (snapshotBefore && snapshotBefore.some((v, i) => v !== cells[i])) pushHistory(snapshotBefore);
+    snapshotBefore = null; render();
+  }
+  grid.addEventListener('pointerup', finishStroke);
+  grid.addEventListener('pointercancel', finishStroke);
+  grid.addEventListener('contextmenu', (e) => { e.preventDefault(); const c = cellFromEvent(e); if (c && cells[idx(c.x, c.y)]) setColor(cells[idx(c.x, c.y)]); });
+
+  // ---------- Tools & UI ----------
+  const NAMES = { pencil: 'Pencil', eraser: 'Eraser', fill: 'Fill bucket', eyedropper: 'Eyedropper', line: 'Line' };
+  function setTool(t) {
+    if (tool !== 'eyedropper') prevTool = tool;
+    tool = t;
+    document.querySelectorAll('#tools [data-tool]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.tool === t)));
+    $('tool-name').textContent = NAMES[t];
+    grid.classList.toggle('picking', t === 'eyedropper');
+  }
+  document.querySelectorAll('#tools [data-tool]').forEach(b => b.addEventListener('click', () => setTool(b.dataset.tool)));
+  $('mirror').addEventListener('click', () => { mirror = !mirror; $('mirror').setAttribute('aria-pressed', String(mirror)); render(); toast(mirror ? 'Mirror X on' : 'Mirror X off'); });
+
+  const paletteEl = $('palette');
+  PALETTE.forEach((c) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'swatch'; b.style.setProperty('--c', c); b.title = c; b.setAttribute('role', 'option');
+    b.setAttribute('aria-label', c); b.setAttribute('aria-pressed', String(c === color));
+    b.addEventListener('click', () => setColor(c));
+    paletteEl.appendChild(b);
+  });
+  function setColor(c) {
+    color = c.toLowerCase();
+    document.querySelectorAll('.swatch').forEach(s => s.setAttribute('aria-pressed', String(s.title.toLowerCase() === color)));
+    $('current-swatch').style.setProperty('--cur', color); $('current-code').textContent = color; $('hover-dot').style.background = color;
+  }
+  $('add-custom').addEventListener('click', () => setColor($('custom').value));
+  $('custom').addEventListener('input', () => setColor($('custom').value));
+
+  $('zoom').addEventListener('input', () => { zoom = +$('zoom').value; $('zoom-out').textContent = zoom + ' px'; sizeCanvas(); render(); });
+  $('size').addEventListener('change', () => {
+    const newN = +$('size').value;
+    pushHistory(cells.slice());
+    const old = cells, oldN = N;
+    cells = new Array(newN * newN).fill(null);
+    for (let y = 0; y < newN; y++) for (let x = 0; x < newN; x++) {
+      const sx = Math.floor(x / newN * oldN), sy = Math.floor(y / newN * oldN);
+      cells[y * newN + x] = old[sy * oldN + sx];
+    }
+    N = newN;
+    zoom = Math.max(4, Math.min(zoom, Math.floor(448 / N)));
+    $('zoom').value = zoom; $('zoom-out').textContent = zoom + ' px';
+    sizeCanvas(); render(); toast(`Resampled to ${N} × ${N}`);
+  });
+  $('undo').addEventListener('click', undo);
+  $('redo').addEventListener('click', redo);
+  $('clear').addEventListener('click', () => { pushHistory(cells.slice()); cells.fill(null); render(); toast('Canvas cleared'); });
+  $('crt').addEventListener('click', () => { const on = $('hero').classList.toggle('crt'); $('crt').setAttribute('aria-pressed', String(on)); });
+
+  $('export').addEventListener('click', () => {
+    const out = document.createElement('canvas'); out.width = out.height = N * 10;
+    const ctx = out.getContext('2d'); ctx.imageSmoothingEnabled = false;
+    paintTo(actual1); ctx.drawImage(actual1, 0, 0, out.width, out.height);
+    const a = document.createElement('a'); a.download = `sprite-${N}x${N}-x10.png`; a.href = out.toDataURL('image/png');
+    document.body.appendChild(a); a.click(); a.remove(); toast(`Exported ${N * 10} × ${N * 10} PNG`);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)) return;
+    const k = e.key.toLowerCase();
+    if ((e.ctrlKey || e.metaKey) && k === 'z') { e.preventDefault(); e.shiftKey ? redo() : undo(); return; }
+    if ((e.ctrlKey || e.metaKey) && k === 'y') { e.preventDefault(); redo(); return; }
+    if (e.ctrlKey || e.metaKey) return;
+    switch (k) {
+      case 'b': setTool('pencil'); break;
+      case 'e': setTool('eraser'); break;
+      case 'g': setTool('fill'); break;
+      case 'i': setTool('eyedropper'); break;
+      case 'l': setTool('line'); break;
+      case 'm': $('mirror').click(); break;
+      case 'z': e.shiftKey ? redo() : undo(); break;
+      case '[': $('zoom').value = Math.max(4, zoom - 2); $('zoom').dispatchEvent(new Event('input')); break;
+      case ']': $('zoom').value = Math.min(28, zoom + 2); $('zoom').dispatchEvent(new Event('input')); break;
+      default: return;
+    }
+    e.preventDefault();
+  });
+
+  let toastTimer;
+  function toast(msg) {
+    const t = $('toast'); t.textContent = msg; t.classList.add('show');
+    $('status').textContent = msg;
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), 1400);
+  }
+
+  // ---------- Boot ----------
+  loadSprite();
+  setColor(color);
+  sizeCanvas();
+  render();
+  updateHistoryButtons();
+})();
+</script>
+</body>
+</html>

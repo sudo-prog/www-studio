@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chladni Resonance — Sand on a Singing Plate</title>
+<style>
+  :root {
+    --bg: #0b0c0e;
+    --panel: #15171b;
+    --panel-2: #1c1f24;
+    --line: #2a2e35;
+    --brass: #c9a24a;
+    --brass-2: #8f6f2a;
+    --brass-3: #f0d68a;
+    --text: #e6e1d6;
+    --muted: #8b8778;
+    --accent: #7fd1c0;
+    --danger: #d66a4f;
+    --serif: Georgia, 'Iowan Old Style', 'Palatino Linotype', Palatino, ui-serif, serif;
+    --mono: 'Courier New', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --sans: ui-sans-serif, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background:
+      radial-gradient(1200px 600px at 20% -10%, #1a1c22 0%, transparent 60%),
+      radial-gradient(800px 500px at 110% 110%, #14161a 0%, transparent 60%),
+      var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    overflow-x: hidden;
+  }
+  header {
+    padding: 22px 28px 10px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--line);
+  }
+  header h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(22px, 2.6vw, 34px);
+    letter-spacing: 0.01em;
+    margin: 0;
+  }
+  header h1 em { color: var(--brass); font-style: italic; }
+  header .sub {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 24px;
+    padding: 24px 28px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    main { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Plate ---------- */
+  .plate-wrap {
+    position: relative;
+    width: 100%;
+    max-width: min(88vh, 100%);
+    margin: 0 auto;
+    aspect-ratio: 1;
+    padding: 22px;
+    background:
+      linear-gradient(135deg, #2b2e33 0%, #1a1c20 40%, #2a2d32 60%, #151719 100%);
+    border-radius: 6px;
+    box-shadow:
+      0 40px 80px rgba(0,0,0,0.6),
+      inset 0 1px 0 rgba(255,255,255,0.06),
+      inset 0 -1px 0 rgba(0,0,0,0.6);
+  }
+  .plate-wrap::before {
+    content: "";
+    position: absolute; inset: 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(201,162,74,0.25);
+    pointer-events: none;
+  }
+  .bolt {
+    position: absolute;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, var(--brass-3), var(--brass) 45%, var(--brass-2) 80%);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.8), inset 0 -1px 1px rgba(0,0,0,0.5);
+  }
+  .bolt::after {
+    content: ""; position: absolute; left: 50%; top: 50%;
+    width: 7px; height: 1.5px; background: rgba(0,0,0,0.6);
+    transform: translate(-50%,-50%) rotate(35deg);
+  }
+  .bolt.tl { top: 5px; left: 5px; } .bolt.tr { top: 5px; right: 5px; }
+  .bolt.bl { bottom: 5px; left: 5px; } .bolt.br { bottom: 5px; right: 5px; }
+  canvas#plate {
+    display: block;
+    width: 100%; height: 100%;
+    border-radius: 3px;
+    background: #23262b;
+    box-shadow: inset 0 0 40px rgba(0,0,0,0.7);
+    cursor: crosshair;
+  }
+  .plate-caption {
+    text-align: center;
+    margin-top: 14px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+
+  /* ---------- Console ---------- */
+  aside.console {
+    background: linear-gradient(180deg, var(--panel-2), var(--panel));
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 18px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.04);
+    display: grid;
+    gap: 18px;
+  }
+  .dials {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .dial {
+    background: radial-gradient(circle at 50% 30%, #0e0f11, #000);
+    border: 1px solid #2c2a22;
+    border-radius: 6px;
+    padding: 10px 6px 8px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .dial::after {
+    content: ""; position: absolute; inset: 0;
+    background: repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 3px);
+    pointer-events: none;
+  }
+  .dial .val {
+    font-family: var(--mono);
+    font-size: 26px;
+    color: var(--brass-3);
+    text-shadow: 0 0 10px rgba(240,214,138,0.5);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .dial .lbl {
+    margin-top: 6px;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--brass-2);
+    text-transform: uppercase;
+  }
+  .row { display: grid; gap: 6px; }
+  .row label {
+    display: flex; justify-content: space-between;
+    font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+  }
+  .row label .readout { color: var(--text); font-family: var(--mono); }
+  input[type=range] {
+    -webkit-appearance: none; appearance: none;
+    width: 100%; height: 22px; background: transparent; margin: 0;
+  }
+  input[type=range]::-webkit-slider-runnable-track {
+    height: 4px; border-radius: 2px;
+    background: linear-gradient(90deg, var(--brass-2), var(--brass));
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.8);
+  }
+  input[type=range]::-moz-range-track {
+    height: 4px; border-radius: 2px;
+    background: linear-gradient(90deg, var(--brass-2), var(--brass));
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 18px; height: 18px; margin-top: -7px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #fff5cc, var(--brass) 50%, var(--brass-2));
+    border: 1px solid #5a4416;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.7);
+    transition: transform 0.2s cubic-bezier(.2,.8,.2,1);
+  }
+  input[type=range]::-moz-range-thumb {
+    width: 18px; height: 18px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #fff5cc, var(--brass) 50%, var(--brass-2));
+    border: 1px solid #5a4416;
+  }
+  input[type=range]:hover::-webkit-slider-thumb { transform: scale(1.15); }
+  input[type=range]:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+
+  .scope {
+    background: #060707;
+    border: 1px solid #2c2a22;
+    border-radius: 6px;
+    height: 84px;
+    position: relative;
+    overflow: hidden;
+  }
+  .scope canvas { width: 100%; height: 100%; display: block; }
+  .scope .tag {
+    position: absolute; top: 6px; left: 8px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em;
+    color: var(--accent); opacity: 0.7;
+  }
+
+  .buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  button {
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text);
+    background: linear-gradient(180deg, #2a2d33, #1a1c20);
+    border: 1px solid #383c44;
+    border-radius: 5px;
+    padding: 11px 10px;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.15s ease, border-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 3px 0 #0c0d0f, 0 6px 14px rgba(0,0,0,0.5);
+  }
+  button:hover { border-color: var(--brass); }
+  button:active { transform: translateY(2px); box-shadow: 0 1px 0 #0c0d0f, 0 3px 8px rgba(0,0,0,0.5); }
+  button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  button[aria-pressed="true"] {
+    background: linear-gradient(180deg, #3a3323, #26210f);
+    border-color: var(--brass);
+    color: var(--brass-3);
+  }
+  button .led {
+    display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+    background: #3a3d44; margin-right: 8px; vertical-align: middle;
+    box-shadow: inset 0 0 2px #000;
+    transition: background 0.2s, box-shadow 0.2s;
+  }
+  button[aria-pressed="true"] .led {
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent), 0 0 2px #fff;
+  }
+  .note {
+    font-family: var(--serif);
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--muted);
+    border-top: 1px dashed var(--line);
+    padding-top: 12px;
+    margin: 0;
+  }
+  .note strong { color: var(--text); font-weight: 400; font-style: italic; }
+  footer {
+    padding: 14px 28px 22px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    input[type=range]::-webkit-slider-thumb, button { transition: none; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Chladni <em>Resonance</em></h1>
+  <div class="sub">Apparatus No. 7 · Square plate, free edges · Fine quartz sand</div>
+</header>
+
+<main>
+  <section aria-label="Vibrating plate">
+    <div class="plate-wrap">
+      <span class="bolt tl"></span><span class="bolt tr"></span>
+      <span class="bolt bl"></span><span class="bolt br"></span>
+      <canvas id="plate" aria-label="Sand grains settling onto nodal lines of a vibrating plate"></canvas>
+    </div>
+    <p class="plate-caption" id="caption">Bow the plate: grains flee the antinodes and gather where the metal is still.</p>
+  </section>
+
+  <aside class="console" aria-label="Control console">
+    <div class="dials">
+      <div class="dial"><div class="val" id="dial-n">3</div><div class="lbl">Mode n</div></div>
+      <div class="dial"><div class="val" id="dial-m">5</div><div class="lbl">Mode m</div></div>
+      <div class="dial"><div class="val" id="dial-hz">412</div><div class="lbl">Hertz</div></div>
+    </div>
+
+    <div class="scope">
+      <span class="tag">DRIVE SIGNAL</span>
+      <canvas id="scope" aria-hidden="true"></canvas>
+    </div>
+
+    <div class="row">
+      <label for="n">Mode n <span class="readout" id="n-out">3</span></label>
+      <input type="range" id="n" min="1" max="9" step="1" value="3">
+    </div>
+    <div class="row">
+      <label for="m">Mode m <span class="readout" id="m-out">5</span></label>
+      <input type="range" id="m" min="1" max="9" step="1" value="5">
+    </div>
+    <div class="row">
+      <label for="blend">Frequency blend <span class="readout" id="blend-out">0.00</span></label>
+      <input type="range" id="blend" min="0" max="1" step="0.001" value="0">
+    </div>
+    <div class="row">
+      <label for="grains">Grains <span class="readout" id="grains-out">14000</span></label>
+      <input type="range" id="grains" min="2000" max="30000" step="500" value="14000">
+    </div>
+
+    <div class="buttons">
+      <button id="sweep" aria-pressed="false"><span class="led"></span>Sweep</button>
+      <button id="tone" aria-pressed="false"><span class="led"></span>Tone</button>
+      <button id="scatter">Scatter sand</button>
+      <button id="rand">Random mode</button>
+    </div>
+
+    <p class="note"><strong>Ernst Chladni, 1787.</strong> Drawing a violin bow across the edge of a sand-dusted brass plate, he watched the grains leap from the vibrating regions and gather along the silent nodal lines. Each pair of integers describes a standing wave; the blend slider slides the plate between two neighbouring resonances.</p>
+  </aside>
+</main>
+
+<footer>
+  <span>z(x,y) = cos(nπx)·cos(mπy) − cos(mπx)·cos(nπy)</span>
+  <span id="status">14000 grains · settled 0%</span>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const canvas = document.getElementById('plate');
+  const ctx = canvas.getContext('2d');
+  const scope = document.getElementById('scope');
+  const sctx = scope.getContext('2d');
+
+  const el = id => document.getElementById(id);
+  const ui = {
+    n: el('n'), m: el('m'), blend: el('blend'), grains: el('grains'),
+    nOut: el('n-out'), mOut: el('m-out'), blendOut: el('blend-out'), grainsOut: el('grains-out'),
+    dialN: el('dial-n'), dialM: el('dial-m'), dialHz: el('dial-hz'),
+    sweep: el('sweep'), tone: el('tone'), scatter: el('scatter'), rand: el('rand'),
+    status: el('status'), caption: el('caption')
+  };
+
+  // ---------- state ----------
+  let W = 0, H = 0, dpr = 1;
+  let count = parseInt(ui.grains.value, 10);
+  let px, py, vx, vy, settled; // typed arrays
+  let sweeping = false, sweepT = 0;
+  let toneOn = false, audioCtx = null, osc = null, gain = null;
+  let flashTime = 0;
+
+  function allocate(n) {
+    count = n;
+    px = new Float32Array(n); py = new Float32Array(n);
+    vx = new Float32Array(n); vy = new Float32Array(n);
+    settled = new Uint8Array(n);
+    for (let i = 0; i < n; i++) { px[i] = Math.random(); py[i] = Math.random(); }
+  }
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const rect = canvas.getBoundingClientRect();
+    W = Math.max(1, Math.round(rect.width * dpr));
+    H = Math.max(1, Math.round(rect.height * dpr));
+    canvas.width = W; canvas.height = H;
+    const s = scope.getBoundingClientRect();
+    scope.width = Math.round(s.width * dpr); scope.height = Math.round(s.height * dpr);
+  }
+
+  // ---------- Chladni field ----------
+  // Returns amplitude in [-2,2] for mode (n,m), blended toward the next mode pair.
+  const PI = Math.PI;
+  function modeAmp(n, m, x, y) {
+    return Math.cos(n * PI * x) * Math.cos(m * PI * y) - Math.cos(m * PI * x) * Math.cos(n * PI * y);
+  }
+  function params() {
+    const n = parseInt(ui.n.value, 10), m = parseInt(ui.m.value, 10);
+    const b = parseFloat(ui.blend.value);
+    return { n, m, b, n2: Math.min(9, n + 1), m2: Math.min(9, m + 1) };
+  }
+  function amp(p, x, y) {
+    const a = modeAmp(p.n, p.m, x, y);
+    if (p.b <= 0.0005) return a;
+    const c = modeAmp(p.n2, p.m2, x, y);
+    return a * (1 - p.b) + c * p.b;
+  }
+  function frequencyOf(p) {
+    // pseudo-physical: f ∝ (n² + m²), blended
+    const f1 = 40 * (p.n * p.n + p.m * p.m) + 30;
+    const f2 = 40 * (p.n2 * p.n2 + p.m2 * p.m2) + 30;
+    return f1 * (1 - p.b) + f2 * p.b;
+  }
+
+  // ---------- particle step ----------
+  function step(p) {
+    const eps = 0.0025;
+    let settledCount = 0;
+    for (let i = 0; i < count; i++) {
+      let x = px[i], y = py[i];
+      const a = amp(p, x, y);
+      const mag = Math.abs(a);
+      // grains move proportionally to local vibration amplitude (random walk),
+      // and drift down the gradient of |amp| toward nodal lines.
+      const ax = (Math.abs(amp(p, x + eps, y)) - Math.abs(amp(p, x - eps, y))) / (2 * eps);
+      const ay = (Math.abs(amp(p, x, y + eps)) - Math.abs(amp(p, x, y - eps))) / (2 * eps);
+      const jitter = mag * 0.012;
+      vx[i] = vx[i] * 0.55 + (Math.random() - 0.5) * jitter - ax * 0.0012 * Math.min(1, mag * 3);
+      vy[i] = vy[i] * 0.55 + (Math.random() - 0.5) * jitter - ay * 0.0012 * Math.min(1, mag * 3);
+      x += vx[i]; y += vy[i];
+      // edge bounce with slight re-scatter (grains fall off & are replaced)
+      if (x < 0 || x > 1 || y < 0 || y > 1) {
+        x = Math.random(); y = Math.random(); vx[i] = vy[i] = 0;
+      }
+      px[i] = x; py[i] = y;
+      const s = mag < 0.06 ? 1 : 0;
+      settled[i] = s; settledCount += s;
+    }
+    return settledCount / count;
+  }
+
+  // ---------- render ----------
+  function drawPlate(p, t) {
+    // brushed dark metal base
+    ctx.globalCompositeOperation = 'source-over';
+    const g = ctx.createLinearGradient(0, 0, W, H);
+    g.addColorStop(0, '#2b2e33'); g.addColorStop(0.5, '#1f2226'); g.addColorStop(1, '#2a2c31');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    // brush lines
+    ctx.globalAlpha = 0.08;
+    ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1;
+    const rows = 90;
+    for (let i = 0; i < rows; i++) {
+      const y = (i / rows) * H + ((i * 7919) % 13) * dpr * 0.2;
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+    // vibration shimmer: faint moving bands whose speed depends on frequency
+    if (!reduceMotion) {
+      const f = frequencyOf(p);
+      const phase = (t * 0.0006 * (f / 200)) % 1;
+      const sg = ctx.createLinearGradient(0, 0, W, H);
+      sg.addColorStop(Math.max(0, phase - 0.15), 'rgba(255,255,255,0)');
+      sg.addColorStop(phase, 'rgba(255,255,255,0.06)');
+      sg.addColorStop(Math.min(1, phase + 0.15), 'rgba(255,255,255,0)');
+      ctx.fillStyle = sg; ctx.fillRect(0, 0, W, H);
+    }
+    // faint underlying field intensity map (antinodes glow warm)
+    ctx.globalAlpha = 0.18;
+    const cell = Math.max(6, Math.floor(W / 64));
+    for (let gy = 0; gy < H; gy += cell) {
+      for (let gx = 0; gx < W; gx += cell) {
+        const a = Math.abs(amp(p, (gx + cell / 2) / W, (gy + cell / 2) / H));
+        const v = Math.min(1, a * 0.6);
+        ctx.fillStyle = `rgba(201,162,74,${v * 0.35})`;
+        ctx.fillRect(gx, gy, cell, cell);
+      }
+    }
+    ctx.globalAlpha = 1;
+    // vignette
+    const vg = ctx.createRadialGradient(W / 2, H / 2, W * 0.35, W / 2, H / 2, W * 0.75);
+    vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(0,0,0,0.55)');
+    ctx.fillStyle = vg; ctx.fillRect(0, 0, W, H);
+    // lightning flash on mode change
+    if (flashTime > 0) {
+      ctx.fillStyle = `rgba(240,214,138,${flashTime * 0.12})`; ctx.fillRect(0, 0, W, H);
+      flashTime = Math.max(0, flashTime - 0.06);
+    }
+  }
+
+  function drawGrains() {
+    const size = Math.max(1, Math.round(dpr * 1.2));
+    ctx.fillStyle = '#f4ecd8';
+    ctx.beginPath();
+    for (let i = 0; i < count; i++) {
+      if (!settled[i]) continue;
+      ctx.rect(px[i] * W, py[i] * H, size, size);
+    }
+    ctx.fill();
+    ctx.fillStyle = 'rgba(244,236,216,0.45)';
+    ctx.beginPath();
+    for (let i = 0; i < count; i++) {
+      if (settled[i]) continue;
+      ctx.rect(px[i] * W, py[i] * H, size, size);
+    }
+    ctx.fill();
+  }
+
+  function drawScope(p, t) {
+    const w = scope.width, h = scope.height;
+    sctx.clearRect(0, 0, w, h);
+    sctx.strokeStyle = 'rgba(127,209,192,0.12)'; sctx.lineWidth = 1;
+    for (let i = 1; i < 4; i++) { sctx.beginPath(); sctx.moveTo(0, h * i / 4); sctx.lineTo(w, h * i / 4); sctx.stroke(); }
+    const f = frequencyOf(p);
+    const cycles = 2 + (f / 400) * 6;
+    sctx.beginPath();
+    sctx.strokeStyle = '#7fd1c0'; sctx.lineWidth = 1.5 * dpr;
+    sctx.shadowColor = '#7fd1c0'; sctx.shadowBlur = 8 * dpr;
+    const ph = reduceMotion ? 0 : t * 0.004;
+    for (let x = 0; x <= w; x += 2) {
+      const u = x / w;
+      const y = h / 2 + Math.sin(u * cycles * Math.PI * 2 + ph) * h * 0.34 * (1 - p.b * 0.25);
+      if (x === 0) sctx.moveTo(x, y); else sctx.lineTo(x, y);
+    }
+    sctx.stroke();
+    sctx.shadowBlur = 0;
+  }
+
+  // ---------- audio ----------
+  function setTone(on) {
+    toneOn = on;
+    ui.tone.setAttribute('aria-pressed', String(on));
+    if (on) {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        osc = audioCtx.createOscillator(); gain = audioCtx.createGain();
+        osc.type = 'sine'; gain.gain.value = 0;
+        osc.connect(gain).connect(audioCtx.destination); osc.start();
+      }
+      audioCtx.resume();
+      gain.gain.setTargetAtTime(0.06, audioCtx.currentTime, 0.2);
+    } else if (gain) {
+      gain.gain.setTargetAtTime(0, audioCtx.currentTime, 0.15);
+    }
+  }
+  function updateTone(f) {
+    if (toneOn && osc) osc.frequency.setTargetAtTime(f, audioCtx.currentTime, 0.05);
+  }
+
+  // ---------- UI ----------
+  function refreshReadouts(p) {
+    ui.nOut.textContent = p.n; ui.mOut.textContent = p.m;
+    ui.blendOut.textContent = p.b.toFixed(2);
+    ui.dialN.textContent = p.n; ui.dialM.textContent = p.m;
+    ui.dialHz.textContent = Math.round(frequencyOf(p));
+  }
+  ['n', 'm'].forEach(k => ui[k].addEventListener('input', () => { flashTime = 1; }));
+  ui.grains.addEventListener('input', () => {
+    ui.grainsOut.textContent = ui.grains.value;
+    allocate(parseInt(ui.grains.value, 10));
+  });
+  ui.scatter.addEventListener('click', () => {
+    for (let i = 0; i < count; i++) { px[i] = Math.random(); py[i] = Math.random(); vx[i] = vy[i] = 0; }
+    flashTime = 1;
+  });
+  ui.rand.addEventListener('click', () => {
+    let n = 1 + Math.floor(Math.random() * 9), m = 1 + Math.floor(Math.random() * 9);
+    if (n === m) m = (m % 9) + 1;
+    ui.n.value = n; ui.m.value = m; ui.blend.value = 0; flashTime = 1;
+  });
+  ui.sweep.addEventListener('click', () => {
+    sweeping = !sweeping;
+    ui.sweep.setAttribute('aria-pressed', String(sweeping));
+    ui.caption.textContent = sweeping
+      ? 'Sweeping: the driving frequency glides upward and the sand reorganises live.'
+      : 'Bow the plate: grains flee the antinodes and gather where the metal is still.';
+  });
+  ui.tone.addEventListener('click', () => setTone(!toneOn));
+  canvas.addEventListener('pointerdown', e => {
+    // tap the plate: puff grains away from the touch point
+    const r = canvas.getBoundingClientRect();
+    const tx = (e.clientX - r.left) / r.width, ty = (e.clientY - r.top) / r.height;
+    for (let i = 0; i < count; i++) {
+      const dx = px[i] - tx, dy = py[i] - ty, d2 = dx * dx + dy * dy;
+      if (d2 < 0.02) { const d = Math.sqrt(d2) + 1e-4; vx[i] += dx / d * 0.03; vy[i] += dy / d * 0.03; }
+    }
+  });
+
+  // ---------- loop ----------
+  let last = performance.now();
+  function frame(t) {
+    const dt = Math.min(50, t - last); last = t;
+    if (sweeping) {
+      sweepT += dt * 0.00012;
+      const cycle = sweepT % 1;
+      // walk through mode pairs: blend rises 0->1, then n,m advance
+      let b = cycle;
+      ui.blend.value = b.toFixed(3);
+      if (sweepT >= 1) {
+        sweepT = 0;
+        let n = parseInt(ui.n.value, 10) + 1, m = parseInt(ui.m.value, 10) + 1;
+        if (n > 8 || m > 8) { n = 1 + Math.floor(Math.random() * 3); m = n + 1 + Math.floor(Math.random() * 3); }
+        ui.n.value = n; ui.m.value = m; ui.blend.value = 0;
+      }
+    }
+    const p = params();
+    refreshReadouts(p);
+    updateTone(frequencyOf(p));
+    const iters = reduceMotion ? 1 : 2;
+    let ratio = 0;
+    for (let k = 0; k < iters; k++) ratio = step(p);
+    drawPlate(p, t);
+    drawGrains();
+    drawScope(p, t);
+    ui.status.textContent = `${count} grains · settled ${Math.round(ratio * 100)}%`;
+    requestAnimationFrame(frame);
+  }
+
+  allocate(count);
+  resize();
+  window.addEventListener('resize', resize);
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

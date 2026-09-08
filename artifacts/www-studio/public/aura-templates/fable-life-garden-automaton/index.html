@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Garden Automaton — Conway's Life as a Living Bed</title>
+<style>
+  :root {
+    --soil: #16100b;
+    --soil-2: #0c0805;
+    --paper: #e9dcc3;
+    --paper-dim: #a99a80;
+    --moss: #7fb069;
+    --coral: #f28e7b;
+    --violet: #a687d1;
+    --gold: #e7b95a;
+    --line: rgba(233, 220, 195, 0.14);
+    --serif: "Iowan Old Style", Palatino, "Palatino Linotype", "Book Antiqua", Georgia, ui-serif, serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Courier New", monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: radial-gradient(ellipse at 50% 40%, #241911 0%, var(--soil) 50%, var(--soil-2) 100%);
+    color: var(--paper);
+    font-family: var(--serif);
+    overflow: hidden;
+  }
+
+  #garden {
+    position: fixed; inset: 0;
+    width: 100%; height: 100%;
+    display: block;
+    cursor: crosshair;
+    touch-action: none;
+  }
+  .vignette {
+    position: fixed; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 45%, rgba(0,0,0,0.7) 100%);
+  }
+  .grain {
+    position: fixed; inset: 0; pointer-events: none; opacity: 0.35; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.45 0 0 0 0 0.4 0 0 0 0.5 0'/></filter><rect width='120' height='120' filter='url(%23n)'/></svg>");
+  }
+
+  /* ---------- Journal header ---------- */
+  header {
+    position: fixed; top: 0; left: 0; right: 0;
+    padding: clamp(14px, 2.5vw, 30px) clamp(16px, 3vw, 40px);
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;
+    pointer-events: none;
+  }
+  .plate-no { font-family: var(--mono); font-size: 10px; letter-spacing: 0.3em; color: var(--paper-dim); margin: 0 0 6px; text-transform: uppercase; }
+  h1 { margin: 0; font-size: clamp(22px, 3.4vw, 40px); font-weight: 400; letter-spacing: 0.02em; line-height: 1.05; }
+  h1 em { font-style: italic; color: var(--gold); }
+  .caption { margin: 8px 0 0; font-style: italic; font-size: 13px; color: var(--paper-dim); max-width: 46ch; line-height: 1.55; }
+
+  .counters { display: flex; gap: 28px; text-align: right; }
+  .counter-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--paper-dim); }
+  .counter-value { font-size: clamp(20px, 2.6vw, 30px); font-variant-numeric: tabular-nums; margin-top: 2px; }
+  .counter-value small { font-style: italic; font-size: 0.5em; color: var(--paper-dim); margin-left: 4px; }
+
+  /* ---------- Legend ---------- */
+  .legend {
+    position: fixed; left: clamp(16px, 3vw, 40px); bottom: clamp(16px, 3vw, 40px);
+    display: flex; gap: 14px; align-items: center; pointer-events: none;
+    font-style: italic; font-size: 12px; color: var(--paper-dim);
+  }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .legend i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; box-shadow: 0 0 8px currentColor; }
+
+  /* ---------- Controls ---------- */
+  .controls {
+    position: fixed; right: clamp(16px, 3vw, 40px); bottom: clamp(16px, 3vw, 40px);
+    display: flex; flex-direction: column; align-items: flex-end; gap: 12px;
+  }
+  .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+  .btn {
+    font-family: var(--serif); font-size: 13px; letter-spacing: 0.08em;
+    color: var(--paper);
+    background: rgba(233,220,195,0.06);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 8px 16px;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: background 0.25s, border-color 0.25s, transform 0.2s cubic-bezier(.2,.8,.2,1);
+  }
+  .btn:hover { background: rgba(233,220,195,0.14); border-color: rgba(233,220,195,0.4); transform: translateY(-1px); }
+  .btn:active { transform: translateY(0); }
+  .btn[aria-pressed="true"] { background: var(--gold); color: #241911; border-color: var(--gold); }
+
+  .speed { display: flex; align-items: center; gap: 10px; font-style: italic; font-size: 12px; color: var(--paper-dim); }
+  input[type=range] {
+    -webkit-appearance: none; appearance: none;
+    width: 140px; height: 2px; background: var(--line); border-radius: 1px; outline: none;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%;
+    background: var(--gold); box-shadow: 0 0 10px rgba(231,185,90,0.7); cursor: pointer;
+    transition: transform 0.2s;
+  }
+  input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+  input[type=range]::-moz-range-thumb { width: 14px; height: 14px; border: 0; border-radius: 50%; background: var(--gold); cursor: pointer; }
+
+  /* ---------- Seed drawer ---------- */
+  .drawer-toggle { position: relative; }
+  .drawer {
+    position: absolute; right: 0; bottom: calc(100% + 10px);
+    width: min(320px, calc(100vw - 32px));
+    background: rgba(22, 16, 11, 0.92);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    transform-origin: bottom right;
+    transform: scale(0.92) translateY(8px);
+    opacity: 0; pointer-events: none;
+    transition: transform 0.3s cubic-bezier(.2,.8,.2,1), opacity 0.25s;
+  }
+  .drawer.open { transform: none; opacity: 1; pointer-events: auto; }
+  .drawer h2 { margin: 0 0 4px; font-size: 15px; font-weight: 400; letter-spacing: 0.06em; }
+  .drawer p { margin: 0 0 12px; font-style: italic; font-size: 12px; color: var(--paper-dim); }
+  .seeds { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .seed {
+    text-align: left; padding: 10px 12px; border-radius: 10px;
+    background: rgba(233,220,195,0.05); border: 1px solid var(--line);
+    color: var(--paper); font-family: var(--serif); cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  }
+  .seed:hover { background: rgba(231,185,90,0.12); border-color: rgba(231,185,90,0.5); transform: translateY(-2px); }
+  .seed b { display: block; font-weight: 400; font-size: 13px; }
+  .seed small { display: block; font-style: italic; font-size: 11px; color: var(--paper-dim); margin-top: 2px; }
+
+  @media (max-width: 640px) {
+    header { flex-direction: column; }
+    .counters { text-align: left; gap: 18px; }
+    .legend { display: none; }
+    input[type=range] { width: 100px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .btn, .seed, .drawer { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="garden" role="img" aria-label="Conway's Game of Life rendered as a garden of blooming cells. Click or drag to plant."></canvas>
+<div class="vignette"></div>
+<div class="grain"></div>
+
+<header>
+  <div>
+    <p class="plate-no">Plate XIV · Cellular Horticulture</p>
+    <h1>The Garden <em>Automaton</em></h1>
+    <p class="caption">Each bloom lives by Conway's three rules: loneliness withers, company sustains, crowding smothers. Seedlings green, blossoms flush coral and violet, elders turn to gold, and every death leaves a fading stain in the soil.</p>
+  </div>
+  <div class="counters">
+    <div><div class="counter-label">Generation</div><div class="counter-value" id="gen">0</div></div>
+    <div><div class="counter-label">Population</div><div class="counter-value" id="pop">0<small>blooms</small></div></div>
+  </div>
+</header>
+
+<div class="legend" aria-hidden="true">
+  <span><i style="color:#7fb069;background:#7fb069"></i>seedling</span>
+  <span><i style="color:#f28e7b;background:#f28e7b"></i>bloom</span>
+  <span><i style="color:#a687d1;background:#a687d1"></i>mature</span>
+  <span><i style="color:#e7b95a;background:#e7b95a"></i>elder</span>
+</div>
+
+<div class="controls">
+  <div class="row speed">
+    <label for="speed">tempo</label>
+    <input type="range" id="speed" min="1" max="30" value="10" aria-label="Generations per second">
+    <span id="speedVal">10 /s</span>
+  </div>
+  <div class="row">
+    <button class="btn" id="playBtn" aria-pressed="true">Pause</button>
+    <button class="btn" id="stepBtn">Step</button>
+    <button class="btn" id="clearBtn">Clear bed</button>
+    <div class="drawer-toggle">
+      <button class="btn" id="drawerBtn" aria-expanded="false" aria-controls="drawer">Seed drawer</button>
+      <div class="drawer" id="drawer">
+        <h2>Seed packets</h2>
+        <p>Choose a cultivar to sow in the centre of the bed.</p>
+        <div class="seeds">
+          <button class="seed" data-seed="gun"><b>Gosper's glider gun</b><small>a perennial that scatters gliders</small></button>
+          <button class="seed" data-seed="pulsar"><b>Pulsar</b><small>period-three breathing rosette</small></button>
+          <button class="seed" data-seed="rpent"><b>R-pentomino</b><small>five cells, a thousand generations</small></button>
+          <button class="seed" data-seed="acorn"><b>Acorn</b><small>seven cells that grow an oak</small></button>
+          <button class="seed" data-seed="random"><b>Wild garden</b><small>random scatter, thirty percent</small></button>
+          <button class="seed" data-seed="diehard"><b>Diehard</b><small>blooms then vanishes at 130</small></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  const canvas = document.getElementById('garden');
+  const ctx = canvas.getContext('2d');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let W = 0, H = 0, DPR = 1, CELL = 14, COLS = 0, ROWS = 0;
+  let age = new Uint16Array(0);      // 0 = dead; else age in generations
+  let next = new Uint16Array(0);
+  let trail = new Float32Array(0);   // death trail intensity 0..1
+  let generation = 0, population = 0;
+  let running = true, gps = 10, acc = 0, lastT = performance.now();
+
+  const genEl = document.getElementById('gen'), popEl = document.getElementById('pop');
+
+  function resize() {
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth; H = window.innerHeight;
+    canvas.width = Math.floor(W * DPR); canvas.height = Math.floor(H * DPR);
+    canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+
+    CELL = W < 500 ? 11 : (W > 1800 ? 18 : 14);
+    const newCols = Math.ceil(W / CELL), newRows = Math.ceil(H / CELL);
+    const nAge = new Uint16Array(newCols * newRows);
+    const nTrail = new Float32Array(newCols * newRows);
+    // preserve existing cells where possible
+    for (let y = 0; y < Math.min(ROWS, newRows); y++)
+      for (let x = 0; x < Math.min(COLS, newCols); x++) {
+        nAge[y * newCols + x] = age[y * COLS + x];
+        nTrail[y * newCols + x] = trail[y * COLS + x];
+      }
+    COLS = newCols; ROWS = newRows;
+    age = nAge; trail = nTrail; next = new Uint16Array(COLS * ROWS);
+  }
+
+  function step() {
+    let pop = 0;
+    for (let y = 0; y < ROWS; y++) {
+      const ym = ((y - 1 + ROWS) % ROWS) * COLS, y0 = y * COLS, yp = ((y + 1) % ROWS) * COLS;
+      for (let x = 0; x < COLS; x++) {
+        const xm = (x - 1 + COLS) % COLS, xp = (x + 1) % COLS;
+        const n = (age[ym + xm] > 0) + (age[ym + x] > 0) + (age[ym + xp] > 0)
+                + (age[y0 + xm] > 0) + (age[y0 + xp] > 0)
+                + (age[yp + xm] > 0) + (age[yp + x] > 0) + (age[yp + xp] > 0);
+        const i = y0 + x, a = age[i];
+        if (a > 0) {
+          if (n === 2 || n === 3) { next[i] = Math.min(a + 1, 65000); pop++; }
+          else { next[i] = 0; trail[i] = 1; }
+        } else {
+          if (n === 3) { next[i] = 1; pop++; } else next[i] = 0;
+        }
+      }
+    }
+    const t = age; age = next; next = t;
+    generation++; population = pop;
+  }
+
+  // Age -> colour: seedling green -> coral -> violet -> gold
+  function colorFor(a) {
+    if (a <= 2) return [127, 176, 105];
+    if (a <= 8) { const t = (a - 2) / 6; return lerp3([127,176,105], [242,142,123], t); }
+    if (a <= 20) { const t = (a - 8) / 12; return lerp3([242,142,123], [166,135,209], t); }
+    if (a <= 45) { const t = (a - 20) / 25; return lerp3([166,135,209], [231,185,90], t); }
+    return [231, 185, 90];
+  }
+  function lerp3(a, b, t) { return [a[0] + (b[0]-a[0])*t, a[1] + (b[1]-a[1])*t, a[2] + (b[2]-a[2])*t]; }
+
+  // Pre-rendered bloom sprites per colour bucket
+  const spriteCache = new Map();
+  function bloomSprite(a, size) {
+    const bucket = Math.min(a, 46);
+    const key = bucket + ':' + size;
+    let s = spriteCache.get(key);
+    if (s) return s;
+    const c = colorFor(bucket);
+    const pad = size * 0.9;
+    const S = Math.ceil(size + pad * 2);
+    s = document.createElement('canvas'); s.width = S * DPR; s.height = S * DPR;
+    const sc = s.getContext('2d'); sc.scale(DPR, DPR);
+    const cx = S / 2, cy = S / 2;
+    // glow
+    const g = sc.createRadialGradient(cx, cy, 0, cx, cy, S / 2);
+    g.addColorStop(0, `rgba(${c[0]|0},${c[1]|0},${c[2]|0},0.55)`);
+    g.addColorStop(0.45, `rgba(${c[0]|0},${c[1]|0},${c[2]|0},0.12)`);
+    g.addColorStop(1, `rgba(${c[0]|0},${c[1]|0},${c[2]|0},0)`);
+    sc.fillStyle = g; sc.fillRect(0, 0, S, S);
+    // body: soft rounded bloom
+    const r = size * 0.36;
+    sc.fillStyle = `rgb(${c[0]|0},${c[1]|0},${c[2]|0})`;
+    sc.beginPath(); sc.arc(cx, cy, r, 0, Math.PI * 2); sc.fill();
+    // petal hint for mature blooms
+    if (bucket > 8) {
+      sc.fillStyle = 'rgba(255,255,255,0.18)';
+      for (let k = 0; k < 5; k++) {
+        const ang = k * Math.PI * 2 / 5 - Math.PI / 2;
+        sc.beginPath(); sc.arc(cx + Math.cos(ang) * r * 0.55, cy + Math.sin(ang) * r * 0.55, r * 0.32, 0, Math.PI * 2); sc.fill();
+      }
+    }
+    // highlight
+    sc.fillStyle = 'rgba(255,255,255,0.35)';
+    sc.beginPath(); sc.arc(cx - r * 0.3, cy - r * 0.3, r * 0.28, 0, Math.PI * 2); sc.fill();
+    spriteCache.set(key, s);
+    return s;
+  }
+
+  function render() {
+    ctx.clearRect(0, 0, W, H);
+    // death trails: soft stains fading in soil
+    for (let y = 0; y < ROWS; y++) for (let x = 0; x < COLS; x++) {
+      const i = y * COLS + x, t = trail[i];
+      if (t <= 0.01) continue;
+      ctx.fillStyle = `rgba(120, 80, 60, ${t * 0.35})`;
+      ctx.beginPath(); ctx.arc(x * CELL + CELL / 2, y * CELL + CELL / 2, CELL * 0.3 * (0.6 + t * 0.4), 0, Math.PI * 2); ctx.fill();
+      trail[i] = t * 0.93;
+    }
+    ctx.globalCompositeOperation = 'lighter';
+    for (let y = 0; y < ROWS; y++) for (let x = 0; x < COLS; x++) {
+      const a = age[y * COLS + x];
+      if (!a) continue;
+      const s = bloomSprite(a, CELL);
+      const grow = a === 1 ? 0.7 : 1;
+      const w = s.width / DPR * grow;
+      ctx.drawImage(s, x * CELL + CELL / 2 - w / 2, y * CELL + CELL / 2 - w / 2, w, w);
+    }
+    ctx.globalCompositeOperation = 'source-over';
+
+    // hover cursor ring
+    if (hover.x >= 0) {
+      ctx.strokeStyle = 'rgba(233,220,195,0.35)'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.arc(hover.x * CELL + CELL / 2, hover.y * CELL + CELL / 2, CELL * 0.55, 0, Math.PI * 2); ctx.stroke();
+    }
+  }
+
+  function updateCounters() {
+    genEl.textContent = generation.toLocaleString('en-US');
+    popEl.innerHTML = population.toLocaleString('en-US') + '<small>blooms</small>';
+  }
+  function countPop() { let p = 0; for (let i = 0; i < age.length; i++) if (age[i]) p++; population = p; }
+
+  function loop(now) {
+    const dt = Math.min(0.1, (now - lastT) / 1000); lastT = now;
+    if (running) {
+      acc += dt * gps;
+      let steps = 0;
+      while (acc >= 1 && steps < 6) { step(); acc -= 1; steps++; }
+      if (acc > 6) acc = 0;
+    }
+    render();
+    updateCounters();
+    requestAnimationFrame(loop);
+  }
+
+  // ---------- Seeds ----------
+  const RLE = {
+    gun: [
+      '........................O...........',
+      '......................O.O...........',
+      '............OO......OO............OO',
+      '...........O...O....OO............OO',
+      'OO........O.....O...OO..............',
+      'OO........O...O.OO....O.O...........',
+      '..........O.....O.......O...........',
+      '...........O...O....................',
+      '............OO......................'
+    ],
+    pulsar: [
+      '..OOO...OOO..', '.............', 'O....O.O....O', 'O....O.O....O', 'O....O.O....O', '..OOO...OOO..',
+      '.............', '..OOO...OOO..', 'O....O.O....O', 'O....O.O....O', 'O....O.O....O', '.............', '..OOO...OOO..'
+    ],
+    rpent: ['.OO', 'OO.', '.O.'],
+    acorn: ['.O.....', '...O...', 'OO..OOO'],
+    diehard: ['......O.', 'OO......', '.O...OOO']
+  };
+  function clear() { age.fill(0); trail.fill(0); generation = 0; population = 0; }
+  function stamp(rows, ox, oy) {
+    const h = rows.length, w = rows[0].length;
+    const sx = Math.floor(ox - w / 2), sy = Math.floor(oy - h / 2);
+    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+      if (rows[y][x] === 'O') {
+        const gx = (sx + x + COLS) % COLS, gy = (sy + y + ROWS) % ROWS;
+        age[gy * COLS + gx] = 1;
+      }
+    }
+  }
+  function sow(name) {
+    clear();
+    if (name === 'random') {
+      for (let i = 0; i < age.length; i++) if (Math.random() < 0.3) age[i] = 1 + Math.floor(Math.random() * 3);
+    } else if (name === 'gun') {
+      stamp(RLE.gun, Math.floor(COLS * 0.32), Math.floor(ROWS * 0.35));
+    } else {
+      stamp(RLE[name], Math.floor(COLS / 2), Math.floor(ROWS / 2));
+    }
+    countPop();
+  }
+
+  // ---------- Planting ----------
+  const hover = { x: -1, y: -1 };
+  let planting = false, lastCell = -1;
+  function cellAt(e) {
+    return { x: Math.floor(e.clientX / CELL), y: Math.floor(e.clientY / CELL) };
+  }
+  canvas.addEventListener('pointerdown', e => {
+    planting = true; canvas.setPointerCapture(e.pointerId);
+    const c = cellAt(e); const i = c.y * COLS + c.x;
+    age[i] = age[i] ? 0 : 1; lastCell = i; countPop();
+  });
+  canvas.addEventListener('pointermove', e => {
+    const c = cellAt(e); hover.x = c.x; hover.y = c.y;
+    if (!planting) return;
+    const i = c.y * COLS + c.x;
+    if (i !== lastCell && i >= 0 && i < age.length) { age[i] = 1; lastCell = i; countPop(); }
+  });
+  const stopPlant = () => { planting = false; lastCell = -1; };
+  canvas.addEventListener('pointerup', stopPlant);
+  canvas.addEventListener('pointercancel', stopPlant);
+  canvas.addEventListener('pointerleave', () => { hover.x = -1; });
+
+  // ---------- Controls ----------
+  const playBtn = document.getElementById('playBtn');
+  function setRunning(v) { running = v; playBtn.textContent = v ? 'Pause' : 'Grow'; playBtn.setAttribute('aria-pressed', String(v)); }
+  playBtn.addEventListener('click', () => setRunning(!running));
+  document.getElementById('stepBtn').addEventListener('click', () => { setRunning(false); step(); });
+  document.getElementById('clearBtn').addEventListener('click', () => { clear(); });
+  const speedEl = document.getElementById('speed'), speedVal = document.getElementById('speedVal');
+  speedEl.addEventListener('input', () => { gps = +speedEl.value; speedVal.textContent = gps + ' /s'; });
+
+  const drawer = document.getElementById('drawer'), drawerBtn = document.getElementById('drawerBtn');
+  function toggleDrawer(open) {
+    drawer.classList.toggle('open', open);
+    drawerBtn.setAttribute('aria-expanded', String(open));
+  }
+  drawerBtn.addEventListener('click', () => toggleDrawer(!drawer.classList.contains('open')));
+  drawer.querySelectorAll('.seed').forEach(b => b.addEventListener('click', () => { sow(b.dataset.seed); toggleDrawer(false); setRunning(true); }));
+  document.addEventListener('keydown', e => {
+    if (e.code === 'Space' && e.target === document.body) { e.preventDefault(); setRunning(!running); }
+    if (e.key === 'Escape') toggleDrawer(false);
+  });
+
+  window.addEventListener('resize', () => { resize(); spriteCache.clear(); });
+
+  resize();
+  sow('gun');
+  if (reduceMotion) { gps = 4; speedEl.value = 4; speedVal.textContent = '4 /s'; }
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

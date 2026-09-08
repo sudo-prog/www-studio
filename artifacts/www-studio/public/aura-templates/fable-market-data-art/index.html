@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aurum — Market Data as Abstract Art</title>
+<style>
+  :root{
+    --bg:#07080a; --bg-2:#0c0e12; --line:rgba(212,175,55,.22); --gold:#d4af37; --mint:#2ee59d; --rose:#ff5c7a;
+    --ink:#e8e6df; --ink-2:rgba(232,230,223,.55); --ink-3:rgba(232,230,223,.3);
+    --sans:ui-sans-serif,system-ui,'Helvetica Neue',Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,'SF Mono',Menlo,Consolas,'Courier New',monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-variant-numeric:tabular-nums;overflow:hidden;display:flex;flex-direction:column;min-height:100vh}
+  #sonar{position:fixed;inset:0;width:100%;height:100%;z-index:0}
+  .grain{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+    background-image:radial-gradient(rgba(255,255,255,.035) .6px, transparent .6px);background-size:3px 3px}
+  header,main,footer{position:relative;z-index:1}
+
+  header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px clamp(14px,3vw,36px);border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .brand{display:flex;align-items:baseline;gap:14px}
+  .brand h1{margin:0;font-weight:300;font-size:clamp(18px,2vw,24px);letter-spacing:.32em;text-transform:uppercase}
+  .brand h1 b{font-weight:600;color:var(--gold)}
+  .brand span{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--ink-2);text-transform:uppercase}
+  .tf{display:flex;border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px}
+  .tf button{font:inherit;font-family:var(--mono);font-size:11px;letter-spacing:.18em;background:transparent;color:var(--ink-2);border:0;border-radius:999px;padding:7px 14px;cursor:pointer;transition:background .3s,color .3s}
+  .tf button:hover{color:var(--ink)}
+  .tf button[aria-pressed="true"]{background:var(--gold);color:#1a1405;font-weight:600}
+  .tf button:focus-visible{outline:2px solid var(--mint);outline-offset:2px}
+  .clock{font-family:var(--mono);font-size:12px;letter-spacing:.16em;color:var(--ink-2)}
+  .clock i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--mint);margin-right:8px;box-shadow:0 0 8px var(--mint);animation:blink 2s infinite}
+  @keyframes blink{50%{opacity:.3}}
+
+  main{flex:1;display:grid;grid-template-columns:minmax(0,2fr) minmax(280px,1fr);grid-template-rows:1fr;gap:clamp(12px,2vw,22px);padding:clamp(12px,2vw,22px) clamp(14px,3vw,36px);min-height:0}
+  .panel{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,0));border:1px solid var(--line);border-radius:14px;min-height:0;display:flex;flex-direction:column;overflow:hidden;backdrop-filter:blur(2px)}
+  .panel::before{content:"";position:absolute;left:14px;right:14px;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.6}
+  .panel h2{margin:0;padding:12px 16px 0;font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--ink-2);font-weight:500;display:flex;justify-content:space-between;align-items:baseline}
+  .panel h2 span{font-family:var(--mono);letter-spacing:.06em;color:var(--ink-3);text-transform:none}
+  .panel canvas{flex:1;width:100%;min-height:0;display:block}
+
+  .stats{display:flex;gap:clamp(14px,2.5vw,34px);padding:10px 16px 0;flex-wrap:wrap}
+  .stat small{display:block;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--ink-3)}
+  .stat b{font-weight:400;font-size:clamp(15px,1.5vw,20px);font-family:var(--mono);letter-spacing:.02em}
+  .stat b.big{font-size:clamp(24px,2.6vw,34px);font-weight:300;letter-spacing:-.01em;color:#fff;text-shadow:0 0 18px rgba(212,175,55,.25)}
+  .up{color:var(--mint)} .down{color:var(--rose)}
+
+  .side{display:grid;grid-template-rows:1fr 1.2fr;gap:clamp(12px,2vw,22px);min-height:0}
+  .treemap{position:relative;flex:1;margin:10px 12px 12px;min-height:0}
+  .cell{position:absolute;border-radius:6px;padding:8px 10px;overflow:hidden;transition:background-color 1.2s ease,box-shadow 1.2s ease,transform .4s;display:flex;flex-direction:column;justify-content:space-between;cursor:default}
+  .cell:hover{transform:scale(1.015);z-index:2;box-shadow:0 0 0 1px var(--gold)}
+  .cell small{font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.75;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cell b{font-family:var(--mono);font-weight:500;font-size:13px}
+  .cell.tiny small{display:none}
+  .cell.tiny b{font-size:10px}
+
+  footer{border-top:1px solid var(--line);background:var(--bg-2);overflow:hidden;height:38px;display:flex;align-items:center;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+  .tape{display:flex;gap:0;white-space:nowrap;animation:tape 48s linear infinite;will-change:transform}
+  footer:hover .tape{animation-play-state:paused}
+  .tape span{display:inline-flex;gap:10px;align-items:baseline;padding:0 22px;font-family:var(--mono);font-size:12px;letter-spacing:.04em;border-right:1px solid var(--line)}
+  .tape span em{font-style:normal;color:var(--ink);font-weight:600;letter-spacing:.12em}
+  .tape span i{font-style:normal;color:var(--ink-2)}
+  .tape span u{text-decoration:none;font-weight:500}
+  @keyframes tape{to{transform:translateX(-50%)}}
+
+  @media (max-width:900px){
+    body{overflow:auto}
+    main{grid-template-columns:1fr;grid-template-rows:60vh auto}
+    .side{grid-template-rows:240px 300px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .tape{animation-duration:160s}
+    .clock i{animation:none}
+    .cell{transition:none}
+  }
+</style>
+</head>
+<body>
+<canvas id="sonar" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
+<header>
+  <div class="brand">
+    <h1><b>Aurum</b> Exchange</h1>
+    <span>Synthetic feed · AUR/USD</span>
+  </div>
+  <div class="tf" role="group" aria-label="Candle timeframe">
+    <button type="button" data-tf="60" aria-pressed="true">1m</button>
+    <button type="button" data-tf="300" aria-pressed="false">5m</button>
+    <button type="button" data-tf="3600" aria-pressed="false">1h</button>
+  </div>
+  <div class="clock"><i></i><span id="clock">00:00:00</span></div>
+</header>
+
+<main>
+  <section class="panel" aria-label="Candlestick chart">
+    <h2>Price · Aurum Index <span id="tfLabel">1-minute candles</span></h2>
+    <div class="stats">
+      <div class="stat"><small>Last</small><b class="big" id="last">0.00</b></div>
+      <div class="stat"><small>Change</small><b id="chg">+0.00%</b></div>
+      <div class="stat"><small>High</small><b id="hi">0.00</b></div>
+      <div class="stat"><small>Low</small><b id="lo">0.00</b></div>
+      <div class="stat"><small>Volatility</small><b id="vol">0.00</b></div>
+    </div>
+    <canvas id="chart"></canvas>
+  </section>
+  <div class="side">
+    <section class="panel" aria-label="Depth of market">
+      <h2>Depth of market <span>bids · asks</span></h2>
+      <canvas id="depth"></canvas>
+    </section>
+    <section class="panel" aria-label="Sector heat map">
+      <h2>Sector heat <span>session %</span></h2>
+      <div class="treemap" id="treemap"></div>
+    </section>
+  </div>
+</main>
+
+<footer aria-label="Ticker tape"><div class="tape" id="tape"></div></footer>
+
+<script>
+(function(){
+  'use strict';
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var MINT=[46,229,157], ROSE=[255,92,122], GOLD='rgba(212,175,55,';
+  var MONO='ui-monospace, "SF Mono", Menlo, Consolas, "Courier New", monospace';
+
+  /* ---------- canvas helper ---------- */
+  function fit(cv){
+    var r=cv.getBoundingClientRect(), dpr=Math.min(window.devicePixelRatio||1,2);
+    var w=Math.max(1,Math.round(r.width)), h=Math.max(1,Math.round(r.height));
+    if(cv.width!==Math.round(w*dpr)||cv.height!==Math.round(h*dpr)){ cv.width=Math.round(w*dpr); cv.height=Math.round(h*dpr); }
+    var ctx=cv.getContext('2d'); ctx.setTransform(dpr,0,0,dpr,0,0); return {ctx:ctx,w:w,h:h};
+  }
+
+  /* ---------- market simulation (random walk w/ volatility clustering) ---------- */
+  var TICK_SEC=7.5, prices=[], sigma=0.0009, lastRet=0, price=1240;
+  function gauss(){ var u=1-Math.random(), v=Math.random(); return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v); }
+  function nextTick(){
+    // GARCH(1,1)-flavoured variance update
+    var omega=1.2e-8, alpha=0.14, beta=0.83;
+    var variance=omega+alpha*lastRet*lastRet+beta*sigma*sigma;
+    sigma=Math.min(0.006,Math.sqrt(variance));
+    var drift=(1240-price)*0.00002; // faint mean reversion keeps the chart in frame over hours
+    lastRet=drift+sigma*gauss();
+    price=Math.max(50,price*(1+lastRet));
+    prices.push(price);
+    if(prices.length>90000) prices.splice(0,20000);
+    return lastRet;
+  }
+  for(var i=0;i<32000;i++) nextTick();
+
+  var tf=60, cache={n:-1,tf:0,count:0,candles:[]};
+  function candles(count){
+    var bucket=Math.round(tf/TICK_SEC), n=prices.length;
+    if(cache.n===n&&cache.tf===tf&&cache.count===count) return cache.candles;
+    var out=[], end=n, start;
+    var firstStart=Math.floor((n-1)/bucket)*bucket;
+    for(var c=0;c<count;c++){
+      start=firstStart-c*bucket; if(start<0) break;
+      var stop=Math.min(end,start+bucket), o=prices[start], cl=prices[stop-1], h=o, l=o, v=0;
+      for(var k=start;k<stop;k++){ var p=prices[k]; if(p>h)h=p; if(p<l)l=p; if(k>start) v+=Math.abs(p-prices[k-1]); }
+      out.push({o:o,h:h,l:l,c:cl,v:v,partial:stop-start<bucket});
+    }
+    out.reverse(); cache={n:n,tf:tf,count:count,candles:out}; return out;
+  }
+
+  /* ---------- sonar background ---------- */
+  var sonar=document.getElementById('sonar'), rings=[];
+  function spawnRing(up,mag){
+    if(reduce&&Math.random()<.7) return;
+    var r=sonar.getBoundingClientRect();
+    rings.push({x:Math.random()*r.width,y:Math.random()*r.height,r:0,max:120+Math.min(500,mag*90000),a:.28,up:up});
+    if(rings.length>60) rings.shift();
+  }
+  function drawSonar(dt){
+    var f=fit(sonar), ctx=f.ctx; ctx.clearRect(0,0,f.w,f.h);
+    ctx.lineWidth=1;
+    for(var i=rings.length-1;i>=0;i--){
+      var g=rings[i]; g.r+=dt*(60+g.max*.25); g.a-=dt*.09;
+      if(g.a<=0||g.r>g.max){ rings.splice(i,1); continue; }
+      var c=g.up?MINT:ROSE;
+      ctx.strokeStyle='rgba('+c[0]+','+c[1]+','+c[2]+','+g.a.toFixed(3)+')';
+      ctx.beginPath(); ctx.arc(g.x,g.y,g.r,0,Math.PI*2); ctx.stroke();
+      ctx.strokeStyle='rgba('+c[0]+','+c[1]+','+c[2]+','+(g.a*.35).toFixed(3)+')';
+      ctx.beginPath(); ctx.arc(g.x,g.y,g.r*.6,0,Math.PI*2); ctx.stroke();
+    }
+  }
+
+  /* ---------- candlestick chart ---------- */
+  var chart=document.getElementById('chart');
+  function drawChart(t){
+    var f=fit(chart), ctx=f.ctx, W=f.w, H=f.h; ctx.clearRect(0,0,W,H);
+    var padR=74, padT=16, padB=30, count=Math.max(24,Math.min(90,Math.floor((W-padR)/11)));
+    var cs=candles(count); if(!cs.length) return;
+    var lo=Infinity, hi=-Infinity, vmax=0;
+    cs.forEach(function(c){ if(c.l<lo)lo=c.l; if(c.h>hi)hi=c.h; if(c.v>vmax)vmax=c.v; });
+    var span=(hi-lo)||1; lo-=span*.08; hi+=span*.08; span=hi-lo;
+    var plotH=H-padT-padB-36, slot=(W-padR)/cs.length, bw=Math.max(1.5,slot*.55);
+    function Y(p){ return padT+(1-(p-lo)/span)*plotH; }
+
+    // gold hairlines + axis labels
+    ctx.font='10.5px '+MONO; ctx.textAlign='left'; ctx.textBaseline='middle';
+    var stepN=6, stepP=niceStep(span/stepN), p0=Math.ceil(lo/stepP)*stepP;
+    for(var p=p0;p<hi;p+=stepP){
+      var y=Y(p); ctx.strokeStyle=GOLD+'.16)'; ctx.beginPath(); ctx.moveTo(0,y+.5); ctx.lineTo(W-padR+8,y+.5); ctx.stroke();
+      ctx.fillStyle='rgba(232,230,223,.45)'; ctx.fillText(p.toFixed(2),W-padR+14,y);
+    }
+    // volume shadows
+    cs.forEach(function(c,i){
+      var x=i*slot+slot/2, vh=(c.v/(vmax||1))*30, up=c.c>=c.o, col=up?MINT:ROSE;
+      ctx.fillStyle='rgba('+col[0]+','+col[1]+','+col[2]+',.12)'; ctx.fillRect(x-bw/2,H-padB-vh,bw,vh);
+    });
+    // candles
+    cs.forEach(function(c,i){
+      var x=Math.round(i*slot+slot/2)+.5, up=c.c>=c.o, col=up?MINT:ROSE, last=i===cs.length-1;
+      var yo=Y(c.o), yc=Y(c.c), yh=Y(c.h), yl=Y(c.l), top=Math.min(yo,yc), bh=Math.max(1,Math.abs(yo-yc));
+      var rgb=col[0]+','+col[1]+','+col[2];
+      ctx.save();
+      if(last){ ctx.shadowColor='rgba('+rgb+',.9)'; ctx.shadowBlur=18; }
+      ctx.strokeStyle='rgba('+rgb+','+(last?1:.85)+')'; ctx.lineWidth=1;
+      ctx.beginPath(); ctx.moveTo(x,yh); ctx.lineTo(x,yl); ctx.stroke();
+      if(up){ ctx.fillStyle='rgba(7,8,10,.9)'; ctx.fillRect(x-bw/2,top,bw,bh); ctx.strokeRect(x-bw/2+.5,top+.5,bw-1,bh-1); }
+      else { ctx.fillStyle='rgba('+rgb+',.95)'; ctx.fillRect(x-bw/2,top,bw,bh); }
+      ctx.restore();
+    });
+    // current price line + tag
+    var lastC=cs[cs.length-1], ly=Y(lastC.c), upNow=lastC.c>=lastC.o;
+    ctx.setLineDash([3,5]); ctx.strokeStyle=GOLD+'.6)'; ctx.beginPath(); ctx.moveTo(0,ly+.5); ctx.lineTo(W-padR+8,ly+.5); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle=upNow?'rgb('+MINT.join(',')+')':'rgb('+ROSE.join(',')+')';
+    roundRect(ctx,W-padR+8,ly-9,padR-16,18,4); ctx.fill();
+    ctx.fillStyle='#07080a'; ctx.font='600 10.5px '+MONO; ctx.fillText(lastC.c.toFixed(2),W-padR+14,ly);
+    // pulse on latest close
+    var lx=Math.round((cs.length-1)*slot+slot/2)+.5, pr=3+Math.sin(t*4)*1.2;
+    ctx.fillStyle=upNow?'rgba('+MINT.join(',')+',.9)':'rgba('+ROSE.join(',')+',.9)';
+    ctx.beginPath(); ctx.arc(lx,ly,pr,0,Math.PI*2); ctx.fill();
+    // time axis marks
+    ctx.fillStyle='rgba(232,230,223,.3)'; ctx.font='10px '+MONO; ctx.textAlign='center'; ctx.textBaseline='alphabetic';
+    var every=Math.ceil(cs.length/6);
+    for(var i2=cs.length-1;i2>=0;i2-=every){ var ago=(cs.length-1-i2)*tf; ctx.fillText(ago===0?'now':'-'+fmtAgo(ago),i2*slot+slot/2,H-8); }
+  }
+  function niceStep(raw){ var p=Math.pow(10,Math.floor(Math.log10(raw))), m=raw/p; return (m<1.5?1:m<3.5?2.5:m<7.5?5:10)*p; }
+  function fmtAgo(s){ return s<3600?Math.round(s/60)+'m':(s/3600).toFixed(s%3600?1:0)+'h'; }
+  function roundRect(ctx,x,y,w,h,r){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
+
+  /* ---------- depth of market ---------- */
+  var depthCv=document.getElementById('depth'), LEVELS=22, bids=new Float32Array(LEVELS), asks=new Float32Array(LEVELS);
+  for(var d=0;d<LEVELS;d++){ bids[d]=.3+Math.random()*.7; asks[d]=.3+Math.random()*.7; }
+  function drawDepth(t,dt){
+    var f=fit(depthCv), ctx=f.ctx, W=f.w, H=f.h; ctx.clearRect(0,0,W,H);
+    var breathe=.82+.18*Math.sin(t*.9), mid=W/2, rowH=(H-20)/LEVELS, maxW=mid-44;
+    ctx.font='9.5px '+MONO; ctx.textBaseline='middle';
+    for(var i=0;i<LEVELS;i++){
+      bids[i]=Math.max(.05,Math.min(1,bids[i]+(Math.random()-.5)*dt*.9));
+      asks[i]=Math.max(.05,Math.min(1,asks[i]+(Math.random()-.5)*dt*.9));
+      var y=10+i*rowH, depthFade=1-i/LEVELS*.7, cum=1+i*.11;
+      var bw=bids[i]*breathe*maxW*Math.min(1,cum*.35), aw=asks[i]*breathe*maxW*Math.min(1,cum*.35);
+      var bg=ctx.createLinearGradient(mid-bw,0,mid,0); bg.addColorStop(0,'rgba(46,229,157,0)'); bg.addColorStop(1,'rgba(46,229,157,'+(.55*depthFade)+')');
+      var ag=ctx.createLinearGradient(mid,0,mid+aw,0); ag.addColorStop(0,'rgba(255,92,122,'+(.55*depthFade)+')'); ag.addColorStop(1,'rgba(255,92,122,0)');
+      ctx.fillStyle=bg; ctx.fillRect(mid-bw-1,y+1,bw,rowH-2);
+      ctx.fillStyle=ag; ctx.fillRect(mid+1,y+1,aw,rowH-2);
+      if(i%4===0){
+        ctx.fillStyle='rgba(232,230,223,.35)'; ctx.textAlign='right'; ctx.fillText((price*(1-(i+1)*.0004)).toFixed(2),mid-bw-6,y+rowH/2);
+        ctx.textAlign='left'; ctx.fillText((price*(1+(i+1)*.0004)).toFixed(2),mid+aw+6,y+rowH/2);
+      }
+    }
+    ctx.strokeStyle=GOLD+'.5)'; ctx.beginPath(); ctx.moveTo(mid+.5,6); ctx.lineTo(mid+.5,H-6); ctx.stroke();
+  }
+
+  /* ---------- treemap ---------- */
+  var SECTORS=[['Photonics',18],['Orbital Freight',14],['Synthetic Biology',12],['Desalination',10],['Fusion Utilities',9],['Quantum Fabs',8],['Vertical Farms',7],['Cartography',6],['Cold Storage',5],['Lunar Leisure',4],['Textiles',4],['Timber',3]];
+  var treemap=document.getElementById('treemap'), cells=[], sect=SECTORS.map(function(s){ return {name:s[0],w:s[1],chg:(Math.random()-.5)*2}; });
+  sect.forEach(function(s){ var c=document.createElement('div'); c.className='cell'; c.innerHTML='<small></small><b></b>'; treemap.appendChild(c); cells.push(c); });
+  function layoutTreemap(){
+    var W=treemap.clientWidth, H=treemap.clientHeight, total=sect.reduce(function(a,s){return a+s.w;},0);
+    // two-strip squarified-ish layout: split into rows whose weight matches height proportion
+    var rows=[[],[],[]], targets=[.46,.32,.22], acc=0, ri=0;
+    sect.forEach(function(s,i){ rows[ri].push(i); acc+=s.w; if(acc>=total*targets[ri]&&ri<2){ acc=0; ri++; } });
+    var y=0, gap=4;
+    rows.forEach(function(row,r){
+      if(!row.length) return;
+      var rw=row.reduce(function(a,i){return a+sect[i].w;},0), rh=(H-gap*2)*(rw/total), x=0;
+      row.forEach(function(i){
+        var cw=(W-gap*(row.length-1))*(sect[i].w/rw), c=cells[i];
+        c.style.left=x+'px'; c.style.top=y+'px'; c.style.width=cw+'px'; c.style.height=rh+'px';
+        c.classList.toggle('tiny',cw<70||rh<44); x+=cw+gap;
+      });
+      y+=rh+gap;
+    });
+  }
+  function paintTreemap(){
+    sect.forEach(function(s,i){
+      var k=Math.max(-1,Math.min(1,s.chg/3)), c=k>=0?MINT:ROSE, a=.12+Math.abs(k)*.55, cell=cells[i];
+      cell.style.backgroundColor='rgba('+c[0]+','+c[1]+','+c[2]+','+a.toFixed(3)+')';
+      cell.style.color=Math.abs(k)>.6?'#07080a':'var(--ink)';
+      cell.firstChild.textContent=s.name; cell.lastChild.textContent=(s.chg>=0?'+':'')+s.chg.toFixed(2)+'%';
+    });
+  }
+
+  /* ---------- ticker tape ---------- */
+  var TICKERS=['AUR','PHTN','ORBF','SYNB','DSAL','FUSN','QFAB','VFRM','CART','COLD','LUNA','TXTL','TMBR','HELX','MIRA','ZEPH'];
+  var tape=document.getElementById('tape'), tick=TICKERS.map(function(s){ return {s:s,p:20+Math.random()*900,c:(Math.random()-.5)*3}; });
+  var tapeNodes=[];
+  function buildTape(){
+    tape.innerHTML='';
+    for(var rep=0;rep<2;rep++){ tick.forEach(function(t,i){ var sp=document.createElement('span'); sp.innerHTML='<em></em><i></i><u></u>'; tape.appendChild(sp); (tapeNodes[i]=tapeNodes[i]||[]).push(sp); }); }
+  }
+  function paintTape(){
+    tick.forEach(function(t,i){ tapeNodes[i].forEach(function(sp){ sp.children[0].textContent=t.s; sp.children[1].textContent=t.p.toFixed(2); var u=sp.children[2]; u.textContent=(t.c>=0?'\u25b2 +':'\u25bc ')+t.c.toFixed(2)+'%'; u.className=t.c>=0?'up':'down'; }); });
+  }
+  buildTape(); paintTape();
+
+  /* ---------- stats + timeframe ---------- */
+  var elLast=document.getElementById('last'), elChg=document.getElementById('chg'), elHi=document.getElementById('hi'), elLo=document.getElementById('lo'), elVol=document.getElementById('vol'), tfLabel=document.getElementById('tfLabel'), clock=document.getElementById('clock');
+  var sessionOpen=prices[prices.length-1-Math.round(6*3600/TICK_SEC)]||prices[0];
+  function paintStats(){
+    var cs=candles(60); if(!cs.length) return;
+    var last=prices[prices.length-1], chg=(last/sessionOpen-1)*100, hi=-Infinity, lo=Infinity;
+    cs.forEach(function(c){ if(c.h>hi)hi=c.h; if(c.l<lo)lo=c.l; });
+    elLast.textContent=last.toFixed(2); elChg.textContent=(chg>=0?'+':'')+chg.toFixed(2)+'%'; elChg.className=chg>=0?'up':'down';
+    elHi.textContent=hi.toFixed(2); elLo.textContent=lo.toFixed(2); elVol.textContent=(sigma*100*Math.sqrt(3600/TICK_SEC)).toFixed(2)+'%/h';
+  }
+  document.querySelector('.tf').addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b) return;
+    this.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed','false');});
+    b.setAttribute('aria-pressed','true'); tf=+b.dataset.tf;
+    tfLabel.textContent=tf===60?'1-minute candles':tf===300?'5-minute candles':'1-hour candles';
+  });
+
+  /* ---------- main loop ---------- */
+  var last=performance.now(), tickAcc=0, tapeAcc=0, TICK_MS=reduce?360:130;
+  function loop(now){
+    var dt=Math.min(.1,(now-last)/1000), t=now/1000; last=now;
+    tickAcc+=dt*1000;
+    while(tickAcc>=TICK_MS){
+      tickAcc-=TICK_MS;
+      var ret=nextTick(); spawnRing(ret>=0,Math.abs(ret));
+      // sympathy moves in sectors and tickers
+      var si=(Math.random()*sect.length)|0; sect[si].chg=Math.max(-6,Math.min(6,sect[si].chg+ret*180+(Math.random()-.5)*.06));
+      var ti=(Math.random()*tick.length)|0; var mv=ret*60+(Math.random()-.5)*.004; tick[ti].p*=1+mv; tick[ti].c=Math.max(-9,Math.min(9,tick[ti].c+mv*100));
+      paintStats();
+    }
+    drawSonar(dt); drawChart(t); drawDepth(t,dt);
+    tapeAcc+=dt; if(tapeAcc>.6){ tapeAcc=0; paintTape(); paintTreemap(); var d=new Date(); clock.textContent=('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)+':'+('0'+d.getSeconds()).slice(-2); }
+    requestAnimationFrame(loop);
+  }
+  window.addEventListener('resize',layoutTreemap);
+  layoutTreemap(); paintTreemap(); paintStats();
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stellar Motor Lodge &amp; Observatory — Tomorrow's Hospitality, Today</title>
+<style>
+  :root{
+    --turq:#3fb8af; --turq-deep:#2a8f88; --mustard:#e3b23c; --coral:#f26b5b;
+    --cream:#f7efdc; --cream-2:#efe3c4; --char:#2b2a2e; --char-2:#3d3b42;
+    --ink:#1f1e22;
+    --serif: 'Iowan Old Style','Palatino Linotype',Palatino,Georgia,ui-serif,serif;
+    --sans: 'Helvetica Neue',Helvetica,Arial,ui-sans-serif,system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--cream); color:var(--char); font-family:var(--sans);
+    line-height:1.5; overflow-x:hidden;
+    background-image:
+      radial-gradient(circle at 12% 8%, rgba(63,184,175,.12), transparent 30%),
+      radial-gradient(circle at 88% 30%, rgba(227,178,60,.14), transparent 28%),
+      repeating-linear-gradient(0deg, transparent 0 34px, rgba(43,42,46,.035) 34px 35px);
+  }
+  a{color:inherit}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
+
+  /* ===== Googie roof header ===== */
+  header{position:relative; padding-top:22px}
+  .roof{
+    position:relative; background:var(--char); color:var(--cream);
+    clip-path:polygon(0 38%, 100% 0, 100% 100%, 0 100%);
+    padding:clamp(70px,9vw,120px) 0 clamp(22px,3vw,34px);
+  }
+  .roof::after{
+    content:""; position:absolute; left:0; right:0; bottom:0; height:10px;
+    background:repeating-linear-gradient(90deg,var(--mustard) 0 60px,var(--coral) 60px 120px,var(--turq) 120px 180px);
+  }
+  nav{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:14px}
+  .brand svg{width:54px;height:54px}
+  .brand-name{font-family:var(--serif);font-style:italic;font-size:clamp(20px,2.4vw,28px);letter-spacing:.01em}
+  .brand-name small{display:block;font-family:var(--sans);font-style:normal;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--mustard);margin-top:2px}
+  nav ul{list-style:none;margin:0;padding:0;display:flex;gap:clamp(10px,2vw,28px);flex-wrap:wrap}
+  nav a{text-decoration:none;font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;position:relative;padding:6px 0}
+  nav a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--turq);transition:right .35s cubic-bezier(.2,.8,.2,1)}
+  nav a:hover::after{right:0}
+
+  /* ===== Neon vacancy sign ===== */
+  .neon{
+    position:absolute; right:clamp(12px,4vw,60px); top:-6px;
+    background:var(--char-2); border:3px solid var(--mustard); border-radius:8px;
+    padding:10px 16px 8px; transform:rotate(-3deg); box-shadow:0 10px 30px rgba(0,0,0,.35);
+    font-family:var(--sans); text-align:center; z-index:3;
+  }
+  .neon .word{
+    font-size:clamp(18px,2.4vw,26px);font-weight:700;letter-spacing:.2em;color:#ff8a7c;
+    text-shadow:0 0 6px #f26b5b,0 0 14px #f26b5b,0 0 32px rgba(242,107,91,.8);
+    animation:flicker 6s infinite;
+  }
+  .neon .no{
+    font-size:11px;letter-spacing:.3em;color:rgba(247,239,220,.25);display:block;margin-bottom:2px;
+  }
+  @keyframes flicker{
+    0%,18%,22%,25%,53%,57%,100%{opacity:1}
+    20%,24%,55%{opacity:.35;text-shadow:none}
+    56%{opacity:.7}
+  }
+
+  /* ===== Hero ===== */
+  .hero{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(20px,4vw,56px);align-items:center;padding:clamp(40px,6vw,90px) 0 40px}
+  .kicker{font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--turq-deep);display:flex;align-items:center;gap:12px;margin:0 0 14px}
+  .kicker::before{content:"";width:38px;height:2px;background:var(--coral)}
+  h1{
+    font-family:var(--serif);font-style:italic;font-weight:400;
+    font-size:clamp(40px,6.4vw,84px);line-height:.98;margin:0 0 6px;color:var(--ink);letter-spacing:-.015em;
+  }
+  h1 em{font-style:italic;color:var(--coral);position:relative;display:inline-block}
+  h1 em::after{
+    content:"";position:absolute;left:-2%;right:-6%;bottom:-.06em;height:.12em;
+    background:var(--turq);border-radius:60% 40% 55% 45%/100% 100% 0 0;transform:rotate(-1.6deg);opacity:.85;
+  }
+  .swash{width:min(420px,90%);height:22px;margin:4px 0 20px;display:block}
+  .lede{font-size:clamp(16px,1.35vw,19px);max-width:52ch;color:var(--char-2);margin:0 0 28px}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn{
+    border:0;cursor:pointer;font:inherit;font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:12.5px;
+    padding:15px 26px;border-radius:999px;background:var(--coral);color:var(--cream);
+    box-shadow:0 8px 0 #c94d3f, 0 14px 24px rgba(242,107,91,.35);
+    transition:transform .18s cubic-bezier(.34,1.56,.64,1), box-shadow .18s;
+    position:relative;
+  }
+  .btn:hover{transform:translateY(-3px);box-shadow:0 11px 0 #c94d3f,0 20px 30px rgba(242,107,91,.4)}
+  .btn:active{transform:translateY(5px);box-shadow:0 3px 0 #c94d3f,0 6px 12px rgba(242,107,91,.35)}
+  .btn.ghost{background:transparent;color:var(--char);box-shadow:inset 0 0 0 2px var(--char)}
+  .btn.ghost:hover{background:var(--char);color:var(--cream);box-shadow:inset 0 0 0 2px var(--char)}
+  .btn:focus-visible,.pill:focus-visible{outline:3px solid var(--turq);outline-offset:3px}
+
+  /* Launch pad scene */
+  .pad{position:relative;height:clamp(340px,42vw,520px);border-radius:32px 32px 200px 32px;
+    background:radial-gradient(ellipse at 50% 100%, #3b3a40 0, var(--char) 60%);
+    overflow:hidden;box-shadow:0 30px 60px -20px rgba(43,42,46,.5)}
+  .pad .stars i{position:absolute;width:3px;height:3px;background:var(--cream);border-radius:50%;opacity:.7;animation:twinkle 3s infinite ease-in-out}
+  @keyframes twinkle{50%{opacity:.15;transform:scale(.6)}}
+  .planet{position:absolute;right:-60px;top:-70px;width:220px;height:220px;border-radius:50%;
+    background:radial-gradient(circle at 35% 35%, #ffd679, var(--mustard) 45%, #b8862a 100%);box-shadow:inset -22px -18px 40px rgba(0,0,0,.25)}
+  .ring{position:absolute;right:-110px;top:20px;width:330px;height:80px;border:10px solid rgba(63,184,175,.85);border-radius:50%;transform:rotate(-18deg);border-top-color:transparent}
+
+  /* Atom orbit */
+  .atom{position:absolute;left:24px;top:24px;width:150px;height:150px}
+  .atom .nucleus{position:absolute;left:50%;top:50%;width:18px;height:18px;margin:-9px;border-radius:50%;background:var(--coral);box-shadow:0 0 18px var(--coral)}
+  .orbit{position:absolute;inset:0;border:1.5px solid rgba(247,239,220,.55);border-radius:50%;animation:spin linear infinite}
+  .orbit:nth-child(2){transform:rotate(60deg);animation-duration:7s}
+  .orbit:nth-child(3){transform:rotate(120deg);animation-duration:9s;animation-direction:reverse}
+  .orbit:nth-child(4){animation-duration:5.5s}
+  .orbit::before{content:"";position:absolute;left:50%;top:-5px;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;background:var(--turq);box-shadow:0 0 10px var(--turq)}
+  .orbit:nth-child(2)::before{background:var(--mustard);box-shadow:0 0 10px var(--mustard)}
+  .orbit:nth-child(3)::before{background:var(--cream);box-shadow:0 0 10px var(--cream)}
+  @keyframes spin{from{transform:rotate(var(--r,0deg))}to{transform:rotate(calc(var(--r,0deg) + 360deg))}}
+  .orbit:nth-child(2){--r:60deg}.orbit:nth-child(3){--r:120deg}
+
+  /* Satellite */
+  .sat{position:absolute;left:52%;top:18%;width:90px;height:90px;animation:orbit-sat 14s linear infinite;transform-origin:-80px 120px}
+  .sat svg{width:100%;height:100%;animation:spin 6s linear infinite}
+  @keyframes orbit-sat{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+  /* Rocket */
+  .rocket{position:absolute;left:50%;bottom:18px;width:84px;height:200px;margin-left:-42px;transition:transform 2.6s cubic-bezier(.55,0,.75,.2);will-change:transform}
+  .rocket.launch{transform:translateY(-140vh) rotate(-3deg)}
+  .rocket svg{width:100%;height:100%;overflow:visible}
+  .ground{position:absolute;left:0;right:0;bottom:0;height:26px;background:linear-gradient(180deg,#4b4950,#2b2a2e)}
+  .ground::before{content:"";position:absolute;left:10%;right:10%;top:-4px;height:4px;background:repeating-linear-gradient(90deg,var(--mustard) 0 14px,transparent 14px 28px)}
+  canvas#exhaust{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+  .pad-note{position:absolute;left:24px;bottom:40px;color:var(--cream);font-size:11px;letter-spacing:.3em;text-transform:uppercase;opacity:.7}
+
+  /* ===== Section headings ===== */
+  section{padding:clamp(48px,7vw,110px) 0;position:relative}
+  h2{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(30px,4vw,52px);margin:0 0 8px;line-height:1.05}
+  .sub{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--turq-deep);margin:0 0 10px}
+  .rule{display:block;width:180px;height:16px;margin:8px 0 34px}
+
+  /* ===== Amenities ===== */
+  .amenities{background:var(--cream-2);position:relative}
+  .amenities::before{content:"";position:absolute;inset:0;background:
+    radial-gradient(circle at 5% 20%, rgba(242,107,91,.08), transparent 24%),
+    radial-gradient(circle at 95% 80%, rgba(63,184,175,.1), transparent 24%)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px;position:relative}
+  .card{
+    background:var(--cream);border-radius:22px 22px 22px 90px;padding:26px 24px 30px;position:relative;overflow:hidden;
+    box-shadow:0 1px 0 rgba(43,42,46,.08),0 18px 30px -20px rgba(43,42,46,.35);
+    transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s;
+  }
+  .card:hover{transform:translateY(-6px) rotate(-.6deg);box-shadow:0 1px 0 rgba(43,42,46,.08),0 30px 40px -22px rgba(43,42,46,.45)}
+  .card::after{content:"";position:absolute;right:-40px;bottom:-40px;width:120px;height:120px;border-radius:50%;background:var(--accent,var(--turq));opacity:.14;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+  .card:hover::after{transform:scale(2.2)}
+  .card svg{width:64px;height:64px;display:block;margin-bottom:14px;transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
+  .card:hover svg{transform:rotate(-8deg) scale(1.08)}
+  .card h3{font-family:var(--serif);font-style:italic;font-weight:400;font-size:22px;margin:0 0 6px}
+  .card p{margin:0;font-size:14.5px;color:var(--char-2)}
+  .starburst{position:absolute;pointer-events:none;animation:spin 40s linear infinite}
+  .boomerang{position:absolute;pointer-events:none}
+
+  /* ===== Observatory band ===== */
+  .observe{background:var(--char);color:var(--cream)}
+  .observe h2{color:var(--cream)}
+  .observe .sub{color:var(--mustard)}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);align-items:center}
+  .observe p{color:rgba(247,239,220,.82);max-width:56ch}
+  .times{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:10px}
+  .times li{display:flex;justify-content:space-between;gap:12px;padding:12px 16px;border:1.5px dashed rgba(247,239,220,.3);border-radius:14px;font-size:14px;transition:background .3s,border-color .3s}
+  .times li:hover{background:rgba(63,184,175,.15);border-color:var(--turq)}
+  .times b{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--mustard)}
+  .dome{width:100%;max-width:440px;margin:0 auto;display:block}
+
+  /* ===== Rates ===== */
+  .rates .grid{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .rate{background:var(--char);color:var(--cream);border-radius:28px;padding:30px 26px;position:relative;overflow:hidden}
+  .rate:nth-child(2){background:var(--turq);color:var(--ink)}
+  .rate:nth-child(3){background:var(--mustard);color:var(--ink)}
+  .rate .price{font-family:var(--serif);font-style:italic;font-size:54px;line-height:1;margin:14px 0 4px}
+  .rate .price sup{font-size:20px;vertical-align:top;margin-right:2px}
+  .rate .tag{font-size:11px;letter-spacing:.3em;text-transform:uppercase;opacity:.8}
+  .rate ul{list-style:none;padding:0;margin:18px 0 0;font-size:14px}
+  .rate li{padding:7px 0;border-top:1px solid rgba(255,255,255,.18)}
+  .rate:nth-child(2) li,.rate:nth-child(3) li{border-top-color:rgba(31,30,34,.18)}
+  .rate li::before{content:"★ ";color:var(--coral)}
+  .rate:nth-child(1) li::before{color:var(--mustard)}
+
+  /* ===== Footer ===== */
+  footer{position:relative;margin-top:60px;background:var(--turq);color:var(--ink);padding:clamp(90px,10vw,140px) 0 40px}
+  footer::before{content:"";position:absolute;left:-10%;right:-10%;top:-60px;height:140px;background:var(--cream);border-radius:0 0 50% 50%/0 0 100% 100%}
+  .foot{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px;align-items:start}
+  footer h4{font-family:var(--serif);font-style:italic;font-weight:400;font-size:24px;margin:0 0 8px}
+  footer p,footer li{font-size:14px;margin:0}
+  footer ul{list-style:none;padding:0;margin:0;display:grid;gap:6px}
+  footer a{text-decoration:none;border-bottom:1.5px solid transparent;transition:border-color .25s}
+  footer a:hover{border-color:var(--ink)}
+  .copy{margin-top:44px;padding-top:18px;border-top:1.5px solid rgba(31,30,34,.25);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+
+  .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,120%);background:var(--char);color:var(--cream);padding:14px 22px;border-radius:999px;font-size:13px;letter-spacing:.06em;box-shadow:0 20px 40px rgba(0,0,0,.3);transition:transform .5s cubic-bezier(.34,1.56,.64,1);z-index:10}
+  .toast.show{transform:translate(-50%,0)}
+
+  @media (max-width:820px){
+    .hero,.two,.foot{grid-template-columns:1fr}
+    .neon{position:static;display:inline-block;margin:14px 0 0;transform:rotate(-2deg)}
+    .roof{clip-path:polygon(0 18%,100% 0,100% 100%,0 100%);padding-top:50px}
+    .pad{border-radius:28px 28px 120px 28px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
+    .rocket.launch{transform:translateY(-140vh)}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="roof">
+    <div class="wrap">
+      <nav aria-label="Primary">
+        <div class="brand">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <circle cx="32" cy="32" r="30" fill="none" stroke="#e3b23c" stroke-width="2"/>
+            <ellipse cx="32" cy="32" rx="28" ry="10" fill="none" stroke="#3fb8af" stroke-width="2" transform="rotate(-30 32 32)"/>
+            <ellipse cx="32" cy="32" rx="28" ry="10" fill="none" stroke="#f26b5b" stroke-width="2" transform="rotate(30 32 32)"/>
+            <circle cx="32" cy="32" r="5" fill="#f7efdc"/>
+          </svg>
+          <div class="brand-name">Stellar Motor Lodge<small>&amp; Observatory · Est. 1957</small></div>
+        </div>
+        <ul>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#observatory">Observatory</a></li>
+          <li><a href="#rates">Rates</a></li>
+          <li><a href="#contact">Directions</a></li>
+        </ul>
+      </nav>
+      <div class="neon" aria-label="Vacancy sign">
+        <span class="no">NO</span>
+        <span class="word">VACANCY</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <div>
+      <p class="kicker">Route 66 · Mile Marker 1957</p>
+      <h1>Sleep beneath <em>tomorrow's</em> sky</h1>
+      <svg class="swash" viewBox="0 0 420 22" aria-hidden="true">
+        <path d="M2 14 C 60 -4, 120 26, 190 10 S 320 -2, 418 12" fill="none" stroke="#f26b5b" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="418" cy="12" r="3.5" fill="#3fb8af"/>
+        <circle cx="2" cy="14" r="2.5" fill="#e3b23c"/>
+      </svg>
+      <p class="lede">Forty-eight streamlined rooms, a kidney-shaped pool heated by the desert sun, and a twelve-inch refractor on the roof pointed straight at the future. Check in tonight — the stars have already saved you a seat.</p>
+      <div class="cta-row">
+        <button class="btn" id="launch" type="button">Reserve &amp; Launch</button>
+        <a class="btn ghost" href="#observatory">Tonight's Sky</a>
+      </div>
+    </div>
+
+    <div class="pad" id="pad" aria-label="Launch pad scene">
+      <div class="stars" id="stars"></div>
+      <div class="planet"></div>
+      <div class="ring"></div>
+      <div class="atom" aria-hidden="true">
+        <div class="nucleus"></div>
+        <div class="orbit"></div>
+        <div class="orbit"></div>
+        <div class="orbit"></div>
+      </div>
+      <div class="sat" aria-hidden="true">
+        <svg viewBox="0 0 90 90">
+          <rect x="6" y="38" width="26" height="14" rx="2" fill="#3fb8af"/>
+          <rect x="58" y="38" width="26" height="14" rx="2" fill="#3fb8af"/>
+          <line x1="32" y1="45" x2="58" y2="45" stroke="#f7efdc" stroke-width="3"/>
+          <circle cx="45" cy="45" r="11" fill="#e3b23c" stroke="#f7efdc" stroke-width="2"/>
+          <path d="M45 34 L45 20 M39 20 L51 20" stroke="#f26b5b" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <canvas id="exhaust" aria-hidden="true"></canvas>
+      <div class="rocket" id="rocket" aria-hidden="true">
+        <svg viewBox="0 0 84 200">
+          <defs>
+            <linearGradient id="body" x1="0" x2="1">
+              <stop offset="0" stop-color="#d9d3c2"/><stop offset=".45" stop-color="#fbf6ea"/><stop offset="1" stop-color="#b9b3a3"/>
+            </linearGradient>
+          </defs>
+          <path d="M42 4 C 22 40, 18 90, 18 150 L66 150 C66 90, 62 40, 42 4Z" fill="url(#body)"/>
+          <path d="M42 4 C 30 24, 26 36, 24 52 L60 52 C58 36, 54 24, 42 4Z" fill="#f26b5b"/>
+          <circle cx="42" cy="84" r="11" fill="#3fb8af" stroke="#2b2a2e" stroke-width="3"/>
+          <circle cx="42" cy="84" r="5" fill="#bff1ec"/>
+          <path d="M18 110 L2 168 L18 152Z" fill="#e3b23c"/>
+          <path d="M66 110 L82 168 L66 152Z" fill="#e3b23c"/>
+          <path d="M36 150 L48 150 L44 178 L40 178Z" fill="#f26b5b"/>
+          <rect x="26" y="150" width="32" height="12" rx="3" fill="#2b2a2e"/>
+          <rect x="30" y="162" width="24" height="10" rx="3" fill="#3d3b42"/>
+          <text x="42" y="132" text-anchor="middle" font-family="Helvetica Neue,Arial,sans-serif" font-size="10" font-weight="700" letter-spacing="2" fill="#2b2a2e">STELLAR</text>
+        </svg>
+      </div>
+      <div class="ground"></div>
+      <p class="pad-note">Pad 7 · Ready</p>
+    </div>
+  </div>
+
+  <section class="amenities" id="amenities">
+    <svg class="starburst" style="left:-40px;top:40px;width:140px;height:140px;opacity:.35" viewBox="0 0 100 100" aria-hidden="true">
+      <g stroke="#f26b5b" stroke-width="2" stroke-linecap="round">
+        <line x1="50" y1="5" x2="50" y2="95"/><line x1="5" y1="50" x2="95" y2="50"/>
+        <line x1="18" y1="18" x2="82" y2="82"/><line x1="82" y1="18" x2="18" y2="82"/>
+        <line x1="32" y1="8" x2="68" y2="92" stroke-width="1"/><line x1="68" y1="8" x2="32" y2="92" stroke-width="1"/>
+        <line x1="8" y1="32" x2="92" y2="68" stroke-width="1"/><line x1="92" y1="32" x2="8" y2="68" stroke-width="1"/>
+      </g><circle cx="50" cy="50" r="6" fill="#e3b23c"/>
+    </svg>
+    <svg class="boomerang" style="right:-30px;bottom:30px;width:220px;height:120px;opacity:.5" viewBox="0 0 220 120" aria-hidden="true">
+      <path d="M10 100 C 60 20, 150 10, 210 30 C 150 40, 100 70, 60 110 Z" fill="#3fb8af"/>
+    </svg>
+    <div class="wrap">
+      <p class="sub">Every modern convenience</p>
+      <h2>Amenities of the Space Age</h2>
+      <svg class="rule" viewBox="0 0 180 16" aria-hidden="true"><path d="M0 8 H70 M110 8 H180" stroke="#2b2a2e" stroke-width="1.5"/><circle cx="90" cy="8" r="5" fill="#e3b23c"/><circle cx="80" cy="8" r="2" fill="#f26b5b"/><circle cx="100" cy="8" r="2" fill="#3fb8af"/></svg>
+      <div class="grid">
+        <article class="card" style="--accent:#3fb8af">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M6 40 C 20 26, 44 26, 58 40 C 44 56, 20 56, 6 40Z" fill="#3fb8af"/><path d="M14 40 c 6 -4 12 -4 18 0 s 12 4 18 0" fill="none" stroke="#f7efdc" stroke-width="2.5" stroke-linecap="round"/><circle cx="46" cy="18" r="8" fill="#e3b23c"/></svg>
+          <h3>Kidney Pool</h3><p>Solar-warmed, chlorine-fresh, and shaped like a comet's tail. Diving board tuned to a perfect C-sharp.</p>
+        </article>
+        <article class="card" style="--accent:#e3b23c">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="16" width="48" height="32" rx="6" fill="#2b2a2e"/><rect x="13" y="21" width="32" height="22" rx="3" fill="#3fb8af"/><circle cx="51" cy="26" r="2.5" fill="#f26b5b"/><circle cx="51" cy="34" r="2.5" fill="#e3b23c"/><path d="M24 48 L20 56 M40 48 L44 56" stroke="#2b2a2e" stroke-width="3" stroke-linecap="round"/><path d="M28 16 L22 6 M36 16 L42 6" stroke="#2b2a2e" stroke-width="2"/></svg>
+          <h3>Color Television</h3><p>Every room. Three channels in living RCA color, plus a fourth that only shows static from Alpha Centauri.</p>
+        </article>
+        <article class="card" style="--accent:#f26b5b">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6 L38 24 L56 24 L42 35 L47 54 L32 43 L17 54 L22 35 L8 24 L26 24Z" fill="#f26b5b"/><circle cx="32" cy="32" r="6" fill="#f7efdc"/></svg>
+          <h3>Sputnik Lounge</h3><p>Atomic cocktails served in orbit-shaped glassware. Try the Tang Sour — it's exactly what the astronauts don't drink.</p>
+        </article>
+        <article class="card" style="--accent:#3fb8af">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 44 C 12 20, 52 20, 56 44Z" fill="#e3b23c"/><rect x="4" y="44" width="56" height="6" rx="3" fill="#2b2a2e"/><path d="M32 20 V10 M26 12 L32 6 L38 12" stroke="#3fb8af" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M16 56 L48 56" stroke="#2b2a2e" stroke-width="3" stroke-linecap="round"/></svg>
+          <h3>Roof Observatory</h3><p>A twelve-inch refractor under a rotating dome. Nightly star talks by our resident astronomer, Miss Lorraine Vega.</p>
+        </article>
+        <article class="card" style="--accent:#e3b23c">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="24" fill="#2b2a2e"/><circle cx="32" cy="32" r="20" fill="#f7efdc"/><path d="M32 32 L32 16 M32 32 L44 38" stroke="#f26b5b" stroke-width="3" stroke-linecap="round"/><circle cx="32" cy="32" r="3" fill="#3fb8af"/><path d="M50 12 l6 -6 M14 12 l-6 -6" stroke="#e3b23c" stroke-width="3" stroke-linecap="round"/></svg>
+          <h3>Rocket Wake-Up</h3><p>A gentle countdown from ten replaces the alarm. Room service arrives at T-minus zero with coffee and a frosted Danish.</p>
+        </article>
+        <article class="card" style="--accent:#f26b5b">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 40 L54 40 L46 52 L18 52Z" fill="#3fb8af"/><rect x="14" y="20" width="36" height="20" rx="4" fill="#f26b5b"/><circle cx="22" cy="54" r="5" fill="#2b2a2e"/><circle cx="42" cy="54" r="5" fill="#2b2a2e"/><path d="M50 30 L60 26 L60 34Z" fill="#e3b23c"/><circle cx="20" cy="30" r="3" fill="#f7efdc"/></svg>
+          <h3>Carport Charging</h3><p>Pull your Bel Air under the fins. Complimentary windshield wash and a free tank of optimism with every stay.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="observe" id="observatory">
+    <div class="wrap two">
+      <div>
+        <p class="sub">Tonight on the roof</p>
+        <h2>The Observatory Program</h2>
+        <svg class="rule" viewBox="0 0 180 16" aria-hidden="true"><path d="M0 8 H70 M110 8 H180" stroke="#f7efdc" stroke-width="1.5"/><circle cx="90" cy="8" r="5" fill="#f26b5b"/><circle cx="80" cy="8" r="2" fill="#e3b23c"/><circle cx="100" cy="8" r="2" fill="#3fb8af"/></svg>
+        <p>Our dome opens each evening at dusk. Bring a sweater; the desert cools quickly, and Saturn is worth a shiver. Guests receive a hand-stamped star chart with the coordinates of everything they saw — and one thing they didn't.</p>
+        <ul class="times">
+          <li><span>Sunset over the Mojave rim</span><b>7:42 pm</b></li>
+          <li><span>Jupiter and the Galilean moons</span><b>8:30 pm</b></li>
+          <li><span>Saturn's rings, tilted just so</span><b>9:15 pm</b></li>
+          <li><span>Andromeda, two and a half million years late</span><b>10:05 pm</b></li>
+          <li><span>Lights out · Cocoa in the Sputnik Lounge</span><b>11:00 pm</b></li>
+        </ul>
+      </div>
+      <svg class="dome" viewBox="0 0 440 340" aria-label="Illustration of the rooftop observatory dome">
+        <defs>
+          <radialGradient id="sky" cx=".5" cy=".9" r=".9"><stop offset="0" stop-color="#3d3b42"/><stop offset="1" stop-color="#1f1e22"/></radialGradient>
+        </defs>
+        <rect width="440" height="340" rx="28" fill="url(#sky)"/>
+        <g fill="#f7efdc" opacity=".8">
+          <circle cx="60" cy="50" r="1.6"/><circle cx="120" cy="90" r="1.2"/><circle cx="200" cy="40" r="1.8"/><circle cx="300" cy="70" r="1.3"/><circle cx="380" cy="40" r="1.7"/><circle cx="340" cy="130" r="1.2"/><circle cx="90" cy="150" r="1.4"/><circle cx="410" cy="100" r="1"/>
+        </g>
+        <circle cx="360" cy="90" r="28" fill="#e3b23c"/>
+        <ellipse cx="360" cy="90" rx="48" ry="9" fill="none" stroke="#3fb8af" stroke-width="3" transform="rotate(-22 360 90)"/>
+        <rect x="120" y="230" width="200" height="80" fill="#3fb8af"/>
+        <path d="M120 230 A100 100 0 0 1 320 230Z" fill="#f7efdc"/>
+        <path d="M205 130 L235 130 L235 230 L205 230Z" fill="#2b2a2e"/>
+        <line x1="220" y1="165" x2="290" y2="60" stroke="#f26b5b" stroke-width="8" stroke-linecap="round"/>
+        <rect x="100" y="310" width="240" height="14" fill="#2b2a2e"/>
+        <g fill="#e3b23c"><rect x="130" y="250" width="22" height="30" rx="3"/><rect x="170" y="250" width="22" height="30" rx="3"/><rect x="248" y="250" width="22" height="30" rx="3"/><rect x="288" y="250" width="22" height="30" rx="3"/></g>
+        <path d="M60 310 C 90 300, 110 300, 130 310" stroke="#3fb8af" stroke-width="3" fill="none"/>
+        <text x="220" y="300" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="14" fill="#2b2a2e">Observatory</text>
+      </svg>
+    </div>
+  </section>
+
+  <section class="rates" id="rates">
+    <div class="wrap">
+      <p class="sub">Nightly rates · Continental breakfast included</p>
+      <h2>Choose Your Orbit</h2>
+      <svg class="rule" viewBox="0 0 180 16" aria-hidden="true"><path d="M0 8 H70 M110 8 H180" stroke="#2b2a2e" stroke-width="1.5"/><circle cx="90" cy="8" r="5" fill="#3fb8af"/><circle cx="80" cy="8" r="2" fill="#f26b5b"/><circle cx="100" cy="8" r="2" fill="#e3b23c"/></svg>
+      <div class="grid">
+        <article class="rate">
+          <span class="tag">Low Earth Orbit</span>
+          <div class="price"><sup>$</sup>19</div>
+          <span class="tag">Standard queen · poolside</span>
+          <ul><li>Color television</li><li>Ice machine within 40 feet</li><li>Star chart at check-in</li></ul>
+        </article>
+        <article class="rate">
+          <span class="tag">Geostationary</span>
+          <div class="price"><sup>$</sup>27</div>
+          <span class="tag">Corner suite · dome view</span>
+          <ul><li>Private observatory hour</li><li>Sputnik Lounge credit</li><li>Rocket wake-up service</li></ul>
+        </article>
+        <article class="rate">
+          <span class="tag">Trans-Lunar</span>
+          <div class="price"><sup>$</sup>42</div>
+          <span class="tag">Penthouse · rooftop terrace</span>
+          <ul><li>Telescope on your balcony</li><li>Midnight cocoa delivery</li><li>Your name on a minor planet*</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <h4>Stellar Motor Lodge &amp; Observatory</h4>
+        <p>1957 Comet Highway, Meteor Flats, Arizona. Look for the boomerang sign; if you can see the rings of Saturn, you've arrived.</p>
+      </div>
+      <div>
+        <h4>Front Desk</h4>
+        <ul><li>Open 24 hours, Earth time</li><li>Telephone: ORBIT-7-1957</li><li>Telegraph: STELLAR AZ</li></ul>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <ul><li><a href="#amenities">Amenities</a></li><li><a href="#observatory">Observatory</a></li><li><a href="#rates">Rates</a></li></ul>
+      </div>
+    </div>
+    <div class="copy"><span>© 1957–Tomorrow · Stellar Motor Lodge</span><span>*Minor planet naming subject to IAU whimsy</span></div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status">Reservation confirmed. Liftoff in T-minus… now.</div>
+
+<script>
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Scatter twinkling stars in the launch-pad scene
+  var stars = document.getElementById('stars');
+  for (var i=0;i<38;i++){
+    var s=document.createElement('i');
+    s.style.left=(Math.random()*100)+'%';
+    s.style.top=(Math.random()*70)+'%';
+    s.style.animationDelay=(Math.random()*3)+'s';
+    s.style.transform='scale('+(0.5+Math.random())+')';
+    stars.appendChild(s);
+  }
+
+  // Exhaust particle canvas
+  var pad=document.getElementById('pad'), cv=document.getElementById('exhaust'), ctx=cv.getContext('2d');
+  var W=0,H=0,dpr=1, parts=[], running=false, emitting=false, rocket=document.getElementById('rocket');
+  function resize(){
+    dpr=Math.min(window.devicePixelRatio||1,2);
+    W=pad.clientWidth; H=pad.clientHeight;
+    cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  resize(); window.addEventListener('resize',resize);
+
+  function nozzle(){
+    var r=rocket.getBoundingClientRect(), p=pad.getBoundingClientRect();
+    return {x:r.left-p.left+r.width/2, y:r.top-p.top+r.height*0.86};
+  }
+  var colors=['#f26b5b','#e3b23c','#f7efdc','#ff9a6a'];
+  function emit(n){
+    var o=nozzle();
+    for(var i=0;i<n;i++){
+      parts.push({x:o.x+(Math.random()-.5)*14,y:o.y,vx:(Math.random()-.5)*2.2,vy:2+Math.random()*4,
+        r:4+Math.random()*9,life:1,decay:.012+Math.random()*.02,c:colors[(Math.random()*colors.length)|0]});
+    }
+  }
+  function frame(){
+    ctx.clearRect(0,0,W,H);
+    if(emitting) emit(6);
+    for(var i=parts.length-1;i>=0;i--){
+      var p=parts[i]; p.x+=p.vx; p.y+=p.vy; p.vy*=.99; p.vx+=(Math.random()-.5)*.3; p.life-=p.decay; p.r+=.25;
+      if(p.life<=0||p.y>H+20){parts.splice(i,1);continue;}
+      ctx.globalAlpha=Math.max(0,p.life)*.85;
+      ctx.fillStyle=p.c; ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
+    }
+    ctx.globalAlpha=1;
+    if(parts.length||emitting) requestAnimationFrame(frame); else running=false;
+  }
+
+  var btn=document.getElementById('launch'), toast=document.getElementById('toast'), busy=false;
+  btn.addEventListener('click',function(){
+    if(busy) return; busy=true;
+    toast.classList.add('show');
+    rocket.classList.add('launch');
+    if(!reduce){
+      emitting=true;
+      if(!running){running=true;requestAnimationFrame(frame);}
+      setTimeout(function(){emitting=false;},2200);
+    }
+    setTimeout(function(){toast.classList.remove('show');},3200);
+    setTimeout(function(){
+      rocket.style.transition='none'; rocket.classList.remove('launch');
+      rocket.style.transform='translateY(60px)'; rocket.style.opacity='0';
+      requestAnimationFrame(function(){
+        rocket.style.transition='transform 1.2s cubic-bezier(.2,.8,.2,1), opacity .6s';
+        rocket.style.transform=''; rocket.style.opacity='1';
+        setTimeout(function(){rocket.style.transition=''; busy=false;},1300);
+      });
+    },3600);
+  });
+
+  // Gentle parallax on the launch pad while pointer moves (skipped for reduced motion)
+  if(!reduce){
+    var planet=pad.querySelector('.planet'), ring=pad.querySelector('.ring');
+    pad.addEventListener('pointermove',function(e){
+      var r=pad.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+      planet.style.transform='translate('+(x*-14)+'px,'+(y*-10)+'px)';
+      ring.style.transform='rotate(-18deg) translate('+(x*-20)+'px,'+(y*-14)+'px)';
+    });
+    pad.addEventListener('pointerleave',function(){planet.style.transform='';ring.style.transform='rotate(-18deg)';});
+  }
+})();
+</script>
+</body>
+</html>

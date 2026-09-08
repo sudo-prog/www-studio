@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rose of Cells — A Voronoi Stained-Glass Window</title>
+<style>
+  :root {
+    --stone-0: #3a3531; --stone-1: #2b2724; --stone-2: #1d1a18;
+    --mortar: #17140f;
+    --ink: #e9dfcf; --muted: #a2968a; --accent: #d7b36a;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    font-family: Georgia, 'Iowan Old Style', 'Palatino Linotype', Palatino, ui-serif, serif;
+    color: var(--ink);
+    background: var(--stone-2);
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    overflow: hidden;
+    position: relative;
+  }
+  /* stone wall */
+  .wall {
+    position: fixed; inset: 0; z-index: 0;
+    background-color: var(--stone-1);
+    background-image:
+      radial-gradient(ellipse 80% 60% at 50% 30%, rgba(255,240,210,.06), transparent 70%),
+      linear-gradient(90deg, var(--mortar) 0 3px, transparent 3px),
+      linear-gradient(0deg, var(--mortar) 0 3px, transparent 3px),
+      linear-gradient(90deg, transparent 0 calc(50% - 1.5px), var(--mortar) calc(50% - 1.5px) calc(50% + 1.5px), transparent calc(50% + 1.5px)),
+      repeating-linear-gradient(135deg, rgba(255,255,255,.015) 0 2px, transparent 2px 6px),
+      linear-gradient(180deg, var(--stone-0), var(--stone-1) 60%, var(--stone-2));
+    background-size: 100% 100%, 220px 92px, 220px 92px, 220px 184px, auto, 100% 100%;
+    background-position: 0 0, 0 0, 0 0, 0 46px, 0 0, 0 0;
+  }
+  .wall::after {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 90% at 50% 40%, transparent 30%, rgba(0,0,0,.75) 100%);
+  }
+  /* floor */
+  .floor {
+    position: fixed; left: 0; right: 0; bottom: 0; height: 26vh; z-index: 1; pointer-events: none;
+    background: linear-gradient(180deg, #14110f 0%, #0d0b0a 100%);
+    border-top: 1px solid rgba(255,255,255,.06);
+    perspective: 700px; overflow: hidden;
+  }
+  .floor::before {
+    content: ""; position: absolute; inset: 0;
+    background: repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0 1px, transparent 1px 90px);
+    transform: perspective(500px) rotateX(60deg); transform-origin: 50% 0;
+  }
+  #floorGlow {
+    position: absolute; left: 50%; top: 0; transform-origin: 50% 0;
+    transform: translateX(-50%) rotateX(62deg) scaleY(-1);
+    filter: blur(22px) saturate(1.4); opacity: .55;
+    mix-blend-mode: screen;
+  }
+
+  header, footer { position: relative; z-index: 3; text-align: center; padding: 18px 16px; }
+  header h1 { margin: 0; font-weight: 400; font-size: clamp(20px, 2.6vw, 30px); letter-spacing: .06em; text-transform: uppercase; color: var(--ink); }
+  header h1 span { color: var(--accent); }
+  header p { margin: 6px 0 0; font-style: italic; color: var(--muted); font-size: 14px; }
+
+  .scene { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; min-height: 0; }
+  .frame-wrap { position: relative; }
+  canvas#glass { display: block; cursor: crosshair; touch-action: manipulation; }
+  .mullion-shadow {
+    position: absolute; inset: 0; pointer-events: none;
+    box-shadow: 0 60px 120px -40px rgba(0,0,0,.9);
+    border-radius: 50% 50% 0 0 / 40% 40% 0 0;
+  }
+
+  footer .controls { display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+  .btn {
+    appearance: none; font: inherit; font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--ink); background: rgba(255,255,255,.04); border: 1px solid rgba(233,223,207,.22);
+    padding: 9px 16px; border-radius: 4px; cursor: pointer;
+    transition: background .25s ease, border-color .25s ease, transform .2s ease;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn:hover { background: rgba(255,255,255,.09); border-color: rgba(233,223,207,.45); transform: translateY(-1px); }
+  .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .btn[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); background: rgba(215,179,106,.08); }
+  .btn .sw { display: inline-flex; gap: 2px; }
+  .btn .sw i { width: 8px; height: 8px; border-radius: 50%; display: block; }
+  .btn.primary { border-color: var(--accent); }
+  footer .status { margin-top: 10px; font-size: 12px; color: var(--muted); font-style: italic; }
+  footer kbd { font-family: ui-monospace, 'Courier New', monospace; font-style: normal; font-size: 11px; border: 1px solid rgba(233,223,207,.3); border-radius: 3px; padding: 0 5px; }
+
+  @media (max-width: 520px) {
+    header p { display: none; }
+    .btn { padding: 8px 10px; font-size: 11px; letter-spacing: .08em; }
+    footer .status { font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+<div class="wall" aria-hidden="true"></div>
+<div class="floor" aria-hidden="true"><canvas id="floorGlow"></canvas></div>
+
+<header>
+  <h1>Rose of <span>Cells</span></h1>
+  <p>A window with no saints in it — only the geometry of nearest neighbours, leaded and lit.</p>
+</header>
+
+<div class="scene">
+  <div class="frame-wrap">
+    <canvas id="glass" role="img" aria-label="Interactive stained-glass window generated from Voronoi cells. Click to add a pane."></canvas>
+    <div class="mullion-shadow"></div>
+  </div>
+</div>
+
+<footer>
+  <div class="controls" role="group" aria-label="Window controls">
+    <button class="btn primary" id="regen" type="button">Regenerate</button>
+    <button class="btn" type="button" data-palette="chartres" aria-pressed="true"><span class="sw"><i style="background:#1f3f9e"></i><i style="background:#9e1b2c"></i><i style="background:#d8b25c"></i></span>Chartres</button>
+    <button class="btn" type="button" data-palette="autumn" aria-pressed="false"><span class="sw"><i style="background:#b3471a"></i><i style="background:#d9931c"></i><i style="background:#6b6a1f"></i></span>Autumn</button>
+    <button class="btn" type="button" data-palette="emerald" aria-pressed="false"><span class="sw"><i style="background:#0f6b3c"></i><i style="background:#1e8f7a"></i><i style="background:#c9a44b"></i></span>Emerald</button>
+  </div>
+  <div class="status" id="status">Click anywhere on the glass to set a new pane. <kbd>R</kbd> regenerates.</div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var canvas = document.getElementById('glass');
+  var ctx = canvas.getContext('2d');
+  var floor = document.getElementById('floorGlow');
+  var fctx = floor.getContext('2d');
+  var status = document.getElementById('status');
+
+  var PALETTES = {
+    chartres: ['#1b2f8f', '#233fa8', '#1a4fb5', '#2b64c8', '#8f1626', '#a91f30', '#c0392b', '#d8b25c', '#e8d6a2', '#4b2a7a', '#f1f0e8', '#1d6e6b'],
+    autumn:   ['#a33d13', '#c25a1c', '#d9931c', '#e8b23a', '#7a2a12', '#6b6a1f', '#8e8a2e', '#4d2b1a', '#e9c98a', '#b3471a', '#5b3a1e', '#d97c2b'],
+    emerald:  ['#0b4a2a', '#0f6b3c', '#158a4a', '#1e8f7a', '#2ea78c', '#0d3c3a', '#c9a44b', '#e6d38a', '#116d5a', '#0a2f26', '#3fbf9a', '#f0ead2']
+  };
+  var paletteName = 'chartres';
+
+  var W = 0, H = 0, dpr = 1;      // css pixel size of window canvas
+  var sites = [];                  // {x,y,c}
+  var cells = [];                  // arrays of [x,y]
+  var glassLayer = document.createElement('canvas');
+  var gctx = glassLayer.getContext('2d');
+  var birth = null;                // {index, start, prevLayer}
+  var needsGlass = true;
+
+  // ---------- geometry ----------
+  function archPath(c, w, h, inset) {
+    inset = inset || 0;
+    var x0 = inset, x1 = w - inset, y1 = h - inset;
+    var aw = x1 - x0;                 // arch width
+    var spring = h * 0.42;            // springing line
+    c.beginPath();
+    c.moveTo(x0, y1);
+    c.lineTo(x0, spring);
+    c.arc(x1, spring, aw, Math.PI, Math.PI * 4 / 3, false);
+    c.arc(x0, spring, aw, Math.PI * 5 / 3, Math.PI * 2, false);
+    c.lineTo(x1, y1);
+    c.closePath();
+  }
+
+  function clipHalfPlane(poly, px, py, qx, qy) {
+    // keep side closer to p than to q
+    var mx = (px + qx) / 2, my = (py + qy) / 2, dx = qx - px, dy = qy - py;
+    var out = [], n = poly.length;
+    for (var i = 0; i < n; i++) {
+      var a = poly[i], b = poly[(i + 1) % n];
+      var da = (a[0] - mx) * dx + (a[1] - my) * dy;
+      var db = (b[0] - mx) * dx + (b[1] - my) * dy;
+      var ain = da <= 0, bin = db <= 0;
+      if (ain) out.push(a);
+      if (ain !== bin) {
+        var t = da / (da - db);
+        out.push([a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]);
+      }
+    }
+    return out;
+  }
+
+  function computeVoronoi() {
+    cells = [];
+    var pad = 4;
+    var bounds = [[-pad, -pad], [W + pad, -pad], [W + pad, H + pad], [-pad, H + pad]];
+    for (var i = 0; i < sites.length; i++) {
+      var s = sites[i], poly = bounds;
+      for (var j = 0; j < sites.length && poly.length; j++) {
+        if (i === j) continue;
+        var o = sites[j];
+        poly = clipHalfPlane(poly, s.x, s.y, o.x, o.y);
+      }
+      cells.push(poly);
+    }
+  }
+
+  function centroid(poly) {
+    var a = 0, cx = 0, cy = 0, n = poly.length;
+    for (var i = 0; i < n; i++) {
+      var p = poly[i], q = poly[(i + 1) % n], f = p[0] * q[1] - q[0] * p[1];
+      a += f; cx += (p[0] + q[0]) * f; cy += (p[1] + q[1]) * f;
+    }
+    if (Math.abs(a) < 1e-6) return [poly[0][0], poly[0][1]];
+    a *= 0.5; return [cx / (6 * a), cy / (6 * a)];
+  }
+
+  // ---------- colour helpers ----------
+  function hexToRgb(h) { var n = parseInt(h.slice(1), 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; }
+  function shade(h, k) { var c = hexToRgb(h); return 'rgb(' + c.map(function (v) { return Math.max(0, Math.min(255, Math.round(v * k))); }).join(',') + ')'; }
+  function tint(h, k) { var c = hexToRgb(h); return 'rgb(' + c.map(function (v) { return Math.round(v + (255 - v) * k); }).join(',') + ')'; }
+
+  function pickColor(x, y, prev) {
+    var pal = PALETTES[paletteName];
+    var c = pal[Math.floor(Math.random() * pal.length)];
+    if (c === prev) c = pal[(pal.indexOf(c) + 1) % pal.length];
+    return c;
+  }
+
+  // ---------- generation ----------
+  function insideArch(x, y) {
+    var spring = H * 0.42;
+    if (y >= spring) return x >= 0 && x <= W && y <= H;
+    var d1 = Math.hypot(x - W, y - spring), d2 = Math.hypot(x, y - spring);
+    return d1 <= W && d2 <= W && x >= 0 && x <= W;
+  }
+
+  function generate() {
+    sites = [];
+    var target = Math.round(Math.max(26, Math.min(70, (W * H) / 6500)));
+    var tries = 0, minDist = Math.sqrt((W * H) / target) * 0.55;
+    while (sites.length < target && tries < target * 60) {
+      tries++;
+      var x = Math.random() * W, y = Math.random() * H;
+      if (!insideArch(x, y) && Math.random() < 0.85) continue;
+      var ok = true;
+      for (var i = 0; i < sites.length; i++) { if (Math.hypot(sites[i].x - x, sites[i].y - y) < minDist) { ok = false; break; } }
+      if (ok) sites.push({ x: x, y: y, c: pickColor(x, y, sites.length ? sites[sites.length - 1].c : null) });
+    }
+    computeVoronoi();
+    birth = null;
+    needsGlass = true;
+    status.textContent = sites.length + ' panes leaded. Click anywhere on the glass to set a new pane.';
+  }
+
+  // ---------- rendering ----------
+  function drawPane(c, poly, site, scale) {
+    if (poly.length < 3) return;
+    var cen = centroid(poly);
+    var pts = poly;
+    if (scale !== undefined && scale < 1) {
+      pts = poly.map(function (p) { return [cen[0] + (p[0] - cen[0]) * scale, cen[1] + (p[1] - cen[1]) * scale]; });
+    }
+    var r = 0;
+    for (var i = 0; i < pts.length; i++) r = Math.max(r, Math.hypot(pts[i][0] - cen[0], pts[i][1] - cen[1]));
+    r = Math.max(r, 8);
+    c.beginPath();
+    c.moveTo(pts[0][0], pts[0][1]);
+    for (var k = 1; k < pts.length; k++) c.lineTo(pts[k][0], pts[k][1]);
+    c.closePath();
+    var lx = cen[0] + (site.x - cen[0]) * 0.4 - r * 0.15, ly = cen[1] + (site.y - cen[1]) * 0.4 - r * 0.2;
+    var g = c.createRadialGradient(lx, ly, r * 0.05, cen[0], cen[1], r * 1.15);
+    g.addColorStop(0, tint(site.c, 0.32));
+    g.addColorStop(0.45, site.c);
+    g.addColorStop(1, shade(site.c, 0.55));
+    c.fillStyle = g;
+    c.fill();
+    // glass grain: faint diagonal streaks inside the pane
+    c.save();
+    c.clip();
+    c.globalAlpha = 0.09;
+    c.strokeStyle = '#ffffff';
+    c.lineWidth = 1;
+    var step = 7, seed = (site.x * 13 + site.y * 7) % step;
+    for (var s = -r * 2 + seed; s < r * 2; s += step) {
+      c.beginPath();
+      c.moveTo(cen[0] + s - r, cen[1] - r);
+      c.lineTo(cen[0] + s + r, cen[1] + r);
+      c.stroke();
+    }
+    c.restore();
+    // lead line
+    c.lineJoin = 'round';
+    c.lineWidth = 6;
+    c.strokeStyle = '#17130f';
+    c.stroke();
+    c.lineWidth = 1.2;
+    c.strokeStyle = 'rgba(255,255,255,0.10)';
+    c.stroke();
+  }
+
+  function renderGlass(now) {
+    var c = gctx;
+    c.setTransform(dpr, 0, 0, dpr, 0, 0);
+    c.clearRect(0, 0, W, H);
+    c.save();
+    archPath(c, W, H, 0);
+    c.clip();
+    var animating = false;
+    if (birth && birth.prev) {
+      var t = Math.min(1, (now - birth.start) / 620);
+      var e = 1 - Math.pow(1 - t, 3);
+      c.drawImage(birth.prev, 0, 0, W, H);
+      drawPane(c, cells[birth.index], sites[birth.index], e);
+      if (t < 1) animating = true; else birth = null;
+    } else {
+      for (var i = 0; i < sites.length; i++) drawPane(c, cells[i], sites[i]);
+    }
+    c.restore();
+    // outer lead frame and stone reveal
+    archPath(c, W, H, 3);
+    c.lineWidth = 8; c.strokeStyle = '#100d0a'; c.lineJoin = 'round'; c.stroke();
+    archPath(c, W, H, 0.5);
+    c.lineWidth = 1.5; c.strokeStyle = 'rgba(233,223,207,.18)'; c.stroke();
+    needsGlass = animating;
+  }
+
+  var shimmerT0 = performance.now();
+  function frame(now) {
+    if (needsGlass) renderGlass(now);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, W, H);
+    ctx.drawImage(glassLayer, 0, 0, W, H);
+
+    // shimmer: a slow diagonal sheet of light sweeping across the panes
+    ctx.save();
+    archPath(ctx, W, H, 3);
+    ctx.clip();
+    var period = 9000;
+    var p = reduce ? 0.35 : ((now - shimmerT0) % period) / period;
+    var x = -W * 0.8 + p * (W * 2.6);
+    var g = ctx.createLinearGradient(x, 0, x + W * 0.9, H * 0.6);
+    g.addColorStop(0, 'rgba(255,250,235,0)');
+    g.addColorStop(0.45, 'rgba(255,250,235,0.16)');
+    g.addColorStop(0.5, 'rgba(255,250,235,0.26)');
+    g.addColorStop(0.55, 'rgba(255,250,235,0.16)');
+    g.addColorStop(1, 'rgba(255,250,235,0)');
+    ctx.globalCompositeOperation = 'soft-light';
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'screen';
+    ctx.globalAlpha = 0.5;
+    ctx.fillRect(0, 0, W, H);
+    ctx.restore();
+
+    // floor reflection: cheap downscaled copy
+    fctx.setTransform(1, 0, 0, 1, 0, 0);
+    fctx.clearRect(0, 0, floor.width, floor.height);
+    fctx.drawImage(canvas, 0, 0, floor.width, floor.height);
+
+    requestAnimationFrame(frame);
+  }
+
+  // ---------- sizing ----------
+  function size() {
+    var scene = document.querySelector('.scene');
+    var availH = Math.max(240, scene.clientHeight - 24);
+    var availW = Math.max(240, window.innerWidth - 32);
+    // classic lancet proportion ~ 1 : 1.75
+    var h = availH, w = h / 1.75;
+    if (w > availW) { w = availW; h = w * 1.75; }
+    if (w > 640) { w = 640; h = w * 1.75; }
+    W = Math.round(w); H = Math.round(h);
+    dpr = Math.min(2, window.devicePixelRatio || 1);
+    canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+    canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+    glassLayer.width = canvas.width; glassLayer.height = canvas.height;
+    floor.width = Math.round(W / 2); floor.height = Math.round(H / 2);
+    floor.style.width = (W * 1.6) + 'px'; floor.style.height = (H * 0.9) + 'px';
+  }
+
+  // ---------- interaction ----------
+  canvas.addEventListener('pointerdown', function (e) {
+    var r = canvas.getBoundingClientRect();
+    var x = (e.clientX - r.left) * (W / r.width), y = (e.clientY - r.top) * (H / r.height);
+    if (!insideArch(x, y)) return;
+    // snapshot current glass for the birth animation
+    var prev = document.createElement('canvas');
+    prev.width = glassLayer.width; prev.height = glassLayer.height;
+    prev.getContext('2d').drawImage(glassLayer, 0, 0);
+    // find the pane we are splitting so the new colour differs from it
+    var nearest = 0, best = Infinity;
+    for (var i = 0; i < sites.length; i++) { var d = Math.hypot(sites[i].x - x, sites[i].y - y); if (d < best) { best = d; nearest = i; } }
+    sites.push({ x: x, y: y, c: pickColor(x, y, sites[nearest].c) });
+    computeVoronoi();
+    birth = { index: sites.length - 1, start: performance.now(), prev: reduce ? null : prev };
+    needsGlass = true;
+    status.textContent = sites.length + ' panes leaded. Each click splits the nearest pane with a new one.';
+  });
+
+  document.getElementById('regen').addEventListener('click', generate);
+  document.querySelectorAll('[data-palette]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      paletteName = b.dataset.palette;
+      document.querySelectorAll('[data-palette]').forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+      // recolour existing panes, keep geometry
+      var prev = null;
+      sites.forEach(function (s) { s.c = pickColor(s.x, s.y, prev); prev = s.c; });
+      birth = null; needsGlass = true;
+    });
+  });
+  window.addEventListener('keydown', function (e) {
+    if (e.key === 'r' || e.key === 'R') { if (document.activeElement && document.activeElement.tagName === 'BUTTON') return; generate(); }
+  });
+
+  var rt;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () {
+      var ow = W, oh = H;
+      size();
+      // rescale site positions into the new window
+      sites.forEach(function (s) { s.x *= W / ow; s.y *= H / oh; });
+      computeVoronoi(); birth = null; needsGlass = true;
+    }, 120);
+  });
+
+  size();
+  generate();
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

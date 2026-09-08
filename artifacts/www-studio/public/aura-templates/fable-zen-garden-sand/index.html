@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karesansui — A Garden of Raked Sand</title>
+<style>
+  :root {
+    --sand: #e6d7bd;
+    --sand-deep: #cbb894;
+    --ink: #2b241c;
+    --ink-soft: rgba(43, 36, 28, 0.55);
+    --ink-faint: rgba(43, 36, 28, 0.22);
+    --vermilion: #b3402a;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; overflow: hidden; }
+  body {
+    background: var(--sand);
+    color: var(--ink);
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, ui-serif, serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  #garden {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    cursor: none;
+    touch-action: none;
+  }
+
+  /* custom rake cursor */
+  .cursor {
+    position: fixed;
+    left: 0; top: 0;
+    width: 28px; height: 28px;
+    margin: -14px 0 0 -14px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 3;
+    will-change: transform;
+  }
+  .cursor.on { opacity: 1; }
+  .cursor svg { width: 100%; height: 100%; overflow: visible; }
+  .cursor line { stroke: var(--ink); stroke-width: 1.2; stroke-linecap: round; opacity: 0.7; }
+  .cursor circle { fill: none; stroke: var(--ink); stroke-width: 0.8; opacity: 0.35; transition: stroke 0.3s ease; }
+  body.grabbing .cursor circle { stroke: var(--vermilion); opacity: 0.8; }
+
+  /* frame vignette: paper edge */
+  .frame {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    box-shadow: inset 0 0 120px rgba(90, 70, 40, 0.18), inset 0 0 8px rgba(90, 70, 40, 0.15);
+    z-index: 1;
+  }
+
+  .label-v {
+    position: fixed;
+    top: clamp(24px, 5vh, 56px);
+    right: clamp(22px, 3.5vw, 48px);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 12px;
+    letter-spacing: 0.42em;
+    color: var(--ink-soft);
+    pointer-events: none;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    animation: fade 2s var(--ease) both;
+  }
+  .label-v::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(180deg, var(--ink-faint), transparent);
+  }
+  .label-v b {
+    font-weight: 400;
+    font-size: 15px;
+    color: var(--ink);
+    letter-spacing: 0.6em;
+  }
+
+  .seal {
+    position: fixed;
+    right: clamp(22px, 3.5vw, 48px);
+    bottom: clamp(22px, 4vh, 48px);
+    width: 30px; height: 30px;
+    background: var(--vermilion);
+    color: #f7ecd8;
+    display: grid;
+    place-items: center;
+    font-size: 15px;
+    line-height: 1;
+    border-radius: 2px;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.1);
+    opacity: 0.9;
+    pointer-events: none;
+    z-index: 2;
+    transform: rotate(-3deg);
+    animation: fade 2s 0.3s var(--ease) both;
+  }
+
+  header.corner {
+    position: fixed;
+    left: clamp(22px, 3.5vw, 48px);
+    top: clamp(24px, 5vh, 56px);
+    z-index: 2;
+    pointer-events: none;
+    animation: fade 2s 0.15s var(--ease) both;
+  }
+  header h1 {
+    margin: 0;
+    font-weight: 400;
+    font-size: clamp(22px, 2.6vw, 34px);
+    letter-spacing: 0.08em;
+    line-height: 1;
+  }
+  header p {
+    margin: 10px 0 0;
+    max-width: 30ch;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+
+  .tools {
+    position: fixed;
+    left: clamp(22px, 3.5vw, 48px);
+    bottom: clamp(22px, 4vh, 48px);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    animation: fade 2s 0.45s var(--ease) both;
+  }
+  .tines {
+    display: inline-flex;
+    gap: 6px;
+    padding: 6px;
+    border: 1px solid var(--ink-faint);
+    border-radius: 999px;
+    background: rgba(255, 250, 240, 0.35);
+    backdrop-filter: blur(6px);
+  }
+  .tines button {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    width: 44px; height: 36px;
+    border-radius: 999px;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: background 0.35s var(--ease);
+  }
+  .tines button svg { width: 22px; height: 16px; overflow: visible; }
+  .tines button line { stroke: var(--ink); stroke-width: 1.4; stroke-linecap: round; opacity: 0.55; transition: opacity 0.3s ease; }
+  .tines button:hover line { opacity: 0.9; }
+  .tines button[aria-pressed="true"] { background: var(--ink); }
+  .tines button[aria-pressed="true"] line { stroke: var(--sand); opacity: 1; }
+
+  .smooth {
+    appearance: none;
+    border: 1px solid var(--ink-faint);
+    background: rgba(255, 250, 240, 0.35);
+    backdrop-filter: blur(6px);
+    color: var(--ink);
+    font: inherit;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    border-radius: 999px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.4s ease, color 0.4s ease;
+  }
+  .smooth::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--ink);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.55s var(--ease);
+    z-index: 0;
+  }
+  .smooth span { position: relative; z-index: 1; }
+  .smooth:hover { color: var(--sand); border-color: var(--ink); }
+  .smooth:hover::before { transform: scaleX(1); }
+  .smooth:active { transform: scale(0.98); }
+
+  .hint {
+    position: fixed;
+    left: 50%; bottom: clamp(26px, 5vh, 56px);
+    transform: translateX(-50%);
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    pointer-events: none;
+    z-index: 2;
+    transition: opacity 1.4s ease;
+    white-space: nowrap;
+  }
+  .hint.hidden { opacity: 0; }
+
+  @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+  @media (max-width: 640px) {
+    header p { display: none; }
+    .hint { display: none; }
+    .tools { gap: 12px; }
+    .smooth { padding: 10px 14px; font-size: 11px; }
+    .label-v { top: auto; bottom: 110px; }
+    #garden { cursor: default; }
+    .cursor { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .label-v, .seal, header.corner, .tools { animation: none; }
+  }
+</style>
+</head>
+<body>
+<canvas id="garden" aria-label="Interactive zen garden. Drag to rake the sand; drag stones to move them." role="img"></canvas>
+<div class="frame" aria-hidden="true"></div>
+
+<div class="cursor" id="cursor" aria-hidden="true">
+  <svg viewBox="0 0 28 28">
+    <circle cx="14" cy="14" r="12"/>
+    <g id="cursorTines">
+      <line x1="14" y1="6" x2="14" y2="22"/>
+    </g>
+  </svg>
+</div>
+
+<header class="corner">
+  <h1>Karesansui</h1>
+  <p>Dry landscape. The sand is water, the stones are islands, and the rake is your breath made visible.</p>
+</header>
+
+<aside class="label-v" aria-hidden="true"><b>枯山水</b>raked sand · three stones · one afternoon</aside>
+<div class="seal" aria-hidden="true">静</div>
+
+<p class="hint" id="hint">drag to rake · move the stones · let it be</p>
+
+<div class="tools" role="toolbar" aria-label="Rake tools">
+  <div class="tines" role="group" aria-label="Rake width">
+    <button type="button" data-tines="1" aria-pressed="true" aria-label="One tine">
+      <svg viewBox="0 0 22 16"><line x1="11" y1="1" x2="11" y2="15"/></svg>
+    </button>
+    <button type="button" data-tines="3" aria-pressed="false" aria-label="Three tines">
+      <svg viewBox="0 0 22 16"><line x1="5" y1="1" x2="5" y2="15"/><line x1="11" y1="1" x2="11" y2="15"/><line x1="17" y1="1" x2="17" y2="15"/></svg>
+    </button>
+    <button type="button" data-tines="5" aria-pressed="false" aria-label="Five tines">
+      <svg viewBox="0 0 22 16"><line x1="2" y1="1" x2="2" y2="15"/><line x1="6.5" y1="1" x2="6.5" y2="15"/><line x1="11" y1="1" x2="11" y2="15"/><line x1="15.5" y1="1" x2="15.5" y2="15"/><line x1="20" y1="1" x2="20" y2="15"/></svg>
+    </button>
+  </div>
+  <button class="smooth" id="smoothBtn" type="button"><span>Smooth sand</span></button>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var canvas = document.getElementById('garden');
+  var ctx = canvas.getContext('2d');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var W = 0, H = 0, dpr = 1;
+  var sandLayer, grooveLayer, gctx;
+  var tines = 1;
+  var TINE_GAP = 9;
+
+  // ---------- Stones ----------
+  var stones = [];
+  function makeStones() {
+    stones = [
+      { x: W * 0.62, y: H * 0.42, rx: Math.min(W, H) * 0.075, ry: Math.min(W, H) * 0.058, rot: -0.35, tone: 0 },
+      { x: W * 0.32, y: H * 0.64, rx: Math.min(W, H) * 0.05,  ry: Math.min(W, H) * 0.042, rot: 0.6,  tone: 1 },
+      { x: W * 0.72, y: H * 0.7,  rx: Math.min(W, H) * 0.036, ry: Math.min(W, H) * 0.03,  rot: 0.1,  tone: 2 }
+    ];
+  }
+  function insideStone(x, y, pad) {
+    for (var i = 0; i < stones.length; i++) {
+      var s = stones[i];
+      var dx = x - s.x, dy = y - s.y;
+      var c = Math.cos(-s.rot), sn = Math.sin(-s.rot);
+      var lx = dx * c - dy * sn, ly = dx * sn + dy * c;
+      var rx = s.rx + pad, ry = s.ry + pad;
+      if ((lx * lx) / (rx * rx) + (ly * ly) / (ry * ry) <= 1) return s;
+    }
+    return null;
+  }
+
+  // ---------- Sand texture ----------
+  function buildSand() {
+    sandLayer = document.createElement('canvas');
+    sandLayer.width = W * dpr; sandLayer.height = H * dpr;
+    var c = sandLayer.getContext('2d');
+    c.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var base = c.createLinearGradient(0, 0, W, H);
+    base.addColorStop(0, '#e9dcc3');
+    base.addColorStop(0.5, '#e4d4b8');
+    base.addColorStop(1, '#dccbab');
+    c.fillStyle = base;
+    c.fillRect(0, 0, W, H);
+
+    // grain: per-pixel noise on a small tile, then repeated
+    var tileSize = 256;
+    var tile = document.createElement('canvas');
+    tile.width = tile.height = tileSize;
+    var tctx = tile.getContext('2d');
+    var img = tctx.createImageData(tileSize, tileSize);
+    var d = img.data;
+    var seedv = 99991;
+    function rnd() { seedv = (seedv * 16807) % 2147483647; return (seedv - 1) / 2147483646; }
+    for (var i = 0; i < d.length; i += 4) {
+      var n = rnd();
+      var v = n < 0.5 ? 0 : 255;                 // light or dark grain
+      var a = Math.pow(rnd(), 2.4) * 46;          // most grains subtle, few crisp
+      d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = a;
+    }
+    tctx.putImageData(img, 0, 0);
+    var pat = c.createPattern(tile, 'repeat');
+    c.fillStyle = pat;
+    c.fillRect(0, 0, W, H);
+
+    // soft undulation of the bed
+    for (var k = 0; k < 6; k++) {
+      var gx = W * (0.15 + 0.7 * ((k * 0.37) % 1)), gy = H * (0.2 + 0.6 * ((k * 0.61) % 1));
+      var r = Math.max(W, H) * 0.35;
+      var g = c.createRadialGradient(gx, gy, 0, gx, gy, r);
+      g.addColorStop(0, k % 2 ? 'rgba(255,248,230,0.10)' : 'rgba(120,95,60,0.07)');
+      g.addColorStop(1, 'rgba(0,0,0,0)');
+      c.fillStyle = g; c.fillRect(0, 0, W, H);
+    }
+  }
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var firstTime = !grooveLayer;
+    var oldGroove = grooveLayer, oldW = W, oldH = H;
+    W = window.innerWidth; H = window.innerHeight;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    buildSand();
+    grooveLayer = document.createElement('canvas');
+    grooveLayer.width = W * dpr; grooveLayer.height = H * dpr;
+    gctx = grooveLayer.getContext('2d');
+    gctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    gctx.lineCap = 'round'; gctx.lineJoin = 'round';
+    if (!firstTime && oldGroove) {
+      gctx.drawImage(oldGroove, 0, 0, oldW, oldH);
+      stones.forEach(function (s) { s.x *= W / oldW; s.y *= H / oldH; });
+    } else {
+      makeStones();
+      seedGrooves();
+    }
+  }
+
+  // ---------- Raking ----------
+  function rakeSegment(x0, y0, x1, y1, count) {
+    var dx = x1 - x0, dy = y1 - y0;
+    var len = Math.hypot(dx, dy);
+    if (len < 0.5) return;
+    var nx = -dy / len, ny = dx / len;             // normal
+    var half = (count - 1) / 2;
+    for (var t = 0; t < count; t++) {
+      var off = (t - half) * TINE_GAP;
+      var ax = x0 + nx * off, ay = y0 + ny * off;
+      var bx = x1 + nx * off, by = y1 + ny * off;
+      if (insideStone(ax, ay, 6) || insideStone(bx, by, 6)) continue;
+      // shadow side (light comes from top-left)
+      gctx.lineWidth = 3.2;
+      gctx.strokeStyle = 'rgba(96, 74, 46, 0.30)';
+      gctx.beginPath(); gctx.moveTo(ax + 1.1, ay + 1.1); gctx.lineTo(bx + 1.1, by + 1.1); gctx.stroke();
+      // highlight ridge
+      gctx.lineWidth = 2.2;
+      gctx.strokeStyle = 'rgba(255, 250, 236, 0.55)';
+      gctx.beginPath(); gctx.moveTo(ax - 1.3, ay - 1.3); gctx.lineTo(bx - 1.3, by - 1.3); gctx.stroke();
+      // groove floor
+      gctx.lineWidth = 1.6;
+      gctx.strokeStyle = 'rgba(120, 96, 62, 0.28)';
+      gctx.beginPath(); gctx.moveTo(ax, ay); gctx.lineTo(bx, by); gctx.stroke();
+    }
+  }
+
+  // ripples around stones and a gentle opening wave so the garden isn't blank
+  function seedGrooves() {
+    stones.forEach(function (s) {
+      for (var ring = 1; ring <= 3; ring++) {
+        var rx = s.rx + ring * TINE_GAP * 1.6 + 6, ry = s.ry + ring * TINE_GAP * 1.6 + 6;
+        var prev = null;
+        for (var a = 0; a <= Math.PI * 2 + 0.05; a += 0.12) {
+          var lx = Math.cos(a) * rx, ly = Math.sin(a) * ry;
+          var c = Math.cos(s.rot), sn = Math.sin(s.rot);
+          var px = s.x + lx * c - ly * sn, py = s.y + lx * sn + ly * c;
+          if (prev) rakeSegment(prev[0], prev[1], px, py, 1);
+          prev = [px, py];
+        }
+      }
+    });
+    var prevp = null;
+    for (var x = -20; x <= W + 20; x += 6) {
+      var y = H * 0.22 + Math.sin(x / W * Math.PI * 2.2) * H * 0.04;
+      if (prevp) rakeSegment(prevp[0], prevp[1], x, y, 3);
+      prevp = [x, y];
+    }
+  }
+
+  // ---------- Stones rendering ----------
+  function drawStone(s) {
+    ctx.save();
+    ctx.translate(s.x, s.y);
+    ctx.rotate(s.rot);
+    // contact shadow + ambient
+    ctx.save();
+    ctx.shadowColor = 'rgba(60, 45, 25, 0.45)';
+    ctx.shadowBlur = 22; ctx.shadowOffsetX = 6; ctx.shadowOffsetY = 10;
+    ctx.fillStyle = '#3a342d';
+    ctx.beginPath(); ctx.ellipse(0, 0, s.rx, s.ry, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.restore();
+    // body shading
+    var tones = [['#5b544b', '#2a251f'], ['#4e463d', '#231e19'], ['#655c52', '#2f2923']];
+    var g = ctx.createRadialGradient(-s.rx * 0.35, -s.ry * 0.45, s.ry * 0.1, 0, 0, s.rx * 1.1);
+    g.addColorStop(0, tones[s.tone][0]);
+    g.addColorStop(1, tones[s.tone][1]);
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.ellipse(0, 0, s.rx, s.ry, 0, 0, Math.PI * 2); ctx.fill();
+    // specular sheen
+    ctx.globalAlpha = 0.18;
+    ctx.fillStyle = '#fff';
+    ctx.beginPath(); ctx.ellipse(-s.rx * 0.3, -s.ry * 0.4, s.rx * 0.35, s.ry * 0.22, -0.3, 0, Math.PI * 2); ctx.fill();
+    ctx.globalAlpha = 1;
+    // tiny sand ring at the base
+    ctx.strokeStyle = 'rgba(255,245,225,0.35)'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.ellipse(0, s.ry * 0.12, s.rx * 1.06, s.ry * 1.08, 0, 0, Math.PI * 2); ctx.stroke();
+    ctx.restore();
+  }
+
+  // ---------- Branch shadow ----------
+  var t0 = performance.now();
+  function drawBranchShadow(now) {
+    var t = reduceMotion ? 0 : (now - t0) / 1000;
+    var sway = Math.sin(t * 0.11) * 18 + Math.sin(t * 0.043) * 30;
+    var drift = Math.sin(t * 0.021) * 60;
+    ctx.save();
+    ctx.translate(W * 0.78 + drift, -H * 0.1);
+    ctx.rotate(0.55 + Math.sin(t * 0.09) * 0.03);
+    ctx.globalAlpha = 0.16;
+    ctx.fillStyle = '#3a2c1a';
+    ctx.strokeStyle = '#3a2c1a';
+    ctx.lineCap = 'round';
+    if ('filter' in ctx) ctx.filter = 'blur(9px)';
+    else { ctx.shadowColor = 'rgba(58,44,26,0.6)'; ctx.shadowBlur = 18; }
+    // main limb
+    ctx.lineWidth = 26;
+    ctx.beginPath(); ctx.moveTo(0, 0); ctx.bezierCurveTo(60, H * 0.25, 40 + sway, H * 0.45, 140 + sway, H * 0.7); ctx.stroke();
+    // secondary limbs
+    ctx.lineWidth = 12;
+    ctx.beginPath(); ctx.moveTo(45, H * 0.28); ctx.bezierCurveTo(-40 + sway * 0.5, H * 0.34, -90 + sway, H * 0.42, -150 + sway, H * 0.5); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(70 + sway * 0.6, H * 0.5); ctx.bezierCurveTo(140, H * 0.5, 190 + sway, H * 0.56, 230 + sway, H * 0.62); ctx.stroke();
+    // leaf clusters
+    var leaves = [[-140 + sway, H * 0.5], [-100 + sway, H * 0.45], [150 + sway, H * 0.72], [220 + sway, H * 0.63], [-30 + sway * 0.5, H * 0.35]];
+    leaves.forEach(function (l, i) {
+      var f = Math.sin(t * 0.3 + i) * 4;
+      ctx.beginPath(); ctx.ellipse(l[0] + f, l[1], 46 + i * 5, 22, 0.4 * i, 0, Math.PI * 2); ctx.fill();
+    });
+    ctx.restore();
+  }
+
+  // ---------- Compose ----------
+  var smoothing = 0;
+  function frame(now) {
+    if (smoothing > 0) {
+      // erase grooves gradually
+      gctx.save();
+      gctx.globalCompositeOperation = 'destination-out';
+      gctx.fillStyle = 'rgba(0,0,0,0.045)';
+      gctx.fillRect(0, 0, W, H);
+      gctx.restore();
+      smoothing--;
+    }
+    ctx.clearRect(0, 0, W, H);
+    ctx.drawImage(sandLayer, 0, 0, W, H);
+    ctx.drawImage(grooveLayer, 0, 0, W, H);
+    stones.forEach(drawStone);
+    drawBranchShadow(now);
+    requestAnimationFrame(frame);
+  }
+
+  // ---------- Input ----------
+  var pointer = { down: false, x: 0, y: 0, dragging: null, offx: 0, offy: 0 };
+  var cursorEl = document.getElementById('cursor');
+  var hint = document.getElementById('hint');
+
+  function updateCursorGlyph() {
+    var g = document.getElementById('cursorTines');
+    g.innerHTML = '';
+    var half = (tines - 1) / 2;
+    for (var i = 0; i < tines; i++) {
+      var x = 14 + (i - half) * 4.5;
+      var ln = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      ln.setAttribute('x1', x); ln.setAttribute('y1', 7); ln.setAttribute('x2', x); ln.setAttribute('y2', 21);
+      g.appendChild(ln);
+    }
+  }
+
+  canvas.addEventListener('pointerdown', function (e) {
+    pointer.down = true; pointer.x = e.clientX; pointer.y = e.clientY;
+    canvas.setPointerCapture(e.pointerId);
+    var s = insideStone(e.clientX, e.clientY, 0);
+    if (s) {
+      pointer.dragging = s; pointer.offx = s.x - e.clientX; pointer.offy = s.y - e.clientY;
+      document.body.classList.add('grabbing');
+    }
+    hint.classList.add('hidden');
+  });
+  canvas.addEventListener('pointermove', function (e) {
+    cursorEl.style.transform = 'translate(' + e.clientX + 'px,' + e.clientY + 'px)' + (pointer.dragging ? ' scale(0.8)' : '');
+    cursorEl.classList.add('on');
+    if (!pointer.down) return;
+    if (pointer.dragging) {
+      pointer.dragging.x = e.clientX + pointer.offx;
+      pointer.dragging.y = e.clientY + pointer.offy;
+    } else {
+      // subdivide long moves so fast strokes stay continuous
+      var dx = e.clientX - pointer.x, dy = e.clientY - pointer.y;
+      var dist = Math.hypot(dx, dy);
+      var steps = Math.max(1, Math.ceil(dist / 4));
+      for (var i = 1; i <= steps; i++) {
+        var ax = pointer.x + dx * (i - 1) / steps, ay = pointer.y + dy * (i - 1) / steps;
+        var bx = pointer.x + dx * i / steps, by = pointer.y + dy * i / steps;
+        rakeSegment(ax, ay, bx, by, tines);
+      }
+    }
+    pointer.x = e.clientX; pointer.y = e.clientY;
+  });
+  function release() {
+    pointer.down = false; pointer.dragging = null;
+    document.body.classList.remove('grabbing');
+  }
+  canvas.addEventListener('pointerup', release);
+  canvas.addEventListener('pointercancel', release);
+  canvas.addEventListener('pointerleave', function () { release(); cursorEl.classList.remove('on'); });
+
+  Array.prototype.forEach.call(document.querySelectorAll('.tines button'), function (btn) {
+    btn.addEventListener('click', function () {
+      tines = parseInt(btn.getAttribute('data-tines'), 10);
+      Array.prototype.forEach.call(document.querySelectorAll('.tines button'), function (b) {
+        b.setAttribute('aria-pressed', String(b === btn));
+      });
+      updateCursorGlyph();
+    });
+  });
+  document.getElementById('smoothBtn').addEventListener('click', function () {
+    smoothing = reduceMotion ? 1 : 90;
+    if (reduceMotion) { gctx.clearRect(0, 0, W, H); smoothing = 0; }
+  });
+
+  window.addEventListener('resize', resize);
+  resize();
+  updateCursorGlyph();
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

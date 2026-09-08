@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Komposition — Bauhaus Poster Composer</title>
+<style>
+  :root {
+    --paper: #f2ecdd;
+    --paper-2: #e9e1cf;
+    --ink: #17161a;
+    --red: #d8342b;
+    --blue: #1e4f9e;
+    --yellow: #f2c233;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: "Helvetica Neue", Helvetica, ui-sans-serif, system-ui, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+    min-height: 100vh;
+  }
+
+  /* ---------- Left column: typography + controls ---------- */
+  .side {
+    padding: clamp(24px, 4vw, 64px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+    position: relative;
+    overflow: hidden;
+    border-right: 1px solid rgba(242,236,221,0.12);
+  }
+  .side::after {
+    content: "";
+    position: absolute;
+    right: -1px; top: 0; bottom: 0;
+    width: 1px;
+    background: repeating-linear-gradient(180deg, var(--paper) 0 8px, transparent 8px 20px);
+    opacity: 0.35;
+  }
+  .kicker {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 11px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+  .kicker i { display: inline-block; width: 40px; height: 2px; background: var(--red); }
+  h1 {
+    margin: 26px 0 0;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: clamp(44px, 7vw, 116px);
+    line-height: 0.86;
+    letter-spacing: -0.035em;
+  }
+  h1 span { display: block; }
+  h1 .o { color: var(--yellow); }
+  h1 .b { -webkit-text-stroke: 1px var(--paper); color: transparent; }
+  h1 .r { color: var(--red); }
+  .caption {
+    margin: 22px 0 0;
+    font-size: 13px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+    opacity: 0.75;
+  }
+  .caption b { font-weight: 800; letter-spacing: 0.18em; }
+  .lede {
+    max-width: 44ch;
+    margin: 28px 0 0;
+    font-size: 15px;
+    line-height: 1.6;
+    opacity: 0.72;
+  }
+
+  .controls { display: grid; gap: 12px; }
+  .row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .btn {
+    appearance: none;
+    border: 2px solid var(--paper);
+    background: transparent;
+    color: var(--paper);
+    font: inherit;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 14px 16px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    transition: color 0.35s var(--ease), border-color 0.35s var(--ease), transform 0.2s var(--ease);
+  }
+  .btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--paper);
+    transform: translateX(-101%);
+    transition: transform 0.45s var(--ease);
+    z-index: 0;
+  }
+  .btn > * { position: relative; z-index: 1; }
+  .btn:hover { color: var(--ink); }
+  .btn:hover::before { transform: translateX(0); }
+  .btn:active { transform: scale(0.98); }
+  .btn.primary { border-color: var(--red); background: var(--red); color: var(--paper); }
+  .btn.primary::before { background: var(--yellow); }
+  .btn.primary:hover { color: var(--ink); border-color: var(--yellow); }
+  .btn[aria-pressed="true"] { background: var(--paper); color: var(--ink); }
+  .btn .glyph { width: 14px; height: 14px; flex: none; }
+  .btn .glyph * { fill: currentColor; }
+
+  .seed {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    font-variant-numeric: tabular-nums;
+    padding-top: 6px;
+  }
+  .seed output { opacity: 1; color: var(--yellow); letter-spacing: 0.1em; }
+
+  /* ---------- Right column: poster ---------- */
+  .stage {
+    display: grid;
+    place-items: center;
+    padding: clamp(18px, 4vw, 64px);
+    background:
+      radial-gradient(circle at 20% 15%, rgba(242,236,221,0.05), transparent 45%),
+      var(--ink);
+    position: relative;
+  }
+  .poster {
+    width: min(100%, calc((100vh - 2 * clamp(18px, 4vw, 64px)) * 0.7071));
+    aspect-ratio: 1 / 1.4142;
+    background: var(--paper);
+    box-shadow:
+      0 40px 80px -20px rgba(0,0,0,0.8),
+      0 0 0 1px rgba(0,0,0,0.4),
+      inset 0 0 120px rgba(0,0,0,0.05);
+    position: relative;
+    animation: settle 1s var(--ease) both;
+  }
+  .poster svg { display: block; width: 100%; height: 100%; overflow: hidden; }
+  .poster .paper-grain { opacity: 0.9; mix-blend-mode: multiply; }
+
+  .shape { transform-box: fill-box; transform-origin: center; }
+  .shape.animate {
+    animation: pop 0.9s var(--spring) both;
+    animation-delay: var(--d, 0s);
+  }
+  .grid-overlay { pointer-events: none; opacity: 0; transition: opacity 0.4s ease; }
+  .grid-overlay.on { opacity: 1; }
+  .grid-overlay line { stroke: var(--red); stroke-width: 0.6; stroke-dasharray: 3 3; opacity: 0.6; }
+  .grid-overlay text { fill: var(--red); font-size: 8px; font-family: ui-monospace, "Courier New", monospace; }
+
+  @keyframes pop {
+    0%   { opacity: 0; transform: scale(0.2) rotate(-25deg); }
+    60%  { opacity: 1; }
+    100% { opacity: 1; transform: scale(1) rotate(0deg); }
+  }
+  @keyframes settle {
+    from { opacity: 0; transform: translateY(24px) rotate(-1deg); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .toast {
+    position: fixed;
+    left: 50%; bottom: 24px;
+    transform: translate(-50%, 20px);
+    background: var(--yellow);
+    color: var(--ink);
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 10px 18px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease, transform 0.45s var(--ease);
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  @media (max-width: 900px) {
+    body { grid-template-columns: 1fr; }
+    .side { border-right: 0; border-bottom: 1px solid rgba(242,236,221,0.12); }
+    .side::after { display: none; }
+    .poster { width: min(100%, 520px); }
+  }
+  @media (max-width: 480px) {
+    .row { grid-template-columns: 1fr; }
+    h1 { font-size: clamp(40px, 15vw, 64px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .shape.animate { animation: none; }
+    .poster { animation: none; }
+    .btn::before { transition: none; }
+  }
+</style>
+</head>
+<body>
+<aside class="side">
+  <div>
+    <p class="kicker"><i></i>Staatliches Bauhaus · Weimar · Dessau · Berlin</p>
+    <h1><span class="r">Kompo</span><span class="b">sition</span><span class="o">Nr. <output id="numOut">01</output></span></h1>
+    <p class="caption"><b>1919–1933</b> · Fourteen years of form follows function</p>
+    <p class="lede">
+      Circle, square, triangle. Red, blue, yellow. Kandinsky asked students to match each shape to its
+      natural color; the school never quite agreed on the answer. This composer takes the same vocabulary
+      and lets a seeded algorithm settle the argument differently every time.
+    </p>
+  </div>
+
+  <div class="controls">
+    <div class="row">
+      <button class="btn primary" id="newBtn" type="button">
+        <span>New composition</span>
+        <svg class="glyph" viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="6"/></svg>
+      </button>
+      <button class="btn" id="shuffleBtn" type="button">
+        <span>Shuffle colors</span>
+        <svg class="glyph" viewBox="0 0 14 14" aria-hidden="true"><rect x="1" y="1" width="12" height="12"/></svg>
+      </button>
+    </div>
+    <div class="row">
+      <button class="btn" id="gridBtn" type="button" aria-pressed="false">
+        <span>Toggle grid</span>
+        <svg class="glyph" viewBox="0 0 14 14" aria-hidden="true"><polygon points="7,1 13,13 1,13"/></svg>
+      </button>
+      <button class="btn" id="dlBtn" type="button">
+        <span>Download SVG</span>
+        <svg class="glyph" viewBox="0 0 14 14" aria-hidden="true"><rect x="1" y="6" width="12" height="2"/></svg>
+      </button>
+    </div>
+    <div class="seed">
+      <span>Seed</span>
+      <output id="seedOut">—</output>
+    </div>
+  </div>
+</aside>
+
+<main class="stage">
+  <div class="poster" id="poster">
+    <svg id="art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 594" role="img" aria-labelledby="artTitle">
+      <title id="artTitle">Generated Bauhaus poster composition</title>
+      <defs>
+        <filter id="grain" x="0" y="0" width="100%" height="100%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="noise"/>
+          <feColorMatrix type="matrix" values="0 0 0 0 0.45  0 0 0 0 0.42  0 0 0 0 0.36  0 0 0 0.12 0"/>
+        </filter>
+        <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <rect width="6" height="6" fill="#17161a"/>
+          <rect width="3" height="6" fill="#f2ecdd"/>
+        </pattern>
+      </defs>
+      <rect width="420" height="594" fill="#f2ecdd"/>
+      <g id="shapes"></g>
+      <g id="typo"></g>
+      <rect class="paper-grain" width="420" height="594" filter="url(#grain)"/>
+      <g id="gridOverlay" class="grid-overlay"></g>
+    </svg>
+  </div>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite">Exported</div>
+
+<script>
+(function () {
+  'use strict';
+  var NS = 'http://www.w3.org/2000/svg';
+  var PALETTE = ['#d8342b', '#1e4f9e', '#f2c233', '#17161a'];
+  var PAPER = '#f2ecdd';
+  var TITLES = ['Form', 'Bühne', 'Licht', 'Rhythmus', 'Ordnung', 'Gleichgewicht', 'Raum', 'Bewegung', 'Kontrast', 'Fläche'];
+  var W = 420, H = 594;
+  var COLS = 6, ROWS = 9;
+  var MARGIN = 30;
+  var cellW = (W - MARGIN * 2) / COLS;
+  var cellH = (H - MARGIN * 2) / ROWS;
+
+  var shapesG = document.getElementById('shapes');
+  var typoG = document.getElementById('typo');
+  var gridG = document.getElementById('gridOverlay');
+  var seedOut = document.getElementById('seedOut');
+  var numOut = document.getElementById('numOut');
+  var toast = document.getElementById('toast');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---------- Seeded PRNG (mulberry32) ----------
+  function makeRng(seed) {
+    var a = seed >>> 0;
+    return function () {
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      var t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  var seed = (Date.now() % 100000) | 0;
+  var rng = makeRng(seed);
+  var counter = 1;
+  var colorOrder = PALETTE.slice();
+  var currentSpec = null;
+
+  function pick(arr) { return arr[Math.floor(rng() * arr.length)]; }
+  function rint(a, b) { return a + Math.floor(rng() * (b - a + 1)); }
+  function el(name, attrs) {
+    var n = document.createElementNS(NS, name);
+    for (var k in attrs) if (attrs.hasOwnProperty(k)) n.setAttribute(k, attrs[k]);
+    return n;
+  }
+  function gx(c) { return MARGIN + c * cellW; }
+  function gy(r) { return MARGIN + r * cellH; }
+
+  // ---------- Composition planning ----------
+  function plan() {
+    var spec = { shapes: [], title: pick(TITLES), titlePos: pick(['top', 'bottom']), align: pick(['left', 'right']) };
+    var occupied = {};
+    function free(c, r, cw, rh) {
+      for (var i = c; i < c + cw; i++) for (var j = r; j < r + rh; j++) {
+        if (i >= COLS || j >= ROWS || occupied[i + ',' + j]) return false;
+      }
+      return true;
+    }
+    function occupy(c, r, cw, rh) {
+      for (var i = c; i < c + cw; i++) for (var j = r; j < r + rh; j++) occupied[i + ',' + j] = true;
+    }
+    var reservedRow = spec.titlePos === 'top' ? 0 : ROWS - 1;
+    for (var i = 0; i < COLS; i++) occupied[i + ',' + reservedRow] = true;
+
+    // One dominant anchor shape
+    var big = rint(2, 3);
+    var attempts = 0;
+    while (attempts++ < 40) {
+      var c = rint(0, COLS - big), r = rint(0, ROWS - big);
+      if (free(c, r, big, big)) {
+        spec.shapes.push({ kind: pick(['circle', 'square', 'circle', 'quarter']), c: c, r: r, w: big, h: big, ci: 0 });
+        occupy(c, r, big, big);
+        break;
+      }
+    }
+    // Thick bars (horizontal + vertical)
+    var bars = rint(1, 3);
+    for (var b = 0; b < bars; b++) {
+      var horizontal = rng() > 0.5;
+      var len = rint(2, horizontal ? COLS : 5);
+      for (attempts = 0; attempts < 30; attempts++) {
+        var bc = rint(0, horizontal ? COLS - len : COLS - 1);
+        var br = rint(0, horizontal ? ROWS - 1 : ROWS - len);
+        var bw = horizontal ? len : 1, bh = horizontal ? 1 : len;
+        if (free(bc, br, bw, bh)) {
+          spec.shapes.push({ kind: 'bar', c: bc, r: br, w: bw, h: bh, thin: rng() > 0.5, ci: 3 });
+          occupy(bc, br, bw, bh); break;
+        }
+      }
+    }
+    // Medium shapes
+    var mediums = rint(3, 6);
+    for (var m = 0; m < mediums; m++) {
+      var sz = rint(1, 2);
+      for (attempts = 0; attempts < 30; attempts++) {
+        var mc = rint(0, COLS - sz), mr = rint(0, ROWS - sz);
+        if (free(mc, mr, sz, sz)) {
+          spec.shapes.push({ kind: pick(['circle', 'square', 'triangle', 'triangle', 'half', 'ring']), c: mc, r: mr, w: sz, h: sz, ci: rint(0, 3), rot: rint(0, 3) });
+          occupy(mc, mr, sz, sz); break;
+        }
+      }
+    }
+    // Small accents
+    var smalls = rint(2, 5);
+    for (var s = 0; s < smalls; s++) {
+      for (attempts = 0; attempts < 30; attempts++) {
+        var sc = rint(0, COLS - 1), sr = rint(0, ROWS - 1);
+        if (free(sc, sr, 1, 1)) {
+          spec.shapes.push({ kind: pick(['dot', 'square', 'triangle', 'hatch']), c: sc, r: sr, w: 1, h: 1, ci: rint(0, 3), rot: rint(0, 3), small: true });
+          occupy(sc, sr, 1, 1); break;
+        }
+      }
+    }
+    // Diagonal lines spanning the sheet
+    var diags = rint(1, 3);
+    spec.lines = [];
+    for (var d = 0; d < diags; d++) {
+      spec.lines.push({ x1: gx(rint(0, COLS)), y1: gy(rint(0, ROWS)), x2: gx(rint(0, COLS)), y2: gy(rint(0, ROWS)), width: pick([1.5, 3, 6]), ci: rint(0, 3) });
+    }
+    return spec;
+  }
+
+  // ---------- Rendering ----------
+  function shapeNode(s, index) {
+    var x = gx(s.c), y = gy(s.r), w = s.w * cellW, h = s.h * cellH;
+    var size = Math.min(w, h);
+    var cx = x + w / 2, cy = y + h / 2;
+    var fill = colorOrder[s.ci % 4];
+    var g = el('g', { 'class': 'shape' + (reduceMotion ? '' : ' animate') });
+    g.style.setProperty('--d', (index * 0.06).toFixed(2) + 's');
+    var node;
+    switch (s.kind) {
+      case 'circle':
+        node = el('circle', { cx: cx, cy: cy, r: size / 2, fill: fill }); break;
+      case 'dot':
+        node = el('circle', { cx: cx, cy: cy, r: size / 4, fill: fill }); break;
+      case 'ring':
+        node = el('circle', { cx: cx, cy: cy, r: size / 2 - size * 0.09, fill: 'none', stroke: fill, 'stroke-width': size * 0.18 }); break;
+      case 'square':
+        var pad = s.small ? size * 0.2 : 0;
+        node = el('rect', { x: cx - size / 2 + pad, y: cy - size / 2 + pad, width: size - pad * 2, height: size - pad * 2, fill: fill }); break;
+      case 'hatch':
+        node = el('rect', { x: cx - size / 2, y: cy - size / 2, width: size, height: size, fill: 'url(#hatch)' }); break;
+      case 'triangle':
+        var pts = [[cx, cy - size / 2], [cx + size / 2, cy + size / 2], [cx - size / 2, cy + size / 2]];
+        node = el('polygon', { points: pts.map(function (p) { return p.join(','); }).join(' '), fill: fill, transform: 'rotate(' + (s.rot * 90) + ' ' + cx + ' ' + cy + ')' }); break;
+      case 'half':
+        node = el('path', { d: 'M' + (cx - size / 2) + ' ' + cy + ' A' + (size / 2) + ' ' + (size / 2) + ' 0 0 1 ' + (cx + size / 2) + ' ' + cy + ' Z', fill: fill, transform: 'rotate(' + (s.rot * 90) + ' ' + cx + ' ' + cy + ')' }); break;
+      case 'quarter':
+        node = el('path', { d: 'M' + x + ' ' + (y + h) + ' L' + x + ' ' + y + ' A' + w + ' ' + h + ' 0 0 1 ' + (x + w) + ' ' + (y + h) + ' Z', fill: fill }); break;
+      case 'bar':
+        var t = s.thin ? 0.35 : 0.7;
+        if (s.w > s.h) node = el('rect', { x: x, y: cy - cellH * t / 2, width: w, height: cellH * t, fill: fill });
+        else node = el('rect', { x: cx - cellW * t / 2, y: y, width: cellW * t, height: h, fill: fill });
+        break;
+      default:
+        node = el('rect', { x: x, y: y, width: w, height: h, fill: fill });
+    }
+    g.appendChild(node);
+    return g;
+  }
+
+  function renderTypo(spec) {
+    typoG.innerHTML = '';
+    var top = spec.titlePos === 'top';
+    var baseY = top ? gy(0) + cellH * 0.78 : gy(ROWS) - cellH * 0.18;
+    var right = spec.align === 'right';
+    var x = right ? W - MARGIN : MARGIN;
+    var title = el('text', {
+      x: x, y: baseY, fill: colorOrder[3], 'font-family': '"Helvetica Neue", Helvetica, Arial, sans-serif',
+      'font-weight': '800', 'font-size': cellH * 0.62, 'letter-spacing': '-1', 'text-anchor': right ? 'end' : 'start'
+    });
+    title.textContent = spec.title.toUpperCase();
+    var cap = el('text', {
+      x: right ? MARGIN : W - MARGIN, y: baseY, fill: colorOrder[3], 'font-family': '"Helvetica Neue", Helvetica, Arial, sans-serif',
+      'font-weight': '500', 'font-size': 7, 'letter-spacing': '2.4', 'text-anchor': right ? 'start' : 'end'
+    });
+    cap.textContent = '1919–1933';
+    var rule = el('rect', { x: MARGIN, y: top ? gy(1) - 3 : gy(ROWS - 1) + 1, width: W - MARGIN * 2, height: 2, fill: colorOrder[3] });
+    var small = el('text', {
+      x: right ? W - MARGIN : MARGIN, y: top ? gy(1) + 10 : gy(ROWS - 1) - 6, fill: colorOrder[3],
+      'font-family': '"Helvetica Neue", Helvetica, Arial, sans-serif', 'font-weight': '500', 'font-size': 5.5, 'letter-spacing': '1.8',
+      'text-anchor': right ? 'end' : 'start'
+    });
+    small.textContent = 'KOMPOSITION NR. ' + pad(counter) + ' · SEED ' + seed;
+    typoG.appendChild(rule); typoG.appendChild(title); typoG.appendChild(cap); typoG.appendChild(small);
+  }
+
+  function render(spec) {
+    shapesG.innerHTML = '';
+    spec.lines.forEach(function (l, i) {
+      var g = el('g', { 'class': 'shape' + (reduceMotion ? '' : ' animate') });
+      g.style.setProperty('--d', (0.1 + i * 0.08).toFixed(2) + 's');
+      g.appendChild(el('line', { x1: l.x1, y1: l.y1, x2: l.x2, y2: l.y2, stroke: colorOrder[l.ci], 'stroke-width': l.width, 'stroke-linecap': 'square' }));
+      shapesG.appendChild(g);
+    });
+    spec.shapes.forEach(function (s, i) { shapesG.appendChild(shapeNode(s, i + spec.lines.length)); });
+    renderTypo(spec);
+    seedOut.textContent = String(seed);
+    numOut.textContent = pad(counter);
+  }
+
+  function pad(n) { return n < 10 ? '0' + n : String(n); }
+
+  function buildGrid() {
+    gridG.innerHTML = '';
+    for (var c = 0; c <= COLS; c++) {
+      gridG.appendChild(el('line', { x1: gx(c), y1: 0, x2: gx(c), y2: H }));
+    }
+    for (var r = 0; r <= ROWS; r++) {
+      gridG.appendChild(el('line', { x1: 0, y1: gy(r), x2: W, y2: gy(r) }));
+      if (r < ROWS) {
+        var t = el('text', { x: 6, y: gy(r) + 10 });
+        t.textContent = String.fromCharCode(65 + r);
+        gridG.appendChild(t);
+      }
+    }
+    for (c = 0; c < COLS; c++) {
+      var tc = el('text', { x: gx(c) + 3, y: 10 });
+      tc.textContent = c + 1;
+      gridG.appendChild(tc);
+    }
+  }
+
+  // ---------- Actions ----------
+  function newComposition() {
+    seed = (seed * 7919 + 104729) % 2147483647;
+    rng = makeRng(seed);
+    counter++;
+    colorOrder = PALETTE.slice();
+    currentSpec = plan();
+    render(currentSpec);
+  }
+  function shuffleColors() {
+    var arr = colorOrder.slice();
+    for (var i = arr.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+    }
+    if (arr.join() === colorOrder.join()) arr.push(arr.shift());
+    colorOrder = arr;
+    render(currentSpec);
+  }
+  function toggleGrid() {
+    var btn = document.getElementById('gridBtn');
+    var on = btn.getAttribute('aria-pressed') !== 'true';
+    btn.setAttribute('aria-pressed', String(on));
+    gridG.classList.toggle('on', on);
+  }
+  function download() {
+    var svg = document.getElementById('art');
+    var clone = svg.cloneNode(true);
+    clone.setAttribute('xmlns', NS);
+    clone.setAttribute('width', '420mm'); clone.setAttribute('height', '594mm');
+    var overlay = clone.querySelector('#gridOverlay');
+    if (overlay) overlay.parentNode.removeChild(overlay);
+    Array.prototype.forEach.call(clone.querySelectorAll('.shape'), function (n) { n.removeAttribute('class'); n.removeAttribute('style'); });
+    var source = '<?xml version="1.0" encoding="UTF-8"?>\n' + new XMLSerializer().serializeToString(clone);
+    var url = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(source);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'komposition-' + pad(counter) + '-' + seed + '.svg';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    toast.classList.add('show');
+    clearTimeout(download._t);
+    download._t = setTimeout(function () { toast.classList.remove('show'); }, 1800);
+  }
+
+  document.getElementById('newBtn').addEventListener('click', newComposition);
+  document.getElementById('shuffleBtn').addEventListener('click', shuffleColors);
+  document.getElementById('gridBtn').addEventListener('click', toggleGrid);
+  document.getElementById('dlBtn').addEventListener('click', download);
+  document.addEventListener('keydown', function (e) {
+    if (e.target.tagName === 'BUTTON') return;
+    if (e.key === ' ' || e.key === 'n') { e.preventDefault(); newComposition(); }
+    else if (e.key === 'c') shuffleColors();
+    else if (e.key === 'g') toggleGrid();
+  });
+
+  // ---------- Boot ----------
+  buildGrid();
+  currentSpec = plan();
+  render(currentSpec);
+})();
+</script>
+</body>
+</html>

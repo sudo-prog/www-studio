@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ＬＵＮＡＲ ＷＩＮＤ — Vaporwave Sunset</title>
+<style>
+  :root {
+    --pink: #ff71ce;
+    --cyan: #01cdfe;
+    --mint: #05ffa1;
+    --violet: #b967ff;
+    --cream: #fffb96;
+    --night: #12002a;
+    --grid-speed: 4s;
+    --mono: ui-monospace, 'SF Mono', Menlo, 'Courier New', monospace;
+    --sans: ui-sans-serif, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --serif: 'Palatino Linotype', Palatino, 'Iowan Old Style', Georgia, ui-serif, serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--night);
+    color: #fff;
+    font-family: var(--sans);
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .scene {
+    position: fixed;
+    inset: 0;
+    perspective: 520px;
+    perspective-origin: 50% 40%;
+    overflow: hidden;
+    background: linear-gradient(180deg, #0a0020 0%, #2b0a5e 30%, #7a2a9e 52%, #ff71ce 63%, #ffb0e0 66%, #12002a 66.1%);
+  }
+
+  /* stars */
+  .stars {
+    position: absolute; inset: 0 0 34% 0;
+    background-image:
+      radial-gradient(1px 1px at 12% 18%, #fff 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 33% 8%, #fffb96 50%, transparent 51%),
+      radial-gradient(1px 1px at 58% 22%, #fff 50%, transparent 51%),
+      radial-gradient(1px 1px at 77% 12%, #01cdfe 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 88% 30%, #fff 50%, transparent 51%),
+      radial-gradient(1px 1px at 21% 40%, #fff 50%, transparent 51%),
+      radial-gradient(1px 1px at 45% 35%, #b967ff 50%, transparent 51%),
+      radial-gradient(1px 1px at 68% 44%, #fff 50%, transparent 51%),
+      radial-gradient(1px 1px at 5% 60%, #fff 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 95% 55%, #fffb96 50%, transparent 51%);
+    animation: twinkle 5s ease-in-out infinite alternate;
+  }
+  @keyframes twinkle { from { opacity: .55; } to { opacity: 1; } }
+
+  /* striped sun */
+  .sun {
+    position: absolute;
+    left: 50%; top: 20%;
+    width: min(46vmin, 380px); height: min(46vmin, 380px);
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: linear-gradient(180deg, var(--cream) 0%, #ffb347 35%, var(--pink) 70%, var(--violet) 100%);
+    -webkit-mask: linear-gradient(180deg,
+      #000 0 52%, transparent 52% 55%,
+      #000 55% 63%, transparent 63% 67%,
+      #000 67% 73.5%, transparent 73.5% 78.5%,
+      #000 78.5% 83%, transparent 83% 89%,
+      #000 89% 92%, transparent 92% 100%);
+    mask: linear-gradient(180deg,
+      #000 0 52%, transparent 52% 55%,
+      #000 55% 63%, transparent 63% 67%,
+      #000 67% 73.5%, transparent 73.5% 78.5%,
+      #000 78.5% 83%, transparent 83% 89%,
+      #000 89% 92%, transparent 92% 100%);
+    animation: sunset 40s ease-in-out infinite alternate;
+  }
+  .sun-glow {
+    position: absolute;
+    left: 50%; top: 20%;
+    width: min(46vmin, 380px); height: min(46vmin, 380px);
+    transform: translateX(-50%);
+    border-radius: 50%;
+    box-shadow: 0 0 80px 30px rgba(255,113,206,.45), 0 0 200px 80px rgba(255,251,150,.15);
+    animation: sunset 40s ease-in-out infinite alternate;
+  }
+  @keyframes sunset { from { margin-top: 0; } to { margin-top: 4vh; } }
+
+  /* haze band at horizon */
+  .haze {
+    position: absolute;
+    left: 0; right: 0; top: 60%;
+    height: 12%;
+    background: linear-gradient(180deg, transparent, rgba(255,176,224,.5) 50%, transparent);
+    filter: blur(6px);
+  }
+
+  /* palms */
+  .palm {
+    position: absolute;
+    bottom: 33%;
+    width: clamp(120px, 22vw, 320px);
+    height: auto;
+    fill: #12002a;
+    filter: drop-shadow(0 0 2px rgba(255,113,206,.4));
+    transform-origin: 50% 100%;
+    animation: sway 7s ease-in-out infinite alternate;
+  }
+  .palm.left { left: -2%; }
+  .palm.right { right: -2%; transform: scaleX(-1); animation-delay: -3s; animation-name: swayR; }
+  @keyframes sway { from { transform: rotate(-1.2deg); } to { transform: rotate(1.4deg); } }
+  @keyframes swayR { from { transform: scaleX(-1) rotate(-1.2deg); } to { transform: scaleX(-1) rotate(1.4deg); } }
+
+  /* neon grid plane */
+  .floor {
+    position: absolute;
+    left: -100%; right: -100%;
+    top: 66%;
+    height: 130%;
+    transform-origin: 50% 0;
+    transform: rotateX(72deg);
+    background-color: var(--night);
+    background-image:
+      linear-gradient(90deg, rgba(1,205,254,.0) 0, rgba(1,205,254,.0) calc(50% - 1px), var(--cyan) calc(50% - 1px), var(--cyan) calc(50% + 1px), rgba(1,205,254,.0) calc(50% + 1px)),
+      repeating-linear-gradient(90deg, var(--cyan) 0 2px, transparent 2px 80px),
+      repeating-linear-gradient(180deg, var(--pink) 0 2px, transparent 2px 80px);
+    background-size: 100% 100%, 80px 80px, 80px 80px;
+    animation: scroll var(--grid-speed) linear infinite;
+    box-shadow: 0 0 60px rgba(1,205,254,.35) inset;
+  }
+  @keyframes scroll { from { background-position: 0 0, 0 0, 0 0; } to { background-position: 0 0, 0 0, 0 80px; } }
+  .floor-fade {
+    position: absolute;
+    left: 0; right: 0; top: 66%; height: 34%;
+    background: linear-gradient(180deg, rgba(255,113,206,.35), transparent 30%, rgba(18,0,42,0) 60%, rgba(18,0,42,.6));
+    pointer-events: none;
+  }
+
+  /* rotating checkered accent */
+  .checker {
+    position: absolute;
+    left: 50%; bottom: -14vmin;
+    width: 60vmin; height: 60vmin;
+    transform: translateX(-50%) rotateX(74deg) rotateZ(0deg);
+    background: repeating-conic-gradient(var(--violet) 0 25%, transparent 0 50%);
+    background-size: 12% 12%;
+    border-radius: 50%;
+    opacity: .5;
+    -webkit-mask: radial-gradient(circle, #000 40%, transparent 72%);
+    mask: radial-gradient(circle, #000 40%, transparent 72%);
+    animation: spin 40s linear infinite;
+  }
+  @keyframes spin { to { transform: translateX(-50%) rotateX(74deg) rotateZ(360deg); } }
+
+  /* chrome title */
+  .title {
+    position: absolute;
+    left: 50%; top: 46%;
+    transform: translate(-50%, -50%);
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(30px, 8.5vw, 132px);
+    letter-spacing: .04em;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    background: linear-gradient(180deg, #fff 0%, var(--cyan) 30%, #063a55 49%, #ffffff 51%, var(--pink) 70%, var(--violet) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,.55);
+    filter: drop-shadow(0 4px 0 #6a1d8a) drop-shadow(0 8px 0 #2b0a5e) drop-shadow(0 0 22px rgba(1,205,254,.7));
+    animation: shimmer 6s ease-in-out infinite;
+    user-select: none;
+  }
+  @keyframes shimmer { 0%, 100% { filter: drop-shadow(0 4px 0 #6a1d8a) drop-shadow(0 8px 0 #2b0a5e) drop-shadow(0 0 22px rgba(1,205,254,.7)); } 50% { filter: drop-shadow(0 4px 0 #6a1d8a) drop-shadow(0 8px 0 #2b0a5e) drop-shadow(0 0 34px rgba(255,113,206,.85)); } }
+  .subtitle {
+    position: absolute;
+    left: 50%; top: calc(46% + clamp(30px, 6vw, 90px));
+    transform: translateX(-50%);
+    font-family: var(--mono);
+    font-size: clamp(10px, 1.4vw, 15px);
+    letter-spacing: .5em;
+    color: var(--mint);
+    text-shadow: 0 0 10px var(--mint);
+    white-space: nowrap;
+  }
+
+  /* classical bust */
+  .bust {
+    position: absolute;
+    right: clamp(4%, 12vw, 18%);
+    top: 28%;
+    width: clamp(90px, 16vw, 220px);
+    height: auto;
+    animation: float 9s ease-in-out infinite;
+    filter: drop-shadow(0 0 18px rgba(185,103,255,.55));
+  }
+  @keyframes float { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-22px) rotate(2deg); } }
+
+  /* retro window */
+  .win {
+    position: absolute;
+    left: clamp(12px, 3vw, 48px);
+    bottom: clamp(12px, 3vh, 40px);
+    width: min(320px, calc(100vw - 24px));
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #fff #404040 #404040 #fff;
+    box-shadow: 1px 1px 0 #000, 6px 6px 0 rgba(0,0,0,.4);
+    font-family: var(--sans);
+    color: #000;
+    font-size: 12px;
+    z-index: 5;
+  }
+  .win .bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 4px;
+    background: linear-gradient(90deg, #000080, #1084d0);
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: .02em;
+  }
+  .win .bar .ico { width: 14px; height: 14px; background: linear-gradient(135deg, var(--pink), var(--cyan)); border: 1px solid #fff; }
+  .win .bar .t { flex: 1; }
+  .win .bar .b { width: 16px; height: 14px; background: #c0c0c0; border: 1px solid; border-color: #fff #404040 #404040 #fff; color: #000; font-size: 10px; line-height: 12px; text-align: center; font-family: var(--mono); }
+  .win .menu { display: flex; gap: 12px; padding: 3px 8px; border-bottom: 1px solid #808080; }
+  .win .menu span:first-letter { text-decoration: underline; }
+  .win .body { padding: 10px; display: grid; gap: 10px; }
+  .win .disp {
+    background: #000;
+    border: 2px solid;
+    border-color: #404040 #fff #fff #404040;
+    padding: 8px 10px;
+    font-family: var(--mono);
+    color: var(--mint);
+    font-size: 11px;
+    line-height: 1.6;
+    text-shadow: 0 0 6px var(--mint);
+    overflow: hidden;
+  }
+  .win .disp b { color: var(--pink); font-weight: normal; }
+  .win .track { display: flex; align-items: center; gap: 8px; }
+  .win .prog { flex: 1; height: 10px; border: 1px solid; border-color: #404040 #fff #fff #404040; background: #fff; position: relative; overflow: hidden; }
+  .win .prog i { position: absolute; left: 0; top: 0; bottom: 0; width: 38%; background: repeating-linear-gradient(90deg, #000080 0 8px, transparent 8px 10px); animation: prog 20s linear infinite; }
+  @keyframes prog { to { width: 100%; } }
+  .win .row { display: flex; gap: 6px; }
+  .win button {
+    flex: 1;
+    font-family: var(--sans);
+    font-size: 12px;
+    padding: 5px 8px;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #fff #404040 #404040 #fff;
+    box-shadow: 1px 1px 0 #000;
+    cursor: pointer;
+    color: #000;
+  }
+  .win button:active, .win button.pressed { border-color: #404040 #fff #fff #404040; box-shadow: none; transform: translate(1px, 1px); }
+  .win button:focus-visible { outline: 1px dotted #000; outline-offset: -4px; }
+  .win .statusbar { display: flex; gap: 6px; padding: 3px 4px; border-top: 1px solid #808080; }
+  .win .statusbar span { flex: 1; border: 1px solid; border-color: #808080 #fff #fff #808080; padding: 1px 6px; font-size: 11px; color: #000; }
+
+  .corner {
+    position: absolute;
+    right: 16px; top: 14px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .3em;
+    color: rgba(255,255,255,.65);
+    text-align: right;
+    z-index: 5;
+  }
+  .corner b { display: block; color: var(--cream); font-weight: normal; font-size: 13px; }
+
+  @media (max-width: 640px) {
+    .bust { right: 2%; top: 22%; width: 90px; }
+    .subtitle { letter-spacing: .3em; }
+    .corner { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .floor, .checker, .stars, .sun, .sun-glow, .title, .bust, .palm, .win .prog i { animation: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="scene" aria-label="Vaporwave sunset scene">
+  <div class="stars"></div>
+  <div class="sun-glow"></div>
+  <div class="sun"></div>
+  <div class="haze"></div>
+
+  <svg class="palm left" viewBox="0 0 300 420" aria-hidden="true">
+    <path d="M150 420 C152 340 158 260 170 190 L160 188 C150 260 145 340 144 420 Z"/>
+    <path d="M165 192 C120 150 60 140 10 170 C70 160 120 175 165 200 Z"/>
+    <path d="M165 190 C120 130 90 70 100 10 C110 70 140 130 172 185 Z"/>
+    <path d="M168 190 C200 120 250 90 300 100 C250 110 210 150 175 195 Z"/>
+    <path d="M168 192 C220 170 270 190 300 230 C260 210 215 205 172 200 Z"/>
+    <path d="M165 194 C110 200 60 230 30 280 C70 245 120 225 168 204 Z"/>
+    <path d="M170 194 C210 220 240 270 245 330 C230 280 205 240 172 208 Z"/>
+  </svg>
+  <svg class="palm right" viewBox="0 0 300 420" aria-hidden="true">
+    <path d="M150 420 C152 340 158 260 170 190 L160 188 C150 260 145 340 144 420 Z"/>
+    <path d="M165 192 C120 150 60 140 10 170 C70 160 120 175 165 200 Z"/>
+    <path d="M165 190 C120 130 90 70 100 10 C110 70 140 130 172 185 Z"/>
+    <path d="M168 190 C200 120 250 90 300 100 C250 110 210 150 175 195 Z"/>
+    <path d="M168 192 C220 170 270 190 300 230 C260 210 215 205 172 200 Z"/>
+    <path d="M165 194 C110 200 60 230 30 280 C70 245 120 225 168 204 Z"/>
+    <path d="M170 194 C210 220 240 270 245 330 C230 280 205 240 172 208 Z"/>
+  </svg>
+
+  <div class="floor"></div>
+  <div class="floor-fade"></div>
+  <div class="checker"></div>
+
+  <svg class="bust" viewBox="0 0 200 260" aria-hidden="true">
+    <defs>
+      <linearGradient id="marble" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#fdf6ff"/>
+        <stop offset=".5" stop-color="#d9c4ff"/>
+        <stop offset="1" stop-color="#8b5cd6"/>
+      </linearGradient>
+    </defs>
+    <g fill="url(#marble)">
+      <path d="M40 260 L160 260 L150 232 L50 232 Z"/>
+      <path d="M52 232 C40 205 75 195 88 190 L112 190 C125 195 160 205 148 232 Z"/>
+      <path d="M86 192 C88 178 86 166 84 156 L116 156 C114 166 112 178 114 192 Z"/>
+      <ellipse cx="100" cy="112" rx="46" ry="54"/>
+      <path d="M54 100 C50 60 70 34 100 30 C132 32 152 60 146 102 C140 80 128 66 100 62 C72 66 60 80 54 100 Z"/>
+      <path d="M56 96 C46 110 48 128 56 136 Z"/>
+      <path d="M144 96 C154 110 152 128 144 136 Z"/>
+    </g>
+    <path d="M78 118 C86 112 94 114 98 118" stroke="#6b3fb0" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M104 118 C110 114 118 112 124 118" stroke="#6b3fb0" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M100 118 C96 128 94 134 92 142 C96 146 104 146 108 142" stroke="#6b3fb0" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M90 156 C96 160 104 160 110 156" stroke="#6b3fb0" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </svg>
+
+  <h1 class="title" id="title">ＬＵＮＡＲ　ＷＩＮＤ</h1>
+  <p class="subtitle">Ｓ Ｉ Ｄ Ｅ　Ｂ　·　１ ９ ９ ５</p>
+
+  <div class="corner"><b>ＭＥＭＯＲＩＥＳ</b>ＯＦ　ＴＯＭＯＲＲＯＷ</div>
+
+  <div class="win" role="region" aria-label="Media player">
+    <div class="bar"><span class="ico"></span><span class="t">Lunar Wind Player</span><span class="b">_</span><span class="b">□</span><span class="b">×</span></div>
+    <div class="menu"><span>File</span><span>View</span><span>Options</span><span>Help</span></div>
+    <div class="body">
+      <div class="disp" id="disp">
+        ▶ <b>NOW PLAYING</b> — ＬＵＮＡＲ ＷＩＮＤ.wav<br>
+        SPEED: <span id="speedTxt">1.0×</span> · GRID: <span id="gridTxt">CRUISE</span><br>
+        <span id="clock">00:00:00</span> · 44.1 kHz · STEREO
+      </div>
+      <div class="track"><span>♫</span><div class="prog"><i></i></div></div>
+      <div class="row">
+        <button type="button" id="btnPlay" aria-pressed="false">▶ Play</button>
+        <button type="button" id="btnSlow">◂◂ Slow</button>
+        <button type="button" id="btnFast">▸▸ Fast</button>
+      </div>
+    </div>
+    <div class="statusbar"><span id="stat">Ready.</span><span>ｴｰﾚｰ ﾈｵﾞｵ</span></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var root = document.documentElement;
+  var btnPlay = document.getElementById('btnPlay');
+  var btnSlow = document.getElementById('btnSlow');
+  var btnFast = document.getElementById('btnFast');
+  var speedTxt = document.getElementById('speedTxt');
+  var gridTxt = document.getElementById('gridTxt');
+  var stat = document.getElementById('stat');
+  var clock = document.getElementById('clock');
+  var title = document.getElementById('title');
+
+  var LEVELS = [
+    { s: 12, label: 'DRIFT', mult: '0.3×' },
+    { s: 4, label: 'CRUISE', mult: '1.0×' },
+    { s: 1.4, label: 'RUSH', mult: '2.9×' },
+    { s: 0.5, label: 'HYPER', mult: '8.0×' }
+  ];
+  var level = 1;
+  var playing = false;
+
+  function apply() {
+    var L = LEVELS[level];
+    root.style.setProperty('--grid-speed', L.s + 's');
+    speedTxt.textContent = L.mult;
+    gridTxt.textContent = L.label;
+    stat.textContent = playing ? 'Playing — grid ' + L.label.toLowerCase() : 'Paused.';
+  }
+
+  btnPlay.addEventListener('click', function () {
+    playing = !playing;
+    btnPlay.textContent = playing ? '❚❚ Pause' : '▶ Play';
+    btnPlay.setAttribute('aria-pressed', playing ? 'true' : 'false');
+    btnPlay.classList.toggle('pressed', playing);
+    if (playing) { level = Math.max(level, 2); }
+    else { level = 1; }
+    apply();
+  });
+  btnSlow.addEventListener('click', function () { level = Math.max(0, level - 1); apply(); });
+  btnFast.addEventListener('click', function () { level = Math.min(LEVELS.length - 1, level + 1); apply(); });
+
+  var start = performance.now();
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function tick() {
+    var el = playing ? (performance.now() - start) / 1000 : 0;
+    if (!playing) start = performance.now();
+    var h = Math.floor(el / 3600), m = Math.floor(el / 60) % 60, s = Math.floor(el) % 60;
+    clock.textContent = (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+    setTimeout(tick, 250);
+  }
+  tick();
+
+  /* parallax tilt on pointer */
+  if (!reduced && window.matchMedia('(pointer: fine)').matches) {
+    var bust = document.querySelector('.bust');
+    var sun = document.querySelector('.sun');
+    var glow = document.querySelector('.sun-glow');
+    var mx = 0, my = 0, cx = 0, cy = 0;
+    window.addEventListener('mousemove', function (e) {
+      mx = (e.clientX / window.innerWidth - 0.5);
+      my = (e.clientY / window.innerHeight - 0.5);
+    }, { passive: true });
+    function loop() {
+      cx += (mx - cx) * 0.06; cy += (my - cy) * 0.06;
+      title.style.transform = 'translate(-50%,-50%) translate(' + (cx * -18) + 'px,' + (cy * -8) + 'px) rotateY(' + (cx * 10) + 'deg)';
+      bust.style.marginLeft = (cx * 26) + 'px'; bust.style.marginTop = (cy * 14) + 'px';
+      sun.style.marginLeft = (cx * -10) + 'px'; glow.style.marginLeft = (cx * -10) + 'px';
+      requestAnimationFrame(loop);
+    }
+    loop();
+  }
+
+  apply();
+})();
+</script>
+</body>
+</html>

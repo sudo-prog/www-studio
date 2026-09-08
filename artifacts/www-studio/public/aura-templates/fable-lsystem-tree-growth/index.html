@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arbor recursiva — A Generative L-System Botanical Plate</title>
+<style>
+  :root {
+    --paper: #f1e7d3;
+    --paper-deep: #e4d6ba;
+    --ink: #2b2318;
+    --ink-soft: #6b5b45;
+    --rule: rgba(43,35,24,.35);
+    --accent: #8a5a2b;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, ui-serif, serif;
+    color: var(--ink);
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 30%, rgba(255,250,238,.9), transparent 70%),
+      linear-gradient(180deg, var(--paper), var(--paper-deep));
+    min-height: 100%;
+    overflow: hidden;
+  }
+  .fibres {
+    position: fixed; inset: 0; pointer-events: none; opacity: .35; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='.02 .35' numOctaves='3' seed='7'/><feColorMatrix values='0 0 0 0 .75 0 0 0 0 .68 0 0 0 0 .55 0 0 0 .5 0'/></filter><rect width='220' height='220' filter='url(%23p)'/></svg>");
+  }
+  .plate {
+    position: fixed; inset: clamp(10px, 2.2vmin, 26px);
+    border: 1px solid var(--rule);
+    outline: 1px solid var(--rule); outline-offset: 4px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    pointer-events: none;
+  }
+  .plate > * { pointer-events: auto; }
+  .head {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    padding: clamp(12px, 2.2vmin, 26px) clamp(14px, 2.6vmin, 34px) 0;
+    gap: 20px;
+  }
+  .head .no { font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--ink-soft); }
+  .head h1 {
+    margin: 4px 0 0; font-weight: 400; letter-spacing: -.01em;
+    font-size: clamp(26px, 4.4vmin, 54px); line-height: 1;
+  }
+  .head h1 em { font-style: italic; }
+  .head .fam { font-size: clamp(11px, 1.4vmin, 13px); margin-top: 8px; color: var(--ink-soft); font-style: italic; }
+  .head .fam b { font-style: normal; font-weight: 400; letter-spacing: .18em; text-transform: uppercase; font-size: 10px; margin-right: 8px; }
+  .legend {
+    text-align: right; font-size: clamp(11px, 1.35vmin, 13px); line-height: 1.55; color: var(--ink-soft); max-width: 34ch;
+  }
+  .legend code { font-family: "Courier New", ui-monospace, monospace; font-size: .92em; color: var(--ink); }
+  .legend .rule { display: block; }
+  canvas { display: block; width: 100%; height: 100%; cursor: crosshair; }
+  .canvas-wrap { position: relative; min-height: 0; }
+  .toast {
+    position: absolute; left: 50%; top: 16px; transform: translate(-50%, -8px);
+    font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: var(--ink-soft);
+    opacity: 0; transition: opacity .5s, transform .5s cubic-bezier(.2,.8,.2,1); pointer-events: none;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+  .caption {
+    border-top: 1px solid var(--rule);
+    padding: clamp(10px, 1.8vmin, 18px) clamp(14px, 2.6vmin, 34px);
+    display: flex; flex-wrap: wrap; align-items: center; gap: 14px clamp(16px, 3vmin, 40px);
+    background: linear-gradient(180deg, rgba(241,231,211,.4), rgba(228,214,186,.75));
+    backdrop-filter: blur(3px);
+  }
+  .group { display: flex; align-items: center; gap: 10px; }
+  .label { font-size: 10px; letter-spacing: .28em; text-transform: uppercase; color: var(--ink-soft); white-space: nowrap; }
+  .seasons { display: flex; gap: 4px; }
+  .seasons button {
+    font-family: inherit; font-size: 13px; font-style: italic; color: var(--ink);
+    background: transparent; border: 1px solid transparent; border-radius: 999px; padding: 6px 12px; cursor: pointer;
+    display: flex; align-items: center; gap: 8px;
+    transition: border-color .3s, background .3s, transform .3s cubic-bezier(.2,.8,.2,1);
+  }
+  .seasons button i { width: 9px; height: 9px; border-radius: 50%; background: var(--sw); box-shadow: inset 0 0 0 1px rgba(0,0,0,.15); transition: transform .3s; }
+  .seasons button:hover { border-color: var(--rule); transform: translateY(-1px); }
+  .seasons button[aria-pressed="true"] { border-color: var(--ink); background: rgba(255,255,255,.35); }
+  .seasons button[aria-pressed="true"] i { transform: scale(1.35); }
+  input[type=range] {
+    -webkit-appearance: none; appearance: none; width: clamp(110px, 16vw, 200px); height: 1px; background: var(--ink); outline: none;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%; background: var(--paper);
+    border: 1px solid var(--ink); cursor: pointer; transition: transform .2s;
+  }
+  input[type=range]::-moz-range-thumb { width: 12px; height: 12px; border-radius: 50%; background: var(--paper); border: 1px solid var(--ink); cursor: pointer; }
+  input[type=range]:hover::-webkit-slider-thumb { transform: scale(1.2); }
+  .wind-val { font-size: 12px; font-style: italic; color: var(--ink-soft); min-width: 5ch; }
+  .plant {
+    margin-left: auto;
+    font-family: inherit; font-size: 12px; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--paper); background: var(--ink); border: 1px solid var(--ink); padding: 10px 18px; cursor: pointer;
+    position: relative; overflow: hidden;
+    transition: color .35s, transform .3s cubic-bezier(.2,.8,.2,1);
+  }
+  .plant::before { content: ""; position: absolute; inset: 0; background: var(--paper); transform: translateX(-101%); transition: transform .35s cubic-bezier(.2,.8,.2,1); }
+  .plant:hover { color: var(--ink); }
+  .plant:hover::before { transform: translateX(0); }
+  .plant:active { transform: scale(.97); }
+  .plant span { position: relative; }
+  .hint { width: 100%; font-size: 11px; font-style: italic; color: var(--ink-soft); }
+  @media (max-width: 720px) {
+    .legend { display: none; }
+    .plant { margin-left: 0; }
+    .hint { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="fibres"></div>
+<div class="plate">
+  <div class="head">
+    <div>
+      <div class="no">Plate XVII · Lindenmayer Herbarium</div>
+      <h1><em>Arbor recursiva</em> var. <em>lindenmayeri</em></h1>
+      <div class="fam"><b>Family</b> Grammaticaceae — a stochastic bracketed L-system, five derivations</div>
+    </div>
+    <div class="legend">
+      <span class="rule">Axiom <code>X</code></span>
+      <span class="rule"><code>X → F[+X]F[−X]+X</code> · <code>X → F[−X]F[+X]−X</code> · <code>X → F[+X][−X]FX</code></span>
+      <span class="rule"><code>F → FF</code> &nbsp; angle 22–28°, jittered</span>
+    </div>
+  </div>
+  <div class="canvas-wrap">
+    <canvas id="c" aria-label="Animated generative tree"></canvas>
+    <div class="toast" id="toast">Sapling planted</div>
+  </div>
+  <div class="caption">
+    <div class="group">
+      <span class="label">Season</span>
+      <div class="seasons" id="seasons" role="group" aria-label="Season">
+        <button data-s="spring" aria-pressed="true" style="--sw:#f2a2b6"><i></i>Spring</button>
+        <button data-s="summer" aria-pressed="false" style="--sw:#6d9a4f"><i></i>Summer</button>
+        <button data-s="autumn" aria-pressed="false" style="--sw:#d88b2f"><i></i>Autumn</button>
+        <button data-s="winter" aria-pressed="false" style="--sw:#e9eef2"><i></i>Winter</button>
+      </div>
+    </div>
+    <div class="group">
+      <label class="label" for="wind">Wind</label>
+      <input type="range" id="wind" min="0" max="100" value="18">
+      <span class="wind-val" id="windVal">gentle</span>
+    </div>
+    <button class="plant" id="plant"><span>Plant new tree</span></button>
+    <div class="hint">Click anywhere on the plate to plant a sapling where you point.</div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const canvas = document.getElementById('c');
+  const ctx = canvas.getContext('2d');
+  const toast = document.getElementById('toast');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let W = 0, H = 0, dpr = 1;
+
+  // ---- seeded random -------------------------------------------------
+  function rng(seed) {
+    let s = seed >>> 0 || 1;
+    return function () { s ^= s << 13; s >>>= 0; s ^= s >>> 17; s ^= s << 5; s >>>= 0; return s / 4294967296; };
+  }
+
+  // ---- L-system ------------------------------------------------------
+  function derive(rand, iterations) {
+    let s = 'X';
+    const rulesX = ['F[+X]F[-X]+X', 'F[-X]F[+X]-X', 'F[+X][-X]FX'];
+    for (let i = 0; i < iterations; i++) {
+      let out = '';
+      for (const ch of s) {
+        if (ch === 'X') { const r = rand(); out += rulesX[r < .4 ? 0 : r < .7 ? 1 : 2]; }
+        else if (ch === 'F') out += 'FF';
+        else out += ch;
+      }
+      s = out;
+    }
+    return s;
+  }
+
+  // interpret the string into a hierarchy of segments so we can animate growth and wind per branch
+  function buildTree(seed) {
+    const rand = rng(seed);
+    const str = derive(rand, 5);
+    const baseAngle = (22 + rand() * 6) * Math.PI / 180;
+    const root = { children: [], rel: 0, len: 0, depth: 0, order: 0 };
+    const stack = [];
+    let cur = root, heading = 0, depth = 0, order = 0, maxOrder = 0;
+    let pendingTurn = 0;
+    for (const ch of str) {
+      if (ch === 'F') {
+        const node = { children: [], rel: pendingTurn + (rand() - .5) * 0.07, len: 1, depth, order: order + 1, tip: true };
+        pendingTurn = 0;
+        cur.tip = false;
+        cur.children.push(node);
+        cur = node; order++;
+        if (order > maxOrder) maxOrder = order;
+      } else if (ch === '+') pendingTurn += baseAngle * (0.8 + rand() * 0.4);
+      else if (ch === '-') pendingTurn -= baseAngle * (0.8 + rand() * 0.4);
+      else if (ch === '[') { stack.push({ cur, order, depth, pendingTurn }); depth++; }
+      else if (ch === ']') { const s = stack.pop(); cur = s.cur; order = s.order; depth = s.depth; pendingTurn = s.pendingTurn; }
+    }
+    // merge straight runs would be nicer, but keep it simple: count segments
+    let count = 0; (function walk(n) { count++; n.children.forEach(walk); })(root);
+    return { root, maxOrder, count, seed };
+  }
+
+  // ---- seasons -------------------------------------------------------
+  const seasons = {
+    spring: { leaves: ['#f4a9bc', '#f9c9d5', '#ea8ea6', '#fff1f3'], leafW: 1.0, leafH: 1.0, sky: 'rgba(255,214,222,.35)', mist: 'rgba(255,245,240,.55)', bark: '#3b2a1c' },
+    summer: { leaves: ['#5f8f45', '#78a659', '#3e6d33', '#93bb6e'], leafW: 1.3, leafH: 0.8, sky: 'rgba(220,236,200,.35)', mist: 'rgba(240,246,230,.5)', bark: '#3a2a1a' },
+    autumn: { leaves: ['#d98a2c', '#c2561f', '#e6b04b', '#a63d1a'], leafW: 1.2, leafH: 0.9, sky: 'rgba(250,220,170,.4)', mist: 'rgba(250,238,220,.55)', bark: '#3d2a18' },
+    winter: { leaves: [], leafW: 0, leafH: 0, sky: 'rgba(215,225,235,.45)', mist: 'rgba(240,244,248,.7)', bark: '#2a2420' }
+  };
+  let season = 'spring';
+  let seasonBlend = 1; // leaves scale factor animating when season changes
+
+  // ---- trees ---------------------------------------------------------
+  const trees = [];
+  let windAmt = 0.18;
+  const GROW_STEP = reduced ? 0 : 55; // ms per order
+
+  function plantTree(x, y, scale, seed) {
+    const t = buildTree(seed);
+    t.x = x; t.y = y; t.scale = scale; t.birth = performance.now();
+    t.unit = 0; // computed at draw from H
+    trees.push(t);
+    if (trees.length > 9) trees.splice(1, 1); // keep the main tree, drop oldest sapling
+    return t;
+  }
+
+  function ease(t) { return t < 0 ? 0 : t > 1 ? 1 : 1 - Math.pow(1 - t, 3); }
+
+  const snow = [];
+  function seedSnow() {
+    snow.length = 0;
+    for (let i = 0; i < 160; i++) snow.push({ x: Math.random(), y: Math.random(), r: .6 + Math.random() * 1.6, v: .15 + Math.random() * .35, ph: Math.random() * 6.28 });
+  }
+  seedSnow();
+
+  function drawTree(t, now) {
+    const s = seasons[season];
+    const unit = (H * 0.82 / t.maxOrder) * t.scale; // segment length so the full tree fits (branches turn, so real height is lower)
+    const age = now - t.birth;
+    const windPhase = now / 1000;
+    ctx.lineCap = 'round';
+
+    const leafBuf = [];
+    function walk(n, x, y, heading, parentDone) {
+      for (const c of n.children) {
+        const t0 = c.order * GROW_STEP;
+        const g = GROW_STEP === 0 ? 1 : ease((age - t0) / (GROW_STEP * 1.8));
+        if (g <= 0) continue;
+        // wind: deeper, thinner branches sway more, with a phase shift so the canopy ripples
+        // sway accumulates down the hierarchy, so per-segment offsets stay tiny
+        const sway = windAmt * (0.003 + c.order / t.maxOrder * 0.014) * Math.sin(windPhase * 1.6 + c.order * 0.35 + t.x * 0.01) +
+                     windAmt * 0.005 * Math.sin(windPhase * 3.7 + c.depth);
+        const h = heading + c.rel + sway;
+        const len = unit * c.len * g;
+        const nx = x + Math.sin(h) * len, ny = y - Math.cos(h) * len;
+        const taper = Math.pow(1 - c.order / (t.maxOrder + 1), 1.6);
+        ctx.lineWidth = Math.max(0.6, (unit * 0.62) * taper * t.scale * 1.1 + 0.3);
+        ctx.strokeStyle = s.bark;
+        ctx.globalAlpha = 0.92;
+        ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(nx, ny); ctx.stroke();
+        if (season === 'winter' && ctx.lineWidth > 1.4) {
+          ctx.strokeStyle = 'rgba(255,255,255,.85)';
+          ctx.lineWidth = Math.max(0.8, ctx.lineWidth * 0.45);
+          ctx.beginPath(); ctx.moveTo(x, y - ctx.lineWidth * 0.9); ctx.lineTo(nx, ny - ctx.lineWidth * 0.9); ctx.stroke();
+        }
+        if (c.tip && g >= 1 && s.leaves.length) {
+          const bloom = GROW_STEP === 0 ? 1 : ease((age - t0 - GROW_STEP * 1.8) / 700);
+          if (bloom > 0) leafBuf.push({ x: nx, y: ny, h, bloom, k: c.order + c.depth * 7 });
+        }
+        walk(c, nx, ny, h, g >= 1);
+      }
+    }
+    walk(t.root, t.x, t.y, 0, true);
+
+    // leaves drawn after wood so they sit on top
+    ctx.globalAlpha = 1;
+    const lr = Math.max(2.2, unit * 0.75) * seasonBlend;
+    for (const L of leafBuf) {
+      const col = s.leaves[L.k % s.leaves.length];
+      const sc = L.bloom * (0.85 + 0.3 * Math.sin(L.k * 1.7));
+      ctx.fillStyle = col;
+      ctx.globalAlpha = 0.82;
+      ctx.beginPath();
+      ctx.ellipse(L.x, L.y, lr * s.leafW * sc, lr * s.leafH * sc, L.h + L.k, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function drawGround(now) {
+    const s = seasons[season];
+    const gy = H * 0.86;
+    // soft sky tint towards the horizon
+    const sky = ctx.createLinearGradient(0, 0, 0, gy);
+    sky.addColorStop(0, 'rgba(0,0,0,0)'); sky.addColorStop(1, s.sky);
+    ctx.fillStyle = sky; ctx.fillRect(0, 0, W, gy);
+    // ground band
+    const g = ctx.createLinearGradient(0, gy - 30, 0, H);
+    g.addColorStop(0, 'rgba(120,96,60,0)'); g.addColorStop(0.35, 'rgba(120,96,60,.28)'); g.addColorStop(1, 'rgba(70,52,30,.5)');
+    ctx.fillStyle = g; ctx.fillRect(0, gy - 30, W, H - gy + 30);
+    // horizon line, hand-ruled
+    ctx.strokeStyle = 'rgba(43,35,24,.5)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(W * 0.04, gy + 0.5); ctx.lineTo(W * 0.96, gy + 0.5); ctx.stroke();
+    // grass ticks
+    ctx.strokeStyle = 'rgba(43,35,24,.35)';
+    for (let x = W * 0.04; x < W * 0.96; x += 9) {
+      const hgt = 3 + ((x * 7.3) % 5);
+      const lean = Math.sin(now / 900 + x * 0.05) * windAmt * 3;
+      ctx.beginPath(); ctx.moveTo(x, gy); ctx.lineTo(x + lean, gy - hgt); ctx.stroke();
+    }
+  }
+
+  function drawMist(now) {
+    const s = seasons[season];
+    const gy = H * 0.86;
+    for (let i = 0; i < 3; i++) {
+      const y = gy - 20 - i * 26;
+      const drift = Math.sin(now / (5000 + i * 1300) + i) * W * 0.06;
+      const grad = ctx.createLinearGradient(drift - W * 0.2, 0, drift + W * 1.2, 0);
+      grad.addColorStop(0, 'rgba(255,255,255,0)'); grad.addColorStop(0.5, s.mist); grad.addColorStop(1, 'rgba(255,255,255,0)');
+      ctx.fillStyle = grad;
+      ctx.globalAlpha = 0.5 - i * 0.12;
+      ctx.beginPath(); ctx.ellipse(W / 2 + drift, y, W * 0.7, 18 + i * 8, 0, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function drawSnow(now) {
+    if (season !== 'winter') return;
+    ctx.fillStyle = 'rgba(255,255,255,.9)';
+    for (const f of snow) {
+      f.y += f.v * 0.0012; if (f.y > 0.88) { f.y = -0.02; f.x = Math.random(); }
+      const x = (f.x + Math.sin(now / 1400 + f.ph) * 0.006 + windAmt * 0.0004 * now / 100 % 1) % 1;
+      ctx.globalAlpha = 0.5 + 0.5 * Math.sin(f.ph + now / 700);
+      ctx.beginPath(); ctx.arc(x * W, f.y * H, f.r, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  let targetBlend = 1;
+  function frame(now) {
+    ctx.clearRect(0, 0, W, H);
+    seasonBlend += (targetBlend - seasonBlend) * 0.08;
+    drawGround(now);
+    for (const t of trees) drawTree(t, now);
+    drawMist(now);
+    drawSnow(now);
+    requestAnimationFrame(frame);
+  }
+
+  // ---- layout --------------------------------------------------------
+  function resize() {
+    const r = canvas.parentElement.getBoundingClientRect();
+    dpr = Math.min(2.5, window.devicePixelRatio || 1);
+    W = Math.max(1, r.width); H = Math.max(1, r.height);
+    canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    // keep the main tree rooted on the ground line
+    if (trees[0]) { trees[0].x = W * 0.5; trees[0].y = H * 0.86; }
+    for (let i = 1; i < trees.length; i++) { trees[i].x = trees[i].fx * W; trees[i].y = trees[i].fy * H; }
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  function newMainTree() {
+    trees.length = 0;
+    const seed = (Math.random() * 1e9) | 0;
+    const t = plantTree(W * 0.5, H * 0.86, 1, seed);
+    t.fx = .5; t.fy = .86;
+  }
+  newMainTree();
+  requestAnimationFrame(frame);
+
+  // ---- controls ------------------------------------------------------
+  document.getElementById('plant').addEventListener('click', newMainTree);
+
+  const windEl = document.getElementById('wind'), windVal = document.getElementById('windVal');
+  function setWind() {
+    windAmt = windEl.value / 100;
+    windVal.textContent = windAmt < .05 ? 'still' : windAmt < .3 ? 'gentle' : windAmt < .65 ? 'brisk' : 'gale';
+  }
+  windEl.addEventListener('input', setWind); setWind();
+
+  document.getElementById('seasons').addEventListener('click', (e) => {
+    const b = e.target.closest('button'); if (!b) return;
+    document.querySelectorAll('#seasons button').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+    const next = b.dataset.s;
+    if (next === season) return;
+    // shrink leaves, swap season, let them re-bloom
+    seasonBlend = 0.05; targetBlend = 1; season = next;
+    if (season === 'winter') seedSnow();
+  });
+
+  let toastTimer;
+  canvas.addEventListener('click', (e) => {
+    const r = canvas.getBoundingClientRect();
+    const x = e.clientX - r.left, y = e.clientY - r.top;
+    // perspective cue: saplings lower on the plate are nearer, so slightly larger
+    const scale = 0.22 + 0.22 * Math.min(1, Math.max(0, (y - H * 0.35) / (H * 0.55)));
+    const t = plantTree(x, y, scale, (Math.random() * 1e9) | 0);
+    t.fx = x / W; t.fy = y / H;
+    toast.classList.add('show');
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1400);
+  });
+  window.addEventListener('keydown', (e) => {
+    if (e.key === ' ' && e.target === document.body) { e.preventDefault(); newMainTree(); }
+  });
+})();
+</script>
+</body>
+</html>

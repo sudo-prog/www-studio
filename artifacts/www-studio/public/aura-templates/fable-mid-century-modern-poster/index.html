@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Three Journeys — Mid-Century Travel Poster Series</title>
+<style>
+  :root{
+    --paper:#efe6d2;
+    --ink:#1b2028;
+    --sans:ui-sans-serif,system-ui,-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,'SF Mono',Menlo,Consolas,'Courier New',monospace;
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:#15181d;color:var(--paper);font-family:var(--sans);overflow:hidden}
+
+  .gallery{
+    display:flex;height:100vh;height:100dvh;overflow-x:auto;overflow-y:hidden;
+    scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+  }
+  .gallery::-webkit-scrollbar{display:none}
+  .slide{
+    flex:0 0 100%;width:100%;height:100%;scroll-snap-align:start;scroll-snap-stop:always;
+    display:grid;place-items:center;position:relative;padding:min(7vh,64px) 16px min(11vh,96px);
+    transition:background .8s ease;
+  }
+  .slide[data-i="0"]{background:radial-gradient(ellipse at 50% 40%,#2b2419,#15181d 70%)}
+  .slide[data-i="1"]{background:radial-gradient(ellipse at 50% 40%,#22161b,#15181d 70%)}
+  .slide[data-i="2"]{background:radial-gradient(ellipse at 50% 40%,#0f1a2c,#15181d 70%)}
+
+  .poster{
+    position:relative;aspect-ratio:2/3;width:min(100%, calc((100vh - 170px) * .6667));width:min(100%, calc((100dvh - 170px) * .6667));
+    background:var(--bg);border-radius:3px;overflow:hidden;
+    box-shadow:0 60px 90px -40px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.05),0 25px 40px -20px rgba(0,0,0,.6);
+    transition:transform .6s var(--ease), box-shadow .6s var(--ease);
+    will-change:transform;
+  }
+  .poster:hover{transform:translateY(-6px) rotate(-.3deg);box-shadow:0 80px 110px -40px rgba(0,0,0,.95),0 0 0 1px rgba(255,255,255,.08),0 30px 50px -20px rgba(0,0,0,.6)}
+  .art{position:absolute;inset:0;height:69%}
+  .art svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .layer{position:absolute;inset:0;will-change:transform;transition:transform .12s linear}
+
+  /* Grain */
+  .grain{position:absolute;inset:0;pointer-events:none;opacity:.55;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>");
+    background-size:220px 220px}
+  .grain.lite{opacity:.28;mix-blend-mode:soft-light}
+
+  /* Type block */
+  .type{position:absolute;left:0;right:0;bottom:0;height:31%;padding:5% 7% 6%;display:flex;flex-direction:column;justify-content:space-between;background:var(--paper);color:var(--ink)}
+  .type::before{content:"";position:absolute;left:7%;right:7%;top:0;height:3px;background:var(--rule)}
+  .visit{font-family:var(--mono);font-size:clamp(9px,1.1vh,13px);letter-spacing:.32em;text-transform:uppercase;display:flex;justify-content:space-between;opacity:.75}
+  .title{font-weight:800;font-size:clamp(26px,5.6vh,64px);line-height:.92;letter-spacing:-.045em;text-transform:uppercase;margin:0}
+  .title span{display:block;color:var(--accent)}
+  .tag{font-family:Georgia,'Iowan Old Style',Palatino,serif;font-style:italic;font-size:clamp(11px,1.6vh,17px);line-height:1.35;opacity:.85;max-width:34ch;margin:0}
+  .type .anim{opacity:0;transform:translateY(18px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .in .type .anim{opacity:1;transform:none}
+  .in .type .anim:nth-child(2){transition-delay:.15s}
+  .in .type .anim:nth-child(3){transition-delay:.3s}
+
+  /* Shape entrance */
+  .s{opacity:0;transform-box:fill-box;transform-origin:center;transition:opacity 1s var(--ease),transform 1.2s var(--ease)}
+  .s.rise{transform:translateY(40px)}
+  .s.drop{transform:translateY(-40px)}
+  .s.pop{transform:scale(.6)}
+  .s.slideL{transform:translateX(-80px)}
+  .s.slideR{transform:translateX(80px)}
+  .in .s{opacity:1;transform:none}
+  .in .s.d1{transition-delay:.1s}.in .s.d2{transition-delay:.25s}.in .s.d3{transition-delay:.4s}.in .s.d4{transition-delay:.55s}.in .s.d5{transition-delay:.7s}.in .s.d6{transition-delay:.85s}
+
+  /* Riso misregistration */
+  .riso .poster .art svg{mix-blend-mode:multiply}
+  .riso .poster .art .layer{filter:saturate(1.15) contrast(1.05)}
+  .riso .poster .art .ink-a{transform:translate(3px,-2px);opacity:.92}
+  .riso .poster .art .ink-b{transform:translate(-2px,2px);opacity:.92}
+  .riso .poster .art .ink-c{transform:translate(1px,3px);opacity:.92}
+  .riso .grain{opacity:.85}
+  .riso .type{background-image:repeating-linear-gradient(45deg,rgba(0,0,0,.02) 0 1px,transparent 1px 4px)}
+  .riso .title{text-shadow:2px -1px 0 var(--accent-shadow)}
+  .ink-a,.ink-b,.ink-c{transition:transform .5s var(--ease),opacity .5s}
+  .poster:hover .ink-a{transform:translate(1px,-1px)}
+  .poster:hover .ink-b{transform:translate(-1px,1px)}
+  .riso .poster:hover .ink-a{transform:translate(4px,-3px)}
+  .riso .poster:hover .ink-b{transform:translate(-3px,3px)}
+
+  /* Aurora motion */
+  .aurora path{animation:sway 9s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}
+  .aurora path:nth-child(2){animation-duration:12s;animation-delay:-3s}
+  .aurora path:nth-child(3){animation-duration:15s;animation-delay:-6s}
+  @keyframes sway{from{transform:translateX(-14px) skewX(-3deg)}to{transform:translateX(14px) skewX(3deg)}}
+  .tram-wheel{animation:spin 3s linear infinite;transform-box:fill-box;transform-origin:center}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .leaf-drift{animation:drift 7s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}
+  .leaf-drift:nth-of-type(2n){animation-duration:9s;animation-delay:-4s}
+  @keyframes drift{from{transform:translate(0,0) rotate(-6deg)}to{transform:translate(8px,10px) rotate(8deg)}}
+
+  /* UI */
+  .ui{position:fixed;left:0;right:0;bottom:0;padding:18px clamp(16px,4vw,48px) 22px;display:flex;align-items:center;justify-content:space-between;gap:14px;z-index:5;pointer-events:none}
+  .ui > *{pointer-events:auto}
+  .num{font-family:var(--mono);font-size:12px;letter-spacing:.22em;opacity:.8;min-width:80px}
+  .num b{font-weight:600;font-size:20px;letter-spacing:0;color:#fff;vertical-align:-2px}
+  .dots{display:flex;gap:10px;align-items:center}
+  .dot{appearance:none;width:34px;height:4px;border:0;border-radius:2px;background:rgba(255,255,255,.22);cursor:pointer;padding:0;transition:background .4s,width .4s var(--ease)}
+  .dot[aria-current="true"]{background:#fff;width:56px}
+  .controls{display:flex;gap:8px;align-items:center}
+  .nav,.toggle{appearance:none;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.04);color:#fff;border-radius:999px;cursor:pointer;
+    font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding:0 14px;height:36px;display:inline-flex;align-items:center;gap:8px;
+    transition:background .3s,border-color .3s,transform .2s var(--ease);backdrop-filter:blur(6px)}
+  .nav{width:36px;justify-content:center;padding:0;font-size:14px}
+  .nav:hover,.toggle:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.5);transform:translateY(-1px)}
+  .toggle .led{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);transition:background .3s,box-shadow .3s}
+  .toggle[aria-pressed="true"] .led{background:#ff5d8f;box-shadow:0 0 10px #ff5d8f}
+  .brand{position:fixed;top:0;left:0;right:0;padding:20px clamp(16px,4vw,48px);display:flex;justify-content:space-between;align-items:center;z-index:5;font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;opacity:.75;pointer-events:none}
+  .brand span:last-child{display:none}
+  @media (min-width:640px){.brand span:last-child{display:inline}}
+  @media (max-width:520px){.toggle .lbl{display:none}.toggle{width:36px;padding:0;justify-content:center}.num{min-width:60px}}
+
+  @media (prefers-reduced-motion:reduce){
+    .gallery{scroll-behavior:auto}
+    .s,.type .anim{opacity:1!important;transform:none!important;transition:none}
+    .aurora path,.tram-wheel,.leaf-drift{animation:none}
+    .poster,.poster:hover{transform:none;transition:none}
+    .layer{transition:none}
+  }
+</style>
+</head>
+<body>
+<div class="brand"><span>Three Journeys · Poster Series</span><span>Screen-printed edition of 300 · 1958 series revisited</span></div>
+
+<main class="gallery" id="gallery" aria-label="Poster gallery" tabindex="0">
+
+  <!-- 01 LISBON -->
+  <section class="slide" data-i="0" aria-label="Lisbon by Tram">
+    <article class="poster" style="--bg:#f3e5c3;--rule:#1b2a3a;--accent:#c8512b;--accent-shadow:rgba(30,111,106,.55)">
+      <div class="art">
+        <div class="layer ink-a" data-depth="0.4">
+          <svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <circle class="s pop d1" cx="430" cy="150" r="78" fill="#e0a526"/>
+            <g class="s rise d2" fill="#1e6f6a">
+              <rect x="0" y="330" width="600" height="80"/>
+            </g>
+            <g class="s rise d2" fill="#1b2a3a" opacity=".9">
+              <rect x="0" y="270" width="70" height="80"/><rect x="70" y="240" width="60" height="110"/><rect x="130" y="290" width="80" height="60"/>
+              <rect x="210" y="255" width="55" height="95"/><rect x="265" y="300" width="90" height="50"/><rect x="355" y="265" width="65" height="85"/>
+              <rect x="420" y="295" width="75" height="55"/><rect x="495" y="250" width="50" height="100"/><rect x="545" y="285" width="55" height="65"/>
+            </g>
+          </svg>
+        </div>
+        <div class="layer ink-b" data-depth="0.8">
+          <svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <g class="s rise d3">
+              <rect x="0" y="360" width="140" height="120" fill="#c8512b"/><rect x="140" y="340" width="100" height="140" fill="#f3e5c3"/>
+              <rect x="240" y="375" width="130" height="105" fill="#e0a526"/><rect x="370" y="345" width="90" height="135" fill="#c8512b"/>
+              <rect x="460" y="380" width="140" height="100" fill="#f3e5c3"/>
+              <g fill="#1b2a3a">
+                <rect x="20" y="385" width="18" height="30"/><rect x="60" y="385" width="18" height="30"/><rect x="100" y="385" width="18" height="30"/>
+                <rect x="20" y="435" width="18" height="30"/><rect x="60" y="435" width="18" height="30"/><rect x="100" y="435" width="18" height="30"/>
+                <rect x="160" y="365" width="16" height="28"/><rect x="200" y="365" width="16" height="28"/><rect x="160" y="415" width="16" height="28"/><rect x="200" y="415" width="16" height="28"/>
+                <rect x="262" y="400" width="18" height="30"/><rect x="306" y="400" width="18" height="30"/><rect x="350" y="400" width="12" height="30"/>
+                <rect x="390" y="370" width="16" height="28"/><rect x="430" y="370" width="16" height="28"/><rect x="390" y="420" width="16" height="28"/><rect x="430" y="420" width="16" height="28"/>
+                <rect x="485" y="405" width="18" height="30"/><rect x="530" y="405" width="18" height="30"/><rect x="575" y="405" width="12" height="30"/>
+              </g>
+              <path d="M0 360h140l-70-40zM240 375h130l-65-38zM370 345h90l-45-30z" fill="#1b2a3a"/>
+            </g>
+            <g class="s d4">
+              <rect x="0" y="480" width="600" height="120" fill="#1b2a3a"/>
+              <pattern id="cobble" width="26" height="14" patternUnits="userSpaceOnUse">
+                <ellipse cx="7" cy="5" rx="6" ry="4" fill="#f3e5c3" opacity=".12"/><ellipse cx="20" cy="11" rx="6" ry="4" fill="#f3e5c3" opacity=".12"/>
+              </pattern>
+              <rect x="0" y="480" width="600" height="120" fill="url(#cobble)"/>
+              <path d="M0 482h600" stroke="#f3e5c3" stroke-width="2" opacity=".5"/>
+            </g>
+          </svg>
+        </div>
+        <div class="layer ink-c" data-depth="1.3">
+          <svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <path class="s drop d1" d="M0 60 Q300 110 600 40" fill="none" stroke="#1b2a3a" stroke-width="2"/>
+            <g class="s slideL d5">
+              <path d="M300 60 L292 300" stroke="#1b2a3a" stroke-width="4"/>
+              <circle cx="300" cy="62" r="5" fill="#1b2a3a"/>
+              <rect x="160" y="300" width="280" height="150" rx="14" fill="#e0a526"/>
+              <rect x="160" y="300" width="280" height="30" rx="14" fill="#f3e5c3"/>
+              <rect x="176" y="335" width="52" height="60" fill="#1b2a3a"/><rect x="238" y="335" width="52" height="60" fill="#1b2a3a"/>
+              <rect x="300" y="335" width="52" height="60" fill="#1b2a3a"/><rect x="362" y="335" width="52" height="60" fill="#1b2a3a"/>
+              <rect x="176" y="405" width="248" height="10" fill="#c8512b"/>
+              <rect x="255" y="425" width="90" height="26" rx="4" fill="#1b2a3a"/>
+              <text x="300" y="445" text-anchor="middle" font-family="ui-sans-serif,system-ui,Helvetica,Arial,sans-serif" font-weight="800" font-size="20" fill="#f3e5c3" letter-spacing="2">28</text>
+              <rect x="150" y="450" width="300" height="18" rx="6" fill="#1b2a3a"/>
+              <g class="tram-wheel"><circle cx="205" cy="480" r="18" fill="#1b2a3a"/><circle cx="205" cy="480" r="9" fill="#f3e5c3"/><rect x="203" y="466" width="4" height="28" fill="#1b2a3a"/></g>
+              <g class="tram-wheel"><circle cx="395" cy="480" r="18" fill="#1b2a3a"/><circle cx="395" cy="480" r="9" fill="#f3e5c3"/><rect x="393" y="466" width="4" height="28" fill="#1b2a3a"/></g>
+              <circle cx="175" cy="318" r="7" fill="#c8512b"/><circle cx="425" cy="318" r="7" fill="#c8512b"/>
+            </g>
+          </svg>
+        </div>
+        <div class="grain"></div>
+      </div>
+      <div class="type">
+        <div class="visit anim"><span>Visit</span><span>Nº 01 / 03</span></div>
+        <h2 class="title anim">Lisbon <span>by Tram</span></h2>
+        <p class="tag anim">Ride the 28 as it grinds uphill through Alfama, past laundry lines and tiled façades, into a sun the colour of egg yolk.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- 02 KYOTO -->
+  <section class="slide" data-i="1" aria-label="Kyoto in October">
+    <article class="poster" style="--bg:#3a1f2d;--rule:#d3442a;--accent:#d3442a;--accent-shadow:rgba(231,176,74,.6)">
+      <div class="art">
+        <div class="layer ink-a" data-depth="0.3">
+          <svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect width="600" height="600" fill="#3a1f2d"/>
+            <circle class="s pop d1" cx="180" cy="150" r="96" fill="#f1e8d6"/>
+            <g class="s rise d2" fill="#7c8b63" opacity=".55">
+              <path d="M0 340 L110 210 L220 340 Z"/><path d="M160 340 L300 170 L440 340 Z"/><path d="M380 340 L500 230 L620 340 Z"/>
+            </g>
+            <g class="s rise d3" fill="#7c8b63">
+              <path d="M-20 420 L90 300 L200 420 Z"/><path d="M150 420 L270 270 L390 420 Z"/><path d="M340 420 L470 290 L600 420 Z"/>
+            </g>
+          </svg>
+        </div>
+        <div class="layer ink-b" data-depth="0.8">
+          <svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect class="s rise d3" x="0" y="400" width="600" height="200" fill="#7c8b63"/>
+            <rect class="s rise d3" x="0" y="400" width="600" height="6" fill="#f1e8d6" opacity=".5"/>
+            <g class="s rise d4" fill="#d3442a">
+              <rect x="150" y="190" width="26" height="240"/><rect x="424" y="190" width="26" height="240"/>
+              <rect x="130" y="250" width="340" height="18"/>
+              <path d="M96 172 Q300 128 504 172 L508 198 Q300 158 92 198 Z"/>
+              <path d="M112 200 h376 v14 h-376 z"/>
+              <rect x="287" y="214" width="26" height="36"/>
+            </g>
+            <g class="s rise d4" fill="#3a1f2d" opacity=".55"><rect x="140" y="426" width="46" height="10"/><rect x="414" y="426" width="46" height="10"/></g>
+          </svg>
+        </div>
+        <div class="layer ink-c" data-depth="1.4">
+          <svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs>
+              <path id="maple" d="M0-22 L6-8 L20-14 L12 0 L22 10 L8 8 L0 22 L-8 8 L-22 10 L-12 0 L-20-14 L-6-8 Z"/>
+            </defs>
+            <g class="s drop d2">
+              <g class="leaf-drift"><use href="#maple" x="80" y="80" fill="#d3442a"/></g>
+              <g class="leaf-drift"><use href="#maple" x="520" y="120" fill="#e7b04a" transform="rotate(30 520 120)"/></g>
+              <g class="leaf-drift"><use href="#maple" x="470" y="60" fill="#d3442a" transform="rotate(-20 470 60) scale(.8)"/></g>
+              <g class="leaf-drift"><use href="#maple" x="60" y="300" fill="#e7b04a" transform="rotate(50 60 300) scale(1.2)"/></g>
+              <g class="leaf-drift"><use href="#maple" x="560" y="330" fill="#e7b04a" transform="rotate(-40 560 330)"/></g>
+              <g class="leaf-drift"><use href="#maple" x="300" y="100" fill="#d3442a" transform="rotate(15 300 100) scale(.7)"/></g>
+              <g class="leaf-drift"><use href="#maple" x="380" y="150" fill="#e7b04a" transform="rotate(-70 380 150) scale(.6)"/></g>
+            </g>
+            <g class="s pop d5" fill="#e7b04a">
+              <path d="M40 470 l14 6 -14 6z"/><path d="M110 500 l14 6 -14 6z"/><path d="M540 480 l-14 6 14 6z"/><path d="M470 510 l-14 6 14 6z"/>
+            </g>
+            <g class="s rise d5">
+              <path d="M300 500 q-40 -10 -60 -45 q60 -15 60 45 q0 -60 60 -45 q-20 35 -60 45z" fill="#d3442a"/>
+              <rect x="297" y="500" width="6" height="40" fill="#3a1f2d"/>
+            </g>
+          </svg>
+        </div>
+        <div class="grain lite"></div>
+      </div>
+      <div class="type">
+        <div class="visit anim"><span>Visit</span><span>Nº 02 / 03</span></div>
+        <h2 class="title anim">Kyoto <span>in October</span></h2>
+        <p class="tag anim">When the maples turn, the torii at Fushimi Inari glow twice — once in vermilion lacquer, once in fallen leaves.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- 03 REYKJAVIK -->
+  <section class="slide" data-i="2" aria-label="Reykjavik Nights">
+    <article class="poster" style="--bg:#0b1a33;--rule:#5ee8a6;--accent:#5ee8a6;--accent-shadow:rgba(123,94,167,.7)">
+      <div class="art">
+        <div class="layer ink-a" data-depth="0.25">
+          <svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs>
+              <linearGradient id="au1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5ee8a6" stop-opacity="0"/><stop offset=".5" stop-color="#5ee8a6" stop-opacity=".85"/><stop offset="1" stop-color="#7b5ea7" stop-opacity="0"/></linearGradient>
+              <linearGradient id="au2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7b5ea7" stop-opacity="0"/><stop offset=".55" stop-color="#7b5ea7" stop-opacity=".8"/><stop offset="1" stop-color="#5ee8a6" stop-opacity="0"/></linearGradient>
+            </defs>
+            <rect width="600" height="600" fill="#0b1a33"/>
+            <g class="s d1" fill="#cfe8f3">
+              <circle cx="40" cy="40" r="1.6"/><circle cx="120" cy="90" r="1.2"/><circle cx="210" cy="30" r="2"/><circle cx="330" cy="70" r="1.3"/><circle cx="410" cy="25" r="1.8"/>
+              <circle cx="520" cy="60" r="1.2"/><circle cx="570" cy="140" r="2.2"/><circle cx="60" cy="180" r="1.3"/><circle cx="260" cy="150" r="1.1"/><circle cx="470" cy="190" r="1.5"/>
+              <circle cx="150" cy="240" r="1.4"/><circle cx="380" cy="120" r="1"/><circle cx="600" cy="20" r="1.5"/><circle cx="20" cy="290" r="1.1"/><circle cx="540" cy="260" r="1.7"/>
+            </g>
+            <g class="aurora s drop d2">
+              <path d="M-40 80 C 80 40, 160 200, 300 120 S 520 40, 660 140 L 660 300 C 520 240, 420 320, 300 260 S 80 300, -40 240 Z" fill="url(#au1)"/>
+              <path d="M-40 160 C 100 100, 200 260, 320 190 S 500 120, 660 220 L 660 360 C 520 300, 400 380, 300 320 S 100 360, -40 300 Z" fill="url(#au2)" opacity=".8"/>
+              <path d="M-40 40 C 120 0, 240 120, 360 60 S 540 20, 660 80 L 660 180 C 540 140, 400 220, 300 160 S 100 200, -40 150 Z" fill="url(#au1)" opacity=".45"/>
+            </g>
+          </svg>
+        </div>
+        <div class="layer ink-b" data-depth="0.7">
+          <svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <g class="s rise d3">
+              <path d="M-20 440 L110 290 L240 440 Z" fill="#142a4d"/><path d="M110 290 L136 320 L84 320 Z" fill="#cfe8f3"/>
+              <path d="M180 440 L330 260 L480 440 Z" fill="#142a4d"/><path d="M330 260 L362 300 L298 300 Z" fill="#cfe8f3"/>
+              <path d="M420 440 L530 320 L640 440 Z" fill="#142a4d"/><path d="M530 320 L552 346 L508 346 Z" fill="#cfe8f3"/>
+            </g>
+            <g class="s rise d4">
+              <path d="M240 440 L240 360 L252 360 L252 350 L264 350 L264 338 L276 338 L276 322 L288 322 L288 250 L300 200 L312 250 L312 322 L324 322 L324 338 L336 338 L336 350 L348 350 L348 360 L360 360 L360 440 Z" fill="#cfe8f3"/>
+              <rect x="294" y="330" width="12" height="70" fill="#0b1a33"/>
+              <rect x="270" y="380" width="8" height="30" fill="#0b1a33"/><rect x="322" y="380" width="8" height="30" fill="#0b1a33"/>
+            </g>
+          </svg>
+        </div>
+        <div class="layer ink-c" data-depth="1.2">
+          <svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <g class="s rise d4">
+              <rect x="0" y="440" width="600" height="160" fill="#0b1a33"/>
+              <rect x="0" y="440" width="600" height="3" fill="#cfe8f3" opacity=".6"/>
+              <g fill="#5ee8a6" opacity=".55"><rect x="40" y="470" width="90" height="3"/><rect x="200" y="500" width="140" height="3"/><rect x="420" y="480" width="110" height="3"/><rect x="120" y="540" width="60" height="3"/><rect x="380" y="530" width="180" height="3"/></g>
+              <g fill="#7b5ea7" opacity=".55"><rect x="60" y="515" width="70" height="3"/><rect x="260" y="560" width="120" height="3"/><rect x="470" y="510" width="80" height="3"/></g>
+              <g fill="#cfe8f3" opacity=".35"><rect x="290" y="460" width="20" height="3"/><rect x="286" y="490" width="28" height="3"/><rect x="292" y="520" width="16" height="3"/></g>
+            </g>
+            <g class="s slideR d5">
+              <path d="M20 430 L52 430 L58 440 L14 440 Z" fill="#cfe8f3"/><rect x="32" y="414" width="6" height="18" fill="#cfe8f3"/><rect x="24" y="420" width="22" height="4" fill="#5ee8a6"/>
+              <path d="M520 428 L566 428 L574 440 L512 440 Z" fill="#cfe8f3"/><rect x="540" y="410" width="6" height="20" fill="#cfe8f3"/><circle cx="543" cy="408" r="3" fill="#5ee8a6"/>
+            </g>
+          </svg>
+        </div>
+        <div class="grain lite"></div>
+      </div>
+      <div class="type">
+        <div class="visit anim"><span>Visit</span><span>Nº 03 / 03</span></div>
+        <h2 class="title anim">Reykjavik <span>Nights</span></h2>
+        <p class="tag anim">Nineteen hours of dark, a harbour of hot chocolate and wool, and a sky that ripples green when the forecast says nothing at all.</p>
+      </div>
+    </article>
+  </section>
+</main>
+
+<div class="ui">
+  <div class="num" aria-live="polite"><b id="cur">01</b> / 03</div>
+  <div class="dots" role="tablist" aria-label="Choose poster">
+    <button class="dot" type="button" role="tab" aria-current="true" aria-label="Poster 1, Lisbon by Tram" data-go="0"></button>
+    <button class="dot" type="button" role="tab" aria-current="false" aria-label="Poster 2, Kyoto in October" data-go="1"></button>
+    <button class="dot" type="button" role="tab" aria-current="false" aria-label="Poster 3, Reykjavik Nights" data-go="2"></button>
+  </div>
+  <div class="controls">
+    <button class="toggle" type="button" id="riso" aria-pressed="false" title="Toggle riso print texture"><span class="led"></span><span class="lbl">Print texture</span></button>
+    <button class="nav" type="button" id="prev" aria-label="Previous poster">&#8592;</button>
+    <button class="nav" type="button" id="next" aria-label="Next poster">&#8594;</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  const gallery=document.getElementById('gallery');
+  const slides=Array.from(gallery.querySelectorAll('.slide'));
+  const dots=Array.from(document.querySelectorAll('.dot'));
+  const cur=document.getElementById('cur');
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let index=0;
+
+  function goTo(i){
+    index=Math.max(0,Math.min(slides.length-1,i));
+    gallery.scrollTo({left:index*gallery.clientWidth,behavior:reduced?'auto':'smooth'});
+  }
+  document.getElementById('prev').addEventListener('click',()=>goTo(index-1));
+  document.getElementById('next').addEventListener('click',()=>goTo(index+1));
+  dots.forEach(d=>d.addEventListener('click',()=>goTo(+d.dataset.go)));
+  window.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'){goTo(index+1);e.preventDefault();}
+    else if(e.key==='ArrowLeft'){goTo(index-1);e.preventDefault();}
+  });
+  // Translate vertical wheel into horizontal travel for desktop mice
+  let wheelLock=0;
+  gallery.addEventListener('wheel',e=>{
+    if(Math.abs(e.deltaY)<=Math.abs(e.deltaX)) return;
+    const now=performance.now(); if(now-wheelLock<700) {e.preventDefault();return;}
+    wheelLock=now; e.preventDefault(); goTo(index+(e.deltaY>0?1:-1));
+  },{passive:false});
+
+  const riso=document.getElementById('riso');
+  riso.addEventListener('click',()=>{
+    const on=riso.getAttribute('aria-pressed')!=='true';
+    riso.setAttribute('aria-pressed',String(on));
+    document.body.classList.toggle('riso',on);
+  });
+
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting && en.intersectionRatio>0.55){
+        en.target.classList.add('in');
+        const i=+en.target.dataset.i; index=i;
+        cur.textContent=String(i+1).padStart(2,'0');
+        dots.forEach((d,j)=>d.setAttribute('aria-current',String(j===i)));
+      }
+    });
+  },{root:gallery,threshold:[0.55]});
+  slides.forEach(s=>io.observe(s));
+
+  // Parallax: offset each layer against its slide's distance from the viewport center
+  const layers=slides.map(s=>Array.from(s.querySelectorAll('.layer')));
+  let raf=0;
+  function parallax(){
+    raf=0;
+    if(reduced) return;
+    const w=gallery.clientWidth, sl=gallery.scrollLeft;
+    slides.forEach((s,i)=>{
+      const off=(i*w-sl)/w; // -1..1 relative to center
+      if(Math.abs(off)>1.2) return;
+      layers[i].forEach(l=>{
+        const d=parseFloat(l.dataset.depth)||1;
+        l.style.transform='translate3d('+(off*d*-60).toFixed(1)+'px,0,0)';
+      });
+    });
+  }
+  gallery.addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(parallax);},{passive:true});
+  window.addEventListener('resize',()=>{gallery.scrollTo({left:index*gallery.clientWidth,behavior:'auto'});parallax();});
+  parallax();
+})();
+</script>
+</body>
+</html>

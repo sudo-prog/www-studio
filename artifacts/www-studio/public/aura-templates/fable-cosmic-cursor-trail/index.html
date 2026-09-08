@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stardust — Cosmic Cursor Trail</title>
+<style>
+  :root {
+    --fg: rgba(255,255,255,.82);
+    --muted: rgba(255,255,255,.42);
+    --pill: rgba(14, 14, 22, .72);
+    --line: rgba(255,255,255,.14);
+    --accent: #9fd8ff;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; background: #000; overflow: hidden; }
+  body {
+    font-family: ui-sans-serif, system-ui, "Helvetica Neue", "Segoe UI", sans-serif;
+    color: var(--fg);
+    -webkit-font-smoothing: antialiased;
+    touch-action: none;
+    cursor: none;
+  }
+  canvas#art { position: fixed; inset: 0; display: block; }
+
+  .cursor {
+    position: fixed; left: 0; top: 0; z-index: 5; pointer-events: none;
+    width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.7);
+    transition: transform .25s cubic-bezier(.22,1,.36,1), opacity .4s;
+    mix-blend-mode: difference;
+  }
+  .cursor.hold { transform: scale(2.6); border-style: dashed; animation: spin 2s linear infinite; }
+  .cursor.hidden { opacity: 0; }
+  @keyframes spin { to { transform: scale(2.6) rotate(360deg); } }
+
+  .title {
+    position: fixed; top: clamp(16px, 3vh, 36px); left: clamp(16px, 3vw, 40px); z-index: 4;
+    pointer-events: none;
+    font-family: Georgia, "Iowan Old Style", Palatino, ui-serif, serif;
+    font-weight: 400; letter-spacing: .02em;
+    opacity: .85;
+  }
+  .title h1 { margin: 0; font-size: clamp(18px, 2vw, 26px); font-weight: 400; }
+  .title p { margin: 4px 0 0; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); font-family: ui-sans-serif, system-ui, sans-serif; }
+  .title p em { font-style: normal; color: var(--accent); }
+
+  .hint {
+    position: fixed; top: clamp(16px, 3vh, 36px); right: clamp(16px, 3vw, 40px); z-index: 4;
+    font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted);
+    text-align: right; line-height: 1.8; pointer-events: none;
+    transition: opacity 1.2s;
+  }
+  .hint.fade { opacity: 0; }
+  .hint kbd { font: inherit; border: 1px solid var(--line); border-radius: 4px; padding: 1px 6px; color: var(--fg); }
+
+  .ui {
+    position: fixed; left: 50%; bottom: clamp(14px, 3vh, 32px); z-index: 6;
+    transform: translateX(-50%);
+    display: flex; align-items: center; gap: 6px;
+    padding: 6px;
+    background: var(--pill);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    backdrop-filter: blur(14px);
+    box-shadow: 0 20px 50px -20px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.06);
+    cursor: auto;
+    max-width: calc(100vw - 20px);
+    flex-wrap: wrap; justify-content: center;
+  }
+  .group { display: flex; gap: 2px; padding: 2px; border-radius: 999px; background: rgba(255,255,255,.04); }
+  .ui button {
+    appearance: none; border: 0; background: transparent; color: var(--muted);
+    font: 600 11px/1 ui-sans-serif, system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase;
+    padding: 10px 13px; border-radius: 999px; cursor: pointer;
+    transition: color .25s, background .25s, transform .25s cubic-bezier(.22,1,.36,1);
+    display: inline-flex; align-items: center; gap: 7px;
+  }
+  .ui button:hover { color: var(--fg); transform: translateY(-1px); }
+  .ui button:active { transform: translateY(0) scale(.97); }
+  .ui button[aria-pressed="true"] { color: #08080c; background: var(--fg); }
+  .ui button svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .sep { width: 1px; height: 22px; background: var(--line); margin: 0 4px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+  @media (max-width: 640px) {
+    .hint { display: none; }
+    .ui button { padding: 9px 10px; font-size: 10px; }
+    .ui button .lbl { display: none; }
+    .ui button svg, .ui .dot { margin: 0; }
+    body { cursor: auto; }
+    .cursor { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cursor.hold { animation: none; }
+  }
+</style>
+</head>
+<body>
+<canvas id="art" aria-label="Interactive stardust painting canvas" role="img"></canvas>
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+
+<div class="title">
+  <h1>Stardust</h1>
+  <p>a cursor that <em>paints the sky</em></p>
+</div>
+<div class="hint" id="hint">
+  move to scatter dust<br>
+  press &amp; hold to gather a vortex<br>
+  release to burst · <kbd>C</kbd> clear · <kbd>S</kbd> save
+</div>
+
+<nav class="ui" aria-label="Brush controls">
+  <div class="group" role="group" aria-label="Brush">
+    <button type="button" data-brush="dust" aria-pressed="true"><span class="dot" style="background:#9fd8ff"></span><span class="lbl">Dust</span></button>
+    <button type="button" data-brush="ribbons" aria-pressed="false"><span class="dot" style="background:#ff9fe5"></span><span class="lbl">Ribbons</span></button>
+    <button type="button" data-brush="embers" aria-pressed="false"><span class="dot" style="background:#ffb060"></span><span class="lbl">Embers</span></button>
+    <button type="button" data-brush="ink" aria-pressed="false"><span class="dot" style="background:#e8e8f0"></span><span class="lbl">Ink</span></button>
+  </div>
+  <span class="sep"></span>
+  <div class="group" role="group" aria-label="Fade speed">
+    <button type="button" data-fade="0.012" aria-pressed="false" title="Long trails">
+      <svg viewBox="0 0 24 24"><path d="M3 12h18"/></svg><span class="lbl">Slow</span></button>
+    <button type="button" data-fade="0.045" aria-pressed="true" title="Medium trails">
+      <svg viewBox="0 0 24 24"><path d="M3 8h18M3 16h12"/></svg><span class="lbl">Mid</span></button>
+    <button type="button" data-fade="0.14" aria-pressed="false" title="Short trails">
+      <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h12M3 18h6"/></svg><span class="lbl">Fast</span></button>
+  </div>
+  <span class="sep"></span>
+  <button type="button" id="clear" title="Clear canvas (C)">
+    <svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg><span class="lbl">Clear</span></button>
+  <button type="button" id="save" title="Save PNG (S)">
+    <svg viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M4 19h16"/></svg><span class="lbl">Save</span></button>
+</nav>
+
+<script>
+(function () {
+  'use strict';
+  const canvas = document.getElementById('art');
+  const ctx = canvas.getContext('2d', { alpha: false });
+  const cursorEl = document.getElementById('cursor');
+  const hintEl = document.getElementById('hint');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let W = 0, H = 0, dpr = 1;
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = innerWidth; H = innerHeight;
+    // preserve the painting across resizes
+    const snap = document.createElement('canvas');
+    snap.width = canvas.width || 1; snap.height = canvas.height || 1;
+    snap.getContext('2d').drawImage(canvas, 0, 0);
+    canvas.width = Math.floor(W * dpr); canvas.height = Math.floor(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H);
+    ctx.drawImage(snap, 0, 0, snap.width / dpr, snap.height / dpr);
+  }
+  addEventListener('resize', resize);
+  resize();
+
+  /* ---------- state ---------- */
+  const state = {
+    brush: 'dust',
+    fade: 0.045,
+    pointer: { x: W / 2, y: H / 2, px: W / 2, py: H / 2, vx: 0, vy: 0, down: false, active: false, lastMove: 0 },
+    comet: { x: W / 2, y: H / 2, vx: 0, vy: 0, trail: [] },
+    ghost: { t: Math.random() * 100, a: 3, b: 2, phase: Math.PI / 2 },
+    hue: Math.random() * 360,
+    hold: 0,
+    particles: []
+  };
+  const MAX_P = 3800;
+  const P = state.particles;
+
+  const BRUSH = {
+    dust:    { count: 2, size: [0.6, 2.2], speed: .22, life: [1.2, 3.2], sat: 90, light: 68, drag: .985, comp: 'lighter' },
+    ribbons: { count: 2, size: [1.0, 1.6], speed: .10, life: [2.0, 4.5], sat: 85, light: 70, drag: .992, comp: 'lighter' },
+    embers:  { count: 4, size: [1.2, 3.6], speed: .30, life: [.8, 2.4], sat: 100, light: 60, drag: .975, comp: 'lighter' },
+    ink:     { count: 3, size: [6, 22],    speed: .06, life: [1.5, 3.5], sat: 10, light: 88, drag: .95,  comp: 'source-over' }
+  };
+  const rnd = (a, b) => a + Math.random() * (b - a);
+
+  function spawn(x, y, vx, vy, n, boost) {
+    const b = BRUSH[state.brush];
+    for (let i = 0; i < n; i++) {
+      if (P.length >= MAX_P) P.shift();
+      const ang = Math.random() * Math.PI * 2, sp = Math.random() * 18 * (boost || 1);
+      let hue = state.hue + rnd(-18, 18);
+      if (state.brush === 'embers') hue = rnd(8, 42);
+      const life = rnd(b.life[0], b.life[1]);
+      P.push({
+        x, y,
+        vx: vx * b.speed + Math.cos(ang) * sp,
+        vy: vy * b.speed + Math.sin(ang) * sp - (state.brush === 'embers' ? 25 : 0),
+        px: x, py: y,
+        size: rnd(b.size[0], b.size[1]),
+        hue, sat: b.sat, light: b.light,
+        life, maxLife: life,
+        drag: b.drag,
+        type: state.brush,
+        flick: Math.random() * 6.28
+      });
+    }
+  }
+
+  /* ---------- pointer ---------- */
+  const pt = state.pointer;
+  function setPointer(x, y) {
+    pt.x = x; pt.y = y; pt.active = true; pt.lastMove = performance.now();
+    cursorEl.style.transform = '';
+    cursorEl.style.left = x + 'px'; cursorEl.style.top = y + 'px';
+    cursorEl.classList.remove('hidden');
+    hintEl.classList.add('fade');
+  }
+  addEventListener('pointermove', e => { if (e.target.closest && e.target.closest('.ui')) return; setPointer(e.clientX, e.clientY); });
+  addEventListener('pointerdown', e => {
+    if (e.target.closest && e.target.closest('.ui')) return;
+    setPointer(e.clientX, e.clientY);
+    pt.down = true; state.hold = 0;
+    cursorEl.classList.add('hold');
+  });
+  function release() {
+    if (!pt.down) return;
+    pt.down = false;
+    cursorEl.classList.remove('hold');
+    explode(pt.x, pt.y, Math.min(1, state.hold / 1.5));
+  }
+  addEventListener('pointerup', release);
+  addEventListener('pointercancel', release);
+  addEventListener('pointerleave', () => { cursorEl.classList.add('hidden'); });
+
+  function explode(x, y, power) {
+    const r2 = (140 + 240 * power) ** 2;
+    for (const p of P) {
+      const dx = p.x - x, dy = p.y - y, d2 = dx * dx + dy * dy;
+      if (d2 < r2) {
+        const d = Math.sqrt(d2) + 1, f = (260 + 520 * power) / (0.4 + d * 0.05);
+        p.vx += dx / d * f * (0.6 + Math.random() * .8);
+        p.vy += dy / d * f * (0.6 + Math.random() * .8);
+        p.life = Math.min(p.maxLife, p.life + .6);
+      }
+    }
+    spawn(x, y, 0, 0, Math.floor(90 + 160 * power), 7 + 13 * power);
+    ring.push({ x, y, r: 4, a: .9 });
+  }
+  const ring = [];
+
+  /* ---------- loop ---------- */
+  let last = performance.now();
+  function frame(now) {
+    const dt = Math.min(.033, (now - last) / 1000) || .016; last = now;
+    state.hue = (state.hue + dt * 14) % 360;
+
+    // idle ghost cursor on a Lissajous curve
+    const idle = now - pt.lastMove > 2600;
+    let tx = pt.x, ty = pt.y;
+    if (idle && !pt.down) {
+      const g = state.ghost;
+      g.t += dt * .55;
+      const ax = Math.min(W, H) * .36, ay = Math.min(W, H) * .30;
+      tx = W / 2 + ax * Math.sin(g.a * g.t + g.phase) + Math.sin(g.t * .7) * ax * .2;
+      ty = H / 2 + ay * Math.sin(g.b * g.t) + Math.cos(g.t * .43) * ay * .15;
+      cursorEl.classList.add('hidden');
+    }
+
+    // velocity of the driving point
+    const vx = (tx - pt.px) / dt, vy = (ty - pt.py) / dt;
+    const dist = Math.hypot(tx - pt.px, ty - pt.py);
+
+    // spawn along the path with velocity inheritance
+    if (dist > 0.5 && (pt.active || idle)) {
+      const b = BRUSH[state.brush];
+      const steps = Math.max(1, Math.min(40, Math.floor(dist / 3)));
+      for (let i = 0; i < steps; i++) {
+        const t = i / steps;
+        spawn(pt.px + (tx - pt.px) * t, pt.py + (ty - pt.py) * t, vx, vy, b.count, 1);
+      }
+    }
+    pt.px = tx; pt.py = ty;
+
+    // vortex while holding
+    if (pt.down) {
+      state.hold += dt;
+      const str = Math.min(1, state.hold / 1.2);
+      spawn(pt.x + rnd(-60, 60) * str, pt.y + rnd(-60, 60) * str, 0, 0, 3, 1);
+      for (const p of P) {
+        const dx = pt.x - p.x, dy = pt.y - p.y, d2 = dx * dx + dy * dy;
+        if (d2 < 260 * 260) {
+          const d = Math.sqrt(d2) + 4;
+          const pull = (900 * str) / d, swirl = (1400 * str) / d;
+          p.vx += (dx / d * pull - dy / d * swirl) * dt * 3;
+          p.vy += (dy / d * pull + dx / d * swirl) * dt * 3;
+          p.life = Math.min(p.maxLife, p.life + dt * .8);
+        }
+      }
+    }
+
+    // comet spring
+    const c = state.comet;
+    const k = 120, damp = .82;
+    c.vx += (tx - c.x) * k * dt; c.vy += (ty - c.y) * k * dt;
+    c.vx *= damp; c.vy *= damp;
+    c.x += c.vx * dt; c.y += c.vy * dt;
+    c.trail.push({ x: c.x, y: c.y });
+    if (c.trail.length > 28) c.trail.shift();
+
+    /* ---- draw ---- */
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.fillStyle = `rgba(0,0,0,${reduced ? Math.max(state.fade, .08) : state.fade})`;
+    ctx.fillRect(0, 0, W, H);
+
+    ctx.globalCompositeOperation = BRUSH[state.brush].comp;
+    ctx.lineCap = 'round';
+    for (let i = P.length - 1; i >= 0; i--) {
+      const p = P[i];
+      p.life -= dt;
+      if (p.life <= 0) { P.splice(i, 1); continue; }
+      p.px = p.x; p.py = p.y;
+      p.vx *= p.drag; p.vy *= p.drag;
+      if (p.type === 'embers') { p.vy -= 30 * dt; p.vx += Math.sin(now * .004 + p.flick) * 18 * dt; }
+      if (p.type === 'dust') { p.vx += Math.sin(now * .001 + p.flick) * 6 * dt; p.vy += Math.cos(now * .0013 + p.flick) * 6 * dt; }
+      p.x += p.vx * dt; p.y += p.vy * dt;
+      const t = p.life / p.maxLife;
+      const a = p.type === 'ink' ? t * .06 : t * t * .7;
+      const fl = p.type === 'embers' ? .6 + .4 * Math.sin(now * .02 + p.flick) : 1;
+      const col = `hsla(${p.hue},${p.sat}%,${p.light}%,${(a * fl).toFixed(3)})`;
+      if (p.type === 'ribbons') {
+        ctx.strokeStyle = col; ctx.lineWidth = p.size * (0.5 + t);
+        ctx.beginPath(); ctx.moveTo(p.px, p.py); ctx.lineTo(p.x, p.y); ctx.stroke();
+      } else if (p.type === 'ink') {
+        ctx.fillStyle = `hsla(${p.hue},${p.sat}%,${p.light}%,${a.toFixed(3)})`;
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.size * (1.4 - t), 0, 6.283); ctx.fill();
+      } else {
+        ctx.fillStyle = col;
+        const r = p.size * (0.4 + t);
+        ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, 6.283); ctx.fill();
+        if (p.size > 1.8) { // soft halo
+          ctx.globalAlpha = a * .12;
+          ctx.beginPath(); ctx.arc(p.x, p.y, r * 3, 0, 6.283); ctx.fill();
+          ctx.globalAlpha = 1;
+        }
+      }
+    }
+
+    // comet line
+    ctx.globalCompositeOperation = 'lighter';
+    const tr = c.trail;
+    for (let i = 1; i < tr.length; i++) {
+      const t = i / tr.length;
+      ctx.strokeStyle = `hsla(${(state.hue + 40) % 360}, 90%, 78%, ${(t * t * .55).toFixed(3)})`;
+      ctx.lineWidth = t * 3.2;
+      ctx.beginPath(); ctx.moveTo(tr[i - 1].x, tr[i - 1].y); ctx.lineTo(tr[i].x, tr[i].y); ctx.stroke();
+    }
+    const head = ctx.createRadialGradient(c.x, c.y, 0, c.x, c.y, 18);
+    head.addColorStop(0, 'rgba(255,255,255,.85)'); head.addColorStop(.3, `hsla(${state.hue}, 90%, 75%, .5)`); head.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = head; ctx.beginPath(); ctx.arc(c.x, c.y, 18, 0, 6.283); ctx.fill();
+
+    // shockwave rings
+    for (let i = ring.length - 1; i >= 0; i--) {
+      const r = ring[i]; r.r += 520 * dt; r.a -= dt * 1.6;
+      if (r.a <= 0) { ring.splice(i, 1); continue; }
+      ctx.strokeStyle = `hsla(${state.hue}, 80%, 85%, ${r.a.toFixed(3)})`; ctx.lineWidth = 2 * r.a + .5;
+      ctx.beginPath(); ctx.arc(r.x, r.y, r.r, 0, 6.283); ctx.stroke();
+    }
+    ctx.globalCompositeOperation = 'source-over';
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  /* ---------- controls ---------- */
+  function pressGroup(sel, btn) {
+    document.querySelectorAll(sel).forEach(b => b.setAttribute('aria-pressed', b === btn));
+  }
+  document.querySelectorAll('[data-brush]').forEach(b => b.addEventListener('click', () => {
+    state.brush = b.dataset.brush; pressGroup('[data-brush]', b);
+    document.documentElement.style.setProperty('--accent', getComputedStyle(b.querySelector('.dot')).backgroundColor);
+  }));
+  document.querySelectorAll('[data-fade]').forEach(b => b.addEventListener('click', () => {
+    state.fade = parseFloat(b.dataset.fade); pressGroup('[data-fade]', b);
+  }));
+  function clear() {
+    P.length = 0; ring.length = 0;
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H);
+  }
+  function save() {
+    const a = document.createElement('a');
+    a.download = 'stardust-' + new Date().toISOString().slice(0, 19).replace(/[:T]/g, '-') + '.png';
+    a.href = canvas.toDataURL('image/png');
+    a.click();
+  }
+  document.getElementById('clear').addEventListener('click', clear);
+  document.getElementById('save').addEventListener('click', save);
+  addEventListener('keydown', e => {
+    if (e.key === 'c' || e.key === 'C') clear();
+    if (e.key === 's' || e.key === 'S') save();
+    if (e.key >= '1' && e.key <= '4') document.querySelectorAll('[data-brush]')[+e.key - 1].click();
+  });
+})();
+</script>
+</body>
+</html>

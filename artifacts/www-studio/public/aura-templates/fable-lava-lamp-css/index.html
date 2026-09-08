@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Groovy Glow — Three CSS Lava Lamps</title>
+<style>
+  :root {
+    --wall-a: #3b2417;
+    --wall-b: #5a3420;
+    --wall-c: #8a5a2b;
+    --floor: #1d120b;
+    --brass-1: #f6e3a1;
+    --brass-2: #c99b3c;
+    --brass-3: #7a5516;
+    --brass-4: #3d2a0a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { min-height: 100%; }
+  body {
+    font-family: Georgia, "Iowan Old Style", Palatino, ui-serif, serif;
+    color: #f3e2c0;
+    background: var(--wall-a);
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ---- 70s wallpaper ---- */
+  .room {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: clamp(24px, 5vh, 60px) 16px 0;
+    min-height: 100vh;
+    background-color: var(--wall-a);
+    background-image:
+      radial-gradient(circle at 50% 50%, transparent 30%, var(--wall-a) 31%, var(--wall-a) 36%, transparent 37%),
+      radial-gradient(circle at 0 0, var(--wall-c) 14%, transparent 15%),
+      radial-gradient(circle at 100% 0, var(--wall-c) 14%, transparent 15%),
+      radial-gradient(circle at 0 100%, var(--wall-c) 14%, transparent 15%),
+      radial-gradient(circle at 100% 100%, var(--wall-c) 14%, transparent 15%),
+      repeating-linear-gradient(45deg, var(--wall-b) 0 6px, transparent 6px 26px),
+      repeating-linear-gradient(-45deg, var(--wall-b) 0 6px, transparent 6px 26px);
+    background-size: 120px 120px, 120px 120px, 120px 120px, 120px 120px, 120px 120px, 100% 100%, 100% 100%;
+  }
+  .room::before {
+    /* dim vignette lighting */
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 50% 70%, rgba(255,170,80,.16), transparent 55%),
+      radial-gradient(ellipse at 50% 40%, transparent 40%, rgba(0,0,0,.72) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .room::after {
+    /* wood floor */
+    content: "";
+    position: absolute; left: 0; right: 0; bottom: 0;
+    height: clamp(90px, 16vh, 160px);
+    background:
+      repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0 2px, transparent 2px 110px),
+      linear-gradient(to bottom, #2b1a0f, var(--floor));
+    box-shadow: 0 -20px 60px rgba(0,0,0,.6);
+    z-index: 0;
+  }
+
+  header {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    margin-bottom: clamp(16px, 4vh, 48px);
+  }
+  h1 {
+    font-size: clamp(40px, 9vw, 112px);
+    font-weight: 900;
+    letter-spacing: -.02em;
+    line-height: .9;
+    color: transparent;
+    background: linear-gradient(180deg, #ffe08a 0%, #ff9f3d 35%, #ff5c8a 65%, #c74bff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: drop-shadow(0 6px 0 #4a1a0a) drop-shadow(0 0 30px rgba(255,140,60,.35));
+    text-transform: lowercase;
+    font-style: italic;
+  }
+  h1 span { display: inline-block; transition: transform .5s cubic-bezier(.34,1.56,.64,1); }
+  h1:hover span { transform: translateY(-6px) rotate(-3deg); }
+  h1:hover span:nth-child(even) { transform: translateY(4px) rotate(3deg); }
+  .sub {
+    margin-top: 14px;
+    font-size: clamp(13px, 1.6vw, 18px);
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: #e6b97a;
+    opacity: .85;
+  }
+
+  /* ---- Shelf of lamps ---- */
+  .shelf {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: clamp(20px, 6vw, 110px);
+    width: 100%;
+    max-width: 1200px;
+    padding-bottom: clamp(50px, 8vh, 90px);
+  }
+
+  .lamp {
+    --c1: #ff6a00;
+    --c2: #ff1e3c;
+    --glow: rgba(255,110,40,.55);
+    --fluid: #3a0c02;
+    --fluid-top: #7a1a04;
+    position: relative;
+    width: clamp(110px, 18vw, 190px);
+    aspect-ratio: 190 / 560;
+    cursor: pointer;
+    display: block;
+    transition: transform .6s cubic-bezier(.2,.8,.2,1);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .lamp:hover { transform: translateY(-6px); }
+  .lamp:focus-visible { outline: 3px dashed #ffd27a; outline-offset: 10px; border-radius: 40px; }
+  .lamp:nth-child(2) { width: clamp(125px, 20vw, 215px); }
+
+  .cap, .base {
+    position: absolute; left: 0; right: 0;
+    background:
+      linear-gradient(90deg, var(--brass-4) 0%, var(--brass-3) 12%, var(--brass-1) 38%, var(--brass-2) 55%, var(--brass-3) 82%, var(--brass-4) 100%);
+  }
+  .cap {
+    top: 0; height: 9%;
+    clip-path: polygon(30% 0, 70% 0, 100% 100%, 0 100%);
+    border-radius: 12px 12px 0 0;
+  }
+  .cap::after {
+    content: "";
+    position: absolute; left: 32%; right: 32%; top: -3%;
+    height: 22%;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    background: linear-gradient(90deg, var(--brass-3), var(--brass-1), var(--brass-3));
+  }
+  .base {
+    bottom: 0; height: 24%;
+    clip-path: polygon(22% 0, 78% 0, 100% 100%, 0 100%);
+    border-radius: 0 0 14px 14px;
+  }
+  .base::before {
+    /* horizontal machined grooves */
+    content: "";
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(to bottom, transparent 0 14px, rgba(0,0,0,.25) 14px 16px);
+    mix-blend-mode: multiply;
+  }
+  .base::after {
+    /* light leak from the bulb */
+    content: "";
+    position: absolute; left: 30%; right: 30%; top: 0; height: 30%;
+    background: radial-gradient(ellipse at 50% 0, var(--glow), transparent 70%);
+    opacity: var(--on, 1);
+    transition: opacity 1.2s ease;
+  }
+
+  .glass {
+    position: absolute;
+    top: 8.5%; bottom: 23.5%; left: 6%; right: 6%;
+    clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%);
+    background: linear-gradient(to bottom, var(--fluid-top), var(--fluid) 70%);
+    overflow: hidden;
+    transition: filter 1.5s ease;
+  }
+  .glass::before {
+    /* warm inner glow from the bulb at the bottom */
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 90% 45% at 50% 100%, var(--glow), transparent 80%);
+    opacity: var(--on, 1);
+    transition: opacity 1.5s ease;
+    z-index: 3;
+    mix-blend-mode: screen;
+  }
+  .glass::after {
+    /* glass highlight streak */
+    content: "";
+    position: absolute; top: 0; bottom: 0; left: 14%; width: 10%;
+    background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.22), rgba(255,255,255,0));
+    z-index: 5;
+    pointer-events: none;
+  }
+  .lamp.off .glass { filter: saturate(.35) brightness(.55); }
+
+  /* Goo layer: blur + contrast via SVG filter */
+  .goo {
+    position: absolute; inset: -10% 0;
+    filter: url(#goo);
+    z-index: 2;
+  }
+  .blob {
+    position: absolute;
+    left: 50%;
+    bottom: -8%;
+    width: 62%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%, var(--c1), var(--c2));
+    transform: translate(-50%, 0);
+    animation: rise var(--t, 12s) cubic-bezier(.45,.05,.55,.95) infinite;
+    animation-delay: var(--d, 0s);
+    will-change: transform;
+    transition: animation-duration 1s;
+  }
+  .blob.b2 { width: 44%; left: 30%; --t: 15s; --d: -4s; }
+  .blob.b3 { width: 38%; left: 68%; --t: 10s; --d: -7s; }
+  .blob.b4 { width: 30%; left: 58%; --t: 18s; --d: -12s; }
+  .blob.b5 { width: 24%; left: 40%; --t: 9s; --d: -2s; }
+  .pool {
+    /* molten reservoir at the bottom that blobs emerge from */
+    position: absolute; left: -10%; right: -10%; bottom: -6%;
+    height: 22%;
+    border-radius: 50% 50% 0 0;
+    background: linear-gradient(to top, var(--c2), var(--c1));
+  }
+  .heat-shimmer {
+    position: absolute; inset: 0;
+    z-index: 4;
+    filter: url(#shimmer);
+    background: linear-gradient(to top, rgba(255,255,255,.06), transparent 40%);
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    animation: shimmer 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes rise {
+    0%   { transform: translate(-50%, 0) scale(1, .85); }
+    12%  { transform: translate(-50%, -6%) scale(1.15, 1.25); }
+    45%  { transform: translate(-46%, -300%) scale(.95, 1.05); }
+    55%  { transform: translate(-54%, -330%) scale(1.05, .95); }
+    88%  { transform: translate(-50%, -20%) scale(1, 1.1); }
+    100% { transform: translate(-50%, 0) scale(1, .85); }
+  }
+  @keyframes shimmer {
+    from { opacity: .5; transform: translateY(0); }
+    to   { opacity: .9; transform: translateY(-2%); }
+  }
+
+  /* Off state: blobs settle */
+  .lamp.off .blob { animation-play-state: paused; }
+  .lamp.off .goo { transition: transform 2.5s cubic-bezier(.4,0,.2,1); }
+  .lamp .goo { transition: transform 2.5s cubic-bezier(.4,0,.2,1); transform: translateY(0); }
+  .lamp.off .goo .blob { transition: transform 2.8s cubic-bezier(.4,0,.2,1); }
+  .lamp.off .heat-shimmer { opacity: 0; animation: none; }
+  .lamp.off { --on: 0; }
+
+  /* Floor glow beneath each lamp */
+  .lamp::after {
+    content: "";
+    position: absolute;
+    left: -30%; right: -30%; bottom: -10%;
+    height: 16%;
+    background: radial-gradient(ellipse at 50% 50%, var(--glow), transparent 70%);
+    filter: blur(14px);
+    opacity: var(--on, 1);
+    transition: opacity 1.5s ease;
+    z-index: -1;
+  }
+
+  .label {
+    position: absolute;
+    left: 50%; bottom: -34px;
+    transform: translateX(-50%);
+    font-size: 12px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #d9b27a;
+    opacity: .75;
+    transition: opacity .4s;
+  }
+  .lamp.off .label::after { content: " · off"; opacity: .6; }
+
+  /* Palettes */
+  .lamp.warm   { --c1: #ffb347; --c2: #ff2e2e; --glow: rgba(255,120,40,.6); --fluid: #3a0c02; --fluid-top: #8a2405; }
+  .lamp.violet { --c1: #ff6ad5; --c2: #7a1fff; --glow: rgba(200,90,255,.55); --fluid: #170430; --fluid-top: #3a0d6e; }
+  .lamp.teal   { --c1: #c6ff3d; --c2: #00c2a8; --glow: rgba(90,255,190,.5); --fluid: #02231f; --fluid-top: #064d3f; }
+
+  /* Controls */
+  .controls {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: clamp(20px, 4vh, 40px);
+  }
+  .ctl {
+    font: italic 14px Georgia, ui-serif, serif;
+    color: #ffe1a8;
+    background: rgba(0,0,0,.35);
+    border: 1px solid rgba(255,200,120,.35);
+    padding: 8px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    transition: background .3s, transform .3s;
+  }
+  .ctl:hover { background: rgba(255,160,60,.25); transform: translateY(-2px); }
+  .ctl:focus-visible { outline: 2px solid #ffd27a; outline-offset: 2px; }
+
+  .svg-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+  @media (max-width: 560px) {
+    .shelf { gap: 10px; }
+    .lamp { width: 28vw; }
+    .lamp:nth-child(2) { width: 32vw; }
+    .label { font-size: 10px; letter-spacing: .1em; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .blob { animation-duration: 60s; }
+    .heat-shimmer { animation: none; }
+    h1 span { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<svg class="svg-defs" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="goo" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"></feGaussianBlur>
+      <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -9" result="goo"></feColorMatrix>
+      <feComposite in="goo" in2="goo" operator="over"></feComposite>
+    </filter>
+    <filter id="shimmer" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02 0.09" numOctaves="2" seed="4" result="noise">
+        <animate attributeName="baseFrequency" dur="6s" values="0.02 0.09;0.03 0.12;0.02 0.09" repeatCount="indefinite"></animate>
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+    </filter>
+  </defs>
+</svg>
+
+<main class="room">
+  <header>
+    <h1 aria-label="groovy glow"><span>g</span><span>r</span><span>o</span><span>o</span><span>v</span><span>y</span>&nbsp;<span>g</span><span>l</span><span>o</span><span>w</span></h1>
+    <p class="sub">Three lamps · one wall · zero external files</p>
+  </header>
+
+  <div class="controls">
+    <button class="ctl" id="allOn" type="button">All on</button>
+    <button class="ctl" id="allOff" type="button">Lights out</button>
+    <button class="ctl" id="speed" type="button" aria-pressed="false">Turn up the heat</button>
+  </div>
+
+  <section class="shelf" aria-label="Lava lamps">
+    <div class="lamp warm" role="button" tabindex="0" aria-pressed="true" aria-label="Sunset lamp, on. Click to switch off.">
+      <div class="cap"></div>
+      <div class="glass">
+        <div class="goo">
+          <div class="pool"></div>
+          <div class="blob b1"></div>
+          <div class="blob b2"></div>
+          <div class="blob b3"></div>
+          <div class="blob b4"></div>
+          <div class="blob b5"></div>
+        </div>
+        <div class="heat-shimmer"></div>
+      </div>
+      <div class="base"></div>
+      <span class="label">Sunset</span>
+    </div>
+
+    <div class="lamp violet" role="button" tabindex="0" aria-pressed="true" aria-label="Orchid lamp, on. Click to switch off.">
+      <div class="cap"></div>
+      <div class="glass">
+        <div class="goo">
+          <div class="pool"></div>
+          <div class="blob b1" style="--t: 13s; --d: -6s;"></div>
+          <div class="blob b2" style="--t: 17s; --d: -1s;"></div>
+          <div class="blob b3" style="--t: 11s; --d: -9s;"></div>
+          <div class="blob b4" style="--t: 19s; --d: -3s;"></div>
+          <div class="blob b5" style="--t: 8s; --d: -5s;"></div>
+        </div>
+        <div class="heat-shimmer"></div>
+      </div>
+      <div class="base"></div>
+      <span class="label">Orchid</span>
+    </div>
+
+    <div class="lamp teal" role="button" tabindex="0" aria-pressed="true" aria-label="Lagoon lamp, on. Click to switch off.">
+      <div class="cap"></div>
+      <div class="glass">
+        <div class="goo">
+          <div class="pool"></div>
+          <div class="blob b1" style="--t: 14s; --d: -8s;"></div>
+          <div class="blob b2" style="--t: 12s; --d: -3s;"></div>
+          <div class="blob b3" style="--t: 16s; --d: -11s;"></div>
+          <div class="blob b4" style="--t: 9s; --d: -1s;"></div>
+          <div class="blob b5" style="--t: 20s; --d: -6s;"></div>
+        </div>
+        <div class="heat-shimmer"></div>
+      </div>
+      <div class="base"></div>
+      <span class="label">Lagoon</span>
+    </div>
+  </section>
+</main>
+
+<script>
+  (function () {
+    var lamps = Array.prototype.slice.call(document.querySelectorAll('.lamp'));
+    var names = ['Sunset', 'Orchid', 'Lagoon'];
+
+    function setLamp(lamp, on) {
+      var i = lamps.indexOf(lamp);
+      lamp.classList.toggle('off', !on);
+      lamp.setAttribute('aria-pressed', on ? 'true' : 'false');
+      lamp.setAttribute('aria-label', names[i] + ' lamp, ' + (on ? 'on' : 'off') + '. Click to switch ' + (on ? 'off' : 'on') + '.');
+      // When switching off, let blobs settle: pause animation and pull them to the bottom.
+      var blobs = lamp.querySelectorAll('.blob');
+      blobs.forEach(function (b) {
+        if (!on) {
+          b.style.animationPlayState = 'paused';
+          var cs = getComputedStyle(b).transform;
+          b.style.animation = 'none';
+          b.style.transform = cs;
+          // force reflow then settle
+          void b.offsetWidth;
+          b.style.transform = 'translate(-50%, 0) scale(1.1, .7)';
+        } else {
+          b.style.transition = 'none';
+          b.style.transform = '';
+          b.style.animation = '';
+          b.style.animationPlayState = '';
+          void b.offsetWidth;
+          b.style.transition = '';
+        }
+      });
+    }
+
+    lamps.forEach(function (lamp) {
+      lamp.addEventListener('click', function () {
+        setLamp(lamp, lamp.classList.contains('off'));
+      });
+      lamp.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          setLamp(lamp, lamp.classList.contains('off'));
+        }
+      });
+    });
+
+    document.getElementById('allOn').addEventListener('click', function () {
+      lamps.forEach(function (l) { setLamp(l, true); });
+    });
+    document.getElementById('allOff').addEventListener('click', function () {
+      lamps.forEach(function (l) { setLamp(l, false); });
+    });
+
+    var speedBtn = document.getElementById('speed');
+    var fast = false;
+    speedBtn.addEventListener('click', function () {
+      fast = !fast;
+      speedBtn.setAttribute('aria-pressed', fast ? 'true' : 'false');
+      speedBtn.textContent = fast ? 'Cool it down' : 'Turn up the heat';
+      document.querySelectorAll('.goo').forEach(function (g) {
+        g.style.setProperty('--speed', fast ? '0.45' : '1');
+      });
+      document.querySelectorAll('.blob').forEach(function (b) {
+        var base = parseFloat(getComputedStyle(b).getPropertyValue('--t')) || 12;
+        b.style.animationDuration = (fast ? base * 0.45 : base) + 's';
+      });
+    });
+  })();
+</script>
+</body>
+</html>

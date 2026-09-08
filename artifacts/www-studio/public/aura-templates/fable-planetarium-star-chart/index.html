@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Planetarium — An Interactive Star Chart</title>
+<style>
+  :root {
+    --night: #070b1c;
+    --night-2: #0d1430;
+    --ink: #e9dfc6;
+    --ink-dim: #a99a78;
+    --brass: #c9a25e;
+    --brass-hi: #efd9a1;
+    --brass-lo: #6b4d22;
+    --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, ui-serif, serif;
+    --mono: ui-monospace, 'Courier New', monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse at 20% 10%, #16204a 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 90%, #121a3a 0%, transparent 55%),
+      var(--night);
+    color: var(--ink);
+    font-family: var(--serif);
+    overflow-x: hidden;
+  }
+  .page {
+    max-width: 1400px; margin: 0 auto; padding: 28px clamp(14px, 3vw, 40px) 48px;
+    display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 28px; align-items: start;
+  }
+  .masthead { grid-column: 1 / -1; text-align: center; padding: 6px 0 4px; }
+  .masthead h1 {
+    margin: 0; font-weight: 400; font-size: clamp(26px, 4vw, 44px); letter-spacing: .12em;
+    text-transform: uppercase; color: var(--brass-hi);
+    text-shadow: 0 0 24px rgba(201,162,94,.35);
+  }
+  .masthead h1 small { display: block; font-size: .36em; letter-spacing: .5em; color: var(--ink-dim); margin-top: 8px; }
+  .masthead .rule {
+    width: min(520px, 80%); height: 1px; margin: 14px auto 0;
+    background: linear-gradient(90deg, transparent, var(--brass), transparent);
+    position: relative;
+  }
+  .masthead .rule::after {
+    content: "✦"; position: absolute; left: 50%; top: -9px; transform: translateX(-50%);
+    color: var(--brass); font-size: 12px; background: var(--night); padding: 0 8px;
+  }
+  .dome-wrap { position: relative; width: 100%; aspect-ratio: 1; max-height: 86vh; margin: 0 auto; }
+  .dome-wrap canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; border-radius: 50%; }
+  #sky { cursor: crosshair; }
+  .tooltip {
+    position: absolute; pointer-events: none; opacity: 0;
+    transform: translate(-50%, calc(-100% - 14px)) scale(.96);
+    transition: opacity .18s ease, transform .18s ease;
+    background: linear-gradient(180deg, rgba(20,26,54,.96), rgba(10,14,32,.96));
+    border: 1px solid var(--brass-lo); border-radius: 6px; padding: 9px 12px; min-width: 150px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.6), 0 0 0 1px rgba(201,162,94,.15) inset;
+    font-size: 13px; line-height: 1.45; z-index: 3; white-space: nowrap;
+  }
+  .tooltip.show { opacity: 1; transform: translate(-50%, calc(-100% - 14px)) scale(1); }
+  .tooltip b { display: block; font-size: 15px; color: var(--brass-hi); letter-spacing: .04em; }
+  .tooltip i { color: var(--ink-dim); font-style: italic; }
+  .tooltip::after {
+    content: ""; position: absolute; left: 50%; bottom: -6px; width: 10px; height: 10px;
+    background: rgba(10,14,32,.96); border-right: 1px solid var(--brass-lo); border-bottom: 1px solid var(--brass-lo);
+    transform: translateX(-50%) rotate(45deg);
+  }
+  .panel {
+    background: linear-gradient(180deg, rgba(20,27,58,.7), rgba(10,14,34,.7));
+    border: 1px solid rgba(201,162,94,.25); border-radius: 10px; padding: 20px 20px 22px;
+    backdrop-filter: blur(6px); position: sticky; top: 20px;
+    box-shadow: 0 20px 50px -20px rgba(0,0,0,.8);
+  }
+  .panel h2 {
+    margin: 0 0 14px; font-weight: 400; font-size: 13px; letter-spacing: .32em; text-transform: uppercase; color: var(--brass);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .panel h2::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--brass-lo), transparent); }
+  .field { margin-bottom: 14px; }
+  .field label { display: flex; justify-content: space-between; font-size: 13px; color: var(--ink-dim); margin-bottom: 6px; font-style: italic; }
+  .field .readout { font-style: normal; color: var(--ink); font-family: var(--mono); font-size: 12px; }
+  input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 20px; background: transparent; margin: 0; }
+  input[type=range]::-webkit-slider-runnable-track { height: 2px; background: linear-gradient(90deg, var(--brass-lo), var(--brass)); }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 16px; height: 16px; margin-top: -7px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, var(--brass-hi), var(--brass) 55%, var(--brass-lo));
+    box-shadow: 0 1px 4px rgba(0,0,0,.6); cursor: pointer; transition: transform .15s ease;
+  }
+  input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+  input[type=range]::-moz-range-track { height: 2px; background: var(--brass); }
+  input[type=range]::-moz-range-thumb { width: 16px; height: 16px; border: 0; border-radius: 50%; background: var(--brass); cursor: pointer; }
+  input[type=date] {
+    width: 100%; font: inherit; font-size: 14px; color: var(--ink); background: rgba(0,0,0,.3);
+    border: 1px solid var(--brass-lo); border-radius: 4px; padding: 7px 10px; color-scheme: dark;
+  }
+  .toggles { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 4px; }
+  .toggle {
+    display: flex; align-items: center; gap: 9px; font-size: 13px; cursor: pointer; user-select: none;
+    padding: 7px 9px; border-radius: 5px; border: 1px solid transparent; transition: border-color .2s ease, background .2s ease;
+  }
+  .toggle:hover { background: rgba(201,162,94,.06); border-color: rgba(201,162,94,.2); }
+  .toggle input { position: absolute; opacity: 0; width: 0; height: 0; }
+  .toggle .sw {
+    width: 30px; height: 16px; border-radius: 10px; border: 1px solid var(--brass-lo); background: rgba(0,0,0,.4); position: relative; flex: none;
+    transition: background .2s ease;
+  }
+  .toggle .sw::after {
+    content: ""; position: absolute; top: 2px; left: 2px; width: 10px; height: 10px; border-radius: 50%;
+    background: var(--ink-dim); transition: transform .2s cubic-bezier(.3,1.4,.5,1), background .2s ease;
+  }
+  .toggle input:checked + .sw { background: rgba(201,162,94,.35); }
+  .toggle input:checked + .sw::after { transform: translateX(14px); background: var(--brass-hi); }
+  .toggle input:focus-visible + .sw { outline: 2px solid var(--brass-hi); outline-offset: 2px; }
+  .btnrow { display: flex; gap: 8px; margin-top: 10px; }
+  .btn {
+    flex: 1; font: inherit; font-size: 13px; letter-spacing: .08em; color: var(--night); cursor: pointer;
+    background: linear-gradient(180deg, var(--brass-hi), var(--brass) 50%, #a3803f); border: 1px solid var(--brass-lo);
+    border-radius: 4px; padding: 9px 10px; transition: transform .12s ease, filter .2s ease;
+  }
+  .btn:hover { filter: brightness(1.08); }
+  .btn:active { transform: translateY(1px); }
+  .btn.ghost { background: transparent; color: var(--brass); }
+  .starcard { margin-top: 18px; padding-top: 16px; border-top: 1px dashed rgba(201,162,94,.3); min-height: 84px; font-size: 14px; line-height: 1.5; }
+  .starcard b { color: var(--brass-hi); font-size: 18px; font-weight: 400; letter-spacing: .04em; display: block; }
+  .starcard .meta { font-family: var(--mono); font-size: 12px; color: var(--ink-dim); margin-top: 4px; }
+  .starcard p { margin: 8px 0 0; color: var(--ink-dim); font-style: italic; }
+  .colophon { grid-column: 1 / -1; text-align: center; font-size: 12px; color: var(--ink-dim); font-style: italic; letter-spacing: .04em; }
+  @media (max-width: 900px) {
+    .page { grid-template-columns: 1fr; }
+    .panel { position: static; }
+    .dome-wrap { max-height: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tooltip, .toggle .sw::after, .btn { transition: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <h1>Planetarium<small>A Chart of the Visible Heavens</small></h1>
+    <div class="rule"></div>
+  </header>
+
+  <section class="dome-wrap" id="domeWrap" aria-label="Rotating sky dome">
+    <canvas id="sky"></canvas>
+    <div class="tooltip" id="tip" role="status" aria-live="polite"></div>
+  </section>
+
+  <aside class="panel">
+    <h2>Observatory</h2>
+    <div class="field">
+      <label for="hour">Local hour <span class="readout" id="hourOut">22:00</span></label>
+      <input type="range" id="hour" min="0" max="23.99" step="0.05" value="22">
+    </div>
+    <div class="field">
+      <label for="date">Date</label>
+      <input type="date" id="date">
+    </div>
+    <div class="field">
+      <label for="lat">Latitude <span class="readout" id="latOut">+40°</span></label>
+      <input type="range" id="lat" min="-70" max="70" step="1" value="40">
+    </div>
+    <div class="field">
+      <label for="speed">Sidereal drift <span class="readout" id="speedOut">60×</span></label>
+      <input type="range" id="speed" min="0" max="600" step="10" value="60">
+    </div>
+    <div class="toggles">
+      <label class="toggle"><input type="checkbox" id="tLines" checked><span class="sw"></span>Lines</label>
+      <label class="toggle"><input type="checkbox" id="tFigures" checked><span class="sw"></span>Figures</label>
+      <label class="toggle"><input type="checkbox" id="tLabels" checked><span class="sw"></span>Labels</label>
+      <label class="toggle"><input type="checkbox" id="tMilky" checked><span class="sw"></span>Milky Way</label>
+      <label class="toggle"><input type="checkbox" id="tEcliptic" checked><span class="sw"></span>Ecliptic</label>
+      <label class="toggle"><input type="checkbox" id="tGrid"><span class="sw"></span>Alt/Az grid</label>
+    </div>
+    <div class="btnrow">
+      <button class="btn" type="button" id="nowBtn">Set to now</button>
+      <button class="btn ghost" type="button" id="pauseBtn">Pause</button>
+    </div>
+    <div class="starcard" id="card">
+      <b>Hover a star</b>
+      <div class="meta">RA · Dec · magnitude · distance</div>
+      <p>Bright stars from a hand-set catalogue of sixty; the faint field is procedurally strewn. Distances are light-years.</p>
+    </div>
+  </aside>
+
+  <footer class="colophon">Stereographic projection · north at top, east to the left, as one sees it lying on the grass · sidereal time computed from the date</footer>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  // ---------- catalogue: [name, RA hours, Dec deg, mag, distance ly, constellation] ----------
+  const STARS = [
+    ['Sirius',6.752,-16.72,-1.46,8.6,'Canis Major'],['Canopus',6.399,-52.70,-0.74,310,'Carina'],['Arcturus',14.261,19.18,-0.05,37,'Boötes'],
+    ['Vega',18.616,38.78,0.03,25,'Lyra'],['Capella',5.278,45.99,0.08,43,'Auriga'],['Rigel',5.242,-8.20,0.13,860,'Orion'],
+    ['Procyon',7.655,5.22,0.34,11.5,'Canis Minor'],['Achernar',1.629,-57.24,0.46,139,'Eridanus'],['Betelgeuse',5.919,7.41,0.42,550,'Orion'],
+    ['Hadar',14.064,-60.37,0.61,390,'Centaurus'],['Altair',19.846,8.87,0.77,16.7,'Aquila'],['Acrux',12.443,-63.10,0.76,320,'Crux'],
+    ['Aldebaran',4.599,16.51,0.86,65,'Taurus'],['Antares',16.490,-26.43,0.96,550,'Scorpius'],['Spica',13.420,-11.16,0.97,250,'Virgo'],
+    ['Pollux',7.755,28.03,1.14,34,'Gemini'],['Fomalhaut',22.961,-29.62,1.16,25,'Piscis Austrinus'],['Deneb',20.690,45.28,1.25,2600,'Cygnus'],
+    ['Mimosa',12.795,-59.69,1.25,280,'Crux'],['Regulus',10.140,11.97,1.35,79,'Leo'],['Adhara',6.977,-28.97,1.50,430,'Canis Major'],
+    ['Castor',7.577,31.89,1.58,51,'Gemini'],['Shaula',17.560,-37.10,1.62,570,'Scorpius'],['Bellatrix',5.419,6.35,1.64,250,'Orion'],
+    ['Elnath',5.438,28.61,1.65,130,'Taurus'],['Alnilam',5.604,-1.20,1.69,2000,'Orion'],['Alnitak',5.679,-1.94,1.77,1260,'Orion'],
+    ['Alioth',12.900,55.96,1.77,83,'Ursa Major'],['Dubhe',11.062,61.75,1.79,123,'Ursa Major'],['Mirfak',3.405,49.86,1.80,510,'Perseus'],
+    ['Wezen',7.140,-26.39,1.84,1600,'Canis Major'],['Sargas',17.622,-43.00,1.87,270,'Scorpius'],['Alkaid',13.792,49.31,1.86,104,'Ursa Major'],
+    ['Alhena',6.629,16.40,1.92,109,'Gemini'],['Mirzam',6.378,-17.96,1.98,500,'Canis Major'],['Polaris',2.530,89.26,1.98,430,'Ursa Minor'],
+    ['Alphard',9.460,-8.66,1.98,180,'Hydra'],['Hamal',2.120,23.46,2.00,66,'Aries'],['Saiph',5.796,-9.67,2.06,650,'Orion'],
+    ['Mintaka',5.533,-0.30,2.23,1200,'Orion'],['Alpheratz',0.140,29.09,2.06,97,'Andromeda'],['Kochab',14.845,74.16,2.08,130,'Ursa Minor'],
+    ['Rasalhague',17.582,12.56,2.08,47,'Ophiuchus'],['Algieba',10.333,19.84,2.08,130,'Leo'],['Denebola',11.818,14.57,2.14,36,'Leo'],
+    ['Mizar',13.399,54.93,2.04,83,'Ursa Major'],['Merak',11.031,56.38,2.37,80,'Ursa Major'],['Phecda',11.897,53.69,2.44,84,'Ursa Major'],
+    ['Megrez',12.257,57.03,3.31,81,'Ursa Major'],['Schedar',0.675,56.54,2.24,230,'Cassiopeia'],['Caph',0.153,59.15,2.28,55,'Cassiopeia'],
+    ['Navi',0.945,60.72,2.47,550,'Cassiopeia'],['Ruchbah',1.430,60.24,2.68,99,'Cassiopeia'],['Segin',1.907,63.67,3.37,410,'Cassiopeia'],
+    ['Sadr',20.371,40.26,2.23,1800,'Cygnus'],['Gienah',20.770,33.97,2.48,72,'Cygnus'],['Fawaris',19.750,45.13,2.87,165,'Cygnus'],
+    ['Albireo',19.512,27.96,3.18,430,'Cygnus'],['Sheliak',18.835,33.36,3.52,960,'Lyra'],['Sulafat',18.982,32.69,3.25,620,'Lyra'],
+    ['Delta Lyrae',18.908,36.90,4.30,900,'Lyra'],['Zeta Lyrae',18.746,37.60,4.34,156,'Lyra'],['Zosma',11.235,20.52,2.56,58,'Leo'],
+    ['Chertan',11.237,15.43,3.33,165,'Leo'],['Adhafera',10.278,23.42,3.43,270,'Leo'],['Rasalas',9.879,26.01,3.88,130,'Leo'],
+    ['Algenubi',9.764,23.77,2.98,250,'Leo'],['Wasat',7.335,21.98,3.53,60,'Gemini'],['Mebsuta',6.732,25.13,3.06,840,'Gemini'],
+    ['Tejat',6.383,22.51,2.87,230,'Gemini'],['Propus',6.248,22.51,3.28,350,'Gemini'],['Alzirr',6.755,12.90,3.35,58,'Gemini'],
+    ['Ain',4.477,19.18,3.53,147,'Taurus'],['Tianguan',5.627,21.14,3.00,440,'Taurus'],['Gamma Tauri',4.330,15.63,3.65,154,'Taurus'],
+    ['Lambda Tauri',4.011,12.49,3.41,480,'Taurus'],['Dschubba',16.006,-22.62,2.29,400,'Scorpius'],['Acrab',16.091,-19.81,2.62,400,'Scorpius'],
+    ['Pi Scorpii',15.981,-26.11,2.89,590,'Scorpius'],['Larawag',16.836,-34.29,2.29,65,'Scorpius'],['Girtab',17.708,-39.03,2.39,480,'Scorpius'],
+    ['Lesath',17.513,-37.30,2.70,580,'Scorpius'],['Aludra',7.401,-29.30,2.45,2000,'Canis Major'],['Furud',6.338,-30.06,3.02,360,'Canis Major'],
+    ['Meissa',5.585,9.93,3.39,1100,'Orion'],['Mu Scorpii',16.864,-38.05,3.04,500,'Scorpius'],['Eta Scorpii',17.202,-43.24,3.33,73,'Scorpius'],
+  ];
+  const byName = {}; STARS.forEach((s, i) => { byName[s[0]] = i; });
+  const CONSTELLATIONS = {
+    'Orion': [['Betelgeuse','Meissa'],['Meissa','Bellatrix'],['Betelgeuse','Alnitak'],['Bellatrix','Mintaka'],['Mintaka','Alnilam'],['Alnilam','Alnitak'],['Alnitak','Saiph'],['Mintaka','Rigel'],['Betelgeuse','Bellatrix']],
+    'Ursa Major': [['Dubhe','Merak'],['Merak','Phecda'],['Phecda','Megrez'],['Megrez','Dubhe'],['Megrez','Alioth'],['Alioth','Mizar'],['Mizar','Alkaid']],
+    'Cassiopeia': [['Caph','Schedar'],['Schedar','Navi'],['Navi','Ruchbah'],['Ruchbah','Segin']],
+    'Cygnus': [['Deneb','Sadr'],['Sadr','Albireo'],['Sadr','Gienah'],['Sadr','Fawaris']],
+    'Lyra': [['Vega','Zeta Lyrae'],['Zeta Lyrae','Sheliak'],['Sheliak','Sulafat'],['Sulafat','Delta Lyrae'],['Delta Lyrae','Zeta Lyrae']],
+    'Scorpius': [['Acrab','Dschubba'],['Dschubba','Pi Scorpii'],['Dschubba','Antares'],['Antares','Larawag'],['Larawag','Mu Scorpii'],['Mu Scorpii','Eta Scorpii'],['Eta Scorpii','Sargas'],['Sargas','Girtab'],['Girtab','Lesath'],['Lesath','Shaula']],
+    'Leo': [['Regulus','Algieba'],['Algieba','Adhafera'],['Adhafera','Rasalas'],['Rasalas','Algenubi'],['Algenubi','Algieba'],['Algieba','Zosma'],['Zosma','Denebola'],['Denebola','Chertan'],['Chertan','Regulus']],
+    'Taurus': [['Aldebaran','Ain'],['Ain','Elnath'],['Aldebaran','Tianguan'],['Ain','Gamma Tauri'],['Gamma Tauri','Lambda Tauri'],['Gamma Tauri','Aldebaran']],
+    'Gemini': [['Castor','Wasat'],['Pollux','Wasat'],['Wasat','Alhena'],['Castor','Mebsuta'],['Mebsuta','Tejat'],['Tejat','Propus'],['Wasat','Alzirr']],
+    'Canis Major': [['Sirius','Mirzam'],['Sirius','Wezen'],['Wezen','Adhara'],['Wezen','Aludra'],['Adhara','Furud'],['Sirius','Furud']],
+  };
+
+  // ---------- faint procedural field ----------
+  let seed = 20260901;
+  function rnd() { seed = (seed * 1103515245 + 12345) & 0x7fffffff; return seed / 0x7fffffff; }
+  const FAINT = [];
+  for (let i = 0; i < 900; i++) {
+    const ra = rnd() * 24, dec = Math.asin(2 * rnd() - 1) * 180 / Math.PI;
+    FAINT.push([ra, dec, 4.4 + rnd() * 2.2, rnd()]);
+  }
+
+  // ---------- state ----------
+  const state = {
+    hour: 22, lat: 40, lon: -74, speed: 60, paused: false,
+    lines: true, figures: true, labels: true, milky: true, ecliptic: true, grid: false,
+    date: new Date()
+  };
+  const $ = id => document.getElementById(id);
+  const canvas = $('sky'), ctx = canvas.getContext('2d'), wrap = $('domeWrap'), tip = $('tip'), card = $('card');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const D2R = Math.PI / 180;
+
+  // ---------- astronomy ----------
+  function localSiderealDeg() {
+    const d = state.date;
+    const local = new Date(d.getFullYear(), d.getMonth(), d.getDate(), 0, 0, 0);
+    local.setMinutes(local.getMinutes() + Math.round(state.hour * 60));
+    const jd = local.getTime() / 86400000 + 2440587.5;
+    const t = jd - 2451545.0;
+    let gmst = (280.46061837 + 360.98564736629 * t) % 360;
+    if (gmst < 0) gmst += 360;
+    return (gmst + state.lon + 360) % 360;
+  }
+  let lst = 0, sinLat = 0, cosLat = 1, R = 300, CX = 300, CY = 300;
+  function project(raHours, decDeg) {
+    const ha = (lst - raHours * 15) * D2R, dec = decDeg * D2R;
+    const sinAlt = Math.sin(dec) * sinLat + Math.cos(dec) * cosLat * Math.cos(ha);
+    const alt = Math.asin(sinAlt);
+    const cosAz = (Math.sin(dec) - sinAlt * sinLat) / (Math.cos(alt) * cosLat || 1e-9);
+    let az = Math.acos(Math.max(-1, Math.min(1, cosAz)));
+    if (Math.sin(ha) > 0) az = 2 * Math.PI - az;
+    const zd = Math.PI / 2 - alt;
+    const r = R * Math.tan(zd / 2);
+    return { x: CX - r * Math.sin(az), y: CY - r * Math.cos(az), alt: alt / D2R, r };
+  }
+  function eclipticPoint(lambdaDeg) {
+    const e = 23.44 * D2R, l = lambdaDeg * D2R;
+    const dec = Math.asin(Math.sin(e) * Math.sin(l));
+    const ra = Math.atan2(Math.cos(e) * Math.sin(l), Math.cos(l));
+    return [((ra / D2R) + 360) % 360 / 15, dec / D2R];
+  }
+  function galacticPoint(lDeg, bDeg) {
+    const raG = 192.85948 * D2R, decG = 27.12825 * D2R, lNCP = 122.932 * D2R;
+    const l = lDeg * D2R, b = bDeg * D2R;
+    const sinDec = Math.sin(decG) * Math.sin(b) + Math.cos(decG) * Math.cos(b) * Math.cos(lNCP - l);
+    const dec = Math.asin(sinDec);
+    const y = Math.cos(b) * Math.sin(lNCP - l);
+    const x = Math.cos(decG) * Math.sin(b) - Math.sin(decG) * Math.cos(b) * Math.cos(lNCP - l);
+    const ra = raG + Math.atan2(y, x);
+    return [((ra / D2R) + 720) % 360 / 15, dec / D2R];
+  }
+
+  // ---------- drawing helpers ----------
+  function strokeSkyPath(points, style, width, blur) {
+    ctx.save();
+    ctx.strokeStyle = style; ctx.lineWidth = width; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    if (blur) { ctx.shadowBlur = blur; ctx.shadowColor = style; }
+    ctx.beginPath(); let pen = false;
+    for (const p of points) {
+      const q = project(p[0], p[1]);
+      if (q.alt < -2) { pen = false; continue; }
+      if (!pen) { ctx.moveTo(q.x, q.y); pen = true; } else ctx.lineTo(q.x, q.y);
+    }
+    ctx.stroke(); ctx.restore();
+  }
+  function hull(pts) {
+    pts = pts.slice().sort((a, b) => a.x - b.x || a.y - b.y);
+    if (pts.length < 3) return pts;
+    const cross = (o, a, b) => (a.x - o.x) * (b.y - o.y) - (a.y - o.y) * (b.x - o.x);
+    const lower = [], upper = [];
+    for (const p of pts) { while (lower.length >= 2 && cross(lower[lower.length - 2], lower[lower.length - 1], p) <= 0) lower.pop(); lower.push(p); }
+    for (let i = pts.length - 1; i >= 0; i--) { const p = pts[i]; while (upper.length >= 2 && cross(upper[upper.length - 2], upper[upper.length - 1], p) <= 0) upper.pop(); upper.push(p); }
+    upper.pop(); lower.pop(); return lower.concat(upper);
+  }
+  function starColor(mag, seedv) {
+    const t = seedv === undefined ? ((mag * 7.3) % 1 + 1) % 1 : seedv;
+    if (t < 0.18) return [170, 190, 255];
+    if (t < 0.55) return [235, 240, 255];
+    if (t < 0.8) return [255, 240, 210];
+    return [255, 205, 160];
+  }
+  const NAMED_TINT = { Betelgeuse: [255,170,110], Antares: [255,150,100], Aldebaran: [255,190,130], Arcturus: [255,200,140], Rigel: [180,200,255], Vega: [200,215,255], Sirius: [220,230,255], Pollux: [255,210,150], Spica: [185,200,255] };
+
+  let hovered = -1, projected = [];
+  function draw(now) {
+    const w = canvas.width, h = canvas.height;
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    ctx.scale(dpr, dpr);
+    const size = w / dpr;
+    CX = CY = size / 2; R = size / 2 - size * 0.075;
+    lst = localSiderealDeg(); sinLat = Math.sin(state.lat * D2R); cosLat = Math.cos(state.lat * D2R);
+
+    // sky disc
+    const skyGrad = ctx.createRadialGradient(CX, CY, R * 0.1, CX, CY, R);
+    skyGrad.addColorStop(0, '#0b1230'); skyGrad.addColorStop(0.7, '#080d24'); skyGrad.addColorStop(1, '#101a3f');
+    ctx.fillStyle = skyGrad; ctx.beginPath(); ctx.arc(CX, CY, R, 0, Math.PI * 2); ctx.fill();
+    ctx.save(); ctx.beginPath(); ctx.arc(CX, CY, R, 0, Math.PI * 2); ctx.clip();
+
+    if (state.milky) {
+      const band = [], edgeA = [], edgeB = [];
+      for (let l = 0; l <= 360; l += 4) { band.push(galacticPoint(l, 0)); edgeA.push(galacticPoint(l, 7)); edgeB.push(galacticPoint(l, -7)); }
+      ctx.globalCompositeOperation = 'lighter';
+      strokeSkyPath(band, 'rgba(120,140,210,0.05)', R * 0.22, 40);
+      strokeSkyPath(band, 'rgba(160,175,230,0.07)', R * 0.12, 24);
+      strokeSkyPath(edgeA, 'rgba(120,140,210,0.03)', R * 0.08, 20);
+      strokeSkyPath(edgeB, 'rgba(120,140,210,0.03)', R * 0.08, 20);
+      ctx.globalCompositeOperation = 'source-over';
+    }
+    if (state.grid) {
+      ctx.save(); ctx.strokeStyle = 'rgba(201,162,94,0.14)'; ctx.lineWidth = 0.6;
+      for (let alt = 30; alt < 90; alt += 30) { const r = R * Math.tan((90 - alt) * D2R / 2); ctx.beginPath(); ctx.arc(CX, CY, r, 0, Math.PI * 2); ctx.stroke(); }
+      for (let az = 0; az < 360; az += 30) { const a = az * D2R; ctx.beginPath(); ctx.moveTo(CX, CY); ctx.lineTo(CX - R * Math.sin(a), CY - R * Math.cos(a)); ctx.stroke(); }
+      ctx.restore();
+    }
+    if (state.ecliptic) {
+      const pts = []; for (let l = 0; l <= 360; l += 3) pts.push(eclipticPoint(l));
+      ctx.setLineDash([6, 6]); strokeSkyPath(pts, 'rgba(232,180,110,0.35)', 1); ctx.setLineDash([]);
+    }
+
+    projected = STARS.map(s => project(s[1], s[2]));
+    if (state.figures) {
+      for (const name in CONSTELLATIONS) {
+        const idx = new Set(); CONSTELLATIONS[name].forEach(seg => { idx.add(byName[seg[0]]); idx.add(byName[seg[1]]); });
+        const pts = [...idx].map(i => projected[i]).filter(p => p.alt > 0);
+        if (pts.length < 3) continue;
+        const hh = hull(pts);
+        let cx = 0, cy = 0; hh.forEach(p => { cx += p.x; cy += p.y; }); cx /= hh.length; cy /= hh.length;
+        let maxd = 0; hh.forEach(p => { maxd = Math.max(maxd, Math.hypot(p.x - cx, p.y - cy)); });
+        const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, maxd * 1.3);
+        g.addColorStop(0, 'rgba(201,162,94,0.13)'); g.addColorStop(1, 'rgba(201,162,94,0)');
+        ctx.fillStyle = g; ctx.beginPath(); hh.forEach((p, i) => i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y)); ctx.closePath(); ctx.fill();
+      }
+    }
+    if (state.lines) {
+      ctx.strokeStyle = 'rgba(201,162,94,0.42)'; ctx.lineWidth = 0.9;
+      ctx.beginPath();
+      for (const name in CONSTELLATIONS) for (const [a, b] of CONSTELLATIONS[name]) {
+        const p = projected[byName[a]], q = projected[byName[b]];
+        if (p.alt < 0 && q.alt < 0) continue;
+        ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y);
+      }
+      ctx.stroke();
+    }
+
+    // faint field
+    for (const f of FAINT) {
+      const p = project(f[0], f[1]); if (p.alt < 0) continue;
+      const a = 0.15 + (6.6 - f[2]) * 0.2;
+      ctx.fillStyle = `rgba(210,220,255,${a.toFixed(2)})`;
+      ctx.fillRect(p.x, p.y, 1, 1);
+    }
+    // bright stars
+    const tw = reduceMotion ? 0 : now / 1000;
+    for (let i = 0; i < STARS.length; i++) {
+      const s = STARS[i], p = projected[i]; if (p.alt < -0.5) continue;
+      const mag = s[3];
+      const base = Math.max(0.9, 4.6 - mag * 0.95) * (size / 700);
+      const twinkle = tw ? 1 + 0.12 * Math.sin(tw * (2.1 + (i % 7) * 0.4) + i) : 1;
+      const rad = base * twinkle;
+      const c = NAMED_TINT[s[0]] || starColor(mag);
+      const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, rad * 3.2);
+      g.addColorStop(0, `rgba(${c[0]},${c[1]},${c[2]},0.9)`); g.addColorStop(0.35, `rgba(${c[0]},${c[1]},${c[2]},0.25)`); g.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x, p.y, rad * 3.2, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(p.x, p.y, rad * 0.55, 0, Math.PI * 2); ctx.fill();
+      if (i === hovered) {
+        ctx.strokeStyle = 'rgba(239,217,161,0.9)'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.arc(p.x, p.y, rad * 3.5 + 4, 0, Math.PI * 2); ctx.stroke();
+      }
+    }
+    if (state.labels) {
+      ctx.font = `${Math.max(9, size * 0.014)}px ${getComputedStyle(document.body).fontFamily}`;
+      ctx.fillStyle = 'rgba(233,223,198,0.75)'; ctx.textBaseline = 'middle';
+      for (let i = 0; i < STARS.length; i++) {
+        const s = STARS[i], p = projected[i]; if (p.alt < 3 || s[3] > 1.6) continue;
+        ctx.fillText(s[0], p.x + 8, p.y - 7);
+      }
+      ctx.font = `italic ${Math.max(10, size * 0.017)}px ${getComputedStyle(document.body).fontFamily}`;
+      ctx.fillStyle = 'rgba(201,162,94,0.55)'; ctx.textAlign = 'center';
+      for (const name in CONSTELLATIONS) {
+        const idx = new Set(); CONSTELLATIONS[name].forEach(seg => { idx.add(byName[seg[0]]); idx.add(byName[seg[1]]); });
+        const pts = [...idx].map(i => projected[i]).filter(p => p.alt > 4);
+        if (pts.length < 2) continue;
+        let cx = 0, cy = 0; pts.forEach(p => { cx += p.x; cy += p.y; });
+        ctx.fillText(name.toUpperCase(), cx / pts.length, cy / pts.length + size * 0.05);
+      }
+      ctx.textAlign = 'left';
+    }
+    // horizon haze
+    const haze = ctx.createRadialGradient(CX, CY, R * 0.82, CX, CY, R);
+    haze.addColorStop(0, 'rgba(20,30,70,0)'); haze.addColorStop(1, 'rgba(60,70,110,0.45)');
+    ctx.fillStyle = haze; ctx.fillRect(0, 0, size, size);
+    ctx.restore();
+
+    drawRing(size);
+  }
+  function drawRing(size) {
+    const outer = R + size * 0.055, inner = R + size * 0.006;
+    const g = ctx.createLinearGradient(CX - outer, CY - outer, CX + outer, CY + outer);
+    g.addColorStop(0, '#6b4d22'); g.addColorStop(0.25, '#efd9a1'); g.addColorStop(0.5, '#a67c3a'); g.addColorStop(0.75, '#e0c17c'); g.addColorStop(1, '#5a3f1a');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(CX, CY, outer, 0, Math.PI * 2); ctx.arc(CX, CY, inner, 0, Math.PI * 2, true); ctx.fill();
+    ctx.strokeStyle = 'rgba(60,40,10,0.7)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(CX, CY, outer - 1, 0, Math.PI * 2); ctx.stroke();
+    ctx.beginPath(); ctx.arc(CX, CY, inner + 1, 0, Math.PI * 2); ctx.stroke();
+    ctx.strokeStyle = 'rgba(255,240,200,0.55)'; ctx.beginPath(); ctx.arc(CX, CY, outer - size * 0.012, 0, Math.PI * 2); ctx.stroke();
+    // tick marks every 5°, longer every 15°, labels at compass points
+    for (let az = 0; az < 360; az += 5) {
+      const a = az * D2R, long = az % 30 === 0, mid = az % 15 === 0;
+      const r1 = inner + size * 0.004, r2 = inner + size * (long ? 0.03 : mid ? 0.02 : 0.012);
+      ctx.strokeStyle = 'rgba(40,25,5,0.85)'; ctx.lineWidth = long ? 1.4 : 0.8;
+      ctx.beginPath(); ctx.moveTo(CX - r1 * Math.sin(a), CY - r1 * Math.cos(a)); ctx.lineTo(CX - r2 * Math.sin(a), CY - r2 * Math.cos(a)); ctx.stroke();
+    }
+    const fam = getComputedStyle(document.body).fontFamily;
+    ctx.fillStyle = '#2b1c06'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.font = `bold ${size * 0.03}px ${fam}`;
+    [['N', 0], ['E', 90], ['S', 180], ['W', 270]].forEach(([t, az]) => {
+      const a = az * D2R, r = outer - size * 0.03;
+      ctx.save(); ctx.translate(CX - r * Math.sin(a), CY - r * Math.cos(a)); ctx.rotate(-a); ctx.fillText(t, 0, 0); ctx.restore();
+    });
+    ctx.font = `${size * 0.016}px ${fam}`;
+    [['NE', 45], ['SE', 135], ['SW', 225], ['NW', 315]].forEach(([t, az]) => {
+      const a = az * D2R, r = outer - size * 0.03;
+      ctx.save(); ctx.translate(CX - r * Math.sin(a), CY - r * Math.cos(a)); ctx.rotate(-a); ctx.fillText(t, 0, 0); ctx.restore();
+    });
+    ctx.textAlign = 'left';
+  }
+
+  // ---------- sizing ----------
+  function resize() {
+    const r = wrap.getBoundingClientRect();
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    const s = Math.max(1, Math.round(Math.min(r.width, r.height || r.width)));
+    canvas.width = s * dpr; canvas.height = s * dpr;
+    canvas.style.width = s + 'px'; canvas.style.height = s + 'px';
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  // ---------- controls ----------
+  function fmtHour(h) { const hh = Math.floor(h), mm = Math.round((h - hh) * 60) % 60; return `${String(hh).padStart(2, '0')}:${String(mm).padStart(2, '0')}`; }
+  const hourEl = $('hour'), hourOut = $('hourOut');
+  hourEl.addEventListener('input', () => { state.hour = parseFloat(hourEl.value); hourOut.textContent = fmtHour(state.hour); });
+  $('lat').addEventListener('input', e => { state.lat = parseFloat(e.target.value); $('latOut').textContent = (state.lat >= 0 ? '+' : '−') + Math.abs(state.lat) + '°'; });
+  $('speed').addEventListener('input', e => { state.speed = parseFloat(e.target.value); $('speedOut').textContent = state.speed + '×'; });
+  const dateEl = $('date');
+  function setDateInput(d) { dateEl.value = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; }
+  dateEl.addEventListener('change', () => { const v = dateEl.valueAsDate; if (v) state.date = new Date(v.getUTCFullYear(), v.getUTCMonth(), v.getUTCDate()); });
+  [['tLines','lines'],['tFigures','figures'],['tLabels','labels'],['tMilky','milky'],['tEcliptic','ecliptic'],['tGrid','grid']].forEach(([id, key]) => {
+    $(id).addEventListener('change', e => { state[key] = e.target.checked; });
+  });
+  $('nowBtn').addEventListener('click', () => {
+    const n = new Date(); state.date = n; setDateInput(n);
+    state.hour = n.getHours() + n.getMinutes() / 60; hourEl.value = state.hour; hourOut.textContent = fmtHour(state.hour);
+  });
+  const pauseBtn = $('pauseBtn');
+  pauseBtn.addEventListener('click', () => { state.paused = !state.paused; pauseBtn.textContent = state.paused ? 'Resume' : 'Pause'; });
+  setDateInput(state.date);
+  hourOut.textContent = fmtHour(state.hour);
+
+  // ---------- hover ----------
+  wrap.addEventListener('pointermove', (e) => {
+    const r = canvas.getBoundingClientRect();
+    const mx = e.clientX - r.left, my = e.clientY - r.top;
+    let best = -1, bestD = 14 * 14;
+    for (let i = 0; i < projected.length; i++) {
+      const p = projected[i]; if (!p || p.alt < 0) continue;
+      const d = (p.x - mx) ** 2 + (p.y - my) ** 2;
+      if (d < bestD) { bestD = d; best = i; }
+    }
+    hovered = best;
+    if (best >= 0) {
+      const s = STARS[best], p = projected[best];
+      const raH = Math.floor(s[1]), raM = Math.round((s[1] - raH) * 60);
+      tip.innerHTML = `<b>${s[0]}</b><i>${s[5]}</i><br>mag ${s[3].toFixed(2)} · ${s[4] >= 1000 ? (s[4]/1000).toFixed(1) + ' kly' : s[4] + ' ly'}`;
+      tip.style.left = p.x + 'px'; tip.style.top = p.y + 'px'; tip.classList.add('show');
+      card.innerHTML = `<b>${s[0]}</b><div class="meta">RA ${String(raH).padStart(2,'0')}h ${String(raM).padStart(2,'0')}m · Dec ${s[2] >= 0 ? '+' : '−'}${Math.abs(s[2]).toFixed(1)}° · m ${s[3].toFixed(2)} · ${s[4]} ly</div><p>In ${s[5]}, currently ${p.alt.toFixed(0)}° above the horizon.</p>`;
+      wrap.style.cursor = 'pointer';
+    } else { tip.classList.remove('show'); wrap.style.cursor = 'crosshair'; }
+  });
+  wrap.addEventListener('pointerleave', () => { hovered = -1; tip.classList.remove('show'); });
+
+  // ---------- loop ----------
+  let last = performance.now();
+  function loop(now) {
+    const dt = Math.min(0.1, (now - last) / 1000); last = now;
+    if (!state.paused && state.speed > 0) {
+      state.hour += dt * state.speed / 3600;
+      if (state.hour >= 24) state.hour -= 24;
+      hourEl.value = state.hour; hourOut.textContent = fmtHour(state.hour);
+    }
+    draw(now);
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

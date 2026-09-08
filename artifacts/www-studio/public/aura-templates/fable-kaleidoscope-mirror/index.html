@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kaleidoscope — A Brass Eyepiece of Living Glass</title>
+<style>
+  :root {
+    --bg: #0e0c0a;
+    --fg: #e9dcc4;
+    --muted: rgba(233, 220, 196, .5);
+    --brass-1: #f3d58a;
+    --brass-2: #9c6a1e;
+    --brass-3: #5a3a0c;
+    --brass-4: #c99a3c;
+    --line: rgba(233, 220, 196, .14);
+    --ease: cubic-bezier(.22, 1, .36, 1);
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background:
+      radial-gradient(80% 60% at 50% 40%, #241c14 0%, var(--bg) 70%);
+    color: var(--fg);
+    font-family: Georgia, "Iowan Old Style", Palatino, "Book Antiqua", ui-serif, serif;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  .felt {
+    position: fixed; inset: 0; pointer-events: none; opacity: .12; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 1 0'/></filter><rect width='200' height='200' filter='url(%23f)'/></svg>");
+  }
+  main {
+    position: relative; height: 100%;
+    display: grid; grid-template-rows: auto 1fr auto;
+    padding: clamp(12px, 2.5vh, 28px) clamp(14px, 3vw, 40px);
+  }
+  header { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  header h1 { margin: 0; font-weight: 400; font-size: clamp(18px, 2.2vw, 28px); letter-spacing: .04em; }
+  header h1 small { display: block; font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); margin-top: 6px; font-family: ui-sans-serif, system-ui, sans-serif; }
+  header .fold { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); font-family: ui-sans-serif, system-ui, sans-serif; font-variant-numeric: tabular-nums; }
+  header .fold b { color: var(--brass-1); font-weight: 600; }
+
+  .stage { display: grid; place-items: center; min-height: 0; }
+  .eyepiece {
+    --size: min(88vw, 74vh);
+    position: relative; width: var(--size); height: var(--size); border-radius: 50%;
+    cursor: grab;
+    filter: drop-shadow(0 40px 60px rgba(0,0,0,.7));
+  }
+  .eyepiece:active { cursor: grabbing; }
+  .rim {
+    position: absolute; inset: 0; border-radius: 50%;
+    background:
+      conic-gradient(from 20deg, var(--brass-3) 0deg, var(--brass-1) 40deg, var(--brass-2) 90deg, var(--brass-4) 140deg, var(--brass-3) 190deg, var(--brass-1) 230deg, var(--brass-2) 290deg, var(--brass-4) 330deg, var(--brass-3) 360deg);
+    box-shadow: inset 0 0 0 1px rgba(255,235,190,.35), inset 0 2px 8px rgba(255,240,200,.35), inset 0 -6px 14px rgba(0,0,0,.6);
+    animation: sheen 40s linear infinite;
+  }
+  @keyframes sheen { to { transform: rotate(360deg); } }
+  .rim::after {
+    content: ""; position: absolute; inset: 3.2%; border-radius: 50%;
+    background:
+      conic-gradient(from 200deg, var(--brass-2), var(--brass-3) 60deg, var(--brass-4) 120deg, var(--brass-2) 200deg, var(--brass-3) 270deg, var(--brass-1) 320deg, var(--brass-2));
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.5), inset 0 3px 10px rgba(0,0,0,.65);
+  }
+  .rim::before {
+    content: ""; position: absolute; inset: 0; border-radius: 50%;
+    background: repeating-conic-gradient(rgba(0,0,0,.28) 0deg 1deg, transparent 1deg 5deg);
+    mask: radial-gradient(circle, transparent 46%, #000 47%);
+    -webkit-mask: radial-gradient(circle, transparent 46%, #000 47%);
+  }
+  .lens {
+    position: absolute; inset: 7%; border-radius: 50%; overflow: hidden; background: #000;
+    box-shadow: inset 0 0 40px rgba(0,0,0,.9), inset 0 0 0 2px rgba(0,0,0,.8), inset 0 0 0 4px rgba(255,220,160,.12);
+  }
+  .lens canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .vignette {
+    position: absolute; inset: 0; border-radius: 50%; pointer-events: none;
+    background:
+      radial-gradient(circle at 50% 50%, transparent 55%, rgba(0,0,0,.55) 92%, rgba(0,0,0,.9) 100%),
+      radial-gradient(ellipse 40% 22% at 34% 24%, rgba(255,255,255,.14), transparent 70%);
+  }
+  .glint {
+    position: absolute; inset: 0; border-radius: 50%; pointer-events: none;
+    background: linear-gradient(115deg, transparent 38%, rgba(255,255,255,.06) 46%, rgba(255,255,255,.12) 50%, rgba(255,255,255,.05) 54%, transparent 62%);
+    animation: glint 9s ease-in-out infinite alternate;
+  }
+  @keyframes glint { from { transform: translateX(-12%) rotate(0deg);} to { transform: translateX(12%) rotate(6deg);} }
+
+  footer {
+    display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px 18px;
+    font-family: ui-sans-serif, system-ui, sans-serif; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted);
+  }
+  .ctl { display: flex; align-items: center; gap: 10px; }
+  .ctl label { white-space: nowrap; }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; background: rgba(0,0,0,.35); }
+  .seg button {
+    font: inherit; letter-spacing: inherit; text-transform: inherit; color: var(--muted);
+    background: transparent; border: 0; cursor: pointer; padding: 9px 13px;
+    transition: color .3s, background .3s, box-shadow .3s;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .seg button:hover { color: var(--fg); }
+  .seg button[aria-pressed="true"] { color: #1a1206; background: linear-gradient(180deg, var(--brass-1), var(--brass-4)); box-shadow: inset 0 1px 0 rgba(255,255,255,.5); }
+  .sw { width: 10px; height: 10px; border-radius: 50%; box-shadow: 0 0 0 1px rgba(0,0,0,.4); }
+  input[type="range"] { accent-color: var(--brass-4); width: clamp(90px, 14vw, 180px); cursor: ew-resize; }
+  .val { min-width: 2ch; color: var(--fg); font-variant-numeric: tabular-nums; }
+  .btn { font: inherit; letter-spacing: inherit; text-transform: inherit; color: var(--muted); background: rgba(0,0,0,.35); border: 1px solid var(--line); border-radius: 999px; padding: 9px 14px; cursor: pointer; transition: color .3s, border-color .3s; }
+  .btn:hover { color: var(--fg); border-color: var(--brass-4); }
+
+  @media (max-width: 640px) {
+    header .fold { display: none; }
+    .eyepiece { --size: min(92vw, 60vh); }
+    .seg button { padding: 8px 10px; }
+    .seg button span.t { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .rim, .glint { animation: none; }
+  }
+</style>
+</head>
+<body>
+<div class="felt" aria-hidden="true"></div>
+<main>
+  <header>
+    <h1>Kaleidoscope<small>brass eyepiece · living glass</small></h1>
+    <div class="fold">Symmetry <b id="foldLabel">8</b>-fold · <span id="shardLabel">24</span> shards</div>
+  </header>
+
+  <section class="stage">
+    <div class="eyepiece" id="eyepiece" aria-label="Kaleidoscope view. Move the pointer to turn it." role="img">
+      <div class="rim"></div>
+      <div class="lens">
+        <canvas id="view"></canvas>
+        <div class="vignette"></div>
+        <div class="glint"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="ctl">
+      <div class="seg" role="group" aria-label="Mirror folds">
+        <button type="button" data-fold="6" aria-pressed="false">6</button>
+        <button type="button" data-fold="8" aria-pressed="true">8</button>
+        <button type="button" data-fold="10" aria-pressed="false">10</button>
+        <button type="button" data-fold="12" aria-pressed="false">12</button>
+      </div>
+    </div>
+    <div class="ctl">
+      <div class="seg" role="group" aria-label="Palette">
+        <button type="button" data-palette="jewel" aria-pressed="true"><i class="sw" style="background:#7b1fa2"></i><span class="t">Jewel</span></button>
+        <button type="button" data-palette="pastel" aria-pressed="false"><i class="sw" style="background:#f8bbd0"></i><span class="t">Pastel</span></button>
+        <button type="button" data-palette="neon" aria-pressed="false"><i class="sw" style="background:#39ff14"></i><span class="t">Neon</span></button>
+        <button type="button" data-palette="autumn" aria-pressed="false"><i class="sw" style="background:#d2691e"></i><span class="t">Autumn</span></button>
+      </div>
+    </div>
+    <div class="ctl">
+      <label for="density">Shard density</label>
+      <input type="range" id="density" min="6" max="40" step="1" value="24">
+      <span class="val" id="densityVal">24</span>
+    </div>
+    <button type="button" class="btn" id="shuffle">Shake</button>
+  </footer>
+</main>
+
+<script>
+(function () {
+  'use strict';
+  const view = document.getElementById('view');
+  const vctx = view.getContext('2d');
+  const src = document.createElement('canvas');
+  const sctx = src.getContext('2d');
+  const eyepiece = document.getElementById('eyepiece');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const PALETTES = {
+    jewel:  { bg: '#07050d', comp: 'screen',      colors: ['#7b1fa2', '#c2185b', '#0288d1', '#00897b', '#f9a825', '#3949ab', '#e53935'] },
+    pastel: { bg: '#f7f1e6', comp: 'multiply',    colors: ['#f8bbd0', '#b3e5fc', '#c8e6c9', '#fff59d', '#e1bee7', '#ffe0b2', '#b2dfdb'] },
+    neon:   { bg: '#020206', comp: 'lighter',     colors: ['#39ff14', '#ff073a', '#00f0ff', '#ff9d00', '#ff00e6', '#c6ff00', '#7a5cff'] },
+    autumn: { bg: '#1a0f08', comp: 'source-over', colors: ['#8b2500', '#d2691e', '#daa520', '#556b2f', '#a0522d', '#cd5c5c', '#f4a460'] }
+  };
+
+  const state = {
+    fold: 8, palette: 'jewel', density: 24,
+    rot: 0, ox: 0, oy: 0, tx: 0, ty: 0,
+    shapes: [], R: 0, S: 0, dpr: 1
+  };
+  const rnd = (a, b) => a + Math.random() * (b - a);
+  const pick = a => a[Math.floor(Math.random() * a.length)];
+
+  /* ---------- sizing ---------- */
+  function resize() {
+    const rect = view.getBoundingClientRect();
+    state.dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const size = Math.max(1, Math.round(rect.width));
+    view.width = Math.round(size * state.dpr); view.height = view.width;
+    vctx.setTransform(state.dpr, 0, 0, state.dpr, 0, 0);
+    state.R = size / 2;
+    // the source only needs to cover one wedge (x,y in [0,R]) plus the turning offset (±0.15R),
+    // so keep it small: a dense source is what makes a kaleidoscope rich
+    state.S = state.R * 1.3;
+    const sres = Math.min(1400, Math.round(state.S * state.dpr));
+    src.width = sres; src.height = sres;
+    const k = sres / state.S;
+    sctx.setTransform(k, 0, 0, k, 0, 0);
+  }
+  new ResizeObserver(resize).observe(view);
+  resize();
+
+  /* ---------- shapes ---------- */
+  function makeShape(pal) {
+    const S = state.S;
+    const kind = Math.random() < .45 ? 'blob' : 'shard';
+    const sides = 3 + Math.floor(Math.random() * 4);
+    const pts = [];
+    if (kind === 'shard') {
+      const r = rnd(S * .07, S * .22);
+      for (let i = 0; i < sides; i++) {
+        const a = (i / sides) * Math.PI * 2 + rnd(-.3, .3);
+        pts.push([Math.cos(a) * r * rnd(.55, 1), Math.sin(a) * r * rnd(.55, 1)]);
+      }
+    }
+    return {
+      kind, pts,
+      x: rnd(0, S), y: rnd(0, S),
+      r: rnd(S * .06, S * .2),
+      vx: rnd(-10, 10), vy: rnd(-10, 10),
+      rot: rnd(0, 6.28), vr: rnd(-.25, .25),
+      c1: pick(pal.colors), c2: pick(pal.colors),
+      alpha: rnd(.55, .95),
+      pulse: rnd(0, 6.28), pulseSpeed: rnd(.3, .9)
+    };
+  }
+  function rebuild() {
+    const pal = PALETTES[state.palette];
+    state.shapes = [];
+    for (let i = 0; i < state.density; i++) state.shapes.push(makeShape(pal));
+  }
+  function retint() {
+    const pal = PALETTES[state.palette];
+    state.shapes.forEach(s => { s.c1 = pick(pal.colors); s.c2 = pick(pal.colors); });
+  }
+  function setDensity(n) {
+    const pal = PALETTES[state.palette];
+    while (state.shapes.length < n) state.shapes.push(makeShape(pal));
+    state.shapes.length = Math.min(state.shapes.length, n);
+  }
+  rebuild();
+
+  function drawSource(dt, now) {
+    const S = state.S, pal = PALETTES[state.palette];
+    sctx.globalCompositeOperation = 'source-over';
+    sctx.fillStyle = pal.bg; sctx.fillRect(0, 0, S, S);
+    sctx.globalCompositeOperation = pal.comp;
+    for (const s of state.shapes) {
+      s.x += s.vx * dt; s.y += s.vy * dt; s.rot += s.vr * dt;
+      const m = s.r * 1.4;
+      if (s.x < -m) s.x = S + m; if (s.x > S + m) s.x = -m;
+      if (s.y < -m) s.y = S + m; if (s.y > S + m) s.y = -m;
+      const breathe = 1 + .08 * Math.sin(now * .001 * s.pulseSpeed + s.pulse);
+      sctx.save();
+      sctx.translate(s.x, s.y); sctx.rotate(s.rot); sctx.scale(breathe, breathe);
+      sctx.globalAlpha = s.alpha;
+      if (s.kind === 'blob') {
+        const g = sctx.createRadialGradient(-s.r * .3, -s.r * .3, 0, 0, 0, s.r);
+        g.addColorStop(0, s.c1); g.addColorStop(.7, s.c2); g.addColorStop(1, 'rgba(0,0,0,0)');
+        sctx.fillStyle = g;
+        sctx.beginPath(); sctx.arc(0, 0, s.r, 0, 6.283); sctx.fill();
+      } else {
+        const g = sctx.createLinearGradient(-s.r, -s.r, s.r, s.r);
+        g.addColorStop(0, s.c1); g.addColorStop(1, s.c2);
+        sctx.fillStyle = g;
+        sctx.beginPath();
+        s.pts.forEach((p, i) => i ? sctx.lineTo(p[0], p[1]) : sctx.moveTo(p[0], p[1]));
+        sctx.closePath(); sctx.fill();
+        sctx.globalAlpha = s.alpha * .6;
+        sctx.strokeStyle = 'rgba(255,255,255,.35)'; sctx.lineWidth = 1.2; sctx.stroke();
+      }
+      sctx.restore();
+    }
+  }
+
+  /* ---------- kaleidoscope ---------- */
+  function drawView() {
+    const R = state.R, S = state.S, n = state.fold, a = (Math.PI * 2) / n;
+    vctx.clearRect(0, 0, R * 2, R * 2);
+    vctx.save();
+    vctx.translate(R, R);
+    vctx.rotate(state.rot);
+    for (let i = 0; i < n; i++) {
+      vctx.save();
+      // wedge clip, slightly overlapped to hide hairline seams
+      vctx.beginPath();
+      vctx.moveTo(0, 0);
+      vctx.arc(0, 0, R + 2, i * a - .004, (i + 1) * a + .004);
+      vctx.closePath();
+      vctx.clip();
+      if (i % 2 === 0) {
+        vctx.rotate(i * a);
+      } else {
+        // reflect wedge 0 across the line at angle c so it lands in [i*a, (i+1)*a]
+        const c = (i + 1) * a / 2;
+        vctx.rotate(c); vctx.scale(1, -1); vctx.rotate(-c);
+      }
+      vctx.drawImage(src, -R * .15 + state.ox, -R * .15 + state.oy, S, S);
+      vctx.restore();
+    }
+    // soft mirror-edge lines for the glass facet feel
+    vctx.globalCompositeOperation = 'overlay';
+    vctx.strokeStyle = 'rgba(255,255,255,.18)'; vctx.lineWidth = 1;
+    for (let i = 0; i < n; i++) {
+      vctx.beginPath(); vctx.moveTo(0, 0); vctx.lineTo(Math.cos(i * a) * R, Math.sin(i * a) * R); vctx.stroke();
+    }
+    vctx.globalCompositeOperation = 'source-over';
+    vctx.restore();
+  }
+
+  /* ---------- pointer turns the scope ---------- */
+  function onPoint(e) {
+    const rect = eyepiece.getBoundingClientRect();
+    const nx = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+    const ny = ((e.clientY - rect.top) / rect.height) * 2 - 1;
+    state.tx = Math.max(-1, Math.min(1, nx)) * state.R * .11;
+    state.ty = Math.max(-1, Math.min(1, ny)) * state.R * .11;
+  }
+  addEventListener('pointermove', onPoint, { passive: true });
+  eyepiece.addEventListener('touchmove', e => e.preventDefault(), { passive: false });
+
+  /* ---------- loop ---------- */
+  let last = performance.now(), drift = 0;
+  function frame(now) {
+    const dt = Math.min(.05, (now - last) / 1000) || .016; last = now;
+    drift += dt;
+    // gentle autonomous wander layered on top of the pointer target
+    const wx = Math.sin(drift * .21) * state.R * .03, wy = Math.cos(drift * .17) * state.R * .03;
+    const k = 1 - Math.pow(.001, dt);
+    state.ox += (state.tx + wx - state.ox) * k;
+    state.oy += (state.ty + wy - state.oy) * k;
+    if (!reduced) state.rot += dt * .06;
+    drawSource(reduced ? dt * .3 : dt, now);
+    drawView();
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  /* ---------- controls ---------- */
+  const press = (sel, btn) => document.querySelectorAll(sel).forEach(b => b.setAttribute('aria-pressed', b === btn));
+  document.querySelectorAll('[data-fold]').forEach(b => b.addEventListener('click', () => {
+    state.fold = +b.dataset.fold; press('[data-fold]', b);
+    document.getElementById('foldLabel').textContent = state.fold;
+  }));
+  document.querySelectorAll('[data-palette]').forEach(b => b.addEventListener('click', () => {
+    state.palette = b.dataset.palette; press('[data-palette]', b); retint();
+  }));
+  const density = document.getElementById('density');
+  density.addEventListener('input', () => {
+    state.density = +density.value; setDensity(state.density);
+    document.getElementById('densityVal').textContent = state.density;
+    document.getElementById('shardLabel').textContent = state.density;
+  });
+  document.getElementById('shuffle').addEventListener('click', () => {
+    rebuild();
+    state.shapes.forEach(s => { s.vx *= 3; s.vy *= 3; });
+    setTimeout(() => state.shapes.forEach(s => { s.vx /= 3; s.vy /= 3; }), 900);
+  });
+  eyepiece.addEventListener('dblclick', () => document.getElementById('shuffle').click());
+})();
+</script>
+</body>
+</html>

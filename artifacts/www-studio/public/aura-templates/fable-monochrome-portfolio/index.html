@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ines Varga — Art Director</title>
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --paper: #f5f4f1;
+    --grey: #a39e94;
+    --line: rgba(10, 10, 10, 0.12);
+    --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, ui-serif, serif;
+    --sans: ui-sans-serif, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, 'SF Mono', Menlo, 'Courier New', monospace;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: var(--ink); color: var(--paper); }
+
+  /* ---------- custom cursor ---------- */
+  .cursor {
+    position: fixed;
+    top: 0; left: 0;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--ink);
+    pointer-events: none;
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+    transition: width .45s var(--ease), height .45s var(--ease), background .3s;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+  .cursor span {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--paper);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity .3s .1s, transform .4s var(--ease) .1s;
+  }
+  .cursor.is-view { width: 84px; height: 84px; background: var(--ink); mix-blend-mode: normal; }
+  .cursor.is-view span { opacity: 1; transform: translateY(0); }
+  .cursor.is-link { width: 40px; height: 40px; }
+
+  /* ---------- layout scaffolding ---------- */
+  .wrap { padding: 0 clamp(20px, 4vw, 72px); }
+
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px clamp(20px, 4vw, 72px);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    z-index: 50;
+    mix-blend-mode: difference;
+    color: var(--paper);
+  }
+  header nav { display: flex; gap: 28px; }
+  header nav a { position: relative; }
+  header nav a::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -4px;
+    width: 100%; height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .5s var(--ease);
+  }
+  header nav a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+  /* ---------- hero ---------- */
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: clamp(32px, 6vh, 80px);
+    position: relative;
+  }
+  .hero-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 18px;
+  }
+  .name {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(64px, 17vw, 300px);
+    line-height: .86;
+    letter-spacing: -0.045em;
+    display: flex;
+    flex-wrap: wrap;
+    user-select: none;
+  }
+  .name .word { display: inline-flex; margin-right: .18em; }
+  .name .word:last-child { margin-right: 0; }
+  .name .ch {
+    display: inline-block;
+    position: relative;
+    transition: transform .7s var(--ease);
+  }
+  .name .ch::before {
+    content: attr(data-ch);
+    position: absolute;
+    left: 0; top: 0;
+    color: var(--grey);
+    opacity: 0;
+    transform: translate(0, 0);
+    transition: transform .7s var(--ease), opacity .5s;
+    pointer-events: none;
+  }
+  .name:hover .ch { transform: translateY(calc(var(--i) * -0.9px)) translateX(calc(var(--j) * 1.6px)); }
+  .name:hover .ch::before { opacity: .45; transform: translate(-.06em, .08em); }
+  .name:hover .ch:nth-child(even) { transform: translateY(calc(var(--i) * 1.2px)); }
+  .hero-line {
+    margin-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    padding-top: 22px;
+    border-top: 1px solid var(--ink);
+  }
+  .hero-line p { max-width: 42ch; font-size: 15px; color: #3a3833; }
+  .hero-line .scroll {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-line .scroll i {
+    display: inline-block;
+    width: 36px; height: 1px;
+    background: var(--ink);
+    transform-origin: left;
+    animation: pulse 2.2s var(--ease) infinite;
+  }
+  @keyframes pulse { 0%, 100% { transform: scaleX(.3); } 50% { transform: scaleX(1); } }
+
+  /* ---------- section header ---------- */
+  .section { padding: clamp(80px, 14vh, 180px) 0 0; }
+  .section-head {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--ink);
+    margin-bottom: 8px;
+  }
+  .index {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--grey);
+  }
+  .section-head h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(28px, 4vw, 56px);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  /* ---------- project list ---------- */
+  .projects { list-style: none; position: relative; }
+  .project {
+    display: grid;
+    grid-template-columns: 56px 1fr auto auto;
+    gap: 24px;
+    align-items: center;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--line);
+    transition: padding .5s var(--ease), color .4s;
+    position: relative;
+  }
+  .project::before {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; top: 0; bottom: 0;
+    background: var(--ink);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform .55s var(--ease);
+    z-index: -1;
+  }
+  .project:hover { color: var(--paper); padding-left: 18px; }
+  .project:hover::before { transform: scaleY(1); transform-origin: top; }
+  .project .num { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; color: var(--grey); }
+  .project h3 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(24px, 3.6vw, 52px);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .project .tag { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--grey); }
+  .project .year { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; }
+  .project:hover .tag, .project:hover .num { color: var(--grey); }
+
+  /* floating preview */
+  .preview {
+    position: fixed;
+    top: 0; left: 0;
+    width: 320px; height: 400px;
+    pointer-events: none;
+    z-index: 40;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.9) rotate(-4deg);
+    transition: opacity .4s var(--ease), transform .6s var(--ease);
+    overflow: hidden;
+    box-shadow: 0 40px 80px -20px rgba(0,0,0,.4);
+  }
+  .preview.on { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+  .preview .art {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity .4s;
+  }
+  .preview .art.show { opacity: 1; }
+
+  .art-1 {
+    background:
+      radial-gradient(circle at 30% 30%, #fff 0 22%, transparent 23%),
+      radial-gradient(circle at 70% 70%, #0a0a0a 0 30%, transparent 31%),
+      linear-gradient(#a39e94, #a39e94);
+  }
+  .art-2 {
+    background:
+      repeating-linear-gradient(90deg, #0a0a0a 0 8px, transparent 8px 22px),
+      linear-gradient(180deg, #f5f4f1 0 50%, #a39e94 50%);
+  }
+  .art-3 {
+    background:
+      conic-gradient(from 0deg at 50% 50%, #0a0a0a 0 25%, #f5f4f1 25% 50%, #0a0a0a 50% 75%, #f5f4f1 75%);
+    background-size: 100px 100px;
+  }
+  .art-4 {
+    background:
+      radial-gradient(ellipse at 50% 120%, #f5f4f1 0 40%, transparent 41%),
+      linear-gradient(#0a0a0a, #0a0a0a);
+  }
+  .art-4::after {
+    content: '';
+    position: absolute;
+    inset: 12% 12% auto 12%;
+    height: 2px;
+    background: #a39e94;
+    box-shadow: 0 30px 0 #a39e94, 0 60px 0 #a39e94, 0 90px 0 #a39e94;
+  }
+  .art-5 {
+    background:
+      linear-gradient(135deg, transparent 0 48%, #0a0a0a 48% 52%, transparent 52%),
+      linear-gradient(45deg, transparent 0 48%, #0a0a0a 48% 52%, transparent 52%),
+      #f5f4f1;
+    background-size: 80px 80px;
+  }
+  .art-6 {
+    background:
+      radial-gradient(circle at 50% 50%, transparent 0 38%, #f5f4f1 39% 42%, transparent 43%),
+      radial-gradient(circle at 50% 50%, transparent 0 58%, #a39e94 59% 60%, transparent 61%),
+      #0a0a0a;
+  }
+
+  /* ---------- about ---------- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 6vw, 120px);
+    padding: clamp(48px, 8vh, 100px) 0 0;
+  }
+  .pull {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(30px, 4.4vw, 68px);
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    text-indent: 2em;
+  }
+  .pull em { font-style: italic; color: var(--grey); }
+  .about-copy { font-size: 15px; color: #3a3833; display: flex; flex-direction: column; gap: 20px; align-self: end; }
+  .about-copy p { max-width: 46ch; }
+  .facts {
+    margin-top: clamp(48px, 8vh, 100px);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    border-top: 1px solid var(--ink);
+  }
+  .fact { padding: 22px 0; border-bottom: 1px solid var(--line); }
+  .fact dt { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--grey); margin-bottom: 8px; }
+  .fact dd { font-family: var(--serif); font-size: 22px; letter-spacing: -0.01em; }
+
+  /* ---------- contact / footer ---------- */
+  .contact {
+    padding: clamp(80px, 14vh, 180px) 0 clamp(48px, 8vh, 100px);
+    text-align: center;
+  }
+  .contact .index { display: block; margin-bottom: 24px; }
+  .contact a.big {
+    font-family: var(--serif);
+    font-size: clamp(30px, 6.5vw, 110px);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    display: inline-block;
+    position: relative;
+  }
+  .contact a.big::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: .02em;
+    width: 100%; height: 2px;
+    background: var(--ink);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .6s var(--ease);
+  }
+  .contact a.big:hover::after { transform: scaleX(1); transform-origin: left; }
+
+  footer {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 26px 0 30px;
+    overflow: hidden;
+  }
+  .marquee {
+    display: flex;
+    white-space: nowrap;
+    font-family: var(--serif);
+    font-size: clamp(22px, 3vw, 40px);
+    letter-spacing: -0.01em;
+  }
+  .marquee-track {
+    display: flex;
+    gap: 0;
+    animation: marquee 32s linear infinite;
+    flex-shrink: 0;
+  }
+  .marquee span { padding-right: 1.4em; }
+  .marquee span::after { content: '·'; color: var(--grey); padding-left: 1.4em; }
+  @keyframes marquee { to { transform: translateX(-100%); } }
+  .foot-meta {
+    display: flex;
+    justify-content: space-between;
+    padding: 34px clamp(20px, 4vw, 72px) 0;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--grey);
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 720px) {
+    body { cursor: auto; }
+    .cursor, .preview { display: none; }
+    .project { grid-template-columns: 40px 1fr auto; }
+    .project .tag { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    header nav { gap: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .001s !important; transition-duration: .001s !important; }
+    .reveal { opacity: 1; transform: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor" aria-hidden="true"><span>View</span></div>
+
+<header>
+  <a href="#top">Ines Varga</a>
+  <nav>
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero wrap">
+    <div class="hero-meta">
+      <span>Art Director — Independent</span>
+      <span>Lisbon / Berlin</span>
+    </div>
+    <h1 class="name" id="name" aria-label="Ines Varga"></h1>
+    <div class="hero-line">
+      <p>Visual direction for brands, publications and cultural institutions that would rather say one true thing than ten loud ones.</p>
+      <span class="scroll"><i></i> Scroll</span>
+    </div>
+  </section>
+
+  <section class="section wrap" id="work">
+    <div class="section-head reveal">
+      <h2>Selected Work</h2>
+      <span class="index">01 — Index</span>
+    </div>
+    <ul class="projects" id="projects">
+      <li class="project reveal" data-art="1">
+        <span class="num">01</span>
+        <h3>Nocturne Editions</h3>
+        <span class="tag">Identity · Print</span>
+        <span class="year">2025</span>
+      </li>
+      <li class="project reveal" data-art="2">
+        <span class="num">02</span>
+        <h3>Museu do Silêncio</h3>
+        <span class="tag">Exhibition · Wayfinding</span>
+        <span class="year">2024</span>
+      </li>
+      <li class="project reveal" data-art="3">
+        <span class="num">03</span>
+        <h3>Halbton Magazine</h3>
+        <span class="tag">Editorial · Type System</span>
+        <span class="year">2024</span>
+      </li>
+      <li class="project reveal" data-art="4">
+        <span class="num">04</span>
+        <h3>Aurel Watches</h3>
+        <span class="tag">Campaign · Motion</span>
+        <span class="year">2023</span>
+      </li>
+      <li class="project reveal" data-art="5">
+        <span class="num">05</span>
+        <h3>Ordinary Forms</h3>
+        <span class="tag">Book · Photography</span>
+        <span class="year">2023</span>
+      </li>
+      <li class="project reveal" data-art="6">
+        <span class="num">06</span>
+        <h3>Tide Table Records</h3>
+        <span class="tag">Packaging · Identity</span>
+        <span class="year">2022</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="section wrap" id="about">
+    <div class="section-head reveal">
+      <h2>About</h2>
+      <span class="index">02 — Practice</span>
+    </div>
+    <div class="about-grid">
+      <p class="pull reveal">Design is not decoration. It is the <em>discipline of leaving things out</em> until only what matters remains — then giving that thing room to breathe.</p>
+      <div class="about-copy reveal">
+        <p>Ines Varga is an independent art director working across identity, editorial and exhibition design. Trained as a typographer in Budapest and later at the Gerrit Rietveld Academie, she spent six years leading the studio at a Berlin publishing house before opening her own practice in 2019.</p>
+        <p>Her work has been recognised by the Type Directors Club, D&amp;AD and the German Design Council. She teaches a seminar on editorial rhythm and, once a year, disappears to the Alentejo to draw letters by hand.</p>
+      </div>
+    </div>
+    <dl class="facts reveal">
+      <div class="fact"><dt>Founded</dt><dd>2019</dd></div>
+      <div class="fact"><dt>Based</dt><dd>Lisbon &amp; Berlin</dd></div>
+      <div class="fact"><dt>Clients</dt><dd>Cultural, Editorial, Luxury</dd></div>
+      <div class="fact"><dt>Availability</dt><dd>Winter 2026</dd></div>
+    </dl>
+  </section>
+
+  <section class="contact wrap" id="contact">
+    <span class="index reveal">03 — Contact</span>
+    <a class="big reveal" href="#contact">Let's make something quiet.</a>
+  </section>
+</main>
+
+<footer>
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track" id="track">
+      <span>Art Direction</span><span>Brand Identity</span><span>Editorial Design</span><span>Typography</span><span>Exhibition Design</span><span>Motion</span><span>Consulting</span>
+    </div>
+  </div>
+  <div class="foot-meta">
+    <span>© 2026 Ines Varga</span>
+    <span>Set in system serif &amp; mono</span>
+    <span>Lisbon 38.72°N · Berlin 52.52°N</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ----- split name into letters ----- */
+  var nameEl = document.getElementById('name');
+  var words = ['Ines', 'Varga'];
+  var idx = 0;
+  words.forEach(function (w) {
+    var span = document.createElement('span');
+    span.className = 'word';
+    for (var i = 0; i < w.length; i++) {
+      var ch = document.createElement('span');
+      ch.className = 'ch';
+      ch.textContent = w[i];
+      ch.setAttribute('data-ch', w[i]);
+      ch.style.setProperty('--i', (idx % 3) + 1);
+      ch.style.setProperty('--j', (idx % 2 === 0 ? 1 : -1));
+      span.appendChild(ch);
+      idx++;
+    }
+    nameEl.appendChild(span);
+  });
+
+  /* ----- duplicate marquee track for seamless loop ----- */
+  var track = document.getElementById('track');
+  var clone = track.cloneNode(true);
+  clone.removeAttribute('id');
+  track.parentNode.appendChild(clone);
+
+  /* ----- reveal on scroll ----- */
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(function (r) { io.observe(r); });
+  } else {
+    reveals.forEach(function (r) { r.classList.add('in'); });
+  }
+
+  /* ----- pointer-driven cursor & preview ----- */
+  var fine = window.matchMedia('(pointer: fine)').matches;
+  if (!fine) return;
+
+  var cursor = document.getElementById('cursor');
+  var preview = document.createElement('div');
+  preview.className = 'preview';
+  preview.setAttribute('aria-hidden', 'true');
+  for (var a = 1; a <= 6; a++) {
+    var art = document.createElement('div');
+    art.className = 'art art-' + a;
+    art.setAttribute('data-art', a);
+    preview.appendChild(art);
+  }
+  document.body.appendChild(preview);
+
+  var mx = window.innerWidth / 2, my = window.innerHeight / 2;
+  var cx = mx, cy = my;
+  var px = mx, py = my;
+  var hoveringProject = false;
+
+  window.addEventListener('mousemove', function (e) {
+    mx = e.clientX; my = e.clientY;
+  }, { passive: true });
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
+
+  function frame() {
+    cx = lerp(cx, mx, 0.28);
+    cy = lerp(cy, my, 0.28);
+    cursor.style.transform = 'translate(' + cx + 'px,' + cy + 'px) translate(-50%,-50%)';
+
+    px = lerp(px, mx + 180, 0.09);
+    py = lerp(py, my - 40, 0.09);
+    var tilt = (mx - px) * 0.03;
+    preview.style.transform = 'translate(' + px + 'px,' + py + 'px) translate(-50%,-50%) rotate(' + (hoveringProject ? tilt : -4) + 'deg) scale(' + (hoveringProject ? 1 : 0.9) + ')';
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  var arts = preview.querySelectorAll('.art');
+  var projects = document.querySelectorAll('.project');
+  projects.forEach(function (p) {
+    p.addEventListener('mouseenter', function () {
+      hoveringProject = true;
+      cursor.classList.add('is-view');
+      preview.classList.add('on');
+      var id = p.getAttribute('data-art');
+      arts.forEach(function (art) { art.classList.toggle('show', art.getAttribute('data-art') === id); });
+    });
+    p.addEventListener('mouseleave', function () {
+      hoveringProject = false;
+      cursor.classList.remove('is-view');
+      preview.classList.remove('on');
+    });
+  });
+
+  document.querySelectorAll('a').forEach(function (l) {
+    l.addEventListener('mouseenter', function () { cursor.classList.add('is-link'); });
+    l.addEventListener('mouseleave', function () { cursor.classList.remove('is-link'); });
+  });
+
+  document.addEventListener('mouseleave', function () { cursor.style.opacity = '0'; });
+  document.addEventListener('mouseenter', function () { cursor.style.opacity = '1'; });
+})();
+</script>
+</body>
+</html>

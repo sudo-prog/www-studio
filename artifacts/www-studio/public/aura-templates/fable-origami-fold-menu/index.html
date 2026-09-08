@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Origami Fold Menu — Kami &amp; Fold Paper Studio</title>
+<style>
+  :root {
+    --bg: #f7f3ec;
+    --ink: #2a2622;
+    --ink-soft: #7a716a;
+    --kraft: #c9a677;
+    --kraft-deep: #a9865a;
+    --cream: #f3e9d6;
+    --cream-deep: #d9ccb2;
+    --coral: #e8846b;
+    --coral-deep: #c4644e;
+    --sage: #9fb096;
+    --sage-deep: #7d8f75;
+    --pw: 176px;   /* panel width */
+    --sh: 150px;   /* segment height */
+    --scale: 1;
+    --serif: Georgia, 'Iowan Old Style', 'Palatino Linotype', Palatino, ui-serif, serif;
+    --sans: ui-sans-serif, system-ui, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace;
+    --paper-noise: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0.16 0'/></filter><rect width='100%' height='100%' filter='url(%23p)'/></svg>");
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--bg); color: var(--ink); font-family: var(--sans); min-height: 100vh;
+    display: flex; flex-direction: column; -webkit-font-smoothing: antialiased;
+    background-image: radial-gradient(circle at 50% 0%, #fffdf8, transparent 60%);
+  }
+  header {
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    padding: 22px clamp(18px, 4vw, 48px);
+  }
+  .logo { font-family: var(--serif); font-size: 18px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 10px; }
+  .logo svg { width: 26px; height: 26px; }
+  .toggle {
+    font: inherit; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer;
+    padding: 12px 20px; border-radius: 999px; border: 1px solid var(--ink); background: transparent; color: var(--ink);
+    display: inline-flex; align-items: center; gap: 10px; position: relative;
+    transition: background .3s, color .3s, transform .3s cubic-bezier(.2,.8,.2,1);
+  }
+  .toggle:hover { background: var(--ink); color: var(--bg); transform: translateY(-1px); }
+  .toggle:focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; }
+  .toggle .crease { width: 16px; height: 16px; position: relative; }
+  .toggle .crease::before, .toggle .crease::after {
+    content: ""; position: absolute; inset: 0; border: 1.5px solid currentColor; border-radius: 2px;
+    transition: transform .5s cubic-bezier(.2,.8,.2,1);
+  }
+  .toggle .crease::after { transform: scaleX(0); transform-origin: left; }
+  .toggle[aria-expanded="true"] .crease::after { transform: scaleX(1) rotate(45deg); }
+  .toggle[aria-expanded="true"] .crease::before { transform: rotate(45deg); }
+
+  .intro { text-align: center; padding: clamp(8px, 3vh, 40px) 20px 10px; }
+  .intro .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink-soft); }
+  .intro h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(30px, 5vw, 60px); margin: 10px 0 8px; letter-spacing: -0.02em; line-height: 1; }
+  .intro h1 em { font-style: italic; color: var(--coral-deep); }
+  .intro p { margin: 0 auto; max-width: 50ch; color: var(--ink-soft); font-size: 15px; line-height: 1.6; }
+
+  /* ===== The stage ===== */
+  .stage { flex: 1; display: grid; place-items: center; padding: 30px 20px 60px; min-height: calc(var(--sh) * 3 + 120px); }
+  .scene {
+    perspective: 1600px; perspective-origin: 50% 40%;
+    width: calc(var(--pw) * 5); height: calc(var(--sh) * 3);
+    transform: scale(var(--scale)); transform-origin: top center;
+  }
+  .row { position: relative; width: var(--pw); height: 100%; transform-style: preserve-3d; }
+  .hinge-y {
+    position: absolute; top: 0; left: 100%; width: var(--pw); height: 100%;
+    transform-origin: left center; transform-style: preserve-3d; will-change: transform;
+  }
+  .hinge-y.first { left: 0; }
+  .panel { position: relative; width: var(--pw); height: 100%; transform-style: preserve-3d; }
+  .hinge-x {
+    position: absolute; left: 0; top: var(--sh); width: 100%; height: var(--sh);
+    transform-origin: top center; transform-style: preserve-3d; will-change: transform;
+  }
+  .seg { position: relative; width: 100%; height: var(--sh); transform-style: preserve-3d; }
+  .face {
+    position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+    background-color: var(--paper); padding: 16px 16px 14px; overflow: hidden;
+    box-shadow: inset 0 0 0 1px rgba(42,38,34,0.08);
+  }
+  .face::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none; background-image: var(--paper-noise);
+    mix-blend-mode: multiply; opacity: 0.9;
+  }
+  /* fibre grain */
+  .face::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: repeating-linear-gradient(92deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 7px);
+  }
+  .face.back { transform: rotateX(180deg); background-color: var(--paper-deep); }
+  /* Lighting overlays driven by fold angle (0..1 via --f) */
+  .shade {
+    position: absolute; inset: 0; pointer-events: none; z-index: 2;
+    background: linear-gradient(180deg, rgba(20,14,8,0.55), rgba(20,14,8,0.05) 60%, rgba(255,255,255,0.12));
+    opacity: calc(var(--f, 0) * 0.9);
+  }
+  .hinge-y > .panel > .shade-y {
+    position: absolute; inset: 0 0 auto 0; height: var(--sh); pointer-events: none; z-index: 3;
+    background: linear-gradient(90deg, rgba(20,14,8,0.6), rgba(20,14,8,0.08) 55%, rgba(255,255,255,0.14));
+    opacity: calc(var(--fy, 0) * 0.85);
+  }
+  /* crease line */
+  .seg:not(.cover) .face.front::before { box-shadow: inset 0 2px 3px -1px rgba(0,0,0,0.18); }
+
+  /* Paper colours */
+  .p-kraft { --paper: var(--kraft); --paper-deep: var(--kraft-deep); }
+  .p-cream { --paper: var(--cream); --paper-deep: var(--cream-deep); }
+  .p-coral { --paper: var(--coral); --paper-deep: var(--coral-deep); }
+  .p-sage  { --paper: var(--sage);  --paper-deep: var(--sage-deep); }
+  .p-coral .face { color: #fff5f1; }
+  .p-kraft .face { color: #2a2622; }
+  .p-sage .face { color: #1f261d; }
+
+  /* Cover tab (button) */
+  .cover-btn {
+    position: absolute; inset: 0; z-index: 4; width: 100%; height: 100%; border: 0; padding: 16px; margin: 0;
+    background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer;
+    display: flex; flex-direction: column; justify-content: space-between;
+    transition: background .3s;
+  }
+  .cover-btn:hover { background: rgba(255,255,255,0.12); }
+  .cover-btn:focus-visible { outline: 2px solid var(--ink); outline-offset: -6px; }
+  .cover-btn .num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; opacity: 0.75; }
+  .cover-btn .name { font-family: var(--serif); font-size: 26px; line-height: 1; letter-spacing: -0.01em; }
+  .cover-btn .hint { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.65; display: flex; align-items: center; gap: 6px; }
+  .cover-btn .hint::after { content: ""; width: 8px; height: 8px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); transition: transform .4s; }
+  .cover-btn[aria-expanded="true"] .hint::after { transform: rotate(225deg) translate(-2px, -2px); }
+
+  .face h3 { font-family: var(--serif); font-weight: 400; font-size: 17px; margin: 0 0 6px; }
+  .face p { font-size: 12.5px; line-height: 1.5; margin: 0; opacity: 0.85; }
+  .face ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  .face li a {
+    color: inherit; text-decoration: none; font-size: 13px; display: flex; justify-content: space-between; align-items: baseline;
+    border-bottom: 1px solid rgba(42,38,34,0.18); padding-bottom: 4px; transition: padding-left .3s cubic-bezier(.2,.8,.2,1);
+  }
+  .face li a:hover, .face li a:focus-visible { padding-left: 6px; outline: none; }
+  .face li a small { font-family: var(--mono); font-size: 10px; opacity: 0.6; }
+  .face .stamp {
+    position: absolute; right: 12px; bottom: 10px; font-family: var(--mono); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+    opacity: 0.45; border: 1px solid currentColor; padding: 3px 6px; border-radius: 2px; transform: rotate(-4deg);
+  }
+
+  /* ground shadow of the stack */
+  .ground {
+    position: absolute; left: 50%; bottom: -40px; width: calc(var(--pw) * 5); height: 40px; transform: translateX(-50%);
+    background: radial-gradient(ellipse at 50% 0%, rgba(42,38,34,0.22), transparent 70%); filter: blur(8px); pointer-events: none;
+    transition: width .9s cubic-bezier(.2,.8,.2,1), opacity .6s;
+  }
+
+  footer { text-align: center; font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); padding: 0 20px 28px; }
+  kbd { font-family: inherit; border: 1px solid rgba(42,38,34,0.3); border-radius: 4px; padding: 1px 5px; }
+
+  /* Mobile: drop the horizontal accordion, keep the vertical paper folds */
+  @media (max-width: 720px) {
+    :root { --pw: min(320px, calc(100vw - 40px)); --sh: 132px; }
+    .scene { width: var(--pw); height: auto; transform: none; perspective: 1200px; }
+    .row { height: auto; }
+    .hinge-y { position: static; transform: none !important; margin-bottom: 14px; height: auto; }
+    .panel { height: calc(var(--sh) * 3); }
+    .hinge-y > .panel > .shade-y { display: none; }
+    .ground { display: none; }
+    .stage { min-height: 0; align-items: start; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .toggle, .toggle .crease::before, .toggle .crease::after, .cover-btn, .face li a, .ground { transition: none; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">
+    <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <path d="M3 25 L16 5 L29 25 Z" fill="#c9a677"/>
+      <path d="M16 5 L29 25 L16 19 Z" fill="#a9865a"/>
+      <path d="M3 25 L16 19 L29 25 Z" fill="#e8846b"/>
+    </svg>
+    Kami &amp; Fold
+  </div>
+  <button class="toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="origami-menu">
+    <span class="crease" aria-hidden="true"></span>
+    <span id="toggle-label">Unfold menu</span>
+  </button>
+</header>
+
+<section class="intro">
+  <div class="eyebrow">Navigation experiment · No. 038</div>
+  <h1>A menu you <em>unfold</em></h1>
+  <p>Five sheets of paper, creased and stacked. Open the packet and each panel swings out on its hinge, then its content drops down in accordion folds, shading itself as it turns toward the light.</p>
+</section>
+
+<div class="stage">
+  <nav class="scene" id="origami-menu" aria-label="Main">
+    <div class="row">
+      <div class="ground" id="ground"></div>
+
+      <!-- Panel 1 -->
+      <div class="hinge-y first" data-panel="1">
+        <article class="panel p-kraft">
+          <div class="shade-y"></div>
+          <div class="seg cover">
+            <div class="face front">
+              <button class="cover-btn" type="button" aria-expanded="false" aria-controls="p1-content" data-cover="1">
+                <span class="num">01</span><span class="name">Studio</span><span class="hint">open</span>
+              </button>
+            </div>
+            <div class="face back"></div>
+          </div>
+          <div class="hinge-x" data-hinge="1-2">
+            <div class="seg" id="p1-content">
+              <div class="face front"><h3>Kyoto, since 2014</h3><p>A small atelier for folded objects: lamps, wayfinding, and packaging that opens like a gift. Everything begins as a single uncut sheet.</p></div>
+              <div class="face back"></div>
+              <div class="shade"></div>
+            </div>
+            <div class="hinge-x" data-hinge="1-3">
+              <div class="seg">
+                <div class="face front">
+                  <ul>
+                    <li><a href="#studio">Our story <small>01.1</small></a></li>
+                    <li><a href="#team">People <small>01.2</small></a></li>
+                    <li><a href="#press">Press <small>01.3</small></a></li>
+                  </ul>
+                  <span class="stamp">kraft 120g</span>
+                </div>
+                <div class="face back"></div>
+                <div class="shade"></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Panel 2 -->
+        <div class="hinge-y" data-panel="2">
+          <article class="panel p-cream">
+            <div class="shade-y"></div>
+            <div class="seg cover">
+              <div class="face front">
+                <button class="cover-btn" type="button" aria-expanded="false" aria-controls="p2-content" data-cover="2">
+                  <span class="num">02</span><span class="name">Work</span><span class="hint">open</span>
+                </button>
+              </div>
+              <div class="face back"></div>
+            </div>
+            <div class="hinge-x" data-hinge="2-2">
+              <div class="seg" id="p2-content">
+                <div class="face front"><h3>Selected pieces</h3><p>Forty-one commissions across lighting, retail and stage. Each one folds flat for shipping and stands up in under a minute.</p></div>
+                <div class="face back"></div>
+                <div class="shade"></div>
+              </div>
+              <div class="hinge-x" data-hinge="2-3">
+                <div class="seg">
+                  <div class="face front">
+                    <ul>
+                      <li><a href="#lighting">Lighting <small>14</small></a></li>
+                      <li><a href="#retail">Retail <small>19</small></a></li>
+                      <li><a href="#stage">Stage sets <small>08</small></a></li>
+                    </ul>
+                    <span class="stamp">cream 150g</span>
+                  </div>
+                  <div class="face back"></div>
+                  <div class="shade"></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Panel 3 -->
+          <div class="hinge-y" data-panel="3">
+            <article class="panel p-coral">
+              <div class="shade-y"></div>
+              <div class="seg cover">
+                <div class="face front">
+                  <button class="cover-btn" type="button" aria-expanded="false" aria-controls="p3-content" data-cover="3">
+                    <span class="num">03</span><span class="name">Process</span><span class="hint">open</span>
+                  </button>
+                </div>
+                <div class="face back"></div>
+              </div>
+              <div class="hinge-x" data-hinge="3-2">
+                <div class="seg" id="p3-content">
+                  <div class="face front"><h3>Crease, score, fold</h3><p>We draw the crease pattern first, score it by hand, then let the paper decide the final form. No glue, no cuts, no shortcuts.</p></div>
+                  <div class="face back"></div>
+                  <div class="shade"></div>
+                </div>
+                <div class="hinge-x" data-hinge="3-3">
+                  <div class="seg">
+                    <div class="face front">
+                      <ul>
+                        <li><a href="#pattern">Crease patterns <small>03.1</small></a></li>
+                        <li><a href="#materials">Materials <small>03.2</small></a></li>
+                        <li><a href="#workshops">Workshops <small>03.3</small></a></li>
+                      </ul>
+                      <span class="stamp">coral 110g</span>
+                    </div>
+                    <div class="face back"></div>
+                    <div class="shade"></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Panel 4 -->
+            <div class="hinge-y" data-panel="4">
+              <article class="panel p-sage">
+                <div class="shade-y"></div>
+                <div class="seg cover">
+                  <div class="face front">
+                    <button class="cover-btn" type="button" aria-expanded="false" aria-controls="p4-content" data-cover="4">
+                      <span class="num">04</span><span class="name">Journal</span><span class="hint">open</span>
+                    </button>
+                  </div>
+                  <div class="face back"></div>
+                </div>
+                <div class="hinge-x" data-hinge="4-2">
+                  <div class="seg" id="p4-content">
+                    <div class="face front"><h3>Notes from the bench</h3><p>Short essays on tension, memory in fibres, and why a fold remembers where it has been.</p></div>
+                    <div class="face back"></div>
+                    <div class="shade"></div>
+                  </div>
+                  <div class="hinge-x" data-hinge="4-3">
+                    <div class="seg">
+                      <div class="face front">
+                        <ul>
+                          <li><a href="#essay-1">The patient crease <small>Aug</small></a></li>
+                          <li><a href="#essay-2">Wet folding <small>Jun</small></a></li>
+                          <li><a href="#essay-3">Paper weights <small>May</small></a></li>
+                        </ul>
+                        <span class="stamp">sage 130g</span>
+                      </div>
+                      <div class="face back"></div>
+                      <div class="shade"></div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Panel 5 -->
+              <div class="hinge-y" data-panel="5">
+                <article class="panel p-cream">
+                  <div class="shade-y"></div>
+                  <div class="seg cover">
+                    <div class="face front">
+                      <button class="cover-btn" type="button" aria-expanded="false" aria-controls="p5-content" data-cover="5">
+                        <span class="num">05</span><span class="name">Contact</span><span class="hint">open</span>
+                      </button>
+                    </div>
+                    <div class="face back"></div>
+                  </div>
+                  <div class="hinge-x" data-hinge="5-2">
+                    <div class="seg" id="p5-content">
+                      <div class="face front"><h3>Visit the atelier</h3><p>Nakagyō-ku, Kyoto. Open Thursday to Sunday, 11–18. Commissions by appointment; workshops monthly.</p></div>
+                      <div class="face back"></div>
+                      <div class="shade"></div>
+                    </div>
+                    <div class="hinge-x" data-hinge="5-3">
+                      <div class="seg">
+                        <div class="face front">
+                          <ul>
+                            <li><a href="#mail">hello@kamiandfold.jp</a></li>
+                            <li><a href="#map">Map &amp; hours</a></li>
+                            <li><a href="#newsletter">Newsletter <small>monthly</small></a></li>
+                          </ul>
+                          <span class="stamp">cream 150g</span>
+                        </div>
+                        <div class="face back"></div>
+                        <div class="shade"></div>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<footer>Press <kbd>M</kbd> to fold or unfold · <kbd>Esc</kbd> closes · <kbd>Tab</kbd> walks the sheets</footer>
+
+<script>
+(function () {
+  'use strict';
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const toggle = document.getElementById('menu-toggle');
+  const toggleLabel = document.getElementById('toggle-label');
+  const scene = document.getElementById('origami-menu');
+  const ground = document.getElementById('ground');
+  const covers = Array.from(document.querySelectorAll('.cover-btn'));
+  const panelHinges = {}; // n -> element
+  document.querySelectorAll('.hinge-y').forEach(h => { panelHinges[h.dataset.panel] = h; });
+  const segHinges = {};   // "n-2" / "n-3" -> element
+  document.querySelectorAll('.hinge-x').forEach(h => { segHinges[h.dataset.hinge] = h; });
+
+  // Fold state: angle magnitude 0 (flat) .. 180 (folded). Sign alternates per hinge to make a Z-fold.
+  const state = {};
+  Object.keys(panelHinges).forEach(n => { state['y' + n] = n === '1' ? 0 : 180; });
+  Object.keys(segHinges).forEach(k => { state[k] = 180; });
+  const tweens = {};
+  let menuOpen = false;
+  let rafId = null;
+
+  const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
+  const easeInOutCubic = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+  function tween(key, to, delay, dur, ease) {
+    tweens[key] = { from: state[key], to, start: performance.now() + (reduceMotion ? 0 : delay), dur: reduceMotion ? 0 : dur, ease: ease || easeOutCubic };
+    if (rafId === null) rafId = requestAnimationFrame(step);
+  }
+
+  function step(now) {
+    let active = false;
+    for (const key in tweens) {
+      const tw = tweens[key];
+      if (now < tw.start) { active = true; continue; }
+      const t = tw.dur === 0 ? 1 : Math.min(1, (now - tw.start) / tw.dur);
+      state[key] = tw.from + (tw.to - tw.from) * tw.ease(t);
+      if (t >= 1) delete tweens[key]; else active = true;
+    }
+    render();
+    rafId = active ? requestAnimationFrame(step) : null;
+  }
+
+  function render() {
+    // Horizontal hinges: panel n folds behind panel n-1, alternating direction
+    for (let n = 2; n <= 5; n++) {
+      const a = state['y' + n];
+      const sign = n % 2 === 0 ? 1 : -1;
+      const depth = (a / 180) * 1.5 * sign;
+      const el = panelHinges[n];
+      el.style.transform = `rotateY(${a * sign}deg) translateZ(${depth}px)`;
+      el.querySelector('.panel').style.setProperty('--fy', (a / 180).toFixed(3));
+      el.style.visibility = a > 179.5 && menuOpen === false ? 'hidden' : 'visible';
+    }
+    // Vertical hinges within each panel
+    for (let n = 1; n <= 5; n++) {
+      [2, 3].forEach(s => {
+        const key = `${n}-${s}`;
+        const a = state[key];
+        const sign = s === 2 ? -1 : 1;
+        const el = segHinges[key];
+        // translateZ is applied in the rotated frame, so it must oppose the rotation sign to land behind
+        const depth = (a / 180) * 1.5 * -sign;
+        el.style.transform = `rotateX(${a * sign}deg) translateZ(${depth}px)`;
+        el.querySelector('.seg').style.setProperty('--f', Math.sin((a / 180) * Math.PI).toFixed(3));
+        el.style.visibility = a > 179.5 ? 'hidden' : 'visible';
+      });
+    }
+    ground.style.opacity = menuOpen ? '1' : '0.5';
+  }
+
+  function openPanelContent(n, delay) {
+    tween(`${n}-2`, 0, delay, 620);
+    tween(`${n}-3`, 0, delay + 170, 620);
+    covers[n - 1].setAttribute('aria-expanded', 'true');
+  }
+  function closePanelContent(n, delay) {
+    tween(`${n}-3`, 180, delay, 420, easeInOutCubic);
+    tween(`${n}-2`, 180, delay + 120, 460, easeInOutCubic);
+    covers[n - 1].setAttribute('aria-expanded', 'false');
+  }
+
+  function openMenu() {
+    menuOpen = true;
+    toggle.setAttribute('aria-expanded', 'true'); toggleLabel.textContent = 'Fold away';
+    for (let n = 2; n <= 5; n++) tween('y' + n, 0, (n - 2) * 140, 760);
+    for (let n = 1; n <= 5; n++) openPanelContent(n, 420 + (n - 1) * 140);
+    render();
+  }
+  function closeMenu() {
+    menuOpen = false;
+    toggle.setAttribute('aria-expanded', 'false'); toggleLabel.textContent = 'Unfold menu';
+    for (let n = 1; n <= 5; n++) closePanelContent(n, (5 - n) * 90);
+    for (let n = 5; n >= 2; n--) tween('y' + n, 180, 520 + (5 - n) * 130, 620, easeInOutCubic);
+  }
+
+  toggle.addEventListener('click', () => (menuOpen ? closeMenu() : openMenu()));
+  covers.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const n = +btn.dataset.cover;
+      if (!menuOpen) { openMenu(); return; }
+      if (btn.getAttribute('aria-expanded') === 'true') closePanelContent(n, 0); else openPanelContent(n, 0);
+    });
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menuOpen) { closeMenu(); toggle.focus(); }
+    if ((e.key === 'm' || e.key === 'M') && !/INPUT|TEXTAREA/.test(document.activeElement.tagName)) { menuOpen ? closeMenu() : openMenu(); }
+  });
+
+  // Hover tilt: the whole packet leans gently toward the pointer
+  const stageEl = document.querySelector('.stage');
+  const row = document.querySelector('.row');
+  if (!reduceMotion && window.matchMedia('(pointer: fine)').matches) {
+    stageEl.addEventListener('pointermove', (e) => {
+      const r = scene.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - 0.5, py = (e.clientY - r.top) / r.height - 0.5;
+      row.style.transform = `rotateY(${px * 8}deg) rotateX(${-py * 5}deg)`;
+      row.style.transition = 'transform .35s cubic-bezier(.2,.8,.2,1)';
+    });
+    stageEl.addEventListener('pointerleave', () => { row.style.transform = 'rotateY(0) rotateX(0)'; row.style.transition = 'transform .8s cubic-bezier(.2,.8,.2,1)'; });
+  }
+
+  // Scale the 880px scene down on mid-size screens
+  function fit() {
+    if (window.innerWidth <= 720) { document.documentElement.style.setProperty('--scale', '1'); return; }
+    const available = stageEl.clientWidth - 40;
+    const needed = 176 * 5;
+    document.documentElement.style.setProperty('--scale', Math.min(1, available / needed).toFixed(3));
+  }
+  window.addEventListener('resize', fit);
+  fit();
+  render();
+
+  // Gentle auto-unfold on first visit so the art is seen
+  setTimeout(() => { if (!menuOpen) openMenu(); }, reduceMotion ? 0 : 700);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Long Meridian — Title Sequence</title>
+<style>
+  :root {
+    --bone: #e8e2d6;
+    --bone-dim: rgba(232, 226, 214, 0.55);
+    --gold: #d8c08a;
+    --serif: "Iowan Old Style", Palatino, "Palatino Linotype", "Book Antiqua", Georgia, ui-serif, serif;
+    --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: #000; color: var(--bone); font-family: var(--serif); overflow: hidden; }
+
+  .theatre {
+    position: fixed; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .frame {
+    position: relative;
+    width: min(100vw, calc((100vh - 96px) * 2.39));
+    aspect-ratio: 2.39 / 1;
+    background: #000;
+    overflow: hidden;
+    box-shadow: 0 0 120px rgba(0,0,0,0.9);
+  }
+  .layer { position: absolute; inset: 0; will-change: transform, opacity; }
+
+  /* Fog: large blurred gradients drifting */
+  .fog { filter: blur(40px); opacity: 0; mix-blend-mode: screen; }
+  .fog i {
+    position: absolute; border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(120,125,140,0.45), rgba(120,125,140,0) 70%);
+  }
+  .fog i:nth-child(1) { width: 70%; height: 90%; left: -20%; top: 10%; animation: drift1 38s ease-in-out infinite alternate; }
+  .fog i:nth-child(2) { width: 60%; height: 80%; left: 45%; top: -30%; animation: drift2 46s ease-in-out infinite alternate; background: radial-gradient(ellipse, rgba(150,140,120,0.35), rgba(150,140,120,0) 70%); }
+  .fog i:nth-child(3) { width: 80%; height: 60%; left: 20%; top: 60%; animation: drift3 52s ease-in-out infinite alternate; }
+  @keyframes drift1 { to { transform: translate(18%, -8%) scale(1.15); } }
+  @keyframes drift2 { to { transform: translate(-16%, 14%) scale(1.1); } }
+  @keyframes drift3 { to { transform: translate(-10%, -18%) scale(1.2); } }
+
+  .horizon {
+    position: absolute; left: 0; right: 0; top: 58%; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(216,192,138,0.5) 30%, rgba(232,226,214,0.7) 50%, rgba(216,192,138,0.5) 70%, transparent);
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  #grain { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.16; mix-blend-mode: overlay; pointer-events: none; }
+  .vignette { background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.85) 100%); pointer-events: none; }
+
+  /* Cast names */
+  .cast { display: flex; align-items: center; justify-content: center; }
+  .name {
+    position: absolute;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  .name .above { font-family: var(--sans); font-weight: 300; font-size: clamp(8px, 0.9vw, 13px); letter-spacing: 0.5em; text-transform: uppercase; color: var(--bone-dim); margin-bottom: 10px; }
+  .name .who { font-size: clamp(16px, 2.4vw, 38px); letter-spacing: 0.32em; text-transform: uppercase; font-weight: 400; }
+  .name .who small { display: block; font-family: var(--sans); font-weight: 300; font-size: 0.42em; letter-spacing: 0.4em; margin-top: 8px; color: var(--bone-dim); }
+
+  /* Title */
+  .title-wrap { display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; }
+  .over { font-family: var(--sans); font-weight: 300; font-size: clamp(8px, 0.9vw, 13px); letter-spacing: 0.6em; text-transform: uppercase; color: var(--bone-dim); margin-bottom: 16px; }
+  .title {
+    position: relative;
+    font-size: clamp(22px, 5.2vw, 88px);
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    white-space: nowrap;
+    color: var(--bone);
+    background: linear-gradient(90deg, var(--bone) 0%, var(--bone) 40%, #fff 50%, var(--bone) 60%, var(--bone) 100%);
+    background-size: 300% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+  }
+  .under { font-family: var(--sans); font-weight: 300; font-size: clamp(8px, 0.9vw, 13px); letter-spacing: 0.5em; text-transform: uppercase; color: var(--bone-dim); margin-top: 18px; opacity: 0; }
+
+  /* Lens flare streak */
+  .flare {
+    position: absolute; top: 50%; left: -40%; width: 60%; height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(216,192,138,0.5) 40%, #fff 50%, rgba(216,192,138,0.5) 60%, transparent);
+    box-shadow: 0 0 30px 6px rgba(216,192,138,0.35), 0 0 80px 20px rgba(120,140,200,0.18);
+    opacity: 0; pointer-events: none;
+    transform: translateY(-50%);
+  }
+  .flare::after {
+    content: ""; position: absolute; left: 50%; top: 50%;
+    width: 120px; height: 120px; transform: translate(-50%,-50%);
+    background: radial-gradient(circle, rgba(255,255,255,0.7), rgba(216,192,138,0.25) 30%, transparent 70%);
+  }
+
+  /* Credits roll */
+  .credits { display: flex; justify-content: center; opacity: 0; }
+  .roll { position: absolute; top: 100%; width: min(90%, 720px); text-align: center; }
+  .credit { margin: 0 0 clamp(20px, 3vw, 44px); }
+  .credit .role { font-family: var(--sans); font-weight: 300; font-size: clamp(8px, 0.85vw, 12px); letter-spacing: 0.5em; text-transform: uppercase; color: var(--bone-dim); margin-bottom: 8px; }
+  .credit .person { font-size: clamp(13px, 1.5vw, 24px); letter-spacing: 0.22em; text-transform: uppercase; }
+  .credit.two { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 40px; text-align: right; }
+  .credit.two .role { text-align: right; margin: 0; align-self: center; }
+  .credit.two .person { text-align: left; }
+  .credit.studio { margin-top: clamp(40px, 6vw, 90px); }
+  .credit.studio .person { letter-spacing: 0.5em; font-size: clamp(10px, 1.1vw, 16px); }
+
+  .endcard { display: flex; align-items: center; justify-content: center; opacity: 0; flex-direction: column; gap: 18px; }
+  .endcard p { margin: 0; font-style: italic; font-size: clamp(12px, 1.3vw, 20px); color: var(--bone-dim); letter-spacing: 0.06em; }
+  .replay {
+    font-family: var(--sans); font-weight: 300; font-size: 11px; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--bone); background: transparent; border: 1px solid rgba(232,226,214,0.4);
+    padding: 12px 26px; border-radius: 999px; cursor: pointer;
+    transition: background 0.3s, color 0.3s, letter-spacing 0.4s cubic-bezier(.2,.8,.2,1);
+  }
+  .replay:hover { background: var(--bone); color: #000; letter-spacing: 0.55em; }
+
+  /* ---------- Scrubber ---------- */
+  .controls {
+    position: fixed; left: 0; right: 0; bottom: 0;
+    height: 96px;
+    display: flex; flex-direction: column; justify-content: center; gap: 12px;
+    padding: 0 clamp(16px, 4vw, 64px);
+    font-family: var(--sans);
+    z-index: 5;
+    opacity: 0.55;
+    transition: opacity 0.4s;
+  }
+  .controls:hover, .controls:focus-within { opacity: 1; }
+  .chapters { display: flex; justify-content: space-between; }
+  .chapter {
+    background: none; border: 0; color: var(--bone-dim);
+    font-family: var(--sans); font-weight: 300; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+    cursor: pointer; padding: 4px 0;
+    transition: color 0.3s;
+  }
+  .chapter:hover, .chapter.current { color: var(--bone); }
+  .track {
+    position: relative; height: 22px; cursor: pointer;
+    display: flex; align-items: center;
+  }
+  .track::before { content: ""; position: absolute; left: 0; right: 0; height: 1px; background: rgba(232,226,214,0.25); }
+  .progress { position: absolute; left: 0; height: 1px; background: var(--bone); width: 0; }
+  .playhead {
+    position: absolute; width: 10px; height: 10px; border-radius: 50%;
+    background: var(--bone); transform: translateX(-50%); left: 0;
+    box-shadow: 0 0 12px rgba(232,226,214,0.6);
+  }
+  .marker { position: absolute; width: 1px; height: 8px; background: rgba(232,226,214,0.5); transform: translateX(-50%); }
+  .transport { display: flex; justify-content: space-between; align-items: center; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--bone-dim); }
+  .transport button { background: none; border: 0; color: var(--bone); font: inherit; cursor: pointer; letter-spacing: inherit; padding: 4px 8px; }
+  .transport button:hover { color: var(--gold); }
+
+  @media (max-width: 600px) {
+    .chapters .chapter:nth-child(even) { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .fog i { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="theatre">
+  <section class="frame" id="frame" aria-label="Film title sequence for The Long Meridian">
+    <div class="layer fog" id="fog" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="horizon" id="horizon" aria-hidden="true"></div>
+
+    <div class="layer cast" id="cast" aria-hidden="true"></div>
+
+    <div class="layer title-wrap" id="titleWrap">
+      <div class="over" id="over">A film by Ilse Varga</div>
+      <h1 class="title" id="title">THE LONG MERIDIAN</h1>
+      <div class="under" id="under">Autumn · MCMXCIX</div>
+    </div>
+    <div class="flare" id="flare" aria-hidden="true"></div>
+
+    <div class="layer credits" id="credits" aria-hidden="true">
+      <div class="roll" id="roll"></div>
+    </div>
+
+    <div class="layer endcard" id="endcard">
+      <p>The meridian does not end. It only turns back toward the sea.</p>
+      <button class="replay" id="replayBtn">Replay</button>
+    </div>
+
+    <canvas id="grain" aria-hidden="true"></canvas>
+    <div class="layer vignette" aria-hidden="true"></div>
+  </section>
+</div>
+
+<div class="controls" aria-label="Timeline">
+  <div class="chapters" id="chapters"></div>
+  <div class="track" id="track" role="slider" aria-label="Timeline position" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
+    <div class="progress" id="progress"></div>
+    <div class="playhead" id="playhead"></div>
+  </div>
+  <div class="transport">
+    <span id="timecode">00:00</span>
+    <div>
+      <button id="playBtn" aria-label="Pause">Pause</button>
+      <button id="replayBtn2" aria-label="Replay from start">Replay</button>
+    </div>
+    <span id="duration">00:00</span>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---------- Timeline (seconds) ----------
+  const chapters = [
+    { name: 'Dark', t: 0 },
+    { name: 'Cast', t: 5 },
+    { name: 'Title', t: 24 },
+    { name: 'Credits', t: 36 },
+    { name: 'End', t: 66 }
+  ];
+  const DURATION = 72;
+
+  const castList = [
+    { above: 'starring', who: 'Maren Solheim', sub: '' , t: 5 },
+    { above: '', who: 'Adaeze Okonkwo', sub: '', t: 9.5 },
+    { above: '', who: 'Tomasz Wierzbicki', sub: 'and', t: 14 },
+    { above: 'with', who: 'Juno Castellanos', sub: 'as the Cartographer', t: 18.5 }
+  ];
+  const HOLD = 3.2, FADE = 0.9;
+
+  const crew = [
+    ['Casting by', 'Rhea Delacroix'],
+    ['Music', 'Oskar Lindqvist'],
+    ['Costume Designer', 'Beatrix Amsel'],
+    ['Production Designer', 'Nikolai Ferrante'],
+    ['Editor', 'Wren Holloway'],
+    ['Director of Photography', 'Sunniva Haugen'],
+    ['Executive Producers', 'Cassius Oyelaran · Ida Brenner'],
+    ['Produced by', 'Leonora Vashti'],
+    ['Written by', 'Ilse Varga & Petra Molnár'],
+    ['Directed by', 'Ilse Varga']
+  ];
+
+  // ---------- DOM ----------
+  const frame = document.getElementById('frame');
+  const fog = document.getElementById('fog');
+  const horizon = document.getElementById('horizon');
+  const cast = document.getElementById('cast');
+  const titleWrap = document.getElementById('titleWrap');
+  const title = document.getElementById('title');
+  const over = document.getElementById('over');
+  const under = document.getElementById('under');
+  const flare = document.getElementById('flare');
+  const credits = document.getElementById('credits');
+  const roll = document.getElementById('roll');
+  const endcard = document.getElementById('endcard');
+  const progress = document.getElementById('progress');
+  const playhead = document.getElementById('playhead');
+  const track = document.getElementById('track');
+  const timecode = document.getElementById('timecode');
+  const playBtn = document.getElementById('playBtn');
+  const chaptersEl = document.getElementById('chapters');
+
+  // Cast names
+  const nameEls = castList.map(c => {
+    const d = document.createElement('div');
+    d.className = 'name';
+    d.innerHTML = `${c.above ? `<div class="above">${c.above}</div>` : ''}<div class="who">${c.sub === 'and' ? '<small>and</small>' : ''}${c.who}${c.sub && c.sub !== 'and' ? `<small>${c.sub}</small>` : ''}</div>`;
+    cast.appendChild(d);
+    return d;
+  });
+
+  // Credits
+  crew.forEach(([role, person]) => {
+    const d = document.createElement('div');
+    d.className = 'credit';
+    d.innerHTML = `<div class="role">${role}</div><div class="person">${person}</div>`;
+    roll.appendChild(d);
+  });
+  const studio = document.createElement('div');
+  studio.className = 'credit studio';
+  studio.innerHTML = '<div class="role">A production of</div><div class="person">Meridian Pictures · Nordlys Film</div>';
+  roll.appendChild(studio);
+
+  // Chapter buttons and markers
+  chapters.forEach((c, i) => {
+    const b = document.createElement('button');
+    b.className = 'chapter'; b.textContent = c.name;
+    b.addEventListener('click', () => seek(c.t));
+    chaptersEl.appendChild(b);
+    if (i > 0) {
+      const m = document.createElement('div');
+      m.className = 'marker'; m.style.left = (c.t / DURATION * 100) + '%';
+      track.appendChild(m);
+    }
+  });
+  const chapterBtns = Array.from(chaptersEl.children);
+
+  // ---------- Grain ----------
+  const grain = document.getElementById('grain');
+  const gctx = grain.getContext('2d');
+  let gw = 0, gh = 0, gdata = null;
+  function resizeGrain() {
+    const r = frame.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    gw = Math.max(1, Math.floor(r.width * dpr / 3)); gh = Math.max(1, Math.floor(r.height * dpr / 3));
+    grain.width = gw; grain.height = gh;
+    gdata = gctx.createImageData(gw, gh);
+  }
+  function drawGrain() {
+    const d = gdata.data;
+    for (let i = 0; i < d.length; i += 4) {
+      const v = 90 + Math.random() * 120;
+      d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = 255;
+    }
+    gctx.putImageData(gdata, 0, 0);
+  }
+
+  // ---------- Helpers ----------
+  const clamp01 = v => Math.max(0, Math.min(1, v));
+  const ease = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  const easeOut = t => 1 - Math.pow(1 - t, 3);
+  // fade in over `fi`, hold, fade out over `fo`, starting at `start` with total visible `len`
+  function envelope(t, start, len, fi, fo) {
+    if (t < start || t > start + len) return 0;
+    const u = t - start;
+    if (u < fi) return ease(u / fi);
+    if (u > len - fo) return ease((len - u) / fo);
+    return 1;
+  }
+  function pad(n) { return String(Math.floor(n)).padStart(2, '0'); }
+  function fmt(s) { return pad(s / 60) + ':' + pad(s % 60); }
+
+  // ---------- Render at time t ----------
+  let T = 0, playing = true, lastNow = performance.now(), frameN = 0;
+  const camScale = reduceMotion ? 0 : 1;
+
+  function render(t) {
+    // camera drift shared by all layers, different depths
+    const dx = Math.sin(t * 0.21) * 8 * camScale, dy = Math.cos(t * 0.17) * 5 * camScale;
+    const zoom = 1 + (0.012 + 0.004 * Math.sin(t * 0.1)) * camScale;
+
+    // Fog: rises in the dark, thins after title
+    const fogA = envelope(t, 0.5, DURATION - 3, 4, 3) * (t > chapters[3].t ? 0.55 : 1);
+    fog.style.opacity = fogA;
+    fog.style.transform = `translate(${dx * 1.6}px, ${dy * 1.6}px) scale(${zoom * 1.04})`;
+
+    // Horizon line grows in during cast, fades at credits
+    const hz = envelope(t, 3, chapters[3].t - 3, 6, 2);
+    horizon.style.opacity = hz * 0.8;
+    horizon.style.transform = `translate(${dx * 0.6}px, ${dy * 0.6}px) scaleX(${easeOut(hz)})`;
+
+    // Cast names
+    castList.forEach((c, i) => {
+      const a = envelope(t, c.t, HOLD + FADE * 2, FADE, FADE);
+      const el = nameEls[i];
+      el.style.opacity = a;
+      const drift = (1 - a) * 6;
+      el.style.transform = `translate(${dx}px, ${dy + drift}px) scale(${zoom})`;
+      el.style.letterSpacing = '';
+    });
+
+    // Title: reveal at chapter 2 with light sweep and tracking expansion
+    const tt = chapters[2].t;
+    const tp = clamp01((t - tt) / 5);                 // reveal progress over 5s
+    const titleA = envelope(t, tt, chapters[3].t - tt + 1.5, 2.2, 1.6);
+    titleWrap.style.opacity = titleA;
+    titleWrap.style.transform = `translate(${dx * 0.8}px, ${dy * 0.8}px) scale(${zoom})`;
+    const spacing = 0.1 + easeOut(tp) * 0.28;
+    title.style.letterSpacing = spacing + 'em';
+    const sweepPos = 100 - easeOut(clamp01((t - tt - 0.6) / 3.2)) * 200;
+    title.style.backgroundPosition = sweepPos + '% 0';
+    title.style.filter = `blur(${(1 - easeOut(tp)) * 6}px)`;
+    over.style.opacity = clamp01((t - tt - 0.2) / 1.5);
+    under.style.opacity = clamp01((t - tt - 2.6) / 1.4);
+
+    // Flare streak passing behind the title
+    const fp = clamp01((t - tt - 0.4) / 3.6);
+    flare.style.opacity = fp > 0 && fp < 1 ? Math.sin(fp * Math.PI) : 0;
+    flare.style.left = (-40 + fp * 120) + '%';
+    flare.style.transform = `translateY(-50%) translate(${dx * 0.4}px, ${dy * 0.4}px) rotate(${-4 + fp * 8}deg)`;
+
+    // Credits roll
+    const ct = chapters[3].t, ce = chapters[4].t;
+    const cA = envelope(t, ct, ce - ct + 1, 1.5, 1.5);
+    credits.style.opacity = cA;
+    const frameH = frame.clientHeight;
+    const rollH = roll.scrollHeight;
+    const cp = clamp01((t - ct) / (ce - ct));
+    roll.style.transform = `translateY(${-(rollH + frameH) * cp}px) translate(${dx * 0.5}px, 0)`;
+
+    // End card
+    const eA = envelope(t, ce + 0.5, DURATION - ce, 1.8, 0.5);
+    endcard.style.opacity = eA;
+    endcard.style.pointerEvents = eA > 0.5 ? 'auto' : 'none';
+
+    // Scrubber
+    const pct = t / DURATION * 100;
+    progress.style.width = pct + '%'; playhead.style.left = pct + '%';
+    track.setAttribute('aria-valuenow', Math.round(pct));
+    timecode.textContent = fmt(t);
+    let ci = 0; chapters.forEach((c, i) => { if (t >= c.t) ci = i; });
+    chapterBtns.forEach((b, i) => b.classList.toggle('current', i === ci));
+  }
+
+  function loop(now) {
+    const dt = Math.min(0.1, (now - lastNow) / 1000); lastNow = now;
+    if (playing) {
+      T += dt;
+      if (T >= DURATION) { T = DURATION; setPlaying(false); }
+    }
+    frameN++;
+    if (!reduceMotion || frameN % 4 === 0) drawGrain();
+    render(T);
+    requestAnimationFrame(loop);
+  }
+
+  // ---------- Controls ----------
+  function setPlaying(v) {
+    playing = v;
+    playBtn.textContent = v ? 'Pause' : 'Play';
+    playBtn.setAttribute('aria-label', v ? 'Pause' : 'Play');
+  }
+  function seek(t) { T = Math.max(0, Math.min(DURATION, t)); if (T < DURATION) setPlaying(true); render(T); }
+  function replay() { seek(0); }
+
+  playBtn.addEventListener('click', () => { if (T >= DURATION) replay(); else setPlaying(!playing); });
+  document.getElementById('replayBtn').addEventListener('click', replay);
+  document.getElementById('replayBtn2').addEventListener('click', replay);
+  document.getElementById('duration').textContent = fmt(DURATION);
+
+  let scrubbing = false;
+  const seekFromEvent = e => {
+    const r = track.getBoundingClientRect();
+    seek(clamp01((e.clientX - r.left) / r.width) * DURATION);
+  };
+  track.addEventListener('pointerdown', e => { scrubbing = true; track.setPointerCapture(e.pointerId); seekFromEvent(e); });
+  track.addEventListener('pointermove', e => { if (scrubbing) seekFromEvent(e); });
+  track.addEventListener('pointerup', () => scrubbing = false);
+  track.addEventListener('pointercancel', () => scrubbing = false);
+  track.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') { seek(T + 2); e.preventDefault(); }
+    if (e.key === 'ArrowLeft') { seek(T - 2); e.preventDefault(); }
+  });
+  document.addEventListener('keydown', e => {
+    if (e.code === 'Space' && e.target === document.body) { e.preventDefault(); if (T >= DURATION) replay(); else setPlaying(!playing); }
+    if (e.key === 'r' || e.key === 'R') replay();
+  });
+
+  window.addEventListener('resize', resizeGrain);
+  resizeGrain();
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

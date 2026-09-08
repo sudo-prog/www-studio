@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Meridian Gazette — Thursday, October 14, 1926</title>
+<style>
+  :root {
+    --paper: #e9dcc0;
+    --paper-dark: #d9c9a6;
+    --ink: #1d1a17;
+    --ink-soft: #3a342c;
+    --rule: #2a2520;
+    --red: #a8261c;
+    --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, ui-serif, serif;
+    --display: 'Old English Text MT', 'Cloister Black', Georgia, 'Times New Roman', ui-serif, serif;
+    --mono: 'Courier New', Courier, ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: #2b2420;
+    font-family: var(--serif);
+    color: var(--ink);
+    padding: clamp(10px, 3vw, 44px);
+    display: flex; justify-content: center;
+    line-height: 1.38;
+  }
+
+  .paper {
+    position: relative;
+    width: 100%; max-width: 1240px;
+    padding: clamp(16px, 3vw, 40px) clamp(14px, 3vw, 38px) 40px;
+    background-color: var(--paper);
+    background-image:
+      radial-gradient(circle at 84% 18%, transparent 56%, rgba(112, 74, 28, 0.20) 58%, rgba(112, 74, 28, 0.06) 61%, transparent 64%),
+      radial-gradient(circle at 86% 20%, rgba(112, 74, 28, 0.10), transparent 40%),
+      radial-gradient(ellipse at 8% 92%, rgba(96, 62, 22, 0.16), transparent 30%),
+      radial-gradient(ellipse at 50% 50%, rgba(255, 246, 220, 0.5), transparent 70%),
+      linear-gradient(180deg, var(--paper), var(--paper-dark));
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,0.8), 0 0 0 1px rgba(0,0,0,0.3);
+    overflow: hidden;
+  }
+  /* paper grain from an SVG turbulence data-URI */
+  .paper::before {
+    content: "";
+    position: absolute; inset: 0; pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    opacity: 0.55; mix-blend-mode: multiply;
+  }
+  /* fold creases */
+  .paper::after {
+    content: "";
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      linear-gradient(90deg, transparent calc(var(--fold, 50%) - 1px), rgba(0,0,0,0.07) var(--fold, 50%), rgba(255,255,255,0.25) calc(var(--fold, 50%) + 1px), transparent calc(var(--fold, 50%) + 3px)),
+      linear-gradient(180deg, transparent 39.8%, rgba(0,0,0,0.05) 40%, rgba(255,255,255,0.2) 40.2%, transparent 40.5%);
+  }
+
+  /* --- masthead ---------------------------------------------------------- */
+  .masthead { position: relative; text-align: center; border-bottom: 3px double var(--rule); padding-bottom: 8px; }
+  .ears { display: flex; justify-content: space-between; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; }
+  .ear { border: 1px solid var(--rule); padding: 6px 10px; max-width: 200px; text-align: left; line-height: 1.35; }
+  .ear b { display: block; font-size: 10px; letter-spacing: 0.18em; border-bottom: 1px solid var(--rule); margin-bottom: 4px; }
+  .title {
+    margin: 8px 0 2px;
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(34px, 8.2vw, 104px);
+    letter-spacing: 0.02em;
+    line-height: 1;
+    color: var(--ink);
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.25), -0.5px -0.5px 0 rgba(255,255,255,0.35), 0 0 1px rgba(29,26,23,0.6);
+    transform: scaleY(1.12);
+    display: inline-block;
+    transition: text-shadow 600ms ease;
+  }
+  .title:hover { text-shadow: 1px 1px 0 rgba(0,0,0,0.25), 0 0 2px rgba(29,26,23,0.9), 0 0 6px rgba(29,26,23,0.35); }
+  .title .cap { font-size: 1.18em; }
+  .motto { font-size: 12px; font-style: italic; letter-spacing: 0.06em; margin: 8px 0 0; }
+  .dateline {
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 16px;
+    border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+    padding: 5px 0; margin: 6px 0 14px;
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700;
+  }
+
+  .stamp {
+    position: absolute; right: 2%; top: 44%;
+    padding: 6px 14px; border: 3px double var(--red); color: var(--red);
+    font-family: var(--serif); font-weight: 900; font-size: clamp(11px, 1.6vw, 20px); letter-spacing: 0.24em; text-transform: uppercase;
+    transform: rotate(-11deg); opacity: 0.82; mix-blend-mode: multiply;
+    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='120'><filter id='d'><feTurbulence type='fractalNoise' baseFrequency='0.08' numOctaves='2'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 5 -1.4'/></filter><rect width='100%' height='100%' filter='url(%23d)'/></svg>");
+    mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='120'><filter id='d'><feTurbulence type='fractalNoise' baseFrequency='0.08' numOctaves='2'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 5 -1.4'/></filter><rect width='100%' height='100%' filter='url(%23d)'/></svg>");
+    animation: stampIn 700ms cubic-bezier(.2,1.4,.4,1) both 300ms;
+  }
+  @keyframes stampIn { from { transform: rotate(-11deg) scale(2.2); opacity: 0; } to { transform: rotate(-11deg) scale(1); opacity: 0.82; } }
+
+  /* --- typography ------------------------------------------------------- */
+  h2, h3, h4 { font-family: var(--serif); margin: 0; line-height: 1.05; }
+  .hl { cursor: default; transition: text-shadow 500ms ease, letter-spacing 500ms ease; }
+  .hl:hover { text-shadow: 0 0 0.6px currentColor, 0 0 1.6px rgba(29,26,23,0.55), 0 0 5px rgba(29,26,23,0.18); letter-spacing: 0.012em; }
+  .lead-h { font-size: clamp(30px, 4.4vw, 56px); font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em; text-align: center; margin: 0 0 8px; }
+  .deck { text-align: center; font-style: italic; font-size: clamp(14px, 1.5vw, 19px); margin: 0 auto 10px; max-width: 60ch; }
+  .deck + .deck { border-top: 1px solid var(--rule); padding-top: 6px; }
+  .byline { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.14em; text-align: center; margin: 0 0 10px; }
+  .byline::before, .byline::after { content: " — "; }
+  p { margin: 0 0 0.6em; text-align: justify; hyphens: auto; -webkit-hyphens: auto; font-size: 13.5px; }
+  .dropcap::first-letter { float: left; font-size: 3.4em; line-height: 0.82; padding: 4px 6px 0 0; font-weight: 700; }
+  .cols-2 { column-count: 2; column-gap: 18px; column-rule: 1px solid rgba(42,37,32,0.5); }
+  .cols-3 { column-count: 3; column-gap: 18px; column-rule: 1px solid rgba(42,37,32,0.5); }
+  .continued { font-size: 10.5px; font-style: italic; text-align: right; margin-top: 6px; }
+
+  .sec { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; text-align: center; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 3px 0; margin: 0 0 10px; font-weight: 700; position: relative; }
+  .sec::before, .sec::after { content: ""; position: absolute; left: 0; right: 0; height: 3px; border-top: 1px solid var(--rule); }
+  .sec::before { top: -5px; } .sec::after { bottom: -5px; }
+
+  .story h3 { font-size: 20px; font-weight: 900; text-align: center; margin-bottom: 6px; }
+  .story h4 { font-size: 13px; font-style: italic; font-weight: 400; text-align: center; margin-bottom: 8px; border-bottom: 1px solid rgba(42,37,32,0.5); padding-bottom: 6px; }
+  .story + .story { border-top: 3px double var(--rule); padding-top: 10px; margin-top: 10px; }
+
+  /* --- layout ----------------------------------------------------------- */
+  .top { display: grid; grid-template-columns: 3fr 2fr 1.2fr; gap: 20px; margin-bottom: 14px; }
+  .top > * + * { border-left: 1px solid var(--rule); padding-left: 20px; }
+  .rule { border: 0; border-top: 3px double var(--rule); margin: 14px 0; }
+  .body { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .body > * + * { border-left: 1px solid var(--rule); padding-left: 20px; }
+  .bottom { display: grid; grid-template-columns: 1.1fr 1.6fr 1.3fr; gap: 20px; margin-top: 14px; }
+  .bottom > * + * { border-left: 1px solid var(--rule); padding-left: 20px; }
+
+  /* --- illustration ------------------------------------------------------ */
+  figure { margin: 0; }
+  figure svg { width: 100%; height: auto; display: block; border: 1px solid var(--rule); background: rgba(255,250,235,0.35); }
+  figcaption { font-size: 11px; font-style: italic; text-align: center; margin-top: 6px; line-height: 1.35; }
+  figcaption b { font-style: normal; text-transform: uppercase; letter-spacing: 0.1em; font-size: 10px; }
+
+  /* --- boxes -------------------------------------------------------------- */
+  .box { border: 1px solid var(--rule); padding: 8px 10px; box-shadow: inset 0 0 0 3px var(--paper), inset 0 0 0 4px var(--rule); }
+  .box h3 { font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; text-align: center; border-bottom: 1px solid var(--rule); padding: 4px 0 6px; margin-bottom: 8px; }
+  .weather { font-size: 12.5px; }
+  .weather .big { font-size: 30px; font-weight: 700; text-align: center; margin: 2px 0; }
+  .weather .row { display: flex; justify-content: space-between; border-bottom: 1px dotted rgba(42,37,32,0.5); padding: 3px 0; }
+  .weather .row:last-child { border: 0; }
+  .weather svg { display: block; margin: 0 auto 4px; width: 56px; height: 56px; }
+
+  table { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 11.5px; }
+  th { text-align: left; font-weight: 700; border-bottom: 1px solid var(--rule); padding: 2px 4px; font-size: 10px; letter-spacing: 0.12em; }
+  td { padding: 3px 4px; border-bottom: 1px dotted rgba(42,37,32,0.4); white-space: nowrap; }
+  td.n, th.n { text-align: right; }
+  tr:hover td { background: rgba(42,37,32,0.06); }
+  .up { color: #2f5a2a; } .down { color: var(--red); }
+
+  .ads { display: grid; gap: 8px; font-size: 11.5px; }
+  .ad { border: 1px solid var(--rule); padding: 6px 8px; line-height: 1.3; transition: transform 300ms ease, box-shadow 300ms ease; }
+  .ad:hover { transform: rotate(-0.6deg) scale(1.02); box-shadow: 2px 3px 0 rgba(42,37,32,0.25); }
+  .ad b { display: block; text-transform: uppercase; letter-spacing: 0.1em; font-size: 10.5px; margin-bottom: 2px; }
+  .ad.fancy { text-align: center; font-family: var(--display); font-size: 15px; border: 3px double var(--rule); }
+  .ad.fancy small { font-family: var(--serif); font-size: 10.5px; display: block; margin-top: 2px; letter-spacing: 0.1em; }
+
+  .foot { margin-top: 16px; border-top: 1px solid var(--rule); padding-top: 6px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+
+  /* --- responsive collapse --------------------------------------------- */
+  @media (max-width: 980px) {
+    .top { grid-template-columns: 1fr 1fr; }
+    .top > .side { grid-column: 1 / -1; border-left: 0; padding-left: 0; border-top: 3px double var(--rule); padding-top: 10px; }
+    .body { grid-template-columns: 1fr 1fr; }
+    .body > :nth-child(3) { border-left: 0; padding-left: 0; }
+    .body > :nth-child(n+3) { border-top: 3px double var(--rule); padding-top: 10px; }
+    .bottom { grid-template-columns: 1fr 1fr; }
+    .bottom > :nth-child(3) { grid-column: 1 / -1; border-left: 0; padding-left: 0; border-top: 3px double var(--rule); padding-top: 10px; }
+  }
+  @media (max-width: 620px) {
+    .top, .body, .bottom { grid-template-columns: 1fr; }
+    .top > *, .body > *, .bottom > * { border-left: 0 !important; padding-left: 0 !important; }
+    .top > * + *, .body > * + *, .bottom > * + * { border-top: 3px double var(--rule); padding-top: 10px; }
+    .cols-2, .cols-3 { column-count: 1; }
+    .ears { display: none; }
+    .stamp { top: 30%; right: -2%; }
+    p { font-size: 14px; }
+  }
+  @media (min-width: 1600px) { body { font-size: 18px; } p { font-size: 15.5px; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stamp, .title, .hl, .ad { animation: none; transition: none; }
+  }
+</style>
+</head>
+<body>
+<article class="paper" id="paper">
+
+  <header class="masthead">
+    <div class="ears">
+      <div class="ear"><b>The Weather</b>Fair and cool to-night; light frost inland. Friday, increasing cloud with westerly winds.</div>
+      <div class="ear"><b>Circulation</b>Forty-one thousand copies daily, sworn. Largest in the three counties.</div>
+    </div>
+    <h1 class="title"><span class="cap">T</span>he <span class="cap">M</span>eridian <span class="cap">G</span>azette</h1>
+    <p class="motto">“All the Light of the Day, Printed Before the Dark.”</p>
+    <div class="stamp" id="stamp" aria-label="Late edition">Late Edition</div>
+  </header>
+
+  <div class="dateline">
+    <span>Vol. XLVII — No. 212</span>
+    <span>Meridian City, Thursday, October 14, 1926</span>
+    <span>Price Two Cents</span>
+  </div>
+
+  <section class="top">
+    <div class="lead">
+      <h2 class="lead-h hl">Airship Meridian Spans Ocean in Sixty-One Hours</h2>
+      <p class="deck">Great Silver Vessel Circles Harbour at Dawn Before Crowd of Thirty Thousand; Captain Hale Reports “Not a Rivet Loosened”</p>
+      <p class="deck">Mails from Lisbon Delivered at City Post Office Before Noon — First Aerial Letters Ever Received Here</p>
+      <p class="byline">By Our Aeronautical Correspondent</p>
+      <div class="cols-2">
+        <p class="dropcap">Out of a grey Atlantic dawn, and to the shrieking of every whistle on the waterfront, the airship <i>Meridian</i> came home yesterday morning. She crossed the harbour bar at 6.42 o’clock, her silver flanks catching the first sun, and made two stately circuits of the city before settling to her mooring mast at Fairleigh Field at 7.15. Sixty-one hours and nine minutes had elapsed since her nose left the tower at Lisbon.</p>
+        <p>Captain Aldous Hale, who commanded the vessel with a crew of twenty-three, descended the mast ladder to find the Mayor, the Harbour Board, and a considerable portion of the population waiting. Asked for a statement, he removed his gloves and said only: “Not a rivet loosened. We had headwinds off the Azores and a night of ice at eleven thousand feet. She behaved like a lady throughout.”</p>
+        <p>The crossing was made at an average speed of a little more than fifty-two miles an hour. Wireless messages received by the Gazette through the night indicated the ship had encountered a storm belt on Tuesday evening and had climbed above it, the crew reporting the curious sight of lightning playing beneath their gondola “like a city on fire under glass.”</p>
+        <p>The vessel carried eleven passengers, among them Mrs. Constance Wyndham, the first woman to cross by air, who described the voyage as “tedious, cold, and entirely wonderful.” She was met by her daughter and a considerable number of photographers.</p>
+        <p>Perhaps of greater lasting moment was the sack of mails. Two hundred and twelve letters bearing Portuguese stamps and the ship’s own violet cachet were carried by motor-car to the General Post Office and were in the hands of their recipients before noon. Postmaster Grady declared the experiment “a complete success” and hinted that a regular aerial mail might be established by the spring.</p>
+        <p class="continued">Continued on Page Two, Column One.</p>
+      </div>
+    </div>
+
+    <figure>
+      <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="illTitle">
+        <title id="illTitle">Engraving of the airship Meridian passing over the city skyline at dawn</title>
+        <defs>
+          <pattern id="hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <line x1="0" y1="0" x2="0" y2="4" stroke="#1d1a17" stroke-width="0.8"/>
+          </pattern>
+          <pattern id="hatch2" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(-30)">
+            <line x1="0" y1="0" x2="0" y2="3" stroke="#1d1a17" stroke-width="0.9"/>
+          </pattern>
+          <pattern id="cross" width="3.5" height="3.5" patternUnits="userSpaceOnUse">
+            <path d="M0 0L3.5 3.5M3.5 0L0 3.5" stroke="#1d1a17" stroke-width="0.7"/>
+          </pattern>
+          <pattern id="skyline" width="400" height="8" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="4" x2="400" y2="4" stroke="#1d1a17" stroke-width="0.5"/>
+          </pattern>
+          <pattern id="ripple" width="24" height="6" patternUnits="userSpaceOnUse">
+            <path d="M0 3 Q6 0 12 3 T24 3" fill="none" stroke="#1d1a17" stroke-width="0.7"/>
+          </pattern>
+        </defs>
+        <rect width="400" height="300" fill="none"/>
+        <!-- sky lines -->
+        <rect x="0" y="0" width="400" height="150" fill="url(#skyline)" opacity="0.55"/>
+        <!-- sun -->
+        <circle cx="330" cy="70" r="26" fill="none" stroke="#1d1a17" stroke-width="1.2"/>
+        <circle cx="330" cy="70" r="26" fill="url(#hatch)" opacity="0.35"/>
+        <g stroke="#1d1a17" stroke-width="0.8">
+          <line x1="330" y1="30" x2="330" y2="20"/><line x1="330" y1="110" x2="330" y2="120"/>
+          <line x1="290" y1="70" x2="280" y2="70"/><line x1="370" y1="70" x2="380" y2="70"/>
+          <line x1="302" y1="42" x2="295" y2="35"/><line x1="358" y1="98" x2="365" y2="105"/>
+          <line x1="358" y1="42" x2="365" y2="35"/><line x1="302" y1="98" x2="295" y2="105"/>
+        </g>
+        <!-- airship -->
+        <g id="ship">
+          <ellipse cx="150" cy="80" rx="120" ry="30" fill="#e9dcc0" stroke="#1d1a17" stroke-width="1.6"/>
+          <path d="M30 80 A120 30 0 0 0 270 80 L270 82 A120 32 0 0 1 30 82Z" fill="url(#hatch)"/>
+          <path d="M45 92 Q150 122 255 92 Q150 106 45 92Z" fill="url(#cross)"/>
+          <path d="M60 66 Q150 40 240 66" fill="none" stroke="#1d1a17" stroke-width="0.6"/>
+          <path d="M40 74 Q150 48 260 74" fill="none" stroke="#1d1a17" stroke-width="0.6"/>
+          <path d="M40 86 Q150 112 260 86" fill="none" stroke="#1d1a17" stroke-width="0.6"/>
+          <path d="M55 92 Q150 126 245 92" fill="none" stroke="#1d1a17" stroke-width="0.6"/>
+          <!-- fins -->
+          <path d="M262 68 L292 52 L286 80 Z" fill="url(#hatch2)" stroke="#1d1a17" stroke-width="1"/>
+          <path d="M262 92 L292 108 L286 80 Z" fill="url(#hatch2)" stroke="#1d1a17" stroke-width="1"/>
+          <!-- gondola -->
+          <path d="M120 108 L185 108 L180 120 L125 120 Z" fill="#1d1a17"/>
+          <g fill="#e9dcc0"><rect x="128" y="110" width="6" height="5"/><rect x="140" y="110" width="6" height="5"/><rect x="152" y="110" width="6" height="5"/><rect x="164" y="110" width="6" height="5"/></g>
+          <!-- engine cars -->
+          <ellipse cx="95" cy="104" rx="9" ry="5" fill="url(#hatch)" stroke="#1d1a17" stroke-width="1"/>
+          <ellipse cx="205" cy="104" rx="9" ry="5" fill="url(#hatch)" stroke="#1d1a17" stroke-width="1"/>
+          <text x="150" y="84" text-anchor="middle" font-family="Georgia, serif" font-size="10" letter-spacing="3" fill="#1d1a17">MERIDIAN</text>
+        </g>
+        <!-- city -->
+        <g stroke="#1d1a17" stroke-width="1" fill="url(#hatch)">
+          <rect x="10" y="190" width="30" height="80"/>
+          <rect x="46" y="170" width="22" height="100"/>
+          <rect x="74" y="200" width="40" height="70"/>
+          <rect x="120" y="150" width="26" height="120"/>
+          <path d="M120 150 L133 128 L146 150Z" fill="url(#hatch2)"/>
+          <rect x="152" y="185" width="34" height="85"/>
+          <rect x="192" y="160" width="20" height="110"/>
+          <rect x="218" y="195" width="46" height="75"/>
+          <rect x="270" y="175" width="28" height="95"/>
+          <rect x="304" y="205" width="36" height="65"/>
+          <rect x="346" y="165" width="24" height="105"/>
+          <rect x="376" y="200" width="20" height="70"/>
+        </g>
+        <!-- clock tower -->
+        <rect x="192" y="160" width="20" height="14" fill="#e9dcc0" stroke="#1d1a17" stroke-width="1"/>
+        <circle cx="202" cy="167" r="5" fill="none" stroke="#1d1a17" stroke-width="0.8"/>
+        <line x1="202" y1="167" x2="202" y2="163" stroke="#1d1a17" stroke-width="0.8"/>
+        <line x1="202" y1="167" x2="205" y2="168" stroke="#1d1a17" stroke-width="0.8"/>
+        <!-- windows -->
+        <g fill="#e9dcc0" stroke="#1d1a17" stroke-width="0.5">
+          <rect x="15" y="198" width="5" height="7"/><rect x="26" y="198" width="5" height="7"/><rect x="15" y="212" width="5" height="7"/><rect x="26" y="212" width="5" height="7"/>
+          <rect x="126" y="160" width="5" height="8"/><rect x="136" y="160" width="5" height="8"/><rect x="126" y="176" width="5" height="8"/><rect x="136" y="176" width="5" height="8"/>
+          <rect x="158" y="195" width="6" height="8"/><rect x="172" y="195" width="6" height="8"/><rect x="158" y="212" width="6" height="8"/><rect x="172" y="212" width="6" height="8"/>
+          <rect x="276" y="185" width="5" height="8"/><rect x="288" y="185" width="5" height="8"/><rect x="276" y="202" width="5" height="8"/><rect x="288" y="202" width="5" height="8"/>
+        </g>
+        <!-- harbour -->
+        <rect x="0" y="270" width="400" height="30" fill="url(#ripple)"/>
+        <line x1="0" y1="270" x2="400" y2="270" stroke="#1d1a17" stroke-width="1"/>
+        <!-- crowd -->
+        <g fill="#1d1a17">
+          <circle cx="20" cy="266" r="2"/><circle cx="27" cy="267" r="2"/><circle cx="35" cy="266" r="2"/><circle cx="60" cy="267" r="2"/><circle cx="66" cy="266" r="2"/>
+          <circle cx="240" cy="267" r="2"/><circle cx="247" cy="266" r="2"/><circle cx="255" cy="267" r="2"/><circle cx="330" cy="266" r="2"/><circle cx="337" cy="267" r="2"/>
+        </g>
+        <rect x="0.5" y="0.5" width="399" height="299" fill="none" stroke="#1d1a17" stroke-width="1"/>
+      </svg>
+      <figcaption><b>From a drawing by our staff artist.</b><br>The <i>Meridian</i> over the Custom House at 6.50 o’clock yesterday, her engines throttled to a whisper.</figcaption>
+    </figure>
+
+    <aside class="side">
+      <div class="sec">Late Wires</div>
+      <div class="story">
+        <h3 class="hl">Comet Found by Hill Observatory</h3>
+        <h4>Faint Visitor Near the Plough; Naked-Eye Object by December, Astronomers Believe</h4>
+        <p>Professor Ida Marchbanks of the Hill Observatory announced last night the discovery of a new comet of the eleventh magnitude in the constellation of the Great Bear. The object was detected upon a photographic plate exposed Tuesday and confirmed by visual observation early yesterday. Its orbit is not yet computed, but the Professor expects it to brighten considerably as it nears the sun.</p>
+      </div>
+      <div class="story">
+        <h3 class="hl">Tramway Bond Carries</h3>
+        <h4>Electric Line to Harbour District Approved by Four to One</h4>
+        <p>The electors of Meridian City yesterday approved by a vote of 18,402 to 4,617 the issue of bonds in the sum of two million dollars for the construction of an electric tramway from Union Square to the Harbour District. Work is to begin before the frost.</p>
+      </div>
+    </aside>
+  </section>
+
+  <hr class="rule">
+
+  <section class="body">
+    <div class="story">
+      <h3 class="hl">Grand Hotel Blaze Held to Upper Floors</h3>
+      <h4>Guests Descend in Night Attire; Orchestra Plays On in Ballroom Until Ordered Out</h4>
+      <p class="dropcap">Fire discovered at half past eleven last night in a linen room on the sixth floor of the Grand Hotel was confined to the two upper storeys by the exertions of four companies of the Fire Department, and no life was lost. Some two hundred guests descended by the stairways, a number of them in dressing gowns, and were accommodated in the lobby with coffee by the management.</p>
+      <p>The dance orchestra in the Palm Ballroom, learning of the fire only when smoke drifted through the ventilators, continued to play a fox-trot at the request of the leader, Mr. Sol Bettany, “so that nobody should hurry,” and were the last to leave the building. Damage is estimated at forty thousand dollars.</p>
+    </div>
+    <div class="story">
+      <h3 class="hl">Radio Concert to Reach Ten Thousand Homes</h3>
+      <h4>Station WMRD to Broadcast Symphony from Apollo Hall Saturday Night</h4>
+      <p>For the first time in the history of the city, a complete symphony concert will be sent by wireless to the homes of listeners on Saturday evening at eight o’clock. The Meridian Symphony, under the baton of Herr Anton Krebs, will perform the Fifth Symphony of Beethoven and a suite by Mr. Grainger from the stage of Apollo Hall.</p>
+      <p>Engineers of Station WMRD have suspended three microphones from the proscenium and assure the public that “every note, down to the triangle, will be heard as clearly in a farmhouse kitchen as in the front stalls.” Dealers report a brisk sale of receiving sets.</p>
+      <div class="sec" style="margin-top:12px">Sporting</div>
+      <h3 class="hl" style="font-size:17px">Harriers Take Cup on Last Lap</h3>
+      <p>The Meridian Harriers won the Tri-County Cross-Country Cup at Fenwick Downs yesterday when their captain, T. Okonjo, overhauled the leader in the final quarter mile to finish in 31 minutes 14 seconds.</p>
+    </div>
+    <div class="story">
+      <h3 class="hl">Council Debates Motor Speed Limit</h3>
+      <h4>Alderman Pruett Calls Twenty Miles “Reckless”; Motorists’ League Objects</h4>
+      <p>A proposal to raise the speed limit for motor-cars within the city from fifteen to twenty miles an hour occasioned a lively debate in Council last evening. Alderman Pruett declared that at twenty miles an hour “a man cannot count the lamp-posts,” while Mr. Vance of the Motorists’ League replied that his members frequently exceeded that speed “without, so far, the loss of a single lamp-post.” The matter was referred to committee.</p>
+      <div class="sec" style="margin-top:12px">Society</div>
+      <p>Mrs. Eleanor Ashby-Cole entertained at tea yesterday in honour of Mrs. Wyndham, the aerial passenger, at her residence in Larkspur Crescent. The rooms were decorated with chrysanthemums, and a small silver airship was suspended above the tea table.</p>
+      <p>Miss Dorothea Finch and Mr. Harold Quaid will be married on Saturday at St. Anselm’s. The bride will wear ivory crêpe.</p>
+    </div>
+    <div class="story">
+      <h3 class="hl">Harbour Board Reports Record Month</h3>
+      <h4>Eighty-Two Vessels Cleared; Wool and Wheat Lead the Cargoes</h4>
+      <p>Eighty-two ocean-going vessels cleared the port during September, the greatest number for any month since the harbour records were begun in 1871, the Harbour Board reported yesterday. Outward cargoes were chiefly wool, wheat and tinned salmon; inward, machinery, textiles and a consignment of Italian marble for the new Court House.</p>
+      <div class="sec" style="margin-top:12px">Amusements</div>
+      <p><b>APOLLO HALL</b> — Saturday, the Symphony. <b>THE EMPIRE</b> — “The Cabinet Minister,” a comedy in three acts, nightly at 8.15, matinée Wednesday. <b>REX PICTURE PALACE</b> — “Sons of the Desert,” with Wurlitzer accompaniment, continuous from two o’clock. <b>FAIRLEIGH FIELD</b> — The airship <i>Meridian</i> may be viewed at her mast daily, ten to four, admission ten cents, children free.</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="bottom">
+    <div class="box weather">
+      <h3>The Weather</h3>
+      <svg viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="32" cy="32" r="12" fill="none" stroke="#1d1a17" stroke-width="1.5"/>
+        <g stroke="#1d1a17" stroke-width="1.5" stroke-linecap="round">
+          <line x1="32" y1="8" x2="32" y2="14"/><line x1="32" y1="50" x2="32" y2="56"/>
+          <line x1="8" y1="32" x2="14" y2="32"/><line x1="50" y1="32" x2="56" y2="32"/>
+          <line x1="15" y1="15" x2="19" y2="19"/><line x1="45" y1="45" x2="49" y2="49"/>
+          <line x1="45" y1="19" x2="49" y2="15"/><line x1="15" y1="49" x2="19" y2="45"/>
+        </g>
+      </svg>
+      <div class="big">54°</div>
+      <div class="row"><span>Highest yesterday</span><span>61°</span></div>
+      <div class="row"><span>Lowest last night</span><span>44°</span></div>
+      <div class="row"><span>Barometer, 8 a.m.</span><span>30.12, rising</span></div>
+      <div class="row"><span>Wind</span><span>N.W., light</span></div>
+      <div class="row"><span>Sun rises</span><span>6.19</span></div>
+      <div class="row"><span>Sun sets</span><span>5.31</span></div>
+      <div class="row"><span>High water</span><span>9.04 a.m.</span></div>
+    </div>
+
+    <div class="box">
+      <h3>Meridian Exchange — Closing Prices</h3>
+      <table>
+        <thead><tr><th>Security</th><th class="n">Open</th><th class="n">Close</th><th class="n">Chg.</th></tr></thead>
+        <tbody id="stocks">
+          <tr><td>Meridian Airship Co.</td><td class="n">142⅜</td><td class="n">158½</td><td class="n up">+16⅛</td></tr>
+          <tr><td>Harbour Tramways</td><td class="n">61</td><td class="n">64¼</td><td class="n up">+3¼</td></tr>
+          <tr><td>Consolidated Wireless</td><td class="n">88½</td><td class="n">91</td><td class="n up">+2½</td></tr>
+          <tr><td>Grand Hotel Corp.</td><td class="n">34⅞</td><td class="n">29</td><td class="n down">−5⅞</td></tr>
+          <tr><td>Fenwick Woollen Mills</td><td class="n">47</td><td class="n">47⅛</td><td class="n up">+⅛</td></tr>
+          <tr><td>Northern Wheat Pool</td><td class="n">112</td><td class="n">110¾</td><td class="n down">−1¼</td></tr>
+          <tr><td>Atlantic Cable &amp; Tel.</td><td class="n">203</td><td class="n">199½</td><td class="n down">−3½</td></tr>
+          <tr><td>City Gas &amp; Electric</td><td class="n">76¼</td><td class="n">77</td><td class="n up">+¾</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:10.5px; font-style:italic; margin-top:6px; text-align:left">Sales for the day 412,000 shares. Call money 4½ per cent. Sterling 4.85⅛.</p>
+    </div>
+
+    <div class="ads">
+      <div class="ad fancy">Bettany’s Orchestra<small>Engagements for dances, weddings and wireless · Telephone Harbour 2210</small></div>
+      <div class="ad"><b>Wanted</b>Reliable young man for counting-house, must write a fair hand and know the typewriter. Apply in own handwriting, Box 44, Gazette.</div>
+      <div class="ad"><b>For Sale</b>Motor-car, 1923 touring model, four new tyres, electric lamps, twenty-two miles to the gallon. Owner going abroad by airship. $385. Larkspur 118.</div>
+      <div class="ad"><b>Lost</b>On Tuesday, near the Custom House, a pair of field-glasses in leather case, marked A.H. Reward. Return to Fairleigh Field office.</div>
+      <div class="ad"><b>Lessons</b>Wireless telegraphy taught in twelve evenings. Certificates guaranteed. Marconi School, Quay Street, above the chemist.</div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span>Printed and published by The Gazette Company, 14 Printing House Lane</span>
+    <span>Telephone: Central 100 · Entered as second-class matter</span>
+  </footer>
+</article>
+
+<script>
+(function () {
+  'use strict';
+  // Every copy comes off the press a little differently: fold, stamp angle, stains.
+  const paper = document.getElementById('paper');
+  const stamp = document.getElementById('stamp');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  paper.style.setProperty('--fold', (48 + Math.random() * 4).toFixed(2) + '%');
+  const angle = -(8 + Math.random() * 7);
+  stamp.style.setProperty('transform', 'rotate(' + angle.toFixed(1) + 'deg)');
+  if (!reduceMotion) {
+    stamp.style.animation = 'none';
+    requestAnimationFrame(() => {
+      stamp.animate([
+        { transform: 'rotate(' + angle + 'deg) scale(2.2)', opacity: 0 },
+        { transform: 'rotate(' + angle + 'deg) scale(0.96)', opacity: 0.82, offset: 0.7 },
+        { transform: 'rotate(' + angle + 'deg) scale(1)', opacity: 0.82 }
+      ], { duration: 700, delay: 350, easing: 'cubic-bezier(.2,1.2,.4,1)', fill: 'both' });
+    });
+  }
+
+  // Headlines on touch devices: tap to spread the ink, since there is no hover.
+  document.querySelectorAll('.hl').forEach(h => {
+    h.addEventListener('touchstart', () => {
+      h.style.textShadow = '0 0 0.6px currentColor, 0 0 1.6px rgba(29,26,23,0.55), 0 0 5px rgba(29,26,23,0.18)';
+      setTimeout(() => { h.style.textShadow = ''; }, 900);
+    }, { passive: true });
+  });
+
+  // Ticker: the exchange table nudges a fraction on hover, as if a late wire arrived.
+  const FR = ['⅛', '¼', '⅜', '½', '⅝', '¾', '⅞'];
+  document.querySelectorAll('#stocks tr').forEach(row => {
+    row.addEventListener('mouseenter', () => {
+      const cells = row.querySelectorAll('td');
+      const close = cells[2], chg = cells[3];
+      if (Math.random() < 0.5) return;
+      const whole = parseInt(close.textContent, 10);
+      close.textContent = whole + FR[Math.floor(Math.random() * FR.length)];
+      const up = Math.random() < 0.55;
+      chg.textContent = (up ? '+' : '−') + (Math.random() < 0.5 ? '' : String(1 + Math.floor(Math.random() * 3))) + FR[Math.floor(Math.random() * FR.length)];
+      chg.className = 'n ' + (up ? 'up' : 'down');
+    });
+  });
+})();
+</script>
+</body>
+</html>

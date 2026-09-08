@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wooden Alphabet Blocks — A Tumbling Toy</title>
+<style>
+  :root {
+    --cream: #fbf3e4;
+    --rug: #d9a98a;
+    --rug-2: #c48a6a;
+    --desk: #a8703f;
+    --desk-2: #7a4b26;
+    --ink: #4a3323;
+    --muted: #8a6a52;
+    --red: #d8483b;
+    --blue: #2f6fc0;
+    --yellow: #f1c232;
+    --green: #4f9a5c;
+    --round: ui-rounded, 'SF Pro Rounded', 'Hiragino Maru Gothic ProN', 'Arial Rounded MT Bold', 'Helvetica Neue', system-ui, sans-serif;
+    --size: 84px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    font-family: var(--round);
+    color: var(--ink);
+    background:
+      radial-gradient(1000px 700px at 80% -10%, rgba(255,230,180,0.85), transparent 60%),
+      linear-gradient(180deg, #fff6e6 0%, var(--cream) 45%, #f2dfc4 100%);
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  /* morning light beams */
+  .light {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      linear-gradient(105deg, transparent 55%, rgba(255,245,220,0.55) 62%, transparent 70%),
+      linear-gradient(105deg, transparent 72%, rgba(255,245,220,0.35) 77%, transparent 83%);
+    mix-blend-mode: screen;
+  }
+  header {
+    position: relative; z-index: 3;
+    padding: 20px 24px 8px;
+    display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; justify-content: space-between;
+  }
+  h1 {
+    margin: 0;
+    font-size: clamp(22px, 3.2vw, 38px);
+    letter-spacing: -0.01em;
+    font-weight: 800;
+    color: var(--ink);
+  }
+  h1 span { display: inline-block; transition: transform 0.35s cubic-bezier(.34,1.56,.64,1); }
+  h1:hover span:nth-child(odd) { transform: rotate(-6deg) translateY(-3px); }
+  h1:hover span:nth-child(even) { transform: rotate(5deg) translateY(2px); }
+  h1 .r { color: var(--red); } h1 .b { color: var(--blue); } h1 .y { color: #d9a60b; } h1 .g { color: var(--green); }
+  .controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .controls form { display: flex; gap: 8px; }
+  input[type=text] {
+    font: inherit; font-size: 15px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 10px 14px; width: 160px;
+    border: 3px solid var(--ink); border-radius: 14px; background: #fff;
+    color: var(--ink); outline: none;
+    box-shadow: 0 4px 0 var(--ink);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  input[type=text]:focus { transform: translateY(-2px); box-shadow: 0 6px 0 var(--ink); }
+  input[type=text]::placeholder { color: #b9a08a; letter-spacing: 0.02em; text-transform: none; font-weight: 600; }
+  .btn {
+    font: inherit; font-size: 14px; font-weight: 800; letter-spacing: 0.04em;
+    padding: 10px 16px; border-radius: 14px; cursor: pointer;
+    border: 3px solid var(--ink); color: #fff;
+    box-shadow: 0 4px 0 var(--ink);
+    transition: transform 0.15s cubic-bezier(.2,.8,.2,1), box-shadow 0.15s;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 0 var(--ink); }
+  .btn:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--ink); }
+  .btn:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+  .btn.red { background: var(--red); } .btn.blue { background: var(--blue); }
+  .btn.yellow { background: var(--yellow); color: var(--ink); } .btn.green { background: var(--green); }
+
+  .stage {
+    position: relative; z-index: 1;
+    flex: 1; min-height: 0;
+    touch-action: none;
+    perspective: 1400px;
+    perspective-origin: 50% 20%;
+  }
+  .rug {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 28%;
+    background:
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.08) 0 6px, transparent 6px 22px),
+      linear-gradient(180deg, var(--rug) 0%, var(--rug-2) 100%);
+    border-top: 6px solid rgba(255,255,255,0.35);
+    box-shadow: 0 -20px 40px rgba(122,75,38,0.15);
+  }
+  .rug::before {
+    content: ""; position: absolute; left: 4%; right: 4%; top: 12px; bottom: 12px;
+    border: 3px dashed rgba(255,255,255,0.35); border-radius: 12px;
+  }
+  .desk {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 12%;
+    background:
+      repeating-linear-gradient(178deg, rgba(0,0,0,0.05) 0 2px, transparent 2px 9px),
+      repeating-linear-gradient(1deg, rgba(255,255,255,0.06) 0 1px, transparent 1px 14px),
+      linear-gradient(180deg, var(--desk), var(--desk-2));
+    border-top: 5px solid #c88b52;
+    box-shadow: inset 0 8px 20px rgba(0,0,0,0.25);
+  }
+  .desk::after {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(60% 90% at 70% 0%, rgba(255,220,170,0.25), transparent 70%);
+  }
+
+  /* ---------- Block ---------- */
+  .block {
+    position: absolute; left: 0; top: 0;
+    width: var(--size); height: var(--size);
+    transform-style: preserve-3d;
+    will-change: transform;
+    cursor: grab;
+    filter: drop-shadow(0 14px 10px rgba(74,51,35,0.35));
+  }
+  .block.dragging { cursor: grabbing; z-index: 100; filter: drop-shadow(0 30px 20px rgba(74,51,35,0.3)); }
+  .block:hover .face.front { filter: brightness(1.06); }
+  .face {
+    position: absolute; inset: 0;
+    border-radius: 6px;
+    backface-visibility: hidden;
+    background-color: #e3b77f;
+    background-image:
+      repeating-linear-gradient(94deg, rgba(120,70,30,0.12) 0 2px, transparent 2px 7px, rgba(120,70,30,0.08) 7px 9px, transparent 9px 18px),
+      linear-gradient(180deg, #ecc48d, #d9a86c);
+    box-shadow: inset 0 0 0 3px rgba(255,235,200,0.35), inset 0 0 0 5px rgba(120,70,30,0.12);
+  }
+  .face.front { transform: translateZ(calc(var(--size) / 2)); display: grid; place-items: center; overflow: hidden; }
+  .face.top   { transform: rotateX(90deg) translateZ(calc(var(--size) / 2)); filter: brightness(1.12); }
+  .face.right { transform: rotateY(90deg) translateZ(calc(var(--size) / 2)); filter: brightness(0.82); }
+  .face.left  { transform: rotateY(-90deg) translateZ(calc(var(--size) / 2)); filter: brightness(0.75); }
+  .face.bottom{ transform: rotateX(-90deg) translateZ(calc(var(--size) / 2)); filter: brightness(0.7); }
+  .face.back  { transform: rotateY(180deg) translateZ(calc(var(--size) / 2)); }
+  .paint {
+    position: absolute; inset: 9px; border-radius: 4px;
+    background: var(--paint);
+    /* worn edges: chipped corner reveals bare wood */
+    clip-path: polygon(0 7px, 7px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%);
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,0.18), inset 2px 3px 8px rgba(0,0,0,0.12);
+    background-image: repeating-linear-gradient(94deg, rgba(255,255,255,0.05) 0 2px, transparent 2px 7px);
+  }
+  .paint::after {
+    content: ""; position: absolute; right: 6px; top: 6px; width: 9px; height: 9px; border-radius: 50%;
+    background: radial-gradient(circle, #e9c495 0 45%, transparent 50%); opacity: 0.85;
+  }
+  .letter {
+    position: relative; z-index: 2;
+    font-size: calc(var(--size) * 0.62);
+    font-weight: 900;
+    color: #fff8e8;
+    text-shadow: 0 2px 0 rgba(0,0,0,0.22), 0 0 0 rgba(0,0,0,0.1);
+    line-height: 1;
+    transform: translateY(2px);
+    letter-spacing: -0.02em;
+  }
+  .toast {
+    position: absolute; left: 50%; bottom: 30%; transform: translate(-50%, 20px);
+    background: #fff; border: 3px solid var(--ink); border-radius: 14px; padding: 10px 16px;
+    font-weight: 800; box-shadow: 0 4px 0 var(--ink); opacity: 0; pointer-events: none;
+    transition: opacity 0.25s, transform 0.35s cubic-bezier(.34,1.56,.64,1); z-index: 5;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+  footer {
+    position: relative; z-index: 3;
+    padding: 10px 24px 14px; font-size: 13px; color: var(--muted); font-weight: 600;
+    display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+    background: linear-gradient(180deg, transparent, rgba(122,75,38,0.08));
+  }
+  footer kbd {
+    font: inherit; font-size: 12px; padding: 1px 7px; border-radius: 6px;
+    border: 2px solid var(--muted); border-bottom-width: 3px; background: #fff;
+  }
+  @media (max-width: 600px) {
+    :root { --size: 60px; }
+    input[type=text] { width: 120px; }
+    .btn { padding: 9px 12px; font-size: 13px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    h1 span, .btn, .toast { transition: none; }
+  }
+</style>
+</head>
+<body>
+<div class="light" aria-hidden="true"></div>
+
+<header>
+  <h1 aria-label="Wooden Blocks">
+    <span class="r">W</span><span class="b">o</span><span class="y">o</span><span class="g">d</span><span class="r">e</span><span class="b">n</span>&nbsp;<span class="y">B</span><span class="g">l</span><span class="r">o</span><span class="b">c</span><span class="y">k</span><span class="g">s</span>
+  </h1>
+  <div class="controls">
+    <form id="spell-form" autocomplete="off">
+      <label for="word" class="visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Word to spell</label>
+      <input type="text" id="word" placeholder="spell a word…" maxlength="12" value="PLAY">
+      <button type="submit" class="btn green">Spell</button>
+    </form>
+    <button type="button" class="btn yellow" id="shake">Shake table</button>
+    <button type="button" class="btn blue" id="more">+ Block</button>
+    <button type="button" class="btn red" id="clear">Tidy up</button>
+  </div>
+</header>
+
+<section class="stage" id="stage" aria-label="Play area with draggable wooden blocks">
+  <div class="rug" aria-hidden="true"></div>
+  <div class="desk" aria-hidden="true"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</section>
+
+<footer>
+  <span>Drag blocks and toss them · they stack, tumble and settle on the desk.</span>
+  <span><kbd>Space</kbd> shake · <kbd>Enter</kbd> spell · <span id="count">0 blocks</span></span>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  const stage = document.getElementById('stage');
+  const toast = document.getElementById('toast');
+  const countEl = document.getElementById('count');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const PAINTS = [
+    'linear-gradient(160deg,#e85c4e,#c33b30)',
+    'linear-gradient(160deg,#4a86d6,#2a5fa8)',
+    'linear-gradient(160deg,#f6cf4a,#e0ad1a)',
+    'linear-gradient(160deg,#63ad70,#3f8a4d)'
+  ];
+  const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+  let SIZE = 84;
+  let floorY = 0, stageW = 0, stageH = 0;
+  const blocks = [];
+  const GRAVITY = 2200;      // px/s²
+  const REST = 0.32;         // restitution
+  const FRICTION = 0.86;
+
+  function measure() {
+    SIZE = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--size')) || 84;
+    const r = stage.getBoundingClientRect();
+    stageW = r.width; stageH = r.height;
+    floorY = stageH - stageH * 0.12 - 4; // desk top
+    for (const b of blocks) {
+      b.x = Math.min(Math.max(0, b.x), stageW - SIZE);
+      if (b.y + SIZE > floorY) b.y = floorY - SIZE;
+    }
+  }
+
+  function makeBlock(letter, x, y, paintIdx) {
+    const el = document.createElement('div');
+    el.className = 'block';
+    el.setAttribute('role', 'img');
+    el.setAttribute('aria-label', 'Wooden block with letter ' + letter);
+    const paint = PAINTS[paintIdx == null ? Math.floor(Math.random() * PAINTS.length) : paintIdx];
+    el.innerHTML =
+      `<div class="face front"><div class="paint" style="--paint:${paint}"></div><span class="letter">${letter}</span></div>` +
+      `<div class="face top"></div><div class="face right"></div><div class="face left"></div><div class="face bottom"></div><div class="face back"></div>`;
+    stage.appendChild(el);
+    const b = {
+      el, letter, x, y, vx: (Math.random() - 0.5) * 60, vy: 0,
+      rot: (Math.random() - 0.5) * 10, rv: 0, yaw: -14 + Math.random() * 28, pitch: 12 + Math.random() * 10,
+      resting: false, drag: null
+    };
+    blocks.push(b);
+    updateCount();
+    return b;
+  }
+
+  function updateCount() { countEl.textContent = blocks.length + (blocks.length === 1 ? ' block' : ' blocks'); }
+
+  function showToast(msg) {
+    toast.textContent = msg; toast.classList.add('show');
+    clearTimeout(showToast.t); showToast.t = setTimeout(() => toast.classList.remove('show'), 1600);
+  }
+
+  // ---------- physics ----------
+  function integrate(dt) {
+    for (const b of blocks) {
+      if (b.drag) continue;
+      b.vy += GRAVITY * dt;
+      b.x += b.vx * dt; b.y += b.vy * dt;
+      b.rot += b.rv * dt;
+      // spring rotation back to upright as it settles
+      b.rv += (-b.rot * 18) * dt; b.rv *= 0.94;
+      // walls
+      if (b.x < 0) { b.x = 0; b.vx = -b.vx * REST; b.rv += b.vy * 0.02; }
+      if (b.x + SIZE > stageW) { b.x = stageW - SIZE; b.vx = -b.vx * REST; b.rv -= b.vy * 0.02; }
+      // floor
+      if (b.y + SIZE > floorY) {
+        const impact = b.vy;
+        b.y = floorY - SIZE;
+        if (impact > 60) { b.vy = -impact * REST; b.rv += (Math.random() - 0.5) * impact * 0.04; }
+        else b.vy = 0;
+        b.vx *= FRICTION;
+        if (Math.abs(b.vx) < 4) b.vx = 0;
+      }
+    }
+    // block-on-block AABB resolution, a few relaxation passes
+    for (let pass = 0; pass < 3; pass++) {
+      for (let i = 0; i < blocks.length; i++) {
+        const a = blocks[i];
+        for (let j = i + 1; j < blocks.length; j++) {
+          const c = blocks[j];
+          const dx = (a.x + SIZE / 2) - (c.x + SIZE / 2);
+          const dy = (a.y + SIZE / 2) - (c.y + SIZE / 2);
+          const ox = SIZE - Math.abs(dx), oy = SIZE - Math.abs(dy);
+          if (ox <= 0 || oy <= 0) continue;
+          const aFixed = !!a.drag, cFixed = !!c.drag;
+          if (aFixed && cFixed) continue;
+          if (oy < ox) {
+            // vertical separation (stacking)
+            const s = dy < 0 ? -1 : 1; // a is above if dy<0
+            const share = aFixed ? 0 : cFixed ? 1 : 0.5;
+            a.y += s * oy * share; c.y -= s * oy * (1 - share);
+            const rel = a.vy - c.vy;
+            if ((s < 0 && rel > 0) || (s > 0 && rel < 0)) {
+              const imp = Math.abs(rel);
+              if (!aFixed) { a.vy = cFixed ? -rel * REST : c.vy + (-rel * REST) * 0.5; a.rv += (dx / SIZE) * imp * 0.03; }
+              if (!cFixed) { c.vy = aFixed ? rel * REST : c.vy + rel * (1 + REST) * 0.5 * 0.5; c.rv -= (dx / SIZE) * imp * 0.03; }
+              if (!aFixed) a.vx = a.vx * 0.9 + c.vx * 0.1;
+            }
+          } else {
+            const s = dx < 0 ? -1 : 1;
+            const share = aFixed ? 0 : cFixed ? 1 : 0.5;
+            a.x += s * ox * share; c.x -= s * ox * (1 - share);
+            const rel = a.vx - c.vx;
+            if ((s < 0 && rel > 0) || (s > 0 && rel < 0)) {
+              const tmp = a.vx;
+              if (!aFixed) a.vx = cFixed ? -rel * REST : c.vx * 0.9;
+              if (!cFixed) c.vx = aFixed ? rel * REST : tmp * 0.9;
+              a.rv += rel * 0.01; c.rv -= rel * 0.01;
+            }
+          }
+          // keep within bounds after push
+          if (a.y + SIZE > floorY) a.y = floorY - SIZE;
+          if (c.y + SIZE > floorY) c.y = floorY - SIZE;
+        }
+      }
+    }
+  }
+
+  function render() {
+    for (const b of blocks) {
+      const depth = (b.y + SIZE) / stageH; // lower on screen = larger/closer
+      const scale = 0.9 + depth * 0.14;
+      b.el.style.transform =
+        `translate3d(${b.x}px, ${b.y}px, 0) rotate(${b.rot}deg) scale(${scale}) rotateX(${b.pitch}deg) rotateY(${b.yaw}deg)`;
+      b.el.style.zIndex = b.drag ? 200 : Math.round(depth * 100);
+    }
+  }
+
+  // ---------- drag ----------
+  let pointerBlock = null;
+  stage.addEventListener('pointerdown', e => {
+    const el = e.target.closest('.block'); if (!el) return;
+    const b = blocks.find(k => k.el === el); if (!b) return;
+    e.preventDefault();
+    stage.setPointerCapture(e.pointerId);
+    const r = stage.getBoundingClientRect();
+    b.drag = { ox: e.clientX - r.left - b.x, oy: e.clientY - r.top - b.y, lx: e.clientX, ly: e.clientY, t: performance.now(), vx: 0, vy: 0 };
+    b.el.classList.add('dragging');
+    pointerBlock = b;
+  });
+  stage.addEventListener('pointermove', e => {
+    const b = pointerBlock; if (!b || !b.drag) return;
+    const r = stage.getBoundingClientRect();
+    const now = performance.now(), dt = Math.max(1, now - b.drag.t) / 1000;
+    const nx = e.clientX - r.left - b.drag.ox, ny = e.clientY - r.top - b.drag.oy;
+    b.drag.vx = (e.clientX - b.drag.lx) / dt; b.drag.vy = (e.clientY - b.drag.ly) / dt;
+    b.drag.lx = e.clientX; b.drag.ly = e.clientY; b.drag.t = now;
+    b.x = Math.min(Math.max(0, nx), stageW - SIZE);
+    b.y = Math.min(ny, floorY - SIZE);
+    b.rot = Math.max(-25, Math.min(25, b.drag.vx * 0.02));
+  });
+  function release(e) {
+    const b = pointerBlock; if (!b || !b.drag) return;
+    b.vx = Math.max(-1600, Math.min(1600, b.drag.vx)); b.vy = Math.max(-1800, Math.min(1800, b.drag.vy));
+    b.rv = b.vx * 0.05;
+    b.drag = null; b.el.classList.remove('dragging'); pointerBlock = null;
+  }
+  stage.addEventListener('pointerup', release);
+  stage.addEventListener('pointercancel', release);
+
+  // ---------- actions ----------
+  function spell(word) {
+    const letters = word.toUpperCase().replace(/[^A-Z]/g, '').slice(0, 12);
+    if (!letters) return;
+    const gap = Math.min(SIZE + 10, (stageW - 40) / letters.length);
+    const total = gap * letters.length;
+    const startX = Math.max(10, (stageW - total) / 2);
+    letters.split('').forEach((ch, i) => {
+      setTimeout(() => {
+        const b = makeBlock(ch, startX + i * gap, -SIZE * (1.2 + Math.random()), i % PAINTS.length);
+        b.vx = (Math.random() - 0.5) * 40;
+      }, reduceMotion ? 0 : i * 110);
+    });
+    showToast(`Spelling “${letters}”`);
+  }
+  function shake() {
+    for (const b of blocks) {
+      if (b.drag) continue;
+      b.vy -= 500 + Math.random() * 700;
+      b.vx += (Math.random() - 0.5) * 900;
+      b.rv += (Math.random() - 0.5) * 400;
+    }
+    if (!reduceMotion) {
+      stage.animate([
+        { transform: 'translate(0,0)' }, { transform: 'translate(-6px,4px)' }, { transform: 'translate(6px,-3px)' },
+        { transform: 'translate(-4px,2px)' }, { transform: 'translate(0,0)' }
+      ], { duration: 380, easing: 'ease-out' });
+    }
+    showToast('Wobble wobble!');
+  }
+  function clearAll() {
+    for (const b of blocks) {
+      if (!reduceMotion) {
+        b.el.animate([{ opacity: 1, transform: b.el.style.transform }, { opacity: 0, transform: b.el.style.transform + ' translateY(-40px) scale(0.6)' }], { duration: 320, easing: 'ease-in' })
+          .onfinish = () => b.el.remove();
+      } else b.el.remove();
+    }
+    blocks.length = 0; updateCount();
+    showToast('All tidied away');
+  }
+
+  document.getElementById('spell-form').addEventListener('submit', e => { e.preventDefault(); spell(document.getElementById('word').value); });
+  document.getElementById('shake').addEventListener('click', shake);
+  document.getElementById('clear').addEventListener('click', clearAll);
+  document.getElementById('more').addEventListener('click', () => {
+    const ch = ALPHABET[Math.floor(Math.random() * 26)];
+    makeBlock(ch, 20 + Math.random() * (stageW - SIZE - 40), -SIZE);
+  });
+  window.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT') return;
+    if (e.code === 'Space') { e.preventDefault(); shake(); }
+  });
+
+  // ---------- loop ----------
+  let last = performance.now();
+  function frame(t) {
+    let dt = Math.min(0.033, (t - last) / 1000); last = t;
+    const sub = 2;
+    for (let i = 0; i < sub; i++) integrate(dt / sub);
+    render();
+    requestAnimationFrame(frame);
+  }
+
+  measure();
+  window.addEventListener('resize', measure);
+  // opening scene: a tidy little stack and a couple of tumbled ones
+  setTimeout(() => {
+    spell('PLAY');
+    setTimeout(() => {
+      makeBlock('A', stageW * 0.12, -SIZE, 0);
+      makeBlock('B', stageW * 0.12 + 2, -SIZE * 2.4, 1);
+      makeBlock('C', stageW * 0.84, -SIZE, 2);
+    }, 700);
+  }, 250);
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

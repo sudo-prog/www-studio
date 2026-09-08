@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NOVA SYNDICATE — Holographic Admission</title>
+<style>
+  :root {
+    --aubergine: #1d0b22;
+    --aubergine-2: #2f1038;
+    --stage: #5a1e6a;
+    --paper: #f3eef2;
+    --paper-2: #dcd2dc;
+    --ink: #1a0c1e;
+    --accent: #ff3fa4;
+    --mx: 50%;
+    --my: 50%;
+    --rx: 0deg;
+    --ry: 0deg;
+    --tx: 0px;
+    --ty: 0px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    min-height: 100%;
+    font-family: 'Helvetica Neue', Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
+    color: var(--paper);
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255,120,220,0.20), transparent 60%),
+      radial-gradient(ellipse 40% 60% at 15% 100%, rgba(120,40,160,0.35), transparent 60%),
+      radial-gradient(ellipse 40% 60% at 85% 100%, rgba(255,80,140,0.18), transparent 60%),
+      linear-gradient(180deg, #120616, var(--aubergine) 40%, var(--aubergine-2) 100%);
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    position: relative;
+  }
+  .haze {
+    position: absolute; inset: -20%;
+    background:
+      radial-gradient(ellipse 30% 70% at 30% -10%, rgba(255,200,240,0.14), transparent 60%),
+      radial-gradient(ellipse 30% 70% at 70% -10%, rgba(180,120,255,0.12), transparent 60%);
+    filter: blur(30px);
+    animation: haze 14s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+  @keyframes haze {
+    from { transform: translateX(-3%) rotate(-2deg); opacity: .8; }
+    to { transform: translateX(3%) rotate(2deg); opacity: 1; }
+  }
+  .dust {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image:
+      radial-gradient(circle, rgba(255,255,255,0.35) 0 1px, transparent 1.5px),
+      radial-gradient(circle, rgba(255,200,255,0.25) 0 1px, transparent 1.5px);
+    background-size: 240px 260px, 170px 190px;
+    background-position: 0 0, 60px 40px;
+    animation: drift 60s linear infinite;
+    opacity: .6;
+  }
+  @keyframes drift { to { background-position: 0 -260px, 60px -150px; } }
+
+  .stagecaption {
+    position: absolute;
+    top: 22px; left: 50%; transform: translateX(-50%);
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: rgba(255,220,250,0.5);
+    white-space: nowrap;
+  }
+  .hint {
+    position: absolute;
+    bottom: 20px; left: 50%; transform: translateX(-50%);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    color: rgba(255,220,250,0.55);
+    text-align: center;
+    max-width: 90vw;
+  }
+  .hint b { color: var(--accent); font-weight: 600; }
+
+  .scene {
+    perspective: 1600px;
+    width: min(96vw, 1180px);
+  }
+  .ticket {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr minmax(180px, 27%);
+    aspect-ratio: 2.55 / 1;
+    transform-style: preserve-3d;
+    transform: rotateX(var(--rx)) rotateY(var(--ry));
+    transition: transform .12s ease-out;
+    filter: drop-shadow(0 40px 60px rgba(0,0,0,0.6));
+  }
+  .ticket.idle { transition: transform 1.4s cubic-bezier(.2,.8,.2,1); }
+
+  .part {
+    position: relative;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.35), transparent 40%),
+      repeating-linear-gradient(0deg, rgba(0,0,0,0.015) 0 1px, transparent 1px 3px),
+      linear-gradient(160deg, #fbf7fa, var(--paper) 50%, var(--paper-2));
+    color: var(--ink);
+    overflow: hidden;
+    transform-style: preserve-3d;
+  }
+  .main {
+    border-radius: 22px 0 0 22px;
+    padding: 4.2% 4% 3.6% 4.5%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+  .stub {
+    border-radius: 0 22px 22px 0;
+    padding: 5% 6% 5% 7%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+    transform: translate(var(--tx), var(--ty)) rotate(var(--rot, 0deg));
+  }
+  .stub:active { cursor: grabbing; }
+  .ticket.torn .stub { transition: none; }
+
+  /* perforation edge */
+  .perf {
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 14px;
+    z-index: 3;
+    pointer-events: none;
+  }
+  .perf.left {
+    right: -7px;
+    background: radial-gradient(circle at 50% 50%, var(--aubergine) 0 3.5px, transparent 4px) 0 0 / 14px 14px repeat-y;
+  }
+  .part::after {
+    content: "";
+    position: absolute; inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.7), inset 0 0 40px rgba(60,20,70,0.08);
+    pointer-events: none;
+  }
+  .torn-edge {
+    position: absolute; top: 0; bottom: 0; width: 6px; z-index: 4; pointer-events: none;
+    opacity: 0; transition: opacity .2s;
+  }
+  .main .torn-edge { right: 0; background: repeating-linear-gradient(180deg, transparent 0 3px, rgba(120,90,120,0.35) 3px 4px, transparent 4px 9px); }
+  .stub .torn-edge { left: 0; background: repeating-linear-gradient(180deg, transparent 0 5px, rgba(120,90,120,0.35) 5px 6px, transparent 6px 11px); }
+  .ticket.torn .torn-edge { opacity: 1; }
+
+  /* Holographic foil */
+  .foil {
+    position: absolute; inset: 0;
+    pointer-events: none;
+    background:
+      conic-gradient(from 90deg at var(--mx) var(--my), #ff4d4d, #ffd24d, #4dff88, #4dd2ff, #8a4dff, #ff4de1, #ff4d4d);
+    background-size: 200% 200%;
+    background-position: calc(50% + (var(--mx) - 50%) * 0.6) calc(50% + (var(--my) - 50%) * 0.6);
+    opacity: .55;
+    mix-blend-mode: color-dodge;
+    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><path d='M20 2 L38 20 L20 38 L2 20 Z' fill='none' stroke='white' stroke-width='1.2' opacity='0.9'/><circle cx='20' cy='20' r='3' fill='white' opacity='0.7'/><circle cx='0' cy='0' r='2' fill='white' opacity='0.5'/><circle cx='40' cy='40' r='2' fill='white' opacity='0.5'/></svg>");
+    mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><path d='M20 2 L38 20 L20 38 L2 20 Z' fill='none' stroke='white' stroke-width='1.2' opacity='0.9'/><circle cx='20' cy='20' r='3' fill='white' opacity='0.7'/><circle cx='0' cy='0' r='2' fill='white' opacity='0.5'/><circle cx='40' cy='40' r='2' fill='white' opacity='0.5'/></svg>");
+    -webkit-mask-size: 40px 40px;
+    mask-size: 40px 40px;
+    -webkit-mask-repeat: repeat;
+    mask-repeat: repeat;
+    z-index: 1;
+  }
+  .foil.band {
+    -webkit-mask-image: none; mask-image: none;
+    inset: auto 0 0 0; height: 22%;
+    opacity: .75;
+    background:
+      linear-gradient(90deg, transparent, rgba(255,255,255,.4) calc(var(--mx) - 12%), transparent calc(var(--mx) + 12%)),
+      conic-gradient(from 0deg at var(--mx) 50%, #ff4d4d, #ffd24d, #4dff88, #4dd2ff, #8a4dff, #ff4de1, #ff4d4d);
+    mix-blend-mode: multiply;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
+  }
+  .glare {
+    position: absolute; inset: 0; pointer-events: none; z-index: 2;
+    background: radial-gradient(circle 240px at var(--mx) var(--my), rgba(255,255,255,0.55), rgba(255,255,255,0.08) 40%, transparent 70%);
+    mix-blend-mode: screen;
+  }
+
+  /* typography */
+  .eyebrow {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: clamp(0.5rem, 0.95vw, 0.8rem);
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #5b4463;
+    position: relative; z-index: 2;
+  }
+  .eyebrow .tag {
+    background: var(--ink); color: var(--paper);
+    padding: 3px 10px; border-radius: 999px; letter-spacing: .25em;
+  }
+  .artist {
+    position: relative; z-index: 2;
+    align-self: center;
+    font-family: Impact, 'Haettenschweiler', 'Arial Narrow Bold', 'Helvetica Neue', Arial, sans-serif;
+    font-stretch: condensed;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.86;
+    font-size: clamp(2.4rem, 8.4vw, 8.6rem);
+    letter-spacing: -0.01em;
+    color: #efe6ee;
+    text-shadow:
+      1px 1px 0 rgba(255,255,255,0.9),
+      -1px -1px 0 rgba(40,10,50,0.55),
+      0 6px 14px rgba(60,20,80,0.25);
+    margin: 0;
+    transform: scaleX(0.92);
+    transform-origin: left center;
+  }
+  .artist span { display: block; }
+  .artist .thin {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    font-size: 0.26em;
+    letter-spacing: 0.42em;
+    color: #6a4f72;
+    text-shadow: none;
+    margin-bottom: 0.3em;
+    transform: scaleX(1.08);
+    transform-origin: left center;
+  }
+  .details {
+    position: relative; z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(4, auto) 1fr auto;
+    gap: 3.2%;
+    align-items: end;
+  }
+  .field { min-width: 0; }
+  .field .k {
+    font-size: clamp(0.42rem, 0.72vw, 0.62rem);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #7d6784;
+    margin-bottom: 4px;
+  }
+  .field .v {
+    font-size: clamp(0.9rem, 2.1vw, 1.8rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .field .v small { font-size: 0.55em; font-weight: 400; color: #5b4463; margin-left: 2px; }
+  .barcode {
+    height: clamp(30px, 4.2vw, 54px);
+    width: clamp(90px, 14vw, 170px);
+    background: repeating-linear-gradient(90deg,
+      var(--ink) 0 2px, transparent 2px 4px, var(--ink) 4px 5px, transparent 5px 8px,
+      var(--ink) 8px 11px, transparent 11px 12px, var(--ink) 12px 13px, transparent 13px 16px,
+      var(--ink) 16px 17px, transparent 17px 20px, var(--ink) 20px 22px, transparent 22px 23px,
+      var(--ink) 23px 24px, transparent 24px 27px);
+    position: relative;
+    justify-self: end;
+  }
+  .barcode::after {
+    content: "7 04120 88519 3";
+    position: absolute; left: 0; right: 0; bottom: -1.2em;
+    font-family: 'Courier New', ui-monospace, monospace;
+    font-size: 0.55rem; letter-spacing: .25em; color: #5b4463; text-align: center;
+  }
+
+  /* stub */
+  .stub .k { font-size: clamp(0.42rem, 0.7vw, 0.6rem); letter-spacing: .3em; text-transform: uppercase; color: #7d6784; }
+  .stub .v { font-size: clamp(0.85rem, 1.8vw, 1.5rem); font-weight: 700; color: var(--ink); }
+  .stub-top { display: flex; justify-content: space-between; align-items: flex-start; position: relative; z-index: 2; }
+  .stub .rot-label {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: Impact, 'Arial Narrow Bold', 'Helvetica Neue', Arial, sans-serif;
+    font-size: clamp(0.9rem, 1.9vw, 1.7rem);
+    letter-spacing: 0.08em;
+    color: #d9cfdb;
+    text-shadow: 1px 1px 0 #fff, -1px -1px 0 rgba(40,10,50,0.5);
+    text-transform: uppercase;
+  }
+  canvas#qr {
+    width: clamp(64px, 9vw, 120px);
+    height: clamp(64px, 9vw, 120px);
+    image-rendering: pixelated;
+    display: block;
+    border: 4px solid #fff;
+    box-shadow: 0 0 0 1px #d0c6d2;
+    position: relative; z-index: 2;
+  }
+  .stub-bottom { display: grid; gap: 4px; position: relative; z-index: 2; }
+  .admit {
+    font-size: clamp(0.45rem, 0.8vw, 0.7rem);
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .reset {
+    position: absolute;
+    top: 50px; right: 24px;
+    font: inherit; font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--paper); background: transparent;
+    border: 1px solid rgba(255,255,255,0.3); border-radius: 999px;
+    padding: 8px 16px; cursor: pointer;
+    opacity: 0; pointer-events: none;
+    transition: opacity .4s, background .2s;
+  }
+  .reset:hover { background: rgba(255,255,255,0.1); }
+  .reset.show { opacity: 1; pointer-events: auto; }
+
+  @media (max-width: 720px) {
+    .ticket { aspect-ratio: 1.9 / 1; grid-template-columns: 1fr 30%; }
+    .details { grid-template-columns: repeat(3, auto) 1fr; }
+    .details .field:nth-child(4), .barcode { display: none; }
+    .main { border-radius: 14px 0 0 14px; }
+    .stub { border-radius: 0 14px 14px 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .haze, .dust { animation: none; }
+    .ticket { transition: none; }
+  }
+</style>
+</head>
+<body>
+<div class="haze"></div>
+<div class="dust"></div>
+<div class="stagecaption">Meridian Arena · Hall of Light · One Night Only</div>
+
+<div class="scene" id="scene">
+  <div class="ticket idle" id="ticket">
+    <div class="part main">
+      <div class="foil"></div>
+      <div class="foil band"></div>
+      <div class="glare"></div>
+      <div class="torn-edge"></div>
+      <div class="perf left"></div>
+
+      <div class="eyebrow">
+        <span>Holographic admission · Series 07</span>
+        <span class="tag">General</span>
+      </div>
+
+      <h1 class="artist">
+        <span class="thin">Meridian Arena presents</span>
+        <span>Nova</span>
+        <span>Syndicate</span>
+      </h1>
+
+      <div class="details">
+        <div class="field"><div class="k">Date</div><div class="v">14 <small>Nov</small></div></div>
+        <div class="field"><div class="k">Doors</div><div class="v">19:30</div></div>
+        <div class="field"><div class="k">Block</div><div class="v">C</div></div>
+        <div class="field"><div class="k">Row</div><div class="v">12</div></div>
+        <div class="field"><div class="k">Seat</div><div class="v">047</div></div>
+        <div class="barcode" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <div class="part stub" id="stub">
+      <div class="foil"></div>
+      <div class="glare"></div>
+      <div class="torn-edge"></div>
+      <div class="stub-top">
+        <div>
+          <div class="k">Stub · Keep</div>
+          <div class="v">C · 12 · 047</div>
+        </div>
+        <div class="rot-label">Nova Syndicate</div>
+      </div>
+      <canvas id="qr" width="29" height="29" aria-label="Generated admission code"></canvas>
+      <div class="stub-bottom">
+        <div class="admit">Admit one</div>
+        <div class="k">14 Nov · 19:30 · No re-entry</div>
+        <div class="k" style="color:#b39cb6">Drag me → to tear</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="reset" id="reset">Reprint ticket</button>
+<p class="hint">Move to tilt the foil. <b>Drag the stub</b> across the perforation to tear it off.</p>
+
+<script>
+(function () {
+  'use strict';
+  const root = document.documentElement;
+  const scene = document.getElementById('scene');
+  const ticket = document.getElementById('ticket');
+  const stub = document.getElementById('stub');
+  const resetBtn = document.getElementById('reset');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---------- pseudo-QR from a seed ----------
+  function drawQR(seed) {
+    const c = document.getElementById('qr');
+    const n = c.width;
+    const g = c.getContext('2d');
+    let s = seed >>> 0;
+    const rnd = () => { s ^= s << 13; s >>>= 0; s ^= s >>> 17; s ^= s << 5; s >>>= 0; return s / 4294967296; };
+    g.fillStyle = '#fff'; g.fillRect(0, 0, n, n);
+    g.fillStyle = '#1a0c1e';
+    const finder = (x, y) => {
+      g.fillRect(x, y, 7, 7);
+      g.fillStyle = '#fff'; g.fillRect(x + 1, y + 1, 5, 5);
+      g.fillStyle = '#1a0c1e'; g.fillRect(x + 2, y + 2, 3, 3);
+    };
+    for (let y = 0; y < n; y++) for (let x = 0; x < n; x++) {
+      const inFinder = (x < 8 && y < 8) || (x >= n - 8 && y < 8) || (x < 8 && y >= n - 8);
+      if (inFinder) continue;
+      if (y === 6 || x === 6) { if ((x + y) % 2 === 0) g.fillRect(x, y, 1, 1); continue; }
+      if (rnd() < 0.47) g.fillRect(x, y, 1, 1);
+    }
+    finder(0, 0); finder(n - 7, 0); finder(0, n - 7);
+    // alignment pattern
+    g.fillRect(n - 9, n - 9, 5, 5); g.fillStyle = '#fff'; g.fillRect(n - 8, n - 8, 3, 3);
+    g.fillStyle = '#1a0c1e'; g.fillRect(n - 7, n - 7, 1, 1);
+  }
+  drawQR(0x4E4F5641); // "NOVA"
+
+  // ---------- tilt + foil ----------
+  let targetRX = 0, targetRY = 0, curRX = 0, curRY = 0;
+  let pointerInside = false;
+  function onMove(clientX, clientY) {
+    const r = scene.getBoundingClientRect();
+    const px = (clientX - r.left) / r.width;
+    const py = (clientY - r.top) / r.height;
+    const cx = Math.min(1, Math.max(0, px));
+    const cy = Math.min(1, Math.max(0, py));
+    targetRY = (cx - 0.5) * 22;
+    targetRX = (0.5 - cy) * 16;
+    root.style.setProperty('--mx', (cx * 100).toFixed(2) + '%');
+    root.style.setProperty('--my', (cy * 100).toFixed(2) + '%');
+    pointerInside = true;
+    ticket.classList.remove('idle');
+  }
+  window.addEventListener('pointermove', e => { if (!dragging) onMove(e.clientX, e.clientY); });
+  window.addEventListener('pointerleave', () => { pointerInside = false; });
+  document.addEventListener('mouseleave', () => { pointerInside = false; ticket.classList.add('idle'); });
+
+  let idleT = 0;
+  function tick(ts) {
+    if (!pointerInside && !dragging) {
+      // gentle idle sway so the foil is alive
+      idleT += 0.008;
+      if (!reduce) {
+        targetRY = Math.sin(idleT) * 6;
+        targetRX = Math.cos(idleT * 0.7) * 4;
+        root.style.setProperty('--mx', (50 + Math.sin(idleT) * 30).toFixed(2) + '%');
+        root.style.setProperty('--my', (50 + Math.cos(idleT * 0.7) * 25).toFixed(2) + '%');
+      }
+    }
+    curRX += (targetRX - curRX) * 0.12;
+    curRY += (targetRY - curRY) * 0.12;
+    root.style.setProperty('--rx', curRX.toFixed(2) + 'deg');
+    root.style.setProperty('--ry', curRY.toFixed(2) + 'deg');
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
+  // ---------- tearing ----------
+  let dragging = false;
+  let startX = 0, startY = 0, dx = 0, dy = 0;
+  let torn = false;
+  let jitterTimer = 0;
+  const TEAR_DIST = () => Math.max(70, stub.getBoundingClientRect().width * 0.45);
+
+  function setStub(x, y, rot) {
+    stub.style.setProperty('--tx', x + 'px');
+    stub.style.setProperty('--ty', y + 'px');
+    stub.style.setProperty('--rot', rot + 'deg');
+  }
+
+  stub.addEventListener('pointerdown', e => {
+    if (torn) return;
+    dragging = true;
+    startX = e.clientX; startY = e.clientY;
+    stub.setPointerCapture(e.pointerId);
+    ticket.classList.remove('idle');
+  });
+  stub.addEventListener('pointermove', e => {
+    if (!dragging) return;
+    dx = Math.max(0, e.clientX - startX);
+    dy = (e.clientY - startY) * 0.4;
+    const progress = Math.min(1, dx / TEAR_DIST());
+    // paper resists, then jitters as fibres give way
+    const resist = dx * (0.35 + progress * 0.4);
+    const jit = progress > 0.15 ? (Math.random() - 0.5) * progress * 6 : 0;
+    const rot = progress * 5 + (Math.random() - 0.5) * progress * 2.5;
+    setStub(resist + jit, dy + jit * 0.5, rot);
+    ticket.style.setProperty('--jx', (jit * 0.3) + 'px');
+    if (progress >= 1) tear(e);
+  });
+  const endDrag = () => {
+    if (!dragging) return;
+    dragging = false;
+    if (!torn) {
+      stub.style.transition = 'transform .6s cubic-bezier(.2,1.4,.3,1)';
+      setStub(0, 0, 0);
+      setTimeout(() => { stub.style.transition = ''; }, 600);
+    }
+  };
+  stub.addEventListener('pointerup', endDrag);
+  stub.addEventListener('pointercancel', endDrag);
+
+  function tear(e) {
+    torn = true;
+    dragging = false;
+    ticket.classList.add('torn');
+    resetBtn.classList.add('show');
+    // physics flop: velocity from drag, gravity, spin, air drag
+    let x = parseFloat(stub.style.getPropertyValue('--tx')) || 0;
+    let y = parseFloat(stub.style.getPropertyValue('--ty')) || 0;
+    let rot = parseFloat(stub.style.getPropertyValue('--rot')) || 0;
+    let vx = 6 + Math.random() * 3, vy = -4, vr = 4 + Math.random() * 3;
+    const floorY = window.innerHeight * 0.55;
+    let bounces = 0;
+    let last = performance.now();
+    function fall(now) {
+      const dt = Math.min(2, (now - last) / 16.67); last = now;
+      vy += 0.55 * dt;
+      vx *= Math.pow(0.985, dt);
+      vr *= Math.pow(0.99, dt);
+      x += vx * dt; y += vy * dt; rot += vr * dt;
+      if (y > floorY && vy > 0) {
+        y = floorY; vy = -vy * 0.35; vr = -vr * 0.6 + (Math.random() - 0.5) * 3; bounces++;
+      }
+      setStub(x, y, rot);
+      if (bounces < 3 || Math.abs(vy) > 0.3) requestAnimationFrame(fall);
+      else {
+        // settle flat
+        stub.style.transition = 'transform .8s ease-out';
+        setStub(x, floorY, Math.round(rot / 180) * 180 + (Math.random() - 0.5) * 12);
+      }
+    }
+    if (reduce) { setStub(160, 80, 12); }
+    else requestAnimationFrame(fall);
+    // paper-tear jitter on the main body
+    let k = 0;
+    clearInterval(jitterTimer);
+    jitterTimer = setInterval(() => {
+      k++;
+      ticket.style.setProperty('--jx', ((Math.random() - 0.5) * (6 - k)) + 'px');
+      if (k > 5) { clearInterval(jitterTimer); ticket.style.setProperty('--jx', '0px'); }
+    }, 40);
+  }
+
+  resetBtn.addEventListener('click', () => {
+    torn = false;
+    ticket.classList.remove('torn');
+    resetBtn.classList.remove('show');
+    stub.style.transition = 'transform .9s cubic-bezier(.2,.9,.2,1.1)';
+    setStub(0, 0, 0);
+    setTimeout(() => { stub.style.transition = ''; }, 900);
+    drawQR((Math.random() * 0xffffffff) >>> 0);
+  });
+
+  ticket.style.transform = 'rotateX(var(--rx)) rotateY(var(--ry)) translateX(var(--jx, 0px))';
+})();
+</script>
+</body>
+</html>

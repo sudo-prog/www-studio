@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DOTMATRIX-7 — LED Marquee Controller</title>
+<style>
+  :root {
+    --bg: #0c0d0f;
+    --panel: #171a1e;
+    --panel-2: #1f2328;
+    --line: #2c3238;
+    --text: #c9ced4;
+    --dim: #6f777f;
+    --led: #ffb000;
+    --mono: "Courier New", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    min-height: 100vh; background: var(--bg); color: var(--text);
+    font-family: var(--mono); font-size: 13px;
+    background-image:
+      radial-gradient(ellipse 70% 40% at 50% 0%, rgba(255,176,0,.06), transparent 60%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,.012) 0 1px, transparent 1px 4px);
+    padding: clamp(14px, 3vw, 40px);
+  }
+  .wrap { max-width: 1500px; margin: 0 auto; display: grid; gap: clamp(14px, 2.2vw, 26px); }
+  header { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; }
+  header h1 { margin: 0; font-size: 13px; letter-spacing: .3em; text-transform: uppercase; font-weight: 400; display: flex; align-items: center; gap: 12px; }
+  header h1 b { font-weight: 700; color: #fff; }
+  .status { display: flex; align-items: center; gap: 8px; color: var(--dim); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; }
+  .status i { width: 8px; height: 8px; border-radius: 50%; background: #39ff5a; box-shadow: 0 0 8px #39ff5a; animation: blink 1.6s steps(2, start) infinite; }
+  @keyframes blink { to { opacity: .25; } }
+
+  .bezel {
+    position: relative; padding: clamp(14px, 2.4vw, 30px); border-radius: 10px;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.25)),
+      repeating-linear-gradient(90deg, #3a3e44 0 1px, #2f3338 1px 2px, #34383e 2px 3px, #2b2f34 3px 5px);
+    box-shadow: 0 30px 60px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.12), inset 0 -2px 0 rgba(0,0,0,.6);
+  }
+  .bezel::before {
+    content: ""; position: absolute; inset: 6px; border-radius: 6px; pointer-events: none;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.05), inset 0 0 0 2px rgba(0,0,0,.35);
+  }
+  .screw {
+    position: absolute; width: 14px; height: 14px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #8a9098, #4a4f56 60%, #20242a);
+    box-shadow: 0 1px 2px rgba(0,0,0,.8), inset 0 0 0 1px rgba(0,0,0,.5);
+  }
+  .screw::before, .screw::after { content: ""; position: absolute; left: 50%; top: 50%; width: 8px; height: 1.5px; background: #15181c; transform: translate(-50%,-50%) rotate(var(--r, 20deg)); }
+  .screw::after { transform: translate(-50%,-50%) rotate(calc(var(--r, 20deg) + 90deg)); }
+  .screw.tl { left: 9px; top: 9px; --r: 12deg; } .screw.tr { right: 9px; top: 9px; --r: 67deg; }
+  .screw.bl { left: 9px; bottom: 9px; --r: 40deg; } .screw.br { right: 9px; bottom: 9px; --r: -25deg; }
+  .glass {
+    position: relative; border-radius: 4px; overflow: hidden; background: #08090b;
+    box-shadow: inset 0 0 40px rgba(0,0,0,.9), inset 0 2px 8px rgba(0,0,0,.9);
+  }
+  .glass::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(175deg, rgba(255,255,255,.07), transparent 35%, transparent 80%, rgba(255,255,255,.02));
+  }
+  canvas { display: block; width: 100%; }
+  #main { height: clamp(120px, 18vw, 260px); }
+  #clockCanvas { height: clamp(64px, 8vw, 110px); }
+  .plate {
+    position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%);
+    font-size: 9px; letter-spacing: .32em; text-transform: uppercase; color: rgba(255,255,255,.35);
+  }
+
+  .console {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px;
+  }
+  .card {
+    background: linear-gradient(180deg, var(--panel-2), var(--panel)); border: 1px solid var(--line); border-radius: 8px;
+    padding: 16px 18px; display: grid; gap: 12px; align-content: start;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+  }
+  .card.wide { grid-column: 1 / -1; }
+  label.t, .t { font-size: 10px; letter-spacing: .3em; text-transform: uppercase; color: var(--dim); display: flex; justify-content: space-between; }
+  .t .readout { color: var(--led); font-variant-numeric: tabular-nums; }
+  input[type=text] {
+    width: 100%; font: inherit; font-size: 16px; letter-spacing: .08em; text-transform: uppercase;
+    color: #fff; background: #0b0c0e; border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px; outline: none;
+    box-shadow: inset 0 2px 6px rgba(0,0,0,.7); transition: border-color .25s, box-shadow .25s;
+  }
+  input[type=text]:focus { border-color: var(--led); box-shadow: inset 0 2px 6px rgba(0,0,0,.7), 0 0 0 3px color-mix(in srgb, var(--led) 25%, transparent); }
+  input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 4px; border-radius: 2px; background: #0b0c0e; border: 1px solid var(--line); outline: none; }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 22px; height: 22px; border-radius: 4px; cursor: pointer;
+    background: linear-gradient(180deg, #4a5058, #2a2f35); border: 1px solid #12151a;
+    box-shadow: 0 2px 4px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.15);
+  }
+  input[type=range]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 4px; cursor: pointer; background: linear-gradient(180deg, #4a5058, #2a2f35); border: 1px solid #12151a; }
+  .seg { display: flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: #0b0c0e; }
+  .seg button {
+    flex: 1; font: inherit; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--dim);
+    background: transparent; border: 0; padding: 11px 6px; cursor: pointer; position: relative;
+    transition: color .25s, background .25s;
+  }
+  .seg button + button { border-left: 1px solid var(--line); }
+  .seg button:hover { color: var(--text); }
+  .seg button[aria-pressed="true"] { color: #fff; background: linear-gradient(180deg, #2e343b, #22272d); box-shadow: inset 0 0 0 1px rgba(255,255,255,.05), inset 0 -2px 0 var(--led); }
+  .swatches { display: flex; gap: 10px; }
+  .swatches button {
+    width: 34px; height: 34px; border-radius: 50%; border: 2px solid #0b0c0e; cursor: pointer; padding: 0;
+    background: radial-gradient(circle at 40% 35%, color-mix(in srgb, var(--c) 100%, #fff 30%), var(--c) 55%, color-mix(in srgb, var(--c) 60%, #000));
+    box-shadow: 0 0 0 1px var(--line), 0 0 10px transparent; transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s;
+  }
+  .swatches button:hover { transform: translateY(-2px); }
+  .swatches button[aria-pressed="true"] { transform: scale(1.12); box-shadow: 0 0 0 2px var(--c), 0 0 14px var(--c); }
+  .counter {
+    display: grid; gap: 4px;
+  }
+  .counter .num { font-size: clamp(26px, 3vw, 40px); color: var(--led); letter-spacing: .04em; text-shadow: 0 0 12px color-mix(in srgb, var(--led) 60%, transparent); font-variant-numeric: tabular-nums; }
+  .counter small { color: var(--dim); letter-spacing: .2em; text-transform: uppercase; font-size: 10px; }
+  .row2 { display: grid; grid-template-columns: 1fr auto; gap: 14px; align-items: end; }
+  @media (max-width: 640px) { .row2 { grid-template-columns: 1fr; } }
+  footer { color: var(--dim); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  @media (prefers-reduced-motion: reduce) { .status i { animation: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1><b>DOTMATRIX-7</b> // Marquee controller</h1>
+    <div class="status"><i></i> Link active · 5×7 core</div>
+  </header>
+
+  <div class="bezel">
+    <span class="screw tl"></span><span class="screw tr"></span><span class="screw bl"></span><span class="screw br"></span>
+    <div class="glass"><canvas id="main" aria-label="Scrolling LED marquee"></canvas></div>
+    <span class="plate">Display A · matrix</span>
+  </div>
+
+  <div class="console">
+    <div class="card wide">
+      <div class="row2">
+        <div style="display:grid;gap:8px">
+          <label class="t" for="msg">Message <span class="readout" id="len">0 CH</span></label>
+          <input type="text" id="msg" maxlength="120" value="Next train 4 min - mind the gap - have a nice day!" autocomplete="off" spellcheck="false">
+        </div>
+        <div class="counter">
+          <small>Pixels</small>
+          <div class="num" id="pixels">0</div>
+          <small id="pixelsSub">lit / total</small>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="t">Mode</div>
+      <div class="seg" id="mode">
+        <button data-m="scroll" aria-pressed="true">Scroll</button>
+        <button data-m="static" aria-pressed="false">Static</button>
+        <button data-m="bounce" aria-pressed="false">Bounce</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="t">LED colour</div>
+      <div class="swatches" id="colors">
+        <button style="--c:#ffb000" data-c="#ffb000" aria-pressed="true" aria-label="Amber"></button>
+        <button style="--c:#ff2a1a" data-c="#ff2a1a" aria-pressed="false" aria-label="Red"></button>
+        <button style="--c:#39ff5a" data-c="#39ff5a" aria-pressed="false" aria-label="Green"></button>
+        <button style="--c:#29e6ff" data-c="#29e6ff" aria-pressed="false" aria-label="Cyan"></button>
+        <button style="--c:#f4f4ff" data-c="#f4f4ff" aria-pressed="false" aria-label="White"></button>
+      </div>
+    </div>
+    <div class="card">
+      <label class="t" for="speed">Speed <span class="readout" id="speedOut">40 COL/S</span></label>
+      <input type="range" id="speed" min="5" max="120" value="40">
+    </div>
+    <div class="card">
+      <label class="t" for="pitch">Pixel size <span class="readout" id="pitchOut">16 PX</span></label>
+      <input type="range" id="pitch" min="7" max="26" value="16">
+    </div>
+  </div>
+
+  <div class="bezel">
+    <span class="screw tl"></span><span class="screw tr"></span><span class="screw bl"></span><span class="screw br"></span>
+    <div class="glass"><canvas id="clockCanvas" aria-label="LED clock showing local time"></canvas></div>
+    <span class="plate">Display B · local time</span>
+  </div>
+
+  <footer>
+    <span>Font: hand-defined 5×7 bitmap · A–Z 0–9 punctuation</span>
+    <span>Ser. no. 0058-DM7</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  // ---- 5x7 bitmap font (rows top→bottom, MSB = left column) ----------
+  const F = {
+    'A': [0b01110,0b10001,0b10001,0b11111,0b10001,0b10001,0b10001],
+    'B': [0b11110,0b10001,0b10001,0b11110,0b10001,0b10001,0b11110],
+    'C': [0b01110,0b10001,0b10000,0b10000,0b10000,0b10001,0b01110],
+    'D': [0b11100,0b10010,0b10001,0b10001,0b10001,0b10010,0b11100],
+    'E': [0b11111,0b10000,0b10000,0b11110,0b10000,0b10000,0b11111],
+    'F': [0b11111,0b10000,0b10000,0b11110,0b10000,0b10000,0b10000],
+    'G': [0b01110,0b10001,0b10000,0b10111,0b10001,0b10001,0b01111],
+    'H': [0b10001,0b10001,0b10001,0b11111,0b10001,0b10001,0b10001],
+    'I': [0b01110,0b00100,0b00100,0b00100,0b00100,0b00100,0b01110],
+    'J': [0b00111,0b00010,0b00010,0b00010,0b00010,0b10010,0b01100],
+    'K': [0b10001,0b10010,0b10100,0b11000,0b10100,0b10010,0b10001],
+    'L': [0b10000,0b10000,0b10000,0b10000,0b10000,0b10000,0b11111],
+    'M': [0b10001,0b11011,0b10101,0b10101,0b10001,0b10001,0b10001],
+    'N': [0b10001,0b10001,0b11001,0b10101,0b10011,0b10001,0b10001],
+    'O': [0b01110,0b10001,0b10001,0b10001,0b10001,0b10001,0b01110],
+    'P': [0b11110,0b10001,0b10001,0b11110,0b10000,0b10000,0b10000],
+    'Q': [0b01110,0b10001,0b10001,0b10001,0b10101,0b10010,0b01101],
+    'R': [0b11110,0b10001,0b10001,0b11110,0b10100,0b10010,0b10001],
+    'S': [0b01111,0b10000,0b10000,0b01110,0b00001,0b00001,0b11110],
+    'T': [0b11111,0b00100,0b00100,0b00100,0b00100,0b00100,0b00100],
+    'U': [0b10001,0b10001,0b10001,0b10001,0b10001,0b10001,0b01110],
+    'V': [0b10001,0b10001,0b10001,0b10001,0b10001,0b01010,0b00100],
+    'W': [0b10001,0b10001,0b10001,0b10101,0b10101,0b10101,0b01010],
+    'X': [0b10001,0b10001,0b01010,0b00100,0b01010,0b10001,0b10001],
+    'Y': [0b10001,0b10001,0b10001,0b01010,0b00100,0b00100,0b00100],
+    'Z': [0b11111,0b00001,0b00010,0b00100,0b01000,0b10000,0b11111],
+    '0': [0b01110,0b10001,0b10011,0b10101,0b11001,0b10001,0b01110],
+    '1': [0b00100,0b01100,0b00100,0b00100,0b00100,0b00100,0b01110],
+    '2': [0b01110,0b10001,0b00001,0b00010,0b00100,0b01000,0b11111],
+    '3': [0b11111,0b00010,0b00100,0b00010,0b00001,0b10001,0b01110],
+    '4': [0b00010,0b00110,0b01010,0b10010,0b11111,0b00010,0b00010],
+    '5': [0b11111,0b10000,0b11110,0b00001,0b00001,0b10001,0b01110],
+    '6': [0b00110,0b01000,0b10000,0b11110,0b10001,0b10001,0b01110],
+    '7': [0b11111,0b00001,0b00010,0b00100,0b01000,0b01000,0b01000],
+    '8': [0b01110,0b10001,0b10001,0b01110,0b10001,0b10001,0b01110],
+    '9': [0b01110,0b10001,0b10001,0b01111,0b00001,0b00010,0b01100],
+    ' ': [0,0,0,0,0,0,0],
+    '.': [0,0,0,0,0,0b01100,0b01100],
+    ',': [0,0,0,0,0b01100,0b00100,0b01000],
+    '!': [0b00100,0b00100,0b00100,0b00100,0b00100,0,0b00100],
+    '?': [0b01110,0b10001,0b00001,0b00010,0b00100,0,0b00100],
+    "'": [0b01100,0b00100,0b01000,0,0,0,0],
+    '"': [0b01010,0b01010,0b01010,0,0,0,0],
+    '-': [0,0,0,0b11111,0,0,0],
+    '_': [0,0,0,0,0,0,0b11111],
+    ':': [0,0b01100,0b01100,0,0b01100,0b01100,0],
+    ';': [0,0b01100,0b01100,0,0b01100,0b00100,0b01000],
+    '/': [0,0b00001,0b00010,0b00100,0b01000,0b10000,0],
+    '&': [0b01100,0b10010,0b10100,0b01000,0b10101,0b10010,0b01101],
+    '+': [0,0b00100,0b00100,0b11111,0b00100,0b00100,0],
+    '=': [0,0,0b11111,0,0b11111,0,0],
+    '(': [0b00010,0b00100,0b01000,0b01000,0b01000,0b00100,0b00010],
+    ')': [0b01000,0b00100,0b00010,0b00010,0b00010,0b00100,0b01000],
+    '#': [0b01010,0b01010,0b11111,0b01010,0b11111,0b01010,0b01010],
+    '$': [0b00100,0b01111,0b10100,0b01110,0b00101,0b11110,0b00100],
+    '%': [0b11000,0b11001,0b00010,0b00100,0b01000,0b10011,0b00011],
+    '@': [0b01110,0b10001,0b00001,0b01101,0b10101,0b10101,0b01110],
+    '*': [0,0b00100,0b10101,0b01110,0b10101,0b00100,0],
+    '<': [0b00010,0b00100,0b01000,0b10000,0b01000,0b00100,0b00010],
+    '>': [0b01000,0b00100,0b00010,0b00001,0b00010,0b00100,0b01000],
+    '\u2665': [0,0b01010,0b11111,0b11111,0b01110,0b00100,0]
+  };
+  const UNKNOWN = [0b11111,0b10001,0b10001,0b10001,0b10001,0b10001,0b11111];
+
+  // Convert a string into an array of 7-bit column masks (bit 0 = top row), with 1 blank column between glyphs.
+  function rasterize(text) {
+    const cols = [];
+    for (const ch of text.toUpperCase()) {
+      const g = Object.prototype.hasOwnProperty.call(F, ch) ? F[ch] : UNKNOWN;
+      for (let c = 0; c < 5; c++) {
+        let mask = 0;
+        for (let r = 0; r < 7; r++) if (g[r] & (1 << (4 - c))) mask |= (1 << r);
+        cols.push(mask);
+      }
+      cols.push(0);
+    }
+    return cols;
+  }
+
+  // ---- display class ----------------------------------------------------
+  class Matrix {
+    constructor(canvas, rows) {
+      this.canvas = canvas; this.ctx = canvas.getContext('2d'); this.rows = rows;
+      this.cols = 0; this.pitch = 16; this.w = 0; this.h = 0; this.dpr = 1;
+    }
+    fit(pitch) {
+      const r = this.canvas.getBoundingClientRect();
+      this.dpr = Math.min(3, window.devicePixelRatio || 1);
+      this.w = r.width; this.h = r.height;
+      this.canvas.width = Math.round(this.w * this.dpr); this.canvas.height = Math.round(this.h * this.dpr);
+      this.ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+      // rows fixed; pitch adapts so the row count fits the height, then columns fill the width
+      this.pitch = Math.min(pitch, Math.floor(this.h / this.rows));
+      this.cols = Math.max(1, Math.floor(this.w / this.pitch));
+      this.ox = (this.w - this.cols * this.pitch) / 2;
+      this.oy = (this.h - this.rows * this.pitch) / 2;
+    }
+    // frame: function(col,row) -> boolean lit
+    draw(lit, color) {
+      const ctx = this.ctx, p = this.pitch, r = p * 0.36;
+      ctx.clearRect(0, 0, this.w, this.h);
+      ctx.fillStyle = '#08090b'; ctx.fillRect(0, 0, this.w, this.h);
+      // off dots
+      ctx.fillStyle = '#171a1e';
+      ctx.beginPath();
+      for (let c = 0; c < this.cols; c++) for (let rr = 0; rr < this.rows; rr++) {
+        const x = this.ox + c * p + p / 2, y = this.oy + rr * p + p / 2;
+        ctx.moveTo(x + r, y); ctx.arc(x, y, r, 0, Math.PI * 2);
+      }
+      ctx.fill();
+      // halos
+      let count = 0;
+      ctx.fillStyle = color; ctx.globalAlpha = 0.16;
+      ctx.beginPath();
+      for (let c = 0; c < this.cols; c++) for (let rr = 0; rr < this.rows; rr++) if (lit(c, rr)) {
+        const x = this.ox + c * p + p / 2, y = this.oy + rr * p + p / 2;
+        ctx.moveTo(x + r * 2.1, y); ctx.arc(x, y, r * 2.1, 0, Math.PI * 2);
+        count++;
+      }
+      ctx.fill();
+      // cores
+      ctx.globalAlpha = 1;
+      ctx.beginPath();
+      for (let c = 0; c < this.cols; c++) for (let rr = 0; rr < this.rows; rr++) if (lit(c, rr)) {
+        const x = this.ox + c * p + p / 2, y = this.oy + rr * p + p / 2;
+        ctx.moveTo(x + r, y); ctx.arc(x, y, r, 0, Math.PI * 2);
+      }
+      ctx.fill();
+      // specular pin-highlight
+      ctx.fillStyle = 'rgba(255,255,255,.55)';
+      ctx.beginPath();
+      for (let c = 0; c < this.cols; c++) for (let rr = 0; rr < this.rows; rr++) if (lit(c, rr)) {
+        const x = this.ox + c * p + p / 2 - r * 0.3, y = this.oy + rr * p + p / 2 - r * 0.35;
+        ctx.moveTo(x + r * 0.28, y); ctx.arc(x, y, r * 0.28, 0, Math.PI * 2);
+      }
+      ctx.fill();
+      return count;
+    }
+  }
+
+  const ROWS = 11, TOP = 2;
+  const main = new Matrix(document.getElementById('main'), ROWS);
+  const clock = new Matrix(document.getElementById('clockCanvas'), 9);
+
+  const msgEl = document.getElementById('msg');
+  const lenOut = document.getElementById('len');
+  const pixelsEl = document.getElementById('pixels');
+  const pixelsSub = document.getElementById('pixelsSub');
+  const speedEl = document.getElementById('speed'), speedOut = document.getElementById('speedOut');
+  const pitchEl = document.getElementById('pitch'), pitchOut = document.getElementById('pitchOut');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let columns = rasterize(msgEl.value), mode = 'scroll', color = '#ffb000';
+  let speed = +speedEl.value, pitch = +pitchEl.value;
+  let offset = 0, dir = 1, lastT = performance.now();
+
+  function updateMessage() {
+    columns = rasterize(msgEl.value || ' ');
+    lenOut.textContent = msgEl.value.length + ' CH';
+    if (mode !== 'scroll') offset = 0;
+  }
+  msgEl.addEventListener('input', updateMessage); updateMessage();
+
+  function relayout() { main.fit(pitch); clock.fit(Math.max(6, Math.round(pitch * 0.75))); }
+  window.addEventListener('resize', relayout); relayout();
+
+  speedEl.addEventListener('input', () => { speed = +speedEl.value; speedOut.textContent = speed + ' COL/S'; });
+  pitchEl.addEventListener('input', () => { pitch = +pitchEl.value; pitchOut.textContent = pitch + ' PX'; relayout(); });
+
+  document.getElementById('mode').addEventListener('click', (e) => {
+    const b = e.target.closest('button'); if (!b) return;
+    mode = b.dataset.m; offset = 0; dir = 1;
+    document.querySelectorAll('#mode button').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+  });
+  document.getElementById('colors').addEventListener('click', (e) => {
+    const b = e.target.closest('button'); if (!b) return;
+    color = b.dataset.c;
+    document.documentElement.style.setProperty('--led', color);
+    document.querySelectorAll('#colors button').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+  });
+
+  function litAt(c, rr) {
+    const row = rr - TOP;
+    if (row < 0 || row > 6) return false;
+    const idx = Math.floor(c + offset);
+    if (idx < 0 || idx >= columns.length) return false;
+    return (columns[idx] >> row) & 1;
+  }
+
+  const GAP = 8; // blank columns between repeats when scrolling
+  function step(dt) {
+    const len = columns.length;
+    if (mode === 'scroll') {
+      const period = len + GAP + main.cols;
+      offset += speed * dt;
+      // offset runs from -cols (text fully right) to len+GAP
+      if (offset > len + GAP) offset -= period;
+    } else if (mode === 'static') {
+      offset = -(main.cols - len) / 2;
+    } else if (mode === 'bounce') {
+      const overflow = Math.max(0, len - main.cols);
+      const min = overflow ? 0 : -(main.cols - len), max = overflow ? overflow : 0;
+      offset += dir * speed * dt;
+      if (offset >= max) { offset = max; dir = -1; }
+      if (offset <= min) { offset = min; dir = 1; }
+    }
+  }
+  offset = -main.cols;
+
+  // ---- clock ----------------------------------------------------------
+  let clockCols = [], lastSec = -1;
+  function clockLit(c, rr) {
+    const row = rr - 1;
+    if (row < 0 || row > 6) return false;
+    const start = Math.floor((clock.cols - clockCols.length) / 2);
+    const idx = c - start;
+    if (idx < 0 || idx >= clockCols.length) return false;
+    return (clockCols[idx] >> row) & 1;
+  }
+  function updateClock(now) {
+    const d = new Date();
+    const s = d.getSeconds();
+    if (s !== lastSec) {
+      lastSec = s;
+      const hh = String(d.getHours()).padStart(2, '0'), mm = String(d.getMinutes()).padStart(2, '0'), ss = String(s).padStart(2, '0');
+      clockCols = rasterize(hh + ':' + mm + ':' + ss);
+    }
+    // blink colons on the half second by masking them out
+    const blinkOff = !reduced && (d.getMilliseconds() > 500);
+    let cols = clockCols;
+    if (blinkOff) { cols = clockCols.slice(); [2, 5].forEach(k => { for (let i = 0; i < 5; i++) cols[k * 6 + i] = 0; }); }
+    const saved = clockCols; clockCols = cols;
+    clock.draw(clockLit, color);
+    clockCols = saved;
+  }
+
+  let acc = 0;
+  function frame(now) {
+    const dt = Math.min(0.05, (now - lastT) / 1000); lastT = now;
+    step(reduced && mode === 'scroll' ? dt * 0.35 : dt);
+    const lit = main.draw(litAt, color);
+    acc += dt;
+    if (acc > 0.12) {
+      acc = 0;
+      const total = main.cols * main.rows;
+      pixelsEl.textContent = lit.toLocaleString();
+      pixelsSub.textContent = 'lit / ' + total.toLocaleString() + ' total · ' + main.cols + '×' + main.rows;
+    }
+    updateClock(now);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

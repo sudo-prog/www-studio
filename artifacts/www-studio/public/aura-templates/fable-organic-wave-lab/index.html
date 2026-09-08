@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Organic Wave Lab — Compose Layered Waveforms</title>
+<style>
+  :root {
+    --ink: #f3f1ec;
+    --ink-dim: rgba(243,241,236,.55);
+    --hair: rgba(243,241,236,.16);
+    --glass: rgba(14,16,24,.42);
+    --accent: #f0c98a;
+    --sans: 'Helvetica Neue', 'Avenir Next', 'Segoe UI', ui-sans-serif, system-ui, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #0b0d14; }
+  body { font-family: var(--sans); font-weight: 300; color: var(--ink); -webkit-font-smoothing: antialiased; }
+  #stage { position: fixed; inset: 0; width: 100%; height: 100%; display: block; cursor: grab; touch-action: none; }
+  #stage.dragging { cursor: grabbing; }
+  .sc { font-variant: small-caps; letter-spacing: .18em; }
+  .title {
+    position: fixed; left: clamp(20px, 4vw, 64px); top: clamp(18px, 4vh, 48px); pointer-events: none;
+    text-shadow: 0 2px 30px rgba(0,0,0,.5);
+  }
+  .title h1 { margin: 0; font-weight: 200; font-size: clamp(26px, 3.6vw, 52px); letter-spacing: .08em; line-height: 1; }
+  .title h1 em { font-style: normal; font-weight: 300; color: var(--accent); }
+  .title p { margin: 10px 0 0; font-size: 12px; color: var(--ink-dim); }
+  .foot {
+    position: fixed; left: clamp(20px, 4vw, 64px); bottom: clamp(16px, 3vh, 36px); font-size: 11px; color: var(--ink-dim); pointer-events: none;
+    display: flex; gap: 22px; flex-wrap: wrap;
+  }
+  .foot b { font-weight: 400; color: var(--ink); }
+
+  .panel {
+    position: fixed; right: clamp(12px, 2.4vw, 32px); top: clamp(12px, 2.4vh, 32px); bottom: clamp(12px, 2.4vh, 32px);
+    width: min(320px, calc(100vw - 24px)); display: flex; flex-direction: column; gap: 14px;
+    padding: 18px 18px 16px; border-radius: 18px; overflow: hidden;
+    background: var(--glass); border: 1px solid var(--hair);
+    backdrop-filter: blur(18px) saturate(1.3); -webkit-backdrop-filter: blur(18px) saturate(1.3);
+    box-shadow: 0 30px 80px -30px rgba(0,0,0,.9), 0 0 0 1px rgba(255,255,255,.03) inset;
+    transition: transform .5s cubic-bezier(.3,1,.3,1), opacity .4s ease;
+  }
+  .panel.hidden { transform: translateX(calc(100% + 40px)); opacity: 0; pointer-events: none; }
+  .panel h2 { margin: 0; font-weight: 300; font-size: 12px; color: var(--ink-dim); display: flex; align-items: center; justify-content: space-between; }
+  .panel h2 .sc { color: var(--ink); }
+  .scroll { overflow-y: auto; flex: 1; min-height: 0; padding-right: 4px; scrollbar-width: thin; scrollbar-color: var(--hair) transparent; }
+  .presets { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pill {
+    font: inherit; font-weight: 300; font-size: 12px; color: var(--ink); cursor: pointer;
+    background: rgba(255,255,255,.04); border: 1px solid var(--hair); border-radius: 999px; padding: 6px 12px;
+    transition: background .2s ease, border-color .2s ease, transform .15s ease;
+  }
+  .pill:hover { background: rgba(255,255,255,.1); transform: translateY(-1px); }
+  .pill[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); background: rgba(240,201,138,.08); }
+  .chips { display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
+  .chip {
+    display: grid; grid-template-columns: 18px 14px 1fr auto auto; align-items: center; gap: 10px;
+    padding: 8px 10px; border-radius: 10px; border: 1px solid transparent; cursor: pointer;
+    background: rgba(255,255,255,.03); transition: background .2s ease, border-color .2s ease, transform .2s cubic-bezier(.3,1.4,.5,1);
+  }
+  .chip:hover { background: rgba(255,255,255,.07); }
+  .chip[aria-selected="true"] { border-color: var(--hair); background: rgba(255,255,255,.08); }
+  .chip.drag-over { border-color: var(--accent); }
+  .chip .grip { color: var(--ink-dim); font-size: 14px; line-height: 1; letter-spacing: -2px; cursor: grab; }
+  .chip .sw { width: 14px; height: 14px; border-radius: 50%; box-shadow: 0 0 0 1px rgba(255,255,255,.25) inset, 0 0 12px var(--c); background: var(--c); }
+  .chip .nm { font-size: 13px; letter-spacing: .02em; }
+  .chip .nm small { display: block; font-size: 10px; color: var(--ink-dim); font-family: var(--mono); letter-spacing: 0; }
+  .icon {
+    font: inherit; font-size: 12px; color: var(--ink-dim); background: transparent; border: 1px solid transparent; border-radius: 6px;
+    width: 24px; height: 24px; cursor: pointer; display: inline-grid; place-items: center; transition: color .2s ease, border-color .2s ease;
+  }
+  .icon:hover { color: var(--ink); border-color: var(--hair); }
+  .icon[aria-pressed="false"] { opacity: .35; }
+  .controls { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--hair); display: grid; gap: 10px; }
+  .ctl label { display: flex; justify-content: space-between; font-size: 11px; color: var(--ink-dim); }
+  .ctl output { font-family: var(--mono); color: var(--ink); font-size: 11px; }
+  input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 18px; margin: 2px 0 0; background: transparent; }
+  input[type=range]::-webkit-slider-runnable-track { height: 1px; background: rgba(243,241,236,.3); }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 12px; height: 12px; margin-top: -5.5px; border-radius: 50%; background: var(--ink);
+    box-shadow: 0 0 0 3px rgba(11,13,20,.8); cursor: pointer; transition: transform .15s ease;
+  }
+  input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.25); }
+  input[type=range]::-moz-range-track { height: 1px; background: rgba(243,241,236,.3); }
+  input[type=range]::-moz-range-thumb { width: 12px; height: 12px; border: 0; border-radius: 50%; background: var(--ink); cursor: pointer; }
+  .colorrow { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 11px; color: var(--ink-dim); }
+  input[type=color] { -webkit-appearance: none; appearance: none; width: 34px; height: 22px; border: 1px solid var(--hair); border-radius: 6px; background: transparent; padding: 0; cursor: pointer; }
+  input[type=color]::-webkit-color-swatch-wrapper { padding: 2px; }
+  input[type=color]::-webkit-color-swatch { border: 0; border-radius: 4px; }
+  .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .btn {
+    font: inherit; font-weight: 300; font-size: 12px; color: var(--ink); cursor: pointer; letter-spacing: .04em;
+    background: rgba(255,255,255,.05); border: 1px solid var(--hair); border-radius: 10px; padding: 9px 10px;
+    transition: background .2s ease, border-color .2s ease, transform .12s ease;
+  }
+  .btn:hover { background: rgba(255,255,255,.12); border-color: rgba(243,241,236,.35); }
+  .btn:active { transform: translateY(1px); }
+  .btn.primary { background: rgba(240,201,138,.14); border-color: rgba(240,201,138,.5); color: var(--accent); }
+  .harmony { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 12px; }
+  .toggle { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
+  .toggle input { position: absolute; opacity: 0; width: 0; height: 0; }
+  .toggle .tk { width: 30px; height: 16px; border-radius: 10px; border: 1px solid var(--hair); background: rgba(255,255,255,.05); position: relative; transition: background .25s ease; }
+  .toggle .tk::after { content: ""; position: absolute; top: 2px; left: 2px; width: 10px; height: 10px; border-radius: 50%; background: var(--ink-dim); transition: transform .25s cubic-bezier(.3,1.5,.5,1), background .25s ease; }
+  .toggle input:checked + .tk { background: rgba(240,201,138,.25); }
+  .toggle input:checked + .tk::after { transform: translateX(14px); background: var(--accent); }
+  .toggle input:focus-visible + .tk { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .panel-toggle {
+    position: fixed; right: clamp(12px, 2.4vw, 32px); bottom: clamp(12px, 2.4vh, 32px); z-index: 5;
+    width: 40px; height: 40px; border-radius: 50%; background: var(--glass); border: 1px solid var(--hair); color: var(--ink);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); cursor: pointer; display: grid; place-items: center; font-size: 16px;
+    transition: transform .2s ease, background .2s ease;
+  }
+  .panel-toggle:hover { transform: scale(1.08); background: rgba(255,255,255,.12); }
+  .toast {
+    position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 20px); opacity: 0; pointer-events: none;
+    background: var(--glass); border: 1px solid var(--hair); border-radius: 999px; padding: 8px 16px; font-size: 12px;
+    backdrop-filter: blur(12px); transition: opacity .3s ease, transform .3s ease;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+  @media (max-width: 720px) {
+    .panel { top: auto; bottom: 0; right: 0; left: 0; width: 100%; max-height: 52vh; border-radius: 18px 18px 0 0; }
+    .panel.hidden { transform: translateY(110%); }
+    .title h1 { font-size: 26px; }
+    .foot { display: none; }
+    .panel-toggle { bottom: auto; top: 12px; right: 12px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .panel, .pill, .chip, .btn, .toast, .toggle .tk::after { transition: none; }
+  }
+</style>
+</head>
+<body>
+<canvas id="stage" aria-label="Layered organic waves; drag to bend them"></canvas>
+
+<div class="title">
+  <h1>Organic <em>Wave</em> Lab</h1>
+  <p class="sc">Compose · Bend · Export</p>
+</div>
+<div class="foot">
+  <span><b>Drag</b> on the canvas to bend the waves</span>
+  <span><b>Space</b> pauses the flow</span>
+  <span><b>H</b> toggles the panel</span>
+</div>
+
+<aside class="panel" id="panel" aria-label="Wave controls">
+  <h2><span class="sc">Presets</span><span id="fps" style="font-family:var(--mono)">60 fps</span></h2>
+  <div class="presets" id="presets" role="group" aria-label="Presets"></div>
+  <div class="harmony">
+    <label class="toggle"><input type="checkbox" id="harmony"><span class="tk"></span><span class="sc">Harmony</span></label>
+    <label class="toggle"><input type="checkbox" id="flow" checked><span class="tk"></span><span class="sc">Flow</span></label>
+  </div>
+  <h2><span class="sc">Layers</span><button class="icon" id="addLayer" type="button" title="Add layer" aria-label="Add layer">+</button></h2>
+  <div class="scroll">
+    <div class="chips" id="chips" role="listbox" aria-label="Wave layers"></div>
+    <div class="controls" id="controls"></div>
+  </div>
+  <div class="actions">
+    <button class="btn" type="button" id="randomBtn">Surprise me</button>
+    <button class="btn primary" type="button" id="exportBtn">Export SVG</button>
+  </div>
+</aside>
+<button class="panel-toggle" type="button" id="panelToggle" aria-label="Toggle control panel" title="Toggle panel (H)">≋</button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  'use strict';
+  const canvas = document.getElementById('stage'), ctx = canvas.getContext('2d');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = id => document.getElementById(id);
+  const NAMES = ['Crest', 'Swell', 'Drift', 'Undertow', 'Haze', 'Bed'];
+  const RATIOS = [1, 1.5, 2, 1.25, 1.6667, 2.5];   // unison, fifth, octave, major third, major sixth, octave+third
+  let W = 0, H = 0, dpr = 1;
+
+  // ---------- presets ----------
+  const PRESETS = {
+    Dunes: { bg: ['#f2e4cf', '#c9a27a'], blend: 'source-over', bottom: 'shade', ink: 'dark',
+      layers: [['#e9cfa8', .30, .6, .9, .12, 0], ['#d4a86f', .43, .9, 1.4, .18, 1.1], ['#b7804a', .56, 1.2, 1.9, .22, 2.3], ['#8a5a33', .70, 1.6, 2.4, .26, 3.1], ['#5b3a22', .84, 2.1, 3.1, .3, 4.2]] },
+    Aurora: { bg: ['#03050f', '#0b1b2b'], blend: 'screen', bottom: 'fade', ink: 'light',
+      layers: [['#36f2b5', .34, 1.4, 1.1, .5, 0], ['#3ac8ff', .42, 1.1, 1.7, .6, 1.4], ['#a86cff', .50, 1.8, 2.3, .45, 2.2], ['#ff6ad5', .58, 1.0, 0.8, .35, 3.3], ['#1ef0d8', .66, 2.2, 3.0, .3, 4.5]] },
+    Tide: { bg: ['#dfeaf1', '#7fa4bd'], blend: 'multiply', bottom: 'shade', ink: 'dark',
+      layers: [['#bcd8e6', .38, .7, 1.2, .3, 0], ['#7fb2cc', .48, 1.0, 1.6, .34, 1.2], ['#3f7fa3', .58, 1.4, 2.1, .38, 2.4], ['#245b7a', .70, 1.9, 2.7, .3, 3.6], ['#123a52', .84, 2.6, 3.4, .22, 4.8]] },
+    Silk: { bg: ['#1a1520', '#3a2740'], blend: 'screen', bottom: 'fade', ink: 'light',
+      layers: [['#f7c9d8', .36, .5, .7, .55, 0], ['#c9b8f5', .46, .8, 1.0, .5, 1.1], ['#9fd6f0', .56, 1.2, 1.4, .45, 2.0], ['#f6e3b4', .66, .9, 0.9, .4, 3.4], ['#e9a5c9', .76, 1.5, 1.8, .35, 4.7]] },
+    Nebula: { bg: ['#050208', '#150a26'], blend: 'lighter', bottom: 'fade', ink: 'light',
+      layers: [['#5a1a8c', .30, .8, 1.0, .5, 0], ['#c026a6', .40, 1.3, 1.5, .45, 1.6], ['#ff4f7a', .50, 1.7, 2.0, .35, 2.7], ['#3b3cff', .60, 1.0, 1.2, .35, 3.9], ['#ffb26a', .72, 2.4, 2.8, .25, 5.0], ['#22e0ff', .84, 3.0, 3.5, .2, 6.1]] },
+  };
+  const state = { preset: 'Aurora', bg: PRESETS.Aurora.bg, blend: 'screen', bottom: 'fade', layers: [], selected: 0, harmony: false, flow: true, baseFreq: 1.0 };
+  let uid = 1;
+  function mkLayer([color, base, freq, speed, amp, phase], i) {
+    return { id: uid++, name: NAMES[i % NAMES.length], color, base, freq, speed, amp, phase, visible: true };
+  }
+  function loadPreset(name) {
+    const p = PRESETS[name];
+    state.preset = name; state.bg = p.bg; state.blend = p.blend; state.bottom = p.bottom;
+    state.layers = p.layers.map(mkLayer); state.selected = 0;
+    document.body.style.setProperty('--ink', p.ink === 'dark' ? '#171410' : '#f3f1ec');
+    document.body.style.setProperty('--ink-dim', p.ink === 'dark' ? 'rgba(23,20,16,.6)' : 'rgba(243,241,236,.55)');
+    document.body.style.setProperty('--hair', p.ink === 'dark' ? 'rgba(23,20,16,.18)' : 'rgba(243,241,236,.16)');
+    document.body.style.setProperty('--glass', p.ink === 'dark' ? 'rgba(255,250,240,.45)' : 'rgba(14,16,24,.42)');
+    document.body.style.setProperty('--accent', p.ink === 'dark' ? '#8a4b1f' : '#f0c98a');
+    renderPresets(); renderChips(); renderControls();
+  }
+
+  // ---------- wave maths ----------
+  const bumps = [];
+  function effectiveFreq(layer, idx) { return state.harmony ? state.baseFreq * RATIOS[idx % RATIOS.length] : layer.freq; }
+  function waveY(layer, idx, x, t) {
+    const f = effectiveFreq(layer, idx), k = Math.PI * 2 / W;
+    const a = layer.amp * H * 0.22;
+    let y = layer.base * H
+      + a * Math.sin(f * k * x + layer.phase + t * layer.speed * 0.5)
+      + a * 0.38 * Math.sin(f * 2.17 * k * x - layer.phase * 0.7 + t * layer.speed * 0.31 + 1.3)
+      + a * 0.16 * Math.sin(f * 4.3 * k * x + t * layer.speed * 0.77 + idx);
+    const baseY = layer.base * H;
+    for (const b of bumps) {
+      const dx = (x - b.x) / 110, dy = (baseY - b.y) / 160;
+      y += b.s * Math.exp(-dx * dx * 0.5 - dy * dy * 0.5) * b.life;
+    }
+    return y;
+  }
+  function pathPoints(layer, idx, t, step) {
+    const pts = [];
+    for (let x = -step; x <= W + step; x += step) pts.push([x, waveY(layer, idx, x, t)]);
+    return pts;
+  }
+  function tracePath(c, pts) {
+    c.beginPath(); c.moveTo(pts[0][0], pts[0][1]);
+    for (let i = 1; i < pts.length - 1; i++) {
+      const xc = (pts[i][0] + pts[i + 1][0]) / 2, yc = (pts[i][1] + pts[i + 1][1]) / 2;
+      c.quadraticCurveTo(pts[i][0], pts[i][1], xc, yc);
+    }
+    c.lineTo(pts[pts.length - 1][0], pts[pts.length - 1][1]);
+    c.lineTo(W + 20, H + 20); c.lineTo(-20, H + 20); c.closePath();
+  }
+  function hexToRgb(h) { const n = parseInt(h.slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; }
+  function shade(h, f) { const [r, g, b] = hexToRgb(h); return `rgb(${Math.round(r * f)},${Math.round(g * f)},${Math.round(b * f)})`; }
+
+  // ---------- render ----------
+  let time = 0, last = performance.now(), fpsS = 60, frameNo = 0;
+  function draw(now) {
+    const dt = Math.min(0.05, (now - last) / 1000); last = now;
+    fpsS += (1 / (dt || 0.016) - fpsS) * 0.05;
+    if (state.flow && !reduceMotion) time += dt;
+    for (let i = bumps.length - 1; i >= 0; i--) { bumps[i].life -= dt * 0.9; if (bumps[i].life <= 0) bumps.splice(i, 1); }
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.globalCompositeOperation = 'source-over';
+    const bg = ctx.createLinearGradient(0, 0, 0, H);
+    bg.addColorStop(0, state.bg[0]); bg.addColorStop(1, state.bg[1]);
+    ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+    // faint vignette light for depth
+    const vg = ctx.createRadialGradient(W * 0.35, H * 0.25, 0, W * 0.35, H * 0.25, Math.max(W, H) * 0.8);
+    vg.addColorStop(0, 'rgba(255,255,255,0.08)'); vg.addColorStop(1, 'rgba(0,0,0,0.12)');
+    ctx.fillStyle = vg; ctx.fillRect(0, 0, W, H);
+
+    ctx.globalCompositeOperation = state.blend;
+    const step = Math.max(3, Math.round(W / 220));
+    state.layers.forEach((L, i) => {
+      if (!L.visible) return;
+      const pts = pathPoints(L, i, time, step);
+      let top = Infinity; for (const p of pts) if (p[1] < top) top = p[1];
+      const g = ctx.createLinearGradient(0, top, 0, H);
+      const [r, gg, b] = hexToRgb(L.color);
+      if (state.bottom === 'fade') {
+        g.addColorStop(0, `rgba(${r},${gg},${b},0.95)`); g.addColorStop(0.45, `rgba(${r},${gg},${b},0.35)`); g.addColorStop(1, `rgba(${r},${gg},${b},0)`);
+      } else {
+        g.addColorStop(0, L.color); g.addColorStop(1, shade(L.color, 0.55));
+      }
+      ctx.fillStyle = g; tracePath(ctx, pts); ctx.fill();
+      // crest highlight
+      ctx.save(); ctx.globalCompositeOperation = 'source-over';
+      ctx.strokeStyle = `rgba(255,255,255,${state.bottom === 'fade' ? 0.22 : 0.28})`; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(pts[0][0], pts[0][1]);
+      for (let k = 1; k < pts.length - 1; k++) { const xc = (pts[k][0] + pts[k + 1][0]) / 2, yc = (pts[k][1] + pts[k + 1][1]) / 2; ctx.quadraticCurveTo(pts[k][0], pts[k][1], xc, yc); }
+      ctx.stroke(); ctx.restore();
+    });
+    ctx.globalCompositeOperation = 'source-over';
+    if (frameNo++ % 20 === 0) $('fps').textContent = Math.round(fpsS) + ' fps';
+    requestAnimationFrame(draw);
+  }
+
+  // ---------- sizing ----------
+  function resize() {
+    dpr = Math.min(2, window.devicePixelRatio || 1);
+    W = window.innerWidth; H = window.innerHeight;
+    canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+  }
+  window.addEventListener('resize', resize); resize();
+
+  // ---------- pointer bending ----------
+  let dragging = false, lastP = null;
+  canvas.addEventListener('pointerdown', (e) => { dragging = true; lastP = [e.clientX, e.clientY]; canvas.classList.add('dragging'); canvas.setPointerCapture(e.pointerId); });
+  canvas.addEventListener('pointermove', (e) => {
+    if (!dragging) return;
+    const dy = e.clientY - lastP[1];
+    lastP = [e.clientX, e.clientY];
+    if (Math.abs(dy) < 0.5) return;
+    bumps.push({ x: e.clientX, y: e.clientY, s: Math.max(-40, Math.min(40, dy * 2.2)), life: 1 });
+    if (bumps.length > 90) bumps.shift();
+  });
+  const stopDrag = (e) => { dragging = false; canvas.classList.remove('dragging'); if (canvas.hasPointerCapture(e.pointerId)) canvas.releasePointerCapture(e.pointerId); };
+  canvas.addEventListener('pointerup', stopDrag); canvas.addEventListener('pointercancel', stopDrag);
+
+  // ---------- panel UI ----------
+  function renderPresets() {
+    const root = $('presets'); root.innerHTML = '';
+    Object.keys(PRESETS).forEach(name => {
+      const b = document.createElement('button'); b.type = 'button'; b.className = 'pill'; b.textContent = name;
+      b.setAttribute('aria-pressed', name === state.preset ? 'true' : 'false');
+      b.addEventListener('click', () => { loadPreset(name); toast(`${name} loaded`); });
+      root.appendChild(b);
+    });
+  }
+  let dragIdx = -1;
+  function renderChips() {
+    const root = $('chips'); root.innerHTML = '';
+    state.layers.forEach((L, i) => {
+      const chip = document.createElement('div');
+      chip.className = 'chip'; chip.setAttribute('role', 'option'); chip.setAttribute('aria-selected', i === state.selected ? 'true' : 'false');
+      chip.style.setProperty('--c', L.color); chip.draggable = true; chip.tabIndex = 0;
+      chip.innerHTML = `<span class="grip" aria-hidden="true">⋮⋮</span><span class="sw"></span>
+        <span class="nm">${L.name}<small>ƒ ${effectiveFreq(L, i).toFixed(2)} · a ${L.amp.toFixed(2)}</small></span>
+        <button class="icon" type="button" data-act="vis" aria-pressed="${L.visible}" aria-label="Toggle visibility">◉</button>
+        <button class="icon" type="button" data-act="del" aria-label="Remove layer">×</button>`;
+      chip.addEventListener('click', (e) => {
+        const act = e.target.dataset && e.target.dataset.act;
+        if (act === 'vis') { L.visible = !L.visible; renderChips(); return; }
+        if (act === 'del') { if (state.layers.length > 1) { state.layers.splice(i, 1); state.selected = Math.max(0, Math.min(state.selected, state.layers.length - 1)); renderChips(); renderControls(); } else toast('Keep at least one layer'); return; }
+        state.selected = i; renderChips(); renderControls();
+      });
+      chip.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); state.selected = i; renderChips(); renderControls(); }
+        if (e.altKey && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) { e.preventDefault(); moveLayer(i, e.key === 'ArrowUp' ? i - 1 : i + 1); }
+      });
+      chip.addEventListener('dragstart', (e) => { dragIdx = i; e.dataTransfer.effectAllowed = 'move'; e.dataTransfer.setData('text/plain', String(i)); });
+      chip.addEventListener('dragover', (e) => { e.preventDefault(); chip.classList.add('drag-over'); });
+      chip.addEventListener('dragleave', () => chip.classList.remove('drag-over'));
+      chip.addEventListener('drop', (e) => { e.preventDefault(); chip.classList.remove('drag-over'); if (dragIdx >= 0 && dragIdx !== i) moveLayer(dragIdx, i); dragIdx = -1; });
+      root.appendChild(chip);
+    });
+  }
+  function moveLayer(from, to) {
+    if (to < 0 || to >= state.layers.length) return;
+    const [L] = state.layers.splice(from, 1); state.layers.splice(to, 0, L);
+    state.selected = to; renderChips(); renderControls();
+  }
+  function renderControls() {
+    const root = $('controls'); root.innerHTML = '';
+    const L = state.layers[state.selected]; if (!L) return;
+    const i = state.selected;
+    const defs = [
+      ['amp', 'Amplitude', 0, 1, 0.01, v => v.toFixed(2)],
+      ['freq', 'Frequency', 0.2, 4, 0.01, v => (state.harmony ? effectiveFreq(L, i) : v).toFixed(2) + (state.harmony ? ' ♪' : '')],
+      ['phase', 'Phase', 0, 6.283, 0.01, v => (v / Math.PI).toFixed(2) + 'π'],
+      ['speed', 'Speed', 0, 4, 0.01, v => v.toFixed(2)],
+      ['base', 'Baseline', 0.05, 1, 0.01, v => Math.round(v * 100) + '%'],
+    ];
+    defs.forEach(([key, label, min, max, stp, fmt]) => {
+      const wrap = document.createElement('div'); wrap.className = 'ctl';
+      const id = `ctl-${key}`;
+      wrap.innerHTML = `<label for="${id}"><span class="sc">${label}</span><output id="${id}-out" for="${id}">${fmt(L[key])}</output></label>
+        <input type="range" id="${id}" min="${min}" max="${max}" step="${stp}" value="${L[key]}" ${key === 'freq' && state.harmony ? 'disabled' : ''}>`;
+      const inp = wrap.querySelector('input'), out = wrap.querySelector('output');
+      inp.addEventListener('input', () => { L[key] = parseFloat(inp.value); out.textContent = fmt(L[key]); if (key === 'amp' || key === 'freq') refreshChipMeta(); });
+      root.appendChild(wrap);
+    });
+    const cr = document.createElement('div'); cr.className = 'colorrow';
+    cr.innerHTML = `<label for="ctl-color" class="sc">Colour</label><span style="font-family:var(--mono)" id="ctl-color-hex">${L.color}</span><input type="color" id="ctl-color" value="${L.color}">`;
+    cr.querySelector('input').addEventListener('input', (e) => { L.color = e.target.value; $('ctl-color-hex').textContent = L.color; refreshChipMeta(); });
+    root.appendChild(cr);
+    if (state.harmony) {
+      const hb = document.createElement('div'); hb.className = 'ctl';
+      hb.innerHTML = `<label for="ctl-basef"><span class="sc">Fundamental</span><output id="ctl-basef-out" for="ctl-basef">${state.baseFreq.toFixed(2)}</output></label>
+        <input type="range" id="ctl-basef" min="0.3" max="2" step="0.01" value="${state.baseFreq}">`;
+      const inp = hb.querySelector('input'), out = hb.querySelector('output');
+      inp.addEventListener('input', () => { state.baseFreq = parseFloat(inp.value); out.textContent = state.baseFreq.toFixed(2); refreshChipMeta(); });
+      root.appendChild(hb);
+    }
+  }
+  function refreshChipMeta() {
+    document.querySelectorAll('.chip').forEach((chip, i) => {
+      const L = state.layers[i]; if (!L) return;
+      chip.style.setProperty('--c', L.color);
+      chip.querySelector('.nm small').textContent = `ƒ ${effectiveFreq(L, i).toFixed(2)} · a ${L.amp.toFixed(2)}`;
+    });
+  }
+  $('harmony').addEventListener('change', (e) => { state.harmony = e.target.checked; refreshChipMeta(); renderControls(); toast(state.harmony ? 'Frequencies locked to just-intonation ratios' : 'Free frequencies'); });
+  $('flow').addEventListener('change', (e) => { state.flow = e.target.checked; });
+  $('addLayer').addEventListener('click', () => {
+    if (state.layers.length >= 6) { toast('Six layers is the limit of good taste'); return; }
+    const src = state.layers[state.layers.length - 1];
+    state.layers.push(mkLayer([src.color, Math.min(0.95, src.base + 0.1), src.freq * 1.3, src.speed * 1.1, src.amp * 0.9, src.phase + 1.1], state.layers.length));
+    state.selected = state.layers.length - 1; renderChips(); renderControls();
+  });
+  $('randomBtn').addEventListener('click', () => {
+    state.layers.forEach((L, i) => {
+      const hue = (Math.random() * 360) | 0;
+      L.color = hslHex(hue, 55 + Math.random() * 35, 45 + Math.random() * 30);
+      L.freq = 0.5 + Math.random() * 2.2; L.amp = 0.15 + Math.random() * 0.45; L.phase = Math.random() * 6.28; L.speed = 0.5 + Math.random() * 2.5;
+      L.base = 0.3 + (i / Math.max(1, state.layers.length - 1)) * 0.55;
+    });
+    renderChips(); renderControls(); toast('New composition');
+  });
+  function hslHex(h, s, l) {
+    s /= 100; l /= 100; const k = n => (n + h / 30) % 12, a = s * Math.min(l, 1 - l);
+    const f = n => Math.round(255 * (l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)))));
+    return '#' + [f(0), f(8), f(4)].map(v => v.toString(16).padStart(2, '0')).join('');
+  }
+
+  // ---------- export ----------
+  $('exportBtn').addEventListener('click', () => {
+    const step = Math.max(4, Math.round(W / 160));
+    let defs = '', body = '';
+    defs += `<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${state.bg[0]}"/><stop offset="1" stop-color="${state.bg[1]}"/></linearGradient>`;
+    body += `<rect width="${W}" height="${H}" fill="url(#bg)"/>`;
+    const mix = { 'source-over': 'normal', screen: 'screen', multiply: 'multiply', lighter: 'plus-lighter' }[state.blend] || 'normal';
+    state.layers.forEach((L, i) => {
+      if (!L.visible) return;
+      const pts = pathPoints(L, i, time, step);
+      let d = `M${pts[0][0].toFixed(1)},${pts[0][1].toFixed(1)}`;
+      for (let k = 1; k < pts.length - 1; k++) { const xc = (pts[k][0] + pts[k + 1][0]) / 2, yc = (pts[k][1] + pts[k + 1][1]) / 2; d += `Q${pts[k][0].toFixed(1)},${pts[k][1].toFixed(1)} ${xc.toFixed(1)},${yc.toFixed(1)}`; }
+      d += `L${W + 20},${H + 20}L-20,${H + 20}Z`;
+      const [r, g, b] = hexToRgb(L.color);
+      const stops = state.bottom === 'fade'
+        ? `<stop offset="0" stop-color="rgb(${r},${g},${b})" stop-opacity=".95"/><stop offset=".45" stop-color="rgb(${r},${g},${b})" stop-opacity=".35"/><stop offset="1" stop-color="rgb(${r},${g},${b})" stop-opacity="0"/>`
+        : `<stop offset="0" stop-color="${L.color}"/><stop offset="1" stop-color="${shade(L.color, 0.55)}"/>`;
+      defs += `<linearGradient id="g${i}" x1="0" y1="0" x2="0" y2="1">${stops}</linearGradient>`;
+      body += `<path d="${d}" fill="url(#g${i})" style="mix-blend-mode:${mix}"/>`;
+    });
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}"><title>Organic Wave Lab — ${state.preset}</title><defs>${defs}</defs>${body}</svg>`;
+    const blob = new Blob([svg], { type: 'image/svg+xml' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href = url; a.download = `wave-lab-${state.preset.toLowerCase()}.svg`; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+    toast('SVG exported');
+  });
+
+  // ---------- misc ----------
+  let toastT = 0;
+  function toast(msg) { const t = $('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 1800); }
+  $('panelToggle').addEventListener('click', () => $('panel').classList.toggle('hidden'));
+  window.addEventListener('keydown', (e) => {
+    if (e.target instanceof Element && e.target.matches('input, button')) return;
+    if (e.key === ' ') { e.preventDefault(); state.flow = !state.flow; $('flow').checked = state.flow; }
+    if (e.key === 'h' || e.key === 'H') $('panel').classList.toggle('hidden');
+  });
+
+  loadPreset('Aurora');
+  requestAnimationFrame((n) => { last = n; draw(n); });
+})();
+</script>
+</body>
+</html>

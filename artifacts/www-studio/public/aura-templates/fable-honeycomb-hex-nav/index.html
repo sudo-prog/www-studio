@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apiary Studio — Honeycomb Navigation</title>
+<style>
+  :root {
+    --amber-deep: #2a1604;
+    --amber-mid: #5a3008;
+    --honey: #f0a83a;
+    --honey-light: #ffd27a;
+    --honey-pale: #fff1cc;
+    --wax: #c47a18;
+    --ink: #1c0f03;
+    --serif: "Iowan Old Style", Palatino, "Palatino Linotype", "Book Antiqua", Georgia, ui-serif, serif;
+    --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --hex-w: 96px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: radial-gradient(ellipse at 30% 20%, #4a2606 0%, var(--amber-deep) 45%, #150a02 100%);
+    color: var(--honey-pale);
+    font-family: var(--serif);
+    overflow: hidden;
+    perspective: 1200px;
+  }
+
+  /* Slow light sweep across the whole comb */
+  .sweep {
+    position: fixed; inset: -20%;
+    background: linear-gradient(115deg, transparent 30%, rgba(255, 210, 122, 0.16) 48%, rgba(255, 240, 200, 0.28) 50%, rgba(255, 210, 122, 0.16) 52%, transparent 70%);
+    animation: sweep 14s cubic-bezier(.45,.05,.55,.95) infinite;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    z-index: 2;
+  }
+  @keyframes sweep {
+    0% { transform: translateX(-60%); }
+    100% { transform: translateX(60%); }
+  }
+
+  .comb {
+    position: fixed; inset: 0;
+    transform-style: preserve-3d;
+    z-index: 1;
+  }
+
+  .hex {
+    position: absolute;
+    width: var(--hex-w);
+    height: calc(var(--hex-w) * 1.1547);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    background:
+      linear-gradient(160deg, rgba(255,230,170,0.12) 0%, rgba(255,200,110,0.04) 45%, rgba(0,0,0,0.18) 100%),
+      linear-gradient(180deg, #6b3a0a, #3d2005);
+    transform: translate3d(0, 0, 0) scale(0.96);
+    transition: transform 0.5s cubic-bezier(.2,.8,.2,1), filter 0.5s ease, opacity 0.6s ease;
+    will-change: transform, filter;
+    filter: brightness(1);
+  }
+  .hex::after {
+    /* inner wax rim */
+    content: "";
+    position: absolute; inset: 3px;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    background: linear-gradient(180deg, rgba(255,215,140,0.10), rgba(255,215,140,0.02) 40%, rgba(0,0,0,0.15));
+    pointer-events: none;
+  }
+
+  .hex.nav {
+    cursor: pointer;
+    border: 0; padding: 0; margin: 0; font: inherit;
+    background:
+      radial-gradient(ellipse at 50% 30%, rgba(255,240,200,0.35), rgba(255,240,200,0) 60%),
+      linear-gradient(180deg, var(--honey) 0%, var(--wax) 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+    color: var(--ink);
+    z-index: 3;
+    box-shadow: 0 0 0 rgba(0,0,0,0);
+  }
+  .hex.nav::after { display: none; }
+  .hex.nav svg { width: 28%; height: 28%; stroke: var(--ink); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .hex.nav span {
+    font-family: var(--sans);
+    font-size: clamp(9px, calc(var(--hex-w) * 0.13), 14px);
+    letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500;
+  }
+  .hex.nav:hover, .hex.nav:focus-visible { filter: brightness(1.15) saturate(1.1); outline: none; }
+  .hex.nav:focus-visible { box-shadow: 0 0 0 3px var(--honey-pale); }
+
+  .comb.dimmed .hex { opacity: 0.22; filter: brightness(0.6) !important; transform: translate3d(0,0,0) scale(0.94) !important; }
+  .comb.dimmed .hex.nav.active { opacity: 0; }
+
+  /* ---------- Heading ---------- */
+  .brand {
+    position: fixed; top: clamp(16px, 3vw, 40px); left: clamp(16px, 3vw, 40px);
+    z-index: 4; pointer-events: none;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+  }
+  .brand h1 { margin: 0; font-size: clamp(22px, 3vw, 38px); font-weight: 400; letter-spacing: 0.04em; }
+  .brand h1 em { font-style: italic; color: var(--honey-light); }
+  .brand p { margin: 6px 0 0; font-family: var(--sans); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,241,204,0.6); }
+
+  .hint {
+    position: fixed; bottom: clamp(16px, 3vw, 40px); left: 50%; transform: translateX(-50%);
+    z-index: 4; pointer-events: none;
+    font-style: italic; font-size: 13px; color: rgba(255,241,204,0.55);
+    white-space: nowrap;
+    transition: opacity 0.4s;
+  }
+  .comb.dimmed ~ .hint { opacity: 0; }
+
+  /* ---------- Expanding panel ---------- */
+  .panel {
+    position: fixed;
+    z-index: 5;
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(255,240,200,0.35), rgba(255,240,200,0) 55%),
+      linear-gradient(170deg, #f7b64a 0%, #d88a1f 100%);
+    color: var(--ink);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      top 0.7s cubic-bezier(.2,.8,.2,1), left 0.7s cubic-bezier(.2,.8,.2,1),
+      width 0.7s cubic-bezier(.2,.8,.2,1), height 0.7s cubic-bezier(.2,.8,.2,1),
+      clip-path 0.7s cubic-bezier(.2,.8,.2,1), border-radius 0.7s, opacity 0.3s;
+    overflow: hidden;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.55);
+  }
+  .panel.open {
+    opacity: 1; pointer-events: auto;
+    clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%, 0% 0%);
+    border-radius: 24px;
+  }
+  .panel-inner {
+    height: 100%;
+    padding: clamp(24px, 4vw, 56px);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 18px;
+    opacity: 0; transform: translateY(14px);
+    transition: opacity 0.4s ease 0.35s, transform 0.5s cubic-bezier(.2,.8,.2,1) 0.35s;
+    overflow: auto;
+  }
+  .panel.open .panel-inner { opacity: 1; transform: none; }
+  .panel-kicker { font-family: var(--sans); font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; opacity: 0.7; margin: 0 0 6px; }
+  .panel h2 { margin: 0; font-size: clamp(30px, 5vw, 64px); font-weight: 400; line-height: 1; letter-spacing: -0.01em; }
+  .panel-body { font-size: clamp(15px, 1.4vw, 19px); line-height: 1.6; max-width: 62ch; }
+  .panel-body p { margin: 0 0 14px; }
+  .panel-list { display: flex; flex-wrap: wrap; gap: 8px 22px; font-family: var(--sans); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.85; padding: 0; margin: 0; list-style: none; }
+  .panel-list li::before { content: "⬢ "; font-size: 8px; vertical-align: middle; }
+  .close {
+    position: absolute; top: 18px; right: 18px;
+    width: 42px; height: 42px; border-radius: 50%;
+    border: 1px solid rgba(28,15,3,0.35); background: rgba(255,241,204,0.35);
+    color: var(--ink); font-size: 18px; cursor: pointer;
+    transition: transform 0.25s cubic-bezier(.2,.8,.2,1), background 0.25s;
+  }
+  .close:hover { transform: rotate(90deg) scale(1.08); background: rgba(255,241,204,0.7); }
+
+  @media (max-width: 600px) {
+    .hex.nav svg { width: 24%; height: 24%; }
+    .hint { font-size: 11px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sweep { animation: none; opacity: 0.4; }
+    .hex, .panel, .panel-inner { transition-duration: 0.01s; }
+  }
+</style>
+</head>
+<body>
+
+<div class="brand">
+  <h1>Apiary <em>Studio</em></h1>
+  <p>Design · Research · Slow Craft</p>
+</div>
+
+<div class="comb" id="comb" aria-label="Honeycomb navigation"></div>
+<div class="sweep" aria-hidden="true"></div>
+<p class="hint">Move across the comb · choose a cell to open it</p>
+
+<section class="panel" id="panel" role="dialog" aria-modal="true" aria-labelledby="panelTitle" aria-hidden="true">
+  <button class="close" id="closeBtn" aria-label="Close panel">×</button>
+  <div class="panel-inner">
+    <div>
+      <p class="panel-kicker" id="panelKicker">Cell 01</p>
+      <h2 id="panelTitle">Work</h2>
+    </div>
+    <div class="panel-body" id="panelBody"></div>
+    <ul class="panel-list" id="panelList"></ul>
+  </div>
+</section>
+
+<script>
+(function () {
+  'use strict';
+  const comb = document.getElementById('comb');
+  const panel = document.getElementById('panel');
+  const panelTitle = document.getElementById('panelTitle');
+  const panelKicker = document.getElementById('panelKicker');
+  const panelBody = document.getElementById('panelBody');
+  const panelList = document.getElementById('panelList');
+  const closeBtn = document.getElementById('closeBtn');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const icons = {
+    work: '<path d="M4 8h16v11H4z"/><path d="M9 8V6h6v2"/><path d="M4 13h16"/>',
+    studio: '<path d="M4 20V9l8-5 8 5v11"/><path d="M10 20v-6h4v6"/>',
+    journal: '<path d="M6 4h11a1 1 0 0 1 1 1v15H7a1 1 0 0 1-1-1z"/><path d="M6 8h12"/><path d="M10 13h5"/>',
+    lab: '<path d="M9 3h6"/><path d="M10 3v6L5 19a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1L14 9V3"/><path d="M7.5 15h9"/>',
+    people: '<circle cx="9" cy="8" r="3"/><circle cx="16" cy="10" r="2.5"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M14 20a4.5 4.5 0 0 1 7 0"/>',
+    contact: '<path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/>'
+  };
+
+  const sections = {
+    work: {
+      title: 'Work', kicker: 'Cell 01 · Selected projects',
+      body: '<p>We make identities, interfaces and printed matter for institutions that plan in decades: a cartographic archive, a chamber orchestra, a seed bank in the high north. Each project begins with listening and ends with a system the client can keep tending after we leave.</p><p>Recent commissions include a wayfinding language for a botanical garden built entirely from hexagonal tiles, and a reading app whose typography changes with the light outside.</p>',
+      list: ['Identity', 'Editorial', 'Wayfinding', 'Interfaces', 'Exhibitions']
+    },
+    studio: {
+      title: 'Studio', kicker: 'Cell 02 · Who we are',
+      body: '<p>Apiary is a nine-person studio in a former honey warehouse. The building still smells faintly of wax on warm afternoons, which is where the name and the comb came from. We work slowly, in small teams, with the doors open.</p><p>Our practice sits between design research and craft: we prototype in paper before pixels and test with real people before we polish.</p>',
+      list: ['Founded 2014', 'Nine people', 'Open Thursdays']
+    },
+    journal: {
+      title: 'Journal', kicker: 'Cell 03 · Notes from the comb',
+      body: '<p><strong>On tessellation.</strong> Why bees settled on six sides, and what that teaches about grids that must grow without a master plan.</p><p><strong>The quiet interface.</strong> A field guide to designing screens that recede — where the best interaction is the one you never notice.</p><p><strong>Ink and honey.</strong> A conversation with our printer about warm blacks, uncoated stock and the patience of letterpress.</p>',
+      list: ['Essays', 'Field notes', 'Conversations']
+    },
+    lab: {
+      title: 'Lab', kicker: 'Cell 04 · Experiments',
+      body: '<p>The Lab is where we keep the things that do not yet have a client: a variable typeface whose weight follows the weather, a loom that weaves generative patterns, and this navigation — a study in how proximity alone can guide a hand.</p><p>Everything here is open, unfinished and happily so.</p>',
+      list: ['Generative', 'Type', 'Tangible', 'Sound']
+    },
+    people: {
+      title: 'People', kicker: 'Cell 05 · The colony',
+      body: '<p>Nour leads research and asks the uncomfortable first question. Teodor draws every letterform by hand before it goes near a computer. Aiko writes the code and the poems in the release notes. Sam keeps the studio, the plants and the espresso machine alive.</p><p>We hire rarely, mentor generously, and always answer thoughtful letters.</p>',
+      list: ['Research', 'Type & Illustration', 'Engineering', 'Production']
+    },
+    contact: {
+      title: 'Contact', kicker: 'Cell 06 · Say hello',
+      body: '<p>We take on four or five projects a year and like to begin with a long conversation over tea. Tell us what you are trying to build, who it is for, and how much time you are willing to give it.</p><p>The studio is on the second floor above the old loading bay; the door is yellow.</p>',
+      list: ['hello@apiary.studio', 'Warehouse 6, Honey Lane', 'Tue–Fri 10–18']
+    }
+  };
+  const navOrder = ['work', 'studio', 'journal', 'lab', 'people', 'contact'];
+
+  let hexes = [];
+  let navHexes = [];
+  let hexW = 96, hexH = 110, cols = 0, rows = 0;
+  let activeKey = null;
+  let pointer = { x: -9999, y: -9999 };
+  let dirty = true;
+
+  function buildGrid() {
+    comb.innerHTML = '';
+    hexes = []; navHexes = [];
+    const W = window.innerWidth, H = window.innerHeight;
+    hexW = W < 480 ? 64 : W < 900 ? 82 : W < 1600 ? 100 : W < 2600 ? 132 : 180;
+    hexH = hexW * 1.1547;
+    document.documentElement.style.setProperty('--hex-w', hexW + 'px');
+    const stepX = hexW + 4;
+    const stepY = hexH * 0.75 + 3;
+    cols = Math.ceil(W / stepX) + 2;
+    rows = Math.ceil(H / stepY) + 2;
+
+    // Choose six nav cells in a ring around the centre
+    const cr = Math.floor(rows / 2), cc = Math.floor(cols / 2);
+    const ringOffsets = cr % 2 === 0
+      ? [[-1, -1], [-1, 0], [0, 1], [1, 0], [1, -1], [0, -1]]
+      : [[-1, 0], [-1, 1], [0, 1], [1, 1], [1, 0], [0, -1]];
+    const navMap = new Map();
+    ringOffsets.forEach((o, i) => navMap.set((cr + o[0]) + ':' + (cc + o[1]), navOrder[i]));
+
+    const frag = document.createDocumentFragment();
+    for (let r = -1; r < rows - 1; r++) {
+      for (let c = -1; c < cols - 1; c++) {
+        const offset = (r % 2 === 0) ? 0 : stepX / 2;
+        const x = c * stepX + offset - stepX / 2;
+        const y = r * stepY - stepY / 2;
+        const key = navMap.get(r + ':' + c);
+        const el = document.createElement(key ? 'button' : 'div');
+        el.className = 'hex' + (key ? ' nav' : '');
+        el.style.left = x + 'px'; el.style.top = y + 'px';
+        if (key) {
+          el.dataset.key = key;
+          el.setAttribute('aria-label', 'Open ' + sections[key].title);
+          el.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true">${icons[key]}</svg><span>${sections[key].title}</span>`;
+          el.addEventListener('click', () => openPanel(key, el));
+          navHexes.push(el);
+        }
+        const h = { el, cx: x + hexW / 2, cy: y + hexH / 2, nav: !!key, tx: 0, ty: 0, tz: 0, sc: 0.96, br: 1 };
+        hexes.push(h);
+        frag.appendChild(el);
+      }
+    }
+    comb.appendChild(frag);
+    dirty = true;
+  }
+
+  // Distance-based lift, brightness and tilt toward the cursor
+  const RADIUS = () => hexW * 3.2;
+  function update() {
+    if (!dirty && !reduceMotion) { requestAnimationFrame(update); return; }
+    const R = RADIUS();
+    for (const h of hexes) {
+      const dx = pointer.x - h.cx, dy = pointer.y - h.cy;
+      const d = Math.hypot(dx, dy);
+      let t = Math.max(0, 1 - d / R);
+      t = t * t * (3 - 2 * t); // smoothstep
+      const lift = t * 34;
+      const tiltX = (dy / R) * -14 * t;
+      const tiltY = (dx / R) * 14 * t;
+      const scale = 0.96 + t * 0.06;
+      const bright = 1 + t * 0.55;
+      h.el.style.transform = `translate3d(0,0,${lift}px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(${scale})`;
+      h.el.style.filter = `brightness(${bright}) saturate(${1 + t * 0.3})`;
+    }
+    dirty = false;
+    requestAnimationFrame(update);
+  }
+
+  window.addEventListener('pointermove', e => {
+    if (activeKey) return;
+    pointer.x = e.clientX; pointer.y = e.clientY; dirty = true;
+  });
+  window.addEventListener('pointerleave', () => { pointer.x = -9999; pointer.y = -9999; dirty = true; });
+
+  // Idle drift: when there is no pointer, a phantom cursor wanders the comb
+  let idleT = 0, lastMove = performance.now();
+  window.addEventListener('pointermove', () => { lastMove = performance.now(); });
+  function idle(now) {
+    if (!activeKey && now - lastMove > 4000 && !reduceMotion) {
+      idleT += 0.006;
+      pointer.x = window.innerWidth * (0.5 + 0.35 * Math.cos(idleT));
+      pointer.y = window.innerHeight * (0.5 + 0.3 * Math.sin(idleT * 1.3));
+      dirty = true;
+    }
+    requestAnimationFrame(idle);
+  }
+
+  // ---------- Panel ----------
+  function openPanel(key, el) {
+    activeKey = key;
+    const s = sections[key];
+    panelKicker.textContent = s.kicker;
+    panelTitle.textContent = s.title;
+    panelBody.innerHTML = s.body;
+    panelList.innerHTML = s.list.map(i => `<li>${i}</li>`).join('');
+
+    // Start the panel at the hex's position, then grow to centre
+    const r = el.getBoundingClientRect();
+    panel.style.transition = 'none';
+    panel.style.left = r.left + 'px'; panel.style.top = r.top + 'px';
+    panel.style.width = r.width + 'px'; panel.style.height = r.height + 'px';
+    panel.classList.remove('open');
+    panel.setAttribute('aria-hidden', 'false');
+    // force reflow before enabling transition
+    void panel.offsetWidth;
+    panel.style.transition = '';
+    navHexes.forEach(n => n.classList.toggle('active', n === el));
+    comb.classList.add('dimmed');
+
+    const W = window.innerWidth, H = window.innerHeight;
+    const pw = Math.min(W - 32, 880), ph = Math.min(H - 32, 620);
+    requestAnimationFrame(() => {
+      panel.style.left = (W - pw) / 2 + 'px'; panel.style.top = (H - ph) / 2 + 'px';
+      panel.style.width = pw + 'px'; panel.style.height = ph + 'px';
+      panel.classList.add('open');
+      closeBtn.focus();
+    });
+  }
+  function closePanel() {
+    if (!activeKey) return;
+    const el = navHexes.find(n => n.dataset.key === activeKey);
+    const r = el.getBoundingClientRect();
+    panel.classList.remove('open');
+    panel.style.left = r.left + 'px'; panel.style.top = r.top + 'px';
+    panel.style.width = r.width + 'px'; panel.style.height = r.height + 'px';
+    panel.setAttribute('aria-hidden', 'true');
+    comb.classList.remove('dimmed');
+    navHexes.forEach(n => n.classList.remove('active'));
+    activeKey = null; dirty = true;
+    el.focus();
+  }
+  closeBtn.addEventListener('click', closePanel);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      const wasOpen = activeKey;
+      if (wasOpen) closePanel();
+      buildGrid();
+    }, 120);
+  });
+
+  buildGrid();
+  requestAnimationFrame(update);
+  requestAnimationFrame(idle);
+})();
+</script>
+</body>
+</html>

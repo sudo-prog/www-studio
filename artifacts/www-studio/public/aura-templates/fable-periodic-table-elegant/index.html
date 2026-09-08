@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Elements — An Elegant Periodic Table</title>
+<style>
+  :root {
+    --bg: #1b2130;
+    --bg-2: #222a3b;
+    --fg: #e8ecf3;
+    --muted: #8b95a8;
+    --line: rgba(255,255,255,.08);
+    --card: rgba(30, 37, 52, .92);
+    --ease: cubic-bezier(.22, 1, .36, 1);
+    --c-ak: #c98a7a; --c-ae: #d4b483; --c-tm: #8fa3b8; --c-pt: #9bb0a5; --c-md: #b8a1c9;
+    --c-nm: #7fb5a6; --c-hg: #c9c07a; --c-ng: #a38ec2; --c-la: #d69ea8; --c-ac: #c48bb0; --c-un: #6f7580;
+    --s-solid: #8fa3b8; --s-liquid: #5aa7e0; --s-gas: #f0b46a;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    background: radial-gradient(120% 90% at 50% -10%, var(--bg-2), var(--bg) 60%);
+    color: var(--fg);
+    font-family: ui-sans-serif, system-ui, "Helvetica Neue", "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    padding: clamp(14px, 2.5vw, 36px);
+  }
+  header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 16px 32px; margin-bottom: clamp(14px, 2vw, 28px); }
+  h1 { margin: 0; font-family: Georgia, "Iowan Old Style", Palatino, ui-serif, serif; font-weight: 400; font-size: clamp(26px, 3.4vw, 44px); letter-spacing: -.01em; line-height: 1; }
+  h1 em { font-style: italic; color: var(--muted); }
+  .sub { margin: 8px 0 0; color: var(--muted); font-size: 13px; letter-spacing: .04em; max-width: 60ch; line-height: 1.5; }
+  .tools { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; }
+  .search { position: relative; }
+  .search input {
+    font: inherit; font-size: 14px; color: var(--fg); background: rgba(0,0,0,.25);
+    border: 1px solid var(--line); border-radius: 999px; padding: 10px 14px 10px 38px; width: clamp(180px, 22vw, 260px);
+    outline: none; transition: border-color .3s, box-shadow .3s;
+  }
+  .search input:focus { border-color: rgba(143,163,184,.7); box-shadow: 0 0 0 4px rgba(143,163,184,.15); }
+  .search svg { position: absolute; left: 13px; top: 50%; width: 16px; height: 16px; transform: translateY(-50%); stroke: var(--muted); fill: none; stroke-width: 1.8; stroke-linecap: round; }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; background: rgba(0,0,0,.25); }
+  .seg button { font: inherit; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); background: transparent; border: 0; padding: 9px 14px; cursor: pointer; transition: color .3s, background .3s; }
+  .seg button[aria-pressed="true"] { color: #141922; background: var(--fg); }
+  .temp { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--muted); letter-spacing: .06em; }
+  .temp input { accent-color: var(--s-liquid); width: clamp(120px, 16vw, 220px); cursor: ew-resize; }
+  .temp .readout { min-width: 5.5ch; color: var(--fg); font-variant-numeric: tabular-nums; font-weight: 600; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 0 0 14px; padding: 0; list-style: none; font-size: 12px; color: var(--muted); }
+  .legend li { display: flex; align-items: center; gap: 7px; padding: 5px 9px; border-radius: 999px; cursor: pointer; user-select: none; transition: background .25s, color .25s; }
+  .legend li:hover, .legend li[aria-pressed="true"] { background: rgba(255,255,255,.07); color: var(--fg); }
+  .legend i { width: 10px; height: 10px; border-radius: 3px; background: var(--c); box-shadow: 0 0 0 1px rgba(0,0,0,.3); }
+  .legend .st { display: none; }
+  body[data-mode="state"] .legend .cat { display: none; }
+  body[data-mode="state"] .legend .st { display: flex; }
+
+  .scroller { overflow-x: auto; overflow-y: visible; padding: 8px 4px 24px; scrollbar-width: thin; }
+  .table {
+    display: grid;
+    grid-template-columns: repeat(18, minmax(46px, 1fr));
+    grid-template-rows: repeat(7, auto) 14px repeat(2, auto);
+    gap: 4px;
+    min-width: 920px;
+    position: relative;
+  }
+  .el {
+    position: relative; grid-column: var(--col); grid-row: var(--row);
+    aspect-ratio: 1 / 1.08; border-radius: 6px; padding: 5px 6px;
+    background: color-mix(in srgb, var(--c) 16%, transparent);
+    border: 1px solid color-mix(in srgb, var(--c) 28%, transparent);
+    display: flex; flex-direction: column; justify-content: space-between;
+    cursor: pointer; text-align: left; color: inherit; font: inherit;
+    transition: transform .35s var(--ease), box-shadow .35s var(--ease), opacity .4s, background .5s, border-color .5s;
+    will-change: transform;
+  }
+  .el::before { content: ""; position: absolute; left: 6px; right: 6px; top: 0; height: 2px; border-radius: 0 0 2px 2px; background: var(--c); opacity: .9; transition: background .5s; }
+  .el .n { font-size: clamp(8px, .7vw, 11px); color: var(--muted); font-variant-numeric: tabular-nums; }
+  .el .s { font-family: Georgia, "Iowan Old Style", Palatino, ui-serif, serif; font-size: clamp(15px, 1.5vw, 26px); line-height: 1; color: var(--c); font-weight: 400; transition: color .5s; }
+  .el .nm { font-size: clamp(7px, .58vw, 10px); color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: .02em; }
+  .el:hover, .el:focus-visible, .el.active {
+    transform: translateY(-5px) scale(1.07); z-index: 5; outline: none;
+    box-shadow: 0 18px 30px -12px rgba(0,0,0,.7), 0 0 0 1px var(--c);
+    background: color-mix(in srgb, var(--c) 30%, transparent);
+  }
+  .el.dim { opacity: .14; }
+  .marker { grid-column: 3; font-size: 10px; color: var(--muted); display: grid; place-items: center; border: 1px dashed var(--line); border-radius: 6px; letter-spacing: .06em; }
+  .marker.la { grid-row: 6; } .marker.ac { grid-row: 7; }
+
+  .card {
+    /* sits in the classic gap above the transition metals: groups 3-12, periods 1-3 */
+    position: absolute; top: 0;
+    left: calc(2 * (100% - 68px) / 18 + 8px);
+    width: calc(10 * (100% - 68px) / 18 + 36px);
+    aspect-ratio: 3.15; overflow: hidden;
+    padding: 10px 16px;
+    display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px 16px; align-items: center;
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    box-shadow: 0 30px 60px -30px rgba(0,0,0,.8), inset 0 1px 0 rgba(255,255,255,.05);
+    backdrop-filter: blur(10px);
+  }
+  .card .atom { height: 100%; max-height: 100%; aspect-ratio: 1; }
+  .card h2 { margin: 0; font-family: Georgia, "Iowan Old Style", Palatino, ui-serif, serif; font-weight: 400; font-size: clamp(22px, 2.4vw, 36px); line-height: 1; display: flex; align-items: baseline; gap: 12px; }
+  .card h2 .sym { color: var(--c); font-size: 1.35em; }
+  .card h2 .num { color: var(--muted); font-size: .5em; font-family: ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; }
+  .card .cat { margin: 6px 0 10px; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--c); }
+  .card dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 3px 14px; font-size: clamp(11px, .85vw, 13px); line-height: 1.25; }
+  .card dt { color: var(--muted); }
+  .card dd { margin: 0; font-variant-numeric: tabular-nums; }
+  .card .state { display: inline-flex; align-items: center; gap: 6px; }
+  .card .state i { width: 8px; height: 8px; border-radius: 50%; background: var(--sc); box-shadow: 0 0 8px var(--sc); }
+  .card .empty { grid-column: 1 / -1; color: var(--muted); font-size: 13px; text-align: center; font-style: italic; font-family: Georgia, ui-serif, serif; }
+  .shell { fill: none; stroke: rgba(255,255,255,.14); stroke-width: 1; }
+  .orbit { transform-origin: 100px 100px; animation: spin var(--dur) linear infinite; animation-direction: var(--dir); }
+  .orbit circle { fill: var(--c); filter: drop-shadow(0 0 3px var(--c)); }
+  .nucleus { fill: url(#nucleusGrad); }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  footer { margin-top: 16px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; color: var(--muted); font-size: 12px; letter-spacing: .04em; }
+
+  @media (max-width: 900px) {
+    .card {
+      position: fixed; top: auto; left: 12px; right: 12px; bottom: 12px; width: auto; aspect-ratio: auto; z-index: 20;
+      grid-template-columns: 96px 1fr; padding: 12px 14px;
+      transform: translateY(calc(100% + 20px)); transition: transform .5s var(--ease);
+    }
+    .card.show { transform: none; }
+    .card .atom { height: 96px; }
+    .card .empty { display: none; }
+    .el .nm { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .orbit { animation: none; }
+    .el, .card { transition: none; }
+  }
+</style>
+</head>
+<body data-mode="category">
+<header>
+  <div>
+    <h1>The Elements <em>arranged</em></h1>
+    <p class="sub">All 118 known elements in the classic long-form layout. Hover any tile to see its Bohr model; slide the temperature to watch matter melt and boil.</p>
+  </div>
+  <div class="tools">
+    <div class="search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input type="search" id="q" placeholder="Search name, symbol or number" aria-label="Search elements" autocomplete="off">
+    </div>
+    <div class="seg" role="group" aria-label="Colour mode">
+      <button type="button" data-mode="category" aria-pressed="true">Category</button>
+      <button type="button" data-mode="state" aria-pressed="false">State</button>
+    </div>
+    <label class="temp"><span>Temperature</span>
+      <input type="range" id="temp" min="0" max="6000" step="5" value="293" aria-label="Temperature in kelvin">
+      <span class="readout" id="tempOut">293 K</span>
+    </label>
+  </div>
+</header>
+
+<ul class="legend" id="legend" aria-label="Legend"></ul>
+
+<div class="scroller">
+  <div class="table" id="table">
+    <aside class="card" id="card" aria-live="polite"><p class="empty">Hover an element to reveal its atom</p></aside>
+    <div class="marker la">57–71</div>
+    <div class="marker ac">89–103</div>
+  </div>
+</div>
+
+<footer>
+  <span>Atomic masses rounded; melting and boiling points approximate at 1 atm. Elements without reliable data are shown as solid.</span>
+  <span id="count">118 elements</span>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  const CATS = {
+    ak: 'Alkali metal', ae: 'Alkaline earth metal', tm: 'Transition metal', pt: 'Post-transition metal',
+    md: 'Metalloid', nm: 'Reactive nonmetal', hg: 'Halogen', ng: 'Noble gas', la: 'Lanthanide', ac: 'Actinide', un: 'Unknown properties'
+  };
+  // [symbol, name, mass, category, melting K, boiling K]  (0 = unknown)
+  const E = [
+    ['H','Hydrogen',1.008,'nm',14,20],['He','Helium',4.003,'ng',1,4],['Li','Lithium',6.94,'ak',454,1615],['Be','Beryllium',9.012,'ae',1560,2742],
+    ['B','Boron',10.81,'md',2349,4200],['C','Carbon',12.011,'nm',3823,4300],['N','Nitrogen',14.007,'nm',63,77],['O','Oxygen',15.999,'nm',54,90],
+    ['F','Fluorine',18.998,'hg',53,85],['Ne','Neon',20.18,'ng',25,27],['Na','Sodium',22.99,'ak',371,1156],['Mg','Magnesium',24.305,'ae',923,1363],
+    ['Al','Aluminium',26.982,'pt',933,2792],['Si','Silicon',28.085,'md',1687,3538],['P','Phosphorus',30.974,'nm',317,550],['S','Sulfur',32.06,'nm',388,718],
+    ['Cl','Chlorine',35.45,'hg',172,239],['Ar','Argon',39.948,'ng',84,87],['K','Potassium',39.098,'ak',337,1032],['Ca','Calcium',40.078,'ae',1115,1757],
+    ['Sc','Scandium',44.956,'tm',1814,3109],['Ti','Titanium',47.867,'tm',1941,3560],['V','Vanadium',50.942,'tm',2183,3680],['Cr','Chromium',51.996,'tm',2180,2944],
+    ['Mn','Manganese',54.938,'tm',1519,2334],['Fe','Iron',55.845,'tm',1811,3134],['Co','Cobalt',58.933,'tm',1768,3200],['Ni','Nickel',58.693,'tm',1728,3186],
+    ['Cu','Copper',63.546,'tm',1358,2835],['Zn','Zinc',65.38,'tm',693,1180],['Ga','Gallium',69.723,'pt',303,2477],['Ge','Germanium',72.63,'md',1211,3106],
+    ['As','Arsenic',74.922,'md',1090,887],['Se','Selenium',78.971,'nm',494,958],['Br','Bromine',79.904,'hg',266,332],['Kr','Krypton',83.798,'ng',116,120],
+    ['Rb','Rubidium',85.468,'ak',312,961],['Sr','Strontium',87.62,'ae',1050,1655],['Y','Yttrium',88.906,'tm',1799,3609],['Zr','Zirconium',91.224,'tm',2128,4682],
+    ['Nb','Niobium',92.906,'tm',2750,5017],['Mo','Molybdenum',95.95,'tm',2896,4912],['Tc','Technetium',98,'tm',2430,4538],['Ru','Ruthenium',101.07,'tm',2607,4423],
+    ['Rh','Rhodium',102.91,'tm',2237,3968],['Pd','Palladium',106.42,'tm',1828,3236],['Ag','Silver',107.87,'tm',1235,2435],['Cd','Cadmium',112.41,'tm',594,1040],
+    ['In','Indium',114.82,'pt',430,2345],['Sn','Tin',118.71,'pt',505,2875],['Sb','Antimony',121.76,'md',904,1860],['Te','Tellurium',127.6,'md',723,1261],
+    ['I','Iodine',126.9,'hg',387,457],['Xe','Xenon',131.29,'ng',161,165],['Cs','Caesium',132.91,'ak',302,944],['Ba','Barium',137.33,'ae',1000,2170],
+    ['La','Lanthanum',138.91,'la',1193,3737],['Ce','Cerium',140.12,'la',1068,3716],['Pr','Praseodymium',140.91,'la',1208,3793],['Nd','Neodymium',144.24,'la',1297,3347],
+    ['Pm','Promethium',145,'la',1315,3273],['Sm','Samarium',150.36,'la',1345,2067],['Eu','Europium',151.96,'la',1099,1802],['Gd','Gadolinium',157.25,'la',1585,3546],
+    ['Tb','Terbium',158.93,'la',1629,3503],['Dy','Dysprosium',162.5,'la',1680,2840],['Ho','Holmium',164.93,'la',1734,2993],['Er','Erbium',167.26,'la',1802,3141],
+    ['Tm','Thulium',168.93,'la',1818,2223],['Yb','Ytterbium',173.05,'la',1097,1469],['Lu','Lutetium',174.97,'la',1925,3675],['Hf','Hafnium',178.49,'tm',2506,4876],
+    ['Ta','Tantalum',180.95,'tm',3290,5731],['W','Tungsten',183.84,'tm',3695,5828],['Re','Rhenium',186.21,'tm',3459,5869],['Os','Osmium',190.23,'tm',3306,5285],
+    ['Ir','Iridium',192.22,'tm',2719,4701],['Pt','Platinum',195.08,'tm',2041,4098],['Au','Gold',196.97,'tm',1337,3129],['Hg','Mercury',200.59,'tm',234,630],
+    ['Tl','Thallium',204.38,'pt',577,1746],['Pb','Lead',207.2,'pt',601,2022],['Bi','Bismuth',208.98,'pt',545,1837],['Po','Polonium',209,'pt',527,1235],
+    ['At','Astatine',210,'hg',575,610],['Rn','Radon',222,'ng',202,211],['Fr','Francium',223,'ak',300,950],['Ra','Radium',226,'ae',973,2010],
+    ['Ac','Actinium',227,'ac',1323,3471],['Th','Thorium',232.04,'ac',2115,5061],['Pa','Protactinium',231.04,'ac',1841,4300],['U','Uranium',238.03,'ac',1405,4404],
+    ['Np','Neptunium',237,'ac',917,4273],['Pu','Plutonium',244,'ac',913,3501],['Am','Americium',243,'ac',1449,2880],['Cm','Curium',247,'ac',1613,3383],
+    ['Bk','Berkelium',247,'ac',1259,2900],['Cf','Californium',251,'ac',1173,1743],['Es','Einsteinium',252,'ac',1133,1269],['Fm','Fermium',257,'ac',1800,0],
+    ['Md','Mendelevium',258,'ac',1100,0],['No','Nobelium',259,'ac',1100,0],['Lr','Lawrencium',266,'ac',1900,0],['Rf','Rutherfordium',267,'tm',2400,5800],
+    ['Db','Dubnium',268,'tm',0,0],['Sg','Seaborgium',269,'tm',0,0],['Bh','Bohrium',270,'tm',0,0],['Hs','Hassium',269,'tm',0,0],
+    ['Mt','Meitnerium',278,'un',0,0],['Ds','Darmstadtium',281,'un',0,0],['Rg','Roentgenium',282,'un',0,0],['Cn','Copernicium',285,'un',0,0],
+    ['Nh','Nihonium',286,'un',0,0],['Fl','Flerovium',289,'un',0,0],['Mc','Moscovium',290,'un',0,0],['Lv','Livermorium',293,'un',0,0],
+    ['Ts','Tennessine',294,'un',0,0],['Og','Oganesson',294,'un',0,0]
+  ];
+
+  function position(z) {
+    if (z === 1) return [1, 1]; if (z === 2) return [1, 18];
+    if (z <= 18) { const p = z <= 10 ? 2 : 3, i = z - (p === 2 ? 2 : 10); return [p, i <= 2 ? i : i + 10]; }
+    if (z <= 54) { const p = z <= 36 ? 4 : 5; return [p, z - (p === 4 ? 18 : 36)]; }
+    if (z <= 56) return [6, z - 54];
+    if (z <= 71) return [9, z - 57 + 3];
+    if (z <= 86) return [6, z - 68];
+    if (z <= 88) return [7, z - 86];
+    if (z <= 103) return [10, z - 89 + 3];
+    return [7, z - 100];
+  }
+
+  const table = document.getElementById('table');
+  const card = document.getElementById('card');
+  const tiles = [];
+  E.forEach((e, i) => {
+    const z = i + 1, [row, col] = position(z);
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'el';
+    b.style.setProperty('--row', row); b.style.setProperty('--col', col);
+    b.style.setProperty('--c', `var(--c-${e[3]})`);
+    b.dataset.z = z; b.dataset.cat = e[3];
+    b.setAttribute('aria-label', `${e[1]}, ${e[0]}, element ${z}`);
+    b.innerHTML = `<span class="n">${z}</span><span class="s">${e[0]}</span><span class="nm">${e[1]}</span>`;
+    b.addEventListener('pointerenter', () => show(z));
+    b.addEventListener('focus', () => show(z));
+    b.addEventListener('click', () => { show(z); card.classList.add('show'); });
+    table.appendChild(b); tiles.push(b);
+  });
+
+  /* ---------- state of matter ---------- */
+  let T = 293;
+  function stateOf(e, t) {
+    const [,,,, mp, bp] = e;
+    if (bp && t >= bp) return 'gas';
+    if (mp && t >= mp) return 'liquid';
+    return 'solid';
+  }
+  function applyMode() {
+    const mode = document.body.dataset.mode;
+    tiles.forEach((b, i) => {
+      if (mode === 'state') b.style.setProperty('--c', `var(--s-${stateOf(E[i], T)})`);
+      else b.style.setProperty('--c', `var(--c-${E[i][3]})`);
+    });
+  }
+
+  /* ---------- detail card + Bohr atom ---------- */
+  const SHELLS = [2, 8, 18, 32, 32, 18, 8];
+  function shellsFor(z) {
+    const out = []; let left = z;
+    for (const cap of SHELLS) { if (left <= 0) break; const n = Math.min(cap, left); out.push(n); left -= n; }
+    return out;
+  }
+  let current = 0;
+  function show(z) {
+    if (z === current) return;
+    current = z;
+    tiles.forEach(b => b.classList.toggle('active', +b.dataset.z === z));
+    const e = E[z - 1], shells = shellsFor(z), st = stateOf(e, T);
+    const color = document.body.dataset.mode === 'state' ? `var(--s-${st})` : `var(--c-${e[3]})`;
+    let svg = `<svg class="atom" viewBox="0 0 200 200" role="img" aria-label="Bohr model of ${e[1]} with ${shells.length} electron shells" style="--c:${color};color:${color}">
+      <defs><radialGradient id="nucleusGrad"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="currentColor"/><stop offset="1" stop-color="#1b2130"/></radialGradient></defs>`;
+    const rMax = 92, rMin = 18, n = shells.length;
+    shells.forEach((count, i) => {
+      const r = n === 1 ? 40 : rMin + (rMax - rMin) * (i / (n - 1));
+      svg += `<circle class="shell" cx="100" cy="100" r="${r.toFixed(1)}"/>`;
+      svg += `<g class="orbit" style="--dur:${(6 + i * 3.5).toFixed(1)}s;--dir:${i % 2 ? 'reverse' : 'normal'}">`;
+      const dots = Math.min(count, 32);
+      for (let k = 0; k < dots; k++) {
+        const a = (k / dots) * Math.PI * 2;
+        svg += `<circle cx="${(100 + Math.cos(a) * r).toFixed(1)}" cy="${(100 + Math.sin(a) * r).toFixed(1)}" r="${(2.6 - i * .2).toFixed(1)}"/>`;
+      }
+      svg += `</g>`;
+    });
+    svg += `<circle cx="100" cy="100" r="9" class="nucleus"/></svg>`;
+    const fmt = v => v ? `${v} K` : '—';
+    card.style.setProperty('--c', color);
+    card.style.setProperty('--sc', `var(--s-${st})`);
+    card.innerHTML = svg + `
+      <div>
+        <h2><span class="sym">${e[0]}</span>${e[1]}<span class="num">№ ${z}</span></h2>
+        <div class="cat">${CATS[e[3]]}</div>
+        <dl>
+          <dt>Atomic mass</dt><dd>${e[2]} u</dd>
+          <dt>Electrons</dt><dd>${z} in ${shells.length} shell${shells.length > 1 ? 's' : ''} (${shells.join(' · ')})</dd>
+          <dt>Melting point</dt><dd>${fmt(e[4])}</dd>
+          <dt>Boiling point</dt><dd>${fmt(e[5])}</dd>
+          <dt>At ${T} K</dt><dd class="state"><i></i>${st}</dd>
+        </dl>
+      </div>`;
+  }
+
+  /* ---------- legend ---------- */
+  const legend = document.getElementById('legend');
+  let pinned = null;
+  Object.entries(CATS).forEach(([k, name]) => {
+    const li = document.createElement('li');
+    li.className = 'cat'; li.style.setProperty('--c', `var(--c-${k})`); li.dataset.cat = k;
+    li.setAttribute('role', 'button'); li.setAttribute('aria-pressed', 'false'); li.tabIndex = 0;
+    li.innerHTML = `<i></i>${name}`;
+    li.addEventListener('pointerenter', () => highlight(k));
+    li.addEventListener('pointerleave', () => highlight(pinned));
+    li.addEventListener('click', () => { pinned = pinned === k ? null : k; legend.querySelectorAll('li.cat').forEach(x => x.setAttribute('aria-pressed', x.dataset.cat === pinned)); highlight(pinned); });
+    legend.appendChild(li);
+  });
+  [['solid', 'Solid'], ['liquid', 'Liquid'], ['gas', 'Gas']].forEach(([k, name]) => {
+    const li = document.createElement('li');
+    li.className = 'st'; li.style.setProperty('--c', `var(--s-${k})`);
+    li.innerHTML = `<i></i>${name} <span class="cnt" data-st="${k}"></span>`;
+    legend.appendChild(li);
+  });
+  function highlight(cat) {
+    const q = qInput.value.trim().toLowerCase();
+    let visible = 0;
+    tiles.forEach((b, i) => {
+      const e = E[i];
+      const matchesQ = !q || e[1].toLowerCase().includes(q) || e[0].toLowerCase() === q || String(i + 1) === q || e[0].toLowerCase().startsWith(q);
+      const matchesC = !cat || b.dataset.cat === cat;
+      const on = matchesQ && matchesC;
+      b.classList.toggle('dim', !on);
+      if (on) visible++;
+    });
+    document.getElementById('count').textContent = visible === 118 ? '118 elements' : `${visible} of 118 elements`;
+  }
+  function stateCounts() {
+    const c = { solid: 0, liquid: 0, gas: 0 };
+    E.forEach(e => c[stateOf(e, T)]++);
+    legend.querySelectorAll('.cnt').forEach(s => s.textContent = `· ${c[s.dataset.st]}`);
+  }
+
+  /* ---------- controls ---------- */
+  const qInput = document.getElementById('q');
+  qInput.addEventListener('input', () => highlight(pinned));
+  document.querySelectorAll('[data-mode]').forEach(b => b.addEventListener('click', () => {
+    document.body.dataset.mode = b.dataset.mode;
+    document.querySelectorAll('button[data-mode]').forEach(x => x.setAttribute('aria-pressed', x === b));
+    applyMode(); const c = current; current = 0; if (c) show(c);
+  }));
+  const temp = document.getElementById('temp'), tempOut = document.getElementById('tempOut');
+  temp.addEventListener('input', () => {
+    T = +temp.value; tempOut.textContent = `${T} K`;
+    if (document.body.dataset.mode !== 'state') {
+      document.body.dataset.mode = 'state';
+      document.querySelectorAll('button[data-mode]').forEach(x => x.setAttribute('aria-pressed', x.dataset.mode === 'state'));
+    }
+    applyMode(); stateCounts(); const c = current; current = 0; if (c) show(c);
+  });
+  document.addEventListener('click', e => { if (!e.target.closest('.el') && !e.target.closest('.card')) card.classList.remove('show'); });
+
+  stateCounts();
+  show(26);
+})();
+</script>
+</body>
+</html>

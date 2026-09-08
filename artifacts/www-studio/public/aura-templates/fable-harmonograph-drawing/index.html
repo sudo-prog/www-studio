@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Harmonograph — A Pendulum Drawing Instrument</title>
+<style>
+  :root {
+    --brass: #c9a24a;
+    --brass-dark: #7a5a1c;
+    --brass-light: #f1d98a;
+    --mahogany: #3b1f12;
+    --mahogany-2: #26140b;
+    --paper: #0d0f14;
+    --ivory: #ece2c8;
+    --ivory-dim: #a89c82;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    font-family: Georgia, 'Iowan Old Style', 'Palatino Linotype', Palatino, ui-serif, serif;
+    color: var(--ivory);
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(201,162,74,0.12), transparent 55%),
+      repeating-linear-gradient(90deg, rgba(0,0,0,0.08) 0 3px, transparent 3px 14px),
+      linear-gradient(180deg, #2c1810, var(--mahogany-2) 50%, #150a05);
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr;
+  }
+  header {
+    text-align: center;
+    padding: 22px 16px 10px;
+  }
+  header h1 {
+    margin: 0;
+    font-weight: normal;
+    font-size: clamp(1.4rem, 3.2vw, 2.4rem);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brass-light);
+    text-shadow: 0 1px 0 #5a3d10, 0 2px 8px rgba(0,0,0,0.6);
+  }
+  header p {
+    margin: 6px 0 0;
+    font-style: italic;
+    color: var(--ivory-dim);
+    font-size: clamp(0.8rem, 1.4vw, 0.95rem);
+  }
+  header .ornament {
+    width: 180px; height: 12px; margin: 8px auto 0;
+    display: block;
+  }
+
+  main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 18px;
+    padding: 10px 18px 26px;
+    max-width: 1500px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  @media (max-width: 900px) {
+    main { grid-template-columns: 1fr; }
+  }
+
+  /* Instrument bed */
+  .bed {
+    position: relative;
+    border-radius: 14px;
+    padding: 18px;
+    background:
+      repeating-linear-gradient(95deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 9px),
+      linear-gradient(160deg, #5a3320, var(--mahogany) 55%, #2a150c);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,220,160,0.15), inset 0 0 40px rgba(0,0,0,0.5);
+    min-height: 420px;
+  }
+  .bed::before {
+    content: "";
+    position: absolute; inset: 8px;
+    border: 1px solid rgba(201,162,74,0.45);
+    border-radius: 10px;
+    pointer-events: none;
+  }
+  .screw {
+    position: absolute;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, var(--brass-light), var(--brass) 40%, var(--brass-dark) 100%);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.7), inset 0 0 2px rgba(0,0,0,0.5);
+  }
+  .screw::after {
+    content: "";
+    position: absolute; left: 3px; right: 3px; top: 6px; height: 2px;
+    background: #3a2a0a; transform: rotate(35deg);
+  }
+  .screw.tl { left: 14px; top: 14px; } .screw.tr { right: 14px; top: 14px; }
+  .screw.bl { left: 14px; bottom: 14px; } .screw.br { right: 14px; bottom: 14px; }
+
+  .paper-frame {
+    position: relative;
+    height: 100%;
+    min-height: 400px;
+    border-radius: 6px;
+    background: var(--paper);
+    box-shadow: inset 0 0 60px rgba(0,0,0,0.9), 0 0 0 3px var(--brass-dark), 0 0 0 5px #1a0d05, 0 0 0 6px rgba(201,162,74,0.5);
+    overflow: hidden;
+  }
+  canvas#plate {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute; inset: 0;
+  }
+  canvas#pen {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+  }
+  .plate-label {
+    position: absolute;
+    left: 50%; bottom: 10px;
+    transform: translateX(-50%);
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(236,226,200,0.35);
+    pointer-events: none;
+  }
+  .readout {
+    position: absolute;
+    right: 12px; top: 10px;
+    font-family: 'Courier New', ui-monospace, monospace;
+    font-size: 0.72rem;
+    color: rgba(201,162,74,0.7);
+    text-align: right;
+    line-height: 1.5;
+    pointer-events: none;
+  }
+
+  /* Brass control panel */
+  .panel {
+    border-radius: 12px;
+    padding: 16px 16px 18px;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.06), transparent 30%),
+      repeating-linear-gradient(0deg, rgba(0,0,0,0.05) 0 1px, transparent 1px 3px),
+      linear-gradient(170deg, #b78f3c, #8a6620 45%, #a88434 70%, #6e4f16);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,240,200,0.5), inset 0 -2px 0 rgba(0,0,0,0.4);
+    color: #2a1a06;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-self: start;
+    position: sticky;
+    top: 12px;
+  }
+  .plate {
+    background: linear-gradient(180deg, #d8c48a, #c2ab68);
+    border: 1px solid #5a3f10;
+    border-radius: 6px;
+    padding: 10px 12px 12px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), inset 0 -1px 0 rgba(0,0,0,0.25), 0 1px 2px rgba(0,0,0,0.4);
+  }
+  .plate h2 {
+    margin: 0 0 8px;
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: normal;
+    color: #3a2608;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.45);
+    border-bottom: 1px solid rgba(58,38,8,0.35);
+    padding-bottom: 4px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .plate h2 small { letter-spacing: 0.1em; font-size: 0.65rem; opacity: 0.75; text-transform: none; font-style: italic; }
+  .row {
+    display: grid;
+    grid-template-columns: 3.2em 1fr 3.4em;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    margin: 4px 0;
+  }
+  .row label {
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.66rem;
+    color: #3a2608;
+  }
+  .row output {
+    font-family: 'Courier New', ui-monospace, monospace;
+    font-size: 0.72rem;
+    text-align: right;
+    color: #2a1a06;
+  }
+  input[type=range] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(180deg, #3a2608, #5e4212);
+    border-radius: 3px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.6);
+    outline: none;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #fff1c0, var(--brass) 45%, var(--brass-dark));
+    border: 1px solid #3a2608;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.5);
+    cursor: pointer;
+    transition: transform .15s;
+  }
+  input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+  input[type=range]::-moz-range-thumb {
+    width: 16px; height: 16px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #fff1c0, var(--brass) 45%, var(--brass-dark));
+    border: 1px solid #3a2608;
+    cursor: pointer;
+  }
+  .buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  button, .toggle {
+    font: inherit;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #f5e8c4;
+    background: linear-gradient(180deg, #5a3a12, #2e1c06);
+    border: 1px solid #1a0f03;
+    border-radius: 5px;
+    padding: 9px 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 0 #140a02, 0 4px 8px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,220,160,0.25);
+    transition: transform .1s, box-shadow .1s, background .2s;
+  }
+  button:hover { background: linear-gradient(180deg, #6b4616, #3a2308); }
+  button:active { transform: translateY(2px); box-shadow: 0 0 0 #140a02, 0 2px 4px rgba(0,0,0,0.45); }
+  button.primary { background: linear-gradient(180deg, #7a1e14, #4a0f08); grid-column: 1 / -1; }
+  button.primary:hover { background: linear-gradient(180deg, #8f2418, #5a1209); }
+  button.active { background: linear-gradient(180deg, #2a5a3a, #133a20); }
+  .inks { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 6px; }
+  .ink {
+    width: 26px; height: 26px; border-radius: 50%;
+    border: 2px solid #3a2608;
+    cursor: pointer;
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.5), 0 1px 2px rgba(0,0,0,0.4);
+    transition: transform .15s, box-shadow .15s;
+    position: relative;
+  }
+  .ink:hover { transform: scale(1.12); }
+  .ink.selected { box-shadow: 0 0 0 2px #f5e8c4, 0 0 0 4px #3a2608; }
+  .ink.rainbow { background: conic-gradient(#ff5e5e, #ffd25e, #7cff6b, #5ee5ff, #8f6bff, #ff5ee9, #ff5e5e); }
+  .check {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+    margin-top: 6px;
+  }
+  .check input { accent-color: #5a3a12; width: 16px; height: 16px; }
+  .footnote {
+    font-size: 0.66rem;
+    font-style: italic;
+    color: #4a3410;
+    text-align: center;
+    line-height: 1.45;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ink, button, input[type=range]::-webkit-slider-thumb { transition: none; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>The Harmonograph</h1>
+  <p>A drawing instrument of coupled, decaying pendulums — patent of the imagination, 1874</p>
+  <svg class="ornament" viewBox="0 0 180 12" aria-hidden="true">
+    <path d="M0 6 H70 M110 6 H180" stroke="#c9a24a" stroke-width="1"/>
+    <path d="M90 1 L95 6 L90 11 L85 6 Z" fill="none" stroke="#c9a24a" stroke-width="1"/>
+    <circle cx="76" cy="6" r="1.5" fill="#c9a24a"/><circle cx="104" cy="6" r="1.5" fill="#c9a24a"/>
+  </svg>
+</header>
+
+<main>
+  <section class="bed" aria-label="Drawing plate">
+    <span class="screw tl"></span><span class="screw tr"></span><span class="screw bl"></span><span class="screw br"></span>
+    <div class="paper-frame">
+      <canvas id="plate"></canvas>
+      <canvas id="pen"></canvas>
+      <div class="readout" id="readout"></div>
+      <div class="plate-label">Smoked glass plate · No. 7</div>
+    </div>
+  </section>
+
+  <aside class="panel" aria-label="Controls">
+    <div class="plate">
+      <h2>Lateral pendulum <small>x-axis</small></h2>
+      <div class="row"><label for="f1">Freq</label><input type="range" id="f1" min="1" max="6" step="0.001" value="3.001"><output id="f1o"></output></div>
+      <div class="row"><label for="p1">Phase</label><input type="range" id="p1" min="0" max="6.283" step="0.01" value="0"><output id="p1o"></output></div>
+      <div class="row"><label for="d1">Damp</label><input type="range" id="d1" min="0" max="0.02" step="0.0001" value="0.002"><output id="d1o"></output></div>
+      <div class="row"><label for="a1">Ampl</label><input type="range" id="a1" min="0" max="1" step="0.01" value="0.75"><output id="a1o"></output></div>
+    </div>
+    <div class="plate">
+      <h2>Longitudinal pendulum <small>y-axis</small></h2>
+      <div class="row"><label for="f2">Freq</label><input type="range" id="f2" min="1" max="6" step="0.001" value="2.0"><output id="f2o"></output></div>
+      <div class="row"><label for="p2">Phase</label><input type="range" id="p2" min="0" max="6.283" step="0.01" value="1.571"><output id="p2o"></output></div>
+      <div class="row"><label for="d2">Damp</label><input type="range" id="d2" min="0" max="0.02" step="0.0001" value="0.0015"><output id="d2o"></output></div>
+      <div class="row"><label for="a2">Ampl</label><input type="range" id="a2" min="0" max="1" step="0.01" value="0.75"><output id="a2o"></output></div>
+    </div>
+    <div class="plate">
+      <h2>Rotary table <small>optional</small></h2>
+      <label class="check"><input type="checkbox" id="rotary"> Engage rotary table</label>
+      <div class="row"><label for="f3">Freq</label><input type="range" id="f3" min="0.05" max="3" step="0.001" value="1.003"><output id="f3o"></output></div>
+      <div class="row"><label for="a3">Ampl</label><input type="range" id="a3" min="0" max="1" step="0.01" value="0.4"><output id="a3o"></output></div>
+      <div class="row"><label for="d3">Damp</label><input type="range" id="d3" min="0" max="0.02" step="0.0001" value="0.001"><output id="d3o"></output></div>
+    </div>
+    <div class="plate">
+      <h2>Ink &amp; motion</h2>
+      <div class="row"><label for="speed">Speed</label><input type="range" id="speed" min="1" max="40" step="1" value="12"><output id="speedo"></output></div>
+      <div class="inks" id="inks"></div>
+    </div>
+    <div class="buttons">
+      <button class="primary" id="draw">▶ Lower pen &amp; draw</button>
+      <button id="lift">Lift pen</button>
+      <button id="replay">Replay</button>
+      <button id="random">Randomize</button>
+      <button id="clear">Clear plate</button>
+      <button id="export" style="grid-column:1 / -1">Export PNG</button>
+    </div>
+    <p class="footnote">x(t) = Σ Aᵢ sin(fᵢt + φᵢ)·e^(−dᵢt). Two pendulums swing at right angles; the third turns the paper beneath the pen.</p>
+  </aside>
+</main>
+
+<script>
+(function () {
+  'use strict';
+  const plate = document.getElementById('plate');
+  const penCanvas = document.getElementById('pen');
+  const ctx = plate.getContext('2d');
+  const pctx = penCanvas.getContext('2d');
+  const readout = document.getElementById('readout');
+  const frame = plate.parentElement;
+
+  const ids = ['f1','p1','d1','a1','f2','p2','d2','a2','f3','a3','d3','speed'];
+  const el = {};
+  ids.forEach(id => { el[id] = document.getElementById(id); });
+  const rotary = document.getElementById('rotary');
+
+  const inks = [
+    { name: 'Phosphor', color: '#8ef7c3' },
+    { name: 'Cyan', color: '#6fd7ff' },
+    { name: 'Rose', color: '#ff7ab8' },
+    { name: 'Amber', color: '#ffc46b' },
+    { name: 'Violet', color: '#b48bff' },
+    { name: 'Ivory', color: '#f2e9d2' },
+    { name: 'Rainbow', color: 'rainbow' }
+  ];
+  let ink = inks[0].color;
+  const inkWrap = document.getElementById('inks');
+  inks.forEach((k, i) => {
+    const b = document.createElement('div');
+    b.className = 'ink' + (k.color === 'rainbow' ? ' rainbow' : '') + (i === 0 ? ' selected' : '');
+    if (k.color !== 'rainbow') b.style.background = `radial-gradient(circle at 35% 30%, #fff, ${k.color} 45%, #000 140%)`;
+    b.title = k.name;
+    b.setAttribute('role', 'button');
+    b.setAttribute('tabindex', '0');
+    b.setAttribute('aria-label', 'Ink: ' + k.name);
+    b.dataset.color = k.color;
+    const pick = () => selectInk(k.color);
+    b.addEventListener('click', pick);
+    b.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
+    inkWrap.appendChild(b);
+  });
+  function selectInk(color) {
+    ink = color;
+    inkWrap.querySelectorAll('.ink').forEach(x => x.classList.toggle('selected', x.dataset.color === color));
+  }
+
+  // ------ sizing ------
+  let W = 0, H = 0, dpr = 1;
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 3);
+    const r = frame.getBoundingClientRect();
+    W = Math.max(1, Math.floor(r.width));
+    H = Math.max(1, Math.floor(r.height));
+    for (const c of [plate, penCanvas]) {
+      c.width = Math.floor(W * dpr);
+      c.height = Math.floor(H * dpr);
+    }
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    pctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    paintPaper();
+    if (history.length) redrawHistory();
+  }
+
+  function paintPaper() {
+    ctx.save();
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.globalCompositeOperation = 'source-over';
+    const g = ctx.createRadialGradient(W / 2, H / 2, 10, W / 2, H / 2, Math.max(W, H) * 0.7);
+    g.addColorStop(0, '#141720');
+    g.addColorStop(1, '#07080c');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, W, H);
+    // faint engraved graticule
+    ctx.strokeStyle = 'rgba(201,162,74,0.08)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    const cx = W / 2, cy = H / 2, R = Math.min(W, H) * 0.46;
+    for (let r = R / 4; r <= R; r += R / 4) { ctx.moveTo(cx + r, cy); ctx.arc(cx, cy, r, 0, Math.PI * 2); }
+    ctx.moveTo(cx - R, cy); ctx.lineTo(cx + R, cy);
+    ctx.moveTo(cx, cy - R); ctx.lineTo(cx, cy + R);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  // ------ parameter reading ------
+  function params() {
+    const p = {};
+    ids.forEach(id => { p[id] = parseFloat(el[id].value); });
+    p.rotary = rotary.checked;
+    return p;
+  }
+  function updateOutputs() {
+    const p = params();
+    const fmt = (v, n) => v.toFixed(n);
+    el.f1.nextElementSibling.textContent = fmt(p.f1, 3);
+    el.p1.nextElementSibling.textContent = fmt(p.p1, 2);
+    el.d1.nextElementSibling.textContent = fmt(p.d1, 4);
+    el.a1.nextElementSibling.textContent = fmt(p.a1, 2);
+    el.f2.nextElementSibling.textContent = fmt(p.f2, 3);
+    el.p2.nextElementSibling.textContent = fmt(p.p2, 2);
+    el.d2.nextElementSibling.textContent = fmt(p.d2, 4);
+    el.a2.nextElementSibling.textContent = fmt(p.a2, 2);
+    el.f3.nextElementSibling.textContent = fmt(p.f3, 3);
+    el.a3.nextElementSibling.textContent = fmt(p.a3, 2);
+    el.d3.nextElementSibling.textContent = fmt(p.d3, 4);
+    el.speed.nextElementSibling.textContent = p.speed + '×';
+    readout.textContent = `x: ${fmt(p.f1,3)} / ${fmt(p.p1,2)} / ${fmt(p.d1,4)}\ny: ${fmt(p.f2,3)} / ${fmt(p.p2,2)} / ${fmt(p.d2,4)}${p.rotary ? `\nrot: ${fmt(p.f3,3)} / ${fmt(p.a3,2)}` : ''}`;
+  }
+  readout.style.whiteSpace = 'pre';
+  ids.forEach(id => el[id].addEventListener('input', () => { updateOutputs(); }));
+  rotary.addEventListener('change', updateOutputs);
+
+  // ------ pendulum model ------
+  function position(t, p, scale) {
+    let x = p.a1 * Math.sin(p.f1 * t + p.p1) * Math.exp(-p.d1 * t);
+    let y = p.a2 * Math.sin(p.f2 * t + p.p2) * Math.exp(-p.d2 * t);
+    if (p.rotary) {
+      const e = p.a3 * Math.exp(-p.d3 * t);
+      x += e * Math.cos(p.f3 * t);
+      y += e * Math.sin(p.f3 * t);
+    }
+    return { x: W / 2 + x * scale, y: H / 2 + y * scale };
+  }
+  function scaleFor(p) {
+    const total = p.a1 + (p.rotary ? p.a3 : 0);
+    const total2 = p.a2 + (p.rotary ? p.a3 : 0);
+    const m = Math.max(total, total2, 0.05);
+    return Math.min(W, H) * 0.46 / m;
+  }
+  function inkAt(t, tMax) {
+    if (ink !== 'rainbow') return ink;
+    const h = (t / tMax * 360 * 1.5) % 360;
+    return `hsl(${h}, 90%, 68%)`;
+  }
+
+  // ------ drawing state ------
+  let t = 0;
+  let running = false;
+  let raf = 0;
+  let last = null;
+  let current = null;          // params frozen for the current trace
+  let history = [];            // list of {params, ink, tEnd}
+  const T_MAX = 260;           // seconds of simulated pendulum time
+  const DT = 0.012;
+
+  function penDot(pt, color) {
+    pctx.clearRect(0, 0, W, H);
+    if (!pt) return;
+    pctx.save();
+    pctx.shadowBlur = 14;
+    pctx.shadowColor = color === 'rainbow' ? '#fff' : color;
+    pctx.fillStyle = '#fff';
+    pctx.beginPath(); pctx.arc(pt.x, pt.y, 2.2, 0, Math.PI * 2); pctx.fill();
+    pctx.restore();
+    // pen arm
+    pctx.strokeStyle = 'rgba(201,162,74,0.45)';
+    pctx.lineWidth = 1.5;
+    pctx.beginPath(); pctx.moveTo(pt.x, pt.y); pctx.lineTo(W + 20, -20); pctx.stroke();
+  }
+
+  function step(now) {
+    if (!running) return;
+    if (last === null) last = now;
+    const elapsed = Math.min(0.05, (now - last) / 1000);
+    last = now;
+    const p = current;
+    const scale = scaleFor(p);
+    const steps = Math.round(elapsed * 60 * p.speed);
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter';
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    let pt = position(t, p, scale);
+    for (let i = 0; i < steps && t < T_MAX; i++) {
+      const nt = t + DT;
+      const npt = position(nt, p, scale);
+      const col = inkAt(t, T_MAX);
+      ctx.strokeStyle = col;
+      ctx.globalAlpha = 0.35;
+      ctx.lineWidth = 2.6;
+      ctx.beginPath(); ctx.moveTo(pt.x, pt.y); ctx.lineTo(npt.x, npt.y); ctx.stroke();
+      ctx.globalAlpha = 0.9;
+      ctx.lineWidth = 0.7;
+      ctx.beginPath(); ctx.moveTo(pt.x, pt.y); ctx.lineTo(npt.x, npt.y); ctx.stroke();
+      pt = npt; t = nt;
+    }
+    ctx.restore();
+    penDot(pt, ink);
+    if (t >= T_MAX) { finishTrace(); return; }
+    raf = requestAnimationFrame(step);
+  }
+
+  function startTrace(fromParams) {
+    if (running) finishTrace(false);
+    current = fromParams || params();
+    t = 0; last = null; running = true;
+    drawBtn.classList.add('active');
+    drawBtn.textContent = '● Drawing…';
+    raf = requestAnimationFrame(step);
+  }
+  function finishTrace(record = true) {
+    running = false;
+    cancelAnimationFrame(raf);
+    if (record && current) history.push({ params: current, ink, tEnd: t });
+    penDot(null);
+    drawBtn.classList.remove('active');
+    drawBtn.textContent = '▶ Lower pen & draw';
+  }
+  function redrawHistory() {
+    for (const h of history) {
+      const saveInk = ink; ink = h.ink;
+      const scale = scaleFor(h.params);
+      ctx.save();
+      ctx.globalCompositeOperation = 'lighter';
+      ctx.lineCap = 'round';
+      let pt = position(0, h.params, scale);
+      for (let tt = 0; tt < h.tEnd; tt += DT) {
+        const npt = position(tt + DT, h.params, scale);
+        ctx.strokeStyle = inkAt(tt, T_MAX);
+        ctx.globalAlpha = 0.35; ctx.lineWidth = 2.6;
+        ctx.beginPath(); ctx.moveTo(pt.x, pt.y); ctx.lineTo(npt.x, npt.y); ctx.stroke();
+        ctx.globalAlpha = 0.9; ctx.lineWidth = 0.7;
+        ctx.beginPath(); ctx.moveTo(pt.x, pt.y); ctx.lineTo(npt.x, npt.y); ctx.stroke();
+        pt = npt;
+      }
+      ctx.restore();
+      ink = saveInk;
+    }
+  }
+
+  // ------ presets & randomize ------
+  const ratios = [[3,2],[4,3],[5,3],[5,4],[3,1],[2,1],[7,5],[5,2],[4,1],[8,5],[7,3],[9,7]];
+  function randomize() {
+    const [a, b] = ratios[Math.floor(Math.random() * ratios.length)];
+    const detune = (Math.random() - 0.5) * 0.02;
+    const base = 0.9 + Math.random() * 0.6;
+    el.f1.value = (a * base + detune).toFixed(3);
+    el.f2.value = (b * base).toFixed(3);
+    el.p1.value = (Math.random() * Math.PI * 2).toFixed(2);
+    el.p2.value = (Math.random() * Math.PI * 2).toFixed(2);
+    el.d1.value = (0.0008 + Math.random() * 0.004).toFixed(4);
+    el.d2.value = (0.0008 + Math.random() * 0.004).toFixed(4);
+    el.a1.value = (0.6 + Math.random() * 0.4).toFixed(2);
+    el.a2.value = (0.6 + Math.random() * 0.4).toFixed(2);
+    rotary.checked = Math.random() < 0.45;
+    el.f3.value = (0.3 + Math.random() * 1.6 + (Math.random() < 0.5 ? 0.003 : -0.003)).toFixed(3);
+    el.a3.value = (0.15 + Math.random() * 0.4).toFixed(2);
+    el.d3.value = (0.0005 + Math.random() * 0.002).toFixed(4);
+    const inkEls = inkWrap.querySelectorAll('.ink');
+    const idx = Math.floor(Math.random() * inks.length);
+    inkEls[idx].click();
+    updateOutputs();
+    clearPlate();
+    startTrace();
+  }
+
+  function clearPlate() {
+    finishTrace(false);
+    history = [];
+    paintPaper();
+  }
+
+  // ------ buttons ------
+  const drawBtn = document.getElementById('draw');
+  drawBtn.addEventListener('click', () => { if (running) finishTrace(); else startTrace(); });
+  document.getElementById('lift').addEventListener('click', () => finishTrace());
+  document.getElementById('replay').addEventListener('click', () => {
+    let target = null;
+    if (running) { target = { params: current, ink }; finishTrace(false); }
+    else if (history.length) { target = history[history.length - 1]; history = history.slice(0, -1); }
+    paintPaper(); redrawHistory();
+    if (target) { selectInk(target.ink); startTrace(target.params); }
+    else startTrace();
+  });
+  document.getElementById('random').addEventListener('click', randomize);
+  document.getElementById('clear').addEventListener('click', clearPlate);
+  document.getElementById('export').addEventListener('click', () => {
+    const a = document.createElement('a');
+    a.download = 'harmonograph.png';
+    a.href = plate.toDataURL('image/png');
+    a.click();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT') return;
+    if (e.key === ' ') { e.preventDefault(); drawBtn.click(); }
+    if (e.key.toLowerCase() === 'r') randomize();
+    if (e.key.toLowerCase() === 'c') clearPlate();
+  });
+
+  let resizeTimer;
+  window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(resize, 120); });
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) el.speed.value = '40';
+
+  updateOutputs();
+  resize();
+  startTrace();
+})();
+</script>
+</body>
+</html>

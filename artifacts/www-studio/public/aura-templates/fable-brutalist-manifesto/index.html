@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HONEST DESIGN — A Manifesto in Nine Parts</title>
+<style>
+  :root {
+    --paper: #f2efe9;
+    --ink: #0a0a0a;
+    --acid: #e8ff47;
+    --signal: #ff2e1f;
+    --border: 4px;
+    --shadow: 10px 10px 0 var(--ink);
+    --shadow-sm: 6px 6px 0 var(--ink);
+    --display: "Helvetica Neue", "Arial Narrow", Impact, "Franklin Gothic Medium", ui-sans-serif, system-ui, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Courier New", monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { background: var(--paper); }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 15px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--acid); color: var(--ink); }
+
+  /* ---------- Marquee ---------- */
+  .marquee {
+    border-bottom: var(--border) solid var(--ink);
+    background: var(--ink);
+    color: var(--acid);
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: var(--display);
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: clamp(16px, 2vw, 24px);
+    letter-spacing: 0.04em;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .marquee-track {
+    display: inline-flex;
+    gap: 0;
+    animation: marquee 28s linear infinite;
+    will-change: transform;
+  }
+  .marquee-track span { padding: 0 1.6em; }
+  .marquee-track span::after { content: "✦"; color: var(--signal); margin-left: 1.6em; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ---------- Header ---------- */
+  header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: var(--border) solid var(--ink);
+  }
+  header > * { padding: 22px 24px; border-right: var(--border) solid var(--ink); }
+  header > *:last-child { border-right: 0; }
+  .meta-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.16em; display: block; margin-bottom: 4px; }
+  .meta-value { font-weight: 700; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: 5fr 3fr;
+    border-bottom: var(--border) solid var(--ink);
+    min-height: 62vh;
+  }
+
+  .hero-title {
+    padding: clamp(24px, 4vw, 64px);
+    border-right: var(--border) solid var(--ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  h1 {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: clamp(52px, 12vw, 190px);
+    line-height: 0.86;
+    letter-spacing: -0.045em;
+    transform: scaleX(0.82);
+    transform-origin: left center;
+    width: 122%;
+  }
+  h1 .strike {
+    position: relative;
+    display: inline-block;
+  }
+  h1 .strike::after {
+    content: "";
+    position: absolute;
+    left: -2%;
+    right: -2%;
+    top: 48%;
+    height: 0.09em;
+    background: var(--signal);
+    transform: rotate(-2deg);
+  }
+  h1 .acid { background: var(--acid); padding: 0 0.06em; box-shadow: 0.08em 0.08em 0 var(--ink); }
+
+  .hero-lede {
+    max-width: 62ch;
+    font-size: clamp(15px, 1.2vw, 18px);
+    margin: 0;
+  }
+  .hero-lede strong { background: var(--ink); color: var(--paper); padding: 0 4px; }
+
+  .hero-side {
+    position: relative;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    overflow: hidden;
+    background:
+      repeating-linear-gradient(45deg, transparent 0 14px, rgba(10,10,10,0.08) 14px 16px);
+  }
+
+  .asterisk {
+    position: absolute;
+    left: 50%;
+    top: 46%;
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(220px, 34vw, 560px);
+    line-height: 1;
+    color: var(--ink);
+    transform: translate(-50%, -50%) rotate(0deg);
+    animation: spin 18s linear infinite;
+    user-select: none;
+    pointer-events: none;
+  }
+  @keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+  .hero-side .stamp-box {
+    align-self: end;
+    justify-self: start;
+    margin: 20px;
+    padding: 12px 16px;
+    background: var(--acid);
+    border: var(--border) solid var(--ink);
+    box-shadow: var(--shadow-sm);
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .btn {
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 14px 22px;
+    border: var(--border) solid var(--ink);
+    background: var(--paper);
+    color: var(--ink);
+    text-decoration: none;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.12s steps(3), box-shadow 0.12s steps(3), background 0.1s;
+    cursor: pointer;
+    display: inline-block;
+  }
+  .btn:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--ink); background: var(--acid); }
+  .btn:active { transform: translate(6px, 6px); box-shadow: 0 0 0 var(--ink); }
+  .btn-signal { background: var(--signal); color: var(--paper); }
+  .btn-signal:hover { background: var(--ink); color: var(--acid); }
+  .btn:focus-visible { outline: var(--border) dashed var(--signal); outline-offset: 4px; }
+
+  /* ---------- Manifesto grid ---------- */
+  .manifesto {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: minmax(160px, auto);
+    border-bottom: var(--border) solid var(--ink);
+  }
+
+  .clause {
+    position: relative;
+    padding: 24px;
+    border-right: var(--border) solid var(--ink);
+    border-bottom: var(--border) solid var(--ink);
+    background: var(--paper);
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 22px;
+    cursor: crosshair;
+    transition: background 0.08s steps(2), color 0.08s steps(2);
+    overflow: hidden;
+  }
+  .clause:hover, .clause:focus-within {
+    background: var(--ink);
+    color: var(--acid);
+  }
+  .clause:hover .num, .clause:focus-within .num { color: var(--acid); -webkit-text-stroke-color: var(--acid); }
+  .clause:hover h2 .u, .clause:focus-within h2 .u { background: var(--signal); color: var(--paper); }
+  .clause::after {
+    content: attr(data-tag);
+    position: absolute;
+    right: 18px;
+    bottom: 14px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.55;
+  }
+
+  /* asymmetric spans */
+  .c1 { grid-column: span 7; }
+  .c2 { grid-column: span 5; }
+  .c3 { grid-column: span 4; }
+  .c4 { grid-column: span 4; }
+  .c5 { grid-column: span 4; }
+  .c6 { grid-column: span 3; }
+  .c7 { grid-column: span 6; }
+  .c8 { grid-column: span 3; }
+  .c9 { grid-column: span 12; }
+
+  .num {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(54px, 7vw, 120px);
+    line-height: 0.85;
+    letter-spacing: -0.06em;
+    color: transparent;
+    -webkit-text-stroke: 3px var(--ink);
+    transition: color 0.08s steps(2), -webkit-text-stroke-color 0.08s steps(2);
+  }
+
+  .clause h2 {
+    margin: 0 0 10px;
+    font-family: var(--display);
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: clamp(22px, 2.6vw, 44px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+  }
+  .clause h2 .u { background: var(--acid); padding: 0 0.1em; transition: background 0.08s steps(2), color 0.08s steps(2); }
+
+  .clause p { margin: 0; max-width: 64ch; font-size: 14px; }
+  .clause p code { font-weight: 700; }
+
+  .c9 {
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    background: var(--acid);
+  }
+  .c9 .num { -webkit-text-stroke: 3px var(--ink); }
+  .c9 h2 { font-size: clamp(30px, 5vw, 84px); }
+  .c9:hover { background: var(--ink); }
+  .c9:hover .num { color: var(--acid); }
+
+  /* ---------- Signatories ---------- */
+  .sign {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    border-bottom: var(--border) solid var(--ink);
+  }
+  .sign > div { padding: 32px 24px; }
+  .sign > div:first-child { border-right: var(--border) solid var(--ink); background: var(--ink); color: var(--paper); }
+  .sign h3 {
+    margin: 0 0 12px;
+    font-family: var(--display);
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: clamp(28px, 4vw, 60px);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+  }
+  .sign-form { display: flex; flex-wrap: wrap; gap: 0; max-width: 720px; margin-top: 12px; }
+  .sign-form input {
+    flex: 1 1 240px;
+    font: inherit;
+    font-size: 15px;
+    padding: 14px 16px;
+    border: var(--border) solid var(--ink);
+    border-right: 0;
+    background: var(--paper);
+    color: var(--ink);
+    outline: none;
+    min-width: 0;
+  }
+  .sign-form input:focus { background: #fff; box-shadow: inset 0 0 0 3px var(--acid); }
+  .sign-form button {
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 14px 22px;
+    background: var(--ink);
+    color: var(--acid);
+    border: var(--border) solid var(--ink);
+    cursor: pointer;
+    transition: background 0.1s, color 0.1s;
+  }
+  .sign-form button:hover { background: var(--signal); color: var(--paper); }
+  .sign-status { margin-top: 12px; font-size: 13px; min-height: 1.6em; }
+  .sign-status.ok { color: var(--signal); font-weight: 700; }
+
+  .roll { list-style: none; margin: 18px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .roll li {
+    font-size: 12px;
+    border: 2px solid var(--ink);
+    padding: 4px 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: var(--paper);
+  }
+  .roll li.new { background: var(--acid); animation: slam 0.25s steps(3) both; }
+  @keyframes slam { from { transform: scale(1.4) rotate(-6deg); } to { transform: none; } }
+
+  /* ---------- Footer ---------- */
+  footer {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 24px;
+    padding: 28px 24px 40px;
+  }
+  footer .small { font-size: 12px; line-height: 1.8; }
+  footer .small a { color: var(--ink); text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 3px; }
+  footer .small a:hover { background: var(--acid); }
+
+  .stamp {
+    width: 150px;
+    height: 150px;
+    border: var(--border) solid var(--signal);
+    color: var(--signal);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    font-family: var(--display);
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 15px;
+    line-height: 1.05;
+    letter-spacing: 0.06em;
+    transform: rotate(-14deg);
+    box-shadow: inset 0 0 0 3px var(--paper), inset 0 0 0 5px var(--signal);
+    mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='r'><feTurbulence baseFrequency='0.7' numOctaves='2'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5 -1.4'/></filter><rect width='120' height='120' filter='url(%23r)'/></svg>"), linear-gradient(#000 0 0);
+    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='r'><feTurbulence baseFrequency='0.7' numOctaves='2'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5 -1.4'/></filter><rect width='120' height='120' filter='url(%23r)'/></svg>"), linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: destination-out;
+    mask-size: 120px 120px, 100% 100%;
+    -webkit-mask-size: 120px 120px, 100% 100%;
+    transition: transform 0.15s steps(3);
+    user-select: none;
+  }
+  .stamp:hover { transform: rotate(-4deg) scale(1.06); }
+  .stamp span { padding: 0 14px; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 1100px) {
+    .c1 { grid-column: span 12; }
+    .c2 { grid-column: span 6; }
+    .c3 { grid-column: span 6; }
+    .c4 { grid-column: span 6; }
+    .c5 { grid-column: span 6; }
+    .c6 { grid-column: span 4; }
+    .c7 { grid-column: span 8; }
+    .c8 { grid-column: span 12; }
+  }
+  @media (max-width: 760px) {
+    header { grid-template-columns: 1fr 1fr; }
+    header > *:nth-child(2) { border-right: 0; }
+    header > *:last-child { grid-column: span 2; border-top: var(--border) solid var(--ink); }
+    .hero { grid-template-columns: 1fr; min-height: 0; }
+    .hero-title { border-right: 0; border-bottom: var(--border) solid var(--ink); }
+    .hero-side { min-height: 300px; }
+    h1 { transform: none; width: auto; font-size: clamp(44px, 16vw, 90px); }
+    .clause { grid-column: span 12 !important; border-right: 0; }
+    .c9 { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .sign { grid-template-columns: 1fr; }
+    .sign > div:first-child { border-right: 0; border-bottom: var(--border) solid var(--ink); }
+    footer { grid-template-columns: 1fr; }
+  }
+  @media (min-width: 1800px) {
+    body { font-size: 17px; }
+    .clause p { font-size: 16px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; }
+    .asterisk { animation: none; }
+    .roll li.new { animation: none; }
+    .btn, .clause, .stamp { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="marquee">
+    <span>Honest design is not a style</span><span>Show the seams</span><span>Weight is information</span><span>The grid is a tool not a god</span><span>No dark patterns</span><span>Ship the raw version</span>
+    <span>Honest design is not a style</span><span>Show the seams</span><span>Weight is information</span><span>The grid is a tool not a god</span><span>No dark patterns</span><span>Ship the raw version</span>
+  </div>
+</div>
+
+<header>
+  <div><span class="meta-label">Document</span><span class="meta-value">Manifesto №4 / Revised</span></div>
+  <div><span class="meta-label">Issued</span><span class="meta-value" id="issued">01 · 09 · 2026</span></div>
+  <div><span class="meta-label">Status</span><span class="meta-value">Unfinished. On purpose.</span></div>
+</header>
+
+<section class="hero">
+  <div class="hero-title">
+    <h1>Honest<br>De<span class="strike">sign</span><br><span class="acid">Or</span> Nothing</h1>
+    <p class="hero-lede">
+      A working manifesto for people who make interfaces. Nine clauses, no exceptions, one <strong>loud</strong> footnote.
+      Written in monospace so you can see exactly how much space every word takes.
+    </p>
+    <div class="hero-cta">
+      <a class="btn" href="#clauses">Read the clauses</a>
+      <a class="btn btn-signal" href="#sign">Sign it</a>
+    </div>
+  </div>
+  <div class="hero-side" aria-hidden="true">
+    <div class="asterisk">*</div>
+    <div class="stamp-box">* Terms apply to everyone, including us</div>
+  </div>
+</section>
+
+<main class="manifesto" id="clauses">
+  <article class="clause c1" data-tag="Clause / Structure" tabindex="0">
+    <div class="num">01</div>
+    <div>
+      <h2>Show <span class="u">the seams</span>.</h2>
+      <p>A border is a decision. A shadow is a decision. Make them visible, make them thick, and never pretend the box is not a box. Users are not fooled by a gradient into thinking a button is a pebble; they are only slowed down.</p>
+    </div>
+  </article>
+
+  <article class="clause c2" data-tag="Clause / Type" tabindex="0">
+    <div class="num">02</div>
+    <div>
+      <h2>Weight is <span class="u">information</span>.</h2>
+      <p>If everything is bold, nothing is. Use one heavy voice for what matters, one plain voice for everything else, and let the size difference be embarrassing.</p>
+    </div>
+  </article>
+
+  <article class="clause c3" data-tag="Clause / Grid" tabindex="0">
+    <div class="num">03</div>
+    <div>
+      <h2>The grid is a tool, <span class="u">not a god</span>.</h2>
+      <p>Break it where the content asks you to. Symmetry is the default of the lazy; asymmetry is the default of the attentive.</p>
+    </div>
+  </article>
+
+  <article class="clause c4" data-tag="Clause / Ethics" tabindex="0">
+    <div class="num">04</div>
+    <div>
+      <h2>No <span class="u">dark patterns</span>.</h2>
+      <p>The cancel button is the same size as the confirm button. The unsubscribe link is the same colour as the subscribe link. If a design only works because someone did not notice it, it does not work.</p>
+    </div>
+  </article>
+
+  <article class="clause c5" data-tag="Clause / Motion" tabindex="0">
+    <div class="num">05</div>
+    <div>
+      <h2>Motion must <span class="u">mean</span> something.</h2>
+      <p>Animate to explain where a thing came from or where it went. Never to decorate. Twelve frames is enough. Respect the person who asked for less.</p>
+    </div>
+  </article>
+
+  <article class="clause c6" data-tag="Clause / Colour" tabindex="0">
+    <div class="num">06</div>
+    <div>
+      <h2>Two colours, <span class="u">maximum</span>.</h2>
+      <p>One to shout (<code>#e8ff47</code>), one to warn (<code>#ff2e1f</code>). Everything else is ink on paper.</p>
+    </div>
+  </article>
+
+  <article class="clause c7" data-tag="Clause / Copy" tabindex="0">
+    <div class="num">07</div>
+    <div>
+      <h2>Write like <span class="u">you mean it</span>.</h2>
+      <p>No placeholder text survives to production. No "Oops!". No "Something went wrong". Say what broke, who is fixing it, and what the user can do in the meantime. A sentence that cannot be said out loud to a stranger should not ship.</p>
+    </div>
+  </article>
+
+  <article class="clause c8" data-tag="Clause / Speed" tabindex="0">
+    <div class="num">08</div>
+    <div>
+      <h2>Ship the <span class="u">raw</span> version.</h2>
+      <p>A page that loads in 200 ms with system fonts beats a page that loads in 3 s with a brand typeface. Every time.</p>
+    </div>
+  </article>
+
+  <article class="clause c9" data-tag="Clause / Footnote" tabindex="0">
+    <div class="num">09</div>
+    <div>
+      <h2>Honesty is a <span class="u">practice</span>, not a look.</h2>
+      <p>You can steal this page's borders and still lie to your users. The thick outline is a reminder, not a certificate. Re-read the eight clauses above every time you open a design file. Then break the one that is stopping you from telling the truth.</p>
+    </div>
+  </article>
+</main>
+
+<section class="sign" id="sign">
+  <div>
+    <h3>Add your name</h3>
+    <p style="margin:0;">Signing changes nothing except the way you argue in your next design review. That is enough.</p>
+  </div>
+  <div>
+    <form class="sign-form" id="signForm" autocomplete="off">
+      <label for="signName" class="meta-label" style="flex-basis:100%;">Name or handle</label>
+      <input id="signName" name="name" type="text" maxlength="32" placeholder="e.g. Ada, @grid_breaker" required>
+      <button type="submit">Sign</button>
+    </form>
+    <div class="sign-status" id="signStatus" aria-live="polite"></div>
+    <ul class="roll" id="roll" aria-label="Signatories">
+      <li>Studio Blunt</li><li>M. Okafor</li><li>Tessellate</li><li>Rune Vik</li><li>The Copy Desk</li><li>Ines P.</li><li>Nullspace</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="small">
+    Set in your system's condensed sans and monospace. No webfonts were loaded to render this page.<br>
+    Borders 4px. Shadows hard. Colours: <a href="#clauses">#f2efe9</a>, #0a0a0a, #e8ff47, #ff2e1f.<br>
+    Copy, paste, argue, revise. Attribution appreciated, not required.
+  </div>
+  <div class="stamp" id="stamp" role="img" aria-label="Approved for public disagreement"><span>Approved<br>for public<br>disagreement</span></div>
+</footer>
+
+<script>
+  (function () {
+    'use strict';
+
+    // Date in the header follows the real clock so the "issued" line is never stale.
+    var d = new Date();
+    var pad = function (n) { return String(n).padStart(2, '0'); };
+    document.getElementById('issued').textContent = pad(d.getDate()) + ' · ' + pad(d.getMonth() + 1) + ' · ' + d.getFullYear();
+
+    // Signing form: purely local, adds a slammed badge to the roll.
+    var form = document.getElementById('signForm');
+    var input = document.getElementById('signName');
+    var status = document.getElementById('signStatus');
+    var roll = document.getElementById('roll');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = input.value.trim().replace(/\s+/g, ' ');
+      if (name.length < 2) {
+        status.textContent = 'Two characters minimum. Initials count.';
+        status.className = 'sign-status';
+        input.focus();
+        return;
+      }
+      var existing = Array.prototype.some.call(roll.children, function (li) {
+        return li.textContent.toLowerCase() === name.toLowerCase();
+      });
+      if (existing) {
+        status.textContent = 'Already signed. Once is honest; twice is marketing.';
+        status.className = 'sign-status';
+        return;
+      }
+      Array.prototype.forEach.call(roll.querySelectorAll('.new'), function (li) { li.classList.remove('new'); });
+      var li = document.createElement('li');
+      li.className = 'new';
+      li.textContent = name;
+      roll.insertBefore(li, roll.firstChild);
+      status.textContent = 'Signed. Clause 04 is now your problem too.';
+      status.className = 'sign-status ok';
+      input.value = '';
+    });
+
+    // Clicking a clause flips it to an inverted "pinned" state for touch users.
+    var clauses = document.querySelectorAll('.clause');
+    Array.prototype.forEach.call(clauses, function (c) {
+      c.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          c.classList.toggle('pinned');
+          c.style.background = c.classList.contains('pinned') ? '#0a0a0a' : '';
+          c.style.color = c.classList.contains('pinned') ? '#e8ff47' : '';
+        }
+      });
+    });
+
+    // The stamp tilts slightly toward the cursor: brutal, but alive.
+    var stamp = document.getElementById('stamp');
+    if (window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      stamp.addEventListener('pointermove', function (e) {
+        var r = stamp.getBoundingClientRect();
+        var dx = (e.clientX - (r.left + r.width / 2)) / r.width;
+        stamp.style.transform = 'rotate(' + (-14 + dx * 16).toFixed(1) + 'deg) scale(1.06)';
+      });
+      stamp.addEventListener('pointerleave', function () { stamp.style.transform = ''; });
+    }
+  })();
+</script>
+</body>
+</html>

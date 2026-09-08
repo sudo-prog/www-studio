@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Signal Loss — Generative Glitch Portrait</title>
+<style>
+  :root {
+    --bg: #07070a;
+    --panel: #0d0d12;
+    --line: rgba(255,255,255,0.09);
+    --ink: #d9d9e2;
+    --ink-2: rgba(217,217,226,0.55);
+    --ink-3: rgba(217,217,226,0.28);
+    --acid: #c8ff3d;
+    --magenta: #ff3d9a;
+    --cyan: #3de9ff;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Courier New", monospace;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    -webkit-font-smoothing: antialiased;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(180deg, rgba(255,255,255,0.018) 0 1px, transparent 1px 3px);
+    z-index: 5;
+    mix-blend-mode: overlay;
+  }
+
+  .bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 16px clamp(16px, 3vw, 40px);
+    border-bottom: 1px solid var(--line);
+    text-transform: uppercase;
+    font-size: 11px;
+    color: var(--ink-2);
+    flex-wrap: wrap;
+  }
+  .bar .dot {
+    display: inline-block;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--acid);
+    box-shadow: 0 0 10px var(--acid);
+    margin-right: 10px;
+    vertical-align: middle;
+    animation: blink 2.4s steps(1) infinite;
+  }
+  body.frozen .bar .dot { background: var(--magenta); box-shadow: 0 0 10px var(--magenta); animation: none; }
+  .bar b { color: var(--ink); font-weight: 500; }
+  .hex { color: var(--acid); font-variant-numeric: tabular-nums; }
+
+  main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
+    gap: clamp(16px, 3vw, 48px);
+    padding: clamp(16px, 3vw, 40px);
+    align-items: center;
+  }
+
+  .frame {
+    position: relative;
+    justify-self: center;
+    width: min(100%, calc((100vh - 220px) * 0.75));
+    aspect-ratio: 3 / 4;
+    background: #000;
+    border: 1px solid var(--line);
+    box-shadow: 0 60px 120px -40px rgba(0,0,0,1), 0 0 0 12px var(--panel), 0 0 0 13px var(--line);
+  }
+  .frame canvas { display: block; width: 100%; height: 100%; }
+  .frame .corner {
+    position: absolute;
+    width: 14px; height: 14px;
+    border: 1px solid var(--acid);
+    opacity: 0.7;
+    pointer-events: none;
+  }
+  .frame .corner.tl { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
+  .frame .corner.tr { top: -1px; right: -1px; border-left: 0; border-bottom: 0; }
+  .frame .corner.bl { bottom: -1px; left: -1px; border-right: 0; border-top: 0; }
+  .frame .corner.br { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
+  .frame .tag {
+    position: absolute;
+    left: 12px; bottom: 12px;
+    font-size: 10px;
+    color: var(--ink-2);
+    background: rgba(0,0,0,0.5);
+    padding: 4px 8px;
+    pointer-events: none;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+  .frame .tag i { color: var(--magenta); font-style: normal; }
+
+  .plaque {
+    display: grid;
+    gap: 22px;
+    align-content: center;
+    animation: rise 1s var(--ease) both;
+  }
+  .plaque h1 {
+    margin: 0;
+    font-family: Georgia, "Iowan Old Style", Palatino, ui-serif, serif;
+    font-weight: 400;
+    font-size: clamp(30px, 3.2vw, 44px);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: #fff;
+  }
+  .plaque h1 em { font-style: italic; color: var(--ink-2); }
+  .plaque .meta {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 6px 18px;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 0;
+  }
+  .plaque .meta span:nth-child(even) { color: var(--ink-2); text-transform: none; font-variant-numeric: tabular-nums; }
+  .plaque p {
+    margin: 0;
+    font-family: Georgia, "Iowan Old Style", Palatino, ui-serif, serif;
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--ink-2);
+    letter-spacing: 0;
+  }
+
+  .controls { display: grid; gap: 16px; }
+  .slider label {
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: var(--ink-3);
+    margin-bottom: 8px;
+  }
+  .slider label .readout { color: var(--acid); font-variant-numeric: tabular-nums; }
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 24px;
+    background: transparent;
+    cursor: ew-resize;
+    margin: 0;
+  }
+  input[type="range"]::-webkit-slider-runnable-track {
+    height: 1px;
+    background: linear-gradient(90deg, var(--acid), var(--magenta));
+  }
+  input[type="range"]::-moz-range-track {
+    height: 1px;
+    background: linear-gradient(90deg, var(--acid), var(--magenta));
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 6px; height: 18px;
+    margin-top: -8.5px;
+    background: var(--ink);
+    border-radius: 1px;
+    box-shadow: 0 0 0 1px var(--bg), 0 0 12px rgba(200,255,61,0.5);
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 6px; height: 18px;
+    background: var(--ink);
+    border: 0;
+    border-radius: 1px;
+  }
+
+  .buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .btn {
+    appearance: none;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,0.02);
+    color: var(--ink);
+    font: inherit;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    padding: 13px 14px;
+    cursor: pointer;
+    position: relative;
+    text-align: left;
+    transition: border-color 0.3s ease, color 0.3s ease, background 0.3s ease;
+  }
+  .btn::after {
+    content: "";
+    position: absolute;
+    right: 12px; top: 50%;
+    width: 6px; height: 6px;
+    transform: translateY(-50%);
+    background: var(--ink-3);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+  .btn:hover { border-color: var(--acid); color: #fff; background: rgba(200,255,61,0.05); }
+  .btn:hover::after { background: var(--acid); box-shadow: 0 0 10px var(--acid); }
+  .btn[aria-pressed="true"] { border-color: var(--magenta); color: var(--magenta); }
+  .btn[aria-pressed="true"]::after { background: var(--magenta); box-shadow: 0 0 10px var(--magenta); }
+  .btn:active { transform: translateY(1px); }
+
+  .readouts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 16px;
+    font-size: 11px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+  }
+  .readouts div { display: flex; justify-content: space-between; border-bottom: 1px dashed var(--line); padding-bottom: 6px; }
+  .readouts .hex { color: var(--cyan); }
+
+  footer.bar { border-bottom: 0; border-top: 1px solid var(--line); }
+
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+  @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+  @media (max-width: 860px) {
+    main { grid-template-columns: 1fr; }
+    .frame { width: min(100%, 520px); }
+    .plaque { max-width: 520px; justify-self: center; width: 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .plaque, .bar .dot { animation: none; }
+  }
+</style>
+</head>
+<body>
+<header class="bar">
+  <span><span class="dot" aria-hidden="true"></span><b>Signal Loss</b> · live corruption</span>
+  <span>Subject <span class="hex" id="subjectHex">0x0000</span></span>
+  <span>Frame <span class="hex" id="frameHex">0x000000</span></span>
+</header>
+
+<main>
+  <div class="frame">
+    <canvas id="out" width="600" height="800" aria-label="Generative glitch portrait, continuously corrupting" role="img"></canvas>
+    <span class="corner tl" aria-hidden="true"></span>
+    <span class="corner tr" aria-hidden="true"></span>
+    <span class="corner bl" aria-hidden="true"></span>
+    <span class="corner br" aria-hidden="true"></span>
+    <span class="tag" id="tag">REC <i>●</i> 600×800 · 24-bit</span>
+  </div>
+
+  <aside class="plaque">
+    <h1 id="title">Untitled portrait <em>(subject unknown)</em></h1>
+    <div class="meta">
+      <span>Medium</span><span>Procedural pigment on unstable signal</span>
+      <span>Year</span><span>2026</span>
+      <span>Dimensions</span><span>600 × 800 px, variable</span>
+      <span>Edition</span><span id="edition">1 / 1 · seed 0x0000</span>
+    </div>
+    <p>
+      No photograph was used. The face is drawn from arithmetic — ellipses, gradients, a little noise —
+      and then handed to a transmission that cannot hold it. Every viewer sees the same subject and a
+      different ruin.
+    </p>
+
+    <div class="controls">
+      <div class="slider">
+        <label for="intensity">Corruption intensity <span class="readout" id="intensityOut">0.45</span></label>
+        <input type="range" id="intensity" min="0" max="1" step="0.01" value="0.45">
+      </div>
+      <div class="buttons">
+        <button class="btn" id="freezeBtn" type="button" aria-pressed="false">Freeze frame</button>
+        <button class="btn" id="newBtn" type="button">New subject</button>
+      </div>
+      <div class="readouts">
+        <div><span>Slice</span><span class="hex" id="rSlice">0x00</span></div>
+        <div><span>Split</span><span class="hex" id="rSplit">0x00</span></div>
+        <div><span>Blocks</span><span class="hex" id="rBlocks">0x00</span></div>
+        <div><span>Smear</span><span class="hex" id="rSmear">0x00</span></div>
+        <div><span>Palette</span><span class="hex" id="rPal">#000000</span></div>
+        <div><span>Burst</span><span class="hex" id="rBurst">0.00</span></div>
+      </div>
+    </div>
+  </aside>
+</main>
+
+<footer class="bar">
+  <span>Rendered entirely in-browser · no images · no network</span>
+  <span>Museum of Unstable Media · Gallery 4</span>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  var LW = 600, LH = 800;                        // logical portrait size
+  var out = document.getElementById('out');
+  var octx = out.getContext('2d');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var src = mk(), chanR = mk(), chanG = mk(), chanB = mk(), work = mk(), prev = mk();
+  function mk() { var c = document.createElement('canvas'); c.width = LW; c.height = LH; return c; }
+
+  // ---------- PRNG ----------
+  var seed = 0;
+  function makeRng(s) {
+    var a = s >>> 0;
+    return function () {
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      var t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function hex(n, digits) { var s = (n >>> 0).toString(16).toUpperCase(); while (s.length < digits) s = '0' + s; return '0x' + s; }
+
+  // ---------- Procedural subject ----------
+  var palette = { bg: '#101018', skin: '#c9a58a', shade: '#6b4a3c', hair: '#141016', light: '#f2d8c2', iris: '#3e6d7a', lip: '#9a4a4a' };
+  var titles = ['Portrait of a Signal', 'Study for a Lost Frame', 'Woman in Static', 'Head, Interrupted', 'Self, Buffering', 'The Last Keyframe', 'Face at 3 a.m.', 'Interference Pattern'];
+  var titleEl = document.getElementById('title');
+
+  function hsl(h, s, l) { return 'hsl(' + ((h % 360 + 360) % 360).toFixed(0) + ' ' + s.toFixed(0) + '% ' + l.toFixed(0) + '%)'; }
+
+  function paintSubject() {
+    var rng = makeRng(seed);
+    var hue = rng() * 360;
+    var skinH = 18 + rng() * 22, skinL = 45 + rng() * 30;
+    palette.bg = hsl(hue, 25 + rng() * 20, 6 + rng() * 6);
+    palette.skin = hsl(skinH, 30 + rng() * 20, skinL);
+    palette.shade = hsl(skinH - 6, 35, skinL - 30);
+    palette.light = hsl(skinH + 8, 40, Math.min(92, skinL + 28));
+    palette.hair = hsl(hue + 180 + rng() * 60, 20 + rng() * 30, 6 + rng() * 14);
+    palette.iris = hsl(hue + 120 + rng() * 80, 40 + rng() * 40, 35 + rng() * 20);
+    palette.lip = hsl(skinH - 14 + rng() * 10, 45, skinL - 22);
+    var accent = hsl(hue + 40, 90, 60);
+
+    var c = src.getContext('2d');
+    c.setTransform(1, 0, 0, 1, 0, 0);
+    c.globalCompositeOperation = 'source-over';
+    c.filter = 'none';
+    // background with a rim of accent light
+    var bg = c.createLinearGradient(0, 0, 0, LH);
+    bg.addColorStop(0, palette.bg); bg.addColorStop(1, '#040407');
+    c.fillStyle = bg; c.fillRect(0, 0, LW, LH);
+    var rim = c.createRadialGradient(LW * (0.2 + rng() * 0.6), LH * 0.3, 20, LW * 0.5, LH * 0.5, LW * 0.9);
+    rim.addColorStop(0, accent); rim.addColorStop(0.35, 'rgba(0,0,0,0)');
+    c.globalAlpha = 0.35; c.fillStyle = rim; c.fillRect(0, 0, LW, LH); c.globalAlpha = 1;
+
+    var cx = LW * 0.5 + (rng() - 0.5) * 40, cy = LH * 0.46;
+    var headW = 150 + rng() * 40, headH = 200 + rng() * 40;
+    var tilt = (rng() - 0.5) * 0.18;
+
+    // shoulders / torso
+    c.save(); c.translate(cx, LH * 0.98);
+    var torso = c.createLinearGradient(0, -260, 0, 0);
+    torso.addColorStop(0, hsl(hue + 200, 20, 18)); torso.addColorStop(1, '#050507');
+    c.fillStyle = torso;
+    c.beginPath(); c.ellipse(0, 0, headW * 2.2, 260, 0, Math.PI, Math.PI * 2); c.fill();
+    c.restore();
+
+    // neck
+    c.save(); c.translate(cx, cy + headH * 0.9); c.rotate(tilt);
+    var neck = c.createLinearGradient(-60, 0, 60, 0);
+    neck.addColorStop(0, palette.shade); neck.addColorStop(0.5, palette.skin); neck.addColorStop(1, palette.shade);
+    c.fillStyle = neck; c.fillRect(-headW * 0.42, -30, headW * 0.84, 160);
+    c.restore();
+
+    // head
+    c.save(); c.translate(cx, cy); c.rotate(tilt);
+    var head = c.createRadialGradient(-headW * 0.35, -headH * 0.35, headW * 0.1, 0, 0, headW * 1.25);
+    head.addColorStop(0, palette.light); head.addColorStop(0.55, palette.skin); head.addColorStop(1, palette.shade);
+    c.fillStyle = head;
+    c.beginPath(); c.ellipse(0, 0, headW, headH, 0, 0, Math.PI * 2); c.fill();
+    // jaw shadow
+    var jaw = c.createLinearGradient(0, headH * 0.4, 0, headH);
+    jaw.addColorStop(0, 'rgba(0,0,0,0)'); jaw.addColorStop(1, 'rgba(0,0,0,0.35)');
+    c.fillStyle = jaw; c.beginPath(); c.ellipse(0, 0, headW, headH, 0, 0, Math.PI * 2); c.fill();
+
+    // hair mass
+    c.fillStyle = palette.hair;
+    var hairStyle = Math.floor(rng() * 3);
+    c.beginPath();
+    if (hairStyle === 0) {
+      c.ellipse(0, -headH * 0.35, headW * 1.08, headH * 0.75, 0, Math.PI, Math.PI * 2);
+      c.lineTo(headW * 1.08, headH * 0.5); c.lineTo(headW * 0.85, -headH * 0.1); c.lineTo(-headW * 0.85, -headH * 0.1); c.lineTo(-headW * 1.08, headH * 0.5);
+    } else if (hairStyle === 1) {
+      c.ellipse(0, -headH * 0.4, headW * 1.15, headH * 0.7, 0, Math.PI * 0.95, Math.PI * 2.05);
+      c.lineTo(headW * 1.2, headH * 0.9); c.lineTo(headW * 0.95, -headH * 0.05); c.lineTo(-headW * 0.95, -headH * 0.05); c.lineTo(-headW * 1.2, headH * 0.9);
+    } else {
+      c.ellipse(0, -headH * 0.45, headW * 1.02, headH * 0.6, 0, Math.PI * 1.05, Math.PI * 1.95);
+    }
+    c.closePath(); c.fill();
+    // hair sheen
+    c.globalAlpha = 0.25; c.strokeStyle = accent; c.lineWidth = 3;
+    for (var h = 0; h < 6; h++) {
+      c.beginPath(); c.arc(0, -headH * 0.2, headW * (0.7 + h * 0.06), Math.PI * 1.15, Math.PI * 1.55); c.stroke();
+    }
+    c.globalAlpha = 1;
+
+    // eyes
+    var eyeY = -headH * 0.08, eyeDX = headW * 0.42, eyeW = headW * 0.22, eyeH = headW * 0.11;
+    [-1, 1].forEach(function (side) {
+      var ex = side * eyeDX;
+      c.fillStyle = '#efe9e4';
+      c.beginPath(); c.ellipse(ex, eyeY, eyeW, eyeH, 0, 0, Math.PI * 2); c.fill();
+      var ir = c.createRadialGradient(ex, eyeY, 1, ex, eyeY, eyeH * 0.95);
+      ir.addColorStop(0, '#050505'); ir.addColorStop(0.35, '#050505'); ir.addColorStop(0.4, palette.iris); ir.addColorStop(1, hsl(hue + 140, 60, 15));
+      c.fillStyle = ir;
+      c.beginPath(); c.ellipse(ex + side * 3, eyeY, eyeH * 0.92, eyeH * 0.92, 0, 0, Math.PI * 2); c.fill();
+      c.fillStyle = 'rgba(255,255,255,0.85)';
+      c.beginPath(); c.arc(ex - eyeH * 0.3, eyeY - eyeH * 0.35, eyeH * 0.18, 0, Math.PI * 2); c.fill();
+      // lid
+      c.strokeStyle = palette.hair; c.lineWidth = 3;
+      c.beginPath(); c.ellipse(ex, eyeY, eyeW, eyeH, 0, Math.PI * 1.05, Math.PI * 1.95); c.stroke();
+      // brow
+      c.lineWidth = 6; c.lineCap = 'round';
+      c.beginPath(); c.moveTo(ex - eyeW * 1.1, eyeY - eyeH * 2.6); c.quadraticCurveTo(ex, eyeY - eyeH * 3.4, ex + eyeW * 1.1, eyeY - eyeH * 2.5); c.stroke();
+    });
+
+    // nose
+    var ng = c.createLinearGradient(-20, 0, 20, 0);
+    ng.addColorStop(0, 'rgba(0,0,0,0.22)'); ng.addColorStop(0.5, 'rgba(0,0,0,0)'); ng.addColorStop(1, 'rgba(255,255,255,0.08)');
+    c.fillStyle = ng;
+    c.beginPath(); c.moveTo(-8, eyeY + 10); c.lineTo(-headW * 0.13, headH * 0.32); c.quadraticCurveTo(0, headH * 0.4, headW * 0.13, headH * 0.32); c.lineTo(8, eyeY + 10); c.closePath(); c.fill();
+
+    // lips
+    var lipY = headH * 0.58;
+    c.fillStyle = palette.lip;
+    c.beginPath();
+    c.moveTo(-headW * 0.3, lipY);
+    c.quadraticCurveTo(-headW * 0.12, lipY - 14, 0, lipY - 6);
+    c.quadraticCurveTo(headW * 0.12, lipY - 14, headW * 0.3, lipY);
+    c.quadraticCurveTo(0, lipY + 26, -headW * 0.3, lipY);
+    c.fill();
+    c.strokeStyle = 'rgba(0,0,0,0.35)'; c.lineWidth = 1.5;
+    c.beginPath(); c.moveTo(-headW * 0.3, lipY); c.quadraticCurveTo(0, lipY + 4, headW * 0.3, lipY); c.stroke();
+
+    // cheek warmth
+    c.globalAlpha = 0.25;
+    [-1, 1].forEach(function (side) {
+      var cg = c.createRadialGradient(side * headW * 0.55, headH * 0.22, 2, side * headW * 0.55, headH * 0.22, headW * 0.35);
+      cg.addColorStop(0, palette.lip); cg.addColorStop(1, 'rgba(0,0,0,0)');
+      c.fillStyle = cg; c.fillRect(-headW, -headH, headW * 2, headH * 2);
+    });
+    c.globalAlpha = 1;
+    c.restore();
+
+    // film grain
+    var img = c.getImageData(0, 0, LW, LH), d = img.data;
+    for (var i = 0; i < d.length; i += 4) {
+      var n = (rng() - 0.5) * 22;
+      d[i] += n; d[i + 1] += n; d[i + 2] += n;
+    }
+    c.putImageData(img, 0, 0);
+
+    // channel isolates for RGB split
+    [[chanR, '#ff0000'], [chanG, '#00ff00'], [chanB, '#0000ff']].forEach(function (pair) {
+      var cc = pair[0].getContext('2d');
+      cc.globalCompositeOperation = 'source-over';
+      cc.clearRect(0, 0, LW, LH);
+      cc.drawImage(src, 0, 0);
+      cc.globalCompositeOperation = 'multiply';
+      cc.fillStyle = pair[1]; cc.fillRect(0, 0, LW, LH);
+      cc.globalCompositeOperation = 'source-over';
+    });
+    prev.getContext('2d').drawImage(src, 0, 0);
+
+    document.getElementById('subjectHex').textContent = hex(seed & 0xffff, 4);
+    document.getElementById('edition').textContent = '1 / 1 · seed ' + hex(seed & 0xffff, 4);
+    document.getElementById('rPal').textContent = rgbHex(palette.skin);
+    titleEl.innerHTML = titles[Math.floor(rng() * titles.length)] + ' <em>(subject ' + hex(seed & 0xffff, 4).slice(2) + ')</em>';
+  }
+
+  function rgbHex(cssColor) {
+    var t = document.createElement('canvas'); t.width = t.height = 1;
+    var tc = t.getContext('2d'); tc.fillStyle = cssColor; tc.fillRect(0, 0, 1, 1);
+    var p = tc.getImageData(0, 0, 1, 1).data;
+    return '#' + [p[0], p[1], p[2]].map(function (v) { var s = v.toString(16).toUpperCase(); return s.length < 2 ? '0' + s : s; }).join('');
+  }
+
+  // ---------- Glitch pipeline ----------
+  var intensity = 0.45;
+  var frozen = false;
+  var frameNo = 0;
+  var burst = 0;              // 0..1 envelope of the current burst
+  var burstT = 0;
+  var lastNow = performance.now();
+  var live = { slice: 0, split: 0, blocks: 0, smear: 0 };
+
+  function resizeOut() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var rect = out.getBoundingClientRect();
+    var scale = Math.min(2, Math.max(0.5, rect.width * dpr / LW));
+    out.width = Math.round(LW * scale); out.height = Math.round(LH * scale);
+    octx.setTransform(scale, 0, 0, scale, 0, 0);
+    octx.imageSmoothingEnabled = true;
+  }
+  window.addEventListener('resize', function () { resizeOut(); if (frozen) render(true); });
+
+  function render(force) {
+    var now = performance.now();
+    var dt = Math.min(0.1, (now - lastNow) / 1000); lastNow = now;
+    if (frozen && !force) return;
+    frameNo++;
+
+    // burst envelope: random spikes, quick attack, slow decay
+    burstT -= dt;
+    if (burstT <= 0) { burstT = 0.4 + Math.random() * 2.6; burst = Math.random() < 0.55 ? 0.6 + Math.random() * 0.8 : 0.1 + Math.random() * 0.3; }
+    burst = Math.max(0, burst - dt * 0.9);
+    var k = intensity * (0.35 + burst);       // effective corruption amount
+    if (reduceMotion) k *= 0.35;
+
+    var w = work.getContext('2d');
+    w.setTransform(1, 0, 0, 1, 0, 0);
+    w.globalCompositeOperation = 'source-over';
+    w.globalAlpha = 1; w.filter = 'none';
+
+    // 1) RGB channel split
+    var split = k * 18 * (Math.random() < 0.3 ? 2 : 1);
+    live.split = Math.round(split);
+    w.fillStyle = '#000'; w.fillRect(0, 0, LW, LH);
+    w.globalCompositeOperation = 'lighter';
+    w.drawImage(chanR, -split * (0.5 + Math.random() * 0.5), (Math.random() - 0.5) * split * 0.3);
+    w.drawImage(chanG, 0, 0);
+    w.drawImage(chanB, split * (0.5 + Math.random() * 0.5), (Math.random() - 0.5) * split * 0.3);
+    w.globalCompositeOperation = 'source-over';
+
+    // 2) datamosh-like smearing: bleed the previous frame into bands
+    var smearBands = Math.random() < k * 0.9 ? Math.floor(1 + k * 6) : 0;
+    live.smear = smearBands;
+    for (var s = 0; s < smearBands; s++) {
+      var sy = Math.random() * LH, sh = 20 + Math.random() * 160 * k;
+      w.globalAlpha = 0.55 + Math.random() * 0.4;
+      w.drawImage(prev, 0, sy, LW, sh, (Math.random() - 0.5) * 30 * k, sy + (Math.random() - 0.5) * 40 * k, LW, sh);
+    }
+    w.globalAlpha = 1;
+
+    // 3) horizontal slice displacement (copy from self via prev buffer)
+    var pctx = prev.getContext('2d');
+    pctx.globalAlpha = 1; pctx.globalCompositeOperation = 'source-over';
+    pctx.drawImage(work, 0, 0);
+    var slices = Math.floor(k * 14 * Math.random());
+    live.slice = slices;
+    for (var i = 0; i < slices; i++) {
+      var y = Math.random() * LH, h = 2 + Math.random() * 60 * k;
+      var dx = (Math.random() - 0.5) * 220 * k;
+      w.drawImage(prev, 0, y, LW, h, dx, y, LW, h);
+      if (Math.random() < 0.25) { w.fillStyle = Math.random() < 0.5 ? 'rgba(61,233,255,0.25)' : 'rgba(255,61,154,0.25)'; w.fillRect(0, y, LW, 1.5); }
+    }
+
+    // 4) block corruption: macroblocks copied to wrong places, some solid
+    var blocks = Math.random() < k ? Math.floor(k * 10 * Math.random()) : 0;
+    live.blocks = blocks;
+    for (var b = 0; b < blocks; b++) {
+      var bw = 16 + Math.floor(Math.random() * 4) * 32, bh = 16 + Math.floor(Math.random() * 3) * 16;
+      var bx = Math.floor(Math.random() * (LW - bw) / 16) * 16, by = Math.floor(Math.random() * (LH - bh) / 16) * 16;
+      if (Math.random() < 0.7) {
+        w.drawImage(prev, bx, by, bw, bh, bx + (Math.random() - 0.5) * 120 * k, by + (Math.random() - 0.5) * 60 * k, bw, bh);
+      } else {
+        w.fillStyle = Math.random() < 0.5 ? palette.skin : (Math.random() < 0.5 ? '#c8ff3d' : palette.hair);
+        w.globalAlpha = 0.85; w.fillRect(bx, by, bw, bh); w.globalAlpha = 1;
+      }
+    }
+
+    // 5) scanline noise + tearing lines
+    var lines = Math.floor(k * 60);
+    w.fillStyle = 'rgba(255,255,255,0.06)';
+    for (var l = 0; l < lines; l++) {
+      var ly = Math.random() * LH;
+      w.fillRect(Math.random() * LW * 0.5, ly, Math.random() * LW * 0.6, 1);
+    }
+    if (Math.random() < k * 0.5) {
+      var ny = Math.random() * LH, nh = 4 + Math.random() * 30;
+      var noise = w.createImageData(LW, Math.ceil(nh));
+      for (var p = 0; p < noise.data.length; p += 4) {
+        var v = Math.random() * 255;
+        noise.data[p] = v; noise.data[p + 1] = v; noise.data[p + 2] = v; noise.data[p + 3] = 140;
+      }
+      w.putImageData(noise, 0, ny);
+    }
+
+    // 6) occasional inversion band or full flash
+    if (Math.random() < k * 0.12) {
+      var iy = Math.random() < 0.15 ? 0 : Math.random() * LH;
+      var ih = iy === 0 ? LH : 20 + Math.random() * 200;
+      w.save();
+      w.globalCompositeOperation = 'difference';
+      w.fillStyle = '#fff'; w.fillRect(0, iy, LW, ih);
+      w.restore();
+    }
+
+    // vignette & subtle chroma bleed at edges
+    var vg = w.createRadialGradient(LW / 2, LH / 2, LH * 0.3, LW / 2, LH / 2, LH * 0.75);
+    vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(0,0,0,0.55)');
+    w.fillStyle = vg; w.fillRect(0, 0, LW, LH);
+
+    // keep this frame as the "previous" for next smear
+    pctx.drawImage(work, 0, 0);
+
+    // present
+    octx.clearRect(0, 0, LW, LH);
+    octx.drawImage(work, 0, 0);
+
+    // readouts (throttled)
+    if (frameNo % 4 === 0) {
+      document.getElementById('frameHex').textContent = hex(frameNo, 6);
+      document.getElementById('rSlice').textContent = hex(live.slice, 2);
+      document.getElementById('rSplit').textContent = hex(live.split, 2);
+      document.getElementById('rBlocks').textContent = hex(live.blocks, 2);
+      document.getElementById('rSmear').textContent = hex(live.smear, 2);
+      document.getElementById('rBurst').textContent = burst.toFixed(2);
+    }
+  }
+
+  function loop() {
+    render(false);
+    requestAnimationFrame(loop);
+  }
+
+  // ---------- Controls ----------
+  var intensityIn = document.getElementById('intensity');
+  intensityIn.addEventListener('input', function () {
+    intensity = parseFloat(this.value);
+    document.getElementById('intensityOut').textContent = intensity.toFixed(2);
+  });
+  var freezeBtn = document.getElementById('freezeBtn');
+  freezeBtn.addEventListener('click', function () {
+    frozen = !frozen;
+    freezeBtn.setAttribute('aria-pressed', String(frozen));
+    freezeBtn.textContent = frozen ? 'Resume signal' : 'Freeze frame';
+    document.body.classList.toggle('frozen', frozen);
+    document.getElementById('tag').innerHTML = frozen ? 'HOLD <i>■</i> 600×800 · 24-bit' : 'REC <i>●</i> 600×800 · 24-bit';
+  });
+  document.getElementById('newBtn').addEventListener('click', function () {
+    seed = (Math.random() * 0xffffffff) >>> 0;
+    paintSubject();
+    burst = 1.4; burstT = 1.2;         // greet the new subject with a violent burst
+    if (frozen) render(true);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === ' ' && e.target.tagName !== 'BUTTON' && e.target.tagName !== 'INPUT') { e.preventDefault(); freezeBtn.click(); }
+    if (e.key === 'n') document.getElementById('newBtn').click();
+  });
+
+  // ---------- Boot ----------
+  seed = (Math.random() * 0xffffffff) >>> 0;
+  paintSubject();
+  resizeOut();
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

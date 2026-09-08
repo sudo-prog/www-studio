@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Small Joys — Ten Microinteractions</title>
+<style>
+  :root {
+    --bg: #f6f6fb;
+    --card: #ffffff;
+    --line: #e7e7f2;
+    --ink: #17172b;
+    --muted: #6f6f8a;
+    --indigo: #4f46e5;
+    --indigo-2: #6366f1;
+    --indigo-soft: #e0e7ff;
+    --indigo-glow: rgba(99, 102, 241, 0.35);
+    --green: #16a34a;
+    --red: #e11d48;
+    --spring: cubic-bezier(.34, 1.56, .64, 1);
+    --smooth: cubic-bezier(.2, .8, .2, 1);
+    --sans: ui-sans-serif, system-ui, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --serif: Georgia, 'Iowan Old Style', Palatino, ui-serif, serif;
+    --mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    background:
+      radial-gradient(ellipse 70% 40% at 20% -10%, rgba(99,102,241,0.12), transparent 60%),
+      radial-gradient(ellipse 50% 40% at 100% 0%, rgba(236,72,153,0.07), transparent 60%),
+      var(--bg);
+    min-height: 100vh;
+    padding: clamp(28px, 5vw, 72px) clamp(16px, 4vw, 56px) 96px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  header { max-width: 1180px; margin: 0 auto clamp(28px, 4vw, 56px); display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px; }
+  header h1 { margin: 0; font-size: clamp(30px, 4.5vw, 54px); letter-spacing: -0.03em; font-weight: 700; line-height: 1.02; }
+  header h1 em { font-family: var(--serif); font-weight: 400; font-style: italic; color: var(--indigo); letter-spacing: 0; }
+  header p { margin: 0; max-width: 40ch; color: var(--muted); font-size: 15px; line-height: 1.55; }
+  .eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--indigo); margin: 0 0 12px; font-weight: 600; }
+
+  .grid {
+    max-width: 1180px; margin: 0 auto;
+    display: grid; gap: 18px;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 22px 22px 18px;
+    display: flex; flex-direction: column;
+    min-height: 270px;
+    box-shadow: 0 1px 2px rgba(23,23,43,0.04), 0 12px 32px -20px rgba(23,23,43,0.18);
+    transition: transform 400ms var(--smooth), box-shadow 400ms var(--smooth);
+    position: relative;
+  }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 1px 2px rgba(23,23,43,0.04), 0 24px 44px -24px rgba(79,70,229,0.28); }
+  .stage { flex: 1; display: flex; align-items: center; justify-content: center; min-height: 150px; position: relative; }
+  .cap { border-top: 1px dashed var(--line); padding-top: 14px; margin-top: 12px; display: flex; gap: 12px; align-items: baseline; }
+  .cap b { font-family: var(--mono); font-size: 11px; color: var(--indigo); font-weight: 600; }
+  .cap h2 { margin: 0; font-size: 14px; font-weight: 600; }
+  .cap p { margin: 2px 0 0; font-size: 12.5px; color: var(--muted); line-height: 1.45; }
+
+  :focus-visible { outline: 2px solid var(--indigo); outline-offset: 3px; }
+
+  /* 01 magnetic ------------------------------------------------------- */
+  .magnet { appearance: none; border: 0; cursor: pointer; padding: 16px 30px; border-radius: 999px; font: 600 15px var(--sans); color: #fff;
+    background: linear-gradient(135deg, var(--indigo-2), var(--indigo)); box-shadow: 0 10px 24px -10px var(--indigo-glow); will-change: transform; }
+  .magnet span { display: inline-block; will-change: transform; }
+  .magnet:active { filter: brightness(0.94); }
+
+  /* 02 liquid toggle -------------------------------------------------- */
+  .toggle { appearance: none; border: 0; cursor: pointer; width: 78px; height: 42px; border-radius: 999px; background: #d9d9e6; position: relative;
+    transition: background 420ms var(--smooth); padding: 0; }
+  .toggle[aria-checked="true"] { background: var(--indigo); }
+  .toggle .knob { position: absolute; top: 5px; left: 5px; width: 32px; height: 32px; border-radius: 50%; background: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2); transition: transform 520ms var(--spring), border-radius 300ms; }
+  .toggle[aria-checked="true"] .knob { transform: translateX(36px); }
+  .toggle.squish .knob { animation: squish 520ms var(--smooth); }
+  @keyframes squish {
+    0%   { transform: translateX(var(--from)); border-radius: 50%; }
+    35%  { transform: translateX(var(--mid)) scaleX(1.55) scaleY(0.82); border-radius: 40% / 50%; }
+    72%  { transform: translateX(var(--to)) scaleX(0.9) scaleY(1.08); }
+    100% { transform: translateX(var(--to)); border-radius: 50%; }
+  }
+  .toggle .label { position: absolute; inset: 0; display: flex; align-items: center; padding: 0 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; color: #fff; text-transform: uppercase;
+    justify-content: flex-start; opacity: 0; transition: opacity 250ms; }
+  .toggle[aria-checked="true"] .label { opacity: 1; }
+
+  /* 03 checkbox --------------------------------------------------------- */
+  .check { display: flex; align-items: center; gap: 14px; cursor: pointer; font-size: 15px; user-select: none; }
+  .check input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .check .box { width: 28px; height: 28px; border-radius: 9px; border: 2px solid #c9c9dc; display: grid; place-items: center; transition: background 250ms, border-color 250ms, transform 500ms var(--spring); }
+  .check svg { width: 16px; height: 16px; overflow: visible; }
+  .check path { fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 24; stroke-dashoffset: 24; transition: stroke-dashoffset 380ms var(--smooth) 80ms; }
+  .check input:checked + .box { background: var(--indigo); border-color: var(--indigo); transform: scale(1.08) rotate(-4deg); }
+  .check input:checked + .box path { stroke-dashoffset: 0; }
+  .check input:focus-visible + .box { outline: 2px solid var(--indigo); outline-offset: 3px; }
+  .check .txt { transition: color 250ms; }
+  .check input:checked ~ .txt { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--indigo); }
+
+  /* 04 like ------------------------------------------------------------ */
+  .like { appearance: none; border: 1px solid var(--line); background: #fff; cursor: pointer; border-radius: 999px; padding: 10px 18px 10px 14px; display: inline-flex; align-items: center; gap: 10px; font: 600 14px var(--sans); color: var(--ink); position: relative; transition: border-color 250ms, background 250ms; }
+  .like svg { width: 22px; height: 22px; transition: transform 500ms var(--spring); }
+  .like path { fill: transparent; stroke: #8b8ba3; stroke-width: 2; transition: fill 250ms, stroke 250ms; }
+  .like[aria-pressed="true"] path { fill: var(--red); stroke: var(--red); }
+  .like[aria-pressed="true"] svg { transform: scale(1.18); }
+  .like[aria-pressed="true"] { border-color: #ffd0dc; background: #fff5f7; }
+  .like .n { font-variant-numeric: tabular-nums; min-width: 2ch; text-align: left; }
+  .particle { position: absolute; left: 50%; top: 50%; width: 6px; height: 6px; border-radius: 50%; pointer-events: none; }
+
+  /* 05 elastic slider --------------------------------------------------- */
+  .slider { width: 80%; max-width: 240px; position: relative; padding: 18px 0; cursor: pointer; touch-action: none; }
+  .slider .track { height: 6px; border-radius: 3px; background: #e6e6f1; overflow: hidden; }
+  .slider .fill { height: 100%; width: 45%; background: linear-gradient(90deg, var(--indigo-2), var(--indigo)); border-radius: 3px; }
+  .slider .thumb { position: absolute; top: 50%; left: 45%; width: 24px; height: 24px; margin: -12px; border-radius: 50%; background: #fff; border: 3px solid var(--indigo);
+    box-shadow: 0 4px 12px -4px var(--indigo-glow); will-change: transform; }
+  .slider .tip { position: absolute; bottom: 100%; left: 45%; transform: translate(-50%, 8px) scale(0.6); opacity: 0; background: var(--ink); color: #fff; font: 600 12px var(--mono); padding: 5px 9px; border-radius: 8px;
+    transition: transform 420ms var(--spring), opacity 200ms; pointer-events: none; }
+  .slider .tip::after { content: ""; position: absolute; left: 50%; top: 100%; margin-left: -5px; border: 5px solid transparent; border-top-color: var(--ink); }
+  .slider.active .tip, .slider:hover .tip { transform: translate(-50%, -2px) scale(1); opacity: 1; }
+
+  /* 06 ripple tabs ------------------------------------------------------ */
+  .tabs { display: flex; position: relative; border-bottom: 2px solid var(--line); gap: 4px; }
+  .tabs button { appearance: none; border: 0; background: none; cursor: pointer; padding: 10px 14px; font: 500 14px var(--sans); color: var(--muted); position: relative; overflow: hidden; border-radius: 10px 10px 0 0; transition: color 250ms; }
+  .tabs button[aria-selected="true"] { color: var(--indigo); }
+  .tabs .ind { position: absolute; bottom: -2px; height: 2px; background: var(--indigo); border-radius: 2px; transition: left 480ms var(--spring), width 480ms var(--spring); }
+  .ripple { position: absolute; border-radius: 50%; background: var(--indigo-glow); transform: scale(0); pointer-events: none; animation: rip 600ms var(--smooth) forwards; }
+  @keyframes rip { to { transform: scale(2.6); opacity: 0; } }
+
+  /* 07 glow card -------------------------------------------------------- */
+  .glow { --mx: 50%; --my: 50%; width: 100%; max-width: 250px; height: 130px; border-radius: 16px; position: relative; background: #fafaff; padding: 18px; overflow: hidden; cursor: default; isolation: isolate; }
+  .glow::before { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1.5px; background: radial-gradient(180px circle at var(--mx) var(--my), var(--indigo), rgba(99,102,241,0.15) 45%, var(--line) 70%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite: exclude; }
+  .glow::after { content: ""; position: absolute; inset: 0; background: radial-gradient(160px circle at var(--mx) var(--my), rgba(99,102,241,0.14), transparent 60%); opacity: 0; transition: opacity 300ms; z-index: -1; }
+  .glow:hover::after { opacity: 1; }
+  .glow h3 { margin: 0 0 6px; font-size: 15px; }
+  .glow p { margin: 0; font-size: 12.5px; color: var(--muted); line-height: 1.45; transform: translateY(6px); opacity: 0.55; transition: transform 400ms var(--smooth), opacity 400ms; }
+  .glow:hover p { transform: none; opacity: 1; }
+  .glow .arrow { position: absolute; right: 16px; bottom: 14px; color: var(--indigo); transform: translateX(-6px); opacity: 0; transition: transform 400ms var(--spring), opacity 300ms; }
+  .glow:hover .arrow { transform: none; opacity: 1; }
+
+  /* 08 floating input -------------------------------------------------- */
+  .field { position: relative; width: 100%; max-width: 250px; }
+  .field input { width: 100%; font: 15px var(--sans); color: var(--ink); padding: 16px 44px 8px 14px; border: 1.5px solid #d3d3e3; border-radius: 12px; background: #fff; outline: none; transition: border-color 250ms, box-shadow 250ms; }
+  .field input:focus { border-color: var(--indigo); box-shadow: 0 0 0 4px rgba(99,102,241,0.14); }
+  .field label { position: absolute; left: 14px; top: 13px; font-size: 15px; color: var(--muted); pointer-events: none; transform-origin: left top; transition: transform 300ms var(--smooth), color 250ms; }
+  .field input:focus + label, .field input:not(:placeholder-shown) + label { transform: translateY(-9px) scale(0.74); color: var(--indigo); }
+  .field .status { position: absolute; right: 12px; top: 50%; width: 22px; height: 22px; margin-top: -11px; display: grid; place-items: center; }
+  .field .status svg { width: 22px; height: 22px; }
+  .field .status path { fill: none; stroke: var(--green); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 30; stroke-dashoffset: 30; transition: stroke-dashoffset 400ms var(--smooth); }
+  .field.ok input { border-color: var(--green); box-shadow: 0 0 0 4px rgba(22,163,74,0.14); }
+  .field.ok .status path { stroke-dashoffset: 0; }
+  .field.bad input { border-color: var(--red); box-shadow: 0 0 0 4px rgba(225,29,72,0.14); }
+  .field.bad { animation: shake 480ms cubic-bezier(.36,.07,.19,.97); }
+  @keyframes shake { 10%, 90% { transform: translateX(-1px); } 20%, 80% { transform: translateX(3px); } 30%, 50%, 70% { transform: translateX(-5px); } 40%, 60% { transform: translateX(5px); } }
+  .field small { display: block; margin-top: 8px; font-size: 12px; color: var(--muted); min-height: 1.4em; }
+  .field.bad small { color: var(--red); }
+  .field.ok small { color: var(--green); }
+
+  /* 09 segmented -------------------------------------------------------- */
+  .seg { display: inline-flex; position: relative; background: #ececf5; border-radius: 12px; padding: 4px; isolation: isolate; }
+  .seg .pill { position: absolute; top: 4px; bottom: 4px; left: 4px; width: 60px; background: #fff; border-radius: 9px; box-shadow: 0 2px 6px rgba(23,23,43,0.12); z-index: -1; will-change: transform, width; transform-origin: left center; }
+  .seg button { appearance: none; border: 0; background: none; cursor: pointer; padding: 9px 16px; font: 600 13px var(--sans); color: var(--muted); border-radius: 9px; transition: color 250ms; white-space: nowrap; }
+  .seg button[aria-pressed="true"] { color: var(--ink); }
+
+  /* 10 download --------------------------------------------------------- */
+  .dl { appearance: none; border: 0; cursor: pointer; height: 52px; width: 190px; border-radius: 26px; background: var(--ink); color: #fff; font: 600 15px var(--sans); position: relative; overflow: hidden;
+    transition: width 520ms var(--spring), background 400ms; display: grid; place-items: center; }
+  .dl .txt { position: absolute; transition: opacity 200ms, transform 300ms; display: flex; gap: 10px; align-items: center; }
+  .dl svg.ring { position: absolute; width: 36px; height: 36px; transform: rotate(-90deg); opacity: 0; transition: opacity 250ms; }
+  .dl .ring circle { fill: none; stroke-width: 3; stroke-linecap: round; }
+  .dl .ring .bgc { stroke: rgba(255,255,255,0.18); }
+  .dl .ring .fgc { stroke: #fff; stroke-dasharray: 100.5; stroke-dashoffset: 100.5; }
+  .dl svg.done { position: absolute; width: 22px; height: 22px; opacity: 0; }
+  .dl .done path { fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 30; stroke-dashoffset: 30; }
+  .dl.loading { width: 52px; }
+  .dl.loading .txt { opacity: 0; transform: scale(0.6); }
+  .dl.loading .ring { opacity: 1; }
+  .dl.finished { background: var(--green); width: 52px; }
+  .dl.finished .txt { opacity: 0; }
+  .dl.finished .done { opacity: 1; }
+  .dl.finished .done path { stroke-dashoffset: 0; transition: stroke-dashoffset 400ms var(--smooth) 150ms; }
+  footer { max-width: 1180px; margin: 40px auto 0; font-size: 12.5px; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <p class="eyebrow">Microinteraction study · No. 054</p>
+    <h1>Small <em>joys,</em><br>ten of them.</h1>
+  </div>
+  <p>Interfaces are remembered for their smallest moments: the way a switch lands, the pause before a checkmark. Each card below is one such moment, built by hand with spring physics and system fonts only.</p>
+</header>
+
+<main class="grid">
+
+  <section class="card" id="c-magnet">
+    <div class="stage" id="magnetStage">
+      <button class="magnet" id="magnet" type="button"><span>Come closer</span></button>
+    </div>
+    <div class="cap"><b>01</b><div><h2>Magnetic button</h2><p>Pulls toward the cursor within a radius; the label drifts a little further than the body.</p></div></div>
+  </section>
+
+  <section class="card">
+    <div class="stage">
+      <button class="toggle" id="toggle" type="button" role="switch" aria-checked="false" aria-label="Notifications">
+        <span class="label">On</span>
+        <span class="knob"></span>
+      </button>
+    </div>
+    <div class="cap"><b>02</b><div><h2>Liquid toggle</h2><p>The knob stretches like a droplet mid-travel and overshoots before settling.</p></div></div>
+  </section>
+
+  <section class="card">
+    <div class="stage">
+      <label class="check">
+        <input type="checkbox" id="chk">
+        <span class="box"><svg viewBox="0 0 16 16" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 8.5 L6.5 12.5 L13.5 4"/></svg></span>
+        <span class="txt">Ship the release notes</span>
+      </label>
+    </div>
+    <div class="cap"><b>03</b><div><h2>Drawn checkmark</h2><p>The tick is a stroked path revealed by dash-offset; the box tilts as it fills.</p></div></div>
+  </section>
+
+  <section class="card">
+    <div class="stage">
+      <button class="like" id="like" type="button" aria-pressed="false" aria-label="Like">
+        <svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s-7.5-4.6-9.3-9.6C1.4 7.6 3.9 4 7.4 4c2 0 3.4 1.1 4.6 2.6C13.2 5.1 14.6 4 16.6 4c3.5 0 6 3.6 4.7 7.4C19.5 16.4 12 21 12 21z"/></svg>
+        <span class="n" id="likeCount">248</span>
+      </button>
+    </div>
+    <div class="cap"><b>04</b><div><h2>Like with burst</h2><p>Twelve particles launch on radial vectors, decelerate and fade, each with its own hue.</p></div></div>
+  </section>
+
+  <section class="card">
+    <div class="stage">
+      <div class="slider" id="slider" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="45" aria-label="Volume" tabindex="0">
+        <div class="track"><div class="fill" id="sFill"></div></div>
+        <div class="tip" id="sTip">45</div>
+        <div class="thumb" id="sThumb"></div>
+      </div>
+    </div>
+    <div class="cap"><b>05</b><div><h2>Elastic slider</h2><p>The thumb lags on a spring and squashes in the direction of travel; the tooltip pops with overshoot.</p></div></div>
+  </section>
+
+  <section class="card">
+    <div class="stage">
+      <div class="tabs" id="tabs" role="tablist">
+        <button type="button" role="tab" aria-selected="true">Overview</button>
+        <button type="button" role="tab" aria-selected="false">Activity</button>
+        <button type="button" role="tab" aria-selected="false">Settings</button>
+        <span class="ind" id="tabInd"></span>
+      </div>
+    </div>
+    <div class="cap"><b>06</b><div><h2>Ripple tabs</h2><p>A ripple blooms from the click point while the indicator glides and resizes to the new tab.</p></div></div>
+  </section>
+
+  <section class="card">
+    <div class="stage">
+      <div class="glow" id="glow">
+        <h3>Quarterly report</h3>
+        <p>Revenue, retention and roadmap in one place. Hover to read on.</p>
+        <span class="arrow" aria-hidden="true">→</span>
+      </div>
+    </div>
+    <div class="cap"><b>07</b><div><h2>Cursor-lit border</h2><p>A masked gradient border and inner glow track the pointer; copy rises on hover.</p></div></div>
+  </section>
+
+  <section class="card">
+    <div class="stage">
+      <form class="field" id="field" novalidate>
+        <input type="email" id="email" placeholder=" " autocomplete="off" aria-describedby="fieldHelp">
+        <label for="email">Work email</label>
+        <span class="status"><svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M5 12.5 L10 17.5 L19 7"/></svg></span>
+        <small id="fieldHelp">Press Enter to validate</small>
+      </form>
+    </div>
+    <div class="cap"><b>08</b><div><h2>Floating label input</h2><p>The label shrinks into the corner; invalid entries shake, valid ones draw a green check.</p></div></div>
+  </section>
+
+  <section class="card">
+    <div class="stage">
+      <div class="seg" id="seg" role="group" aria-label="View">
+        <span class="pill" id="segPill"></span>
+        <button type="button" aria-pressed="true">Day</button>
+        <button type="button" aria-pressed="false">Week</button>
+        <button type="button" aria-pressed="false">Month</button>
+      </div>
+    </div>
+    <div class="cap"><b>09</b><div><h2>Springy segments</h2><p>The pill is driven by a damped spring and stretches while in flight, like a rubber band.</p></div></div>
+  </section>
+
+  <section class="card">
+    <div class="stage">
+      <button class="dl" id="dl" type="button">
+        <span class="txt"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v3h16v-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Download</span>
+        <svg class="ring" viewBox="0 0 36 36" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><circle class="bgc" cx="18" cy="18" r="16"/><circle class="fgc" id="dlRing" cx="18" cy="18" r="16"/></svg>
+        <svg class="done" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M5 12.5 L10 17.5 L19 7"/></svg>
+      </button>
+    </div>
+    <div class="cap"><b>10</b><div><h2>Morphing download</h2><p>The pill collapses into a ring that fills with progress, then flips green with a drawn check.</p></div></div>
+  </section>
+
+</main>
+
+<footer>
+  <span>Springs: k 170–220, damping 18–26 · Curves: cubic-bezier(.34,1.56,.64,1)</span>
+  <span>Handcrafted, dependency-free</span>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* A tiny damped spring integrator shared by several components. */
+  function spring(opts) {
+    const s = { x: opts.from, v: 0, target: opts.from, k: opts.k || 180, d: opts.d || 22, raf: 0, onUpdate: opts.onUpdate };
+    function tick() {
+      const a = -s.k * (s.x - s.target) - s.d * s.v;
+      s.v += a / 60; s.x += s.v / 60;
+      s.onUpdate(s.x);
+      if (Math.abs(s.v) > 0.02 || Math.abs(s.x - s.target) > 0.02) s.raf = requestAnimationFrame(tick);
+      else { s.x = s.target; s.v = 0; s.onUpdate(s.x); s.raf = 0; }
+    }
+    s.set = t => { s.target = t; if (reduceMotion) { s.x = t; s.onUpdate(t); return; } if (!s.raf) s.raf = requestAnimationFrame(tick); };
+    return s;
+  }
+
+  /* 01 magnetic button */
+  (function () {
+    const stage = document.getElementById('magnetStage'), btn = document.getElementById('magnet'), label = btn.firstElementChild;
+    let tx = 0, ty = 0;
+    const sx = spring({ from: 0, k: 160, d: 16, onUpdate: v => { tx = v; apply(); } });
+    const sy = spring({ from: 0, k: 160, d: 16, onUpdate: v => { ty = v; apply(); } });
+    function apply() {
+      btn.style.transform = `translate(${tx}px, ${ty}px)`;
+      label.style.transform = `translate(${tx * 0.35}px, ${ty * 0.35}px)`;
+    }
+    stage.addEventListener('pointermove', e => {
+      const r = btn.getBoundingClientRect();
+      const dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+      const dist = Math.hypot(dx, dy), radius = 140;
+      const pull = Math.max(0, 1 - dist / radius);
+      sx.set(dx * pull * 0.45); sy.set(dy * pull * 0.45);
+    });
+    stage.addEventListener('pointerleave', () => { sx.set(0); sy.set(0); });
+  })();
+
+  /* 02 liquid toggle */
+  (function () {
+    const t = document.getElementById('toggle');
+    t.addEventListener('click', () => {
+      const on = t.getAttribute('aria-checked') !== 'true';
+      t.style.setProperty('--from', on ? '0px' : '36px');
+      t.style.setProperty('--mid', on ? '14px' : '22px');
+      t.style.setProperty('--to', on ? '36px' : '0px');
+      t.setAttribute('aria-checked', String(on));
+      t.classList.remove('squish'); void t.offsetWidth; t.classList.add('squish');
+    });
+  })();
+
+  /* 04 like burst */
+  (function () {
+    const btn = document.getElementById('like'), count = document.getElementById('likeCount');
+    const hues = ['#e11d48', '#f97316', '#facc15', '#6366f1', '#22c55e', '#ec4899'];
+    btn.addEventListener('click', () => {
+      const on = btn.getAttribute('aria-pressed') !== 'true';
+      btn.setAttribute('aria-pressed', String(on));
+      count.textContent = String(Number(count.textContent) + (on ? 1 : -1));
+      if (!on || reduceMotion) return;
+      for (let i = 0; i < 12; i++) {
+        const p = document.createElement('span');
+        p.className = 'particle';
+        p.style.background = hues[i % hues.length];
+        btn.appendChild(p);
+        const ang = (i / 12) * Math.PI * 2 + (Math.random() - 0.5) * 0.5, dist = 34 + Math.random() * 30;
+        const anim = p.animate([
+          { transform: 'translate(-50%,-50%) scale(1)', opacity: 1 },
+          { transform: `translate(calc(-50% + ${Math.cos(ang) * dist}px), calc(-50% + ${Math.sin(ang) * dist}px)) scale(${0.2 + Math.random() * 0.4})`, opacity: 0 }
+        ], { duration: 560 + Math.random() * 240, easing: 'cubic-bezier(.2,.8,.3,1)', fill: 'forwards' });
+        anim.onfinish = () => p.remove();
+      }
+    });
+  })();
+
+  /* 05 elastic slider */
+  (function () {
+    const el = document.getElementById('slider'), fill = document.getElementById('sFill'), thumb = document.getElementById('sThumb'), tip = document.getElementById('sTip');
+    let value = 45, lastX = 45, dragging = false;
+    const sp = spring({ from: 45, k: 210, d: 20, onUpdate: x => {
+      const vel = x - lastX; lastX = x;
+      const stretch = Math.min(0.5, Math.abs(vel) * 0.06);
+      fill.style.width = x + '%';
+      thumb.style.left = x + '%';
+      thumb.style.transform = `scale(${1 + stretch}, ${1 - stretch * 0.6}) ${dragging ? 'scale(1.15)' : ''}`;
+      tip.style.left = x + '%';
+    } });
+    function setFromEvent(e) {
+      const r = el.getBoundingClientRect();
+      value = Math.round(Math.max(0, Math.min(100, (e.clientX - r.left) / r.width * 100)));
+      commit();
+    }
+    function commit() { tip.textContent = value; el.setAttribute('aria-valuenow', String(value)); sp.set(value); }
+    el.addEventListener('pointerdown', e => { dragging = true; el.classList.add('active'); el.setPointerCapture(e.pointerId); setFromEvent(e); });
+    el.addEventListener('pointermove', e => { if (dragging) setFromEvent(e); });
+    const stop = () => { dragging = false; el.classList.remove('active'); sp.set(value); };
+    el.addEventListener('pointerup', stop); el.addEventListener('pointercancel', stop);
+    el.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') { value = Math.max(0, value - 5); commit(); e.preventDefault(); }
+      if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { value = Math.min(100, value + 5); commit(); e.preventDefault(); }
+    });
+  })();
+
+  /* 06 ripple tabs */
+  (function () {
+    const tabs = document.getElementById('tabs'), ind = document.getElementById('tabInd');
+    const buttons = [...tabs.querySelectorAll('button')];
+    function place(b) { ind.style.left = b.offsetLeft + 'px'; ind.style.width = b.offsetWidth + 'px'; }
+    place(buttons[0]);
+    tabs.addEventListener('click', e => {
+      const b = e.target.closest('button'); if (!b) return;
+      buttons.forEach(x => x.setAttribute('aria-selected', String(x === b)));
+      place(b);
+      const r = b.getBoundingClientRect(), size = Math.max(r.width, r.height);
+      const rip = document.createElement('span');
+      rip.className = 'ripple';
+      rip.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - r.left - size / 2}px;top:${e.clientY - r.top - size / 2}px`;
+      b.appendChild(rip);
+      rip.addEventListener('animationend', () => rip.remove());
+    });
+    window.addEventListener('resize', () => place(buttons.find(b => b.getAttribute('aria-selected') === 'true')));
+  })();
+
+  /* 07 cursor-lit border */
+  (function () {
+    const g = document.getElementById('glow');
+    g.addEventListener('pointermove', e => {
+      const r = g.getBoundingClientRect();
+      g.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      g.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  })();
+
+  /* 08 floating label + validation */
+  (function () {
+    const form = document.getElementById('field'), input = document.getElementById('email'), help = document.getElementById('fieldHelp');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(input.value.trim());
+      form.classList.remove('ok', 'bad'); void form.offsetWidth;
+      form.classList.add(ok ? 'ok' : 'bad');
+      help.textContent = ok ? 'Looks good — welcome aboard.' : 'That does not look like an email address.';
+    });
+    input.addEventListener('input', () => { form.classList.remove('ok', 'bad'); help.textContent = 'Press Enter to validate'; });
+  })();
+
+  /* 09 springy segmented control */
+  (function () {
+    const seg = document.getElementById('seg'), pill = document.getElementById('segPill');
+    const buttons = [...seg.querySelectorAll('button')];
+    let curX = 0, curW = 0, lastX = 0;
+    const sx = spring({ from: 0, k: 190, d: 19, onUpdate: x => {
+      const v = x - lastX; lastX = x;
+      const stretch = Math.min(28, Math.abs(v) * 1.6);
+      pill.style.transform = `translateX(${Math.min(x, x - (v < 0 ? stretch : 0))}px)`;
+      pill.style.width = (curW + stretch) + 'px';
+      curX = x;
+    } });
+    function target(b, instant) {
+      curW = b.offsetWidth;
+      pill.style.width = curW + 'px';
+      if (instant) { sx.x = b.offsetLeft - 4; lastX = sx.x; pill.style.transform = `translateX(${sx.x}px)`; }
+      sx.set(b.offsetLeft - 4);
+    }
+    target(buttons[0], true);
+    seg.addEventListener('click', e => {
+      const b = e.target.closest('button'); if (!b) return;
+      buttons.forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+      target(b, false);
+    });
+    window.addEventListener('resize', () => target(buttons.find(b => b.getAttribute('aria-pressed') === 'true'), true));
+  })();
+
+  /* 10 morphing download */
+  (function () {
+    const btn = document.getElementById('dl'), ring = document.getElementById('dlRing');
+    const C = 100.5;
+    let busy = false;
+    btn.addEventListener('click', () => {
+      if (busy) return; busy = true;
+      btn.classList.add('loading');
+      let p = 0; const t0 = performance.now(), dur = reduceMotion ? 300 : 2200;
+      (function step(now) {
+        const t = Math.min(1, (now - t0) / dur);
+        p = 1 - Math.pow(1 - t, 2.2);
+        ring.style.strokeDashoffset = String(C * (1 - p));
+        if (t < 1) requestAnimationFrame(step);
+        else {
+          setTimeout(() => {
+            btn.classList.remove('loading'); btn.classList.add('finished');
+            setTimeout(() => { btn.classList.remove('finished'); ring.style.strokeDashoffset = String(C); busy = false; }, 1800);
+          }, 200);
+        }
+      })(t0);
+    });
+  })();
+})();
+</script>
+</body>
+</html>

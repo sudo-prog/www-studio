@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TOTALLY SATURDAY — A Memphis Design Party</title>
+<style>
+  :root {
+    --pink: #ff5fa2;
+    --teal: #22c7c0;
+    --yellow: #ffd23f;
+    --black: #141414;
+    --lavender: #c4a6ff;
+    --cream: #fdf8ee;
+    --sans: 'Avenir Next', 'Futura', 'Helvetica Neue', Helvetica, 'Arial Black', Arial, ui-sans-serif, system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    font-family: var(--sans);
+    color: var(--black);
+    background-color: var(--cream);
+    background-image:
+      radial-gradient(circle at 12% 20%, var(--pink) 0 5px, transparent 6px),
+      radial-gradient(circle at 78% 8%, var(--teal) 0 4px, transparent 5px),
+      radial-gradient(circle at 40% 70%, var(--yellow) 0 6px, transparent 7px),
+      radial-gradient(circle at 90% 60%, var(--lavender) 0 5px, transparent 6px),
+      radial-gradient(circle at 60% 35%, var(--black) 0 2.5px, transparent 3.5px),
+      radial-gradient(circle at 25% 88%, var(--black) 0 2px, transparent 3px),
+      radial-gradient(circle at 5% 55%, var(--teal) 0 3px, transparent 4px),
+      radial-gradient(circle at 70% 90%, var(--pink) 0 3px, transparent 4px);
+    background-size: 260px 260px, 340px 340px, 420px 420px, 300px 300px, 180px 180px, 220px 220px, 380px 380px, 460px 460px;
+    overflow-x: hidden;
+  }
+  .poster {
+    position: relative; min-height: 100vh; overflow: hidden;
+    border-bottom: 8px solid var(--black);
+  }
+  .shapes { position: absolute; inset: 0; pointer-events: none; }
+  .shape {
+    position: absolute; width: var(--w, 120px); height: var(--w, 120px);
+    pointer-events: auto; cursor: pointer; color: var(--c, var(--pink));
+    will-change: transform; filter: drop-shadow(6px 6px 0 var(--black));
+    transition: filter .2s ease;
+  }
+  .shape:hover { filter: drop-shadow(10px 10px 0 var(--black)); }
+  .shape svg { width: 100%; height: 100%; overflow: visible; display: block; }
+  .stage {
+    position: relative; z-index: 2; pointer-events: none;
+    min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+    padding: clamp(24px, 6vw, 80px) clamp(18px, 6vw, 90px);
+  }
+  .stage > * { pointer-events: auto; }
+  .kicker {
+    display: inline-flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: .28em; text-transform: uppercase; font-size: clamp(11px, 1.3vw, 15px);
+    background: var(--black); color: var(--yellow); padding: 8px 14px; transform: rotate(-2deg); width: max-content; max-width: 100%;
+    box-shadow: 5px 5px 0 var(--pink);
+  }
+  .kicker i { width: 10px; height: 10px; background: var(--teal); border-radius: 50%; display: inline-block; }
+  h1 {
+    margin: 18px 0 0; font-weight: 900; text-transform: uppercase; line-height: .86; letter-spacing: -.03em;
+    font-size: clamp(52px, 15vw, 210px); width: max-content; max-width: 100%;
+  }
+  h1 .line { display: block; position: relative; }
+  h1 .l1 { color: var(--pink); text-shadow: 6px 6px 0 var(--black), 12px 12px 0 var(--teal); }
+  h1 .l2 { color: var(--yellow); text-shadow: 6px 6px 0 var(--black), 12px 12px 0 var(--lavender); margin-left: clamp(10px, 6vw, 110px); }
+  .squiggle { display: block; width: min(560px, 90vw); height: 60px; margin: 18px 0 0 clamp(0px, 2vw, 40px); overflow: visible; }
+  .squiggle path {
+    fill: none; stroke: var(--black); stroke-width: 8; stroke-linecap: round;
+    stroke-dasharray: 1400; stroke-dashoffset: 1400;
+    animation: squig 2.2s cubic-bezier(.6,.05,.3,1) .3s forwards;
+  }
+  .squiggle path.shadow { stroke: var(--teal); transform: translate(6px, 6px); animation-delay: .45s; }
+  @keyframes squig { to { stroke-dashoffset: 0; } }
+  .lede {
+    margin: 26px 0 0; font-size: clamp(16px, 2vw, 22px); font-weight: 700; line-height: 1.35; max-width: 34ch;
+    background: var(--cream); padding: 14px 18px; border: 4px solid var(--black); box-shadow: 8px 8px 0 var(--lavender); width: max-content; max-width: 100%;
+  }
+  .actions { margin-top: 26px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    font: inherit; font-weight: 900; text-transform: uppercase; letter-spacing: .12em; font-size: 15px; cursor: pointer;
+    background: var(--teal); color: var(--black); border: 4px solid var(--black); padding: 16px 26px; box-shadow: 7px 7px 0 var(--black);
+    transition: transform .12s cubic-bezier(.3,1.6,.5,1), box-shadow .12s ease, background .2s ease;
+  }
+  .btn:hover { transform: translate(-2px, -2px) rotate(-1.5deg); box-shadow: 10px 10px 0 var(--black); }
+  .btn:active { transform: translate(4px, 4px); box-shadow: 2px 2px 0 var(--black); }
+  .btn.pink { background: var(--pink); }
+  .btn.yellow { background: var(--yellow); }
+
+  .details {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 0;
+    border-bottom: 8px solid var(--black);
+  }
+  .detail {
+    padding: 34px 28px; border-right: 8px solid var(--black); position: relative; overflow: hidden; min-height: 200px;
+  }
+  .detail:last-child { border-right: 0; }
+  .detail:nth-child(1) { background: var(--yellow); }
+  .detail:nth-child(2) { background: var(--lavender); }
+  .detail:nth-child(3) { background: var(--teal); }
+  .detail:nth-child(4) { background: var(--pink); }
+  .detail h3 { margin: 0 0 8px; font-size: 13px; letter-spacing: .3em; text-transform: uppercase; font-weight: 900; }
+  .detail p { margin: 0; font-size: clamp(22px, 2.4vw, 34px); font-weight: 900; line-height: 1.05; text-transform: uppercase; letter-spacing: -.01em; }
+  .detail small { display: block; margin-top: 10px; font-weight: 700; font-size: 14px; }
+  .detail svg { position: absolute; right: -20px; bottom: -20px; width: 120px; height: 120px; opacity: .9; transition: transform .5s cubic-bezier(.3,1.5,.5,1); }
+  .detail:hover svg { transform: rotate(25deg) scale(1.15); }
+  .zig {
+    height: 26px; background:
+      linear-gradient(135deg, var(--black) 25%, transparent 25%) 0 0 / 26px 26px,
+      linear-gradient(225deg, var(--black) 25%, transparent 25%) 0 0 / 26px 26px,
+      linear-gradient(315deg, var(--black) 25%, transparent 25%) 13px 0 / 26px 26px,
+      linear-gradient(45deg, var(--black) 25%, transparent 25%) 13px 0 / 26px 26px;
+    background-color: var(--cream);
+  }
+
+  .rsvp {
+    position: relative; padding: clamp(40px, 7vw, 100px) clamp(18px, 6vw, 90px); display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;
+    background: var(--cream);
+  }
+  .rsvp h2 { margin: 0; font-size: clamp(44px, 8vw, 120px); font-weight: 900; line-height: .9; text-transform: uppercase; letter-spacing: -.03em; color: var(--black); text-shadow: 8px 8px 0 var(--teal); }
+  .rsvp h2 span { color: var(--pink); text-shadow: 8px 8px 0 var(--black); }
+  .rsvp .blurb { font-weight: 700; font-size: 18px; margin: 20px 0 0; max-width: 40ch; line-height: 1.4; }
+  form { display: grid; gap: 18px; }
+  .fld { display: grid; gap: 6px; }
+  .fld label, .fld .lbl { font-weight: 900; text-transform: uppercase; letter-spacing: .2em; font-size: 12px; }
+  .fld input, .fld select {
+    font: inherit; font-weight: 800; font-size: clamp(18px, 2vw, 26px); padding: 16px 18px; border: 5px solid var(--black); background: #fff; color: var(--black);
+    box-shadow: 8px 8px 0 var(--yellow); outline: none; width: 100%; border-radius: 0; -webkit-appearance: none; appearance: none;
+    transition: box-shadow .15s ease, transform .15s ease;
+  }
+  .fld select { background: #fff url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'><path d='M4 8l8 8 8-8' fill='none' stroke='%23141414' stroke-width='4'/></svg>") no-repeat right 16px center; padding-right: 54px; }
+  .fld input:focus, .fld select:focus { box-shadow: 8px 8px 0 var(--pink); transform: translate(-2px, -2px); }
+  .fld:nth-child(2) input { box-shadow: 8px 8px 0 var(--lavender); }
+  .fld:nth-child(3) select { box-shadow: 8px 8px 0 var(--teal); }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip { position: relative; }
+  .chip input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+  .chip span {
+    display: inline-block; padding: 10px 16px; border: 4px solid var(--black); font-weight: 900; text-transform: uppercase; letter-spacing: .1em; font-size: 13px;
+    background: #fff; transition: transform .15s cubic-bezier(.3,1.6,.5,1), background .15s ease;
+  }
+  .chip input:checked + span { background: var(--yellow); transform: rotate(-3deg) scale(1.05); box-shadow: 4px 4px 0 var(--black); }
+  .chip input:focus-visible + span { outline: 3px dashed var(--pink); outline-offset: 3px; }
+  .confirm {
+    margin-top: 6px; padding: 16px 20px; border: 5px solid var(--black); background: var(--teal); font-weight: 900; font-size: 18px;
+    transform: rotate(-1.5deg) scale(0); transition: transform .5s cubic-bezier(.3,1.7,.4,1); box-shadow: 8px 8px 0 var(--pink); text-transform: uppercase;
+  }
+  .confirm.show { transform: rotate(-1.5deg) scale(1); }
+  #confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 50; }
+  footer { border-top: 8px solid var(--black); background: var(--black); color: var(--cream); padding: 22px clamp(18px, 6vw, 90px); font-weight: 800; letter-spacing: .18em; text-transform: uppercase; font-size: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+  footer b { color: var(--yellow); }
+  @media (max-width: 760px) {
+    .rsvp { grid-template-columns: 1fr; }
+    .shape { --w: 80px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .squiggle path { animation: none; stroke-dashoffset: 0; }
+    .btn, .detail svg, .chip span, .confirm, .shape { transition: none; }
+  }
+</style>
+</head>
+<body>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<section class="poster" id="poster">
+  <div class="shapes" id="shapes"></div>
+  <div class="stage">
+    <div class="kicker"><i></i> Memphis Milano Revival · Est. 1981</div>
+    <h1>
+      <span class="line l1">Totally</span>
+      <span class="line l2">Saturday</span>
+    </h1>
+    <svg class="squiggle" viewBox="0 0 560 60" aria-hidden="true">
+      <path class="shadow" d="M6 30 C 40 -10, 70 70, 104 30 S 168 -10, 202 30 S 266 70, 300 30 S 364 -10, 398 30 S 462 70, 496 30 S 540 0, 554 30"/>
+      <path d="M6 30 C 40 -10, 70 70, 104 30 S 168 -10, 202 30 S 266 70, 300 30 S 364 -10, 398 30 S 462 70, 496 30 S 540 0, 554 30"/>
+    </svg>
+    <p class="lede">A one-night takeover of the old laminate showroom. Bring your loudest pattern, your squarest sunglasses, and absolutely no beige.</p>
+    <div class="actions">
+      <button class="btn" type="button" id="shuffleBtn">Shuffle the vibe</button>
+      <a class="btn pink" href="#rsvp" style="text-decoration:none; display:inline-block">RSVP now</a>
+    </div>
+  </div>
+</section>
+
+<section class="details">
+  <div class="detail">
+    <h3>When</h3>
+    <p>Sat 19 Sept<br>9 PM → late</p>
+    <small>Doors sharp. Squiggle o'clock.</small>
+    <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="40" fill="none" stroke="#141414" stroke-width="8"/><circle cx="50" cy="50" r="14" fill="#141414"/></svg>
+  </div>
+  <div class="detail">
+    <h3>Where</h3>
+    <p>Formica Hall<br>Via Sottsass 14</p>
+    <small>Third floor, the door with the zigzag.</small>
+    <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M10 80 L50 15 L90 80 Z" fill="none" stroke="#141414" stroke-width="8" stroke-linejoin="round"/></svg>
+  </div>
+  <div class="detail">
+    <h3>Dress code</h3>
+    <p>Primary &amp; pastel<br>collision</p>
+    <small>Bonus points for terrazzo.</small>
+    <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M10 70 L30 30 L50 70 L70 30 L90 70" fill="none" stroke="#141414" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/></svg>
+  </div>
+  <div class="detail">
+    <h3>Soundtrack</h3>
+    <p>Italo disco,<br>synth-pop, zips</p>
+    <small>Live set by The Bacterio Print.</small>
+    <svg viewBox="0 0 100 100" aria-hidden="true"><rect x="20" y="20" width="60" height="60" fill="none" stroke="#141414" stroke-width="8"/><path d="M20 50 H80 M50 20 V80" stroke="#141414" stroke-width="8"/></svg>
+  </div>
+</section>
+<div class="zig" aria-hidden="true"></div>
+
+<section class="rsvp" id="rsvp">
+  <div>
+    <h2>Say <span>yes</span><br>or say<br>nothing</h2>
+    <p class="blurb">Capacity is set by the number of chairs Ettore would have approved of. That is not many. Tell us you're coming and we will hold a bright plastic one for you.</p>
+  </div>
+  <form id="rsvpForm" novalidate>
+    <div class="fld">
+      <label for="name">Your name</label>
+      <input id="name" name="name" type="text" placeholder="Nathalie Du Pasquier" autocomplete="name" required>
+    </div>
+    <div class="fld">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" placeholder="you@bright.colours" autocomplete="email" required>
+    </div>
+    <div class="fld">
+      <label for="plus">Party size</label>
+      <select id="plus" name="plus">
+        <option value="1">Just me, dramatically</option>
+        <option value="2">Me plus one</option>
+        <option value="3">A trio in matching prints</option>
+        <option value="4">An entire design collective</option>
+      </select>
+    </div>
+    <div class="fld">
+      <span class="lbl">Mood</span>
+      <div class="chips">
+        <label class="chip"><input type="checkbox" name="mood" value="dance"><span>Will dance</span></label>
+        <label class="chip"><input type="checkbox" name="mood" value="talk"><span>Will critique furniture</span></label>
+        <label class="chip"><input type="checkbox" name="mood" value="sing"><span>Will sing italo</span></label>
+      </div>
+    </div>
+    <div>
+      <button class="btn yellow" type="submit">Count me in</button>
+    </div>
+    <div class="confirm" id="confirm" role="status" aria-live="polite"></div>
+  </form>
+</section>
+
+<footer>
+  <span><b>Totally Saturday</b> · a party in the key of Memphis</span>
+  <span>Squiggles supplied · Beige refused</span>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  const PALETTE = ['#ff5fa2', '#22c7c0', '#ffd23f', '#141414', '#c4a6ff'];
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const rand = (a, b) => a + Math.random() * (b - a);
+  const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+
+  // ---------- shape library (inline SVG factories) ----------
+  const S = 'http://www.w3.org/2000/svg';
+  const SHAPES = [
+    () => `<circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="12"/>`,
+    () => `<circle cx="50" cy="50" r="42" fill="currentColor"/>`,
+    () => `<path d="M10 85 L50 12 L90 85 Z" fill="currentColor"/>`,
+    () => `<path d="M10 85 L50 12 L90 85 Z" fill="none" stroke="currentColor" stroke-width="11" stroke-linejoin="round"/>`,
+    () => `<path d="M8 50 A42 42 0 0 1 92 50 Z" fill="currentColor"/>`,
+    () => `<path d="M6 65 L26 30 L46 65 L66 30 L86 65" fill="none" stroke="currentColor" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/>`,
+    () => `<path d="M8 50 C 22 15, 36 85, 50 50 S 78 15, 92 50" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round"/>`,
+    () => `<rect x="14" y="14" width="72" height="72" fill="none" stroke="currentColor" stroke-width="12"/>`,
+    () => `<path d="M50 8 V92 M8 50 H92" stroke="currentColor" stroke-width="14" stroke-linecap="round"/>`,
+    () => `<rect x="12" y="12" width="76" height="76" fill="currentColor"/><rect x="26" y="26" width="48" height="48" fill="none" stroke="#fdf8ee" stroke-width="7" stroke-dasharray="6 7"/>`,
+    () => { let d = ''; for (let y = 22; y <= 78; y += 14) for (let x = 22; x <= 78; x += 14) d += `<circle cx="${x}" cy="${y}" r="5" fill="currentColor"/>`; return d; },
+    () => `<path d="M50 6 L60 38 L94 38 L66 58 L77 92 L50 72 L23 92 L34 58 L6 38 L40 38 Z" fill="currentColor"/>`,
+  ];
+
+  const layer = document.getElementById('shapes');
+  const poster = document.getElementById('poster');
+  const shapes = [];
+  const COUNT = 16;
+
+  function randomTarget(sh) {
+    const r = poster.getBoundingClientRect();
+    const size = sh.size;
+    return {
+      x: rand(-size * 0.3, r.width - size * 0.7),
+      y: rand(-size * 0.3, r.height - size * 0.7),
+      rot: rand(-45, 45), scale: 1
+    };
+  }
+
+  for (let i = 0; i < COUNT; i++) {
+    const el = document.createElement('div');
+    el.className = 'shape';
+    const size = Math.round(rand(70, 190));
+    el.style.setProperty('--w', size + 'px');
+    const color = pick(PALETTE);
+    el.style.setProperty('--c', color);
+    const svg = document.createElementNS(S, 'svg');
+    svg.setAttribute('viewBox', '0 0 100 100'); svg.setAttribute('aria-hidden', 'true');
+    svg.innerHTML = pick(SHAPES)();
+    el.appendChild(svg);
+    el.style.zIndex = String(i % 2 ? 1 : 3);
+    layer.appendChild(el);
+    const sh = { el, svg, size, color, x: 0, y: 0, rot: 0, scale: 0.001, vx: 0, vy: 0, vrot: 0, vscale: 0, tx: 0, ty: 0, trot: 0, tscale: 1 };
+    const t = randomTarget(sh);
+    sh.x = sh.tx = t.x; sh.y = sh.ty = t.y; sh.rot = sh.trot = t.rot;
+    // staggered "pop in": start tiny and spring up
+    sh.scale = 0.001; sh.tscale = 1; sh.vscale = 0;
+    sh.delay = i * 60;
+    shapes.push(sh);
+
+    el.addEventListener('pointerenter', () => { sh.tscale = 1.18; sh.trot += rand(-25, 25); sh.vy -= 3; });
+    el.addEventListener('pointerleave', () => { sh.tscale = 1; });
+    el.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const nt = randomTarget(sh);
+      sh.tx = nt.x; sh.ty = nt.y; sh.trot = sh.trot + rand(180, 540);
+      sh.vscale += 4;
+      recolor(sh);
+    });
+  }
+
+  function recolor(sh) {
+    let c = pick(PALETTE); if (c === sh.color) c = pick(PALETTE);
+    sh.color = c; sh.el.style.setProperty('--c', c);
+  }
+
+  // ---------- spring integrator ----------
+  const K = 110, DAMP = 11;
+  function springStep(sh, dt) {
+    const step = (p, v, t) => {
+      const a = (t - p) * K - v * DAMP;
+      v += a * dt; p += v * dt; return [p, v];
+    };
+    [sh.x, sh.vx] = step(sh.x, sh.vx, sh.tx);
+    [sh.y, sh.vy] = step(sh.y, sh.vy, sh.ty);
+    [sh.rot, sh.vrot] = step(sh.rot, sh.vrot, sh.trot);
+    [sh.scale, sh.vscale] = step(sh.scale, sh.vscale, sh.tscale);
+  }
+  let last = performance.now(), started = performance.now();
+  function loop(now) {
+    const dt = Math.min(0.033, (now - last) / 1000); last = now;
+    const el = now - started;
+    for (const sh of shapes) {
+      if (el < sh.delay) continue;
+      if (reduceMotion) { sh.x = sh.tx; sh.y = sh.ty; sh.rot = sh.trot; sh.scale = sh.tscale; }
+      else springStep(sh, dt);
+      sh.el.style.transform = `translate3d(${sh.x.toFixed(1)}px, ${sh.y.toFixed(1)}px, 0) rotate(${sh.rot.toFixed(1)}deg) scale(${Math.max(0.001, sh.scale).toFixed(3)})`;
+    }
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+
+  // ---------- shuffle ----------
+  const TITLE_COMBOS = [
+    ['#ff5fa2', '#22c7c0', '#ffd23f', '#c4a6ff'],
+    ['#22c7c0', '#ffd23f', '#ff5fa2', '#141414'],
+    ['#ffd23f', '#c4a6ff', '#22c7c0', '#ff5fa2'],
+    ['#c4a6ff', '#ff5fa2', '#22c7c0', '#ffd23f'],
+  ];
+  function shuffle() {
+    for (const sh of shapes) {
+      const nt = randomTarget(sh);
+      sh.tx = nt.x; sh.ty = nt.y; sh.trot += rand(-360, 360); sh.vscale += rand(2, 5);
+      sh.svg.innerHTML = pick(SHAPES)(); recolor(sh);
+    }
+    const combo = pick(TITLE_COMBOS);
+    const l1 = document.querySelector('.l1'), l2 = document.querySelector('.l2');
+    l1.style.color = combo[0]; l1.style.textShadow = `6px 6px 0 #141414, 12px 12px 0 ${combo[1]}`;
+    l2.style.color = combo[2]; l2.style.textShadow = `6px 6px 0 #141414, 12px 12px 0 ${combo[3]}`;
+    document.querySelector('.squiggle .shadow').style.stroke = combo[1];
+    document.querySelector('.kicker').style.boxShadow = `5px 5px 0 ${combo[2]}`;
+    document.querySelector('.lede').style.boxShadow = `8px 8px 0 ${combo[3]}`;
+  }
+  document.getElementById('shuffleBtn').addEventListener('click', shuffle);
+  window.addEventListener('resize', () => { for (const sh of shapes) { const nt = randomTarget(sh); sh.tx = Math.min(sh.tx, nt.x + sh.size); sh.ty = Math.min(sh.ty, nt.y + sh.size); } });
+
+  // ---------- confetti ----------
+  const cv = document.getElementById('confetti'), cx = cv.getContext('2d');
+  let pieces = [], running = false;
+  function sizeConfetti() {
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    cv.width = Math.round(innerWidth * dpr); cv.height = Math.round(innerHeight * dpr);
+    cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  window.addEventListener('resize', sizeConfetti); sizeConfetti();
+  function burst(x, y, n) {
+    for (let i = 0; i < n; i++) {
+      const a = rand(0, Math.PI * 2), sp = rand(300, 900);
+      pieces.push({ x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 300, r: rand(-Math.PI, Math.PI), vr: rand(-12, 12), w: rand(8, 18), h: rand(6, 12), c: pick(PALETTE), t: 0, kind: Math.random() < 0.3 ? 'circle' : Math.random() < 0.5 ? 'rect' : 'tri' });
+    }
+    if (!running) { running = true; lastC = performance.now(); requestAnimationFrame(confettiLoop); }
+  }
+  let lastC = 0;
+  function confettiLoop(now) {
+    const dt = Math.min(0.033, (now - lastC) / 1000); lastC = now;
+    cx.clearRect(0, 0, innerWidth, innerHeight);
+    pieces = pieces.filter(p => p.t < 3.2 && p.y < innerHeight + 40);
+    for (const p of pieces) {
+      p.t += dt; p.vy += 900 * dt; p.vx *= 0.985; p.x += p.vx * dt; p.y += p.vy * dt; p.r += p.vr * dt;
+      cx.save(); cx.translate(p.x, p.y); cx.rotate(p.r); cx.fillStyle = p.c; cx.globalAlpha = Math.min(1, 3.2 - p.t);
+      if (p.kind === 'circle') { cx.beginPath(); cx.arc(0, 0, p.w / 2, 0, Math.PI * 2); cx.fill(); }
+      else if (p.kind === 'tri') { cx.beginPath(); cx.moveTo(-p.w / 2, p.h / 2); cx.lineTo(0, -p.h / 2); cx.lineTo(p.w / 2, p.h / 2); cx.closePath(); cx.fill(); }
+      else cx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+      cx.restore();
+    }
+    if (pieces.length) requestAnimationFrame(confettiLoop); else running = false;
+  }
+
+  // ---------- RSVP ----------
+  const form = document.getElementById('rsvpForm'), confirm = document.getElementById('confirm');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim(), email = document.getElementById('email').value.trim();
+    if (!name || !/.+@.+\..+/.test(email)) {
+      confirm.textContent = !name ? 'A name, please — even a fabulous fake one.' : 'That email needs an @ and a dot, darling.';
+      confirm.style.background = '#ffd23f'; confirm.classList.add('show');
+      return;
+    }
+    const moods = [...form.querySelectorAll('input[name=mood]:checked')].map(i => i.nextElementSibling.textContent.toLowerCase());
+    const sel = document.getElementById('plus');
+    const size = sel.options[sel.selectedIndex].text.toLowerCase();
+    confirm.style.background = '#22c7c0';
+    confirm.textContent = `${name.split(' ')[0]}, you're in — ${size}${moods.length ? ', and you ' + moods.join(' & ') : ''}. Chairs held.`;
+    confirm.classList.add('show');
+    const btn = form.querySelector('button[type=submit]').getBoundingClientRect();
+    if (!reduceMotion) { burst(btn.left + btn.width / 2, btn.top + btn.height / 2, 160); setTimeout(() => burst(innerWidth * 0.3, innerHeight * 0.3, 80), 180); setTimeout(() => burst(innerWidth * 0.7, innerHeight * 0.35, 80), 320); }
+    for (const sh of shapes) { sh.vy -= rand(200, 600); sh.vrot += rand(-300, 300); }
+  });
+})();
+</script>
+</body>
+</html>

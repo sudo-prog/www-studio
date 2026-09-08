@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Major Arcana — a three-card spread</title>
+<style>
+  :root{
+    --velvet:#4a0f1e; --velvet-2:#2c0812; --gold:#d9b45b; --gold-2:#f3dc9a; --ivory:#f1e6c8; --ink:#1b1424; --muted:#c9a58c;
+    --cw: clamp(84px, 13vw, 150px); --ch: calc(var(--cw) * 1.66);
+    --ease: cubic-bezier(.22,.8,.2,1);
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; min-height:100%; }
+  body{
+    min-height:100vh; color:var(--ivory); overflow-x:hidden;
+    font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, ui-serif, serif;
+    background-color:var(--velvet);
+    background-image:
+      radial-gradient(ellipse 70% 55% at 50% 0%, rgba(255,190,110,.28), transparent 70%),
+      radial-gradient(ellipse 120% 90% at 50% 60%, transparent 40%, rgba(0,0,0,.75) 100%),
+      repeating-linear-gradient(45deg, rgba(255,255,255,.035) 0 1px, transparent 1px 5px),
+      repeating-linear-gradient(-45deg, rgba(0,0,0,.14) 0 1px, transparent 1px 5px),
+      linear-gradient(var(--velvet), var(--velvet-2));
+    background-attachment: fixed;
+  }
+  .candle{ position:fixed; left:50%; top:-12vh; width:70vw; height:50vh; transform:translateX(-50%); border-radius:50%; pointer-events:none; z-index:0;
+    background: radial-gradient(closest-side, rgba(255,200,120,.30), rgba(255,170,90,.08) 60%, transparent); filter:blur(20px); animation: flicker 3.2s ease-in-out infinite; }
+  @keyframes flicker{ 0%,100%{ opacity:.85; transform:translateX(-50%) scale(1); } 30%{ opacity:1; transform:translateX(-51%) scale(1.04); } 60%{ opacity:.75; transform:translateX(-49%) scale(.98); } }
+
+  header{ position:relative; z-index:2; text-align:center; padding: clamp(18px,4vh,44px) 16px 0; }
+  h1{ margin:0; font-weight:400; font-variant: small-caps; letter-spacing:.22em; font-size: clamp(1.4rem, 3.2vw, 2.4rem); color:var(--gold-2); text-shadow: 0 0 24px rgba(255,210,130,.35); }
+  header p{ margin:.5em 0 0; color:var(--muted); font-style:italic; font-size:clamp(.85rem,1.4vw,1rem); }
+  .rule{ width:min(320px,60vw); height:1px; margin:14px auto 0; background:linear-gradient(90deg, transparent, var(--gold), transparent); }
+
+  main{ position:relative; z-index:1; max-width:1100px; margin:0 auto; padding: 0 12px 40px; }
+  .spread{ display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: clamp(8px,2vw,28px); margin: clamp(14px,3vh,30px) auto 0; max-width: 760px; }
+  .col{ display:flex; flex-direction:column; align-items:center; gap:10px; min-width:0; }
+  .slot{ width:var(--cw); height:var(--ch); border-radius: calc(var(--cw) * .07); border:1px dashed rgba(217,180,91,.45); display:grid; place-items:center; position:relative; background:rgba(0,0,0,.18); transition: border-color .4s, box-shadow .4s; }
+  .slot.filled{ border-color:transparent; box-shadow:0 0 0 1px rgba(217,180,91,.15); }
+  .slot .lbl{ font-variant: small-caps; letter-spacing:.24em; color:rgba(217,180,91,.85); font-size:clamp(.7rem,1.3vw,.95rem); }
+  .reading{ text-align:center; max-width:30ch; opacity:0; transform:translateY(10px); transition: opacity .8s var(--ease), transform .8s var(--ease); font-size:clamp(.72rem,1.25vw,.95rem); line-height:1.5; }
+  .reading.show{ opacity:1; transform:none; }
+  .reading h3{ margin:0; font-weight:400; font-variant: small-caps; letter-spacing:.14em; color:var(--gold-2); font-size:1.15em; }
+  .reading .or{ margin:.15em 0 .5em; font-size:.8em; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
+  .reading .or.rev{ color:#e88b7d; }
+  .reading .kw{ display:block; font-style:italic; color:var(--muted); margin-top:.5em; font-size:.85em; }
+
+  .stage{ position:relative; height: calc(var(--ch) * 1.75); margin: clamp(10px,3vh,30px) auto 0; }
+  .card{ position:absolute; left:50%; top:10px; width:var(--cw); height:var(--ch); margin-left:calc(var(--cw) / -2); transform-origin: 50% calc(var(--ch) * 2.6);
+    transition: transform .9s var(--ease), opacity .6s ease; cursor:pointer; will-change: transform; outline:none; }
+  .card:focus-visible .lift{ box-shadow:0 0 0 3px var(--gold-2); border-radius: calc(var(--cw) * .07); }
+  .lift{ width:100%; height:100%; transition: transform .5s var(--ease); perspective:1200px; }
+  .card:not(.drawn):hover .lift, .card:not(.drawn):focus-visible .lift{ transform:translateY(-18px); }
+  .card.rev .lift{ transform:rotate(180deg); }
+  .inner{ position:relative; width:100%; height:100%; transform-style:preserve-3d; transition: transform 1.1s var(--ease); }
+  .card.flipped .inner{ transform:rotateY(180deg); }
+  .face{ position:absolute; inset:0; border-radius: calc(var(--cw) * .07); overflow:hidden; backface-visibility:hidden; -webkit-backface-visibility:hidden; box-shadow: 0 10px 30px rgba(0,0,0,.55), 0 1px 0 rgba(255,255,255,.06) inset; }
+  .face svg{ display:block; }
+  .back svg{ width:100%; height:100%; }
+  .front{ transform:rotateY(180deg); background: radial-gradient(ellipse at 50% 30%, #2a1d36, var(--ink) 70%); border:1px solid rgba(217,180,91,.5); display:flex; flex-direction:column; align-items:center; justify-content:space-between; padding: 6% 6% 5%; }
+  .front::before{ content:""; position:absolute; inset:5%; border:1px solid rgba(217,180,91,.35); border-radius:3px; pointer-events:none; }
+  .front::after{ content:""; position:absolute; inset:0; pointer-events:none; background: linear-gradient(115deg, transparent 30%, rgba(255,240,190,.0) 42%, rgba(255,240,190,.45) 50%, rgba(255,240,190,0) 58%, transparent 70%); background-size:250% 100%; background-position: 120% 0; mix-blend-mode:screen; }
+  .card.flipped .front::after{ animation: foil 1.8s .5s var(--ease) both; }
+  .card.flipped:hover .front::after{ animation: foil 1.4s var(--ease); }
+  @keyframes foil{ from{ background-position:120% 0; } to{ background-position:-120% 0; } }
+  .num{ font-variant: small-caps; letter-spacing:.16em; color:var(--gold); font-size: calc(var(--cw) * .085); position:relative; z-index:1; }
+  .art{ width:88%; height:auto; flex:1; min-height:0; position:relative; z-index:1; filter: drop-shadow(0 0 6px rgba(217,180,91,.35)); }
+  .name{ font-variant: small-caps; letter-spacing:.12em; color:var(--gold-2); font-size: calc(var(--cw) * .085); text-align:center; line-height:1.1; white-space:nowrap; position:relative; z-index:1; }
+  .card.dim{ opacity:.35; pointer-events:none; }
+
+  .controls{ display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-top: clamp(10px,2vh,22px); position:relative; z-index:3; }
+  .controls button{ font:inherit; font-variant: small-caps; letter-spacing:.18em; font-size:clamp(.8rem,1.3vw,1rem); color:var(--gold-2); background:rgba(0,0,0,.28); border:1px solid rgba(217,180,91,.55); border-radius:999px; padding:.55em 1.5em; cursor:pointer; transition: background .3s, box-shadow .3s, transform .3s var(--ease), opacity .3s; }
+  .controls button:hover{ background:rgba(217,180,91,.16); box-shadow:0 0 22px rgba(217,180,91,.25); transform:translateY(-1px); }
+  .controls button:disabled{ opacity:.35; cursor:default; transform:none; box-shadow:none; background:rgba(0,0,0,.28); }
+  .status{ text-align:center; color:var(--muted); font-style:italic; font-size:.85rem; margin-top:10px; min-height:1.4em; }
+  footer{ text-align:center; color:rgba(201,165,140,.6); font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; padding:10px 16px 26px; position:relative; z-index:1; }
+
+  @media (max-width:640px){
+    :root{ --cw: clamp(78px, 26vw, 110px); }
+    .reading{ max-width:100%; }
+    .stage{ height: calc(var(--ch) * 1.6); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .candle{ animation:none; }
+    .card, .lift, .inner, .reading{ transition-duration:.01s !important; }
+    .card.flipped .front::after, .card.flipped:hover .front::after{ animation:none; }
+  }
+</style>
+</head>
+<body>
+<div class="candle" aria-hidden="true"></div>
+
+<header>
+  <h1>The Major Arcana</h1>
+  <p>Twenty-two cards, one candle, three questions: what was, what is, what may be.</p>
+  <div class="rule"></div>
+</header>
+
+<main>
+  <section class="spread" aria-label="Three-card spread">
+    <div class="col"><div class="slot" id="slot0"><span class="lbl">Past</span></div><div class="reading" id="read0"></div></div>
+    <div class="col"><div class="slot" id="slot1"><span class="lbl">Present</span></div><div class="reading" id="read1"></div></div>
+    <div class="col"><div class="slot" id="slot2"><span class="lbl">Future</span></div><div class="reading" id="read2"></div></div>
+  </section>
+
+  <div class="stage" id="stage" aria-label="Deck"></div>
+
+  <div class="controls">
+    <button type="button" id="shuffle">Shuffle</button>
+    <button type="button" id="draw" disabled>Draw three</button>
+    <button type="button" id="reset" disabled>Gather the deck</button>
+  </div>
+  <p class="status" id="status" aria-live="polite">Shuffle the deck to begin. You may also draw a single card from the fan.</p>
+</main>
+<footer>Original readings · inline SVG arcana · gold foil by CSS</footer>
+
+<!-- shared artwork -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <pattern id="lat" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M6 0 L12 6 L6 12 L0 6Z" fill="none" stroke="#d9b45b" stroke-width=".45" opacity=".55"/></pattern>
+    <radialGradient id="backGlow" cx="50%" cy="50%" r="60%"><stop offset="0" stop-color="#4a1424"/><stop offset="1" stop-color="#22080f"/></radialGradient>
+    <linearGradient id="goldLin" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3dc9a"/><stop offset=".5" stop-color="#b98a2e"/><stop offset="1" stop-color="#f3dc9a"/></linearGradient>
+    <g id="cornerF" fill="none" stroke="#d9b45b" stroke-width="1"><path d="M14 34 Q14 14 34 14 M17 27 Q18 18 27 17 M20 40 Q20 20 40 20"/><circle cx="24" cy="24" r="1.6" fill="#d9b45b" stroke="none"/></g>
+    <path id="petal" d="M0 -30 C9 -20 9 -8 0 0 C-9 -8 -9 -20 0 -30Z" fill="none" stroke="#d9b45b" stroke-width="1"/>
+    <symbol id="cardBack" viewBox="0 0 120 200">
+      <rect width="120" height="200" fill="url(#backGlow)"/>
+      <rect x="12" y="12" width="96" height="176" fill="url(#lat)"/>
+      <rect x="5" y="5" width="110" height="190" rx="6" fill="none" stroke="url(#goldLin)" stroke-width="2"/>
+      <rect x="10" y="10" width="100" height="180" rx="4" fill="none" stroke="#d9b45b" stroke-width=".6"/>
+      <use href="#cornerF"/><use href="#cornerF" transform="translate(120 0) scale(-1 1)"/><use href="#cornerF" transform="translate(0 200) scale(1 -1)"/><use href="#cornerF" transform="translate(120 200) scale(-1 -1)"/>
+      <g transform="translate(60 100)">
+        <circle r="38" fill="#22080f" stroke="#d9b45b" stroke-width="1.2"/>
+        <circle r="33" fill="none" stroke="#d9b45b" stroke-width=".5" stroke-dasharray="2 3"/>
+        <use href="#petal"/><use href="#petal" transform="rotate(45)"/><use href="#petal" transform="rotate(90)"/><use href="#petal" transform="rotate(135)"/>
+        <use href="#petal" transform="rotate(180)"/><use href="#petal" transform="rotate(225)"/><use href="#petal" transform="rotate(270)"/><use href="#petal" transform="rotate(315)"/>
+        <circle r="6" fill="url(#goldLin)"/><circle r="2" fill="#22080f"/>
+      </g>
+      <g fill="#f3dc9a"><circle cx="60" cy="30" r="1.4"/><circle cx="60" cy="170" r="1.4"/><circle cx="30" cy="60" r="1"/><circle cx="90" cy="60" r="1"/><circle cx="30" cy="140" r="1"/><circle cx="90" cy="140" r="1"/></g>
+    </symbol>
+
+    <!-- the twenty-two -->
+    <symbol id="a0" viewBox="0 0 120 160"><circle cx="90" cy="28" r="12"/><path d="M8 130 L44 130 L60 96 L112 96 M60 96 L60 130"/><circle cx="48" cy="66" r="6"/><path d="M48 72 L48 98 M38 86 L60 80 L68 70 M48 98 L40 118 M48 98 L56 118"/><circle cx="32" cy="124" r="4" fill="#d9b45b"/><path d="M60 80 L74 72 L72 62" /></symbol>
+    <symbol id="a1" viewBox="0 0 120 160"><path d="M30 40 C30 25 55 25 60 40 C65 55 90 55 90 40 C90 25 65 25 60 40 C55 55 30 55 30 40Z"/><path d="M60 62 L60 116" stroke-width="3"/><path d="M52 10 L60 2 L68 10"/><rect x="18" y="118" width="84" height="12"/><circle cx="34" cy="108" r="6"/><path d="M78 100 L94 100 L94 112 L78 112Z"/><path d="M50 108 L64 108 M57 102 L57 114"/></symbol>
+    <symbol id="a2" viewBox="0 0 120 160"><rect x="16" y="30" width="16" height="110"/><rect x="88" y="30" width="16" height="110"/><path d="M32 40 Q60 30 88 40"/><path d="M60 46 A18 18 0 1 1 60 82 A13 13 0 1 0 60 46Z" fill="#d9b45b"/><path d="M60 90 L60 128 M42 140 Q60 118 78 140"/><circle cx="60" cy="20" r="4"/></symbol>
+    <symbol id="a3" viewBox="0 0 120 160"><circle cx="60" cy="58" r="24"/><path d="M60 82 L60 122 M44 104 L76 104"/><path d="M60 50 C52 40 40 48 48 58 L60 70 L72 58 C80 48 68 40 60 50Z" fill="#d9b45b"/><path d="M18 146 Q28 124 24 100 M24 100 l-7 8 M24 100 l7 8 M25 114 l-7 8 M25 114 l7 8"/><path d="M102 146 Q92 124 96 100 M96 100 l-7 8 M96 100 l7 8 M95 114 l-7 8 M95 114 l7 8"/></symbol>
+    <symbol id="a4" viewBox="0 0 120 160"><rect x="30" y="52" width="60" height="80"/><path d="M30 52 A16 16 0 0 1 18 30 M90 52 A16 16 0 0 0 102 30"/><circle cx="60" cy="92" r="11"/><path d="M60 81 L60 103 M49 92 L71 92"/><path d="M40 132 L40 152 M80 132 L80 152"/><path d="M44 22 L60 8 L76 22"/><path d="M52 40 L68 40"/></symbol>
+    <symbol id="a5" viewBox="0 0 120 160"><path d="M60 16 L60 132 M42 44 L78 44 M36 70 L84 70 M30 96 L90 96"/><circle cx="28" cy="142" r="7"/><path d="M35 142 L52 142 M46 142 L46 148"/><circle cx="92" cy="142" r="7"/><path d="M85 142 L68 142 M74 142 L74 148"/><path d="M52 16 A8 8 0 0 1 68 16"/></symbol>
+    <symbol id="a6" viewBox="0 0 120 160"><circle cx="60" cy="26" r="13"/><path d="M60 6 L60 0 M60 46 L60 52 M40 26 L34 26 M80 26 L86 26 M46 12 L42 8 M74 12 L78 8 M46 40 L42 44 M74 40 L78 44"/><circle cx="46" cy="96" r="28"/><circle cx="74" cy="96" r="28"/><path d="M60 72 L60 120" stroke-dasharray="3 4"/><path d="M60 92 C57 87 51 90 55 95 L60 100 L65 95 C69 90 63 87 60 92Z" fill="#d9b45b"/></symbol>
+    <symbol id="a7" viewBox="0 0 120 160"><rect x="30" y="72" width="60" height="46"/><circle cx="38" cy="130" r="13"/><circle cx="82" cy="130" r="13"/><path d="M30 72 L36 40 L84 40 L90 72 M36 40 Q60 30 84 40"/><path d="M50 52 l2 5 5 0 -4 3 1 5 -4 -3 -4 3 1 -5 -4 -3 5 0z" fill="#d9b45b"/><path d="M70 52 l2 5 5 0 -4 3 1 5 -4 -3 -4 3 1 -5 -4 -3 5 0z" fill="#d9b45b"/><path d="M48 118 L40 148 M72 118 L80 148"/><circle cx="60" cy="95" r="8"/></symbol>
+    <symbol id="a8" viewBox="0 0 120 160"><path d="M40 28 C40 18 55 18 60 28 C65 38 80 38 80 28 C80 18 65 18 60 28 C55 38 40 38 40 28Z"/><circle cx="60" cy="96" r="22"/><circle cx="60" cy="96" r="31" stroke-dasharray="4 6" stroke-width="4"/><circle cx="52" cy="92" r="2" fill="#d9b45b"/><circle cx="68" cy="92" r="2" fill="#d9b45b"/><path d="M56 104 L60 108 L64 104 M60 108 L60 112"/><path d="M20 144 L100 144"/></symbol>
+    <symbol id="a9" viewBox="0 0 120 160"><path d="M60 40 L78 50 L78 74 L60 84 L42 74 L42 50Z"/><path d="M60 50 L64 58 L73 59 L66 65 L68 74 L60 70 L52 74 L54 65 L47 59 L56 58Z" fill="#d9b45b"/><path d="M60 40 L60 30 M50 30 L70 30"/><path d="M96 26 L96 150"/><path d="M14 150 L106 150"/><path d="M92 26 Q96 16 100 26"/><path d="M18 120 Q30 100 40 118" stroke-dasharray="2 4"/></symbol>
+    <symbol id="a10" viewBox="0 0 120 160"><circle cx="60" cy="80" r="42"/><circle cx="60" cy="80" r="27"/><circle cx="60" cy="80" r="6" fill="#d9b45b"/><path d="M60 38 L60 122 M18 80 L102 80 M30 50 L90 110 M90 50 L30 110"/><path d="M60 26 l-5 8 h10z M60 134 l-5 -8 h10z M6 80 l8 -5 v10z M114 80 l-8 -5 v10z" fill="#d9b45b"/><path d="M14 150 L106 150" stroke-dasharray="6 4"/></symbol>
+    <symbol id="a11" viewBox="0 0 120 160"><path d="M60 22 L60 140"/><circle cx="60" cy="14" r="5"/><path d="M18 46 L102 46"/><path d="M18 46 L6 72 M18 46 L30 72 M102 46 L90 72 M102 46 L114 72"/><path d="M6 72 A12 7 0 0 0 30 72 M90 72 A12 7 0 0 0 114 72"/><path d="M40 140 L80 140 M48 150 L72 150"/><path d="M50 60 L70 60"/></symbol>
+    <symbol id="a12" viewBox="0 0 120 160"><path d="M18 30 L102 30 M60 30 L60 48"/><path d="M60 128 L40 60 L80 60Z"/><path d="M46 100 L60 86 L74 100"/><circle cx="60" cy="140" r="12" stroke-dasharray="2 4"/><circle cx="60" cy="140" r="4" fill="#d9b45b"/><path d="M18 30 L18 18 M102 30 L102 18"/></symbol>
+    <symbol id="a13" viewBox="0 0 120 160"><path d="M8 122 L112 122"/><path d="M34 122 A26 26 0 0 1 86 122"/><path d="M60 86 L60 78 M42 92 L37 87 M78 92 L83 87"/><path d="M24 30 L24 152"/><path d="M24 30 Q76 18 98 54 Q72 40 24 42Z" fill="#d9b45b"/><circle cx="92" cy="140" r="6"/><path d="M92 146 L92 156 M88 152 L96 152"/><path d="M30 144 L46 144 M32 138 L44 138" stroke-dasharray="2 3"/></symbol>
+    <symbol id="a14" viewBox="0 0 120 160"><path d="M20 62 L38 62 L34 92 L24 92Z M82 62 L100 62 L96 92 L86 92Z"/><path d="M29 62 C29 28 91 28 91 62" stroke-dasharray="6 4"/><rect x="44" y="104" width="32" height="32"/><path d="M60 108 L73 130 L47 130Z"/><path d="M60 136 L60 154"/><circle cx="60" cy="20" r="4"/></symbol>
+    <symbol id="a15" viewBox="0 0 120 160"><circle cx="60" cy="75" r="40"/><path d="M60 111 L38.8 45.9 L94.2 86.1 L25.8 86.1 L81.2 45.9Z" fill="none" stroke-width="1.8"/><path d="M30 126 L30 150 M90 126 L90 150"/><circle cx="30" cy="140" r="4"/><circle cx="90" cy="140" r="4"/><path d="M22 40 Q26 28 34 26 M98 40 Q94 28 86 26"/></symbol>
+    <symbol id="a16" viewBox="0 0 120 160"><rect x="42" y="52" width="36" height="98"/><path d="M42 52 L42 42 L50 42 L50 52 M56 52 L56 42 L64 42 L64 52 M70 52 L70 42 L78 42 L78 52"/><path d="M52 34 L64 18 L70 30 L80 18 L88 34" transform="rotate(-18 70 26) translate(4 -8)"/><path d="M98 4 L74 46 L90 46 L60 98" stroke-width="3"/><rect x="55" y="72" width="10" height="16"/><circle cx="30" cy="84" r="3" fill="#d9b45b"/><circle cx="96" cy="112" r="3" fill="#d9b45b"/><circle cx="22" cy="124" r="2.5" fill="#d9b45b"/><path d="M10 150 L110 150"/></symbol>
+    <symbol id="a17" viewBox="0 0 120 160"><rect x="40" y="30" width="40" height="40"/><rect x="40" y="30" width="40" height="40" transform="rotate(45 60 50)"/><circle cx="60" cy="50" r="6" fill="#d9b45b"/><g fill="#d9b45b"><circle cx="16" cy="18" r="2"/><circle cx="104" cy="22" r="2"/><circle cx="22" cy="60" r="1.6"/><circle cx="98" cy="62" r="1.6"/><circle cx="30" cy="94" r="1.6"/><circle cx="92" cy="96" r="1.6"/><circle cx="60" cy="100" r="1.6"/></g><path d="M50 104 L46 130 M70 104 L74 130"/><path d="M14 132 Q30 124 46 132 T78 132 T110 132 M14 146 Q30 138 46 146 T78 146 T110 146"/></symbol>
+    <symbol id="a18" viewBox="0 0 120 160"><path d="M70 30 A26 26 0 1 0 70 82 A20 20 0 1 1 70 30Z" fill="#d9b45b"/><rect x="12" y="92" width="14" height="40"/><rect x="94" y="92" width="14" height="40"/><path d="M60 150 C50 135 70 125 60 110" stroke-dasharray="4 4"/><circle cx="40" cy="130" r="3" fill="#d9b45b"/><circle cx="80" cy="130" r="3" fill="#d9b45b"/><path d="M40 96 L40 104 M60 92 L60 100 M80 96 L80 104"/><path d="M6 150 L114 150"/></symbol>
+    <symbol id="a19" viewBox="0 0 120 160"><circle cx="60" cy="60" r="22" fill="#d9b45b"/><circle cx="60" cy="60" r="34" stroke-dasharray="2 5"/><path d="M60 20 L60 6 M60 100 L60 114 M20 60 L6 60 M100 60 L114 60 M32 32 L22 22 M88 32 L98 22 M32 88 L22 98 M88 88 L98 98"/><path d="M10 130 L110 130 M10 142 L110 142 M30 130 L30 142 M60 130 L60 142 M90 130 L90 142"/><circle cx="24" cy="120" r="5"/><circle cx="96" cy="120" r="5"/><path d="M24 125 L24 130 M96 125 L96 130"/></symbol>
+    <symbol id="a20" viewBox="0 0 120 160"><path d="M55 22 L65 22 L86 86 L34 86Z"/><path d="M60 12 L60 2 M40 16 L34 8 M80 16 L86 8"/><rect x="72" y="34" width="28" height="20"/><path d="M86 34 L86 54 M72 44 L100 44"/><path d="M30 120 a6 6 0 0 1 12 0 M54 112 a6 6 0 0 1 12 0 M78 120 a6 6 0 0 1 12 0"/><path d="M8 134 Q22 124 36 134 T64 134 T92 134 T120 134 M8 148 Q22 138 36 148 T64 148 T92 148 T120 148"/></symbol>
+    <symbol id="a21" viewBox="0 0 120 160"><ellipse cx="60" cy="82" rx="34" ry="54" stroke-dasharray="3 3" stroke-width="5"/><ellipse cx="60" cy="82" rx="34" ry="54" stroke-width="1"/><circle cx="60" cy="58" r="6"/><path d="M60 64 L60 96 M60 72 L46 84 M60 72 L74 60 M60 96 L50 114 M60 96 L70 114"/><circle cx="12" cy="14" r="5"/><rect x="100" y="8" width="10" height="10"/><path d="M6 146 L18 146 L12 156Z"/><path d="M108 140 l-6 6 6 6 6 -6z"/></symbol>
+  </defs>
+</svg>
+
+<script>
+(function(){
+  'use strict';
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ARCANA = [
+    ['0','The Fool','beginnings · faith · the leap','You stand at the cliff\'s edge with your bundle light and your eyes on the sky. Step; the ground has always appeared where the foot lands.','Recklessness is wearing the costume of freedom this week. Look down once before you leap, then leap.'],
+    ['I','The Magician','will · craft · channel','Every tool you need is already on the table, arranged and waiting. Point upward, point downward, and the current runs through you.','Sleight of hand has replaced the work itself. Put the tricks away and make one true thing.'],
+    ['II','The High Priestess','intuition · the veil · silence','The answer is behind the veil, and the veil is thin tonight. Sit still long enough and it will lift itself.','You have been shouting over your own intuition. Turn the volume down; something has been trying to speak.'],
+    ['III','The Empress','abundance · nurture · growth','Abundance is not coming; it is here, ripening in plain sight. Tend it with your hands and it will feed more than you.','Care has curdled into control, or gone dry from neglect. Nourish yourself before you try to grow anything else.'],
+    ['IV','The Emperor','structure · authority · order','Structure is a kindness you give your future self. Build the frame now, and let the wild things climb it later.','The rules have outlived the reason they were made. Question the throne, especially if you are sitting on it.'],
+    ['V','The Hierophant','tradition · teaching · the key','Tradition holds a key you have not tried yet. Learn the old form before you break it.','The ceremony has hollowed out; you are kneeling to a habit. Find a truer teacher, even if it is yourself.'],
+    ['VI','The Lovers','union · choice · harmony','A choice arrives dressed as another person. Choose with the whole heart, and the two roads become one.','Something between you and another has slipped out of tune. Speak the quiet thing before it becomes the loud thing.'],
+    ['VII','The Chariot','drive · control · victory','Two forces pull in different directions and you hold both reins. Victory here is not speed but steadiness.','You are driving hard toward a destination you have not questioned. Slow down enough to read the signposts.'],
+    ['VIII','Strength','courage · patience · gentleness','The lion does not need to be conquered, only met. Gentleness that does not flinch is the rarest power.','Doubt has been gnawing at your resolve. Remember the times you were braver than you felt.'],
+    ['IX','The Hermit','solitude · search · the lantern','Withdraw, not to escape, but to hear. The lantern shows only the next step, and that is enough.','Solitude has thickened into isolation. Leave the cave with what you learned and let someone see your light.'],
+    ['X','Wheel of Fortune','cycles · fate · turning','The wheel turns and your place on it changes. Fortune favours those who ride the rise without gripping the rim.','A cycle is dragging you round again. Notice the pattern; naming it is how you finally step off.'],
+    ['XI','Justice','truth · balance · consequence','Cause and consequence are meeting at last, and the scales are honest. Act as though the truth will be read aloud.','An imbalance has been tolerated too long. Own your part, and let the rest be weighed fairly.'],
+    ['XII','The Hanged Man','surrender · suspension · new sight','Surrender is not defeat; it is a new angle on the same sky. Hang a while and let understanding arrive upside down.','You are stalling and calling it patience. The pause has done its work — come down from the tree.'],
+    ['XIII','Death','endings · release · renewal','Something is ending so completely that it cannot be repaired, only released. Grieve it, then notice the horizon lightening.','You are clutching a season that has already passed. Refusing the ending only delays the beginning.'],
+    ['XIV','Temperance','balance · alchemy · patience','Pour patiently from one vessel to the other until the two become a third thing. Balance is a practice, not a state.','Excess in one cup, drought in the other. Find the middle path before the imbalance chooses for you.'],
+    ['XV','The Devil','bondage · desire · illusion','The chains are loose enough to slip, and you know it. Name what binds you and watch it lose its glamour.','You are already loosening a grip that once felt permanent. Freedom looks smaller than expected and is worth more.'],
+    ['XVI','The Tower','upheaval · revelation · collapse','What was built on a false foundation is falling, and the lightning is a mercy. Let it fall; you will rebuild on rock.','You feel the tremor and are propping up the walls. Better to leave before the roof teaches you the lesson.'],
+    ['XVII','The Star','hope · renewal · clarity','After the storm, the sky is clear and the water is sweet. Hope is not naive here; it is accurate.','Faith has dimmed, and the well seems far. The star is still there — you have only stopped looking up.'],
+    ['XVIII','The Moon','illusion · dreams · the path','Not everything you see tonight is true, and not everything true can be seen. Trust the path, not the shadows beside it.','Confusion is lifting like fog at dawn. What frightened you was mostly shape and silhouette.'],
+    ['XIX','The Sun','joy · vitality · openness','Joy without asterisk, warmth without agenda. Stand in the open and let yourself be seen.','The light is there but you are squinting at it. Let the small happiness be enough for today.'],
+    ['XX','Judgement','awakening · reckoning · the call','A call sounds and something in you rises to answer. Forgive what needs forgiving, then step into the next life.','You are judging yourself by a verdict long overturned. Hear the call as invitation, not indictment.'],
+    ['XXI','The World','completion · wholeness · return','The circle closes and you are standing at its centre, whole. Celebrate — then notice the next circle beginning.','Completion is close but a loose thread remains. Finish it properly; shortcuts here will unravel later.']
+  ];
+
+  const stage = document.getElementById('stage'), status = document.getElementById('status');
+  const bShuffle = document.getElementById('shuffle'), bDraw = document.getElementById('draw'), bReset = document.getElementById('reset');
+  const slots = [0, 1, 2].map(i => document.getElementById('slot' + i));
+  const reads = [0, 1, 2].map(i => document.getElementById('read' + i));
+  const cards = [];
+  let order = [], fanned = false, drawn = [], busy = false;
+
+  ARCANA.forEach(([num, name], i) => {
+    const el = document.createElement('div');
+    el.className = 'card'; el.dataset.i = i; el.setAttribute('role', 'button'); el.setAttribute('tabindex', '0'); el.setAttribute('aria-label', 'Draw ' + name);
+    el.innerHTML = `<div class="lift"><div class="inner">
+      <div class="face back"><svg viewBox="0 0 120 200" preserveAspectRatio="none" aria-hidden="true"><use href="#cardBack"/></svg></div>
+      <div class="face front"><div class="num">${num}</div>
+        <svg class="art" viewBox="0 0 120 160" fill="none" stroke="#d9b45b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#a${i}"/></svg>
+        <div class="name">${name}</div></div></div></div>`;
+    stage.appendChild(el); cards.push(el);
+  });
+
+  const cardSize = () => ({ w: cards[0].offsetWidth, h: cards[0].offsetHeight });
+
+  function stackAll(){
+    cards.forEach((c, i) => { c.style.transitionDelay = '0ms'; c.style.transform = `translateY(${(cardSize().h * .3).toFixed(1)}px) rotate(${((i % 5) - 2) * .6}deg) translate(${(i % 3) * .4}px, ${-i * .35}px)`; c.style.zIndex = i; });
+  }
+  function fanAll(){
+    const { h } = cardSize(); const R = h * 2.6, avail = Math.min(stage.clientWidth, window.innerWidth) - 30;
+    const total = Math.min(80, 2 * Math.asin(Math.min(1, avail / 2 / R)) * 180 / Math.PI);
+    const per = total / (order.length - 1 || 1);
+    order.forEach((idx, p) => {
+      const c = cards[idx]; if(c.classList.contains('drawn')) return;
+      c.style.transitionDelay = (p * 22) + 'ms';
+      c.style.transform = `rotate(${((p - (order.length - 1) / 2) * per).toFixed(2)}deg)`;
+      c.style.zIndex = p + 1;
+    });
+  }
+  function placeDrawn(){
+    const { h } = cardSize(); const sr = stage.getBoundingClientRect();
+    const cx = sr.left + sr.width / 2, cy = sr.top + 10 + h / 2;
+    drawn.forEach(({ card, slot }) => {
+      const r = slots[slot].getBoundingClientRect();
+      card.style.transitionDelay = '0ms';
+      card.style.transform = `translate(${(r.left + r.width / 2 - cx).toFixed(1)}px, ${(r.top + r.height / 2 - cy).toFixed(1)}px)`;
+      card.style.zIndex = 200 + slot;
+    });
+  }
+
+  function shuffle(){
+    if(busy) return; busy = true;
+    order = ARCANA.map((_, i) => i);
+    for(let i = order.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [order[i], order[j]] = [order[j], order[i]]; }
+    cards.forEach(c => c.classList.remove('dim'));
+    stackAll();
+    status.textContent = 'Shuffling…';
+    setTimeout(() => { fanAll(); fanned = true; bDraw.disabled = false; bReset.disabled = false; status.textContent = 'Choose "Draw three", or pick any card from the fan.'; busy = false; }, reduce ? 20 : 500);
+  }
+
+  function drawCard(card, reversed){
+    if(!fanned || card.classList.contains('drawn') || drawn.length >= 3) return false;
+    const slot = drawn.length; const i = +card.dataset.i; const [num, name, kw, up, rev] = ARCANA[i];
+    card.classList.add('drawn'); if(reversed) card.classList.add('rev');
+    card.setAttribute('aria-label', `${name}, ${reversed ? 'reversed' : 'upright'}`); card.removeAttribute('role'); card.setAttribute('tabindex', '-1');
+    drawn.push({ card, slot, reversed });
+    placeDrawn();
+    setTimeout(() => card.classList.add('flipped'), reduce ? 10 : 850);
+    setTimeout(() => {
+      slots[slot].classList.add('filled');
+      reads[slot].innerHTML = `<h3>${num} · ${name}</h3><p class="or${reversed ? ' rev' : ''}">${reversed ? 'Reversed' : 'Upright'}</p><p>${reversed ? rev : up}</p><span class="kw">${kw}</span>`;
+      reads[slot].classList.add('show');
+    }, reduce ? 20 : 1350);
+    if(drawn.length === 3){ bDraw.disabled = true; setTimeout(() => { cards.forEach(c => { if(!c.classList.contains('drawn')) c.classList.add('dim'); }); status.textContent = 'The spread is complete. Gather the deck to ask again.'; }, reduce ? 30 : 1500); }
+    else status.textContent = `${['Past', 'Present', 'Future'][slot]} drawn. ${3 - drawn.length} to go.`;
+    return true;
+  }
+
+  function drawThree(){
+    if(busy || !fanned) return; busy = true;
+    const pool = order.filter(i => !cards[i].classList.contains('drawn'));
+    const need = 3 - drawn.length; let k = 0;
+    const picks = []; while(picks.length < need && pool.length){ picks.push(pool.splice(Math.floor(Math.random() * pool.length), 1)[0]); }
+    (function next(){ if(k >= picks.length){ busy = false; return; } drawCard(cards[picks[k++]], Math.random() < .3); setTimeout(next, reduce ? 30 : 650); })();
+  }
+
+  function reset(){
+    if(busy) return; busy = true;
+    cards.forEach(c => { c.classList.remove('flipped', 'dim'); });
+    reads.forEach(r => r.classList.remove('show')); slots.forEach(s => s.classList.remove('filled'));
+    setTimeout(() => {
+      cards.forEach((c, i) => { c.classList.remove('drawn', 'rev'); c.setAttribute('role', 'button'); c.setAttribute('tabindex', '0'); c.setAttribute('aria-label', 'Draw ' + ARCANA[i][1]); });
+      drawn = []; fanned = false; stackAll(); bDraw.disabled = true; bReset.disabled = true;
+      status.textContent = 'The deck is gathered. Shuffle to begin again.'; busy = false;
+    }, reduce ? 20 : 700);
+  }
+
+  stage.addEventListener('click', e => { const c = e.target.closest('.card'); if(c && fanned && !busy) drawCard(c, Math.random() < .3); });
+  stage.addEventListener('keydown', e => { if((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('card')){ e.preventDefault(); if(fanned && !busy) drawCard(e.target, Math.random() < .3); } });
+  bShuffle.addEventListener('click', shuffle); bDraw.addEventListener('click', drawThree); bReset.addEventListener('click', reset);
+  window.addEventListener('resize', () => { if(fanned) fanAll(); else stackAll(); placeDrawn(); });
+
+  stackAll();
+})();
+</script>
+</body>
+</html>

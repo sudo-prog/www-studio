@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tension — String Art Loom</title>
+<style>
+  :root{
+    --linen:#efe7d8; --linen-2:#e4d9c4; --ink:#22201c; --mute:#7a7266; --line:rgba(34,32,28,.14);
+    --moss:#2f4a3e; --moss-2:#3c5d4e; --brass:#b98a3a; --brass-2:#e2b862;
+    --serif:Georgia,"Iowan Old Style",Palatino,"Palatino Linotype",ui-serif,serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Courier New",monospace;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Helvetica Neue","Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--linen);color:var(--ink);font-family:var(--sans);min-height:100vh;overflow-x:hidden;
+    background-image:
+      radial-gradient(ellipse at 10% 0%,rgba(255,255,255,.55),transparent 50%),
+      repeating-linear-gradient(0deg,rgba(0,0,0,.018) 0 1px,transparent 1px 3px),
+      repeating-linear-gradient(90deg,rgba(0,0,0,.018) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:1320px;margin:0 auto;padding:clamp(14px,3vw,40px)}
+  header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:14px 30px;margin-bottom:24px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+  h1{margin:0;font-family:var(--serif);font-weight:400;font-size:clamp(30px,4.6vw,58px);letter-spacing:-.02em;line-height:1}
+  h1 em{font-style:italic;color:var(--moss)}
+  .sub{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+  .counter{font-family:var(--mono);font-size:13px;color:var(--mute);display:flex;gap:22px;flex-wrap:wrap}
+  .counter b{display:block;color:var(--ink);font-size:clamp(22px,2.6vw,34px);font-weight:400;font-variant-numeric:tabular-nums;line-height:1}
+  .layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:clamp(18px,3vw,40px);align-items:start}
+  @media (max-width:920px){.layout{grid-template-columns:1fr}}
+  .board-wrap{position:relative;width:100%;aspect-ratio:1;max-width:820px;margin:0 auto;border-radius:14px;
+    box-shadow:0 30px 60px -20px rgba(40,30,10,.45),0 10px 20px -10px rgba(40,30,10,.3),inset 0 0 0 1px rgba(255,255,255,.25);overflow:hidden;touch-action:none}
+  .board-wrap canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+  #overlay{cursor:crosshair}
+  .tip{position:absolute;pointer-events:none;opacity:0;transform:translate(-50%,-140%);background:var(--ink);color:var(--linen);font-family:var(--mono);font-size:11px;
+    padding:6px 9px;border-radius:3px;white-space:nowrap;transition:opacity .15s;letter-spacing:.06em}
+  .tip.show{opacity:1}
+  .mode-badge{position:absolute;left:14px;top:14px;font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.85);
+    background:rgba(0,0,0,.35);padding:6px 10px;border-radius:3px;backdrop-filter:blur(4px)}
+  .panel{display:grid;gap:20px;background:var(--moss);color:var(--linen);padding:clamp(18px,2.4vw,28px);border-radius:14px;box-shadow:0 20px 50px -20px rgba(20,40,30,.6)}
+  .panel h2{margin:0;font-family:var(--serif);font-weight:400;font-size:13px;letter-spacing:.26em;text-transform:uppercase;color:var(--brass-2);display:flex;align-items:center;gap:12px}
+  .panel h2::after{content:"";flex:1;height:1px;background:rgba(255,255,255,.15)}
+  .seg{display:flex;gap:6px;flex-wrap:wrap}
+  .seg button{font:inherit;font-size:12px;letter-spacing:.06em;color:var(--linen);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:6px;padding:8px 12px;cursor:pointer;transition:all .25s}
+  .seg button:hover{background:rgba(255,255,255,.14)}
+  .seg button[aria-pressed="true"]{background:var(--brass-2);color:var(--ink);border-color:var(--brass-2)}
+  .threads{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+  .thr{font:inherit;font-size:12px;color:var(--linen);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:6px;padding:9px 10px;cursor:pointer;display:flex;align-items:center;gap:10px;text-align:left;transition:all .25s}
+  .thr:hover{background:rgba(255,255,255,.14)}
+  .thr[aria-pressed="true"]{border-color:var(--brass-2);box-shadow:inset 0 0 0 1px var(--brass-2)}
+  .thr i{width:26px;height:26px;border-radius:50%;flex:none;border:2px solid rgba(255,255,255,.3);
+    background:linear-gradient(135deg,var(--b) 50%,var(--t) 50%)}
+  .field{display:grid;gap:8px}
+  .field label{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+  .field .readout{font-family:var(--mono);color:var(--linen);letter-spacing:0}
+  input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:3px;background:rgba(255,255,255,.25);border-radius:2px;outline:none}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--brass-2);border:3px solid var(--moss);box-shadow:0 0 0 1px var(--brass-2);cursor:grab}
+  input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--brass-2);border:3px solid var(--moss);cursor:grab}
+  .actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .btn{font:inherit;font-size:13px;letter-spacing:.06em;color:var(--linen);background:transparent;border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:11px 12px;cursor:pointer;transition:all .25s}
+  .btn:hover{background:rgba(255,255,255,.1)}
+  .btn.primary{background:var(--brass-2);color:var(--ink);border-color:var(--brass-2);grid-column:1/-1;font-weight:600}
+  .btn.primary:hover{background:#f0cc7a}
+  .preview{display:flex;gap:14px;align-items:center}
+  .preview canvas{width:72px;height:72px;border-radius:6px;border:1px solid rgba(255,255,255,.2);flex:none}
+  .preview p{margin:0;font-size:12px;line-height:1.5;color:rgba(255,255,255,.7)}
+  .note{font-size:12px;line-height:1.55;color:rgba(255,255,255,.65);margin:0;border-top:1px solid rgba(255,255,255,.12);padding-top:14px}
+  kbd{font-family:var(--mono);font-size:10px;border:1px solid rgba(255,255,255,.3);border-radius:3px;padding:1px 5px}
+  .essay{margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px;max-width:1000px}
+  .essay h3{font-family:var(--serif);font-weight:400;font-size:20px;margin:0 0 8px}
+  .essay p{margin:0;font-size:14px;line-height:1.65;color:#4f483f}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <div class="sub">Tension · a computational thread loom</div>
+      <h1>Ten thousand straight lines <em>make a curve</em></h1>
+    </div>
+    <div class="counter" aria-live="polite">
+      <span><b id="cThreads">0</b>threads</span>
+      <span><b id="cNails">200</b>nails</span>
+      <span><b id="cLen">0.0</b>m of thread</span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <div class="board-wrap" id="boardWrap">
+      <canvas id="board" aria-hidden="true"></canvas>
+      <canvas id="threads" aria-hidden="true"></canvas>
+      <canvas id="overlay" role="img" aria-label="String art board with nails and threads"></canvas>
+      <div class="tip" id="tip"></div>
+      <div class="mode-badge" id="badge">Weaving · auto</div>
+    </div>
+
+    <aside class="panel" aria-label="Loom controls">
+      <div>
+        <h2>Target</h2>
+        <div class="preview">
+          <canvas id="preview" width="120" height="120" aria-label="Target luminance preview"></canvas>
+          <div>
+            <div class="seg" role="group" aria-label="Target image">
+              <button data-target="face" aria-pressed="true">Portrait</button>
+              <button data-target="orb" aria-pressed="false">Orb</button>
+              <button data-target="rings" aria-pressed="false">Rings</button>
+            </div>
+            <p style="margin-top:8px">A luminance map the greedy weaver tries to reproduce.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2>Frame</h2>
+        <div class="seg" role="group" aria-label="Frame shape">
+          <button data-shape="circle" aria-pressed="true">Circle</button>
+          <button data-shape="square" aria-pressed="false">Square</button>
+          <button data-shape="heart" aria-pressed="false">Heart</button>
+        </div>
+      </div>
+      <div>
+        <h2>Thread</h2>
+        <div class="threads" role="group" aria-label="Thread and board colours">
+          <button class="thr" data-thr="black" aria-pressed="true" style="--t:#1a1714;--b:#e9dcbf">Black on cream</button>
+          <button class="thr" data-thr="white" aria-pressed="false" style="--t:#f4efe4;--b:#2b2926">White on charcoal</button>
+          <button class="thr" data-thr="crimson" aria-pressed="false" style="--t:#a3122a;--b:#d9bb8a">Crimson on oak</button>
+          <button class="thr" data-thr="gold" aria-pressed="false" style="--t:#e0b04a;--b:#3a281c">Gold on walnut</button>
+        </div>
+      </div>
+      <div class="field"><label for="nails">Nails <span class="readout" id="oNails">200</span></label><input id="nails" type="range" min="60" max="320" step="4" value="200"></div>
+      <div class="field"><label for="count">Threads <span class="readout" id="oCount">3000</span></label><input id="count" type="range" min="400" max="7000" step="100" value="3000"></div>
+      <div class="field"><label for="speed">Speed <span class="readout" id="oSpeed">24 / frame</span></label><input id="speed" type="range" min="2" max="80" value="24"></div>
+      <div class="actions">
+        <button class="btn primary" id="weave">Weave</button>
+        <button class="btn" id="pause">Pause</button>
+        <button class="btn" id="manual" aria-pressed="false">Manual mode</button>
+        <button class="btn" id="clear">Clear</button>
+        <button class="btn" id="save" style="grid-column:1/-1">Download PNG</button>
+      </div>
+      <p class="note">In manual mode, click a nail to hook the thread, then click another to pull it across. Keep clicking to chain. <kbd>Esc</kbd> releases the thread, <kbd>space</kbd> pauses the weaver.</p>
+    </aside>
+  </div>
+
+  <div class="essay">
+    <div><h3>The algorithm</h3><p>Each thread starts where the last one ended. From that nail the loom scores every other nail by the average darkness still left along the straight line between them, chooses the best, and subtracts what the thread will cover. It is greedy and simple, and after a few thousand lines a face appears where there is only geometry.</p></div>
+    <div><h3>Why straight lines</h3><p>String art is a lesson in perception: no line is curved, no line is grey, yet the eye integrates density into shade and edges into contour. The overlapping threads throw fine shadows onto the board, and that shadow is part of the picture.</p></div>
+    <div><h3>Make it physical</h3><p>The nail count and thread sequence are exactly what you would need to build this piece on a real board. Two hundred nails on a 60 cm hoop and three kilometres of thread is a weekend well spent.</p></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const board=$('board'), thr=$('threads'), ov=$('overlay'), wrap=$('boardWrap'), tip=$('tip'), badge=$('badge'), pv=$('preview');
+  const bctx=board.getContext('2d'), tctx=thr.getContext('2d'), octx=ov.getContext('2d'), pctx=pv.getContext('2d');
+  const R=256; // target map resolution
+  const state={ target:'face', shape:'circle', thr:'black', nails:200, count:3000, speed:24, manual:false, paused:false };
+  const threads={ black:{t:'#1a1714',b:'#e9dcbf',grain:'#c9b58f',light:true,alpha:.28},
+                  white:{t:'#f4efe4',b:'#2b2926',grain:'#1a1816',light:false,alpha:.22},
+                  crimson:{t:'#a3122a',b:'#d9bb8a',grain:'#b8935e',light:true,alpha:.3},
+                  gold:{t:'#e0b04a',b:'#3a281c',grain:'#2a1a10',light:false,alpha:.26} };
+  let size=600, dpr=1, nails=[], residual=null, pairs=[], cur=0, done=0, running=false, raf=0, hover=-1, selected=-1, totalLen=0, usedPairs=new Set();
+
+  /* ---------- geometry ---------- */
+  function layoutNails(){
+    nails=[]; const n=state.nails, cx=.5, cy=.5, r=.455;
+    if(state.shape==='circle'){ for(let i=0;i<n;i++){ const a=i/n*Math.PI*2-Math.PI/2; nails.push([cx+Math.cos(a)*r, cy+Math.sin(a)*r]); } }
+    else if(state.shape==='square'){ const per=4, side=r*2, s=cx-r; for(let i=0;i<n;i++){ const t=i/n*per, k=Math.floor(t), f=t-k;
+      if(k===0) nails.push([s+f*side,s]); else if(k===1) nails.push([s+side,s+f*side]); else if(k===2) nails.push([s+side-f*side,s+side]); else nails.push([s,s+side-f*side]); } }
+    else { // heart, resample by arc length
+      const pts=[]; for(let i=0;i<=2000;i++){ const t=i/2000*Math.PI*2; pts.push([16*Math.pow(Math.sin(t),3), -(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t))]); }
+      let L=0; const cum=[0]; for(let i=1;i<pts.length;i++){ L+=Math.hypot(pts[i][0]-pts[i-1][0],pts[i][1]-pts[i-1][1]); cum.push(L); }
+      let j=0; for(let i=0;i<n;i++){ const d=i/n*L; while(cum[j+1]<d) j++; const f=(d-cum[j])/(cum[j+1]-cum[j]); const x=pts[j][0]+(pts[j+1][0]-pts[j][0])*f, y=pts[j][1]+(pts[j+1][1]-pts[j][1])*f;
+        nails.push([cx+x/17*r*1.02, cy+.04+y/17*r*1.02]); }
+    }
+  }
+
+  /* ---------- target ---------- */
+  function buildTarget(){
+    const c=document.createElement('canvas'); c.width=c.height=R; const x=c.getContext('2d');
+    x.fillStyle='#fff'; x.fillRect(0,0,R,R);
+    if(state.target==='face'){
+      const bg=x.createRadialGradient(R*.5,R*.5,R*.1,R*.5,R*.5,R*.6); bg.addColorStop(0,'#fff'); bg.addColorStop(1,'#cfcfcf'); x.fillStyle=bg; x.fillRect(0,0,R,R);
+      x.fillStyle='#2a2a2a'; x.beginPath(); x.ellipse(R*.5,R*.36,R*.31,R*.30,0,Math.PI,Math.PI*2); x.fill(); // hair cap
+      x.beginPath(); x.moveTo(R*.19,R*.36); x.quadraticCurveTo(R*.16,R*.75,R*.24,R*.9); x.lineTo(R*.33,R*.9); x.quadraticCurveTo(R*.27,R*.7,R*.29,R*.42); x.closePath(); x.fill();
+      x.beginPath(); x.moveTo(R*.81,R*.36); x.quadraticCurveTo(R*.84,R*.75,R*.76,R*.9); x.lineTo(R*.67,R*.9); x.quadraticCurveTo(R*.73,R*.7,R*.71,R*.42); x.closePath(); x.fill();
+      const skin=x.createRadialGradient(R*.44,R*.42,R*.05,R*.5,R*.48,R*.32); skin.addColorStop(0,'#fafafa'); skin.addColorStop(.75,'#d7d7d7'); skin.addColorStop(1,'#8c8c8c');
+      x.fillStyle=skin; x.beginPath(); x.ellipse(R*.5,R*.5,R*.23,R*.29,0,0,Math.PI*2); x.fill();
+      x.fillStyle='#6a6a6a'; x.fillRect(R*.44,R*.76,R*.12,R*.12);
+      const sh=x.createLinearGradient(R*.44,0,R*.56,0); sh.addColorStop(0,'rgba(0,0,0,.5)'); sh.addColorStop(1,'rgba(0,0,0,0)'); x.fillStyle=sh; x.fillRect(R*.44,R*.76,R*.12,R*.12);
+      x.fillStyle='#3a3a3a'; x.beginPath(); x.moveTo(R*.2,R); x.quadraticCurveTo(R*.3,R*.84,R*.5,R*.86); x.quadraticCurveTo(R*.7,R*.84,R*.8,R); x.closePath(); x.fill();
+      [[.41,.47],[.59,.47]].forEach(([ex,ey])=>{ x.fillStyle='#f4f4f4'; x.beginPath(); x.ellipse(R*ex,R*ey,R*.05,R*.03,0,0,Math.PI*2); x.fill();
+        x.fillStyle='#1e1e1e'; x.beginPath(); x.arc(R*ex,R*ey,R*.02,0,Math.PI*2); x.fill();
+        x.strokeStyle='#3a3a3a'; x.lineWidth=R*.012; x.beginPath(); x.moveTo(R*(ex-.06),R*(ey-.06)); x.quadraticCurveTo(R*ex,R*(ey-.085),R*(ex+.06),R*(ey-.06)); x.stroke(); });
+      x.strokeStyle='#9a9a9a'; x.lineWidth=R*.01; x.beginPath(); x.moveTo(R*.5,R*.5); x.quadraticCurveTo(R*.48,R*.6,R*.51,R*.62); x.stroke();
+      x.fillStyle='#4a4a4a'; x.beginPath(); x.moveTo(R*.42,R*.69); x.quadraticCurveTo(R*.5,R*.65,R*.58,R*.69); x.quadraticCurveTo(R*.5,R*.75,R*.42,R*.69); x.fill();
+    } else if(state.target==='orb'){
+      x.fillStyle='#e8e8e8'; x.fillRect(0,0,R,R);
+      const g=x.createRadialGradient(R*.38,R*.36,R*.02,R*.5,R*.5,R*.42); g.addColorStop(0,'#fff'); g.addColorStop(.5,'#9a9a9a'); g.addColorStop(1,'#111'); x.fillStyle=g; x.beginPath(); x.arc(R*.5,R*.5,R*.4,0,Math.PI*2); x.fill();
+      const s=x.createRadialGradient(R*.55,R*.9,0,R*.55,R*.9,R*.4); s.addColorStop(0,'rgba(0,0,0,.55)'); s.addColorStop(1,'rgba(0,0,0,0)'); x.fillStyle=s; x.fillRect(0,R*.7,R,R*.3);
+    } else {
+      x.fillStyle='#f4f4f4'; x.fillRect(0,0,R,R);
+      for(let i=9;i>=0;i--){ const v=i%2?40:230; x.fillStyle=`rgb(${v},${v},${v})`; x.beginPath(); x.arc(R*.5,R*.5,R*.46*(i+1)/10,0,Math.PI*2); x.fill(); }
+      const fade=x.createLinearGradient(0,0,R,R); fade.addColorStop(0,'rgba(255,255,255,0)'); fade.addColorStop(1,'rgba(255,255,255,.85)'); x.fillStyle=fade; x.fillRect(0,0,R,R);
+    }
+    const d=x.getImageData(0,0,R,R).data; residual=new Float32Array(R*R);
+    const light=threads[state.thr].light;
+    for(let i=0;i<R*R;i++){ const l=(.3*d[i*4]+.59*d[i*4+1]+.11*d[i*4+2])/255; residual[i]= light ? 1-l : l; }
+    // mask outside frame for circle/heart
+    pctx.clearRect(0,0,120,120); pctx.drawImage(c,0,0,120,120);
+  }
+
+  /* ---------- board texture ---------- */
+  function drawBoard(){
+    const T=threads[state.thr]; const s=size;
+    bctx.setTransform(dpr,0,0,dpr,0,0); bctx.clearRect(0,0,s,s);
+    bctx.fillStyle=T.b; bctx.fillRect(0,0,s,s);
+    let seed=7; const rnd=()=>{ seed=(seed*16807)%2147483647; return seed/2147483647; };
+    bctx.globalAlpha=1;
+    for(let i=0;i<160;i++){ const y=rnd()*s, amp=4+rnd()*12, w=.6+rnd()*2.2, ph=rnd()*6;
+      bctx.strokeStyle=T.grain; bctx.globalAlpha=.08+rnd()*.22; bctx.lineWidth=w; bctx.beginPath();
+      for(let x=0;x<=s;x+=8){ const yy=y+Math.sin(x/(60+amp*6)+ph)*amp+Math.sin(x/17+ph*2)*1.5; if(x===0) bctx.moveTo(x,yy); else bctx.lineTo(x,yy); } bctx.stroke(); }
+    // knots
+    for(let k=0;k<2;k++){ const kx=s*(.15+rnd()*.7), ky=s*(.15+rnd()*.7); for(let r=3;r<40;r+=4){ bctx.globalAlpha=.06; bctx.strokeStyle=T.grain; bctx.lineWidth=1.5; bctx.beginPath(); bctx.ellipse(kx,ky,r*1.6,r,rnd()*.4,0,Math.PI*2); bctx.stroke(); } }
+    bctx.globalAlpha=1;
+    const v=bctx.createRadialGradient(s/2,s/2,s*.3,s/2,s/2,s*.75); v.addColorStop(0,'rgba(0,0,0,0)'); v.addColorStop(1,'rgba(0,0,0,.35)'); bctx.fillStyle=v; bctx.fillRect(0,0,s,s);
+    const sheen=bctx.createLinearGradient(0,0,s,s); sheen.addColorStop(0,'rgba(255,255,255,.12)'); sheen.addColorStop(.5,'rgba(255,255,255,0)'); sheen.addColorStop(1,'rgba(255,255,255,.06)'); bctx.fillStyle=sheen; bctx.fillRect(0,0,s,s);
+  }
+  function drawNails(){
+    const s=size; octx.setTransform(dpr,0,0,dpr,0,0); octx.clearRect(0,0,s,s);
+    const r=Math.max(2.2, s/state.nails*.55);
+    nails.forEach(([nx,ny],i)=>{
+      const x=nx*s, y=ny*s;
+      octx.fillStyle='rgba(0,0,0,.35)'; octx.beginPath(); octx.arc(x+r*.5,y+r*.7,r*1.05,0,Math.PI*2); octx.fill();
+      const g=octx.createRadialGradient(x-r*.35,y-r*.35,r*.1,x,y,r*1.1); g.addColorStop(0,'#fdfdfd'); g.addColorStop(.45,'#b9bcc2'); g.addColorStop(1,'#4c4f55');
+      octx.fillStyle=g; octx.beginPath(); octx.arc(x,y,r,0,Math.PI*2); octx.fill();
+      if(i===hover||i===selected){ octx.strokeStyle= i===selected ? '#e2b862' : '#fff'; octx.lineWidth=2; octx.beginPath(); octx.arc(x,y,r+4,0,Math.PI*2); octx.stroke(); }
+    });
+    if(selected>=0 && hover>=0 && hover!==selected){
+      const a=nails[selected], b=nails[hover]; octx.strokeStyle='rgba(226,184,98,.8)'; octx.setLineDash([4,4]); octx.lineWidth=1; octx.beginPath(); octx.moveTo(a[0]*s,a[1]*s); octx.lineTo(b[0]*s,b[1]*s); octx.stroke(); octx.setLineDash([]);
+    }
+  }
+
+  /* ---------- weaving ---------- */
+  function scoreLine(a,b){
+    const [x0,y0]=nails[a],[x1,y1]=nails[b]; const dx=(x1-x0)*R, dy=(y1-y0)*R, len=Math.hypot(dx,dy), steps=Math.max(2,len|0); let sum=0;
+    for(let i=0;i<=steps;i++){ const t=i/steps; const x=(x0*R+dx*t)|0, y=(y0*R+dy*t)|0; if(x>=0&&y>=0&&x<R&&y<R) sum+=residual[y*R+x]; }
+    return sum/(steps+1);
+  }
+  function subtractLine(a,b){
+    const [x0,y0]=nails[a],[x1,y1]=nails[b]; const dx=(x1-x0)*R, dy=(y1-y0)*R, steps=Math.max(2,Math.hypot(dx,dy)|0); const w=.13;
+    for(let i=0;i<=steps;i++){ const t=i/steps; const x=(x0*R+dx*t)|0, y=(y0*R+dy*t)|0; if(x>=0&&y>=0&&x<R&&y<R){ const k=y*R+x; residual[k]=Math.max(0,residual[k]-w); } }
+  }
+  function nextNail(from){
+    const n=state.nails, minGap=Math.max(3,(n/14)|0); let best=-1, bs=-1;
+    for(let j=0;j<n;j++){ const gap=Math.min(Math.abs(j-from), n-Math.abs(j-from)); if(gap<minGap) continue;
+      const key=from<j?from*1000+j:j*1000+from; if(usedPairs.has(key)) continue;
+      const sc=scoreLine(from,j); if(sc>bs){ bs=sc; best=j; } }
+    return [best,bs];
+  }
+  function strokeThread(a,b){
+    const T=threads[state.thr], s=size; const [x0,y0]=nails[a],[x1,y1]=nails[b];
+    tctx.setTransform(dpr,0,0,dpr,0,0);
+    tctx.globalAlpha=T.alpha*.55; tctx.strokeStyle='rgba(0,0,0,1)'; tctx.lineWidth=1.4; tctx.beginPath(); tctx.moveTo(x0*s+1.2,y0*s+1.6); tctx.lineTo(x1*s+1.2,y1*s+1.6); tctx.stroke();
+    tctx.globalAlpha=T.alpha; tctx.strokeStyle=T.t; tctx.lineWidth=1; tctx.beginPath(); tctx.moveTo(x0*s,y0*s); tctx.lineTo(x1*s,y1*s); tctx.stroke();
+  }
+  function drawThread(a,b){
+    strokeThread(a,b); pairs.push([a,b]);
+    const [x0,y0]=nails[a],[x1,y1]=nails[b];
+    totalLen+=Math.hypot(x1-x0,y1-y0)*0.6; // assume a 60 cm board
+    done++; updateCounter();
+  }
+  function updateCounter(){ $('cThreads').textContent=done; $('cNails').textContent=state.nails; $('cLen').textContent=(totalLen).toFixed(1); }
+  function step(){
+    if(!running||state.paused||state.manual) return;
+    for(let i=0;i<state.speed;i++){
+      if(done>=state.count){ running=false; badge.textContent='Finished · '+done+' threads'; return; }
+      const [nx,sc]=nextNail(cur); if(nx<0||sc<.004){ running=false; badge.textContent='Nothing left to darken · '+done; return; }
+      usedPairs.add(cur<nx?cur*1000+nx:nx*1000+cur); subtractLine(cur,nx); drawThread(cur,nx); cur=nx;
+    }
+    badge.textContent='Weaving · auto · '+Math.round(done/state.count*100)+'%';
+    raf=requestAnimationFrame(step);
+  }
+  function clearThreads(){ cancelAnimationFrame(raf); running=false; done=0; totalLen=0; pairs=[]; cur=0; usedPairs.clear(); tctx.setTransform(1,0,0,1,0,0); tctx.clearRect(0,0,thr.width,thr.height); updateCounter(); }
+  function weave(){ clearThreads(); buildTarget(); state.manual=false; $('manual').setAttribute('aria-pressed','false'); state.paused=false; $('pause').textContent='Pause'; running=true; badge.textContent='Weaving · auto'; drawNails(); raf=requestAnimationFrame(step); }
+
+  /* ---------- sizing ---------- */
+  function resize(){
+    dpr=Math.min(2,window.devicePixelRatio||1); size=Math.max(240,Math.round(wrap.clientWidth));
+    [board,thr,ov].forEach(c=>{ c.width=Math.round(size*dpr); c.height=Math.round(size*dpr); });
+    drawBoard(); drawNails();
+    // redraw existing threads at the new size
+    pairs.forEach(([a,b])=>strokeThread(a,b));
+  }
+
+  /* ---------- interaction ---------- */
+  function nearest(e){ const r=wrap.getBoundingClientRect(); const px=(e.clientX-r.left)/r.width, py=(e.clientY-r.top)/r.height; let best=-1,bd=1e9;
+    nails.forEach(([x,y],i)=>{ const d=Math.hypot(x-px,y-py); if(d<bd){bd=d;best=i;} }); return bd<.035?best:-1; }
+  ov.addEventListener('pointermove',e=>{ const i=nearest(e); if(i!==hover){ hover=i; drawNails(); }
+    if(i>=0){ const [x,y]=nails[i]; tip.textContent='nail '+String(i).padStart(3,'0')+' · '+Math.round((Math.atan2(y-.5,x-.5)*180/Math.PI+450)%360)+'°'; tip.style.left=(x*100)+'%'; tip.style.top=(y*100)+'%'; tip.classList.add('show'); } else tip.classList.remove('show'); });
+  ov.addEventListener('pointerleave',()=>{ hover=-1; tip.classList.remove('show'); drawNails(); });
+  ov.addEventListener('pointerdown',e=>{ const i=nearest(e); if(i<0) return;
+    if(!state.manual){ setManual(true); }
+    if(selected<0){ selected=i; } else if(i!==selected){ drawThread(selected,i); selected=i; }
+    drawNails(); });
+  function setManual(on){ state.manual=on; $('manual').setAttribute('aria-pressed',on); if(on){ cancelAnimationFrame(raf); running=false; badge.textContent='Manual · click nails to thread'; } else { selected=-1; badge.textContent='Paused'; } drawNails(); }
+  $('manual').addEventListener('click',()=>setManual(!state.manual));
+  $('weave').addEventListener('click',weave);
+  $('pause').addEventListener('click',()=>{ if(state.manual) return; state.paused=!state.paused; $('pause').textContent=state.paused?'Resume':'Pause'; badge.textContent=state.paused?'Paused':'Weaving · auto'; if(!state.paused&&running) raf=requestAnimationFrame(step); });
+  $('clear').addEventListener('click',()=>{ clearThreads(); selected=-1; badge.textContent=state.manual?'Manual · click nails to thread':'Cleared'; drawNails(); });
+  $('save').addEventListener('click',()=>{ const c=document.createElement('canvas'); c.width=board.width; c.height=board.height; const x=c.getContext('2d'); x.drawImage(board,0,0); x.drawImage(thr,0,0); x.drawImage(ov,0,0);
+    const a=document.createElement('a'); a.download='tension-string-art.png'; a.href=c.toDataURL('image/png'); a.click(); });
+  addEventListener('keydown',e=>{ if(e.key==='Escape'){ selected=-1; drawNails(); } if(e.code==='Space'&&e.target.tagName!=='BUTTON'&&e.target.tagName!=='INPUT'){ e.preventDefault(); $('pause').click(); } });
+
+  document.querySelectorAll('[data-target]').forEach(b=>b.addEventListener('click',()=>{ press(b); state.target=b.dataset.target; weave(); }));
+  document.querySelectorAll('[data-shape]').forEach(b=>b.addEventListener('click',()=>{ press(b); state.shape=b.dataset.shape; layoutNails(); weave(); }));
+  document.querySelectorAll('[data-thr]').forEach(b=>b.addEventListener('click',()=>{ press(b); state.thr=b.dataset.thr; drawBoard(); weave(); }));
+  function press(b){ b.parentElement.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed','false')); b.setAttribute('aria-pressed','true'); }
+  $('nails').addEventListener('input',e=>{ state.nails=+e.target.value; $('oNails').value=state.nails; layoutNails(); weave(); });
+  $('count').addEventListener('input',e=>{ state.count=+e.target.value; $('oCount').value=state.count; if(!running&&!state.manual&&done<state.count){ running=true; raf=requestAnimationFrame(step); } });
+  $('speed').addEventListener('input',e=>{ state.speed=+e.target.value; $('oSpeed').value=state.speed+' / frame'; });
+
+  let rt; addEventListener('resize',()=>{ clearTimeout(rt); rt=setTimeout(resize,150); });
+  layoutNails(); buildTarget(); resize(); weave();
+})();
+</script>
+</body>
+</html>

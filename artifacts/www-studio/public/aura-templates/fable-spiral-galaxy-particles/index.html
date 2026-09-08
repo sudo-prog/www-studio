@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NGC 7741 — Spiral Galaxy Particle Observatory</title>
+<style>
+  :root {
+    --bg: #000000;
+    --ink: #d9dfe8;
+    --ink-dim: #6d7787;
+    --accent: #ffd9a0;
+    --accent-blue: #9cc4ff;
+    --hud-line: rgba(160, 180, 220, 0.18);
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Courier New", monospace;
+    --serif: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, ui-serif, serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    height: 100%;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--serif);
+    overflow: hidden;
+  }
+
+  #stage {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    cursor: grab;
+    touch-action: none;
+  }
+  #stage.dragging { cursor: grabbing; }
+
+  .vignette {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.75) 100%);
+  }
+
+  /* ---------- HUD ---------- */
+  .hud {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: clamp(16px, 3vw, 40px);
+    opacity: 0;
+    animation: hud-in 2.4s cubic-bezier(.2,.8,.2,1) 0.8s forwards;
+  }
+  @keyframes hud-in { to { opacity: 1; } }
+
+  .hud-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .designation {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    margin: 0 0 8px;
+  }
+
+  .galaxy-name {
+    font-size: clamp(26px, 4vw, 52px);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    margin: 0;
+    line-height: 1;
+    color: #fff;
+    text-shadow: 0 0 40px rgba(255, 217, 160, 0.25);
+  }
+  .galaxy-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .classification {
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--ink-dim);
+    font-style: italic;
+    max-width: 40ch;
+    line-height: 1.5;
+  }
+
+  .compass {
+    width: 64px;
+    height: 64px;
+    flex: 0 0 auto;
+    opacity: 0.7;
+  }
+  .compass circle, .compass line { stroke: var(--ink-dim); fill: none; stroke-width: 1; }
+  .compass text { fill: var(--ink-dim); font-family: var(--mono); font-size: 8px; }
+  .compass .needle { stroke: var(--accent); transform-origin: 32px 32px; transition: transform 0.2s ease-out; }
+
+  .hud-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, max-content));
+    gap: 6px 36px;
+    border-top: 1px solid var(--hud-line);
+    padding-top: 14px;
+  }
+  .stat { min-width: 0; }
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+  .stat-value {
+    font-family: var(--mono);
+    font-size: clamp(15px, 1.6vw, 20px);
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+    margin-top: 2px;
+  }
+  .stat-value small { color: var(--ink-dim); font-size: 0.7em; margin-left: 4px; }
+
+  .hint {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    line-height: 1.9;
+    text-align: right;
+  }
+  .hint b { color: var(--accent-blue); font-weight: 400; }
+
+  /* Controls */
+  .controls {
+    position: fixed;
+    right: clamp(16px, 3vw, 40px);
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0;
+    animation: hud-in 2s ease 1.6s forwards;
+  }
+  .ctl {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--hud-line);
+    background: rgba(8, 10, 18, 0.6);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 14px;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    transition: transform 0.25s cubic-bezier(.2,.8,.2,1), border-color 0.25s, background 0.25s;
+  }
+  .ctl:hover { transform: scale(1.12); border-color: var(--accent); background: rgba(40, 32, 20, 0.7); }
+  .ctl:active { transform: scale(0.96); }
+  .ctl[aria-pressed="true"] { border-color: var(--accent-blue); color: var(--accent-blue); }
+
+  @media (max-width: 600px) {
+    .hint { display: none; }
+    .compass { display: none; }
+    .stats { gap: 6px 20px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hud, .controls { animation-duration: 0.01s; animation-delay: 0s; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="stage" aria-label="Interactive particle simulation of a spiral galaxy. Drag to tilt, scroll to zoom." role="img"></canvas>
+<div class="vignette"></div>
+
+<div class="hud" aria-live="polite">
+  <div class="hud-top">
+    <div>
+      <p class="designation">Catalogue entry · Grand design spiral</p>
+      <h1 class="galaxy-name">NGC 7741 <em>Meridian</em></h1>
+      <p class="classification">A barred spiral seen at an oblique angle. Its two principal arms trail a bright, ancient core; blue star-forming knots trace the leading edges, and cold dust lanes drift behind.</p>
+    </div>
+    <svg class="compass" viewBox="0 0 64 64" aria-hidden="true">
+      <circle cx="32" cy="32" r="30"></circle>
+      <circle cx="32" cy="32" r="3"></circle>
+      <line x1="32" y1="2" x2="32" y2="10"></line>
+      <line x1="32" y1="54" x2="32" y2="62"></line>
+      <line x1="2" y1="32" x2="10" y2="32"></line>
+      <line x1="54" y1="32" x2="62" y2="32"></line>
+      <line id="needle" class="needle" x1="32" y1="32" x2="32" y2="12"></line>
+      <text x="29" y="20">N</text>
+    </svg>
+  </div>
+  <div></div>
+  <div class="hud-bottom">
+    <div class="stats">
+      <div class="stat"><div class="stat-label">Particles</div><div class="stat-value" id="s-particles">0</div></div>
+      <div class="stat"><div class="stat-label">Distance</div><div class="stat-value" id="s-distance">0<small>Mly</small></div></div>
+      <div class="stat"><div class="stat-label">Diameter</div><div class="stat-value" id="s-diameter">0<small>kly</small></div></div>
+      <div class="stat"><div class="stat-label">Tilt</div><div class="stat-value" id="s-tilt">0<small>°</small></div></div>
+      <div class="stat"><div class="stat-label">Zoom</div><div class="stat-value" id="s-zoom">1.00<small>×</small></div></div>
+    </div>
+    <div class="hint">
+      <b>Drag</b> to tilt the disk<br>
+      <b>Scroll / pinch</b> to zoom<br>
+      <b>Space</b> to pause rotation
+    </div>
+  </div>
+</div>
+
+<div class="controls">
+  <button class="ctl" id="btn-zoom-in" title="Zoom in" aria-label="Zoom in">+</button>
+  <button class="ctl" id="btn-zoom-out" title="Zoom out" aria-label="Zoom out">−</button>
+  <button class="ctl" id="btn-pause" title="Pause rotation" aria-label="Pause rotation" aria-pressed="false">‖</button>
+  <button class="ctl" id="btn-reset" title="Reset view" aria-label="Reset view">⟲</button>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  const canvas = document.getElementById('stage');
+  const ctx = canvas.getContext('2d');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---------- Simulation parameters ----------
+  const COUNT = reduceMotion ? 14000 : 42000;
+  const ARMS = 2;
+  const ARM_TIGHTNESS = 0.28;   // log-spiral b in r = a*e^(b*theta)
+  const DISK_RADIUS = 1.0;      // normalized
+  const THICKNESS = 0.06;
+  const DUST_COUNT = 90;
+  const BG_GALAXIES = 14;
+
+  // State
+  let W = 0, H = 0, DPR = 1;
+  let tilt = 0.95;          // radians (0 = face-on, PI/2 = edge-on)
+  let yaw = 0.0;            // rotation about the vertical screen axis
+  let zoom = 1.0;
+  let targetZoom = 1.0;
+  let paused = false;
+  let time = 0;
+
+  const DEFAULTS = { tilt: 0.95, yaw: 0.0, zoom: 1.0 };
+
+  // Particles: typed arrays for speed
+  const px = new Float32Array(COUNT);   // radius
+  const pa = new Float32Array(COUNT);   // base angle
+  const pz = new Float32Array(COUNT);   // height above plane
+  const pr = new Uint8Array(COUNT), pg = new Uint8Array(COUNT), pb = new Uint8Array(COUNT);
+  const ps = new Float32Array(COUNT);   // size
+  const pbright = new Float32Array(COUNT);
+
+  function gaussian() {
+    let u = 0, v = 0;
+    while (u === 0) u = Math.random();
+    while (v === 0) v = Math.random();
+    return Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+  }
+
+  // Color mapping by radius: warm core -> blue-white arms -> faint red dust
+  function colorAt(r, inArm) {
+    let R, G, B;
+    if (r < 0.15) {
+      const t = r / 0.15;
+      R = 255; G = 235 - t * 30; B = 190 - t * 60;
+    } else if (r < 0.7) {
+      const t = (r - 0.15) / 0.55;
+      if (inArm) {
+        R = 205 - t * 60; G = 215 - t * 20; B = 255;
+      } else {
+        R = 225 - t * 40; G = 210 - t * 30; B = 210 + t * 30;
+      }
+    } else {
+      const t = Math.min(1, (r - 0.7) / 0.3);
+      R = 170 + t * 40; G = 120 - t * 40; B = 130 - t * 40;
+    }
+    return [R | 0, G | 0, B | 0];
+  }
+
+  function buildGalaxy() {
+    for (let i = 0; i < COUNT; i++) {
+      // Radius with exponential density falloff (more particles near core)
+      let r = -Math.log(1 - Math.random()) * 0.32;
+      r = Math.min(r, DISK_RADIUS * 1.15);
+
+      // Bulge: 18% of particles in a spherical core
+      const isBulge = i < COUNT * 0.18;
+      let theta, z, inArm = false;
+
+      if (isBulge) {
+        r = Math.abs(gaussian()) * 0.08;
+        theta = Math.random() * Math.PI * 2;
+        z = gaussian() * 0.06 * Math.max(0.15, 1 - r * 4);
+      } else {
+        // Angle on the log spiral for this radius, with arm scatter that grows with radius
+        const armIndex = i % ARMS;
+        const spiralAngle = Math.log(Math.max(r, 0.02) / 0.05) / ARM_TIGHTNESS;
+        const scatter = gaussian() * (0.18 + r * 0.35);
+        theta = spiralAngle + (armIndex * Math.PI * 2 / ARMS) + scatter;
+        inArm = Math.abs(scatter) < 0.22;
+        z = gaussian() * THICKNESS * (0.4 + r * 0.6);
+      }
+
+      px[i] = r;
+      pa[i] = theta;
+      pz[i] = z;
+
+      const c = colorAt(r, inArm);
+      pr[i] = c[0]; pg[i] = c[1]; pb[i] = c[2];
+
+      const hot = inArm && Math.random() < 0.06;
+      ps[i] = hot ? 1.8 + Math.random() * 1.6 : 0.6 + Math.random() * 0.9;
+      if (isBulge) ps[i] = 0.7 + Math.random() * 1.1;
+      pbright[i] = hot ? 1.0 : (isBulge ? 0.55 : 0.28 + Math.random() * 0.3);
+    }
+  }
+
+  // Dust clouds: large soft blobs positioned along arms
+  const dust = [];
+  function buildDust() {
+    for (let i = 0; i < DUST_COUNT; i++) {
+      const r = 0.18 + Math.random() * 0.8;
+      const arm = i % ARMS;
+      const theta = Math.log(r / 0.05) / ARM_TIGHTNESS + arm * Math.PI * 2 / ARMS + gaussian() * 0.15 - 0.25;
+      const warm = r < 0.35;
+      dust.push({
+        r, theta, z: gaussian() * 0.02,
+        size: 0.05 + Math.random() * 0.09,
+        color: warm ? [255, 200, 150] : (Math.random() < 0.5 ? [110, 140, 255] : [170, 80, 110]),
+        alpha: warm ? 0.09 : 0.06
+      });
+    }
+  }
+
+  // Faint background galaxies
+  const bgGalaxies = [];
+  function buildBackground() {
+    for (let i = 0; i < BG_GALAXIES; i++) {
+      bgGalaxies.push({
+        x: Math.random(), y: Math.random(),
+        size: 6 + Math.random() * 22,
+        rot: Math.random() * Math.PI,
+        squash: 0.25 + Math.random() * 0.6,
+        hue: Math.random() < 0.6 ? [230, 220, 200] : [180, 190, 240],
+        alpha: 0.12 + Math.random() * 0.2
+      });
+    }
+  }
+  const stars = [];
+  function buildStars() {
+    for (let i = 0; i < 260; i++) {
+      stars.push({ x: Math.random(), y: Math.random(), s: Math.random() * 1.4 + 0.2, a: 0.2 + Math.random() * 0.6 });
+    }
+  }
+
+  // Offscreen background layer (stars + distant galaxies), redrawn on resize only
+  const bgCanvas = document.createElement('canvas');
+  const bgCtx = bgCanvas.getContext('2d');
+  function drawBackground() {
+    bgCanvas.width = W * DPR; bgCanvas.height = H * DPR;
+    bgCtx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    bgCtx.fillStyle = '#000';
+    bgCtx.fillRect(0, 0, W, H);
+    for (const s of stars) {
+      bgCtx.fillStyle = `rgba(220,228,255,${s.a})`;
+      bgCtx.beginPath();
+      bgCtx.arc(s.x * W, s.y * H, s.s, 0, Math.PI * 2);
+      bgCtx.fill();
+    }
+    for (const g of bgGalaxies) {
+      bgCtx.save();
+      bgCtx.translate(g.x * W, g.y * H);
+      bgCtx.rotate(g.rot);
+      bgCtx.scale(1, g.squash);
+      const grad = bgCtx.createRadialGradient(0, 0, 0, 0, 0, g.size);
+      grad.addColorStop(0, `rgba(${g.hue[0]},${g.hue[1]},${g.hue[2]},${g.alpha})`);
+      grad.addColorStop(0.4, `rgba(${g.hue[0]},${g.hue[1]},${g.hue[2]},${g.alpha * 0.35})`);
+      grad.addColorStop(1, 'rgba(0,0,0,0)');
+      bgCtx.fillStyle = grad;
+      bgCtx.beginPath();
+      bgCtx.arc(0, 0, g.size, 0, Math.PI * 2);
+      bgCtx.fill();
+      bgCtx.restore();
+    }
+  }
+
+  // Pre-rendered glow sprite for additive particle rendering
+  const sprite = document.createElement('canvas');
+  function buildSprite() {
+    const S = 32;
+    sprite.width = S; sprite.height = S;
+    const sctx = sprite.getContext('2d');
+    const g = sctx.createRadialGradient(S / 2, S / 2, 0, S / 2, S / 2, S / 2);
+    g.addColorStop(0, 'rgba(255,255,255,1)');
+    g.addColorStop(0.25, 'rgba(255,255,255,0.55)');
+    g.addColorStop(0.6, 'rgba(255,255,255,0.12)');
+    g.addColorStop(1, 'rgba(255,255,255,0)');
+    sctx.fillStyle = g;
+    sctx.fillRect(0, 0, S, S);
+  }
+
+  function resize() {
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth; H = window.innerHeight;
+    canvas.width = Math.floor(W * DPR);
+    canvas.height = Math.floor(H * DPR);
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    drawBackground();
+  }
+
+  // ---------- Render ----------
+  const tintCache = new Map();
+  function tinted(r, g, b) {
+    const key = (r << 16) | (g << 8) | b;
+    let c = tintCache.get(key);
+    if (c) return c;
+    c = document.createElement('canvas');
+    c.width = 32; c.height = 32;
+    const cc = c.getContext('2d');
+    cc.drawImage(sprite, 0, 0);
+    cc.globalCompositeOperation = 'multiply';
+    cc.fillStyle = `rgb(${r},${g},${b})`;
+    cc.fillRect(0, 0, 32, 32);
+    cc.globalCompositeOperation = 'destination-in';
+    cc.drawImage(sprite, 0, 0);
+    tintCache.set(key, c);
+    return c;
+  }
+
+  // Quantize colors to keep the tint cache small
+  function q(v) { return Math.round(v / 24) * 24; }
+
+  function project(r, theta, z, out) {
+    const x = Math.cos(theta) * r;
+    const y = Math.sin(theta) * r;
+    // yaw around Z (in-plane), then tilt around X
+    const cy = Math.cos(yaw), sy = Math.sin(yaw);
+    const xr = x * cy - y * sy;
+    const yr = x * sy + y * cy;
+    const ct = Math.cos(tilt), st = Math.sin(tilt);
+    const y2 = yr * ct - z * st;
+    const z2 = yr * st + z * ct;
+    out[0] = xr; out[1] = y2; out[2] = z2;
+  }
+
+  const tmp = [0, 0, 0];
+  let lastT = performance.now();
+
+  function frame(now) {
+    const dt = Math.min(0.05, (now - lastT) / 1000);
+    lastT = now;
+    if (!paused && !reduceMotion) time += dt;
+    zoom += (targetZoom - zoom) * 0.12;
+
+    const scale = Math.min(W, H) * 0.42 * zoom;
+    const cx = W / 2, cy = H / 2;
+
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.clearRect(0, 0, W, H);
+    ctx.drawImage(bgCanvas, 0, 0, W, H);
+
+    ctx.globalCompositeOperation = 'lighter';
+
+    // Dust layer (soft blurred radial gradients, additive)
+    for (const d of dust) {
+      const omega = 0.35 / (0.25 + d.r);
+      project(d.r, d.theta + time * omega, d.z, tmp);
+      const sx = cx + tmp[0] * scale, sy = cy + tmp[1] * scale;
+      const sz = d.size * scale * (0.6 + 0.4 * Math.cos(tilt));
+      if (sz < 2) continue;
+      const g = ctx.createRadialGradient(sx, sy, 0, sx, sy, sz);
+      g.addColorStop(0, `rgba(${d.color[0]},${d.color[1]},${d.color[2]},${d.alpha})`);
+      g.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = g;
+      ctx.beginPath();
+      ctx.ellipse(sx, sy, sz, sz * (0.4 + 0.6 * Math.abs(Math.cos(tilt))), 0, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // Core glow
+    const coreR = scale * 0.16;
+    const cg = ctx.createRadialGradient(cx, cy, 0, cx, cy, coreR);
+    cg.addColorStop(0, 'rgba(255,240,205,0.55)');
+    cg.addColorStop(0.35, 'rgba(255,215,160,0.22)');
+    cg.addColorStop(1, 'rgba(255,190,120,0)');
+    ctx.fillStyle = cg;
+    ctx.beginPath();
+    ctx.ellipse(cx, cy, coreR, coreR * (0.5 + 0.5 * Math.abs(Math.cos(tilt))), 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Particles with differential rotation: omega ~ 1/(r + eps)
+    const sizeMul = Math.max(0.5, Math.sqrt(zoom));
+    for (let i = 0; i < COUNT; i++) {
+      const r = px[i];
+      const omega = 0.35 / (0.25 + r);
+      project(r, pa[i] + time * omega, pz[i], tmp);
+      const sx = cx + tmp[0] * scale;
+      const sy = cy + tmp[1] * scale;
+      if (sx < -8 || sx > W + 8 || sy < -8 || sy > H + 8) continue;
+      const depthBoost = 1 + tmp[2] * 0.4;
+      const s = ps[i] * sizeMul * depthBoost * 3.2;
+      ctx.globalAlpha = pbright[i] * Math.min(1, 0.6 + zoom * 0.25);
+      ctx.drawImage(tinted(q(pr[i]), q(pg[i]), q(pb[i])), sx - s / 2, sy - s / 2, s, s);
+    }
+    ctx.globalAlpha = 1;
+    ctx.globalCompositeOperation = 'source-over';
+
+    updateHud();
+    requestAnimationFrame(frame);
+  }
+
+  // ---------- HUD ----------
+  const els = {
+    particles: document.getElementById('s-particles'),
+    distance: document.getElementById('s-distance'),
+    diameter: document.getElementById('s-diameter'),
+    tilt: document.getElementById('s-tilt'),
+    zoom: document.getElementById('s-zoom'),
+    needle: document.getElementById('needle')
+  };
+  const target = { particles: COUNT, distance: 41.2, diameter: 103 };
+  const shown = { particles: 0, distance: 0, diameter: 0 };
+  const startTime = performance.now();
+  const easeOut = t => 1 - Math.pow(1 - t, 4);
+
+  function updateHud() {
+    const t = Math.min(1, (performance.now() - startTime - 1000) / 3200);
+    if (t > 0) {
+      const e = easeOut(t);
+      shown.particles = Math.round(target.particles * e);
+      shown.distance = target.distance * e;
+      shown.diameter = target.diameter * e;
+      els.particles.textContent = shown.particles.toLocaleString('en-US');
+      els.distance.innerHTML = shown.distance.toFixed(1) + '<small>Mly</small>';
+      els.diameter.innerHTML = Math.round(shown.diameter) + '<small>kly</small>';
+    }
+    els.tilt.innerHTML = Math.round(tilt * 180 / Math.PI) + '<small>°</small>';
+    els.zoom.innerHTML = zoom.toFixed(2) + '<small>×</small>';
+    els.needle.style.transform = `rotate(${yaw}rad)`;
+  }
+
+  // ---------- Interaction ----------
+  let dragging = false, lastX = 0, lastY = 0;
+  let pinchDist = 0;
+
+  canvas.addEventListener('pointerdown', e => {
+    dragging = true; lastX = e.clientX; lastY = e.clientY;
+    canvas.classList.add('dragging');
+    canvas.setPointerCapture(e.pointerId);
+  });
+  canvas.addEventListener('pointermove', e => {
+    if (!dragging) return;
+    const dx = e.clientX - lastX, dy = e.clientY - lastY;
+    lastX = e.clientX; lastY = e.clientY;
+    yaw += dx * 0.005;
+    tilt = Math.max(0.02, Math.min(Math.PI / 2 - 0.02, tilt + dy * 0.005));
+  });
+  const endDrag = () => { dragging = false; canvas.classList.remove('dragging'); };
+  canvas.addEventListener('pointerup', endDrag);
+  canvas.addEventListener('pointercancel', endDrag);
+
+  canvas.addEventListener('wheel', e => {
+    e.preventDefault();
+    const f = Math.exp(-e.deltaY * 0.0012);
+    targetZoom = Math.max(0.35, Math.min(6, targetZoom * f));
+  }, { passive: false });
+
+  canvas.addEventListener('touchstart', e => {
+    if (e.touches.length === 2) pinchDist = Math.hypot(
+      e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+  }, { passive: true });
+  canvas.addEventListener('touchmove', e => {
+    if (e.touches.length === 2) {
+      const d = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+      if (pinchDist) targetZoom = Math.max(0.35, Math.min(6, targetZoom * (d / pinchDist)));
+      pinchDist = d;
+      dragging = false;
+    }
+  }, { passive: true });
+
+  const pauseBtn = document.getElementById('btn-pause');
+  function togglePause() {
+    paused = !paused;
+    pauseBtn.setAttribute('aria-pressed', String(paused));
+    pauseBtn.textContent = paused ? '▶' : '‖';
+  }
+  pauseBtn.addEventListener('click', togglePause);
+  document.getElementById('btn-zoom-in').addEventListener('click', () => { targetZoom = Math.min(6, targetZoom * 1.3); });
+  document.getElementById('btn-zoom-out').addEventListener('click', () => { targetZoom = Math.max(0.35, targetZoom / 1.3); });
+  document.getElementById('btn-reset').addEventListener('click', () => { tilt = DEFAULTS.tilt; yaw = DEFAULTS.yaw; targetZoom = DEFAULTS.zoom; });
+  window.addEventListener('keydown', e => {
+    if (e.code === 'Space') { e.preventDefault(); togglePause(); }
+  });
+
+  window.addEventListener('resize', resize);
+
+  // ---------- Boot ----------
+  buildSprite();
+  buildGalaxy();
+  buildDust();
+  buildBackground();
+  buildStars();
+  resize();
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

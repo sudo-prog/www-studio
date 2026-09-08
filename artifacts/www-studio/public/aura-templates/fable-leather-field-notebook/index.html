@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Field Notebook — The Saltmarsh Walk</title>
+<style>
+  :root {
+    --leather-1: #6b3a1e;
+    --leather-2: #4a2410;
+    --leather-3: #2e1608;
+    --thread: #d9b98a;
+    --cream: #f4ead6;
+    --cream-2: #eadfc6;
+    --rule: rgba(120, 150, 190, 0.35);
+    --ink: #1f3a6e;
+    --ink-soft: #35507f;
+    --pencil: #5a5148;
+    --band: #2b2b2b;
+    --desk: #2a2118;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    font-family: Georgia, 'Iowan Old Style', 'Palatino Linotype', Palatino, ui-serif, serif;
+    background:
+      radial-gradient(ellipse at 50% 20%, rgba(255, 220, 160, 0.10), transparent 60%),
+      repeating-linear-gradient(90deg, rgba(0,0,0,0.05) 0 2px, transparent 2px 9px),
+      linear-gradient(180deg, #3a2d20, var(--desk) 60%, #1c150e);
+    color: #e9dcc4;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 12px 48px;
+    overflow-x: hidden;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 18px;
+    opacity: 0.85;
+  }
+  header h1 {
+    font-weight: normal;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    margin: 0 0 6px;
+  }
+  header p {
+    margin: 0;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #c9b696;
+  }
+
+  .scene {
+    perspective: 2200px;
+    perspective-origin: 50% 45%;
+    width: min(92vw, 1080px);
+    aspect-ratio: 1.42 / 1;
+    max-height: 78vh;
+    position: relative;
+  }
+  .book {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+    transition: transform 1.2s cubic-bezier(.65,.05,.36,1);
+    transform: translateX(-25%) rotateX(4deg);
+  }
+  .book.open { transform: translateX(0) rotateX(4deg); }
+
+  .desk-shadow {
+    position: absolute;
+    left: 5%; right: 5%; bottom: -6%;
+    height: 14%;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.55), transparent 70%);
+    filter: blur(8px);
+    transform: translateZ(-40px);
+  }
+
+  /* Back cover: always visible under pages */
+  .cover-back {
+    position: absolute;
+    inset: 0;
+    border-radius: 10px 22px 22px 10px;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(255,200,140,0.18), transparent 50%),
+      repeating-radial-gradient(circle at 20% 30%, rgba(0,0,0,0.05) 0 1px, transparent 1px 4px),
+      linear-gradient(160deg, var(--leather-1), var(--leather-2) 55%, var(--leather-3));
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 0 40px rgba(0,0,0,0.4);
+    transform: translateZ(-6px);
+  }
+  .cover-back::after {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 2px dashed var(--thread);
+    border-radius: 6px 16px 16px 6px;
+    opacity: 0.55;
+  }
+
+  /* Right-hand page stack */
+  .stack {
+    position: absolute;
+    top: 2.2%; bottom: 2.2%;
+    left: 50%; right: 2.2%;
+    background: var(--cream-2);
+    border-radius: 0 6px 6px 0;
+    box-shadow: inset -14px 0 20px -14px rgba(0,0,0,0.3);
+    transform: translateZ(0);
+  }
+  .stack::before {
+    content: "";
+    position: absolute;
+    right: -6px; top: 6px; bottom: 6px; width: 6px;
+    background: repeating-linear-gradient(180deg, #ddd2ba 0 1px, #f7efdc 1px 3px);
+    border-radius: 0 3px 3px 0;
+  }
+  .stack-left {
+    position: absolute;
+    top: 2.2%; bottom: 2.2%;
+    left: 2.2%; right: 50%;
+    background: var(--cream-2);
+    border-radius: 6px 0 0 6px;
+    box-shadow: inset 14px 0 20px -14px rgba(0,0,0,0.3);
+  }
+
+  /* Sheets: each sheet has front (right page) and back (next left page) */
+  .sheet {
+    position: absolute;
+    top: 2.2%; bottom: 2.2%;
+    left: 50%; right: 2.2%;
+    transform-origin: left center;
+    transform-style: preserve-3d;
+    transition: transform 1.1s cubic-bezier(.55,.05,.3,1);
+    cursor: pointer;
+  }
+  .sheet.turned { transform: rotateY(-180deg); }
+  .face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    background:
+      repeating-linear-gradient(180deg, transparent 0 27px, var(--rule) 27px 28px),
+      radial-gradient(ellipse at 70% 100%, rgba(120,90,50,0.10), transparent 60%),
+      linear-gradient(180deg, #f6eedb, var(--cream) 50%, #efe4cc);
+    background-position: 0 58px, 0 0, 0 0;
+    overflow: hidden;
+    padding: 5.5% 6% 5% 7%;
+    color: var(--ink);
+  }
+  .face.front {
+    border-radius: 0 6px 6px 0;
+    box-shadow: inset 24px 0 30px -24px rgba(60,40,20,0.45);
+  }
+  .face.back {
+    transform: rotateY(180deg);
+    border-radius: 6px 0 0 6px;
+    box-shadow: inset -24px 0 30px -24px rgba(60,40,20,0.45);
+    padding: 5.5% 7% 5% 6%;
+  }
+  .face::before {
+    content: "";
+    position: absolute;
+    left: 9%; top: 0; bottom: 0; width: 1px;
+    background: rgba(200, 90, 90, 0.35);
+  }
+  .face.back::before { left: auto; right: 9%; }
+
+  /* Page curl shadow that sweeps as the sheet turns */
+  .curl {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(90deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.28) 100%);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .sheet.turning .curl { opacity: 1; }
+
+  .corner-hint {
+    position: absolute;
+    right: 0; bottom: 0;
+    width: 60px; height: 60px;
+    background: linear-gradient(225deg, #d8ccb0 0 50%, transparent 50%);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    opacity: 0.6;
+    transition: width .3s, height .3s, opacity .3s;
+  }
+  .sheet:hover .corner-hint { width: 84px; height: 84px; opacity: 0.9; }
+  .face.back .corner-hint { right: auto; left: 0; transform: scaleX(-1); }
+
+  /* Handwriting */
+  .hand {
+    font-family: 'Segoe Script', 'Bradley Hand', 'Brush Script MT', 'Snell Roundhand', 'Apple Chancery', 'Lucida Handwriting', 'Comic Sans MS', cursive;
+    font-size: clamp(0.72rem, 1.45vw, 1.05rem);
+    line-height: 28px;
+    color: var(--ink);
+    margin: 0;
+    transform: rotate(-0.6deg);
+    text-shadow: 0 0 0.4px rgba(31,58,110,0.6);
+  }
+  .hand + .hand { margin-top: 0; }
+  .hand.tilt { transform: rotate(0.7deg); }
+  .hand.date {
+    color: var(--ink-soft);
+    font-size: clamp(0.85rem, 1.7vw, 1.25rem);
+    margin-bottom: 4px;
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: rgba(31,58,110,0.35);
+  }
+  .pencil { color: var(--pencil); font-style: italic; }
+  .face .cover-title {
+    font-family: Georgia, 'Iowan Old Style', serif;
+    color: #3d2a16;
+    font-size: clamp(1.1rem, 2.4vw, 1.8rem);
+    letter-spacing: 0.08em;
+    margin: 0 0 6px;
+  }
+
+  /* Ephemera */
+  .flower {
+    position: absolute;
+    filter: drop-shadow(1px 2px 1px rgba(60,40,20,0.25));
+    pointer-events: none;
+  }
+  .polaroid {
+    position: absolute;
+    width: 30%;
+    aspect-ratio: 0.84 / 1;
+    background: #fbf9f4;
+    padding: 6% 6% 16%;
+    box-shadow: 0 6px 14px rgba(40,25,10,0.35), 0 1px 0 #d9d2c2;
+    transform: rotate(-5deg);
+    transition: transform .5s cubic-bezier(.2,.8,.2,1.2);
+  }
+  .polaroid:hover { transform: rotate(-2deg) scale(1.04); z-index: 4; }
+  .polaroid .photo {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background:
+      radial-gradient(circle at 70% 25%, rgba(255,240,200,0.9) 0 6%, transparent 7%),
+      linear-gradient(180deg, #8ec5e8 0%, #c8e2f0 42%, #f2d5a3 55%, #3f6b7a 56%, #2d4f5a 72%, #cbb58c 73%, #b9a27a 100%);
+  }
+  .polaroid .caption {
+    position: absolute;
+    left: 0; right: 0; bottom: 4%;
+    text-align: center;
+    font-family: 'Segoe Script', 'Bradley Hand', cursive;
+    font-size: clamp(0.6rem, 1.1vw, 0.85rem);
+    color: #2b3d66;
+  }
+  .tape {
+    position: absolute;
+    width: 26%; height: 9%;
+    background: rgba(255, 245, 200, 0.55);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.12);
+    backdrop-filter: blur(0.5px);
+    left: 37%; top: -4%;
+    transform: rotate(3deg);
+    border-left: 1px dashed rgba(255,255,255,0.6);
+    border-right: 1px dashed rgba(255,255,255,0.6);
+  }
+  .coffee {
+    position: absolute;
+    border-radius: 50%;
+    border: 6px solid rgba(120, 75, 30, 0.22);
+    box-shadow: 0 0 0 2px rgba(120,75,30,0.08), inset 0 0 0 3px rgba(120,75,30,0.10);
+    pointer-events: none;
+    mix-blend-mode: multiply;
+  }
+  .coffee::after {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 2px solid rgba(120,75,30,0.12);
+    border-left-color: transparent;
+    border-top-color: transparent;
+  }
+  .blot {
+    position: absolute;
+    width: 9px; height: 9px;
+    border-radius: 60% 40% 55% 45%;
+    background: var(--ink);
+    opacity: 0.55;
+  }
+
+  /* Front cover */
+  .cover-front {
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 50%;
+    transform-origin: right center;
+    transform-style: preserve-3d;
+    transition: transform 1.2s cubic-bezier(.65,.05,.36,1);
+    z-index: 20;
+    cursor: pointer;
+  }
+  .book.open .cover-front { transform: rotateY(-178deg); }
+  .cover-front .outside, .cover-front .inside {
+    position: absolute; inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  .cover-front .outside {
+    border-radius: 10px 4px 4px 10px;
+    background:
+      radial-gradient(ellipse at 25% 15%, rgba(255,210,150,0.22), transparent 45%),
+      radial-gradient(ellipse at 80% 90%, rgba(0,0,0,0.35), transparent 50%),
+      repeating-radial-gradient(circle at 40% 60%, rgba(0,0,0,0.045) 0 1px, transparent 1px 5px),
+      repeating-linear-gradient(115deg, rgba(255,255,255,0.03) 0 3px, transparent 3px 11px),
+      linear-gradient(150deg, #7a4423, var(--leather-1) 40%, var(--leather-2) 75%, var(--leather-3));
+    box-shadow: 0 20px 50px rgba(0,0,0,0.55), inset 0 0 60px rgba(0,0,0,0.35), inset 2px 2px 3px rgba(255,220,180,0.15);
+    transform: rotateY(0deg) translateZ(2px);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .cover-front .outside::before {
+    content: "";
+    position: absolute;
+    inset: 12px 8px 12px 12px;
+    border: 2px dashed var(--thread);
+    border-radius: 6px 3px 3px 6px;
+    opacity: 0.6;
+  }
+  .scuff {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(230,190,140,0.18), transparent 70%);
+    pointer-events: none;
+  }
+  .emboss {
+    text-align: center;
+    padding: 0 10%;
+    transform: translateZ(1px);
+  }
+  .emboss h2 {
+    font-family: Georgia, 'Iowan Old Style', serif;
+    font-weight: normal;
+    font-size: clamp(1.2rem, 3.2vw, 2.6rem);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin: 0;
+    color: #3a1d0a;
+    text-shadow: 1px 1px 0 rgba(255,215,170,0.35), -1px -1px 1px rgba(0,0,0,0.7);
+  }
+  .emboss .sub {
+    display: block;
+    margin-top: 10px;
+    font-size: clamp(0.6rem, 1.2vw, 0.85rem);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: #3a1d0a;
+    text-shadow: 1px 1px 0 rgba(255,215,170,0.3), -1px -1px 1px rgba(0,0,0,0.6);
+  }
+  .emboss .ornament {
+    width: 44%;
+    margin: 12px auto;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,215,170,0.35), transparent);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.6);
+  }
+  .cover-front .inside {
+    transform: rotateY(180deg) translateZ(2px);
+    border-radius: 10px 4px 4px 10px;
+    background:
+      radial-gradient(ellipse at 40% 50%, rgba(255,235,200,0.15), transparent 60%),
+      linear-gradient(160deg, #5a3218, #3e2110);
+    box-shadow: inset 0 0 40px rgba(0,0,0,0.45);
+  }
+  .inside .pocket {
+    position: absolute;
+    left: 8%; right: 8%; bottom: 8%;
+    height: 34%;
+    background: linear-gradient(180deg, #5f3a1f, #4b2a13);
+    border: 2px dashed var(--thread);
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.3);
+  }
+  .inside .card {
+    position: absolute;
+    left: 14%; right: 14%; bottom: 30%;
+    height: 24%;
+    background: linear-gradient(180deg, #f8f1e0, #eadfc6);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.35);
+    padding: 3% 5%;
+    font-size: clamp(0.55rem, 1.1vw, 0.8rem);
+    color: #4a3a2a;
+    font-style: italic;
+    line-height: 1.5;
+    transform: rotate(-1.2deg);
+  }
+  .inside .card b { font-style: normal; letter-spacing: .1em; font-size: .85em; }
+
+  /* Elastic band */
+  .band {
+    position: absolute;
+    top: -1.5%; bottom: -1.5%;
+    left: 41%;
+    width: 2.6%;
+    background: linear-gradient(90deg, #1a1a1a, #3a3a3a 45%, #222 55%, #111);
+    box-shadow: 2px 0 6px rgba(0,0,0,0.5), -1px 0 2px rgba(255,255,255,0.08) inset;
+    border-radius: 3px;
+    z-index: 30;
+    transition: transform 1s cubic-bezier(.65,.05,.36,1), opacity .6s;
+    transform: translateX(0) scaleY(1);
+    pointer-events: none;
+  }
+  .book.open .band { transform: translateX(-60%) scaleX(0.6) scaleY(1.04); opacity: 0; }
+
+  /* Controls */
+  .controls {
+    margin-top: 26px;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  button {
+    font: inherit;
+    background: linear-gradient(180deg, #7a5330, #58381c);
+    color: #f1e3c8;
+    border: 1px solid #a9825a;
+    border-radius: 4px;
+    padding: 8px 18px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    cursor: pointer;
+    box-shadow: 0 3px 0 #2e1608, 0 6px 12px rgba(0,0,0,0.4);
+    transition: transform .12s, box-shadow .12s;
+  }
+  button:hover { transform: translateY(-1px); box-shadow: 0 4px 0 #2e1608, 0 8px 16px rgba(0,0,0,0.45); }
+  button:active { transform: translateY(2px); box-shadow: 0 1px 0 #2e1608, 0 3px 6px rgba(0,0,0,0.4); }
+  button:disabled { opacity: .45; cursor: default; transform: none; }
+  .dots { display: flex; gap: 8px; }
+  .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: #6b5a44; border: 1px solid #a48a63;
+    transition: background .3s, transform .3s;
+  }
+  .dot.active { background: #e6c98f; transform: scale(1.25); }
+  .status { font-size: .8rem; font-style: italic; color: #c9b696; }
+
+  @media (max-width: 700px) {
+    .scene { aspect-ratio: 1.25 / 1; max-height: 60vh; }
+    .hand { line-height: 20px; }
+    .face { background-position: 0 42px, 0 0, 0 0; background-size: auto 20px, auto, auto; padding: 5% 5% 4% 6%; }
+    .polaroid { width: 36%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .book, .sheet, .cover-front, .band, .polaroid { transition-duration: 0.01s !important; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Field Notebook</h1>
+  <p>Click the cover to open. Tap a page corner to turn. Arrow keys work too.</p>
+</header>
+
+<div class="scene">
+  <div class="book" id="book">
+    <div class="desk-shadow"></div>
+    <div class="cover-back"></div>
+    <div class="stack-left"></div>
+    <div class="stack"></div>
+
+    <!-- Sheet 3 (bottom of stack, turned last) -->
+    <div class="sheet" id="sheet3" style="z-index:3" data-index="3">
+      <div class="face front">
+        <div class="coffee" style="width:26%;aspect-ratio:1;right:6%;top:4%"></div>
+        <p class="hand date">Sunday 14th — Low tide, 07:20</p>
+        <p class="hand">Back at the harbour before the town wakes. The ferry is hauled onto its slip and two men in orange are scraping barnacles off its keel, laughing about something I can't hear.</p>
+        <p class="hand tilt">Sea kale on the shingle — a great grey-green cabbage growing straight out of the stones, as if planted by someone with a sense of humour.</p>
+        <p class="hand">Skimmed nine stones. One went eleven bounces. Nobody saw it, so I'm recording it here as fact.</p>
+        <p class="hand pencil">Total walked this weekend: 31.4 miles (the map says 29, my feet disagree).</p>
+        <div class="blot" style="left:62%;top:56%"></div>
+        <div class="curl"></div>
+        <div class="corner-hint"></div>
+      </div>
+      <div class="face back">
+        <p class="hand date">Things to remember</p>
+        <p class="hand">— The smell of the boathouse: tar, rope, and pencil shavings.</p>
+        <p class="hand tilt">— Mrs Alder's sign: "CRABS. KNOCK LOUDLY. I AM OLD."</p>
+        <p class="hand">— That the tide tables were right and I was wrong, twice.</p>
+        <p class="hand">— To come back in October, when the geese arrive and the chip shop closes and the marsh belongs to the birds again.</p>
+        <svg class="flower" viewBox="0 0 120 160" width="30%" style="right:6%;bottom:6%;position:absolute" role="img" aria-label="pressed thrift flower">
+          <path d="M60 156 C58 120 55 90 62 60" stroke="#6e7d45" stroke-width="2.2" fill="none"/>
+          <g fill="#c98aa6" opacity="0.9">
+            <circle cx="62" cy="54" r="9"/><circle cx="52" cy="46" r="8"/><circle cx="72" cy="46" r="8"/>
+            <circle cx="56" cy="36" r="8"/><circle cx="68" cy="36" r="8"/><circle cx="62" cy="28" r="7"/>
+          </g>
+          <g fill="#e9c1d3" opacity="0.8"><circle cx="62" cy="44" r="3"/><circle cx="58" cy="52" r="2.5"/><circle cx="66" cy="34" r="2.5"/></g>
+          <path d="M60 130 C40 128 30 118 34 104" stroke="#6e7d45" stroke-width="1.8" fill="none"/>
+          <path d="M34 104 C30 96 40 90 44 100 C46 108 40 110 34 104Z" fill="#8a9a55" opacity=".85"/>
+        </svg>
+        <div class="curl"></div>
+        <div class="corner-hint"></div>
+      </div>
+    </div>
+
+    <!-- Sheet 2 -->
+    <div class="sheet" id="sheet2" style="z-index:4" data-index="2">
+      <div class="face front">
+        <p class="hand date">Saturday 13th, cont. — Saltmarsh</p>
+        <p class="hand">The path gave up at the sluice gate and became a suggestion. Followed the line of fence posts, each wearing a cormorant like a hat.</p>
+        <p class="hand tilt">Redshank calling — a nervous, tumbling whistle. Curlew further out, sounding like the marsh itself is sighing.</p>
+        <p class="hand">Found a whole razor shell, unbroken, 19cm. Kept it. Found a bicycle wheel. Did not keep it.</p>
+        <p class="hand">The light at four o'clock turned every creek to pewter. Sat on a lump of concrete that had once meant something and ate the last of the ginger cake.</p>
+        <div class="blot" style="left:30%;top:78%;width:6px;height:6px"></div>
+        <div class="curl"></div>
+        <div class="corner-hint"></div>
+      </div>
+      <div class="face back">
+        <div class="coffee" style="width:22%;aspect-ratio:1;left:4%;bottom:8%"></div>
+        <p class="hand date">Sketch — Purple sea lavender</p>
+        <p class="hand">Not a lavender at all, apparently. Grows in sheets across the upper marsh so that the whole ground goes violet for August. Pressed a spray between the tide tables.</p>
+        <svg class="flower" viewBox="0 0 200 220" width="46%" style="right:4%;top:28%;position:absolute" role="img" aria-label="pressed sea lavender">
+          <path d="M100 215 C98 170 92 130 100 90" stroke="#5f6b3c" stroke-width="2.4" fill="none"/>
+          <path d="M100 130 C120 120 140 100 150 80" stroke="#5f6b3c" stroke-width="1.8" fill="none"/>
+          <path d="M100 112 C80 100 62 82 58 62" stroke="#5f6b3c" stroke-width="1.8" fill="none"/>
+          <path d="M100 90 C104 70 108 50 112 30" stroke="#5f6b3c" stroke-width="1.8" fill="none"/>
+          <g fill="#8a6bb5" opacity=".85">
+            <circle cx="150" cy="78" r="5"/><circle cx="158" cy="70" r="4.5"/><circle cx="145" cy="68" r="4"/><circle cx="162" cy="82" r="4"/>
+            <circle cx="58" cy="60" r="5"/><circle cx="50" cy="54" r="4.5"/><circle cx="64" cy="50" r="4"/><circle cx="46" cy="64" r="4"/>
+            <circle cx="112" cy="28" r="5"/><circle cx="118" cy="20" r="4.5"/><circle cx="106" cy="19" r="4"/><circle cx="120" cy="34" r="4"/>
+            <circle cx="132" cy="104" r="4"/><circle cx="78" cy="94" r="4"/><circle cx="106" cy="58" r="4"/>
+          </g>
+          <g fill="#c5b0e0" opacity=".8">
+            <circle cx="152" cy="76" r="1.8"/><circle cx="58" cy="58" r="1.8"/><circle cx="112" cy="26" r="1.8"/>
+          </g>
+          <path d="M100 200 C80 196 70 184 74 170 C82 166 96 176 100 200Z" fill="#7d8a4e" opacity=".8"/>
+        </svg>
+        <p class="hand pencil" style="position:absolute;bottom:8%;right:8%;max-width:45%">Limonium vulgare — flowers July to Sept. Note the stiff, papery calyx.</p>
+        <div class="curl"></div>
+        <div class="corner-hint"></div>
+      </div>
+    </div>
+
+    <!-- Sheet 1 (top of stack, turned first) -->
+    <div class="sheet" id="sheet1" style="z-index:5" data-index="1">
+      <div class="face front">
+        <p class="hand date">Saturday 13th September — Harbour to the Point</p>
+        <p class="hand">Left the cottage at 06:40 with the kettle still ticking. Mist on the estuary so thick the moored boats looked like they were hanging in the air.</p>
+        <p class="hand tilt">First bird: a little egret, standing on one leg in the channel like it had been left there overnight. Then oystercatchers, dozens, all complaining at once.</p>
+        <p class="hand">The old lifeboat house has lost another window. Someone has painted a small yellow sun on the door.</p>
+        <p class="hand">Tide turning around nine. Walked the shingle spit as far as the wreck ribs, which look more like a whale every year.</p>
+        <div class="polaroid" style="right:5%;bottom:5%">
+          <div class="tape"></div>
+          <div class="photo"></div>
+          <div class="caption">the spit, 09:12 — mist lifting</div>
+        </div>
+        <div class="curl"></div>
+        <div class="corner-hint"></div>
+      </div>
+      <div class="face back">
+        <p class="hand date">Noon — The Point</p>
+        <p class="hand">Wind picked up from the south-west. Ate a cheese and pickle sandwich in the lee of the coastguard hut, which smells of creosote and warm brick.</p>
+        <p class="hand tilt">Seals on the far bank, eleven of them, arranged like commas. One rolled over to look at me, decided I wasn't interesting, rolled back.</p>
+        <p class="hand">A man with a metal detector said he'd found a Victorian button and forty years of ring-pulls. He seemed content with both.</p>
+        <p class="hand pencil">Note: buy new laces. Left boot now held on by optimism.</p>
+        <svg class="flower" viewBox="0 0 120 140" width="26%" style="right:8%;bottom:4%;position:absolute" role="img" aria-label="pressed yellow horned poppy">
+          <path d="M60 138 C56 110 60 80 62 62" stroke="#6e7d45" stroke-width="2" fill="none"/>
+          <g fill="#e8c343" opacity=".9">
+            <ellipse cx="62" cy="40" rx="14" ry="20" transform="rotate(-30 62 40)"/>
+            <ellipse cx="62" cy="40" rx="14" ry="20" transform="rotate(30 62 40)"/>
+            <ellipse cx="62" cy="40" rx="14" ry="20" transform="rotate(90 62 40)"/>
+            <ellipse cx="62" cy="40" rx="14" ry="20" transform="rotate(150 62 40)"/>
+          </g>
+          <circle cx="62" cy="42" r="5" fill="#8a6a1e"/>
+          <path d="M60 110 C45 106 36 96 40 84" stroke="#6e7d45" stroke-width="1.6" fill="none"/>
+          <path d="M40 84 C34 76 46 70 50 80 C52 88 46 92 40 84Z" fill="#8fa06a" opacity=".85"/>
+        </svg>
+        <div class="curl"></div>
+        <div class="corner-hint"></div>
+      </div>
+    </div>
+
+    <div class="band"></div>
+
+    <div class="cover-front" id="cover">
+      <div class="outside">
+        <div class="scuff" style="width:40%;height:18%;left:55%;top:70%"></div>
+        <div class="scuff" style="width:20%;height:12%;left:8%;top:12%"></div>
+        <div class="emboss">
+          <h2>Field Notes</h2>
+          <div class="ornament"></div>
+          <span class="sub">The Saltmarsh Walk · Vol. III</span>
+        </div>
+      </div>
+      <div class="inside">
+        <div class="pocket"></div>
+        <div class="card">
+          <b>IF FOUND</b><br>
+          Please return to the blue cottage by the ferry slip. Reward: a pot of tea and the full story of the razor shell.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="controls">
+  <button id="prev" disabled>◄ Back</button>
+  <div class="dots" id="dots"></div>
+  <button id="next">Open ►</button>
+  <span class="status" id="status">Closed</span>
+</div>
+
+<script>
+(function () {
+  const book = document.getElementById('book');
+  const cover = document.getElementById('cover');
+  const sheets = [1, 2, 3].map(n => document.getElementById('sheet' + n));
+  const prev = document.getElementById('prev');
+  const next = document.getElementById('next');
+  const status = document.getElementById('status');
+  const dotsWrap = document.getElementById('dots');
+
+  // state: 0 = closed, 1..4 = spreads (spread k shows sheet k-1 turned)
+  let state = 0;
+  const labels = ['Closed', 'Spread 1 — Harbour to the Point', 'Spread 2 — The Point / Saltmarsh', 'Spread 3 — Sea lavender / Low tide', 'Spread 4 — Things to remember'];
+
+  for (let i = 0; i <= 4; i++) {
+    const d = document.createElement('div');
+    d.className = 'dot';
+    d.title = labels[i];
+    dotsWrap.appendChild(d);
+  }
+  const dots = Array.from(dotsWrap.children);
+
+  function markTurning(sheet) {
+    sheet.classList.add('turning');
+    setTimeout(() => sheet.classList.remove('turning'), 1100);
+  }
+
+  function render() {
+    book.style.transform = '';
+    book.classList.toggle('open', state > 0);
+    sheets.forEach((s, i) => {
+      const shouldTurn = state > i + 1;
+      if (s.classList.contains('turned') !== shouldTurn) markTurning(s);
+      s.classList.toggle('turned', shouldTurn);
+      // keep z-order sensible: turned sheets stack on the left in turn order
+      s.style.zIndex = shouldTurn ? (3 + i) : (5 - i);
+    });
+    prev.disabled = state === 0;
+    next.disabled = state === 4;
+    next.textContent = state === 0 ? 'Open ►' : 'Next ►';
+    prev.textContent = state === 1 ? '◄ Close' : '◄ Back';
+    status.textContent = labels[state];
+    dots.forEach((d, i) => d.classList.toggle('active', i === state));
+  }
+
+  function go(delta) {
+    const n = Math.max(0, Math.min(4, state + delta));
+    if (n === state) return;
+    state = n;
+    render();
+  }
+
+  cover.addEventListener('click', () => { state = state === 0 ? 1 : 0; render(); });
+  sheets.forEach((s, i) => {
+    s.addEventListener('click', e => {
+      // clicking a right-hand (unturned) sheet advances; a turned sheet goes back
+      const turned = s.classList.contains('turned');
+      if (turned) { state = i + 1; } else { state = i + 2; }
+      render();
+      e.stopPropagation();
+    });
+  });
+  prev.addEventListener('click', () => go(-1));
+  next.addEventListener('click', () => go(1));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') go(1);
+    if (e.key === 'ArrowLeft') go(-1);
+  });
+
+  // swipe support
+  let startX = null;
+  const scene = document.querySelector('.scene');
+  scene.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+  scene.addEventListener('touchend', e => {
+    if (startX === null) return;
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+    startX = null;
+  });
+
+  // subtle tilt of the whole book following the mouse
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce) {
+    scene.addEventListener('mousemove', e => {
+      const r = scene.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      book.style.transform = (state > 0 ? 'translateX(0)' : 'translateX(-25%)') +
+        ` rotateX(${4 - y * 4}deg) rotateY(${x * 4}deg)`;
+    });
+    scene.addEventListener('mouseleave', () => { book.style.transform = ''; });
+  }
+
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vellmar Metro — Live Network Map</title>
+<style>
+  :root{
+    --paper:#f5f2ea; --paper-2:#ebe7dc; --ink:#1b1e24; --ink-2:#5a5f6b; --rule:#d5d0c4; --river:#cfe3ec;
+    --station:#ffffff; --station-stroke:#1b1e24; --panel:#ffffff; --shadow:0 10px 30px -14px rgba(20,24,32,.35);
+    --good:#1e9e5a; --delay:#f0a020;
+    --sans:ui-sans-serif,system-ui,-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,'SF Mono',Menlo,Consolas,'Courier New',monospace;
+  }
+  body.night{
+    --paper:#0f1318; --paper-2:#151a21; --ink:#e9ecf1; --ink-2:#9aa3b2; --rule:#252c36; --river:#17232e;
+    --station:#0f1318; --station-stroke:#e9ecf1; --panel:#161c24; --shadow:0 10px 30px -14px rgba(0,0,0,.8);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:500;display:flex;flex-direction:column;transition:background .5s,color .5s;min-height:100vh}
+
+  header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px clamp(14px,3vw,32px);border-bottom:2px solid var(--ink);flex-wrap:wrap}
+  .logo{display:flex;align-items:center;gap:12px}
+  .logo svg{width:40px;height:40px}
+  .logo h1{margin:0;font-size:clamp(17px,2vw,22px);letter-spacing:-.01em;font-weight:700}
+  .logo h1 small{display:block;font-size:11px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-2);margin-top:2px}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px}
+  .legend span{display:flex;align-items:center;gap:6px;cursor:pointer;padding:4px 8px;border-radius:6px;transition:background .25s}
+  .legend span:hover{background:var(--paper-2)}
+  .legend i{width:22px;height:6px;border-radius:3px;display:inline-block}
+  .toggle{font:inherit;font-size:12px;letter-spacing:.14em;text-transform:uppercase;background:var(--ink);color:var(--paper);border:0;border-radius:999px;padding:9px 16px;cursor:pointer;display:flex;gap:8px;align-items:center;transition:transform .2s,background .5s,color .5s}
+  .toggle:hover{transform:translateY(-1px)}
+  .toggle:focus-visible{outline:2px solid var(--delay);outline-offset:2px}
+  .toggle svg{width:14px;height:14px}
+
+  main{flex:1;display:grid;grid-template-columns:1fr minmax(260px,320px);gap:clamp(12px,2vw,24px);padding:clamp(12px,2vw,24px) clamp(14px,3vw,32px);min-height:0}
+  .map{position:relative;background:var(--paper-2);border-radius:14px;overflow:hidden;box-shadow:inset 0 0 0 1px var(--rule);transition:background .5s}
+  .map svg{width:100%;height:100%;display:block;font-family:var(--sans)}
+  .map .clock{position:absolute;left:14px;bottom:12px;font-family:var(--mono);font-size:12px;color:var(--ink-2);letter-spacing:.1em;font-variant-numeric:tabular-nums}
+  .map .hintbar{position:absolute;right:14px;bottom:12px;font-size:11px;color:var(--ink-2);letter-spacing:.08em}
+
+  /* SVG map elements */
+  .line{fill:none;stroke-width:9;stroke-linecap:round;stroke-linejoin:round;transition:opacity .35s,stroke-width .25s;cursor:pointer}
+  .line-hit{fill:none;stroke:transparent;stroke-width:26;stroke-linecap:round;stroke-linejoin:round;cursor:pointer}
+  .lg:hover .line{stroke-width:11}
+  .dim{opacity:.13}
+  .st{cursor:pointer}
+  .st .tick{stroke:var(--ink);stroke-width:3;stroke-linecap:round;transition:stroke .5s}
+  .st circle{fill:var(--station);stroke:var(--station-stroke);stroke-width:3.2;transition:fill .5s,stroke .5s,r .2s}
+  .st:hover circle{r:9}
+  .st text{font-size:11.5px;font-weight:500;fill:var(--ink);pointer-events:none;transition:fill .5s;paint-order:stroke;stroke:var(--paper-2);stroke-width:3px;stroke-linejoin:round}
+  .st.sel circle{stroke:var(--delay);stroke-width:4}
+  .st.sel text{font-weight:700}
+  .train{pointer-events:none;transition:opacity .35s}
+  .train circle{stroke:#fff;stroke-width:1.6}
+  .river{fill:var(--river);transition:fill .5s}
+  .grid{stroke:var(--rule);stroke-width:1;opacity:.6;transition:stroke .5s}
+  .mapname{font-size:12px;letter-spacing:.34em;text-transform:uppercase;fill:var(--ink-2);font-weight:600}
+
+  /* Side panel */
+  aside{display:flex;flex-direction:column;gap:14px;min-height:0}
+  .card{background:var(--panel);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow);border:1px solid var(--rule);transition:background .5s,border-color .5s}
+  .card h2{margin:0 0 10px;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-2);font-weight:600;display:flex;justify-content:space-between;align-items:center}
+  .status{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+  .status li{display:flex;align-items:center;gap:10px;font-size:13px;padding:7px 8px;border-radius:8px;transition:background .3s}
+  .status li:hover{background:var(--paper-2)}
+  .status i{width:10px;height:10px;border-radius:50%;flex:none}
+  .status .name{flex:1}
+  .badge{font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:color-mix(in srgb,var(--good) 15%,transparent);color:var(--good);font-weight:600}
+  .badge.delay{background:color-mix(in srgb,var(--delay) 18%,transparent);color:#b76d00;animation:pulse 1.6s ease-in-out infinite}
+  body.night .badge.delay{color:var(--delay)}
+  @keyframes pulse{50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--delay) 25%,transparent)}}
+
+  .arrivals{min-height:180px}
+  .arrivals .empty{color:var(--ink-2);font-size:13px;line-height:1.6;font-weight:400}
+  .stname{font-size:20px;font-weight:700;margin:0 0 2px;letter-spacing:-.01em}
+  .stmeta{font-size:12px;color:var(--ink-2);margin:0 0 12px;display:flex;gap:6px;flex-wrap:wrap}
+  .stmeta i{display:inline-block;width:14px;height:14px;border-radius:50%}
+  .arr{display:grid;gap:8px}
+  .arr div{display:grid;grid-template-columns:6px 1fr auto;gap:10px;align-items:center;font-size:13px;padding:6px 0;border-top:1px solid var(--rule)}
+  .arr div:first-child{border-top:0}
+  .arr i{width:6px;height:28px;border-radius:3px}
+  .arr .to{color:var(--ink-2);font-size:11.5px;font-weight:400;display:block}
+  .arr b{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:15px;font-weight:600;min-width:5ch;text-align:right}
+  .arr b.due{color:var(--good)}
+  .close{background:none;border:0;color:var(--ink-2);cursor:pointer;font-size:18px;line-height:1;padding:0 2px}
+  .close:hover{color:var(--ink)}
+  .fine{font-size:11px;color:var(--ink-2);line-height:1.6;font-weight:400;margin:0}
+
+  @media (max-width:860px){
+    main{grid-template-columns:1fr;grid-template-rows:minmax(56vh,1fr) auto}
+    .legend{display:none}
+    .map svg{height:auto;aspect-ratio:1000/740}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .badge.delay{animation:none}
+    .line,.st circle{transition:none}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">
+    <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="4"/><path d="M8 20 H32 M20 8 V32" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M12 12 L28 28" stroke="#d9363e" stroke-width="4" stroke-linecap="round"/></svg>
+    <h1>Vellmar Metro<small>Live network map</small></h1>
+  </div>
+  <div class="legend" id="legend" aria-label="Lines"></div>
+  <button class="toggle" id="night" type="button" aria-pressed="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/></svg>
+    <span>Night mode</span>
+  </button>
+</header>
+
+<main>
+  <div class="map">
+    <svg id="map" viewBox="0 0 1000 740" role="img" aria-label="Schematic map of the six Vellmar Metro lines with moving trains"></svg>
+    <div class="clock" id="clock">00:00:00</div>
+    <div class="hintbar">Hover a line · click a station</div>
+  </div>
+  <aside>
+    <section class="card">
+      <h2>Service status <span id="updated" style="font-weight:400;letter-spacing:0;text-transform:none"></span></h2>
+      <ul class="status" id="status"></ul>
+    </section>
+    <section class="card arrivals" id="arrivals">
+      <h2>Next arrivals</h2>
+      <p class="empty">Select a station on the map to see live departures for every line that calls there. Interchanges show all connecting lines.</p>
+    </section>
+    <section class="card">
+      <p class="fine">Trains are simulated. Vellmar is a fictional city; any resemblance to your commute is a coincidence and probably an improvement.</p>
+    </section>
+  </aside>
+</main>
+
+<script>
+(function(){
+  'use strict';
+  var NS='http://www.w3.org/2000/svg';
+  var svg=document.getElementById('map');
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------------- network data ---------------- */
+  var LINES=[
+    {id:'crimson',name:'Crimson',color:'#d9363e',pts:[[60,380],[300,380],[380,300],[640,300],[720,380],[940,380]],
+     stops:['westgate','harbor','foundry','tannery','central','lantern','eastbridge','orchard','sunfield']},
+    {id:'cobalt',name:'Cobalt',color:'#1f6fd6',pts:[[420,60],[420,240],[500,320],[500,560],[580,640],[700,640]],
+     stops:['northgate','kingsrow','chapel','central','university','riverside','botanic','southbank','ferry']},
+    {id:'emerald',name:'Emerald',color:'#1e9e5a',pts:[[100,660],[280,480],[460,480],[580,360],[580,60]],
+     stops:['coalpit','olddocks','saltmarsh','weavers','greenfield','meadowbrook','riverside','clocktower','lantern','museum','aurora','northfields']},
+    {id:'amber',name:'Amber',color:'#f0a020',pts:[[60,200],[200,200],[280,120],[700,120],[780,200],[940,200]],
+     stops:['silverbeck','millpond','priory','hollins','kingsrow','cathedral','aurora','ironworks','hillcrest','vale','eastmoor']},
+    {id:'violet',name:'Violet',color:'#7b4fbf',pts:[[180,680],[180,520],[260,440],[260,80]],
+     stops:['marshend','saltmarsh','ropewalk','foundry','tinsmith','abbey','priory','highfield']},
+    {id:'slate',name:'Slate',color:'#3a8c96',pts:[[940,600],[800,600],[740,540],[380,540],[300,620],[60,620]],
+     stops:['lakeshore','regatta','boathouse','glassworks','botanic','southgate','kiln','ropery','olddocks','pierhead']}
+  ];
+  // id:[x,y,name,labelDx,labelDy,anchor]
+  var ST={
+    westgate:[60,380,'Westgate Quay',0,-16,'middle'], harbor:[160,380,'Harbor Mills',0,22,'middle'], foundry:[260,380,'Foundry Square',-16,-12,'end'],
+    tannery:[340,340,'Tannery Steps',12,-8,'start'], central:[480,300,'Central Vellmar',0,-18,'middle'], lantern:[580,300,'Lantern Court',14,24,'start'],
+    eastbridge:[680,340,'Eastbridge',12,20,'start'], orchard:[800,380,'Orchard Fields',0,-16,'middle'], sunfield:[940,380,'Sunfield Terminal',0,-16,'middle'],
+    northgate:[420,60,'Northgate Observatory',12,4,'start'], kingsrow:[420,120,'Kingsrow',-16,-12,'end'], chapel:[420,200,'Chapel Hill',12,4,'start'],
+    university:[500,380,'University',12,4,'start'], riverside:[500,440,'Riverside',16,-8,'start'], botanic:[500,540,'Botanic Gardens',16,-10,'start'],
+    southbank:[620,640,'Southbank',0,24,'middle'], ferry:[700,640,'Ferry Landing',14,4,'start'],
+    coalpit:[100,660,'Coalpit Lane',0,24,'middle'], olddocks:[140,620,'Old Docks',18,-8,'start'], saltmarsh:[180,580,'Saltmarsh',18,-8,'start'],
+    weavers:[240,520,'Weaver\u2019s Row',14,-8,'start'], greenfield:[360,480,'Greenfield',0,-14,'middle'], meadowbrook:[460,480,'Meadowbrook',0,24,'middle'],
+    clocktower:[540,400,'Clocktower',12,4,'start'], museum:[580,200,'Museum Quarter',12,4,'start'], aurora:[580,120,'Aurora Park',14,-10,'start'], northfields:[580,60,'Northfields',12,4,'start'],
+    silverbeck:[60,200,'Silverbeck',0,-16,'middle'], millpond:[140,200,'Mill Pond',0,22,'middle'], priory:[260,140,'Priory Gate',-16,-10,'end'],
+    hollins:[340,120,'Hollins',0,-14,'middle'], cathedral:[500,120,'Cathedral',0,-14,'middle'], ironworks:[660,120,'Ironworks',0,-14,'middle'],
+    hillcrest:[740,160,'Hillcrest',14,4,'start'], vale:[860,200,'Vale Road',0,22,'middle'], eastmoor:[940,200,'Eastmoor Terminal',0,-16,'middle'],
+    marshend:[180,680,'Marsh End',14,4,'start'], ropewalk:[220,480,'Rope Walk',-14,-4,'end'], tinsmith:[260,280,'Tinsmith Lane',12,4,'start'],
+    abbey:[260,200,'Abbey',12,4,'start'], highfield:[260,80,'Highfield',12,4,'start'],
+    lakeshore:[940,600,'Lakeshore',0,-16,'middle'], regatta:[860,600,'Regatta',0,22,'middle'], boathouse:[770,570,'Boathouse',12,18,'start'],
+    glassworks:[640,540,'Glassworks',0,22,'middle'], southgate:[420,540,'Southgate',0,22,'middle'], kiln:[340,580,'Kiln Street',12,14,'start'],
+    ropery:[220,620,'Ropery',0,22,'middle'], pierhead:[60,620,'Pier Head',0,-16,'middle']
+  };
+  var stationLines={}; LINES.forEach(function(L){ L.stops.forEach(function(s){ (stationLines[s]=stationLines[s]||[]).push(L.id); }); });
+  var lineById={}; LINES.forEach(function(L){ lineById[L.id]=L; });
+
+  function el(tag,attrs,parent){ var e=document.createElementNS(NS,tag); for(var k in attrs) e.setAttribute(k,attrs[k]); if(parent) parent.appendChild(e); return e; }
+  function pathD(pts){ return pts.map(function(p,i){ return (i?'L':'M')+p[0]+' '+p[1]; }).join(' '); }
+
+  /* ---------------- background ---------------- */
+  var gBg=el('g',{},svg);
+  for(var gx=0;gx<=1000;gx+=100) el('line',{x1:gx,y1:0,x2:gx,y2:740,'class':'grid'},gBg);
+  for(var gy=0;gy<=740;gy+=100) el('line',{x1:0,y1:gy,x2:1000,y2:gy,'class':'grid'},gBg);
+  el('path',{d:'M-20 470 C 120 430, 220 520, 380 470 S 640 420, 760 470 S 900 520, 1020 460 L1020 520 C 900 570, 800 500, 700 520 S 480 560, 360 520 S 140 470, -20 530Z','class':'river'},gBg);
+  var mapName=el('text',{x:30,y:718,'class':'mapname'},gBg); mapName.textContent='Vellmar Metro \u00b7 Network Diagram \u00b7 2026';
+
+  /* ---------------- lines ---------------- */
+  var gLines=el('g',{},svg), gTrains=el('g',{},svg), gStations=el('g',{},svg);
+  LINES.forEach(function(L){
+    var g=el('g',{'class':'lg','data-line':L.id},gLines);
+    L.path=el('path',{d:pathD(L.pts),stroke:L.color,'class':'line line-'+L.id},g);
+    el('path',{d:pathD(L.pts),'class':'line-hit'},g);
+    L.len=L.path.getTotalLength();
+    L.stopLen=L.stops.map(function(s){ return nearestLen(L.path,L.len,ST[s][0],ST[s][1]); });
+    L.trains=[]; L.delayed=false; L.g=g;
+    g.addEventListener('pointerenter',function(){ highlight(L.id); });
+    g.addEventListener('pointerleave',function(){ highlight(null); });
+  });
+  function nearestLen(path,len,x,y){
+    var best=0,bd=1e9,step=4;
+    for(var l=0;l<=len;l+=step){ var p=path.getPointAtLength(l), d=(p.x-x)*(p.x-x)+(p.y-y)*(p.y-y); if(d<bd){bd=d;best=l;} }
+    for(var l2=Math.max(0,best-step);l2<=Math.min(len,best+step);l2+=0.25){ var q=path.getPointAtLength(l2), d2=(q.x-x)*(q.x-x)+(q.y-y)*(q.y-y); if(d2<bd){bd=d2;best=l2;} }
+    return best;
+  }
+  function highlight(id){
+    LINES.forEach(function(L){ var dim=id&&L.id!==id; L.path.classList.toggle('dim',!!dim); L.trains.forEach(function(t){ t.el.classList.toggle('dim',!!dim); }); });
+    Object.keys(ST).forEach(function(s){ var dim=id&&stationLines[s].indexOf(id)<0; ST[s].el.classList.toggle('dim',!!dim); });
+  }
+
+  /* ---------------- stations ---------------- */
+  Object.keys(ST).forEach(function(id){
+    var s=ST[id], lines=stationLines[id], g=el('g',{'class':'st','data-id':id,tabindex:0,role:'button','aria-label':s[2]},gStations);
+    if(lines.length>1){
+      el('circle',{cx:s[0],cy:s[1],r:7.5},g);
+    } else {
+      var L=lineById[lines[0]], dir=segDir(L,s[0],s[1]), nx=-dir[1], ny=dir[0];
+      var side=(s[3]>0||(s[3]===0&&s[4]<0))?1:-1;
+      var ends=L.stops[0]===id||L.stops[L.stops.length-1]===id;
+      if(ends){ el('line',{x1:s[0]-nx*9,y1:s[1]-ny*9,x2:s[0]+nx*9,y2:s[1]+ny*9,'class':'tick'},g); el('circle',{cx:s[0],cy:s[1],r:6},g); }
+      else el('line',{x1:s[0]+nx*4*side,y1:s[1]+ny*4*side,x2:s[0]+nx*11*side,y2:s[1]+ny*11*side,'class':'tick'},g);
+    }
+    var t=el('text',{x:s[0]+s[3],y:s[1]+s[4]+4,'text-anchor':s[5]},g); t.textContent=s[2];
+    s.el=g;
+    g.addEventListener('click',function(){ selectStation(id); });
+    g.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); selectStation(id); } });
+  });
+  function segDir(L,x,y){
+    for(var i=0;i<L.pts.length-1;i++){
+      var a=L.pts[i],b=L.pts[i+1], dx=b[0]-a[0], dy=b[1]-a[1], len=Math.hypot(dx,dy);
+      var t=((x-a[0])*dx+(y-a[1])*dy)/(len*len); if(t<-0.01||t>1.01) continue;
+      var px=a[0]+dx*t, py=a[1]+dy*t; if(Math.hypot(px-x,py-y)<1) return [dx/len,dy/len];
+    }
+    return [1,0];
+  }
+
+  /* ---------------- trains ---------------- */
+  var SPEED=reduce?26:62, DWELL=1.6;
+  LINES.forEach(function(L,li){
+    for(var i=0;i<4;i++){
+      var dir=i<2?1:-1, pos=(L.len*(i%2?0.62:0.15)+li*37)%L.len;
+      var g=el('g',{'class':'train'},gTrains);
+      el('circle',{r:9,fill:L.color,opacity:.18},g);
+      var c=el('circle',{r:4.2,fill:L.color},g);
+      L.trains.push({line:L,pos:pos,dir:dir,dwell:0,el:g,dot:c,lastStop:-1});
+    }
+  });
+  function stepTrain(t,dt){
+    var L=t.line, v=SPEED*(L.delayed?0.45:1);
+    if(t.dwell>0){ t.dwell-=dt; return; }
+    var np=t.pos+t.dir*v*dt;
+    for(var i=0;i<L.stopLen.length;i++){
+      var sl=L.stopLen[i];
+      if(i!==t.lastStop && ((t.dir>0&&t.pos<sl&&np>=sl)||(t.dir<0&&t.pos>sl&&np<=sl))){ np=sl; t.lastStop=i; t.dwell=DWELL*(L.delayed?2:1); break; }
+    }
+    if(np>=L.len){ np=L.len; t.dir=-1; t.dwell=DWELL*2; t.lastStop=L.stopLen.length-1; }
+    else if(np<=0){ np=0; t.dir=1; t.dwell=DWELL*2; t.lastStop=0; }
+    t.pos=np;
+    var p=L.path.getPointAtLength(np);
+    t.el.setAttribute('transform','translate('+p.x.toFixed(2)+' '+p.y.toFixed(2)+')');
+  }
+  function etaTo(t,stopIdx){
+    var L=t.line, target=L.stopLen[stopIdx], v=SPEED*(L.delayed?0.45:1), dist, dwells=0;
+    if(t.dir>0){ if(target<t.pos-0.5) return null; dist=target-t.pos; L.stopLen.forEach(function(s){ if(s>t.pos+0.5&&s<target-0.5) dwells++; }); }
+    else { if(target>t.pos+0.5) return null; dist=t.pos-target; L.stopLen.forEach(function(s){ if(s<t.pos-0.5&&s>target+0.5) dwells++; }); }
+    return Math.max(0,t.dwell)+dist/v+dwells*DWELL*(L.delayed?2:1);
+  }
+
+  /* ---------------- selection / arrivals ---------------- */
+  var selected=null, arrivals=document.getElementById('arrivals');
+  function selectStation(id){
+    if(selected) ST[selected].el.classList.remove('sel');
+    selected=id; ST[id].el.classList.add('sel');
+    renderArrivals(true);
+  }
+  function renderArrivals(rebuild){
+    if(!selected) return;
+    var s=ST[selected], lines=stationLines[selected];
+    if(rebuild){
+      var html='<h2>Next arrivals <button class="close" type="button" aria-label="Close">\u00d7</button></h2>';
+      html+='<p class="stname">'+s[2]+'</p><p class="stmeta">'+lines.map(function(l){ return '<i style="background:'+lineById[l].color+'"></i>'+lineById[l].name+' Line'; }).join(' ')+'</p><div class="arr" id="arrList"></div>';
+      arrivals.innerHTML=html;
+      arrivals.querySelector('.close').addEventListener('click',function(){ ST[selected].el.classList.remove('sel'); selected=null; arrivals.innerHTML='<h2>Next arrivals</h2><p class="empty">Select a station on the map to see live departures for every line that calls there.</p>'; });
+    }
+    var rows=[];
+    lines.forEach(function(lid){
+      var L=lineById[lid], idx=L.stops.indexOf(selected);
+      L.trains.forEach(function(t){
+        var e=etaTo(t,idx); if(e===null) return;
+        var dest=t.dir>0?ST[L.stops[L.stops.length-1]][2]:ST[L.stops[0]][2];
+        if((t.dir>0&&idx===L.stops.length-1)||(t.dir<0&&idx===0)) dest='Terminates here';
+        rows.push({L:L,eta:e,dest:dest});
+      });
+    });
+    rows.sort(function(a,b){ return a.eta-b.eta; });
+    var list=document.getElementById('arrList'), out='';
+    rows.slice(0,6).forEach(function(r){
+      var due=r.eta<3, txt=due?'Due':(r.eta<60?Math.ceil(r.eta)+' s':Math.floor(r.eta/60)+':'+('0'+Math.floor(r.eta%60)).slice(-2));
+      out+='<div><i style="background:'+r.L.color+'"></i><span>'+r.L.name+' Line'+(r.L.delayed?' \u00b7 <span style="color:#b76d00">delays</span>':'')+'<span class="to">towards '+r.dest+'</span></span><b class="'+(due?'due':'')+'">'+txt+'</b></div>';
+    });
+    if(!rows.length) out='<p class="empty">No trains approaching right now.</p>';
+    list.innerHTML=out;
+  }
+
+  /* ---------------- service status ---------------- */
+  var statusEl=document.getElementById('status'), updatedEl=document.getElementById('updated'), legend=document.getElementById('legend');
+  LINES.forEach(function(L){
+    var li=document.createElement('li'); li.innerHTML='<i style="background:'+L.color+'"></i><span class="name">'+L.name+' Line</span><span class="badge" id="badge-'+L.id+'">Good service</span>';
+    li.addEventListener('pointerenter',function(){ highlight(L.id); }); li.addEventListener('pointerleave',function(){ highlight(null); });
+    statusEl.appendChild(li);
+    var sp=document.createElement('span'); sp.innerHTML='<i style="background:'+L.color+'"></i>'+L.name;
+    sp.addEventListener('pointerenter',function(){ highlight(L.id); }); sp.addEventListener('pointerleave',function(){ highlight(null); });
+    legend.appendChild(sp);
+  });
+  var nextIncident=8+Math.random()*10;
+  function updateStatus(dt){
+    nextIncident-=dt;
+    if(nextIncident<=0){
+      var candidates=LINES.filter(function(L){ return !L.delayed; });
+      if(candidates.length){
+        var L=candidates[(Math.random()*candidates.length)|0]; L.delayed=true;
+        var b=document.getElementById('badge-'+L.id); b.textContent='Minor delays'; b.classList.add('delay');
+        setTimeout(function(){ L.delayed=false; b.textContent='Good service'; b.classList.remove('delay'); },14000+Math.random()*16000);
+      }
+      nextIncident=18+Math.random()*22;
+    }
+  }
+
+  /* ---------------- night mode ---------------- */
+  var nightBtn=document.getElementById('night');
+  nightBtn.addEventListener('click',function(){
+    var on=document.body.classList.toggle('night'); nightBtn.setAttribute('aria-pressed',String(on));
+    nightBtn.querySelector('span').textContent=on?'Day mode':'Night mode';
+  });
+  if(window.matchMedia('(prefers-color-scheme: dark)').matches) nightBtn.click();
+
+  /* ---------------- loop ---------------- */
+  var clock=document.getElementById('clock'), last=performance.now(), acc=0;
+  function loop(now){
+    var dt=Math.min(0.1,(now-last)/1000); last=now;
+    LINES.forEach(function(L){ L.trains.forEach(function(t){ stepTrain(t,dt); }); });
+    updateStatus(dt);
+    acc+=dt;
+    if(acc>0.25){
+      acc=0; renderArrivals(false);
+      var d=new Date(); clock.textContent=('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)+':'+('0'+d.getSeconds()).slice(-2);
+      updatedEl.textContent='live';
+    }
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

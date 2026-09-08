@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ARCHIVE / 1972–2026</title>
+<style>
+  :root {
+    --ink: #000;
+    --paper: #fff;
+    --rule: #000;
+    --hair: 1px;
+    --mono: ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    --sans: 'Helvetica Neue', Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; border-radius: 0 !important; box-shadow: none !important; }
+  html, body { margin: 0; background: var(--paper); color: var(--ink); }
+  body { font-family: var(--mono); font-size: 13px; line-height: 1.35; -webkit-font-smoothing: antialiased; }
+  ::selection { background: #000; color: #fff; }
+
+  header.masthead {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--paper);
+    border-bottom: var(--hair) solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 16px;
+    padding: 14px 20px 10px;
+  }
+  .masthead h1 {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: clamp(30px, 8.5vw, 132px);
+    line-height: 0.86;
+    letter-spacing: -0.05em;
+    margin: 0;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .masthead h1 span { font-weight: 300; }
+  .meta {
+    display: grid;
+    gap: 2px;
+    text-align: right;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .meta .clock { font-size: clamp(18px, 2.6vw, 34px); letter-spacing: 0; font-variant-numeric: tabular-nums; line-height: 1; }
+  .meta .clock small { font-size: 0.45em; vertical-align: 0.6em; margin-left: 4px; }
+
+  .toolbar {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: stretch;
+    border-bottom: var(--hair) solid var(--rule);
+  }
+  .toolbar > * { padding: 10px 20px; border-right: var(--hair) solid var(--rule); }
+  .toolbar > *:last-child { border-right: 0; }
+  .toolbar input {
+    width: 100%; border: 0; outline: none; background: transparent;
+    font: inherit; text-transform: uppercase; letter-spacing: 0.04em; padding: 0;
+    color: var(--ink);
+  }
+  .toolbar input::placeholder { color: #000; opacity: 0.35; }
+  .toolbar label { display: block; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 4px; }
+  .count { font-variant-numeric: tabular-nums; white-space: nowrap; align-self: center; }
+  .count b { font-weight: 400; display: block; font-size: 10px; letter-spacing: 0.16em; }
+  .legend { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; align-self: center; white-space: nowrap; }
+  @media (max-width: 860px) {
+    header.masthead { grid-template-columns: 1fr; align-items: start; gap: 8px; }
+    .meta { text-align: left; grid-template-columns: auto 1fr; align-items: baseline; column-gap: 12px; }
+    .meta .clock { grid-row: 1 / span 2; }
+    .toolbar { grid-template-columns: 1fr auto; }
+    .legend { display: none; }
+    .toolbar > *:nth-child(2) { border-right: 0; }
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 34vw);
+    min-height: 60vh;
+  }
+  @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } }
+
+  table { width: 100%; border-collapse: collapse; }
+  thead th {
+    position: sticky;
+    top: var(--thead-top, 0);
+    background: var(--paper);
+    text-align: left;
+    font-weight: 400;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 8px 20px 8px 0;
+    border-bottom: var(--hair) solid var(--rule);
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+  }
+  thead th:first-child, tbody td:first-child { padding-left: 20px; }
+  thead th::after { content: "·"; margin-left: 6px; opacity: 0.35; }
+  thead th[aria-sort="ascending"]::after { content: "↑"; opacity: 1; }
+  thead th[aria-sort="descending"]::after { content: "↓"; opacity: 1; }
+  thead th:hover { text-decoration: underline; text-underline-offset: 3px; }
+  tbody tr {
+    border-bottom: var(--hair) solid var(--rule);
+    cursor: default;
+    transition: background 60ms linear, color 60ms linear;
+  }
+  tbody tr:hover, tbody tr.focus { background: var(--ink); color: var(--paper); }
+  tbody tr:hover mark, tbody tr.focus mark { background: var(--paper); color: var(--ink); }
+  tbody td { padding: 9px 20px 9px 0; vertical-align: top; font-variant-numeric: tabular-nums; }
+  td.id { width: 9ch; letter-spacing: 0.04em; white-space: nowrap; }
+  td.title { font-family: var(--sans); font-weight: 500; font-size: 14px; letter-spacing: -0.01em; }
+  td.year { width: 6ch; white-space: nowrap; }
+  td.medium { width: 18ch; text-transform: uppercase; font-size: 11px; letter-spacing: 0.06em; }
+  td.size { width: 14ch; text-align: right; padding-right: 20px; white-space: nowrap; }
+  tbody tr.hidden { display: none; }
+  mark { background: #000; color: #fff; padding: 0 2px; }
+  @media (max-width: 560px) {
+    td.medium, th.medium { display: none; }
+    td.size { width: auto; white-space: normal; }
+    td.id { width: 7ch; }
+    thead th, tbody td { padding-right: 10px; }
+  }
+
+  aside.preview {
+    position: sticky;
+    top: var(--aside-top, 0);
+    align-self: start;
+    height: calc(100vh - var(--aside-top, 0px));
+    border-left: var(--hair) solid var(--rule);
+    display: grid;
+    grid-template-rows: 1fr auto;
+    background: var(--paper);
+  }
+  @media (max-width: 860px) {
+    aside.preview {
+      position: fixed; right: 0; bottom: 0; top: auto;
+      width: 46vw; max-width: 300px; height: auto;
+      border-top: var(--hair) solid var(--rule);
+      transform: translateY(100%);
+      transition: transform 240ms cubic-bezier(.2,.8,.2,1);
+      z-index: 20;
+    }
+    aside.preview.on { transform: none; }
+  }
+  .artifact {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    max-height: 100%;
+    margin: 20px;
+    border: var(--hair) solid var(--rule);
+    overflow: hidden;
+    background: #eee;
+    opacity: 0.35;
+    transition: opacity 200ms linear;
+  }
+  aside.preview.on .artifact { opacity: 1; }
+  .artifact .layer { position: absolute; inset: 0; }
+  .artifact .empty {
+    position: absolute; inset: 0; display: grid; place-items: center;
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  }
+  .caption { border-top: var(--hair) solid var(--rule); padding: 12px 20px 16px; display: grid; gap: 4px; }
+  .caption .pt { font-family: var(--sans); font-weight: 700; font-size: 18px; letter-spacing: -0.02em; line-height: 1.05; text-transform: uppercase; }
+  .caption .pm { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; }
+  .caption .pd { font-size: 12px; margin-top: 6px; }
+  @media (max-width: 860px) { .artifact { margin: 10px; } .caption { padding: 8px 12px 10px; } .caption .pt { font-size: 14px; } .caption .pd { display: none; } }
+
+  footer {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 60px 20px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 20px;
+    border-top: var(--hair) solid var(--rule);
+  }
+  footer .big {
+    grid-column: 1 / -1;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: clamp(56px, 18vw, 320px);
+    line-height: 0.8;
+    letter-spacing: -0.06em;
+    text-transform: uppercase;
+  }
+  footer .col { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; line-height: 1.7; }
+  footer .col b { display: block; font-weight: 400; opacity: 0.5; }
+  footer a { color: inherit; text-decoration: none; border-bottom: 1px solid currentColor; }
+  footer a:hover { background: var(--paper); color: var(--ink); }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<header class="masthead" id="masthead">
+  <h1>Archive <span>/</span> 1972–2026</h1>
+  <div class="meta">
+    <div class="clock" id="clock" aria-live="off">00:00:00<small id="tz">UTC</small></div>
+    <div id="dateline">—</div>
+    <div>Index · Fonds A–K · Holding 40 items</div>
+  </div>
+</header>
+
+<div class="toolbar" id="toolbar">
+  <div>
+    <label for="filter">Filter</label>
+    <input id="filter" type="search" placeholder="Title, medium, year, id…" autocomplete="off" spellcheck="false">
+  </div>
+  <div class="count"><b>Showing</b><span id="shown">40</span> / 40</div>
+  <div class="legend">Hover row → artifact · Click header → sort</div>
+</div>
+
+<div class="layout">
+  <table id="table" aria-describedby="dateline">
+    <thead>
+      <tr>
+        <th scope="col" data-key="id" aria-sort="ascending">ID</th>
+        <th scope="col" data-key="title" aria-sort="none">Title</th>
+        <th scope="col" data-key="year" aria-sort="none">Year</th>
+        <th scope="col" data-key="medium" aria-sort="none" class="medium">Medium</th>
+        <th scope="col" data-key="size" aria-sort="none" style="text-align:right;padding-right:20px">Size</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+
+  <aside class="preview" id="preview" aria-live="polite">
+    <div class="artifact" id="artifact"><div class="empty" id="empty">No selection</div></div>
+    <div class="caption">
+      <div class="pt" id="pt">—</div>
+      <div class="pm" id="pm">Hover a row to render its artifact</div>
+      <div class="pd" id="pd">Each artifact is generated deterministically from the item's identifier: same ID, same image, every time.</div>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="big">Fonds</div>
+  <div class="col"><b>Custodian</b>Institute for Ephemeral Media<br>Room 4B, Lower Stacks<br>Open Tue–Sat, 10–18</div>
+  <div class="col"><b>Colophon</b>Set in system monospace and Helvetica<br>No images were stored. All artifacts are procedural.<br><a href="#masthead">Back to top</a></div>
+</footer>
+
+<script>
+(function () {
+  const items = [
+    ['A-0001', 'Concrete Poem for a Parking Structure', 1972, 'Offset print', '594 × 841 mm'],
+    ['A-0004', 'Hum of the Substation', 1974, 'Reel-to-reel tape', '18 min 40 s'],
+    ['A-0009', 'Corridor Study No. 3', 1975, 'Gelatin silver', '203 × 254 mm'],
+    ['A-0011', 'Municipal Typeface (Trial Cuts)', 1976, 'Lead type', '12 pt, 240 sorts'],
+    ['B-0017', 'Bus Timetable, Winter Service', 1978, 'Letterpress', '210 × 297 mm'],
+    ['B-0021', 'Anti-Monument Proposal', 1979, 'Blueprint', '841 × 1189 mm'],
+    ['B-0026', 'Notes Toward an Index', 1981, 'Typescript', '86 leaves'],
+    ['B-0030', 'Stairwell Reverberation', 1982, 'Cassette', '46 min'],
+    ['C-0033', 'Grid Fatigue', 1983, 'Screenprint', '700 × 1000 mm'],
+    ['C-0038', 'Rubbings from the Loading Dock', 1984, 'Graphite on newsprint', '12 sheets'],
+    ['C-0042', 'Directory of Vacant Offices', 1985, 'Ring binder', '312 pp.'],
+    ['C-0047', 'Standard Deviation (Wall Text)', 1986, 'Vinyl lettering', '4.2 m run'],
+    ['D-0051', 'Floppy Poems v1.1', 1988, '3.5" diskette', '720 KB'],
+    ['D-0055', 'Photocopier Self-Portraits', 1989, 'Xerography', '33 × A4'],
+    ['D-0060', 'Signal / Noise Ledger', 1990, 'Ledger book', '2 vols.'],
+    ['D-0063', 'Ceiling Tile Census', 1991, 'Chromogenic print', '280 × 355 mm'],
+    ['E-0068', 'Municipal Hold Music', 1993, 'DAT', '61 min'],
+    ['E-0072', 'Fax Correspondence with a Bridge', 1994, 'Thermal paper', '9.4 m roll'],
+    ['E-0077', 'Untitled (Fluorescent Flicker)', 1995, 'VHS', '2 h 06 min'],
+    ['E-0080', 'Wayfinding for Nowhere', 1996, 'Enamel on steel', '600 × 600 mm'],
+    ['F-0084', 'Y2K Contingency Booklet', 1999, 'Saddle-stitched', '48 pp.'],
+    ['F-0089', 'Server Room Field Recording', 2001, 'MiniDisc', '74 min'],
+    ['F-0093', 'Draft Bylaws, Redacted', 2002, 'Inkjet', '219 leaves'],
+    ['F-0097', 'Lift Announcements (All Floors)', 2003, 'CD-R', '12 min 12 s'],
+    ['G-0102', 'Spreadsheet as Landscape', 2005, 'Plotter print', '914 × 2400 mm'],
+    ['G-0106', 'Dead Links Anthology', 2006, 'HTML on CD-ROM', '640 MB'],
+    ['G-0110', 'Waiting Room Chairs, Catalogued', 2008, 'Digital C-print', '400 × 500 mm'],
+    ['G-0115', 'Terms and Conditions (Read Aloud)', 2009, 'MP3', '3 h 48 min'],
+    ['H-0119', 'Blank Forms Collection', 2011, 'Mixed paper', '1 archive box'],
+    ['H-0123', 'Fluorescent Tube Requiem', 2012, 'Neon, transformer', '2.4 m'],
+    ['H-0128', 'Automatic Door Studies', 2013, 'HD video', '38 min'],
+    ['H-0131', 'Ledger of Small Delays', 2015, 'Notebook', '192 pp.'],
+    ['J-0136', 'Notification Sounds, Ranked', 2016, 'WAV, 24-bit', '1.2 GB'],
+    ['J-0140', 'Grey Card Series', 2017, 'Pigment print', '300 × 300 mm'],
+    ['J-0144', 'Screensaver for an Empty Lobby', 2018, 'Executable', '14 MB'],
+    ['J-0149', 'Ambient Compliance', 2020, 'Broadcast stem', '52 min'],
+    ['K-0153', 'Text Messages to No One', 2021, 'Thermal receipt', '31 m roll'],
+    ['K-0157', 'Municipal Pantone (Unofficial)', 2023, 'Swatch fan', '112 chips'],
+    ['K-0162', 'The Last Fax', 2025, 'Thermal paper', '1 leaf'],
+    ['K-0166', 'Index of This Index', 2026, 'Living document', '∞']
+  ].map(([id, title, year, medium, size]) => ({ id, title, year, medium, size }));
+
+  const tbody = document.getElementById('tbody');
+  const filter = document.getElementById('filter');
+  const shown = document.getElementById('shown');
+  const preview = document.getElementById('preview');
+  const artifact = document.getElementById('artifact');
+  const empty = document.getElementById('empty');
+  let sortKey = 'id', sortDir = 1, query = '';
+
+  /* Deterministic hash → pseudo random generator */
+  function hash(str) {
+    let h = 2166136261;
+    for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); }
+    return h >>> 0;
+  }
+  function rng(seed) {
+    let s = seed || 1;
+    return () => { s ^= s << 13; s >>>= 0; s ^= s >>> 17; s ^= s << 5; s >>>= 0; return s / 4294967296; };
+  }
+
+  function renderArtifact(item) {
+    artifact.innerHTML = '';
+    const r = rng(hash(item.id));
+    const pick = (arr) => arr[Math.floor(r() * arr.length)];
+    const layers = 3 + Math.floor(r() * 3);
+    const palette = [['#000', '#fff'], ['#000', '#e6e6e6'], ['#111', '#ff3b00'], ['#000', '#ffe600'], ['#0033ff', '#fff'], ['#000', '#00b37a']];
+    const [a, b] = pick(palette);
+    artifact.style.background = b;
+    for (let i = 0; i < layers; i++) {
+      const el = document.createElement('div');
+      el.className = 'layer';
+      const kind = Math.floor(r() * 6);
+      const ang = Math.floor(r() * 180);
+      const size = 6 + Math.floor(r() * 40);
+      const off = Math.floor(r() * 100);
+      if (kind === 0) {
+        el.style.background = `repeating-linear-gradient(${ang}deg, ${a} 0 ${size / 6}px, transparent ${size / 6}px ${size}px)`;
+      } else if (kind === 1) {
+        el.style.background = `radial-gradient(circle at ${off}% ${100 - off}%, ${a} 0 ${size}%, transparent ${size + 0.5}%)`;
+      } else if (kind === 2) {
+        el.style.background = `linear-gradient(${ang}deg, ${a} ${off / 2}%, transparent ${off / 2 + 0.2}%)`;
+        el.style.mixBlendMode = 'difference';
+      } else if (kind === 3) {
+        el.style.background = `repeating-radial-gradient(circle at ${off}% ${off}%, ${a} 0 2px, transparent 2px ${size}px)`;
+      } else if (kind === 4) {
+        el.style.background = `conic-gradient(from ${ang}deg at ${off}% ${100 - off}%, ${a} 0 ${size}%, transparent ${size}% 50%, ${a} 50% ${50 + size / 2}%, transparent ${50 + size / 2}%)`;
+        el.style.mixBlendMode = 'difference';
+      } else {
+        const dot = Math.max(2, size / 4);
+        el.style.background = `radial-gradient(circle, ${a} 0 ${dot / 2}px, transparent ${dot / 2 + 0.5}px)`;
+        el.style.backgroundSize = `${dot * 3}px ${dot * 3}px`;
+        el.style.clipPath = `inset(${off / 3}% ${(100 - off) / 3}% ${(100 - off) / 4}% ${off / 4}%)`;
+      }
+      el.style.opacity = (0.7 + r() * 0.3).toFixed(2);
+      artifact.appendChild(el);
+    }
+    const label = document.createElement('div');
+    label.style.cssText = `position:absolute;left:8px;bottom:6px;font:10px/1 ${getComputedStyle(document.body).fontFamily};letter-spacing:.2em;background:${b};color:${a};padding:4px 6px;border:1px solid ${a}`;
+    label.textContent = item.id;
+    artifact.appendChild(label);
+    document.getElementById('pt').textContent = item.title;
+    document.getElementById('pm').textContent = `${item.id} · ${item.year} · ${item.medium}`;
+    document.getElementById('pd').textContent = `${item.size}. Generated from FNV-1a hash ${hash(item.id).toString(16).toUpperCase()} — ${layers} layers.`;
+    preview.classList.add('on');
+  }
+
+  function clearArtifact() {
+    preview.classList.remove('on');
+  }
+
+  function highlight(text) {
+    if (!query) return text;
+    const i = text.toLowerCase().indexOf(query);
+    if (i < 0) return text;
+    return text.slice(0, i) + '<mark>' + text.slice(i, i + query.length) + '</mark>' + text.slice(i + query.length);
+  }
+
+  function sizeValue(s) {
+    const n = parseFloat(s.replace(/[^\d.]/g, '')) || 0;
+    if (s.includes('GB')) return n * 1e9;
+    if (s.includes('MB')) return n * 1e6;
+    if (s.includes('KB')) return n * 1e3;
+    if (s === '∞') return Infinity;
+    return n;
+  }
+
+  function render() {
+    const data = items.slice().sort((x, y) => {
+      let a = x[sortKey], b = y[sortKey];
+      if (sortKey === 'size') { a = sizeValue(a); b = sizeValue(b); }
+      if (typeof a === 'string') return a.localeCompare(b) * sortDir;
+      return (a - b) * sortDir;
+    });
+    tbody.innerHTML = '';
+    let visible = 0;
+    data.forEach((it) => {
+      const tr = document.createElement('tr');
+      const hay = `${it.id} ${it.title} ${it.year} ${it.medium} ${it.size}`.toLowerCase();
+      const match = !query || hay.includes(query);
+      if (match) visible++;
+      tr.className = match ? '' : 'hidden';
+      tr.tabIndex = 0;
+      tr.innerHTML = `<td class="id">${highlight(it.id)}</td><td class="title">${highlight(it.title)}</td><td class="year">${highlight(String(it.year))}</td><td class="medium">${highlight(it.medium)}</td><td class="size">${highlight(it.size)}</td>`;
+      const show = () => { tbody.querySelectorAll('tr.focus').forEach((r) => r.classList.remove('focus')); tr.classList.add('focus'); renderArtifact(it); };
+      tr.addEventListener('mouseenter', show);
+      tr.addEventListener('focus', show);
+      tr.addEventListener('click', show);
+      tr.addEventListener('mouseleave', () => tr.classList.remove('focus'));
+      tbody.appendChild(tr);
+    });
+    shown.textContent = visible;
+  }
+  tbody.addEventListener('mouseleave', clearArtifact);
+
+  document.querySelectorAll('thead th').forEach((th) => {
+    th.addEventListener('click', () => {
+      const key = th.dataset.key;
+      if (sortKey === key) sortDir *= -1; else { sortKey = key; sortDir = 1; }
+      document.querySelectorAll('thead th').forEach((t) => t.setAttribute('aria-sort', 'none'));
+      th.setAttribute('aria-sort', sortDir === 1 ? 'ascending' : 'descending');
+      render();
+    });
+  });
+
+  filter.addEventListener('input', () => { query = filter.value.trim().toLowerCase(); render(); });
+
+  /* Sticky offsets follow the masthead height */
+  function layout() {
+    const h = document.getElementById('masthead').offsetHeight;
+    const t = document.getElementById('toolbar').offsetHeight;
+    document.documentElement.style.setProperty('--thead-top', h + 'px');
+    document.documentElement.style.setProperty('--aside-top', (h + t) + 'px');
+  }
+  window.addEventListener('resize', layout);
+
+  /* Clock */
+  const clock = document.getElementById('clock');
+  const tz = document.getElementById('tz');
+  const dateline = document.getElementById('dateline');
+  function tick() {
+    const d = new Date();
+    const p = (n) => String(n).padStart(2, '0');
+    clock.firstChild.nodeValue = `${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())}`;
+    const off = -d.getTimezoneOffset();
+    tz.textContent = 'UTC' + (off >= 0 ? '+' : '−') + p(Math.floor(Math.abs(off) / 60)) + (Math.abs(off) % 60 ? ':' + p(Math.abs(off) % 60) : '');
+    dateline.textContent = d.toLocaleDateString('en-GB', { weekday: 'short', day: '2-digit', month: 'short', year: 'numeric' });
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  render();
+  layout();
+})();
+</script>
+</body>
+</html>

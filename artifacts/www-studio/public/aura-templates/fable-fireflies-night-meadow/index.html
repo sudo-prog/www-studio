@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Night Meadow — Fireflies</title>
+<style>
+  :root {
+    --glow: #d4ff6a;
+    --sky-top: #05081a;
+    --sky-mid: #0d1a3d;
+    --sky-low: #1a2f52;
+    --moon: rgba(255, 246, 220, 1);
+    --ambient: 1;
+    --serif: 'Iowan Old Style', Palatino, 'Palatino Linotype', 'Book Antiqua', Georgia, ui-serif, serif;
+    --sans: ui-sans-serif, system-ui, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --ease: cubic-bezier(.4, 0, .2, 1);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #05081a; }
+  body { font-family: var(--serif); color: #e9ecf5; }
+
+  .scene {
+    position: fixed; inset: 0;
+    background: linear-gradient(to bottom, var(--sky-top) 0%, var(--sky-mid) 48%, var(--sky-low) 78%, #22344f 100%);
+    transition: filter 1400ms var(--ease), background 1400ms var(--ease);
+    cursor: none;
+  }
+  .scene.new-moon { filter: brightness(0.62) saturate(0.85); }
+  .scene.new-moon .moon { opacity: 0.08; box-shadow: none; }
+  .scene.new-moon .moonglow { opacity: 0; }
+  .scene.new-moon .stars { opacity: 1; }
+  .scene.new-moon .mist { opacity: 0.35; }
+
+  .stars {
+    position: absolute; inset: 0;
+    opacity: 0.75;
+    transition: opacity 1400ms var(--ease);
+    background-image:
+      radial-gradient(1.6px 1.6px at 12% 18%, #fff 50%, transparent 51%),
+      radial-gradient(1.9px 1.9px at 27% 9%, #fff 50%, transparent 51%),
+      radial-gradient(1.6px 1.6px at 41% 24%, #cfd8ff 50%, transparent 51%),
+      radial-gradient(2.2px 2.2px at 55% 6%, #fff 50%, transparent 51%),
+      radial-gradient(1.6px 1.6px at 63% 29%, #fff 50%, transparent 51%),
+      radial-gradient(1.6px 1.6px at 72% 12%, #ffe9c4 50%, transparent 51%),
+      radial-gradient(2px 2px at 84% 22%, #fff 50%, transparent 51%),
+      radial-gradient(1.6px 1.6px at 91% 8%, #fff 50%, transparent 51%),
+      radial-gradient(1.6px 1.6px at 5% 36%, #fff 50%, transparent 51%),
+      radial-gradient(1.6px 1.6px at 34% 40%, #fff 50%, transparent 51%),
+      radial-gradient(1.6px 1.6px at 48% 15%, #cfd8ff 50%, transparent 51%),
+      radial-gradient(1.9px 1.9px at 77% 38%, #fff 50%, transparent 51%),
+      radial-gradient(1.6px 1.6px at 96% 33%, #fff 50%, transparent 51%),
+      radial-gradient(1.6px 1.6px at 19% 45%, #fff 50%, transparent 51%),
+      radial-gradient(1.6px 1.6px at 60% 44%, #ffe9c4 50%, transparent 51%);
+    animation: twinkle 6s ease-in-out infinite alternate;
+  }
+  @keyframes twinkle { from { opacity: 0.55; } to { opacity: 0.95; } }
+
+  .moon {
+    position: absolute; top: 12vh; right: 14vw;
+    width: clamp(64px, 9vw, 130px); aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at 38% 36%, #fffbf0, #f3e9cf 60%, #d9cfb4 100%);
+    box-shadow: 0 0 40px 8px rgba(255, 240, 200, 0.35), 0 0 140px 40px rgba(255, 240, 200, 0.12);
+    transition: opacity 1400ms var(--ease), box-shadow 1400ms var(--ease);
+  }
+  .moon::after {
+    content: "";
+    position: absolute; inset: 0; border-radius: 50%;
+    background:
+      radial-gradient(circle at 30% 60%, rgba(0,0,0,0.08) 0 9%, transparent 10%),
+      radial-gradient(circle at 62% 30%, rgba(0,0,0,0.07) 0 6%, transparent 7%),
+      radial-gradient(circle at 68% 68%, rgba(0,0,0,0.06) 0 12%, transparent 13%);
+  }
+  .moonglow {
+    position: absolute; inset: 0;
+    background: radial-gradient(40vmax 30vmax at 80% 20%, rgba(255, 240, 200, 0.10), transparent 70%);
+    transition: opacity 1400ms var(--ease);
+  }
+
+  .hills { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 55vh; }
+  .hills svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+  .mist {
+    position: absolute; left: -10%; right: -10%; bottom: 14vh; height: 18vh;
+    background: linear-gradient(to bottom, transparent, rgba(190, 205, 230, 0.18) 40%, rgba(190, 205, 230, 0.22) 60%, transparent);
+    filter: blur(14px);
+    opacity: 0.7;
+    animation: drift 40s linear infinite alternate;
+    transition: opacity 1400ms var(--ease);
+    pointer-events: none;
+  }
+  .mist.b { bottom: 8vh; height: 12vh; opacity: 0.45; animation-duration: 55s; animation-direction: alternate-reverse; }
+  @keyframes drift { from { transform: translateX(-4%); } to { transform: translateX(4%); } }
+
+  canvas#flies { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+  .grass {
+    position: absolute; left: 0; right: 0; bottom: -2px;
+    height: 34vh; pointer-events: none;
+  }
+  .grass svg { position: absolute; bottom: 0; left: 0; width: 100%; height: 100%; overflow: visible; }
+  .grass .blade { transform-origin: 50% 100%; transform-box: fill-box; animation: sway var(--d, 5s) ease-in-out infinite alternate; animation-delay: var(--dl, 0s); }
+  @keyframes sway { from { transform: rotate(-3.5deg) skewX(-2deg); } to { transform: rotate(3.5deg) skewX(2deg); } }
+  .grass.far { height: 30vh; opacity: 0.55; filter: blur(0.6px); }
+  .grass.far .blade { animation-duration: calc(var(--d, 5s) * 1.4); }
+  .grass.near { height: 40vh; }
+  .grass.near .blade { animation-duration: calc(var(--d, 5s) * 0.9); }
+
+  .cursor {
+    position: fixed; left: 0; top: 0;
+    width: 120px; height: 120px; margin: -60px 0 0 -60px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200, 220, 255, 0.14), rgba(200, 220, 255, 0.04) 45%, transparent 70%);
+    pointer-events: none;
+    transform: translate(-200px, -200px);
+    transition: transform 80ms linear, opacity 300ms;
+    opacity: 0;
+    z-index: 5;
+  }
+
+  .caption {
+    position: absolute; left: 50%; top: 14vh;
+    transform: translateX(-50%);
+    text-align: center;
+    width: min(92vw, 640px);
+    opacity: 0;
+    animation: fadein 4s var(--ease) 1.2s forwards;
+    pointer-events: none;
+    z-index: 4;
+  }
+  .caption h1 {
+    font-weight: 400; font-style: italic;
+    font-size: clamp(22px, 3.4vw, 40px);
+    letter-spacing: 0.01em;
+    margin: 0 0 8px;
+    text-shadow: 0 2px 30px rgba(0,0,0,0.6);
+  }
+  .caption p {
+    margin: 0;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(233, 236, 245, 0.55);
+  }
+  @keyframes fadein { to { opacity: 1; } }
+
+  .ui {
+    position: fixed; left: 50%; bottom: 22px;
+    transform: translateX(-50%);
+    display: flex; gap: 10px; align-items: center;
+    z-index: 6;
+    font-family: var(--sans);
+  }
+  .ui button {
+    display: inline-flex; align-items: center; gap: 8px;
+    font: 500 12px/1 var(--sans);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: #e9ecf5;
+    background: rgba(10, 16, 40, 0.5);
+    border: 1px solid rgba(255,255,255,0.18);
+    padding: 11px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: background 300ms var(--ease), transform 300ms var(--ease), border-color 300ms;
+  }
+  .ui button:hover { background: rgba(20, 30, 70, 0.7); border-color: rgba(255,255,255,0.35); transform: translateY(-2px); }
+  .ui .phase { width: 12px; height: 12px; border-radius: 50%; background: #fff2cf; box-shadow: 0 0 10px #fff2cf; transition: all 600ms var(--ease); }
+  .scene.new-moon ~ .ui .phase { background: transparent; box-shadow: inset 3px -1px 0 0 #fff2cf; }
+  .ui .count { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(233,236,245,0.5); padding: 0 6px; }
+  .hint {
+    position: fixed; right: 22px; bottom: 26px;
+    font: 11px/1.5 var(--sans); letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(233,236,245,0.4); text-align: right;
+    z-index: 6;
+  }
+  @media (max-width: 600px) { .hint { display: none; } .moon { right: 8vw; top: 10vh; } }
+  @media (prefers-reduced-motion: reduce) {
+    .grass .blade, .mist, .stars { animation: none !important; }
+    .caption { animation-duration: 1ms; animation-delay: 0s; }
+  }
+</style>
+</head>
+<body>
+<div class="scene" id="scene">
+  <div class="stars"></div>
+  <div class="moonglow"></div>
+  <div class="moon" aria-hidden="true"></div>
+
+  <div class="hills" aria-hidden="true">
+    <svg viewBox="0 0 1440 560" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="hillFar" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#1b2c4d"/><stop offset="1" stop-color="#101c36"/>
+        </linearGradient>
+        <linearGradient id="hillNear" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#0f1a31"/><stop offset="1" stop-color="#080f21"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#hillFar)" d="M0 300 C 180 240, 300 250, 460 290 S 720 380, 900 320 S 1200 230, 1440 300 L1440 560 L0 560 Z"/>
+      <path fill="url(#hillNear)" d="M0 400 C 200 350, 420 380, 600 420 S 900 470, 1100 410 S 1320 350, 1440 390 L1440 560 L0 560 Z"/>
+    </svg>
+  </div>
+
+  <div class="mist"></div>
+  <div class="mist b"></div>
+
+  <canvas id="flies" aria-label="Fireflies drifting over a night meadow" role="img"></canvas>
+
+  <div class="grass far" id="grassFar" aria-hidden="true"></div>
+  <div class="grass mid" id="grassMid" aria-hidden="true"></div>
+  <div class="grass near" id="grassNear" aria-hidden="true"></div>
+
+  <div class="caption">
+    <h1>The field remembers every small light.</h1>
+    <p>a night meadow · late june</p>
+  </div>
+</div>
+
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+
+<div class="ui">
+  <button type="button" id="moonBtn" aria-pressed="false"><span class="phase"></span><span id="moonLabel">Full moon</span></button>
+  <span class="count" id="count">0 fireflies</span>
+</div>
+<div class="hint">move — a breeze<br>click — release a swarm</div>
+
+<script>
+(function () {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- Grass: build three SVG layers of swaying blades ---- */
+  function buildGrass(el, count, color, hMin, hMax, seed) {
+    let s = seed;
+    const rnd = () => { s = (s * 16807) % 2147483647; return s / 2147483647; };
+    const w = 1440, h = 400;
+    let paths = '';
+    for (let i = 0; i < count; i++) {
+      const x = rnd() * w;
+      const bh = hMin + rnd() * (hMax - hMin);
+      const lean = (rnd() - 0.5) * 90;
+      const width = 6 + rnd() * 10;
+      const tipX = x + lean, tipY = h - bh;
+      const cx1 = x + lean * 0.2, cy1 = h - bh * 0.45;
+      const d = `M${(x - width / 2).toFixed(1)} ${h} Q${cx1.toFixed(1)} ${cy1.toFixed(1)} ${tipX.toFixed(1)} ${tipY.toFixed(1)} Q${(cx1 + width * 0.3).toFixed(1)} ${cy1.toFixed(1)} ${(x + width / 2).toFixed(1)} ${h} Z`;
+      const dur = (4 + rnd() * 4).toFixed(2) + 's';
+      const delay = (-rnd() * 8).toFixed(2) + 's';
+      paths += `<path class="blade" d="${d}" fill="${color}" style="--d:${dur};--dl:${delay}"/>`;
+    }
+    el.innerHTML = `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">${paths}<rect x="0" y="${h - 6}" width="${w}" height="8" fill="${color}"/></svg>`;
+  }
+  buildGrass(document.getElementById('grassFar'), 140, '#0b1530', 120, 260, 11);
+  buildGrass(document.getElementById('grassMid'), 120, '#070f24', 140, 320, 23);
+  buildGrass(document.getElementById('grassNear'), 90, '#03081a', 160, 380, 37);
+
+  /* ---- Fireflies canvas ---- */
+  const canvas = document.getElementById('flies');
+  const ctx = canvas.getContext('2d');
+  const scene = document.getElementById('scene');
+  const countEl = document.getElementById('count');
+  const cursorEl = document.getElementById('cursor');
+  let W = 0, H = 0, dpr = 1;
+  const flies = [];
+  const pointer = { x: -9999, y: -9999, active: false };
+  let ambient = 1;
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = canvas.clientWidth; H = canvas.clientHeight;
+    canvas.width = Math.round(W * dpr);
+    canvas.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  function makeFly(x, y, burst) {
+    const a = Math.random() * Math.PI * 2;
+    return {
+      x: x !== undefined ? x : Math.random() * W,
+      y: y !== undefined ? y : H * (0.35 + Math.random() * 0.55),
+      vx: Math.cos(a) * (burst ? 1.6 + Math.random() * 1.4 : 0.2),
+      vy: Math.sin(a) * (burst ? 1.6 + Math.random() * 1.4 : 0.2),
+      heading: a,
+      wander: Math.random() * Math.PI * 2,
+      speed: 0.25 + Math.random() * 0.35,
+      size: 1.2 + Math.random() * 1.6,
+      phase: Math.random() * Math.PI * 2,
+      rate: 0.6 + Math.random() * 1.2,
+      life: burst ? 1 : Infinity,
+      hue: 78 + Math.random() * 12
+    };
+  }
+  const baseCount = () => Math.round(Math.min(90, Math.max(28, (W * H) / 22000)));
+  for (let i = 0; i < baseCount(); i++) flies.push(makeFly());
+
+  function updateCount() { countEl.textContent = `${flies.length} fireflies`; }
+  updateCount();
+
+  let last = performance.now();
+  function frame(now) {
+    const dt = Math.min(0.05, (now - last) / 1000);
+    last = now;
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'lighter';
+    const floor = H * 0.9, ceil = H * 0.28;
+
+    for (let i = flies.length - 1; i >= 0; i--) {
+      const f = flies[i];
+      /* wander steering: heading drifts by a random walk, biased back toward the meadow band */
+      f.wander += (Math.random() - 0.5) * 0.6;
+      f.heading += Math.sin(f.wander) * 0.06;
+      let ax = Math.cos(f.heading) * f.speed, ay = Math.sin(f.heading) * f.speed;
+      if (f.y < ceil) ay += (ceil - f.y) * 0.002;
+      if (f.y > floor) ay -= (f.y - floor) * 0.003;
+      if (f.x < 0) ax += 0.4; if (f.x > W) ax -= 0.4;
+
+      /* breeze from the cursor: gentle inverse-square repulsion */
+      if (pointer.active) {
+        const dx = f.x - pointer.x, dy = f.y - pointer.y;
+        const d2 = dx * dx + dy * dy;
+        if (d2 < 150 * 150 && d2 > 1) {
+          const d = Math.sqrt(d2);
+          const push = (1 - d / 150) * 1.8;
+          ax += (dx / d) * push; ay += (dy / d) * push;
+        }
+      }
+      f.vx = f.vx * 0.94 + ax * 0.12;
+      f.vy = f.vy * 0.94 + ay * 0.12;
+      f.x += f.vx * (reduce ? 20 : 60) * dt;
+      f.y += f.vy * (reduce ? 20 : 60) * dt;
+
+      if (f.life !== Infinity) {
+        f.life -= dt * 0.06;
+        if (f.life <= 0) { flies.splice(i, 1); continue; }
+      }
+
+      f.phase += dt * f.rate * (reduce ? 0.3 : 1);
+      const pulse = Math.pow((Math.sin(f.phase) + 1) / 2, 2.2);
+      const alpha = (0.15 + pulse * 0.85) * Math.min(1, f.life) * (0.85 + ambient * 0.15);
+      const r = f.size;
+
+      const g = ctx.createRadialGradient(f.x, f.y, 0, f.x, f.y, r * 10);
+      g.addColorStop(0, `hsla(${f.hue}, 100%, 72%, ${alpha * 0.55})`);
+      g.addColorStop(0.35, `hsla(${f.hue}, 100%, 62%, ${alpha * 0.16})`);
+      g.addColorStop(1, `hsla(${f.hue}, 100%, 60%, 0)`);
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(f.x, f.y, r * 10, 0, Math.PI * 2); ctx.fill();
+
+      ctx.fillStyle = `hsla(${f.hue}, 100%, 88%, ${alpha})`;
+      ctx.beginPath(); ctx.arc(f.x, f.y, r, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.globalCompositeOperation = 'source-over';
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  /* ---- Pointer as breeze ---- */
+  window.addEventListener('pointermove', (e) => {
+    pointer.x = e.clientX; pointer.y = e.clientY; pointer.active = true;
+    cursorEl.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    cursorEl.style.opacity = e.pointerType === 'mouse' ? '1' : '0';
+  });
+  window.addEventListener('pointerleave', () => { pointer.active = false; cursorEl.style.opacity = '0'; });
+  document.addEventListener('mouseleave', () => { pointer.active = false; cursorEl.style.opacity = '0'; });
+
+  /* ---- Click: release a swarm ---- */
+  scene.addEventListener('pointerdown', (e) => {
+    if (e.target.closest('button')) return;
+    const n = 14 + Math.floor(Math.random() * 10);
+    for (let i = 0; i < n; i++) flies.push(makeFly(e.clientX, e.clientY, true));
+    updateCount();
+    setTimeout(updateCount, 17000);
+  });
+
+  /* ---- Moon phase toggle ---- */
+  const moonBtn = document.getElementById('moonBtn');
+  const moonLabel = document.getElementById('moonLabel');
+  moonBtn.addEventListener('click', () => {
+    const dark = scene.classList.toggle('new-moon');
+    ambient = dark ? 1.35 : 1;
+    moonBtn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+    moonLabel.textContent = dark ? 'New moon' : 'Full moon';
+  });
+
+  document.addEventListener('visibilitychange', () => { last = performance.now(); });
+})();
+</script>
+</body>
+</html>

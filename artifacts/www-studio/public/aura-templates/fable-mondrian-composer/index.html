@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Composer — A De Stijl Generator</title>
+<style>
+  :root {
+    --wall: #d9d3c7;
+    --wall-deep: #a89f8f;
+    --plate: #f3efe6;
+    --ink: #1a1a1a;
+    --red: #d7301f;
+    --blue: #1e4d9b;
+    --yellow: #f2c40f;
+    --white: #f6f3ec;
+    --frame: #111;
+    --gutter: 10px;
+    --grid-transition: 1100ms;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    min-height: 100%;
+  }
+
+  body {
+    font-family: Georgia, 'Iowan Old Style', 'Palatino Linotype', Palatino, ui-serif, serif;
+    color: var(--ink);
+    background:
+      radial-gradient(ellipse 60% 45% at 50% 22%, rgba(255, 248, 230, 0.75), rgba(255, 248, 230, 0) 70%),
+      linear-gradient(180deg, #cfc8bb 0%, var(--wall) 45%, #c8c1b3 78%, #6b6358 78.2%, #5a5248 100%);
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: clamp(20px, 4vw, 64px) clamp(14px, 4vw, 48px) 80px;
+    overflow-x: hidden;
+  }
+
+  /* subtle plaster texture on the wall */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(0,0,0,0.018) 0 1px, transparent 1px 3px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0 1px, transparent 1px 4px);
+    mix-blend-mode: multiply;
+  }
+
+  header {
+    text-align: center;
+    max-width: 720px;
+    margin-bottom: clamp(18px, 3vw, 40px);
+  }
+
+  header h1 {
+    margin: 0 0 6px;
+    font-weight: 400;
+    font-size: clamp(22px, 3.4vw, 40px);
+    letter-spacing: 0.02em;
+  }
+
+  header h1 em {
+    font-style: italic;
+    color: #5a5248;
+  }
+
+  header p {
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #6b6358;
+  }
+
+  /* --- The framed painting -------------------------------------------- */
+  .easel {
+    position: relative;
+    width: min(92vw, 720px);
+    aspect-ratio: 1 / 1;
+    padding: clamp(10px, 2.4vw, 22px);
+    background: linear-gradient(145deg, #2b2b2b, #0d0d0d 40%, #202020 70%, #050505);
+    box-shadow:
+      0 2px 0 rgba(255,255,255,0.12) inset,
+      0 40px 70px -30px rgba(0,0,0,0.65),
+      0 18px 30px -18px rgba(0,0,0,0.5);
+    transition: transform 600ms cubic-bezier(.2,.8,.2,1);
+  }
+
+  .easel::after {
+    /* glass glare */
+    content: "";
+    position: absolute;
+    inset: clamp(10px, 2.4vw, 22px);
+    pointer-events: none;
+    background: linear-gradient(115deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0) 28%, rgba(255,255,255,0) 70%, rgba(255,255,255,0.06) 100%);
+    z-index: 3;
+  }
+
+  .canvas {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    gap: var(--gutter);
+    background: var(--ink);
+    padding: var(--gutter);
+    transition: grid-template-columns var(--grid-transition) cubic-bezier(.65,0,.25,1),
+                grid-template-rows var(--grid-transition) cubic-bezier(.65,0,.25,1);
+  }
+
+  .canvas.breathing { transition: none; }
+
+  .cell {
+    position: relative;
+    background: var(--white);
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    outline-offset: -4px;
+    transition: background-color 380ms cubic-bezier(.3,.9,.3,1), transform 250ms cubic-bezier(.2,.8,.2,1);
+    animation: reveal 700ms cubic-bezier(.2,.8,.2,1) both;
+    animation-delay: calc(var(--i) * 28ms);
+    box-shadow: inset 0 0 0 0 rgba(0,0,0,0);
+  }
+
+  .cell:hover { transform: scale(0.985); }
+  .cell:focus-visible { outline: 3px dashed #fff; }
+
+  /* canvas weave texture on the white cells */
+  .cell[data-c="white"] {
+    background-image:
+      repeating-linear-gradient(0deg, rgba(0,0,0,0.028) 0 1px, transparent 1px 3px),
+      repeating-linear-gradient(90deg, rgba(0,0,0,0.028) 0 1px, transparent 1px 3px);
+  }
+  .cell[data-c="red"]    { background-color: var(--red); }
+  .cell[data-c="blue"]   { background-color: var(--blue); }
+  .cell[data-c="yellow"] { background-color: var(--yellow); }
+  .cell[data-c="black"]  { background-color: #161616; }
+
+  .cell::after {
+    /* brushy paint edge on colored cells */
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    background: linear-gradient(160deg, rgba(255,255,255,0.18), rgba(255,255,255,0) 45%, rgba(0,0,0,0.12));
+    transition: opacity 400ms;
+  }
+  .cell:not([data-c="white"])::after { opacity: 1; }
+
+  @keyframes reveal {
+    from { opacity: 0; transform: scale(0.94); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  /* --- Museum plate ------------------------------------------------------ */
+  .plate {
+    margin-top: clamp(22px, 4vw, 44px);
+    width: min(92vw, 420px);
+    background: linear-gradient(180deg, #faf7f0, var(--plate));
+    border: 1px solid #c9c2b4;
+    padding: 18px 22px 16px;
+    box-shadow: 0 1px 0 #fff inset, 0 12px 24px -16px rgba(0,0,0,0.5);
+    position: relative;
+  }
+
+  .plate::before, .plate::after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #fff, #8a8478 60%, #4d4840);
+  }
+  .plate::before { left: 8px; }
+  .plate::after  { right: 8px; }
+
+  .plate .artist {
+    font-family: ui-sans-serif, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #6b6358;
+    margin: 0 0 6px;
+  }
+
+  .plate .title {
+    font-size: 19px;
+    margin: 0;
+    font-style: italic;
+    line-height: 1.25;
+    transition: opacity 300ms;
+  }
+
+  .plate .meta {
+    margin: 8px 0 0;
+    font-size: 13px;
+    color: #4c463d;
+    line-height: 1.5;
+  }
+
+  .plate .meta span + span::before {
+    content: " · ";
+    color: #a89f8f;
+  }
+
+  /* --- Controls -------------------------------------------------------- */
+  .controls {
+    margin-top: clamp(20px, 3vw, 36px);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    align-items: center;
+    justify-content: center;
+    width: min(92vw, 720px);
+    font-family: ui-sans-serif, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+  }
+
+  .btn {
+    appearance: none;
+    border: 1.5px solid var(--ink);
+    background: var(--white);
+    color: var(--ink);
+    font: inherit;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 10px 18px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: color 250ms, transform 200ms cubic-bezier(.2,.8,.2,1), box-shadow 250ms;
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+  .btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--ink);
+    transform: translateX(-101%);
+    transition: transform 320ms cubic-bezier(.65,0,.25,1);
+    z-index: 0;
+  }
+  .btn span { position: relative; z-index: 1; }
+  .btn:hover { color: var(--white); }
+  .btn:hover::before { transform: translateX(0); }
+  .btn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--ink); }
+  .btn[aria-pressed="true"] { background: var(--yellow); }
+  .btn.red { --dot: var(--red); }
+
+  .slider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 160px;
+    height: 3px;
+    background: var(--ink);
+    outline: none;
+    cursor: pointer;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px; height: 18px;
+    background: var(--red);
+    border: 2px solid var(--ink);
+    cursor: grab;
+    transition: transform 150ms;
+  }
+  input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+  input[type="range"]::-moz-range-thumb {
+    width: 18px; height: 18px;
+    background: var(--red);
+    border: 2px solid var(--ink);
+    border-radius: 0;
+    cursor: grab;
+  }
+  input[type="range"]:focus-visible { outline: 2px dashed var(--ink); outline-offset: 6px; }
+
+  .depth-value {
+    display: inline-block;
+    min-width: 1.4em;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  .legend {
+    margin-top: 14px;
+    display: flex;
+    gap: 14px;
+    font-family: ui-sans-serif, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #6b6358;
+  }
+  .legend i {
+    display: inline-block;
+    width: 10px; height: 10px;
+    border: 1px solid var(--ink);
+    vertical-align: -1px;
+    margin-right: 5px;
+  }
+
+  .hint {
+    margin-top: 10px;
+    font-family: ui-sans-serif, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    color: #6b6358;
+    text-align: center;
+  }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+  }
+
+  @media (max-width: 480px) {
+    :root { --gutter: 7px; }
+    .controls { gap: 10px; }
+    input[type="range"] { width: 120px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .canvas, .cell, .btn, .btn::before, .easel { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Composer <em>— a De Stijl generator</em></h1>
+  <p>Recursive subdivision · CSS grid · Primary colour</p>
+</header>
+
+<div class="easel" id="easel">
+  <div class="canvas" id="canvas" role="group" aria-label="Generated composition. Click any cell to change its colour."></div>
+</div>
+
+<section class="plate" aria-live="polite">
+  <p class="artist">Piet Anonymous (b. 1872)</p>
+  <h2 class="title" id="plateTitle">Composition with Red, Blue and Yellow</h2>
+  <p class="meta">
+    <span id="plateYear">1930</span><span id="plateMedium">Oil on canvas</span><span id="plateSize">46 × 46 cm</span>
+  </p>
+</section>
+
+<div class="controls">
+  <button class="btn" id="newBtn" type="button"><span>New composition</span></button>
+  <button class="btn" id="animBtn" type="button" aria-pressed="false"><span>Animate</span></button>
+  <label class="slider" for="depth">
+    Depth
+    <input type="range" id="depth" min="2" max="7" value="4" step="1">
+    <span class="depth-value" id="depthValue">4</span>
+  </label>
+</div>
+
+<div class="legend" aria-hidden="true">
+  <span><i style="background:#f6f3ec"></i>Canvas</span>
+  <span><i style="background:#d7301f"></i>Red</span>
+  <span><i style="background:#1e4d9b"></i>Blue</span>
+  <span><i style="background:#f2c40f"></i>Yellow</span>
+</div>
+<p class="hint">Click a cell to cycle its colour. Press <kbd>N</kbd> for a new composition, <kbd>A</kbd> to breathe.</p>
+
+<script>
+(function () {
+  'use strict';
+
+  const UNITS = 16;                 // resolution of the underlying track grid
+  const COLORS = ['white', 'red', 'blue', 'yellow', 'black'];
+  const canvas = document.getElementById('canvas');
+  const easel = document.getElementById('easel');
+  const depthInput = document.getElementById('depth');
+  const depthValue = document.getElementById('depthValue');
+  const newBtn = document.getElementById('newBtn');
+  const animBtn = document.getElementById('animBtn');
+  const plateTitle = document.getElementById('plateTitle');
+  const plateYear = document.getElementById('plateYear');
+  const plateMedium = document.getElementById('plateMedium');
+  const plateSize = document.getElementById('plateSize');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let cols = [], rows = [];          // base track sizes (fr units)
+  let cells = [];                    // {x, y, w, h, color}
+  let breathing = false;
+  let rafId = 0;
+  let t0 = 0;
+  let compositionNo = 1;
+
+  const rand = (a, b) => a + Math.random() * (b - a);
+  const randInt = (a, b) => Math.floor(rand(a, b + 1));
+  const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+
+  /* Random but harmonious track sizes: neighbours differ, nothing too thin. */
+  function makeTracks(n) {
+    const out = [];
+    for (let i = 0; i < n; i++) {
+      const r = Math.random();
+      out.push(r < 0.2 ? rand(0.45, 0.7) : r < 0.85 ? rand(0.8, 1.3) : rand(1.5, 2.2));
+    }
+    return out;
+  }
+
+  /* Recursive subdivision in track units. Splits prefer the long axis and
+     avoid slivers; occasionally a big rectangle survives unsplit. */
+  function subdivide(x, y, w, h, depth, maxDepth, out) {
+    const canSplitX = w >= 2, canSplitY = h >= 2;
+    const area = w * h;
+    const keepWhole = depth > 1 && Math.random() < 0.18 + depth * 0.06;
+    if (depth >= maxDepth || (!canSplitX && !canSplitY) || (keepWhole && area < UNITS * UNITS * 0.3)) {
+      out.push({ x, y, w, h, color: 'white' });
+      return;
+    }
+    let splitVertical;
+    if (canSplitX && canSplitY) {
+      const bias = w / (w + h);
+      splitVertical = Math.random() < bias;
+    } else {
+      splitVertical = canSplitX;
+    }
+    if (splitVertical) {
+      // lean toward golden proportion, jittered
+      const g = Math.random() < 0.5 ? 0.382 : 0.618;
+      let cut = Math.round(w * (g + rand(-0.15, 0.15)));
+      cut = Math.max(1, Math.min(w - 1, cut));
+      subdivide(x, y, cut, h, depth + 1, maxDepth, out);
+      subdivide(x + cut, y, w - cut, h, depth + 1, maxDepth, out);
+    } else {
+      const g = Math.random() < 0.5 ? 0.382 : 0.618;
+      let cut = Math.round(h * (g + rand(-0.15, 0.15)));
+      cut = Math.max(1, Math.min(h - 1, cut));
+      subdivide(x, y, w, cut, depth + 1, maxDepth, out);
+      subdivide(x, y + cut, w, h - cut, depth + 1, maxDepth, out);
+    }
+  }
+
+  function paintCells(list) {
+    // Mondrian used colour sparingly: a few strong planes, rarely touching.
+    const shuffled = list.slice().sort(() => Math.random() - 0.5);
+    const count = Math.max(2, Math.round(list.length * rand(0.16, 0.28)));
+    const palette = ['red', 'blue', 'yellow', 'red', 'blue', 'yellow', 'black'];
+    for (let i = 0; i < count && i < shuffled.length; i++) {
+      shuffled[i].color = palette[i % palette.length];
+    }
+  }
+
+  function trackString(arr) {
+    return arr.map(v => v.toFixed(3) + 'fr').join(' ');
+  }
+
+  function render() {
+    canvas.style.gridTemplateColumns = trackString(cols);
+    canvas.style.gridTemplateRows = trackString(rows);
+    canvas.innerHTML = '';
+    const frag = document.createDocumentFragment();
+    cells.forEach((c, i) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.className = 'cell';
+      el.dataset.c = c.color;
+      el.dataset.i = String(i);
+      el.style.setProperty('--i', String(i));
+      el.style.gridColumn = (c.x + 1) + ' / ' + (c.x + c.w + 1);
+      el.style.gridRow = (c.y + 1) + ' / ' + (c.y + c.h + 1);
+      el.setAttribute('aria-label', 'Cell ' + (i + 1) + ', ' + c.color + '. Activate to change colour.');
+      frag.appendChild(el);
+    });
+    canvas.appendChild(frag);
+  }
+
+  function updatePlate() {
+    const counts = cells.reduce((m, c) => (m[c.color] = (m[c.color] || 0) + 1, m), {});
+    const named = ['red', 'blue', 'yellow', 'black'].filter(k => counts[k]);
+    const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+    let colourPhrase;
+    if (named.length === 0) colourPhrase = 'in White and Grey';
+    else if (named.length === 1) colourPhrase = 'with ' + cap(named[0]);
+    else colourPhrase = 'with ' + named.slice(0, -1).map(cap).join(', ') + ' and ' + cap(named[named.length - 1]);
+
+    const forms = ['Composition', 'Composition No. ' + roman(compositionNo), 'Tableau', 'Lozenge Study', 'Composition ' + String.fromCharCode(64 + ((compositionNo - 1) % 26 + 1))];
+    const title = pick(forms) + ' ' + colourPhrase;
+    plateTitle.style.opacity = '0';
+    setTimeout(() => {
+      plateTitle.textContent = title;
+      plateYear.textContent = String(randInt(1919, 1942));
+      plateMedium.textContent = pick(['Oil on canvas', 'Oil on canvas, artist’s frame', 'Oil and charcoal on canvas', 'Gouache on board']);
+      const size = randInt(40, 90);
+      plateSize.textContent = size + ' × ' + size + ' cm';
+      plateTitle.style.opacity = '1';
+    }, reduceMotion ? 0 : 220);
+  }
+
+  function roman(n) {
+    const map = [[10, 'X'], [9, 'IX'], [5, 'V'], [4, 'IV'], [1, 'I']];
+    let s = '';
+    for (const [v, r] of map) while (n >= v) { s += r; n -= v; }
+    return s || 'I';
+  }
+
+  function compose() {
+    const maxDepth = Number(depthInput.value);
+    cols = makeTracks(UNITS);
+    rows = makeTracks(UNITS);
+    const list = [];
+    subdivide(0, 0, UNITS, UNITS, 0, maxDepth, list);
+    paintCells(list);
+    cells = list;
+    compositionNo++;
+    render();
+    updatePlate();
+    if (!reduceMotion) {
+      easel.style.transform = 'rotate(' + rand(-0.6, 0.6) + 'deg)';
+    }
+  }
+
+  /* Living painting: gently modulate every track with layered sine waves. */
+  function breathe(ts) {
+    if (!t0) t0 = ts;
+    const t = (ts - t0) / 1000;
+    const c = cols.map((v, i) => v * (1 + 0.16 * Math.sin(t * 0.55 + i * 0.9) + 0.06 * Math.sin(t * 1.3 + i * 2.1)));
+    const r = rows.map((v, i) => v * (1 + 0.16 * Math.cos(t * 0.47 + i * 1.1) + 0.06 * Math.sin(t * 1.1 + i * 1.7)));
+    canvas.style.gridTemplateColumns = trackString(c);
+    canvas.style.gridTemplateRows = trackString(r);
+    rafId = requestAnimationFrame(breathe);
+  }
+
+  function setBreathing(on) {
+    breathing = on;
+    animBtn.setAttribute('aria-pressed', String(on));
+    animBtn.querySelector('span').textContent = on ? 'Still' : 'Animate';
+    if (on && !reduceMotion) {
+      canvas.classList.add('breathing');
+      t0 = 0;
+      rafId = requestAnimationFrame(breathe);
+    } else {
+      cancelAnimationFrame(rafId);
+      // let the tracks ease back home
+      canvas.classList.remove('breathing');
+      canvas.style.gridTemplateColumns = trackString(cols);
+      canvas.style.gridTemplateRows = trackString(rows);
+    }
+  }
+
+  canvas.addEventListener('click', e => {
+    const el = e.target.closest('.cell');
+    if (!el) return;
+    const i = Number(el.dataset.i);
+    const next = COLORS[(COLORS.indexOf(cells[i].color) + 1) % COLORS.length];
+    cells[i].color = next;
+    el.dataset.c = next;
+    el.setAttribute('aria-label', 'Cell ' + (i + 1) + ', ' + next + '. Activate to change colour.');
+    updatePlate();
+  });
+
+  newBtn.addEventListener('click', compose);
+  animBtn.addEventListener('click', () => setBreathing(!breathing));
+
+  depthInput.addEventListener('input', () => {
+    depthValue.textContent = depthInput.value;
+    compose();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT') return;
+    if (e.key === 'n' || e.key === 'N') compose();
+    if (e.key === 'a' || e.key === 'A') setBreathing(!breathing);
+  });
+
+  compose();
+})();
+</script>
+</body>
+</html>

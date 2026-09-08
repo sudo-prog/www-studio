@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Quiet Architecture of Fog — Issue 14 · Margin</title>
+<style>
+  :root {
+    --paper: #f4efe6;
+    --paper-deep: #ece5d8;
+    --ink: #151311;
+    --ink-soft: #3d3934;
+    --ink-mute: #857d72;
+    --rule: rgba(21, 19, 17, 0.18);
+    --accent: #6d7f8a;
+    --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, ui-serif, serif;
+    --sans: ui-sans-serif, system-ui, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --measure: 66ch;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    background-image:
+      radial-gradient(ellipse at 20% 0%, rgba(255,255,255,0.5), transparent 50%),
+      radial-gradient(ellipse at 80% 100%, rgba(120, 100, 80, 0.06), transparent 50%);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: clamp(1rem, 0.35vw + 0.92rem, 1.15rem);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection { background: var(--ink); color: var(--paper); }
+
+  .page {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: clamp(24px, 5vw, 80px) clamp(20px, 5vw, 72px) 120px;
+    position: relative;
+  }
+
+  /* masthead */
+  .masthead {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .masthead strong {
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: 0.34em;
+  }
+
+  .rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
+
+  /* opener */
+  .opener {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: clamp(40px, 7vw, 110px) 0 clamp(36px, 5vw, 72px);
+    align-items: end;
+  }
+
+  @media (min-width: 900px) {
+    .opener { grid-template-columns: 7fr 5fr; gap: 64px; }
+  }
+
+  .kicker {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .kicker::before {
+    content: "";
+    width: 40px; height: 1px; background: var(--accent);
+  }
+
+  h1 {
+    font-weight: 400;
+    font-size: clamp(2.9rem, 9.5vw, 8.4rem);
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  h1 em {
+    font-style: italic;
+    font-weight: 300;
+    display: block;
+    font-size: 0.42em;
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+    margin-top: 0.5em;
+    color: var(--ink-soft);
+    max-width: 24ch;
+  }
+
+  .standfirst {
+    font-size: clamp(1.1rem, 1.4vw, 1.4rem);
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin: 0;
+    max-width: 38ch;
+    font-style: italic;
+  }
+
+  .byline {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin: 28px 0 0;
+    line-height: 2;
+  }
+
+  .byline b { color: var(--ink); font-weight: 600; }
+
+  /* figures — pure CSS "photographs" */
+  figure {
+    margin: 0;
+    position: relative;
+  }
+
+  .plate {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    position: relative;
+    overflow: hidden;
+    background: #9aa4ab;
+    box-shadow: 0 30px 60px -30px rgba(21,19,17,0.35), inset 0 0 0 1px rgba(21,19,17,0.08);
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .plate::after {
+    content: "";
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 3px);
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+
+  figure:hover .plate { transform: scale(1.012); }
+
+  .plate.wide { aspect-ratio: 21 / 9; }
+  .plate.square { aspect-ratio: 1; }
+
+  /* Plate I — coastal fog bank over headland */
+  .plate-i {
+    background:
+      radial-gradient(ellipse 80% 50% at 50% 100%, rgba(38,44,50,0.9) 0%, rgba(38,44,50,0) 60%),
+      radial-gradient(ellipse 120% 60% at 30% 70%, rgba(200,206,210,0.8), transparent 60%),
+      radial-gradient(ellipse 100% 50% at 80% 40%, rgba(236,238,238,0.9), transparent 60%),
+      linear-gradient(180deg, #c9cfd3 0%, #a9b3ba 45%, #6f7a82 75%, #2f353a 100%);
+  }
+
+  .plate-i .ridge {
+    position: absolute; left: -10%; right: -10%; bottom: 0; height: 42%;
+    background: linear-gradient(180deg, rgba(40,46,52,0.0), rgba(30,35,40,0.95));
+    clip-path: polygon(0 60%, 12% 52%, 24% 58%, 38% 40%, 50% 47%, 62% 33%, 74% 45%, 86% 38%, 100% 50%, 100% 100%, 0 100%);
+  }
+
+  /* Plate II — pylons dissolving */
+  .plate-ii {
+    background:
+      linear-gradient(180deg, #dfe2e4 0%, #c8cdd1 50%, #aab1b7 100%);
+  }
+
+  .plate-ii .pylon {
+    position: absolute;
+    bottom: 0;
+    width: 2.2%;
+    background: linear-gradient(180deg, rgba(60,66,72,0) 0%, rgba(60,66,72,0.35) 30%, rgba(40,44,48,0.85) 100%);
+  }
+
+  .plate-ii .pylon:nth-child(1) { left: 14%; height: 70%; }
+  .plate-ii .pylon:nth-child(2) { left: 30%; height: 82%; width: 2.8%; }
+  .plate-ii .pylon:nth-child(3) { left: 47%; height: 60%; }
+  .plate-ii .pylon:nth-child(4) { left: 61%; height: 88%; width: 3%; }
+  .plate-ii .pylon:nth-child(5) { left: 78%; height: 66%; }
+  .plate-ii .pylon:nth-child(6) { left: 90%; height: 54%; width: 1.6%; }
+
+  .plate-ii .haze {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(223,226,228,0.95) 0%, rgba(223,226,228,0.6) 40%, rgba(223,226,228,0) 75%);
+  }
+
+  /* Plate III — duotone window light */
+  .plate-iii {
+    background:
+      linear-gradient(135deg, rgba(109,127,138,0.55), rgba(21,19,17,0) 60%),
+      radial-gradient(circle at 70% 30%, #e8e4dc 0%, #b4b7b5 35%, #5d6870 70%, #2a3035 100%);
+  }
+
+  .plate-iii .mullion {
+    position: absolute;
+    background: rgba(21,19,17,0.55);
+  }
+
+  .plate-iii .mullion.v { top: 8%; bottom: 8%; width: 1.8%; left: 49%; }
+  .plate-iii .mullion.h { left: 8%; right: 8%; height: 1.8%; top: 49%; }
+
+  .plate-iii .frame {
+    position: absolute; inset: 8%;
+    border: clamp(6px, 1.4vw, 14px) solid rgba(21,19,17,0.55);
+  }
+
+  figcaption {
+    font-family: var(--serif);
+    font-variant-caps: small-caps;
+    letter-spacing: 0.08em;
+    font-size: 0.82rem;
+    color: var(--ink-mute);
+    margin-top: 14px;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  figcaption span:last-child { color: var(--accent); white-space: nowrap; }
+
+  /* body */
+  .body {
+    display: grid;
+    gap: 48px;
+    padding-top: clamp(36px, 5vw, 64px);
+  }
+
+  .columns {
+    column-count: 1;
+    column-gap: 44px;
+    column-rule: 1px solid var(--rule);
+  }
+
+  @media (min-width: 760px) { .columns { column-count: 2; } }
+  @media (min-width: 1180px) { .columns { column-count: 3; } }
+
+  .columns p {
+    margin: 0 0 1.15em;
+    text-align: left;
+    hyphens: auto;
+    orphans: 3; widows: 3;
+  }
+
+  .columns p:first-of-type::first-letter {
+    float: left;
+    font-size: 5.1em;
+    line-height: 0.78;
+    padding: 0.08em 0.1em 0 0;
+    font-weight: 400;
+    color: var(--ink);
+  }
+
+  .columns h2 {
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 1.6em 0 0.9em;
+    break-after: avoid;
+  }
+
+  /* pull quotes span all columns */
+  .pull {
+    column-span: all;
+    -webkit-column-span: all;
+    margin: 32px 0 40px;
+    padding: 36px 0;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .pull { grid-template-columns: 2fr 1fr; gap: 56px; }
+  }
+
+  .pull blockquote {
+    margin: 0;
+    font-size: clamp(1.6rem, 3.3vw, 3rem);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    font-weight: 300;
+    font-style: italic;
+    text-wrap: balance;
+  }
+
+  .pull blockquote::before { content: "\201C"; color: var(--accent); margin-left: -0.45em; }
+  .pull blockquote::after { content: "\201D"; color: var(--accent); }
+
+  .pull cite {
+    font-family: var(--sans);
+    font-style: normal;
+    font-size: 0.68rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    line-height: 1.9;
+  }
+
+  .spread {
+    display: grid;
+    gap: 28px;
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  @media (min-width: 900px) {
+    .spread { grid-template-columns: 5fr 7fr; gap: 44px; }
+  }
+
+  .aside {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    border-left: 1px solid var(--rule);
+    padding-left: 20px;
+  }
+
+  .aside h3 {
+    font-family: var(--sans);
+    font-size: 0.66rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin: 0 0 12px;
+    color: var(--ink);
+  }
+
+  .aside dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; }
+  .aside dt { font-variant-caps: small-caps; letter-spacing: 0.06em; color: var(--ink-mute); }
+  .aside dd { margin: 0; }
+
+  .end-mark {
+    display: inline-block;
+    width: 0.55em; height: 0.55em;
+    background: var(--ink);
+    margin-left: 0.4em;
+    vertical-align: baseline;
+    transform: translateY(0.02em);
+  }
+
+  /* folios */
+  .folio {
+    position: fixed;
+    bottom: 22px;
+    font-family: var(--sans);
+    font-size: 0.66rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    z-index: 5;
+    display: flex; gap: 14px; align-items: center;
+    pointer-events: none;
+  }
+
+  .folio.left { left: clamp(20px, 5vw, 72px); }
+  .folio.right { right: clamp(20px, 5vw, 72px); }
+  .folio b { color: var(--ink); font-weight: 600; font-size: 0.8rem; letter-spacing: 0.1em; }
+
+  .progress {
+    position: fixed; top: 0; left: 0; height: 2px;
+    background: var(--ink);
+    width: 0%;
+    z-index: 6;
+    transition: width 0.15s linear;
+  }
+
+  .colophon {
+    margin-top: 80px;
+    padding-top: 22px;
+    border-top: 1px solid var(--ink);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px 32px;
+    font-family: var(--sans);
+    font-size: 0.66rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  /* reveal on scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1), transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--d, 0ms);
+  }
+
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .plate, figure:hover .plate { transition: none; transform: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  @media (max-width: 640px) {
+    .folio.left { display: none; }
+    .masthead { flex-wrap: wrap; gap: 6px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<div class="page">
+
+  <header class="masthead reveal">
+    <span><strong>Margin</strong> · A journal of slow places</span>
+    <span>Issue 14 · Overcast</span>
+    <span>Field notes</span>
+  </header>
+
+  <section class="opener">
+    <div>
+      <p class="kicker reveal">Essay · Weather as Building Material</p>
+      <h1 class="reveal" style="--d:120ms">The Quiet Architecture of Fog<em>On the walls that weather builds and unbuilds each morning along the northern coast</em></h1>
+    </div>
+    <div class="reveal" style="--d:260ms">
+      <p class="standfirst">Every structure we admire was designed to be seen. Fog is the only architecture designed to be walked into, and the only one that agrees, each day, to be taken down.</p>
+      <p class="byline">Words <b>Ines Halloran</b><br>Plates <b>Studio Nordvik</b><br>Reporting from Point Reyes and the Firth of Forth</p>
+    </div>
+  </section>
+
+  <figure class="reveal">
+    <div class="plate plate-i wide" role="img" aria-label="Abstract composition of a pale fog bank rolling over a dark coastal ridge">
+      <div class="ridge"></div>
+    </div>
+    <figcaption><span>Plate I — The marine layer arrives at Tomales Point, 06:12, moving at roughly the speed of a walking person.</span><span>Duotone, slate and bone</span></figcaption>
+  </figure>
+
+  <div class="body">
+
+    <div class="columns">
+      <p class="reveal">Somewhere before dawn the ocean begins to build. It does this without drawings and without sound, lifting a wall of water vapor a few hundred meters high and pushing it, at an amble, across the headland. By the time the first dog-walkers reach the bluff the wall has a roof, several rooms, and a ceiling height that changes if you look at it too long. It has, in every sense that matters to the body, become a building. You cannot see through it. You navigate it by memory. Your voice does something different inside it.</p>
+
+      <p class="reveal">We have a hundred words for the way buildings hold us — enclosure, threshold, nave, corridor — and almost none for the way fog does, though fog does it more often and to more people. The Coast Miwok who lived on this peninsula had a word that a nineteenth-century missionary transcribed as <i>lupe</i>, and glossed as "the grey house." The gloss may be a stretch. It is also, I think, exactly right.</p>
+
+      <h2 class="reveal">I. Walls without footings</h2>
+
+      <p class="reveal">Architects speak of a wall's three duties: to bear, to shelter, to divide. Fog abdicates the first entirely and performs the other two with a thoroughness no masonry can match. A fog bank shelters you from sight, from sun, from the distant traffic of the world, and it divides the coast into rooms whose doors move. The architect Juhani Pallasmaa once wrote that the eye is the organ of distance while the skin is the organ of nearness. Fog is what happens when a landscape is rebuilt for the skin. Distance collapses. Everything in the world is suddenly within reach, or does not exist.</p>
+
+      <p class="reveal">On the Firth of Forth the locals call it <i>haar</i>, a word that seems to have been chosen for how it feels in the throat — a small cold exhalation. Haar comes off the North Sea in late spring, when the water is still winter-cold and the air has already decided it is summer. It arrives in Edinburgh by mid-morning and dismantles the city from the top down: first the castle rock, then the spires, then the upper stories of the New Town, until the whole grey capital has been reduced to a floor plan a single storey high, drawn in wet stone, lit from within by bakeries.</p>
+
+      <div class="pull reveal">
+        <blockquote>Fog is what happens when a landscape is rebuilt for the skin. Distance collapses. Everything is suddenly within reach, or does not exist.</blockquote>
+        <cite>From the author's notebook<br>Tomales Point, May</cite>
+      </div>
+
+      <h2 class="reveal">II. The ceiling that breathes</h2>
+
+      <p class="reveal">A meteorologist will tell you that a fog bank is simply a cloud that has been persuaded, by the temperature of the ground, to come down and sit. This is true and it is also the least interesting thing about it. What matters to a person standing inside is that the ceiling is not fixed. Advection fog off the Pacific stacks itself in layers — a dense floor the height of a two-storey house, a thinner mezzanine above it, and, if you are lucky, a glimpse of a further, brighter vault where the sun is trying to get in. Stand still for ten minutes and you will watch the ceiling lift, hesitate, lower, and lift again, as if the building were breathing. There is no other structure in the world that does this. Cathedrals only pretend to.</p>
+
+      <p class="reveal">I spent a week in a rented cottage above Drakes Bay trying to record these movements with a pencil. I am not a good draughtsman, and fog is a poor sitter, but I learned to notice its habits. It thickens in the low places first, pooling in the gullies like water finding a level. It thins where the land warms — over the dark rock, over the paved road, over the roof of the ranger's truck. It carries sound strangely, so that the foghorn at the lighthouse, four kilometers off, seemed some mornings to be in the next room, and other mornings to be a rumour.</p>
+
+      <h2 class="reveal">III. The city as a scale model</h2>
+
+      <p class="reveal">There is a particular pleasure to watching fog take a city apart, and I think it is the pleasure of scale. A city is too large to be seen at once, and so we never quite believe in it as a single made thing; it is a confusion of parts. Fog gives it edges. The morning haar draws a line across Edinburgh at roughly the height of a fourth-floor window and says: <i>this much, and no more</i>. What is left is an object. You can hold it in the mind. You can walk around it. You notice, perhaps for the first time, that Princes Street is a straight line and George Street is another and that someone, two and a half centuries ago, decided this.</p>
+
+      <p class="reveal">The architect Peter Zumthor has said that the task of a building is to produce atmosphere, and that atmosphere is what we perceive in the first fraction of a second before we understand what we are looking at. Fog produces nothing but atmosphere; it withholds the understanding indefinitely. This may be why so many of us walk faster in it and why a few of us, the ones who keep coming back to these coasts, walk slower.</p>
+
+      <div class="pull reveal">
+        <blockquote>The task of a building is to produce atmosphere. Fog produces nothing but atmosphere, and withholds the understanding indefinitely.</blockquote>
+        <cite>After Peter Zumthor<br><i>Atmospheres</i>, 2006</cite>
+      </div>
+
+      <h2 class="reveal">IV. Demolition, daily</h2>
+
+      <p class="reveal">By eleven the wind has turned and the sun has found the top of the wall. The demolition is as quiet as the construction. Rooms open one into another. The ceiling goes first, then the far walls, until you are standing in a single enormous space with the sea at the end of it and no memory of how you were ever enclosed. Fog leaves no ruin. This is its most radical architectural proposition, and the one we find hardest to forgive. We want our buildings to outlast us, to keep the shape of our intentions after we are gone. Fog keeps nothing. It builds a grey house each morning for anyone who happens to be awake, and it takes the house down before lunch, and it does this without asking to be remembered.</p>
+
+      <p class="reveal">I have started to think that we could learn from it. Not the impermanence — we are impermanent enough — but the generosity. The willingness to build something enormous for a few hours' use. The refusal to leave a mark. On my last morning at Point Reyes I walked out to the end of the headland inside the wall and stood, for a while, in a room the size of the ocean, with the foghorn in the next room and the sun somewhere above the roof, and I did not draw anything. It seemed rude.<span class="end-mark" aria-hidden="true"></span></p>
+    </div>
+
+    <div class="spread">
+      <figure class="reveal">
+        <div class="plate plate-iii square" role="img" aria-label="Abstract duotone composition of pale light through a divided window">
+          <div class="frame"></div>
+          <div class="mullion v"></div>
+          <div class="mullion h"></div>
+        </div>
+        <figcaption><span>Plate III — Haar at the window, Stockbridge, 09:40.</span><span>Duotone, slate and bone</span></figcaption>
+      </figure>
+
+      <div>
+        <figure class="reveal" style="--d:120ms">
+          <div class="plate plate-ii wide" role="img" aria-label="Abstract composition of dark pylons dissolving upward into pale fog">
+            <div class="pylon"></div><div class="pylon"></div><div class="pylon"></div>
+            <div class="pylon"></div><div class="pylon"></div><div class="pylon"></div>
+            <div class="haze"></div>
+          </div>
+          <figcaption><span>Plate II — Pier pilings, Inverness Landing, dissolving from the top.</span><span>Duotone, slate and bone</span></figcaption>
+        </figure>
+
+        <aside class="aside reveal" style="--d:220ms; margin-top: 36px;">
+          <h3>Field glossary</h3>
+          <dl>
+            <dt>Advection fog</dt><dd>Formed when warm, moist air moves over a cooler surface — the standard Pacific model.</dd>
+            <dt>Haar</dt><dd>Scots and Northumbrian term for the cold sea fog of the east coast, most frequent in April and May.</dd>
+            <dt>Ceiling</dt><dd>In aviation and here, the height of the lowest layer that obscures more than half the sky.</dd>
+            <dt>Marine layer</dt><dd>The cool, humid air mass beneath a temperature inversion in which coastal fog lives.</dd>
+            <dt>Lupe</dt><dd>Contested Coast Miwok gloss: "the grey house." Treat with the affection owed to a good story.</dd>
+          </dl>
+        </aside>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="colophon reveal">
+    <span>Margin · Issue 14</span>
+    <span>Set in system serif and sans · Plates composed in gradient and shadow</span>
+    <span>Printed nowhere · read anywhere</span>
+  </footer>
+
+</div>
+
+<div class="folio left"><b>14</b> Margin — Overcast</div>
+<div class="folio right">The Quiet Architecture of Fog <b id="pageNo">42</b></div>
+
+<script>
+(function () {
+  'use strict';
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reveals = document.querySelectorAll('.reveal');
+
+  if (reduce || !('IntersectionObserver' in window)) {
+    reveals.forEach(el => el.classList.add('in'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    reveals.forEach(el => io.observe(el));
+  }
+
+  // Reading progress bar + drifting folio page number (42 → 47 across the piece)
+  const progress = document.getElementById('progress');
+  const pageNo = document.getElementById('pageNo');
+  const firstPage = 42, lastPage = 47;
+  let ticking = false;
+
+  function update() {
+    const doc = document.documentElement;
+    const max = doc.scrollHeight - window.innerHeight;
+    const t = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+    progress.style.width = (t * 100).toFixed(2) + '%';
+    pageNo.textContent = String(firstPage + Math.round(t * (lastPage - firstPage)));
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
+</body>
+</html>

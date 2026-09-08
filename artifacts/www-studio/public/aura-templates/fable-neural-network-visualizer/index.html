@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Synapse — A Living Neural Network</title>
+<style>
+  :root {
+    --navy: #050a1a;
+    --navy-2: #0a1230;
+    --panel: rgba(12, 20, 52, 0.72);
+    --line: rgba(120, 160, 255, 0.14);
+    --cyan: #35f0ff;
+    --magenta: #ff3fd1;
+    --text: #dbe7ff;
+    --muted: #7f93c4;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    font-family: ui-sans-serif, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(ellipse 60% 40% at 20% 0%, rgba(53,240,255,0.10), transparent 60%),
+      radial-gradient(ellipse 50% 40% at 90% 100%, rgba(255,63,209,0.12), transparent 60%),
+      linear-gradient(180deg, var(--navy-2), var(--navy) 60%);
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .grid-bg {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background-image:
+      linear-gradient(rgba(120,160,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(120,160,255,0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+    -webkit-mask-image: radial-gradient(ellipse at 50% 40%, #000 30%, transparent 80%);
+    mask-image: radial-gradient(ellipse at 50% 40%, #000 30%, transparent 80%);
+  }
+  header {
+    position: relative; z-index: 1;
+    display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px;
+    padding: 22px 28px 10px;
+  }
+  header h1 {
+    margin: 0;
+    font-weight: 300;
+    font-size: clamp(1.3rem, 2.6vw, 2rem);
+    letter-spacing: 0.02em;
+  }
+  header h1 b { font-weight: 700; background: linear-gradient(90deg, var(--cyan), var(--magenta)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  header p { margin: 0; color: var(--muted); font-size: 0.85rem; }
+  header code { font-family: 'Courier New', ui-monospace, monospace; color: var(--cyan); }
+
+  main {
+    position: relative; z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 16px;
+    padding: 8px 28px 28px;
+    flex: 1;
+    max-width: 1600px; width: 100%; margin: 0 auto;
+  }
+  @media (max-width: 980px) { main { grid-template-columns: 1fr; padding: 8px 14px 20px; } header { padding: 18px 14px 8px; } }
+
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.05);
+    position: relative;
+    overflow: hidden;
+  }
+  .card h2 {
+    margin: 0;
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 12px 16px 0;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .card h2 span.val { font-family: 'Courier New', ui-monospace, monospace; color: var(--cyan); letter-spacing: 0; font-size: 0.75rem; }
+
+  .net-card { min-height: 460px; display: flex; flex-direction: column; }
+  .net-wrap { position: relative; flex: 1; min-height: 400px; }
+  canvas#net { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .layer-labels {
+    position: absolute; left: 0; right: 0; bottom: 8px;
+    display: flex; justify-content: space-around;
+    font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted);
+    pointer-events: none;
+  }
+  .hud {
+    position: absolute; left: 14px; top: 12px;
+    font-family: 'Courier New', ui-monospace, monospace;
+    font-size: 0.72rem; line-height: 1.6; color: var(--muted);
+    pointer-events: none;
+  }
+  .hud b { color: var(--text); font-weight: 400; }
+
+  .side { display: flex; flex-direction: column; gap: 14px; }
+  .controls { padding: 12px 16px 16px; display: grid; gap: 10px; }
+  .btnrow { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  button {
+    font: inherit; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--text);
+    background: linear-gradient(180deg, rgba(120,160,255,0.16), rgba(120,160,255,0.06));
+    border: 1px solid rgba(120,160,255,0.35);
+    border-radius: 8px;
+    padding: 10px 10px;
+    cursor: pointer;
+    transition: transform .12s, box-shadow .2s, border-color .2s, background .2s;
+  }
+  button:hover { border-color: var(--cyan); box-shadow: 0 0 18px rgba(53,240,255,0.25); transform: translateY(-1px); }
+  button:active { transform: translateY(1px); }
+  button.primary { background: linear-gradient(135deg, rgba(53,240,255,0.25), rgba(255,63,209,0.25)); border-color: rgba(255,255,255,0.35); }
+  button.on { background: linear-gradient(135deg, rgba(53,240,255,0.45), rgba(255,63,209,0.45)); border-color: #fff; box-shadow: 0 0 22px rgba(255,63,209,0.35); }
+  .row { display: grid; grid-template-columns: 6.5em 1fr 4em; align-items: center; gap: 8px; font-size: 0.7rem; }
+  .row label { color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.62rem; }
+  .row output { font-family: 'Courier New', ui-monospace, monospace; text-align: right; color: var(--cyan); }
+  input[type=range] {
+    -webkit-appearance: none; appearance: none;
+    width: 100%; height: 4px; border-radius: 2px;
+    background: linear-gradient(90deg, var(--cyan), var(--magenta));
+    outline: none;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%;
+    background: #fff; border: 2px solid var(--navy); box-shadow: 0 0 10px rgba(53,240,255,0.7); cursor: pointer;
+  }
+  input[type=range]::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 2px solid var(--navy); cursor: pointer; }
+  select {
+    font: inherit; font-size: 0.75rem; color: var(--text);
+    background: rgba(10,18,48,0.9); border: 1px solid rgba(120,160,255,0.35); border-radius: 8px;
+    padding: 6px 8px; outline: none;
+  }
+  .legend {
+    display: flex; gap: 14px; flex-wrap: wrap;
+    font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+    padding: 0 16px 12px;
+  }
+  .legend i { display: inline-block; width: 18px; height: 3px; vertical-align: middle; margin-right: 6px; border-radius: 2px; }
+  .legend .pos { background: var(--cyan); box-shadow: 0 0 8px var(--cyan); }
+  .legend .neg { background: var(--magenta); box-shadow: 0 0 8px var(--magenta); }
+
+  canvas#loss { display: block; width: 100%; height: 150px; }
+  .heat-wrap { position: relative; }
+  canvas#heat { display: block; width: 100%; aspect-ratio: 1 / 1; image-rendering: auto; border-radius: 0 0 14px 14px; }
+  .heat-wrap.collapsed canvas#heat { display: none; }
+  .heat-note { font-size: 0.64rem; color: var(--muted); padding: 8px 16px 12px; line-height: 1.5; }
+  .toggle { font-size: 0.6rem; padding: 4px 10px; border-radius: 999px; }
+
+  footer { position: relative; z-index: 1; text-align: center; color: var(--muted); font-size: 0.7rem; padding: 0 16px 22px; }
+  @media (prefers-reduced-motion: reduce) { button { transition: none; } }
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+<header>
+  <h1><b>Synapse</b> — a living neural network</h1>
+  <p>2 → 6 → 6 → 4 → 1, <code>tanh</code> hidden units, sigmoid output, trained with real backpropagation in your browser.</p>
+</header>
+
+<main>
+  <section class="card net-card" aria-label="Network diagram">
+    <h2>Network <span class="val" id="hudStatus">idle</span></h2>
+    <div class="net-wrap">
+      <canvas id="net"></canvas>
+      <div class="hud" id="hud"></div>
+      <div class="layer-labels"><span>Input</span><span>Hidden 1</span><span>Hidden 2</span><span>Hidden 3</span><span>Output</span></div>
+    </div>
+    <div class="legend">
+      <span><i class="pos"></i>positive weight</span>
+      <span><i class="neg"></i>negative weight</span>
+      <span>thickness ∝ |w| · node glow ∝ activation</span>
+    </div>
+  </section>
+
+  <aside class="side">
+    <section class="card">
+      <h2>Controls</h2>
+      <div class="controls">
+        <div class="btnrow">
+          <button class="primary" id="forward">Forward pass</button>
+          <button class="primary" id="train">Train</button>
+          <button id="step">Step ×1 epoch</button>
+          <button id="reset">Reset weights</button>
+        </div>
+        <div class="row"><label for="lr">Learn rate</label><input type="range" id="lr" min="0.005" max="0.5" step="0.005" value="0.08"><output id="lro">0.080</output></div>
+        <div class="row"><label for="speed">Epochs/frame</label><input type="range" id="speed" min="1" max="12" step="1" value="3"><output id="speedo">3</output></div>
+        <div class="row"><label for="dataset">Dataset</label>
+          <select id="dataset">
+            <option value="xor">XOR quadrants</option>
+            <option value="circle">Circle in square</option>
+            <option value="moons">Two moons</option>
+          </select>
+          <output id="nptso">200</output>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Loss · binary cross-entropy <span class="val" id="lossVal">—</span></h2>
+      <canvas id="loss"></canvas>
+    </section>
+
+    <section class="card heat-wrap" id="heatWrap">
+      <h2>Decision boundary <button class="toggle" id="heatToggle">Hide</button></h2>
+      <canvas id="heat" width="72" height="72"></canvas>
+      <div class="heat-note">Cyan = class 1, magenta = class 0. Dots are the training set; the field is the network's output over the plane, re-rendered as weights change. Click a dot to run a forward pass on it.</div>
+    </section>
+  </aside>
+</main>
+<footer>Everything here is computed live: no libraries, no pre-baked data. Reload for a fresh random initialisation.</footer>
+
+<script>
+(function () {
+  'use strict';
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const SIZES = [2, 6, 6, 4, 1];
+
+  // ---------------- tiny neural network ----------------
+  function makeNet() {
+    const W = [], B = [];
+    for (let l = 0; l < SIZES.length - 1; l++) {
+      const nin = SIZES[l], nout = SIZES[l + 1];
+      const scale = Math.sqrt(2 / (nin + nout)) * 1.6;
+      W.push(Array.from({ length: nout }, () => Array.from({ length: nin }, () => (Math.random() * 2 - 1) * scale)));
+      B.push(Array.from({ length: nout }, () => 0));
+    }
+    return { W, B };
+  }
+  const sigmoid = z => 1 / (1 + Math.exp(-z));
+  function forward(net, x) {
+    const acts = [x.slice()];
+    let a = x;
+    for (let l = 0; l < net.W.length; l++) {
+      const out = new Array(SIZES[l + 1]);
+      const last = l === net.W.length - 1;
+      for (let j = 0; j < out.length; j++) {
+        let z = net.B[l][j];
+        const row = net.W[l][j];
+        for (let i = 0; i < a.length; i++) z += row[i] * a[i];
+        out[j] = last ? sigmoid(z) : Math.tanh(z);
+      }
+      acts.push(out);
+      a = out;
+    }
+    return acts;
+  }
+  function trainEpoch(net, data, lr) {
+    // minibatch SGD, batch of 16, BCE loss with sigmoid output -> delta = y_hat - y
+    let total = 0;
+    const idx = data.map((_, i) => i);
+    for (let i = idx.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [idx[i], idx[j]] = [idx[j], idx[i]]; }
+    const BATCH = 16;
+    for (let b = 0; b < idx.length; b += BATCH) {
+      const gW = net.W.map(m => m.map(r => r.map(() => 0)));
+      const gB = net.B.map(v => v.map(() => 0));
+      let n = 0;
+      for (let k = b; k < Math.min(b + BATCH, idx.length); k++) {
+        const s = data[idx[k]];
+        const acts = forward(net, [s.x, s.y]);
+        const yhat = acts[acts.length - 1][0];
+        const eps = 1e-7;
+        total += -(s.label * Math.log(yhat + eps) + (1 - s.label) * Math.log(1 - yhat + eps));
+        let delta = [yhat - s.label];
+        for (let l = net.W.length - 1; l >= 0; l--) {
+          const aPrev = acts[l];
+          for (let j = 0; j < delta.length; j++) {
+            gB[l][j] += delta[j];
+            for (let i = 0; i < aPrev.length; i++) gW[l][j][i] += delta[j] * aPrev[i];
+          }
+          if (l > 0) {
+            const nd = new Array(aPrev.length).fill(0);
+            for (let i = 0; i < aPrev.length; i++) {
+              let sum = 0;
+              for (let j = 0; j < delta.length; j++) sum += net.W[l][j][i] * delta[j];
+              nd[i] = sum * (1 - aPrev[i] * aPrev[i]);
+            }
+            delta = nd;
+          }
+        }
+        n++;
+      }
+      for (let l = 0; l < net.W.length; l++) {
+        for (let j = 0; j < net.W[l].length; j++) {
+          net.B[l][j] -= lr * gB[l][j] / n;
+          for (let i = 0; i < net.W[l][j].length; i++) net.W[l][j][i] -= lr * gW[l][j][i] / n;
+        }
+      }
+    }
+    return total / data.length;
+  }
+
+  // ---------------- datasets ----------------
+  function makeData(kind, n = 200) {
+    const pts = [];
+    for (let i = 0; i < n; i++) {
+      let x = Math.random() * 2 - 1, y = Math.random() * 2 - 1, label;
+      if (kind === 'xor') {
+        if (Math.abs(x) < 0.08) x += Math.sign(x || 1) * 0.1;
+        if (Math.abs(y) < 0.08) y += Math.sign(y || 1) * 0.1;
+        label = x * y > 0 ? 1 : 0;
+      } else if (kind === 'circle') {
+        const r = Math.hypot(x, y);
+        if (r > 0.5 && r < 0.62) { x *= 1.3; y *= 1.3; }
+        label = Math.hypot(x, y) < 0.56 ? 1 : 0;
+      } else {
+        const t = Math.random() * Math.PI;
+        label = i % 2;
+        if (label === 1) { x = Math.cos(t) * 0.6 - 0.25; y = Math.sin(t) * 0.6 - 0.2; }
+        else { x = 0.25 - Math.cos(t) * 0.6; y = 0.25 - Math.sin(t) * 0.6 + 0.1; }
+        x += (Math.random() - 0.5) * 0.14; y += (Math.random() - 0.5) * 0.14;
+      }
+      pts.push({ x: Math.max(-1, Math.min(1, x)), y: Math.max(-1, Math.min(1, y)), label });
+    }
+    return pts;
+  }
+
+  // ---------------- state ----------------
+  let net = makeNet();
+  let data = makeData('xor');
+  let losses = [];
+  let training = false;
+  let epoch = 0;
+  let acts = forward(net, [0.5, 0.5]);
+  let sample = { x: 0.5, y: 0.5, label: 1 };
+  let pulse = null; // { start, sample }
+  const PULSE_MS = reduce ? 1 : 520;
+
+  // ---------------- canvas helpers ----------------
+  function fit(canvas, aspectSquare) {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const r = canvas.getBoundingClientRect();
+    const w = Math.max(1, Math.floor(r.width)), h = Math.max(1, Math.floor(aspectSquare ? r.width : r.height));
+    if (canvas.width !== Math.floor(w * dpr) || canvas.height !== Math.floor(h * dpr)) {
+      canvas.width = Math.floor(w * dpr); canvas.height = Math.floor(h * dpr);
+    }
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    return { ctx, w, h };
+  }
+
+  const netCanvas = document.getElementById('net');
+  const lossCanvas = document.getElementById('loss');
+  const heatCanvas = document.getElementById('heat');
+  const heatWrap = document.getElementById('heatWrap');
+  const hud = document.getElementById('hud');
+  const hudStatus = document.getElementById('hudStatus');
+  const lossVal = document.getElementById('lossVal');
+
+  function nodePositions(w, h) {
+    const pos = [];
+    const padX = w * 0.09, padY = h * 0.14;
+    for (let l = 0; l < SIZES.length; l++) {
+      const x = padX + (w - 2 * padX) * (l / (SIZES.length - 1));
+      const layer = [];
+      const n = SIZES[l];
+      for (let i = 0; i < n; i++) {
+        const y = n === 1 ? h / 2 : padY + (h - 2 * padY) * (i / (n - 1));
+        layer.push({ x, y });
+      }
+      pos.push(layer);
+    }
+    return pos;
+  }
+  function bez(p0, p1, t) {
+    const cx1 = p0.x + (p1.x - p0.x) * 0.5, cx2 = p1.x - (p1.x - p0.x) * 0.5;
+    const mt = 1 - t;
+    return {
+      x: mt*mt*mt*p0.x + 3*mt*mt*t*cx1 + 3*mt*t*t*cx2 + t*t*t*p1.x,
+      y: mt*mt*mt*p0.y + 3*mt*mt*t*p0.y + 3*mt*t*t*p1.y + t*t*t*p1.y
+    };
+  }
+
+  function drawNet(now) {
+    const { ctx, w, h } = fit(netCanvas, false);
+    ctx.clearRect(0, 0, w, h);
+    const pos = nodePositions(w, h);
+    let maxW = 0.2;
+    net.W.forEach(m => m.forEach(r => r.forEach(v => { maxW = Math.max(maxW, Math.abs(v)); })));
+
+    // pulse phase per layer transition
+    let pulseLayer = -1, pulseT = 0, litUpTo = SIZES.length;
+    if (pulse) {
+      const el = now - pulse.start;
+      pulseLayer = Math.floor(el / PULSE_MS);
+      pulseT = (el % PULSE_MS) / PULSE_MS;
+      if (pulseLayer >= SIZES.length - 1) { pulse = null; pulseLayer = -1; hudStatus.textContent = training ? 'training' : 'idle'; }
+      else litUpTo = pulseLayer;
+    }
+
+    // connections
+    ctx.lineCap = 'round';
+    for (let l = 0; l < net.W.length; l++) {
+      for (let j = 0; j < SIZES[l + 1]; j++) {
+        for (let i = 0; i < SIZES[l]; i++) {
+          const wv = net.W[l][j][i];
+          const mag = Math.abs(wv) / maxW;
+          const p0 = pos[l][i], p1 = pos[l + 1][j];
+          const cx1 = p0.x + (p1.x - p0.x) * 0.5, cx2 = p1.x - (p1.x - p0.x) * 0.5;
+          const col = wv >= 0 ? '53,240,255' : '255,63,209';
+          const active = pulse && l < pulseLayer;
+          ctx.strokeStyle = `rgba(${col},${(0.08 + mag * 0.55 + (active ? 0.15 : 0)).toFixed(3)})`;
+          ctx.lineWidth = 0.4 + mag * 3.2;
+          ctx.beginPath();
+          ctx.moveTo(p0.x, p0.y);
+          ctx.bezierCurveTo(cx1, p0.y, cx2, p1.y, p1.x, p1.y);
+          ctx.stroke();
+        }
+      }
+    }
+    // pulses travelling
+    if (pulse && pulseLayer >= 0) {
+      const l = pulseLayer;
+      for (let j = 0; j < SIZES[l + 1]; j++) for (let i = 0; i < SIZES[l]; i++) {
+        const a = acts[l][i];
+        const wv = net.W[l][j][i];
+        const strength = Math.min(1, Math.abs(a * wv) / (maxW * 0.8));
+        if (strength < 0.05) continue;
+        const p = bez(pos[l][i], pos[l + 1][j], pulseT);
+        const col = wv * a >= 0 ? '53,240,255' : '255,63,209';
+        ctx.fillStyle = `rgba(${col},${(0.4 + strength * 0.6).toFixed(2)})`;
+        ctx.shadowColor = `rgba(${col},0.9)`; ctx.shadowBlur = 12;
+        ctx.beginPath(); ctx.arc(p.x, p.y, 1.8 + strength * 3, 0, Math.PI * 2); ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+    }
+    // nodes
+    const R = Math.max(7, Math.min(16, h / 30));
+    for (let l = 0; l < SIZES.length; l++) {
+      for (let i = 0; i < SIZES[l]; i++) {
+        const p = pos[l][i];
+        const a = acts[l][i];
+        const lit = l <= litUpTo;
+        const positive = l === 0 || l === SIZES.length - 1 ? true : a >= 0;
+        const col = positive ? '53,240,255' : '255,63,209';
+        const glow = lit ? Math.abs(l === 0 ? a : (l === SIZES.length - 1 ? a * 2 - 1 : a)) : 0;
+        ctx.shadowColor = `rgba(${col},${(glow * 0.9).toFixed(2)})`;
+        ctx.shadowBlur = 8 + glow * 26;
+        const grad = ctx.createRadialGradient(p.x - R * 0.3, p.y - R * 0.3, 1, p.x, p.y, R);
+        grad.addColorStop(0, `rgba(255,255,255,${(0.35 + glow * 0.65).toFixed(2)})`);
+        grad.addColorStop(0.5, `rgba(${col},${(0.35 + glow * 0.6).toFixed(2)})`);
+        grad.addColorStop(1, `rgba(${col},${(0.15 + glow * 0.25).toFixed(2)})`);
+        ctx.fillStyle = grad;
+        ctx.beginPath(); ctx.arc(p.x, p.y, R, 0, Math.PI * 2); ctx.fill();
+        ctx.shadowBlur = 0;
+        ctx.strokeStyle = `rgba(${col},0.7)`; ctx.lineWidth = 1;
+        ctx.stroke();
+        // value label
+        ctx.fillStyle = 'rgba(219,231,255,0.85)';
+        ctx.font = `${Math.max(9, R * 0.85)}px 'Courier New', monospace`;
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText(lit ? a.toFixed(2) : '·', p.x, p.y);
+      }
+    }
+    // input labels
+    ctx.fillStyle = 'rgba(127,147,196,0.9)';
+    ctx.font = `11px ui-sans-serif, system-ui, sans-serif`;
+    ctx.textAlign = 'right';
+    ctx.fillText('x₁', pos[0][0].x - R - 8, pos[0][0].y);
+    ctx.fillText('x₂', pos[0][1].x - R - 8, pos[0][1].y);
+    ctx.textAlign = 'left';
+    const out = acts[acts.length - 1][0];
+    ctx.fillText(`P(class 1) = ${out.toFixed(3)}`, pos[4][0].x + R + 8, pos[4][0].y - 8);
+    ctx.fillText(`target ${sample.label}`, pos[4][0].x + R + 8, pos[4][0].y + 8);
+  }
+
+  function drawLoss() {
+    const { ctx, w, h } = fit(lossCanvas, false);
+    ctx.clearRect(0, 0, w, h);
+    const padL = 34, padR = 10, padT = 10, padB = 18;
+    ctx.strokeStyle = 'rgba(120,160,255,0.15)'; ctx.lineWidth = 1;
+    for (let i = 0; i <= 4; i++) {
+      const y = padT + (h - padT - padB) * i / 4;
+      ctx.beginPath(); ctx.moveTo(padL, y); ctx.lineTo(w - padR, y); ctx.stroke();
+    }
+    const maxL = Math.max(0.75, ...losses.slice(0, 5));
+    ctx.fillStyle = 'rgba(127,147,196,0.9)';
+    ctx.font = '10px "Courier New", monospace'; ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+    ctx.fillText(maxL.toFixed(2), padL - 5, padT);
+    ctx.fillText('0', padL - 5, h - padB);
+    ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+    ctx.fillText(`epoch ${epoch}`, padL, h - 4);
+    if (losses.length < 2) return;
+    const n = losses.length;
+    const gx = i => padL + (w - padL - padR) * i / (n - 1);
+    const gy = v => padT + (h - padT - padB) * (1 - Math.min(1, v / maxL));
+    const grad = ctx.createLinearGradient(0, padT, 0, h - padB);
+    grad.addColorStop(0, 'rgba(255,63,209,0.35)'); grad.addColorStop(1, 'rgba(53,240,255,0.02)');
+    ctx.beginPath(); ctx.moveTo(gx(0), h - padB);
+    losses.forEach((v, i) => ctx.lineTo(gx(i), gy(v)));
+    ctx.lineTo(gx(n - 1), h - padB); ctx.closePath();
+    ctx.fillStyle = grad; ctx.fill();
+    ctx.beginPath();
+    losses.forEach((v, i) => i ? ctx.lineTo(gx(i), gy(v)) : ctx.moveTo(gx(i), gy(v)));
+    const lg = ctx.createLinearGradient(padL, 0, w - padR, 0);
+    lg.addColorStop(0, '#ff3fd1'); lg.addColorStop(1, '#35f0ff');
+    ctx.strokeStyle = lg; ctx.lineWidth = 1.8; ctx.lineJoin = 'round';
+    ctx.shadowColor = 'rgba(53,240,255,0.6)'; ctx.shadowBlur = 8;
+    ctx.stroke(); ctx.shadowBlur = 0;
+    const lx = gx(n - 1), ly = gy(losses[n - 1]);
+    ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(lx, ly, 2.5, 0, Math.PI * 2); ctx.fill();
+  }
+
+  const heatCtx = heatCanvas.getContext('2d');
+  const HEAT_N = 72;
+  const heatImg = heatCtx.createImageData(HEAT_N, HEAT_N);
+  function drawHeat() {
+    if (heatWrap.classList.contains('collapsed')) return;
+    const d = heatImg.data;
+    for (let j = 0; j < HEAT_N; j++) for (let i = 0; i < HEAT_N; i++) {
+      const x = (i + 0.5) / HEAT_N * 2 - 1, y = 1 - (j + 0.5) / HEAT_N * 2;
+      const p = forward(net, [x, y]);
+      const v = p[p.length - 1][0];
+      const k = (j * HEAT_N + i) * 4;
+      // magenta (0) -> navy (0.5) -> cyan (1)
+      const c0 = [255, 63, 209], cm = [12, 20, 52], c1 = [53, 240, 255];
+      let r, g, b;
+      if (v < 0.5) { const f = v * 2; r = c0[0] + (cm[0]-c0[0])*f; g = c0[1] + (cm[1]-c0[1])*f; b = c0[2] + (cm[2]-c0[2])*f; }
+      else { const f = (v - 0.5) * 2; r = cm[0] + (c1[0]-cm[0])*f; g = cm[1] + (c1[1]-cm[1])*f; b = cm[2] + (c1[2]-cm[2])*f; }
+      d[k] = r; d[k + 1] = g; d[k + 2] = b; d[k + 3] = 255;
+    }
+    heatCtx.putImageData(heatImg, 0, 0);
+    // data points, drawn in image space (canvas is 72x72, CSS scales it up)
+    for (const s of data) {
+      const px = (s.x + 1) / 2 * HEAT_N, py = (1 - s.y) / 2 * HEAT_N;
+      heatCtx.fillStyle = s.label ? '#35f0ff' : '#ff3fd1';
+      heatCtx.beginPath(); heatCtx.arc(px, py, 1.1, 0, Math.PI * 2); heatCtx.fill();
+      heatCtx.strokeStyle = 'rgba(5,10,26,0.9)'; heatCtx.lineWidth = 0.4; heatCtx.stroke();
+    }
+    if (sample) {
+      const px = (sample.x + 1) / 2 * HEAT_N, py = (1 - sample.y) / 2 * HEAT_N;
+      heatCtx.strokeStyle = '#fff'; heatCtx.lineWidth = 0.7;
+      heatCtx.beginPath(); heatCtx.arc(px, py, 2.4, 0, Math.PI * 2); heatCtx.stroke();
+    }
+  }
+
+  // ---------------- controls ----------------
+  const lr = document.getElementById('lr'), lro = document.getElementById('lro');
+  const speed = document.getElementById('speed'), speedo = document.getElementById('speedo');
+  const trainBtn = document.getElementById('train');
+  lr.addEventListener('input', () => { lro.textContent = parseFloat(lr.value).toFixed(3); });
+  speed.addEventListener('input', () => { speedo.textContent = speed.value; });
+
+  function runForward(s) {
+    sample = s;
+    acts = forward(net, [s.x, s.y]);
+    pulse = { start: performance.now(), sample: s };
+    hudStatus.textContent = 'forward pass';
+  }
+  document.getElementById('forward').addEventListener('click', () => {
+    runForward(data[Math.floor(Math.random() * data.length)]);
+  });
+  trainBtn.addEventListener('click', () => {
+    training = !training;
+    trainBtn.textContent = training ? 'Pause' : 'Train';
+    trainBtn.classList.toggle('on', training);
+    hudStatus.textContent = training ? 'training' : 'idle';
+  });
+  document.getElementById('step').addEventListener('click', () => { doEpochs(1); });
+  document.getElementById('reset').addEventListener('click', () => {
+    net = makeNet(); losses = []; epoch = 0; acts = forward(net, [sample.x, sample.y]); lossVal.textContent = '—'; heatDirty = true;
+  });
+  document.getElementById('dataset').addEventListener('change', e => {
+    data = makeData(e.target.value); losses = []; epoch = 0; net = makeNet(); acts = forward(net, [sample.x, sample.y]); heatDirty = true;
+  });
+  const heatToggle = document.getElementById('heatToggle');
+  heatToggle.addEventListener('click', () => {
+    heatWrap.classList.toggle('collapsed');
+    heatToggle.textContent = heatWrap.classList.contains('collapsed') ? 'Show' : 'Hide';
+    heatDirty = true;
+  });
+  heatCanvas.addEventListener('click', e => {
+    const r = heatCanvas.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width * 2 - 1, y = 1 - (e.clientY - r.top) / r.height * 2;
+    let best = null, bd = 1e9;
+    for (const s of data) { const d = Math.hypot(s.x - x, s.y - y); if (d < bd) { bd = d; best = s; } }
+    runForward(bd < 0.12 ? best : { x, y, label: '?' });
+    heatDirty = true;
+  });
+
+  let heatDirty = true;
+  function doEpochs(n) {
+    for (let i = 0; i < n; i++) {
+      const L = trainEpoch(net, data, parseFloat(lr.value));
+      losses.push(L); epoch++;
+      if (losses.length > 600) losses = losses.filter((_, i) => i % 2 === 0);
+    }
+    lossVal.textContent = losses[losses.length - 1].toFixed(4);
+    acts = forward(net, [sample.x, sample.y]);
+    heatDirty = true;
+  }
+
+  let heatFrame = 0;
+  function loop(now) {
+    if (training) doEpochs(parseInt(speed.value, 10));
+    drawNet(now);
+    drawLoss();
+    heatFrame++;
+    if (heatDirty && heatFrame % 3 === 0) { drawHeat(); heatDirty = training; }
+    const acc = data.reduce((c, s) => c + ((forward(net, [s.x, s.y])[4][0] > 0.5 ? 1 : 0) === s.label ? 1 : 0), 0) / data.length;
+    hud.innerHTML = `epoch <b>${epoch}</b><br>accuracy <b>${(acc * 100).toFixed(1)}%</b><br>sample <b>(${sample.x.toFixed(2)}, ${sample.y.toFixed(2)})</b>`;
+    requestAnimationFrame(loop);
+  }
+  window.addEventListener('resize', () => { heatDirty = true; });
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

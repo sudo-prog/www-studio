@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Casa Maré — A Quiet House Above the Atlantic</title>
+<style>
+  :root {
+    --sand: #efe6d8;
+    --sand-deep: #e2d5c1;
+    --sea: #2f6f73;
+    --sea-deep: #1f4d51;
+    --sea-light: #8fb8b9;
+    --ink: #1c1c1c;
+    --ink-soft: #5a5652;
+    --gold: #b8935a;
+    --serif: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, ui-serif, serif;
+    --sans: "Helvetica Neue", Helvetica, ui-sans-serif, system-ui, Arial, sans-serif;
+    --ease: cubic-bezier(.2, .8, .2, 1);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--sand); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 400; margin: 0; letter-spacing: -.015em; }
+  em { font-style: italic; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { width: min(1240px, 92vw); margin: 0 auto; }
+  .eyebrow { font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 12px; }
+  .eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--gold); }
+
+  /* nav */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 28px clamp(18px, 4vw, 56px);
+    color: #fff;
+    transition: padding .5s var(--ease), background .5s, color .5s, box-shadow .5s;
+  }
+  .nav.solid {
+    padding: 12px clamp(18px, 4vw, 56px);
+    background: rgba(239,230,216,.78); color: var(--ink);
+    backdrop-filter: blur(14px) saturate(1.2); -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    box-shadow: 0 1px 0 rgba(28,28,28,.08);
+  }
+  .logo { font-family: var(--serif); font-size: 22px; letter-spacing: .04em; display: flex; align-items: center; gap: 10px; transition: font-size .5s var(--ease); }
+  .nav.solid .logo { font-size: 19px; }
+  .logo svg { width: 22px; height: 22px; }
+  .links { display: flex; gap: 30px; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; }
+  .links a { position: relative; padding: 4px 0; }
+  .links a::after { content: ""; position: absolute; left: 0; bottom: 0; height: 1px; width: 100%; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .45s var(--ease); }
+  .links a:hover::after { transform: scaleX(1); transform-origin: left; }
+  .btn {
+    display: inline-block; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; padding: 12px 22px;
+    border: 1px solid currentColor; border-radius: 999px; cursor: pointer; background: transparent; color: inherit; font-family: inherit;
+    transition: background .35s, color .35s, transform .35s var(--ease), border-color .35s;
+  }
+  .btn:hover { background: var(--ink); color: var(--sand); border-color: var(--ink); transform: translateY(-1px); }
+  .nav .btn { padding: 10px 18px; }
+  .btn.gold { background: var(--gold); border-color: var(--gold); color: #fff; }
+  .btn.gold:hover { background: var(--ink); border-color: var(--ink); }
+  @media (max-width: 820px) { .links { display: none; } }
+
+  /* hero */
+  .hero { position: relative; height: 100vh; min-height: 640px; overflow: hidden; color: #fff; display: flex; align-items: flex-end; }
+  .sky {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 70% 30%, rgba(255,228,190,.55), transparent 60%),
+      linear-gradient(180deg, #a9c3c9 0%, #cfd8d3 34%, #e8d9c2 52%, #8fb8b9 56%, #3b7c80 75%, #2f6f73 100%);
+  }
+  .sun {
+    position: absolute; width: 22vmin; height: 22vmin; left: 66%; top: 30%; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,246,222,1) 0 28%, rgba(255,232,190,.7) 45%, transparent 70%);
+    filter: blur(2px); transform: translate(-50%, -50%);
+  }
+  .glint {
+    position: absolute; left: 0; right: 0; top: 55%; height: 45%;
+    background: radial-gradient(ellipse 12% 40% at 66% 0%, rgba(255,240,210,.7), rgba(255,240,210,.15) 45%, transparent 70%);
+    animation: glint 9s ease-in-out infinite alternate; mix-blend-mode: screen;
+  }
+  @keyframes glint { from { transform: translateX(-2%) scaleX(1); opacity: .7; } to { transform: translateX(2%) scaleX(1.25); opacity: 1; } }
+  .waves { position: absolute; left: 0; right: 0; bottom: 0; height: 46%; }
+  .waves svg { position: absolute; left: 0; bottom: 0; width: 200%; height: 100%; }
+  .waves .w1 { animation: drift 18s linear infinite; opacity: .55; bottom: 34%; height: 24%; }
+  .waves .w2 { animation: drift 26s linear infinite reverse; opacity: .7; bottom: 18%; height: 30%; }
+  .waves .w3 { animation: drift 14s linear infinite; bottom: 0; height: 36%; }
+  @keyframes drift { to { transform: translateX(-50%); } }
+  .hero .wrap { position: relative; z-index: 2; padding-bottom: clamp(56px, 10vh, 120px); display: grid; gap: 22px; }
+  .hero h1 { font-size: clamp(44px, 8vw, 118px); line-height: .98; text-shadow: 0 2px 30px rgba(31,77,81,.35); max-width: 14ch; }
+  .hero h1 em { color: #fff3dd; }
+  .hero p { max-width: 46ch; font-size: clamp(15px, 1.3vw, 18px); opacity: .92; margin: 0; }
+  .hero .eyebrow { color: #fff3dd; } .hero .eyebrow::before { background: #fff3dd; }
+  .hero .cta { display: flex; gap: 14px; flex-wrap: wrap; }
+  .scroll-cue { position: absolute; right: clamp(18px, 4vw, 56px); bottom: 36px; z-index: 2; font-size: 10px; letter-spacing: .3em; text-transform: uppercase; writing-mode: vertical-rl; display: flex; gap: 12px; align-items: center; opacity: .85; }
+  .scroll-cue i { display: block; width: 1px; height: 54px; background: linear-gradient(#fff, transparent); animation: cue 2.2s var(--ease) infinite; }
+  @keyframes cue { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+  /* sections */
+  section { padding: clamp(72px, 10vw, 140px) 0; }
+  .sec-head { display: grid; gap: 14px; margin-bottom: clamp(36px, 5vw, 64px); max-width: 720px; }
+  .sec-head h2 { font-size: clamp(32px, 4.2vw, 58px); line-height: 1.05; }
+  .sec-head p { color: var(--ink-soft); margin: 0; max-width: 56ch; }
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+  .reveal.in { opacity: 1; transform: none; }
+  .reveal[data-d="1"] { transition-delay: .12s; } .reveal[data-d="2"] { transition-delay: .24s; } .reveal[data-d="3"] { transition-delay: .36s; }
+
+  /* intro */
+  .intro { background: var(--sand); }
+  .intro .grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 6vw, 90px); align-items: center; }
+  .intro h2 { font-size: clamp(30px, 3.6vw, 50px); line-height: 1.1; }
+  .intro p { color: var(--ink-soft); font-size: 16px; }
+  .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; border-top: 1px solid rgba(28,28,28,.15); padding-top: 24px; }
+  .facts b { display: block; font-family: var(--serif); font-size: 32px; font-weight: 400; }
+  .facts span { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft); }
+  .tide { aspect-ratio: 4 / 5; border-radius: 240px 240px 8px 8px; overflow: hidden; position: relative;
+    background: linear-gradient(180deg, #d9cdb8 0 45%, var(--sea-light) 45%, var(--sea) 100%); }
+  .tide::before { content: ""; position: absolute; left: 12%; right: 12%; top: 46%; height: 1px; background: rgba(255,255,255,.7); box-shadow: 0 24px 0 rgba(255,255,255,.35), 0 60px 0 rgba(255,255,255,.2); }
+  .tide::after { content: ""; position: absolute; left: 50%; top: 24%; width: 18%; aspect-ratio: 1; border-radius: 50%; transform: translateX(-50%); background: radial-gradient(circle at 40% 40%, #fff7e4, #ecd6a8); box-shadow: 0 0 60px rgba(255,240,200,.8); }
+  @media (max-width: 820px) { .intro .grid { grid-template-columns: 1fr; } .tide { max-width: 420px; } }
+
+  /* rooms */
+  .rooms { background: var(--sand-deep); }
+  .room-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 26px; }
+  .room { display: grid; gap: 14px; }
+  .photo { aspect-ratio: 4 / 5; overflow: hidden; border-radius: 6px; position: relative; box-shadow: 0 30px 60px -30px rgba(31,77,81,.45); }
+  .photo .art { position: absolute; inset: 0; transition: transform 1.2s var(--ease); background: var(--art); }
+  .room:hover .photo .art { transform: scale(1.07); }
+  .photo .art::before, .photo .art::after { content: ""; position: absolute; }
+  .art.a1 { --art: linear-gradient(180deg, #e9dcc5 0 55%, #c9b899 55% 58%, #8fb8b9 58%, #2f6f73 100%); }
+  .art.a1::before { left: 18%; top: 22%; width: 26%; aspect-ratio: 1; border-radius: 50%; background: #f7efe0; box-shadow: inset -8px -6px 0 rgba(0,0,0,.05); }
+  .art.a1::after { left: 0; right: 0; bottom: 0; height: 22%; background: repeating-linear-gradient(90deg, rgba(255,255,255,.18) 0 2px, transparent 2px 22px); }
+  .art.a2 { --art: linear-gradient(160deg, #f2e9da 0 40%, #d9c6a7 40% 41%, #efe6d8 41% 100%); }
+  .art.a2::before { right: 12%; top: 14%; width: 46%; height: 62%; background: linear-gradient(180deg, #2f6f73, #1f4d51); border-radius: 2px; }
+  .art.a2::after { left: 14%; bottom: 14%; width: 38%; height: 30%; background: #c9b899; border-radius: 2px; box-shadow: 8px -8px 0 #b8935a; }
+  .art.a3 { --art: radial-gradient(circle at 50% 110%, #b8935a 0 18%, transparent 19%), linear-gradient(180deg, #a9c3c9 0 48%, #e2d5c1 48%); }
+  .art.a3::before { left: 10%; right: 10%; top: 30%; height: 1px; background: #fff; box-shadow: 0 10px 0 rgba(255,255,255,.6), 0 20px 0 rgba(255,255,255,.3); }
+  .art.a3::after { left: 40%; top: 52%; width: 20%; height: 28%; background: #2f6f73; clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+  .room .meta { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .room h3 { font-size: 24px; }
+  .room .price { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); white-space: nowrap; }
+  .room .price b { font-family: var(--serif); font-size: 20px; color: var(--ink); text-transform: none; letter-spacing: 0; font-weight: 400; }
+  .room p { margin: 0; color: var(--ink-soft); font-size: 14px; }
+  .room .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .room .tags span { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; padding: 5px 10px; border: 1px solid rgba(28,28,28,.2); border-radius: 999px; }
+
+  /* experiences */
+  .exp { background: var(--sea); color: var(--sand); }
+  .exp .sec-head p { color: rgba(239,230,216,.75); }
+  .exp .eyebrow { color: #e5c99a; } .exp .eyebrow::before { background: #e5c99a; }
+  .strip { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 4vw 24px; margin: 0 -4vw; scrollbar-width: none; }
+  .strip::-webkit-scrollbar { display: none; }
+  .exp-card {
+    flex: 0 0 min(78vw, 380px); scroll-snap-align: start; border-radius: 6px; padding: 26px; min-height: 340px;
+    background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border: 1px solid rgba(239,230,216,.16);
+    display: flex; flex-direction: column; justify-content: flex-end; gap: 10px; position: relative; overflow: hidden;
+    transition: transform .5s var(--ease), border-color .5s;
+  }
+  .exp-card:hover { transform: translateY(-6px); border-color: rgba(229,201,154,.6); }
+  .exp-card .n { position: absolute; top: 18px; right: 22px; font-family: var(--serif); font-size: 56px; opacity: .18; line-height: 1; }
+  .exp-card .time { font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: #e5c99a; }
+  .exp-card h3 { font-size: 26px; line-height: 1.1; }
+  .exp-card p { margin: 0; font-size: 14px; color: rgba(239,230,216,.75); }
+  .exp-card svg { width: 44px; height: 44px; margin-bottom: auto; stroke: #e5c99a; fill: none; stroke-width: 1.2; }
+  .strip-nav { display: flex; gap: 10px; justify-content: flex-end; margin-top: 6px; }
+  .strip-nav button { width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(239,230,216,.4); background: transparent; color: var(--sand); cursor: pointer; display: grid; place-items: center; transition: background .3s, transform .3s var(--ease); }
+  .strip-nav button:hover { background: rgba(239,230,216,.12); transform: translateY(-2px); }
+  .strip-nav svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.4; }
+
+  /* booking */
+  .book { background: var(--sand); }
+  .widget {
+    background: #fff; border-radius: 10px; padding: clamp(22px, 3vw, 40px); box-shadow: 0 40px 80px -40px rgba(31,77,81,.35);
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(24px, 4vw, 56px); align-items: start;
+  }
+  .widget h2 { font-size: clamp(28px, 3vw, 42px); line-height: 1.1; margin-bottom: 10px; }
+  .widget .lead { color: var(--ink-soft); margin: 0 0 22px; }
+  .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .field { display: grid; gap: 8px; }
+  .field label, .field .lbl { font-size: 10px; letter-spacing: .26em; text-transform: uppercase; color: var(--ink-soft); }
+  .field input { font: inherit; font-size: 15px; padding: 14px; border: 1px solid rgba(28,28,28,.18); border-radius: 6px; background: var(--sand); color: var(--ink); outline: none; width: 100%; transition: border-color .3s, box-shadow .3s; }
+  .field input:focus { border-color: var(--sea); box-shadow: 0 0 0 3px rgba(47,111,115,.15); }
+  .stepper { display: flex; align-items: center; justify-content: space-between; border: 1px solid rgba(28,28,28,.18); border-radius: 6px; background: var(--sand); padding: 6px 6px 6px 14px; }
+  .stepper b { font-family: var(--serif); font-size: 20px; font-weight: 400; min-width: 2ch; text-align: center; }
+  .stepper button { width: 38px; height: 38px; border-radius: 50%; border: 1px solid rgba(28,28,28,.2); background: #fff; font-size: 18px; cursor: pointer; transition: background .25s, color .25s, transform .25s var(--ease); color: var(--ink); font-family: inherit; }
+  .stepper button:hover { background: var(--ink); color: #fff; }
+  .stepper button:active { transform: scale(.94); }
+  .stepper button:disabled { opacity: .3; pointer-events: none; }
+  .summary { border-left: 1px solid rgba(28,28,28,.12); padding-left: clamp(20px, 3vw, 40px); display: grid; gap: 14px; align-content: start; }
+  .summary .line { display: flex; justify-content: space-between; font-size: 14px; color: var(--ink-soft); }
+  .summary .line b { color: var(--ink); font-weight: 500; }
+  .summary .total { border-top: 1px solid rgba(28,28,28,.12); padding-top: 14px; font-family: var(--serif); font-size: 28px; display: flex; justify-content: space-between; align-items: baseline; }
+  .summary .total small { font-family: var(--sans); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft); }
+  .summary .note { font-size: 12px; color: var(--ink-soft); min-height: 1.5em; }
+  .summary .btn { justify-self: start; }
+  @media (max-width: 820px) { .widget { grid-template-columns: 1fr; } .summary { border-left: 0; padding-left: 0; border-top: 1px solid rgba(28,28,28,.12); padding-top: 20px; } }
+  @media (max-width: 480px) { .fields { grid-template-columns: 1fr; } }
+
+  /* testimonials */
+  .voices { background: var(--sand-deep); text-align: center; }
+  .quote-box { position: relative; min-height: 220px; max-width: 760px; margin: 0 auto; }
+  .quote { position: absolute; inset: 0; opacity: 0; transform: translateY(12px); transition: opacity 1.1s var(--ease), transform 1.1s var(--ease); display: grid; gap: 22px; align-content: center; }
+  .quote.on { opacity: 1; transform: none; }
+  .quote blockquote { margin: 0; font-family: var(--serif); font-size: clamp(22px, 2.6vw, 34px); line-height: 1.35; }
+  .quote cite { font-style: normal; font-size: 11px; letter-spacing: .26em; text-transform: uppercase; color: var(--ink-soft); }
+  .q-dots { display: flex; gap: 8px; justify-content: center; margin-top: 26px; }
+  .q-dots button { width: 8px; height: 8px; border-radius: 50%; border: 0; background: rgba(28,28,28,.2); cursor: pointer; padding: 0; transition: background .3s, transform .3s; }
+  .q-dots button[aria-current="true"] { background: var(--gold); transform: scale(1.3); }
+
+  /* footer */
+  footer { background: var(--ink); color: var(--sand); padding: clamp(56px, 7vw, 100px) 0 40px; }
+  .foot { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1.4fr; gap: 40px; }
+  .foot h4 { font-size: 11px; letter-spacing: .26em; text-transform: uppercase; color: var(--gold); margin: 0 0 16px; font-weight: 500; }
+  .foot ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 14px; color: rgba(239,230,216,.75); }
+  .foot ul a:hover { color: #fff; }
+  .foot .logo { font-size: 28px; margin-bottom: 14px; }
+  .foot p { margin: 0; color: rgba(239,230,216,.7); font-size: 14px; max-width: 30ch; }
+  .map { width: 100%; border-radius: 6px; border: 1px solid rgba(239,230,216,.15); background: #232323; display: block; }
+  .legal { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 50px; padding-top: 20px; border-top: 1px solid rgba(239,230,216,.12); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: rgba(239,230,216,.5); }
+  @media (max-width: 900px) { .foot { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .foot { grid-template-columns: 1fr; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .waves svg, .glint, .scroll-cue i { animation: none; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .photo .art, .exp-card, .quote { transition: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+<nav class="nav" id="nav" aria-label="Primary">
+  <a class="logo" href="#top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 15c3 0 3-2 6-2s3 2 6 2 3-2 6-2M2 19c3 0 3-2 6-2s3 2 6 2 3-2 6-2"/><circle cx="12" cy="7" r="3"/></svg>Casa Maré</a>
+  <div class="links"><a href="#rooms">Rooms</a><a href="#experiences">Experiences</a><a href="#voices">Guests</a><a href="#contact">Contact</a></div>
+  <a class="btn" href="#book">Reserve</a>
+</nav>
+
+<header class="hero" id="top">
+  <div class="sky"></div>
+  <div class="sun"></div>
+  <div class="glint"></div>
+  <div class="waves" aria-hidden="true">
+    <svg class="w1" viewBox="0 0 1600 200" preserveAspectRatio="none"><path fill="#a9cfd0" d="M0 90 C 200 40, 400 140, 800 90 S 1400 40, 1600 90 L1600 200 L0 200 Z"/></svg>
+    <svg class="w2" viewBox="0 0 1600 200" preserveAspectRatio="none"><path fill="#4a8d90" d="M0 100 C 250 60, 450 150, 800 100 S 1350 60, 1600 100 L1600 200 L0 200 Z"/></svg>
+    <svg class="w3" viewBox="0 0 1600 200" preserveAspectRatio="none"><path fill="#2f6f73" d="M0 110 C 300 70, 500 160, 800 110 S 1300 70, 1600 110 L1600 200 L0 200 Z"/></svg>
+  </div>
+  <div class="wrap">
+    <div class="eyebrow">Praia da Luz · Algarve coast</div>
+    <h1>A quiet house <em>above</em> the Atlantic</h1>
+    <p>Twelve rooms, one long terrace, and a tide that sets the pace of the day. Casa Maré is a place to do less, slowly and well.</p>
+    <div class="cta"><a class="btn gold" href="#book">Check availability</a><a class="btn" href="#rooms">See the rooms</a></div>
+  </div>
+  <div class="scroll-cue"><i></i>Scroll</div>
+</header>
+
+<main>
+  <section class="intro">
+    <div class="wrap grid">
+      <div class="reveal">
+        <div class="eyebrow">The house</div>
+        <h2 style="margin-top:14px">Built from the cliff's own <em>limestone</em>, opened to the sea on every side.</h2>
+        <p>Casa Maré began as a fisherman's storehouse in 1911. We kept the thick walls and the long shaded loggia, and added only what the light asked for: deep linen beds, hand-glazed tiles, a saltwater pool cut into the rock.</p>
+        <div class="facts">
+          <div><b>12</b><span>Rooms &amp; suites</span></div>
+          <div><b>40 m</b><span>Above the tide</span></div>
+          <div><b>1911</b><span>Stone walls</span></div>
+        </div>
+      </div>
+      <div class="tide reveal" data-d="1" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section class="rooms" id="rooms">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Rooms</div>
+        <h2>Three ways to <em>wake</em> to the water</h2>
+        <p>Every room faces the sea. The difference is how much of it you can hold in one glance.</p>
+      </div>
+      <div class="room-grid">
+        <article class="room reveal">
+          <div class="photo"><div class="art a1"></div></div>
+          <div class="meta"><h3>Tide Room</h3><div class="price">from <b>€290</b> / night</div></div>
+          <p>Ground-floor, with a private stone step into the garden and the sound of the shore at the pillow.</p>
+          <div class="tags"><span>32 m²</span><span>Garden</span><span>King bed</span></div>
+        </article>
+        <article class="room reveal" data-d="1">
+          <div class="photo"><div class="art a2"></div></div>
+          <div class="meta"><h3>Loggia Suite</h3><div class="price">from <b>€460</b> / night</div></div>
+          <p>A sitting room under the original vaulted loggia, a bath carved from a single block of local stone.</p>
+          <div class="tags"><span>58 m²</span><span>Terrace</span><span>Stone bath</span></div>
+        </article>
+        <article class="room reveal" data-d="2">
+          <div class="photo"><div class="art a3"></div></div>
+          <div class="meta"><h3>Lighthouse Suite</h3><div class="price">from <b>€720</b> / night</div></div>
+          <p>The top of the house. Windows on three sides, a rooftop plunge pool, and the horizon as your only neighbour.</p>
+          <div class="tags"><span>74 m²</span><span>Rooftop</span><span>Plunge pool</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="exp" id="experiences">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Experiences</div>
+        <h2>Days shaped by the <em>tide table</em></h2>
+        <p>Nothing is scheduled that the sea would not approve of. Ask at the desk, or simply follow the light.</p>
+      </div>
+      <div class="strip reveal" id="strip">
+        <article class="exp-card"><span class="n">01</span><svg viewBox="0 0 48 48"><circle cx="24" cy="30" r="9"/><path d="M6 30h6M36 30h6M24 12v6M11 17l4 4M37 17l-4 4M4 42h40"/></svg><div class="time">06:40 · sunrise</div><h3>Swim at first light</h3><p>The saltwater pool is warmest before the wind arrives. Towels and coffee wait on the ledge.</p></article>
+        <article class="exp-card"><span class="n">02</span><svg viewBox="0 0 48 48"><path d="M6 36c6-14 30-14 36 0M12 36c4-8 20-8 24 0M24 10v6M24 40v2"/></svg><div class="time">09:00 · low tide</div><h3>Rock-pool walk</h3><p>Our marine biologist neighbour leads a slow walk along the exposed shelf, naming anemones.</p></article>
+        <article class="exp-card"><span class="n">03</span><svg viewBox="0 0 48 48"><path d="M8 40h32M10 40l4-22h20l4 22M18 18v-6h12v6"/><path d="M24 24v10"/></svg><div class="time">13:30 · lunch</div><h3>Grill on the terrace</h3><p>Whatever came in on the boats this morning, cooked over vine cuttings, eaten under the loggia.</p></article>
+        <article class="exp-card"><span class="n">04</span><svg viewBox="0 0 48 48"><path d="M8 30c8 0 8-6 16-6s8 6 16 6M4 38h40M24 6v10M18 12l6-6 6 6"/></svg><div class="time">17:00 · golden hour</div><h3>Sail to the caves</h3><p>A wooden boat, a quiet skipper, and the grottoes of Ponta da Piedade lit from within.</p></article>
+        <article class="exp-card"><span class="n">05</span><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="10"/><path d="M24 4v6M24 38v6M4 24h6M38 24h6M9 9l4 4M35 35l4 4M9 39l4-4M35 13l4-4"/></svg><div class="time">21:30 · dark sky</div><h3>Stars from the roof</h3><p>The village lights go off at nine. A telescope, blankets, and someone who knows the constellations.</p></article>
+      </div>
+      <div class="strip-nav">
+        <button id="sPrev" aria-label="Scroll experiences left"><svg viewBox="0 0 16 16"><path d="M10 2 4 8l6 6"/></svg></button>
+        <button id="sNext" aria-label="Scroll experiences right"><svg viewBox="0 0 16 16"><path d="m6 2 6 6-6 6"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="book" id="book">
+    <div class="wrap">
+      <div class="widget reveal">
+        <div>
+          <div class="eyebrow">Reserve</div>
+          <h2 style="margin-top:14px">Choose your <em>nights</em></h2>
+          <p class="lead">Rates include breakfast on the terrace, use of the saltwater pool, and the sunrise swim.</p>
+          <div class="fields">
+            <div class="field"><label for="in">Arrival</label><input type="date" id="in"></div>
+            <div class="field"><label for="out">Departure</label><input type="date" id="out"></div>
+            <div class="field"><span class="lbl" id="guestsLbl">Guests</span>
+              <div class="stepper" role="group" aria-labelledby="guestsLbl"><b id="guestsVal" aria-live="polite">2</b><div><button type="button" id="gMinus" aria-label="Fewer guests">−</button> <button type="button" id="gPlus" aria-label="More guests">+</button></div></div>
+            </div>
+            <div class="field"><label for="room">Room</label>
+              <select id="room" style="font:inherit;font-size:15px;padding:14px;border:1px solid rgba(28,28,28,.18);border-radius:6px;background:var(--sand);color:var(--ink);width:100%">
+                <option value="290">Tide Room — €290</option><option value="460">Loggia Suite — €460</option><option value="720">Lighthouse Suite — €720</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="summary">
+          <div class="line"><span>Nights</span><b id="sNights">—</b></div>
+          <div class="line"><span>Guests</span><b id="sGuests">2</b></div>
+          <div class="line"><span>Room</span><b id="sRoom">Tide Room</b></div>
+          <div class="total"><small>Estimated total</small><span id="sTotal">€ —</span></div>
+          <div class="note" id="sNote">Select your dates to see the total.</div>
+          <button class="btn gold" type="button" id="reserve">Request reservation</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="voices" id="voices">
+    <div class="wrap reveal">
+      <div class="eyebrow" style="justify-content:center">Guests</div>
+      <div class="quote-box" id="quotes" aria-live="polite">
+        <figure class="quote on"><blockquote>“We came for three nights and stayed nine. I have never slept the way I slept with that window open.”</blockquote><cite>Ines &amp; Tomas — Vienna</cite></figure>
+        <figure class="quote"><blockquote>“The house does not try to impress you. It just keeps quietly being the most beautiful place you have ever been.”</blockquote><cite>Margaret H. — Edinburgh</cite></figure>
+        <figure class="quote"><blockquote>“The grill lunch on the terrace, the sail into the caves, the stars. My children are still talking about the octopus.”</blockquote><cite>The Okafor family — Lagos</cite></figure>
+      </div>
+      <div class="q-dots" id="qDots"></div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="logo">Casa Maré</div>
+        <p>Rua do Farol 4, Praia da Luz, 8600-121 Lagos, Portugal. Open all year; the sea sets the hours.</p>
+      </div>
+      <div><h4>Visit</h4><ul><li><a href="#rooms">Rooms &amp; suites</a></li><li><a href="#experiences">Experiences</a></li><li><a href="#book">Reservations</a></li><li><a href="#top">Gift stays</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li>+351 282 000 000</li><li>stay@casamare.example</li><li>Concierge 07:00–23:00</li></ul></div>
+      <div>
+        <h4>Find us</h4>
+        <svg class="map" viewBox="0 0 300 160" role="img" aria-label="Simplified map of the Praia da Luz coastline with Casa Maré marked">
+          <defs><pattern id="wl" width="14" height="6" patternUnits="userSpaceOnUse"><path d="M0 3c3-3 4-3 7 0s4 3 7 0" fill="none" stroke="#2f6f73" stroke-width=".8"/></pattern></defs>
+          <rect width="300" height="160" fill="#232323"/>
+          <path d="M0 95 C 40 80, 70 100, 110 90 S 180 70, 220 88 S 280 100, 300 92 L300 160 L0 160Z" fill="url(#wl)"/>
+          <path d="M0 95 C 40 80, 70 100, 110 90 S 180 70, 220 88 S 280 100, 300 92" fill="none" stroke="#efe6d8" stroke-width="1.2"/>
+          <path d="M20 20 C 60 40, 90 30, 130 60 M130 60 C 160 75, 200 50, 240 70 M60 10 L 80 60" fill="none" stroke="#4a4a4a" stroke-width="1"/>
+          <g fill="#efe6d8" font-family="Helvetica Neue, Arial, sans-serif" font-size="8" letter-spacing="1"><text x="12" y="140" fill="#8fb8b9">ATLANTIC</text><text x="150" y="30" fill="#8a8a8a">N125</text><text x="184" y="84">PRAIA DA LUZ</text></g>
+          <g transform="translate(140 84)"><circle r="9" fill="#b8935a" opacity=".25"><animate attributeName="r" values="6;14;6" dur="3s" repeatCount="indefinite"/></circle><circle r="3.5" fill="#b8935a"/></g>
+          <text x="112" y="76" fill="#b8935a" font-family="Georgia, serif" font-size="9" font-style="italic">Casa Maré</text>
+        </svg>
+      </div>
+    </div>
+    <div class="legal"><span>© 2026 Casa Maré · Hotelaria do Farol Lda.</span><span>Privacy · Terms · Accessibility</span></div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('solid', window.scrollY > 40);
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  // scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // experiences strip
+  const strip = document.getElementById('strip');
+  const cardW = () => (strip.querySelector('.exp-card').getBoundingClientRect().width + 20);
+  document.getElementById('sPrev').addEventListener('click', () => strip.scrollBy({ left: -cardW(), behavior: 'smooth' }));
+  document.getElementById('sNext').addEventListener('click', () => strip.scrollBy({ left: cardW(), behavior: 'smooth' }));
+
+  // booking widget
+  const inEl = document.getElementById('in'), outEl = document.getElementById('out'), roomEl = document.getElementById('room');
+  const gVal = document.getElementById('guestsVal'), gMinus = document.getElementById('gMinus'), gPlus = document.getElementById('gPlus');
+  const sNights = document.getElementById('sNights'), sGuests = document.getElementById('sGuests'), sRoom = document.getElementById('sRoom');
+  const sTotal = document.getElementById('sTotal'), sNote = document.getElementById('sNote');
+  let guests = 2;
+  const iso = d => d.toISOString().slice(0, 10);
+  const today = new Date(); today.setHours(12, 0, 0, 0);
+  const arrive = new Date(today); arrive.setDate(arrive.getDate() + 14);
+  const leave = new Date(arrive); leave.setDate(leave.getDate() + 3);
+  inEl.min = iso(today); inEl.value = iso(arrive); outEl.value = iso(leave);
+
+  function fmt(n) { return '€ ' + n.toLocaleString('en-IE'); }
+  function update() {
+    const a = new Date(inEl.value), b = new Date(outEl.value);
+    outEl.min = inEl.value ? iso(new Date(a.getTime() + 86400000)) : '';
+    gVal.textContent = guests; sGuests.textContent = guests;
+    sRoom.textContent = roomEl.options[roomEl.selectedIndex].text.split(' — ')[0];
+    gMinus.disabled = guests <= 1; gPlus.disabled = guests >= 4;
+    const nights = Math.round((b - a) / 86400000);
+    if (!inEl.value || !outEl.value || !(nights > 0)) {
+      sNights.textContent = '—'; sTotal.textContent = '€ —';
+      sNote.textContent = inEl.value && outEl.value ? 'Departure must be after arrival.' : 'Select your dates to see the total.';
+      return;
+    }
+    const rate = +roomEl.value + Math.max(0, guests - 2) * 60;
+    const longStay = nights >= 5 ? 0.9 : 1;
+    const total = Math.round(rate * nights * longStay);
+    sNights.textContent = nights + (nights === 1 ? ' night' : ' nights');
+    sTotal.textContent = fmt(total);
+    sNote.textContent = (longStay < 1 ? 'Includes our 10% long-stay courtesy. ' : '') + (guests > 2 ? 'Third and fourth guests €60 per night. ' : '') + 'Taxes included.';
+  }
+  [inEl, outEl, roomEl].forEach(el => el.addEventListener('input', update));
+  gMinus.addEventListener('click', () => { guests = Math.max(1, guests - 1); update(); });
+  gPlus.addEventListener('click', () => { guests = Math.min(4, guests + 1); update(); });
+  document.getElementById('reserve').addEventListener('click', function () {
+    const b = this; b.textContent = 'Request sent — we will write back today'; b.style.pointerEvents = 'none';
+    setTimeout(() => { b.textContent = 'Request reservation'; b.style.pointerEvents = ''; }, 3200);
+  });
+  update();
+
+  // testimonials
+  const quotes = Array.from(document.querySelectorAll('#quotes .quote'));
+  const dots = document.getElementById('qDots');
+  let qi = 0, qTimer;
+  quotes.forEach((_, i) => {
+    const d = document.createElement('button'); d.setAttribute('aria-label', 'Show testimonial ' + (i + 1));
+    d.addEventListener('click', () => { show(i); restart(); }); dots.appendChild(d);
+  });
+  function show(i) {
+    qi = i; quotes.forEach((q, k) => q.classList.toggle('on', k === i));
+    dots.querySelectorAll('button').forEach((b, k) => b.setAttribute('aria-current', k === i ? 'true' : 'false'));
+  }
+  function restart() { clearInterval(qTimer); qTimer = setInterval(() => show((qi + 1) % quotes.length), 6500); }
+  show(0);
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) restart();
+})();
+</script>
+</body>
+</html>

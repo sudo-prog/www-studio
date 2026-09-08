@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Little Meridian — An Isometric City Block</title>
+<style>
+  :root {
+    --sky1: #6fb7ff;
+    --sky2: #dff0ff;
+    --night: 0;         /* 0 = full day, 1 = full night */
+    --shx: 30;          /* unitless shadow offset (px) per 100px of height */
+    --shy: 14;
+    --s: 1;
+    --ink: #2a2333;
+    --paper: rgba(255,255,255,0.72);
+    --sans: ui-sans-serif, system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    --serif: Georgia, 'Iowan Old Style', Palatino, ui-serif, serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; overflow: hidden; }
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    background: linear-gradient(to bottom, var(--sky1) 0%, var(--sky2) 70%, #f5efe6 100%);
+    transition: background 1s linear;
+  }
+
+  /* ---------- Sky ---------- */
+  .stars {
+    position: fixed; inset: 0; pointer-events: none; opacity: var(--night);
+    background-image:
+      radial-gradient(1px 1px at 12% 18%, #fff 50%, transparent 60%), radial-gradient(1.5px 1.5px at 28% 8%, #fff 50%, transparent 60%),
+      radial-gradient(1px 1px at 41% 24%, #fff 50%, transparent 60%), radial-gradient(1px 1px at 57% 11%, #fff 50%, transparent 60%),
+      radial-gradient(1.5px 1.5px at 66% 29%, #fff 50%, transparent 60%), radial-gradient(1px 1px at 78% 6%, #fff 50%, transparent 60%),
+      radial-gradient(1px 1px at 88% 21%, #fff 50%, transparent 60%), radial-gradient(1px 1px at 5% 36%, #fff 50%, transparent 60%),
+      radial-gradient(1.5px 1.5px at 94% 40%, #fff 50%, transparent 60%), radial-gradient(1px 1px at 35% 44%, #fff 50%, transparent 60%),
+      radial-gradient(1px 1px at 50% 33%, #fff 50%, transparent 60%), radial-gradient(1px 1px at 72% 47%, #fff 50%, transparent 60%),
+      radial-gradient(1px 1px at 20% 52%, #fff 50%, transparent 60%), radial-gradient(1px 1px at 84% 56%, #fff 50%, transparent 60%);
+  }
+  .orb {
+    position: fixed; width: clamp(40px, 7vmin, 90px); aspect-ratio: 1; border-radius: 50%; pointer-events: none;
+    left: calc(50% + var(--ox) * 1vw); top: calc(var(--oy) * 1vh); transform: translate(-50%, -50%);
+    transition: opacity 1.2s ease;
+  }
+  .sun { background: radial-gradient(circle at 40% 40%, #fff9e0, #ffd66b 60%, #ffb347); box-shadow: 0 0 40px rgba(255,214,107,0.8), 0 0 120px rgba(255,180,80,0.45); }
+  .moon { background: radial-gradient(circle at 40% 40%, #fbfbff, #cfd3e0 60%, #8e93a6); box-shadow: 0 0 30px rgba(220,225,255,0.5); }
+  .clouds { position: fixed; inset: 0; pointer-events: none; opacity: calc(0.9 - var(--night) * 0.7); }
+  .cloud {
+    position: absolute; height: 18px; border-radius: 999px; background: rgba(255,255,255,0.85);
+    box-shadow: 30px -10px 0 6px rgba(255,255,255,0.85), -34px -6px 0 2px rgba(255,255,255,0.85), 8px -16px 0 8px rgba(255,255,255,0.85);
+    animation: drift linear infinite;
+  }
+  .cloud.a { top: 12vh; width: 80px; animation-duration: 90s; }
+  .cloud.b { top: 24vh; width: 60px; animation-duration: 130s; animation-delay: -60s; transform: scale(0.7); }
+  .cloud.c { top: 6vh; width: 100px; animation-duration: 110s; animation-delay: -30s; transform: scale(1.2); }
+  @keyframes drift { from { left: -200px; } to { left: 110vw; } }
+
+  /* ---------- Isometric stage ---------- */
+  .stage {
+    position: fixed; left: 50%; top: 52%;
+    transform: translate(-50%, -50%) scale(var(--s));
+    width: 540px; height: 540px;
+  }
+  .scene {
+    position: absolute; left: 0; top: 0; width: 540px; height: 540px;
+    transform-style: preserve-3d;
+    transform: rotateX(60deg) rotateZ(45deg);
+  }
+  .ground {
+    position: absolute; inset: 0; transform-style: preserve-3d;
+    background:
+      /* road markings */
+      repeating-linear-gradient(to right, transparent 0 18px, rgba(255,240,200,0.9) 18px 30px, transparent 30px 40px) 0 268px / 100% 3px no-repeat,
+      repeating-linear-gradient(to bottom, transparent 0 18px, rgba(255,240,200,0.9) 18px 30px, transparent 30px 40px) 268px 0 / 3px 100% no-repeat,
+      /* roads */
+      linear-gradient(#5b5f6b, #5b5f6b) 0 225px / 100% 90px no-repeat,
+      linear-gradient(#5b5f6b, #5b5f6b) 225px 0 / 90px 100% no-repeat,
+      /* sidewalks */
+      linear-gradient(#d9d3c7, #d9d3c7) 0 213px / 100% 114px no-repeat,
+      linear-gradient(#d9d3c7, #d9d3c7) 213px 0 / 114px 100% no-repeat,
+      /* grass blocks */
+      #b9d59a;
+    box-shadow: 0 0 0 6px #c9c2b4, 0 0 0 7px rgba(0,0,0,0.15), 0 40px 60px -20px rgba(20,20,50,0.5);
+  }
+  .ground::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: rgba(20, 30, 70, calc(var(--night) * 0.55 + var(--wet, 0) * 0.15));
+    transition: background 1s linear;
+  }
+  .tree {
+    position: absolute; width: 14px; height: 14px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #8ac27a, #4f8a48);
+    transform: translateZ(10px); box-shadow: 4px 6px 0 rgba(0,0,0,0.15);
+  }
+  .tree::before { content: ""; position: absolute; left: 6px; top: 6px; width: 2px; height: 10px; background: #6b4a2b; transform-origin: 0 0; transform: rotateX(-90deg); }
+
+  /* Buildings */
+  .slot {
+    position: absolute; left: var(--x); top: var(--y); width: var(--w); height: var(--d);
+    transform-style: preserve-3d;
+  }
+  .shadow {
+    position: absolute; inset: 0; background: rgba(20, 25, 60, 0.28); filter: blur(3px);
+    transform: translate(calc(var(--shx) * var(--h) / 100), calc(var(--shy) * var(--h) / 100)) translateZ(0.5px);
+    transition: transform 1s linear, opacity 1s linear; opacity: calc(1 - var(--night) * 0.7);
+  }
+  .b {
+    position: absolute; inset: 0; transform-style: preserve-3d; cursor: pointer;
+    transition: transform 0.55s cubic-bezier(0.2, 1.3, 0.3, 1);
+    transform: translateZ(0);
+  }
+  .b:hover, .b:focus-visible { transform: translateZ(24px); outline: none; }
+  .face { position: absolute; left: 0; top: 0; background: var(--c); transform-origin: 0 0; overflow: hidden; }
+  .face::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 2;
+    background: rgba(18, 24, 66, calc(var(--night) * 0.6)); transition: background 1s linear;
+  }
+  .top { width: var(--w); height: var(--d); transform: translateZ(var(--h)); transform-style: preserve-3d; overflow: visible; }
+  .top::after { content: ""; position: absolute; inset: 0; background: rgba(255,255,255,0.16); box-shadow: inset 6px 6px 0 -5px rgba(0,0,0,0.06), inset -6px -6px 0 -5px rgba(0,0,0,0.06); }
+  .south { width: var(--w); height: var(--h); transform: translateY(var(--d)) translateZ(var(--h)) rotateX(-90deg); filter: brightness(0.96); }
+  .east { width: var(--d); height: var(--h); transform: translateX(var(--w)) translateZ(var(--h)) rotateZ(90deg) rotateX(-90deg); filter: brightness(0.74); }
+  .wins { position: absolute; inset: 8px 6px 12px; display: grid; grid-template-columns: repeat(var(--cols), 1fr); grid-auto-rows: 1fr; gap: 4px 5px; }
+  .win {
+    position: relative; border-radius: 1px;
+    background: linear-gradient(160deg, rgba(120,160,200,0.85), rgba(60,90,130,0.9));
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.12);
+  }
+  .win::after {
+    content: ""; position: absolute; inset: 0; border-radius: inherit;
+    background: #ffd58a; box-shadow: 0 0 6px rgba(255,200,120,0.9);
+    opacity: calc(var(--night) * var(--lit, 0)); transition: opacity 0.35s ease;
+  }
+  .win.on { --lit: 1; }
+  .win.warm::after { background: #ffe9b8; }
+  .win.cool::after { background: #cfe6ff; box-shadow: 0 0 6px rgba(180,210,255,0.9); }
+  .door { position: absolute; bottom: 0; left: 50%; width: 12px; height: 10px; transform: translateX(-50%); background: #4c3d3a; border-radius: 2px 2px 0 0; }
+
+  .tag {
+    position: absolute; left: 50%; top: 50%; width: 150px; padding: 8px 10px;
+    transform: translate(-50%, -50%) translateZ(20px) rotateZ(-45deg) rotateX(-60deg) translateY(-40px);
+    background: var(--paper); color: var(--ink); border-radius: 8px;
+    font-size: 11px; line-height: 1.35; text-align: center; pointer-events: none;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+    opacity: 0; transition: opacity 0.25s ease, transform 0.55s cubic-bezier(0.2, 1.3, 0.3, 1);
+    backface-visibility: hidden;
+  }
+  .tag b { display: block; font-family: var(--serif); font-size: 14px; font-weight: 400; letter-spacing: 0.01em; }
+  .b:hover .tag, .b:focus-visible .tag { opacity: 1; transform: translate(-50%, -50%) translateZ(34px) rotateZ(-45deg) rotateX(-60deg) translateY(-40px); }
+
+  /* Neon */
+  .neon {
+    position: absolute; left: 50%; top: 100%; width: 150px; height: 34px; margin-left: -75px;
+    transform-origin: 0 0; transform: translateZ(64px) rotateX(-90deg);
+    background: #2a2038; border-radius: 4px; border: 2px solid #3c2d4f;
+    display: grid; place-items: center;
+    font-family: var(--serif); font-style: italic; font-size: 16px; letter-spacing: 0.08em; color: #ff5fb8;
+    text-shadow: 0 0 6px #ff5fb8, 0 0 14px #ff2fa0, 0 0 30px rgba(255,47,160,0.6);
+    animation: hover 3.2s ease-in-out infinite, neon 5s steps(1, end) infinite;
+    box-shadow: 0 0 20px rgba(255,95,184,calc(0.25 + var(--night) * 0.55));
+  }
+  .neon::before, .neon::after { content: ""; position: absolute; bottom: -18px; width: 2px; height: 18px; background: #6a5a7a; }
+  .neon::before { left: 20px; } .neon::after { right: 20px; }
+  @keyframes hover { 0%, 100% { transform: translateZ(64px) rotateX(-90deg); } 50% { transform: translateZ(70px) rotateX(-90deg); } }
+  @keyframes neon { 0%, 90%, 100% { opacity: 1; } 91%, 93% { opacity: 0.55; } 92% { opacity: 1; } }
+
+  /* Cars */
+  .car {
+    position: absolute; width: 12px; height: 7px; border-radius: 2px; transform-style: preserve-3d;
+    background: var(--cc); box-shadow: 0 1px 0 rgba(0,0,0,0.3);
+    animation: linear infinite;
+  }
+  .car::before, .car::after { content: ""; position: absolute; top: 1px; width: 3px; height: 5px; border-radius: 1px; }
+  .car::before { right: -2px; background: #fff7d6; box-shadow: 8px 0 8px 3px rgba(255,247,214,calc(var(--night) * 0.8)); }
+  .car::after { left: -1px; background: #ff4b4b; box-shadow: 0 0 6px 2px rgba(255,75,75,calc(var(--night) * 0.8)); }
+  .car.x1 { top: 236px; animation-name: driveEast; animation-duration: 9s; }
+  .car.x2 { top: 296px; animation-name: driveWest; animation-duration: 12s; animation-delay: -5s; }
+  .car.y1 { left: 240px; width: 7px; height: 12px; animation-name: driveSouth; animation-duration: 11s; animation-delay: -3s; }
+  .car.y2 { left: 296px; width: 7px; height: 12px; animation-name: driveNorth; animation-duration: 8s; animation-delay: -7s; }
+  .car.y1::before, .car.y2::before { right: 1px; top: auto; bottom: -2px; width: 5px; height: 3px; }
+  .car.y1::after, .car.y2::after { left: 1px; top: -1px; width: 5px; height: 3px; }
+  .car.y2 { transform: rotate(180deg); }
+  @keyframes driveEast { from { transform: translate3d(-30px, 0, 2px); } to { transform: translate3d(570px, 0, 2px); } }
+  @keyframes driveWest { from { transform: translate3d(570px, 0, 2px) rotate(180deg); } to { transform: translate3d(-30px, 0, 2px) rotate(180deg); } }
+  @keyframes driveSouth { from { transform: translate3d(0, -30px, 2px) rotate(90deg); } to { transform: translate3d(0, 570px, 2px) rotate(90deg); } }
+  @keyframes driveNorth { from { transform: translate3d(0, 570px, 2px) rotate(-90deg); } to { transform: translate3d(0, -30px, 2px) rotate(-90deg); } }
+
+  /* Rain */
+  .rain { position: fixed; inset: -10%; pointer-events: none; opacity: 0; transition: opacity 0.8s ease; transform: rotate(8deg); }
+  .rain::before, .rain::after {
+    content: ""; position: absolute; inset: 0;
+    background-image: radial-gradient(ellipse 1px 16px at 8px 50%, rgba(200,220,255,0.55), transparent 70%);
+    background-size: 16px 48px;
+    animation: fall 0.55s linear infinite;
+  }
+  .rain::after { background-size: 26px 70px; background-image: radial-gradient(ellipse 1px 22px at 13px 50%, rgba(220,235,255,0.4), transparent 70%); animation-duration: 0.8s; }
+  @keyframes fall { from { background-position: 0 0; } to { background-position: 0 100px; } }
+  body.raining .rain { opacity: 1; }
+  body.raining { --wet: 1; }
+  body.raining .clouds { opacity: 1; }
+
+  /* ---------- UI ---------- */
+  .hud { position: fixed; z-index: 10; }
+  .title { left: clamp(14px, 3vw, 40px); top: clamp(14px, 3vh, 32px); }
+  .title h1 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(24px, 3.6vw, 40px); line-height: 1; color: var(--ink); text-shadow: 0 1px 0 rgba(255,255,255,0.5); }
+  .title p { margin: 6px 0 0; font-size: 12px; letter-spacing: 0.04em; color: var(--ink); opacity: 0.75; max-width: 34ch; }
+  .clock {
+    right: clamp(14px, 3vw, 40px); top: clamp(14px, 3vh, 32px);
+    font-family: var(--serif); font-size: clamp(22px, 3vw, 34px); font-variant-numeric: tabular-nums;
+    background: var(--paper); padding: 6px 14px; border-radius: 10px; box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    display: flex; align-items: baseline; gap: 10px;
+  }
+  .clock small { font-family: var(--sans); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.6; }
+  .controls {
+    left: 50%; bottom: clamp(14px, 3vh, 32px); transform: translateX(-50%);
+    display: flex; gap: 8px; padding: 8px; border-radius: 999px;
+    background: var(--paper); box-shadow: 0 8px 30px rgba(0,0,0,0.15); backdrop-filter: blur(8px);
+  }
+  .controls button {
+    font: inherit; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink);
+    background: transparent; border: 1px solid rgba(42,35,51,0.2); border-radius: 999px; padding: 9px 16px; cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
+  }
+  .controls button:hover { transform: translateY(-1px); background: rgba(255,255,255,0.7); }
+  .controls button[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .caption { position: fixed; left: 50%; bottom: 76px; transform: translateX(-50%); font-size: 12px; opacity: 0.7; pointer-events: none; }
+
+  @media (max-width: 600px) { .title p { display: none; } .clock { font-size: 20px; padding: 4px 10px; } .clock small { display: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    .cloud, .neon, .rain::before, .rain::after { animation: none; }
+    .car { animation-duration: 40s; }
+    .b, .tag, .shadow { transition: none; }
+  }
+</style>
+</head>
+<body>
+<div class="stars" aria-hidden="true"></div>
+<div class="orb sun" id="sun" aria-hidden="true" style="--ox: -30; --oy: 20"></div>
+<div class="orb moon" id="moon" aria-hidden="true" style="--ox: 30; --oy: 90"></div>
+<div class="clouds" aria-hidden="true"><i class="cloud a"></i><i class="cloud b"></i><i class="cloud c"></i></div>
+
+<div class="stage" aria-label="Isometric city block">
+  <div class="scene">
+    <div class="ground" id="ground">
+      <i class="tree" style="left:150px;top:150px"></i><i class="tree" style="left:180px;top:120px"></i>
+      <i class="tree" style="left:340px;top:100px"></i><i class="tree" style="left:60px;top:470px"></i>
+      <i class="tree" style="left:470px;top:150px"></i><i class="tree" style="left:490px;top:470px"></i>
+      <i class="tree" style="left:230px;top:400px"></i><i class="tree" style="left:200px;top:470px"></i>
+
+      <div class="slot" style="--x:20px;--y:20px;--w:90px;--d:90px;--h:220px;--c:#a9b7c9;--cols:5">
+        <div class="shadow"></div>
+        <div class="b" tabindex="0" data-name="Harbor Tower" data-floors="18" data-rows="9" aria-label="Harbor Tower, 18 floors">
+          <div class="face south"><div class="wins"></div><i class="door"></i></div>
+          <div class="face east"><div class="wins"></div></div>
+          <div class="face top"><div class="tag"><b>Harbor Tower</b>18 floors · offices</div></div>
+        </div>
+      </div>
+      <div class="slot" style="--x:125px;--y:30px;--w:75px;--d:70px;--h:110px;--c:#e9c1a0;--cols:4">
+        <div class="shadow"></div>
+        <div class="b" tabindex="0" data-name="Marigold Flats" data-floors="9" data-rows="5" aria-label="Marigold Flats, 9 floors">
+          <div class="face south"><div class="wins"></div><i class="door"></i></div>
+          <div class="face east"><div class="wins"></div></div>
+          <div class="face top"><div class="tag"><b>Marigold Flats</b>9 floors · apartments</div></div>
+        </div>
+      </div>
+      <div class="slot" style="--x:30px;--y:130px;--w:80px;--d:70px;--h:80px;--c:#b9d4c2;--cols:4">
+        <div class="shadow"></div>
+        <div class="b" tabindex="0" data-name="Linden Court" data-floors="6" data-rows="4" aria-label="Linden Court, 6 floors">
+          <div class="face south"><div class="wins"></div><i class="door"></i></div>
+          <div class="face east"><div class="wins"></div></div>
+          <div class="face top"><div class="tag"><b>Linden Court</b>6 floors · library</div></div>
+        </div>
+      </div>
+
+      <div class="slot" style="--x:320px;--y:20px;--w:70px;--d:120px;--h:170px;--c:#c9bfe0;--cols:4">
+        <div class="shadow"></div>
+        <div class="b" tabindex="0" data-name="The Prism" data-floors="14" data-rows="7" aria-label="The Prism, 14 floors">
+          <div class="face south"><div class="wins"></div><i class="door"></i></div>
+          <div class="face east"><div class="wins"></div></div>
+          <div class="face top"><div class="tag"><b>The Prism</b>14 floors · studios</div></div>
+        </div>
+      </div>
+      <div class="slot" style="--x:410px;--y:30px;--w:90px;--d:80px;--h:130px;--c:#9fb8d8;--cols:5">
+        <div class="shadow"></div>
+        <div class="b" tabindex="0" data-name="Cobalt Works" data-floors="11" data-rows="6" aria-label="Cobalt Works, 11 floors">
+          <div class="face south"><div class="wins"></div><i class="door"></i></div>
+          <div class="face east"><div class="wins"></div></div>
+          <div class="face top"><div class="tag"><b>Cobalt Works</b>11 floors · workshops</div></div>
+        </div>
+      </div>
+      <div class="slot" style="--x:330px;--y:160px;--w:170px;--d:50px;--h:40px;--c:#e6a49a;--cols:8">
+        <div class="shadow"></div>
+        <div class="b" tabindex="0" data-name="Night Market" data-floors="2" data-rows="2" aria-label="Night Market, 2 floors">
+          <div class="face south"><div class="wins"></div><i class="door"></i></div>
+          <div class="face east"><div class="wins"></div></div>
+          <div class="face top"><div class="tag"><b>Night Market</b>2 floors · food hall</div></div>
+        </div>
+        <div class="neon" aria-hidden="true">Night Market</div>
+      </div>
+
+      <div class="slot" style="--x:20px;--y:320px;--w:120px;--d:80px;--h:90px;--c:#e8dcc4;--cols:6">
+        <div class="shadow"></div>
+        <div class="b" tabindex="0" data-name="Pillow Bank" data-floors="7" data-rows="4" aria-label="Pillow Bank, 7 floors">
+          <div class="face south"><div class="wins"></div><i class="door"></i></div>
+          <div class="face east"><div class="wins"></div></div>
+          <div class="face top"><div class="tag"><b>Pillow Bank</b>7 floors · bank &amp; vaults</div></div>
+        </div>
+      </div>
+      <div class="slot" style="--x:30px;--y:420px;--w:80px;--d:90px;--h:150px;--c:#dcb3b8;--cols:4">
+        <div class="shadow"></div>
+        <div class="b" tabindex="0" data-name="Ferris Apartments" data-floors="12" data-rows="7" aria-label="Ferris Apartments, 12 floors">
+          <div class="face south"><div class="wins"></div><i class="door"></i></div>
+          <div class="face east"><div class="wins"></div></div>
+          <div class="face top"><div class="tag"><b>Ferris Apartments</b>12 floors · homes</div></div>
+        </div>
+      </div>
+      <div class="slot" style="--x:150px;--y:330px;--w:60px;--d:60px;--h:60px;--c:#c3ccb0;--cols:3">
+        <div class="shadow"></div>
+        <div class="b" tabindex="0" data-name="Saltbox Studios" data-floors="4" data-rows="3" aria-label="Saltbox Studios, 4 floors">
+          <div class="face south"><div class="wins"></div><i class="door"></i></div>
+          <div class="face east"><div class="wins"></div></div>
+          <div class="face top"><div class="tag"><b>Saltbox Studios</b>4 floors · ceramics</div></div>
+        </div>
+      </div>
+
+      <div class="slot" style="--x:330px;--y:330px;--w:80px;--d:80px;--h:260px;--c:#a8cfd0;--cols:4">
+        <div class="shadow"></div>
+        <div class="b" tabindex="0" data-name="Aurora Spire" data-floors="22" data-rows="11" aria-label="Aurora Spire, 22 floors">
+          <div class="face south"><div class="wins"></div><i class="door"></i></div>
+          <div class="face east"><div class="wins"></div></div>
+          <div class="face top"><div class="tag"><b>Aurora Spire</b>22 floors · observatory</div></div>
+        </div>
+      </div>
+      <div class="slot" style="--x:430px;--y:340px;--w:80px;--d:60px;--h:45px;--c:#ecd9a1;--cols:4">
+        <div class="shadow"></div>
+        <div class="b" tabindex="0" data-name="Tin Roof Diner" data-floors="2" data-rows="2" aria-label="Tin Roof Diner, 2 floors">
+          <div class="face south"><div class="wins"></div><i class="door"></i></div>
+          <div class="face east"><div class="wins"></div></div>
+          <div class="face top"><div class="tag"><b>Tin Roof Diner</b>2 floors · open all night</div></div>
+        </div>
+      </div>
+      <div class="slot" style="--x:340px;--y:430px;--w:160px;--d:80px;--h:100px;--c:#cfc5d6;--cols:8">
+        <div class="shadow"></div>
+        <div class="b" tabindex="0" data-name="Meridian House" data-floors="8" data-rows="5" aria-label="Meridian House, 8 floors">
+          <div class="face south"><div class="wins"></div><i class="door"></i></div>
+          <div class="face east"><div class="wins"></div></div>
+          <div class="face top"><div class="tag"><b>Meridian House</b>8 floors · town hall</div></div>
+        </div>
+      </div>
+
+      <i class="car x1" style="--cc:#ff8a65" aria-hidden="true"></i>
+      <i class="car x2" style="--cc:#5ec4b6" aria-hidden="true"></i>
+      <i class="car y1" style="--cc:#f6d365" aria-hidden="true"></i>
+      <i class="car y2" style="--cc:#8fa7ff" aria-hidden="true"></i>
+    </div>
+  </div>
+</div>
+
+<div class="rain" aria-hidden="true"></div>
+
+<header class="hud title">
+  <h1>Little Meridian</h1>
+  <p>A single city block, built from CSS cuboids, living through a two-minute day. Hover a building to lift it.</p>
+</header>
+<div class="hud clock" aria-live="off"><span id="time">06:00</span><small id="phase">dawn</small></div>
+<div class="hud controls" role="toolbar" aria-label="City controls">
+  <button type="button" id="pause" aria-pressed="false">Pause cycle</button>
+  <button type="button" id="rain" aria-pressed="false">Rain</button>
+  <button type="button" id="skip">Skip to night</button>
+</div>
+<p class="caption" id="caption" aria-live="polite"></p>
+
+<script>
+(function () {
+  'use strict';
+  const root = document.documentElement;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Populate windows ---------- */
+  const wins = [];
+  document.querySelectorAll('.b').forEach((b) => {
+    const rows = parseInt(b.dataset.rows, 10) || 3;
+    b.querySelectorAll('.wins').forEach((grid) => {
+      const cols = parseInt(getComputedStyle(b.parentElement).getPropertyValue('--cols'), 10) || 4;
+      const isEast = grid.parentElement.classList.contains('east');
+      const c = isEast ? Math.max(2, Math.round(cols * 0.8)) : cols;
+      grid.style.setProperty('--cols', String(c));
+      for (let i = 0; i < rows * c; i++) {
+        const w = document.createElement('i');
+        w.className = 'win' + (Math.random() < 0.15 ? ' cool' : (Math.random() < 0.3 ? ' warm' : ''));
+        if (Math.random() < 0.55) w.classList.add('on');
+        grid.appendChild(w); wins.push(w);
+      }
+    });
+    b.addEventListener('mouseenter', () => { caption.textContent = `${b.dataset.name} — ${b.dataset.floors} floors`; });
+    b.addEventListener('focus', () => { caption.textContent = `${b.dataset.name} — ${b.dataset.floors} floors`; });
+    b.addEventListener('mouseleave', () => { caption.textContent = ''; });
+  });
+  const caption = document.getElementById('caption');
+
+  /* Random flicker: a few windows change state every tick, more often at night */
+  setInterval(() => {
+    const n = 2 + Math.floor(Math.random() * 5);
+    for (let i = 0; i < n; i++) {
+      const w = wins[Math.floor(Math.random() * wins.length)];
+      w.classList.toggle('on');
+    }
+  }, 380);
+
+  /* ---------- Day / night cycle ---------- */
+  const DAY_SECONDS = 120;
+  const state = { t: 0.27, paused: false, last: performance.now() };
+  const KEY = [
+    // t, sky1, sky2, night, (reserved), shx, shy
+    [0.00, [12, 16, 40], [30, 34, 70], 1.0, 0.55, 0, 0],
+    [0.20, [30, 36, 90], [90, 80, 120], 0.85, 0.65, -60, 25],
+    [0.27, [255, 150, 110], [255, 215, 170], 0.35, 0.9, -80, 30],
+    [0.35, [120, 185, 255], [220, 240, 255], 0.0, 1.0, -45, 22],
+    [0.50, [95, 170, 255], [225, 242, 255], 0.0, 1.05, 0, 12],
+    [0.65, [120, 175, 245], [235, 230, 220], 0.0, 1.0, 45, 22],
+    [0.75, [255, 130, 100], [255, 200, 150], 0.35, 0.85, 80, 30],
+    [0.83, [60, 40, 90], [140, 80, 110], 0.85, 0.65, 60, 25],
+    [1.00, [12, 16, 40], [30, 34, 70], 1.0, 0.55, 0, 0]
+  ];
+  const lerp = (a, b, k) => a + (b - a) * k;
+  const lerpC = (a, b, k) => `rgb(${Math.round(lerp(a[0], b[0], k))}, ${Math.round(lerp(a[1], b[1], k))}, ${Math.round(lerp(a[2], b[2], k))})`;
+  const timeEl = document.getElementById('time'), phaseEl = document.getElementById('phase');
+  const sun = document.getElementById('sun'), moon = document.getElementById('moon');
+
+  function apply(t) {
+    let i = 0; while (i < KEY.length - 2 && KEY[i + 1][0] <= t) i++;
+    const a = KEY[i], b = KEY[i + 1];
+    const k = (t - a[0]) / (b[0] - a[0]);
+    const ease = k * k * (3 - 2 * k);
+    root.style.setProperty('--sky1', lerpC(a[1], b[1], ease));
+    root.style.setProperty('--sky2', lerpC(a[2], b[2], ease));
+    root.style.setProperty('--night', lerp(a[3], b[3], ease).toFixed(3));
+    root.style.setProperty('--shx', lerp(a[5], b[5], ease).toFixed(1));
+    root.style.setProperty('--shy', lerp(a[6], b[6], ease).toFixed(1));
+
+    // Sun and moon travel arcs across the sky; t=0.5 is noon
+    const sa = (t - 0.25) * Math.PI * 2;
+    sun.style.setProperty('--ox', (-Math.cos((t - 0.25) * Math.PI * 2 / 2) * 42).toFixed(1));
+    sun.style.setProperty('--oy', (58 - Math.sin(sa / 2) * 52).toFixed(1));
+    sun.style.opacity = (t > 0.22 && t < 0.78) ? '1' : '0';
+    const mt = (t + 0.5) % 1;
+    moon.style.setProperty('--ox', (-Math.cos((mt - 0.25) * Math.PI * 2 / 2) * 42).toFixed(1));
+    moon.style.setProperty('--oy', (58 - Math.sin((mt - 0.25) * Math.PI * 2 / 2) * 52).toFixed(1));
+    moon.style.opacity = (mt > 0.22 && mt < 0.78) ? '1' : '0';
+
+    const minutes = Math.round(t * 24 * 60);
+    timeEl.textContent = String(Math.floor(minutes / 60) % 24).padStart(2, '0') + ':' + String(minutes % 60).padStart(2, '0');
+    phaseEl.textContent = t < 0.2 ? 'night' : t < 0.32 ? 'dawn' : t < 0.7 ? 'day' : t < 0.83 ? 'dusk' : 'night';
+  }
+
+  function tick(now) {
+    const dt = Math.min(0.1, (now - state.last) / 1000); state.last = now;
+    if (!state.paused) { state.t = (state.t + dt / DAY_SECONDS) % 1; apply(state.t); }
+    requestAnimationFrame(tick);
+  }
+  apply(state.t);
+  requestAnimationFrame(tick);
+
+  /* ---------- Controls ---------- */
+  const pauseBtn = document.getElementById('pause');
+  pauseBtn.addEventListener('click', () => {
+    state.paused = !state.paused;
+    pauseBtn.setAttribute('aria-pressed', String(state.paused));
+    pauseBtn.textContent = state.paused ? 'Resume cycle' : 'Pause cycle';
+  });
+  const rainBtn = document.getElementById('rain');
+  rainBtn.addEventListener('click', () => {
+    const on = document.body.classList.toggle('raining');
+    rainBtn.setAttribute('aria-pressed', String(on));
+  });
+  document.getElementById('skip').addEventListener('click', () => { state.t = state.t < 0.5 ? 0.78 : 0.27; apply(state.t); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === ' ' && e.target === document.body) { e.preventDefault(); pauseBtn.click(); }
+    if (e.key.toLowerCase() === 'r') rainBtn.click();
+  });
+
+  /* ---------- Fit stage to viewport ---------- */
+  function fit() {
+    const s = Math.min(1.7, window.innerWidth / 900, window.innerHeight / 780);
+    root.style.setProperty('--s', String(Math.max(0.42, s)));
+  }
+  fit();
+  window.addEventListener('resize', fit);
+  if (reduce) state.paused = true;
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lumen — Ambient Light OS</title>
+<style>
+  :root {
+    --bg: #070a1c;
+    --bg-2: #0d1230;
+    --ink: #eef0ff;
+    --ink-dim: rgba(238, 240, 255, 0.62);
+    --ink-faint: rgba(238, 240, 255, 0.38);
+    --glass: rgba(255, 255, 255, 0.055);
+    --glass-strong: rgba(255, 255, 255, 0.09);
+    --line: rgba(255, 255, 255, 0.14);
+    --line-strong: rgba(255, 255, 255, 0.28);
+    --violet: #8b7dff;
+    --teal: #4ee6c7;
+    --rose: #ff7ab6;
+    --amber: #ffc46b;
+    --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 16px;
+    line-height: 1.55;
+    letter-spacing: -0.005em;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- Aurora layers ---------- */
+  .sky {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse 120% 80% at 50% 110%, #101a48 0%, var(--bg) 60%),
+      var(--bg);
+  }
+
+  .ribbon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 140vmax;
+    height: 140vmax;
+    margin: -70vmax 0 0 -70vmax;
+    border-radius: 50%;
+    filter: blur(70px) saturate(130%);
+    opacity: 0.55;
+    mix-blend-mode: screen;
+    will-change: transform, filter;
+  }
+
+  .ribbon-a {
+    background: conic-gradient(from 90deg at 50% 50%,
+      transparent 0deg, rgba(139, 125, 255, 0.85) 60deg, transparent 120deg,
+      rgba(78, 230, 199, 0.75) 200deg, transparent 260deg, rgba(255, 122, 182, 0.6) 320deg, transparent 360deg);
+    animation: drift-a 48s linear infinite, hue-a 30s ease-in-out infinite alternate;
+  }
+
+  .ribbon-b {
+    background: radial-gradient(closest-side at 35% 40%, rgba(78, 230, 199, 0.9), transparent 70%),
+                radial-gradient(closest-side at 70% 65%, rgba(139, 125, 255, 0.8), transparent 65%);
+    animation: drift-b 62s ease-in-out infinite alternate, hue-b 40s linear infinite;
+    opacity: 0.5;
+  }
+
+  .ribbon-c {
+    width: 90vmax;
+    height: 40vmax;
+    margin: -20vmax 0 0 -45vmax;
+    border-radius: 50%;
+    background: linear-gradient(100deg, transparent 0%, rgba(255, 196, 107, 0.55) 30%, rgba(255, 122, 182, 0.65) 55%, transparent 100%);
+    filter: blur(60px);
+    animation: drift-c 36s ease-in-out infinite alternate;
+    opacity: 0.42;
+  }
+
+  .stars {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 12% 22%, rgba(255,255,255,0.7) 50%, transparent 51%),
+      radial-gradient(1px 1px at 78% 14%, rgba(255,255,255,0.55) 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 40% 8%, rgba(255,255,255,0.65) 50%, transparent 51%),
+      radial-gradient(1px 1px at 88% 48%, rgba(255,255,255,0.5) 50%, transparent 51%),
+      radial-gradient(1px 1px at 23% 62%, rgba(255,255,255,0.45) 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 62% 34%, rgba(255,255,255,0.6) 50%, transparent 51%),
+      radial-gradient(1px 1px at 5% 84%, rgba(255,255,255,0.5) 50%, transparent 51%),
+      radial-gradient(1px 1px at 94% 78%, rgba(255,255,255,0.55) 50%, transparent 51%),
+      radial-gradient(1px 1px at 52% 90%, rgba(255,255,255,0.4) 50%, transparent 51%);
+    animation: twinkle 7s ease-in-out infinite alternate;
+  }
+
+  .grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.06;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    background-size: 160px 160px;
+    mix-blend-mode: overlay;
+  }
+
+  @keyframes drift-a {
+    from { transform: rotate(0deg) scale(1); }
+    to   { transform: rotate(360deg) scale(1); }
+  }
+  @keyframes drift-b {
+    from { transform: translate(-8%, -4%) rotate(-10deg) scale(1.05); }
+    to   { transform: translate(10%, 6%) rotate(18deg) scale(0.95); }
+  }
+  @keyframes drift-c {
+    from { transform: translate(-12%, -30%) rotate(-24deg); }
+    to   { transform: translate(14%, 18%) rotate(-8deg); }
+  }
+  @keyframes hue-a { from { filter: blur(70px) hue-rotate(0deg) saturate(130%); } to { filter: blur(70px) hue-rotate(60deg) saturate(150%); } }
+  @keyframes hue-b { from { filter: blur(70px) hue-rotate(0deg); } to { filter: blur(70px) hue-rotate(-360deg); } }
+  @keyframes twinkle { from { opacity: 0.55; } to { opacity: 1; } }
+
+  /* ---------- Layout ---------- */
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 4vw, 48px) 96px;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 28px 0;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 11px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.03));
+    border: 1px solid var(--line);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 8px 24px rgba(0,0,0,0.3);
+  }
+
+  .brand-mark svg { display: block; }
+
+  .nav-links {
+    display: flex;
+    gap: 6px;
+    padding: 6px;
+    border-radius: 999px;
+    background: var(--glass);
+    border: 1px solid var(--line);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
+  }
+
+  .nav-links a {
+    color: var(--ink-dim);
+    text-decoration: none;
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    transition: color 0.3s var(--ease-soft), background 0.3s var(--ease-soft);
+  }
+
+  .nav-links a:hover, .nav-links a:focus-visible {
+    color: var(--ink);
+    background: rgba(255,255,255,0.08);
+    outline: none;
+  }
+
+  .nav-cta {
+    font-size: 14px;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .nav-cta:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.45); }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: clamp(32px, 6vw, 96px);
+    align-items: center;
+    padding: clamp(48px, 9vh, 120px) 0 clamp(56px, 8vh, 96px);
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    padding: 8px 14px 8px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--glass);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .eyebrow .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--teal);
+    box-shadow: 0 0 0 4px rgba(78, 230, 199, 0.18), 0 0 18px var(--teal);
+    animation: pulse 2.6s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(0.75); opacity: 0.7; } }
+
+  h1 {
+    margin: 26px 0 20px;
+    font-size: clamp(42px, 6.4vw, 88px);
+    line-height: 0.98;
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+
+  h1 .shimmer {
+    background: linear-gradient(90deg, #ffffff 0%, var(--violet) 30%, var(--teal) 55%, var(--rose) 80%, #ffffff 100%);
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 9s linear infinite;
+  }
+  @keyframes shimmer { from { background-position: 0% 50%; } to { background-position: 220% 50%; } }
+
+  .lede {
+    max-width: 52ch;
+    font-size: clamp(16px, 1.35vw, 19px);
+    color: var(--ink-dim);
+    margin: 0 0 36px;
+  }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+
+  .btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 26px;
+    border-radius: 999px;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    color: var(--ink);
+    cursor: pointer;
+    border: 1px solid var(--line-strong);
+    transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out), background 0.4s;
+    isolation: isolate;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, rgba(139,125,255,0.95), rgba(78,230,199,0.85));
+    color: #0a0d22;
+    border-color: transparent;
+    box-shadow: 0 10px 30px -8px rgba(139,125,255,0.65), 0 0 0 1px rgba(255,255,255,0.15) inset;
+  }
+  .btn-primary::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: inherit;
+    filter: blur(18px);
+    opacity: 0.55;
+    z-index: -1;
+    transition: opacity 0.5s var(--ease-out);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 40px -10px rgba(139,125,255,0.85); }
+  .btn-primary:hover::after { opacity: 0.9; }
+  .btn-primary:active { transform: translateY(0) scale(0.98); }
+
+  .btn-ghost {
+    background: var(--glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.14);
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); border-color: rgba(255,255,255,0.45); }
+  .btn-ghost svg { transition: transform 0.4s var(--ease-out); }
+  .btn-ghost:hover svg { transform: translateX(4px); }
+
+  .btn:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+
+  /* ---------- Hero visual: floating glass panels ---------- */
+  .stage {
+    position: relative;
+    height: clamp(360px, 46vw, 520px);
+    perspective: 1200px;
+  }
+
+  .panel {
+    position: absolute;
+    border-radius: 22px;
+    background: linear-gradient(160deg, rgba(255,255,255,0.12), rgba(255,255,255,0.03) 60%);
+    border: 1px solid var(--line);
+    backdrop-filter: blur(22px) saturate(160%);
+    -webkit-backdrop-filter: blur(22px) saturate(160%);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.3),
+      inset 0 -1px 0 rgba(255,255,255,0.06),
+      0 30px 60px -20px rgba(0,0,0,0.6);
+    padding: 20px;
+    transform: translate3d(var(--px, 0), var(--py, 0), 0);
+    transition: transform 0.8s var(--ease-out);
+    will-change: transform;
+  }
+
+  .panel-main {
+    left: 6%;
+    top: 12%;
+    width: 68%;
+    height: 66%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .panel-main .label { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); }
+  .panel-main .room { font-size: 24px; font-weight: 600; margin-top: 4px; }
+
+  .scene-ring {
+    width: min(58%, 160px);
+    aspect-ratio: 1;
+    margin: 12px auto;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 50% 50%, rgba(7,10,28,0.9) 0 58%, transparent 60%),
+      conic-gradient(from -90deg, var(--amber), var(--rose), var(--violet), var(--teal), var(--amber));
+    box-shadow: 0 0 60px -10px rgba(139,125,255,0.7);
+    position: relative;
+    animation: spin 24s linear infinite;
+  }
+  .scene-ring::after {
+    content: "";
+    position: absolute;
+    inset: 22%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%, rgba(255,255,255,0.25), rgba(255,255,255,0.02) 60%);
+    border: 1px solid var(--line);
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .scene-meta { display: flex; justify-content: space-between; font-size: 13px; color: var(--ink-dim); }
+  .scene-meta strong { color: var(--ink); font-weight: 600; }
+
+  .panel-temp {
+    right: 0;
+    top: 0;
+    width: 44%;
+    min-width: 150px;
+    padding: 18px;
+  }
+  .panel-temp .big { font-size: clamp(22px, 2.3vw, 34px); font-weight: 600; letter-spacing: -0.03em; line-height: 1; white-space: nowrap; }
+  .panel-temp .sub { font-size: 12px; color: var(--ink-faint); margin-top: 6px; }
+  .bar {
+    margin-top: 14px;
+    height: 6px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #ffb26b, #fff2d6 55%, #9ec9ff);
+    position: relative;
+  }
+  .bar::after {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: 38%;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(7,10,28,0.9), 0 0 16px rgba(255,255,255,0.6);
+  }
+
+  .panel-sched {
+    right: 4%;
+    bottom: 4%;
+    width: 46%;
+    padding: 18px;
+  }
+  .panel-sched ul { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 10px; }
+  .panel-sched li { display: flex; justify-content: space-between; font-size: 13px; color: var(--ink-dim); }
+  .panel-sched li span:last-child { color: var(--ink); }
+  .panel-sched .label { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); }
+
+  .orb {
+    position: absolute;
+    left: -4%;
+    bottom: 8%;
+    width: 84px; height: 84px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.9), rgba(78,230,199,0.6) 30%, rgba(139,125,255,0.4) 65%, transparent 72%);
+    filter: blur(0.5px);
+    box-shadow: 0 0 60px rgba(78,230,199,0.5);
+    transform: translate3d(var(--px, 0), var(--py, 0), 0);
+    transition: transform 0.9s var(--ease-out);
+    animation: bob 6s ease-in-out infinite;
+  }
+  @keyframes bob { 0%, 100% { margin-bottom: 0; } 50% { margin-bottom: 14px; } }
+
+  /* ---------- Features ---------- */
+  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin: 20px 0 28px; }
+  .section-head h2 { margin: 0; font-size: clamp(26px, 3vw, 38px); font-weight: 600; letter-spacing: -0.03em; }
+  .section-head p { margin: 0; max-width: 40ch; color: var(--ink-dim); font-size: 15px; }
+
+  .features {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .card {
+    position: relative;
+    padding: 28px 26px 30px;
+    border-radius: 24px;
+    background: linear-gradient(160deg, var(--glass-strong), rgba(255,255,255,0.025) 70%);
+    border: 1px solid var(--line);
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.22), 0 24px 60px -30px rgba(0,0,0,0.7);
+    overflow: hidden;
+    transform: translate3d(var(--px, 0), var(--py, 0), 0);
+    transition: transform 0.7s var(--ease-out), border-color 0.4s, box-shadow 0.6s var(--ease-out);
+  }
+
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.14), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+  }
+  .card:hover::before { opacity: 1; }
+  .card:hover {
+    border-color: var(--line-strong);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 34px 70px -28px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.05);
+  }
+
+  .icon {
+    width: 48px; height: 48px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 22px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.16), rgba(255,255,255,0.04));
+    border: 1px solid var(--line);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+    transition: transform 0.6s var(--ease-out);
+  }
+  .card:hover .icon { transform: translateY(-3px) rotate(-4deg); }
+
+  .card h3 { margin: 0 0 10px; font-size: 19px; font-weight: 600; letter-spacing: -0.015em; }
+  .card p { margin: 0; color: var(--ink-dim); font-size: 15px; }
+
+  .card .tag {
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding: 5px 9px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+  }
+
+  footer {
+    margin-top: 72px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--ink-faint);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 960px) {
+    .hero { grid-template-columns: 1fr; }
+    .stage { height: clamp(320px, 80vw, 460px); max-width: 560px; }
+    .features { grid-template-columns: 1fr 1fr; }
+    .section-head { flex-direction: column; align-items: start; }
+  }
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .features { grid-template-columns: 1fr; }
+    .panel-main { width: 74%; }
+    .panel-temp { width: 46%; }
+    .panel-sched { width: 58%; }
+  }
+  @media (min-width: 1800px) {
+    .page { max-width: 1480px; }
+    body { font-size: 18px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ribbon, .stars, .scene-ring, .orb, .eyebrow .dot, h1 .shimmer { animation: none !important; }
+    .panel, .card, .orb { transition: none; transform: none !important; }
+    .ribbon { opacity: 0.4; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sky" aria-hidden="true">
+  <div class="ribbon ribbon-a"></div>
+  <div class="ribbon ribbon-b"></div>
+  <div class="ribbon ribbon-c"></div>
+  <div class="stars"></div>
+  <div class="grain"></div>
+</div>
+
+<div class="page">
+  <nav aria-label="Primary">
+    <a class="brand" href="#top" id="top">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="5" fill="url(#g1)"/>
+          <path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.2 2.2M16.9 16.9l2.2 2.2M4.9 19.1l2.2-2.2M16.9 7.1l2.2-2.2" stroke="#eef0ff" stroke-width="1.5" stroke-linecap="round"/>
+          <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4ee6c7"/><stop offset="1" stop-color="#8b7dff"/></linearGradient></defs>
+        </svg>
+      </span>
+      Lumen
+    </a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#scenes">Scenes</a>
+      <a href="#hardware">Hardware</a>
+      <a href="#journal">Journal</a>
+    </div>
+    <a class="nav-cta" href="#waitlist">Request access</a>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <span class="eyebrow"><span class="dot"></span> Lumen OS 3 · Now in private beta</span>
+      <h1>Light that <span class="shimmer">listens</span> to the room.</h1>
+      <p class="lede">
+        Lumen is an ambient light operating system. It reads daylight, weather, your calendar and your
+        heartbeat, then paints every lamp in the house with a colour temperature that matches the moment —
+        without a single app tap.
+      </p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#waitlist">Join the waitlist</a>
+        <a class="btn btn-ghost" href="#features">
+          See how it works
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="stage" id="stage" aria-label="Lumen interface preview">
+      <div class="panel panel-main" data-depth="14">
+        <div>
+          <div class="label">Now playing</div>
+          <div class="room">Evening Ember · Living room</div>
+        </div>
+        <div class="scene-ring" aria-hidden="true"></div>
+        <div class="scene-meta">
+          <span>Warmth <strong>2 400 K</strong></span>
+          <span>Intensity <strong>38%</strong></span>
+        </div>
+      </div>
+      <div class="panel panel-temp" data-depth="32">
+        <div class="big" id="kelvin">2 400 K</div>
+        <div class="sub">Sunset in 42 minutes — easing warmer</div>
+        <div class="bar" aria-hidden="true"></div>
+      </div>
+      <div class="panel panel-sched" data-depth="24">
+        <div class="label">Tonight</div>
+        <ul>
+          <li><span>19:30</span><span>Dinner · Candlelight</span></li>
+          <li><span>21:00</span><span>Reading · Paper white</span></li>
+          <li><span>23:15</span><span>Wind down · Amber</span></li>
+        </ul>
+      </div>
+      <div class="orb" data-depth="44" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <section id="features" aria-labelledby="features-title">
+    <div class="section-head">
+      <h2 id="features-title">Three ideas behind Lumen</h2>
+      <p>Everything else is an implementation detail. These are the promises we design against.</p>
+    </div>
+    <div class="features">
+      <article class="card" data-depth="8">
+        <span class="tag">Sense</span>
+        <div class="icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#eef0ff" stroke-width="1.6" stroke-linecap="round">
+            <path d="M3 12c4-6 14-6 18 0-4 6-14 6-18 0Z"/><circle cx="12" cy="12" r="3"/>
+          </svg>
+        </div>
+        <h3>Circadian by default</h3>
+        <p>Lumen tracks the sun for your exact latitude and shifts every fixture from crisp 5 600 K mornings to a 1 900 K candle glow, in steps too small to notice and too consistent to ignore.</p>
+      </article>
+
+      <article class="card" data-depth="8">
+        <span class="tag">Compose</span>
+        <div class="icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#eef0ff" stroke-width="1.6" stroke-linecap="round">
+            <path d="M4 20 20 4M4 4h6v6M20 20h-6v-6"/>
+          </svg>
+        </div>
+        <h3>Scenes that blend</h3>
+        <p>Scenes are not presets, they are gradients in time. Cross-fade from "Focus" to "Dinner" over twenty minutes, or snap instantly when the doorbell rings. Every transition is eased, never stepped.</p>
+      </article>
+
+      <article class="card" data-depth="8">
+        <span class="tag">Trust</span>
+        <div class="icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#eef0ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3 4 6v6c0 4.4 3.4 8 8 9 4.6-1 8-4.6 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/>
+          </svg>
+        </div>
+        <h3>Local, silent, yours</h3>
+        <p>The whole OS runs on a hub the size of a coaster. No cloud round-trips, no account required, and the scene engine keeps working when the internet does not.</p>
+      </article>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Lumen Labs · Designed in Reykjavík</span>
+    <span id="clock" aria-live="off">Local light: —</span>
+  </footer>
+</div>
+
+<script>
+  (function () {
+    'use strict';
+
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var layers = Array.prototype.slice.call(document.querySelectorAll('[data-depth]'));
+    var targetX = 0, targetY = 0, curX = 0, curY = 0;
+    var raf = null;
+
+    function onMove(e) {
+      var w = window.innerWidth, h = window.innerHeight;
+      targetX = (e.clientX / w - 0.5) * 2;
+      targetY = (e.clientY / h - 0.5) * 2;
+      if (!raf) raf = requestAnimationFrame(tick);
+    }
+
+    function tick() {
+      raf = null;
+      curX += (targetX - curX) * 0.08;
+      curY += (targetY - curY) * 0.08;
+      for (var i = 0; i < layers.length; i++) {
+        var el = layers[i];
+        var depth = parseFloat(el.getAttribute('data-depth')) || 0;
+        el.style.setProperty('--px', (-curX * depth).toFixed(2) + 'px');
+        el.style.setProperty('--py', (-curY * depth).toFixed(2) + 'px');
+      }
+      if (Math.abs(targetX - curX) > 0.001 || Math.abs(targetY - curY) > 0.001) {
+        raf = requestAnimationFrame(tick);
+      }
+    }
+
+    if (!reduce && window.matchMedia('(pointer: fine)').matches) {
+      window.addEventListener('pointermove', onMove, { passive: true });
+    }
+
+    // Spotlight follows the cursor inside each card.
+    var cards = document.querySelectorAll('.card');
+    Array.prototype.forEach.call(cards, function (card) {
+      card.addEventListener('pointermove', function (e) {
+        var r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
+        card.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
+      });
+    });
+
+    // A gentle, believable colour-temperature readout tied to the local clock.
+    var kelvinEl = document.getElementById('kelvin');
+    var clockEl = document.getElementById('clock');
+
+    function kelvinForHour(h) {
+      // Sinusoidal curve: 1900 K at 23:00, 5600 K near 13:00
+      var t = (h - 13) / 24 * Math.PI * 2;
+      var k = 3750 + 1850 * Math.cos(t);
+      return Math.round(k / 50) * 50;
+    }
+
+    function fmt(k) { return k.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' K'; }
+
+    function update() {
+      var now = new Date();
+      var h = now.getHours() + now.getMinutes() / 60;
+      var k = kelvinForHour(h);
+      kelvinEl.textContent = fmt(k);
+      var hh = String(now.getHours()).padStart(2, '0');
+      var mm = String(now.getMinutes()).padStart(2, '0');
+      clockEl.textContent = 'Local light: ' + fmt(k) + ' at ' + hh + ':' + mm;
+    }
+
+    update();
+    setInterval(update, 30000);
+  })();
+</script>
+</body>
+</html>

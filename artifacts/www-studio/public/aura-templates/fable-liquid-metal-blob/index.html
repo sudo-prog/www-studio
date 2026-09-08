@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MERCURY — Liquid Metal Study</title>
+<style>
+  :root {
+    --bg: #1b1c1f;
+    --bg-deep: #101113;
+    --ink: #f4f4f2;
+    --ink-dim: rgba(244, 244, 242, 0.55);
+    --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Courier New", monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html, body { height: 100%; }
+
+  body {
+    margin: 0;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 50% 40%, #232428 0%, var(--bg) 45%, var(--bg-deep) 100%);
+    color: var(--ink);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+    cursor: crosshair;
+  }
+
+  canvas#scene {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .floor {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    height: 38%;
+    pointer-events: none;
+    background: linear-gradient(180deg, transparent, rgba(0,0,0,0.35));
+  }
+
+  .grain {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.07;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.7 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    background-size: 200px 200px;
+  }
+
+  /* ---------- Typography overlay ---------- */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: clamp(18px, 3vw, 40px) clamp(18px, 4vw, 56px);
+    pointer-events: none;
+  }
+
+  .label {
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    font-family: var(--mono);
+  }
+  .label span:last-child { color: rgba(244,244,242,0.35); }
+
+  .title {
+    align-self: center;
+    justify-self: center;
+    margin: 0;
+    font-weight: 200;
+    font-size: clamp(48px, 13.5vw, 300px);
+    line-height: 0.9;
+    letter-spacing: 0.05em;
+    text-indent: 0.05em;
+    max-width: 100%;
+    color: #fff;
+    mix-blend-mode: difference;
+    user-select: none;
+    animation: settle 2.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+    white-space: nowrap;
+  }
+  @keyframes settle {
+    from { opacity: 0; letter-spacing: 0.4em; filter: blur(12px); }
+    to   { opacity: 1; letter-spacing: 0.05em; filter: blur(0); }
+  }
+
+  .foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--ink-dim);
+  }
+  .foot p { margin: 0; max-width: 42ch; line-height: 1.6; font-family: var(--sans); font-size: 12px; letter-spacing: 0; }
+  .foot .stats { text-align: right; white-space: nowrap; }
+  .foot .stats b { color: var(--ink); font-weight: 500; }
+
+  .hint {
+    position: fixed;
+    left: 50%;
+    bottom: clamp(70px, 10vh, 120px);
+    transform: translateX(-50%);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(244,244,242,0.4);
+    pointer-events: none;
+    transition: opacity 1.2s ease;
+  }
+  .hint.gone { opacity: 0; }
+
+  @media (max-width: 640px) {
+    .foot { flex-direction: column; align-items: flex-start; }
+    .foot .stats { text-align: left; }
+    .label span:last-child { display: none; }
+    .hint { bottom: auto; top: 56px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .title { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="scene" aria-label="Liquid chrome metaballs drifting and merging"></canvas>
+<div class="floor" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<div class="overlay">
+  <div class="label">
+    <span>Liquid metal study · 05</span>
+    <span>Metaball field · environment mapped</span>
+  </div>
+  <h1 class="title">MERCURY</h1>
+  <div class="foot">
+    <p>Seven bodies of quicksilver share one surface. Where their fields overlap the threshold, they fuse; where they part, the skin snaps back. The reflection is a fake horizon painted from the field's own gradient.</p>
+    <div class="stats"><span id="stats">— fps · — bodies · —%</span></div>
+  </div>
+</div>
+
+<div class="hint" id="hint">Move to attract · click to add</div>
+
+<script>
+  (function () {
+    'use strict';
+
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var canvas = document.getElementById('scene');
+    var ctx = canvas.getContext('2d');
+    var statsEl = document.getElementById('stats');
+    var hintEl = document.getElementById('hint');
+
+    // The field is computed on a small offscreen buffer and upscaled with smoothing.
+    var buf = document.createElement('canvas');
+    var bctx = buf.getContext('2d');
+    var img = null, px32 = null;
+
+    var W = 0, H = 0, dpr = 1;
+    var bw = 0, bh = 0;
+    var scale = 0.5;               // field resolution relative to CSS pixels (adaptive)
+    var MAX_FIELD_PIXELS = 420000; // hard cap so 4K screens stay smooth
+
+    var T = 1.0;                   // metaball threshold
+    var blobs = [];
+    var pointer = { x: 0, y: 0, active: false, strength: 0 };
+    var MAX_BLOBS = 12;
+
+    /* ----- Environment LUT: a chrome horizon, sampled by reflected Y ----- */
+    var ENV = new Uint8ClampedArray(256 * 3);
+    (function buildEnv() {
+      // stops: [position 0..1 (bottom→top), r, g, b]
+      var stops = [
+        [0.00, 14, 15, 18],
+        [0.30, 40, 42, 48],
+        [0.44, 88, 90, 96],
+        [0.495, 210, 208, 204],
+        [0.505, 250, 250, 252],
+        [0.53, 190, 196, 206],
+        [0.66, 128, 137, 150],
+        [0.82, 72, 78, 90],
+        [1.00, 26, 28, 34]
+      ];
+      for (var i = 0; i < 256; i++) {
+        var p = i / 255, a = stops[0], b = stops[stops.length - 1];
+        for (var s = 0; s < stops.length - 1; s++) {
+          if (p >= stops[s][0] && p <= stops[s + 1][0]) { a = stops[s]; b = stops[s + 1]; break; }
+        }
+        var k = (b[0] === a[0]) ? 0 : (p - a[0]) / (b[0] - a[0]);
+        k = k * k * (3 - 2 * k);
+        ENV[i * 3] = a[1] + (b[1] - a[1]) * k;
+        ENV[i * 3 + 1] = a[2] + (b[2] - a[2]) * k;
+        ENV[i * 3 + 2] = a[3] + (b[3] - a[3]) * k;
+      }
+    })();
+
+    // Key light, normalised.
+    var L = (function () { var x = -0.45, y = -0.62, z = 0.64; var n = Math.sqrt(x * x + y * y + z * z); return [x / n, y / n, z / n]; })();
+
+    /* ----- Blobs ----- */
+    function rand(a, b) { return a + Math.random() * (b - a); }
+
+    function makeBlob(x, y) {
+      var base = Math.min(W, H);
+      return {
+        x: x !== undefined ? x : rand(W * 0.25, W * 0.75),
+        y: y !== undefined ? y : rand(H * 0.25, H * 0.75),
+        vx: rand(-20, 20), vy: rand(-20, 20),
+        r: base * rand(0.09, 0.19),
+        seed: Math.random() * 1000,
+        born: performance.now()
+      };
+    }
+
+    function seedBlobs() {
+      blobs = [];
+      var n = W < 600 ? 5 : 7;
+      for (var i = 0; i < n; i++) blobs.push(makeBlob());
+    }
+
+    /* ----- Resize / DPR ----- */
+    function resize() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = window.innerWidth; H = window.innerHeight;
+      canvas.width = Math.round(W * dpr);
+      canvas.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+      allocBuffer();
+      if (!blobs.length) seedBlobs();
+      else blobs.forEach(function (b) { b.r = Math.min(W, H) * rand(0.09, 0.19); });
+    }
+
+    function allocBuffer() {
+      var s = scale;
+      while (W * s * H * s > MAX_FIELD_PIXELS) s *= 0.9;
+      bw = Math.max(2, Math.round(W * s));
+      bh = Math.max(2, Math.round(H * s));
+      buf.width = bw; buf.height = bh;
+      img = bctx.createImageData(bw, bh);
+      px32 = new Uint32Array(img.data.buffer);
+    }
+
+    /* ----- Simulation ----- */
+    function step(dt, t) {
+      var cx = W / 2, cy = H / 2;
+      for (var i = 0; i < blobs.length; i++) {
+        var b = blobs[i];
+        // Gentle wander from layered sines, plus a pull toward centre so nothing escapes.
+        var ax = Math.sin(t * 0.31 + b.seed) * 26 + Math.cos(t * 0.17 + b.seed * 1.7) * 18;
+        var ay = Math.cos(t * 0.27 + b.seed * 0.7) * 26 + Math.sin(t * 0.21 + b.seed * 2.3) * 18;
+        ax += (cx - b.x) * 0.06;
+        ay += (cy - b.y) * 0.06;
+
+        if (pointer.active) {
+          var dx = pointer.x - b.x, dy = pointer.y - b.y;
+          var d = Math.sqrt(dx * dx + dy * dy) + 1;
+          var pull = 260 * pointer.strength / (1 + d / 400);
+          ax += dx / d * pull;
+          ay += dy / d * pull;
+        }
+
+        // Soft repulsion so blobs breathe apart instead of collapsing into one lump.
+        for (var j = 0; j < blobs.length; j++) {
+          if (i === j) continue;
+          var o = blobs[j];
+          var ox = b.x - o.x, oy = b.y - o.y;
+          var od = Math.sqrt(ox * ox + oy * oy) + 1;
+          var minD = (b.r + o.r) * 0.85;
+          if (od < minD) {
+            var f = (minD - od) / minD * 90;
+            ax += ox / od * f; ay += oy / od * f;
+          }
+        }
+
+        b.vx = (b.vx + ax * dt) * 0.985;
+        b.vy = (b.vy + ay * dt) * 0.985;
+        b.x += b.vx * dt;
+        b.y += b.vy * dt;
+
+        var m = b.r * 0.6;
+        if (b.x < m) { b.x = m; b.vx = Math.abs(b.vx) * 0.5; }
+        if (b.x > W - m) { b.x = W - m; b.vx = -Math.abs(b.vx) * 0.5; }
+        if (b.y < m) { b.y = m; b.vy = Math.abs(b.vy) * 0.5; }
+        if (b.y > H - m) { b.y = H - m; b.vy = -Math.abs(b.vy) * 0.5; }
+      }
+      pointer.strength += ((pointer.active ? 1 : 0) - pointer.strength) * Math.min(1, dt * 4);
+    }
+
+    /* ----- Field render ----- */
+    var bx = new Float32Array(MAX_BLOBS), by = new Float32Array(MAX_BLOBS), br2 = new Float32Array(MAX_BLOBS);
+
+    function render(t) {
+      var n = blobs.length;
+      var s = bw / W;
+      var nowMs = performance.now();
+      for (var i = 0; i < n; i++) {
+        var b = blobs[i];
+        var grow = Math.max(0, Math.min(1, (nowMs - b.born) / 900)); // new blobs swell in
+        grow = grow * grow * (3 - 2 * grow);
+        bx[i] = b.x * s; by[i] = b.y * s;
+        var r = b.r * s * (0.15 + 0.85 * grow);
+        br2[i] = r * r;
+      }
+
+      var lx = L[0], ly = L[1], lz = L[2];
+      var idx = 0;
+      for (var y = 0; y < bh; y++) {
+        for (var x = 0; x < bw; x++) {
+          var f = 0, gx = 0, gy = 0;
+          for (var k = 0; k < n; k++) {
+            var dx = x - bx[k], dy = y - by[k];
+            var d2 = dx * dx + dy * dy + 1;
+            var inv = br2[k] / d2;
+            f += inv;
+            var c = -2 * inv / d2;
+            gx += c * dx; gy += c * dy;
+          }
+          var g = Math.sqrt(gx * gx + gy * gy);
+          var a = (f - T) / (g + 1e-6) + 0.5; // ~1px anti-aliased edge
+          if (a <= 0) { px32[idx++] = 0; continue; }
+          if (a > 1) a = 1;
+
+          // Surface normal: gradient direction for tilt, tilt amount decays with depth into the field.
+          var fT = f < T ? T : f;
+          var tilt = Math.pow(T / fT, 1.6);
+          var nx = 0, ny = 0;
+          if (g > 1e-6) { nx = -gx / g * tilt; ny = -gy / g * tilt; }
+          var nz = Math.sqrt(Math.max(0, 1 - nx * nx - ny * ny));
+
+          // Reflect the view vector (0,0,1) about the normal, sample the horizon by reflected Y.
+          var ry = 2 * nz * ny;
+          var rx = 2 * nz * nx;
+          var envIdx = ((-ry * 0.5 + 0.5) * 255) | 0;
+          if (envIdx < 0) envIdx = 0; else if (envIdx > 255) envIdx = 255;
+          var er = ENV[envIdx * 3], eg = ENV[envIdx * 3 + 1], eb = ENV[envIdx * 3 + 2];
+
+          // Slight horizontal shading: a studio softbox to the left, darker to the right.
+          var side = 1 - rx * 0.18;
+          // Fresnel rim brightens edges; specular from the key light adds the hard highlight.
+          var fres = tilt * tilt * tilt * 0.35;
+          var ndl = nx * lx + ny * ly + nz * lz;
+          var spec = ndl > 0 ? Math.pow(ndl, 48) * 255 : 0;
+          var soft = ndl > 0 ? ndl * 18 : 0;
+
+          var R = er * side + fres * 120 + spec + soft;
+          var G = eg * side + fres * 126 + spec + soft;
+          var B = eb * side + fres * 140 + spec * 0.96 + soft;
+          if (R > 255) R = 255; if (G > 255) G = 255; if (B > 255) B = 255;
+
+          var A = (a * 255) | 0;
+          px32[idx++] = (A << 24) | ((B | 0) << 16) | ((G | 0) << 8) | (R | 0);
+        }
+      }
+
+      bctx.putImageData(img, 0, 0);
+      ctx.clearRect(0, 0, W, H);
+
+      // Soft contact shadow under each body before the chrome goes on top.
+      ctx.save();
+      ctx.globalAlpha = 0.35;
+      for (var q = 0; q < n; q++) {
+        var s2 = blobs[q];
+        var grd = ctx.createRadialGradient(s2.x, s2.y + s2.r * 0.55, s2.r * 0.2, s2.x, s2.y + s2.r * 0.55, s2.r * 1.5);
+        grd.addColorStop(0, 'rgba(0,0,0,0.9)');
+        grd.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = grd;
+        ctx.fillRect(s2.x - s2.r * 1.6, s2.y - s2.r, s2.r * 3.2, s2.r * 3);
+      }
+      ctx.restore();
+
+      ctx.drawImage(buf, 0, 0, bw, bh, 0, 0, W, H);
+    }
+
+    /* ----- Adaptive quality + stats ----- */
+    var frames = 0, acc = 0, fps = 0, slow = 0, fast = 0;
+    function adapt(dtMs) {
+      acc += dtMs; frames++;
+      if (acc >= 1000) {
+        fps = Math.round(frames * 1000 / acc);
+        frames = 0; acc = 0;
+        statsEl.textContent = fps + ' fps · ' + blobs.length + ' bodies · ' + Math.round(scale * 100) + '%';
+      }
+      if (dtMs > 26) { slow++; fast = 0; } else if (dtMs < 14) { fast++; slow = 0; } else { slow = 0; fast = 0; }
+      if (slow > 20 && scale > 0.28) { scale = Math.max(0.28, scale * 0.85); allocBuffer(); slow = 0; }
+      if (fast > 240 && scale < 0.6) { scale = Math.min(0.6, scale * 1.1); allocBuffer(); fast = 0; }
+    }
+
+    /* ----- Main loop ----- */
+    var last = performance.now();
+    var running = !reduce;
+
+    function frame(now) {
+      var dtMs = now - last; last = now;
+      var dt = Math.min(0.05, dtMs / 1000);
+      var t = now / 1000;
+      step(dt, t);
+      render(t);
+      adapt(dtMs);
+      if (running) requestAnimationFrame(frame);
+    }
+
+    /* ----- Input ----- */
+    function toLocal(e) { pointer.x = e.clientX; pointer.y = e.clientY; }
+
+    window.addEventListener('pointermove', function (e) {
+      toLocal(e); pointer.active = true; hintEl.classList.add('gone');
+      if (!running) renderOnce();
+    }, { passive: true });
+    window.addEventListener('pointerdown', function (e) {
+      toLocal(e); pointer.active = true; hintEl.classList.add('gone');
+      if (blobs.length < MAX_BLOBS) {
+        var nb = makeBlob(e.clientX, e.clientY);
+        nb.vx = 0; nb.vy = 0;
+        blobs.push(nb);
+      } else {
+        blobs.shift();
+      }
+      if (!running) renderOnce();
+    });
+    window.addEventListener('pointerleave', function () { pointer.active = false; });
+    window.addEventListener('pointercancel', function () { pointer.active = false; });
+    document.addEventListener('mouseleave', function () { pointer.active = false; });
+
+    window.addEventListener('keydown', function (e) {
+      if (e.key === 'r' || e.key === 'R') { seedBlobs(); if (!running) renderOnce(); }
+      if (e.code === 'Space') { e.preventDefault(); running = !running; if (running) { last = performance.now(); requestAnimationFrame(frame); } }
+    });
+
+    function renderOnce() {
+      var now = performance.now();
+      last = now;
+      step(0.016, now / 1000);
+      render(now / 1000);
+    }
+
+    var resizeTimer = null;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () { resize(); if (!running) renderOnce(); }, 80);
+    });
+
+    resize();
+    if (reduce) {
+      // Static composition: settle the bodies for a few seconds of simulated time, then draw once.
+      for (var i = 0; i < 240; i++) step(1 / 60, i / 60);
+      blobs.forEach(function (b) { b.born = performance.now() - 5000; });
+      render(performance.now() / 1000);
+      statsEl.textContent = 'static · ' + blobs.length + ' bodies · reduced motion';
+    } else {
+      requestAnimationFrame(frame);
+    }
+  })();
+</script>
+</body>
+</html>

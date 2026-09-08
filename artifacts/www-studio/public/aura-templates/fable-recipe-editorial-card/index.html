@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saffron &amp; Blood Orange Tart — An Editorial Recipe</title>
+<style>
+  :root {
+    --paper: #f6efe3;
+    --paper-2: #efe4d2;
+    --ink: #2b241d;
+    --ink-2: #5b4f42;
+    --muted: #9a8b78;
+    --rule: #d9cbb4;
+    --saffron: #f2a93b;
+    --saffron-2: #d98a1a;
+    --orange: #c73e3a;
+    --orange-2: #8e1f24;
+    --cream: #fff8ec;
+    --display: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, ui-serif, serif;
+    --body: Georgia, 'Iowan Old Style', ui-serif, serif;
+    --mono: 'Courier New', ui-monospace, Menlo, monospace;
+    --ease: cubic-bezier(.2,.8,.2,1);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: var(--body);
+    color: var(--ink);
+    background:
+      radial-gradient(900px 500px at 10% 0%, rgba(242,169,59,0.12), transparent 60%),
+      radial-gradient(700px 500px at 100% 100%, rgba(199,62,58,0.08), transparent 60%),
+      repeating-linear-gradient(0deg, rgba(120,90,50,0.025) 0 1px, transparent 1px 3px),
+      var(--paper);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .running {
+    position: sticky; top: 0; z-index: 20;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px clamp(16px, 4vw, 56px);
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-2);
+    background: rgba(246,239,227,0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .running .dots { flex: 1; margin: 0 14px; border-bottom: 1px dotted var(--muted); transform: translateY(-3px); }
+  .page { max-width: 1180px; margin: 0 auto; padding: clamp(20px, 4vw, 56px) clamp(16px, 4vw, 56px) 80px; }
+
+  /* ---------- hero ---------- */
+  .hero {
+    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(20px, 4vw, 56px); align-items: center;
+    padding-bottom: clamp(24px, 4vw, 48px); border-bottom: 3px double var(--rule);
+  }
+  .kicker {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--orange);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .kicker::before { content: ""; width: 34px; height: 1px; background: var(--orange); }
+  h1 {
+    font-family: var(--display); font-weight: 400; font-size: clamp(38px, 6vw, 84px); line-height: 0.98; letter-spacing: -0.02em; margin: 14px 0 18px;
+  }
+  h1 em { font-style: italic; color: var(--orange); }
+  h1 .amp { font-style: italic; color: var(--saffron-2); font-size: 0.8em; }
+  .dek { font-size: clamp(16px, 1.4vw, 19px); color: var(--ink-2); max-width: 56ch; font-style: italic; margin: 0 0 22px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 8px 26px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; color: var(--ink-2); }
+  .meta b { display: block; font-family: var(--display); font-weight: 400; font-size: 20px; color: var(--ink); letter-spacing: 0; }
+
+  /* the tart illustration */
+  .tart-wrap { position: relative; aspect-ratio: 1; max-width: 520px; margin: 0 auto; width: 100%; }
+  .plate {
+    position: absolute; inset: 0; border-radius: 50%;
+    background: radial-gradient(circle at 50% 45%, #fffdf8 0%, #f4ebdc 70%, #e5d8c3 88%, #d5c6ad 100%);
+    box-shadow: 0 30px 60px rgba(60,40,20,0.22), inset 0 -6px 14px rgba(120,90,50,0.15);
+  }
+  .plate::after {
+    content: ""; position: absolute; inset: 6%; border-radius: 50%;
+    border: 1.5px solid rgba(199,62,58,0.35);
+    box-shadow: inset 0 0 0 6px rgba(199,62,58,0.06);
+  }
+  .tart {
+    position: absolute; inset: 14%; border-radius: 50%;
+    transform: rotate(0deg);
+    transition: transform 1.2s var(--ease);
+    filter: drop-shadow(0 18px 20px rgba(80,40,10,0.25));
+  }
+  .tart-wrap:hover .tart { transform: rotate(-6deg); }
+  .crust {
+    position: absolute; inset: 0; border-radius: 50%;
+    background:
+      repeating-conic-gradient(from 0deg, rgba(120,70,20,0.18) 0 3deg, transparent 3deg 9deg),
+      radial-gradient(circle, #e8b76a 0%, #d99a45 60%, #b8742a 82%, #8a4f18 100%);
+    box-shadow: inset 0 0 0 8px rgba(255,220,160,0.3), inset 0 -10px 20px rgba(90,50,10,0.35);
+  }
+  .custard {
+    position: absolute; inset: 9%; border-radius: 50%;
+    background: radial-gradient(circle at 50% 40%, #ffd977 0%, #f2a93b 55%, #d98a1a 100%);
+    box-shadow: inset 0 6px 18px rgba(255,240,200,0.5), inset 0 -8px 16px rgba(160,90,10,0.35);
+  }
+  .custard::before {
+    content: ""; position: absolute; left: 20%; top: 12%; width: 30%; height: 16%; border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(255,255,255,0.55), transparent 70%);
+    transform: rotate(-20deg);
+  }
+  .slice {
+    position: absolute; width: 27%; height: 27%; border-radius: 50%;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%) rotate(var(--a)) translate(0, -130%) rotate(calc(var(--a) * -1)) rotate(var(--t));
+    background:
+      repeating-conic-gradient(from 0deg, rgba(255,255,255,0.55) 0 1.5deg, transparent 1.5deg 40deg),
+      radial-gradient(circle at 50% 50%, #ffd9c9 0 7%, #c73e3a 8%, #a92c2c 45%, #7a1919 80%, #f4c9a5 82%, #f7dcc2 100%);
+    box-shadow: 0 3px 6px rgba(90,20,10,0.35), inset 0 0 0 2px rgba(255,235,220,0.7);
+    transition: transform 0.6s var(--ease);
+  }
+  .slice.center { width: 22%; height: 22%; transform: translate(-50%, -50%) rotate(12deg); }
+  .tart-wrap:hover .slice { transform: translate(-50%, -50%) rotate(var(--a)) translate(0, -136%) rotate(calc(var(--a) * -1)) rotate(calc(var(--t) + 10deg)); }
+  .thread {
+    position: absolute; width: 2px; height: 11%; border-radius: 2px; background: linear-gradient(#d13f2c, #f2a93b); left: 50%; top: 50%;
+    transform-origin: 50% 0; transform: translate(-50%, 0) rotate(var(--r)) translateY(70%);
+    opacity: 0.9;
+  }
+  .caption { text-align: center; font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-top: 16px; }
+
+  /* ---------- body grid ---------- */
+  .body { display: grid; grid-template-columns: 300px 1fr 240px; gap: clamp(24px, 3.5vw, 56px); padding-top: clamp(28px, 4vw, 56px); }
+  h2 {
+    font-family: var(--display); font-weight: 400; font-size: 26px; margin: 0 0 14px; letter-spacing: -0.01em;
+    display: flex; align-items: baseline; gap: 12px;
+  }
+  h2 small { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+
+  /* stepper */
+  .stepper { display: inline-flex; align-items: center; border: 1px solid var(--ink); border-radius: 999px; overflow: hidden; margin-bottom: 18px; background: var(--cream); }
+  .stepper button {
+    width: 40px; height: 40px; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 20px; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .stepper button:hover { background: rgba(242,169,59,0.25); }
+  .stepper button:active { background: rgba(242,169,59,0.5); }
+  .stepper output { min-width: 96px; text-align: center; font-family: var(--display); font-size: 17px; border-left: 1px solid var(--rule); border-right: 1px solid var(--rule); line-height: 40px; }
+  .stepper output b { font-weight: 400; color: var(--orange); }
+
+  .ingredients { list-style: none; margin: 0; padding: 0; }
+  .ingredients li.group { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--saffron-2); margin: 16px 0 6px; padding-bottom: 4px; border-bottom: 1px solid var(--rule); }
+  .ingredients li.group:first-child { margin-top: 0; }
+  .ingredients label {
+    display: grid; grid-template-columns: 22px 1fr; gap: 12px; align-items: start;
+    padding: 7px 0; cursor: pointer; position: relative;
+  }
+  .ingredients input { position: absolute; opacity: 0; width: 0; height: 0; }
+  .box {
+    width: 20px; height: 20px; border: 1.5px solid var(--ink-2); border-radius: 4px; margin-top: 3px; position: relative; background: var(--cream);
+    transition: background 0.25s, border-color 0.25s, transform 0.25s var(--ease);
+  }
+  .box::after {
+    content: ""; position: absolute; left: 6px; top: 2px; width: 5px; height: 10px;
+    border: solid var(--cream); border-width: 0 2px 2px 0; transform: rotate(45deg) scale(0); transition: transform 0.25s var(--ease);
+  }
+  .ingredients input:checked + .box { background: var(--orange); border-color: var(--orange); transform: scale(1.05); }
+  .ingredients input:checked + .box::after { transform: rotate(45deg) scale(1); }
+  .ingredients input:focus-visible + .box { outline: 2px solid var(--saffron); outline-offset: 2px; }
+  .ingredients .txt { position: relative; color: var(--ink); transition: color 0.35s; }
+  .ingredients .txt::after {
+    content: ""; position: absolute; left: 0; right: 0; top: 55%; height: 1.5px; background: var(--orange);
+    transform: scaleX(0); transform-origin: left; transition: transform 0.4s var(--ease);
+  }
+  .ingredients input:checked ~ .txt { color: var(--muted); }
+  .ingredients input:checked ~ .txt::after { transform: scaleX(1); }
+  .qty { font-family: var(--display); color: var(--orange-2); font-variant-numeric: diagonal-fractions; }
+  .qty sup, .qty sub { font-size: 0.7em; }
+  .ingredients label:hover .box { border-color: var(--orange); }
+
+  /* method */
+  .steps { list-style: none; margin: 0; padding: 0; counter-reset: step; }
+  .step {
+    position: relative; padding: 18px 0 18px 64px; border-bottom: 1px solid var(--rule);
+    transition: background 0.4s, padding 0.4s var(--ease);
+  }
+  .step::before {
+    counter-increment: step; content: counter(step, decimal-leading-zero);
+    position: absolute; left: 0; top: 14px; font-family: var(--display); font-size: 34px; line-height: 1; color: var(--saffron); font-style: italic;
+    transition: color 0.3s, transform 0.4s var(--ease);
+  }
+  .step h3 { margin: 0 0 6px; font-family: var(--display); font-weight: 400; font-size: 20px; }
+  .step p { margin: 0; color: var(--ink-2); }
+  .step:hover::before { transform: translateX(-4px); color: var(--orange); }
+  .timer {
+    display: inline-flex; align-items: center; gap: 10px; margin-top: 12px;
+    border: 1px solid var(--rule); border-radius: 999px; padding: 6px 12px 6px 6px; background: var(--cream);
+    font-family: var(--mono); font-size: 13px; letter-spacing: 0.06em;
+  }
+  .timer button {
+    width: 30px; height: 30px; border-radius: 50%; border: 0; cursor: pointer; background: var(--orange); color: #fff; font-size: 12px; display: grid; place-items: center;
+    transition: transform 0.2s var(--ease), background 0.2s;
+  }
+  .timer button:hover { transform: scale(1.08); background: var(--orange-2); }
+  .timer svg { width: 26px; height: 26px; transform: rotate(-90deg); }
+  .timer .track { fill: none; stroke: var(--rule); stroke-width: 3; }
+  .timer .prog { fill: none; stroke: var(--saffron); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 62.8; stroke-dashoffset: 0; transition: stroke-dashoffset 0.9s linear; }
+  .timer.done .prog { stroke: var(--orange); }
+  .timer.done { animation: ding 0.6s var(--ease) 3; }
+  @keyframes ding { 50% { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(199,62,58,0.35); } }
+
+  .cook-toggle {
+    font: inherit; font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    border: 1px solid var(--ink); border-radius: 999px; padding: 8px 14px; background: transparent; color: var(--ink); cursor: pointer; margin-left: auto;
+    transition: background 0.25s, color 0.25s;
+  }
+  .cook-toggle:hover, .cook-toggle[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+
+  /* cook mode */
+  body.cook .steps .step { opacity: 0.35; padding-left: 64px; }
+  body.cook .steps .step.current {
+    opacity: 1; background: var(--cream); border-radius: 14px; border-bottom-color: transparent;
+    padding: 28px 28px 28px 88px; margin: 10px -20px; box-shadow: 0 20px 50px rgba(80,50,20,0.15), 0 0 0 1px var(--rule);
+  }
+  body.cook .step.current::before { left: 24px; font-size: 46px; color: var(--orange); }
+  body.cook .step.current p { font-size: clamp(17px, 1.6vw, 22px); color: var(--ink); }
+  .cook-nav { display: none; gap: 10px; margin-top: 16px; position: sticky; bottom: 16px; }
+  body.cook .cook-nav { display: flex; }
+  .cook-nav button {
+    flex: 1; font: inherit; font-family: var(--display); font-size: 16px; padding: 12px; border-radius: 12px; cursor: pointer;
+    border: 1px solid var(--ink); background: var(--paper); color: var(--ink); transition: transform 0.2s var(--ease), background 0.2s;
+  }
+  .cook-nav button.primary { background: var(--orange); border-color: var(--orange); color: #fff; }
+  .cook-nav button:hover { transform: translateY(-2px); }
+  .cook-nav button:disabled { opacity: 0.4; cursor: default; transform: none; }
+
+  /* sidebar */
+  aside .card { border: 1px solid var(--rule); border-radius: 14px; padding: 18px; background: rgba(255,248,236,0.6); margin-bottom: 18px; }
+  aside h4 { margin: 0 0 10px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--saffron-2); }
+  .badges { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .badge {
+    text-align: center; padding: 12px 6px; border-radius: 12px; background: var(--cream); border: 1px solid var(--rule);
+    transition: transform 0.3s var(--ease), border-color 0.3s;
+  }
+  .badge:hover { transform: translateY(-3px) rotate(-1deg); border-color: var(--saffron); }
+  .badge b { display: block; font-family: var(--display); font-weight: 400; font-size: 22px; color: var(--orange-2); }
+  .badge span { font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+  .pair { display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; border-top: 1px dotted var(--rule); }
+  .pair:first-of-type { border-top: 0; padding-top: 0; }
+  .pair .glass { width: 34px; height: 34px; flex: none; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #fff, var(--glass) 55%, #7a1919); box-shadow: inset 0 -3px 6px rgba(0,0,0,0.2); }
+  .pair p { margin: 0; font-size: 14px; color: var(--ink-2); }
+  .pair p b { display: block; font-family: var(--display); font-weight: 400; color: var(--ink); font-size: 16px; }
+  .note { font-style: italic; color: var(--ink-2); font-size: 14px; border-left: 3px solid var(--saffron); padding-left: 12px; margin: 0; }
+
+  .colophon { margin-top: 56px; padding-top: 18px; border-top: 3px double var(--rule); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+
+  @media (max-width: 1000px) { .body { grid-template-columns: 260px 1fr; } aside.side { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; } }
+  @media (max-width: 720px) {
+    .hero { grid-template-columns: 1fr; } .tart-wrap { max-width: 340px; }
+    .body { grid-template-columns: 1fr; } aside.side { grid-template-columns: 1fr; }
+    body.cook .steps .step.current { margin: 10px 0; padding: 22px 18px 22px 64px; }
+    body.cook .step.current::before { left: 14px; font-size: 36px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+  }
+  @media print {
+    .running, .cook-toggle, .cook-nav, .stepper button { display: none; }
+    body { background: #fff; }
+  }
+</style>
+</head>
+<body>
+<div class="running" aria-hidden="true"><span>Hearth &amp; Season · Winter Citrus</span><span class="dots"></span><span>No. 14 · Saffron &amp; Blood Orange Tart</span></div>
+
+<main class="page">
+  <header class="hero">
+    <div>
+      <p class="kicker">Pastry · Winter citrus · Serves a small crowd</p>
+      <h1>Saffron <span class="amp">&amp;</span><br><em>Blood Orange</em> Tart</h1>
+      <p class="dek">A shortcrust shell filled with saffron-scented custard and crowned with ruby wheels of blood orange, glazed until they gleam like stained glass.</p>
+      <div class="meta">
+        <div>Prep<b>45 min</b></div>
+        <div>Bake<b>1 h 05</b></div>
+        <div>Rest<b>3 h</b></div>
+        <div>Difficulty<b>Patient</b></div>
+      </div>
+    </div>
+    <figure class="tart-wrap" aria-label="Illustration of a round tart with blood orange slices" style="margin:0">
+      <div class="plate"></div>
+      <div class="tart">
+        <div class="crust"></div>
+        <div class="custard">
+          <span class="slice" style="--a:0deg;--t:8deg"></span>
+          <span class="slice" style="--a:60deg;--t:-12deg"></span>
+          <span class="slice" style="--a:120deg;--t:20deg"></span>
+          <span class="slice" style="--a:180deg;--t:-4deg"></span>
+          <span class="slice" style="--a:240deg;--t:14deg"></span>
+          <span class="slice" style="--a:300deg;--t:-18deg"></span>
+          <span class="slice center"></span>
+          <span class="thread" style="--r:30deg"></span>
+          <span class="thread" style="--r:150deg"></span>
+          <span class="thread" style="--r:250deg"></span>
+        </div>
+      </div>
+      <figcaption class="caption">Fig. 1 — the finished tart, 23 cm</figcaption>
+    </figure>
+  </header>
+
+  <div class="body">
+    <section aria-labelledby="ing-h">
+      <h2 id="ing-h">Ingredients <small>tick as you go</small></h2>
+      <div class="stepper" role="group" aria-label="Servings">
+        <button type="button" id="dec" aria-label="Fewer servings">−</button>
+        <output id="serves" for="dec inc">Serves <b>8</b></output>
+        <button type="button" id="inc" aria-label="More servings">+</button>
+      </div>
+      <ul class="ingredients" id="ingredients">
+        <li class="group">Shortcrust</li>
+        <li><label><input type="checkbox"><span class="box"></span><span class="txt"><span class="qty" data-q="200" data-u="g"></span> plain flour</span></label></li>
+        <li><label><input type="checkbox"><span class="box"></span><span class="txt"><span class="qty" data-q="120" data-u="g"></span> cold butter, diced</span></label></li>
+        <li><label><input type="checkbox"><span class="box"></span><span class="txt"><span class="qty" data-q="40" data-u="g"></span> icing sugar</span></label></li>
+        <li><label><input type="checkbox"><span class="box"></span><span class="txt"><span class="qty" data-q="1" data-u="" data-name="egg yolk"></span></span></label></li>
+        <li><label><input type="checkbox"><span class="box"></span><span class="txt"><span class="qty" data-q="1" data-u="tbsp"></span> iced water</span></label></li>
+        <li class="group">Saffron custard</li>
+        <li><label><input type="checkbox"><span class="box"></span><span class="txt"><span class="qty" data-q="0.5" data-u="tsp"></span> saffron threads</span></label></li>
+        <li><label><input type="checkbox"><span class="box"></span><span class="txt"><span class="qty" data-q="300" data-u="ml"></span> double cream</span></label></li>
+        <li><label><input type="checkbox"><span class="box"></span><span class="txt"><span class="qty" data-q="3" data-u="" data-name="egg"></span>, plus <span class="qty" data-q="1" data-u="" data-name="yolk"></span></span></label></li>
+        <li><label><input type="checkbox"><span class="box"></span><span class="txt"><span class="qty" data-q="90" data-u="g"></span> caster sugar</span></label></li>
+        <li><label><input type="checkbox"><span class="box"></span><span class="txt"><span class="qty" data-q="1" data-u="" data-name="blood orange"></span>, zest only</span></label></li>
+        <li class="group">Glazed oranges</li>
+        <li><label><input type="checkbox"><span class="box"></span><span class="txt"><span class="qty" data-q="3" data-u="" data-name="blood orange"></span>, sliced 3 mm thin</span></label></li>
+        <li><label><input type="checkbox"><span class="box"></span><span class="txt"><span class="qty" data-q="150" data-u="g"></span> caster sugar</span></label></li>
+        <li><label><input type="checkbox"><span class="box"></span><span class="txt"><span class="qty" data-q="150" data-u="ml"></span> water</span></label></li>
+        <li><label><input type="checkbox"><span class="box"></span><span class="txt"><span class="qty" data-q="2" data-u="tbsp"></span> honey, for the final glaze</span></label></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="method-h">
+      <h2 id="method-h">Method <small>eight movements</small> <button type="button" class="cook-toggle" id="cookToggle" aria-pressed="false">Cook mode</button></h2>
+      <ol class="steps" id="steps">
+        <li class="step">
+          <h3>Make the pastry</h3>
+          <p>Rub the butter into the flour and icing sugar until it looks like damp sand. Add the yolk and water, press into a disc, wrap and chill.</p>
+          <div class="timer" data-min="30"><button type="button" aria-label="Start timer">▶</button><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="track" cx="12" cy="12" r="10"/><circle class="prog" cx="12" cy="12" r="10"/></svg><span class="t">30:00</span></div>
+        </li>
+        <li class="step">
+          <h3>Candy the oranges</h3>
+          <p>Simmer sugar and water to a clear syrup. Slide in the orange slices and poach at the gentlest tremble until translucent. Lift onto a rack; keep the syrup.</p>
+          <div class="timer" data-min="25"><button type="button" aria-label="Start timer">▶</button><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="track" cx="12" cy="12" r="10"/><circle class="prog" cx="12" cy="12" r="10"/></svg><span class="t">25:00</span></div>
+        </li>
+        <li class="step">
+          <h3>Steep the saffron</h3>
+          <p>Warm the cream with the saffron threads and orange zest until it turns the colour of late afternoon. Leave to infuse off the heat.</p>
+          <div class="timer" data-min="20"><button type="button" aria-label="Start timer">▶</button><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="track" cx="12" cy="12" r="10"/><circle class="prog" cx="12" cy="12" r="10"/></svg><span class="t">20:00</span></div>
+        </li>
+        <li class="step">
+          <h3>Line and blind bake</h3>
+          <p>Roll the pastry to the thickness of a coin, line a 23 cm tin, prick and freeze for ten minutes. Bake with baking beans at 180°C until pale gold, then brush with yolk and return for five minutes.</p>
+          <div class="timer" data-min="18"><button type="button" aria-label="Start timer">▶</button><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="track" cx="12" cy="12" r="10"/><circle class="prog" cx="12" cy="12" r="10"/></svg><span class="t">18:00</span></div>
+        </li>
+        <li class="step">
+          <h3>Whisk the custard</h3>
+          <p>Beat eggs, yolk and sugar until just combined — no froth. Strain in the saffron cream and stir slowly; the mixture should ribbon lazily off a spoon.</p>
+        </li>
+        <li class="step">
+          <h3>Bake low</h3>
+          <p>Drop the oven to 140°C. Pour the custard into the warm shell and bake until the centre wobbles like a held breath. It will set fully as it cools.</p>
+          <div class="timer" data-min="40"><button type="button" aria-label="Start timer">▶</button><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="track" cx="12" cy="12" r="10"/><circle class="prog" cx="12" cy="12" r="10"/></svg><span class="t">40:00</span></div>
+        </li>
+        <li class="step">
+          <h3>Crown with citrus</h3>
+          <p>Arrange the candied slices in an overlapping wheel, one in the centre. Warm the reserved syrup with the honey and brush over until the whole surface shines.</p>
+        </li>
+        <li class="step">
+          <h3>Rest, then serve</h3>
+          <p>Leave at room temperature for three hours. Serve in thin wedges with a spoon of crème fraîche and, if you have it, a few extra saffron threads scattered like confetti.</p>
+          <div class="timer" data-min="180"><button type="button" aria-label="Start timer">▶</button><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="track" cx="12" cy="12" r="10"/><circle class="prog" cx="12" cy="12" r="10"/></svg><span class="t">180:00</span></div>
+        </li>
+      </ol>
+      <div class="cook-nav">
+        <button type="button" id="prev">← Previous</button>
+        <button type="button" id="next" class="primary">Next step →</button>
+      </div>
+    </section>
+
+    <aside class="side">
+      <div class="card">
+        <h4>Per slice</h4>
+        <div class="badges">
+          <div class="badge"><b>412</b><span>kcal</span></div>
+          <div class="badge"><b>24 g</b><span>fat</span></div>
+          <div class="badge"><b>44 g</b><span>carbs</span></div>
+          <div class="badge"><b>6 g</b><span>protein</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <h4>To pour alongside</h4>
+        <div class="pair"><span class="glass" style="--glass:#f0c96a"></span><p><b>Late-harvest Riesling</b>Its apricot sweetness meets the saffron halfway.</p></div>
+        <div class="pair"><span class="glass" style="--glass:#c73e3a"></span><p><b>Blood orange spritz</b>Aperol, prosecco and a slice of the fruit itself.</p></div>
+        <div class="pair"><span class="glass" style="--glass:#8a5a2b"></span><p><b>Cardamom coffee</b>Short, dark and faintly floral for the afternoon.</p></div>
+      </div>
+      <div class="card">
+        <h4>Kitchen note</h4>
+        <p class="note">Saffron is shy. Bloom it in warm, never boiling, cream — scorch it and you trade honeyed hay for bitterness.</p>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="colophon">
+    <span>Hearth &amp; Season — set in system serifs</span>
+    <span>Tested four times in a north-facing kitchen</span>
+  </footer>
+</main>
+
+<script>
+(function () {
+  'use strict';
+  const BASE = 8;
+  let serves = BASE;
+  const servesOut = document.getElementById('serves');
+  const qtys = Array.from(document.querySelectorAll('.qty'));
+
+  // Nicely formatted quantities: unicode fractions for small numbers, rounding for grams/ml.
+  const FRACTIONS = [[0.125,'⅛'],[0.25,'¼'],[0.333,'⅓'],[0.375,'⅜'],[0.5,'½'],[0.625,'⅝'],[0.667,'⅔'],[0.75,'¾'],[0.875,'⅞']];
+  function fmt(n, unit) {
+    if (unit === 'g' || unit === 'ml') {
+      const step = n >= 100 ? 5 : n >= 20 ? 2 : 1;
+      return Math.round(n / step) * step;
+    }
+    const whole = Math.floor(n + 1e-9), frac = n - whole;
+    if (frac < 0.06) return whole || '0';
+    let best = FRACTIONS[0];
+    for (const f of FRACTIONS) if (Math.abs(f[0] - frac) < Math.abs(best[0] - frac)) best = f;
+    if (Math.abs(best[0] - frac) > 0.07) return n.toFixed(1);
+    return (whole ? whole : '') + best[1];
+  }
+  function plural(name, v) {
+    return Math.abs(v - 1) < 0.06 ? name : name + 's';
+  }
+  function rescale() {
+    const k = serves / BASE;
+    servesOut.innerHTML = 'Serves <b>' + serves + '</b>';
+    for (const q of qtys) {
+      const base = parseFloat(q.dataset.q), unit = q.dataset.u, name = q.dataset.name;
+      const v = base * k;
+      const shown = fmt(v, unit);
+      q.textContent = name ? shown + ' ' + plural(name, v) : shown + (unit ? ' ' + unit : '');
+    }
+  }
+  document.getElementById('inc').addEventListener('click', () => { serves = Math.min(24, serves + 2); rescale(); });
+  document.getElementById('dec').addEventListener('click', () => { serves = Math.max(2, serves - 2); rescale(); });
+  rescale();
+
+  // ---------- timers ----------
+  const R = 10, CIRC = 2 * Math.PI * R;
+  document.querySelectorAll('.timer').forEach(el => {
+    const total = parseInt(el.dataset.min, 10) * 60;
+    let left = total, running = false, handle = null;
+    const btn = el.querySelector('button'), out = el.querySelector('.t'), prog = el.querySelector('.prog');
+    const show = () => {
+      const m = Math.floor(left / 60), s = left % 60;
+      out.textContent = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+      prog.style.strokeDashoffset = (CIRC * (1 - left / total)).toFixed(2);
+    };
+    const stop = () => { running = false; clearInterval(handle); btn.textContent = '▶'; btn.setAttribute('aria-label', 'Start timer'); };
+    btn.addEventListener('click', () => {
+      if (el.classList.contains('done')) { el.classList.remove('done'); left = total; show(); return; }
+      if (running) { stop(); return; }
+      running = true; btn.textContent = '❚❚'; btn.setAttribute('aria-label', 'Pause timer');
+      handle = setInterval(() => {
+        left -= 1; show();
+        if (left <= 0) { stop(); el.classList.add('done'); out.textContent = 'done'; btn.textContent = '↺'; btn.setAttribute('aria-label', 'Reset timer'); document.title = '⏰ ' + document.title.replace(/^⏰ /, ''); }
+      }, 1000);
+    });
+    show();
+  });
+
+  // ---------- cook mode ----------
+  const body = document.body, toggle = document.getElementById('cookToggle');
+  const steps = Array.from(document.querySelectorAll('.step'));
+  const prev = document.getElementById('prev'), next = document.getElementById('next');
+  let cur = 0;
+  function setCurrent(i) {
+    cur = Math.max(0, Math.min(steps.length - 1, i));
+    steps.forEach((s, k) => s.classList.toggle('current', k === cur));
+    prev.disabled = cur === 0; next.disabled = cur === steps.length - 1;
+    next.textContent = cur === steps.length - 1 ? 'Serve' : 'Next step →';
+    if (body.classList.contains('cook')) steps[cur].scrollIntoView({ block: 'center', behavior: 'smooth' });
+  }
+  toggle.addEventListener('click', () => {
+    const on = !body.classList.contains('cook');
+    body.classList.toggle('cook', on);
+    toggle.setAttribute('aria-pressed', String(on));
+    toggle.textContent = on ? 'Exit cook mode' : 'Cook mode';
+    if (on) setCurrent(cur);
+  });
+  prev.addEventListener('click', () => setCurrent(cur - 1));
+  next.addEventListener('click', () => setCurrent(cur + 1));
+  steps.forEach((s, k) => s.addEventListener('click', e => { if (body.classList.contains('cook') && !e.target.closest('.timer')) setCurrent(k); }));
+  window.addEventListener('keydown', e => {
+    if (!body.classList.contains('cook')) return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); setCurrent(cur + 1); }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); setCurrent(cur - 1); }
+    if (e.key === 'Escape') toggle.click();
+  });
+  setCurrent(0);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>THERMA-1 — Thermal Vision Heatmap</title>
+<style>
+  :root {
+    --bg: #07080a;
+    --bezel: #1a1c20;
+    --bezel-hi: #2b2e34;
+    --bezel-lo: #0c0d10;
+    --ink: #d7dbd2;
+    --dim: #7c8378;
+    --accent: #ffb347;
+    --hot: #ff5a1f;
+    --cold: #4f7cff;
+    --mono: ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: radial-gradient(ellipse at 50% 0%, #16181c 0%, var(--bg) 60%);
+    color: var(--ink);
+    font-family: var(--mono);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px 40px;
+    overflow-x: hidden;
+  }
+  header {
+    width: min(1100px, 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 18px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: var(--dim);
+  }
+  header h1 {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: .3em;
+  }
+  header h1 span { color: var(--accent); }
+  .rig {
+    width: min(1100px, 100%);
+    position: relative;
+  }
+  .bezel {
+    background: linear-gradient(160deg, var(--bezel-hi), var(--bezel) 40%, var(--bezel-lo));
+    border-radius: 26px;
+    padding: clamp(10px, 2vw, 22px);
+    box-shadow:
+      0 0 0 1px #000 inset,
+      0 1px 0 #3a3e46 inset,
+      0 40px 80px -20px rgba(0,0,0,.9),
+      0 0 0 1px rgba(255,255,255,.04);
+    position: relative;
+  }
+  .bezel::before {
+    content: "";
+    position: absolute; inset: 6px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,.05);
+    pointer-events: none;
+  }
+  .screw {
+    position: absolute; width: 10px; height: 10px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #4b5058, #14161a);
+    box-shadow: 0 1px 1px rgba(255,255,255,.1) inset;
+  }
+  .screw::after {
+    content: ""; position: absolute; left: 2px; right: 2px; top: 4.2px; height: 1.4px;
+    background: #050607; transform: rotate(35deg);
+  }
+  .screw.tl { top: 9px; left: 9px; } .screw.tr { top: 9px; right: 9px; }
+  .screw.bl { bottom: 9px; left: 9px; } .screw.br { bottom: 9px; right: 9px; }
+  .viewport {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 0 0 2px #000, 0 0 30px rgba(0,0,0,.8) inset;
+    cursor: crosshair;
+    touch-action: none;
+  }
+  canvas.heat {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    image-rendering: auto;
+    display: block;
+  }
+  .scan {
+    position: absolute; inset: 0; pointer-events: none;
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,.14) 0 1px, transparent 1px 3px);
+    mix-blend-mode: multiply;
+  }
+  .vignette {
+    position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55) 100%);
+  }
+  .hud {
+    position: absolute; inset: 0; pointer-events: none;
+    color: #eaf2e6;
+    font-size: clamp(9px, 1.15vw, 13px);
+    text-shadow: 0 0 4px rgba(0,0,0,.9), 0 0 1px #000;
+    letter-spacing: .06em;
+  }
+  .hud .corner { position: absolute; padding: 1.2em 1.4em; line-height: 1.5; white-space: nowrap; }
+  .hud .tl { top: 0; left: 0; }
+  .hud .tr { top: 0; right: 0; text-align: right; }
+  .hud .bl { bottom: 0; left: 0; }
+  .hud .br { bottom: 0; right: 0; text-align: right; }
+  .hud .rec { color: #ff4d4d; }
+  .hud .rec::before {
+    content: ""; display: inline-block; width: .7em; height: .7em; border-radius: 50%;
+    background: currentColor; margin-right: .5em; vertical-align: -.05em;
+    animation: blink 1.2s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+  .battery { display: inline-flex; align-items: center; gap: .4em; vertical-align: middle; }
+  .battery svg { width: 2.4em; height: 1.2em; }
+  .crosshair {
+    position: absolute; left: 50%; top: 50%; width: 14%; aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+  }
+  .crosshair svg { width: 100%; height: 100%; overflow: visible; }
+  .center-temp {
+    position: absolute; left: 50%; top: 50%;
+    transform: translate(1.6em, -2.4em);
+    font-size: 1.35em; font-weight: 600; color: #fff;
+  }
+  .marker {
+    position: absolute; width: 1.6em; height: 1.6em; margin: -.8em 0 0 -.8em;
+    transition: left .12s linear, top .12s linear;
+  }
+  .marker svg { width: 100%; height: 100%; overflow: visible; }
+  .marker .lbl {
+    position: absolute; left: 1.9em; top: -.15em; font-size: .9em; white-space: nowrap;
+  }
+  .marker.max .lbl { color: #ffd7a1; }
+  .marker.min .lbl { color: #a9c4ff; }
+  .legend {
+    position: absolute; right: 2.2%; top: 18%; bottom: 18%; width: 2.2%;
+    min-width: 12px;
+    border: 1px solid rgba(255,255,255,.55);
+    box-shadow: 0 0 6px rgba(0,0,0,.8);
+  }
+  .legend canvas { width: 100%; height: 100%; display: block; }
+  .legend .tick {
+    position: absolute; right: 130%; transform: translateY(-50%);
+    font-size: .85em; white-space: nowrap; color: #fff;
+  }
+  .legend .tick::after {
+    content: ""; position: absolute; left: calc(100% + .35em); top: 50%; width: .6em; height: 1px; background: #fff;
+  }
+  .frame-lines {
+    position: absolute; inset: 0; pointer-events: none;
+  }
+  .frame-lines::before, .frame-lines::after {
+    content: ""; position: absolute; border: 1px solid rgba(255,255,255,.35);
+    width: 5%; height: 9%;
+  }
+  .frame-lines::before { left: 3%; top: 5.5%; border-right: 0; border-bottom: 0; }
+  .frame-lines::after { right: 3%; bottom: 5.5%; border-left: 0; border-top: 0; }
+
+  .controls {
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px 20px;
+    background: linear-gradient(180deg, #14161a, #0d0e11);
+    border: 1px solid #23262c;
+    border-radius: 14px;
+    padding: 14px 16px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--dim);
+  }
+  .ctl { display: flex; flex-direction: column; gap: 7px; }
+  .ctl label { display: flex; justify-content: space-between; gap: 8px; }
+  .ctl .readout { color: var(--accent); }
+  .ctl input[type=range] {
+    -webkit-appearance: none; appearance: none; width: 100%; height: 22px; background: transparent; margin: 0;
+  }
+  .ctl input[type=range]::-webkit-slider-runnable-track {
+    height: 3px; background: linear-gradient(90deg, #2a2d33, #4a4f58); border-radius: 2px;
+  }
+  .ctl input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 14px; height: 14px; margin-top: -5.5px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #ffd9a3, var(--accent) 60%, #8a5410);
+    box-shadow: 0 0 0 2px #0a0b0d, 0 0 10px rgba(255,179,71,.5);
+    cursor: pointer; transition: transform .15s ease;
+  }
+  .ctl input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+  .ctl input[type=range]::-moz-range-track { height: 3px; background: #3a3e46; border-radius: 2px; }
+  .ctl input[type=range]::-moz-range-thumb {
+    width: 14px; height: 14px; border: 0; border-radius: 50%; background: var(--accent); cursor: pointer;
+  }
+  .palettes { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pal {
+    font: inherit; letter-spacing: inherit; text-transform: inherit;
+    background: #0b0c0f; color: var(--dim); border: 1px solid #2a2e35;
+    border-radius: 6px; padding: 6px 9px; cursor: pointer; display: inline-flex; align-items: center; gap: 7px;
+    transition: border-color .2s ease, color .2s ease, transform .15s ease, box-shadow .2s ease;
+  }
+  .pal i { display: inline-block; width: 26px; height: 8px; border-radius: 2px; }
+  .pal:hover { transform: translateY(-1px); border-color: #4a505a; color: var(--ink); }
+  .pal[aria-pressed="true"] { border-color: var(--accent); color: var(--ink); box-shadow: 0 0 12px rgba(255,179,71,.25); }
+  .btn {
+    font: inherit; letter-spacing: inherit; text-transform: inherit;
+    background: linear-gradient(180deg, #23262c, #15171b); color: var(--ink);
+    border: 1px solid #33373f; border-radius: 8px; padding: 9px 12px; cursor: pointer;
+    transition: transform .12s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .btn:hover { border-color: var(--accent); box-shadow: 0 0 14px rgba(255,179,71,.2); }
+  .btn:active { transform: translateY(1px) scale(.99); }
+  .hint {
+    margin-top: 14px; font-size: 11px; color: var(--dim); text-align: center; letter-spacing: .06em; line-height: 1.7;
+  }
+  .hint kbd {
+    font: inherit; background: #15171b; border: 1px solid #2c3037; border-bottom-width: 2px;
+    padding: 1px 6px; border-radius: 4px; color: var(--ink);
+  }
+  @media (max-width: 600px) {
+    header { flex-direction: column; gap: 4px; }
+    .hud .corner { padding: .9em 1em; line-height: 1.4; }
+    .hud .br .battery { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hud .rec::before { animation: none; }
+    .marker { transition: none; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>THERMA<span>-1</span> · Longwave Infrared Imager</h1>
+  <div>Uncooled microbolometer · 160 × 90 · 7.5–14 µm</div>
+</header>
+
+<div class="rig">
+  <div class="bezel">
+    <span class="screw tl"></span><span class="screw tr"></span><span class="screw bl"></span><span class="screw br"></span>
+    <div class="viewport" id="viewport">
+      <canvas class="heat" id="heat"></canvas>
+      <div class="scan"></div>
+      <div class="vignette"></div>
+      <div class="frame-lines"></div>
+      <div class="hud">
+        <div class="corner tl">
+          <div class="rec">REC <span id="clock">00:00:00</span></div>
+          <div id="datestamp">2026-09-01</div>
+          <div>PAL <span id="palName">IRON</span></div>
+        </div>
+        <div class="corner tr">
+          <div>ε <span id="emissivity">0.95</span> · Trefl 20.0°C</div>
+          <div>RANGE −20 … 150°C</div>
+          <div>SPAN AUTO · FPS <span id="fps">60</span></div>
+        </div>
+        <div class="corner bl">
+          <div>ZOOM 1.0× · FOCUS ∞</div>
+          <div>GHOSTS <span id="ghostCount">3</span> · DIFF <span id="diffRead">0.18</span></div>
+        </div>
+        <div class="corner br">
+          <div>MAX <span id="maxRead">--.-</span>°C · MIN <span id="minRead">--.-</span>°C</div>
+          <div><span class="battery"><svg viewBox="0 0 48 24" aria-hidden="true"><rect x="1" y="3" width="42" height="18" rx="3" fill="none" stroke="#fff" stroke-width="2"/><rect x="44" y="8" width="3" height="8" rx="1" fill="#fff"/><rect id="battFill" x="4" y="6" width="30" height="12" rx="1" fill="#9be07a"/></svg><span id="battPct">78%</span></span></div>
+        </div>
+        <div class="crosshair" aria-hidden="true">
+          <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="30" fill="none" stroke="#fff" stroke-width="1.2" stroke-dasharray="6 5" opacity=".8"/>
+            <line x1="50" y1="0" x2="50" y2="16" stroke="#fff" stroke-width="1.4"/>
+            <line x1="50" y1="84" x2="50" y2="100" stroke="#fff" stroke-width="1.4"/>
+            <line x1="0" y1="50" x2="16" y2="50" stroke="#fff" stroke-width="1.4"/>
+            <line x1="84" y1="50" x2="100" y2="50" stroke="#fff" stroke-width="1.4"/>
+            <circle cx="50" cy="50" r="2" fill="#fff"/>
+          </svg>
+        </div>
+        <div class="center-temp" id="centerTemp">21.4°C</div>
+        <div class="marker max" id="mkMax">
+          <svg viewBox="0 0 20 20"><path d="M10 2 L18 10 L10 18 L2 10 Z" fill="none" stroke="#ffd7a1" stroke-width="1.6"/><circle cx="10" cy="10" r="1.6" fill="#ffd7a1"/></svg>
+          <span class="lbl" id="mkMaxLbl">▲ --.-</span>
+        </div>
+        <div class="marker min" id="mkMin">
+          <svg viewBox="0 0 20 20"><path d="M10 2 L18 10 L10 18 L2 10 Z" fill="none" stroke="#a9c4ff" stroke-width="1.6"/><circle cx="10" cy="10" r="1.6" fill="#a9c4ff"/></svg>
+          <span class="lbl" id="mkMinLbl">▼ --.-</span>
+        </div>
+        <div class="legend" id="legend">
+          <canvas id="legendCanvas" width="8" height="256"></canvas>
+          <span class="tick" style="top:0%">150°</span>
+          <span class="tick" style="top:25%">108°</span>
+          <span class="tick" style="top:50%">65°</span>
+          <span class="tick" style="top:75%">23°</span>
+          <span class="tick" style="top:100%">−20°</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="ctl">
+        <span>Palette</span>
+        <div class="palettes" id="palettes" role="group" aria-label="Thermal palette"></div>
+      </div>
+      <div class="ctl">
+        <label for="brush">Brush radius <span class="readout" id="brushOut">6</span></label>
+        <input type="range" id="brush" min="2" max="14" step="1" value="6">
+      </div>
+      <div class="ctl">
+        <label for="diffuse">Diffusion <span class="readout" id="diffuseOut">0.18</span></label>
+        <input type="range" id="diffuse" min="0.02" max="0.24" step="0.01" value="0.18">
+      </div>
+      <div class="ctl">
+        <label for="cool">Cooling <span class="readout" id="coolOut">0.985</span></label>
+        <input type="range" id="cool" min="0.95" max="0.999" step="0.001" value="0.985">
+      </div>
+      <div class="ctl">
+        <label for="ghosts">Ghosts <span class="readout" id="ghostsOut">3</span></label>
+        <input type="range" id="ghosts" min="0" max="8" step="1" value="3">
+      </div>
+      <div class="ctl">
+        <span>Sensor</span>
+        <div class="palettes">
+          <button class="btn" id="resetBtn" type="button">Reset frame</button>
+          <button class="btn" id="emberBtn" type="button">Drop ember</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="hint">Move to warm the scene · Click or tap to drop an ember · <kbd>1</kbd>–<kbd>4</kbd> switch palettes · <kbd>R</kbd> reset</p>
+
+<script>
+(function () {
+  'use strict';
+  const W = 160, H = 90;
+  const N = W * H;
+  let heat = new Float32Array(N);
+  let next = new Float32Array(N);
+  const AMBIENT = 21.0, MIN_T = -20, MAX_T = 150;
+
+  const canvas = document.getElementById('heat');
+  const ctx = canvas.getContext('2d');
+  const off = document.createElement('canvas');
+  off.width = W; off.height = H;
+  const octx = off.getContext('2d');
+  const img = octx.createImageData(W, H);
+  const px = img.data;
+
+  const viewport = document.getElementById('viewport');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---------- palettes ----------
+  function lerpStops(stops) {
+    const lut = new Uint8ClampedArray(256 * 3);
+    for (let i = 0; i < 256; i++) {
+      const t = i / 255;
+      let k = 0;
+      while (k < stops.length - 2 && t > stops[k + 1][0]) k++;
+      const [t0, c0] = stops[k], [t1, c1] = stops[k + 1];
+      const f = Math.min(1, Math.max(0, (t - t0) / (t1 - t0 || 1)));
+      for (let c = 0; c < 3; c++) lut[i * 3 + c] = c0[c] + (c1[c] - c0[c]) * f;
+    }
+    return lut;
+  }
+  const PALETTES = {
+    IRON: lerpStops([[0,[0,0,0]],[.12,[20,0,60]],[.3,[120,0,140]],[.5,[210,40,50]],[.7,[250,130,20]],[.87,[255,220,60]],[1,[255,255,255]]]),
+    RAINBOW: lerpStops([[0,[0,0,0]],[.15,[10,10,130]],[.32,[0,110,255]],[.5,[0,220,120]],[.65,[250,240,0]],[.82,[255,80,0]],[1,[255,255,255]]]),
+    ARCTIC: lerpStops([[0,[8,10,20]],[.3,[20,60,120]],[.55,[70,160,220]],[.78,[190,235,250]],[1,[255,255,255]]]),
+    GRAY: lerpStops([[0,[0,0,0]],[1,[255,255,255]]])
+  };
+  const PAL_ORDER = ['IRON', 'RAINBOW', 'ARCTIC', 'GRAY'];
+  let palName = 'IRON';
+  let lut = PALETTES[palName];
+
+  const palRoot = document.getElementById('palettes');
+  PAL_ORDER.forEach((name) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'pal'; b.dataset.pal = name;
+    b.setAttribute('aria-pressed', name === palName ? 'true' : 'false');
+    const l = PALETTES[name];
+    const stops = [];
+    for (let i = 0; i <= 8; i++) { const j = Math.round(i / 8 * 255) * 3; stops.push(`rgb(${l[j]},${l[j+1]},${l[j+2]})`); }
+    b.innerHTML = `<i style="background:linear-gradient(90deg,${stops.join(',')})"></i>${name}`;
+    b.addEventListener('click', () => setPalette(name));
+    palRoot.appendChild(b);
+  });
+  function setPalette(name) {
+    palName = name; lut = PALETTES[name];
+    document.getElementById('palName').textContent = name;
+    palRoot.querySelectorAll('.pal').forEach(b => b.setAttribute('aria-pressed', b.dataset.pal === name ? 'true' : 'false'));
+    drawLegend();
+  }
+  function drawLegend() {
+    const lc = document.getElementById('legendCanvas');
+    const g = lc.getContext('2d');
+    const d = g.createImageData(lc.width, lc.height);
+    for (let y = 0; y < lc.height; y++) {
+      const v = Math.round((1 - y / (lc.height - 1)) * 255) * 3;
+      for (let x = 0; x < lc.width; x++) {
+        const o = (y * lc.width + x) * 4;
+        d.data[o] = lut[v]; d.data[o + 1] = lut[v + 1]; d.data[o + 2] = lut[v + 2]; d.data[o + 3] = 255;
+      }
+    }
+    g.putImageData(d, 0, 0);
+  }
+
+  // ---------- parameters ----------
+  const params = { brush: 6, diffuse: 0.18, cool: 0.985, ghosts: 3 };
+  function bindRange(id, key, fmt) {
+    const el = document.getElementById(id);
+    const out = document.getElementById(id + 'Out');
+    const upd = () => { params[key] = parseFloat(el.value); out.textContent = fmt(params[key]); };
+    el.addEventListener('input', upd); upd();
+  }
+  bindRange('brush', 'brush', v => v.toFixed(0));
+  bindRange('diffuse', 'diffuse', v => v.toFixed(2));
+  bindRange('cool', 'cool', v => v.toFixed(3));
+  bindRange('ghosts', 'ghosts', v => v.toFixed(0));
+
+  // ---------- heat operations ----------
+  function reset() { heat.fill(AMBIENT); next.fill(AMBIENT); embers.length = 0; }
+  function brush(gx, gy, radius, power) {
+    const r2 = radius * radius;
+    const x0 = Math.max(0, Math.floor(gx - radius)), x1 = Math.min(W - 1, Math.ceil(gx + radius));
+    const y0 = Math.max(0, Math.floor(gy - radius)), y1 = Math.min(H - 1, Math.ceil(gy + radius));
+    for (let y = y0; y <= y1; y++) {
+      for (let x = x0; x <= x1; x++) {
+        const dx = x - gx, dy = y - gy, d2 = dx * dx + dy * dy;
+        if (d2 > r2 * 1.8) continue;
+        const g = Math.exp(-d2 / (r2 * 0.55));
+        const i = y * W + x;
+        heat[i] = Math.min(MAX_T, heat[i] + power * g);
+      }
+    }
+  }
+
+  // ---------- thermal ghosts ----------
+  const ghosts = [];
+  function makeGhost() {
+    const fromLeft = Math.random() < 0.5;
+    return {
+      x: fromLeft ? -10 : W + 10, y: H * (0.3 + Math.random() * 0.5),
+      vx: (fromLeft ? 1 : -1) * (0.12 + Math.random() * 0.14),
+      vy: 0, warmth: 9 + Math.random() * 6, phase: Math.random() * 6.28, bob: 0.3 + Math.random() * 0.3
+    };
+  }
+  function updateGhosts(dt) {
+    while (ghosts.length < params.ghosts) ghosts.push(makeGhost());
+    while (ghosts.length > params.ghosts) ghosts.pop();
+    for (let i = 0; i < ghosts.length; i++) {
+      const g = ghosts[i];
+      g.phase += dt * 3;
+      g.x += g.vx * dt * 60;
+      g.y += Math.sin(g.phase) * g.bob * dt * 20;
+      if (g.x < -14 || g.x > W + 14 || g.y < 8 || g.y > H - 8) ghosts[i] = makeGhost();
+      // body: head + torso as two soft blobs
+      const stride = Math.abs(Math.sin(g.phase * 0.5)) * 1.5;
+      brush(g.x, g.y - 5, 2.4, g.warmth * dt * 0.8);
+      brush(g.x, g.y + 1, 3.6, g.warmth * dt * 0.55);
+      brush(g.x - stride, g.y + 7, 1.6, g.warmth * dt * 0.35);
+      brush(g.x + stride, g.y + 7, 1.6, g.warmth * dt * 0.35);
+    }
+    document.getElementById('ghostCount').textContent = ghosts.length;
+  }
+
+  // ---------- embers ----------
+  const embers = [];
+  function dropEmber(gx, gy) {
+    embers.push({ x: gx, y: gy, life: 1.4, age: 0 });
+  }
+  function updateEmbers(dt) {
+    for (let i = embers.length - 1; i >= 0; i--) {
+      const e = embers[i];
+      e.age += dt;
+      const t = e.age / e.life;
+      if (t >= 1) { embers.splice(i, 1); continue; }
+      const r = 2 + t * 9;
+      brush(e.x, e.y, r, (1 - t) * 60 * dt);
+    }
+  }
+
+  // ---------- simulation step ----------
+  function step(dt) {
+    const k = params.diffuse, cool = Math.pow(params.cool, dt * 60);
+    for (let y = 0; y < H; y++) {
+      const yu = y > 0 ? y - 1 : y, yd = y < H - 1 ? y + 1 : y;
+      for (let x = 0; x < W; x++) {
+        const xl = x > 0 ? x - 1 : x, xr = x < W - 1 ? x + 1 : x;
+        const i = y * W + x;
+        const lap = heat[yu * W + x] + heat[yd * W + x] + heat[y * W + xl] + heat[y * W + xr] - 4 * heat[i];
+        let v = heat[i] + lap * k;
+        v = AMBIENT + (v - AMBIENT) * cool;
+        next[i] = v;
+      }
+    }
+    const tmp = heat; heat = next; next = tmp;
+  }
+
+  // ---------- render ----------
+  let noiseSeed = 1;
+  function rnd() { noiseSeed = (noiseSeed * 1664525 + 1013904223) >>> 0; return noiseSeed / 4294967296; }
+  function render() {
+    let minV = Infinity, maxV = -Infinity, minI = 0, maxI = 0;
+    for (let i = 0; i < N; i++) {
+      const v = heat[i];
+      if (v < minV) { minV = v; minI = i; }
+      if (v > maxV) { maxV = v; maxI = i; }
+    }
+    // auto-span with gentle floor so an idle scene still shows texture
+    const lo = Math.min(minV, AMBIENT - 6), hi = Math.max(maxV, AMBIENT + 18);
+    const inv = 255 / (hi - lo);
+    for (let i = 0; i < N; i++) {
+      const n = (rnd() - 0.5) * 6;
+      let t = (heat[i] - lo) * inv + n;
+      t = t < 0 ? 0 : t > 255 ? 255 : t | 0;
+      const j = t * 3, o = i * 4;
+      px[o] = lut[j]; px[o + 1] = lut[j + 1]; px[o + 2] = lut[j + 2]; px[o + 3] = 255;
+    }
+    octx.putImageData(img, 0, 0);
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    ctx.drawImage(off, 0, 0, canvas.width, canvas.height);
+    return { minV, maxV, minI, maxI };
+  }
+
+  function placeMarker(el, lbl, idx, val, arrow) {
+    const x = ((idx % W) + 0.5) / W * 100, y = (Math.floor(idx / W) + 0.5) / H * 100;
+    el.style.left = x + '%'; el.style.top = y + '%';
+    lbl.textContent = arrow + ' ' + val.toFixed(1);
+  }
+
+  // ---------- sizing ----------
+  function resize() {
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    const r = viewport.getBoundingClientRect();
+    canvas.width = Math.max(1, Math.round(r.width * dpr));
+    canvas.height = Math.max(1, Math.round(r.height * dpr));
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  // ---------- input ----------
+  let pointer = null;
+  function toGrid(e) {
+    const r = viewport.getBoundingClientRect();
+    return { x: (e.clientX - r.left) / r.width * W, y: (e.clientY - r.top) / r.height * H };
+  }
+  viewport.addEventListener('pointermove', (e) => { pointer = toGrid(e); });
+  viewport.addEventListener('pointerleave', () => { pointer = null; });
+  viewport.addEventListener('pointerdown', (e) => {
+    const g = toGrid(e); pointer = g; dropEmber(g.x, g.y);
+    viewport.setPointerCapture(e.pointerId);
+  });
+  viewport.addEventListener('pointerup', (e) => { if (viewport.hasPointerCapture(e.pointerId)) viewport.releasePointerCapture(e.pointerId); });
+  document.getElementById('resetBtn').addEventListener('click', reset);
+  document.getElementById('emberBtn').addEventListener('click', () => dropEmber(20 + Math.random() * (W - 40), 15 + Math.random() * (H - 30)));
+  window.addEventListener('keydown', (e) => {
+    if (e.key >= '1' && e.key <= '4') setPalette(PAL_ORDER[parseInt(e.key, 10) - 1]);
+    if (e.key === 'r' || e.key === 'R') reset();
+  });
+
+  // ---------- HUD ----------
+  const clockEl = document.getElementById('clock'), dateEl = document.getElementById('datestamp');
+  const fpsEl = document.getElementById('fps');
+  const maxEl = document.getElementById('maxRead'), minEl = document.getElementById('minRead');
+  const centerEl = document.getElementById('centerTemp');
+  const mkMax = document.getElementById('mkMax'), mkMaxLbl = document.getElementById('mkMaxLbl');
+  const mkMin = document.getElementById('mkMin'), mkMinLbl = document.getElementById('mkMinLbl');
+  const battFill = document.getElementById('battFill'), battPct = document.getElementById('battPct');
+  const emisEl = document.getElementById('emissivity'), diffEl = document.getElementById('diffRead');
+  const startTime = performance.now();
+  let battery = 78;
+
+  function updateHUD(stats, now, fps) {
+    const el = (now - startTime) / 1000;
+    const hh = String(Math.floor(el / 3600)).padStart(2, '0');
+    const mm = String(Math.floor(el / 60) % 60).padStart(2, '0');
+    const ss = String(Math.floor(el) % 60).padStart(2, '0');
+    clockEl.textContent = `${hh}:${mm}:${ss}`;
+    const d = new Date();
+    dateEl.textContent = d.toISOString().slice(0, 10);
+    fpsEl.textContent = String(Math.round(fps));
+    maxEl.textContent = stats.maxV.toFixed(1);
+    minEl.textContent = stats.minV.toFixed(1);
+    const c = heat[Math.floor(H / 2) * W + Math.floor(W / 2)];
+    centerEl.textContent = c.toFixed(1) + '°C';
+    placeMarker(mkMax, mkMaxLbl, stats.maxI, stats.maxV, '▲');
+    placeMarker(mkMin, mkMinLbl, stats.minI, stats.minV, '▼');
+    battery = Math.max(12, 78 - el / 90);
+    battFill.setAttribute('width', String((30 * battery / 100).toFixed(1)));
+    battFill.setAttribute('fill', battery > 30 ? '#9be07a' : '#ff6a4d');
+    battPct.textContent = Math.round(battery) + '%';
+    emisEl.textContent = (0.95 + Math.sin(el * 0.3) * 0.004).toFixed(3);
+    diffEl.textContent = params.diffuse.toFixed(2);
+  }
+
+  // ---------- loop ----------
+  reset();
+  drawLegend();
+  let last = performance.now(), fpsSmooth = 60, frame = 0;
+  function loop(now) {
+    let dt = Math.min(0.05, (now - last) / 1000); last = now;
+    if (dt <= 0) dt = 1 / 60;
+    fpsSmooth += (1 / dt - fpsSmooth) * 0.05;
+    if (pointer) brush(pointer.x, pointer.y, params.brush, 26 * dt * 3);
+    if (!reduceMotion || frame % 2 === 0) {
+      updateGhosts(dt);
+      updateEmbers(dt);
+      step(dt);
+    }
+    const stats = render();
+    if (frame % 3 === 0) updateHUD(stats, now, fpsSmooth);
+    frame++;
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

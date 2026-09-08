@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Murmuration — Starlings at Dusk</title>
+<style>
+  :root {
+    --ink: #0d0f14;
+    --text: #e8e3d9;
+    --muted: #9a948a;
+    --accent: #d9a466;
+    --serif: 'Iowan Old Style', Georgia, 'Palatino Linotype', Palatino, ui-serif, serif;
+    --mono: 'Courier New', ui-monospace, Menlo, monospace;
+    --night: 0;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: var(--ink);
+    color: var(--text);
+    font-family: var(--serif);
+    overflow: hidden;
+  }
+  .sky {
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(120% 60% at 50% 100%, rgba(255,170,90,0.55), transparent 60%),
+      linear-gradient(180deg, #2a2f4a 0%, #5a4a6e 35%, #b26a5a 62%, #e3a06a 78%, #f0c48c 100%);
+  }
+  .night {
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(90% 50% at 50% 100%, rgba(80,70,110,0.5), transparent 70%),
+      linear-gradient(180deg, #05060c 0%, #0b0f1e 45%, #1a1c33 75%, #2b2540 100%);
+    opacity: var(--night);
+    transition: opacity 0.4s linear;
+  }
+  .stars {
+    position: fixed; inset: 0; opacity: var(--night); transition: opacity 0.4s linear;
+    background-image:
+      radial-gradient(1px 1px at 12% 18%, #fff 50%, transparent 51%),
+      radial-gradient(1px 1px at 28% 9%, #fff 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 41% 22%, #fff 50%, transparent 51%),
+      radial-gradient(1px 1px at 57% 14%, #fff 50%, transparent 51%),
+      radial-gradient(1px 1px at 66% 31%, #fff 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 79% 11%, #fff 50%, transparent 51%),
+      radial-gradient(1px 1px at 88% 26%, #fff 50%, transparent 51%),
+      radial-gradient(1px 1px at 95% 7%, #fff 50%, transparent 51%),
+      radial-gradient(1px 1px at 5% 36%, #fff 50%, transparent 51%),
+      radial-gradient(1px 1px at 34% 40%, #fff 50%, transparent 51%),
+      radial-gradient(1px 1px at 72% 44%, #fff 50%, transparent 51%),
+      radial-gradient(1px 1px at 50% 4%, #fff 50%, transparent 51%);
+  }
+  canvas#flock { position: fixed; inset: 0; width: 100%; height: 100%; display: block; cursor: none; }
+  svg.land { position: fixed; left: 0; right: 0; bottom: 0; width: 100%; height: 34vh; display: block; pointer-events: none; }
+  .hawk {
+    position: fixed; left: 0; top: 0; width: 26px; height: 26px; pointer-events: none;
+    transform: translate(-50%, -50%); opacity: 0; transition: opacity 0.3s;
+  }
+  .hawk.on { opacity: 1; }
+
+  /* ---------- UI ---------- */
+  .title {
+    position: fixed; left: clamp(18px, 4vw, 64px); top: clamp(18px, 4vh, 56px); pointer-events: none;
+    text-shadow: 0 2px 30px rgba(0,0,0,0.5);
+  }
+  .title h1 { margin: 0; font-weight: 400; font-size: clamp(30px, 5vw, 64px); letter-spacing: 0.02em; line-height: 1; }
+  .title h1 em { font-style: italic; color: var(--accent); }
+  .title p { margin: 10px 0 0; font-style: italic; font-size: clamp(13px, 1.3vw, 17px); color: var(--text); opacity: 0.8; max-width: 44ch; line-height: 1.5; }
+
+  .panel {
+    position: fixed; right: clamp(12px, 3vw, 40px); top: clamp(12px, 3vh, 40px);
+    width: min(280px, calc(100vw - 24px));
+    background: rgba(13,15,20,0.55); border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-radius: 12px; padding: 14px 16px 10px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+    transition: transform 0.4s cubic-bezier(.2,.8,.2,1), opacity 0.3s;
+  }
+  .panel.hidden { transform: translateX(calc(100% + 60px)); opacity: 0; }
+  .panel h2 { margin: 0 0 8px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); font-weight: 400; display: flex; justify-content: space-between; }
+  .panel h2 span { color: var(--accent); }
+  .row { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; align-items: center; padding: 5px 0; }
+  .row label { font-size: 13px; font-style: italic; color: var(--text); }
+  .row output { font-family: var(--mono); font-size: 11px; color: var(--accent); justify-self: end; }
+  .row input { grid-column: 1 / -1; }
+  input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 18px; background: transparent; margin: 0; cursor: pointer; }
+  input[type=range]::-webkit-slider-runnable-track { height: 2px; background: rgba(255,255,255,0.22); }
+  input[type=range]::-moz-range-track { height: 2px; background: rgba(255,255,255,0.22); }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none; width: 12px; height: 12px; border-radius: 50%; margin-top: -5px;
+    background: var(--accent); box-shadow: 0 0 0 3px rgba(217,164,102,0.2); transition: transform 0.2s;
+  }
+  input[type=range]::-moz-range-thumb { width: 12px; height: 12px; border-radius: 50%; border: none; background: var(--accent); }
+  input[type=range]:hover::-webkit-slider-thumb { transform: scale(1.3); }
+  input[type=range]:focus-visible { outline: 1px solid var(--accent); outline-offset: 4px; }
+  .actions { display: flex; gap: 6px; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.08); }
+  .actions button {
+    flex: 1; font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+    background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,0.18); border-radius: 6px; padding: 8px 4px; cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+  }
+  .actions button:hover { border-color: var(--accent); color: var(--accent); }
+  .actions button[aria-pressed="true"] { background: var(--accent); color: var(--ink); border-color: var(--accent); }
+  .actions button:focus-visible { outline: 1px solid var(--accent); outline-offset: 3px; }
+  .toggle {
+    position: fixed; right: clamp(12px, 3vw, 40px); bottom: clamp(12px, 3vh, 32px);
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    background: rgba(13,15,20,0.5); color: var(--muted); border: 1px solid rgba(255,255,255,0.12); border-radius: 999px; padding: 8px 14px; cursor: pointer;
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  }
+  .toggle:hover { color: var(--text); border-color: rgba(255,255,255,0.3); }
+  .foot {
+    position: fixed; left: clamp(18px, 4vw, 64px); bottom: clamp(12px, 3vh, 32px); pointer-events: none;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; color: var(--muted); text-transform: uppercase;
+  }
+  .foot b { color: var(--text); font-weight: 400; }
+  @media (max-width: 720px) {
+    .title p { display: none; }
+    .panel { top: auto; bottom: 56px; right: 12px; }
+    .foot { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="sky" aria-hidden="true"></div>
+<div class="night" aria-hidden="true"></div>
+<div class="stars" aria-hidden="true"></div>
+
+<canvas id="flock" aria-label="Simulation of a starling murmuration; move the pointer to act as a hawk, click to scatter"></canvas>
+
+<svg class="land" viewBox="0 0 1600 340" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+  <defs>
+    <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1c1620"/><stop offset="1" stop-color="#0a0a10"/>
+    </linearGradient>
+  </defs>
+  <!-- distant hills -->
+  <path fill="#2a2333" opacity="0.7" d="M0 250 C 200 200, 380 230, 560 210 S 900 170, 1100 205 S 1450 235, 1600 215 L1600 340 L0 340 Z"/>
+  <!-- treeline -->
+  <path fill="url(#hill)" d="M0 290 L0 270 L28 262 L40 236 L54 268 L70 258 L96 272 L120 240 L134 268 L160 262 L190 226 L204 250 L214 232 L228 266 L260 258 L290 272 L320 244 L332 262 L360 254 L392 270 L420 236 L440 264 L470 258 L500 232 L520 260 L548 250 L580 272 L610 246 L626 266 L650 258 L690 270 L720 238 L738 262 L770 254 L800 270 L830 228 L846 256 L870 246 L900 268 L930 254 L960 272 L990 238 L1008 264 L1040 256 L1070 270 L1100 242 L1118 262 L1150 254 L1190 272 L1220 232 L1236 258 L1264 250 L1300 270 L1330 244 L1350 266 L1380 258 L1410 272 L1440 234 L1458 260 L1490 252 L1520 270 L1550 246 L1570 264 L1600 258 L1600 340 L0 340 Z"/>
+  <!-- ground -->
+  <rect x="0" y="286" width="1600" height="54" fill="#07070b"/>
+  <!-- telegraph poles & wires -->
+  <g stroke="#0a0a0f" stroke-width="5" stroke-linecap="round">
+    <line x1="260" y1="300" x2="260" y2="120"/><line x1="236" y1="140" x2="284" y2="140"/><line x1="240" y1="160" x2="280" y2="160"/>
+    <line x1="900" y1="300" x2="900" y2="110"/><line x1="876" y1="130" x2="924" y2="130"/><line x1="880" y1="150" x2="920" y2="150"/>
+    <line x1="1480" y1="300" x2="1480" y2="118"/><line x1="1456" y1="138" x2="1504" y2="138"/><line x1="1460" y1="158" x2="1500" y2="158"/>
+  </g>
+  <g fill="none" stroke="#0b0b12" stroke-width="1.6">
+    <path d="M-40 150 Q 110 168 260 140 Q 580 178 900 130 Q 1190 172 1480 138 Q 1560 146 1640 136"/>
+    <path d="M-40 172 Q 110 188 260 160 Q 580 198 900 150 Q 1190 192 1480 158 Q 1560 166 1640 156"/>
+  </g>
+  <!-- a few perched birds -->
+  <g fill="#0b0b12">
+    <ellipse cx="420" cy="163" rx="4" ry="2.6"/><ellipse cx="436" cy="165" rx="4" ry="2.6"/><ellipse cx="1120" cy="163" rx="4" ry="2.6"/>
+    <ellipse cx="1140" cy="164" rx="4" ry="2.6"/><ellipse cx="1156" cy="163" rx="4" ry="2.6"/><ellipse cx="640" cy="176" rx="4" ry="2.6"/>
+  </g>
+</svg>
+
+<svg class="hawk" id="hawk" viewBox="0 0 26 26" aria-hidden="true">
+  <path d="M13 4 L23 12 L18 12 L15 22 L11 22 L8 12 L3 12 Z" fill="#1a1410" opacity="0.85"/>
+</svg>
+
+<div class="title">
+  <h1>Murmu<em>ration</em></h1>
+  <p>Ten thousand small decisions made at once. No bird leads; every bird listens to seven neighbours, and the sky writes in ink.</p>
+</div>
+
+<aside class="panel" id="panel" aria-label="Simulation parameters">
+  <h2>Flock <span id="fps">— fps</span></h2>
+  <div class="row"><label for="count">Birds</label><output id="count-out">4000</output><input type="range" id="count" min="500" max="12000" step="100" value="4000"></div>
+  <div class="row"><label for="cohesion">Cohesion</label><output id="cohesion-out">0.9</output><input type="range" id="cohesion" min="0" max="3" step="0.05" value="0.9"></div>
+  <div class="row"><label for="alignment">Alignment</label><output id="alignment-out">1.2</output><input type="range" id="alignment" min="0" max="3" step="0.05" value="1.2"></div>
+  <div class="row"><label for="separation">Separation</label><output id="separation-out">1.5</output><input type="range" id="separation" min="0" max="3" step="0.05" value="1.5"></div>
+  <div class="row"><label for="speed">Speed</label><output id="speed-out">3.2</output><input type="range" id="speed" min="1" max="7" step="0.1" value="3.2"></div>
+  <div class="row"><label for="radius">Perception</label><output id="radius-out">32</output><input type="range" id="radius" min="10" max="80" step="1" value="32"></div>
+  <div class="row"><label for="dusk">Dusk → night</label><output id="dusk-out">0.15</output><input type="range" id="dusk" min="0" max="1" step="0.01" value="0.15"></div>
+  <div class="actions">
+    <button type="button" id="pause" aria-pressed="false">Pause</button>
+    <button type="button" id="stepBtn">Step</button>
+    <button type="button" id="scatter">Scatter</button>
+  </div>
+</aside>
+<button type="button" class="toggle" id="toggle" aria-controls="panel" aria-expanded="true">Hide panel</button>
+
+<div class="foot">Pointer is a <b>hawk</b> · click to <b>scatter</b> · space to <b>pause</b></div>
+
+<script>
+(function () {
+  'use strict';
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const canvas = document.getElementById('flock');
+  const ctx = canvas.getContext('2d', { alpha: true });
+  const hawk = document.getElementById('hawk');
+  const $ = id => document.getElementById(id);
+  const P = {
+    count: $('count'), cohesion: $('cohesion'), alignment: $('alignment'), separation: $('separation'),
+    speed: $('speed'), radius: $('radius'), dusk: $('dusk')
+  };
+
+  let W = 0, H = 0, dpr = 1;
+  const MAX = 12000;
+  const px = new Float32Array(MAX), py = new Float32Array(MAX), vx = new Float32Array(MAX), vy = new Float32Array(MAX);
+  const dens = new Uint8Array(MAX);
+  let N = 0;
+  let paused = false, stepOnce = false;
+  const mouse = { x: -9999, y: -9999, active: false };
+  const attractor = { x: 0, y: 0, tx: 0, ty: 0, t: 0 };
+
+  // spatial grid
+  let cell = 32, cols = 0, rows = 0;
+  let gridHead = new Int32Array(1), gridNext = new Int32Array(MAX);
+
+  function resize() {
+    dpr = Math.min(2, window.devicePixelRatio || 1);
+    W = window.innerWidth; H = window.innerHeight;
+    canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    rebuildGrid();
+  }
+  function rebuildGrid() {
+    cell = Math.max(10, parseFloat(P.radius.value));
+    cols = Math.ceil(W / cell) + 1; rows = Math.ceil(H / cell) + 1;
+    gridHead = new Int32Array(cols * rows);
+  }
+  function setCount(n) {
+    n = Math.min(MAX, n);
+    for (let i = N; i < n; i++) {
+      // spawn near the current attractor so new birds join the flock
+      const a = Math.random() * Math.PI * 2, r = Math.random() * 120;
+      px[i] = attractor.x + Math.cos(a) * r; py[i] = attractor.y + Math.sin(a) * r;
+      vx[i] = (Math.random() - 0.5) * 2; vy[i] = (Math.random() - 0.5) * 2;
+    }
+    N = n;
+  }
+
+  function fillGrid() {
+    gridHead.fill(-1);
+    for (let i = 0; i < N; i++) {
+      let cx = (px[i] / cell) | 0, cy = (py[i] / cell) | 0;
+      if (cx < 0) cx = 0; else if (cx >= cols) cx = cols - 1;
+      if (cy < 0) cy = 0; else if (cy >= rows) cy = rows - 1;
+      const k = cy * cols + cx;
+      gridNext[i] = gridHead[k]; gridHead[k] = i;
+    }
+  }
+
+  function step() {
+    const coh = parseFloat(P.cohesion.value) * 0.02;
+    const ali = parseFloat(P.alignment.value) * 0.08;
+    const sep = parseFloat(P.separation.value) * 0.9;
+    const maxSpeed = parseFloat(P.speed.value);
+    const R = parseFloat(P.radius.value), R2 = R * R, sepR2 = (R * 0.45) * (R * 0.45);
+
+    // wandering attractor: a slow lissajous-ish path through the upper sky
+    attractor.t += 0.004;
+    attractor.tx = W * (0.5 + 0.32 * Math.sin(attractor.t * 0.7) * Math.cos(attractor.t * 0.23));
+    attractor.ty = H * (0.38 + 0.2 * Math.sin(attractor.t * 1.1 + 1));
+    attractor.x += (attractor.tx - attractor.x) * 0.02; attractor.y += (attractor.ty - attractor.y) * 0.02;
+
+    fillGrid();
+    const floor = H * 0.7; // birds avoid the treeline
+    for (let i = 0; i < N; i++) {
+      const x = px[i], y = py[i];
+      let cx = (x / cell) | 0, cy = (y / cell) | 0;
+      let sumX = 0, sumY = 0, sumVX = 0, sumVY = 0, sepX = 0, sepY = 0, n = 0;
+      for (let gy = cy - 1; gy <= cy + 1; gy++) {
+        if (gy < 0 || gy >= rows) continue;
+        for (let gx = cx - 1; gx <= cx + 1; gx++) {
+          if (gx < 0 || gx >= cols) continue;
+          let j = gridHead[gy * cols + gx];
+          while (j !== -1) {
+            if (j !== i) {
+              const dx = px[j] - x, dy = py[j] - y, d2 = dx * dx + dy * dy;
+              if (d2 < R2 && d2 > 0.0001) {
+                n++;
+                sumX += px[j]; sumY += py[j]; sumVX += vx[j]; sumVY += vy[j];
+                if (d2 < sepR2) { const inv = 1 / d2; sepX -= dx * inv; sepY -= dy * inv; }
+                if (n > 24) { gx = cx + 2; gy = cy + 2; break; } // cap neighbour work
+              }
+            }
+            j = gridNext[j];
+          }
+        }
+      }
+      let ax = 0, ay = 0;
+      if (n > 0) {
+        const inv = 1 / n;
+        ax += (sumX * inv - x) * coh + (sumVX * inv - vx[i]) * ali;
+        ay += (sumY * inv - y) * coh + (sumVY * inv - vy[i]) * ali;
+        ax += sepX * sep; ay += sepY * sep;
+      }
+      dens[i] = n > 24 ? 24 : n;
+      // wandering attractor pull (weak, grows with distance)
+      const dxA = attractor.x - x, dyA = attractor.y - y;
+      const dA = Math.sqrt(dxA * dxA + dyA * dyA) + 1;
+      const pull = Math.min(0.06, dA * 0.00006);
+      ax += dxA / dA * pull; ay += dyA / dA * pull;
+      // hawk
+      if (mouse.active) {
+        const dxH = x - mouse.x, dyH = y - mouse.y, dH2 = dxH * dxH + dyH * dyH;
+        if (dH2 < 160 * 160) { const dH = Math.sqrt(dH2) + 0.1; const f = (160 - dH) / 160 * 1.6; ax += dxH / dH * f; ay += dyH / dH * f; }
+      }
+      // sky bounds: soft repulsion from edges & the treeline
+      if (y > floor) ay -= (y - floor) * 0.01;
+      if (y < 30) ay += (30 - y) * 0.01;
+      if (x < 30) ax += (30 - x) * 0.01;
+      if (x > W - 30) ax -= (x - (W - 30)) * 0.01;
+
+      let nvx = vx[i] + ax, nvy = vy[i] + ay;
+      const sp = Math.sqrt(nvx * nvx + nvy * nvy);
+      const minSpeed = maxSpeed * 0.45;
+      if (sp > maxSpeed) { nvx = nvx / sp * maxSpeed; nvy = nvy / sp * maxSpeed; }
+      else if (sp < minSpeed && sp > 0) { nvx = nvx / sp * minSpeed; nvy = nvy / sp * minSpeed; }
+      vx[i] = nvx; vy[i] = nvy;
+      px[i] = x + nvx; py[i] = y + nvy;
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    const night = parseFloat(P.dusk.value);
+    // Bucket birds by density into a few alpha layers so we can batch path fills.
+    const layers = 4;
+    const size = Math.max(2.2, Math.min(4.2, 900 / Math.sqrt(N)));
+    for (let L = 0; L < layers; L++) {
+      ctx.beginPath();
+      for (let i = 0; i < N; i++) {
+        const d = dens[i];
+        const bucket = d < 4 ? 0 : d < 9 ? 1 : d < 16 ? 2 : 3;
+        if (bucket !== L) continue;
+        const x = px[i], y = py[i];
+        const s = Math.hypot(vx[i], vy[i]) || 1;
+        const ux = vx[i] / s * size, uy = vy[i] / s * size;
+        // elongated triangle: nose ahead, two tail points behind and to the side
+        ctx.moveTo(x + ux * 1.4, y + uy * 1.4);
+        ctx.lineTo(x - ux * 0.8 - uy * 0.45, y - uy * 0.8 + ux * 0.45);
+        ctx.lineTo(x - ux * 0.8 + uy * 0.45, y - uy * 0.8 - ux * 0.45);
+        ctx.closePath();
+      }
+      // sparse birds: soft ink; dense birds: near-black cloud
+      const a = [0.42, 0.62, 0.82, 0.96][L] * (1 - night * 0.25);
+      const shade = [22, 16, 10, 5][L];
+      ctx.fillStyle = `rgba(${shade},${shade - 2},${shade + 6},${a})`;
+      ctx.fill();
+    }
+  }
+
+  // ---------- UI ----------
+  function bindOutput(input, fmt) {
+    const out = $(input.id + '-out');
+    const update = () => { out.textContent = fmt ? fmt(input.value) : input.value; };
+    input.addEventListener('input', update); update();
+  }
+  bindOutput(P.count); bindOutput(P.cohesion, v => parseFloat(v).toFixed(2)); bindOutput(P.alignment, v => parseFloat(v).toFixed(2));
+  bindOutput(P.separation, v => parseFloat(v).toFixed(2)); bindOutput(P.speed, v => parseFloat(v).toFixed(1)); bindOutput(P.radius);
+  bindOutput(P.dusk, v => parseFloat(v).toFixed(2));
+  P.count.addEventListener('input', () => setCount(parseInt(P.count.value, 10)));
+  P.radius.addEventListener('input', rebuildGrid);
+  P.dusk.addEventListener('input', () => document.documentElement.style.setProperty('--night', P.dusk.value));
+  document.documentElement.style.setProperty('--night', P.dusk.value);
+
+  const pauseBtn = $('pause');
+  function setPaused(v) { paused = v; pauseBtn.setAttribute('aria-pressed', String(v)); pauseBtn.textContent = v ? 'Resume' : 'Pause'; }
+  pauseBtn.addEventListener('click', () => setPaused(!paused));
+  $('stepBtn').addEventListener('click', () => { setPaused(true); stepOnce = true; });
+  function scatter(x, y) {
+    const sx = x == null ? W / 2 : x, sy = y == null ? H * 0.4 : y;
+    for (let i = 0; i < N; i++) {
+      const dx = px[i] - sx, dy = py[i] - sy, d = Math.sqrt(dx * dx + dy * dy) + 1;
+      const f = Math.max(0, 1 - d / (Math.max(W, H) * 0.6)) * 9;
+      vx[i] += dx / d * f + (Math.random() - 0.5) * 3; vy[i] += dy / d * f + (Math.random() - 0.5) * 3;
+    }
+  }
+  $('scatter').addEventListener('click', () => scatter());
+  canvas.addEventListener('pointerdown', e => scatter(e.clientX, e.clientY));
+  canvas.addEventListener('pointermove', e => {
+    mouse.x = e.clientX; mouse.y = e.clientY; mouse.active = true;
+    hawk.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%) rotate(${Math.atan2(e.movementY, e.movementX) * 180 / Math.PI + 90}deg)`;
+    hawk.classList.add('on');
+  });
+  canvas.addEventListener('pointerleave', () => { mouse.active = false; hawk.classList.remove('on'); });
+  const panel = $('panel'), toggle = $('toggle');
+  toggle.addEventListener('click', () => {
+    const hidden = panel.classList.toggle('hidden');
+    toggle.textContent = hidden ? 'Show panel' : 'Hide panel';
+    toggle.setAttribute('aria-expanded', String(!hidden));
+  });
+  window.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
+    if (e.code === 'Space') { e.preventDefault(); setPaused(!paused); }
+    if (e.key === 's' || e.key === 'S') scatter();
+  });
+
+  // ---------- loop ----------
+  const fpsOut = $('fps');
+  let frames = 0, fpsT = performance.now();
+  function loop(now) {
+    if (!paused || stepOnce) {
+      // reduced motion: simulate at half rate for a calmer flock
+      if (!reduceMotion || stepOnce || (frames & 1) === 0) step();
+      stepOnce = false;
+    }
+    draw();
+    frames++;
+    if (now - fpsT > 1000) { fpsOut.textContent = frames + ' fps'; frames = 0; fpsT = now; }
+    requestAnimationFrame(loop);
+  }
+
+  resize();
+  attractor.x = W / 2; attractor.y = H * 0.38; attractor.tx = attractor.x; attractor.ty = attractor.y;
+  setCount(parseInt(P.count.value, 10));
+  window.addEventListener('resize', resize);
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Twelve Ways to Tell the Time — A Clock Collection</title>
+<style>
+  :root {
+    --bg: #0e0f13;
+    --bg-2: #15161c;
+    --frame: #23252d;
+    --text: #ece8df;
+    --muted: #8b8a93;
+    --gold: #cdb27a;
+    --serif: 'Iowan Old Style', Palatino, 'Palatino Linotype', 'Book Antiqua', Georgia, ui-serif, serif;
+    --sans: ui-sans-serif, system-ui, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace;
+    --ease: cubic-bezier(.2,.8,.2,1);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: radial-gradient(1200px 600px at 50% -200px, #1b1d26, var(--bg));
+    color: var(--text);
+    font-family: var(--sans);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  header { text-align: center; padding: 64px 20px 28px; }
+  header .eyebrow { font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  header h1 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(34px, 5.5vw, 68px); line-height: 1.02; letter-spacing: -0.02em;
+    margin: 0 auto; max-width: 18ch;
+  }
+  header h1 em { font-style: italic; color: var(--gold); }
+  header p { color: var(--muted); max-width: 52ch; margin: 18px auto 0; font-size: 15px; line-height: 1.6; }
+  header .now { font-family: var(--mono); font-size: 13px; color: var(--muted); margin-top: 16px; letter-spacing: 0.08em; }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+    gap: 22px;
+    max-width: 1480px;
+    margin: 0 auto;
+    padding: 12px 22px 90px;
+  }
+  .clock {
+    --c-bg: #1a1b22; --c-fg: #ece8df; --c-accent: #cdb27a; --c-soft: #2b2d37;
+    position: relative;
+    background: linear-gradient(180deg, color-mix(in srgb, var(--c-bg), #fff 4%), var(--c-bg));
+    border: 1px solid var(--frame);
+    border-radius: 20px;
+    padding: 22px 22px 18px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 14px;
+    min-height: 360px;
+    color: var(--c-fg);
+    transition: transform 400ms var(--ease), box-shadow 400ms var(--ease), border-color 400ms;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 20px 50px -30px rgba(0,0,0,0.9);
+  }
+  .clock:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--c-accent) 45%, var(--frame)); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 30px 60px -28px rgba(0,0,0,0.95); }
+  .clock .num { position: absolute; top: 16px; right: 18px; font-family: var(--serif); font-style: italic; font-size: 13px; color: var(--c-accent); opacity: 0.8; }
+  .clock h2 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: 20px; letter-spacing: -0.01em; }
+  .clock .face { display: grid; place-items: center; min-height: 200px; }
+  .clock .cap { font-size: 12.5px; line-height: 1.5; color: color-mix(in srgb, var(--c-fg) 60%, transparent); }
+  svg { display: block; }
+
+  /* 1 Swiss */
+  .swiss { --c-bg: #f3f1ea; --c-fg: #17181b; --c-accent: #e0242a; --c-soft: #d8d5cc; }
+  .swiss .hand { transform-origin: 100px 100px; }
+
+  /* 2 Word */
+  .word { --c-bg: #101114; --c-fg: #f0ede4; --c-accent: #ffffff; --c-soft: #1f2026; }
+  .wordgrid { display: grid; grid-template-columns: repeat(11, 1fr); gap: 4px 6px; font-family: var(--mono); font-size: clamp(12px, 1.4vw, 15px); letter-spacing: 0.05em; width: min(100%, 250px); }
+  .wordgrid span { text-align: center; color: rgba(240,237,228,0.12); transition: color 700ms var(--ease), text-shadow 700ms var(--ease); }
+  .wordgrid span.on { color: var(--c-accent); text-shadow: 0 0 12px rgba(255,255,255,0.5); }
+
+  /* 3 Binary */
+  .binary { --c-bg: #0b1410; --c-fg: #d5f5e3; --c-accent: #3dff8f; --c-soft: #123020; }
+  .bits { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px 8px; }
+  .bits .col { display: grid; gap: 8px; }
+  .bits i { display: block; width: 18px; height: 18px; border-radius: 50%; background: var(--c-soft); box-shadow: inset 0 1px 2px rgba(0,0,0,0.6); transition: background 200ms, box-shadow 200ms; }
+  .bits i.on { background: var(--c-accent); box-shadow: 0 0 10px var(--c-accent), 0 0 24px color-mix(in srgb, var(--c-accent) 50%, transparent); }
+  .bits .col:nth-child(2n) { margin-right: 8px; }
+  .bits .lbl { font-family: var(--mono); font-size: 10px; text-align: center; color: var(--muted); }
+
+  /* 4 Sun arc */
+  .sunarc { --c-bg: #1d2333; --c-fg: #f5e9d6; --c-accent: #ffb454; --c-soft: #2c3550; }
+
+  /* 5 Nixie */
+  .nixie { --c-bg: #15100c; --c-fg: #ffd9b0; --c-accent: #ff7a1a; --c-soft: #2a1c12; }
+  .tubes { display: flex; gap: 6px; align-items: center; }
+  .tube {
+    position: relative; width: 38px; height: 92px; border-radius: 19px 19px 10px 10px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02) 40%, rgba(0,0,0,0.25));
+    border: 1px solid rgba(255,200,150,0.18);
+    display: grid; place-items: center;
+    overflow: hidden;
+  }
+  .tube::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, rgba(255,180,120,0.06) 0 1px, transparent 1px 5px); }
+  .tube::after { content: ""; position: absolute; left: 6px; right: 6px; bottom: 6px; height: 4px; border-radius: 2px; background: rgba(255,150,80,0.25); }
+  .tube b {
+    font: 400 42px/1 var(--mono);
+    color: #ffb070;
+    text-shadow: 0 0 6px #ff8a2a, 0 0 18px #ff6a00, 0 0 40px rgba(255,90,0,0.6);
+    animation: flicker 4s infinite;
+  }
+  .tube:nth-child(3) b { animation-delay: -1.3s; } .tube:nth-child(5) b { animation-delay: -2.6s; }
+  @keyframes flicker { 0%, 92%, 100% { opacity: 1; } 94% { opacity: 0.85; } 96% { opacity: 1; } 97% { opacity: 0.9; } }
+  .tubes .colon { color: #ff8a2a; font: 30px/1 var(--mono); text-shadow: 0 0 10px #ff6a00; animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0.25; } }
+
+  /* 6 Rings */
+  .rings { --c-bg: #101418; --c-fg: #e4eef5; --c-accent: #5fd3ff; --c-soft: #1c2530; }
+  .rings circle.track { stroke: var(--c-soft); }
+  .rings circle.val { stroke-linecap: round; transform: rotate(-90deg); transform-origin: 100px 100px; transition: stroke-dashoffset 300ms var(--ease); }
+
+  /* 7 Flip */
+  .flipc { --c-bg: #1b1b1f; --c-fg: #f2f2f2; --c-accent: #ffffff; --c-soft: #2a2a30; }
+  .flips { display: flex; gap: 8px; align-items: center; perspective: 600px; }
+  .flip { position: relative; width: 62px; height: 78px; font: 600 44px/78px var(--sans); color: var(--c-fg); }
+  .flip .half { position: absolute; left: 0; right: 0; height: 50%; overflow: hidden; background: linear-gradient(#2e2e34, #26262b); border-radius: 8px 8px 0 0; }
+  .flip .half span { position: absolute; left: 0; right: 0; text-align: center; }
+  .flip .top { top: 0; }
+  .flip .top span { top: 0; }
+  .flip .bottom { bottom: 0; border-radius: 0 0 8px 8px; background: linear-gradient(#202024, #1a1a1e); }
+  .flip .bottom span { bottom: 0; line-height: 78px; top: -39px; }
+  .flip .leaf { transform-origin: 50% 100%; backface-visibility: hidden; }
+  .flip .leaf.bottom { transform-origin: 50% 0%; }
+  .flip .leaf { display: none; }
+  .flip.go .leaf { display: block; }
+  .flip.go .leaf.top { animation: fold 320ms ease-in forwards; }
+  .flip.go .leaf.bottom { animation: unfold 320ms ease-out 320ms both; }
+  @keyframes fold { from { transform: rotateX(0); } to { transform: rotateX(-90deg); } }
+  @keyframes unfold { from { transform: rotateX(90deg); } to { transform: rotateX(0); } }
+  .flip::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: rgba(0,0,0,0.8); z-index: 3; }
+  .flips .sep { width: 6px; height: 6px; border-radius: 50%; background: var(--c-fg); opacity: 0.4; margin: 0 -2px; }
+
+  /* 8 Polar */
+  .polar { --c-bg: #1a1220; --c-fg: #f4e6ff; --c-accent: #e879f9; --c-soft: #2c1e38; }
+
+  /* 9 Text */
+  .textc { --c-bg: #f7f2e7; --c-fg: #2b2620; --c-accent: #9a5b2c; --c-soft: #e7dfd0; }
+  .phrase { font-family: var(--serif); font-size: clamp(24px, 2.6vw, 32px); line-height: 1.25; text-align: center; max-width: 12ch; text-wrap: balance; }
+  .phrase em { color: var(--c-accent); }
+  .phrase small { display: block; font-family: var(--sans); font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: color-mix(in srgb, var(--c-fg) 50%, transparent); margin-top: 14px; }
+
+  /* 10 24h */
+  .dial24 { --c-bg: #0f1a2c; --c-fg: #e8eefb; --c-accent: #ffd27a; --c-soft: #1a2a45; }
+
+  /* 11 Sand */
+  .sand { --c-bg: #f1e6d3; --c-fg: #3a2f22; --c-accent: #c9a063; --c-soft: #e2d4bb; }
+  .glass { position: relative; width: 120px; height: 190px; }
+  .glass svg { width: 100%; height: 100%; }
+  .grainfall { animation: fall 1.2s linear infinite; }
+  @keyframes fall { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -12; } }
+
+  /* 12 LCD */
+  .lcd { --c-bg: #9fb197; --c-fg: #1c2a1c; --c-accent: #1c2a1c; --c-soft: #8fa088; }
+  .lcd .face { background: linear-gradient(160deg, #b2c3a8, #97a98f); border-radius: 8px; border: 6px solid #33372f; box-shadow: inset 0 4px 12px rgba(0,0,0,0.25); }
+  .lcd .seg { fill: var(--c-accent); }
+  .lcd .seg.off { fill: rgba(28,42,28,0.08); }
+
+  footer { text-align: center; color: var(--muted); font-family: var(--serif); font-style: italic; font-size: 14px; padding: 0 20px 50px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .swiss .sec { transition: none; }
+    .tube b, .tubes .colon, .grainfall { animation: none; }
+    .flip.go .leaf { animation-duration: 1ms; }
+    .clock { transition: none; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="eyebrow">A collection</div>
+  <h1>Twelve ways to tell <em>the same moment</em></h1>
+  <p>Every clock below is alive and reading your computer's time right now. Same seconds, twelve dialects: Swiss precision, glowing gas, folded cards, sand, plain English.</p>
+  <div class="now" id="now">—</div>
+</header>
+
+<main class="gallery">
+  <!-- 1 -->
+  <section class="clock swiss" aria-label="Swiss railway analog clock">
+    <span class="num">i</span><h2>Railway</h2>
+    <div class="face">
+      <svg viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Analog clock">
+        <circle cx="100" cy="100" r="98" fill="#fff" stroke="#111" stroke-width="2"/>
+        <g id="swissTicks" stroke="#111"></g>
+        <rect id="swH" class="hand" x="95.5" y="40" width="9" height="72" fill="#111"/>
+        <rect id="swM" class="hand" x="96.5" y="14" width="7" height="98" fill="#111"/>
+        <g id="swS" class="hand sec"><line x1="100" y1="112" x2="100" y2="36" stroke="#e0242a" stroke-width="3"/><circle cx="100" cy="36" r="7" fill="#e0242a"/></g>
+        <circle cx="100" cy="100" r="3" fill="#111"/>
+      </svg>
+    </div>
+    <p class="cap">Hans Hilfiker, 1944. The seconds hand laps the dial in 58.5 seconds, then waits at twelve for the minute impulse — national punctuality, faithfully reproduced.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="clock word" aria-label="Word clock">
+    <span class="num">ii</span><h2>Word grid</h2>
+    <div class="face"><div class="wordgrid" id="wordgrid" aria-live="off"></div></div>
+    <p class="cap">One hundred and ten letters; the right ones wake up. Rounded to the nearest five minutes, the way people actually speak.</p>
+  </section>
+
+  <!-- 3 -->
+  <section class="clock binary" aria-label="Binary clock">
+    <span class="num">iii</span><h2>Binary LEDs</h2>
+    <div class="face"><div class="bits" id="bits"></div></div>
+    <p class="cap">Binary-coded decimal: each column is a digit, rows are 8·4·2·1 from top to bottom. Read the lit dots downward.</p>
+  </section>
+
+  <!-- 4 -->
+  <section class="clock sunarc" aria-label="Sunrise to sunset arc clock">
+    <span class="num">iv</span><h2>Daylight arc</h2>
+    <div class="face">
+      <svg viewBox="0 0 240 150" width="240" height="150">
+        <defs><linearGradient id="skyg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb454" stop-opacity=".35"/><stop offset="1" stop-color="#ffb454" stop-opacity="0"/></linearGradient></defs>
+        <path d="M20 120 A100 100 0 0 1 220 120" fill="url(#skyg)" stroke="var(--c-soft)" stroke-width="2"/>
+        <path id="arcProg" d="M20 120 A100 100 0 0 1 220 120" fill="none" stroke="var(--c-accent)" stroke-width="3" stroke-linecap="round"/>
+        <line x1="10" y1="120" x2="230" y2="120" stroke="var(--c-soft)" stroke-width="2"/>
+        <g id="sun"><circle r="14" fill="#ffb454" opacity=".25"/><circle r="8" fill="#ffd27a"/></g>
+        <text x="20" y="140" font-size="10" fill="var(--c-fg)" opacity=".6" font-family="ui-monospace, monospace">06:12</text>
+        <text x="220" y="140" font-size="10" fill="var(--c-fg)" opacity=".6" text-anchor="end" font-family="ui-monospace, monospace">19:48</text>
+        <text id="arcLabel" x="120" y="100" font-size="12" fill="var(--c-fg)" text-anchor="middle" font-family="ui-monospace, monospace">—</text>
+      </svg>
+    </div>
+    <p class="cap">The sun travels the arc from a fixed sunrise to sunset; at night it rests below the horizon and the arc waits for morning.</p>
+  </section>
+
+  <!-- 5 -->
+  <section class="clock nixie" aria-label="Nixie tube clock">
+    <span class="num">v</span><h2>Nixie tubes</h2>
+    <div class="face"><div class="tubes" id="tubes"></div></div>
+    <p class="cap">Neon-filled glass, cathodes stacked ten deep. The orange glow is the gas discharge; the faint mesh is the anode grid.</p>
+  </section>
+
+  <!-- 6 -->
+  <section class="clock rings" aria-label="Concentric ring clock">
+    <span class="num">vi</span><h2>Concentric rings</h2>
+    <div class="face">
+      <svg viewBox="0 0 200 200" width="200" height="200">
+        <circle class="track" cx="100" cy="100" r="86" fill="none" stroke-width="10"/>
+        <circle class="track" cx="100" cy="100" r="66" fill="none" stroke-width="10"/>
+        <circle class="track" cx="100" cy="100" r="46" fill="none" stroke-width="10"/>
+        <circle id="rH" class="val" cx="100" cy="100" r="46" fill="none" stroke="#ffb3c7" stroke-width="10"/>
+        <circle id="rM" class="val" cx="100" cy="100" r="66" fill="none" stroke="#9be7ff" stroke-width="10"/>
+        <circle id="rS" class="val" cx="100" cy="100" r="86" fill="none" stroke="#5fd3ff" stroke-width="10"/>
+        <text id="rT" x="100" y="106" text-anchor="middle" font-size="18" fill="var(--c-fg)" font-family="ui-monospace, monospace">—</text>
+      </svg>
+    </div>
+    <p class="cap">Outer ring sweeps once a minute, middle once an hour, inner once every twelve. Three orbits, one center.</p>
+  </section>
+
+  <!-- 7 -->
+  <section class="clock flipc" aria-label="Flip clock">
+    <span class="num">vii</span><h2>Flip cards</h2>
+    <div class="face"><div class="flips" id="flips"></div></div>
+    <p class="cap">Split-flap mechanics: the upper leaf falls, the lower leaf catches. A hinge line runs through every digit.</p>
+  </section>
+
+  <!-- 8 -->
+  <section class="clock polar" aria-label="Polar dots clock">
+    <span class="num">viii</span><h2>Polar dots</h2>
+    <div class="face"><svg id="polarSvg" viewBox="0 0 200 200" width="200" height="200"></svg></div>
+    <p class="cap">Sixty seconds on the rim, sixty minutes inside, twelve hours at the core. Dots fill clockwise and empty at the top of each cycle.</p>
+  </section>
+
+  <!-- 9 -->
+  <section class="clock textc" aria-label="Natural language clock">
+    <span class="num">ix</span><h2>Plain English</h2>
+    <div class="face"><div class="phrase" id="phrase">—</div></div>
+    <p class="cap">Told the way a grandparent would: quarter past, twenty to, nearly noon. Precision is overrated at the dinner table.</p>
+  </section>
+
+  <!-- 10 -->
+  <section class="clock dial24" aria-label="24 hour dial clock">
+    <span class="num">x</span><h2>Twenty-four hours</h2>
+    <div class="face"><svg id="dial24Svg" viewBox="0 0 200 200" width="200" height="200"></svg></div>
+    <p class="cap">One revolution per day, midnight at the bottom, noon at the top. The shaded half is night; the hand shows where in it you stand.</p>
+  </section>
+
+  <!-- 11 -->
+  <section class="clock sand" aria-label="Day progress hourglass">
+    <span class="num">xi</span><h2>Sand of the day</h2>
+    <div class="face">
+      <div class="glass">
+        <svg viewBox="0 0 120 190">
+          <defs><clipPath id="lowerBulb"><path d="M18 108 C18 100 50 96 60 96 C70 96 102 100 102 108 L102 178 C102 184 96 186 90 186 L30 186 C24 186 18 184 18 178 Z"/></clipPath>
+          <clipPath id="upperBulb"><path d="M18 4 L102 4 C102 12 100 20 96 30 C86 56 70 80 60 92 C50 80 34 56 24 30 C20 20 18 12 18 4 Z"/></clipPath></defs>
+          <path d="M18 4 L102 4 C102 12 100 20 96 30 C86 56 70 80 60 92 C50 80 34 56 24 30 C20 20 18 12 18 4 Z" fill="none" stroke="var(--c-fg)" stroke-width="2" opacity=".5"/>
+          <path d="M18 108 C18 100 50 96 60 96 C70 96 102 100 102 108 L102 178 C102 184 96 186 90 186 L30 186 C24 186 18 184 18 178 Z" fill="none" stroke="var(--c-fg)" stroke-width="2" opacity=".5"/>
+          <rect id="sandTop" x="18" y="4" width="84" height="88" fill="var(--c-accent)" clip-path="url(#upperBulb)"/>
+          <rect id="sandBottom" x="18" y="96" width="84" height="90" fill="var(--c-accent)" clip-path="url(#lowerBulb)"/>
+          <line class="grainfall" x1="60" y1="92" x2="60" y2="176" stroke="var(--c-accent)" stroke-width="2" stroke-dasharray="3 9"/>
+          <rect x="10" y="0" width="100" height="6" rx="2" fill="var(--c-fg)"/>
+          <rect x="10" y="184" width="100" height="6" rx="2" fill="var(--c-fg)"/>
+        </svg>
+      </div>
+    </div>
+    <p class="cap" id="sandCap">—</p>
+  </section>
+
+  <!-- 12 -->
+  <section class="clock lcd" aria-label="Seven segment LCD clock">
+    <span class="num">xii</span><h2>Seven-segment</h2>
+    <div class="face"><svg id="lcdSvg" viewBox="0 0 270 80" width="250" height="74"></svg></div>
+    <p class="cap">Casio-grey liquid crystal, 1983. Unlit segments stay faintly visible, as they always did in a real LCD.</p>
+  </section>
+</main>
+
+<footer>All twelve read the same clock; only the storytelling differs.</footer>
+
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const pad = (n) => String(n).padStart(2, '0');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* 1 Swiss ticks */
+  (function () {
+    let g = '';
+    for (let i = 0; i < 60; i++) {
+      const a = i * 6, big = i % 5 === 0;
+      g += `<line x1="100" y1="6" x2="100" y2="${big ? 26 : 14}" stroke-width="${big ? 6 : 2.5}" transform="rotate(${a} 100 100)"/>`;
+    }
+    $('swissTicks').innerHTML = g;
+  })();
+
+  /* 2 Word grid */
+  const wordRows = ['ITLISASAMPM', 'ACQUARTERDC', 'TWENTYFIVEX', 'HALFSTENFTO', 'PASTERUNINE', 'ONESIXTHREE', 'FOURFIVETWO', 'EIGHTELEVEN', 'SEVENTWELVE', 'TENSEOCLOCK'];
+  const W = {
+    IT: [0, 0, 2], IS: [0, 3, 2], A: [1, 0, 1], QUARTER: [1, 2, 7], TWENTY: [2, 0, 6], FIVEM: [2, 6, 4], HALF: [3, 0, 4], TENM: [3, 5, 3], TO: [3, 9, 2], PAST: [4, 0, 4],
+    NINE: [4, 7, 4], ONE: [5, 0, 3], SIX: [5, 3, 3], THREE: [5, 6, 5], FOUR: [6, 0, 4], FIVE: [6, 4, 4], TWO: [6, 8, 3], EIGHT: [7, 0, 5], ELEVEN: [7, 5, 6], SEVEN: [8, 0, 5], TWELVE: [8, 5, 6], TEN: [9, 0, 3], OCLOCK: [9, 5, 6]
+  };
+  const hourWords = ['TWELVE', 'ONE', 'TWO', 'THREE', 'FOUR', 'FIVE', 'SIX', 'SEVEN', 'EIGHT', 'NINE', 'TEN', 'ELEVEN'];
+  const wg = $('wordgrid');
+  wordRows.forEach((r) => { for (const ch of r) { const s = document.createElement('span'); s.textContent = ch; wg.appendChild(s); } });
+  const wgCells = Array.from(wg.children);
+  function lightWord(key) { const [r, c, len] = W[key]; for (let i = 0; i < len; i++) wgCells[r * 11 + c + i].classList.add('on'); }
+
+  /* 3 Binary */
+  const bits = $('bits');
+  const bitLabels = ['H', 'H', 'M', 'M', 'S', 'S'];
+  const bitCols = [];
+  for (let c = 0; c < 6; c++) {
+    const col = document.createElement('div'); col.className = 'col';
+    const dots = [];
+    for (let r = 0; r < 4; r++) { const i = document.createElement('i'); col.appendChild(i); dots.push(i); }
+    const l = document.createElement('div'); l.className = 'lbl'; l.textContent = bitLabels[c]; col.appendChild(l);
+    bits.appendChild(col); bitCols.push(dots);
+  }
+
+  /* 5 Nixie */
+  const tubes = $('tubes');
+  const tubeDigits = [];
+  for (let i = 0; i < 6; i++) {
+    if (i === 2 || i === 4) { const c = document.createElement('span'); c.className = 'colon'; c.textContent = ':'; tubes.appendChild(c); }
+    const t = document.createElement('div'); t.className = 'tube'; const b = document.createElement('b'); b.textContent = '0'; t.appendChild(b); tubes.appendChild(t); tubeDigits.push(b);
+  }
+
+  /* 7 Flip */
+  const flips = $('flips');
+  const flipUnits = [];
+  for (let i = 0; i < 3; i++) {
+    if (i) { const s = document.createElement('span'); s.className = 'sep'; flips.appendChild(s); }
+    const f = document.createElement('div'); f.className = 'flip';
+    f.innerHTML = '<div class="half top"><span></span></div><div class="half bottom"><span></span></div><div class="half top leaf"><span></span></div><div class="half bottom leaf"><span></span></div>';
+    flips.appendChild(f);
+    const spans = f.querySelectorAll('span');
+    flipUnits.push({ el: f, top: spans[0], bottom: spans[1], leafTop: spans[2], leafBottom: spans[3], value: null, timer: 0 });
+  }
+  function setFlip(u, v) {
+    if (u.value === v) return;
+    const old = u.value;
+    u.value = v;
+    if (old === null) { u.top.textContent = u.bottom.textContent = v; return; }
+    u.top.textContent = v; u.leafTop.textContent = old; u.leafBottom.textContent = v; u.bottom.textContent = old;
+    u.el.classList.remove('go'); void u.el.offsetWidth; u.el.classList.add('go');
+    clearTimeout(u.timer);
+    u.timer = setTimeout(() => { u.bottom.textContent = v; u.el.classList.remove('go'); }, reduce ? 10 : 660);
+  }
+
+  /* 8 Polar */
+  const polar = $('polarSvg');
+  const polarDots = { s: [], m: [], h: [] };
+  (function () {
+    const mk = (n, r, size, key, color) => {
+      for (let i = 0; i < n; i++) {
+        const a = (i / n) * Math.PI * 2 - Math.PI / 2;
+        const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        c.setAttribute('cx', (100 + Math.cos(a) * r).toFixed(2)); c.setAttribute('cy', (100 + Math.sin(a) * r).toFixed(2)); c.setAttribute('r', size);
+        c.setAttribute('fill', color); c.style.transition = 'opacity 300ms'; c.style.opacity = '0.12';
+        polar.appendChild(c); polarDots[key].push(c);
+      }
+    };
+    mk(60, 90, 2.6, 's', '#e879f9'); mk(60, 70, 2.6, 'm', '#c084fc'); mk(12, 46, 5, 'h', '#f5d0fe');
+    const t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    t.setAttribute('x', 100); t.setAttribute('y', 105); t.setAttribute('text-anchor', 'middle'); t.setAttribute('font-size', 14); t.setAttribute('fill', '#f4e6ff'); t.setAttribute('font-family', 'ui-monospace, monospace'); t.id = 'polarT';
+    polar.appendChild(t);
+  })();
+
+  /* 10 24h dial */
+  (function () {
+    const s = $('dial24Svg');
+    let g = `<circle cx="100" cy="100" r="92" fill="#16233a" stroke="#1a2a45" stroke-width="2"/>
+      <path d="M8 100 A92 92 0 0 0 192 100 Z" fill="#0b1322"/>
+      <path d="M8 100 A92 92 0 0 1 192 100 Z" fill="#22385e" opacity=".55"/>`;
+    for (let i = 0; i < 24; i++) {
+      const a = (i / 24) * 360 + 180;
+      g += `<line x1="100" y1="10" x2="100" y2="${i % 6 === 0 ? 22 : 15}" stroke="#e8eefb" stroke-opacity="${i % 6 === 0 ? 0.9 : 0.35}" stroke-width="${i % 6 === 0 ? 2 : 1}" transform="rotate(${a} 100 100)"/>`;
+    }
+    g += `<text x="100" y="36" text-anchor="middle" font-size="9" fill="#ffd27a" font-family="ui-monospace, monospace">12</text>
+      <text x="100" y="176" text-anchor="middle" font-size="9" fill="#e8eefb" opacity=".6" font-family="ui-monospace, monospace">00</text>
+      <text x="30" y="103" text-anchor="middle" font-size="9" fill="#e8eefb" opacity=".6" font-family="ui-monospace, monospace">06</text>
+      <text x="170" y="103" text-anchor="middle" font-size="9" fill="#e8eefb" opacity=".6" font-family="ui-monospace, monospace">18</text>
+      <g id="h24" style="transform-origin:100px 100px"><line x1="100" y1="100" x2="100" y2="30" stroke="#ffd27a" stroke-width="3" stroke-linecap="round"/><circle cx="100" cy="30" r="4" fill="#ffd27a"/></g>
+      <circle cx="100" cy="100" r="4" fill="#ffd27a"/>`;
+    s.innerHTML = g;
+  })();
+
+  /* 12 Seven-segment */
+  const SEG = { 0: 'abcdef', 1: 'bc', 2: 'abdeg', 3: 'abcdg', 4: 'bcfg', 5: 'acdfg', 6: 'acdefg', 7: 'abc', 8: 'abcdefg', 9: 'abcdfg' };
+  const lcd = $('lcdSvg');
+  const lcdDigits = [];
+  (function () {
+    const segShape = {
+      a: 'M6 2 L28 2 L24 7 L10 7 Z', b: 'M29 4 L33 8 L31 30 L27 34 L25 30 L27 8 Z', c: 'M27 38 L31 42 L29 64 L25 68 L21 64 L23 42 Z',
+      d: 'M4 70 L8 65 L22 65 L26 70 Z', e: 'M5 38 L9 42 L7 64 L3 68 L-1 64 L1 42 Z', f: 'M7 4 L11 8 L9 30 L5 34 L1 30 L3 8 Z', g: 'M5 36 L9 32 L25 32 L29 36 L25 40 L9 40 Z'
+    };
+    const xs = [18, 56, 110, 148, 202, 240];
+    xs.forEach((x, i) => {
+      const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      g.setAttribute('transform', `translate(${x - 12} 4) skewX(-6)`);
+      const segs = {};
+      Object.keys(segShape).forEach((k) => {
+        const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        p.setAttribute('d', segShape[k]); p.setAttribute('class', 'seg off'); g.appendChild(p); segs[k] = p;
+      });
+      lcd.appendChild(g); lcdDigits.push(segs);
+      if (i === 1 || i === 3) {
+        const c1 = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        c1.setAttribute('x', x + 28); c1.setAttribute('y', 24); c1.setAttribute('width', 6); c1.setAttribute('height', 6); c1.setAttribute('class', 'seg'); c1.setAttribute('transform', 'skewX(-6)');
+        const c2 = c1.cloneNode(); c2.setAttribute('y', 46);
+        lcd.appendChild(c1); lcd.appendChild(c2);
+      }
+    });
+    const t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    t.setAttribute('x', 266); t.setAttribute('y', 79); t.setAttribute('text-anchor', 'end'); t.setAttribute('font-size', 7); t.setAttribute('fill', '#1c2a1c'); t.setAttribute('font-family', 'ui-sans-serif, sans-serif'); t.setAttribute('letter-spacing', '1'); t.textContent = 'WATER RESIST · LIGHT';
+    lcd.appendChild(t);
+  })();
+
+  /* Circumferences for rings */
+  const circ = (r) => 2 * Math.PI * r;
+  ['rH', 'rM', 'rS'].forEach((id) => { const c = $(id); const r = +c.getAttribute('r'); c.setAttribute('stroke-dasharray', circ(r)); });
+
+  const hourNames = ['twelve', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven'];
+  function phraseFor(h, m) {
+    const rounded = Math.round(m / 5) * 5;
+    let hh = h, mm = rounded;
+    if (mm === 60) { mm = 0; hh = (hh + 1) % 24; }
+    const h12 = hourNames[hh % 12], next12 = hourNames[(hh + 1) % 12];
+    let core;
+    if (mm === 0) core = (hh % 12 === 0) ? `<em>${hh === 0 ? 'midnight' : 'noon'}</em>` : `<em>${h12}</em> o'clock`;
+    else if (mm === 15) core = `quarter past <em>${h12}</em>`;
+    else if (mm === 30) core = `half past <em>${h12}</em>`;
+    else if (mm === 45) core = `quarter to <em>${next12}</em>`;
+    else if (mm < 30) core = `${['', 'five', 'ten', '', 'twenty', 'twenty-five'][mm / 5]} past <em>${h12}</em>`;
+    else core = `${['', 'five', 'ten', '', 'twenty', 'twenty-five'][(60 - mm) / 5]} to <em>${next12}</em>`;
+    const part = hh < 5 ? 'in the small hours' : hh < 12 ? 'in the morning' : hh < 17 ? 'in the afternoon' : hh < 21 ? 'in the evening' : 'at night';
+    const exact = Math.abs(m - rounded) <= 1 || (rounded === 60 && m >= 59);
+    return `${exact ? '' : 'about '}${core}<small>${part}</small>`;
+  }
+
+  let lastSecond = -1, lastMinute = -1;
+  function tick() {
+    const d = new Date();
+    const h = d.getHours(), m = d.getMinutes(), s = d.getSeconds(), ms = d.getMilliseconds();
+    const secF = s + ms / 1000;
+
+    /* Smooth things every frame */
+    $('swH').style.transform = `rotate(${(h % 12) * 30 + m * 0.5}deg)`;
+    $('swM').style.transform = `rotate(${m * 6}deg)`;
+    /* Railway behaviour: the seconds hand completes its lap in 58.5 s and waits at twelve */
+    $('swS').style.transform = `rotate(${Math.min(360, (secF / 58.5) * 360)}deg)`;
+    $('rS').setAttribute('stroke-dashoffset', circ(86) * (1 - secF / 60));
+    $('rM').setAttribute('stroke-dashoffset', circ(66) * (1 - (m + secF / 60) / 60));
+    $('rH').setAttribute('stroke-dashoffset', circ(46) * (1 - ((h % 12) + m / 60) / 12));
+    $('h24').style.transform = `rotate(${((h + m / 60 + s / 3600) / 24) * 360 + 180}deg)`;
+
+    if (s !== lastSecond) {
+      lastSecond = s;
+      const hh = pad(h), mm = pad(m), ss = pad(s);
+      $('now').textContent = `${hh}:${mm}:${ss} — ${d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}`;
+      $('rT').textContent = `${hh}:${mm}:${ss}`;
+
+      /* binary */
+      const digits = (hh + mm + ss).split('').map(Number);
+      digits.forEach((v, c) => { for (let r = 0; r < 4; r++) bitCols[c][r].classList.toggle('on', !!(v & (8 >> r))); });
+
+      /* nixie */
+      (hh + mm + ss).split('').forEach((ch, i) => { if (tubeDigits[i].textContent !== ch) tubeDigits[i].textContent = ch; });
+
+      /* flip */
+      setFlip(flipUnits[0], hh); setFlip(flipUnits[1], mm); setFlip(flipUnits[2], ss);
+
+      /* polar */
+      polarDots.s.forEach((c, i) => { c.style.opacity = i <= s ? '1' : '0.12'; });
+      polarDots.m.forEach((c, i) => { c.style.opacity = i <= m ? '1' : '0.12'; });
+      polarDots.h.forEach((c, i) => { c.style.opacity = i <= (h % 12) ? '1' : '0.12'; });
+      $('polarT').textContent = `${hh}:${mm}`;
+
+      /* lcd */
+      (hh + mm + ss).split('').forEach((ch, i) => { const on = SEG[ch]; Object.keys(lcdDigits[i]).forEach((k) => lcdDigits[i][k].classList.toggle('off', !on.includes(k))); });
+
+      /* sun arc: sunrise 06:12, sunset 19:48 */
+      const mins = h * 60 + m + s / 60, rise = 372, set = 1188;
+      const sunG = $('sun'), prog = $('arcProg');
+      if (mins >= rise && mins <= set) {
+        const t = (mins - rise) / (set - rise), a = Math.PI - t * Math.PI;
+        sunG.setAttribute('transform', `translate(${120 + Math.cos(a) * 100} ${120 - Math.sin(a) * 100})`);
+        sunG.style.opacity = '1';
+        prog.setAttribute('stroke-dasharray', `${Math.PI * 100 * t} ${Math.PI * 100}`);
+        $('arcLabel').textContent = `${Math.round(t * 100)}% of daylight`;
+      } else {
+        const night = mins > set ? mins - set : mins + (1440 - set);
+        const total = 1440 - (set - rise);
+        sunG.setAttribute('transform', `translate(${20 + (night / total) * 200} 138)`);
+        sunG.style.opacity = '0.35';
+        prog.setAttribute('stroke-dasharray', `0 ${Math.PI * 100}`);
+        $('arcLabel').textContent = 'night · sun below horizon';
+      }
+
+      /* sand */
+      const frac = (h * 3600 + m * 60 + s) / 86400;
+      const topH = 88 * (1 - frac), botH = 90 * frac;
+      $('sandTop').setAttribute('y', 4 + (88 - topH)); $('sandTop').setAttribute('height', topH);
+      $('sandBottom').setAttribute('y', 186 - botH); $('sandBottom').setAttribute('height', botH);
+      const left = 86400 - (h * 3600 + m * 60 + s);
+      $('sandCap').textContent = `${(frac * 100).toFixed(1)}% of today has run through. ${Math.floor(left / 3600)} h ${pad(Math.floor((left % 3600) / 60))} min remain until midnight.`;
+    }
+
+    if (m !== lastMinute) {
+      lastMinute = m;
+      /* word clock */
+      wgCells.forEach((c) => c.classList.remove('on'));
+      lightWord('IT'); lightWord('IS');
+      const r5 = Math.round(m / 5) * 5;
+      let hh = h;
+      let mm = r5;
+      if (mm === 60) { mm = 0; hh = (hh + 1) % 24; }
+      if (mm === 0) { lightWord(hourWords[hh % 12]); lightWord('OCLOCK'); }
+      else {
+        const toward = mm > 30;
+        const mmm = toward ? 60 - mm : mm;
+        if (mmm === 5) lightWord('FIVEM'); else if (mmm === 10) lightWord('TENM'); else if (mmm === 15) { lightWord('A'); lightWord('QUARTER'); }
+        else if (mmm === 20) lightWord('TWENTY'); else if (mmm === 25) { lightWord('TWENTY'); lightWord('FIVEM'); } else if (mmm === 30) lightWord('HALF');
+        lightWord(toward ? 'TO' : 'PAST');
+        lightWord(hourWords[(toward ? hh + 1 : hh) % 12]);
+      }
+      $('phrase').innerHTML = phraseFor(h, m);
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>

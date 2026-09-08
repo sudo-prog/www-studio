@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aurelian Codex — Holographic Card Gallery</title>
+<style>
+  :root {
+    --velvet-0: #0b0611;
+    --velvet-1: #170b24;
+    --velvet-2: #24103a;
+    --gold-0: #f6e3a1;
+    --gold-1: #d9b04c;
+    --gold-2: #8a6a1f;
+    --ink: #f3ecff;
+    --muted: #b9a9d6;
+    --card-w: 280px;
+    --card-h: 400px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    font-family: Georgia, 'Iowan Old Style', 'Palatino Linotype', Palatino, ui-serif, serif;
+    color: var(--ink);
+    background:
+      radial-gradient(ellipse 120% 70% at 50% -10%, #3a1a5c 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 90% 110%, #2a0f3f 0%, transparent 60%),
+      linear-gradient(180deg, var(--velvet-1) 0%, var(--velvet-0) 100%);
+    background-attachment: fixed;
+    overflow-x: hidden;
+  }
+  /* velvet nap texture */
+  body::before {
+    content: "";
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background-image:
+      repeating-linear-gradient(115deg, rgba(255,255,255,0.018) 0 2px, transparent 2px 7px),
+      repeating-linear-gradient(25deg, rgba(0,0,0,0.12) 0 1px, transparent 1px 5px);
+    opacity: .9;
+  }
+  header {
+    position: relative; z-index: 1;
+    text-align: center;
+    padding: clamp(40px, 8vh, 96px) 20px 24px;
+  }
+  .eyebrow {
+    font-family: ui-monospace, 'Courier New', monospace;
+    font-size: 11px; letter-spacing: .32em; text-transform: uppercase;
+    color: var(--gold-1); margin: 0 0 14px;
+  }
+  h1 {
+    margin: 0;
+    font-weight: 400;
+    font-size: clamp(34px, 6vw, 72px);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    background: linear-gradient(180deg, #fff6d5 0%, var(--gold-1) 55%, var(--gold-2) 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    text-shadow: none;
+  }
+  h1 em { font-style: italic; }
+  .lede {
+    max-width: 560px; margin: 18px auto 0; color: var(--muted);
+    font-size: 16px; line-height: 1.6;
+  }
+  .rule {
+    width: 160px; height: 1px; margin: 26px auto 0;
+    background: linear-gradient(90deg, transparent, var(--gold-1), transparent);
+  }
+
+  .gallery {
+    position: relative; z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--card-w), max-content));
+    justify-content: center;
+    gap: clamp(28px, 4vw, 56px);
+    padding: 30px clamp(16px, 4vw, 60px) 90px;
+    max-width: 1400px; margin: 0 auto;
+    perspective: 1400px;
+  }
+
+  .scene {
+    width: var(--card-w); height: var(--card-h);
+    perspective: 1000px;
+    justify-self: center;
+  }
+  .card {
+    position: relative;
+    width: 100%; height: 100%;
+    transform-style: preserve-3d;
+    transition: transform .55s cubic-bezier(.2,.8,.2,1), box-shadow .5s ease;
+    cursor: pointer;
+    border-radius: 16px;
+    will-change: transform;
+    --rx: 0deg; --ry: 0deg; --mx: 50%; --my: 50%; --flip: 0deg;
+    transform: rotateY(var(--flip)) rotateX(var(--rx)) rotateY(var(--ry));
+    outline: none;
+  }
+  .card.tilting { transition: transform .08s linear, box-shadow .5s ease; }
+  .card:focus-visible .face { box-shadow: 0 0 0 3px #fff, 0 0 0 6px var(--gold-1); }
+
+  .face {
+    position: absolute; inset: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    background: #100818;
+    box-shadow:
+      0 30px 60px -20px rgba(0,0,0,.8),
+      0 10px 20px -10px rgba(0,0,0,.6);
+  }
+  .face.back { transform: rotateY(180deg); }
+
+  /* gilded frame */
+  .frame {
+    position: absolute; inset: 0; border-radius: 16px; pointer-events: none; z-index: 6;
+    padding: 6px;
+    background: linear-gradient(135deg, #fff2c2 0%, var(--gold-1) 20%, var(--gold-2) 40%, #f2dc9a 55%, var(--gold-2) 75%, var(--gold-1) 100%);
+    background-size: 300% 300%;
+    background-position: var(--mx) var(--my);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+  }
+  .frame::after {
+    content: ""; position: absolute; inset: 9px; border-radius: 10px;
+    border: 1px solid rgba(255, 236, 180, .45);
+  }
+
+  .art {
+    position: absolute; inset: 6px; border-radius: 10px;
+    background: var(--art-bg);
+    overflow: hidden;
+  }
+  .art svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .art .emblem {
+    position: absolute; left: 50%; top: 42%; width: 62%; height: auto;
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(0 12px 22px rgba(0,0,0,.6));
+    transition: transform .5s cubic-bezier(.2,.8,.2,1);
+  }
+  .card:hover .art .emblem { transform: translate(-50%, -54%) scale(1.06); }
+
+  /* rainbow foil layer */
+  .foil {
+    position: absolute; inset: 6px; border-radius: 10px; z-index: 3; pointer-events: none;
+    background:
+      linear-gradient(115deg,
+        transparent 0%, rgba(255,0,128,.55) 20%, rgba(255,200,0,.55) 30%, rgba(0,255,170,.55) 40%,
+        rgba(0,140,255,.55) 50%, rgba(160,0,255,.55) 60%, rgba(255,0,128,.55) 70%, transparent 90%);
+    background-size: 300% 300%;
+    background-position: calc(var(--mx) * 1.6) calc(var(--my) * 1.6);
+    mix-blend-mode: color-dodge;
+    opacity: .38;
+    transition: opacity .4s ease;
+  }
+  .card:hover .foil, .card.tilting .foil { opacity: .62; }
+
+  /* sparkle pattern */
+  .sparkle {
+    position: absolute; inset: 6px; border-radius: 10px; z-index: 4; pointer-events: none;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(255,255,255,.9) 0 .8px, transparent 1.4px),
+      radial-gradient(circle at 70% 60%, rgba(255,255,255,.8) 0 .7px, transparent 1.3px),
+      radial-gradient(circle at 45% 80%, rgba(255,255,255,.8) 0 .6px, transparent 1.2px),
+      radial-gradient(circle at 85% 15%, rgba(255,255,255,.9) 0 .8px, transparent 1.4px),
+      radial-gradient(circle at 10% 75%, rgba(255,255,255,.7) 0 .6px, transparent 1.1px);
+    background-size: 37px 41px, 53px 47px, 29px 61px, 67px 43px, 41px 37px;
+    background-position: var(--mx) var(--my), calc(var(--mx) * -1) var(--my), var(--mx) calc(var(--my) * -1), calc(var(--mx) * .5) calc(var(--my) * .5), calc(var(--mx) * -.6) calc(var(--my) * -.6);
+    mix-blend-mode: screen;
+    opacity: .35;
+  }
+
+  /* moving specular glare */
+  .glare {
+    position: absolute; inset: 0; border-radius: 16px; z-index: 5; pointer-events: none;
+    background: radial-gradient(circle at var(--mx) var(--my), rgba(255,255,255,.55) 0%, rgba(255,255,255,.12) 18%, transparent 45%);
+    mix-blend-mode: overlay;
+    opacity: 0; transition: opacity .4s ease;
+  }
+  .card:hover .glare, .card.tilting .glare { opacity: 1; }
+
+  .title-plate {
+    position: absolute; left: 18px; right: 18px; top: 18px; z-index: 5;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 15px; letter-spacing: .02em;
+    color: #fff8e6;
+    text-shadow: 0 1px 0 rgba(0,0,0,.6), 0 0 12px rgba(0,0,0,.5);
+  }
+  .title-plate .num {
+    font-family: ui-monospace, 'Courier New', monospace; font-size: 11px; color: var(--gold-0);
+  }
+  .card-type {
+    position: absolute; left: 50%; top: 62%; transform: translateX(-50%); z-index: 5;
+    font-family: ui-monospace, 'Courier New', monospace; font-size: 10px; letter-spacing: .28em;
+    text-transform: uppercase; color: var(--gold-0);
+    padding: 4px 10px; border: 1px solid rgba(246,227,161,.5); border-radius: 999px;
+    background: rgba(10,4,16,.55); backdrop-filter: blur(4px);
+    white-space: nowrap;
+  }
+  .stats {
+    position: absolute; left: 14px; right: 14px; bottom: 14px; z-index: 5;
+    background: linear-gradient(180deg, rgba(14,6,22,.7), rgba(14,6,22,.92));
+    border: 1px solid rgba(246,227,161,.28);
+    border-radius: 10px;
+    padding: 10px 12px 12px;
+    backdrop-filter: blur(6px);
+  }
+  .stats p { margin: 0 0 8px; font-size: 12px; line-height: 1.45; color: #e9dfff; font-style: italic; }
+  .bars { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .bar { font-family: ui-monospace, 'Courier New', monospace; font-size: 9.5px; letter-spacing: .12em; color: var(--muted); text-transform: uppercase; }
+  .bar b { display: block; color: #fff; font-size: 13px; letter-spacing: 0; margin-bottom: 3px; font-family: Georgia, serif; }
+  .bar i {
+    display: block; height: 3px; border-radius: 2px; background: rgba(255,255,255,.12); overflow: hidden;
+  }
+  .bar i::after {
+    content: ""; display: block; height: 100%; width: var(--v);
+    background: linear-gradient(90deg, var(--gold-2), var(--gold-0));
+    transform-origin: left; transform: scaleX(0);
+    transition: transform 1.1s cubic-bezier(.2,.8,.2,1) .2s;
+  }
+  .card.seen .bar i::after { transform: scaleX(1); }
+
+  /* back face */
+  .back .inner {
+    position: absolute; inset: 6px; border-radius: 10px;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(217,176,76,.18), transparent 60%),
+      repeating-linear-gradient(45deg, rgba(217,176,76,.06) 0 1px, transparent 1px 12px),
+      repeating-linear-gradient(-45deg, rgba(217,176,76,.06) 0 1px, transparent 1px 12px),
+      #14091f;
+    padding: 26px 22px;
+    display: flex; flex-direction: column;
+  }
+  .back h3 {
+    margin: 0 0 4px; font-weight: 400; font-size: 22px; color: var(--gold-0); letter-spacing: .01em;
+  }
+  .back .origin {
+    font-family: ui-monospace, 'Courier New', monospace; font-size: 10px; letter-spacing: .24em;
+    text-transform: uppercase; color: var(--gold-1); margin-bottom: 16px;
+  }
+  .back .lore { font-size: 13.5px; line-height: 1.6; color: #e6dbff; margin: 0; flex: 1; }
+  .back .lore::first-letter { font-size: 2.4em; float: left; line-height: .85; margin: 4px 6px 0 0; color: var(--gold-0); }
+  .back .sigil {
+    align-self: center; width: 48px; height: 48px; opacity: .8; margin-top: 12px;
+  }
+  .back .hint {
+    text-align: center; font-family: ui-monospace, 'Courier New', monospace; font-size: 9.5px;
+    letter-spacing: .22em; text-transform: uppercase; color: var(--muted); margin: 10px 0 0;
+  }
+
+  footer {
+    position: relative; z-index: 1; text-align: center; padding: 0 20px 60px;
+    color: var(--muted); font-size: 13px;
+  }
+  footer kbd {
+    font-family: ui-monospace, 'Courier New', monospace; font-size: 11px;
+    border: 1px solid rgba(185,169,214,.4); border-bottom-width: 2px; border-radius: 5px;
+    padding: 1px 6px; color: var(--ink);
+  }
+
+  @media (max-width: 640px) {
+    :root { --card-w: 250px; --card-h: 358px; }
+    .stats p { display: none; }
+  }
+  @media (max-width: 360px) {
+    :root { --card-w: 228px; --card-h: 326px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card, .card.tilting, .art .emblem, .bar i::after { transition: none !important; }
+    .card { transform: rotateY(var(--flip)) !important; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <p class="eyebrow">Aurelian Codex · Series I</p>
+  <h1>Six <em>Elemental</em> Wards</h1>
+  <p class="lede">A collector's set of foil-stamped wards, each bound to a primordial element. Move across a card to catch the light; press or tap to turn it over and read its lore.</p>
+  <div class="rule"></div>
+</header>
+
+<main class="gallery" id="gallery">
+
+  <!-- 01 Ignis -->
+  <div class="scene">
+    <div class="card" tabindex="0" role="button" aria-pressed="false" aria-label="Ignis, the Ember Wyrm. Press to flip." data-name="Ignis">
+      <div class="face front" style="--art-bg: radial-gradient(ellipse at 50% 90%, #ff7a1a 0%, #8a1c0a 35%, #2a0710 70%, #140510 100%);">
+        <div class="art">
+          <svg viewBox="0 0 200 300" aria-hidden="true">
+            <defs><radialGradient id="g1" cx="50%" cy="80%" r="60%"><stop offset="0" stop-color="#ffd27a" stop-opacity=".7"/><stop offset="1" stop-color="#ff5a00" stop-opacity="0"/></radialGradient></defs>
+            <rect width="200" height="300" fill="url(#g1)"/>
+            <g stroke="#ffb347" stroke-opacity=".25" fill="none"><path d="M0 250 Q50 200 100 250 T200 250"/><path d="M0 270 Q50 220 100 270 T200 270"/></g>
+          </svg>
+          <svg class="emblem" viewBox="0 0 120 120" aria-hidden="true">
+            <defs><linearGradient id="e1" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#ff3d00"/><stop offset=".6" stop-color="#ffb300"/><stop offset="1" stop-color="#fff3c4"/></linearGradient></defs>
+            <path d="M60 8 C52 30 30 36 34 62 C36 74 44 78 46 88 C30 82 22 68 24 56 C10 74 18 100 46 110 C40 100 44 92 52 84 C58 96 72 96 76 110 C102 98 104 70 92 54 C90 68 84 76 74 80 C82 66 84 50 74 36 C72 48 66 52 62 56 C68 40 66 22 60 8Z" fill="url(#e1)" stroke="#fff3c4" stroke-width="1.2" stroke-opacity=".7"/>
+            <circle cx="60" cy="86" r="8" fill="#fff8e1" opacity=".9"/>
+          </svg>
+        </div>
+        <div class="foil"></div><div class="sparkle"></div>
+        <div class="title-plate"><span>Ignis, the Ember Wyrm</span><span class="num">01/06</span></div>
+        <span class="card-type">Fire · Legendary</span>
+        <div class="stats">
+          <p>Sleeps beneath the furnace-hills and wakes only for the forging of a true blade.</p>
+          <div class="bars">
+            <div class="bar"><b>94</b>Might<i style="--v:94%"></i></div>
+            <div class="bar"><b>61</b>Guard<i style="--v:61%"></i></div>
+            <div class="bar"><b>78</b>Swift<i style="--v:78%"></i></div>
+          </div>
+        </div>
+        <div class="glare"></div><div class="frame"></div>
+      </div>
+      <div class="face back">
+        <div class="inner">
+          <h3>Ignis</h3><div class="origin">Found · Cinder Vale, Year 312</div>
+          <p class="lore">When the smiths of Vale ran short of coal, they walked into the mountain and asked the mountain for heat. It answered with a single eye opening in the dark. Ignis is not a dragon so much as a promise: that every fire worth keeping was once given freely, and must be returned someday.</p>
+          <svg class="sigil" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="20" fill="none" stroke="#d9b04c" stroke-width="1.5"/><path d="M24 10 L30 24 L24 38 L18 24Z" fill="none" stroke="#d9b04c" stroke-width="1.5"/></svg>
+          <p class="hint">tap to return</p>
+        </div>
+        <div class="frame"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 Undine -->
+  <div class="scene">
+    <div class="card" tabindex="0" role="button" aria-pressed="false" aria-label="Undine of the Still Deep. Press to flip." data-name="Undine">
+      <div class="face front" style="--art-bg: radial-gradient(ellipse at 50% 20%, #3ad1ff 0%, #0a4f8a 40%, #051c3a 75%, #030a1c 100%);">
+        <div class="art">
+          <svg viewBox="0 0 200 300" aria-hidden="true">
+            <g fill="none" stroke="#9fe8ff" stroke-opacity=".28"><circle cx="100" cy="130" r="40"/><circle cx="100" cy="130" r="62"/><circle cx="100" cy="130" r="86"/></g>
+            <g fill="#cdf6ff" opacity=".5"><circle cx="40" cy="240" r="2"/><circle cx="160" cy="210" r="1.5"/><circle cx="60" cy="60" r="1.2"/><circle cx="150" cy="70" r="2"/></g>
+          </svg>
+          <svg class="emblem" viewBox="0 0 120 120" aria-hidden="true">
+            <defs><linearGradient id="e2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8fbff"/><stop offset=".5" stop-color="#5ad3ff"/><stop offset="1" stop-color="#0b5aa8"/></linearGradient></defs>
+            <path d="M60 10 C40 40 26 56 26 76 C26 96 42 110 60 110 C78 110 94 96 94 76 C94 56 80 40 60 10Z" fill="url(#e2)" stroke="#e8fbff" stroke-width="1.2" stroke-opacity=".8"/>
+            <path d="M44 78 C48 92 56 98 66 98" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+            <path d="M30 70 Q60 60 90 70" fill="none" stroke="#fff" stroke-width="1" opacity=".5"/>
+          </svg>
+        </div>
+        <div class="foil"></div><div class="sparkle"></div>
+        <div class="title-plate"><span>Undine of the Still Deep</span><span class="num">02/06</span></div>
+        <span class="card-type">Water · Rare</span>
+        <div class="stats">
+          <p>She keeps the drowned bells of nine cities and rings them on the longest night.</p>
+          <div class="bars">
+            <div class="bar"><b>58</b>Might<i style="--v:58%"></i></div>
+            <div class="bar"><b>88</b>Guard<i style="--v:88%"></i></div>
+            <div class="bar"><b>70</b>Swift<i style="--v:70%"></i></div>
+          </div>
+        </div>
+        <div class="glare"></div><div class="frame"></div>
+      </div>
+      <div class="face back">
+        <div class="inner">
+          <h3>Undine</h3><div class="origin">Found · The Glass Trench</div>
+          <p class="lore">Sailors say the trench is so still you can see your own reflection two hundred fathoms down, and that the reflection is not always yours. Undine collects what the surface forgets: coins, prayers, the names of ships. She is not cruel. She simply never lets anything go.</p>
+          <svg class="sigil" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="20" fill="none" stroke="#d9b04c" stroke-width="1.5"/><path d="M12 26 Q18 20 24 26 T36 26" fill="none" stroke="#d9b04c" stroke-width="1.5"/></svg>
+          <p class="hint">tap to return</p>
+        </div>
+        <div class="frame"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 Sylph -->
+  <div class="scene">
+    <div class="card" tabindex="0" role="button" aria-pressed="false" aria-label="Sylph, Herald of the High Wind. Press to flip." data-name="Sylph">
+      <div class="face front" style="--art-bg: radial-gradient(ellipse at 30% 30%, #f6fbff 0%, #9fc7e8 25%, #3c6f9c 60%, #14243a 100%);">
+        <div class="art">
+          <svg viewBox="0 0 200 300" aria-hidden="true">
+            <g fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1.2"><path d="M-10 90 C40 70 60 110 110 90 S180 70 220 95"/><path d="M-10 120 C40 100 60 140 110 120 S180 100 220 125"/><path d="M-10 200 C40 180 60 220 110 200 S180 180 220 205"/></g>
+          </svg>
+          <svg class="emblem" viewBox="0 0 120 120" aria-hidden="true">
+            <defs><linearGradient id="e3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#8fc3ea"/></linearGradient></defs>
+            <path d="M18 70 C30 40 60 30 100 34 C88 46 80 52 70 54 C84 56 92 62 100 70 C76 74 64 70 52 60 C46 74 40 84 24 92 C30 80 30 72 18 70Z" fill="url(#e3)" stroke="#fff" stroke-width="1" opacity=".95"/>
+            <path d="M20 70 C40 60 56 62 68 56" fill="none" stroke="#2f5f86" stroke-width="1" opacity=".6"/>
+            <circle cx="96" cy="36" r="2.5" fill="#fff"/>
+          </svg>
+        </div>
+        <div class="foil"></div><div class="sparkle"></div>
+        <div class="title-plate"><span>Sylph, Herald of the High Wind</span><span class="num">03/06</span></div>
+        <span class="card-type">Air · Rare</span>
+        <div class="stats">
+          <p>Arrives a heartbeat before the storm and leaves a heartbeat after the news.</p>
+          <div class="bars">
+            <div class="bar"><b>52</b>Might<i style="--v:52%"></i></div>
+            <div class="bar"><b>40</b>Guard<i style="--v:40%"></i></div>
+            <div class="bar"><b>99</b>Swift<i style="--v:99%"></i></div>
+          </div>
+        </div>
+        <div class="glare"></div><div class="frame"></div>
+      </div>
+      <div class="face back">
+        <div class="inner">
+          <h3>Sylph</h3><div class="origin">Found · The Kite Steppe</div>
+          <p class="lore">No one has seen the Sylph twice, because no one is sure they saw it the first time. Shepherds on the steppe leave a ribbon tied to the tallest post; by morning it points where the weather will go. The Sylph is less a creature than a rumor the wind tells about itself.</p>
+          <svg class="sigil" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="20" fill="none" stroke="#d9b04c" stroke-width="1.5"/><path d="M12 20 H30 M12 28 H36 M18 24 H26" stroke="#d9b04c" stroke-width="1.5"/></svg>
+          <p class="hint">tap to return</p>
+        </div>
+        <div class="frame"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 Gnomon -->
+  <div class="scene">
+    <div class="card" tabindex="0" role="button" aria-pressed="false" aria-label="Gnomon, the Patient Stone. Press to flip." data-name="Gnomon">
+      <div class="face front" style="--art-bg: radial-gradient(ellipse at 50% 100%, #5fbf6a 0%, #1f4d2a 35%, #1c1a12 70%, #0d0c08 100%);">
+        <div class="art">
+          <svg viewBox="0 0 200 300" aria-hidden="true">
+            <g fill="#7ad489" opacity=".18"><polygon points="0,300 40,220 80,300"/><polygon points="60,300 120,180 180,300"/><polygon points="140,300 180,240 220,300"/></g>
+            <g stroke="#c8f2cc" stroke-opacity=".2" fill="none"><path d="M0 40 H200 M0 60 H200"/></g>
+          </svg>
+          <svg class="emblem" viewBox="0 0 120 120" aria-hidden="true">
+            <defs><linearGradient id="e4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9f0bd"/><stop offset=".5" stop-color="#4fa85c"/><stop offset="1" stop-color="#1c4a26"/></linearGradient></defs>
+            <polygon points="60,12 100,36 100,84 60,108 20,84 20,36" fill="url(#e4)" stroke="#e9ffe9" stroke-width="1.2" stroke-opacity=".7"/>
+            <polygon points="60,32 84,46 84,74 60,88 36,74 36,46" fill="none" stroke="#e9ffe9" stroke-width="1" opacity=".55"/>
+            <path d="M60 32 V88 M36 46 L84 74 M84 46 L36 74" stroke="#0d2a14" stroke-width="1" opacity=".5"/>
+          </svg>
+        </div>
+        <div class="foil"></div><div class="sparkle"></div>
+        <div class="title-plate"><span>Gnomon, the Patient Stone</span><span class="num">04/06</span></div>
+        <span class="card-type">Earth · Uncommon</span>
+        <div class="stats">
+          <p>Has never lost a wager, because it has never agreed on when a wager ends.</p>
+          <div class="bars">
+            <div class="bar"><b>76</b>Might<i style="--v:76%"></i></div>
+            <div class="bar"><b>98</b>Guard<i style="--v:98%"></i></div>
+            <div class="bar"><b>12</b>Swift<i style="--v:12%"></i></div>
+          </div>
+        </div>
+        <div class="glare"></div><div class="frame"></div>
+      </div>
+      <div class="face back">
+        <div class="inner">
+          <h3>Gnomon</h3><div class="origin">Found · Under the Old Road</div>
+          <p class="lore">The road-builders found a stone they could not move and built the road around it. Three centuries later the road is gone and the stone has moved four inches toward the sea. Gnomon keeps time by erosion and considers a human lifetime a rather short afternoon.</p>
+          <svg class="sigil" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="20" fill="none" stroke="#d9b04c" stroke-width="1.5"/><rect x="15" y="15" width="18" height="18" fill="none" stroke="#d9b04c" stroke-width="1.5"/></svg>
+          <p class="hint">tap to return</p>
+        </div>
+        <div class="frame"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 Fulgur -->
+  <div class="scene">
+    <div class="card" tabindex="0" role="button" aria-pressed="false" aria-label="Fulgur, the Split Second. Press to flip." data-name="Fulgur">
+      <div class="face front" style="--art-bg: radial-gradient(ellipse at 50% 10%, #fff6a8 0%, #b98cff 25%, #3a1f7a 55%, #0e0820 100%);">
+        <div class="art">
+          <svg viewBox="0 0 200 300" aria-hidden="true">
+            <g fill="none" stroke="#fff7b0" stroke-opacity=".5" stroke-width="1"><path d="M30 0 L50 60 L38 64 L70 130"/><path d="M170 0 L150 50 L162 56 L130 120"/></g>
+            <rect width="200" height="300" fill="url(#g5)"/>
+            <defs><radialGradient id="g5" cx="50%" cy="10%" r="50%"><stop offset="0" stop-color="#fff" stop-opacity=".25"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+          </svg>
+          <svg class="emblem" viewBox="0 0 120 120" aria-hidden="true">
+            <defs><linearGradient id="e5" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fffbe0"/><stop offset=".5" stop-color="#ffe14d"/><stop offset="1" stop-color="#c98bff"/></linearGradient></defs>
+            <polygon points="68,6 34,64 58,64 44,114 90,50 64,50 80,6" fill="url(#e5)" stroke="#fff" stroke-width="1.2" stroke-opacity=".8"/>
+          </svg>
+        </div>
+        <div class="foil"></div><div class="sparkle"></div>
+        <div class="title-plate"><span>Fulgur, the Split Second</span><span class="num">05/06</span></div>
+        <span class="card-type">Storm · Legendary</span>
+        <div class="stats">
+          <p>Exists for one nine-thousandth of a second and remembers all of it.</p>
+          <div class="bars">
+            <div class="bar"><b>100</b>Might<i style="--v:100%"></i></div>
+            <div class="bar"><b>18</b>Guard<i style="--v:18%"></i></div>
+            <div class="bar"><b>100</b>Swift<i style="--v:100%"></i></div>
+          </div>
+        </div>
+        <div class="glare"></div><div class="frame"></div>
+      </div>
+      <div class="face back">
+        <div class="inner">
+          <h3>Fulgur</h3><div class="origin">Found · Everywhere, Briefly</div>
+          <p class="lore">Every bolt that has ever struck the earth is the same bolt, returning. That is the heresy of the Tower astronomers and the plain fact of the Fulgur, who is born and dies in each flash and carries the memory forward like a letter passed hand to hand across a burning room.</p>
+          <svg class="sigil" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="20" fill="none" stroke="#d9b04c" stroke-width="1.5"/><path d="M26 12 L18 26 H24 L22 36 L30 22 H24Z" fill="none" stroke="#d9b04c" stroke-width="1.5"/></svg>
+          <p class="hint">tap to return</p>
+        </div>
+        <div class="frame"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 Umbra -->
+  <div class="scene">
+    <div class="card" tabindex="0" role="button" aria-pressed="false" aria-label="Umbra, the Kept Shadow. Press to flip." data-name="Umbra">
+      <div class="face front" style="--art-bg: radial-gradient(ellipse at 50% 50%, #4a3a6e 0%, #221636 40%, #0a0612 80%, #050308 100%);">
+        <div class="art">
+          <svg viewBox="0 0 200 300" aria-hidden="true">
+            <g fill="none" stroke="#b7a3e6" stroke-opacity=".25"><ellipse cx="100" cy="130" rx="70" ry="24"/><ellipse cx="100" cy="130" rx="70" ry="24" transform="rotate(60 100 130)"/><ellipse cx="100" cy="130" rx="70" ry="24" transform="rotate(-60 100 130)"/></g>
+          </svg>
+          <svg class="emblem" viewBox="0 0 120 120" aria-hidden="true">
+            <defs><radialGradient id="e6" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#e8dcff"/><stop offset=".4" stop-color="#6a4fb0"/><stop offset="1" stop-color="#0c0715"/></radialGradient></defs>
+            <circle cx="60" cy="60" r="42" fill="url(#e6)" stroke="#cdbdf5" stroke-width="1.2" stroke-opacity=".7"/>
+            <path d="M40 60 A20 20 0 1 0 80 60 A14 14 0 1 1 40 60Z" fill="#0a0612" opacity=".9"/>
+            <circle cx="52" cy="46" r="3" fill="#fff" opacity=".9"/>
+          </svg>
+        </div>
+        <div class="foil"></div><div class="sparkle"></div>
+        <div class="title-plate"><span>Umbra, the Kept Shadow</span><span class="num">06/06</span></div>
+        <span class="card-type">Void · Mythic</span>
+        <div class="stats">
+          <p>Belongs to no one, but has been wearing you since the day you were born.</p>
+          <div class="bars">
+            <div class="bar"><b>66</b>Might<i style="--v:66%"></i></div>
+            <div class="bar"><b>82</b>Guard<i style="--v:82%"></i></div>
+            <div class="bar"><b>84</b>Swift<i style="--v:84%"></i></div>
+          </div>
+        </div>
+        <div class="glare"></div><div class="frame"></div>
+      </div>
+      <div class="face back">
+        <div class="inner">
+          <h3>Umbra</h3><div class="origin">Found · Behind You</div>
+          <p class="lore">The Codex keepers argued for a century over whether to include Umbra at all, since it cannot be caught, drawn, or described except by what it is not. In the end they printed the card with a hole in the middle. Hold it to a lamp and you will see the only true portrait of it that exists.</p>
+          <svg class="sigil" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="20" fill="none" stroke="#d9b04c" stroke-width="1.5"/><circle cx="24" cy="24" r="8" fill="#d9b04c"/></svg>
+          <p class="hint">tap to return</p>
+        </div>
+        <div class="frame"></div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  Hover or drag a finger across a ward to catch the foil. <kbd>Enter</kbd> or <kbd>Space</kbd> flips the focused card.
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
+  var MAX_TILT = 16;
+
+  function setPointer(card, clientX, clientY) {
+    var r = card.getBoundingClientRect();
+    var px = (clientX - r.left) / r.width;
+    var py = (clientY - r.top) / r.height;
+    px = Math.min(1, Math.max(0, px));
+    py = Math.min(1, Math.max(0, py));
+    var flipped = card.classList.contains('flipped');
+    // when flipped, mirror horizontal so tilt still follows the cursor
+    var ry = (px - 0.5) * 2 * MAX_TILT * (flipped ? -1 : 1);
+    var rx = (0.5 - py) * 2 * MAX_TILT;
+    card.style.setProperty('--rx', rx.toFixed(2) + 'deg');
+    card.style.setProperty('--ry', ry.toFixed(2) + 'deg');
+    card.style.setProperty('--mx', (px * 100).toFixed(1) + '%');
+    card.style.setProperty('--my', (py * 100).toFixed(1) + '%');
+  }
+
+  function resetTilt(card) {
+    card.classList.remove('tilting');
+    card.style.setProperty('--rx', '0deg');
+    card.style.setProperty('--ry', '0deg');
+    card.style.setProperty('--mx', '50%');
+    card.style.setProperty('--my', '50%');
+  }
+
+  function flip(card) {
+    var on = card.classList.toggle('flipped');
+    card.style.setProperty('--flip', on ? '180deg' : '0deg');
+    card.setAttribute('aria-pressed', on ? 'true' : 'false');
+  }
+
+  cards.forEach(function (card) {
+    var raf = 0, pending = null;
+    var moved = false, startX = 0, startY = 0;
+
+    function schedule(x, y) {
+      pending = [x, y];
+      if (!raf) {
+        raf = requestAnimationFrame(function () {
+          raf = 0;
+          if (pending) setPointer(card, pending[0], pending[1]);
+        });
+      }
+    }
+
+    if (!reduce) {
+      card.addEventListener('pointerenter', function () { card.classList.add('tilting'); });
+      card.addEventListener('pointermove', function (e) {
+        if (e.pointerType === 'touch') {
+          if (Math.abs(e.clientX - startX) > 6 || Math.abs(e.clientY - startY) > 6) moved = true;
+        }
+        schedule(e.clientX, e.clientY);
+      });
+      card.addEventListener('pointerleave', function () { resetTilt(card); });
+      card.addEventListener('pointercancel', function () { resetTilt(card); });
+      card.addEventListener('pointerdown', function (e) {
+        startX = e.clientX; startY = e.clientY; moved = false;
+        card.classList.add('tilting');
+        schedule(e.clientX, e.clientY);
+      });
+      card.addEventListener('pointerup', function (e) {
+        if (e.pointerType === 'touch') {
+          if (!moved) flip(card);
+          resetTilt(card);
+        }
+      });
+    }
+
+    card.addEventListener('click', function (e) {
+      // touch handled in pointerup to distinguish drag from tap
+      if (e.pointerType === 'touch') return;
+      flip(card);
+    });
+
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(card); }
+    });
+  });
+
+  // reveal stat bars when cards enter view
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('seen'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.3 });
+    cards.forEach(function (c) { io.observe(c); });
+  } else {
+    cards.forEach(function (c) { c.classList.add('seen'); });
+  }
+
+  // idle shimmer: gently sweep the foil highlight across a random card when nobody is interacting
+  if (!reduce) {
+    var idle = 0;
+    setInterval(function () {
+      var hovering = document.querySelector('.card.tilting');
+      if (hovering) return;
+      var card = cards[idle % cards.length]; idle++;
+      var t0 = performance.now();
+      function sweep(now) {
+        var k = Math.min(1, (now - t0) / 1600);
+        var e = k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+        card.style.setProperty('--mx', (10 + e * 80).toFixed(1) + '%');
+        card.style.setProperty('--my', (30 + e * 40).toFixed(1) + '%');
+        if (k < 1 && !card.classList.contains('tilting')) requestAnimationFrame(sweep);
+        else if (!card.classList.contains('tilting')) { card.style.setProperty('--mx', '50%'); card.style.setProperty('--my', '50%'); }
+      }
+      requestAnimationFrame(sweep);
+    }, 3200);
+  }
+})();
+</script>
+</body>
+</html>

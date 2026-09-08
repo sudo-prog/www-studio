@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Still Water — Moonlit Ripple Reflection</title>
+<style>
+  :root {
+    --indigo: #0b1030;
+    --silver: #d9dff0;
+    --amber: #ffb35c;
+    --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, ui-serif, serif;
+    --sans: ui-sans-serif, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; overflow: hidden; background: var(--indigo); }
+  body { font-family: var(--serif); color: var(--silver); }
+  #lake { position: fixed; inset: 0; width: 100%; height: 100%; display: block; cursor: crosshair; touch-action: none; }
+  .caption {
+    position: fixed; left: clamp(18px, 4vw, 56px); bottom: clamp(18px, 4vh, 44px); max-width: 34ch; pointer-events: none;
+    font-style: italic; font-size: clamp(15px, 1.5vw, 20px); line-height: 1.5; color: rgba(217,223,240,.82);
+    text-shadow: 0 1px 12px rgba(0,0,0,.7);
+    animation: rise 1.8s ease-out both;
+  }
+  .caption b { display: block; font-style: normal; font-weight: 400; letter-spacing: .3em; text-transform: uppercase; font-size: .62em; color: var(--amber); margin-bottom: 8px; opacity: .9; }
+  .caption span { display: block; font-size: .7em; margin-top: 8px; color: rgba(217,223,240,.5); letter-spacing: .06em; font-style: normal; font-family: var(--sans); }
+  @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  .panel {
+    position: fixed; right: clamp(14px, 3vw, 40px); top: clamp(14px, 3vh, 36px); width: min(260px, calc(100vw - 28px));
+    padding: 16px 18px 14px; border-radius: 14px;
+    background: linear-gradient(160deg, rgba(30,36,78,.55), rgba(10,14,40,.55));
+    border: 1px solid rgba(217,223,240,.18); backdrop-filter: blur(10px) saturate(1.2); -webkit-backdrop-filter: blur(10px) saturate(1.2);
+    box-shadow: 0 20px 60px -20px rgba(0,0,0,.8), 0 0 0 1px rgba(255,255,255,.03) inset;
+    font-family: var(--sans); font-size: 12px; letter-spacing: .04em; color: rgba(217,223,240,.85);
+    animation: rise 1.2s ease-out both;
+  }
+  .panel h2 { margin: 0 0 12px; font: 400 11px/1 var(--sans); letter-spacing: .32em; text-transform: uppercase; color: var(--amber); }
+  .row { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 10px; }
+  .row label { display: flex; justify-content: space-between; width: 100%; }
+  .scale { display: flex; justify-content: space-between; font-size: 10px; color: rgba(217,223,240,.5); text-transform: uppercase; letter-spacing: .18em; margin-top: 2px; }
+  input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 22px; margin: 4px 0 0; background: transparent; }
+  input[type=range]::-webkit-slider-runnable-track { height: 2px; background: linear-gradient(90deg, rgba(217,223,240,.25), var(--silver)); border-radius: 1px; }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 14px; height: 14px; margin-top: -6px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #fff, var(--silver) 60%, #7a84a8); box-shadow: 0 0 10px rgba(217,223,240,.5); cursor: pointer;
+    transition: transform .15s ease;
+  }
+  input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+  input[type=range]::-moz-range-track { height: 2px; background: var(--silver); }
+  input[type=range]::-moz-range-thumb { width: 14px; height: 14px; border: 0; border-radius: 50%; background: var(--silver); cursor: pointer; }
+  .toggle { display: inline-flex; align-items: center; gap: 9px; cursor: pointer; user-select: none; }
+  .toggle input { position: absolute; opacity: 0; width: 0; height: 0; }
+  .toggle .sw { width: 30px; height: 16px; border-radius: 10px; background: rgba(217,223,240,.15); border: 1px solid rgba(217,223,240,.25); position: relative; transition: background .25s ease; }
+  .toggle .sw::after { content: ""; position: absolute; top: 2px; left: 2px; width: 10px; height: 10px; border-radius: 50%; background: var(--silver); transition: transform .25s cubic-bezier(.3,1.5,.5,1), background .25s ease; }
+  .toggle input:checked + .sw { background: rgba(255,179,92,.35); }
+  .toggle input:checked + .sw::after { transform: translateX(14px); background: var(--amber); }
+  .toggle input:focus-visible + .sw { outline: 2px solid var(--amber); outline-offset: 2px; }
+  .btn {
+    font: inherit; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; cursor: pointer; color: var(--silver);
+    background: rgba(217,223,240,.08); border: 1px solid rgba(217,223,240,.25); border-radius: 8px; padding: 8px 12px;
+    transition: background .2s ease, transform .12s ease, border-color .2s ease;
+  }
+  .btn:hover { background: rgba(217,223,240,.16); border-color: rgba(217,223,240,.5); }
+  .btn:active { transform: translateY(1px); }
+  @media (max-width: 600px) {
+    .caption { max-width: 60vw; font-size: 14px; }
+    .panel { width: 200px; padding: 12px 14px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .caption, .panel { animation: none; }
+    .toggle .sw::after, .btn { transition: none; }
+  }
+</style>
+</head>
+<body>
+<canvas id="lake" aria-label="A moonlit lake; click or drag on the water to make ripples"></canvas>
+
+<aside class="panel">
+  <h2>The Water</h2>
+  <div>
+    <label for="damp">Surface <span class="readout" id="dampOut">calm</span></label>
+    <input type="range" id="damp" min="0" max="1" step="0.01" value="0.35">
+    <div class="scale"><span>still</span><span>restless</span></div>
+  </div>
+  <div class="row">
+    <label class="toggle"><input type="checkbox" id="rain"><span class="sw"></span>Random raindrops</label>
+  </div>
+  <div class="row">
+    <label class="toggle"><input type="checkbox" id="lanterns" checked><span class="sw"></span>Lanterns on the shore</label>
+  </div>
+  <div class="row">
+    <button class="btn" type="button" id="calmBtn">Let it settle</button>
+    <button class="btn" type="button" id="stoneBtn">Throw a stone</button>
+  </div>
+</aside>
+
+<p class="caption">
+  <b>Nocturne · Lake Ōnuma</b>
+  The lake keeps whatever the sky gives it, and gives it back a little softer. Touch the water and the moon comes apart, then finds itself again.
+  <span>Click or drag on the water · two-buffer height field, 1/3 resolution</span>
+</p>
+
+<script>
+(function () {
+  'use strict';
+  const canvas = document.getElementById('lake');
+  const ctx = canvas.getContext('2d');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---------- sizing & buffers ----------
+  let W = 0, H = 0, dpr = 1;          // css px & ratio
+  let SW = 0, SH = 0, HY = 0, WH = 0; // simulation width/height, horizon row, water rows
+  let cur, prev, tmp;
+  const scene = document.createElement('canvas'), sctx = scene.getContext('2d');   // low-res scene for reflection sampling
+  const water = document.createElement('canvas'), wctx = water.getContext('2d');   // low-res water output
+  let sceneData = null, waterImg = null;
+  const HORIZON = 0.56;
+
+  function resize() {
+    dpr = Math.min(2, window.devicePixelRatio || 1);
+    W = window.innerWidth; H = window.innerHeight;
+    canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+    const scale = W > 1400 ? 4 : 3;
+    SW = Math.max(120, Math.round(W / scale)); SH = Math.max(80, Math.round(H / scale));
+    HY = Math.round(SH * HORIZON); WH = SH - HY;
+    cur = new Float32Array(SW * WH); prev = new Float32Array(SW * WH);
+    scene.width = SW; scene.height = SH; water.width = SW; water.height = WH;
+    waterImg = wctx.createImageData(SW, WH);
+    paintStatic(sctx, SW, SH, true);
+    staticScene = sctx.getImageData(0, 0, SW, SH);
+    paintStatic(bgctx, canvas.width, canvas.height, false);
+  }
+  const bg = document.createElement('canvas'), bgctx = bg.getContext('2d'); // full-res static sky
+  let staticScene = null;
+
+  // ---------- scene painting (used at two resolutions) ----------
+  let starSeed = 7;
+  function srand() { starSeed = (starSeed * 48271) % 2147483647; return starSeed / 2147483647; }
+  function paintStatic(c, w, h, lowres) {
+    if (!lowres) { bg.width = w; bg.height = h; }
+    const hy = h * HORIZON;
+    const sky = c.createLinearGradient(0, 0, 0, hy);
+    sky.addColorStop(0, '#05071a'); sky.addColorStop(0.55, '#0c1236'); sky.addColorStop(1, '#1a2352');
+    c.fillStyle = sky; c.fillRect(0, 0, w, h);
+    // stars
+    starSeed = 7;
+    for (let i = 0; i < 260; i++) {
+      const x = srand() * w, y = srand() * hy * 0.85, r = (0.3 + srand() * 1.1) * (lowres ? 0.5 : w / 1400 + 0.5);
+      c.fillStyle = `rgba(220,228,255,${(0.35 + srand() * 0.65).toFixed(2)})`;
+      c.beginPath(); c.arc(x, y, r, 0, Math.PI * 2); c.fill();
+    }
+    // moon
+    const mx = w * 0.68, my = hy * 0.32, mr = Math.max(6, Math.min(w, h) * 0.055);
+    const glow = c.createRadialGradient(mx, my, mr * 0.6, mx, my, mr * 7);
+    glow.addColorStop(0, 'rgba(210,220,255,0.55)'); glow.addColorStop(0.25, 'rgba(180,195,240,0.16)'); glow.addColorStop(1, 'rgba(120,140,220,0)');
+    c.fillStyle = glow; c.fillRect(0, 0, w, hy);
+    const moon = c.createRadialGradient(mx - mr * 0.3, my - mr * 0.3, mr * 0.2, mx, my, mr);
+    moon.addColorStop(0, '#ffffff'); moon.addColorStop(0.7, '#e6ebfa'); moon.addColorStop(1, '#c5cde8');
+    c.fillStyle = moon; c.beginPath(); c.arc(mx, my, mr, 0, Math.PI * 2); c.fill();
+    c.fillStyle = 'rgba(160,170,200,0.35)';
+    [[-0.3, 0.1, 0.22], [0.25, -0.35, 0.16], [0.35, 0.3, 0.12], [-0.05, 0.45, 0.1]].forEach(([dx, dy, rr]) => { c.beginPath(); c.arc(mx + dx * mr, my + dy * mr, rr * mr, 0, Math.PI * 2); c.fill(); });
+    // far ridge
+    c.fillStyle = '#0d1338';
+    c.beginPath(); c.moveTo(0, hy);
+    for (let x = 0; x <= w; x += w / 60) c.lineTo(x, hy - hy * (0.10 + 0.07 * Math.sin(x / w * 5.1 + 1.2) + 0.04 * Math.sin(x / w * 13.7)));
+    c.lineTo(w, hy); c.closePath(); c.fill();
+    // treeline
+    c.fillStyle = '#05071c';
+    c.beginPath(); c.moveTo(0, hy);
+    const n = Math.round(w / (lowres ? 3 : 9));
+    for (let i = 0; i <= n; i++) {
+      const x = i / n * w;
+      const base = 0.06 + 0.035 * Math.sin(x / w * 7.3 + 0.4) + 0.02 * Math.sin(x / w * 21.1);
+      const spike = (i % 2 ? 0.045 : 0.012) + 0.03 * Math.abs(Math.sin(i * 12.9898)) ;
+      c.lineTo(x, hy - hy * (base + spike));
+    }
+    c.lineTo(w, hy); c.closePath(); c.fill();
+    // shore mist line
+    const mist = c.createLinearGradient(0, hy - hy * 0.06, 0, hy);
+    mist.addColorStop(0, 'rgba(120,140,200,0)'); mist.addColorStop(1, 'rgba(120,140,200,0.18)');
+    c.fillStyle = mist; c.fillRect(0, hy - hy * 0.06, w, hy * 0.06);
+  }
+
+  // ---------- lanterns / fireflies ----------
+  const lanterns = [];
+  for (let i = 0; i < 7; i++) lanterns.push({ u: 0.06 + Math.random() * 0.36, v: 0.96 + Math.random() * 0.06, ph: Math.random() * 6.28, sp: 0.2 + Math.random() * 0.25, big: i < 3 });
+  const flies = [];
+  for (let i = 0; i < 26; i++) flies.push({ u: Math.random(), v: 0.6 + Math.random() * 0.5, ph: Math.random() * 6.28, sp: 0.5 + Math.random() });
+  function lanternPositions(t) {
+    return lanterns.map(l => ({ x: (l.u + 0.02 * Math.sin(t * l.sp + l.ph)) , y: HORIZON * (l.v + 0.012 * Math.sin(t * l.sp * 1.7 + l.ph)), a: 0.75 + 0.25 * Math.sin(t * 2.3 + l.ph * 3), big: l.big }));
+  }
+  function drawLanterns(c, w, h, t, lowres) {
+    if (!state.lanterns) return;
+    const hy = h * HORIZON;
+    for (const p of lanternPositions(t)) {
+      const x = p.x * w, y = Math.min(hy - 1, p.y * h), r = (p.big ? 0.012 : 0.007) * Math.min(w, h) * (lowres ? 1.6 : 1);
+      const g = c.createRadialGradient(x, y, 0, x, y, r * 6);
+      g.addColorStop(0, `rgba(255,190,110,${(0.55 * p.a).toFixed(2)})`); g.addColorStop(0.3, `rgba(255,160,80,${(0.18 * p.a).toFixed(2)})`); g.addColorStop(1, 'rgba(255,140,60,0)');
+      c.fillStyle = g; c.beginPath(); c.arc(x, y, r * 6, 0, Math.PI * 2); c.fill();
+      c.fillStyle = `rgba(255,225,170,${p.a.toFixed(2)})`; c.beginPath(); c.arc(x, y, r, 0, Math.PI * 2); c.fill();
+      if (!lowres) { c.strokeStyle = 'rgba(255,200,130,0.35)'; c.lineWidth = 1; c.beginPath(); c.moveTo(x, y + r); c.lineTo(x, hy); c.stroke(); }
+    }
+  }
+  function drawFlies(c, w, h, t) {
+    if (!state.lanterns || reduceMotion) return;
+    for (const f of flies) {
+      const x = (f.u + 0.03 * Math.sin(t * f.sp + f.ph)) * w, y = (0.5 + 0.05 * Math.sin(t * f.sp * 0.7 + f.ph * 2)) * h * f.v;
+      const a = Math.max(0, Math.sin(t * f.sp * 2 + f.ph)) ** 3;
+      if (a < 0.02) continue;
+      c.fillStyle = `rgba(255,214,120,${(a * 0.9).toFixed(2)})`; c.beginPath(); c.arc(x, y, 1.3 * dpr, 0, Math.PI * 2); c.fill();
+    }
+  }
+
+  // ---------- ripple simulation ----------
+  const state = { damping: 0.35, rain: false, lanterns: true };
+  function disturb(sx, sy, radius, amp) {
+    const r2 = radius * radius;
+    for (let y = Math.max(1, Math.floor(sy - radius)); y <= Math.min(WH - 2, Math.ceil(sy + radius)); y++)
+      for (let x = Math.max(1, Math.floor(sx - radius)); x <= Math.min(SW - 2, Math.ceil(sx + radius)); x++) {
+        const d2 = (x - sx) ** 2 + (y - sy) ** 2; if (d2 > r2) continue;
+        prev[y * SW + x] += amp * (1 - d2 / r2);
+      }
+  }
+  function stepRipples() {
+    const damp = 0.955 + state.damping * 0.042; // still → restless
+    for (let y = 1; y < WH - 1; y++) {
+      const row = y * SW;
+      for (let x = 1; x < SW - 1; x++) {
+        const i = row + x;
+        let v = (prev[i - 1] + prev[i + 1] + prev[i - SW] + prev[i + SW]) * 0.5 - cur[i];
+        cur[i] = v * damp;
+      }
+    }
+    tmp = prev; prev = cur; cur = tmp;
+  }
+
+  // ---------- water render ----------
+  function renderWater(t) {
+    // rebuild low-res scene with lanterns for reflection sampling
+    sctx.putImageData(staticScene, 0, 0);
+    drawLanterns(sctx, SW, SH, t, true);
+    sceneData = sctx.getImageData(0, 0, SW, SH).data;
+    const out = waterImg.data;
+    const moonX = SW * 0.68;
+    const shimmer = Math.sin(t * 1.7) * 0.5 + 0.5;
+    const disp = 3.2 * (SW / 400 + 0.5);
+    for (let y = 0; y < WH; y++) {
+      const depth = y / WH;                        // 0 at horizon, 1 at shore
+      const rowMirror = HY - 1 - Math.round(y * (0.55 + depth * 0.55)); // slight perspective stretch
+      for (let x = 0; x < SW; x++) {
+        const i = y * SW + x;
+        const xl = x > 0 ? i - 1 : i, xr = x < SW - 1 ? i + 1 : i, yu = y > 0 ? i - SW : i, yd = y < WH - 1 ? i + SW : i;
+        const gx = prev[xr] - prev[xl], gy = prev[yd] - prev[yu];
+        let sx = Math.round(x + gx * disp), sy = Math.round(rowMirror + gy * disp * 1.6);
+        if (sx < 0) sx = 0; else if (sx >= SW) sx = SW - 1;
+        if (sy < 0) sy = 0; else if (sy >= HY) sy = HY - 1;
+        const si = (sy * SW + sx) * 4;
+        const dist = Math.abs(x - moonX) / SW;
+        const spec = Math.max(0, -gy * 18 + gx * 4) * Math.exp(-dist * dist * 60) * (0.7 + 0.3 * shimmer);
+        const shade = 1 - Math.abs(gx) * 1.5;
+        const fade = 0.62 - depth * 0.28;           // reflections dim toward the shore
+        const o = i * 4;
+        out[o]     = Math.min(255, sceneData[si]     * fade * shade + 8  + 30 * depth + spec * 120);
+        out[o + 1] = Math.min(255, sceneData[si + 1] * fade * shade + 12 + 34 * depth + spec * 125);
+        out[o + 2] = Math.min(255, sceneData[si + 2] * fade * shade + 34 + 50 * depth + spec * 135);
+        out[o + 3] = 255;
+      }
+    }
+    wctx.putImageData(waterImg, 0, 0);
+  }
+
+  // ---------- main draw ----------
+  function frame(t) {
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.drawImage(bg, 0, 0);
+    ctx.save(); ctx.scale(dpr, dpr);
+    drawLanterns(ctx, W, H, t, false);
+    ctx.restore();
+    const hyPx = Math.round(H * HORIZON * dpr);
+    ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
+    ctx.drawImage(water, 0, 0, SW, WH, 0, hyPx, canvas.width, canvas.height - hyPx);
+    // horizon seam & shore
+    const seam = ctx.createLinearGradient(0, hyPx - 2 * dpr, 0, hyPx + 10 * dpr);
+    seam.addColorStop(0, 'rgba(120,140,200,0.25)'); seam.addColorStop(1, 'rgba(120,140,200,0)');
+    ctx.fillStyle = seam; ctx.fillRect(0, hyPx - 2 * dpr, canvas.width, 12 * dpr);
+    const shore = ctx.createLinearGradient(0, canvas.height - 70 * dpr, 0, canvas.height);
+    shore.addColorStop(0, 'rgba(3,4,14,0)'); shore.addColorStop(1, 'rgba(3,4,14,0.85)');
+    ctx.fillStyle = shore; ctx.fillRect(0, canvas.height - 70 * dpr, canvas.width, 70 * dpr);
+    // reeds
+    ctx.strokeStyle = 'rgba(4,6,18,0.95)'; ctx.lineWidth = 1.2 * dpr; ctx.lineCap = 'round';
+    for (let i = 0; i < 18; i++) {
+      const bx = (i < 9 ? 0.02 + i * 0.022 : 0.8 + (i - 9) * 0.022) * canvas.width;
+      const hgt = (30 + (i * 37) % 40) * dpr, sway = reduceMotion ? 0 : Math.sin(t * 0.8 + i) * 3 * dpr;
+      ctx.beginPath(); ctx.moveTo(bx, canvas.height); ctx.quadraticCurveTo(bx + sway, canvas.height - hgt * 0.6, bx + sway * 2, canvas.height - hgt); ctx.stroke();
+    }
+    drawFlies(ctx, canvas.width, canvas.height, t);
+  }
+
+  // ---------- input ----------
+  function toSim(e) {
+    const r = canvas.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width * SW, y = ((e.clientY - r.top) / r.height * SH) - HY;
+    return { x, y };
+  }
+  let dragging = false, lastDrop = 0;
+  canvas.addEventListener('pointerdown', (e) => {
+    const p = toSim(e); if (p.y < 0) return;
+    dragging = true; canvas.setPointerCapture(e.pointerId);
+    disturb(p.x, p.y, 3.2, 90);
+  });
+  canvas.addEventListener('pointermove', (e) => {
+    if (!dragging) return;
+    const p = toSim(e); if (p.y < 0) return;
+    const now = performance.now(); if (now - lastDrop < 28) return; lastDrop = now;
+    disturb(p.x, p.y, 2.2, 28);
+  });
+  const endDrag = (e) => { dragging = false; if (canvas.hasPointerCapture(e.pointerId)) canvas.releasePointerCapture(e.pointerId); };
+  canvas.addEventListener('pointerup', endDrag); canvas.addEventListener('pointercancel', endDrag);
+
+  const dampEl = document.getElementById('damp'), dampOut = document.getElementById('dampOut');
+  const words = ['glass', 'calm', 'stirring', 'restless', 'brooding'];
+  function updateDamp() { state.damping = parseFloat(dampEl.value); dampOut.textContent = words[Math.min(4, Math.floor(state.damping * 5))]; }
+  dampEl.addEventListener('input', updateDamp); updateDamp();
+  document.getElementById('rain').addEventListener('change', e => { state.rain = e.target.checked; });
+  document.getElementById('lanterns').addEventListener('change', e => { state.lanterns = e.target.checked; });
+  document.getElementById('calmBtn').addEventListener('click', () => { cur.fill(0); prev.fill(0); });
+  document.getElementById('stoneBtn').addEventListener('click', () => { disturb(SW * (0.25 + Math.random() * 0.5), WH * (0.3 + Math.random() * 0.5), 5, 160); });
+
+  // ---------- loop ----------
+  window.addEventListener('resize', resize);
+  resize();
+  let last = performance.now(), rainAcc = 0, frameNo = 0;
+  function loop(now) {
+    const dt = Math.min(0.05, (now - last) / 1000); last = now;
+    const t = now / 1000;
+    if (state.rain) {
+      rainAcc += dt * (1.5 + state.damping * 4);
+      while (rainAcc > 1) { rainAcc -= 1; disturb(2 + Math.random() * (SW - 4), 2 + Math.random() * (WH - 4), 1.6 + Math.random() * 1.4, 18 + Math.random() * 30); }
+    }
+    // a barely-there breeze so a "restless" surface never goes fully flat
+    if (!reduceMotion && state.damping > 0.5 && frameNo % 9 === 0) disturb(Math.random() * SW, Math.random() * WH, 1.5, (state.damping - 0.5) * 6);
+    const steps = reduceMotion ? 1 : 2;
+    for (let s = 0; s < steps; s++) stepRipples();
+    renderWater(t);
+    frame(t);
+    frameNo++;
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

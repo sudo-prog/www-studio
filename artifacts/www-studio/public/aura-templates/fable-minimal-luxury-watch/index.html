@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Halden — Meridian 38 · Automatic</title>
+<style>
+  :root {
+    --bg: #0a0a0b;
+    --bg-2: #111113;
+    --fg: #ece9e2;
+    --fg-dim: rgba(236, 233, 226, 0.55);
+    --fg-faint: rgba(236, 233, 226, 0.22);
+    --hair: rgba(236, 233, 226, 0.12);
+    --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, ui-serif, serif;
+    --sans: ui-sans-serif, system-ui, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace;
+
+    /* variant-driven */
+    --dial: #14161a;
+    --dial-edge: #23262c;
+    --strap: #1c1a18;
+    --strap-stitch: rgba(236,233,226,0.18);
+    --accent: #c9b48a;
+    --hand: #ece9e2;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body { margin: 0; background: var(--bg); color: var(--fg); }
+
+  body {
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 40%, rgba(255,255,255,0.035), transparent 60%),
+      var(--bg);
+  }
+
+  .shell {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: clamp(24px, 4vw, 56px) clamp(20px, 5vw, 72px);
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: clamp(32px, 5vh, 64px);
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--fg-dim);
+  }
+
+  .brand {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    letter-spacing: 0.55em;
+    color: var(--fg);
+    font-weight: 400;
+    text-transform: uppercase;
+    padding-left: 0.55em; /* balance the trailing tracking */
+  }
+
+  nav ul { list-style: none; display: flex; gap: 32px; margin: 0; padding: 0; }
+  nav a { color: inherit; text-decoration: none; position: relative; transition: color 0.4s var(--ease); }
+  nav a::after {
+    content: ""; position: absolute; left: 0; right: 100%; bottom: -6px; height: 1px;
+    background: var(--fg); transition: right 0.5s var(--ease);
+  }
+  nav a:hover { color: var(--fg); }
+  nav a:hover::after { right: 0; }
+
+  main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(40px, 6vw, 96px);
+    align-items: center;
+  }
+
+  @media (min-width: 960px) {
+    main { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ---------- watch ---------- */
+  .stage {
+    display: grid;
+    place-items: center;
+    position: relative;
+    padding: 24px 0;
+  }
+
+  .stage::before {
+    content: "";
+    position: absolute;
+    width: 70%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.05), transparent 65%);
+    filter: blur(20px);
+    pointer-events: none;
+  }
+
+  .watch {
+    width: min(78vw, 480px);
+    aspect-ratio: 1 / 1.55;
+    position: relative;
+    display: grid;
+    place-items: center;
+    animation: hover-float 9s ease-in-out infinite;
+  }
+
+  @keyframes hover-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .strap {
+    position: absolute;
+    left: 50%;
+    width: 40%;
+    height: 44%;
+    transform: translateX(-50%);
+    background:
+      repeating-linear-gradient(90deg, rgba(0,0,0,0.12) 0 1px, transparent 1px 7px),
+      linear-gradient(90deg, rgba(0,0,0,0.5), transparent 25%, transparent 75%, rgba(0,0,0,0.5)),
+      var(--strap);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05), 0 40px 60px -30px rgba(0,0,0,0.9);
+    transition: background-color 0.9s var(--ease);
+  }
+
+  .strap::before, .strap::after {
+    content: "";
+    position: absolute;
+    top: 8%; bottom: 8%;
+    width: 1px;
+    background: repeating-linear-gradient(180deg, var(--strap-stitch) 0 6px, transparent 6px 12px);
+  }
+  .strap::before { left: 9%; }
+  .strap::after { right: 9%; }
+
+  .strap.top { top: 0; border-radius: 12px 12px 4px 4px; }
+  .strap.bottom { bottom: 0; border-radius: 4px 4px 12px 12px; }
+
+  .strap.bottom .buckle {
+    position: absolute;
+    left: 50%; bottom: 12%;
+    transform: translateX(-50%);
+    width: 62%; height: 6%;
+    border-radius: 3px;
+    background: linear-gradient(180deg, #d8d6d0, #8f8d88 50%, #c9c7c1);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+  }
+
+  .case {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    z-index: 2;
+    background:
+      repeating-conic-gradient(from 0deg, rgba(255,255,255,0.04) 0deg 0.6deg, transparent 0.6deg 1.4deg),
+      conic-gradient(from 210deg, #2b2a28 0deg, #d8d6d0 40deg, #5f5d58 90deg, #efede7 150deg, #4a4844 210deg, #cfcdc7 270deg, #3a3835 330deg, #2b2a28 360deg);
+    filter: drop-shadow(0 50px 50px rgba(0,0,0,0.75));
+  }
+
+  .crown {
+    position: absolute;
+    right: -3.6%;
+    top: 50%;
+    width: 6%;
+    height: 9%;
+    transform: translateY(-50%);
+    border-radius: 2px 5px 5px 2px;
+    background:
+      repeating-linear-gradient(180deg, rgba(0,0,0,0.35) 0 1px, transparent 1px 4px),
+      linear-gradient(180deg, #e2e0da, #77756f 50%, #d1cfc9);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.5);
+  }
+
+  .case svg { width: 100%; height: 100%; display: block; overflow: visible; }
+
+  .dial-fill { fill: var(--dial); transition: fill 0.9s var(--ease); }
+  .dial-edge { fill: var(--dial-edge); transition: fill 0.9s var(--ease); }
+  .accent-fill { fill: var(--accent); transition: fill 0.9s var(--ease); }
+  .accent-stroke { stroke: var(--accent); transition: stroke 0.9s var(--ease); }
+  .hand-fill { fill: var(--hand); transition: fill 0.9s var(--ease); }
+
+  .hand {
+    transform-origin: 200px 200px;
+    transform-box: view-box;
+  }
+
+  .hand.seconds { will-change: transform; }
+
+  /* ---------- copy ---------- */
+  .copy {
+    display: grid;
+    gap: clamp(28px, 3.5vw, 44px);
+    max-width: 560px;
+  }
+
+  .eyebrow {
+    font-size: 0.66rem;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--fg-dim);
+    margin: 0;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2.8rem, 5vw, 4.6rem);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    margin: 10px 0 0;
+  }
+
+  h1 span {
+    display: block;
+    font-size: 0.34em;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--fg-dim);
+    margin-top: 18px;
+    font-family: var(--sans);
+  }
+
+  .lede {
+    margin: 0;
+    color: var(--fg-dim);
+    max-width: 44ch;
+    font-family: var(--serif);
+    font-size: 1.08rem;
+    line-height: 1.7;
+  }
+
+  /* variants */
+  .variants {
+    display: grid;
+    gap: 14px;
+  }
+
+  .variants .label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.66rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--fg-dim);
+  }
+
+  .variants .label output { color: var(--fg); letter-spacing: 0.2em; transition: opacity 0.4s; }
+
+  .swatches { display: flex; gap: 18px; }
+
+  .swatch {
+    appearance: none;
+    border: 0;
+    background: none;
+    padding: 0;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+  }
+
+  .swatch::before {
+    content: "";
+    position: absolute; inset: 0;
+    border-radius: 50%;
+    border: 1px solid var(--fg-faint);
+    transition: transform 0.5s var(--ease), border-color 0.5s var(--ease);
+  }
+
+  .swatch span {
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--a), var(--b));
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+    transition: transform 0.5s var(--ease);
+  }
+
+  .swatch:hover::before { border-color: var(--fg-dim); }
+  .swatch:hover span { transform: scale(1.08); }
+  .swatch[aria-checked="true"]::before { border-color: var(--fg); transform: scale(1.18); }
+  .swatch:focus-visible { outline: none; }
+  .swatch:focus-visible::before { border-color: var(--fg); }
+
+  /* specs */
+  .specs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 1px solid var(--hair);
+    margin: 0;
+  }
+
+  @media (min-width: 560px) { .specs { grid-template-columns: repeat(3, 1fr); } }
+
+  .specs div {
+    padding: 18px 20px 20px 0;
+    border-bottom: 1px solid var(--hair);
+  }
+
+  .specs dt {
+    font-size: 0.62rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--fg-dim);
+    margin-bottom: 6px;
+  }
+
+  .specs dd {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    color: var(--fg);
+    letter-spacing: 0.01em;
+  }
+
+  .specs dd small { display: block; font-family: var(--sans); font-size: 0.7rem; color: var(--fg-dim); margin-top: 2px; letter-spacing: 0.06em; }
+
+  /* action */
+  .action {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+
+  .price {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    letter-spacing: 0.04em;
+  }
+
+  .price small { display: block; font-family: var(--sans); font-size: 0.64rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--fg-dim); margin-top: 2px; }
+
+  .reserve {
+    appearance: none;
+    background: none;
+    border: 1px solid var(--fg-faint);
+    color: var(--fg);
+    font: inherit;
+    font-size: 0.7rem;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    padding: 18px 42px 18px 46px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.6s var(--ease), color 0.6s var(--ease);
+  }
+
+  .reserve::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: var(--fg);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.7s var(--ease);
+    z-index: -1;
+  }
+
+  .reserve:hover, .reserve:focus-visible { color: var(--bg); border-color: var(--fg); outline: none; }
+  .reserve:hover::before, .reserve:focus-visible::before { transform: scaleX(1); }
+  .reserve:active { transform: translateY(1px); }
+
+  .reserve[data-state="done"] { border-color: var(--accent); color: var(--fg-dim); pointer-events: none; }
+  .reserve[data-state="done"]::before { transform: scaleX(0); }
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.64rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--fg-faint);
+    border-top: 1px solid var(--hair);
+    padding-top: 22px;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+  }
+
+  footer time { color: var(--fg-dim); font-variant-numeric: tabular-nums; }
+
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  @media (max-width: 640px) {
+    nav ul { display: none; }
+    .specs div { padding-right: 12px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .watch { animation: none; }
+    .reserve::before, .swatch::before, .swatch span { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <nav aria-label="Primary">
+    <span class="brand">Halden</span>
+    <ul>
+      <li><a href="#specs">Movement</a></li>
+      <li><a href="#specs">Atelier</a></li>
+      <li><a href="#reserve">Reserve</a></li>
+    </ul>
+    <span>Est. Oslo · 1962</span>
+  </nav>
+
+  <main>
+
+    <section class="stage" aria-label="Meridian 38 watch with a live analog dial">
+      <div class="watch" id="watch">
+        <div class="strap top"></div>
+        <div class="strap bottom"><div class="buckle"></div></div>
+
+        <div class="case">
+          <div class="crown" aria-hidden="true"></div>
+          <svg viewBox="0 0 400 400" role="img" aria-labelledby="clockTitle clockDesc">
+            <title id="clockTitle">Analog watch face showing the current time</title>
+            <desc id="clockDesc">A round watch face with hour, minute and sweeping second hands driven by the system clock.</desc>
+            <defs>
+              <linearGradient id="bezelSheen" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f2f0ea"/>
+                <stop offset="0.35" stop-color="#8b8983"/>
+                <stop offset="0.5" stop-color="#d9d7d1"/>
+                <stop offset="0.7" stop-color="#6d6b66"/>
+                <stop offset="1" stop-color="#e6e4de"/>
+              </linearGradient>
+              <radialGradient id="dialVignette" cx="0.5" cy="0.45" r="0.6">
+                <stop offset="0" stop-color="#ffffff" stop-opacity="0.10"/>
+                <stop offset="0.7" stop-color="#000000" stop-opacity="0"/>
+                <stop offset="1" stop-color="#000000" stop-opacity="0.45"/>
+              </radialGradient>
+              <linearGradient id="glass" x1="0.1" y1="0" x2="0.9" y2="1">
+                <stop offset="0" stop-color="#ffffff" stop-opacity="0.22"/>
+                <stop offset="0.38" stop-color="#ffffff" stop-opacity="0.03"/>
+                <stop offset="0.42" stop-color="#ffffff" stop-opacity="0"/>
+                <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+              </linearGradient>
+              <clipPath id="dialClip"><circle cx="200" cy="200" r="168"/></clipPath>
+              <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+                <feOffset dx="0" dy="3" result="off"/>
+                <feComponentTransfer><feFuncA type="linear" slope="0.55"/></feComponentTransfer>
+                <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+
+            <!-- bezel: the brushed conic-gradient metal lives on the .case element behind this SVG; here we add sheen and edges -->
+            <circle cx="200" cy="200" r="198" fill="url(#bezelSheen)" opacity="0.28"/>
+            <circle cx="200" cy="200" r="198" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.8"/>
+            <circle cx="200" cy="200" r="181" fill="none" stroke="rgba(0,0,0,0.6)" stroke-width="3"/>
+            <circle cx="200" cy="200" r="178" class="dial-edge"/>
+
+            <!-- dial -->
+            <circle cx="200" cy="200" r="168" class="dial-fill"/>
+            <circle cx="200" cy="200" r="168" fill="url(#dialVignette)"/>
+            <circle cx="200" cy="200" r="168" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+
+            <!-- minute track -->
+            <g id="ticks" stroke="rgba(236,233,226,0.5)" stroke-width="1"></g>
+            <g id="hourTicks" class="accent-stroke" stroke-width="2.2" stroke-linecap="round"></g>
+
+            <!-- numerals at 12 / 3 / 6 / 9 -->
+            <g font-family="'Iowan Old Style', Palatino, Georgia, serif" font-size="20" fill="rgba(236,233,226,0.85)" text-anchor="middle" letter-spacing="1">
+              <text x="200" y="76">XII</text>
+              <text x="331" y="207">III</text>
+              <text x="200" y="336">VI</text>
+              <text x="70" y="207">IX</text>
+            </g>
+
+            <!-- brand -->
+            <text x="200" y="140" text-anchor="middle" font-family="'Iowan Old Style', Palatino, Georgia, serif" font-size="12" letter-spacing="6" fill="rgba(236,233,226,0.85)">HALDEN</text>
+            <text x="200" y="156" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="6.5" letter-spacing="3" fill="rgba(236,233,226,0.45)">MERIDIAN · AUTOMATIC</text>
+
+            <!-- small seconds sub-dial ring at 6 as detail -->
+            <circle cx="200" cy="268" r="26" fill="none" stroke="rgba(236,233,226,0.12)" stroke-width="0.8"/>
+            <text x="200" y="290" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="5.5" letter-spacing="2.5" fill="rgba(236,233,226,0.4)">SWISS MADE</text>
+
+            <!-- date window at 4:30 -->
+            <rect x="262" y="246" width="26" height="16" rx="1" fill="#f0ede6" stroke="rgba(0,0,0,0.5)" stroke-width="1"/>
+            <text id="dateText" x="275" y="258.5" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="600" fill="#151311">01</text>
+
+            <!-- hands -->
+            <g filter="url(#softShadow)">
+              <g id="hourHand" class="hand">
+                <rect x="196.5" y="112" width="7" height="100" rx="3.5" class="hand-fill"/>
+                <rect x="198.5" y="122" width="3" height="66" rx="1.5" fill="rgba(10,10,11,0.75)"/>
+              </g>
+              <g id="minuteHand" class="hand">
+                <rect x="197.5" y="52" width="5" height="160" rx="2.5" class="hand-fill"/>
+                <rect x="199" y="64" width="2" height="118" rx="1" fill="rgba(10,10,11,0.75)"/>
+              </g>
+              <g id="secondHand" class="hand seconds">
+                <rect x="199.25" y="40" width="1.5" height="200" class="accent-fill"/>
+                <circle cx="200" cy="72" r="4" fill="none" class="accent-stroke" stroke-width="1.5"/>
+                <circle cx="200" cy="200" r="3.2" class="accent-fill"/>
+              </g>
+            </g>
+            <circle cx="200" cy="200" r="1.4" fill="#0a0a0b"/>
+
+            <!-- glass reflection -->
+            <g clip-path="url(#dialClip)">
+              <ellipse cx="150" cy="120" rx="150" ry="100" fill="url(#glass)" transform="rotate(-20 150 120)"/>
+            </g>
+            <circle cx="200" cy="200" r="176" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="copy">
+      <div>
+        <p class="eyebrow">Reference 38.02 · Limited to 250</p>
+        <h1>Meridian 38<span>Automatic · Calibre H-11</span></h1>
+      </div>
+
+      <p class="lede">Thirty-eight millimetres of brushed steel, a dial the colour of the fjord at dusk, and a movement you can hear only if the room is silent. Nothing here is decorative. Everything here is deliberate.</p>
+
+      <div class="variants" role="radiogroup" aria-labelledby="variantLabel">
+        <div class="label"><span id="variantLabel">Dial &amp; strap</span><output id="variantName" aria-live="polite">Fjord</output></div>
+        <div class="swatches" id="swatches">
+          <button type="button" class="swatch" role="radio" aria-checked="true" aria-label="Fjord — graphite dial, black calf strap"
+            data-name="Fjord" data-dial="#14161a" data-edge="#23262c" data-strap="#1c1a18" data-accent="#c9b48a" data-hand="#ece9e2" style="--a:#23262c;--b:#0e0f12"><span></span></button>
+          <button type="button" class="swatch" role="radio" aria-checked="false" aria-label="Glacier — pale silver dial, slate strap"
+            data-name="Glacier" data-dial="#d7d9d6" data-edge="#b9bcb8" data-strap="#3a3f45" data-accent="#8a6f43" data-hand="#1a1c20" style="--a:#e6e8e5;--b:#aeb1ad"><span></span></button>
+          <button type="button" class="swatch" role="radio" aria-checked="false" aria-label="Deep — midnight blue dial, navy strap"
+            data-name="Deep" data-dial="#0f1a2e" data-edge="#182741" data-strap="#141c2b" data-accent="#d4a25a" data-hand="#ece9e2" style="--a:#1c2e4f;--b:#0a1120"><span></span></button>
+          <button type="button" class="swatch" role="radio" aria-checked="false" aria-label="Moss — deep green dial, tan strap"
+            data-name="Moss" data-dial="#152219" data-edge="#1f3124" data-strap="#5a4632" data-accent="#e0c48e" data-hand="#ece9e2" style="--a:#25402c;--b:#0d1610"><span></span></button>
+        </div>
+      </div>
+
+      <dl class="specs" id="specs">
+        <div><dt>Case</dt><dd>38 mm<small>316L steel, brushed</small></dd></div>
+        <div><dt>Thickness</dt><dd>9.4 mm<small>incl. domed sapphire</small></dd></div>
+        <div><dt>Movement</dt><dd>H-11<small>automatic, 28,800 vph</small></dd></div>
+        <div><dt>Reserve</dt><dd>72 h<small>twin barrel</small></dd></div>
+        <div><dt>Water</dt><dd>100 m<small>screw-down crown</small></dd></div>
+        <div><dt>Strap</dt><dd>20 mm<small>Bridle leather, hand-stitched</small></dd></div>
+      </dl>
+
+      <div class="action" id="reserve">
+        <div class="price">€ 4,850<small>Delivery from October</small></div>
+        <button type="button" class="reserve" id="reserveBtn">Reserve</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <span>Halden Urverk AS</span>
+    <span>Local time <time id="clockOut" datetime="00:00:00">00:00:00</time></span>
+    <span>Reference 38.02</span>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  const root = document.documentElement;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---- build the minute / hour tracks ----
+  const ticks = document.getElementById('ticks');
+  const hourTicks = document.getElementById('hourTicks');
+  const ns = 'http://www.w3.org/2000/svg';
+  for (let i = 0; i < 60; i++) {
+    const isHour = i % 5 === 0;
+    const line = document.createElementNS(ns, 'line');
+    const a = (i / 60) * Math.PI * 2;
+    const r1 = isHour ? 150 : 158;
+    const r2 = 164;
+    line.setAttribute('x1', (200 + Math.sin(a) * r1).toFixed(2));
+    line.setAttribute('y1', (200 - Math.cos(a) * r1).toFixed(2));
+    line.setAttribute('x2', (200 + Math.sin(a) * r2).toFixed(2));
+    line.setAttribute('y2', (200 - Math.cos(a) * r2).toFixed(2));
+    // skip hour ticks where roman numerals sit
+    if (isHour && (i === 0 || i === 15 || i === 30 || i === 45)) continue;
+    (isHour ? hourTicks : ticks).appendChild(line);
+  }
+
+  // ---- live hands ----
+  const hourHand = document.getElementById('hourHand');
+  const minuteHand = document.getElementById('minuteHand');
+  const secondHand = document.getElementById('secondHand');
+  const dateText = document.getElementById('dateText');
+  const clockOut = document.getElementById('clockOut');
+  let lastSecond = -1;
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function tick() {
+    const now = new Date();
+    const ms = now.getMilliseconds();
+    const s = now.getSeconds() + (reduce ? 0 : ms / 1000);
+    const m = now.getMinutes() + s / 60;
+    const h = (now.getHours() % 12) + m / 60;
+
+    secondHand.style.transform = 'rotate(' + (s * 6) + 'deg)';
+    minuteHand.style.transform = 'rotate(' + (m * 6) + 'deg)';
+    hourHand.style.transform = 'rotate(' + (h * 30) + 'deg)';
+
+    if (now.getSeconds() !== lastSecond) {
+      lastSecond = now.getSeconds();
+      dateText.textContent = pad(now.getDate());
+      clockOut.textContent = pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
+      clockOut.setAttribute('datetime', now.toISOString());
+    }
+    if (reduce) setTimeout(tick, 1000 - ms); else requestAnimationFrame(tick);
+  }
+  tick();
+
+  // ---- variants ----
+  const swatches = document.getElementById('swatches');
+  const variantName = document.getElementById('variantName');
+
+  swatches.addEventListener('click', (e) => {
+    const btn = e.target.closest('.swatch');
+    if (!btn) return;
+    selectVariant(btn);
+  });
+
+  swatches.addEventListener('keydown', (e) => {
+    const all = [...swatches.querySelectorAll('.swatch')];
+    const i = all.findIndex(b => b.getAttribute('aria-checked') === 'true');
+    let next = -1;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (i + 1) % all.length;
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (i - 1 + all.length) % all.length;
+    if (next >= 0) { e.preventDefault(); selectVariant(all[next]); all[next].focus(); }
+  });
+
+  function selectVariant(btn) {
+    swatches.querySelectorAll('.swatch').forEach(b => {
+      const on = b === btn;
+      b.setAttribute('aria-checked', String(on));
+      b.tabIndex = on ? 0 : -1;
+    });
+    const d = btn.dataset;
+    root.style.setProperty('--dial', d.dial);
+    root.style.setProperty('--dial-edge', d.edge);
+    root.style.setProperty('--strap', d.strap);
+    root.style.setProperty('--accent', d.accent);
+    root.style.setProperty('--hand', d.hand);
+    variantName.style.opacity = '0';
+    setTimeout(() => { variantName.textContent = d.name; variantName.style.opacity = '1'; }, 180);
+  }
+  swatches.querySelectorAll('.swatch').forEach((b, i) => { b.tabIndex = i === 0 ? 0 : -1; });
+
+  // ---- reserve ----
+  const reserveBtn = document.getElementById('reserveBtn');
+  reserveBtn.addEventListener('click', () => {
+    const name = variantName.textContent;
+    reserveBtn.textContent = 'Reserved · ' + name;
+    reserveBtn.dataset.state = 'done';
+    reserveBtn.setAttribute('aria-disabled', 'true');
+  });
+})();
+</script>
+</body>
+</html>

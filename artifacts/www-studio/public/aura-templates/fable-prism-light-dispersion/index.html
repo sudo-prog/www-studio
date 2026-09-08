@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dispersion — An Interactive Prism</title>
+<style>
+  :root{
+    --bg:#06070b; --panel:rgba(14,16,24,.72); --line:rgba(255,255,255,.12);
+    --ink:#e8ecf3; --muted:#8b93a7; --accent:#8fd3ff;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; height:100%; background:var(--bg); color:var(--ink);
+    font-family: ui-sans-serif, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif; overflow:hidden; }
+  .stage{ position:fixed; inset:0; }
+  canvas#scene{ position:absolute; inset:0; width:100%; height:100%; display:block; touch-action:none; cursor:crosshair; }
+  canvas#scene.grab{ cursor:grabbing; }
+
+  .hud{ position:absolute; z-index:2; pointer-events:none; }
+  .hud > *{ pointer-events:auto; }
+
+  .title{ top:clamp(14px,3vh,32px); left:clamp(14px,3vw,36px); max-width:min(46ch, 70vw); }
+  .title .kicker{ font-size:.68rem; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin:0 0 .5em; }
+  .title h1{ margin:0; font-weight:300; font-size:clamp(1.5rem,3.4vw,2.6rem); letter-spacing:-.01em; line-height:1.05; }
+  .title h1 b{ font-weight:600; }
+  .title p{ margin:.7em 0 0; color:var(--muted); font-size:.9rem; line-height:1.5; max-width:40ch; }
+
+  .controls{ top:clamp(14px,3vh,32px); right:clamp(14px,3vw,36px); display:flex; flex-direction:column; gap:8px; align-items:flex-end; }
+  .seg{ display:inline-flex; border:1px solid var(--line); border-radius:8px; overflow:hidden; background:var(--panel); backdrop-filter:blur(10px); }
+  .seg button{ font:inherit; font-size:.74rem; letter-spacing:.08em; text-transform:uppercase; padding:.6em 1em; border:0; background:transparent; color:var(--muted); cursor:pointer; transition:background .25s, color .25s; }
+  .seg button[aria-pressed="true"]{ background:rgba(143,211,255,.16); color:var(--ink); }
+  .seg button:hover{ color:var(--ink); }
+  .chk{ display:inline-flex; align-items:center; gap:.6em; font-size:.74rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:.55em .9em; cursor:pointer; user-select:none; }
+  .chk input{ appearance:none; width:28px; height:16px; border-radius:999px; background:#2a2f3d; position:relative; margin:0; cursor:pointer; transition:background .25s; }
+  .chk input::after{ content:""; position:absolute; top:2px; left:2px; width:12px; height:12px; border-radius:50%; background:#aab2c5; transition:transform .25s cubic-bezier(.2,.8,.2,1), background .25s; }
+  .chk input:checked{ background:rgba(143,211,255,.45); }
+  .chk input:checked::after{ transform:translateX(12px); background:#fff; }
+  .ghost{ font:inherit; font-size:.74rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); background:transparent; border:1px solid var(--line); border-radius:8px; padding:.55em .9em; cursor:pointer; transition:color .25s, border-color .25s; }
+  .ghost:hover{ color:var(--ink); border-color:rgba(255,255,255,.3); }
+
+  .panel{ left:clamp(14px,3vw,36px); bottom:clamp(14px,3vh,32px); width:min(360px, calc(100vw - 28px)); background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px 16px 12px; backdrop-filter:blur(12px); box-shadow:0 20px 50px rgba(0,0,0,.5); }
+  .panel h2{ margin:0 0 .4em; font-size:.7rem; letter-spacing:.26em; text-transform:uppercase; color:var(--accent); font-weight:600; }
+  .panel p{ margin:0; font-size:.83rem; line-height:1.55; color:#c3c9d6; }
+  .panel .eq{ font-family: ui-monospace, 'SF Mono', Menlo, 'Courier New', monospace; font-size:.85rem; color:var(--ink); background:rgba(255,255,255,.05); border-radius:6px; padding:.45em .7em; margin:.7em 0; display:inline-block; }
+  .stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:.8em; padding-top:.7em; border-top:1px solid var(--line); }
+  .stats div{ font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size:.78rem; color:var(--ink); }
+  .stats small{ display:block; font-family: ui-sans-serif, system-ui, sans-serif; font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:.25em; }
+  .panel details summary{ display:none; }
+
+  .readout{ position:absolute; z-index:3; pointer-events:none; opacity:0; transform:translate(-100%, -50%) translateX(-16px); transition:opacity .15s;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size:.8rem; padding:.5em .8em; border-radius:6px; background:rgba(6,7,11,.92); border:1px solid var(--line); white-space:nowrap; }
+  .readout.show{ opacity:1; }
+  .readout i{ display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:.5em; vertical-align:-1px; box-shadow:0 0 10px currentColor; }
+  .readout small{ color:var(--muted); margin-left:.6em; font-family: ui-sans-serif, system-ui, sans-serif; }
+
+  .hint{ position:absolute; z-index:2; left:50%; bottom:clamp(14px,3vh,32px); transform:translateX(-50%); font-size:.7rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); pointer-events:none; white-space:nowrap; }
+
+  @media (max-width:760px){
+    .title p{ display:none; }
+    .panel{ padding:10px 12px; }
+    .panel details summary{ display:block; cursor:pointer; font-size:.7rem; letter-spacing:.26em; text-transform:uppercase; color:var(--accent); font-weight:600; list-style:none; }
+    .panel h2{ display:none; }
+    .panel .stats{ grid-template-columns:repeat(3,1fr); }
+    .hint{ display:none; }
+    .controls{ gap:6px; }
+    .seg button, .chk, .ghost{ font-size:.66rem; padding:.5em .7em; }
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+  <canvas id="scene" aria-label="Interactive prism: drag the lamp and the prisms to refract a white beam into a spectrum" role="img"></canvas>
+
+  <div class="hud title">
+    <p class="kicker">Gallery of Optics · Exhibit 07</p>
+    <h1>Why the rainbow<br><b>lives inside glass</b></h1>
+    <p>White light is every colour at once. Glass slows violet a little more than red, so each colour turns by a different angle and the beam unfolds into a spectrum.</p>
+  </div>
+
+  <div class="hud controls">
+    <div class="seg" role="group" aria-label="Dispersion model">
+      <button type="button" id="modePhys" aria-pressed="true">Physics-accurate</button>
+      <button type="button" id="modeArt" aria-pressed="false">Artistic spread</button>
+    </div>
+    <label class="chk" for="second"><input type="checkbox" id="second"> Second prism</label>
+    <button type="button" class="ghost" id="reset">Reset layout</button>
+  </div>
+
+  <div class="hud panel">
+    <details open>
+      <summary>About dispersion</summary>
+      <h2>About dispersion</h2>
+      <p>At each surface the beam obeys Snell's law. The refractive index of glass is not a single number: it rises toward the blue end of the spectrum (Cauchy's approximation), so blue light is bent through a larger angle than red.</p>
+      <div class="eq">n₁ sin θ₁ = n₂ sin θ₂ &nbsp;·&nbsp; n(λ) ≈ A + B/λ²</div>
+      <p>Hover the screen on the right to read the wavelength landing there. A second, inverted prism can fold the colours back together.</p>
+    </details>
+    <div class="stats">
+      <div><small>Index @ 400 nm</small><span id="nBlue">—</span></div>
+      <div><small>Index @ 680 nm</small><span id="nRed">—</span></div>
+      <div><small>Angular spread</small><span id="spread">—</span></div>
+    </div>
+  </div>
+
+  <div class="readout" id="readout"><i></i><span id="roText"></span><small id="roName"></small></div>
+  <div class="hint">Drag the lamp or the prisms · hover the screen for wavelength</div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  const cv = document.getElementById('scene');
+  const ctx = cv.getContext('2d');
+  const sceneCv = document.createElement('canvas');
+  const sctx = sceneCv.getContext('2d');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let W = 0, H = 0, dpr = 1, floorY = 0, screenX = 0, screenTop = 0, screenBot = 0;
+  const state = {
+    artistic: false, second: false,
+    src: { x: 0, y: 0 }, p1: { x: 0, y: 0, s: 0, rot: 0 }, p2: { x: 0, y: 0, s: 0, rot: Math.PI },
+    drag: null, hover: null, hits: [], pointer: { x: -1, y: -1 }
+  };
+
+  function layout(keep){
+    const oldW = W, oldH = H;
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth; H = window.innerHeight;
+    for(const c of [cv, sceneCv]){ c.width = Math.round(W * dpr); c.height = Math.round(H * dpr); }
+    cv.style.width = W + 'px'; cv.style.height = H + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0); sctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    floorY = H * 0.84; screenX = W * 0.905; screenTop = H * 0.12; screenBot = floorY - 14;
+    const s = Math.max(48, Math.min(W * 0.17, H * 0.22));
+    state.p1.s = s; state.p2.s = s * 0.82;
+    if(keep && oldW){ // scale positions proportionally
+      for(const o of [state.src, state.p1, state.p2]){ o.x *= W / oldW; o.y *= H / oldH; }
+    } else resetLayout();
+  }
+  function resetLayout(){
+    state.src.x = W * 0.11; state.src.y = H * 0.40;
+    state.p1.x = W * 0.43; state.p1.y = H * 0.50; state.p1.rot = 0;
+    state.p2.x = W * 0.66; state.p2.y = H * 0.52; state.p2.rot = Math.PI;
+  }
+
+  // ---- optics ----
+  const LAMBDAS = []; for(let i = 0; i < 40; i++) LAMBDAS.push(400 + i * (280 / 39));
+  function nIndex(lambdaNm){
+    const um = lambdaNm / 1000, k = state.artistic ? 11 : 1;
+    return 1.5046 + 0.00420 * k / (um * um) + (state.artistic ? 0.02 : 0);
+  }
+  function wlToRGB(l){
+    let r = 0, g = 0, b = 0;
+    if(l < 440){ r = -(l - 440) / 60; b = 1; }
+    else if(l < 490){ g = (l - 440) / 50; b = 1; }
+    else if(l < 510){ g = 1; b = -(l - 510) / 20; }
+    else if(l < 580){ r = (l - 510) / 70; g = 1; }
+    else if(l < 645){ r = 1; g = -(l - 645) / 65; }
+    else { r = 1; }
+    const f = l < 420 ? .35 + .65 * (l - 380) / 40 : l > 660 ? .35 + .65 * (700 - l) / 40 : 1;
+    return [Math.round(255 * Math.pow(r * f, .8)), Math.round(255 * Math.pow(g * f, .8)), Math.round(255 * Math.pow(b * f, .8))];
+  }
+  function triangle(p){
+    const R = p.s / Math.sqrt(3); const v = [];
+    for(let i = 0; i < 3; i++){ const a = p.rot - Math.PI / 2 + i * 2 * Math.PI / 3; v.push({ x: p.x + R * Math.cos(a), y: p.y + R * Math.sin(a) }); }
+    return v;
+  }
+  function edges(p){
+    const v = triangle(p), e = [];
+    for(let i = 0; i < 3; i++){
+      const a = v[i], b = v[(i + 1) % 3]; const dx = b.x - a.x, dy = b.y - a.y, L = Math.hypot(dx, dy);
+      let nx = dy / L, ny = -dx / L; // candidate normal
+      const mx = (a.x + b.x) / 2 - p.x, my = (a.y + b.y) / 2 - p.y; if(nx * mx + ny * my < 0){ nx = -nx; ny = -ny; } // make outward
+      e.push({ a, b, nx, ny, prism: p, id: i });
+    }
+    return e;
+  }
+  function hitEdge(o, d, e, skip){
+    const vx = e.b.x - e.a.x, vy = e.b.y - e.a.y; const den = d.x * vy - d.y * vx; if(Math.abs(den) < 1e-9) return null;
+    const ox = e.a.x - o.x, oy = e.a.y - o.y;
+    const t = (ox * vy - oy * vx) / den, u = (ox * d.y - oy * d.x) / den;
+    if(t < 1e-4 || u < 0 || u > 1 || e === skip) return null;
+    return { t, x: o.x + d.x * t, y: o.y + d.y * t, e };
+  }
+  function nearestHit(o, d, edgeList, skip){
+    let best = null; for(const e of edgeList){ const h = hitEdge(o, d, e, skip); if(h && (!best || h.t < best.t)) best = h; } return best;
+  }
+  function refract(d, nx, ny, eta){ // eta = n_in / n_out ; normal is flipped to face the incoming ray
+    if(d.x * nx + d.y * ny > 0){ nx = -nx; ny = -ny; }
+    const cosi = -(d.x * nx + d.y * ny); const k = 1 - eta * eta * (1 - cosi * cosi);
+    if(k < 0) return null; const s = eta * cosi - Math.sqrt(k);
+    return { x: eta * d.x + s * nx, y: eta * d.y + s * ny };
+  }
+  function reflect(d, nx, ny){ const dot = d.x * nx + d.y * ny; return { x: d.x - 2 * dot * nx, y: d.y - 2 * dot * ny }; }
+  function endpoint(o, d){ // extend to canvas bounds / screen
+    if(d.x > 0){ const t = (screenX - o.x) / d.x; const y = o.y + d.y * t; if(t > 0 && y >= screenTop && y <= screenBot) return { x: screenX, y, screen: true }; }
+    const t = Math.max(W, H) * 2; return { x: o.x + d.x * t, y: o.y + d.y * t, screen: false };
+  }
+
+  // trace a monochromatic ray; returns list of segments and optional screen hit
+  function traceRay(o, d, n, allEdges){
+    const segs = []; let lastEdge = null, inside = null, guard = 0;
+    while(guard++ < 14){
+      if(!inside){
+        const h = nearestHit(o, d, allEdges, lastEdge);
+        if(!h){ const e = endpoint(o, d); segs.push({ a: o, b: e, k: 'air' }); return { segs, hit: e.screen ? e : null, dir: d }; }
+        segs.push({ a: o, b: h, k: 'air' });
+        const r = refract(d, -h.e.nx, -h.e.ny, 1 / n);
+        const fr = reflect(d, h.e.nx, h.e.ny); segs.push({ a: h, b: { x: h.x + fr.x * 90, y: h.y + fr.y * 90 }, k: 'fresnel' });
+        o = h; d = r || fr; inside = r ? h.e.prism : null; lastEdge = h.e;
+      } else {
+        const own = allEdges.filter(e => e.prism === inside);
+        const h = nearestHit(o, d, own, lastEdge);
+        if(!h){ inside = null; continue; }
+        segs.push({ a: o, b: h, k: 'glass' });
+        const r = refract(d, h.e.nx, h.e.ny, n);
+        if(r){ const fr = reflect(d, h.e.nx, h.e.ny); segs.push({ a: h, b: { x: h.x + fr.x * 60, y: h.y + fr.y * 60 }, k: 'internal' }); o = h; d = r; inside = null; lastEdge = h.e; }
+        else { d = reflect(d, h.e.nx, h.e.ny); segs.push({ a: h, b: h, k: 'tir' }); o = h; lastEdge = h.e; }
+      }
+    }
+    return { segs, hit: null, dir: d };
+  }
+  // ---- drawing ----
+  function drawGlass(c, p, t){
+    const v = triangle(p);
+    c.save();
+    c.beginPath(); c.moveTo(v[0].x, v[0].y); c.lineTo(v[1].x, v[1].y); c.lineTo(v[2].x, v[2].y); c.closePath();
+    const g = c.createLinearGradient(v[0].x, v[0].y, v[1].x, v[2].y);
+    g.addColorStop(0, 'rgba(180,220,255,.16)'); g.addColorStop(.5, 'rgba(120,160,220,.05)'); g.addColorStop(1, 'rgba(200,230,255,.14)');
+    c.fillStyle = g; c.fill();
+    c.clip();
+    // caustic ribbons drifting inside the glass
+    c.globalCompositeOperation = 'lighter';
+    for(let i = 0; i < 3; i++){
+      const ph = t * 0.0004 + i * 2.1; c.beginPath();
+      for(let k = 0; k <= 20; k++){ const u = k / 20; const x = v[1].x + (v[2].x - v[1].x) * u; const y = p.y - p.s * .25 + Math.sin(u * 5 + ph) * p.s * .12 + i * p.s * .16 + Math.cos(ph * .7) * 8; k ? c.lineTo(x, y) : c.moveTo(x, y); }
+      c.strokeStyle = `rgba(200,230,255,${(.06 + .04 * Math.sin(ph)).toFixed(3)})`; c.lineWidth = 6; c.stroke();
+    }
+    c.restore();
+    // edges with flare
+    c.save(); c.globalCompositeOperation = 'lighter';
+    c.beginPath(); c.moveTo(v[0].x, v[0].y); c.lineTo(v[1].x, v[1].y); c.lineTo(v[2].x, v[2].y); c.closePath();
+    c.shadowColor = 'rgba(160,210,255,.9)'; c.shadowBlur = 14; c.strokeStyle = 'rgba(220,240,255,.85)'; c.lineWidth = 1.4; c.stroke();
+    c.shadowBlur = 0;
+    for(const q of v){ const rg = c.createRadialGradient(q.x, q.y, 0, q.x, q.y, 26); rg.addColorStop(0, 'rgba(255,255,255,.55)'); rg.addColorStop(.3, 'rgba(160,210,255,.18)'); rg.addColorStop(1, 'rgba(160,210,255,0)'); c.fillStyle = rg; c.beginPath(); c.arc(q.x, q.y, 26, 0, Math.PI * 2); c.fill(); }
+    c.restore();
+  }
+  function drawLamp(c, s){
+    c.save(); c.globalCompositeOperation = 'lighter';
+    const g = c.createRadialGradient(s.x, s.y, 0, s.x, s.y, 60); g.addColorStop(0, 'rgba(255,255,255,.9)'); g.addColorStop(.15, 'rgba(255,250,235,.5)'); g.addColorStop(1, 'rgba(255,240,200,0)');
+    c.fillStyle = g; c.beginPath(); c.arc(s.x, s.y, 60, 0, Math.PI * 2); c.fill();
+    c.restore();
+    c.save(); c.strokeStyle = 'rgba(255,255,255,.35)'; c.lineWidth = 1; c.setLineDash([3, 4]); c.beginPath(); c.arc(s.x, s.y, 18, 0, Math.PI * 2); c.stroke(); c.restore();
+    c.fillStyle = '#fff'; c.beginPath(); c.arc(s.x, s.y, 5, 0, Math.PI * 2); c.fill();
+    c.fillStyle = 'rgba(139,147,167,.9)'; c.font = '600 10px ui-sans-serif, system-ui, sans-serif'; c.textAlign = 'center'; c.fillText('LAMP', s.x, s.y + 36);
+  }
+  function drawScreen(c){
+    c.save();
+    c.fillStyle = 'rgba(255,255,255,.04)'; c.fillRect(screenX - 3, screenTop, 10, screenBot - screenTop);
+    c.strokeStyle = 'rgba(255,255,255,.22)'; c.lineWidth = 1; c.beginPath(); c.moveTo(screenX, screenTop); c.lineTo(screenX, screenBot); c.stroke();
+    for(let y = screenTop; y <= screenBot; y += 24){ c.beginPath(); c.moveTo(screenX + 8, y); c.lineTo(screenX + 14, y); c.stroke(); }
+    c.fillStyle = 'rgba(139,147,167,.9)'; c.font = '600 10px ui-sans-serif, system-ui, sans-serif'; c.textAlign = 'center'; c.fillText('SCREEN', screenX, screenTop - 10);
+    c.restore();
+  }
+
+  function render(t){
+    const c = sctx;
+    c.clearRect(0, 0, W, H);
+    // studio wash
+    const bg = c.createRadialGradient(W * .5, H * .4, 10, W * .5, H * .4, Math.max(W, H) * .8);
+    bg.addColorStop(0, '#0d1018'); bg.addColorStop(1, '#04050a'); c.fillStyle = bg; c.fillRect(0, 0, W, floorY);
+
+    const prisms = state.second ? [state.p1, state.p2] : [state.p1];
+    const allEdges = prisms.flatMap(edges);
+    for(const p of prisms) drawGlass(c, p, t);
+    drawScreen(c);
+
+    // aim the beam at the first prism
+    const aim = { x: state.p1.x - state.p1.s * .05, y: state.p1.y + state.p1.s * .1 };
+    let d = { x: aim.x - state.src.x, y: aim.y - state.src.y }; const L = Math.hypot(d.x, d.y) || 1; d = { x: d.x / L, y: d.y / L };
+
+    c.save(); c.globalCompositeOperation = 'lighter'; c.lineCap = 'round';
+    state.hits = [];
+    let firstAir = null, dirBlue = null, dirRed = null;
+    LAMBDAS.forEach((lam, i) => {
+      const n = nIndex(lam); const res = traceRay(state.src, d, n, allEdges);
+      const [r, g, b] = wlToRGB(lam); const hi = state.hover === i;
+      res.segs.forEach((s, si) => {
+        if(si === 0){ firstAir = s; return; } // white beam drawn once below
+        let alpha = .16, w = 1.6;
+        if(s.k === 'fresnel'){ alpha = .035; w = 1; } else if(s.k === 'internal'){ alpha = .05; w = 1; } else if(s.k === 'tir') return;
+        if(hi){ alpha = .9; w = 2.4; }
+        c.strokeStyle = `rgba(${r},${g},${b},${alpha})`; c.lineWidth = w;
+        c.beginPath(); c.moveTo(s.a.x, s.a.y); c.lineTo(s.b.x, s.b.y); c.stroke();
+      });
+      if(res.hit){ state.hits.push({ y: res.hit.y, lam, rgb: [r, g, b], i });
+        const rg = c.createRadialGradient(screenX, res.hit.y, 0, screenX, res.hit.y, 16); rg.addColorStop(0, `rgba(${r},${g},${b},${hi ? .9 : .5})`); rg.addColorStop(1, `rgba(${r},${g},${b},0)`);
+        c.fillStyle = rg; c.beginPath(); c.ellipse(screenX + 2, res.hit.y, 6, 16, 0, 0, Math.PI * 2); c.fill();
+      }
+      if(i === 0) dirBlue = res.dir; if(i === LAMBDAS.length - 1) dirRed = res.dir;
+    });
+    if(firstAir){
+      c.shadowColor = 'rgba(255,255,255,.8)'; c.shadowBlur = 12; c.strokeStyle = 'rgba(255,255,255,.55)'; c.lineWidth = 2.2;
+      c.beginPath(); c.moveTo(firstAir.a.x, firstAir.a.y); c.lineTo(firstAir.b.x, firstAir.b.y); c.stroke(); c.shadowBlur = 0;
+    }
+    c.restore();
+    drawLamp(c, state.src);
+
+    // stats
+    if(dirBlue && dirRed){ const ang = Math.acos(Math.max(-1, Math.min(1, dirBlue.x * dirRed.x + dirBlue.y * dirRed.y))) * 180 / Math.PI; document.getElementById('spread').textContent = ang.toFixed(2) + '°'; }
+    document.getElementById('nBlue').textContent = nIndex(400).toFixed(4);
+    document.getElementById('nRed').textContent = nIndex(680).toFixed(4);
+
+    // composite: scene + floor reflection
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#04050a'; ctx.fillRect(0, 0, W, H);
+    ctx.drawImage(sceneCv, 0, 0, W, H);
+    ctx.save(); ctx.beginPath(); ctx.rect(0, floorY, W, H - floorY); ctx.clip();
+    ctx.translate(0, floorY * 2); ctx.scale(1, -1); ctx.globalAlpha = .28; ctx.filter = 'blur(2px)';
+    ctx.drawImage(sceneCv, 0, 0, W, H); ctx.restore();
+    const fade = ctx.createLinearGradient(0, floorY, 0, H); fade.addColorStop(0, 'rgba(4,5,10,.25)'); fade.addColorStop(1, 'rgba(4,5,10,1)');
+    ctx.fillStyle = fade; ctx.fillRect(0, floorY, W, H - floorY);
+    ctx.strokeStyle = 'rgba(255,255,255,.08)'; ctx.beginPath(); ctx.moveTo(0, floorY + .5); ctx.lineTo(W, floorY + .5); ctx.stroke();
+  }
+
+  // ---- interaction ----
+  const readout = document.getElementById('readout'), roText = document.getElementById('roText'), roName = document.getElementById('roName');
+  const names = [[450, 'violet'], [485, 'blue'], [500, 'cyan'], [565, 'green'], [590, 'yellow'], [625, 'orange'], [701, 'red']];
+  const lines = [[434, 'Hγ hydrogen'], [486, 'Hβ hydrogen'], [589, 'Na D sodium doublet'], [656, 'Hα hydrogen']];
+  function nameFor(l){ for(const [lim, nm] of names) if(l < lim){ for(const [ll, ln] of lines) if(Math.abs(l - ll) < 5) return `${nm} · near ${ln}`; return nm; } return 'red'; }
+  function pick(x, y){
+    if(Math.hypot(x - state.src.x, y - state.src.y) < 30) return state.src;
+    for(const p of state.second ? [state.p2, state.p1] : [state.p1]) if(Math.hypot(x - p.x, y - p.y) < p.s * .6) return p;
+    return null;
+  }
+  cv.addEventListener('pointerdown', e => { const o = pick(e.clientX, e.clientY); if(o){ state.drag = { o, dx: o.x - e.clientX, dy: o.y - e.clientY }; cv.classList.add('grab'); cv.setPointerCapture(e.pointerId); } });
+  cv.addEventListener('pointermove', e => {
+    state.pointer.x = e.clientX; state.pointer.y = e.clientY;
+    if(state.drag){ const { o, dx, dy } = state.drag; o.x = Math.max(20, Math.min(screenX - 30, e.clientX + dx)); o.y = Math.max(20, Math.min(floorY - 20, e.clientY + dy)); readout.classList.remove('show'); state.hover = null; return; }
+    if(Math.abs(e.clientX - screenX) < 34 && state.hits.length){
+      let best = null; for(const h of state.hits){ const dd = Math.abs(h.y - e.clientY); if(dd < 14 && (!best || dd < best.dd)) best = { ...h, dd }; }
+      if(best){ state.hover = best.i; readout.style.left = (screenX - 8) + 'px'; readout.style.top = best.y + 'px'; roText.textContent = `λ ≈ ${best.lam.toFixed(0)} nm`; roName.textContent = nameFor(best.lam);
+        readout.querySelector('i').style.background = `rgb(${best.rgb.join(',')})`; readout.querySelector('i').style.color = `rgb(${best.rgb.join(',')})`; readout.classList.add('show'); return; }
+    }
+    state.hover = null; readout.classList.remove('show');
+    cv.style.cursor = pick(e.clientX, e.clientY) ? 'grab' : 'crosshair';
+  });
+  const endDrag = () => { state.drag = null; cv.classList.remove('grab'); };
+  cv.addEventListener('pointerup', endDrag); cv.addEventListener('pointercancel', endDrag);
+
+  const bPhys = document.getElementById('modePhys'), bArt = document.getElementById('modeArt');
+  function setMode(a){ state.artistic = a; bPhys.setAttribute('aria-pressed', String(!a)); bArt.setAttribute('aria-pressed', String(a)); }
+  bPhys.addEventListener('click', () => setMode(false)); bArt.addEventListener('click', () => setMode(true));
+  document.getElementById('second').addEventListener('change', e => { state.second = e.target.checked; });
+  document.getElementById('reset').addEventListener('click', resetLayout);
+  window.addEventListener('resize', () => layout(true));
+
+  layout(false);
+  function loop(t){ render(t); if(!reduce) requestAnimationFrame(loop); }
+  requestAnimationFrame(loop);
+  if(reduce){ // still re-render on interaction
+    ['pointermove', 'pointerup', 'pointerdown'].forEach(ev => cv.addEventListener(ev, () => render(0)));
+    ['click', 'change'].forEach(ev => document.querySelector('.controls').addEventListener(ev, () => setTimeout(() => render(0), 0)));
+    window.addEventListener('resize', () => render(0));
+  }
+})();
+</script>
+</body>
+</html>

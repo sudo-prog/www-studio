@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nami no Yume — An Animated Ukiyo-e Seascape</title>
+<style>
+  :root {
+    --paper: #efe3c6;
+    --paper-dark: #d9c79c;
+    --prussian: #1b3a5c;
+    --prussian-deep: #0f2540;
+    --indigo-mid: #2f5a86;
+    --indigo-light: #6f9cc2;
+    --foam: #f6efdc;
+    --seal: #b8322a;
+    --ink: #2b2620;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, ui-serif, serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { min-height: 100%; }
+  body {
+    background: #2a231d;
+    background-image:
+      radial-gradient(ellipse at 50% 40%, #3a3129 0%, #221c17 70%);
+    color: var(--ink);
+    font-family: var(--serif);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: clamp(14px, 3vw, 40px) clamp(10px, 2vw, 30px);
+    gap: 18px;
+    min-height: 100vh;
+  }
+
+  .print {
+    position: relative;
+    width: min(100%, 1200px);
+    aspect-ratio: 3 / 2;
+    background: var(--paper);
+    box-shadow:
+      0 40px 90px rgba(0,0,0,.6),
+      0 2px 4px rgba(0,0,0,.4),
+      inset 0 0 0 1px rgba(0,0,0,.08);
+    overflow: hidden;
+  }
+  .print svg { display: block; width: 100%; height: 100%; }
+
+  /* Misregistration on hover: key block and colour blocks slip apart */
+  .block { transition: transform .9s cubic-bezier(.25,.8,.25,1); }
+  .print:hover .block-blue { transform: translate(5px, -3px); }
+  .print:hover .block-foam { transform: translate(-4px, 2px); }
+  .print:hover .block-key { transform: translate(2px, 3px); }
+  .print:hover .block-seal { transform: translate(-3px, -2px) rotate(-1deg); }
+
+  .caption {
+    width: min(100%, 1200px);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    color: #cbbb99;
+    font-size: clamp(12px, 1.3vw, 15px);
+    letter-spacing: .04em;
+  }
+  .caption em { font-style: italic; color: #e6d7b3; }
+  .caption .small { font-size: .85em; opacity: .7; }
+
+  .controls {
+    display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
+  }
+  .ctl {
+    appearance: none;
+    font: italic 14px var(--serif);
+    color: #e6d7b3;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(230,215,179,.35);
+    padding: 8px 16px;
+    cursor: pointer;
+    letter-spacing: .06em;
+    transition: background .3s, color .3s, border-color .3s;
+  }
+  .ctl:hover { background: var(--seal); border-color: var(--seal); color: #fff; }
+  .ctl[aria-pressed="true"] { background: rgba(184,50,42,.35); border-color: var(--seal); }
+  .ctl:focus-visible { outline: 2px solid #e6d7b3; outline-offset: 2px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .block { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="print" id="print">
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svgTitle svgDesc" preserveAspectRatio="xMidYMid slice">
+  <title id="svgTitle">Nami no Yume — Dream of the Wave</title>
+  <desc id="svgDesc">Layered blue waves with clawed foam rise before a pale mountain while three small boats bob between the swells.</desc>
+  <defs>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="7" result="n"></feTurbulence>
+      <feColorMatrix in="n" type="saturate" values="0" result="g"></feColorMatrix>
+      <feComponentTransfer in="g" result="grain">
+        <feFuncA type="linear" slope="0.18" intercept="-0.02"></feFuncA>
+      </feComponentTransfer>
+      <feBlend in="SourceGraphic" in2="grain" mode="multiply"></feBlend>
+    </filter>
+    <filter id="fibres" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="turbulence" baseFrequency="0.004 0.08" numOctaves="2" seed="3" result="f"></feTurbulence>
+      <feColorMatrix in="f" type="matrix" values="0 0 0 0 .55  0 0 0 0 .45  0 0 0 0 .3  0 0 0 .12 0"></feColorMatrix>
+    </filter>
+    <filter id="inkbleed" x="-5%" y="-5%" width="110%" height="110%">
+      <feMorphology operator="dilate" radius="0.6"></feMorphology>
+      <feGaussianBlur stdDeviation="0.4"></feGaussianBlur>
+    </filter>
+
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e9dcb9"></stop>
+      <stop offset=".45" stop-color="#d7ccb0"></stop>
+      <stop offset=".75" stop-color="#b9b8a6"></stop>
+      <stop offset="1" stop-color="#9fb0b3"></stop>
+    </linearGradient>
+    <linearGradient id="waveBack" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6f9cc2"></stop>
+      <stop offset=".35" stop-color="#3d6d9a"></stop>
+      <stop offset="1" stop-color="#1b3a5c"></stop>
+    </linearGradient>
+    <linearGradient id="waveMid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4a7ba8"></stop>
+      <stop offset=".3" stop-color="#2f5a86"></stop>
+      <stop offset="1" stop-color="#132c47"></stop>
+    </linearGradient>
+    <linearGradient id="waveFront" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3a6b98"></stop>
+      <stop offset=".25" stop-color="#1b3a5c"></stop>
+      <stop offset="1" stop-color="#0f2540"></stop>
+    </linearGradient>
+    <linearGradient id="mountain" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6efdc"></stop>
+      <stop offset=".28" stop-color="#f6efdc"></stop>
+      <stop offset=".3" stop-color="#7c8fa3"></stop>
+      <stop offset="1" stop-color="#3f5470"></stop>
+    </linearGradient>
+    <pattern id="stripes" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(-8)">
+      <rect width="14" height="14" fill="none"></rect>
+      <path d="M0 7 H14" stroke="#7fa8cc" stroke-width="1.6" opacity=".45"></path>
+    </pattern>
+    <pattern id="stripesDark" width="18" height="18" patternUnits="userSpaceOnUse" patternTransform="rotate(-14)">
+      <path d="M0 9 H18" stroke="#0b1d33" stroke-width="2" opacity=".5"></path>
+    </pattern>
+    <clipPath id="frame"><rect width="1200" height="800"></rect></clipPath>
+  </defs>
+
+  <!-- Paper -->
+  <rect width="1200" height="800" fill="#efe3c6"></rect>
+  <rect width="1200" height="800" fill="url(#sky)" opacity=".85"></rect>
+  <rect width="1200" height="800" filter="url(#fibres)" opacity=".8"></rect>
+
+  <!-- Sun -->
+  <circle cx="860" cy="210" r="58" fill="#e8c9a0" opacity=".55"></circle>
+  <circle cx="860" cy="210" r="48" fill="#f2d5a6" opacity=".7"></circle>
+
+  <!-- Distant mountain -->
+  <g class="block block-key" id="mountainGroup">
+    <path d="M540 470 L 680 300 Q 700 280 720 300 L 860 470 Z" fill="url(#mountain)"></path>
+    <path d="M680 300 Q 700 280 720 300 L 740 330 Q 720 322 705 336 Q 690 322 668 332 Z" fill="#f6efdc"></path>
+    <path d="M700 320 L 690 380 M 712 326 L 740 400 M 692 340 L 660 410" stroke="#f6efdc" stroke-width="3" fill="none" stroke-linecap="round" opacity=".7"></path>
+  </g>
+
+  <!-- Wind-blown cloud strokes -->
+  <g class="block block-key" opacity=".35" fill="none" stroke="#8b8a7f" stroke-width="2" stroke-linecap="round">
+    <path d="M120 180 q 60 -18 140 -6 t 130 8" ></path>
+    <path d="M980 250 q 40 -12 90 -4 t 80 6"></path>
+    <path d="M160 215 q 40 -10 90 -3"></path>
+  </g>
+
+  <!-- Waves, drawn by script -->
+  <g clip-path="url(#frame)">
+    <g class="block block-blue">
+      <path id="waveBackFill" d="M0 0" fill="url(#waveBack)"></path>
+      <path id="waveBackStripes" d="M0 0" fill="url(#stripes)"></path>
+    </g>
+    <g class="block block-foam" id="foamBack" fill="#f6efdc"></g>
+
+    <g id="boats" class="block block-key"></g>
+
+    <g class="block block-blue">
+      <path id="waveMidFill" d="M0 0" fill="url(#waveMid)"></path>
+      <path id="waveMidStripes" d="M0 0" fill="url(#stripes)"></path>
+    </g>
+    <g class="block block-foam" id="foamMid" fill="#f6efdc"></g>
+
+    <g class="block block-blue">
+      <path id="waveFrontFill" d="M0 0" fill="url(#waveFront)"></path>
+      <path id="waveFrontStripes" d="M0 0" fill="url(#stripesDark)"></path>
+      <path id="waveFrontEdge" d="M0 0" fill="none" stroke="#0b1d33" stroke-width="2.5" stroke-linejoin="round"></path>
+    </g>
+    <g class="block block-foam" id="foamFront" fill="#f6efdc"></g>
+    <g class="block block-foam" id="flecks" fill="#f6efdc"></g>
+  </g>
+
+  <!-- Vertical caption -->
+  <g class="block block-key" font-family="Iowan Old Style, Palatino, Georgia, serif" fill="#2b2620">
+    <text x="1120" y="70" font-size="30" letter-spacing="6" style="writing-mode: vertical-rl; text-orientation: upright;" font-weight="600">波の夢</text>
+    <text x="1078" y="70" font-size="13" letter-spacing="3" style="writing-mode: vertical-rl; text-orientation: mixed;" opacity=".8">Nami no Yume — dream of the wave</text>
+  </g>
+
+  <!-- Red seal stamp -->
+  <g class="block block-seal" transform="translate(60 60)">
+    <rect x="0" y="0" width="82" height="112" rx="6" fill="#b8322a" filter="url(#inkbleed)"></rect>
+    <rect x="6" y="6" width="70" height="100" rx="3" fill="none" stroke="#efe3c6" stroke-width="2"></rect>
+    <text x="41" y="34" text-anchor="middle" font-family="Iowan Old Style, Palatino, Georgia, serif" font-size="14" font-weight="700" fill="#efe3c6" letter-spacing="2">NAMI</text>
+    <text x="41" y="58" text-anchor="middle" font-family="Iowan Old Style, Palatino, Georgia, serif" font-size="14" font-weight="700" fill="#efe3c6" letter-spacing="2">NO</text>
+    <text x="41" y="82" text-anchor="middle" font-family="Iowan Old Style, Palatino, Georgia, serif" font-size="14" font-weight="700" fill="#efe3c6" letter-spacing="2">YUME</text>
+    <text x="41" y="98" text-anchor="middle" font-family="Iowan Old Style, Palatino, Georgia, serif" font-size="8" fill="#efe3c6" letter-spacing="1.5">MMXXVI</text>
+  </g>
+
+  <!-- Paper grain over everything -->
+  <rect width="1200" height="800" fill="#efe3c6" filter="url(#grain)" opacity=".55" style="mix-blend-mode: multiply;"></rect>
+</svg>
+</div>
+
+<div class="controls">
+  <button class="ctl" id="btnCalm" type="button" aria-pressed="false">Calm sea</button>
+  <button class="ctl" id="btnStorm" type="button" aria-pressed="false">Rising storm</button>
+  <button class="ctl" id="btnPause" type="button" aria-pressed="false">Hold the block</button>
+</div>
+
+<p class="caption">
+  <span><em>Nami no Yume</em> — an original composition in the ukiyo-e manner, printed live in the browser.</span>
+  <span class="small">Hover the print to see the colour blocks slip out of register.</span>
+</p>
+
+<script>
+(function () {
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var W = 1200, H = 800;
+  var amp = 1;               // storm multiplier
+  var targetAmp = 1;
+  var paused = false;
+  var t = 0;
+  var last = performance.now();
+
+  var $ = function (id) { return document.getElementById(id); };
+  var els = {
+    backFill: $('waveBackFill'), backStripes: $('waveBackStripes'), foamBack: $('foamBack'),
+    midFill: $('waveMidFill'), midStripes: $('waveMidStripes'), foamMid: $('foamMid'),
+    frontFill: $('waveFrontFill'), frontStripes: $('waveFrontStripes'), frontEdge: $('waveFrontEdge'), foamFront: $('foamFront'),
+    boats: $('boats'), flecks: $('flecks')
+  };
+
+  /* Wave layer definitions: base height, harmonics, and the great crest bump */
+  var layers = [
+    { base: 500, speed: 0.35, waves: [[0.0045, 22, 0], [0.011, 9, 1.7], [0.023, 4, 0.4]], crest: null, dir: 1 },
+    { base: 570, speed: 0.55, waves: [[0.0038, 34, 2.1], [0.0095, 12, 0.3], [0.021, 5, 2.9]], crest: null, dir: -1 },
+    { base: 690, speed: 0.8,  waves: [[0.0032, 40, 1.1], [0.008, 16, 2.2], [0.019, 6, 0.8]], crest: { x: 330, w: 260, h: 330 }, dir: 1 }
+  ];
+
+  function heightAt(layer, x, time) {
+    var y = layer.base;
+    for (var i = 0; i < layer.waves.length; i++) {
+      var w = layer.waves[i];
+      y -= Math.sin(x * w[0] + time * layer.speed * layer.dir * (1 + i * 0.35) + w[2]) * w[1] * amp;
+    }
+    if (layer.crest) {
+      var c = layer.crest;
+      var breathe = 1 + Math.sin(time * 0.6) * 0.06 * amp;
+      var d = (x - c.x) / c.w;
+      // asymmetric gaussian: steep on the right so it appears to curl forward
+      var g = Math.exp(-d * d * (d > 0 ? 7 : 2.6));
+      y -= g * c.h * breathe;
+    }
+    return y;
+  }
+
+  function buildPath(layer, time, step, offsetY) {
+    var pts = [];
+    for (var x = -20; x <= W + 20; x += step) pts.push([x, heightAt(layer, x, time) + (offsetY || 0)]);
+    var d = 'M' + pts[0][0] + ' ' + pts[0][1];
+    for (var i = 1; i < pts.length - 1; i++) {
+      var mx = (pts[i][0] + pts[i + 1][0]) / 2, my = (pts[i][1] + pts[i + 1][1]) / 2;
+      d += ' Q' + pts[i][0].toFixed(1) + ' ' + pts[i][1].toFixed(1) + ' ' + mx.toFixed(1) + ' ' + my.toFixed(1);
+    }
+    d += ' L' + (W + 20) + ' ' + (H + 20) + ' L-20 ' + (H + 20) + ' Z';
+    return { d: d, pts: pts };
+  }
+
+  /* Foam claws: clusters of shrinking circles hooking forward from each crest */
+  function clawPath(x, y, dir, size, time, seed) {
+    var d = '';
+    var fingers = 3 + (seed % 3);
+    for (var f = 0; f < fingers; f++) {
+      var fa = -Math.PI / 2 + dir * (0.35 + f * 0.42) + Math.sin(time * 1.4 + seed + f) * 0.08;
+      var len = size * (1 - f * 0.16);
+      var n = 5;
+      for (var k = 0; k < n; k++) {
+        var tt = k / (n - 1);
+        // curve the finger downward like a hook
+        var ang = fa + dir * tt * 1.4;
+        var r = size * 0.16 * (1 - tt * 0.85) + 0.8;
+        var px = x + Math.cos(ang) * len * tt * 1.1 + dir * f * size * 0.12;
+        var py = y + Math.sin(ang) * len * tt + Math.abs(Math.sin(ang)) * f * 2;
+        d += 'M' + (px - r).toFixed(1) + ' ' + py.toFixed(1) + ' a' + r.toFixed(1) + ' ' + r.toFixed(1) + ' 0 1 0 ' + (r * 2).toFixed(1) + ' 0 a' + r.toFixed(1) + ' ' + r.toFixed(1) + ' 0 1 0 ' + (-r * 2).toFixed(1) + ' 0 ';
+      }
+    }
+    // foam rim along the crest
+    var rimR = size * 0.12;
+    d += 'M' + (x - size * 0.5).toFixed(1) + ' ' + (y + rimR).toFixed(1) + ' q ' + (size * 0.5).toFixed(1) + ' ' + (-rimR * 2.2).toFixed(1) + ' ' + size.toFixed(1) + ' 0 ' + ' q ' + (-size * 0.5).toFixed(1) + ' ' + (rimR * 1.4).toFixed(1) + ' ' + (-size).toFixed(1) + ' 0 Z ';
+    return d;
+  }
+
+  function crests(pts) {
+    var out = [];
+    for (var i = 2; i < pts.length - 2; i++) {
+      if (pts[i][1] < pts[i - 1][1] && pts[i][1] <= pts[i + 1][1] && pts[i][1] < pts[i - 2][1] && pts[i][1] < pts[i + 2][1]) out.push(pts[i]);
+    }
+    return out;
+  }
+
+  function foamFor(pts, layer, time, sizeScale) {
+    var cs = crests(pts), d = '';
+    for (var i = 0; i < cs.length; i++) {
+      var p = cs[i];
+      var prominence = layer.base - p[1];
+      if (prominence < 10 * amp) continue;
+      var size = Math.min(150, prominence * sizeScale);
+      var seed = Math.round(p[0] / 37);
+      d += clawPath(p[0], p[1], layer.dir, size, time, seed);
+    }
+    return d;
+  }
+
+  /* Boats */
+  var boatDefs = [
+    { x: 590, layerBetween: 0, scale: 0.75, phase: 0 },
+    { x: 820, layerBetween: 0, scale: 0.9, phase: 1.3 },
+    { x: 1050, layerBetween: 0, scale: 0.6, phase: 2.4 }
+  ];
+  var boatMarkup = '<path d="M-60 0 q 10 14 60 16 q 50 -2 62 -16 q -8 -10 -22 -12 h -80 q -14 2 -20 12 z" fill="#3b2a1c"></path>' +
+    '<path d="M-58 0 h 118" stroke="#d9b98a" stroke-width="2.5" stroke-linecap="round"></path>' +
+    '<path d="M-40 -12 v 12 M-16 -12 v 12 M8 -12 v 12 M32 -12 v 12" stroke="#6b4a2c" stroke-width="2"></path>' +
+    '<g fill="#1f2a3a"><ellipse cx="-30" cy="-16" rx="5" ry="6"></ellipse><ellipse cx="-8" cy="-17" rx="5" ry="6"></ellipse><ellipse cx="16" cy="-16" rx="5" ry="6"></ellipse><ellipse cx="40" cy="-15" rx="5" ry="6"></ellipse></g>' +
+    '<path d="M-30 -10 l -18 12 M-8 -10 l -18 12 M16 -10 l -18 12 M40 -10 l -18 12" stroke="#4a3a2a" stroke-width="2" stroke-linecap="round"></path>';
+  var boatGroups = boatDefs.map(function (b) {
+    var g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    g.innerHTML = boatMarkup;
+    els.boats.appendChild(g);
+    return g;
+  });
+
+  /* Foam flecks that drift across the print */
+  var flecks = [];
+  for (var i = 0; i < 46; i++) {
+    var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    var f = { x: Math.random() * W, y: 380 + Math.random() * 380, r: 1.2 + Math.random() * 3.2, vx: 8 + Math.random() * 30, vy: -6 - Math.random() * 14, el: c, life: Math.random() };
+    c.setAttribute('r', f.r.toFixed(1));
+    c.setAttribute('opacity', '0.85');
+    els.flecks.appendChild(c);
+    flecks.push(f);
+  }
+
+  function render(time, dt) {
+    var back = buildPath(layers[0], time, 24);
+    var mid = buildPath(layers[1], time, 20);
+    var front = buildPath(layers[2], time, 14);
+
+    els.backFill.setAttribute('d', back.d);
+    els.backStripes.setAttribute('d', back.d);
+    els.midFill.setAttribute('d', mid.d);
+    els.midStripes.setAttribute('d', mid.d);
+    els.frontFill.setAttribute('d', front.d);
+    els.frontStripes.setAttribute('d', front.d);
+    els.frontEdge.setAttribute('d', front.d);
+
+    els.foamBack.innerHTML = '<path d="' + foamFor(back.pts, layers[0], time, 1.1) + '"></path>';
+    els.foamMid.innerHTML = '<path d="' + foamFor(mid.pts, layers[1], time, 1.25) + '"></path>';
+    els.foamFront.innerHTML = '<path d="' + foamFor(front.pts, layers[2], time, 0.62) + '"></path>';
+
+    // Boats sit on the wave in front of their layer, rocking with the local slope
+    for (var i = 0; i < boatGroups.length; i++) {
+      var b = boatDefs[i];
+      var layer = layers[b.layerBetween];
+      var y = heightAt(layer, b.x, time) + 6;
+      var slope = (heightAt(layer, b.x + 12, time) - heightAt(layer, b.x - 12, time)) / 24;
+      var rot = Math.atan(slope) * 180 / Math.PI * 0.8 + Math.sin(time * 1.2 + b.phase) * 2.5;
+      boatGroups[i].setAttribute('transform', 'translate(' + b.x + ' ' + y.toFixed(1) + ') rotate(' + rot.toFixed(2) + ') scale(' + b.scale + ')');
+    }
+
+    // Drift flecks upward and forward; recycle at edges
+    for (var k = 0; k < flecks.length; k++) {
+      var f = flecks[k];
+      f.x += f.vx * dt * amp; f.y += f.vy * dt * amp + Math.sin(time * 2 + k) * 0.3;
+      f.life += dt * 0.25;
+      if (f.x > W + 10 || f.y < 300 || f.life > 1) { f.x = Math.random() * W * 0.7; f.y = 450 + Math.random() * 300; f.life = 0; }
+      f.el.setAttribute('cx', f.x.toFixed(1));
+      f.el.setAttribute('cy', f.y.toFixed(1));
+      f.el.setAttribute('opacity', (0.9 * Math.sin(f.life * Math.PI)).toFixed(2));
+    }
+  }
+
+  function frame(now) {
+    var dt = Math.min(0.05, (now - last) / 1000);
+    last = now;
+    amp += (targetAmp - amp) * Math.min(1, dt * 1.2);
+    if (!paused) t += dt;
+    render(t, paused ? 0 : dt);
+    if (!reduce) requestAnimationFrame(frame);
+  }
+
+  /* Controls */
+  var btnCalm = $('btnCalm'), btnStorm = $('btnStorm'), btnPause = $('btnPause');
+  function setSea(mode) {
+    targetAmp = mode === 'calm' ? 0.45 : mode === 'storm' ? 1.6 : 1;
+    btnCalm.setAttribute('aria-pressed', mode === 'calm' ? 'true' : 'false');
+    btnStorm.setAttribute('aria-pressed', mode === 'storm' ? 'true' : 'false');
+  }
+  btnCalm.addEventListener('click', function () { setSea(btnCalm.getAttribute('aria-pressed') === 'true' ? 'normal' : 'calm'); });
+  btnStorm.addEventListener('click', function () { setSea(btnStorm.getAttribute('aria-pressed') === 'true' ? 'normal' : 'storm'); });
+  btnPause.addEventListener('click', function () {
+    paused = !paused;
+    btnPause.setAttribute('aria-pressed', paused ? 'true' : 'false');
+    btnPause.textContent = paused ? 'Release the block' : 'Hold the block';
+    if (reduce && !paused) { last = performance.now(); requestAnimationFrame(frame); }
+  });
+
+  if (reduce) {
+    // Static print: render one frame at a pleasing phase
+    t = 2.3;
+    render(t, 0);
+  } else {
+    requestAnimationFrame(frame);
+  }
+})();
+</script>
+</body>
+</html>

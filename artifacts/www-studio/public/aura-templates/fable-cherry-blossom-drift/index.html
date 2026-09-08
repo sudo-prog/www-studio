@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sakura Drift — petals, river, breeze</title>
+<style>
+  :root{
+    --sky1:#cfe3f5; --sky2:#f3dfe8; --sky3:#fbeee6;
+    --blush:#f7c8d4; --pink:#e2698c; --indigo:#2f2b52; --gold:#e9c27a; --mist:#b9b3d1;
+    --sunx:20%; --suny:60%; --sun-a:.6;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; height:100%; overflow:hidden; }
+  body{
+    position:relative; width:100vw; height:100vh; color:var(--indigo);
+    font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, ui-serif, serif;
+    background: linear-gradient(180deg, var(--sky1) 0%, var(--sky2) 55%, var(--sky3) 100%);
+  }
+  .sun{ position:absolute; left:var(--sunx); top:var(--suny); width:min(22vw,180px); aspect-ratio:1; transform:translate(-50%,-50%); border-radius:50%; pointer-events:none;
+    background: radial-gradient(circle, rgba(255,250,235,.95) 0 28%, rgba(255,236,200,.55) 40%, rgba(255,230,190,0) 70%); opacity:var(--sun-a); filter: blur(1px); }
+  .haze{ position:absolute; inset:0; pointer-events:none; background: linear-gradient(180deg, transparent 40%, rgba(255,255,255,.35) 75%, rgba(255,255,255,0) 82%); }
+  svg.scene{ position:absolute; left:0; bottom:0; width:100%; height:100%; display:block; }
+  canvas#petals{ position:absolute; inset:0; width:100%; height:100%; display:block; cursor:default; }
+
+  .haiku{ position:absolute; top:clamp(16px,4vh,48px); right:clamp(14px,4vw,64px); display:flex; flex-direction:row-reverse; gap:clamp(6px,1.4vw,18px); pointer-events:none; }
+  .haiku p{ margin:0; writing-mode: vertical-rl; text-orientation: mixed; font-size:clamp(1rem, 2.1vw, 1.55rem); letter-spacing:.14em; line-height:1; font-style:italic; color:var(--indigo); text-shadow:0 1px 0 rgba(255,255,255,.6); }
+  .haiku p:nth-child(2){ margin-top:clamp(20px,4vh,48px); }
+  .haiku p:nth-child(3){ margin-top:clamp(40px,8vh,96px); }
+  .haiku span{ opacity:0; transform:translateY(-6px); display:inline-block; transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1); }
+  .haiku span.on{ opacity:1; transform:none; }
+
+  .title{ position:absolute; left:clamp(14px,3vw,40px); bottom:clamp(14px,3vh,32px); pointer-events:none; }
+  .title h1{ margin:0; font-weight:400; font-size:clamp(1.3rem,2.6vw,2rem); letter-spacing:.06em; color:var(--indigo); }
+  .title h1 span{ font-style:italic; color:var(--pink); }
+  .title p{ margin:.3em 0 0; font-size:.8rem; letter-spacing:.16em; text-transform:uppercase; color:rgba(47,43,82,.65); }
+  .kanji{ position:absolute; right:clamp(14px,3vw,40px); bottom:clamp(14px,3vh,32px); font-size:clamp(2.2rem,5vw,4rem); color:rgba(47,43,82,.14); font-weight:700; pointer-events:none; line-height:1; }
+  .hint{ position:absolute; left:50%; bottom:clamp(14px,3vh,32px); transform:translateX(-50%); font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(47,43,82,.55); pointer-events:none; white-space:nowrap; transition:opacity 1s; }
+  .hint.fade{ opacity:0; }
+  @media (max-width:640px){ .kanji, .hint{ display:none; } .haiku p{ font-size:1rem; } }
+</style>
+</head>
+<body>
+<div class="sun" aria-hidden="true"></div>
+
+<svg class="scene" viewBox="0 0 1000 600" preserveAspectRatio="xMinYMax slice" role="img" aria-labelledby="sceneTitle">
+  <title id="sceneTitle">Cherry trees in blossom above a river, a pagoda in the distance</title>
+  <defs>
+    <radialGradient id="bl" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#fff3f6"/><stop offset=".55" stop-color="#f7c8d4"/><stop offset="1" stop-color="#e2698c"/></radialGradient>
+    <radialGradient id="bl2" cx="45%" cy="40%" r="70%"><stop offset="0" stop-color="#fbe0e8"/><stop offset=".6" stop-color="#f1b3c4"/><stop offset="1" stop-color="#c9527a"/></radialGradient>
+    <radialGradient id="bl3" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#ffffff"/><stop offset=".5" stop-color="#fbd9e2"/><stop offset="1" stop-color="#e98aa6"/></radialGradient>
+    <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9b3d1" stop-opacity=".55"/><stop offset="1" stop-color="#b9b3d1" stop-opacity=".15"/></linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="1.2"/></filter>
+    <filter id="mist" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2.5"/></filter>
+  </defs>
+
+  <!-- distant hills and pagoda -->
+  <g id="distance" filter="url(#mist)">
+    <path d="M0 470 C120 420 220 440 320 400 C420 360 520 420 640 380 C760 340 860 390 1000 350 L1000 600 L0 600Z" fill="url(#hill)"/>
+    <path d="M300 500 C420 450 560 470 700 430 C820 400 920 450 1000 420 L1000 600 L300 600Z" fill="#b9b3d1" opacity=".35"/>
+    <g fill="#8f88b3" opacity=".7" transform="translate(720 300) scale(1.05)">
+      <rect x="-3" y="-30" width="6" height="30"/>
+      <path d="M-40 0 Q0 -14 40 0 L26 8 L-26 8Z"/>
+      <rect x="-18" y="8" width="36" height="22"/>
+      <path d="M-50 30 Q0 14 50 30 L34 38 L-34 38Z"/>
+      <rect x="-24" y="38" width="48" height="26"/>
+      <path d="M-62 64 Q0 46 62 64 L44 72 L-44 72Z"/>
+      <rect x="-30" y="72" width="60" height="30"/>
+      <path d="M-74 102 Q0 84 74 102 L74 108 L-74 108Z"/>
+      <rect x="-80" y="108" width="160" height="8"/>
+    </g>
+  </g>
+
+  <!-- trees: indigo branches -->
+  <g id="trees" fill="none" stroke="#2f2b52" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M70 600 C85 540 90 500 130 440" stroke-width="28"/>
+    <path d="M130 440 C160 400 190 380 240 330" stroke-width="17"/>
+    <path d="M240 330 C280 290 330 280 380 250" stroke-width="11"/>
+    <path d="M380 250 C420 230 450 240 500 210" stroke-width="7"/>
+    <path d="M500 210 C540 200 560 180 600 190" stroke-width="4"/>
+    <path d="M170 400 C150 350 140 320 90 280" stroke-width="10"/>
+    <path d="M90 280 C60 250 40 260 20 230" stroke-width="5"/>
+    <path d="M240 330 C260 290 250 250 290 200" stroke-width="8"/>
+    <path d="M290 200 C310 170 340 160 360 130" stroke-width="4.5"/>
+    <path d="M130 440 C180 430 230 440 290 420" stroke-width="9"/>
+    <path d="M290 420 C340 410 380 380 430 370" stroke-width="5"/>
+    <path d="M380 250 C400 200 390 170 420 140" stroke-width="4.5"/>
+    <path d="M330 280 C340 250 370 230 400 225" stroke-width="3.5"/>
+    <path d="M960 600 C950 540 930 500 900 460" stroke-width="18"/>
+    <path d="M900 460 C870 420 830 400 800 370" stroke-width="10"/>
+    <path d="M800 370 C770 340 740 350 700 320" stroke-width="6"/>
+    <path d="M900 460 C920 420 950 400 990 380" stroke-width="7"/>
+    <path d="M840 400 C830 370 850 350 870 330" stroke-width="4"/>
+  </g>
+  <g id="blossoms" filter="url(#soft)"></g>
+  <g id="blossomsFront"></g>
+</svg>
+
+<div class="haze" aria-hidden="true"></div>
+<canvas id="petals" aria-hidden="true"></canvas>
+
+<div class="haiku" id="haiku" aria-label="Haiku">
+  <p>petals let go first</p>
+  <p>the branch remembers nothing</p>
+  <p>the river keeps all</p>
+</div>
+
+<div class="title">
+  <h1>Sakura <span>Drift</span></h1>
+  <p>Morning into gold · a ninety-second afternoon</p>
+</div>
+<div class="kanji" aria-hidden="true">桜</div>
+<div class="hint" id="hint">Move to stir the breeze · click for a gust</div>
+
+<script>
+(function(){
+  'use strict';
+  const NS = 'http://www.w3.org/2000/svg';
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const rnd = (a, b) => a + Math.random() * (b - a);
+
+  // ---- blossoms on the branches ----
+  const anchors = [
+    [600,190,26],[560,185,22],[500,210,32],[450,240,26],[420,140,28],[400,190,22],[380,250,34],[360,130,30],[330,165,24],[290,200,30],
+    [330,280,28],[240,330,30],[275,300,22],[200,370,22],[140,320,24],[90,280,30],[20,230,30],[55,255,22],[430,370,28],[380,395,22],[330,415,20],
+    [700,320,30],[740,350,24],[800,370,30],[870,330,26],[840,400,22],[990,380,28],[950,400,24],[905,430,20]
+  ];
+  const back = document.getElementById('blossoms'), front = document.getElementById('blossomsFront');
+  anchors.forEach(([x, y, R]) => {
+    const n = Math.round(R * .7);
+    for(let i = 0; i < n; i++){
+      const a = Math.random() * Math.PI * 2, d = Math.sqrt(Math.random()) * R;
+      const c = document.createElementNS(NS, 'circle');
+      const cx = x + Math.cos(a) * d, cy = y + Math.sin(a) * d * .85;
+      c.setAttribute('cx', cx.toFixed(1)); c.setAttribute('cy', cy.toFixed(1));
+      c.setAttribute('r', rnd(2.6, 6.2).toFixed(1));
+      const g = Math.random(); c.setAttribute('fill', g < .55 ? 'url(#bl)' : g < .85 ? 'url(#bl2)' : 'url(#bl3)');
+      (i % 3 === 0 ? front : back).appendChild(c);
+    }
+    for(let i = 0; i < 4; i++){ // a few petal-shaped highlights
+      const e = document.createElementNS(NS, 'ellipse');
+      const cx = x + rnd(-R, R) * .8, cy = y + rnd(-R, R) * .7;
+      e.setAttribute('cx', cx.toFixed(1)); e.setAttribute('cy', cy.toFixed(1)); e.setAttribute('rx', '2.2'); e.setAttribute('ry', '4');
+      e.setAttribute('transform', `rotate(${Math.round(rnd(0, 180))} ${cx.toFixed(1)} ${cy.toFixed(1)})`);
+      e.setAttribute('fill', '#fff'); e.setAttribute('opacity', '.75'); front.appendChild(e);
+    }
+  });
+
+  // ---- sky cycle ----
+  const root = document.documentElement.style;
+  const morning = [[207,227,245],[243,223,232],[251,238,230]], golden = [[233,201,168],[246,217,180],[251,229,201]];
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const mix = (A, B, t) => `rgb(${Math.round(lerp(A[0],B[0],t))},${Math.round(lerp(A[1],B[1],t))},${Math.round(lerp(A[2],B[2],t))})`;
+  const CYCLE = 90000;
+  function sky(now){
+    const u = (now % CYCLE) / CYCLE, ph = .5 - .5 * Math.cos(u * Math.PI * 2); // morning → golden → morning
+    root.setProperty('--sky1', mix(morning[0], golden[0], ph)); root.setProperty('--sky2', mix(morning[1], golden[1], ph)); root.setProperty('--sky3', mix(morning[2], golden[2], ph));
+    root.setProperty('--sunx', (18 + 62 * u).toFixed(2) + '%'); root.setProperty('--suny', (58 - 40 * Math.sin(u * Math.PI)).toFixed(2) + '%');
+    root.setProperty('--sun-a', (.45 + .5 * ph).toFixed(3));
+    return ph;
+  }
+
+  // ---- petals canvas ----
+  const cv = document.getElementById('petals'), ctx = cv.getContext('2d');
+  let W = 0, H = 0, dpr = 1, riverTop = 0, petals = [];
+  const wind = { x: .35, gust: 0 };
+  const pointer = { x: -1e4, y: -1e4, vx: 0, vy: 0, t: 0 };
+
+  function makePetal(fromTree){
+    const z = rnd(.35, 1); // depth: 1 = nearest
+    const p = {
+      z, x: rnd(-40, W + 40), y: rnd(-H, -10), r: (5 + rnd(0, 5)) * z, rot: rnd(0, Math.PI * 2), rs: rnd(-.03, .03) * (2 - z),
+      vy: (.5 + rnd(0, .7)) * z, ph: rnd(0, Math.PI * 2), amp: rnd(.4, 1.3), freq: rnd(.8, 1.8), vx: 0, state: 'fall', hue: rnd(0, 1), flip: rnd(0, Math.PI * 2)
+    };
+    if(fromTree){ p.x = rnd(0, W * .62); p.y = rnd(H * .1, H * .55); }
+    return p;
+  }
+  function resize(){
+    dpr = Math.min(window.devicePixelRatio || 1, 2); W = window.innerWidth; H = window.innerHeight;
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    riverTop = H * .83;
+    const n = Math.min(170, Math.round(W * H / 7000));
+    petals = Array.from({ length: n }, () => { const p = makePetal(false); p.y = rnd(-H * .2, H); return p; });
+  }
+  function petalPath(c, r){
+    c.beginPath(); c.moveTo(0, -r);
+    c.bezierCurveTo(r * .9, -r * .9, r * .95, r * .3, 0, r);
+    c.bezierCurveTo(-r * .95, r * .3, -r * .9, -r * .9, 0, -r);
+    c.closePath();
+  }
+  function drawRiver(t, ph){
+    const g = ctx.createLinearGradient(0, riverTop, 0, H);
+    g.addColorStop(0, ph > .5 ? 'rgba(214,196,190,.9)' : 'rgba(191,205,222,.9)'); g.addColorStop(.35, 'rgba(160,178,204,.95)'); g.addColorStop(1, 'rgba(94,98,140,1)');
+    ctx.fillStyle = g; ctx.fillRect(0, riverTop, W, H - riverTop);
+    // blossom reflection glow on the water under the big tree
+    const rg = ctx.createRadialGradient(W * .3, riverTop + 10, 0, W * .3, riverTop + 10, W * .35); rg.addColorStop(0, 'rgba(247,200,212,.55)'); rg.addColorStop(1, 'rgba(247,200,212,0)');
+    ctx.fillStyle = rg; ctx.fillRect(0, riverTop, W, H - riverTop);
+    // ripples
+    ctx.lineWidth = 1; ctx.lineCap = 'round';
+    for(let k = 0; k < 9; k++){
+      const y = riverTop + 8 + k * ((H - riverTop) / 9); const speed = .0006 + k * .00008; const a = .18 - k * .012;
+      ctx.strokeStyle = `rgba(255,255,255,${a.toFixed(3)})`; ctx.beginPath();
+      for(let x = -20; x <= W + 20; x += 12){ const yy = y + Math.sin(x * .02 + t * speed * 3 + k) * 2.2 + Math.sin(x * .007 - t * speed * 2) * 3; x === -20 ? ctx.moveTo(x, yy) : ctx.lineTo(x, yy); }
+      ctx.stroke();
+    }
+    // sun glitter
+    const sunx = parseFloat(root.getPropertyValue('--sunx')) / 100 * W;
+    for(let i = 0; i < 24; i++){ const x = sunx + Math.sin(i * 12.9898 + t * .0007) * W * .12, y = riverTop + 6 + ((i * 37) % Math.max(10, (H - riverTop) * .5)); const al = .25 + .25 * Math.sin(t * .003 + i); ctx.fillStyle = `rgba(255,248,230,${al.toFixed(3)})`; ctx.fillRect(x, y, 6 + (i % 3) * 3, 1.2); }
+  }
+  function step(t, dt){
+    wind.gust *= Math.pow(.985, dt / 16);
+    const push = Math.min(1, Math.hypot(pointer.vx, pointer.vy) / 40);
+    for(const p of petals){
+      if(p.state === 'fall'){
+        const sway = Math.sin(t * .001 * p.freq + p.ph) * p.amp * p.z;
+        const dx = p.x - pointer.x, dy = p.y - pointer.y, dist = Math.hypot(dx, dy);
+        if(dist < 180 && push > 0){ const f = (1 - dist / 180) * push * 3.5; p.vx += (pointer.vx / 40) * f + (dx / dist) * f * .6; p.vy += (pointer.vy / 40) * f * .5 - f * .25; }
+        p.vx += (wind.x + wind.gust * p.z - p.vx) * .03; p.vy += ((.5 + p.z * .8) - p.vy) * .02;
+        p.x += (p.vx + sway) * (dt / 16); p.y += p.vy * (dt / 16); p.rot += p.rs * (dt / 16) + wind.gust * .002; p.flip += .02 * (dt / 16);
+        if(p.y > riverTop + rnd(0, 20) && p.z > .55){ p.state = 'float'; p.fy = p.y; p.vy = 0; }
+        else if(p.y > H + 20 || p.x > W + 60 || p.x < -60){ Object.assign(p, makePetal(false)); }
+      } else {
+        p.x += (1.1 + p.z * .6 + wind.gust * .3) * (dt / 16); p.y = p.fy + Math.sin(t * .002 + p.ph) * 1.6; p.rot += .002 * (dt / 16);
+        if(p.x > W + 40) Object.assign(p, makePetal(false));
+      }
+    }
+    pointer.vx *= .9; pointer.vy *= .9;
+  }
+  let phase = 0;
+  function draw(t){
+    ctx.clearRect(0, 0, W, H);
+    drawRiver(t, phase);
+    // far petals first
+    const sorted = petals.slice().sort((a, b) => a.z - b.z);
+    for(const p of sorted){
+      const sq = .35 + .65 * Math.abs(Math.cos(p.flip)); // flutter: petal turning edge-on
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot); ctx.scale(sq, 1);
+      const floaty = p.state === 'float';
+      const alpha = floaty ? .85 : .45 + .55 * p.z;
+      const c1 = p.hue < .5 ? '#fbe0e8' : '#f7c8d4', c2 = p.hue < .5 ? '#f0a3b9' : '#e2698c';
+      const g = ctx.createLinearGradient(0, -p.r, 0, p.r); g.addColorStop(0, c1); g.addColorStop(1, c2);
+      ctx.globalAlpha = alpha; ctx.fillStyle = g; petalPath(ctx, p.r); ctx.fill();
+      if(p.z > .8 && !floaty){ ctx.globalAlpha = alpha * .5; ctx.strokeStyle = '#ffffff'; ctx.lineWidth = .6; ctx.stroke(); }
+      ctx.restore();
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  // ---- haiku, letter by letter ----
+  const haiku = document.getElementById('haiku');
+  const spans = [];
+  haiku.querySelectorAll('p').forEach(p => { const txt = p.textContent; p.textContent = ''; for(const ch of txt){ const s = document.createElement('span'); s.textContent = ch === ' ' ? '\u00a0' : ch; p.appendChild(s); spans.push(s); } });
+  if(reduce){ spans.forEach(s => s.classList.add('on')); }
+  else spans.forEach((s, i) => setTimeout(() => s.classList.add('on'), 1800 + i * 110));
+
+  // ---- interaction ----
+  const hint = document.getElementById('hint');
+  window.addEventListener('pointermove', e => {
+    const now = performance.now(), dt = Math.max(8, now - pointer.t);
+    if(pointer.x > -1e3){ pointer.vx = (e.clientX - pointer.x) / dt * 16; pointer.vy = (e.clientY - pointer.y) / dt * 16; }
+    pointer.x = e.clientX; pointer.y = e.clientY; pointer.t = now;
+  });
+  document.documentElement.addEventListener('pointerleave', () => { pointer.x = -1e4; pointer.y = -1e4; });
+  window.addEventListener('pointerdown', e => {
+    // a gust blows away from the side that was clicked
+    const dir = e.clientX < W / 2 ? 1 : -1;
+    wind.gust = dir * Math.min(12, Math.abs(wind.gust) + 7);
+    for(let i = 0; i < 36; i++){ const p = makePetal(true); p.vx = wind.gust * rnd(.6, 1.2); p.vy = rnd(-1.5, .5); const victim = petals.find(q => q.state === 'fall' && q.y < -H * .3) || null; if(victim) Object.assign(victim, p); else if(petals.length < 260) petals.push(p); }
+    hint.classList.add('fade');
+  });
+  window.addEventListener('resize', resize);
+
+  resize();
+  let last = performance.now();
+  function frame(t){
+    const dt = Math.min(48, t - last); last = t;
+    phase = sky(t); step(t, dt); draw(t);
+    requestAnimationFrame(frame);
+  }
+  if(reduce){ phase = sky(CYCLE * .4); for(let i = 0; i < 60; i++) step(i * 16, 16); draw(0); }
+  else requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

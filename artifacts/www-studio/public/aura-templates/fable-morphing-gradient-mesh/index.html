@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Breathe — A Living Gradient Mesh</title>
+<style>
+  :root {
+    --c1: #ff6b57;   /* coral */
+    --c2: #7b4dff;   /* violet */
+    --c3: #14b8a6;   /* teal */
+    --c4: #f5b942;   /* gold */
+    --base: #1a1030;
+    --ink: rgba(255, 250, 240, 0.94);
+    --ink-dim: rgba(255, 250, 240, 0.55);
+    --ink-faint: rgba(255, 250, 240, 0.2);
+    --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, ui-serif, serif;
+    --sans: ui-sans-serif, system-ui, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace;
+    --swap: 2.2s;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    background: var(--base);
+    color: var(--ink);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+    transition: background-color var(--swap) ease;
+  }
+
+  .mesh {
+    position: fixed;
+    inset: -20%;
+    width: 140%;
+    height: 140%;
+    filter: blur(clamp(50px, 7vw, 120px)) saturate(1.15);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .blob {
+    position: absolute;
+    width: 62vmax;
+    height: 62vmax;
+    border-radius: 50%;
+    mix-blend-mode: screen;
+    opacity: 0.9;
+    will-change: transform;
+    transition: background-color var(--swap) ease;
+  }
+
+  .blob.b1 { background: var(--c1); left: 5%;  top: 10%; }
+  .blob.b2 { background: var(--c2); left: 45%; top: 0%;   width: 70vmax; height: 70vmax; }
+  .blob.b3 { background: var(--c3); left: 25%; top: 45%; }
+  .blob.b4 { background: var(--c4); left: 55%; top: 50%; width: 50vmax; height: 50vmax; }
+  .blob.b5 { background: var(--c2); left: -5%; top: 55%; width: 48vmax; height: 48vmax; opacity: 0.6; }
+
+  #grain {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.22;
+    mix-blend-mode: overlay;
+  }
+
+  .vignette {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, rgba(0,0,0,0.45) 100%);
+  }
+
+  .stage {
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: clamp(20px, 4vw, 52px);
+  }
+
+  header, footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+
+  header b { color: var(--ink); font-weight: 500; letter-spacing: 0.4em; }
+
+  .word-wrap {
+    display: grid;
+    place-items: center;
+    position: relative;
+  }
+
+  .word {
+    position: absolute;
+    font-family: var(--serif);
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(3.4rem, 15vw, 15rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-shadow: 0 0 60px rgba(255,255,255,0.15);
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
+    filter: blur(8px);
+    transition: opacity 1.6s cubic-bezier(0.4, 0, 0.2, 1), transform 1.6s cubic-bezier(0.16, 1, 0.3, 1), filter 1.6s ease;
+    will-change: opacity, transform, filter;
+    white-space: nowrap;
+    user-select: none;
+  }
+
+  .word.in { opacity: 1; transform: none; filter: blur(0); }
+  .word.out { opacity: 0; transform: translateY(-12px) scale(1.015); filter: blur(10px); }
+
+  .caption {
+    position: absolute;
+    bottom: 14%;
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    opacity: 0;
+    transition: opacity 1.4s ease 0.6s;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .caption.in { opacity: 1; }
+
+  .controls {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+
+  .palettes {
+    display: flex;
+    gap: 6px;
+    padding: 4px;
+    border: 1px solid var(--ink-faint);
+    border-radius: 999px;
+    background: rgba(0,0,0,0.12);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .palettes button {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: var(--ink-dim);
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 9px 16px 9px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.4s ease, background-color 0.5s ease;
+  }
+
+  .palettes button i {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: conic-gradient(var(--p1) 0 25%, var(--p2) 0 50%, var(--p3) 0 75%, var(--p4) 0);
+    transform: rotate(-45deg);
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.15);
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .palettes button:hover { color: var(--ink); }
+  .palettes button:hover i { transform: rotate(45deg) scale(1.15); }
+  .palettes button[aria-pressed="true"] { color: var(--ink); background: rgba(255,255,255,0.12); }
+  .palettes button:focus-visible { outline: 1px solid var(--ink); outline-offset: 2px; }
+
+  .pause {
+    appearance: none;
+    background: transparent;
+    border: 1px solid var(--ink-faint);
+    color: var(--ink-dim);
+    border-radius: 999px;
+    width: 42px; height: 42px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: border-color 0.4s ease, color 0.4s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .pause:hover { color: var(--ink); border-color: var(--ink-dim); transform: scale(1.06); }
+  .pause:focus-visible { outline: 1px solid var(--ink); outline-offset: 2px; }
+  .pause svg { width: 14px; height: 14px; fill: currentColor; }
+  .pause .ico-play { display: none; }
+  .paused .pause .ico-pause { display: none; }
+  .paused .pause .ico-play { display: block; }
+
+  .meta { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-faint); }
+
+  @media (max-width: 640px) {
+    header span:last-child, footer .meta { display: none; }
+    .controls { gap: 14px; }
+    .palettes button { padding: 8px 12px 8px 10px; font-size: 0.58rem; letter-spacing: 0.16em; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .word { transition-duration: 0.6s; }
+    .palettes button i, .pause { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="mesh" id="mesh" aria-hidden="true">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+  <div class="blob b4"></div>
+  <div class="blob b5"></div>
+</div>
+
+<canvas id="grain" aria-hidden="true"></canvas>
+<div class="vignette" aria-hidden="true"></div>
+
+<div class="stage">
+  <header>
+    <span><b>Breathe</b></span>
+    <span>A living gradient · no. 009</span>
+    <span id="paletteName">Dawn</span>
+  </header>
+
+  <div class="word-wrap" id="wordWrap" aria-live="polite" aria-atomic="true">
+    <div class="word in" id="wordA">breathe</div>
+    <div class="word" id="wordB"></div>
+    <div class="caption" id="caption"></div>
+  </div>
+
+  <footer>
+    <div class="controls">
+      <div class="palettes" id="palettes" role="group" aria-label="Palette">
+        <button type="button" data-palette="dawn" aria-pressed="true" style="--p1:#ff6b57;--p2:#7b4dff;--p3:#14b8a6;--p4:#f5b942"><i></i>Dawn</button>
+        <button type="button" data-palette="reef" aria-pressed="false" style="--p1:#00c2c7;--p2:#2748ff;--p3:#5be7a9;--p4:#ff7ab6"><i></i>Reef</button>
+        <button type="button" data-palette="ember" aria-pressed="false" style="--p1:#ff4d2e;--p2:#9c1a5b;--p3:#ff9f1c;--p4:#ffd166"><i></i>Ember</button>
+      </div>
+      <button type="button" class="pause" id="pause" aria-pressed="false" aria-label="Pause motion">
+        <svg class="ico-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg>
+        <svg class="ico-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11a1 1 0 0 0 1.5.87l9-5.5a1 1 0 0 0 0-1.74l-9-5.5A1 1 0 0 0 4 2.5z"/></svg>
+      </button>
+    </div>
+    <span class="meta" id="meta">space · pause &nbsp; 1 2 3 · palette</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  const root = document.documentElement;
+  const body = document.body;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---------- palettes ----------
+  const palettes = {
+    dawn:  { name: 'Dawn',  base: '#1a1030', colors: ['#ff6b57', '#7b4dff', '#14b8a6', '#f5b942'] },
+    reef:  { name: 'Reef',  base: '#03131f', colors: ['#00c2c7', '#2748ff', '#5be7a9', '#ff7ab6'] },
+    ember: { name: 'Ember', base: '#1c0a0a', colors: ['#ff4d2e', '#9c1a5b', '#ff9f1c', '#ffd166'] }
+  };
+
+  const paletteName = document.getElementById('paletteName');
+  const paletteGroup = document.getElementById('palettes');
+
+  function setPalette(key) {
+    const p = palettes[key];
+    if (!p) return;
+    p.colors.forEach((c, i) => root.style.setProperty('--c' + (i + 1), c));
+    root.style.setProperty('--base', p.base);
+    paletteName.textContent = p.name;
+    paletteGroup.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.palette === key)));
+  }
+
+  paletteGroup.addEventListener('click', (e) => {
+    const btn = e.target.closest('button');
+    if (btn) setPalette(btn.dataset.palette);
+  });
+
+  // ---------- blobs: independent eased orbits ----------
+  const blobs = [...document.querySelectorAll('.blob')];
+  // each blob: amplitude in vw/vh, period in seconds, phase, plus a slow rotation of the ellipse
+  const orbits = [
+    { ax: 18, ay: 14, px: 23, py: 31, ph: 0.0, rot: 0.010, sc: 0.10 },
+    { ax: 22, ay: 12, px: 37, py: 29, ph: 1.7, rot: -0.008, sc: 0.12 },
+    { ax: 16, ay: 18, px: 29, py: 41, ph: 3.1, rot: 0.012, sc: 0.09 },
+    { ax: 20, ay: 16, px: 43, py: 27, ph: 4.4, rot: -0.011, sc: 0.14 },
+    { ax: 14, ay: 20, px: 53, py: 33, ph: 5.6, rot: 0.007, sc: 0.08 }
+  ];
+
+  // smooth non-linear easing on a sine to give the motion a "breathing" hesitation
+  function easeWave(t) {
+    const s = Math.sin(t);
+    return Math.sign(s) * Math.pow(Math.abs(s), 0.8);
+  }
+
+  let paused = false;
+  let simTime = 0;
+  let lastNow = performance.now();
+
+  function moveBlobs(now) {
+    const dt = Math.min(0.1, (now - lastNow) / 1000);
+    lastNow = now;
+    if (!paused) simTime += dt;
+
+    const vw = window.innerWidth / 100, vh = window.innerHeight / 100;
+    blobs.forEach((b, i) => {
+      const o = orbits[i];
+      const t = simTime;
+      const x = easeWave(t * (2 * Math.PI / o.px) + o.ph) * o.ax * vw;
+      const y = easeWave(t * (2 * Math.PI / o.py) + o.ph * 1.3) * o.ay * vh;
+      const s = 1 + Math.sin(t * 0.35 + o.ph) * o.sc;
+      const r = (t * o.rot * 57.3) % 360;
+      b.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0) rotate(' + r.toFixed(2) + 'deg) scale(' + s.toFixed(3) + ')';
+    });
+  }
+
+  // ---------- grain ----------
+  const grain = document.getElementById('grain');
+  const gctx = grain.getContext('2d');
+  let gw = 0, gh = 0, grainDpr = 1;
+  let noiseFrames = [];
+  let noiseIndex = 0;
+
+  function buildGrain() {
+    grainDpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    gw = Math.ceil(window.innerWidth * grainDpr);
+    gh = Math.ceil(window.innerHeight * grainDpr);
+    grain.width = gw; grain.height = gh;
+    grain.style.width = window.innerWidth + 'px';
+    grain.style.height = window.innerHeight + 'px';
+    // pre-render a few noise frames so we can cycle them cheaply for film flicker
+    noiseFrames = [];
+    const frames = reduce ? 1 : 4;
+    for (let f = 0; f < frames; f++) {
+      const img = gctx.createImageData(gw, gh);
+      const d = img.data;
+      for (let i = 0; i < d.length; i += 4) {
+        const v = 110 + Math.random() * 90;   // mid-grey noise, overlay-blended
+        d[i] = d[i + 1] = d[i + 2] = v;
+        d[i + 3] = 255;
+      }
+      noiseFrames.push(img);
+    }
+    gctx.putImageData(noiseFrames[0], 0, 0);
+  }
+
+  let grainTick = 0;
+  function drawGrain() {
+    if (reduce || paused) return;
+    if (++grainTick % 3 !== 0) return;      // ~20fps flicker feels more like film than 60
+    noiseIndex = (noiseIndex + 1) % noiseFrames.length;
+    gctx.putImageData(noiseFrames[noiseIndex], 0, 0);
+  }
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(buildGrain, 150);
+  });
+  buildGrain();
+
+  // ---------- words ----------
+  const words = [
+    ['breathe', 'in through the nose, four counts'],
+    ['drift',   'let the thought pass like weather'],
+    ['soften',  'the jaw, the shoulders, the grip'],
+    ['become',  'whatever the light is doing now'],
+    ['linger',  'there is nowhere else to be'],
+    ['unfold',  'slowly, the way morning does'],
+    ['return',  'to the room, to the body, to here']
+  ];
+
+  const wordA = document.getElementById('wordA');
+  const wordB = document.getElementById('wordB');
+  const caption = document.getElementById('caption');
+  let wordIndex = 0;
+  let front = wordA, back = wordB;
+  let wordTimer = 0;
+  const WORD_INTERVAL = 5.2;
+
+  caption.textContent = words[0][1];
+  setTimeout(() => caption.classList.add('in'), 400);
+
+  function nextWord() {
+    wordIndex = (wordIndex + 1) % words.length;
+    back.textContent = words[wordIndex][0];
+    back.classList.remove('out');
+    // force reflow so the incoming word starts from its hidden state
+    void back.offsetWidth;
+    front.classList.remove('in');
+    front.classList.add('out');
+    back.classList.add('in');
+    caption.classList.remove('in');
+    setTimeout(() => { caption.textContent = words[wordIndex][1]; caption.classList.add('in'); }, 900);
+    const tmp = front; front = back; back = tmp;
+  }
+
+  // ---------- pause ----------
+  const pauseBtn = document.getElementById('pause');
+  function setPaused(v) {
+    paused = v;
+    body.classList.toggle('paused', v);
+    pauseBtn.setAttribute('aria-pressed', String(v));
+    pauseBtn.setAttribute('aria-label', v ? 'Resume motion' : 'Pause motion');
+  }
+  pauseBtn.addEventListener('click', () => setPaused(!paused));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'BUTTON' && e.key === ' ') return;
+    if (e.key === ' ') { e.preventDefault(); setPaused(!paused); }
+    if (e.key === '1') setPalette('dawn');
+    if (e.key === '2') setPalette('reef');
+    if (e.key === '3') setPalette('ember');
+  });
+
+  document.addEventListener('visibilitychange', () => {
+    lastNow = performance.now();
+  });
+
+  // ---------- main loop ----------
+  let lastWordNow = performance.now();
+  function frame(now) {
+    moveBlobs(now);
+    drawGrain();
+    if (!paused) {
+      wordTimer += Math.min(0.1, (now - lastWordNow) / 1000);
+      if (wordTimer >= WORD_INTERVAL) { wordTimer = 0; nextWord(); }
+    }
+    lastWordNow = now;
+    requestAnimationFrame(frame);
+  }
+
+  if (reduce) {
+    // static composition: place blobs once, cycle words slowly, no grain flicker
+    moveBlobs(performance.now());
+    setInterval(nextWord, 9000);
+  } else {
+    requestAnimationFrame(frame);
+  }
+})();
+</script>
+</body>
+</html>

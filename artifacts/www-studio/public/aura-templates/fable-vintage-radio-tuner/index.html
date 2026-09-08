@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marconi Meridian 55 — Vintage Radio Tuner</title>
+<style>
+  :root {
+    --walnut-1: #5a2f18;
+    --walnut-2: #3a1c0e;
+    --walnut-3: #7a4525;
+    --cream: #efe2c4;
+    --cream-2: #d9c79f;
+    --cream-shadow: #b9a377;
+    --amber: #ffb347;
+    --amber-deep: #d97a12;
+    --red: #c8322a;
+    --brass: #c9a25c;
+    --brass-dark: #7d5d2a;
+    --ink: #3b2a1a;
+    --serif: "Iowan Old Style", Palatino, "Palatino Linotype", "Book Antiqua", Georgia, ui-serif, serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Courier New", monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    background:
+      radial-gradient(ellipse at 50% 20%, #2d2119 0%, #16100c 55%, #0a0705 100%);
+    color: var(--cream);
+    font-family: var(--serif);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: clamp(12px, 3vw, 48px) clamp(8px, 2vw, 24px);
+  }
+
+  .brand-line {
+    font-size: 12px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: #8f7a5c;
+    margin: 0 0 18px;
+    text-align: center;
+  }
+
+  /* ---------- Cabinet ---------- */
+  .radio {
+    position: relative;
+    width: min(100%, 880px);
+    border-radius: 42px 42px 26px 26px;
+    padding: clamp(14px, 2.6vw, 28px);
+    background:
+      repeating-linear-gradient(94deg, rgba(0,0,0,0) 0 6px, rgba(0,0,0,0.08) 6px 7px, rgba(255,255,255,0.03) 7px 9px),
+      linear-gradient(180deg, var(--walnut-3) 0%, var(--walnut-1) 30%, var(--walnut-2) 100%);
+    box-shadow:
+      inset 0 2px 0 rgba(255,220,180,0.25),
+      inset 0 -6px 14px rgba(0,0,0,0.5),
+      0 30px 60px rgba(0,0,0,0.65),
+      0 8px 20px rgba(0,0,0,0.5);
+  }
+  .radio::before {
+    /* glossy Bakelite sheen */
+    content: "";
+    position: absolute; inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(115deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0) 35%, rgba(255,255,255,0) 70%, rgba(255,255,255,0.05) 100%);
+    pointer-events: none;
+  }
+
+  .face {
+    position: relative;
+    border-radius: 28px 28px 18px 18px;
+    background: linear-gradient(180deg, var(--cream) 0%, var(--cream-2) 100%);
+    box-shadow: inset 0 3px 8px rgba(255,255,255,0.6), inset 0 -4px 10px rgba(120,90,50,0.35), 0 2px 0 rgba(0,0,0,0.4);
+    padding: clamp(14px, 2.4vw, 26px);
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    grid-template-areas:
+      "dial dial"
+      "grille display"
+      "knobs knobs";
+    gap: clamp(12px, 2vw, 22px);
+  }
+
+  /* ---------- Dial ---------- */
+  .dial {
+    grid-area: dial;
+    position: relative;
+    border-radius: 14px;
+    background: #1c1108;
+    box-shadow: inset 0 0 0 3px var(--brass-dark), inset 0 0 0 5px #2a1a0c, inset 0 8px 18px rgba(0,0,0,0.9);
+    padding: 12px 8px 10px;
+    overflow: hidden;
+    user-select: none;
+    touch-action: none;
+    cursor: ew-resize;
+  }
+  .dial-glow {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 100%, rgba(255,179,71,0.55) 0%, rgba(255,140,40,0.22) 40%, rgba(0,0,0,0) 75%);
+    pointer-events: none;
+    animation: flicker 6s infinite ease-in-out;
+  }
+  @keyframes flicker {
+    0%, 100% { opacity: 0.9; } 47% { opacity: 1; } 52% { opacity: 0.82; } 60% { opacity: 0.97; }
+  }
+  .dial-strip {
+    position: relative;
+    height: 84px;
+    color: var(--amber);
+    text-shadow: 0 0 6px rgba(255,180,80,0.8);
+  }
+  .band-label {
+    position: absolute; left: 10px; top: 2px;
+    font-family: var(--mono);
+    font-size: 10px; letter-spacing: 0.3em; color: #f4c98a;
+  }
+  .ticks {
+    position: absolute; left: 0; right: 0; top: 36px; height: 14px;
+    background:
+      repeating-linear-gradient(90deg, rgba(255,190,110,0.8) 0 1px, transparent 1px 2%);
+    background-size: 100% 100%;
+  }
+  .ticks::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(90deg, rgba(255,210,150,1) 0 2px, transparent 2px 10%);
+    height: 8px; top: -6px;
+  }
+  .freq { position: absolute; top: 14px; font-family: var(--mono); font-size: 12px; transform: translateX(-50%); }
+  .city {
+    position: absolute; top: 56px;
+    font-size: 11px; font-style: italic; letter-spacing: 0.04em;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    color: #ffd39a;
+    transition: color 0.3s, text-shadow 0.3s;
+  }
+  .city.active { color: #fff5e6; text-shadow: 0 0 10px #ffbf60, 0 0 22px rgba(255,160,60,0.9); }
+  .needle {
+    position: absolute; top: 4px; bottom: 4px; width: 2px;
+    background: linear-gradient(180deg, #ff6b5c, var(--red));
+    box-shadow: 0 0 6px rgba(255,80,60,0.9), 0 0 2px #fff;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+  .needle::before {
+    content: ""; position: absolute; top: -4px; left: 50%;
+    width: 10px; height: 10px; transform: translateX(-50%) rotate(45deg);
+    background: var(--red);
+    box-shadow: 0 0 6px rgba(255,80,60,0.9);
+  }
+  .dial-glass {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0.14), rgba(255,255,255,0) 40%, rgba(255,255,255,0.04) 100%);
+    pointer-events: none;
+  }
+
+  /* ---------- Grille ---------- */
+  .grille {
+    grid-area: grille;
+    position: relative;
+    min-height: 200px;
+    border-radius: 18px;
+    background:
+      repeating-linear-gradient(45deg, rgba(0,0,0,0.35) 0 2px, transparent 2px 7px),
+      repeating-linear-gradient(-45deg, rgba(0,0,0,0.35) 0 2px, transparent 2px 7px),
+      repeating-linear-gradient(0deg, #c9a97a 0 3px, #a3835a 3px 6px);
+    box-shadow: inset 0 0 0 4px var(--brass), inset 0 0 0 6px var(--brass-dark), inset 0 10px 30px rgba(0,0,0,0.5);
+    overflow: hidden;
+  }
+  .grille::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.35) 100%);
+  }
+  .grille-emblem {
+    position: absolute; left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    width: 62px; height: 62px;
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.6));
+    z-index: 1;
+  }
+
+  /* ---------- Display ---------- */
+  .display {
+    grid-area: display;
+    position: relative;
+    border-radius: 14px;
+    background: #0f0a06;
+    box-shadow: inset 0 0 0 3px var(--brass-dark), inset 0 6px 20px rgba(0,0,0,0.9);
+    overflow: hidden;
+    min-height: 200px;
+    display: flex; flex-direction: column;
+  }
+  #static {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    display: block;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+  }
+  .display.locked #static { opacity: 0.08; }
+  .station {
+    position: relative; z-index: 1;
+    padding: 16px 16px 12px;
+    color: #ffd9a3;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.45s ease, transform 0.45s cubic-bezier(.2,.8,.2,1);
+    flex: 1;
+    text-shadow: 0 0 8px rgba(255,170,70,0.5);
+  }
+  .display.locked .station { opacity: 1; transform: none; }
+  .station-city { font-size: 20px; letter-spacing: 0.06em; margin: 0; color: #fff1d6; }
+  .station-freq { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; color: #e29a3d; margin: 2px 0 10px; }
+  .station-prog { font-style: italic; font-size: 13px; line-height: 1.5; margin: 0; color: #f6d9a8; }
+  .no-signal {
+    position: absolute; inset: 0; z-index: 1;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.3em; color: rgba(255,200,130,0.65);
+    text-transform: uppercase;
+    transition: opacity 0.3s;
+  }
+  .display.locked .no-signal { opacity: 0; }
+
+  .vu {
+    position: relative; z-index: 1;
+    height: 58px;
+    margin: 0 12px 10px;
+    border-radius: 8px 8px 4px 4px;
+    background: linear-gradient(180deg, #f3e6c8, #d8c59a);
+    box-shadow: inset 0 0 0 2px var(--brass-dark), inset 0 -3px 8px rgba(0,0,0,0.25);
+    overflow: hidden;
+  }
+  .vu svg { width: 100%; height: 100%; display: block; }
+  .vu .arc { fill: none; stroke: #3b2a1a; stroke-width: 1.2; }
+  .vu .arc-red { fill: none; stroke: var(--red); stroke-width: 3; }
+  .vu .vu-needle { stroke: #1a1008; stroke-width: 1.6; stroke-linecap: round; transform-origin: 60px 56px; transition: transform 0.12s ease-out; }
+  .vu text { font-family: var(--mono); font-size: 6px; fill: #3b2a1a; }
+
+  /* ---------- Knobs ---------- */
+  .knobs {
+    grid-area: knobs;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 4px 6px 0;
+  }
+  .knob-wrap { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .knob-label { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink); opacity: 0.75; }
+  .knob {
+    position: relative;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 35% 30%, #4a3324 0%, #1e120a 60%, #0a0603 100%);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.6), inset 0 1px 1px rgba(255,255,255,0.25), inset 0 -3px 6px rgba(0,0,0,0.6);
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+    transition: box-shadow 0.25s;
+  }
+  .knob:hover { box-shadow: 0 8px 16px rgba(0,0,0,0.7), 0 0 0 3px rgba(201,162,92,0.35), inset 0 1px 1px rgba(255,255,255,0.25), inset 0 -3px 6px rgba(0,0,0,0.6); }
+  .knob:active { cursor: grabbing; }
+  .knob::before {
+    /* fluted ridges */
+    content: ""; position: absolute; inset: 0; border-radius: 50%;
+    background: repeating-conic-gradient(from 0deg, rgba(255,255,255,0.07) 0 4deg, rgba(0,0,0,0.15) 4deg 10deg);
+    -webkit-mask: radial-gradient(circle, transparent 62%, #000 64%);
+    mask: radial-gradient(circle, transparent 62%, #000 64%);
+  }
+  .knob-indicator {
+    position: absolute; left: 50%; top: 9%;
+    width: 4px; height: 22%;
+    border-radius: 2px;
+    background: var(--cream);
+    transform: translateX(-50%);
+    box-shadow: 0 0 4px rgba(255,240,200,0.6);
+  }
+  .knob.big { width: clamp(84px, 12vw, 116px); height: clamp(84px, 12vw, 116px); }
+  .knob.small { width: clamp(60px, 8vw, 78px); height: clamp(60px, 8vw, 78px); }
+
+  .vents {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    position: relative;
+    height: 44px;
+    align-items: stretch;
+  }
+  .vents span {
+    width: 6px;
+    border-radius: 3px;
+    background: #1a1008;
+    box-shadow: inset 0 0 6px rgba(255,140,40,0.9), inset 0 0 14px rgba(255,100,20,0.5);
+    animation: tube 3.6s ease-in-out infinite;
+  }
+  .vents span:nth-child(odd) { animation-delay: -1.2s; }
+  .vents span:nth-child(3n) { animation-delay: -2.4s; }
+  @keyframes tube {
+    0%, 100% { box-shadow: inset 0 0 6px rgba(255,140,40,0.8), inset 0 0 14px rgba(255,100,20,0.45); }
+    50% { box-shadow: inset 0 0 8px rgba(255,170,70,1), inset 0 0 18px rgba(255,120,30,0.7); }
+  }
+  .vents::before {
+    content: "";
+    position: absolute; left: 50%; top: 50%;
+    width: 60%; height: 200%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(ellipse, rgba(255,140,40,0.35), rgba(255,140,40,0) 70%);
+    pointer-events: none;
+    filter: blur(6px);
+  }
+
+  .audio-btn {
+    font-family: var(--serif);
+    font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--ink);
+    background: linear-gradient(180deg, #fff6df, #d7c39a);
+    border: 1px solid var(--brass-dark);
+    border-radius: 999px;
+    padding: 8px 14px;
+    cursor: pointer;
+    box-shadow: 0 2px 0 var(--brass-dark), 0 4px 8px rgba(0,0,0,0.3);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .audio-btn:hover { transform: translateY(-1px); }
+  .audio-btn:active { transform: translateY(1px); box-shadow: 0 1px 0 var(--brass-dark); }
+  .audio-btn[aria-pressed="true"] { background: linear-gradient(180deg, #ffd48a, #e2a44a); }
+
+  .plate {
+    position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);
+    font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--brass); opacity: 0.85;
+  }
+  .footnote { margin-top: 22px; font-size: 12px; font-style: italic; color: #8f7a5c; text-align: center; max-width: 60ch; line-height: 1.6; }
+
+  @media (max-width: 640px) {
+    .face {
+      grid-template-columns: 1fr;
+      grid-template-areas: "dial" "display" "grille" "knobs";
+    }
+    .grille { min-height: 120px; }
+    .knobs { flex-wrap: wrap; justify-content: center; }
+    .vents { order: 3; width: 100%; height: 30px; }
+    .city { font-size: 9px; }
+    .freq { font-size: 10px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .dial-glow, .vents span { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<p class="brand-line">Marconi Meridian · Model 55 · 1954</p>
+
+<section class="radio" aria-label="Vintage radio tuner">
+  <div class="face">
+
+    <div class="dial" id="dial" role="slider" aria-label="Tuning frequency" aria-valuemin="530" aria-valuemax="1600" aria-valuenow="880" tabindex="0">
+      <div class="dial-glow"></div>
+      <div class="dial-strip" id="dialStrip">
+        <span class="band-label">MEDIUM WAVE · kHz</span>
+        <div class="ticks"></div>
+      </div>
+      <div class="needle" id="needle"></div>
+      <div class="dial-glass"></div>
+    </div>
+
+    <div class="grille" aria-hidden="true">
+      <svg class="grille-emblem" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="30" fill="#c9a25c" stroke="#7d5d2a" stroke-width="2"></circle>
+        <circle cx="32" cy="32" r="22" fill="none" stroke="#7d5d2a" stroke-width="1.5"></circle>
+        <path d="M32 14 L36 28 L50 32 L36 36 L32 50 L28 36 L14 32 L28 28 Z" fill="#3b2a1a"></path>
+        <text x="32" y="59" text-anchor="middle" font-size="6" font-family="Georgia, serif" fill="#3b2a1a" letter-spacing="1">MERIDIAN</text>
+      </svg>
+    </div>
+
+    <div class="display" id="display">
+      <canvas id="static" aria-hidden="true"></canvas>
+      <div class="no-signal">· · · searching · · ·</div>
+      <div class="station">
+        <h2 class="station-city" id="stCity">Hilversum</h2>
+        <p class="station-freq" id="stFreq">747 kHz</p>
+        <p class="station-prog" id="stProg">Evening concert</p>
+      </div>
+      <div class="vu" aria-hidden="true">
+        <svg viewBox="0 0 120 60">
+          <path class="arc" d="M14 54 A50 50 0 0 1 106 54"></path>
+          <path class="arc-red" d="M84 24 A50 50 0 0 1 106 54"></path>
+          <text x="10" y="50">-20</text>
+          <text x="38" y="20">-5</text>
+          <text x="66" y="12">0</text>
+          <text x="96" y="30">+3</text>
+          <text x="52" y="40" font-size="7" letter-spacing="1">VU</text>
+          <line class="vu-needle" id="vuNeedle" x1="60" y1="56" x2="60" y2="10"></line>
+          <circle cx="60" cy="56" r="3" fill="#1a1008"></circle>
+        </svg>
+      </div>
+    </div>
+
+    <div class="knobs">
+      <div class="knob-wrap">
+        <div class="knob small" id="volumeKnob" role="slider" aria-label="Volume" aria-valuemin="0" aria-valuemax="100" aria-valuenow="60" tabindex="0">
+          <span class="knob-indicator"></span>
+        </div>
+        <span class="knob-label">Volume</span>
+      </div>
+
+      <div class="vents" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+
+      <button class="audio-btn" id="audioBtn" aria-pressed="false">Power ○</button>
+
+      <div class="knob-wrap">
+        <div class="knob big" id="tuneKnob" role="slider" aria-label="Tuning knob" aria-valuemin="530" aria-valuemax="1600" aria-valuenow="880" tabindex="0">
+          <span class="knob-indicator"></span>
+        </div>
+        <span class="knob-label">Tuning</span>
+      </div>
+    </div>
+  </div>
+  <span class="plate">Made in Hilversum · Bakelite Cabinet · 6 Valves</span>
+</section>
+
+<p class="footnote">Drag the red needle across the dial or turn the tuning knob. Between cities the receiver hisses with static; settle on a station and the evening programme lights up. Power on for a soft synthesized hum.</p>
+
+<script>
+(function () {
+  'use strict';
+  const MIN_F = 530, MAX_F = 1600;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const stations = [
+    { f: 585, city: 'Madrid',      prog: 'Zarzuela hour — a live broadcast from Teatro de la Zarzuela, with intermission notes by Doña Inés Marquez.' },
+    { f: 648, city: 'Luxembourg',  prog: 'The Late Continental — dance orchestras of Europe on transcription discs, presented in three languages.' },
+    { f: 747, city: 'Hilversum',   prog: 'Evening concert — the Radio Philharmonic performs Diepenbrock and Debussy from the Concertgebouw.' },
+    { f: 864, city: 'Paris',       prog: 'Chansons de minuit — Piaf, Trenet and new voices from the cabarets of Saint-Germain-des-Prés.' },
+    { f: 963, city: 'Lisbon',      prog: 'Fado da noite — guitarra portuguesa and a slow, salt-worn voice from the Alfama quarter.' },
+    { f: 1053, city: 'Vienna',     prog: 'Nachtmusik — waltzes and operetta, followed by the weather for the Alpine passes.' },
+    { f: 1179, city: 'Stockholm',  prog: 'Nordic hour — a radio play about a lighthouse keeper and the winter ferry that never came.' },
+    { f: 1296, city: 'Athens',     prog: 'Rebetiko nights — bouzouki, smoke and the songs of the harbour tavernas of Piraeus.' },
+    { f: 1422, city: 'Warsaw',     prog: 'Chopin at eleven — the nocturnes, performed live from the Philharmonic Hall.' },
+    { f: 1530, city: 'Oslo',       prog: 'Shipping forecast — Skagerrak, Dogger, Utsira: light winds, moderate seas, good visibility.' }
+  ];
+  const LOCK_RANGE = 14; // kHz
+
+  let freq = 880;
+  let volume = 0.6;
+  let knobAngle = 0;
+
+  const dial = document.getElementById('dial');
+  const strip = document.getElementById('dialStrip');
+  const needle = document.getElementById('needle');
+  const display = document.getElementById('display');
+  const stCity = document.getElementById('stCity');
+  const stFreq = document.getElementById('stFreq');
+  const stProg = document.getElementById('stProg');
+  const vuNeedle = document.getElementById('vuNeedle');
+  const tuneKnob = document.getElementById('tuneKnob');
+  const volumeKnob = document.getElementById('volumeKnob');
+  const audioBtn = document.getElementById('audioBtn');
+
+  // Build dial labels
+  const cityEls = [];
+  for (let f = 600; f <= 1500; f += 150) {
+    const s = document.createElement('span');
+    s.className = 'freq';
+    s.textContent = f;
+    s.style.left = (100 * (f - MIN_F) / (MAX_F - MIN_F)) + '%';
+    strip.appendChild(s);
+  }
+  stations.forEach((st, i) => {
+    const s = document.createElement('span');
+    s.className = 'city';
+    s.textContent = st.city;
+    s.style.left = (100 * (st.f - MIN_F) / (MAX_F - MIN_F)) + '%';
+    if (i % 2) s.style.top = '68px';
+    strip.appendChild(s);
+    cityEls.push(s);
+  });
+
+  // ---------- Static canvas ----------
+  const canvas = document.getElementById('static');
+  const ctx = canvas.getContext('2d');
+  let cw = 0, ch = 0, dpr = 1;
+  function resizeCanvas() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const r = display.getBoundingClientRect();
+    cw = Math.max(1, Math.floor(r.width)); ch = Math.max(1, Math.floor(r.height));
+    canvas.width = Math.floor(cw * dpr / 2);   // half-res for chunky grain
+    canvas.height = Math.floor(ch * dpr / 2);
+  }
+  let noiseData = null;
+  function drawStatic(intensity) {
+    const w = canvas.width, h = canvas.height;
+    if (!noiseData || noiseData.width !== w || noiseData.height !== h) noiseData = ctx.createImageData(w, h);
+    const d = noiseData.data;
+    const amber = 1 - intensity;
+    for (let i = 0; i < d.length; i += 4) {
+      const v = Math.random() * 255 * intensity;
+      d[i] = v * 1.0 + amber * 40;
+      d[i + 1] = v * 0.78 + amber * 22;
+      d[i + 2] = v * 0.45 + amber * 8;
+      d[i + 3] = 255;
+    }
+    // rolling scan band
+    const band = ((performance.now() / 12) % (h + 40)) - 20;
+    for (let y = Math.max(0, band | 0); y < Math.min(h, band + 18); y++) {
+      for (let x = 0; x < w; x++) {
+        const k = (y * w + x) * 4;
+        d[k] = Math.min(255, d[k] + 40); d[k + 1] = Math.min(255, d[k + 1] + 25);
+      }
+    }
+    ctx.putImageData(noiseData, 0, 0);
+  }
+
+  // ---------- Tuning state ----------
+  let current = null;
+  let signal = 0; // 0..1
+  function nearest() {
+    let best = null, bd = Infinity;
+    for (const s of stations) {
+      const d = Math.abs(s.f - freq);
+      if (d < bd) { bd = d; best = s; }
+    }
+    return { st: best, d: bd };
+  }
+  function applyFreq() {
+    freq = Math.max(MIN_F, Math.min(MAX_F, freq));
+    const pct = (freq - MIN_F) / (MAX_F - MIN_F);
+    needle.style.left = (pct * 100) + '%';
+    dial.setAttribute('aria-valuenow', Math.round(freq));
+    tuneKnob.setAttribute('aria-valuenow', Math.round(freq));
+    knobAngle = pct * 300 - 150;
+    tuneKnob.style.transform = `rotate(${knobAngle}deg)`;
+
+    const n = nearest();
+    signal = Math.max(0, 1 - n.d / LOCK_RANGE);
+    const locked = n.d <= LOCK_RANGE * 0.6;
+    if (locked && current !== n.st) {
+      current = n.st;
+      stCity.textContent = n.st.city;
+      stFreq.textContent = n.st.f + ' kHz · ' + n.st.city.toUpperCase();
+      stProg.textContent = n.st.prog;
+    }
+    if (!locked) current = null;
+    display.classList.toggle('locked', locked);
+    cityEls.forEach((el, i) => el.classList.toggle('active', locked && stations[i] === n.st));
+    updateAudio();
+  }
+
+  // ---------- Dial dragging ----------
+  function freqFromX(clientX) {
+    const r = dial.getBoundingClientRect();
+    const pct = (clientX - r.left - 8) / (r.width - 16);
+    return MIN_F + Math.max(0, Math.min(1, pct)) * (MAX_F - MIN_F);
+  }
+  let dialDrag = false;
+  dial.addEventListener('pointerdown', e => { dialDrag = true; dial.setPointerCapture(e.pointerId); freq = freqFromX(e.clientX); applyFreq(); });
+  dial.addEventListener('pointermove', e => { if (dialDrag) { freq = freqFromX(e.clientX); applyFreq(); } });
+  dial.addEventListener('pointerup', () => dialDrag = false);
+  dial.addEventListener('pointercancel', () => dialDrag = false);
+  dial.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') { freq += e.shiftKey ? 20 : 3; applyFreq(); e.preventDefault(); }
+    if (e.key === 'ArrowLeft') { freq -= e.shiftKey ? 20 : 3; applyFreq(); e.preventDefault(); }
+  });
+
+  // ---------- Rotary knobs ----------
+  function attachRotary(el, onDelta) {
+    let active = false, lastAng = 0;
+    const angle = e => {
+      const r = el.getBoundingClientRect();
+      return Math.atan2(e.clientY - (r.top + r.height / 2), e.clientX - (r.left + r.width / 2));
+    };
+    el.addEventListener('pointerdown', e => { active = true; lastAng = angle(e); el.setPointerCapture(e.pointerId); });
+    el.addEventListener('pointermove', e => {
+      if (!active) return;
+      let a = angle(e), d = a - lastAng;
+      if (d > Math.PI) d -= Math.PI * 2; if (d < -Math.PI) d += Math.PI * 2;
+      lastAng = a;
+      onDelta(d * 180 / Math.PI);
+    });
+    const stop = () => active = false;
+    el.addEventListener('pointerup', stop);
+    el.addEventListener('pointercancel', stop);
+    el.addEventListener('wheel', e => { e.preventDefault(); onDelta(e.deltaY > 0 ? 6 : -6); }, { passive: false });
+  }
+  attachRotary(tuneKnob, deg => { freq += deg * (MAX_F - MIN_F) / 300; applyFreq(); });
+  tuneKnob.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { freq += 3; applyFreq(); e.preventDefault(); }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') { freq -= 3; applyFreq(); e.preventDefault(); }
+  });
+
+  function applyVolume() {
+    volume = Math.max(0, Math.min(1, volume));
+    volumeKnob.style.transform = `rotate(${volume * 270 - 135}deg)`;
+    volumeKnob.setAttribute('aria-valuenow', Math.round(volume * 100));
+    updateAudio();
+  }
+  attachRotary(volumeKnob, deg => { volume += deg / 270; applyVolume(); });
+  volumeKnob.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { volume += 0.05; applyVolume(); e.preventDefault(); }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') { volume -= 0.05; applyVolume(); e.preventDefault(); }
+  });
+
+  // ---------- Web Audio (silent until Power clicked) ----------
+  let audio = null;
+  function buildAudio() {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return null;
+    const ac = new AC();
+    const master = ac.createGain(); master.gain.value = 0; master.connect(ac.destination);
+
+    // white noise buffer
+    const len = ac.sampleRate * 2;
+    const buf = ac.createBuffer(1, len, ac.sampleRate);
+    const data = buf.getChannelData(0);
+    for (let i = 0; i < len; i++) data[i] = Math.random() * 2 - 1;
+    const noise = ac.createBufferSource(); noise.buffer = buf; noise.loop = true;
+    const noiseFilter = ac.createBiquadFilter(); noiseFilter.type = 'bandpass'; noiseFilter.frequency.value = 1800; noiseFilter.Q.value = 0.6;
+    const noiseGain = ac.createGain(); noiseGain.gain.value = 0.15;
+    noise.connect(noiseFilter).connect(noiseGain).connect(master);
+    noise.start();
+
+    // mains hum (50 Hz + harmonic)
+    const hum = ac.createOscillator(); hum.type = 'sine'; hum.frequency.value = 50;
+    const hum2 = ac.createOscillator(); hum2.type = 'triangle'; hum2.frequency.value = 100;
+    const humGain = ac.createGain(); humGain.gain.value = 0.05;
+    const hum2Gain = ac.createGain(); hum2Gain.gain.value = 0.015;
+    hum.connect(humGain).connect(master); hum2.connect(hum2Gain).connect(master);
+    hum.start(); hum2.start();
+
+    // station "programme": a soft warbling tone pad
+    const pad = ac.createOscillator(); pad.type = 'sine'; pad.frequency.value = 220;
+    const padLfo = ac.createOscillator(); padLfo.frequency.value = 0.4;
+    const padLfoGain = ac.createGain(); padLfoGain.gain.value = 6;
+    padLfo.connect(padLfoGain).connect(pad.frequency);
+    const padFilter = ac.createBiquadFilter(); padFilter.type = 'lowpass'; padFilter.frequency.value = 900;
+    const padGain = ac.createGain(); padGain.gain.value = 0;
+    pad.connect(padFilter).connect(padGain).connect(master);
+    pad.start(); padLfo.start();
+
+    return { ac, master, noiseGain, padGain, pad };
+  }
+  function updateAudio() {
+    if (!audio) return;
+    const t = audio.ac.currentTime;
+    audio.master.gain.setTargetAtTime(volume * 0.5, t, 0.05);
+    audio.noiseGain.gain.setTargetAtTime(0.02 + (1 - signal) * 0.16, t, 0.08);
+    audio.padGain.gain.setTargetAtTime(signal * 0.08, t, 0.15);
+    if (current) audio.pad.frequency.setTargetAtTime(110 + (stations.indexOf(current) * 37) % 220, t, 0.3);
+  }
+  audioBtn.addEventListener('click', async () => {
+    if (!audio) {
+      audio = buildAudio();
+      if (!audio) return;
+    }
+    if (audio.ac.state === 'suspended') await audio.ac.resume();
+    const on = audioBtn.getAttribute('aria-pressed') !== 'true';
+    audioBtn.setAttribute('aria-pressed', String(on));
+    audioBtn.textContent = on ? 'Power ●' : 'Power ○';
+    if (on) updateAudio();
+    else audio.master.gain.setTargetAtTime(0, audio.ac.currentTime, 0.1);
+  });
+
+  // ---------- Animation loop ----------
+  let vuTarget = 0, vuVal = 0;
+  let frameCount = 0;
+  function loop() {
+    frameCount++;
+    if (!reduceMotion || frameCount % 6 === 0) drawStatic(0.35 + (1 - signal) * 0.65);
+    // VU: jittery when static, gentle swing when locked
+    const now = performance.now() / 1000;
+    if (signal > 0.6) vuTarget = 0.45 + Math.sin(now * 2.1) * 0.18 + Math.sin(now * 5.3) * 0.08;
+    else vuTarget = 0.12 + Math.random() * 0.12 * (1 - signal);
+    vuVal += (vuTarget - vuVal) * 0.18;
+    vuNeedle.style.transform = `rotate(${(vuVal * 120 - 60) * volume + (1 - volume) * -55}deg)`;
+    requestAnimationFrame(loop);
+  }
+
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+  applyVolume();
+  applyFreq();
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

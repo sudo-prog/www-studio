@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DOT BOMB — Pop-Art Halftone Studio</title>
+<style>
+  :root{
+    --yellow:#ffe600; --red:#e4002b; --cyan:#00b7eb; --magenta:#ec008c; --ink:#0a0a0a; --paper:#fffaf0;
+    --comic:"Arial Black","Helvetica Neue",Impact,ui-sans-serif,system-ui,sans-serif;
+    --body:ui-sans-serif,system-ui,"Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--body);color:var(--ink);background:var(--yellow);min-height:100vh;overflow-x:hidden;
+    background-image:radial-gradient(circle at 3px 3px,rgba(0,0,0,.14) 1.6px,transparent 2px);background-size:14px 14px}
+  .wrap{max-width:1280px;margin:0 auto;padding:clamp(14px,3vw,36px)}
+  header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}
+  h1{margin:0;font-family:var(--comic);font-weight:900;text-transform:uppercase;font-size:clamp(38px,7vw,88px);line-height:.9;letter-spacing:-.02em;
+    color:var(--yellow);-webkit-text-stroke:2px var(--ink);text-shadow:5px 5px 0 var(--ink),5px 5px 0 var(--ink);transform:rotate(-2deg);display:inline-block}
+  h1 span{color:var(--red)}
+  .tagline{font-family:var(--comic);font-weight:900;text-transform:uppercase;font-size:13px;letter-spacing:.14em;background:var(--ink);color:var(--paper);padding:8px 14px;
+    clip-path:polygon(0 0,100% 6%,97% 100%,3% 94%);display:inline-block;transform:rotate(1.5deg)}
+  .grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:22px;align-items:start}
+  @media (max-width:900px){.grid{grid-template-columns:1fr}}
+  .panel{background:var(--paper);border:4px solid var(--ink);box-shadow:10px 10px 0 var(--ink);position:relative}
+  .stage{padding:14px}
+  .stage-inner{position:relative;width:100%;aspect-ratio:1;border:3px solid var(--ink);overflow:hidden;background:#fff;cursor:grab;touch-action:none}
+  .stage-inner:active{cursor:grabbing}
+  canvas{display:block;width:100%;height:100%}
+  .sticker{position:absolute;font-family:var(--comic);font-weight:900;text-transform:uppercase;font-size:12px;letter-spacing:.1em;padding:6px 10px;border:3px solid var(--ink);
+    background:var(--cyan);color:var(--ink);box-shadow:4px 4px 0 var(--ink);pointer-events:none;transform:rotate(-6deg)}
+  .sticker.tl{top:-10px;left:-10px}
+  .sticker.br{right:-8px;bottom:-8px;transform:rotate(4deg);background:var(--red);color:var(--paper)}
+  .busy{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--comic);font-weight:900;font-size:clamp(24px,5vw,54px);text-transform:uppercase;
+    color:var(--yellow);-webkit-text-stroke:2px var(--ink);background:rgba(255,250,240,.75);opacity:0;pointer-events:none;transition:opacity .15s}
+  .busy.on{opacity:1}
+  .controls{padding:18px;display:grid;gap:18px}
+  .controls h2{margin:0;font-family:var(--comic);font-weight:900;text-transform:uppercase;font-size:20px;letter-spacing:.02em;display:flex;align-items:center;gap:10px}
+  .controls h2::before{content:"";width:16px;height:16px;background:var(--red);border:3px solid var(--ink);border-radius:50%}
+  .controls h2.c::before{background:var(--cyan)}
+  .controls h2.m::before{background:var(--magenta)}
+  .seg{display:flex;flex-wrap:wrap;gap:6px}
+  .seg button,.btn{font:inherit;font-family:var(--comic);font-weight:900;text-transform:uppercase;font-size:12px;letter-spacing:.06em;
+    background:#fff;color:var(--ink);border:3px solid var(--ink);padding:9px 12px;cursor:pointer;box-shadow:4px 4px 0 var(--ink);
+    transition:transform .12s,box-shadow .12s,background .2s}
+  .seg button:hover,.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+  .seg button:active,.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+  .seg button[aria-pressed="true"]{background:var(--ink);color:var(--yellow)}
+  .btn.primary{background:var(--red);color:#fff;font-size:15px;padding:12px 16px;width:100%}
+  .field{display:grid;gap:6px}
+  .field label{display:flex;justify-content:space-between;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.1em}
+  .field .readout{font-family:var(--comic);background:var(--ink);color:var(--yellow);padding:1px 8px;font-size:11px}
+  input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:10px;background:#fff;border:3px solid var(--ink);outline:none;margin:6px 0}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;background:var(--cyan);border:3px solid var(--ink);border-radius:50%;cursor:grab;box-shadow:2px 2px 0 var(--ink)}
+  input[type=range]::-moz-range-thumb{width:20px;height:20px;background:var(--cyan);border:3px solid var(--ink);border-radius:50%;cursor:grab}
+  input[type=text]{width:100%;font:inherit;font-family:var(--comic);font-weight:900;text-transform:uppercase;font-size:16px;padding:10px 12px;border:3px solid var(--ink);background:#fff;outline:none;box-shadow:inset 4px 4px 0 rgba(0,0,0,.08)}
+  input[type=text]:focus{background:#fff8c2}
+  .swatches{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+  .sw{font:inherit;font-family:var(--comic);font-weight:900;font-size:11px;text-transform:uppercase;letter-spacing:.04em;border:3px solid var(--ink);padding:8px 10px;cursor:pointer;
+    display:flex;align-items:center;gap:8px;background:#fff;box-shadow:4px 4px 0 var(--ink);transition:transform .12s,box-shadow .12s;text-align:left}
+  .sw:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+  .sw[aria-pressed="true"]{outline:3px dashed var(--ink);outline-offset:2px}
+  .sw i{display:flex;flex:none}
+  .sw i b{width:12px;height:22px;display:block;border:1px solid var(--ink);margin-left:-1px}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .about{margin-top:26px;padding:18px 22px;background:var(--cyan);border:4px solid var(--ink);box-shadow:10px 10px 0 var(--ink);display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+  .about h3{margin:0 0 6px;font-family:var(--comic);font-weight:900;text-transform:uppercase;font-size:16px}
+  .about p{margin:0;font-size:14px;line-height:1.55;font-weight:500}
+  footer{margin-top:24px;font-family:var(--comic);font-weight:900;font-size:11px;text-transform:uppercase;letter-spacing:.14em;text-align:center}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Dot <span>Bomb!</span></h1>
+    <div class="tagline">Pop-art halftone studio · Ben-Day dots · CMYK screens</div>
+  </header>
+
+  <div class="grid">
+    <div class="panel stage">
+      <div class="sticker tl">Issue #01</div>
+      <div class="stage-inner" id="stageInner">
+        <canvas id="out" aria-label="Halftone artwork"></canvas>
+        <div class="busy" id="busy" aria-hidden="true">Screening…</div>
+      </div>
+      <div class="sticker br">Drag the bubble</div>
+    </div>
+
+    <div class="panel controls">
+      <h2>Source</h2>
+      <div class="seg" role="group" aria-label="Source image">
+        <button data-src="portrait" aria-pressed="true">Portrait</button>
+        <button data-src="shapes" aria-pressed="false">Bold shapes</button>
+        <button data-src="text" aria-pressed="false">Big text</button>
+      </div>
+      <div class="field" id="textField" hidden>
+        <label for="srcText">Text to screen</label>
+        <input id="srcText" type="text" value="ZAP" maxlength="12">
+      </div>
+
+      <h2 class="c">Screen</h2>
+      <div class="field"><label for="dot">Dot size <span class="readout" id="oDot">8 px</span></label><input id="dot" type="range" min="5" max="22" value="8"></div>
+      <div class="field"><label for="ang">Screen angle <span class="readout" id="oAng">15°</span></label><input id="ang" type="range" min="0" max="90" value="15"></div>
+      <div class="field"><label for="con">Contrast <span class="readout" id="oCon">1.20</span></label><input id="con" type="range" min="50" max="220" value="120"></div>
+      <div class="field"><label for="edge">Outline weight <span class="readout" id="oEdge">3</span></label><input id="edge" type="range" min="0" max="6" value="3"></div>
+
+      <h2 class="m">Palette</h2>
+      <div class="swatches" role="group" aria-label="Palette preset">
+        <button class="sw" data-pal="cmyk" aria-pressed="true"><i><b style="background:#00aeef"></b><b style="background:#ec008c"></b><b style="background:#fff200"></b><b style="background:#111"></b></i>Classic CMYK</button>
+        <button class="sw" data-pal="warhol" aria-pressed="false"><i><b style="background:#ff2bd6"></b><b style="background:#00f0ff"></b><b style="background:#ffe600"></b><b style="background:#7b2cff"></b></i>Warhol Neon</button>
+        <button class="sw" data-pal="news" aria-pressed="false"><i><b style="background:#efe6d0"></b><b style="background:#2a2520"></b></i>Newsprint</button>
+        <button class="sw" data-pal="duo" aria-pressed="false"><i><b style="background:#fff3d6"></b><b style="background:#1c1c6e"></b><b style="background:#ff4d00"></b></i>Duotone</button>
+      </div>
+
+      <h2>Bubble</h2>
+      <div class="field"><label for="bubbleText">Speech text</label><input id="bubbleText" type="text" value="POW!" maxlength="18"></div>
+      <div class="row2">
+        <div class="seg" role="group" aria-label="Bubble style">
+          <button data-bub="burst" aria-pressed="true">Burst</button>
+          <button data-bub="speech" aria-pressed="false">Speech</button>
+          <button data-bub="none" aria-pressed="false">None</button>
+        </div>
+      </div>
+      <button class="btn primary" id="dl">Download PNG ↓</button>
+    </div>
+  </div>
+
+  <div class="about">
+    <div><h3>How it works</h3><p>The source is drawn procedurally, split into cyan, magenta, yellow and black (or a preset's channels), and each channel is re-screened as a grid of dots rotated to its own angle: 15°, 75°, 0° and 45°. Dot radius grows with the channel's ink density, so tone becomes size.</p></div>
+    <div><h3>Ben-Day &amp; outlines</h3><p>Flat colour areas fill with evenly spaced Ben-Day dots, just like a 1960s comic. A Sobel edge detector traces the source's contours and lays down heavy black comic outlines on top of the screens.</p></div>
+    <div><h3>Make it yours</h3><p>Type big text, swap palettes, push the contrast, then drag the speech bubble anywhere and download a crisp PNG at device resolution.</p></div>
+  </div>
+  <footer>Dot Bomb · Printed nowhere · 2026</footer>
+</div>
+
+<script>
+(function(){
+  const W = 720;
+  const out = document.getElementById('out'), ctx = out.getContext('2d');
+  const stage = document.getElementById('stageInner'), busy = document.getElementById('busy');
+  const src = document.createElement('canvas'); src.width=src.height=W; const sctx = src.getContext('2d', {willReadFrequently:true});
+  const edgeCv = document.createElement('canvas'); edgeCv.width=edgeCv.height=W; const ectx = edgeCv.getContext('2d');
+  let dpr=1;
+
+  const state = { source:'portrait', text:'ZAP', dot:8, angle:15, contrast:1.2, edge:3, pal:'cmyk', bubble:'burst', bubbleText:'POW!', bx:.72, by:.22 };
+
+  const palettes = {
+    cmyk:{ bg:'#fffaf0', blend:'multiply', ch:[ ['c','#00aeef',0],['m','#ec008c',60],['y','#fff200',-15],['k','#141414',30] ] },
+    warhol:{ bg:'#ffe600', blend:'source-over', ch:[ ['inv','#00f0ff',0],['m','#ff2bd6',60],['k','#7b2cff',30] ] },
+    news:{ bg:'#efe6d0', blend:'multiply', ch:[ ['k','#2a2520',30] ] },
+    duo:{ bg:'#fff3d6', blend:'multiply', ch:[ ['k','#1c1c6e',30],['mid','#ff4d00',-30] ] }
+  };
+
+  /* ---------- procedural sources ---------- */
+  function drawPortrait(c){
+    c.fillStyle='#e8f4ff'; c.fillRect(0,0,W,W);
+    c.save(); c.strokeStyle='#8fd8ff'; c.lineWidth=26;
+    for(let i=-W;i<W*2;i+=90){ c.beginPath(); c.moveTo(i,0); c.lineTo(i+W,W); c.stroke(); } c.restore();
+    // shoulders
+    c.fillStyle='#d62839'; c.beginPath(); c.moveTo(80,W); c.quadraticCurveTo(140,520,300,500); c.lineTo(420,500); c.quadraticCurveTo(580,520,640,W); c.closePath(); c.fill();
+    // neck
+    c.fillStyle='#f1b48c'; c.fillRect(310,400,100,120);
+    const shade = c.createLinearGradient(310,0,410,0); shade.addColorStop(0,'rgba(0,0,0,.35)'); shade.addColorStop(1,'rgba(0,0,0,0)');
+    c.fillStyle=shade; c.fillRect(310,400,100,120);
+    // head
+    const g = c.createRadialGradient(330,260,40,360,300,200); g.addColorStop(0,'#ffd3b3'); g.addColorStop(.7,'#f1b48c'); g.addColorStop(1,'#c4805a');
+    c.fillStyle=g; c.beginPath(); c.ellipse(360,300,150,190,0,0,Math.PI*2); c.fill();
+    // hair
+    c.fillStyle='#1b1b2f'; c.beginPath(); c.moveTo(210,300); c.quadraticCurveTo(190,80,360,90); c.quadraticCurveTo(540,80,510,300);
+    c.quadraticCurveTo(500,200,430,180); c.quadraticCurveTo(330,150,300,210); c.quadraticCurveTo(240,220,210,300); c.closePath(); c.fill();
+    c.fillStyle='#2b2b4a'; c.beginPath(); c.moveTo(200,320); c.quadraticCurveTo(150,480,190,620); c.lineTo(250,620); c.quadraticCurveTo(220,480,240,340); c.closePath(); c.fill();
+    c.beginPath(); c.moveTo(520,320); c.quadraticCurveTo(570,480,530,620); c.lineTo(470,620); c.quadraticCurveTo(500,480,480,340); c.closePath(); c.fill();
+    // eyes
+    [[300,290],[420,290]].forEach(([x,y])=>{
+      c.fillStyle='#fff'; c.beginPath(); c.ellipse(x,y,34,20,0,0,Math.PI*2); c.fill();
+      c.fillStyle='#1fa9c9'; c.beginPath(); c.arc(x+4,y,15,0,Math.PI*2); c.fill();
+      c.fillStyle='#0a0a0a'; c.beginPath(); c.arc(x+5,y,8,0,Math.PI*2); c.fill();
+      c.fillStyle='#fff'; c.beginPath(); c.arc(x+10,y-6,4,0,Math.PI*2); c.fill();
+      c.strokeStyle='#1b1b2f'; c.lineWidth=7; c.beginPath(); c.moveTo(x-36,y-30); c.quadraticCurveTo(x,y-46,x+36,y-32); c.stroke();
+    });
+    // nose
+    c.strokeStyle='#b8734c'; c.lineWidth=5; c.beginPath(); c.moveTo(365,310); c.quadraticCurveTo(350,360,370,372); c.quadraticCurveTo(385,368,382,362); c.stroke();
+    // lips
+    c.fillStyle='#e0163c'; c.beginPath(); c.moveTo(305,420); c.quadraticCurveTo(360,395,415,420); c.quadraticCurveTo(360,470,305,420); c.closePath(); c.fill();
+    c.fillStyle='#fff'; c.beginPath(); c.moveTo(325,422); c.lineTo(395,422); c.lineTo(385,434); c.lineTo(335,434); c.closePath(); c.fill();
+    // cheek blush
+    const bl = c.createRadialGradient(280,350,0,280,350,50); bl.addColorStop(0,'rgba(236,0,140,.45)'); bl.addColorStop(1,'rgba(236,0,140,0)');
+    c.fillStyle=bl; c.fillRect(220,290,130,130);
+    const bl2 = c.createRadialGradient(440,350,0,440,350,50); bl2.addColorStop(0,'rgba(236,0,140,.45)'); bl2.addColorStop(1,'rgba(236,0,140,0)');
+    c.fillStyle=bl2; c.fillRect(380,290,130,130);
+    // earring
+    c.fillStyle='#ffe600'; c.beginPath(); c.arc(212,340,14,0,Math.PI*2); c.fill();
+  }
+  function drawShapes(c){
+    c.fillStyle='#fff'; c.fillRect(0,0,W,W);
+    const g = c.createLinearGradient(0,0,W,W); g.addColorStop(0,'#ffe600'); g.addColorStop(1,'#ff6a00'); c.fillStyle=g; c.fillRect(0,0,W,W);
+    c.fillStyle='#0a0a0a'; c.beginPath(); c.moveTo(0,W); c.lineTo(W,W*.55); c.lineTo(W,W); c.closePath(); c.fill();
+    const r = c.createRadialGradient(260,260,20,260,260,200); r.addColorStop(0,'#fff'); r.addColorStop(.4,'#ec008c'); r.addColorStop(1,'#5a0033');
+    c.fillStyle=r; c.beginPath(); c.arc(260,260,200,0,Math.PI*2); c.fill();
+    c.fillStyle='#00b7eb'; c.beginPath(); c.moveTo(520,80); c.lineTo(690,380); c.lineTo(350,380); c.closePath(); c.fill();
+    const b = c.createLinearGradient(400,420,640,640); b.addColorStop(0,'#fff'); b.addColorStop(1,'#00b7eb');
+    c.fillStyle=b; c.fillRect(420,430,220,220);
+    c.fillStyle='#e4002b'; c.beginPath(); c.arc(140,560,90,0,Math.PI*2); c.fill();
+    c.fillStyle='#fff'; for(let i=0;i<5;i++){ c.beginPath(); c.arc(560+Math.cos(i*1.26)*60,180+Math.sin(i*1.26)*60,14,0,Math.PI*2); c.fill(); }
+  }
+  function drawText(c, txt){
+    c.fillStyle='#e4002b'; c.fillRect(0,0,W,W);
+    const g = c.createRadialGradient(W/2,W/2,50,W/2,W/2,520); g.addColorStop(0,'#ffe600'); g.addColorStop(1,'#e4002b'); c.fillStyle=g; c.fillRect(0,0,W,W);
+    c.save(); c.translate(W/2,W/2); c.strokeStyle='rgba(255,255,255,.55)'; c.lineWidth=14;
+    for(let i=0;i<24;i++){ c.rotate(Math.PI/12); c.beginPath(); c.moveTo(0,0); c.lineTo(0,-600); c.stroke(); } c.restore();
+    const t = (txt||'ZAP').toUpperCase(); let size = Math.min(320, 620/Math.max(1,t.length)*1.35);
+    c.font = `900 ${size}px "Arial Black","Helvetica Neue",Impact,ui-sans-serif,sans-serif`; c.textAlign='center'; c.textBaseline='middle';
+    c.save(); c.translate(W/2,W/2); c.rotate(-.12);
+    c.lineJoin='round'; c.strokeStyle='#0a0a0a'; c.lineWidth=size*.12; c.strokeText(t,10,14);
+    const tg = c.createLinearGradient(0,-size/2,0,size/2); tg.addColorStop(0,'#fff'); tg.addColorStop(.5,'#00b7eb'); tg.addColorStop(1,'#1c1c6e');
+    c.fillStyle=tg; c.fillText(t,0,0); c.strokeStyle='#fff'; c.lineWidth=size*.03; c.strokeText(t,0,0); c.restore();
+  }
+
+  /* ---------- channels ---------- */
+  function buildChannels(){
+    const img = sctx.getImageData(0,0,W,W).data, n=W*W;
+    const ch = {c:new Float32Array(n),m:new Float32Array(n),y:new Float32Array(n),k:new Float32Array(n),inv:new Float32Array(n),mid:new Float32Array(n),lum:new Float32Array(n)};
+    const con=state.contrast;
+    for(let i=0;i<n;i++){
+      let r=img[i*4]/255,g=img[i*4+1]/255,b=img[i*4+2]/255;
+      r=Math.min(1,Math.max(0,(r-.5)*con+.5)); g=Math.min(1,Math.max(0,(g-.5)*con+.5)); b=Math.min(1,Math.max(0,(b-.5)*con+.5));
+      const k=1-Math.max(r,g,b), d=1-k||1e-6;
+      ch.c[i]=(1-r-k)/d; ch.m[i]=(1-g-k)/d; ch.y[i]=(1-b-k)/d; ch.k[i]=k;
+      const l=.2126*r+.7152*g+.0722*b; ch.lum[i]=1-l; ch.inv[i]=l; ch.mid[i]=1-Math.abs(l-.5)*2;
+    }
+    return ch;
+  }
+  function edges(){
+    const img = sctx.getImageData(0,0,W,W).data; const lum=new Float32Array(W*W);
+    for(let i=0;i<W*W;i++) lum[i]=(.3*img[i*4]+.59*img[i*4+1]+.11*img[i*4+2]);
+    const o = ectx.createImageData(W,W), d=o.data;
+    for(let y=1;y<W-1;y++)for(let x=1;x<W-1;x++){
+      const i=y*W+x;
+      const gx=-lum[i-W-1]-2*lum[i-1]-lum[i+W-1]+lum[i-W+1]+2*lum[i+1]+lum[i+W+1];
+      const gy=-lum[i-W-1]-2*lum[i-W]-lum[i-W+1]+lum[i+W-1]+2*lum[i+W]+lum[i+W+1];
+      const m=Math.hypot(gx,gy);
+      if(m>120){ d[i*4]=10;d[i*4+1]=10;d[i*4+2]=10;d[i*4+3]=255; }
+    }
+    ectx.putImageData(o,0,0);
+  }
+
+  /* ---------- render ---------- */
+  function resize(){
+    dpr = Math.min(2, window.devicePixelRatio||1);
+    const size = Math.max(200, Math.round(stage.clientWidth||W));
+    out.width = Math.round(size*dpr); out.height = Math.round(size*dpr);
+    ctx.setTransform(out.width/W,0,0,out.height/W,0,0);
+  }
+  function renderSource(){
+    if(state.source==='portrait') drawPortrait(sctx); else if(state.source==='shapes') drawShapes(sctx); else drawText(sctx,state.text);
+  }
+  let pending=false;
+  function schedule(){ if(pending) return; pending=true; busy.classList.add('on'); requestAnimationFrame(()=>requestAnimationFrame(()=>{ render(); pending=false; busy.classList.remove('on'); })); }
+  function render(){
+    renderSource(); edges();
+    const pal = palettes[state.pal], ch = buildChannels(), cell = state.dot;
+    ctx.save(); ctx.globalCompositeOperation='source-over';
+    ctx.fillStyle=pal.bg; ctx.fillRect(0,0,W,W);
+    ctx.globalCompositeOperation=pal.blend;
+    const diag = W*.75;
+    pal.ch.forEach(([key,color,offset])=>{
+      const a=(state.angle+offset)*Math.PI/180, cs=Math.cos(a), sn=Math.sin(a), map=ch[key];
+      ctx.fillStyle=color; ctx.beginPath();
+      for(let v=-diag;v<=diag;v+=cell)for(let u=-diag;u<=diag;u+=cell){
+        const x=W/2+u*cs-v*sn, y=W/2+u*sn+v*cs;
+        if(x<-cell||y<-cell||x>W+cell||y>W+cell) continue;
+        const xi=Math.min(W-1,Math.max(0,x|0)), yi=Math.min(W-1,Math.max(0,y|0));
+        // average 2x2 for a smoother tone
+        let t=map[yi*W+xi]; if(xi<W-1) t+=map[yi*W+xi+1]; if(yi<W-1) t+=map[(yi+1)*W+xi]; if(xi<W-1&&yi<W-1) t+=map[(yi+1)*W+xi+1]; t/=4;
+        if(t<.03) continue;
+        const r = cell*.56*Math.sqrt(Math.min(1,t*1.08));
+        ctx.moveTo(x+r,y); ctx.arc(x,y,r,0,Math.PI*2);
+      }
+      ctx.fill();
+    });
+    ctx.globalCompositeOperation='source-over';
+    // comic outlines: dilate by drawing offsets
+    if(state.edge>0){
+      const w=state.edge;
+      for(let dx=-w;dx<=w;dx+=Math.max(1,w/2))for(let dy=-w;dy<=w;dy+=Math.max(1,w/2)) if(dx*dx+dy*dy<=w*w+1) ctx.drawImage(edgeCv,dx*.5,dy*.5,W,W);
+    }
+    drawBubble();
+    // frame
+    ctx.lineWidth=12; ctx.strokeStyle='#0a0a0a'; ctx.strokeRect(0,0,W,W);
+    ctx.restore();
+  }
+  function drawBubble(){
+    if(state.bubble==='none') return;
+    const txt=(state.bubbleText||'POW!').toUpperCase(); const cx=state.bx*W, cy=state.by*W;
+    ctx.font=`900 ${Math.min(92, 520/Math.max(2,txt.length))}px "Arial Black","Helvetica Neue",Impact,ui-sans-serif,sans-serif`;
+    ctx.textAlign='center'; ctx.textBaseline='middle';
+    const tw = ctx.measureText(txt).width, rw=tw/2+46, rh=Math.min(92,520/Math.max(2,txt.length))*.55+34;
+    ctx.save(); ctx.translate(cx,cy); ctx.rotate(-.08);
+    ctx.lineJoin='round'; ctx.lineWidth=7; ctx.strokeStyle='#0a0a0a';
+    ctx.beginPath();
+    if(state.bubble==='burst'){
+      const spikes=14;
+      for(let i=0;i<spikes*2;i++){ const ang=i*Math.PI/spikes, rad=i%2?1:1.45, jitter=1+((i*7)%3)*.06;
+        const x=Math.cos(ang)*rw*rad*jitter, y=Math.sin(ang)*rh*rad*jitter; if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y); }
+      ctx.closePath(); ctx.fillStyle='#ffe600';
+    } else {
+      ctx.ellipse(0,0,rw*1.05,rh*1.15,0,0,Math.PI*2); ctx.moveTo(-rw*.2,rh*1.05); ctx.lineTo(-rw*.55,rh*2.2); ctx.lineTo(rw*.25,rh*1.08);
+      ctx.fillStyle='#fff';
+    }
+    ctx.fill(); ctx.stroke();
+    ctx.lineWidth=Math.max(6,rh*.12); ctx.strokeStyle='#0a0a0a'; ctx.strokeText(txt,4,5);
+    ctx.fillStyle= state.bubble==='burst' ? '#e4002b' : '#0a0a0a'; ctx.fillText(txt,0,0);
+    if(state.bubble==='burst'){ ctx.lineWidth=2.5; ctx.strokeStyle='#fff'; ctx.strokeText(txt,0,0); }
+    ctx.restore();
+  }
+
+  /* ---------- UI ---------- */
+  const $=id=>document.getElementById(id);
+  function seg(sel, key, cb){
+    document.querySelectorAll(sel).forEach(b=>b.addEventListener('click',()=>{
+      b.parentElement.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed','false')); b.setAttribute('aria-pressed','true');
+      state[key]=b.dataset[Object.keys(b.dataset)[0]]; if(cb) cb(); schedule();
+    }));
+  }
+  seg('[data-src]','source',()=>{ $('textField').hidden = state.source!=='text'; });
+  seg('[data-pal]','pal'); seg('[data-bub]','bubble');
+  const bind=(id,key,fmt,scale)=>{ const el=$(id), o=$('o'+id[0].toUpperCase()+id.slice(1)); const f=()=>{ state[key]=scale?el.value*scale:+el.value; o.value=fmt(el.value); schedule(); }; el.addEventListener('input',f); f(); };
+  bind('dot','dot',v=>v+' px'); bind('ang','angle',v=>v+'°'); bind('con','contrast',v=>(v/100).toFixed(2),.01); bind('edge','edge',v=>v);
+  $('srcText').addEventListener('input',e=>{ state.text=e.target.value; schedule(); });
+  $('bubbleText').addEventListener('input',e=>{ state.bubbleText=e.target.value; schedule(); });
+  $('dl').addEventListener('click',()=>{ const a=document.createElement('a'); a.download='dot-bomb.png'; a.href=out.toDataURL('image/png'); a.click(); });
+
+  // drag bubble
+  let drag=false;
+  stage.addEventListener('pointerdown',e=>{ drag=true; stage.setPointerCapture(e.pointerId); move(e); });
+  stage.addEventListener('pointermove',e=>{ if(drag) move(e); });
+  stage.addEventListener('pointerup',()=>drag=false); stage.addEventListener('pointercancel',()=>drag=false);
+  function move(e){ const r=stage.getBoundingClientRect(); state.bx=Math.min(.95,Math.max(.05,(e.clientX-r.left)/r.width)); state.by=Math.min(.95,Math.max(.05,(e.clientY-r.top)/r.height)); schedule(); }
+
+  let rt; addEventListener('resize',()=>{ clearTimeout(rt); rt=setTimeout(()=>{ resize(); schedule(); },120); });
+  resize(); schedule();
+})();
+</script>
+</body>
+</html>

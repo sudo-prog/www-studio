@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jumpgate — Hyperspace Warp Tunnel</title>
+<style>
+  :root {
+    --blue: #3d8bff;
+    --blue-2: #7fc4ff;
+    --violet: #8a5cff;
+    --white: #f4f8ff;
+    --hud: rgba(125,196,255,.85);
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Courier New", monospace;
+    --sans: ui-sans-serif, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; overflow: hidden; background: #000; }
+  body {
+    color: var(--white);
+    font-family: var(--sans);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
+  }
+  #space {
+    position: fixed; inset: 0;
+    width: 100%; height: 100%;
+    display: block;
+    cursor: crosshair;
+  }
+  /* Cinematic frame */
+  .letterbox {
+    position: fixed; left: 0; right: 0;
+    height: clamp(0px, 6vh, 64px);
+    background: #000;
+    z-index: 4;
+    pointer-events: none;
+    transition: height .8s cubic-bezier(.2,.8,.2,1);
+  }
+  .letterbox.top { top: 0; }
+  .letterbox.bottom { bottom: 0; }
+  .vignette {
+    position: fixed; inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, transparent 50%, rgba(0,0,0,.7) 100%);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .scanlines {
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(to bottom, rgba(255,255,255,.025) 0 1px, transparent 1px 3px);
+    pointer-events: none;
+    z-index: 3;
+    mix-blend-mode: overlay;
+  }
+
+  /* HUD */
+  .hud {
+    position: fixed; inset: 0;
+    z-index: 5;
+    pointer-events: none;
+    font-family: var(--mono);
+    color: var(--hud);
+    text-shadow: 0 0 8px rgba(61,139,255,.6);
+  }
+  .corner {
+    position: absolute;
+    font-size: clamp(10px, 1.1vw, 13px);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    line-height: 1.6;
+    padding: clamp(14px, 3vw, 40px);
+    padding-top: calc(clamp(14px, 3vw, 40px) + clamp(0px, 6vh, 64px));
+    padding-bottom: calc(clamp(14px, 3vw, 40px) + clamp(0px, 6vh, 64px));
+  }
+  .tl { top: 0; left: 0; }
+  .tr { top: 0; right: 0; text-align: right; }
+  .bl { bottom: 0; left: 0; }
+  .br { bottom: 0; right: 0; text-align: right; }
+  .corner b { color: var(--white); font-weight: 500; }
+  .corner .dim { opacity: .55; }
+
+  .speed {
+    position: absolute;
+    left: 50%; bottom: calc(clamp(14px, 3vw, 40px) + clamp(0px, 6vh, 64px));
+    transform: translateX(-50%);
+    text-align: center;
+  }
+  .speed .value {
+    font-size: clamp(34px, 6vw, 84px);
+    font-weight: 300;
+    letter-spacing: -.02em;
+    color: var(--white);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    transition: color .3s;
+  }
+  .speed .value small { font-size: .38em; color: var(--hud); letter-spacing: .1em; margin-left: .2em; }
+  .speed .bar {
+    margin: 10px auto 0;
+    width: clamp(160px, 26vw, 360px);
+    height: 3px;
+    background: rgba(125,196,255,.18);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .speed .bar i {
+    display: block; height: 100%; width: 0%;
+    background: linear-gradient(90deg, var(--blue), var(--blue-2), #fff);
+    box-shadow: 0 0 12px var(--blue-2);
+    transition: width .12s linear;
+  }
+  .speed .label {
+    margin-top: 8px;
+    font-size: clamp(9px, 1vw, 12px);
+    letter-spacing: .3em;
+    text-transform: uppercase;
+  }
+  .speed.max .value { color: #fff; text-shadow: 0 0 30px #fff, 0 0 60px var(--blue); }
+
+  /* Reticle */
+  .reticle {
+    position: absolute;
+    left: 50%; top: 50%;
+    width: clamp(120px, 18vw, 260px);
+    height: clamp(120px, 18vw, 260px);
+    transform: translate(-50%, -50%);
+  }
+  .reticle svg { width: 100%; height: 100%; overflow: visible; }
+  .reticle .ring { fill: none; stroke: var(--hud); stroke-width: 1; opacity: .8; }
+  .reticle .spin { transform-origin: 50% 50%; animation: spin 14s linear infinite; }
+  .reticle .spin-r { transform-origin: 50% 50%; animation: spin 22s linear infinite reverse; }
+  .reticle .tick { stroke: var(--hud); stroke-width: 1; }
+  .reticle .dot { fill: #fff; animation: pulse 1.6s ease-in-out infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes pulse { 0%, 100% { opacity: .5; r: 1.5; } 50% { opacity: 1; r: 2.6; } }
+
+  .title {
+    position: absolute;
+    left: 50%; top: calc(clamp(14px, 3vw, 40px) + clamp(0px, 6vh, 64px));
+    transform: translateX(-50%);
+    text-align: center;
+    font-family: var(--sans);
+  }
+  .title h1 {
+    font-weight: 200;
+    font-size: clamp(16px, 2.2vw, 28px);
+    letter-spacing: .5em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+  .title p {
+    margin-top: 6px;
+    font-family: var(--mono);
+    font-size: clamp(9px, 1vw, 12px);
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    opacity: .8;
+    transition: opacity .6s;
+  }
+  .hud.engaged .title p { opacity: 0; }
+
+  /* Flash at max speed entry */
+  .flash {
+    position: fixed; inset: 0;
+    background: #fff;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 6;
+    transition: opacity .9s ease-out;
+  }
+  .flash.on { opacity: .85; transition: opacity .05s; }
+
+  @media (max-width: 600px) {
+    .tr, .bl { display: none; }
+    .corner { font-size: 10px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reticle .spin, .reticle .spin-r, .reticle .dot { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="space" aria-label="Hyperspace warp tunnel animation. Hold to accelerate." role="img"></canvas>
+<div class="vignette" aria-hidden="true"></div>
+<div class="scanlines" aria-hidden="true"></div>
+<div class="letterbox top" aria-hidden="true"></div>
+<div class="letterbox bottom" aria-hidden="true"></div>
+<div class="flash" id="flash" aria-hidden="true"></div>
+
+<div class="hud" id="hud" aria-live="polite">
+  <div class="title">
+    <h1>Jumpgate</h1>
+    <p id="prompt">Hold click · touch · or space to engage</p>
+  </div>
+
+  <div class="corner tl">
+    <div><span class="dim">vector</span> <b>ORION-SPUR / 07</b></div>
+    <div><span class="dim">gate</span> <b id="gateId">Δ-4471</b></div>
+    <div><span class="dim">integrity</span> <b id="integrity">100%</b></div>
+  </div>
+  <div class="corner tr">
+    <div><span class="dim">drive</span> <b id="driveState">IDLE</b></div>
+    <div><span class="dim">frame</span> <b id="fps">60</b> <span class="dim">hz</span></div>
+    <div><span class="dim">stars</span> <b id="starCount">0</b></div>
+  </div>
+  <div class="corner bl">
+    <div><span class="dim">dist</span> <b id="dist">0.000</b> <span class="dim">ly</span></div>
+    <div><span class="dim">elapsed</span> <b id="elapsed">00:00</b></div>
+  </div>
+  <div class="corner br">
+    <div><span class="dim">rings</span> <b>14 · WIRE</b></div>
+    <div><span class="dim">shake</span> <b id="shakeLbl">0.00</b></div>
+  </div>
+
+  <div class="reticle" aria-hidden="true">
+    <svg viewBox="0 0 200 200">
+      <g class="spin">
+        <circle class="ring" cx="100" cy="100" r="92" stroke-dasharray="6 10"></circle>
+        <path class="tick" d="M100 4v10M100 186v10M4 100h10M186 100h10"></path>
+      </g>
+      <g class="spin-r">
+        <circle class="ring" cx="100" cy="100" r="70" stroke-dasharray="40 100 20 60"></circle>
+        <path class="tick" d="M100 24v6M100 170v6M24 100h6M170 100h6" opacity=".6"></path>
+      </g>
+      <circle class="ring" cx="100" cy="100" r="34" opacity=".5"></circle>
+      <path class="tick" d="M100 82v8M100 110v8M82 100h8M110 100h8"></path>
+      <circle class="dot" cx="100" cy="100" r="2"></circle>
+    </svg>
+  </div>
+
+  <div class="speed" id="speedBox">
+    <div class="value"><span id="speedVal">0.00</span><small>c</small></div>
+    <div class="bar"><i id="speedBar"></i></div>
+    <div class="label" id="speedLabel">sublight</div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var canvas = document.getElementById('space');
+  var ctx = canvas.getContext('2d');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var W = 0, H = 0, DPR = 1, CX = 0, CY = 0;
+  var STAR_COUNT = 700;
+  var RING_COUNT = 14;
+  var stars = [], rings = [];
+
+  // Speed model: 0..1 normalised; displayed as c-units 0..9.99
+  var speed = 0, targetSpeed = 0, holding = false;
+  var travelled = 0, startTime = performance.now(), lastFrame = performance.now();
+  var fpsAcc = 0, fpsN = 0, fpsShown = 60;
+  var flashed = false;
+
+  var FOCAL = 420;
+
+  function rand(a, b) { return a + Math.random() * (b - a); }
+
+  function resetStar(s, deep) {
+    s.x = rand(-1, 1) * W * 1.2;
+    s.y = rand(-1, 1) * H * 1.2;
+    s.z = deep ? rand(200, 3000) : 3000;
+    s.pz = s.z;
+    s.hue = Math.random() < 0.12 ? 'violet' : (Math.random() < 0.55 ? 'blue' : 'white');
+    s.size = rand(0.6, 1.8);
+  }
+  function initStars() {
+    stars = [];
+    for (var i = 0; i < STAR_COUNT; i++) { var s = {}; resetStar(s, true); stars.push(s); }
+    document.getElementById('starCount').textContent = STAR_COUNT;
+  }
+  function initRings() {
+    rings = [];
+    for (var i = 0; i < RING_COUNT; i++) rings.push({ z: 200 + (i / RING_COUNT) * 3400, spin: rand(0, Math.PI * 2) });
+  }
+
+  function resize() {
+    DPR = Math.min(window.devicePixelRatio || 1, 2.5);
+    W = window.innerWidth; H = window.innerHeight;
+    CX = W / 2; CY = H / 2;
+    canvas.width = Math.round(W * DPR); canvas.height = Math.round(H * DPR);
+    canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    STAR_COUNT = Math.round(Math.min(1400, Math.max(350, (W * H) / 1800)));
+    initStars();
+  }
+
+  function project(x, y, z) {
+    var k = FOCAL / z;
+    return { x: CX + x * k, y: CY + y * k, k: k };
+  }
+
+  function starColor(hue, a) {
+    if (hue === 'violet') return 'rgba(160,120,255,' + a + ')';
+    if (hue === 'blue') return 'rgba(125,180,255,' + a + ')';
+    return 'rgba(244,248,255,' + a + ')';
+  }
+
+  function drawTunnel(dt, shake) {
+    var zSpeed = (40 + speed * speed * 2600) * dt;
+    var glow = 0.25 + speed * 0.75;
+    ctx.lineWidth = 1;
+    for (var i = 0; i < rings.length; i++) {
+      var r = rings[i];
+      r.z -= zSpeed;
+      r.spin += dt * (0.1 + speed * 0.6);
+      if (r.z < 40) { r.z += 3400; r.spin = rand(0, Math.PI * 2); }
+      var radius = Math.min(W, H) * 1.1;
+      var k = FOCAL / r.z;
+      var pr = radius * k;
+      if (pr > Math.max(W, H) * 2) continue;
+      var a = Math.min(1, (3400 - r.z) / 3400) * glow * Math.min(1, k * 3);
+      // Octagonal wireframe ring
+      ctx.beginPath();
+      var sides = 8;
+      for (var s = 0; s <= sides; s++) {
+        var ang = r.spin + (s / sides) * Math.PI * 2;
+        var px = CX + Math.cos(ang) * pr, py = CY + Math.sin(ang) * pr;
+        if (s === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+      }
+      ctx.strokeStyle = 'rgba(61,139,255,' + (a * 0.9) + ')';
+      ctx.shadowColor = 'rgba(125,196,255,' + a + ')';
+      ctx.shadowBlur = 8 + speed * 14;
+      ctx.stroke();
+      // Struts connecting to the next ring
+      if (i % 2 === 0) {
+        var nz = r.z + 3400 / RING_COUNT;
+        var nk = FOCAL / nz, npr = radius * nk;
+        ctx.beginPath();
+        for (var t = 0; t < sides; t += 2) {
+          var ang2 = r.spin + (t / sides) * Math.PI * 2;
+          ctx.moveTo(CX + Math.cos(ang2) * pr, CY + Math.sin(ang2) * pr);
+          ctx.lineTo(CX + Math.cos(ang2) * npr, CY + Math.sin(ang2) * npr);
+        }
+        ctx.strokeStyle = 'rgba(138,92,255,' + (a * 0.45) + ')';
+        ctx.stroke();
+      }
+    }
+    ctx.shadowBlur = 0;
+  }
+
+  function drawStars(dt, chroma) {
+    var zSpeed = (60 + speed * speed * 3200) * dt;
+    ctx.lineCap = 'round';
+    for (var i = 0; i < stars.length; i++) {
+      var s = stars[i];
+      s.pz = s.z;
+      s.z -= zSpeed;
+      if (s.z < 20) { resetStar(s, false); s.pz = s.z; continue; }
+      var p = project(s.x, s.y, s.z);
+      // Streak length proportional to speed: draw from previous z position
+      var q = project(s.x, s.y, s.pz + zSpeed * (0.2 + speed * 2.2));
+      if (p.x < -50 || p.x > W + 50 || p.y < -50 || p.y > H + 50) { resetStar(s, false); continue; }
+      var alpha = Math.min(1, (3000 - s.z) / 1400) * (0.5 + speed * 0.5);
+      var w = s.size * Math.min(3, p.k * 1.6);
+      ctx.lineWidth = w;
+      if (chroma > 0) {
+        // chromatic split: offset red and blue copies horizontally
+        var off = chroma * 6 * Math.max(0.4, p.k);
+        ctx.strokeStyle = 'rgba(255,70,90,' + alpha * 0.6 + ')';
+        ctx.beginPath(); ctx.moveTo(q.x - off, q.y); ctx.lineTo(p.x - off, p.y); ctx.stroke();
+        ctx.strokeStyle = 'rgba(60,140,255,' + alpha * 0.6 + ')';
+        ctx.beginPath(); ctx.moveTo(q.x + off, q.y); ctx.lineTo(p.x + off, p.y); ctx.stroke();
+      }
+      ctx.strokeStyle = starColor(s.hue, alpha);
+      ctx.beginPath(); ctx.moveTo(q.x, q.y); ctx.lineTo(p.x, p.y); ctx.stroke();
+    }
+  }
+
+  function drawCore() {
+    // Bright horizon core that intensifies with speed
+    var r = 40 + speed * speed * Math.min(W, H) * 0.35;
+    var g = ctx.createRadialGradient(CX, CY, 0, CX, CY, r);
+    g.addColorStop(0, 'rgba(255,255,255,' + (0.05 + speed * 0.75) + ')');
+    g.addColorStop(0.3, 'rgba(125,196,255,' + (0.04 + speed * 0.35) + ')');
+    g.addColorStop(1, 'rgba(61,139,255,0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(CX - r, CY - r, r * 2, r * 2);
+  }
+
+  var hud = document.getElementById('hud');
+  var speedVal = document.getElementById('speedVal');
+  var speedBar = document.getElementById('speedBar');
+  var speedLabel = document.getElementById('speedLabel');
+  var speedBox = document.getElementById('speedBox');
+  var driveState = document.getElementById('driveState');
+  var distEl = document.getElementById('dist');
+  var elapsedEl = document.getElementById('elapsed');
+  var fpsEl = document.getElementById('fps');
+  var shakeLbl = document.getElementById('shakeLbl');
+  var integrity = document.getElementById('integrity');
+  var flash = document.getElementById('flash');
+  var hudTick = 0;
+
+  function updateHUD(dt, shakeAmt) {
+    var c = speed * 9.99;
+    speedVal.textContent = c.toFixed(2);
+    speedBar.style.width = (speed * 100).toFixed(1) + '%';
+    var label = speed < 0.05 ? 'sublight' : speed < 0.4 ? 'warp entry' : speed < 0.85 ? 'hyperspace' : 'threshold';
+    speedLabel.textContent = label;
+    driveState.textContent = holding ? (speed > 0.97 ? 'MAX' : 'BURN') : (speed > 0.02 ? 'COAST' : 'IDLE');
+    speedBox.classList.toggle('max', speed > 0.97);
+    hud.classList.toggle('engaged', speed > 0.05);
+    travelled += speed * speed * dt * 0.42;
+    hudTick += dt;
+    if (hudTick > 0.25) {
+      hudTick = 0;
+      distEl.textContent = travelled.toFixed(3);
+      var sec = Math.floor((performance.now() - startTime) / 1000);
+      elapsedEl.textContent = String(Math.floor(sec / 60)).padStart(2, '0') + ':' + String(sec % 60).padStart(2, '0');
+      fpsEl.textContent = fpsShown;
+      shakeLbl.textContent = shakeAmt.toFixed(2);
+      integrity.textContent = (100 - Math.round(Math.max(0, speed - 0.9) * 60)) + '%';
+    }
+  }
+
+  function frame(now) {
+    var dt = Math.min(0.05, (now - lastFrame) / 1000);
+    lastFrame = now;
+    fpsAcc += dt; fpsN++;
+    if (fpsAcc > 0.5) { fpsShown = Math.round(fpsN / fpsAcc); fpsAcc = 0; fpsN = 0; }
+
+    // Speed ramps: quick acceleration, slower decay
+    targetSpeed = holding ? 1 : 0;
+    var rate = holding ? 0.55 : 0.32;
+    speed += (targetSpeed - speed) * Math.min(1, dt * rate * (holding ? 1.4 : 1));
+    if (!holding && speed < 0.002) speed = 0;
+
+    var atMax = speed > 0.93;
+    var shakeAmt = reduce ? 0 : Math.max(0, (speed - 0.75) / 0.25) * 6;
+    var chroma = Math.max(0, (speed - 0.7) / 0.3);
+    if (atMax && !flashed) { flashed = true; flash.classList.add('on'); setTimeout(function () { flash.classList.remove('on'); }, 60); }
+    if (speed < 0.6) flashed = false;
+
+    // Motion trail: fade previous frame instead of clearing for smooth blur
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.fillStyle = 'rgba(0,0,0,' + (0.55 - speed * 0.3) + ')';
+    ctx.fillRect(0, 0, W, H);
+
+    var sx = (Math.random() - 0.5) * shakeAmt, sy = (Math.random() - 0.5) * shakeAmt;
+    ctx.translate(sx, sy);
+
+    ctx.globalCompositeOperation = 'lighter';
+    drawCore();
+    drawTunnel(dt, shakeAmt);
+    drawStars(dt, chroma);
+    ctx.globalCompositeOperation = 'source-over';
+
+    updateHUD(dt, shakeAmt);
+    requestAnimationFrame(frame);
+  }
+
+  /* ---------- Input: hold to accelerate ---------- */
+  function down(e) { if (e.type === 'pointerdown' && e.button !== 0) return; holding = true; }
+  function up() { holding = false; }
+  canvas.addEventListener('pointerdown', down);
+  window.addEventListener('pointerup', up);
+  window.addEventListener('pointercancel', up);
+  window.addEventListener('blur', up);
+  window.addEventListener('keydown', function (e) {
+    if (e.code === 'Space' || e.key === ' ') { e.preventDefault(); holding = true; }
+  });
+  window.addEventListener('keyup', function (e) {
+    if (e.code === 'Space' || e.key === ' ') holding = false;
+  });
+  canvas.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+
+  window.addEventListener('resize', resize);
+  resize();
+  initRings();
+  ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H);
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

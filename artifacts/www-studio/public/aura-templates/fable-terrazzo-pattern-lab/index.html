@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terrazzo Pattern Lab — Composite Stone Studio</title>
+<style>
+  :root {
+    --paper: #f4efe6;
+    --paper-deep: #e9e1d3;
+    --ink: #2b2620;
+    --ink-soft: #6b625a;
+    --line: rgba(43, 38, 32, 0.14);
+    --terracotta: #c4674a;
+    --sage: #8a9a7b;
+    --ochre: #d2a34a;
+    --blush: #e8b9a8;
+    --card: #fbf8f2;
+    --shadow: 0 30px 60px -30px rgba(43, 38, 32, 0.35), 0 10px 24px -14px rgba(43, 38, 32, 0.2);
+    --radius: 18px;
+    --serif: Georgia, 'Iowan Old Style', 'Palatino Linotype', Palatino, ui-serif, serif;
+    --sans: ui-sans-serif, system-ui, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse at 15% 0%, rgba(232, 185, 168, 0.28), transparent 55%),
+      radial-gradient(ellipse at 100% 100%, rgba(138, 154, 123, 0.22), transparent 50%);
+    -webkit-font-smoothing: antialiased;
+  }
+  /* subtle paper grain */
+  body::before {
+    content: "";
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    opacity: 0.35; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.6 0 0 0 0 0.55 0 0 0 0 0.5 0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  header {
+    position: relative; z-index: 1;
+    padding: clamp(28px, 5vw, 64px) clamp(20px, 5vw, 72px) 12px;
+    display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px;
+  }
+  .eyebrow {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-soft);
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--ink-soft); }
+  h1 {
+    font-family: var(--serif); font-weight: 400; margin: 10px 0 0;
+    font-size: clamp(34px, 5.4vw, 72px); line-height: 0.98; letter-spacing: -0.02em;
+  }
+  h1 em { font-style: italic; color: var(--terracotta); }
+  .lede {
+    max-width: 44ch; color: var(--ink-soft); line-height: 1.55; font-size: 15px; margin: 0;
+  }
+  main {
+    position: relative; z-index: 1;
+    display: grid; gap: 26px;
+    grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.85fr);
+    padding: 12px clamp(20px, 5vw, 72px) 80px;
+  }
+  @media (max-width: 960px) { main { grid-template-columns: 1fr; } }
+
+  .panel {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    box-shadow: var(--shadow); position: relative;
+  }
+  .panel-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    padding: 18px 22px 0; gap: 12px;
+  }
+  .panel-head h2 {
+    font-family: var(--serif); font-weight: 400; font-size: 22px; margin: 0; letter-spacing: -0.01em;
+  }
+  .panel-head span { font-family: var(--mono); font-size: 11px; color: var(--ink-soft); letter-spacing: 0.08em; }
+
+  /* ===== Tile stage ===== */
+  .stage { padding: 18px 22px 22px; }
+  .tile-frame {
+    position: relative; border-radius: 14px; overflow: hidden;
+    aspect-ratio: 1 / 1; max-height: 640px; margin: 0 auto;
+    box-shadow: inset 0 0 0 1px rgba(43,38,32,0.12), 0 24px 40px -24px rgba(43,38,32,0.5);
+    transform-style: preserve-3d; transition: transform .6s cubic-bezier(.2,.8,.2,1);
+  }
+  .tile-frame:hover { transform: translateY(-2px) rotate(-0.3deg); }
+  .tile-frame canvas { display: block; width: 100%; height: 100%; }
+  .tile-frame .gloss {
+    position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(115deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0) 32%, rgba(255,255,255,0) 70%, rgba(255,255,255,0.12) 100%);
+    mix-blend-mode: soft-light;
+  }
+  .tile-frame .seam-note {
+    position: absolute; left: 14px; bottom: 12px; font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.85);
+    background: rgba(43,38,32,0.55); padding: 6px 10px; border-radius: 999px; backdrop-filter: blur(6px);
+  }
+  .tile-frame.busy::after {
+    content: ""; position: absolute; inset: 0; background: rgba(244,239,230,0.35);
+    animation: flash .5s ease-out forwards;
+  }
+  @keyframes flash { from { opacity: 1; } to { opacity: 0; } }
+
+  /* ===== Controls ===== */
+  .controls { padding: 18px 22px 24px; display: grid; gap: 18px; }
+  .field { display: grid; gap: 8px; }
+  .field-label {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft);
+  }
+  .field-label .readout { font-family: var(--mono); color: var(--ink); font-size: 12px; }
+  input[type="range"] {
+    -webkit-appearance: none; appearance: none; width: 100%; height: 26px; background: transparent; margin: 0; cursor: pointer;
+  }
+  input[type="range"]::-webkit-slider-runnable-track {
+    height: 3px; border-radius: 3px;
+    background: linear-gradient(90deg, var(--terracotta), var(--ochre), var(--sage));
+  }
+  input[type="range"]::-moz-range-track {
+    height: 3px; border-radius: 3px;
+    background: linear-gradient(90deg, var(--terracotta), var(--ochre), var(--sage));
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; margin-top: -8.5px;
+    background: var(--card); border: 2px solid var(--ink);
+    box-shadow: 0 3px 8px rgba(43,38,32,0.25); transition: transform .2s cubic-bezier(.34,1.56,.64,1);
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 18px; height: 18px; border-radius: 50%; background: var(--card); border: 2px solid var(--ink);
+    box-shadow: 0 3px 8px rgba(43,38,32,0.25);
+  }
+  input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.18); }
+
+  .palette-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .swatch-btn {
+    display: grid; grid-template-columns: 1fr; gap: 8px; padding: 10px 12px;
+    border-radius: 12px; border: 1px solid var(--line); background: var(--paper);
+    cursor: pointer; text-align: left; font: inherit; color: var(--ink);
+    transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s, border-color .25s;
+  }
+  .swatch-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px -12px rgba(43,38,32,0.4); }
+  .swatch-btn[aria-pressed="true"] { border-color: var(--ink); box-shadow: 0 0 0 3px rgba(43,38,32,0.08); }
+  .swatch-btn .chips { display: flex; gap: 4px; height: 14px; }
+  .swatch-btn .chips i { flex: 1; border-radius: 4px; display: block; }
+  .swatch-btn .chips i:nth-child(odd) { border-radius: 4px 4px 8px 3px; }
+  .swatch-btn b { font-family: var(--serif); font-weight: 400; font-size: 15px; }
+  .swatch-btn small { font-size: 11px; color: var(--ink-soft); }
+
+  .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .color-wrap {
+    display: inline-flex; align-items: center; gap: 10px; padding: 6px 12px 6px 6px;
+    border: 1px solid var(--line); border-radius: 999px; background: var(--paper);
+  }
+  .color-wrap input[type="color"] {
+    -webkit-appearance: none; appearance: none; width: 30px; height: 30px; border: none; padding: 0;
+    border-radius: 50%; background: none; cursor: pointer; overflow: hidden;
+  }
+  .color-wrap input[type="color"]::-webkit-color-swatch-wrapper { padding: 0; }
+  .color-wrap input[type="color"]::-webkit-color-swatch { border: 1px solid rgba(0,0,0,0.15); border-radius: 50%; }
+  .color-wrap input[type="color"]::-moz-color-swatch { border: 1px solid rgba(0,0,0,0.15); border-radius: 50%; }
+  .color-wrap code { font-family: var(--mono); font-size: 12px; }
+
+  .btn {
+    font: inherit; font-size: 13px; letter-spacing: 0.04em; cursor: pointer;
+    padding: 12px 20px; border-radius: 999px; border: 1px solid var(--ink);
+    background: var(--ink); color: var(--paper);
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s, background .25s;
+    position: relative; overflow: hidden;
+  }
+  .btn::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.25) 50%, transparent 70%);
+    transform: translateX(-120%); transition: transform .6s ease;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 24px -12px rgba(43,38,32,0.6); }
+  .btn:hover::after { transform: translateX(120%); }
+  .btn:active { transform: translateY(0) scale(0.98); }
+  .btn.ghost { background: transparent; color: var(--ink); }
+  .btn.ghost:hover { background: rgba(43,38,32,0.05); }
+  .btn svg { width: 15px; height: 15px; }
+  .btn:focus-visible, .swatch-btn:focus-visible, input:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
+
+  /* ===== Mockups ===== */
+  .mockups { grid-column: 1 / -1; padding: 0 22px 26px; }
+  .mock-grid {
+    display: grid; gap: 22px; padding-top: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+  .mock {
+    background: linear-gradient(180deg, #f8f4ec, #ece4d6);
+    border-radius: 16px; padding: 24px 18px 18px; text-align: center;
+    border: 1px solid var(--line); position: relative; overflow: hidden;
+    display: grid; grid-template-rows: 1fr auto; gap: 14px; min-height: 300px;
+  }
+  .mock::before {
+    content: ""; position: absolute; left: 10%; right: 10%; bottom: 46px; height: 24px;
+    background: radial-gradient(ellipse, rgba(43,38,32,0.28), transparent 70%); filter: blur(6px);
+  }
+  .mock figcaption { font-family: var(--serif); font-size: 15px; color: var(--ink-soft); }
+  .mock figcaption b { display: block; color: var(--ink); font-weight: 400; font-size: 17px; }
+  .obj { position: relative; margin: 0 auto; transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+  .mock:hover .obj { transform: translateY(-6px) rotate(-1.5deg); }
+  .terrazzo-bg { background-image: var(--tile-url); background-size: 190px 190px; background-color: var(--tile-base, #eee); }
+
+  /* Mug */
+  .mug { width: 150px; height: 168px; }
+  .mug .body {
+    position: absolute; left: 0; top: 14px; width: 118px; height: 150px; border-radius: 10px 10px 34px 34px;
+    box-shadow: inset 0 -18px 30px rgba(43,38,32,0.28), inset 10px 0 20px rgba(255,255,255,0.28), inset -12px 0 24px rgba(43,38,32,0.25);
+  }
+  .mug .rim {
+    position: absolute; left: 0; top: 6px; width: 118px; height: 18px; border-radius: 50%;
+    background: #f7f3ea; box-shadow: inset 0 3px 6px rgba(43,38,32,0.25);
+  }
+  .mug .rim::after {
+    content: ""; position: absolute; inset: 3px 6px; border-radius: 50%;
+    background: radial-gradient(ellipse at 50% 70%, #3a2b22, #1b140f);
+  }
+  .mug .handle {
+    position: absolute; left: 106px; top: 46px; width: 46px; height: 76px;
+    border: 14px solid transparent; border-left: none; border-radius: 0 40px 40px 0;
+    background: var(--tile-url) border-box; background-size: 190px 190px;
+    -webkit-mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+  }
+
+  /* Phone case */
+  .phone { width: 96px; height: 196px; border-radius: 22px; position: relative;
+    box-shadow: inset 0 0 0 4px rgba(43,38,32,0.12), inset 3px 3px 10px rgba(255,255,255,0.4), inset -6px -6px 14px rgba(43,38,32,0.25), 0 18px 30px -14px rgba(43,38,32,0.5); }
+  .phone .camera {
+    position: absolute; top: 12px; left: 12px; width: 40px; height: 40px; border-radius: 12px;
+    background: #1e1a16; box-shadow: inset 0 0 0 2px #3a332c;
+  }
+  .phone .camera::before, .phone .camera::after {
+    content: ""; position: absolute; width: 12px; height: 12px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #6d7fa3, #0e0c0a 60%);
+    box-shadow: 0 0 0 2px #2c2621;
+  }
+  .phone .camera::before { top: 6px; left: 6px; }
+  .phone .camera::after { bottom: 6px; right: 6px; }
+  .phone .side { position: absolute; right: -3px; top: 56px; width: 3px; height: 26px; background: #6b625a; border-radius: 2px; }
+
+  /* Tote */
+  .tote { width: 150px; height: 190px; }
+  .tote .straps {
+    position: absolute; left: 30px; top: 0; width: 90px; height: 80px;
+    border: 9px solid #5a4a3e; border-bottom: none; border-radius: 48px 48px 0 0;
+    box-shadow: inset 0 0 0 2px rgba(0,0,0,0.15);
+  }
+  .tote .bag {
+    position: absolute; left: 0; top: 56px; width: 150px; height: 134px; border-radius: 6px 6px 14px 14px;
+    box-shadow: inset 0 -14px 26px rgba(43,38,32,0.22), inset 12px 0 20px rgba(255,255,255,0.25), 0 14px 26px -14px rgba(43,38,32,0.5);
+  }
+  .tote .bag::after {
+    content: "studio"; position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%);
+    font-family: var(--serif); font-style: italic; font-size: 13px; color: rgba(255,255,255,0.9);
+    background: rgba(43,38,32,0.55); padding: 3px 10px; border-radius: 999px;
+  }
+
+  footer {
+    position: relative; z-index: 1; padding: 0 clamp(20px, 5vw, 72px) 40px;
+    color: var(--ink-soft); font-size: 12px; display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap;
+    font-family: var(--mono); letter-spacing: 0.06em;
+  }
+  .reveal { animation: rise .8s cubic-bezier(.2,.8,.2,1) both; }
+  .reveal:nth-child(2) { animation-delay: .08s; }
+  .reveal:nth-child(3) { animation-delay: .16s; }
+  @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <span class="eyebrow">Composite stone studio · No. 036</span>
+    <h1>Terrazzo <em>Pattern</em> Lab</h1>
+  </div>
+  <p class="lede">Scatter marble and glass chips into a poured binder, then see the slab wrapped around real objects. Every tile is seamless; every regeneration is a fresh pour.</p>
+</header>
+
+<main>
+  <section class="panel reveal" aria-labelledby="tile-heading">
+    <div class="panel-head">
+      <h2 id="tile-heading">The Slab</h2>
+      <span id="seed-label">seed 0000</span>
+    </div>
+    <div class="stage">
+      <div class="tile-frame" id="tile-frame">
+        <canvas id="tile" width="512" height="512" aria-label="Generated seamless terrazzo tile"></canvas>
+        <div class="gloss"></div>
+        <div class="seam-note">seamless · wraps on all edges</div>
+      </div>
+    </div>
+  </section>
+
+  <aside class="panel reveal controls" aria-labelledby="controls-heading">
+    <div class="panel-head" style="padding: 0;">
+      <h2 id="controls-heading">Mix Formula</h2>
+      <span>live</span>
+    </div>
+
+    <div class="field">
+      <label class="field-label" for="density">Chip density <span class="readout" id="density-out">140</span></label>
+      <input type="range" id="density" min="30" max="420" value="140" step="5">
+    </div>
+    <div class="field">
+      <label class="field-label" for="size">Chip size <span class="readout" id="size-out">1.0×</span></label>
+      <input type="range" id="size" min="0.4" max="2.2" value="1" step="0.05">
+    </div>
+    <div class="field">
+      <label class="field-label" for="speckle">Speckle <span class="readout" id="speckle-out">35%</span></label>
+      <input type="range" id="speckle" min="0" max="100" value="35" step="1">
+    </div>
+
+    <div class="field">
+      <span class="field-label">Palette</span>
+      <div class="palette-grid" id="palette-grid" role="group" aria-label="Chip palette"></div>
+    </div>
+
+    <div class="field">
+      <span class="field-label">Base binder</span>
+      <div class="row">
+        <label class="color-wrap">
+          <input type="color" id="base" value="#efe7db" aria-label="Base color">
+          <code id="base-code">#efe7db</code>
+        </label>
+        <button class="btn ghost" id="base-reset" type="button">Palette default</button>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 4px;">
+      <button class="btn" id="regen" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg>
+        Regenerate pour
+      </button>
+      <button class="btn ghost" id="download" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 21h16"/></svg>
+        Download PNG
+      </button>
+    </div>
+  </aside>
+
+  <section class="panel reveal mockups" aria-labelledby="mock-heading">
+    <div class="panel-head" style="padding-left:0; padding-right:0;">
+      <h2 id="mock-heading">Applied to Objects</h2>
+      <span>css silhouettes · canvas texture</span>
+    </div>
+    <div class="mock-grid">
+      <figure class="mock">
+        <div class="obj mug">
+          <div class="body terrazzo-bg"></div>
+          <div class="rim"></div>
+          <div class="handle"></div>
+        </div>
+        <figcaption><b>Stoneware Mug</b>full-wrap glaze print</figcaption>
+      </figure>
+      <figure class="mock">
+        <div class="obj phone terrazzo-bg">
+          <div class="camera"></div>
+          <div class="side"></div>
+        </div>
+        <figcaption><b>Phone Case</b>matte polycarbonate</figcaption>
+      </figure>
+      <figure class="mock">
+        <div class="obj tote">
+          <div class="straps"></div>
+          <div class="bag terrazzo-bg"></div>
+        </div>
+        <figcaption><b>Canvas Tote</b>all-over sublimation</figcaption>
+      </figure>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>Tile 512 × 512 px · toroidal wrap · polygonal chips</span>
+  <span>Press <kbd>R</kbd> to re-pour · <kbd>S</kbd> to save</span>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  const PALETTES = {
+    Milano: { base: '#efe7db', chips: ['#c4674a', '#8a9a7b', '#d2a34a', '#2b2620', '#e8b9a8', '#f6f1e7'], note: 'terracotta, sage, ochre' },
+    Nordic: { base: '#e6e8e4', chips: ['#4b5563', '#9aa5a0', '#c9ccc6', '#2c3238', '#b7c4c0', '#f4f5f2'], note: 'slate, mist, fog' },
+    Tokyo:  { base: '#f3ece4', chips: ['#b52f2f', '#1c1c1e', '#d9c7a3', '#e0857f', '#6a7f6a', '#faf6ef'], note: 'vermilion, ink, tatami' },
+    Bold:   { base: '#12100e', chips: ['#ff6b4a', '#ffd23f', '#2ec4b6', '#e05297', '#f2f0ea', '#7a5cff'], note: 'high-key on charcoal' }
+  };
+
+  const canvas = document.getElementById('tile');
+  const ctx = canvas.getContext('2d');
+  const frame = document.getElementById('tile-frame');
+  const $ = (id) => document.getElementById(id);
+  const density = $('density'), size = $('size'), speckle = $('speckle'), base = $('base');
+  const state = { palette: 'Milano', seed: Math.floor(Math.random() * 9999) };
+
+  // Deterministic PRNG so seeds are reproducible
+  function mulberry32(a) {
+    return function () {
+      a |= 0; a = a + 0x6D2B79F5 | 0;
+      let t = Math.imul(a ^ a >>> 15, 1 | a);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+
+  function hexToRgb(hex) {
+    const n = parseInt(hex.slice(1), 16);
+    return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+  }
+  function shade(hex, amt) {
+    const [r, g, b] = hexToRgb(hex).map(v => Math.max(0, Math.min(255, Math.round(v + amt))));
+    return `rgb(${r},${g},${b})`;
+  }
+
+  // Build an irregular convex-ish chip polygon around a center
+  function chipPolygon(rand, cx, cy, r) {
+    const n = 5 + Math.floor(rand() * 4);
+    const pts = [];
+    const squash = 0.65 + rand() * 0.6;
+    const rot = rand() * Math.PI * 2;
+    for (let i = 0; i < n; i++) {
+      const a = (i / n) * Math.PI * 2 + (rand() - 0.5) * (Math.PI / n);
+      const rr = r * (0.7 + rand() * 0.5);
+      const x = Math.cos(a) * rr, y = Math.sin(a) * rr * squash;
+      pts.push([cx + x * Math.cos(rot) - y * Math.sin(rot), cy + x * Math.sin(rot) + y * Math.cos(rot)]);
+    }
+    return pts;
+  }
+
+  function drawPoly(pts, dx, dy, fill, stroke) {
+    ctx.beginPath();
+    pts.forEach((p, i) => { if (i === 0) ctx.moveTo(p[0] + dx, p[1] + dy); else ctx.lineTo(p[0] + dx, p[1] + dy); });
+    ctx.closePath();
+    ctx.fillStyle = fill; ctx.fill();
+    if (stroke) { ctx.strokeStyle = stroke; ctx.lineWidth = 0.8; ctx.stroke(); }
+  }
+
+  // Draw a shape 9 times (center + 8 neighbours) so it wraps seamlessly
+  function wrapped(fn, W, H) {
+    for (let ox = -1; ox <= 1; ox++) for (let oy = -1; oy <= 1; oy++) fn(ox * W, oy * H);
+  }
+
+  function generate() {
+    const W = canvas.width, H = canvas.height;
+    const rand = mulberry32(state.seed);
+    const pal = PALETTES[state.palette];
+    const baseHex = base.value;
+    const count = +density.value;
+    const scale = +size.value;
+    const spk = +speckle.value / 100;
+
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = baseHex; ctx.fillRect(0, 0, W, H);
+
+    // faint binder mottling
+    for (let i = 0; i < 40; i++) {
+      const x = rand() * W, y = rand() * H, r = 40 + rand() * 120;
+      const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+      const dark = rand() > 0.5;
+      g.addColorStop(0, dark ? 'rgba(0,0,0,0.035)' : 'rgba(255,255,255,0.06)');
+      g.addColorStop(1, 'rgba(0,0,0,0)');
+      wrapped((dx, dy) => { ctx.fillStyle = g; ctx.save(); ctx.translate(dx, dy); ctx.fillRect(0, 0, W, H); ctx.restore(); }, W, H);
+    }
+
+    // Chips: place with simple rejection so they do not overlap too heavily
+    const placed = [];
+    const attempts = count * 6;
+    let made = 0;
+    for (let i = 0; i < attempts && made < count; i++) {
+      const big = rand() < 0.14;
+      const r = (big ? 22 + rand() * 26 : 6 + rand() * 14) * scale;
+      const x = rand() * W, y = rand() * H;
+      let ok = true;
+      for (const p of placed) {
+        let dx = Math.abs(p.x - x), dy = Math.abs(p.y - y);
+        dx = Math.min(dx, W - dx); dy = Math.min(dy, H - dy);
+        if (dx * dx + dy * dy < (p.r + r) * (p.r + r) * 0.55) { ok = false; break; }
+      }
+      if (!ok) continue;
+      placed.push({ x, y, r });
+      made++;
+      const color = pal.chips[Math.floor(rand() * pal.chips.length)];
+      const pts = chipPolygon(rand, x, y, r);
+      const lighter = shade(color, 18), darker = shade(color, -22);
+      wrapped((dx, dy) => {
+        // soft shadow to embed chip in the binder
+        ctx.save(); ctx.globalAlpha = 0.18;
+        drawPoly(pts, dx + 0.8, dy + 1.2, '#000', null);
+        ctx.restore();
+        const g = ctx.createLinearGradient(x - r + dx, y - r + dy, x + r + dx, y + r + dy);
+        g.addColorStop(0, lighter); g.addColorStop(1, darker);
+        drawPoly(pts, dx, dy, g, 'rgba(0,0,0,0.08)');
+        // vein highlight on larger chips
+        if (r > 16 * scale && rand() < 0.6) {
+          ctx.save(); ctx.globalAlpha = 0.35; ctx.strokeStyle = '#fff'; ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(pts[0][0] + dx, pts[0][1] + dy);
+          ctx.quadraticCurveTo(x + dx, y + dy, pts[Math.floor(pts.length / 2)][0] + dx, pts[Math.floor(pts.length / 2)][1] + dy);
+          ctx.stroke(); ctx.restore();
+        }
+      }, W, H);
+    }
+
+    // Speckle: tiny grains of chip colour + base darkening
+    const grains = Math.floor(spk * 2600);
+    for (let i = 0; i < grains; i++) {
+      const x = rand() * W, y = rand() * H, r = 0.5 + rand() * 1.6;
+      const c = rand() < 0.6 ? pal.chips[Math.floor(rand() * pal.chips.length)] : (rand() < 0.5 ? '#000' : '#fff');
+      ctx.globalAlpha = 0.25 + rand() * 0.45;
+      ctx.fillStyle = c;
+      wrapped((dx, dy) => { ctx.beginPath(); ctx.arc(x + dx, y + dy, r, 0, Math.PI * 2); ctx.fill(); }, W, H);
+    }
+    ctx.globalAlpha = 1;
+
+    // polish sheen
+    const sheen = ctx.createLinearGradient(0, 0, W, H);
+    sheen.addColorStop(0, 'rgba(255,255,255,0.06)'); sheen.addColorStop(0.5, 'rgba(255,255,255,0)'); sheen.addColorStop(1, 'rgba(0,0,0,0.05)');
+    ctx.fillStyle = sheen; ctx.fillRect(0, 0, W, H);
+
+    $('seed-label').textContent = 'seed ' + String(state.seed).padStart(4, '0');
+    applyToMockups(baseHex);
+  }
+
+  function applyToMockups(baseHex) {
+    const url = canvas.toDataURL('image/png');
+    document.documentElement.style.setProperty('--tile-url', `url("${url}")`);
+    document.documentElement.style.setProperty('--tile-base', baseHex);
+  }
+
+  function repour() {
+    state.seed = Math.floor(Math.random() * 9999);
+    frame.classList.remove('busy'); void frame.offsetWidth; frame.classList.add('busy');
+    generate();
+  }
+
+  // Palette buttons
+  const grid = $('palette-grid');
+  Object.keys(PALETTES).forEach((name) => {
+    const p = PALETTES[name];
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'swatch-btn'; b.setAttribute('aria-pressed', String(name === state.palette));
+    b.innerHTML = `<span class="chips">${p.chips.slice(0, 5).map(c => `<i style="background:${c}"></i>`).join('')}</span><b>${name}</b><small>${p.note}</small>`;
+    b.addEventListener('click', () => {
+      state.palette = name;
+      grid.querySelectorAll('.swatch-btn').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+      base.value = p.base; $('base-code').textContent = p.base;
+      generate();
+    });
+    grid.appendChild(b);
+  });
+
+  const fmt = { density: v => v, size: v => (+v).toFixed(2).replace(/0$/, '') + '×', speckle: v => v + '%' };
+  [density, size, speckle].forEach((el) => {
+    el.addEventListener('input', () => { $(el.id + '-out').textContent = fmt[el.id](el.value); generate(); });
+  });
+  base.addEventListener('input', () => { $('base-code').textContent = base.value; generate(); });
+  $('base-reset').addEventListener('click', () => { base.value = PALETTES[state.palette].base; $('base-code').textContent = base.value; generate(); });
+  $('regen').addEventListener('click', repour);
+  $('download').addEventListener('click', download);
+
+  function download() {
+    const a = document.createElement('a');
+    a.download = `terrazzo-${state.palette.toLowerCase()}-${state.seed}.png`;
+    a.href = canvas.toDataURL('image/png');
+    document.body.appendChild(a); a.click(); a.remove();
+  }
+
+  window.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT') return;
+    if (e.key === 'r' || e.key === 'R') repour();
+    if (e.key === 's' || e.key === 'S') download();
+  });
+
+  generate();
+})();
+</script>
+</body>
+</html>

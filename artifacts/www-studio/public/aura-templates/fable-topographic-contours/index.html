@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Living Landscape — Animated Topographic Contours, Sheet 040</title>
+<style>
+  :root {
+    --bg: #f3eee3; --ink: #2b2a28; --ink-soft: rgba(43,42,40,0.62); --line: rgba(43,42,40,0.18);
+    --glass: rgba(243,238,227,0.72); --accent: #b5482b;
+    --serif: Georgia, 'Iowan Old Style', 'Palatino Linotype', Palatino, ui-serif, serif;
+    --sans: ui-sans-serif, system-ui, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace;
+  }
+  body[data-palette="terrain"] { --bg: #e9e4d2; --ink: #3a2e22; --ink-soft: rgba(58,46,34,0.65); --line: rgba(58,46,34,0.2); --glass: rgba(240,236,224,0.74); --accent: #8a4b2a; }
+  body[data-palette="night"] { --bg: #0a1a33; --ink: #d9ecff; --ink-soft: rgba(217,236,255,0.6); --line: rgba(217,236,255,0.18); --glass: rgba(10,26,51,0.62); --accent: #7fd1ff; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; overflow: hidden; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--sans); transition: background .6s, color .6s; -webkit-font-smoothing: antialiased; }
+  #map { position: fixed; inset: 0; width: 100%; height: 100%; display: block; cursor: crosshair; }
+
+  .ui { position: fixed; inset: 0; pointer-events: none; display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto 1fr auto; padding: clamp(14px, 2.5vw, 30px); gap: 14px; }
+  .ui > * { pointer-events: auto; }
+  .card {
+    background: var(--glass); border: 1px solid var(--line); border-radius: 6px; padding: 14px 18px;
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 20px 40px -30px rgba(0,0,0,0.45); transition: background .6s, border-color .6s;
+  }
+  .caps { font-variant: small-caps; letter-spacing: 0.12em; }
+  .title { grid-column: 1; grid-row: 1; max-width: 420px; align-self: start; justify-self: start; position: relative; }
+  .title::before { content: ""; position: absolute; inset: 5px; border: 1px solid var(--line); border-radius: 3px; pointer-events: none; }
+  .title .sheet { font-family: var(--mono); font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink-soft); display: flex; justify-content: space-between; gap: 12px; }
+  .title h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(22px, 2.6vw, 34px); margin: 8px 0 4px; letter-spacing: 0.01em; line-height: 1.05; }
+  .title h1 em { font-style: italic; color: var(--accent); }
+  .title p { margin: 0; font-size: 12.5px; line-height: 1.55; color: var(--ink-soft); max-width: 40ch; }
+
+  .palettes { grid-column: 2; grid-row: 1; align-self: start; justify-self: end; display: flex; flex-direction: column; gap: 6px; padding: 10px; }
+  .palettes .label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink-soft); padding: 2px 6px 6px; }
+  .pal {
+    font: inherit; font-size: 12px; color: var(--ink); background: transparent; border: 1px solid transparent; border-radius: 4px;
+    padding: 8px 10px; cursor: pointer; display: flex; align-items: center; gap: 10px; text-align: left;
+    transition: background .25s, border-color .25s, transform .25s cubic-bezier(.2,.8,.2,1);
+  }
+  .pal:hover { background: rgba(127,127,127,0.12); transform: translateX(-2px); }
+  .pal[aria-pressed="true"] { border-color: var(--ink-soft); background: rgba(127,127,127,0.1); }
+  .pal .sw { width: 34px; height: 18px; border-radius: 3px; border: 1px solid var(--line); background: var(--s); flex: none; }
+  .pal:focus-visible, .ctl:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .readout { grid-column: 1; grid-row: 3; align-self: end; justify-self: start; display: grid; grid-template-columns: repeat(3, auto); gap: 4px 22px; min-width: 260px; }
+  .readout .k { font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-soft); }
+  .readout .v { font-family: var(--serif); font-size: 22px; letter-spacing: -0.01em; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .readout .v small { font-size: 12px; color: var(--ink-soft); margin-left: 3px; font-family: var(--sans); }
+  .readout .row2 { grid-column: 1 / -1; display: flex; gap: 14px; align-items: center; margin-top: 8px; padding-top: 10px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+  .scalebar { display: flex; align-items: flex-end; gap: 0; }
+  .scalebar i { display: block; width: 26px; height: 5px; border: 1px solid var(--ink); }
+  .scalebar i:nth-child(odd) { background: var(--ink); }
+  .scalebar span { font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; margin-left: 8px; color: var(--ink-soft); }
+  .legend { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); display: flex; gap: 12px; align-items: center; }
+  .legend i { display: inline-block; width: 22px; border-top: 1px solid var(--ink); vertical-align: middle; margin-right: 5px; }
+  .legend i.idx { border-top-width: 2px; }
+  .ctl-row { display: flex; align-items: center; gap: 10px; }
+  .ctl { font: inherit; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 4px; padding: 6px 10px; cursor: pointer; transition: background .25s; }
+  .ctl:hover { background: rgba(127,127,127,0.12); }
+  .ctl[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+  input[type="range"] { -webkit-appearance: none; appearance: none; width: 110px; height: 20px; background: transparent; margin: 0; cursor: pointer; }
+  input[type="range"]::-webkit-slider-runnable-track { height: 1px; background: var(--ink-soft); }
+  input[type="range"]::-moz-range-track { height: 1px; background: var(--ink-soft); }
+  input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 12px; height: 12px; border-radius: 50%; margin-top: -5.5px; background: var(--bg); border: 1.5px solid var(--ink); }
+  input[type="range"]::-moz-range-thumb { width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 1.5px solid var(--ink); }
+  .ctl-row label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-soft); }
+
+  .compass { grid-column: 2; grid-row: 3; align-self: end; justify-self: end; width: clamp(96px, 10vw, 150px); height: auto; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.25)); }
+  .compass text { font-family: var(--serif); font-variant: small-caps; letter-spacing: 0.1em; fill: var(--ink); }
+  .compass .ring, .compass .tick { stroke: var(--ink); fill: none; }
+  .compass .star-dark { fill: var(--ink); }
+  .compass .star-light { fill: var(--bg); stroke: var(--ink); stroke-width: 0.6; }
+  .compass .needle { fill: var(--accent); }
+  .compass .rose { transform-origin: 60px 60px; animation: sway 12s ease-in-out infinite; }
+  @keyframes sway { 0%, 100% { transform: rotate(-1.2deg); } 50% { transform: rotate(1.2deg); } }
+
+  .grid-lines { position: fixed; inset: 0; pointer-events: none; mix-blend-mode: multiply; opacity: 0.35;
+    background: linear-gradient(var(--line) 1px, transparent 1px) 0 0 / 120px 120px, linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0 / 120px 120px; }
+  body[data-palette="night"] .grid-lines { mix-blend-mode: screen; opacity: 0.25; }
+
+  @media (max-width: 720px) {
+    .ui { grid-template-columns: 1fr; grid-template-rows: auto 1fr auto auto; }
+    .title { max-width: none; } .title p { display: none; }
+    .palettes { grid-column: 1; grid-row: 4; flex-direction: row; justify-self: stretch; }
+    .palettes .label { display: none; } .pal { flex: 1; justify-content: center; } .pal span:last-child { display: none; }
+    .readout { grid-row: 3; justify-self: stretch; min-width: 0; }
+    .compass { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { .compass .rose { animation: none; } .pal, .ctl, .card, body { transition: none; } }
+</style>
+</head>
+<body data-palette="paper">
+<canvas id="map" aria-label="Animated topographic contour map"></canvas>
+<div class="grid-lines" aria-hidden="true"></div>
+
+<div class="ui">
+  <section class="card title">
+    <div class="sheet"><span>Sheet 040 · Series L-7</span><span>1 : 25 000</span></div>
+    <h1>The <em>Living</em> Landscape</h1>
+    <p>A heightfield of layered noise that never settles. Contours are traced every 40 metres by marching squares; every fifth line is an index contour, labelled in metres above datum.</p>
+  </section>
+
+  <div class="card palettes" role="group" aria-label="Map palette">
+    <span class="label">Palette</span>
+    <button class="pal" type="button" data-palette="paper" aria-pressed="true"><span class="sw" style="--s: linear-gradient(90deg, #f3eee3 50%, #2b2a28 50%)"></span><span>Paper &amp; Ink</span></button>
+    <button class="pal" type="button" data-palette="terrain" aria-pressed="false"><span class="sw" style="--s: linear-gradient(90deg, #5f8a4e, #c8b27a, #8a6a4a, #f2efe6)"></span><span>Terrain</span></button>
+    <button class="pal" type="button" data-palette="night" aria-pressed="false"><span class="sw" style="--s: linear-gradient(90deg, #0a1a33 50%, #7fd1ff 50%)"></span><span>Night Blueprint</span></button>
+  </div>
+
+  <section class="card readout" aria-live="off">
+    <div><div class="k">Elevation</div><div class="v" id="r-elev">—<small>m</small></div></div>
+    <div><div class="k">Slope</div><div class="v" id="r-slope">—<small>°</small></div></div>
+    <div><div class="k">Aspect</div><div class="v" id="r-aspect">—</div></div>
+    <div class="row2">
+      <div class="scalebar" aria-label="Scale bar, 1 kilometre"><i></i><i></i><i></i><i></i><span>1 km</span></div>
+      <div class="legend"><span><i></i>40 m</span><span><i class="idx"></i>200 m index</span></div>
+      <div class="ctl-row">
+        <label for="flow">Flow</label>
+        <input type="range" id="flow" min="0" max="100" value="35" step="1" aria-label="Landscape flow speed">
+        <button class="ctl" id="pause" type="button" aria-pressed="false">Pause</button>
+      </div>
+    </div>
+  </section>
+
+  <svg class="compass" viewBox="0 0 120 120" role="img" aria-label="Compass rose, north up">
+    <g class="rose">
+      <circle class="ring" cx="60" cy="60" r="46" stroke-width="0.8"/>
+      <circle class="ring" cx="60" cy="60" r="41" stroke-width="0.4"/>
+      <g class="tick" stroke-width="0.6">
+        <path d="M60 14v5M60 101v5M14 60h5M101 60h5"/>
+        <path d="M27.5 27.5l3.5 3.5M92.5 27.5l-3.5 3.5M27.5 92.5l3.5-3.5M92.5 92.5l-3.5-3.5"/>
+      </g>
+      <g transform="rotate(45 60 60)">
+        <path class="star-light" d="M60 30 L64 60 L60 90 L56 60 Z"/>
+        <path class="star-light" d="M30 60 L60 56 L90 60 L60 64 Z"/>
+      </g>
+      <path class="star-dark" d="M60 22 L65 60 L60 60 Z"/>
+      <path class="star-light" d="M60 22 L55 60 L60 60 Z"/>
+      <path class="star-dark" d="M60 98 L55 60 L60 60 Z"/>
+      <path class="star-light" d="M60 98 L65 60 L60 60 Z"/>
+      <path class="star-dark" d="M22 60 L60 55 L60 60 Z"/>
+      <path class="star-light" d="M22 60 L60 65 L60 60 Z"/>
+      <path class="star-dark" d="M98 60 L60 65 L60 60 Z"/>
+      <path class="star-light" d="M98 60 L60 55 L60 60 Z"/>
+      <path class="needle" d="M60 24 L62.5 40 L57.5 40 Z"/>
+      <circle cx="60" cy="60" r="2.2" class="star-dark"/>
+      <text x="60" y="11" text-anchor="middle" font-size="9">N</text>
+      <text x="60" y="115" text-anchor="middle" font-size="8">S</text>
+      <text x="6" y="63" text-anchor="middle" font-size="8">W</text>
+      <text x="114" y="63" text-anchor="middle" font-size="8">E</text>
+    </g>
+  </svg>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  const canvas = document.getElementById('map');
+  const ctx = canvas.getContext('2d');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---------- Palettes ----------
+  const PALETTES = {
+    paper: {
+      bg: '#f3eee3', minor: 'rgba(43,42,40,0.42)', index: 'rgba(43,42,40,0.92)', label: '#2b2a28', halo: '#f3eee3', spot: 'rgba(181,72,43,0.16)', cross: '#b5482b',
+      shade: (h, s) => { const v = 232 + (s - 0.5) * 34 - h * 14; return [v + 8, v + 2, v - 12]; }
+    },
+    terrain: {
+      bg: '#e9e4d2', minor: 'rgba(58,46,34,0.4)', index: 'rgba(58,46,34,0.9)', label: '#3a2e22', halo: 'rgba(233,228,210,0.9)', spot: 'rgba(255,255,255,0.22)', cross: '#8a4b2a',
+      shade: (h, s) => {
+        const stops = [[0, [62, 110, 74]], [0.25, [122, 150, 82]], [0.45, [200, 178, 122]], [0.65, [150, 112, 78]], [0.82, [120, 104, 92]], [1, [242, 239, 230]]];
+        let i = 0; while (i < stops.length - 2 && h > stops[i + 1][0]) i++;
+        const [a, ca] = stops[i], [b, cb] = stops[i + 1]; const t = Math.max(0, Math.min(1, (h - a) / (b - a)));
+        const l = 0.72 + s * 0.56;
+        return [(ca[0] + (cb[0] - ca[0]) * t) * l, (ca[1] + (cb[1] - ca[1]) * t) * l, (ca[2] + (cb[2] - ca[2]) * t) * l];
+      }
+    },
+    night: {
+      bg: '#0a1a33', minor: 'rgba(127,209,255,0.42)', index: 'rgba(217,236,255,0.95)', label: '#d9ecff', halo: '#0a1a33', spot: 'rgba(127,209,255,0.18)', cross: '#7fd1ff',
+      shade: (h, s) => { const v = 0.55 + s * 0.9 + h * 0.5; return [10 + 22 * v, 26 + 34 * v, 51 + 50 * v]; }
+    }
+  };
+  let palName = 'paper', pal = PALETTES.paper;
+
+  // ---------- 3D value noise / fBm ----------
+  const PERM = new Uint8Array(512);
+  (function () { const p = []; for (let i = 0; i < 256; i++) p[i] = i; let seed = 1337; for (let i = 255; i > 0; i--) { seed = (seed * 16807) % 2147483647; const j = seed % (i + 1); [p[i], p[j]] = [p[j], p[i]]; } for (let i = 0; i < 512; i++) PERM[i] = p[i & 255]; })();
+  function fade(t) { return t * t * t * (t * (t * 6 - 15) + 10); }
+  function grad(hash, x, y, z) {
+    const h = hash & 15; const u = h < 8 ? x : y; const v = h < 4 ? y : (h === 12 || h === 14 ? x : z);
+    return ((h & 1) ? -u : u) + ((h & 2) ? -v : v);
+  }
+  function perlin3(x, y, z) {
+    const X = Math.floor(x) & 255, Y = Math.floor(y) & 255, Z = Math.floor(z) & 255;
+    x -= Math.floor(x); y -= Math.floor(y); z -= Math.floor(z);
+    const u = fade(x), v = fade(y), w = fade(z);
+    const A = PERM[X] + Y, AA = PERM[A] + Z, AB = PERM[A + 1] + Z, B = PERM[X + 1] + Y, BA = PERM[B] + Z, BB = PERM[B + 1] + Z;
+    const lerp = (t, a, b) => a + t * (b - a);
+    return lerp(w,
+      lerp(v, lerp(u, grad(PERM[AA], x, y, z), grad(PERM[BA], x - 1, y, z)), lerp(u, grad(PERM[AB], x, y - 1, z), grad(PERM[BB], x - 1, y - 1, z))),
+      lerp(v, lerp(u, grad(PERM[AA + 1], x, y, z - 1), grad(PERM[BA + 1], x - 1, y, z - 1)), lerp(u, grad(PERM[AB + 1], x, y - 1, z - 1), grad(PERM[BB + 1], x - 1, y - 1, z - 1))));
+  }
+  function fbm(x, y, z) {
+    let a = 0.55, f = 1, sum = 0, norm = 0;
+    for (let o = 0; o < 5; o++) { sum += perlin3(x * f, y * f, z * f * 0.6) * a; norm += a; a *= 0.5; f *= 2.05; }
+    return Math.max(0.001, Math.min(0.999, sum / norm * 1.15 + 0.5));
+  }
+
+  // ---------- Grid ----------
+  let W = 0, H = 0, dpr = 1, cols = 0, rows = 0, cell = 8;
+  let heights, shadeImg, shadeCv = document.createElement('canvas'), shadeCtx = shadeCv.getContext('2d');
+  let zTime = 0, flow = 0.35, paused = false, mouse = null;
+  const LEVELS = 26, INDEX_EVERY = 5, ELEV_MIN = 180, ELEV_STEP = 40;
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth; H = window.innerHeight;
+    canvas.width = Math.floor(W * dpr); canvas.height = Math.floor(H * dpr);
+    canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    cell = Math.max(5, Math.round(Math.max(W, H) / 200));
+    cols = Math.ceil(W / cell) + 2; rows = Math.ceil(H / cell) + 2;
+    heights = new Float32Array(cols * rows);
+    shadeCv.width = cols; shadeCv.height = rows;
+    shadeImg = shadeCtx.createImageData(cols, rows);
+    if (reduceMotion) { compute(); draw(); }
+  }
+
+  function compute() {
+    const sc = 0.0021 * (1400 / Math.max(W, 900));
+    for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
+      const x = i * cell * sc, y = j * cell * sc;
+      // gentle domain warp for more organic ridgelines
+      const wx = fbm(x * 0.6 + 31.4, y * 0.6, zTime * 0.5) * 0.6, wy = fbm(x * 0.6, y * 0.6 + 17.2, zTime * 0.5) * 0.6;
+      heights[j * cols + i] = fbm(x + wx, y + wy, zTime);
+    }
+    // hillshade
+    const d = shadeImg.data; const lx = -0.6, ly = -0.7, lz = 0.55;
+    for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
+      const k = j * cols + i;
+      const hl = heights[k - (i > 0 ? 1 : 0)], hr = heights[k + (i < cols - 1 ? 1 : 0)];
+      const hu = heights[k - (j > 0 ? cols : 0)], hd = heights[k + (j < rows - 1 ? cols : 0)];
+      const gx = (hr - hl) * 14, gy = (hd - hu) * 14;
+      const len = Math.sqrt(gx * gx + gy * gy + 1);
+      const s = Math.max(0, Math.min(1, ((-gx / len) * lx + (-gy / len) * ly + (1 / len) * lz) * 1.1));
+      const c = pal.shade(heights[k], s);
+      d[k * 4] = c[0]; d[k * 4 + 1] = c[1]; d[k * 4 + 2] = c[2]; d[k * 4 + 3] = 255;
+    }
+    shadeCtx.putImageData(shadeImg, 0, 0);
+  }
+
+  // Marching squares for one level; returns array of segments [x0,y0,x1,y1] in screen space
+  function marching(level, segs) {
+    const half = cell * 0.5;
+    for (let j = 0; j < rows - 1; j++) {
+      for (let i = 0; i < cols - 1; i++) {
+        const k = j * cols + i;
+        const a = heights[k], b = heights[k + 1], c = heights[k + cols + 1], dd = heights[k + cols];
+        let idx = 0; if (a > level) idx |= 8; if (b > level) idx |= 4; if (c > level) idx |= 2; if (dd > level) idx |= 1;
+        if (idx === 0 || idx === 15) continue;
+        const x = i * cell - half, y = j * cell - half;
+        const top = [x + cell * (level - a) / (b - a), y];
+        const right = [x + cell, y + cell * (level - b) / (c - b)];
+        const bottom = [x + cell * (level - dd) / (c - dd), y + cell];
+        const left = [x, y + cell * (level - a) / (dd - a)];
+        switch (idx) {
+          case 1: case 14: segs.push(left, bottom); break;
+          case 2: case 13: segs.push(bottom, right); break;
+          case 3: case 12: segs.push(left, right); break;
+          case 4: case 11: segs.push(top, right); break;
+          case 5: { const centre = (a + b + c + dd) / 4 > level; if (centre) { segs.push(left, top, bottom, right); } else { segs.push(left, bottom, top, right); } break; }
+          case 6: case 9: segs.push(top, bottom); break;
+          case 7: case 8: segs.push(left, top); break;
+          case 10: { const centre = (a + b + c + dd) / 4 > level; if (centre) { segs.push(top, right, left, bottom); } else { segs.push(top, left, right, bottom); } break; }
+        }
+      }
+    }
+  }
+
+  function draw() {
+    // hillshade base
+    ctx.imageSmoothingEnabled = true;
+    ctx.drawImage(shadeCv, 0, 0, cols, rows, -cell * 0.5, -cell * 0.5, cols * cell, rows * cell);
+
+    const labelSpots = [];
+    for (let l = 1; l < LEVELS; l++) {
+      const level = l / LEVELS;
+      const isIndex = l % INDEX_EVERY === 0;
+      const segs = [];
+      marching(level, segs);
+      if (!segs.length) continue;
+      ctx.beginPath();
+      for (let s = 0; s < segs.length; s += 2) { ctx.moveTo(segs[s][0], segs[s][1]); ctx.lineTo(segs[s + 1][0], segs[s + 1][1]); }
+      ctx.strokeStyle = isIndex ? pal.index : pal.minor;
+      ctx.lineWidth = isIndex ? 1.6 : 0.7;
+      ctx.stroke();
+      if (isIndex) placeLabels(segs, ELEV_MIN + l * ELEV_STEP, labelSpots);
+    }
+
+    // spotlight & crosshair
+    if (mouse) {
+      const r = Math.min(W, H) * 0.22;
+      const g = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, r);
+      g.addColorStop(0, pal.spot); g.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = g; ctx.fillRect(mouse.x - r, mouse.y - r, r * 2, r * 2);
+      ctx.strokeStyle = pal.cross; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.arc(mouse.x, mouse.y, 14, 0, Math.PI * 2); ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(mouse.x - 26, mouse.y); ctx.lineTo(mouse.x - 8, mouse.y); ctx.moveTo(mouse.x + 8, mouse.y); ctx.lineTo(mouse.x + 26, mouse.y);
+      ctx.moveTo(mouse.x, mouse.y - 26); ctx.lineTo(mouse.x, mouse.y - 8); ctx.moveTo(mouse.x, mouse.y + 8); ctx.lineTo(mouse.x, mouse.y + 26);
+      ctx.stroke();
+      const e = sample(mouse.x, mouse.y);
+      ctx.font = '600 11px ' + getComputedStyle(document.body).getPropertyValue('--mono');
+      ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+      const txt = Math.round(e.elev).toLocaleString('en-US') + ' m';
+      const tw = ctx.measureText(txt).width;
+      ctx.fillStyle = pal.halo; ctx.fillRect(mouse.x + 20, mouse.y - 22, tw + 12, 18);
+      ctx.strokeStyle = pal.cross; ctx.strokeRect(mouse.x + 20.5, mouse.y - 21.5, tw + 11, 17);
+      ctx.fillStyle = pal.cross; ctx.fillText(txt, mouse.x + 26, mouse.y - 13);
+    }
+  }
+
+  function placeLabels(segs, elev, spots) {
+    const stride = Math.max(2, Math.floor(segs.length / 2 / 5)) * 2;
+    ctx.font = '600 10px ' + getComputedStyle(document.body).getPropertyValue('--sans');
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    const text = String(elev);
+    const tw = ctx.measureText(text).width;
+    for (let s = 0; s < segs.length; s += stride) {
+      const [x0, y0] = segs[s], [x1, y1] = segs[s + 1];
+      const mx = (x0 + x1) / 2, my = (y0 + y1) / 2;
+      if (mx < 60 || my < 40 || mx > W - 60 || my > H - 40) continue;
+      let ok = true;
+      for (const sp of spots) { if ((sp[0] - mx) ** 2 + (sp[1] - my) ** 2 < 150 * 150) { ok = false; break; } }
+      if (!ok) continue;
+      spots.push([mx, my]);
+      let ang = Math.atan2(y1 - y0, x1 - x0);
+      if (ang > Math.PI / 2) ang -= Math.PI; if (ang < -Math.PI / 2) ang += Math.PI;
+      ctx.save(); ctx.translate(mx, my); ctx.rotate(ang);
+      ctx.fillStyle = pal.halo; ctx.fillRect(-tw / 2 - 5, -7, tw + 10, 14);
+      ctx.fillStyle = pal.label; ctx.fillText(text, 0, 0.5);
+      ctx.restore();
+    }
+  }
+
+  function sample(px, py) {
+    const gx = (px + cell * 0.5) / cell, gy = (py + cell * 0.5) / cell;
+    const i = Math.max(0, Math.min(cols - 2, Math.floor(gx))), j = Math.max(0, Math.min(rows - 2, Math.floor(gy)));
+    const fx = gx - i, fy = gy - j, k = j * cols + i;
+    const h = heights[k] * (1 - fx) * (1 - fy) + heights[k + 1] * fx * (1 - fy) + heights[k + cols] * (1 - fx) * fy + heights[k + cols + 1] * fx * fy;
+    const range = LEVELS * ELEV_STEP; // total relief in metres
+    const dx = (heights[k + 1] - heights[k]) * range;
+    const dy = (heights[k + cols] - heights[k]) * range;
+    const metresPerCell = cell * 2.5; // 1 px ≈ 2.5 m at 1:25 000 sheet scale
+    const slope = Math.atan(Math.sqrt(dx * dx + dy * dy) / metresPerCell) * 180 / Math.PI;
+    const aspectDeg = ((Math.atan2(-dx, dy) * 180 / Math.PI) + 360) % 360;
+    const dirs = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+    return { elev: ELEV_MIN + h * LEVELS * ELEV_STEP, slope, aspect: dirs[Math.round(aspectDeg / 45) % 8] };
+  }
+
+  function updateReadout() {
+    if (!mouse) return;
+    const e = sample(mouse.x, mouse.y);
+    document.getElementById('r-elev').innerHTML = Math.round(e.elev).toLocaleString('en-US') + '<small>m</small>';
+    document.getElementById('r-slope').innerHTML = e.slope.toFixed(1) + '<small>°</small>';
+    document.getElementById('r-aspect').textContent = e.aspect;
+  }
+
+  // ---------- Loop ----------
+  let last = performance.now(), acc = 0;
+  function frame(now) {
+    const dt = Math.min(0.1, (now - last) / 1000); last = now;
+    if (!paused) zTime += dt * flow * 0.22;
+    acc += dt;
+    // compute at most ~30 fps to keep marching squares smooth on big screens
+    if (acc > 1 / 30) { acc = 0; compute(); draw(); updateReadout(); }
+    requestAnimationFrame(frame);
+  }
+
+  // ---------- Events ----------
+  canvas.addEventListener('pointermove', (e) => { mouse = { x: e.clientX, y: e.clientY }; if (reduceMotion) { draw(); updateReadout(); } });
+  canvas.addEventListener('pointerleave', () => { mouse = null; if (reduceMotion) draw(); });
+  document.querySelectorAll('.pal').forEach((b) => {
+    b.addEventListener('click', () => {
+      palName = b.dataset.palette; pal = PALETTES[palName];
+      document.body.dataset.palette = palName;
+      document.querySelectorAll('.pal').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+      if (reduceMotion) { compute(); draw(); }
+    });
+  });
+  const flowEl = document.getElementById('flow');
+  flowEl.addEventListener('input', () => { flow = flowEl.value / 100; });
+  const pauseBtn = document.getElementById('pause');
+  pauseBtn.addEventListener('click', () => { paused = !paused; pauseBtn.setAttribute('aria-pressed', String(paused)); pauseBtn.textContent = paused ? 'Resume' : 'Pause'; });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === ' ') { e.preventDefault(); pauseBtn.click(); }
+    if (e.key === '1' || e.key === '2' || e.key === '3') document.querySelectorAll('.pal')[+e.key - 1].click();
+  });
+  let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(resize, 120); });
+
+  resize();
+  if (reduceMotion) { compute(); draw(); } else requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Valley of Paper — A Layered Paper-Cut Dusk</title>
+<style>
+  :root {
+    /* dusk palette; JS interpolates these toward night */
+    --sky-top: #3b2a5c;
+    --sky-mid: #c9698a;
+    --sky-bot: #f7b26a;
+    --sun: #ffd28a;
+    --sun-glow: rgba(255, 190, 120, 0.55);
+    --moon: #f4f1e6;
+    --l-far: #8b6a9c;
+    --l-mid: #6a4f83;
+    --l-hills: #4f3a6b;
+    --l-trees: #3a2a54;
+    --l-near: #2b1f44;
+    --l-front: #1c1533;
+    --l-ground: #130f26;
+    --cloud: #f7d5c4;
+    --window: rgba(255, 200, 110, 0.15);
+    --stars: 0;
+    --sun-y: 0;
+    --moon-y: 1;
+    --label: #f6ead6;
+    --label-ink: #3b2a2a;
+    --mx: 0px;
+    --my: 0px;
+    --rounded: ui-rounded, 'SF Pro Rounded', 'Hiragino Maru Gothic ProN', 'Arial Rounded MT Bold', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --mono: ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    background: var(--sky-top);
+    font-family: var(--rounded);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .scene {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 55%, var(--sky-bot) 100%);
+  }
+
+  .scene svg {
+    position: absolute;
+    inset: -6% -6% -4% -6%;
+    width: 112%;
+    height: 110%;
+    display: block;
+  }
+
+  /* each layer is a cut sheet: soft shadow beneath, parallax factor via --p */
+  .layer {
+    transform-box: fill-box;
+    transform-origin: center;
+    transform: translate(calc(var(--mx) * var(--p)), calc(var(--my) * var(--p) * 0.6));
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+
+  .sheet { filter: drop-shadow(0 10px 8px rgba(20, 10, 40, 0.35)); }
+  .sheet-deep { filter: drop-shadow(0 18px 14px rgba(15, 8, 35, 0.45)); }
+
+  .far   { fill: var(--l-far); }
+  .mid   { fill: var(--l-mid); }
+  .hills { fill: var(--l-hills); }
+  .trees { fill: var(--l-trees); }
+  .near  { fill: var(--l-near); }
+  .front { fill: var(--l-front); }
+  .ground{ fill: var(--l-ground); }
+  .cloud { fill: var(--cloud); }
+
+  .far, .mid, .hills, .trees, .near, .front, .ground, .cloud, .sun-disc, .moon-disc, .window-pane {
+    transition: fill 0.6s ease;
+  }
+
+  .sun-disc { fill: var(--sun); }
+  .moon-disc { fill: var(--moon); }
+  .window-pane { fill: var(--window); }
+
+  #sunGroup { transform: translateY(calc(var(--sun-y) * 620px)); }
+  #moonGroup { transform: translateY(calc(var(--moon-y) * 700px)); }
+  #sunGroup, #moonGroup { transition: transform 0.6s ease; }
+
+  #stars { opacity: var(--stars); transition: opacity 0.6s ease; }
+  #stars circle { fill: #fff8e7; animation: twinkle 4s ease-in-out infinite; animation-delay: var(--d); }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.45; }
+    50% { opacity: 1; }
+  }
+
+  .cloud-drift { animation: drift linear infinite; animation-duration: var(--dur); animation-delay: var(--delay); }
+
+  @keyframes drift {
+    from { transform: translateX(-400px); }
+    to   { transform: translateX(2000px); }
+  }
+
+  .breeze { transform-box: fill-box; transform-origin: bottom center; animation: sway 6s ease-in-out infinite; animation-delay: var(--d, 0s); }
+  @keyframes sway {
+    0%, 100% { transform: rotate(-0.8deg); }
+    50% { transform: rotate(0.8deg); }
+  }
+
+  /* ---------- UI ---------- */
+  .ui {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: clamp(18px, 4vw, 48px);
+    z-index: 2;
+  }
+
+  .label {
+    justify-self: start;
+    pointer-events: auto;
+    background: var(--label);
+    color: var(--label-ink);
+    padding: 16px 26px 18px;
+    border-radius: 6px;
+    box-shadow: 0 12px 20px -8px rgba(30, 15, 40, 0.5), 0 1px 0 rgba(255,255,255,0.6) inset;
+    position: relative;
+    transform: rotate(-1.2deg);
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.6s ease, color 0.6s ease;
+    animation: settle 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .label:hover { transform: rotate(0deg) translateY(-2px); }
+
+  /* a strip of paper tape holding the label */
+  .label::before {
+    content: "";
+    position: absolute;
+    top: -10px; left: 50%;
+    width: 64px; height: 20px;
+    transform: translateX(-50%) rotate(2deg);
+    background: rgba(255, 240, 220, 0.55);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    border-left: 1px dashed rgba(0,0,0,0.08);
+    border-right: 1px dashed rgba(0,0,0,0.08);
+  }
+
+  .label h1 {
+    margin: 0;
+    font-size: clamp(1.5rem, 3.4vw, 2.4rem);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    line-height: 1.05;
+  }
+
+  .label p {
+    margin: 6px 0 0;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.65;
+    font-weight: 500;
+  }
+
+  .panel {
+    pointer-events: auto;
+    justify-self: end;
+    align-self: end;
+    width: min(100%, 360px);
+    background: var(--label);
+    color: var(--label-ink);
+    padding: 18px 22px 20px;
+    border-radius: 6px;
+    box-shadow: 0 12px 20px -8px rgba(30, 15, 40, 0.5), 0 1px 0 rgba(255,255,255,0.6) inset;
+    transform: rotate(0.8deg);
+    transition: background-color 0.6s ease, color 0.6s ease;
+    animation: settle 1.4s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+    display: grid;
+    gap: 12px;
+  }
+
+  .panel .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+    opacity: 0.8;
+  }
+
+  .panel output { font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.04em; }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 26px;
+    background: transparent;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  input[type="range"]::-webkit-slider-runnable-track {
+    height: 6px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #f7b26a, #c9698a 45%, #3b2a5c 75%, #0b1230);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.25);
+  }
+
+  input[type="range"]::-moz-range-track {
+    height: 6px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #f7b26a, #c9698a 45%, #3b2a5c 75%, #0b1230);
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px; height: 22px;
+    margin-top: -8px;
+    border-radius: 50%;
+    background: var(--label);
+    border: 2px solid var(--label-ink);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--label);
+    border: 2px solid var(--label-ink);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+  }
+
+  input[type="range"]:hover::-webkit-slider-thumb,
+  input[type="range"]:focus-visible::-webkit-slider-thumb { transform: scale(1.15); }
+  input[type="range"]:focus-visible { outline: none; }
+
+  .ticks {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    font-weight: 600;
+  }
+
+  .hint {
+    font-size: 0.64rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .tilt-btn {
+    appearance: none;
+    font: inherit;
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--label-ink);
+    background: rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 999px;
+    padding: 8px 14px;
+    cursor: pointer;
+    display: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .tilt-btn:hover { background: rgba(0,0,0,0.12); }
+  .tilt-btn.show { display: inline-block; justify-self: center; }
+
+  @keyframes settle {
+    from { opacity: 0; transform: translateY(16px) rotate(-1.2deg); }
+    to   { opacity: 1; }
+  }
+
+  @media (max-width: 640px) {
+    .ui { padding: 16px; }
+    .label { padding: 12px 18px 14px; }
+    .panel { width: 100%; transform: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .layer, #sunGroup, #moonGroup { transition: none; }
+    .cloud-drift, .breeze, #stars circle, .label, .panel { animation: none; }
+    input[type="range"]::-webkit-slider-thumb { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scene" id="scene">
+  <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" role="img" aria-labelledby="sceneTitle sceneDesc">
+    <title id="sceneTitle">Layered paper-cut valley at dusk</title>
+    <desc id="sceneDesc">Stacked paper mountains, hills, and trees with a sun, drifting clouds, a cabin and a deer, shifting from golden dusk to starry night.</desc>
+    <defs>
+      <radialGradient id="sunGlow" cx="0.5" cy="0.5" r="0.5">
+        <stop offset="0" stop-color="#ffe6b0" stop-opacity="0.75"/>
+        <stop offset="0.45" stop-color="#ffb870" stop-opacity="0.25"/>
+        <stop offset="1" stop-color="#ffb870" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="moonGlow" cx="0.5" cy="0.5" r="0.5">
+        <stop offset="0" stop-color="#e8f0ff" stop-opacity="0.5"/>
+        <stop offset="1" stop-color="#e8f0ff" stop-opacity="0"/>
+      </radialGradient>
+      <mask id="crescent">
+        <rect x="0" y="0" width="1600" height="900" fill="#fff"/>
+        <circle cx="1268" cy="156" r="46" fill="#000"/>
+      </mask>
+      <!-- reusable paper tree -->
+      <g id="pine">
+        <path d="M0 -120 L34 -62 L20 -62 L52 -12 L30 -12 L64 40 L-64 40 L-30 -12 L-52 -12 L-20 -62 L-34 -62 Z"/>
+        <rect x="-7" y="40" width="14" height="26" rx="2"/>
+      </g>
+    </defs>
+
+    <!-- stars -->
+    <g id="stars" class="layer" style="--p:0.1"></g>
+
+    <!-- sun -->
+    <g id="sunGroup">
+      <g class="layer" style="--p:0.15">
+        <circle cx="420" cy="300" r="190" fill="url(#sunGlow)"/>
+        <circle class="sun-disc" cx="420" cy="300" r="70" style="filter: drop-shadow(0 6px 6px rgba(120,60,40,0.35))"/>
+      </g>
+    </g>
+
+    <!-- moon -->
+    <g id="moonGroup">
+      <g class="layer" style="--p:0.12">
+        <circle cx="1240" cy="180" r="150" fill="url(#moonGlow)"/>
+        <circle class="moon-disc" cx="1240" cy="180" r="58" mask="url(#crescent)" style="filter: drop-shadow(0 6px 6px rgba(20,20,60,0.4))"/>
+      </g>
+    </g>
+
+    <!-- clouds -->
+    <g class="layer sheet" style="--p:0.22">
+      <g class="cloud-drift" style="--dur: 140s; --delay: -30s">
+        <path class="cloud" d="M120 260 c0 -30 30 -50 58 -42 c10 -34 62 -40 82 -10 c30 -14 66 6 62 36 c26 4 36 34 12 46 H140 c-24 0 -30 -26 -20 -30 Z"/>
+      </g>
+      <g class="cloud-drift" style="--dur: 190s; --delay: -120s">
+        <path class="cloud" transform="translate(640 150) scale(1.3)" d="M0 60 c-6 -34 30 -56 58 -40 c14 -36 70 -40 86 -6 c34 -10 62 18 50 46 H0 Z"/>
+      </g>
+      <g class="cloud-drift" style="--dur: 165s; --delay: -80s">
+        <path class="cloud" transform="translate(300 380) scale(0.8)" d="M0 60 c-6 -34 30 -56 58 -40 c14 -36 70 -40 86 -6 c34 -10 62 18 50 46 H0 Z"/>
+      </g>
+    </g>
+
+    <!-- far mountains -->
+    <g class="layer sheet" style="--p:0.3">
+      <path class="far" d="M-100 620 L80 500 L200 560 L330 420 L470 540 L560 470 L700 580 L840 400 L960 520 L1080 450 L1220 560 L1360 430 L1480 520 L1600 470 L1750 560 L1750 900 L-100 900 Z"/>
+    </g>
+
+    <!-- mid mountains -->
+    <g class="layer sheet" style="--p:0.42">
+      <path class="mid" d="M-100 680 L60 600 L180 640 L300 540 L420 630 L540 580 L660 660 L780 560 L900 640 L1020 590 L1160 660 L1280 570 L1400 650 L1520 610 L1750 680 L1750 900 L-100 900 Z"/>
+    </g>
+
+    <!-- hills with tree line -->
+    <g class="layer sheet" style="--p:0.55">
+      <path class="hills" d="M-100 740 C120 660 320 700 500 690 C700 680 820 640 1000 660 C1200 680 1360 720 1750 700 L1750 900 L-100 900 Z"/>
+      <g class="hills">
+        <use href="#pine" transform="translate(140 700) scale(0.42)"/>
+        <use href="#pine" transform="translate(190 705) scale(0.36)"/>
+        <use href="#pine" transform="translate(880 668) scale(0.4)"/>
+        <use href="#pine" transform="translate(930 664) scale(0.46)"/>
+        <use href="#pine" transform="translate(985 670) scale(0.38)"/>
+        <use href="#pine" transform="translate(1400 716) scale(0.4)"/>
+        <use href="#pine" transform="translate(1450 712) scale(0.34)"/>
+      </g>
+    </g>
+
+    <!-- near hills -->
+    <g class="layer sheet" style="--p:0.7">
+      <path class="trees" d="M-100 790 C100 740 260 770 420 760 C620 748 760 720 940 740 C1120 760 1300 790 1750 770 L1750 900 L-100 900 Z"/>
+      <g class="trees">
+        <g transform="translate(60 770) scale(0.62)"><use class="breeze" href="#pine" style="--d:-1s"/></g>
+        <g transform="translate(130 762) scale(0.7)"><use class="breeze" href="#pine" style="--d:-3s"/></g>
+        <g transform="translate(210 770) scale(0.55)"><use class="breeze" href="#pine" style="--d:-2s"/></g>
+        <g transform="translate(1180 762) scale(0.66)"><use class="breeze" href="#pine" style="--d:-4s"/></g>
+        <g transform="translate(1260 770) scale(0.58)"><use class="breeze" href="#pine" style="--d:-1.5s"/></g>
+        <g transform="translate(1340 778) scale(0.72)"><use class="breeze" href="#pine" style="--d:-2.5s"/></g>
+        <g transform="translate(1440 774) scale(0.6)"><use class="breeze" href="#pine" style="--d:-0.5s"/></g>
+      </g>
+    </g>
+
+    <!-- front ridge with cabin -->
+    <g class="layer sheet-deep" style="--p:0.9">
+      <path class="near" d="M-100 850 C140 800 340 830 540 820 C740 810 900 780 1100 800 C1300 820 1500 850 1750 830 L1750 900 L-100 900 Z"/>
+      <g class="near">
+        <!-- cabin -->
+        <g transform="translate(1040 740)">
+          <rect x="0" y="30" width="120" height="70" rx="2"/>
+          <path d="M-14 34 L60 -12 L134 34 Z"/>
+          <rect x="88" y="-2" width="16" height="30"/>
+          <rect class="window-pane" x="26" y="52" width="24" height="24" rx="2"/>
+          <rect class="window-pane" x="70" y="52" width="24" height="24" rx="2"/>
+          <rect x="53" y="66" width="14" height="34" fill="rgba(0,0,0,0.35)"/>
+        </g>
+        <g transform="translate(1210 810) scale(0.8)"><use class="breeze" href="#pine" style="--d:-2s"/></g>
+        <g transform="translate(980 812) scale(0.62)"><use class="breeze" href="#pine" style="--d:-3.5s"/></g>
+      </g>
+    </g>
+
+    <!-- foreground ground with deer -->
+    <g class="layer sheet-deep" style="--p:1.15">
+      <path class="front" d="M-100 900 L-100 880 C200 850 420 870 620 862 C800 855 940 835 1100 850 C1300 868 1500 890 1750 880 L1750 900 Z"/>
+      <g class="ground">
+        <!-- deer, facing left -->
+        <g transform="translate(300 738) scale(1.05)">
+          <ellipse cx="60" cy="60" rx="46" ry="26"/>
+          <path d="M20 46 C14 30 18 14 30 6 C38 0 46 4 46 12 C46 22 40 34 44 48 Z"/>
+          <path d="M14 8 C4 4 0 10 6 16 C10 20 18 18 22 14 Z"/>
+          <path d="M24 12 C22 4 26 -2 32 2 C36 6 32 12 28 14 Z"/>
+          <!-- antlers -->
+          <path d="M30 6 C26 -10 14 -18 6 -28 M26 -6 C18 -12 10 -12 4 -10 M30 6 C36 -12 46 -20 58 -26 M36 -6 C42 -12 50 -12 56 -8" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" style="color: var(--l-ground)"/>
+          <rect x="26" y="78" width="7" height="46" rx="3"/>
+          <rect x="40" y="80" width="7" height="44" rx="3" transform="rotate(-6 43 80)"/>
+          <rect x="78" y="78" width="7" height="46" rx="3"/>
+          <rect x="92" y="80" width="7" height="44" rx="3" transform="rotate(8 95 80)"/>
+          <path d="M102 50 C112 46 116 52 108 58 Z"/>
+        </g>
+        <use href="#pine" transform="translate(80 870) scale(0.9)"/>
+        <use href="#pine" transform="translate(1560 864) scale(1)"/>
+      </g>
+    </g>
+  </svg>
+</div>
+
+<div class="ui">
+  <div class="label">
+    <h1>Valley of Paper</h1>
+    <p>A cut-paper dusk · move to look around</p>
+  </div>
+  <div aria-hidden="true"></div>
+  <div class="panel">
+    <div class="row"><label for="time">Time of day</label><output id="timeOut" for="time">18:40</output></div>
+    <input type="range" id="time" min="0" max="1000" value="0" step="1" aria-label="Time of day from golden dusk to blue night">
+    <div class="ticks"><span>Golden dusk</span><span>Twilight</span><span>Blue night</span></div>
+    <button type="button" class="tilt-btn" id="tiltBtn">Enable tilt parallax</button>
+    <div class="hint" id="hint">drag the slider · move the pointer</div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  const root = document.documentElement;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const scene = document.getElementById('scene');
+
+  // ---------- palette interpolation ----------
+  const dusk = {
+    '--sky-top': '#3b2a5c', '--sky-mid': '#c9698a', '--sky-bot': '#f7b26a',
+    '--sun': '#ffd28a', '--moon': '#f4f1e6',
+    '--l-far': '#8b6a9c', '--l-mid': '#6a4f83', '--l-hills': '#4f3a6b', '--l-trees': '#3a2a54',
+    '--l-near': '#2b1f44', '--l-front': '#1c1533', '--l-ground': '#130f26',
+    '--cloud': '#f7d5c4', '--label': '#f6ead6', '--label-ink': '#3b2a2a'
+  };
+  const night = {
+    '--sky-top': '#050a1e', '--sky-mid': '#0f1c44', '--sky-bot': '#24356a',
+    '--sun': '#ff9a5a', '--moon': '#f4f1e6',
+    '--l-far': '#2b3a6b', '--l-mid': '#1f2c55', '--l-hills': '#182243', '--l-trees': '#111935',
+    '--l-near': '#0c122a', '--l-front': '#080c1f', '--l-ground': '#050815',
+    '--cloud': '#3a4a7a', '--label': '#e9e2d2', '--label-ink': '#1f1d2e'
+  };
+
+  function hexToRgb(h) {
+    const n = parseInt(h.slice(1), 16);
+    return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+  }
+  function mix(a, b, t) {
+    const A = hexToRgb(a), B = hexToRgb(b);
+    return 'rgb(' + A.map((v, i) => Math.round(v + (B[i] - v) * t)).join(',') + ')';
+  }
+  const smooth = t => t * t * (3 - 2 * t);
+
+  const slider = document.getElementById('time');
+  const timeOut = document.getElementById('timeOut');
+
+  function applyTime(t) {
+    const k = smooth(t);
+    for (const key in dusk) root.style.setProperty(key, mix(dusk[key], night[key], k));
+    // stars appear through twilight, fully out by night
+    root.style.setProperty('--stars', Math.max(0, Math.min(1, (t - 0.35) / 0.5)).toFixed(3));
+    // sun sinks, moon rises
+    root.style.setProperty('--sun-y', smooth(Math.min(1, t * 1.25)).toFixed(3));
+    root.style.setProperty('--moon-y', (1 - smooth(Math.max(0, (t - 0.3) / 0.7))).toFixed(3));
+    // cabin window warms as it gets dark
+    const glow = 0.15 + k * 0.85;
+    root.style.setProperty('--window', 'rgba(255,' + Math.round(200 - k * 40) + ',' + Math.round(110 - k * 40) + ',' + glow.toFixed(2) + ')');
+    // 18:40 → 23:59 clock readout
+    const minutes = 18 * 60 + 40 + Math.round(t * (5 * 60 + 19));
+    const hh = String(Math.floor(minutes / 60) % 24).padStart(2, '0');
+    const mm = String(minutes % 60).padStart(2, '0');
+    timeOut.textContent = hh + ':' + mm;
+  }
+
+  slider.addEventListener('input', () => applyTime(slider.value / 1000));
+  applyTime(0);
+
+  // ---------- stars ----------
+  const stars = document.getElementById('stars');
+  const ns = 'http://www.w3.org/2000/svg';
+  let seed = 7;
+  function rnd() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+  for (let i = 0; i < 140; i++) {
+    const c = document.createElementNS(ns, 'circle');
+    c.setAttribute('cx', (-60 + rnd() * 1720).toFixed(1));
+    c.setAttribute('cy', (rnd() * 560).toFixed(1));
+    c.setAttribute('r', (0.6 + rnd() * 1.8).toFixed(2));
+    c.style.setProperty('--d', (-rnd() * 4).toFixed(2) + 's');
+    stars.appendChild(c);
+  }
+
+  // ---------- parallax ----------
+  let targetX = 0, targetY = 0, curX = 0, curY = 0;
+  const RANGE = 40; // px at factor 1
+
+  function setTarget(nx, ny) {
+    targetX = Math.max(-1, Math.min(1, nx)) * RANGE;
+    targetY = Math.max(-1, Math.min(1, ny)) * RANGE;
+  }
+
+  window.addEventListener('pointermove', (e) => {
+    const nx = (e.clientX / window.innerWidth) * 2 - 1;
+    const ny = (e.clientY / window.innerHeight) * 2 - 1;
+    setTarget(-nx, -ny);
+  });
+
+  window.addEventListener('pointerleave', () => setTarget(0, 0));
+
+  function animate() {
+    // exponential smoothing so layers glide rather than snap
+    curX += (targetX - curX) * 0.06;
+    curY += (targetY - curY) * 0.06;
+    root.style.setProperty('--mx', curX.toFixed(2) + 'px');
+    root.style.setProperty('--my', curY.toFixed(2) + 'px');
+    requestAnimationFrame(animate);
+  }
+  if (!reduce) requestAnimationFrame(animate);
+
+  // ---------- device tilt ----------
+  const tiltBtn = document.getElementById('tiltBtn');
+  const hint = document.getElementById('hint');
+  let tiltActive = false;
+
+  function onOrientation(e) {
+    if (e.gamma === null || e.beta === null) return;
+    tiltActive = true;
+    const nx = e.gamma / 30;           // left-right tilt
+    const ny = (e.beta - 45) / 30;     // forward-back, centred on a natural holding angle
+    setTarget(-nx, -ny);
+  }
+
+  function enableTilt() {
+    const start = () => {
+      window.addEventListener('deviceorientation', onOrientation);
+      tiltBtn.classList.remove('show');
+      hint.textContent = 'tilt your device · drag the slider';
+    };
+    if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+      DeviceOrientationEvent.requestPermission().then(state => { if (state === 'granted') start(); }).catch(() => {});
+    } else {
+      start();
+    }
+  }
+
+  const coarse = window.matchMedia('(pointer: coarse)').matches;
+  if (coarse && typeof DeviceOrientationEvent !== 'undefined' && !reduce) {
+    if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+      tiltBtn.classList.add('show');
+      tiltBtn.addEventListener('click', enableTilt);
+    } else {
+      enableTilt();
+    }
+  }
+
+  // Touch drag on the scene also pans the parallax for devices without orientation data
+  scene.addEventListener('touchmove', (e) => {
+    if (tiltActive) return;
+    const t = e.touches[0];
+    const nx = (t.clientX / window.innerWidth) * 2 - 1;
+    const ny = (t.clientY / window.innerHeight) * 2 - 1;
+    setTarget(-nx, -ny);
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>

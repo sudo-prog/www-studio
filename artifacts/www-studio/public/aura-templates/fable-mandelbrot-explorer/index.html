@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mandelbrot Explorer — Progressive Fractal Renderer</title>
+<style>
+  :root {
+    --bg: #07080c;
+    --panel: rgba(14, 16, 24, 0.78);
+    --line: rgba(255, 255, 255, 0.09);
+    --ink: #e8e6df;
+    --dim: rgba(232, 230, 223, 0.55);
+    --accent: #f0b35a;
+    --mono: ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace;
+    --sans: ui-sans-serif, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --serif: Georgia, 'Iowan Old Style', Palatino, ui-serif, serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink); overflow: hidden; font-family: var(--sans); }
+
+  #view {
+    position: fixed; inset: 0; width: 100%; height: 100%; display: block;
+    cursor: crosshair; touch-action: none; background: #000;
+    image-rendering: pixelated;
+  }
+  #view.dragging { cursor: grabbing; }
+
+  #progress {
+    position: fixed; top: 0; left: 0; height: 2px; width: 0;
+    background: linear-gradient(90deg, var(--accent), #fff3d6);
+    box-shadow: 0 0 12px rgba(240,179,90,0.8);
+    z-index: 9; transition: width 120ms linear, opacity 400ms;
+    opacity: 0;
+  }
+  #progress.active { opacity: 1; }
+
+  .panel {
+    position: fixed; z-index: 5;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    backdrop-filter: blur(16px) saturate(1.1);
+    -webkit-backdrop-filter: blur(16px) saturate(1.1);
+    box-shadow: 0 30px 60px -30px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.05);
+  }
+
+  .brand { top: 18px; left: 18px; padding: 12px 16px 12px 14px; display: flex; gap: 12px; align-items: center; }
+  .brand svg { width: 30px; height: 30px; flex: none; }
+  .brand h1 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: 17px; letter-spacing: 0.02em; }
+  .brand p { margin: 2px 0 0; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim); }
+
+  .hud {
+    top: 18px; right: 18px; padding: 12px 16px;
+    font-family: var(--mono); font-size: 11.5px; line-height: 1.75; letter-spacing: 0.02em;
+    min-width: 260px;
+  }
+  .hud .row { display: flex; justify-content: space-between; gap: 18px; }
+  .hud .k { color: var(--dim); text-transform: uppercase; letter-spacing: 0.14em; font-size: 9.5px; align-self: center; }
+  .hud .v { color: var(--ink); font-variant-numeric: tabular-nums; }
+  .hud .v.hi { color: var(--accent); }
+
+  .dock {
+    left: 50%; bottom: 18px; transform: translateX(-50%);
+    width: min(calc(100vw - 36px), 1040px);
+    padding: 12px 14px;
+    display: grid; gap: 12px;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+  .marks { display: flex; gap: 10px; overflow-x: auto; scrollbar-width: none; padding: 2px; }
+  .marks::-webkit-scrollbar { display: none; }
+
+  .mark {
+    flex: none; position: relative;
+    width: 112px; height: 72px; padding: 0; border: 1px solid var(--line); border-radius: 6px;
+    background: #000; overflow: hidden; cursor: pointer;
+    transition: transform 260ms cubic-bezier(.2,.9,.3,1.3), border-color 200ms, box-shadow 260ms;
+  }
+  .mark canvas { display: block; width: 100%; height: 100%; }
+  .mark span {
+    position: absolute; left: 0; right: 0; bottom: 0; padding: 14px 8px 5px;
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; text-align: left;
+    color: #fff; background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,0.75));
+    text-shadow: 0 1px 2px #000;
+  }
+  .mark:hover { transform: translateY(-3px) scale(1.03); border-color: rgba(240,179,90,0.6); box-shadow: 0 12px 24px -12px rgba(240,179,90,0.4); }
+  .mark:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .mark.active { border-color: var(--accent); }
+
+  .tools { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+  .seg button, .tools .btn {
+    appearance: none; font: inherit; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--dim); background: transparent; border: 0; padding: 8px 12px; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 7px;
+    transition: background 200ms, color 200ms;
+  }
+  .seg button + button { border-left: 1px solid var(--line); }
+  .seg button:hover, .tools .btn:hover { background: rgba(255,255,255,0.06); color: var(--ink); }
+  .seg button[aria-pressed="true"] { color: var(--ink); background: rgba(240,179,90,0.14); }
+  .seg button i { width: 22px; height: 8px; border-radius: 2px; display: inline-block; }
+  .tools .btn { border: 1px solid var(--line); border-radius: 6px; }
+  .tools .btn:focus-visible, .seg button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .iter { display: inline-flex; align-items: center; gap: 4px; }
+  .iter .btn { padding: 8px 10px; font-family: var(--mono); font-size: 13px; }
+  .iter .val { font-family: var(--mono); font-size: 11px; min-width: 36px; text-align: center; color: var(--dim); }
+
+  .tip {
+    position: fixed; left: 50%; bottom: 128px; transform: translateX(-50%); z-index: 4;
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim);
+    pointer-events: none; text-shadow: 0 1px 4px #000; transition: opacity 800ms;
+  }
+  .tip.gone { opacity: 0; }
+
+  @media (max-width: 760px) {
+    .hud { top: auto; bottom: 138px; right: 18px; min-width: 0; font-size: 10.5px; padding: 8px 12px; }
+    .hud .row.opt { display: none; }
+    .dock { grid-template-columns: 1fr; padding: 10px; }
+    .tools { flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+    .mark { width: 92px; height: 60px; }
+    .brand p { display: none; }
+    .tip { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .mark, #progress, .tip { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="view" aria-label="Interactive rendering of the Mandelbrot set. Click to zoom in, shift-click or right-click to zoom out, drag to pan, scroll to zoom."></canvas>
+<div id="progress" aria-hidden="true"></div>
+
+<div class="panel brand">
+  <svg viewBox="0 0 32 32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="16" cy="16" r="15" fill="none" stroke="#f0b35a" stroke-width="1"/>
+    <path d="M16 4 C16 10 22 12 22 16 C22 20 16 22 16 28 C16 22 10 20 10 16 C10 12 16 10 16 4Z" fill="#f0b35a" opacity="0.9"/>
+  </svg>
+  <div>
+    <h1>Mandelbrot Explorer</h1>
+    <p>Progressive · Multithreaded · Smooth escape</p>
+  </div>
+</div>
+
+<div class="panel hud" aria-live="polite">
+  <div class="row"><span class="k">Re</span><span class="v" id="hRe">-0.750000000000</span></div>
+  <div class="row"><span class="k">Im</span><span class="v" id="hIm">0.000000000000</span></div>
+  <div class="row"><span class="k">Zoom</span><span class="v hi" id="hZoom">×1.00</span></div>
+  <div class="row"><span class="k">Iterations</span><span class="v" id="hIter">120</span></div>
+  <div class="row opt"><span class="k">Render</span><span class="v" id="hTime">—</span></div>
+  <div class="row opt"><span class="k">Workers</span><span class="v" id="hWorkers">—</span></div>
+</div>
+
+<p class="tip" id="tip">Click to dive · shift-click to surface · drag to pan · scroll to zoom</p>
+
+<div class="panel dock">
+  <div class="marks" id="marks" role="group" aria-label="Bookmarked locations"></div>
+  <div class="tools">
+    <div class="seg" id="palettes" role="group" aria-label="Palette">
+      <button type="button" data-pal="ultra" aria-pressed="true"><i style="background:linear-gradient(90deg,#000764,#206bcb,#edffff,#ffaa00,#000200)"></i>Ultra</button>
+      <button type="button" data-pal="ember" aria-pressed="false"><i style="background:linear-gradient(90deg,#0a0402,#5a0c06,#c83c0a,#ffaa28,#fff0c8,#3c0a14)"></i>Ember</button>
+      <button type="button" data-pal="ice" aria-pressed="false"><i style="background:linear-gradient(90deg,#020614,#0a286e,#3c8cdc,#c8f0ff,#ffffff,#1e1446)"></i>Ice</button>
+      <button type="button" data-pal="mono" aria-pressed="false"><i style="background:linear-gradient(90deg,#08080a,#f0eee8,#08080a)"></i>Mono</button>
+    </div>
+    <div style="display:flex; gap:8px; align-items:center;">
+      <div class="iter" aria-label="Iteration multiplier">
+        <button class="btn" type="button" id="iterMinus" aria-label="Fewer iterations">−</button>
+        <span class="val" id="iterMul">×1</span>
+        <button class="btn" type="button" id="iterPlus" aria-label="More iterations">+</button>
+      </div>
+      <button class="btn" type="button" id="zoomOut">Zoom out</button>
+      <button class="btn" type="button" id="reset">Reset</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  const PALS = {
+    ultra: [[0, 0, 7, 100], [0.16, 32, 107, 203], [0.42, 237, 255, 255], [0.6425, 255, 170, 0], [0.8575, 0, 2, 0], [1, 0, 7, 100]],
+    ember: [[0, 10, 4, 2], [0.2, 90, 12, 6], [0.45, 200, 60, 10], [0.65, 255, 170, 40], [0.8, 255, 240, 200], [0.92, 60, 10, 20], [1, 10, 4, 2]],
+    ice:   [[0, 2, 6, 20], [0.25, 10, 40, 110], [0.5, 60, 140, 220], [0.7, 200, 240, 255], [0.8, 255, 255, 255], [0.92, 30, 20, 70], [1, 2, 6, 20]],
+    mono:  [[0, 8, 8, 10], [0.5, 240, 238, 232], [1, 8, 8, 10]]
+  };
+
+  /* The kernel is shared by the Blob workers and by the main-thread fallback. */
+  const KERNEL = `
+    const PALS = ${JSON.stringify(PALS)};
+    const N = 2048;
+    const LUT = {};
+    function lut(name) {
+      if (LUT[name]) return LUT[name];
+      const pts = PALS[name] || PALS.ultra;
+      const out = new Uint8ClampedArray(N * 3);
+      for (let i = 0; i < N; i++) {
+        const t = i / N;
+        let k = 0;
+        while (k < pts.length - 2 && pts[k + 1][0] <= t) k++;
+        const a = pts[k], b = pts[k + 1];
+        const f = (t - a[0]) / Math.max(1e-9, b[0] - a[0]);
+        const s = f * f * (3 - 2 * f);
+        out[i * 3] = a[1] + (b[1] - a[1]) * s;
+        out[i * 3 + 1] = a[2] + (b[2] - a[2]) * s;
+        out[i * 3 + 2] = a[3] + (b[3] - a[3]) * s;
+      }
+      return (LUT[name] = out);
+    }
+    function compute(j) {
+      const w = j.wpx, h = j.hpx, maxIter = j.maxIter, step = j.step;
+      const pal = lut(j.pal);
+      const buf = new Uint8ClampedArray(w * h * 4);
+      const LN2 = Math.LN2;
+      for (let y = 0; y < h; y++) {
+        const ci = j.im0 - y * step;
+        for (let x = 0; x < w; x++) {
+          const cr = j.re0 + x * step;
+          const idx = (y * w + x) * 4;
+          const q = (cr - 0.25) * (cr - 0.25) + ci * ci;
+          if (q * (q + (cr - 0.25)) < 0.25 * ci * ci || (cr + 1) * (cr + 1) + ci * ci < 0.0625) { buf[idx + 3] = 255; continue; }
+          let zr = 0, zi = 0, zr2 = 0, zi2 = 0, n = 0;
+          while (n < maxIter && zr2 + zi2 < 65536) {
+            zi = 2 * zr * zi + ci;
+            zr = zr2 - zi2 + cr;
+            zr2 = zr * zr; zi2 = zi * zi;
+            n++;
+          }
+          if (n >= maxIter) { buf[idx + 3] = 255; continue; }
+          const logZn = Math.log(zr2 + zi2) / 2;
+          const nu = n + 1 - Math.log(logZn / LN2) / LN2;
+          const p = (Math.floor((Math.sqrt(Math.max(0, nu)) * 96 + 240) % N)) * 3;
+          buf[idx] = pal[p]; buf[idx + 1] = pal[p + 1]; buf[idx + 2] = pal[p + 2]; buf[idx + 3] = 255;
+        }
+      }
+      return { id: j.id, kind: j.kind, index: j.index, pass: j.pass, y0px: j.y0px, wpx: w, hpx: h, buf: buf.buffer };
+    }
+  `;
+
+  const canvas = document.getElementById('view');
+  const ctx = canvas.getContext('2d');
+  const progress = document.getElementById('progress');
+  const tip = document.getElementById('tip');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const H = id => document.getElementById(id);
+
+  const HOME = { cx: -0.75, cy: 0, span: 3.4 };
+  const state = { cx: HOME.cx, cy: HOME.cy, span: HOME.span, pal: 'ultra', iterMul: 1 };
+  const MULS = [0.5, 1, 2, 4, 8];
+  let W = 0, Hh = 0, dpr = 1;
+  let pool = [], queue = [];
+  let renderId = 0, jobsTotal = 0, jobsDone = 0, renderStart = 0;
+  const temp = document.createElement('canvas');
+  const tctx = temp.getContext('2d');
+
+  const BOOKMARKS = [
+    { name: 'Overview', cx: -0.75, cy: 0, span: 3.4 },
+    { name: 'Seahorse Valley', cx: -0.7435669, cy: 0.1314023, span: 0.0022 },
+    { name: 'Elephant Valley', cx: 0.2749, cy: 0.00655, span: 0.012 },
+    { name: 'Triple Spiral', cx: -0.0880, cy: 0.6540, span: 0.012 },
+    { name: 'Spiral', cx: -0.16070135, cy: 1.0375665, span: 0.0012 },
+    { name: 'Mini-brot', cx: -1.7548776, cy: 0, span: 0.028 }
+  ];
+
+  /* ---------------------------------------------------------- worker pool */
+  function buildPool() {
+    let n = Math.min(8, Math.max(2, (navigator.hardwareConcurrency || 4)));
+    try {
+      const url = URL.createObjectURL(new Blob([KERNEL, '\nself.onmessage = e => { const r = compute(e.data); self.postMessage(r, [r.buf]); };'], { type: 'text/javascript' }));
+      for (let i = 0; i < n; i++) {
+        const w = new Worker(url);
+        w.busy = false;
+        w.onmessage = e => { w.busy = false; handle(e.data); pump(); };
+        w.onerror = () => { fallback(); };
+        pool.push(w);
+      }
+      H('hWorkers').textContent = n + ' threads';
+    } catch (err) {
+      fallback();
+    }
+  }
+  function fallback() {
+    if (pool.fake) return;
+    pool.forEach(w => { try { w.terminate(); } catch (e) { /* ignore */ } });
+    const compute = new Function(KERNEL + '\nreturn compute;')();
+    const fake = {
+      busy: false,
+      postMessage(job) { setTimeout(() => { const r = compute(job); fake.busy = false; handle(r); pump(); }, 0); }
+    };
+    pool = [fake]; pool.fake = true;
+    H('hWorkers').textContent = 'main thread';
+    render();
+  }
+  function pump() {
+    for (const w of pool) {
+      if (!w.busy && queue.length) { w.busy = true; w.postMessage(queue.shift()); }
+    }
+  }
+
+  /* ---------------------------------------------------------- rendering */
+  function autoIter() {
+    const depth = Math.log2(HOME.span / state.span);
+    return Math.round(Math.min(12000, Math.max(120, (120 + 90 * Math.pow(Math.max(0, depth), 1.15)) * state.iterMul)));
+  }
+
+  /* Invalidate in-flight bands so they cannot paint over a gesture preview. */
+  function cancelRender() {
+    renderId++;
+    queue.length = 0;
+    progress.classList.remove('active');
+  }
+
+  function render() {
+    renderId++;
+    queue.length = 0;
+    const id = renderId, iter = autoIter();
+    const step = state.span / W;
+    jobsTotal = 0; jobsDone = 0; renderStart = performance.now();
+    for (const s of [8, 4, 2, 1]) {
+      const cw = Math.ceil(W / s), ch = Math.ceil(Hh / s);
+      const bands = s === 1 ? pool.length * 4 : Math.max(1, pool.length);
+      const bh = Math.ceil(ch / bands);
+      for (let b = 0; b < bands; b++) {
+        const y0 = b * bh, h = Math.min(bh, ch - y0);
+        if (h <= 0) break;
+        queue.push({
+          id, kind: 'main', pass: s, y0px: y0, wpx: cw, hpx: h,
+          re0: state.cx + (s / 2 - W / 2) * step,
+          im0: state.cy - (y0 * s + s / 2 - Hh / 2) * step,
+          step: step * s, maxIter: iter, pal: state.pal
+        });
+        jobsTotal++;
+      }
+    }
+    progress.classList.add('active');
+    progress.style.width = '0%';
+    updateHud(iter);
+    pump();
+  }
+
+  function handle(d) {
+    if (d.kind === 'thumb') {
+      const c = document.querySelector('.mark[data-i="' + d.index + '"] canvas');
+      if (!c) return;
+      c.getContext('2d').putImageData(new ImageData(new Uint8ClampedArray(d.buf), d.wpx, d.hpx), 0, 0);
+      return;
+    }
+    if (d.id !== renderId) return;
+    temp.width = d.wpx; temp.height = d.hpx;
+    tctx.putImageData(new ImageData(new Uint8ClampedArray(d.buf), d.wpx, d.hpx), 0, 0);
+    ctx.imageSmoothingEnabled = false;
+    ctx.drawImage(temp, 0, 0, d.wpx, d.hpx, 0, d.y0px * d.pass, d.wpx * d.pass, d.hpx * d.pass);
+    jobsDone++;
+    progress.style.width = (jobsDone / jobsTotal * 100).toFixed(1) + '%';
+    if (jobsDone === jobsTotal) {
+      H('hTime').textContent = (performance.now() - renderStart).toFixed(0) + ' ms';
+      setTimeout(() => { if (jobsDone === jobsTotal) progress.classList.remove('active'); }, 250);
+    }
+  }
+
+  function updateHud(iter) {
+    H('hRe').textContent = state.cx.toFixed(12);
+    H('hIm').textContent = state.cy.toFixed(12);
+    const z = HOME.span / state.span;
+    H('hZoom').textContent = '×' + (z < 1000 ? z.toFixed(2) : z.toExponential(2).replace('e+', 'e'));
+    H('hIter').textContent = String(iter || autoIter());
+    document.querySelectorAll('.mark').forEach(m => {
+      const b = BOOKMARKS[Number(m.dataset.i)];
+      m.classList.toggle('active', Math.abs(b.cx - state.cx) < 1e-9 && Math.abs(b.cy - state.cy) < 1e-9 && Math.abs(b.span - state.span) < 1e-12);
+    });
+  }
+
+  /* ---------------------------------------------------------- resize */
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = Math.round(window.innerWidth * dpr);
+    Hh = Math.round(window.innerHeight * dpr);
+    canvas.width = W; canvas.height = Hh;
+    render();
+  }
+
+  /* ---------------------------------------------------------- navigation */
+  function snapshot() {
+    const s = document.createElement('canvas');
+    s.width = W; s.height = Hh;
+    s.getContext('2d').drawImage(canvas, 0, 0);
+    return s;
+  }
+
+  /* Zoom by factor f about canvas pixel (px, py); animates the old bitmap first. */
+  function zoomAt(px, py, f) {
+    const step = state.span / W;
+    const re = state.cx + (px - W / 2) * step;
+    const im = state.cy - (py - Hh / 2) * step;
+    state.cx = re + (state.cx - re) / f;
+    state.cy = im + (state.cy - im) / f;
+    state.span /= f;
+    updateHud();
+    cancelRender();
+    const snap = snapshot();
+    ctx.imageSmoothingEnabled = true;
+    if (reduceMotion) {
+      ctx.drawImage(snap, px * (1 - f), py * (1 - f), W * f, Hh * f);
+      render();
+      return;
+    }
+    const t0 = performance.now(), dur = 300;
+    const ease = t => 1 - Math.pow(1 - t, 3);
+    (function anim(now) {
+      const t = Math.min(1, (now - t0) / dur);
+      const k = Math.pow(f, ease(t));
+      ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, Hh);
+      ctx.drawImage(snap, px * (1 - k), py * (1 - k), W * k, Hh * k);
+      if (t < 1) requestAnimationFrame(anim); else render();
+    })(t0);
+  }
+
+  function wheelZoom(px, py, f) {
+    const step = state.span / W;
+    const re = state.cx + (px - W / 2) * step;
+    const im = state.cy - (py - Hh / 2) * step;
+    state.cx = re + (state.cx - re) / f;
+    state.cy = im + (state.cy - im) / f;
+    state.span /= f;
+    const snap = snapshot();
+    ctx.imageSmoothingEnabled = true;
+    ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, Hh);
+    ctx.drawImage(snap, px * (1 - f), py * (1 - f), W * f, Hh * f);
+    render();
+  }
+
+  let drag = null;
+  canvas.addEventListener('pointerdown', e => {
+    if (e.button !== 0 && e.button !== 2) return;
+    canvas.setPointerCapture(e.pointerId);
+    cancelRender();
+    drag = { x: e.clientX, y: e.clientY, sx: e.clientX, sy: e.clientY, snap: snapshot(), moved: false, button: e.button, shift: e.shiftKey };
+  });
+  canvas.addEventListener('pointermove', e => {
+    if (!drag) return;
+    const dx = e.clientX - drag.sx, dy = e.clientY - drag.sy;
+    if (!drag.moved && Math.hypot(dx, dy) > 4) { drag.moved = true; canvas.classList.add('dragging'); }
+    if (drag.moved) {
+      ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, Hh);
+      ctx.drawImage(drag.snap, dx * dpr, dy * dpr);
+    }
+  });
+  function endDrag(e) {
+    if (!drag) return;
+    canvas.classList.remove('dragging');
+    const dx = e.clientX - drag.sx, dy = e.clientY - drag.sy;
+    if (drag.moved) {
+      const step = state.span / W;
+      state.cx -= dx * dpr * step;
+      state.cy += dy * dpr * step;
+      render();
+    } else {
+      const out = drag.button === 2 || drag.shift;
+      zoomAt(e.clientX * dpr, e.clientY * dpr, out ? 1 / 2.5 : 2.5);
+    }
+    tip.classList.add('gone');
+    drag = null;
+  }
+  canvas.addEventListener('pointerup', endDrag);
+  canvas.addEventListener('pointercancel', () => { drag = null; canvas.classList.remove('dragging'); });
+  canvas.addEventListener('contextmenu', e => e.preventDefault());
+
+  canvas.addEventListener('wheel', e => {
+    e.preventDefault();
+    const f = Math.exp(-e.deltaY * (e.deltaMode === 1 ? 0.05 : 0.0018));
+    wheelZoom(e.clientX * dpr, e.clientY * dpr, f);
+    tip.classList.add('gone');
+  }, { passive: false });
+
+  /* ---------------------------------------------------------- UI */
+  const marks = H('marks');
+  BOOKMARKS.forEach((b, i) => {
+    const btn = document.createElement('button');
+    btn.type = 'button'; btn.className = 'mark'; btn.dataset.i = String(i);
+    btn.setAttribute('aria-label', 'Go to ' + b.name);
+    const c = document.createElement('canvas');
+    c.width = 112 * 2; c.height = 72 * 2;
+    const label = document.createElement('span');
+    label.textContent = b.name;
+    btn.appendChild(c); btn.appendChild(label);
+    btn.addEventListener('click', () => {
+      state.cx = b.cx; state.cy = b.cy; state.span = b.span;
+      ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, Hh);
+      render();
+    });
+    marks.appendChild(btn);
+  });
+
+  function renderThumbs() {
+    BOOKMARKS.forEach((b, i) => {
+      const wpx = 224, hpx = 144, step = b.span / wpx;
+      const depth = Math.log2(HOME.span / b.span);
+      queue.push({
+        id: -1, kind: 'thumb', index: i, pass: 1, y0px: 0, wpx, hpx,
+        re0: b.cx - b.span / 2 + step / 2, im0: b.cy + (hpx / 2) * step - step / 2,
+        step, maxIter: Math.round(120 + 90 * Math.pow(Math.max(0, depth), 1.15)), pal: state.pal
+      });
+    });
+    pump();
+  }
+
+  H('palettes').addEventListener('click', e => {
+    const b = e.target.closest('button[data-pal]');
+    if (!b) return;
+    setPalette(b.dataset.pal);
+  });
+  function setPalette(p) {
+    state.pal = p;
+    document.querySelectorAll('#palettes button').forEach(x => x.setAttribute('aria-pressed', String(x.dataset.pal === p)));
+    render();
+    renderThumbs();
+  }
+
+  function setMul(dir) {
+    const i = Math.max(0, Math.min(MULS.length - 1, MULS.indexOf(state.iterMul) + dir));
+    state.iterMul = MULS[i];
+    H('iterMul').textContent = '×' + state.iterMul;
+    render();
+  }
+  H('iterMinus').addEventListener('click', () => setMul(-1));
+  H('iterPlus').addEventListener('click', () => setMul(1));
+  H('zoomOut').addEventListener('click', () => zoomAt(W / 2, Hh / 2, 1 / 2.5));
+  H('reset').addEventListener('click', () => { state.cx = HOME.cx; state.cy = HOME.cy; state.span = HOME.span; render(); });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'r' || e.key === 'R') H('reset').click();
+    else if (e.key === '+' || e.key === '=') setMul(1);
+    else if (e.key === '-' || e.key === '_') setMul(-1);
+    else if (e.key >= '1' && e.key <= '4') setPalette(['ultra', 'ember', 'ice', 'mono'][Number(e.key) - 1]);
+    else if (e.key === 'Escape') zoomAt(W / 2, Hh / 2, 1 / 2.5);
+  });
+
+  let resizeTimer = 0;
+  window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(resize, 150); });
+
+  buildPool();
+  resize();
+  renderThumbs();
+})();
+</script>
+</body>
+</html>
