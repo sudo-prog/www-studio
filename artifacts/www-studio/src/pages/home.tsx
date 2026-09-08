@@ -9,7 +9,9 @@ import {
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { AiChatWidget } from "@/components/AiChatWidget";
-import { useState, useEffect } from "react";
+import { WEBSITE_TEMPLATES, TEMPLATE_CATEGORIES } from "@/data/aura-templates";
+import type { WebsiteTemplateItem } from "@/data/aura-templates";
+import { useState, useEffect, useMemo } from "react";
 
 const WELLNESS_COLORS = ["#7FB5A0","#B39DC2","#E8957A","#87BBDB","#F4C5A1","#4A7C6B","#C8D8E0"];
 
@@ -40,6 +42,108 @@ function SceneShowcaseCard({ scene, href }: { scene: any; href?: string }) {
         </div>
       </div>
     </Link>
+  );
+}
+
+function WebsiteTemplateCard({ item }: { item: WebsiteTemplateItem }) {
+  return (
+    <Link href={item.previewUrl} target="_blank" rel="noopener noreferrer" className="block min-h-[44px]">
+      <div className="group relative aspect-[16/9] rounded-xl overflow-hidden border border-border bg-muted hover:border-primary/40 transition-all hover:shadow-lg hover:shadow-primary/10">
+        <iframe
+          src={item.previewUrl}
+          className="absolute inset-0 w-full h-full border-0"
+          title={item.name}
+          loading="lazy"
+          sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-presentation"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity flex items-end p-4">
+          <div>
+            <h3 className="text-white font-semibold text-sm mb-1 line-clamp-1">{item.name}</h3>
+            <p className="text-zinc-300 text-xs line-clamp-1 max-w-xs">{item.description}</p>
+          </div>
+        </div>
+      </div>
+      <div className="p-3">
+        <h3 className="font-medium text-sm mb-1 line-clamp-1">{item.name}</h3>
+        <div className="flex flex-wrap gap-1">
+          {item.tags.slice(0, 2).map((tag) => (
+            <span key={tag} className="text-[10px] px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+function WebsiteTemplatesSection() {
+  const [search, setSearch] = useState("");
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const filtered = useMemo(() => {
+    return WEBSITE_TEMPLATES.filter(
+      (t) =>
+        (activeCategory === "All" || t.category === activeCategory) &&
+        (!search ||
+          t.name.toLowerCase().includes(search.toLowerCase()) ||
+          t.tags.some((tag) => tag.toLowerCase().includes(search.toLowerCase())))
+    );
+  }, [search, activeCategory]);
+
+  if (WEBSITE_TEMPLATES.length === 0) return null;
+
+  return (
+    <section className="px-4 md:px-6 pb-16 max-w-7xl mx-auto">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 sm:mb-8 gap-3 sm:gap-4">
+        <div>
+          <h2 className="text-xl sm:text-2xl font-semibold tracking-tight">Aura Website Templates</h2>
+          <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+            {WEBSITE_TEMPLATES.length} full-site templates ready to preview — HTML/CSS/JS, Tailwind, GSAP, Three.js
+          </p>
+        </div>
+        <div className="relative w-full sm:w-72">
+          <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+          <Input
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search templates..."
+            className="pl-9 min-h-[48px]"
+          />
+        </div>
+      </div>
+
+      {/* Category pills */}\n      <div className="flex flex-wrap gap-2 mb-6">
+        {TEMPLATE_CATEGORIES.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setActiveCategory(cat)}
+            className={`px-3 py-1.5 min-h-[44px] rounded-full text-xs font-medium transition-colors ${
+              activeCategory === cat
+                ? "bg-primary text-primary-foreground"
+                : "bg-muted text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      {filtered.length === 0 ? (
+        <div className="text-center py-16 text-muted-foreground">
+          <Search className="w-10 h-10 mx-auto mb-3 opacity-30" />
+          <p>No templates found for "{search}"</p>
+        </div>
+      ) : (
+        <div className="overflow-x-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 min-w-[480px] sm:min-w-0">
+            {filtered.map((template) => (
+              <WebsiteTemplateCard key={template.id} item={template} />
+            ))}
+          </div>
+        </div>
+      )}
+    </section>
   );
 }
 
@@ -169,6 +273,9 @@ export default function Home() {
             </div>
           </section>
         )}
+
+        {/* AURA Website Templates — full site templates */}
+        <WebsiteTemplatesSection />
 
         {/* Templates Gallery */}
         <section className="px-4 md:px-6 pb-24 max-w-7xl mx-auto">
