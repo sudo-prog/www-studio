@@ -446,6 +446,9 @@ importers:
       ccapture.js:
         specifier: ^1.1.0
         version: 1.1.0
+      design-md-extractor:
+        specifier: link:design-md-extractor
+        version: link:design-md-extractor
       figma-squircle:
         specifier: ^1.1.0
         version: 1.1.0
