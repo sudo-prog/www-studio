@@ -131,7 +131,7 @@ function WebsiteTemplatesSection() {
     <section className="px-4 md:px-6 pb-16 max-w-7xl mx-auto">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 sm:mb-8 gap-3 sm:gap-4">
         <div>
-          <h2 className="text-xl sm:text-2xl font-semibold tracking-tight">Website Templates</h2>
+          <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-foreground">Website Templates</h2>
           <p className="text-xs sm:text-sm text-muted-foreground mt-1">
             {WEBSITE_TEMPLATES.length} full-site templates ready to preview — HTML/CSS/JS, Tailwind, GSAP, Three.js
           </p>
@@ -210,15 +210,15 @@ export default function Home() {
   return (
     <div className="min-h-[100dvh] pb-safe flex flex-col overflow-x-hidden" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
       <main className="flex-1">
-        {/* Hero */}
+        {/* Hero — dark-first, headlessui.com aesthetic: white headline on deep black bg with soft gradient */}
         <section className="px-4 py-12 sm:py-16 md:py-28 flex flex-col items-center text-center max-w-4xl mx-auto">
           <div className="inline-flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/20 mb-4 sm:mb-6">
             <WandSparkles className="w-3.5 h-3.5 shrink-0" />
             AI-Powered Visual Builder
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight mb-4 sm:mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-4 sm:mb-6 leading-tight">
             Clone any website.{" "}
-            <span className="bg-gradient-to-r from-primary to-violet-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-sky-400 via-blue-400 to-violet-400 bg-clip-text text-transparent">
               Edit like magic.
             </span>{" "}
             Own the code.
@@ -260,7 +260,7 @@ export default function Home() {
               <div>
                 <div className="flex items-center gap-2 mb-1">
                   <Sparkles className="h-5 w-5 text-primary" />
-                  <h2 className="text-xl sm:text-2xl font-semibold tracking-tight">Wellness Scenes</h2>
+                  <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-foreground">Wellness Scenes</h2>
                 </div>
                 <p className="text-xs sm:text-sm text-muted-foreground">AI-generated SVG compositions with living animations — click to share</p>
               </div>
@@ -315,7 +315,7 @@ export default function Home() {
         <section className="px-4 md:px-6 pb-24 max-w-7xl mx-auto">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 sm:mb-8 gap-3 sm:gap-4">
             <div>
-              <h2 className="text-xl sm:text-2xl font-semibold tracking-tight">Community Templates</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-foreground">Community Templates</h2>
               <p className="text-xs sm:text-sm text-muted-foreground mt-1">{safeTemplates.length} templates ready to fork</p>
             </div>
             <div className="relative w-full sm:w-72">

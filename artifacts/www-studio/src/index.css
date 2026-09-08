@@ -61,6 +61,43 @@
 }
 
 :root {
+  /* ---- Headless UI dark-first theme (headlessui.com palette) ---- */
+  --background: 220 98% 4%;       /* #030712 */
+  --foreground: 0 0% 98%;         /* #ffffff */
+  --card: 220 39% 7%;            /* #0f172a */
+  --card-foreground: 0 0% 98%;    /* #ffffff */
+  --card-border: 220 19% 12%;    /* #1e293b */
+  --popover: 220 39% 7%;          /* #0f172a */
+  --popover-foreground: 0 0% 98%; /* #ffffff */
+  --popover-border: 220 19% 12%;  /* #1e293b */
+  --primary: 217 91% 60%;        /* #3b82f6 */
+  --primary-foreground: 0 0% 98%; /* #ffffff */
+  --secondary: 220 19% 12%;     /* #1e293b — slate-800 */
+  --secondary-foreground: 0 0% 98%; /* #ffffff */
+  --muted: 220 19% 12%;          /* #1e293b */
+  --muted-foreground: 220 15% 64%; /* #94a3b8 */
+  --accent: 220 3.7% 15.9%;      /* surface-level */
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 63% 31%;      /* #ef4444 */
+  --destructive-foreground: 0 0% 98%;
+  --border: 220 19% 12%;         /* #1e293b */
+  --input: 220 19% 12%;          /* #1e293b */
+  --ring: 217 91% 60%;           /* #3b82f6 */
+  --sidebar: 220 90% 4%;         /* #0d1117 */
+  --sidebar-foreground: 0 0% 93%; /* #ecedee */
+  --sidebar-border: 220 19% 12%; /* #1e293b */
+  --sidebar-primary: 217 91% 60%;
+  --sidebar-primary-foreground: 0 0% 98%;
+  --sidebar-accent: 220 19% 16%;
+  --sidebar-accent-foreground: 0 0% 98%;
+  --sidebar-ring: 217 91% 60%;
+  --radius: 0.75rem;             /* 12px — headlessui card radius */
+  --app-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --app-font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.light {
+  /* Light mode as secondary override */
   --background: 0 0% 100%;
   --foreground: 0 0% 3.9%;
   --card: 0 0% 100%;
@@ -82,48 +119,13 @@
   --border: 0 0% 89.8%;
   --input: 0 0% 89.8%;
   --ring: 217.2 91.2% 59.8%;
-  --sidebar: 0 0% 98%;
+  --sidebar: 240 5.9% 10%;
   --sidebar-foreground: 240 5.3% 26.1%;
   --sidebar-border: 240 5.9% 90%;
   --sidebar-primary: 240 5.9% 10%;
   --sidebar-primary-foreground: 0 0% 98%;
   --sidebar-accent: 240 4.8% 95.9%;
   --sidebar-accent-foreground: 240 5.9% 10%;
-  --sidebar-ring: 217.2 91.2% 59.8%;
-  --radius: 0.5rem;
-  --app-font-sans: 'Inter', sans-serif;
-  --app-font-mono: 'JetBrains Mono', monospace;
-}
-
-.dark {
-  --background: 240 10% 3.9%;
-  --foreground: 0 0% 98%;
-  --card: 240 10% 3.9%;
-  --card-foreground: 0 0% 98%;
-  --card-border: 240 3.7% 15.9%;
-  --popover: 240 10% 3.9%;
-  --popover-foreground: 0 0% 98%;
-  --popover-border: 240 3.7% 15.9%;
-  --primary: 217.2 91.2% 59.8%;
-  --primary-foreground: 0 0% 98%;
-  --secondary: 240 3.7% 15.9%;
-  --secondary-foreground: 0 0% 98%;
-  --muted: 240 3.7% 15.9%;
-  --muted-foreground: 240 5% 64.9%;
-  --accent: 240 3.7% 15.9%;
-  --accent-foreground: 0 0% 98%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 0 0% 98%;
-  --border: 240 3.7% 15.9%;
-  --input: 240 3.7% 15.9%;
-  --ring: 217.2 91.2% 59.8%;
-  --sidebar: 240 5.9% 10%;
-  --sidebar-foreground: 240 4.8% 95.9%;
-  --sidebar-border: 240 3.7% 15.9%;
-  --sidebar-primary: 217.2 91.2% 59.8%;
-  --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 240 3.7% 15.9%;
-  --sidebar-accent-foreground: 240 4.8% 95.9%;
   --sidebar-ring: 217.2 91.2% 59.8%;
 }
 
@@ -133,8 +135,19 @@
   }
   body {
     @apply bg-background text-foreground;
+    /* Headless UI dark-first: subtle noise texture on page background */
+    /* Radial gradient from bottom-left (blue/violet) like headlessui.com */
+    background-image:
+      radial-gradient(circle at 20% 80%, hsla(220, 80%, 60%, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsla(260, 80%, 65%, 0.03) 0%, transparent 50%);
+    background-attachment: fixed;
     overflow-x: hidden;
     -webkit-text-size-adjust: 100%;
+  }
+  /* Selection color fitting dark theme */
+  ::selection {
+    background-color: hsl(217, 91%, 60%, 0.3);
+    color: hsl(0, 0%, 100%);
   }
   /* Prevent horizontal overflow on small screens */
   html, body {

@@ -46,7 +46,7 @@ export function Navbar() {
   );
 
   return (
-    <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
+    <nav className="border-b border-border/30 bg-background/60 backdrop-blur-xl supports-[backdrop-filter]:bg-background/30 sticky top-0 z-50">
       <div className="flex h-14 items-center px-4 md:px-6 max-w-7xl mx-auto">
         <Link href="/" className="flex items-center gap-2 mr-4 md:mr-6 font-semibold tracking-tight shrink-0">
           <Code2 className="h-5 w-5 text-primary" />
@@ -187,7 +187,13 @@ export function Navbar() {
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
-              <Button size="sm" className="hidden sm:inline-flex" onClick={() => { navigate("/profile"); }}>Log in</Button>
+              <Button
+                size="sm"
+                className="hidden sm:inline-flex min-h-[44px]"
+                onClick={() => { navigate("/profile"); }}
+              >
+                Log in
+              </Button>
             )}
           </div>
         </div>
