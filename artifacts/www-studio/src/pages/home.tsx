@@ -204,22 +204,48 @@ export default function Home() {
   return (
     <div className="min-h-[100dvh] pb-safe flex flex-col overflow-x-hidden" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
       <main className="flex-1">
-        {/* Hero — dark-first, headlessui.com aesthetic: white headline on deep black bg with soft gradient */}
+        {/* Hero — aura.build-inspired layout with www-studio identity */}
         <section className="px-4 py-12 sm:py-16 md:py-28 flex flex-col items-center text-center max-w-4xl mx-auto">
           <div className="inline-flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/20 mb-4 sm:mb-6">
             <WandSparkles className="w-3.5 h-3.5 shrink-0" />
             AI-Powered Visual Builder
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-4 sm:mb-6 leading-tight">
-            Clone any website.{" "}
+            Create beautiful designs.{" "}
             <span className="bg-gradient-to-r from-sky-400 via-blue-400 to-violet-400 bg-clip-text text-transparent">
-              Edit like magic.
+              Generate top-tier landing pages
             </span>{" "}
-            Own the code.
+            in seconds.
           </h1>
           <p className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-10 max-w-2xl leading-relaxed px-2">
             WWW Studio is the visual UI builder for developers. Paste a URL, describe your idea, or upload a screenshot — get an editable React + Tailwind codebase instantly.
           </p>
+
+          {/* aura.build-style prompt input with AI agent selector */}
+          <div className="w-full max-w-2xl mb-6">
+            <div className="flex flex-col sm:flex-row gap-2">
+              <div className="relative flex-1">
+                <Input
+                  placeholder="Create a landing page for a calendar app that helps design teams plan launches"
+                  className="h-12 min-h-[48px] px-4 pr-10 text-sm"
+                />
+                <Sparkles className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              </div>
+              <Button size="lg" className="h-12 min-h-[48px] px-6 text-base gap-2" asChild>
+                <Link href="/editor/new">
+                  <WandSparkles className="w-4 h-4" />Start Building
+                </Link>
+              </Button>
+            </div>
+            <div className="flex items-center gap-2 mt-2 text-xs text-muted-foreground">
+              <span className="flex items-center gap-1">
+                <Sparkles className="w-3.5 h-3.5" />
+                AI Agent
+              </span>
+              <span className="text-foreground font-medium">GPT-5.6 Terra</span>
+            </div>
+          </div>
+
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
             <Button size="lg" className="h-12 px-8 text-base gap-2 w-full sm:w-auto justify-center min-h-[48px]" asChild>
               <Link href="/editor/new">
@@ -227,8 +253,8 @@ export default function Home() {
               </Link>
             </Button>
             <Button size="lg" variant="outline" className="h-12 px-8 text-base gap-2 w-full sm:w-auto justify-center min-h-[48px]" asChild>
-              <Link href="/scenes">
-                <Sparkles className="w-5 h-5" />Wellness Scenes
+              <Link href="/gallery">
+                <Sparkles className="w-5 h-5" />View Templates
               </Link>
             </Button>
           </div>
