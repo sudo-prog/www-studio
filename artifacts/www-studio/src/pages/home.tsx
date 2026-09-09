@@ -307,9 +307,22 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-12 sm:mt-16 flex items-center justify-center gap-2 text-xs text-muted-foreground">
-            <Blocks className="h-3 w-3" />
-            <span>Trusted by 189,000+ designers and developers</span>
+          <div className="mt-12 sm:mt-16">
+            {/* Trusted By — aura.build style with company logos */}
+            <div className="flex flex-col items-center justify-center gap-3 sm:gap-4 text-xs text-muted-foreground">
+              <Blocks className="h-3 w-3" />
+              <span>Trusted by 189,000+ designers and developers</span>
+            </div>
+            <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-6 sm:gap-8 opacity-60 grayscale">
+              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/nasa.svg" alt="NASA" className="h-8 w-auto" loading="lazy" />
+              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/spacex.svg" alt="SpaceX" className="h-8 w-auto" loading="lazy" />
+              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/uber.svg" alt="Uber" className="h-8 w-auto" loading="lazy" />
+              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/visa.svg" alt="Visa" className="h-8 w-auto" loading="lazy" />
+              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/bose.svg" alt="Bose" className="h-8 w-auto" loading="lazy" />
+              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/discover.svg" alt="Discover" className="h-8 w-auto" loading="lazy" />
+              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/dji.svg" alt="DJI" className="h-8 w-auto" loading="lazy" />
+              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/sony.svg" alt="Sony" className="h-8 w-auto" loading="lazy" />
+            </div>
           </div>
         </section>
 
