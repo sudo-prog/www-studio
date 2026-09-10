@@ -14,9 +14,7 @@ import {
   Globe,
   ArrowRight,
   Sparkles,
-  User,
   Copy,
-  RefreshCw,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { AiChatWidget } from "@/components/AiChatWidget";
@@ -78,57 +76,21 @@ function WebsiteTemplateCard({ item }: { item: WebsiteTemplateItem }) {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {/* Image thumbnail (aura.build: aspect-4/3) */}
-        {item.imageUrl ? (
-          <img src={item.imageUrl} alt={`${item.name} thumbnail`} className="w-full h-full object-cover" />
-        ) : (
-          <div className="w-full h-full bg-muted/50 flex items-center justify-center">
-            <div className="text-center">
-              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-3">
-                <Eye className="h-5 w-5 text-primary" />
-              </div>
-              <p className="text-sm font-medium text-foreground mb-1">Click to Preview</p>
-              <p className="text-xs text-muted-foreground max-w-[180px]">Load interactive template preview</p>
+        {/* Thumbnail placeholder — aura.build style */}
+        <div className="w-full h-full bg-muted/50 flex items-center justify-center">
+          <div className="text-center">
+            <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-3">
+              <Eye className="h-5 w-5 text-primary" />
             </div>
+            <p className="text-sm font-medium text-foreground mb-1">Click to Preview</p>
+            <p className="text-xs text-muted-foreground max-w-[180px]">Load interactive template preview</p>
           </div>
-        )}
-
-        {/* PRO badge */}
-        {item.isPro && (
-          <div className="absolute top-3 left-3 z-10 flex h-6 items-center px-2 rounded-full bg-primary text-primary-foreground text-xs font-medium">
-            PRO
-          </div>
-        )}
-
-        {/* Author avatar + name */}
-        <div className="absolute bottom-3 left-3 z-10 flex items-center space-x-2">
-          {item.author ? (
-            <>
-              <img src={item.author.avatarUrl} alt={`${item.author.name} avatar`} className="h-8 w-8 rounded-full border border-white/20" />
-              <span className="text-white/90 text-xs font-medium">{item.author.name}</span>
-            </>
-          ) : (
-            <div className="flex items-center space-x-2">
-              <User className="h-6 w-6 rounded-full bg-muted text-muted-foreground" />
-              <span className="text-white/90 text-xs font-medium">Aura Team</span>
-            </div>
-          )}
         </div>
 
-        {/* Remix button + view count — shown on hover */}
+        {/* Remix button — shown on hover */}
         {isHovered && (
           <>
-            <div className="absolute top-3 right-3 z-10 flex items-center space-x-4 text-sm text-white/90">
-              <span className="flex items-center">
-                <Eye className="h-4 w-4 mr-1" /> {item.viewCount?.toLocaleString() ?? "0"}
-              </span>
-              <span className="flex items-center">
-                <RefreshCw className="h-4 w-4 mr-1" /> {item.remixCount?.toLocaleString() ?? "0"}
-              </span>
-            </div>
-
-            {/* Copy prompt button on hover */}
-            <div className="absolute bottom-3 right-3 z-10">
+            <div className="absolute top-3 right-3 z-10">
               <Button variant="ghost" size="icon" asChild>
                 <Link href={item.sourceUrl} target="_blank" rel="noopener noreferrer">
                   <Copy className="h-4 w-4 text-white/70 hover:text-white" />
@@ -294,9 +256,7 @@ export default function Home() {
                 rows={3}
               />
               <div className="absolute bottom-3 right-3 flex items-center gap-2">
-                <select className="hidden sm:inline-flex items-center gap-2 text-xs text-muted-foreground bg-muted/50 rounded-lg px-3 py-1.5 border border-border focus:outline-none focus:ring-1 focus:ring-primary">
-                  <option>Gemini 3 Pro</option>
-                  <option>GPT-5</option>
+                <select className="hidden sm:inline-flex items-center gap-2 text-xs text-muted-foreground bg-muted/50 rounded-lg px-3 py-1.5 border border-border focus:outline-none focus:ring-1 focus:ring-primary">                  <option>GPT-5</option>
                   <option>Claude 4</option>
                 </select>
                 <Button size="sm" className="min-h-[44px]">
@@ -308,20 +268,10 @@ export default function Home() {
           </div>
 
           <div className="mt-12 sm:mt-16">
-            {/* Trusted By — aura.build style with company logos */}
+            {/* Personal use — no community badges */}
             <div className="flex flex-col items-center justify-center gap-3 sm:gap-4 text-xs text-muted-foreground">
               <Blocks className="h-3 w-3" />
-              <span>Trusted by 189,000+ designers and developers</span>
-            </div>
-            <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-6 sm:gap-8 opacity-60 grayscale">
-              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/nasa.svg" alt="NASA" className="h-8 w-auto" loading="lazy" />
-              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/spacex.svg" alt="SpaceX" className="h-8 w-auto" loading="lazy" />
-              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/uber.svg" alt="Uber" className="h-8 w-auto" loading="lazy" />
-              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/visa.svg" alt="Visa" className="h-8 w-auto" loading="lazy" />
-              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/bose.svg" alt="Bose" className="h-8 w-auto" loading="lazy" />
-              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/discover.svg" alt="Discover" className="h-8 w-auto" loading="lazy" />
-              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/dji.svg" alt="DJI" className="h-8 w-auto" loading="lazy" />
-              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/sony.svg" alt="Sony" className="h-8 w-auto" loading="lazy" />
+              <span>WWW-Studio personal template collection</span>
             </div>
           </div>
         </section>

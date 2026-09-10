@@ -23,7 +23,7 @@ export function Navbar() {
         { href: "/", label: "Home" },
         { href: "/editor/new", label: "Create" },
         { href: "/gallery", label: "Templates" },
-        { href: "/components", label: "Components" },
+        { href: "/ui-library", label: "Components" },
         { href: "/assets", label: "Assets" },
         { href: "/skills", label: "Skills" },
         { href: "/design", label: "Design" },
