@@ -20,15 +20,16 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/scenes", label: "Scenes" },
-    { href: "/scenes/gallery", label: "Scene Gallery" },
-    { href: "/gallery", label: "Gallery" },
-    { href: "/ui-library", label: "Components" },
-    { href: "/design-extract", label: "Design Extract" },
-    { href: "/freeform", label: "Freeform" },
-    ...(isAuthenticated ? [{ href: "/projects", label: "My Projects" }] : []),
-  ];
+        { href: "/", label: "Home" },
+        { href: "/editor/new", label: "Create" },
+        { href: "/gallery", label: "Templates" },
+        { href: "/components", label: "Components" },
+        { href: "/assets", label: "Assets" },
+        { href: "/skills", label: "Skills" },
+        { href: "/design", label: "Design" },
+        { href: "/learn", label: "Learn" },
+        { href: "/sign-in", label: "Sign In" },
+    ];
 
   const NavLink = ({ href, label, onClick }: { href: string; label: string; onClick?: () => void }) => (
     <Link
