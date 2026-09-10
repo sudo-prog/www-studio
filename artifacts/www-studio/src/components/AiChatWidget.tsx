@@ -74,8 +74,8 @@ const STORAGE_MODEL_KEY = "www-studio-selected-model";
 
 // Primary AI endpoint: OmniRoute local gateway (OpenAI-compatible, free)
 const PRIMARY_PROXY = "http://127.0.0.1:20128/v1/chat/completions";
-const PRIMARY_MODEL = "auto/best-coding-fast";
-// Fallback: dead gemini-web2api tunnel (kept for chain completeness)
+const PRIMARY_MODEL = "auto/coding:free";
+// Fallback: gemini-web2api tunnel (free-tier)
 const FALLBACK_PROXY = "https://dressed-integer-strain-powerpoint.trycloudflare.com/v1/chat/completions";
 const FALLBACK_MODEL = "gemini-3.5-flash";
 
@@ -127,6 +127,10 @@ const WELCOME: Message = {
 
 // Web2API proxy models
 const GEMINI_MODELS: GeminiModel[] = [
+  // OmniRoute free-tier combo (primary)
+  { id: "auto/coding:free", name: "omniroute-coding-free", displayName: "OmniRoute Coding (Free)" },
+  { id: "auto/best-free", name: "omniroute-best-free", displayName: "OmniRoute Best (Free)" },
+  // Gemini web2api fallback models
   { id: "gemini-3.5-flash", name: "gemini-3.5-flash", displayName: "Gemini 3.5 Flash" },
   { id: "gemini-3.5-flash-thinking", name: "gemini-3.5-flash-thinking", displayName: "Gemini 3.5 Flash Thinking" },
   { id: "gemini-3.1-pro", name: "gemini-3.1-pro", displayName: "Gemini 3.1 Pro" },
@@ -200,7 +204,7 @@ export function AiChatWidget({ context, onNavigate }: AiChatWidgetProps) {
   // Models
   const [models] = useState<GeminiModel[]>(GEMINI_MODELS);
   const [selectedModel, setSelectedModel] = useState<string>(
-    loadSelectedModel() || "gemini-3.5-flash"
+    loadSelectedModel() || PRIMARY_MODEL
   );
   const [showModelPicker, setShowModelPicker] = useState(false);
 
