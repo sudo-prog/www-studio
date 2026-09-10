@@ -1,16 +1,14 @@
 import { apiFetch } from "@/lib/apiFetch";
 import { Button } from "@/components/ui/button";
-import { Link, useLocation } from "wouter";
-import { useGetGalleryTemplates, useGetScenes } from "@workspace/api-client-react";
+import { Link } from "wouter";
+import { useGetScenes } from "@workspace/api-client-react";
 import {
-  Heart,
   Search,
   Eye,
   Blocks,
   WandSparkles,
   Code2,
   Layers,
-  Globe,
   ArrowRight,
   Sparkles,
   Copy,
@@ -199,11 +197,7 @@ function WebsiteTemplatesSection() {
 }
 
 export default function Home() {
-  const { data: templates = [], isLoading } = useGetGalleryTemplates();
-  const safeTemplates = Array.isArray(templates) ? templates : [];
   const { data: allScenes = [] }            = useGetScenes();
-  const [search, setSearch]       = useState("");
-  const [, setLocation]           = useLocation();
   const [publicScenes, setPublicScenes] = useState<any[]>([]);
 
   // Fetch public scenes for showcase
@@ -213,13 +207,6 @@ export default function Home() {
       .then((d) => setPublicScenes(Array.isArray(d) ? d.slice(0, 6) : []))
       .catch(() => {});
   }, []);
-
-  const filtered = safeTemplates.filter(
-    (t) =>
-      !search ||
-      t.title?.toLowerCase().includes(search.toLowerCase()) ||
-      t.tags?.some((tag) => tag.toLowerCase().includes(search.toLowerCase()))
-  );
 
   const safeScenes = Array.isArray(allScenes) ? allScenes : [];
   const showcaseScenes = (Array.isArray(publicScenes) && publicScenes.length > 0) ? publicScenes : safeScenes.slice(0, 6);
@@ -248,8 +235,6 @@ export default function Home() {
           <div className="w-full max-w-2xl mx-auto">
             <div className="relative">
               <textarea
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
                 placeholder="Describe your design — AI will generate HTML/CSS/React instantly..."
                 className="w-full min-h-[120px] max-h-40 px-4 py-4 rounded-2xl bg-card border border-border text-foreground placeholder-muted-foreground resize-none focus:outline-none focus:ring-1 focus:ring-primary transition-shadow"
                 rows={3}
