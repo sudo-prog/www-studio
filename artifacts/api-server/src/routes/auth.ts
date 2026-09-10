@@ -131,8 +131,8 @@ router.post("/auth/register", async (req: Request, res: Response) => {
     return;
   }
 
-  if (password.length < 8) {
-    res.status(400).json({ error: "password must be at least 8 characters" });
+  if (password.length < 4) {
+    res.status(400).json({ error: "password must be at least 4 characters" });
     return;
   }
 
@@ -281,8 +281,8 @@ router.get("/auth/methods", async (_req: Request, res: Response) => {
 // ── First-run password set (creates owner account) ──
 router.post("/auth/password-set", async (req: Request, res: Response) => {
   const { password } = req.body as { password?: string };
-  if (!password || password.length < 8) {
-    res.status(400).json({ error: "Password must be at least 8 characters" });
+  if (!password || password.length < 4) {
+    res.status(400).json({ error: "Password must be at least 4 characters" });
     return;
   }
   const owner = await getOwnerUser();
@@ -338,8 +338,8 @@ router.post("/auth/password-reset", async (req: Request, res: Response) => {
   const session = await getSession(sid);
   if (!session?.user) { res.status(401).json({ error: "Not authenticated" }); return; }
   const { currentPassword, newPassword } = req.body as { currentPassword?: string; newPassword?: string };
-  if (!currentPassword || !newPassword || newPassword.length < 8) {
-    res.status(400).json({ error: "Current and new (>=8 char) passwords required" });
+  if (!currentPassword || !newPassword || newPassword.length < 4) {
+    res.status(400).json({ error: "Current and new (>=4 char) passwords required" });
     return;
   }
   const owner = await getOwnerUser();
