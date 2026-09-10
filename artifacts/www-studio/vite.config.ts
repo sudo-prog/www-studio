@@ -26,4 +26,5 @@ export default defineConfig({
     host: "0.0.0.0",
   },
 });
-// Cache-bust: 1789018939
+// Build version: $(date +%s) - force Vercel cache invalidation
+// Build version: e9fcf068 - force Vercel cache invalidation
