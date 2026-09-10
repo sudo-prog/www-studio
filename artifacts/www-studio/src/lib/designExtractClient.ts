@@ -6,7 +6,7 @@ const RESULTS_KEY = "www-studio-design-extract-results";
 
 // Primary AI endpoint: OmniRoute local gateway (OpenAI-compatible, free)
 const PRIMARY_PROXY = "http://127.0.0.1:20128/v1/chat/completions";
-const PRIMARY_MODEL = "auto/best-coding-fast";
+const PRIMARY_MODEL = "auto/coding:free";
 
 // ─── Provider fallback chain ────────────────────────────────────────────────
 async function callAiProvider(

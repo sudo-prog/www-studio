@@ -8,11 +8,11 @@
  * Configure via environment variables:
  *   LLM_BASE_URL      default: http://127.0.0.1:20128/v1  (OmniRoute)
  *   LLM_API_KEY       default: "omniroute"
- *   LLM_MODEL         default: "auto/best-coding-fast"
+ *   LLM_MODEL         default: "auto/coding:free"
  *   LLM_VISION_MODEL  default: LLM_MODEL
  *
  * Quick-start examples:
- *   OmniRoute (default):     LLM_BASE_URL=http://127.0.0.1:20128/v1 LLM_MODEL=auto/best-coding-fast
+ *   OmniRoute (default):     LLM_BASE_URL=http://127.0.0.1:20128/v1 LLM_MODEL=auto/coding:free
  *   Gemini Web2API (local):  LLM_BASE_URL=http://localhost:8081/v1  LLM_MODEL=gemini-3.5-flash
  *   OpenRouter (free):        LLM_BASE_URL=https://openrouter.ai/api/v1  LLM_API_KEY=sk-or-...
  *                             LLM_MODEL=openrouter/free
@@ -24,7 +24,7 @@ import OpenAI from "openai";
 
 export const LLM_BASE_URL    = process.env.LLM_BASE_URL    ?? "http://127.0.0.1:20128/v1";
 export const LLM_API_KEY     = process.env.LLM_API_KEY     ?? "omniroute";
-export const LLM_MODEL       = process.env.LLM_MODEL       ?? "auto/best-coding-fast";
+export const LLM_MODEL       = process.env.LLM_MODEL       ?? "auto/coding:free";
 export const LLM_VISION_MODEL = process.env.LLM_VISION_MODEL ?? LLM_MODEL;
 
 export const llm = new OpenAI({
