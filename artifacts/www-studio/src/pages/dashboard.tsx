@@ -123,7 +123,7 @@ export default function Dashboard() {
           {[
             { icon: <Plus className="h-4 w-4" />,       label: "New Project",       sub: "Blank canvas",           href: "/editor/new",        color: "bg-blue-500/10 text-blue-400 border-blue-500/20" },
             { icon: <Zap className="h-4 w-4" />,         label: "AI Scene",          sub: "Generate with AI",       href: "/scenes",            color: "bg-purple-500/10 text-purple-400 border-purple-500/20" },
-            { icon: <Globe className="h-4 w-4" />,       label: "Public Gallery",    sub: "Browse community",       href: "/scenes/gallery",    color: "bg-green-500/10 text-green-400 border-green-500/20" },
+            { icon: <Globe className="h-4 w-4" />,       label: "Public Gallery",    sub: "Browse public",       href: "/scenes/gallery",    color: "bg-green-500/10 text-green-400 border-green-500/20" },
             { icon: <PenLine className="h-4 w-4" />,     label: "Freeform Canvas",   sub: "Visual editor",          href: "/freeform",          color: "bg-orange-500/10 text-orange-400 border-orange-500/20" },
           ].map(({ icon, label, sub, href, color }) => (
             <Link key={label} href={href} className="min-h-[48px]">

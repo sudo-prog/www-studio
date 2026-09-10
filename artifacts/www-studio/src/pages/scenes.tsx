@@ -346,7 +346,7 @@ export default function Scenes() {
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-8">
           <div>
             <h1 className="text-3xl font-bold tracking-tight mb-1">Scenes</h1>
-            <p className="text-muted-foreground">Visual SVG compositions with wellness animations</p>
+            <p className="text-muted-foreground">Visual SVG compositions with animated effects</p>
           </div>
           <div className="flex flex-wrap gap-2">
             <Button variant="outline" onClick={() => setShowAI(true)} className="gap-2 min-h-[48px]">
@@ -468,7 +468,7 @@ export default function Scenes() {
           <div className="text-center py-24 text-muted-foreground">
             <Layers className="h-16 w-16 mx-auto mb-4 opacity-20" />
             <p className="text-lg font-medium mb-2">No scenes yet</p>
-            <p className="text-sm mb-6">Create your first visual scene with wellness animations</p>
+            <p className="text-sm mb-6">Create your first visual scene with animations</p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Button variant="outline" onClick={() => setShowAI(true)} className="gap-2 min-h-[48px]">
                 <Sparkles className="h-4 w-4" />AI Generate
@@ -529,7 +529,7 @@ export default function Scenes() {
           </DialogHeader>
           <div className="space-y-3 py-2">
             <p className="text-sm text-muted-foreground">
-              Describe a wellness scene — the AI will compose it with calming orbs, waves, and animations.
+              Describe a scene — the AI will compose it with calming orbs, waves, and animations.
             </p>
             <Input
               placeholder="e.g. serene ocean at dawn with gentle floating orbs…"

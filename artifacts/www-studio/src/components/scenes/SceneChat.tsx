@@ -319,7 +319,7 @@ export function SceneChat({ sceneId, elements, selectedId, onApply, onClose }: P
     try {
       // Build messages for AI providers
       const aiMessages = [
-        { role: "system", content: "You are a wellness scene design AI. Given a scene description and user request, suggest modifications. Respond ONLY with JSON: { \"text\": \"...\", \"actions\": [...] }" },
+        { role: "system", content: "You are a scene design AI. Given a scene description and user request, suggest modifications. Respond ONLY with JSON: { \"text\": \"...\", \"actions\": [...] }" },
         { role: "user", content: fullPrompt },
       ];
 

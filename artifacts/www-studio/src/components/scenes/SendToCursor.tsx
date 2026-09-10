@@ -36,7 +36,7 @@ function buildCursorPrompt(scene: SceneData): string {
   return `# Scene Prompt: ${scene.name}
 
 ## Context
-Build a React wellness scene component. Canvas: ${scene.canvasWidth}×${scene.canvasHeight}px.
+Build a React scene component. Canvas: ${scene.canvasWidth}×${scene.canvasHeight}px.
 
 ## Elements (${scene.elements.length} total)
 ${elementTable || "  (empty canvas)"}

@@ -7,7 +7,7 @@ const STORAGE_KEY = "www-studio:scene-onboarding-done";
 const STEPS = [
   {
     title: "Welcome to Scenes ✨",
-    body:  "Create living, animated SVG compositions with AI. Each scene is a canvas of wellness-inspired visual elements.",
+    body:  "Create living, animated SVG compositions with AI. Each scene is a canvas of visual animation visual elements.",
     emoji: "🎨",
   },
   {

@@ -268,7 +268,7 @@ export function DesignPanel({ projectId, themeTokens, iframeRef }: Props) {
     "Playful e-commerce with warm colors",
     "Elegant luxury fashion brand",
     "Tech startup, blue, corporate",
-    "Organic, earthy green wellness brand",
+    "Organic, earthy green animated brand",
     "Bold, high-contrast portfolio",
   ];
 

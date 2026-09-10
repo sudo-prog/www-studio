@@ -311,7 +311,7 @@ export default function SceneShare() {
             </div>
 
             <p className="text-[11px] text-muted-foreground mt-3 leading-relaxed">
-              Paste this snippet into any HTML page or React app to embed this animated wellness scene.
+              Paste this snippet into any HTML page or React app to embed this animated SVG scene.
             </p>
           </div>
 

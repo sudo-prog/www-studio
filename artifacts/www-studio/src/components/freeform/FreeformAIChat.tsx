@@ -120,7 +120,7 @@ function generateLocalFreeformResponse(
     return { text: "Added 5 random shapes to shake things up! 🎪", actions };
   }
 
-  if (lower.includes("design token") || lower.includes("apply token") || lower.includes("wellness")) {
+  if (lower.includes("design token") || lower.includes("apply token")) {
     const tokenColors = ["#7FB5A0", "#B39DC2", "#E8957A", "#87BBDB", "#F4C5A1", "#4A7C6B", "#C8D8E0", "#E8DDD0"];
     elements.forEach((el) => {
       if (el.type === "shape" || el.type === "text" || el.type === "button") {
@@ -132,7 +132,7 @@ function generateLocalFreeformResponse(
         });
       }
     });
-    return { text: `Applied wellness design tokens to ${actions.length} elements 🎨`, actions };
+    return { text: `Applied design tokens to ${actions.length} elements 🎨`, actions };
   }
 
   if (lower.includes("mobile") || lower.includes("responsive")) {
@@ -299,7 +299,7 @@ function generateLocalFreeformResponse(
 
   // Default response
   return {
-    text: `I can help you with:\n• "Add floating shapes" — add decorative elements\n• "Make this more chaotic" — add random elements\n• "Apply design tokens" — use wellness colors\n• "Optimize for mobile" — responsive suggestions\n• "Create a hero section" — add hero layout\n• "Add a gradient background" — gradient tips\n• "Make it more minimal" — cleanup tips\n• "Add a text element" — adds text to canvas\n• "Make the background blue" — adds blue bg\n\nWhat would you like to do?`,
+    text: `I can help you with:\n• "Add floating shapes" — add decorative elements\n• "Make this more chaotic" — add random elements\n• "Apply design tokens" — use calming colors\n• "Optimize for mobile" — responsive suggestions\n• "Create a hero section" — add hero layout\n• "Add a gradient background" — gradient tips\n• "Make it more minimal" — cleanup tips\n• "Add a text element" — adds text to canvas\n• "Make the background blue" — adds blue bg\n\nWhat would you like to do?`,
     actions: [],
   };
 }

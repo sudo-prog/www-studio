@@ -21,7 +21,7 @@ export interface AgenticWorkflow {
 export interface WorkflowContext {
   canvasWidth: number;
   canvasHeight: number;
-  theme?: "minimal" | "bold" | "elegant" | "playful" | "corporate" | "wellness";
+  theme?: "minimal" | "bold" | "elegant" | "playful" | "corporate";
   colors?: {
     primary: string;
     secondary: string;
@@ -41,15 +41,15 @@ const DEFAULT_COLORS: WorkflowContext["colors"] = {
 
 // ── Wellness Site Workflow ─────────────────────────────────────────────────
 
-const wellnessWorkflow: AgenticWorkflow = {
-  id: "wellness-site",
+const animatedWorkflow: AgenticWorkflow = {
+  id: "animated-site",
   name: "Premium Wellness Site",
-  description: "Generates a calming wellness landing page with hero, features, and CTA",
+  description: "Generates a calming animated landing page with hero, features, and CTA",
   steps: [
     { name: "Create hero section", description: "Add hero headline and subtext", status: "pending" },
     { name: "Add feature cards", description: "Create 3 feature cards in a row", status: "pending" },
     { name: "Add CTA section", description: "Call-to-action with button", status: "pending" },
-    { name: "Apply wellness styling", description: "Calming colors and spacing", status: "pending" },
+    { name: "Apply animated styling", description: "Calming colors and spacing", status: "pending" },
   ],
   generateElements: (ctx) => {
     const colors = ctx.colors || DEFAULT_COLORS;
@@ -339,7 +339,7 @@ const landingWorkflow: AgenticWorkflow = {
 // ── Workflow registry ──────────────────────────────────────────────────────
 
 export const ALL_WORKFLOWS: AgenticWorkflow[] = [
-  wellnessWorkflow,
+  animatedWorkflow,
   portfolioWorkflow,
   landingWorkflow,
 ];

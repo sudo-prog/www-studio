@@ -236,7 +236,7 @@ export default function SceneGallery() {
               Public Scene Gallery
             </h1>
             <p className="text-muted-foreground text-sm mt-1">
-              Browse and fork community-published wellness scenes
+              Browse and fork published scenes
             </p>
           </div>
           <div className="flex items-center gap-3 flex-wrap">
@@ -364,7 +364,7 @@ export default function SceneGallery() {
           <div className="text-center py-24 text-muted-foreground">
             <Globe className="h-16 w-16 mx-auto mb-4 opacity-20" />
             <p className="text-lg font-medium mb-2">No public scenes yet</p>
-            <p className="text-sm mb-6">Publish your scenes to share them with the community</p>
+            <p className="text-sm mb-6">Publish your scenes to share them</p>
             <Link href="/scenes">
               <Button className="min-h-[48px]">Go to My Scenes</Button>
             </Link>
