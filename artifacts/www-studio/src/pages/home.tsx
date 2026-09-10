@@ -2,7 +2,6 @@ import { apiFetch } from "@/lib/apiFetch";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "wouter";
 import { useGetGalleryTemplates, useGetScenes } from "@workspace/api-client-react";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import {
   Heart,
   Search,
@@ -267,11 +266,28 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-12 sm:mt-16">
-            {/* Personal use — no community badges */}
-            <div className="flex flex-col items-center justify-center gap-3 sm:gap-4 text-xs text-muted-foreground">
-              <Blocks className="h-3 w-3" />
-              <span>WWW-Studio personal template collection</span>
+          <div className="mt-8 sm:mt-12">
+            {/* Control bar — aura.build style (personal use version) */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 p-3 sm:p-4 bg-card/50 rounded-xl border border-border">
+              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                <Blocks className="h-3 w-3" />
+                <span>WWW-Studio personal template collection</span>
+              </div>
+              <div className="flex items-center gap-1 sm:gap-2">
+                <select className="hidden sm:inline-flex items-center gap-2 text-xs text-muted-foreground bg-muted/50 rounded-lg px-3 py-1.5 border border-border focus:outline-none focus:ring-1 focus:ring-primary">
+                  <option>GPT-5</option>
+                  <option>Claude 4</option>
+                </select>
+                <Button variant="ghost" size="sm" className="min-h-[44px]">
+                  <Code2 className="h-3 w-3" />
+                </Button>
+                <Button variant="ghost" size="sm" className="min-h-[44px]">
+                  <Layers className="h-3 w-3" />
+                </Button>
+                <Button variant="ghost" size="sm" className="min-h-[44px] hidden sm:inline-flex">
+                  <Copy className="h-3 w-3" />
+                </Button>
+              </div>
             </div>
           </div>
         </section>
@@ -322,80 +338,6 @@ export default function Home() {
           </section>
         )}
 
-        {/* AURA Website Templates — full site templates */}
-        <WebsiteTemplatesSection />
-
-        {/* Community Templates Gallery */}
-        <section className="px-4 md:px-6 pb-24 max-w-7xl mx-auto">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 sm:mb-8 gap-3 sm:gap-4">
-            <div>
-              <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-foreground">Community Templates</h2>
-              <p className="text-xs sm:text-sm text-muted-foreground mt-1">{safeTemplates.length} templates ready to fork</p>
-            </div>
-            <div className="relative w-full sm:w-72">
-              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-              <Input
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search templates..."
-                className="pl-9 min-h-[48px] min-w-[48px]"
-              />
-            </div>
-          </div>
-
-          {isLoading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[1,2,3,4,5,6].map((i) => (
-                <div key={i} className="h-[300px] rounded-lg bg-muted animate-pulse" />
-              ))}
-            </div>
-          ) : filtered.length === 0 ? (
-            <div className="text-center py-16 text-muted-foreground">
-              <Search className="w-10 h-10 mx-auto mb-3 opacity-30" />
-              <p>No templates found for "{search}"</p>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filtered.map((template) => (
-                <Card key={template.id} className="overflow-hidden group border-muted bg-card hover:border-primary/50 transition-colors">
-                  <div className="aspect-video bg-muted relative overflow-hidden">
-                    {template.thumbnailUrl ? (
-                      <img src={template.thumbnailUrl} alt={template.title} className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" />
-                    ) : (
-                      <div className="absolute inset-0 flex items-center justify-center text-muted-foreground text-sm">No Preview</div>
-                    )}
-                    <div className="absolute inset-0 bg-black/60 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <Button variant="secondary" size="sm" className="min-h-[48px]" asChild>
-                        <Link href={`/editor/new?templateId=${template.id}`}>
-                          <Eye className="w-4 h-4 mr-2" />Fork Template
-                        </Link>
-                      </Button>
-                    </div>
-                  </div>
-                  <CardContent className="p-4">
-                    <h3 className="font-semibold line-clamp-1 mb-1">{template.title}</h3>
-                    <p className="text-xs text-muted-foreground mb-3">by {template.creator}</p>
-                    <div className="flex flex-wrap gap-1">
-                      {template.tags?.slice(0, 3).map((tag) => (
-                        <span key={tag} className="text-[10px] px-2 min-h-[44px] py-0.5 rounded-full bg-secondary text-secondary-foreground">{tag}</span>
-                      ))}
-                    </div>
-                  </CardContent>
-                  <CardFooter className="p-4 pt-0 flex justify-between items-center text-xs text-muted-foreground">
-                    <span className="capitalize">{template.style}</span>
-                    <div className="flex items-center gap-1">
-                      <Heart className="w-3 h-3" /><span>{template.likes}</span>
-                    </div>
-                  </CardFooter>
-                </Card>
-              ))}
-            </div>
-          )}
-        </section>
-
-        {/* AI Chat Widget - www-studio unique feature */}
-        <AiChatWidget />
-      </main>
-    </div>
+        {/* AURA Website Templates — personal use */}\n        <WebsiteTemplatesSection />\n\n        {/* Footer — aura.build style, personal-use version */}\n        <footer className="px-4 md:px-6 py-12 border-t border-border bg-card/30 mt-16">\n          <div className="max-w-7xl mx-auto">\n            <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-8">\n              <div>\n                <h3 className="text-xs font-semibold text-muted-foreground mb-3 uppercase">Product</h3>\n                <ul className="space-y-2 text-sm">\n                  <li><Link href="/editor/new" className="text-foreground hover:text-primary transition-colors">Create</Link></li>\n                  <li><Link href="/gallery" className="text-foreground hover:text-primary transition-colors">Templates</Link></li>\n                  <li><Link href="/ui-library" className="text-foreground hover:text-primary transition-colors">Components</Link></li>\n                  <li><Link href="/assets" className="text-foreground hover:text-primary transition-colors">Assets</Link></li>\n                </ul>\n              </div>\n              <div>\n                <h3 className="text-xs font-semibold text-muted-foreground mb-3 uppercase">Resources</h3>\n                <ul className="space-y-2 text-sm">\n                  <li><Link href="/skills" className="text-foreground hover:text-primary transition-colors">Skills</Link></li>\n                  <li><Link href="/design" className="text-foreground hover:text-primary transition-colors">Design</Link></li>\n                  <li><Link href="/learn" className="text-foreground hover:text-primary transition-colors">Learn</Link></li>\n                </ul>\n              </div>\n              <div>\n                <h3 className="text-xs font-semibold text-muted-foreground mb-3 uppercase">Company</h3>\n                <ul className="space-y-2 text-sm">\n                  <li><a href="https://github.com/sudo-prog" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">GitHub</a></li>\n                  <li><a href="https://twitter.com/sudo_prog" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">Twitter</a></li>\n                </ul>\n              </div>\n              <div className="col-span-2 md:col-span-1">\n                <div className="flex items-center gap-2 text-xs text-muted-foreground">\n                  <Blocks className="h-3 w-3" />\n                  <span>WWW-Studio — personal visual builder</span>\n                </div>\n              </div>\n            </div>\n            <div className="border-t border-border pt-4 text-xs text-muted-foreground">\n              Personal use template collection. No community features.\n            </div>\n          </div>\n        </footer>\n\n        {/* AI Chat Widget - www-studio unique feature */}\n        <AiChatWidget />\n      </main>\n    </div>
   );
 }
