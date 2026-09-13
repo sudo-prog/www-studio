@@ -65,20 +65,13 @@ jobs:
           DEPLOY_ID=$(npx vercel@latest inspect "$DEPLOY_URL" --token=${{ secrets.VERCEL_TOKEN }} --format=json 2>/dev/null | python3 -c "import sys,json; print(json.load(sys.stdin).get('id',''))")
           echo "Deployment ID: $DEPLOY_ID"
           if [ -n "$DEPLOY_ID" ]; then
-            # Set www-studio-red.vercel.app alias
+            # Set www-studio-red.vercel.app alias (non-fatal: Vercel --prod may have already set it)
             curl -fsS -X POST \
               "https://api.vercel.com/v2/deployments/${DEPLOY_ID}/aliases" \
               -H "Authorization: Bearer *** secrets.VERCEL_TOKEN }}" \
               -H "Content-Type: application/json" \
               -d '{"alias":"www-studio-red.vercel.app"}' \
-            | python3 -c "import sys,json; d=json.load(sys.stdin); print('Alias set:', d.get('alias') or d.get('error',{}).get('message','unknown'))"
-            # Also explicitly promote this deployment to production via REST API
-            curl -fsS -X PATCH \
-              "https://api.vercel.com/v2/deployments/${DEPLOY_ID}" \
-              -H "Authorization: Bearer *** secrets.VERCEL_TOKEN }}" \
-              -H "Content-Type: application/json" \
-              -d '{"target":"production"}' \
-            | python3 -c "import sys,json; d=json.load(sys.stdin); print('Production target:', d.get('target','unknown'))" 2>/dev/null || echo "PATCH: production target already set (OK)"
+            | python3 -c "import sys,json; d=json.load(sys.stdin); print('Alias set:', d.get('alias') or d.get('error',{}).get('message','unknown'))" 2>/dev/null || echo "Alias POST: non-fatal (may already be set)"
           else
             echo "ERROR: failed to get deployment ID"
             exit 1
