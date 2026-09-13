@@ -56,12 +56,13 @@ jobs:
         run: |
           # vercel.json `alias=[]` configures the custom-domain auto-alias on prod.
           # --project=www-studio ensures we hit the right Vercel project regardless of cwd.
+          # VERCEL_ORG_ID and VERCEL_PROJECT_ID env vars ensure the CLI connects to the correct Vercel project.
           DEPLOY_URL=$(npx vercel@latest --prod \
             --project=www-studio \
             --token=${{ secrets.VERCEL_TOKEN }} \
             --yes 2>&1 | grep -oE 'https://[a-z0-9-]+-[a-z0-9]+\.vercel\.app' | head -1)
           echo "Production URL: $DEPLOY_URL"
-          # Also ensure the Vercel auto-generated production URL is updated
+          # Get deployment ID for alias management
           DEPLOY_ID=$(npx vercel@latest inspect "$DEPLOY_URL" --token=${{ secrets.VERCEL_TOKEN }} --format=json 2>/dev/null | python3 -c "import sys,json; print(json.load(sys.stdin).get('id',''))")
           echo "Deployment ID: $DEPLOY_ID"
           if [ -n "$DEPLOY_ID" ]; then
@@ -72,18 +73,13 @@ jobs:
               -H "Content-Type: application/json" \
               -d '{"alias":"www-studio-red.vercel.app"}' \
             | python3 -c "import sys,json; d=json.load(sys.stdin); print('Alias set:', d.get('alias') or d.get('error',{}).get('message','unknown'))" 2>/dev/null || echo "Alias POST: non-fatal (may already be set)"
-            # Also set the Vercel auto-generated team URL as an alias
-            # This ensures www-studio-superpowerstudio.vercel.app points to the latest production deploy
-            curl -fsS -X POST \
-              "https://api.vercel.com/v2/deployments/${DEPLOY_ID}/aliases" \
-              -H "Authorization: Bearer *** secrets.VERCEL_TOKEN }}" \
-              -H "Content-Type: application/json" \
-              -d '{"alias":"www-studio-superpowerstudio.vercel.app"}' \
-            | python3 -c "import sys,json; d=json.load(sys.stdin); print('Team URL alias set:', d.get('alias') or d.get('error',{}).get('message','unknown'))" 2>/dev/null || echo "Team URL alias: non-fatal (may already be set)"
           else
             echo "ERROR: failed to get deployment ID"
             exit 1
           fi
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
   deploy-preview:
     runs-on: ubuntu-latest
