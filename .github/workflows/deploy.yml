@@ -72,6 +72,14 @@ jobs:
               -H "Content-Type: application/json" \
               -d '{"alias":"www-studio-red.vercel.app"}' \
             | python3 -c "import sys,json; d=json.load(sys.stdin); print('Alias set:', d.get('alias') or d.get('error',{}).get('message','unknown'))" 2>/dev/null || echo "Alias POST: non-fatal (may already be set)"
+            # Also set the Vercel auto-generated team URL as an alias
+            # This ensures www-studio-superpowerstudio.vercel.app points to the latest production deploy
+            curl -fsS -X POST \
+              "https://api.vercel.com/v2/deployments/${DEPLOY_ID}/aliases" \
+              -H "Authorization: Bearer *** secrets.VERCEL_TOKEN }}" \
+              -H "Content-Type: application/json" \
+              -d '{"alias":"www-studio-superpowerstudio.vercel.app"}' \
+            | python3 -c "import sys,json; d=json.load(sys.stdin); print('Team URL alias set:', d.get('alias') or d.get('error',{}).get('message','unknown'))" 2>/dev/null || echo "Team URL alias: non-fatal (may already be set)"
           else
             echo "ERROR: failed to get deployment ID"
             exit 1
