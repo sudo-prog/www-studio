@@ -75,5 +75,24 @@ artifacts/www-studio/ws_audit.mjs
 artifacts/www-studio/ws_live.mjs
 artifacts/www-studio/ws_probe.mjs
 artifacts/www-studio/ws_verify2.mjs
+# subagent debug/test scripts (leftover from Sep 13 component fix)
+artifacts/www-studio/analyze_entries.py
+artifacts/www-studio/check_backups.py
+artifacts/www-studio/check_escape_types.py
+artifacts/www-studio/check_escapes.py
+artifacts/www-studio/check_escapes2.py
+artifacts/www-studio/check_escapes3.py
+artifacts/www-studio/check_escapes4.py
+artifacts/www-studio/find_all_issues.py
+artifacts/www-studio/find_issue.py
+artifacts/www-studio/find_liquid_entries.py
+artifacts/www-studio/fix_all_previews.py
+artifacts/www-studio/fix_backtick_final.py
+artifacts/www-studio/fix_backticks.py
+artifacts/www-studio/fix_backticks2.py
+artifacts/www-studio/fix_preview_issues.py
+artifacts/www-studio/src/data/component-library_test.ts
+artifacts/www-studio/test_minimal.ts
+artifacts/www-studio/test_template.ts
 design-md-extractor/
 .config/
