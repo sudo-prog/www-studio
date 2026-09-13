@@ -1,8 +1,37 @@
 [
   {
-    "id": "x-halftone-dots-filter-paper",
+    "id": "cat-0",
+    "name": "Neumorphism CSS shadow generator",
+    "category": "background",
+    "tags": [
+      "blur",
+      "css",
+      "flat",
+      "generator",
+      "morph",
+      "neumorphism"
+    ],
+    "code": "border-radius: 50px;\nbackground: #e0e0e0;\nbox-shadow:  20px 20px 60px #bebebe,\n             -20px -20px 60px #ffffff;",
+    "sourceUrl": "https://neumorphism.io/",
+    "description": "Neumorphism CSS shadow generator"
+  },
+  {
+    "id": "cat-1",
+    "name": "magnifying image view with zoom \ud83d\udd0d +touch support",
+    "category": "component",
+    "tags": [
+      "loop",
+      "snippet",
+      "support"
+    ],
+    "code": "transition: transform .25s ease, opacity 0s linear .25s, background .25s ease;",
+    "sourceUrl": "https://codepen.io/creme/pen/gOYrvxM",
+    "description": "magnifying image view with zoom \ud83d\udd0d +touch support"
+  },
+  {
+    "id": "cat-2",
     "name": "Halftone Dots Filter \u2022 Paper",
-    "category": "Shader",
+    "category": "shader",
     "tags": [
       "art-tool",
       "click",
@@ -18,9 +47,154 @@
     "description": "Halftone Dots Filter \u2022 Paper"
   },
   {
-    "id": "x-tailwind-fab-speed-dial-component-daisyui",
+    "id": "cat-3",
+    "name": "Border Beam \u2013 Animated border beam component for React",
+    "category": "card",
+    "tags": [
+      "border",
+      "react"
+    ],
+    "code": "",
+    "sourceUrl": "https://beam.jakubantalik.com/pulse",
+    "description": "Border Beam \u2013 Animated border beam component for React"
+  },
+  {
+    "id": "cat-4",
+    "name": "Zihan",
+    "category": "shader",
+    "tags": [
+      "art-tool",
+      "ink",
+      "shader",
+      "snippet"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.z1han.com/shader/siriai",
+    "description": "Zihan \u2014 Zihan Huang, Design Engineer"
+  },
+  {
+    "id": "cat-5",
+    "name": "Originkit",
+    "category": "card",
+    "tags": [
+      "art-tool",
+      "halo",
+      "ink",
+      "template"
+    ],
+    "code": "",
+    "sourceUrl": "https://originkit.dev/components/juiceeffect",
+    "description": "Originkit \u2014 Free Animated component library for modern websites"
+  },
+  {
+    "id": "cat-6",
+    "name": "Print Machine",
+    "category": "component",
+    "tags": [
+      "gallery",
+      "inspiration"
+    ],
+    "code": "",
+    "sourceUrl": "https://billstate.framer.ai/",
+    "description": "Print Machine"
+  },
+  {
+    "id": "cat-7",
+    "name": "116+ 3D Components for React & Tailwind",
+    "category": "3d",
+    "tags": [
+      "3d",
+      "marketplace",
+      "react",
+      "tailwind"
+    ],
+    "code": "",
+    "sourceUrl": "https://21st.dev/community/components/s/3d",
+    "description": "116+ 3D Components for React & Tailwind | 21st"
+  },
+  {
+    "id": "cat-8",
+    "name": "Poimandres documentation",
+    "category": "3d",
+    "tags": [
+      "gallery",
+      "inspiration"
+    ],
+    "code": "",
+    "sourceUrl": "https://docs.pmnd.rs/",
+    "description": "Poimandres documentation"
+  },
+  {
+    "id": "cat-9",
+    "name": "The Three Graces",
+    "category": "component",
+    "tags": [
+      "3d",
+      "animation",
+      "snippet",
+      "three.js"
+    ],
+    "code": "",
+    "sourceUrl": "https://pmndrs.github.io/examples/the-three-graces/",
+    "description": "The Three Graces \u2014 pmndrs examples"
+  },
+  {
+    "id": "cat-10",
+    "name": "boytchev",
+    "category": "component",
+    "tags": [
+      "3d",
+      "animation",
+      "isometric",
+      "snippet"
+    ],
+    "code": "",
+    "sourceUrl": "https://boytchev.github.io/disfigure/examples/entangled-space/",
+    "description": ""
+  },
+  {
+    "id": "cat-11",
+    "name": "Shopping Cart Animation",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "drag"
+    ],
+    "code": "",
+    "sourceUrl": "https://tympanus.net/Tutorials/ShoppingCartAnimation/",
+    "description": "Shopping Cart Animation | Codrops"
+  },
+  {
+    "id": "cat-12",
+    "name": "React Component Registry: Components, Blocks & Design Systems",
+    "category": "component",
+    "tags": [
+      "ai-tool",
+      "marketplace",
+      "react"
+    ],
+    "code": "",
+    "sourceUrl": "https://aicanvas.me/",
+    "description": "React Component Registry: Components, Blocks & Design Systems | AI Canvas"
+  },
+  {
+    "id": "cat-13",
+    "name": "Button Switches with Checkboxes and CSS3 Fanciness",
+    "category": "input",
+    "tags": [
+      "animation",
+      "css",
+      "drag",
+      "ink"
+    ],
+    "code": "",
+    "sourceUrl": "https://tympanus.net/Tutorials/CSS3ButtonSwitches/",
+    "description": "Button Switches with Checkboxes and CSS3 Fanciness"
+  },
+  {
+    "id": "cat-14",
     "name": "Tailwind FAB / Speed Dial Component \u2013 daisyUI",
-    "category": "Component",
+    "category": "button",
     "tags": [
       "ai-tool",
       "click",
@@ -32,14 +206,3338 @@
     "description": "Tailwind FAB / Speed Dial Component \u2013 daisyUI"
   },
   {
-    "id": "x-autocomplete-appica-ui",
+    "id": "cat-15",
+    "name": "Uiverse",
+    "category": "background",
+    "tags": [
+      "ink",
+      "snippet"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/",
+    "description": "Uiverse | The Largest Library of Open-Source UI elements"
+  },
+  {
+    "id": "cat-16",
+    "name": "Neumorphic Elements",
+    "category": "effect",
+    "tags": [
+      "loop",
+      "morph",
+      "morphic",
+      "snippet"
+    ],
+    "code": "<a href=\"https://dribbble.com/myacode\" class=\"dribbble\" target=\"_blank\"><ion-icon name=\"logo-dribbble\"></ion-icon></a>",
+    "sourceUrl": "https://codepen.io/myacode/pen/PoqQQNM",
+    "description": "Neumorphic Elements"
+  },
+  {
+    "id": "cat-17",
+    "name": "NameThatUI",
+    "category": "input",
+    "tags": [
+      "gallery",
+      "inspiration"
+    ],
+    "code": "",
+    "sourceUrl": "https://namethatui.com/",
+    "description": "NameThatUI \u2014 What Is This UI Element Called?"
+  },
+  {
+    "id": "cat-18",
+    "name": "KokonutUI - Free Open Source UI Components for React and Tailwind CSS",
+    "category": "component",
+    "tags": [
+      "ai-tool",
+      "marketplace",
+      "react",
+      "snippet",
+      "tailwind"
+    ],
+    "code": "",
+    "sourceUrl": "https://kokonutui.com/",
+    "description": "KokonutUI - Free Open Source UI Components for React and Tailwind CSS"
+  },
+  {
+    "id": "cat-19",
+    "name": "Examples: React, JavaScript, and Vue animation snippets",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "react"
+    ],
+    "code": "",
+    "sourceUrl": "https://motion.dev/examples",
+    "description": "Examples: React, JavaScript, and Vue animation snippets | Motion"
+  },
+  {
+    "id": "cat-20",
+    "name": "Kinetics",
+    "category": "animation",
+    "tags": [
+      "color-palette",
+      "drag",
+      "motion",
+      "physics"
+    ],
+    "code": "",
+    "sourceUrl": "https://kinetics.colorion.co/#library",
+    "description": "Kinetics \u2014 Spring-physics motion for web interfaces"
+  },
+  {
+    "id": "cat-21",
+    "name": "Jelly UI",
+    "category": "input",
+    "tags": [
+      "physics",
+      "scroll",
+      "soft"
+    ],
+    "code": "",
+    "sourceUrl": "https://jelly-ui.com/",
+    "description": "Jelly UI \u2014 Soft Web Components"
+  },
+  {
+    "id": "cat-22",
+    "name": "Jitter",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "motion",
+      "video-player"
+    ],
+    "code": "",
+    "sourceUrl": "https://jitter.video/",
+    "description": "Jitter \u00b7 A fast and simple motion design tool on the web"
+  },
+  {
+    "id": "cat-23",
+    "name": "Shaders",
+    "category": "shader",
+    "tags": [
+      "art-tool",
+      "form",
+      "shader",
+      "snippet"
+    ],
+    "code": "",
+    "sourceUrl": "https://shaders.com/",
+    "description": "Shaders \u2014 The design platform for web shaders"
+  },
+  {
+    "id": "cat-24",
+    "name": "Componentry",
+    "category": "animation",
+    "tags": [
+      "library",
+      "marketplace",
+      "react"
+    ],
+    "code": "",
+    "sourceUrl": "https://componentry.dev/",
+    "description": "Componentry \u2014 Beautiful Animated UI Components for React"
+  },
+  {
+    "id": "cat-25",
+    "name": "Free React & Next.js UI Components",
+    "category": "animation",
+    "tags": [
+      "marketplace",
+      "react",
+      "tilt"
+    ],
+    "code": "",
+    "sourceUrl": "https://ui.aceternity.com/components",
+    "description": "Free React & Next.js UI Components | Aceternity UI"
+  },
+  {
+    "id": "cat-26",
+    "name": "Gooey Search Bar",
+    "category": "effect",
+    "tags": [
+      "animation",
+      "drag",
+      "gooey",
+      "ink"
+    ],
+    "code": "",
+    "sourceUrl": "https://tympanus.net/Tutorials/GooeySearch/",
+    "description": "Gooey Search Bar | Codrops"
+  },
+  {
+    "id": "cat-27",
+    "name": "Interactive dock-like navigation",
+    "category": "nav",
+    "tags": [
+      "navbar"
+    ],
+    "code": "",
+    "sourceUrl": "https://dock-nav.framer.website/",
+    "description": "Interactive dock-like navigation"
+  },
+  {
+    "id": "cat-28",
+    "name": "My Framer Site",
+    "category": "nav",
+    "tags": [
+      "framer-motion",
+      "snippet"
+    ],
+    "code": "",
+    "sourceUrl": "https://peepin.framer.website/",
+    "description": "My Framer Site"
+  },
+  {
+    "id": "cat-29",
+    "name": "Free Resources, Components & UI Kits for Framer & Figma",
+    "category": "component",
+    "tags": [
+      "figma-plugin",
+      "framer-motion"
+    ],
+    "code": "",
+    "sourceUrl": "https://segmentui.com/",
+    "description": "Free Resources, Components & UI Kits for Framer & Figma"
+  },
+  {
+    "id": "cat-30",
+    "name": "Creative Gooey Effects: Menu",
+    "category": "effect",
+    "tags": [
+      "gooey",
+      "menu",
+      "morph"
+    ],
+    "code": "",
+    "sourceUrl": "https://tympanus.net/Development/CreativeGooeyEffects/menu.html",
+    "description": "Creative Gooey Effects: Menu"
+  },
+  {
+    "id": "cat-31",
+    "name": "Creative Gooey Effects: Loader",
+    "category": "effect",
+    "tags": [
+      "gooey",
+      "loader",
+      "morph"
+    ],
+    "code": "",
+    "sourceUrl": "https://tympanus.net/Development/CreativeGooeyEffects/send.html",
+    "description": "Creative Gooey Effects: Loader"
+  },
+  {
+    "id": "cat-32",
+    "name": "How to Make an Awwwards Navigation Menu using Nextjs and Framer Motion",
+    "category": "animation",
+    "tags": [
+      "framer-motion",
+      "menu",
+      "navbar"
+    ],
+    "code": "1\nimport { motion } from 'framer-motion';\n\n2\nimport { opacity, slideLeft, mountAnim } from '../anim';\n\n3\nimport styles from './style.module.scss';\n\n4\nimport Link from './link';\n\n5\n\n6\nconst menu = [\\\n\\\n7\\\n  {\\\n\\\n8\\\n    title: \"Projects\",\\\n\\\n9\\\n    description: \"To See Everything\",\\\n\\\n10\\\n    images: ['projects1.jpg', 'projects2.jpg']\\\n\\\n11\\\n  },\\\n\\\n12\\\n  {\\\n\\\n13\\\n    title: \"Agence\",\\\n\\\n14\\\n    description: \"To Learn Everything\",\\\n\\\n15\\\n    images: ['agence1.jpg', 'agence2.jpg']\\\n\\\n16\\\n  },\\\n\\\n17\\\n  {\\\n\\\n18\\\n    title: \"Contact\",\\\n\\\n19\\\n    description: \"To Send a FAX\",\\\n\\\n20\\\n    images: ['contact1.jpg', 'contact2.jpg']\\\n\\\n21\\\n  }\\\n\\\n22\\\n]\n\n23\n\n24\nexport default function index({closeMenu}) {\n\n25\n\n26\n  return (\n\n27\n    <div className={styles.menu}>\n\n28\n\n29\n        <div className={styles.header}>\n\n30\n          <motion.svg\n\n31\n            variants={slideLeft}\n\n32\n            {...mountAnim}\n\n33\n            onClick={() => {closeMenu()}}\n\n34\n            width=\"68\"\n\n35\n            height=\"68\"\n\n36\n            viewBox=\"0 0 68 68\"\n\n37\n            fill=\"none\"\n\n38\n            xmlns=\"http://www.w3.org/2000/svg\">\n\n39\n              <path d=\"M1.5 1.5L67 67\" stroke=\"white\"/>\n\n40\n              <path d=\"M66.5 1L0.999997 66.5\" stroke=\"white\"/>\n\n41\n          </motion.svg>\n\n42\n        </div>\n\n43\n\n44\n        <div className={styles.body}>\n\n45\n          {\n\n46\n            menu.map( (el, index) => {\n\n47\n              return <Link data={el} index={index} key={index}/>\n\n48\n            })\n\n49\n          }\n\n50\n        </div>\n\n51\n\n52\n        <motion.div\n\n53\n          variants={opacity}\n\n54\n          {...mountAnim}\n\n55\n          custom={0.5}\n\n56\n          className={styles.footer}>\n\n57\n          <a>FB</a>\n\n58\n          <a>IG</a>\n\n59\n          <a>IN</a>\n\n60\n          <a>BE</a>\n\n61\n        </motion.div>\n\n62\n\n63\n    </div>\n\n64\n  )\n\n65\n}",
+    "sourceUrl": "https://blog.olivierlarose.com/tutorials/sliding-stairs-menu",
+    "description": "How to Make an Awwwards Navigation Menu using Nextjs and Framer Motion"
+  },
+  {
+    "id": "cat-33",
+    "name": "How to Make Creative Animated Buttons in React",
+    "category": "button",
+    "tags": [
+      "button",
+      "react"
+    ],
+    "code": "",
+    "sourceUrl": "https://blog.olivierlarose.com/tutorials/creative-buttons",
+    "description": "How to Make Creative Animated Buttons in React"
+  },
+  {
+    "id": "cat-34",
+    "name": "How to Animate a Linear Gradient using Framer Motion and Next.js",
+    "category": "animation",
+    "tags": [
+      "framer-motion",
+      "gradient",
+      "gradient-generator"
+    ],
+    "code": "",
+    "sourceUrl": "https://blog.olivierlarose.com/tutorials/gradient-mouse-move",
+    "description": "How to Animate a Linear Gradient using Framer Motion and Next.js"
+  },
+  {
+    "id": "cat-35",
+    "name": "How to Make a Text Gooey Morph Effect Using SVG Filters",
+    "category": "effect",
+    "tags": [
+      "gooey",
+      "morph",
+      "svg",
+      "text"
+    ],
+    "code": "1\nconst [index, setIndex] = useState(0);\n\n2\nconst circles = useRef([]);\n\n3\nconst paths = useRef([]);\n\n4\nconst nbOfCircles = 30;\n\n5\n\n6\nuseEffect( () => {\n\n7\n    const length = paths.current[index].getTotalLength();\n\n8\n    const step = length / nbOfCircles;\n\n9\n\n10\n    circles.current.forEach((circle, i) => {\n\n11\n        const { x, y } = paths.current[index].getPointAtLength(i * step);\n\n12\n        animate(circle,\n\n13\n            { cx: x, cy: y},\n\n14\n            { delay: i * 0.025, ease: \"easeOut\"}\n\n15\n        )\n\n16\n    })\n\n17\n}, [index])",
+    "sourceUrl": "https://blog.olivierlarose.com/tutorials/text-gooey",
+    "description": "How to Make a Text Gooey Morph Effect Using SVG Filters"
+  },
+  {
+    "id": "cat-36",
+    "name": "Build a Sticky Cursor Effect with Next.js, Framer Motion and Trigonometry",
+    "category": "animation",
+    "tags": [
+      "cursor",
+      "framer-motion"
+    ],
+    "code": "1\n'use client';\n\n2\nimport { useEffect, useState } from 'react';\n\n3\nimport styles from './style.module.scss';\n\n4\nimport { motion, useMotionValue, useSpring } from 'framer-motion';\n\n5\n\n6\nexport default function index({stickyElement}) {\n\n7\n\n8\n  const [isHovered, setIsHovered] = useState(false);\n\n9\n  const cursorSize = isHovered ? 60 : 15;\n\n10\n\n11\n  const mouse = {\n\n12\n    x: useMotionValue(0),\n\n13\n    y: useMotionValue(0)\n\n14\n  }\n\n15\n\n16\n  //Smooth out the mouse values\n\n17\n  const smoothOptions = {damping: 20, stiffness: 300, mass: 0.5}\n\n18\n  const smoothMouse = {\n\n19\n    x: useSpring(mouse.x, smoothOptions),\n\n20\n    y: useSpring(mouse.y, smoothOptions)\n\n21\n  }\n\n22\n\n23\n  const manageMouseMove = e => {\n\n24\n    const { clientX, clientY } = e;\n\n25\n    const { left, top, height, width } = stickyElement.current.getBoundingClientRect();\n\n26\n\n27\n    //center position of the stickyElement\n\n28\n    const center = {x: left + width / 2, y: top + height / 2}\n\n29\n\n30\n    if(isHovered){\n\n31\n\n32\n      //distance between the mouse pointer and the center of the custom cursor and\n\n33\n      const distance = {x: clientX - center.x, y: clientY - center.y}\n\n34\n\n\n35\n      //move mouse to center of stickyElement + slightly move it towards the mouse pointer\n\n36\n      mouse.x.set((center.x - cursorSize / 2) + (distance.x * 0.1));\n\n37\n      mouse.y.set((center.y - cursorSize / 2) + (distance.y * 0.1));\n\n38\n    }\n\n39\n    else{\n\n40\n      //move custom cursor to center of stickyElement\n\n41\n      mouse.x.set(clientX - cursorSize / 2);\n\n42\n      mouse.y.set(clientY - cursorSize / 2);\n\n43\n    }\n\n44\n  }\n\n45\n\n46\n  const manageMouseOver = e => {\n\n47\n    setIsHovered(true)\n\n48\n  }\n\n49\n\n50\n  const manageMouseLeave = e => {\n\n51\n    setIsHovered(false)\n\n52\n  }\n\n53\n\n54\n  useEffect( () => {\n\n55\n    stickyElement.current.addEventListener(\"mouseenter\", manageMouseOver)\n\n56\n    stickyElement.current.addEventListener(\"mouseleave\", manageMouseLeave)\n\n57\n    window.addEventListener(\"mousemove\", manageMouseMove);\n\n58\n    return () => {\n\n59\n      stickyElement.current.removeEventListener(\"mouseenter\", manageMouseOver)\n\n60\n      stickyElement.current.removeEventListener(\"mouseleave\", manageMouseLeave)\n\n61\n      window.removeEventListener(\"mousemove\", manageMouseMove)\n\n62\n    }\n\n63\n  }, [isHovered])\n\n64\n\n65\n  return (\n\n66\n    <div className={styles.cursorContainer}>\n\n67\n      <motion.div\n\n68\n        style={{\n\n69\n          left: smoothMouse.x,\n\n70\n          top: smoothMouse.y,\n\n71\n        }}\n\n72\n        animate={{\n\n73\n          width: cursorSize,\n\n74\n          height: cursorSize\n\n75\n        }}\n\n76\n        className={styles.cursor}>\n\n77\n      </motion.div>\n\n78\n    </div>\n\n79\n  )\n\n80\n}",
+    "sourceUrl": "https://blog.olivierlarose.com/tutorials/sticky-cursor",
+    "description": "Build a Sticky Cursor Effect with Next.js, Framer Motion and Trigonometry"
+  },
+  {
+    "id": "cat-37",
+    "name": "FreeFrontend",
+    "category": "card",
+    "tags": [
+      "gradient",
+      "hover",
+      "reveal",
+      "snippet"
+    ],
+    "code": "",
+    "sourceUrl": "https://freefrontend.com/",
+    "description": "FreeFrontend\n"
+  },
+  {
+    "id": "cat-38",
+    "name": "Glass AI Composer - Animated Input React Component",
+    "category": "input",
+    "tags": [
+      "ai-tool",
+      "glass",
+      "input",
+      "morph",
+      "react"
+    ],
+    "code": "",
+    "sourceUrl": "https://aicanvas.me/components/glass-ai-compose",
+    "description": "Glass AI Composer - Animated Input React Component | AI Canvas"
+  },
+  {
+    "id": "cat-39",
+    "name": "GSAP Animation Component Library for React & Vue",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "react",
+      "reveal",
+      "scroll"
+    ],
+    "code": "",
+    "sourceUrl": "https://annnimate.com/animations",
+    "description": "GSAP Animation Component Library for React & Vue | Annnimate"
+  },
+  {
+    "id": "cat-40",
+    "name": "Magnify",
+    "category": "effect",
+    "tags": [
+      "click",
+      "liquid-glass",
+      "marketplace"
+    ],
+    "code": "",
+    "sourceUrl": "https://canvasui.dev/docs/components/magnify",
+    "description": "Magnify | Canvas UI"
+  },
+  {
+    "id": "cat-41",
+    "name": "Design Minis: the design tools you keep bookmarking",
+    "category": "3d",
+    "tags": [
+      "3d",
+      "marker",
+      "template"
+    ],
+    "code": "",
+    "sourceUrl": "https://designminis.com/",
+    "description": "Design Minis: the design tools you keep bookmarking"
+  },
+  {
+    "id": "cat-42",
     "name": "Autocomplete - Appica UI",
-    "category": "Input",
+    "category": "input",
     "tags": [
       "marketplace"
     ],
     "code": "'use client'\n\nimport * as React from 'react'\nimport {\n  Autocomplete,\n  AutocompleteInput,\n  AutocompleteContent,\n  AutocompleteEmpty,\n  AutocompleteList,\n  AutocompleteItem,\n} from '@appica/ui-react/autocomplete'\nimport { CountryFlagRounded } from '@appica/country-flags-react'\n\ninterface Country {\n  code: string\n  name: string\n}\n\nconst countries: Country[] = [\\\n  { code: 'au', name: 'Australia' },\\\n  { code: 'br', name: 'Brazil' },\\\n  { code: 'ca', name: 'Canada' },\\\n  { code: 'fr', name: 'France' },\\\n  { code: 'de', name: 'Germany' },\\\n  { code: 'it', name: 'Italy' },\\\n  { code: 'jp', name: 'Japan' },\\\n  { code: 'es', name: 'Spain' },\\\n  { code: 'gb', name: 'United Kingdom' },\\\n  { code: 'us', name: 'United States' },\\\n]\n\nexport default function AutocompleteCountrySearch() {\n  const [value, setValue] = React.useState('')\n  const selected = countries.find((country) => country.name === value)\n\n  return (\n    <div className=\"w-full max-w-70\">\n      <Autocomplete\n        items={countries}\n        value={value}\n        onValueChange={(v: string) => setValue(v)}\n        itemToStringValue={(item) => (item as Country).name}\n        clearable\n        icon\n      >\n        <AutocompleteInput\n          placeholder=\"Search a country\"\n          aria-label=\"Search a country\"\n          startSlot={selected ? <CountryFlagRounded code={selected.code} aria-hidden /> : null}\n        />\n        <AutocompleteContent>\n          <AutocompleteEmpty>No countries found.</AutocompleteEmpty>\n          <AutocompleteList>\n            {(country: Country) => (\n              <AutocompleteItem key={country.code} value={country}>\n                <CountryFlagRounded code={country.code} data-icon=\"start\" aria-hidden />\n                {country.name}\n              </AutocompleteItem>\n            )}\n          </AutocompleteList>\n        </AutocompleteContent>\n      </Autocomplete>\n    </div>\n  )\n}",
     "sourceUrl": "https://appica.dev/ui/components/react/autocomplete",
     "description": "Autocomplete - Appica UI"
+  },
+  {
+    "id": "cat-43",
+    "name": "Thinking orbs",
+    "category": "background",
+    "tags": [
+      "art-tool",
+      "ink"
+    ],
+    "code": "",
+    "sourceUrl": "https://orbs.jakubantalik.com/",
+    "description": "Thinking orbs \u2014 Animated thinking orb component"
+  },
+  {
+    "id": "cat-44",
+    "name": "Aether CSS",
+    "category": "card",
+    "tags": [
+      "click",
+      "css",
+      "drag",
+      "glass",
+      "liquid-glass",
+      "morph",
+      "neumorphism"
+    ],
+    "code": "",
+    "sourceUrl": "https://aethercss.lovable.app/",
+    "description": "Aether CSS \u2014 Liquid Glass & Glassmorphism Generator"
+  },
+  {
+    "id": "cat-45",
+    "name": "morphicons",
+    "category": "nav",
+    "tags": [
+      "click",
+      "morph",
+      "physics",
+      "react"
+    ],
+    "code": "",
+    "sourceUrl": "https://morphicons.com/",
+    "description": "morphicons \u2014 SVG icon morphing library for React, Vue & Svelte"
+  },
+  {
+    "id": "cat-46",
+    "name": "Components",
+    "category": "animation",
+    "tags": [
+      "hover",
+      "marketplace"
+    ],
+    "code": "",
+    "sourceUrl": "https://great-ui.com/components",
+    "description": "Components | Great UI"
+  },
+  {
+    "id": "cat-47",
+    "name": "Deployment Paused",
+    "category": "nav",
+    "tags": [
+      "gallery",
+      "inspiration"
+    ],
+    "code": "",
+    "sourceUrl": "https://hexui.sh/blocks/sidebar",
+    "description": "Deployment Paused"
+  },
+  {
+    "id": "cat-48",
+    "name": "DesEngs: Resources for Design Engineers",
+    "category": "component",
+    "tags": [
+      "gallery",
+      "inspiration"
+    ],
+    "code": "",
+    "sourceUrl": "https://desengs.com/",
+    "description": "DesEngs: Resources for Design Engineers"
+  },
+  {
+    "id": "cat-49",
+    "name": "React Components, Dashboards & Blocks",
+    "category": "input",
+    "tags": [
+      "dashboard",
+      "react",
+      "water"
+    ],
+    "code": "",
+    "sourceUrl": "https://ui.watermelon.sh/home",
+    "description": "React Components, Dashboards & Blocks | Watermelon UI"
+  },
+  {
+    "id": "cat-50",
+    "name": "Jhey on CodePen",
+    "category": "component",
+    "tags": [
+      "codepen",
+      "snippet"
+    ],
+    "code": "",
+    "sourceUrl": "https://codepen.io/jh3y/pens/public",
+    "description": "Jhey on CodePen"
+  },
+  {
+    "id": "cat-51",
+    "name": "FeralUI",
+    "category": "animation",
+    "tags": [
+      "drag",
+      "gradient",
+      "physics",
+      "react"
+    ],
+    "code": "",
+    "sourceUrl": "https://feralui.dev/",
+    "description": "FeralUI \u00b7 playful, physics-driven React elements"
+  },
+  {
+    "id": "cat-52",
+    "name": "Let's talk about gradients",
+    "category": "input",
+    "tags": [
+      "gradient",
+      "gradient-generator"
+    ],
+    "code": "",
+    "sourceUrl": "https://brainfunctioncollapse.com/projects/gradients",
+    "description": "Let's talk about gradients"
+  },
+  {
+    "id": "cat-53",
+    "name": "Liquid Gooey",
+    "category": "effect",
+    "tags": [
+      "gooey",
+      "halo",
+      "liquid-glass",
+      "react"
+    ],
+    "code": "",
+    "sourceUrl": "https://gooey.jakubantalik.com/",
+    "description": "Liquid Gooey \u2014 liquid UI for React"
+  },
+  {
+    "id": "cat-54",
+    "name": "Beautiful UI",
+    "category": "card",
+    "tags": [
+      "ai-tool",
+      "ink",
+      "inspiration",
+      "shimmer"
+    ],
+    "code": "",
+    "sourceUrl": "https://beautifului.dev/",
+    "description": "Beautiful UI \u2014 Crafted primitives for AI-native interfaces"
+  },
+  {
+    "id": "cat-55",
+    "name": "Animated React Components",
+    "category": "animation",
+    "tags": [
+      "marketplace",
+      "react"
+    ],
+    "code": "",
+    "sourceUrl": "https://beui.dev/components/motion",
+    "description": "Animated React Components \u2014 Copy-Paste Motion UI \u00b7 beUI"
+  },
+  {
+    "id": "cat-56",
+    "name": "Amicro",
+    "category": "animation",
+    "tags": [
+      "click",
+      "docs",
+      "react",
+      "transition"
+    ],
+    "code": "",
+    "sourceUrl": "https://amicro.vercel.app/",
+    "description": "Amicro \u2014 Premium React Micro-transitions & Interaction Components"
+  },
+  {
+    "id": "cat-57",
+    "name": "The Thoughtful List",
+    "category": "component",
+    "tags": [
+      "gallery",
+      "inspiration"
+    ],
+    "code": "",
+    "sourceUrl": "https://thoughtful.charmiekapoor.com/",
+    "description": "The Thoughtful List"
+  },
+  {
+    "id": "cat-58",
+    "name": "The Cotton Rag Press",
+    "category": "background",
+    "tags": [
+      "art-tool",
+      "drag",
+      "ink"
+    ],
+    "code": "",
+    "sourceUrl": "https://html.non.io/ink-bleed/",
+    "description": "The Cotton Rag Press \u2014 ink bleed bench"
+  },
+  {
+    "id": "cat-59",
+    "name": "Ink Object",
+    "category": "shader",
+    "tags": [
+      "3d",
+      "art-tool",
+      "drag",
+      "ink",
+      "marketplace"
+    ],
+    "code": "",
+    "sourceUrl": "https://canvasui.dev/docs/components/ink-object",
+    "description": "Ink Object | Canvas UI"
+  },
+  {
+    "id": "cat-60",
+    "name": "Holosticker",
+    "category": "nav",
+    "tags": [
+      "drag",
+      "holo",
+      "svg-tool"
+    ],
+    "code": "",
+    "sourceUrl": "https://holosticker.dev/",
+    "description": "Holosticker"
+  },
+  {
+    "id": "cat-61",
+    "name": "Receipt Printer",
+    "category": "animation",
+    "tags": [
+      "component"
+    ],
+    "code": "",
+    "sourceUrl": "https://dqnamo.com/experiments/receipt-printer",
+    "description": "Receipt Printer | dqnamo"
+  },
+  {
+    "id": "cat-62",
+    "name": "Folder component",
+    "category": "3d",
+    "tags": [
+      "3d",
+      "click",
+      "hover",
+      "marketplace",
+      "react",
+      "tilt"
+    ],
+    "code": "",
+    "sourceUrl": "https://rareui.com/components/foldercomponent",
+    "description": "Folder component \u2014 Animated React Component | Rare UI"
+  },
+  {
+    "id": "cat-63",
+    "name": "Proximity Sidebar",
+    "category": "animation",
+    "tags": [
+      "click",
+      "hover",
+      "marketplace",
+      "react",
+      "scroll",
+      "sidebar"
+    ],
+    "code": "",
+    "sourceUrl": "https://rareui.com/components/proximitysidebar",
+    "description": "Proximity Sidebar \u2014 Animated React Component | Rare UI"
+  },
+  {
+    "id": "cat-64",
+    "name": "OTP Input",
+    "category": "animation",
+    "tags": [
+      "drag",
+      "marketplace",
+      "react"
+    ],
+    "code": "",
+    "sourceUrl": "https://rareui.com/components/otpinput",
+    "description": "OTP Input \u2014 Animated React Component | Rare UI"
+  },
+  {
+    "id": "cat-65",
+    "name": "Lab",
+    "category": "loader",
+    "tags": [
+      "physics"
+    ],
+    "code": "",
+    "sourceUrl": "https://anainsomnia.com/forge-dynamics",
+    "description": "Lab \u2014 Forge Dynamics"
+  },
+  {
+    "id": "cat-66",
+    "name": "Lab - Bakai Tolondu uulu",
+    "category": "card",
+    "tags": [
+      "drag",
+      "qr",
+      "reveal",
+      "warp"
+    ],
+    "code": "",
+    "sourceUrl": "https://bakai.me/lab",
+    "description": "Lab - Bakai Tolondu uulu"
+  },
+  {
+    "id": "cat-67",
+    "name": "Turn Creative Vision into Living Design Tools",
+    "category": "animation",
+    "tags": [
+      "ai-tool",
+      "ink",
+      "snippet"
+    ],
+    "code": "",
+    "sourceUrl": "https://brik.space/",
+    "description": "Turn Creative Vision into Living Design Tools | Brik AI"
+  },
+  {
+    "id": "cat-68",
+    "name": "UXSnaps \u2013 Actionable UI/UX Breakdowns from Top Apps",
+    "category": "component",
+    "tags": [
+      "gallery",
+      "inspiration"
+    ],
+    "code": "",
+    "sourceUrl": "https://uxsnaps.com/",
+    "description": "UXSnaps \u2013 Actionable UI/UX Breakdowns from Top Apps"
+  },
+  {
+    "id": "cat-69",
+    "name": "Navbar Gallery \u2013 Navigation Design Inspiration",
+    "category": "nav",
+    "tags": [
+      "gallery",
+      "navbar"
+    ],
+    "code": "",
+    "sourceUrl": "https://navbar.gallery/",
+    "description": "Navbar Gallery \u2013 Navigation Design Inspiration"
+  },
+  {
+    "id": "cat-70",
+    "name": "Three.js Components, Templates & Interactive Shaders",
+    "category": "shader",
+    "tags": [
+      "art-tool",
+      "shader",
+      "snippet",
+      "template",
+      "three.js"
+    ],
+    "code": "",
+    "sourceUrl": "https://threeui.com/browse",
+    "description": "Three.js Components, Templates & Interactive Shaders | ThreeUI"
+  },
+  {
+    "id": "cat-71",
+    "name": "Great UI - Accessible React & Tailwind Components",
+    "category": "animation",
+    "tags": [
+      "ai-tool",
+      "react",
+      "scroll",
+      "snippet",
+      "tailwind"
+    ],
+    "code": "",
+    "sourceUrl": "https://great-ui.com/",
+    "description": "Great UI - Accessible React & Tailwind Components"
+  },
+  {
+    "id": "cat-72",
+    "name": "Dithered QR Code Generator",
+    "category": "background",
+    "tags": [
+      "dither",
+      "qr"
+    ],
+    "code": "",
+    "sourceUrl": "https://andrewt.net/dithered-qr-codes/index.html",
+    "description": "Dithered QR Code Generator"
+  },
+  {
+    "id": "cat-73",
+    "name": "Orbit Field",
+    "category": "component",
+    "tags": [
+      "drag",
+      "snippet"
+    ],
+    "code": "",
+    "sourceUrl": "https://amirmushich.com/lab/orbit-field/",
+    "description": "Orbit Field \u2014 spatial image editor"
+  },
+  {
+    "id": "cat-74",
+    "name": "CSS Grid Lanes / Masonry Lab",
+    "category": "animation",
+    "tags": [
+      "css",
+      "grid",
+      "water"
+    ],
+    "code": "",
+    "sourceUrl": "https://stella-create.co.jp/tools/css-grid-lanes/",
+    "description": "CSS Grid Lanes / Masonry Lab | CSS\u3060\u3051\u306eWaterfall\u30ec\u30a4\u30a2\u30a6\u30c8"
+  },
+  {
+    "id": "cat-75",
+    "name": "GSAP Demo Hub",
+    "category": "animation",
+    "tags": [
+      "gsap",
+      "scroll",
+      "snippet"
+    ],
+    "code": "",
+    "sourceUrl": "https://demos.gsap.com/",
+    "description": "GSAP Demo Hub"
+  },
+  {
+    "id": "cat-76",
+    "name": "MetalForge",
+    "category": "shader",
+    "tags": [
+      "art-tool",
+      "shader",
+      "snippet"
+    ],
+    "code": "",
+    "sourceUrl": "https://metalforge.xyz/",
+    "description": "MetalForge \u2014 Beautiful Metal shaders for SwiftUI"
+  },
+  {
+    "id": "cat-77",
+    "name": "movin.design",
+    "category": "animation",
+    "tags": [
+      "motion",
+      "snippet"
+    ],
+    "code": "",
+    "sourceUrl": "https://movin.design/",
+    "description": "movin.design \u2014 motion design inspiration"
+  },
+  {
+    "id": "cat-78",
+    "name": "Example: rotating loader \u2022 The gooey effect for React",
+    "category": "effect",
+    "tags": [
+      "gooey",
+      "loader",
+      "react"
+    ],
+    "code": "",
+    "sourceUrl": "https://gooey-react.netlify.app/examples/rotating-loader/",
+    "description": "Example: rotating loader \u2022 The gooey effect for React"
+  },
+  {
+    "id": "cat-79",
+    "name": "Anime.js JavaScript animation engine",
+    "category": "animation",
+    "tags": [
+      "animation",
+      "animejs",
+      "engine",
+      "javascript",
+      "library"
+    ],
+    "code": "",
+    "sourceUrl": "https://animejs.com/",
+    "description": "Anime.js \u2014 lightweight JavaScript animation library. Works with CSS, SVG, DOM attributes, JS objects. Animations, timelines, staggering, easing, callbacks."
+  },
+  {
+    "id": "cat-80",
+    "name": "Framer Marketplace Components",
+    "category": "component",
+    "tags": [
+      "framer",
+      "framer-motion",
+      "marker",
+      "marketplace",
+      "templates",
+      "ui"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.framer.com/community/marketplace/components/",
+    "description": "Framer community marketplace with production-ready website components and templates for designers/developers."
+  },
+  {
+    "id": "cat-81",
+    "name": "Cool Radial Toggle Menu with Gooey Effect",
+    "category": "nav",
+    "tags": [
+      "css",
+      "gooey",
+      "menu",
+      "radial",
+      "svg-filter"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.cssscript.com/demo/cool-radial-toggle-menu-with-gooey-effect/",
+    "description": "Radial toggle menu that reveals options in a circular pattern with a gooey SVG filter morph between states."
+  },
+  {
+    "id": "cat-82",
+    "name": "Pixel-Perfect design tool",
+    "category": "effect",
+    "tags": [
+      "effect",
+      "filter",
+      "pixel",
+      "pixel-art",
+      "retro"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.pixel-perfect.space/",
+    "description": "Pixel-perfect design exploration with pixelation and retro effects for design prototyping."
+  },
+  {
+    "id": "cat-83",
+    "name": "OriginKit component library",
+    "category": "component",
+    "tags": [
+      "art-tool",
+      "components",
+      "originkit",
+      "react",
+      "template",
+      "ui-kit"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.originkit.dev/",
+    "description": "OriginKit \u2014 curated collection of polished UI components and design elements for modern web apps."
+  },
+  {
+    "id": "cat-84",
+    "name": "DesignMinis design gallery",
+    "category": "component",
+    "tags": [
+      "design",
+      "gallery",
+      "inspiration",
+      "showcase"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.designminis.com/",
+    "description": "DesignMinis \u2014 curated collection of design micro-interactions, components, and inspiration for product designers."
+  },
+  {
+    "id": "cat-85",
+    "name": "Metal \u2014 circular shader visualizer",
+    "category": "shader",
+    "tags": [
+      "art-tool",
+      "audio-visualizer",
+      "circular",
+      "metal",
+      "metallic",
+      "shader",
+      "snippet",
+      "three.js",
+      "visualizer"
+    ],
+    "code": "",
+    "sourceUrl": "https://metal.jakubantalik.com/",
+    "description": "Circular metal shader visualizer by Jakub Antalik \u2014 WebGL effect with metallic reflections."
+  },
+  {
+    "id": "cat-86",
+    "name": "Morphicons animated icon set",
+    "category": "effect",
+    "tags": [
+      "animated",
+      "icon-set",
+      "icons",
+      "morph",
+      "svg",
+      "transition"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.morphicons.com/",
+    "description": "Morphicons \u2014 collection of animated icons that morph between states with smooth transitions."
+  },
+  {
+    "id": "cat-87",
+    "name": "Beautiful UI Five \u2014 Vercel component showcase",
+    "category": "component",
+    "tags": [
+      "components",
+      "docs",
+      "showcase",
+      "ui",
+      "vercel"
+    ],
+    "code": "",
+    "sourceUrl": "https://beautiful-ui-five.vercel.app/",
+    "description": "Beautiful UI Five \u2014 showcase of beautifully designed UI components hosted on Vercel."
+  },
+  {
+    "id": "cat-88",
+    "name": "Beautiful UI component library",
+    "category": "component",
+    "tags": [
+      "components",
+      "gallery",
+      "library",
+      "ui"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.beautifului.dev/",
+    "description": "BeautifulUI \u2014 community-curated collection of well-designed UI components from real products."
+  },
+  {
+    "id": "cat-89",
+    "name": "Drawably drawing tool",
+    "category": "effect",
+    "tags": [
+      "canvas",
+      "creative",
+      "drawing",
+      "snippet",
+      "tool"
+    ],
+    "code": "",
+    "sourceUrl": "https://drawably-site.pages.dev/",
+    "description": "Drawably \u2014 web-based drawing tool with a curated feature set for digital sketching."
+  },
+  {
+    "id": "cat-90",
+    "name": "Mark's overprint CSS generator",
+    "category": "effect",
+    "tags": [
+      "art-tool",
+      "css",
+      "generator",
+      "marker",
+      "overprint",
+      "typography"
+    ],
+    "code": "",
+    "sourceUrl": "https://thinkmake.github.io/overprinter.markhurrell.com/",
+    "description": "Mark Hurrell's CSS overprint generator \u2014 creates print-style overprint effects with mix-blend-mode for type layering."
+  },
+  {
+    "id": "cat-91",
+    "name": "Holosticker SVG/PNG holo effect",
+    "category": "effect",
+    "tags": [
+      "holo",
+      "holographic",
+      "png",
+      "sticker",
+      "svg",
+      "svg-tool"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.holosticker.dev/",
+    "description": "Holosticker \u2014 turn SVG/PNG artwork into a holographic sticker with rotation, light, and shine effects."
+  },
+  {
+    "id": "cat-92",
+    "name": "ReceiptPrinter component",
+    "category": "component",
+    "tags": [
+      "feed",
+      "motion",
+      "phosrphor",
+      "printer",
+      "react",
+      "receipt",
+      "snippet"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.dqnamo.com/experiments/receipt-printer",
+    "description": "ReceiptPrinter.tsx \u2014 multi-stage receipt printer machine with smooth/stepped paper feed motion, React + motion/react + Phosphor icons."
+  },
+  {
+    "id": "cat-93",
+    "name": "CSS-Tricks web design/development reference",
+    "category": "background",
+    "tags": [
+      "article",
+      "css",
+      "reference",
+      "tricks",
+      "tutorial"
+    ],
+    "code": "",
+    "sourceUrl": "https://css-tricks.com/",
+    "description": "CSS-Tricks \u2014 long-running front-end design/development reference with articles on layout, animation, accessibility, and modern CSS features."
+  },
+  {
+    "id": "cat-94",
+    "name": "Warp \u2014 agentic SDLC platform",
+    "category": "component",
+    "tags": [
+      "agent",
+      "agentic",
+      "factory",
+      "form",
+      "platform",
+      "sdlc",
+      "warp"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.warp.dev/",
+    "description": "Warp \u2014 open platform for automating development. Factories-as-code (factory.yaml) with agents, models, permissions, and checkpoints. CLI/SDK/MCP/API."
+  },
+  {
+    "id": "cat-95",
+    "name": "21st.dev community component library",
+    "category": "component",
+    "tags": [
+      "21st",
+      "ai-tool",
+      "community",
+      "components",
+      "marketplace",
+      "react"
+    ],
+    "code": "",
+    "sourceUrl": "https://21st.dev/community",
+    "description": "21st.dev community \u2014 open registry of modern React UI components and design primitives built on Tailwind / shadcn."
+  },
+  {
+    "id": "cat-96",
+    "name": "21st.dev Agent 21",
+    "category": "component",
+    "tags": [
+      "21st",
+      "agent",
+      "ai",
+      "ai-tool",
+      "generator",
+      "react"
+    ],
+    "code": "",
+    "sourceUrl": "https://21st.dev/agent-21",
+    "description": "21st.dev Agent 21 \u2014 AI design agent that scaffolds React components from natural-language prompts."
+  },
+  {
+    "id": "cat-97",
+    "name": "v0 by Vercel \u2014 AI UI generator",
+    "category": "component",
+    "tags": [
+      "ai",
+      "ai-tool",
+      "generator",
+      "react",
+      "v0",
+      "vercel"
+    ],
+    "code": "",
+    "sourceUrl": "https://v0.app/",
+    "description": "v0 \u2014 Vercel's AI UI generator that produces production-grade React/Tailwind components from natural-language descriptions."
+  },
+  {
+    "id": "cat-98",
+    "name": "Builder.io visual CMS",
+    "category": "component",
+    "tags": [
+      "agent",
+      "builder.io",
+      "cms",
+      "drag",
+      "drag-and-drop",
+      "editor",
+      "visual"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.builder.io/",
+    "description": "Builder.io \u2014 visual headless CMS with drag-and-drop editor, Builder Agent for design-to-code, and component SDK."
+  },
+  {
+    "id": "cat-99",
+    "name": "Shadertoy community shader gallery",
+    "category": "shader",
+    "tags": [
+      "art-tool",
+      "gallery",
+      "glsl",
+      "playground",
+      "shader",
+      "shadertoy",
+      "snippet"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.shadertoy.com/",
+    "description": "Shadertoy \u2014 community GLSL shader gallery with weekly featured shaders, view/like counts, and patreon support."
+  },
+  {
+    "id": "cat-100",
+    "name": "Iconshock Social Media Icons pack",
+    "category": "effect",
+    "tags": [
+      "3d",
+      "icon-set",
+      "icons",
+      "lottie",
+      "pack",
+      "png",
+      "social-media",
+      "svg"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.iconshock.com/social-media-icons",
+    "description": "Iconshock Social Media Icons \u2014 300 social media icons across 13 styles (NeuGlyph, Material, iOS, Fluent, 3D, etc.) in PNG, SVG, Lottie, and AE."
+  },
+  {
+    "id": "cat-101",
+    "name": "CSS-Loaders collection",
+    "category": "loader",
+    "tags": [
+      "animation",
+      "css",
+      "loader",
+      "spinner"
+    ],
+    "code": "",
+    "sourceUrl": "https://css-loaders.com/",
+    "description": "CSS-Loaders \u2014 curated collection of pure-CSS loading spinners and animated loaders for every use case."
+  },
+  {
+    "id": "cat-102",
+    "name": "neumorphism.io full generator",
+    "category": "background",
+    "tags": [
+      "color-palette",
+      "css-shadow",
+      "generator",
+      "morph",
+      "neumorphism"
+    ],
+    "code": "",
+    "sourceUrl": "https://neumorphism.io/#e0e0e0",
+    "description": "Direct anchor into the neumorphism.io generator with the #e0e0e0 default color preset (light grey surface)."
+  },
+  {
+    "id": "cat-103",
+    "name": "DaisyUI components directory",
+    "category": "component",
+    "tags": [
+      "ai-tool",
+      "button",
+      "card",
+      "components",
+      "daisyui",
+      "modal",
+      "navbar",
+      "tailwind",
+      "themable"
+    ],
+    "code": "",
+    "sourceUrl": "https://daisyui.com/components/",
+    "description": "DaisyUI components \u2014 full component directory (alerts, buttons, cards, modals, navbar, stats, etc.) on top of Tailwind CSS, fully themable."
+  },
+  {
+    "id": "cat-104",
+    "name": "Aicanvas component library",
+    "category": "component",
+    "tags": [
+      "ai",
+      "ai-tool",
+      "aicanvas",
+      "components",
+      "gallery",
+      "library"
+    ],
+    "code": "",
+    "sourceUrl": "https://aicanvas.me/components",
+    "description": "Aicanvas \u2014 AI-curated component library, browse all at /components (covers the aicanvas.me/ root and component index)."
+  },
+  {
+    "id": "cat-105",
+    "name": "Navbar Gallery \u2014 navigation design inspiration",
+    "category": "nav",
+    "tags": [
+      "gallery",
+      "inspiration",
+      "navbar",
+      "navigation"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.navbar.gallery/",
+    "description": "Navbar Gallery \u2014 curated daily collection of real-product navigation patterns (dropdowns, sidebars, mega menus, tabs, search bars) for designers."
+  },
+  {
+    "id": "cat-106",
+    "name": "UXSnaps \u2014 UI/UX product teardowns",
+    "category": "background",
+    "tags": [
+      "inspiration",
+      "pattern",
+      "product",
+      "teardown",
+      "ui",
+      "ux"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.uxsnaps.com/",
+    "description": "UXSnaps \u2014 actionable UI/UX breakdowns from real apps used by millions; designer/PM/founder-oriented with proven patterns and quick wins."
+  },
+  {
+    "id": "cat-107",
+    "name": "Bakai Lab \u2014 design engineering portfolio",
+    "category": "background",
+    "tags": [
+      "design-engineering",
+      "lab",
+      "next.js",
+      "portfolio"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.bakai.me/lab",
+    "description": "Bakai Lab \u2014 design-engineering lab with project case studies (FOHE, Spina, Oymo, Sidebar series) showcasing UI/UX craft."
+  },
+  {
+    "id": "cat-108",
+    "name": "Forge Dynamics \u2014 text-driven scene",
+    "category": "effect",
+    "tags": [
+      "color-palette",
+      "physics",
+      "playback",
+      "procedural",
+      "rive",
+      "scene",
+      "text"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.anainsomnia.com/forge-dynamics",
+    "description": "Forge Dynamics by anainsomnia \u2014 text-driven procedural scene with playback controls (pause/restart/frame) and color customization."
+  },
+  {
+    "id": "cat-109",
+    "name": "Dithered QR Code Generator",
+    "category": "effect",
+    "tags": [
+      "dither",
+      "error-diffusion",
+      "generator",
+      "qr-code"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.andrewt.net/dithered-qr-codes/index.html",
+    "description": "Andrew Taylor's dithered QR code generator \u2014 embeds an image into a QR code's redundant data area via error diffusion with gamma/contrast/brightness controls."
+  },
+  {
+    "id": "cat-110",
+    "name": "Paperlab Playground",
+    "category": "3d",
+    "tags": [
+      "3d",
+      "banner",
+      "paper-engine",
+      "paperlab",
+      "scene",
+      "walk"
+    ],
+    "code": "",
+    "sourceUrl": "https://paperlab.nawwara.studio/playground/",
+    "description": "Paperlab playground \u2014 write a room from text; walkable scene with banners (Nave/Procession/Cloister/Threshold/Ribbon/Archive) you step between with arrow keys."
+  },
+  {
+    "id": "cat-111",
+    "name": "Paperlab Editor",
+    "category": "3d",
+    "tags": [
+      "canvas",
+      "editor",
+      "paperlab",
+      "preset-library"
+    ],
+    "code": "",
+    "sourceUrl": "https://paperlab.nawwara.studio/editor/",
+    "description": "Paperlab editor \u2014 desktop canvas tool with preset library on the left, inspector on the right, and a sheet in the middle sculpted by dragging a paper handle."
+  },
+  {
+    "id": "cat-112",
+    "name": "AI UX Playground",
+    "category": "background",
+    "tags": [
+      "ai",
+      "ai-tool",
+      "art-tool",
+      "motion",
+      "playground",
+      "shader",
+      "shaders",
+      "snippet",
+      "tools",
+      "ux"
+    ],
+    "code": "",
+    "sourceUrl": "https://aiuxplayground.com/playground",
+    "description": "AI UX Playground \u2014 curated third-party AI UI experiments and tools (Shaders, WebGPU, Motion, Tools, Components, Framer, Portfolios) for designers/eng building chat, agents, copilots."
+  },
+  {
+    "id": "cat-113",
+    "name": "Gradient Mouse Move",
+    "category": "animation",
+    "tags": [
+      "background",
+      "framer-motion",
+      "gradient",
+      "mouse",
+      "next.js",
+      "olivierlarose"
+    ],
+    "code": "",
+    "sourceUrl": "https://blog.olivierlarose.com/tutorials/gradient-mouse-move",
+    "description": "Olivier Larose tutorial animating a CSS linear-gradient's angle/color stops on mouse move using Framer Motion's useMotionValue. Inspired by itsoffbrand.com. Built in Next.js with Framer Motion + SASS. Demo: blog.olivierlarose.com/demos/gradient-mouse-move."
+  },
+  {
+    "id": "cat-114",
+    "name": "Text Gooey Morph",
+    "category": "effect",
+    "tags": [
+      "filter",
+      "framer-motion",
+      "gooey",
+      "morph",
+      "next.js",
+      "olivierlarose",
+      "svg",
+      "text"
+    ],
+    "code": "",
+    "sourceUrl": "https://blog.olivierlarose.com/tutorials/text-gooey",
+    "description": "Olivier Larose tutorial morphing SVG numeric characters via 30 circles animated along each number's SVG path, with feGaussianBlur + feColorMatrix gooey filter applied. Inspired by codepen.io/supah. Built in Next.js + Framer Motion + SASS. Source: github.com/olivierlarose/gooey-morph."
+  },
+  {
+    "id": "cat-115",
+    "name": "Neon Border",
+    "category": "effect",
+    "tags": [
+      "border",
+      "css",
+      "glow",
+      "neon"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.originkit.dev/components/neon-border",
+    "description": "Neon-glow border effect from Originkit."
+  },
+  {
+    "id": "cat-116",
+    "name": "Copy Button",
+    "category": "button",
+    "tags": [
+      "button",
+      "framer-motion",
+      "minimal",
+      "vue"
+    ],
+    "code": "",
+    "sourceUrl": "https://motion.dev/examples/vue-copy-button",
+    "description": "Vue copy-button animation example using Motion."
+  },
+  {
+    "id": "cat-117",
+    "name": "Matrix Rain",
+    "category": "effect",
+    "tags": [
+      "background",
+      "canvas",
+      "matrix",
+      "react",
+      "retro"
+    ],
+    "code": "",
+    "sourceUrl": "https://componentry.dev/docs",
+    "description": "Matrix-rain animated background from Componentry React UI library."
+  },
+  {
+    "id": "cat-118",
+    "name": "Dither Gradient",
+    "category": "effect",
+    "tags": [
+      "background",
+      "dither",
+      "gradient",
+      "react",
+      "shader"
+    ],
+    "code": "",
+    "sourceUrl": "https://componentry.dev/docs",
+    "description": "Dither-gradient background effect from Componentry."
+  },
+  {
+    "id": "cat-119",
+    "name": "MorphIcon React",
+    "category": "component",
+    "tags": [
+      "icon",
+      "minimal",
+      "procrustes",
+      "react",
+      "svg"
+    ],
+    "code": "",
+    "sourceUrl": "https://github.com/guillermolg00/morphicons",
+    "description": "Morph any SVG icon to any other via 2D Procrustes; React/Vue/Svelte/Astro support."
+  },
+  {
+    "id": "cat-120",
+    "name": "MorphIcon Vue",
+    "category": "component",
+    "tags": [
+      "icon",
+      "minimal",
+      "svg",
+      "vue"
+    ],
+    "code": "",
+    "sourceUrl": "https://github.com/guillermolg00/morphicons",
+    "description": "Vue driver for MorphIcon \u2014 morph Lucide/Tabler/Heroicons with spring physics."
+  },
+  {
+    "id": "cat-121",
+    "name": "MorphIcon Svelte",
+    "category": "component",
+    "tags": [
+      "icon",
+      "minimal",
+      "svelte",
+      "svg"
+    ],
+    "code": "",
+    "sourceUrl": "https://github.com/guillermolg00/morphicons",
+    "description": "Svelte driver for MorphIcon \u2014 zero-dependency icon morphing."
+  },
+  {
+    "id": "cat-122",
+    "name": "MorphIcon React Native",
+    "category": "component",
+    "tags": [
+      "icon",
+      "minimal",
+      "react-native",
+      "svg"
+    ],
+    "code": "",
+    "sourceUrl": "https://github.com/guillermolg00/morphicons",
+    "description": "React Native driver for MorphIcon \u2014 6.5KB core, zero runtime deps."
+  },
+  {
+    "id": "cat-123",
+    "name": "CSS Loaders",
+    "category": "loader",
+    "tags": [
+      "animated",
+      "css",
+      "loader",
+      "minimal"
+    ],
+    "code": "",
+    "sourceUrl": "https://css-loaders.com/",
+    "description": "Collection of pure-CSS loading spinners and skeleton loaders."
+  },
+  {
+    "id": "cat-124",
+    "name": "Typewriter",
+    "category": "component",
+    "tags": [
+      "animation",
+      "framer-motion",
+      "minimal",
+      "react",
+      "transition"
+    ],
+    "code": "",
+    "sourceUrl": "https://motion.dev/examples/react-typewriter",
+    "description": "React typewriter animation using Motion's Typewriter component with text reveal effects."
+  },
+  {
+    "id": "cat-125",
+    "name": "iOS App Folder",
+    "category": "component",
+    "tags": [
+      "animation",
+      "framer-motion",
+      "gradient",
+      "react",
+      "soft",
+      "transition"
+    ],
+    "code": "",
+    "sourceUrl": "https://motion.dev/examples/react-ios-app-folder",
+    "description": "iOS-style folder expansion animation for React using Motion for layout and spring physics."
+  },
+  {
+    "id": "cat-126",
+    "name": "Pokopia Modal",
+    "category": "component",
+    "tags": [
+      "framer-motion",
+      "modal",
+      "react",
+      "soft",
+      "transition"
+    ],
+    "code": "",
+    "sourceUrl": "https://motion.dev/examples/react-pokopia-modal",
+    "description": "Pokopia modal animation demonstrating React shared-layout transitions."
+  },
+  {
+    "id": "cat-127",
+    "name": "Reorder Grid",
+    "category": "component",
+    "tags": [
+      "drag",
+      "framer-motion",
+      "grid",
+      "minimal",
+      "react"
+    ],
+    "code": "",
+    "sourceUrl": "https://motion.dev/examples/react-reorder-grid",
+    "description": "Multidimensional reorder grid demonstrating drag-to-reorder with Motion for React."
+  },
+  {
+    "id": "cat-128",
+    "name": "Command Palette",
+    "category": "component",
+    "tags": [
+      "dropdown",
+      "framer-motion",
+      "glass",
+      "modal",
+      "vue"
+    ],
+    "code": "",
+    "sourceUrl": "https://motion.dev/examples/vue-command-palette",
+    "description": "Command palette animation built with Vue and Motion with keyboard-driven transitions."
+  },
+  {
+    "id": "cat-129",
+    "name": "Mega Menu",
+    "category": "component",
+    "tags": [
+      "framer-motion",
+      "menu",
+      "minimal",
+      "navbar",
+      "vue"
+    ],
+    "code": "",
+    "sourceUrl": "https://motion.dev/examples/vue-mega-menu",
+    "description": "Vue mega menu with staggered nav entrance and smooth open/close animations."
+  },
+  {
+    "id": "cat-130",
+    "name": "Sheet Modal",
+    "category": "component",
+    "tags": [
+      "drawer",
+      "framer-motion",
+      "modal",
+      "soft",
+      "vue"
+    ],
+    "code": "",
+    "sourceUrl": "https://motion.dev/examples/vue-sheet-modal",
+    "description": "Bottom-sheet modal slide-in with backdrop fade using Vue + Motion."
+  },
+  {
+    "id": "cat-131",
+    "name": "Scroll Zoom Hero",
+    "category": "component",
+    "tags": [
+      "framer-motion",
+      "gradient",
+      "hero",
+      "scroll-effect",
+      "vue"
+    ],
+    "code": "",
+    "sourceUrl": "https://motion.dev/examples/vue-scroll-zoom-hero",
+    "description": "Scroll-linked zoom hero effect on Vue powered by Motion's scroll utilities."
+  },
+  {
+    "id": "cat-132",
+    "name": "Rolling Text Button",
+    "category": "component",
+    "tags": [
+      "button",
+      "framer-motion",
+      "hover-effect",
+      "minimal",
+      "react"
+    ],
+    "code": "",
+    "sourceUrl": "https://motion.dev/examples/react-rolling-text-button",
+    "description": "Button with rolling text animation on hover using Motion for React."
+  },
+  {
+    "id": "cat-133",
+    "name": "Scroll Velocity 3D Planes",
+    "category": "component",
+    "tags": [
+      "framer-motion",
+      "holo",
+      "parallax",
+      "scroll-effect",
+      "three.js",
+      "vue"
+    ],
+    "code": "",
+    "sourceUrl": "https://motion.dev/examples/vue-scroll-velocity-linked-offset",
+    "description": "3D planes that translate with scroll velocity using linked offsets in Vue + Motion."
+  },
+  {
+    "id": "cat-134",
+    "name": "Ink Flow Field",
+    "category": "component",
+    "tags": [
+      "aurora",
+      "background",
+      "fluid",
+      "js",
+      "particles",
+      "particles.js"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.originkit.dev/components/ink-flow-field",
+    "description": "Animated ink flow field rendered with canvas particle motion for hero sections."
+  },
+  {
+    "id": "cat-135",
+    "name": "Rotunda Carousel",
+    "category": "component",
+    "tags": [
+      "animation",
+      "gallery",
+      "gradient",
+      "holo",
+      "react",
+      "three.js"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.originkit.dev/components/rotunda-carousel",
+    "description": "3D rotunda-style carousel with depth and circular motion paths."
+  },
+  {
+    "id": "cat-136",
+    "name": "Pixel Arc",
+    "category": "component",
+    "tags": [
+      "animation",
+      "css",
+      "gallery",
+      "halftone",
+      "js",
+      "retro"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.originkit.dev/components/pixel-arc",
+    "description": "Pixel-art arc gallery effect with stylized blocky animation."
+  },
+  {
+    "id": "cat-137",
+    "name": "Cursor Ring Field",
+    "category": "component",
+    "tags": [
+      "cursor",
+      "glow",
+      "js",
+      "neon",
+      "particles",
+      "particles.js"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.originkit.dev/components/cursor-ring-field",
+    "description": "Animated cursor ring particles following pointer position on the screen."
+  },
+  {
+    "id": "cat-138",
+    "name": "Particle Saturn",
+    "category": "component",
+    "tags": [
+      "animation",
+      "aurora",
+      "js",
+      "metallic",
+      "particles",
+      "webgl"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.originkit.dev/components/particle-saturn",
+    "description": "Saturn-style particle ring animation rendered with WebGL/canvas."
+  },
+  {
+    "id": "cat-139",
+    "name": "Globe Mesh",
+    "category": "component",
+    "tags": [
+      "animation",
+      "background",
+      "metallic",
+      "minimal",
+      "react-three-fiber",
+      "three.js"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.originkit.dev/components/globe-mesh",
+    "description": "Animated 3D wireframe globe with rotating mesh points."
+  },
+  {
+    "id": "cat-140",
+    "name": "Sphere Gallery 3D",
+    "category": "component",
+    "tags": [
+      "gallery",
+      "holo",
+      "metallic",
+      "react-three-fiber",
+      "three.js"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.originkit.dev/components/sphere-gallery-3d",
+    "description": "3D sphere gallery with rotating thumbnails arranged on a spherical surface."
+  },
+  {
+    "id": "cat-141",
+    "name": "Water Ball",
+    "category": "component",
+    "tags": [
+      "animation",
+      "fluid",
+      "metallic",
+      "shader",
+      "webgl"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.originkit.dev/components/water-ball",
+    "description": "Realistic water-ball rendering with refraction and animated surface."
+  },
+  {
+    "id": "cat-142",
+    "name": "Radial Reveal Button",
+    "category": "component",
+    "tags": [
+      "button",
+      "css",
+      "gradient",
+      "hover-effect",
+      "minimal"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.originkit.dev/components/radial-reveal-button",
+    "description": "Button with radial reveal hover effect expanding from the click point."
+  },
+  {
+    "id": "cat-143",
+    "name": "Place Details (Corner)",
+    "category": "component",
+    "tags": [
+      "card",
+      "css",
+      "hero",
+      "html",
+      "minimal"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.uxsnaps.com/",
+    "description": "Product listing detail page breakdown showcasing user control and social proof patterns."
+  },
+  {
+    "id": "cat-144",
+    "name": "Events Dashboard (Meetup)",
+    "category": "component",
+    "tags": [
+      "css",
+      "dashboard",
+      "html",
+      "minimal"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.uxsnaps.com/",
+    "description": "Dashboard breakdown from Meetup demonstrating contextual design and CTAs."
+  },
+  {
+    "id": "cat-145",
+    "name": "Content Idea Board (Buffer)",
+    "category": "component",
+    "tags": [
+      "css",
+      "dashboard",
+      "grid",
+      "html",
+      "minimal"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.uxsnaps.com/",
+    "description": "Feed/timeline breakdown from Buffer showing onboarding and information architecture."
+  },
+  {
+    "id": "cat-146",
+    "name": "AI Workspace (Cofounder)",
+    "category": "component",
+    "tags": [
+      "css",
+      "dashboard",
+      "glass",
+      "html"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.uxsnaps.com/",
+    "description": "AI workspace breakdown highlighting affordance, visual hierarchy, and UX writing."
+  },
+  {
+    "id": "cat-147",
+    "name": "AI Outfit Planner (Alta)",
+    "category": "component",
+    "tags": [
+      "card",
+      "css",
+      "dashboard",
+      "gradient",
+      "html",
+      "soft"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.uxsnaps.com/",
+    "description": "Dashboard breakdown with personalization, real-world match, and storytelling patterns."
+  },
+  {
+    "id": "cat-148",
+    "name": "Support Inbox (Plain)",
+    "category": "component",
+    "tags": [
+      "css",
+      "dashboard",
+      "feed",
+      "html",
+      "minimal"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.uxsnaps.com/",
+    "description": "Feed/timeline breakdown of Plain's support inbox focusing on UX writing and affordance."
+  },
+  {
+    "id": "cat-149",
+    "name": "Daily Wellness Dashboard",
+    "category": "component",
+    "tags": [
+      "chart",
+      "css",
+      "dashboard",
+      "gradient",
+      "html",
+      "soft"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.uxsnaps.com/",
+    "description": "Wellness dashboard breakdown demonstrating metrics, UX writing, and visual hierarchy."
+  },
+  {
+    "id": "cat-150",
+    "name": "Onboarding Dashboard (HoneyBook)",
+    "category": "component",
+    "tags": [
+      "css",
+      "dashboard",
+      "gradient",
+      "hero",
+      "html",
+      "soft"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.uxsnaps.com/",
+    "description": "Advanced onboarding dashboard breakdown emphasizing feedback, clarity, and UX writing."
+  },
+  {
+    "id": "cat-151",
+    "name": "Crypto Wallet Portfolio (Solflare)",
+    "category": "component",
+    "tags": [
+      "card",
+      "css",
+      "dark",
+      "dashboard",
+      "glow",
+      "html"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.uxsnaps.com/",
+    "description": "Crypto wallet portfolio breakdown with delight, user control, and real-world match patterns."
+  },
+  {
+    "id": "cat-152",
+    "name": "Homepage Summary Dashboard (Headway)",
+    "category": "component",
+    "tags": [
+      "css",
+      "dashboard",
+      "gradient",
+      "hero",
+      "html",
+      "soft"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.uxsnaps.com/",
+    "description": "Advanced dashboard breakdown using gamification, CTAs, and personalization."
+  },
+  {
+    "id": "cat-153",
+    "name": "Weak Firefox Button",
+    "category": "component",
+    "tags": [
+      "button",
+      "css",
+      "gradient",
+      "hover-effect",
+      "soft"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/cssbuttons-io/weak-firefox-5",
+    "description": "Open-source CSS/Tailwind button from Uiverse called 'Weak Firefox Button' with hover or click animations."
+  },
+  {
+    "id": "cat-154",
+    "name": "Red Crab Button",
+    "category": "component",
+    "tags": [
+      "brutalist",
+      "button",
+      "click-effect",
+      "css"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/dexter-st/red-crab-98",
+    "description": "Open-source CSS/Tailwind button from Uiverse called 'Red Crab Button' with hover or click animations."
+  },
+  {
+    "id": "cat-155",
+    "name": "Warm Zebra Button",
+    "category": "component",
+    "tags": [
+      "button",
+      "css",
+      "glass",
+      "hover-effect",
+      "minimal"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Mike11jr/warm-zebra-80",
+    "description": "Open-source CSS/Tailwind button from Uiverse called 'Warm Zebra Button' with hover or click animations."
+  },
+  {
+    "id": "cat-156",
+    "name": "Stale Fireant Button",
+    "category": "component",
+    "tags": [
+      "button",
+      "click-effect",
+      "css",
+      "glow",
+      "neon"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/elijahgummer/stale-fireant-57",
+    "description": "Open-source CSS/Tailwind button from Uiverse called 'Stale Fireant Button' with hover or click animations."
+  },
+  {
+    "id": "cat-157",
+    "name": "Good Dolphin Button",
+    "category": "component",
+    "tags": [
+      "button",
+      "css",
+      "gradient",
+      "hover-effect"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/alshahwan/good-dolphin-78",
+    "description": "Open-source CSS/Tailwind button from Uiverse called 'Good Dolphin Button' with hover or click animations."
+  },
+  {
+    "id": "cat-158",
+    "name": "Lovely Fox Button",
+    "category": "component",
+    "tags": [
+      "button",
+      "click-effect",
+      "css",
+      "hard",
+      "minimal"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/yaroslavas2001/lovely-fox-50",
+    "description": "Open-source CSS/Tailwind button from Uiverse called 'Lovely Fox Button' with hover or click animations."
+  },
+  {
+    "id": "cat-159",
+    "name": "Curly Wombat Button",
+    "category": "component",
+    "tags": [
+      "button",
+      "css",
+      "hover-effect",
+      "morph"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/adamgiebl/curly-wombat-58",
+    "description": "Open-source CSS/Tailwind button from Uiverse called 'Curly Wombat Button' with hover or click animations."
+  },
+  {
+    "id": "cat-160",
+    "name": "Blue Dodo Button",
+    "category": "component",
+    "tags": [
+      "button",
+      "click-effect",
+      "css",
+      "metallic"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/krlozCJ/blue-dodo-17",
+    "description": "Open-source CSS/Tailwind button from Uiverse called 'Blue Dodo Button' with hover or click animations."
+  },
+  {
+    "id": "cat-161",
+    "name": "Lazy Cow Button",
+    "category": "component",
+    "tags": [
+      "button",
+      "css",
+      "gradient",
+      "hover-effect",
+      "soft"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Smit-Prajapati/lazy-cow-47",
+    "description": "Open-source CSS/Tailwind button from Uiverse called 'Lazy Cow Button' with hover or click animations."
+  },
+  {
+    "id": "cat-162",
+    "name": "Spotty Goose Form",
+    "category": "component",
+    "tags": [
+      "css",
+      "form",
+      "input",
+      "minimal",
+      "soft"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/mi-series/spotty-goose-56",
+    "description": "Open-source form component from Uiverse named 'Spotty Goose Form' built with CSS or Tailwind."
+  },
+  {
+    "id": "cat-163",
+    "name": "Unlucky Rat Form",
+    "category": "component",
+    "tags": [
+      "css",
+      "form",
+      "gradient",
+      "input"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Galahhad/unlucky-rat-64",
+    "description": "Open-source form component from Uiverse named 'Unlucky Rat Form' built with CSS or Tailwind."
+  },
+  {
+    "id": "cat-164",
+    "name": "Sour Dog Form",
+    "category": "component",
+    "tags": [
+      "css",
+      "form",
+      "glass",
+      "input"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/ayyjayy2/sour-dog-94",
+    "description": "Open-source form component from Uiverse named 'Sour Dog Form' built with CSS or Tailwind."
+  },
+  {
+    "id": "cat-165",
+    "name": "Selfish Dragon Form",
+    "category": "component",
+    "tags": [
+      "css",
+      "form",
+      "glow",
+      "input",
+      "neon"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Spacious74/selfish-dragon-64",
+    "description": "Open-source form component from Uiverse named 'Selfish Dragon Form' built with CSS or Tailwind."
+  },
+  {
+    "id": "cat-166",
+    "name": "Brave Moose Form",
+    "category": "component",
+    "tags": [
+      "brutalist",
+      "css",
+      "form",
+      "input"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Praashoo7/brave-moose-56",
+    "description": "Open-source form component from Uiverse named 'Brave Moose Form' built with CSS or Tailwind."
+  },
+  {
+    "id": "cat-167",
+    "name": "Fresh Newt Form",
+    "category": "component",
+    "tags": [
+      "css",
+      "form",
+      "input",
+      "minimal"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/guilhermeyohan/fresh-newt-22",
+    "description": "Open-source form component from Uiverse named 'Fresh Newt Form' built with CSS or Tailwind."
+  },
+  {
+    "id": "cat-168",
+    "name": "Chatty Ladybug Form",
+    "category": "component",
+    "tags": [
+      "css",
+      "form",
+      "input",
+      "morph",
+      "soft"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Javierrocadev/chatty-ladybug-95",
+    "description": "Open-source form component from Uiverse named 'Chatty Ladybug Form' built with CSS or Tailwind."
+  },
+  {
+    "id": "cat-169",
+    "name": "Cold Lionfish Form",
+    "category": "component",
+    "tags": [
+      "css",
+      "dark",
+      "form",
+      "input",
+      "neon"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/satyamchaudharydev/cold-lionfish-49",
+    "description": "Open-source form component from Uiverse named 'Cold Lionfish Form' built with CSS or Tailwind."
+  },
+  {
+    "id": "cat-170",
+    "name": "Angry Shrimp Form",
+    "category": "component",
+    "tags": [
+      "css",
+      "form",
+      "gradient",
+      "input",
+      "metallic"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/zanina-yassine/angry-shrimp-34",
+    "description": "Open-source form component from Uiverse named 'Angry Shrimp Form' built with CSS or Tailwind."
+  },
+  {
+    "id": "cat-171",
+    "name": "Bitter Eagle Card",
+    "category": "component",
+    "tags": [
+      "card",
+      "css",
+      "glass",
+      "hover-effect",
+      "minimal"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/vinodjangid07/bitter-eagle-34",
+    "description": "Open-source card component from Uiverse called 'Bitter Eagle Card' built with CSS or Tailwind."
+  },
+  {
+    "id": "cat-172",
+    "name": "Empty Wolverine Card",
+    "category": "component",
+    "tags": [
+      "card",
+      "css",
+      "gradient",
+      "hover-effect",
+      "soft"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Cybercom682/empty-wolverine-58",
+    "description": "Open-source card component from Uiverse called 'Empty Wolverine Card' built with CSS or Tailwind."
+  },
+  {
+    "id": "cat-173",
+    "name": "Ancient Starfish Card",
+    "category": "component",
+    "tags": [
+      "brutalist",
+      "card",
+      "css",
+      "hover-effect"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/gharsh11032000/ancient-starfish-68",
+    "description": "Open-source card component from Uiverse called 'Ancient Starfish Card' built with CSS or Tailwind."
+  },
+  {
+    "id": "cat-174",
+    "name": "Mean Dolphin Card",
+    "category": "component",
+    "tags": [
+      "card",
+      "css",
+      "glow",
+      "hover-effect",
+      "neon"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/KSAplay/mean-dolphin-87",
+    "description": "Open-source card component from Uiverse called 'Mean Dolphin Card' built with CSS or Tailwind."
+  },
+  {
+    "id": "cat-175",
+    "name": "Mean Vampirebat Card",
+    "category": "component",
+    "tags": [
+      "card",
+      "css",
+      "hover-effect",
+      "minimal"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Yaya12085/mean-vampirebat-50",
+    "description": "Open-source card component from Uiverse called 'Mean Vampirebat Card' built with CSS or Tailwind."
+  },
+  {
+    "id": "cat-176",
+    "name": "Warm Hound Card",
+    "category": "component",
+    "tags": [
+      "card",
+      "css",
+      "dark",
+      "gradient",
+      "hover-effect"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Spacious74/warm-hound-89",
+    "description": "Open-source card component from Uiverse called 'Warm Hound Card' built with CSS or Tailwind."
+  },
+  {
+    "id": "cat-177",
+    "name": "Dangerous Warthog Card",
+    "category": "component",
+    "tags": [
+      "card",
+      "css",
+      "holo",
+      "hover-effect",
+      "metallic"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/SteveBloX/dangerous-warthog-85",
+    "description": "Open-source card component from Uiverse called 'Dangerous Warthog Card' built with CSS or Tailwind."
+  },
+  {
+    "id": "cat-178",
+    "name": "Spotty Squid Card",
+    "category": "component",
+    "tags": [
+      "card",
+      "css",
+      "hover-effect",
+      "morph"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Kemboi-Dun/spotty-squid-30",
+    "description": "Open-source card component from Uiverse called 'Spotty Squid Card' built with CSS or Tailwind."
+  },
+  {
+    "id": "cat-179",
+    "name": "Witty Squid Card",
+    "category": "component",
+    "tags": [
+      "card",
+      "css",
+      "hover-effect",
+      "retro"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/chase2k25/witty-squid-83",
+    "description": "Open-source card component from Uiverse called 'Witty Squid Card' built with CSS or Tailwind."
+  },
+  {
+    "id": "cat-180",
+    "name": "Spicy Starfish Checkbox",
+    "category": "component",
+    "tags": [
+      "click-effect",
+      "css",
+      "glow",
+      "neon",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/PriyanshuGupta28/spicy-starfish-71",
+    "description": "Open-source checkbox component from Uiverse named 'Spicy Starfish Checkbox' with custom animated state."
+  },
+  {
+    "id": "cat-181",
+    "name": "Bright Rat Checkbox",
+    "category": "component",
+    "tags": [
+      "click-effect",
+      "css",
+      "gradient",
+      "soft",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/shreyasm-dev/bright-rat-5",
+    "description": "Open-source checkbox component from Uiverse named 'Bright Rat Checkbox' with custom animated state."
+  },
+  {
+    "id": "cat-182",
+    "name": "Dry Robin Checkbox",
+    "category": "component",
+    "tags": [
+      "click-effect",
+      "css",
+      "minimal",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/catraco/dry-robin-61",
+    "description": "Open-source checkbox component from Uiverse named 'Dry Robin Checkbox' with custom animated state."
+  },
+  {
+    "id": "cat-183",
+    "name": "Big Deer Checkbox",
+    "category": "component",
+    "tags": [
+      "brutalist",
+      "click-effect",
+      "css",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Shoh2008/big-deer-80",
+    "description": "Open-source checkbox component from Uiverse named 'Big Deer Checkbox' with custom animated state."
+  },
+  {
+    "id": "cat-184",
+    "name": "Mighty Warthog Checkbox",
+    "category": "component",
+    "tags": [
+      "click-effect",
+      "css",
+      "glass",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Galahhad/mighty-warthog-42",
+    "description": "Open-source checkbox component from Uiverse named 'Mighty Warthog Checkbox' with custom animated state."
+  },
+  {
+    "id": "cat-185",
+    "name": "Ugly Dog Checkbox",
+    "category": "component",
+    "tags": [
+      "click-effect",
+      "css",
+      "metallic",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/AbanoubMagdy1/ugly-dog-26",
+    "description": "Open-source checkbox component from Uiverse named 'Ugly Dog Checkbox' with custom animated state."
+  },
+  {
+    "id": "cat-186",
+    "name": "Grumpy Panda Checkbox",
+    "category": "component",
+    "tags": [
+      "click-effect",
+      "css",
+      "morph",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Dev-MdTuhin/grumpy-panda-46",
+    "description": "Open-source checkbox component from Uiverse named 'Grumpy Panda Checkbox' with custom animated state."
+  },
+  {
+    "id": "cat-187",
+    "name": "Strange Frog Checkbox",
+    "category": "component",
+    "tags": [
+      "click-effect",
+      "css",
+      "gradient",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/mobinkakei/strange-frog-14",
+    "description": "Open-source checkbox component from Uiverse named 'Strange Frog Checkbox' with custom animated state."
+  },
+  {
+    "id": "cat-188",
+    "name": "Sweet Ape Checkbox",
+    "category": "component",
+    "tags": [
+      "click-effect",
+      "css",
+      "soft",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Galahhad/sweet-ape-100",
+    "description": "Open-source checkbox component from Uiverse named 'Sweet Ape Checkbox' with custom animated state."
+  },
+  {
+    "id": "cat-189",
+    "name": "Chatty Zebra Loader",
+    "category": "component",
+    "tags": [
+      "animation",
+      "css",
+      "gradient",
+      "loader"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/StealthWorm/chatty-zebra-11",
+    "description": "CSS/Tailwind loader animation from Uiverse named 'Chatty Zebra Loader' for loading states."
+  },
+  {
+    "id": "cat-190",
+    "name": "Orange Monkey Loader",
+    "category": "component",
+    "tags": [
+      "animation",
+      "css",
+      "loader",
+      "minimal"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/andrew-demchenk0/orange-monkey-2",
+    "description": "CSS/Tailwind loader animation from Uiverse named 'Orange Monkey Loader' for loading states."
+  },
+  {
+    "id": "cat-191",
+    "name": "Weak Bobcat Loader",
+    "category": "component",
+    "tags": [
+      "animation",
+      "css",
+      "glow",
+      "loader",
+      "neon"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/zanina-yassine/weak-bobcat-68",
+    "description": "CSS/Tailwind loader animation from Uiverse named 'Weak Bobcat Loader' for loading states."
+  },
+  {
+    "id": "cat-192",
+    "name": "Young Goat Loader",
+    "category": "component",
+    "tags": [
+      "animation",
+      "css",
+      "loader",
+      "morph"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Nawsome/young-goat-78",
+    "description": "CSS/Tailwind loader animation from Uiverse named 'Young Goat Loader' for loading states."
+  },
+  {
+    "id": "cat-193",
+    "name": "Lazy Quail Loader",
+    "category": "component",
+    "tags": [
+      "animation",
+      "css",
+      "loader",
+      "metaball"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/AatreyuShau/lazy-quail-10",
+    "description": "CSS/Tailwind loader animation from Uiverse named 'Lazy Quail Loader' for loading states."
+  },
+  {
+    "id": "cat-194",
+    "name": "New Walrus Loader",
+    "category": "component",
+    "tags": [
+      "animation",
+      "css",
+      "glass",
+      "loader"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/mrhyddenn/new-walrus-45",
+    "description": "CSS/Tailwind loader animation from Uiverse named 'New Walrus Loader' for loading states."
+  },
+  {
+    "id": "cat-195",
+    "name": "Light Husky Loader",
+    "category": "component",
+    "tags": [
+      "animation",
+      "css",
+      "fluid",
+      "loader"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Nawsome/light-husky-91",
+    "description": "CSS/Tailwind loader animation from Uiverse named 'Light Husky Loader' for loading states."
+  },
+  {
+    "id": "cat-196",
+    "name": "Ugly Bullfrog Loader",
+    "category": "component",
+    "tags": [
+      "animation",
+      "css",
+      "loader",
+      "soft"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/jeremyssocial/ugly-bullfrog-62",
+    "description": "CSS/Tailwind loader animation from Uiverse named 'Ugly Bullfrog Loader' for loading states."
+  },
+  {
+    "id": "cat-197",
+    "name": "Sweet Frog Loader",
+    "category": "component",
+    "tags": [
+      "animation",
+      "css",
+      "duotone",
+      "loader"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/BlackisPlay/sweet-frog-67",
+    "description": "CSS/Tailwind loader animation from Uiverse named 'Sweet Frog Loader' for loading states."
+  },
+  {
+    "id": "cat-198",
+    "name": "Pink Deer Loader",
+    "category": "component",
+    "tags": [
+      "animation",
+      "brutalist",
+      "css",
+      "loader"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/mobinkakei/pink-deer-76",
+    "description": "CSS/Tailwind loader animation from Uiverse named 'Pink Deer Loader' for loading states."
+  },
+  {
+    "id": "cat-199",
+    "name": "Young Horse Radio",
+    "category": "component",
+    "tags": [
+      "click-effect",
+      "css",
+      "minimal",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/elijahgummer/young-horse-7",
+    "description": "Custom radio button component from Uiverse named 'Young Horse Radio' with animated state."
+  },
+  {
+    "id": "cat-200",
+    "name": "Quiet Firefox Radio",
+    "category": "component",
+    "tags": [
+      "click-effect",
+      "css",
+      "glass",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/xbeat_5120/quiet-firefox-74",
+    "description": "Custom radio button component from Uiverse named 'Quiet Firefox Radio' with animated state."
+  },
+  {
+    "id": "cat-201",
+    "name": "Clever Elephant Radio",
+    "category": "component",
+    "tags": [
+      "click-effect",
+      "css",
+      "neon",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/andrew-demchenk0/clever-elephant-35",
+    "description": "Custom radio button component from Uiverse named 'Clever Elephant Radio' with animated state."
+  },
+  {
+    "id": "cat-202",
+    "name": "Little Wombat Radio",
+    "category": "component",
+    "tags": [
+      "click-effect",
+      "css",
+      "gradient",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/byllzz/little-wombat-0",
+    "description": "Custom radio button component from Uiverse named 'Little Wombat Radio' with animated state."
+  },
+  {
+    "id": "cat-203",
+    "name": "Bad Starfish Radio",
+    "category": "component",
+    "tags": [
+      "click-effect",
+      "css",
+      "soft",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Shoh2008/bad-starfish-74",
+    "description": "Custom radio button component from Uiverse named 'Bad Starfish Radio' with animated state."
+  },
+  {
+    "id": "cat-204",
+    "name": "Fast Turtle Radio",
+    "category": "component",
+    "tags": [
+      "click-effect",
+      "css",
+      "metallic",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/nazar-gavrylyk/fast-turtle-85",
+    "description": "Custom radio button component from Uiverse named 'Fast Turtle Radio' with animated state."
+  },
+  {
+    "id": "cat-205",
+    "name": "Slimy Warthog Radio",
+    "category": "component",
+    "tags": [
+      "brutalist",
+      "click-effect",
+      "css",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Pradeepsaranbishnoi/slimy-warthog-37",
+    "description": "Custom radio button component from Uiverse named 'Slimy Warthog Radio' with animated state."
+  },
+  {
+    "id": "cat-206",
+    "name": "Swift Chipmunk Radio",
+    "category": "component",
+    "tags": [
+      "click-effect",
+      "css",
+      "morph",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/PriyanshuGupta28/swift-chipmunk-76",
+    "description": "Custom radio button component from Uiverse named 'Swift Chipmunk Radio' with animated state."
+  },
+  {
+    "id": "cat-207",
+    "name": "Quick Panther Radio",
+    "category": "component",
+    "tags": [
+      "click-effect",
+      "css",
+      "glow",
+      "toggle"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Smit-Prajapati/quick-panther-98",
+    "description": "Custom radio button component from Uiverse named 'Quick Panther Radio' with animated state."
+  },
+  {
+    "id": "cat-208",
+    "name": "Good Donkey Input",
+    "category": "component",
+    "tags": [
+      "css",
+      "hover-effect",
+      "input",
+      "minimal"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/vinodjangid07/good-donkey-28",
+    "description": "CSS/Tailwind input field from Uiverse named 'Good Donkey Input' with animated focus states."
+  },
+  {
+    "id": "cat-209",
+    "name": "Curly Chipmunk Input",
+    "category": "component",
+    "tags": [
+      "css",
+      "gradient",
+      "hover-effect",
+      "input"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/FColombati/curly-chipmunk-73",
+    "description": "CSS/Tailwind input field from Uiverse named 'Curly Chipmunk Input' with animated focus states."
+  },
+  {
+    "id": "cat-210",
+    "name": "Sour Quail Input",
+    "category": "component",
+    "tags": [
+      "css",
+      "glass",
+      "hover-effect",
+      "input"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/EcheverriaJesus/sour-quail-63",
+    "description": "CSS/Tailwind input field from Uiverse named 'Sour Quail Input' with animated focus states."
+  },
+  {
+    "id": "cat-211",
+    "name": "Hot Cat Input",
+    "category": "component",
+    "tags": [
+      "brutalist",
+      "css",
+      "hover-effect",
+      "input"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/adamgiebl/hot-cat-14",
+    "description": "CSS/Tailwind input field from Uiverse named 'Hot Cat Input' with animated focus states."
+  },
+  {
+    "id": "cat-212",
+    "name": "Sharp Rattlesnake Input",
+    "category": "component",
+    "tags": [
+      "css",
+      "glow",
+      "hover-effect",
+      "input",
+      "neon"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/ozgeozkaraa01/sharp-rattlesnake-74",
+    "description": "CSS/Tailwind input field from Uiverse named 'Sharp Rattlesnake Input' with animated focus states."
+  },
+  {
+    "id": "cat-213",
+    "name": "Slippery Snail Input",
+    "category": "component",
+    "tags": [
+      "css",
+      "hover-effect",
+      "input",
+      "soft"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/alexruix/slippery-snail-18",
+    "description": "CSS/Tailwind input field from Uiverse named 'Slippery Snail Input' with animated focus states."
+  },
+  {
+    "id": "cat-214",
+    "name": "Serious Lionfish Input",
+    "category": "component",
+    "tags": [
+      "css",
+      "hover-effect",
+      "input",
+      "metallic"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/Jaareet/serious-lionfish-75",
+    "description": "CSS/Tailwind input field from Uiverse named 'Serious Lionfish Input' with animated focus states."
+  },
+  {
+    "id": "cat-215",
+    "name": "Tasty Dingo Input",
+    "category": "component",
+    "tags": [
+      "css",
+      "hover-effect",
+      "input",
+      "morph"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/satyamchaudharydev/tasty-dingo-5",
+    "description": "CSS/Tailwind input field from Uiverse named 'Tasty Dingo Input' with animated focus states."
+  },
+  {
+    "id": "cat-216",
+    "name": "Friendly Rabbit Input",
+    "category": "component",
+    "tags": [
+      "css",
+      "halftone",
+      "hover-effect",
+      "input"
+    ],
+    "code": "",
+    "sourceUrl": "https://uiverse.io/pharmacist-sabot/friendly-rabbit-86",
+    "description": "CSS/Tailwind input field from Uiverse named 'Friendly Rabbit Input' with animated focus states."
+  },
+  {
+    "id": "cat-217",
+    "name": "MorphIcon Core",
+    "category": "component",
+    "tags": [
+      "animated",
+      "animation",
+      "component-library",
+      "icon",
+      "minimal",
+      "react",
+      "svelte",
+      "svg",
+      "typescript",
+      "vue"
+    ],
+    "code": "",
+    "sourceUrl": "https://github.com/guillermolg00/morphicons",
+    "description": "SVG icon morphing component library for React, Vue, Svelte, React Native, and Astro. Morphs any stroke icon (Lucide, Tabler, Heroicons, Iconoir, Akar, Untitled UI, Hugeicons, shadcn) into any other using closed-form 2D Procrustes with spring physics. 6.5KB core, zero runtime deps."
+  },
+  {
+    "id": "cat-218",
+    "name": "MorphIcon Menu Toggle",
+    "category": "component",
+    "tags": [
+      "animated",
+      "button",
+      "icon",
+      "minimal",
+      "navigation",
+      "react",
+      "svg"
+    ],
+    "code": "",
+    "sourceUrl": "https://github.com/guillermolg00/morphicons",
+    "description": "Drop-in animated menu/hamburger toggle using MorphIcon. Swap between any two Lucide-style icons (e.g., Menu \u2194 X) with one component, no from/to pairs needed."
+  },
+  {
+    "id": "cat-219",
+    "name": "MorphIcon Plus to Arrow",
+    "category": "component",
+    "tags": [
+      "animated",
+      "animation",
+      "icon",
+      "minimal",
+      "svg"
+    ],
+    "code": "",
+    "sourceUrl": "https://github.com/guillermolg00/morphicons",
+    "description": "Animated plus \u2192 arrow-right morph icon with optimal rotation solved in closed form. Coordinate-aligned frame, smooth interpolation."
+  },
+  {
+    "id": "cat-220",
+    "name": "Super Gradients",
+    "category": "component",
+    "tags": [
+      "background",
+      "component",
+      "css",
+      "framer",
+      "gradient",
+      "hero",
+      "modern"
+    ],
+    "code": "",
+    "sourceUrl": "https://segmentui.com/",
+    "description": "Framer component featuring advanced multi-stop gradient treatments for hero sections, cards, and backgrounds. Production-ready, CMS-aware."
+  },
+  {
+    "id": "cat-221",
+    "name": "Fractal Glass",
+    "category": "component",
+    "tags": [
+      "3d",
+      "background",
+      "card",
+      "glass",
+      "react",
+      "tailwindcss"
+    ],
+    "code": "",
+    "sourceUrl": "https://21st.dev/@hyperiux/components/fractal-glass",
+    "description": "Glassmorphism component with fractal pattern overlays. Layered transparency with shader-like fractal noise backgrounds."
+  },
+  {
+    "id": "cat-222",
+    "name": "Gradient Text",
+    "category": "component",
+    "tags": [
+      "component",
+      "gradient",
+      "modern",
+      "react",
+      "tailwindcss",
+      "text"
+    ],
+    "code": "",
+    "sourceUrl": "https://21st.dev/@designali-in/components/gradient-text/gradient-text",
+    "description": "Multi-stop gradient text component with smooth color transitions. 699 views."
+  },
+  {
+    "id": "cat-223",
+    "name": "Marquee",
+    "category": "component",
+    "tags": [
+      "animation",
+      "marquee",
+      "minimal",
+      "modern",
+      "react",
+      "tailwindcss"
+    ],
+    "code": "",
+    "sourceUrl": "https://21st.dev/@tom_ui/components/marquee",
+    "description": "Infinite horizontal scrolling marquee component. Configurable speed, direction, and pause-on-hover. 666 views."
+  },
+  {
+    "id": "cat-224",
+    "name": "Hover Preview",
+    "category": "component",
+    "tags": [
+      "card",
+      "hover-effect",
+      "minimal",
+      "modern",
+      "react",
+      "tailwindcss"
+    ],
+    "code": "",
+    "sourceUrl": "https://21st.dev/@minhxthanh/components/hover-preview",
+    "description": "Link hover preview card with image, title, and description revealed on cursor hover. 496 views."
+  },
+  {
+    "id": "cat-225",
+    "name": "Handwriting SVG",
+    "category": "component",
+    "tags": [
+      "animated",
+      "animation",
+      "minimal",
+      "react",
+      "svg"
+    ],
+    "code": "",
+    "sourceUrl": "https://21st.dev/@pulkitxm/components/handwriting-svg",
+    "description": "SVG path animation component that simulates handwriting. Strokes animate along path data. 375 views."
+  },
+  {
+    "id": "cat-226",
+    "name": "Button",
+    "category": "component",
+    "tags": [
+      "button",
+      "css",
+      "minimal",
+      "modern",
+      "tailwind"
+    ],
+    "code": "",
+    "sourceUrl": "https://daisyui.com/components/button/",
+    "description": "daisyUI Button component with multiple variants (primary, secondary, accent, neutral, ghost, link), sizes (xs, sm, md, lg, xl), wide and block modifiers, soft and glass styles. Supports loading states and icons."
+  },
+  {
+    "id": "cat-227",
+    "name": "Card",
+    "category": "component",
+    "tags": [
+      "card",
+      "css",
+      "minimal",
+      "modern",
+      "tailwind"
+    ],
+    "code": "",
+    "sourceUrl": "https://daisyui.com/components/card/",
+    "description": "daisyUI Card component for grouping and displaying content in an easily readable format. Includes card-body, card-title, card-actions, card-image, image-full layout, badges, side layout, and bordered variants."
+  },
+  {
+    "id": "cat-228",
+    "name": "KokonutUI Installation Guide",
+    "category": "component",
+    "tags": [
+      "docs",
+      "minimal",
+      "react",
+      "shadcn",
+      "tailwind"
+    ],
+    "code": "",
+    "sourceUrl": "https://kokonutui.com/docs",
+    "description": "Installation and setup documentation for KokonutUI: install via shadcn CLI in React or Next.js projects, configure components.json registry, install utilities (cn), and integrate with the shadcn MCP server for Claude Code/Cursor/VS Code/Codex."
+  },
+  {
+    "id": "cat-229",
+    "name": "CSS Loaders Collection",
+    "category": "component",
+    "tags": [
+      "animated",
+      "css",
+      "loader",
+      "minimal"
+    ],
+    "code": "",
+    "sourceUrl": "https://css-loaders.com/",
+    "description": "The biggest collection of loading animations: 600+ CSS-only loaders made using a single element. Includes a 'Zig-Zag' themed set; click any loader to copy its CSS."
+  },
+  {
+    "id": "cat-230",
+    "name": "Navbar Gallery",
+    "category": "component",
+    "tags": [
+      "css",
+      "gallery",
+      "html",
+      "minimal",
+      "modern"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.navbar.gallery/",
+    "description": "Navbar Gallery is a curated navigation-focused design inspiration website featuring hundreds of real-world navbar examples across categories: Static, Dropdown, Mega Menu, Side Bar, Progress Bar, Search Bar, Announcement, Full Screen, and Tabs."
+  },
+  {
+    "id": "cat-231",
+    "name": "Cursor Lab",
+    "category": "component",
+    "tags": [
+      "editor",
+      "javascript",
+      "minimal",
+      "modern",
+      "svg"
+    ],
+    "code": "",
+    "sourceUrl": "https://cursor-lab-ui.vercel.app/",
+    "description": "Cursor Lab \u2014 SVG-based custom cursor designer with live preview."
+  },
+  {
+    "id": "cat-232",
+    "name": "Gradlab",
+    "category": "component",
+    "tags": [
+      "background",
+      "css",
+      "minimal",
+      "modern",
+      "web"
+    ],
+    "code": "",
+    "sourceUrl": "http://www.gradlab.app/",
+    "description": "Gradlab \u2014 gradient background generator and lab for visual experiments."
+  },
+  {
+    "id": "cat-233",
+    "name": "Word Focus Scroll",
+    "category": "component",
+    "tags": [
+      "minimal",
+      "modern",
+      "react",
+      "tailwind",
+      "typography"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.great-ui.com/components/word-focus-scroll",
+    "description": "Scroll-driven typography that brings a word into focus as you scroll through a passage."
+  },
+  {
+    "id": "cat-234",
+    "name": "Macbook Mockup",
+    "category": "component",
+    "tags": [
+      "minimal",
+      "mockup",
+      "modern",
+      "react",
+      "tailwind"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.great-ui.com/components/macbook-mockup",
+    "description": "A realistic Macbook device mockup component for React + Tailwind."
+  },
+  {
+    "id": "cat-235",
+    "name": "Loading State",
+    "category": "component",
+    "tags": [
+      "animated",
+      "css",
+      "javascript",
+      "loader",
+      "minimal"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.beautifului.dev/",
+    "description": "Pixel-grid loading state with shimmer animation and elapsed time counter. Includes Drive, Dots, Orbit, and Surfer variants."
+  },
+  {
+    "id": "cat-236",
+    "name": "Streaming Text",
+    "category": "component",
+    "tags": [
+      "css",
+      "javascript",
+      "minimal",
+      "modern",
+      "typography"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.beautifului.dev/",
+    "description": "Streamed answer primitive with inline sources, action buttons, and follow-up suggestions \u2014 designed for AI chat interfaces."
+  },
+  {
+    "id": "cat-237",
+    "name": "Approval Card",
+    "category": "component",
+    "tags": [
+      "card",
+      "css",
+      "javascript",
+      "minimal",
+      "modern"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.beautifului.dev/",
+    "description": "Human-in-the-loop approval card for AI agents: questions the agent asks before acting, with Skip/Continue controls."
+  },
+  {
+    "id": "cat-238",
+    "name": "Prompt Bar",
+    "category": "component",
+    "tags": [
+      "css",
+      "input",
+      "javascript",
+      "minimal",
+      "modern"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.beautifului.dev/",
+    "description": "AI composer prompt bar with @ sources, / commands, model picker, and dictation support."
+  },
+  {
+    "id": "cat-239",
+    "name": "Recommendation Card",
+    "category": "component",
+    "tags": [
+      "card",
+      "css",
+      "javascript",
+      "minimal",
+      "modern"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.beautifului.dev/",
+    "description": "Agent suggestion card with a confidence meter, alternative actions, and Accept/Improve controls."
+  },
+  {
+    "id": "cat-240",
+    "name": "Context Cards",
+    "category": "component",
+    "tags": [
+      "card",
+      "css",
+      "javascript",
+      "minimal",
+      "modern"
+    ],
+    "code": "",
+    "sourceUrl": "https://www.beautifului.dev/",
+    "description": "Retrieved knowledge chunks with their sources, formatted as a feed for AI reasoning context."
+  },
+  {
+    "id": "cat-241",
+    "name": "Text Flipping Board",
+    "category": "component",
+    "tags": [
+      "animated",
+      "framer-motion",
+      "react",
+      "retro",
+      "tailwind",
+      "typography"
+    ],
+    "code": "",
+    "sourceUrl": "https://ui.aceternity.com/components/text-flipping-board",
+    "description": "A split-flap display component that animates characters with flip transitions, inspired by Vestaboard."
+  },
+  {
+    "id": "cat-242",
+    "name": "Tooltip Card",
+    "category": "component",
+    "tags": [
+      "minimal",
+      "modern",
+      "react",
+      "tailwind",
+      "tooltip"
+    ],
+    "code": "",
+    "sourceUrl": "https://ui.aceternity.com/components/tooltip-card",
+    "description": "A tooltip card container that follows the mouse pointer when hovered."
+  },
+  {
+    "id": "cat-243",
+    "name": "Terminal",
+    "category": "component",
+    "tags": [
+      "minimal",
+      "mockup",
+      "modern",
+      "react",
+      "tailwind"
+    ],
+    "code": "",
+    "sourceUrl": "https://ui.aceternity.com/components/terminal",
+    "description": "A macOS-style terminal component with bash syntax highlighting and typewriter effect."
+  },
+  {
+    "id": "cat-244",
+    "name": "Modal",
+    "category": "component",
+    "tags": [
+      "css",
+      "html",
+      "minimal",
+      "modal",
+      "modern",
+      "tailwind"
+    ],
+    "code": "",
+    "sourceUrl": "https://daisyui.com/components/modal/",
+    "description": "daisyUI Modal component with 4 usage methods: HTML dialog element (recommended), HTML popover, hidden checkbox (legacy), and anchor links (legacy). Supports placements (top/middle/bottom/start/end), responsive variants, custom widths, and an optional modal-backdrop."
   }
 ]
