@@ -123,7 +123,7 @@ function GalleryCard({ scene, onLike, liked }: { scene: any; onLike: () => void;
 
       {/* Body */}
       <div className="p-4">
-        <div className="flex items-start justify-between gap-2 mb-2">
+        <div className="flex items-start justify-between gap-2 mb-2 flex-wrap">
           <h3 className="font-semibold text-sm truncate">{scene.name}</h3>
           <button
             onClick={onLike}
@@ -155,7 +155,7 @@ function GalleryCard({ scene, onLike, liked }: { scene: any; onLike: () => void;
           </div>
         )}
 
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between flex-wrap">
           <span className="text-[10px] text-muted-foreground">
             {new Date(scene.createdAt).toLocaleDateString()}
           </span>
@@ -221,7 +221,7 @@ export default function SceneGallery() {
     });
 
   return (
-    <div className="min-h-[100dvh] bg-background overflow-x-hidden">
+    <div className="min-h-[100dvh] bg-background overflow-x-hidden pb-[env(safe-area-inset-bottom)]">
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-8">
         {/* Header */}
         <div className="flex items-center gap-4 mb-8 flex-wrap">
@@ -316,7 +316,7 @@ export default function SceneGallery() {
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as any)}
-            className="text-sm border border-border rounded-lg px-3 py-1.5 min-h-[44px] bg-background text-foreground"
+            className="text-sm border border-border rounded-lg px-3 py-1.5 min-h-[48px] bg-background text-foreground"
           >
             <option value="likes">Most Liked</option>
             <option value="views">Most Viewed</option>

@@ -84,7 +84,7 @@ function GallerySceneCard({ scene, onFork, onEmbed, onPreview }: {
 
         {/* Hover overlay */}
         <div className="absolute inset-0 bg-black/50 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex flex-wrap items-center justify-center gap-2">
-          <Button size="sm" variant="secondary" className="gap-1.5 text-xs min-h-[48px]" onClick={(e) => { e.stopPropagation(); onPreview(); }}>
+          <Button size="sm" variant="secondary" className="gap-1.5 text-xs min-h-[48px] min-w-[48px]" onClick={(e) => { e.stopPropagation(); onPreview(); }}>
             <Eye className="h-3.5 w-3.5" />Preview
           </Button>
           <Button size="sm" className="gap-1.5 text-xs min-h-[48px]" onClick={(e) => { e.stopPropagation(); onFork(); }}>
@@ -113,8 +113,8 @@ function GallerySceneCard({ scene, onFork, onEmbed, onPreview }: {
         <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
           <span className="text-xs text-muted-foreground">{elements.length} elements</span>
           <button
-            onClick={onEmbed}
-            className="min-h-[44px] min-w-[44px] flex items-center justify-center text-[10px] text-muted-foreground hover:text-foreground gap-1 transition-colors"
+          onClick={onEmbed}
+          className="min-h-[44px] min-w-[44px] min-h-[48px] min-w-[48px] flex items-center justify-center text-[10px] text-muted-foreground hover:text-foreground gap-1 transition-colors"
           >
             <Code2 className="h-3 w-3" />Embed
           </button>

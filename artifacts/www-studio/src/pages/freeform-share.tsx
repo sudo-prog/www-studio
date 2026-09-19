@@ -176,7 +176,7 @@ export default function FreeformSharePage() {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row flex-1 min-h-0">
+      <div className="flex flex-col md:flex-row flex-1 min-h-0 flex-wrap">
         {/* Page preview */}
         <div className="flex-1 bg-[#0d0d1a] relative overflow-hidden">
           <FreeformPageRenderer page={page} />
@@ -207,13 +207,13 @@ export default function FreeformSharePage() {
               <Code className="h-4 w-4 text-primary" />Embed this page
             </p>
 
-            <div className="flex gap-1 mb-3 flex-wrap">
+            <div className="flex gap-1 mb-3 flex-wrap items-center">
               {(["link", "iframe", "react"] as const).map((mode) => (
                 <button
                   key={mode}
                   onClick={() => setEmbedMode(mode)}
                   className={cn(
-                    "flex-1 min-w-0 py-1.5 min-h-[44px] text-xs rounded-md border transition-colors",
+                    "flex-1 min-w-[100px] py-1.5 min-h-[44px] text-xs rounded-md border transition-colors",
                     embedMode === mode
                       ? "bg-primary text-primary-foreground border-primary"
                       : "border-border text-muted-foreground hover:text-foreground"

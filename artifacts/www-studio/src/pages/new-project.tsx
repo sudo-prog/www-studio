@@ -146,14 +146,14 @@ export default function NewProject() {
                 <form onSubmit={handleClone} className="space-y-4">
                   <div className="relative">
                     <LinkIcon className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
-                    <Input type="url" placeholder="https://stripe.com" value={url} onChange={(e) => setUrl(e.target.value)} className="pl-10 h-12 text-base" required />
+                    <Input type="url" placeholder="https://stripe.com" value={url} onChange={(e) => setUrl(e.target.value)} className="pl-10 h-12 min-h-[48px] text-base" required />
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {["stripe.com", "linear.app", "vercel.com", "apple.com"].map((u) => (
                       <button key={u} type="button" onClick={() => setUrl(`https://${u}`)} className="text-xs px-3 py-1 min-w-[44px] min-h-[48px] rounded-full border border-border/50 text-muted-foreground hover:text-foreground hover:border-primary/50 transition-colors">{u}</button>
                     ))}
                   </div>
-                  <Button type="submit" className="w-full h-12 text-base font-medium" disabled={cloneMutation.isPending || !url}>
+                  <Button type="submit" className="w-full h-12 min-h-[48px] text-base font-medium" disabled={cloneMutation.isPending || !url}>
                     {cloneMutation.isPending ? <><Loader2 className="mr-2 h-5 w-5 animate-spin" />Cloning...</> : "Clone Site"}
                   </Button>
                 </form>
@@ -179,7 +179,7 @@ export default function NewProject() {
                       ))}
                     </div>
                   </div>
-                  <Button type="submit" className="w-full h-12 text-base font-medium" disabled={generateMutation.isPending || !prompt.trim()}>
+                  <Button type="submit" className="w-full h-12 min-h-[48px] text-base font-medium" disabled={generateMutation.isPending || !prompt.trim()}>
                     {generateMutation.isPending ? <><Loader2 className="mr-2 h-5 w-5 animate-spin" />Generating...</> : <><Sparkles className="mr-2 h-5 w-5" />Generate Site</>}
                   </Button>
                 </form>
@@ -208,7 +208,7 @@ export default function NewProject() {
                     </div>
                   )}
                   <input ref={fileInputRef} type="file" accept="image/*" className="hidden" onChange={(e) => { const f = e.target.files?.[0]; if (f) processFile(f); }} />
-                  <Button type="submit" className="w-full h-12 text-base font-medium" disabled={screenshotMutation.isPending || !imageData}>
+                  <Button type="submit" className="w-full h-12 min-h-[48px] text-base font-medium" disabled={screenshotMutation.isPending || !imageData}>
                     {screenshotMutation.isPending ? <><Loader2 className="mr-2 h-5 w-5 animate-spin" />Converting...</> : <><ImageUp className="mr-2 h-5 w-5" />Convert to Code</>}
                   </Button>
                 </form>
@@ -244,7 +244,7 @@ export default function NewProject() {
                     <p>2. Main menu → Plugins → <span className="text-primary">Figma to JSON</span> (or any JSON exporter)</p>
                     <p>3. Download the .json file and upload it here</p>
                   </div>
-                  <Button type="submit" className="w-full h-12 text-base font-medium" disabled={generateMutation.isPending || !figmaJson}>
+                  <Button type="submit" className="w-full h-12 min-h-[48px] text-base font-medium" disabled={generateMutation.isPending || !figmaJson}>
                     {generateMutation.isPending ? <><Loader2 className="mr-2 h-5 w-5 animate-spin" />Importing...</> : <><Figma className="mr-2 h-5 w-5" />Import Figma Design</>}
                   </Button>
                 </form>

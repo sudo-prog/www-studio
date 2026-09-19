@@ -67,7 +67,7 @@ export default function Dashboard() {
             { icon: <Layers className="h-4 w-4" />,      label: "Scenes",    value: scenesCount,                  color: "text-purple-400" },
             { icon: <BarChart3 className="h-4 w-4" />,   label: "Live Scenes", value: publishedScenes,           color: "text-orange-400" },
           ].map(({ icon, label, value, color }) => (
-            <div key={label} className="bg-card border border-border rounded-xl p-4 flex items-center gap-3">
+            <div key={label} className="bg-card border border-border rounded-xl p-4 flex items-center gap-3 flex-wrap">
               <div className={`${color} shrink-0`}>{icon}</div>
               <div>
                 <p className="text-2xl font-bold tabular-nums">{value}</p>
@@ -84,7 +84,7 @@ export default function Dashboard() {
               <h2 className="text-sm font-semibold flex items-center gap-2">
                 <Layers className="h-4 w-4 text-purple-400" />Recent Scenes
               </h2>
-              <Link href="/scenes" className="text-xs text-muted-foreground hover:text-foreground flex items-center gap-1 min-h-[48px] px-2">
+              <Link href="/scenes" className="text-xs text-muted-foreground hover:text-foreground flex items-center gap-1 min-h-[48px] px-2 flex-wrap">
                 View all →
               </Link>
             </div>
@@ -103,7 +103,7 @@ export default function Dashboard() {
                         } : { background: "hsl(var(--muted))" }}
                       >
                         {scene.status === "published" && (
-                          <span className="absolute top-1.5 right-1.5 text-[9px] px-1.5 py-0.5 rounded-full bg-green-500/20 text-green-400 border border-green-500/30">Live</span>
+                          <span className="absolute top-1.5 right-1.5 text-[9px] px-1.5 py-0.5 rounded-full bg-green-500/20 text-green-400 border border-green-500/30 min-h-[44px] flex items-center">Live</span>
                         )}
                       </div>
                       <div className="px-2.5 py-2">
@@ -151,10 +151,12 @@ export default function Dashboard() {
         </div>
 
         {isLoading ? (
+          <div className="overflow-x-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {[1, 2, 3, 4].map((i) => (
               <div key={i} className="h-64 rounded-lg bg-muted animate-pulse" />
             ))}
+          </div>
           </div>
         ) : projects.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-24 text-center border rounded-xl border-dashed border-border/50">
@@ -170,6 +172,7 @@ export default function Dashboard() {
             </Button>
           </div>
         ) : (
+          <div className="overflow-x-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {projects.map((project) => (
               <Card key={project.id} className="overflow-hidden group hover:border-primary/50 transition-colors flex flex-col">
@@ -179,7 +182,7 @@ export default function Dashboard() {
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center text-muted-foreground text-sm">No Preview</div>
                   )}
-                  <div className="absolute inset-0 bg-black/60 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+                  <div className="absolute inset-0 bg-black/60 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 flex-wrap">
                     <Button variant="secondary" size="sm" asChild className="min-h-[48px]">
                       <Link href={`/editor/${project.id}`}>
                         <Play className="w-4 h-4 mr-2" />Open Editor
@@ -198,7 +201,7 @@ export default function Dashboard() {
                   <div className="flex items-start justify-between gap-2 flex-wrap">
                     <div className="min-w-0">
                       <h3 className="font-semibold truncate mb-1" title={project.name}>{project.name}</h3>
-                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground flex-wrap">
                         <Clock className="w-3 h-3 shrink-0" />
                         <span>{new Date(project.updatedAt).toLocaleDateString()}</span>
                       </div>
@@ -236,9 +239,12 @@ export default function Dashboard() {
               </Card>
             ))}
           </div>
+          </div>
         )}
       </main>
+      <div className="pb-[env(safe-area-inset-bottom)]">
       <AiChatWidget context="my projects dashboard" onNavigate={setLocation} />
+      </div>
     </div>
   );
 }

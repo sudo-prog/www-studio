@@ -103,7 +103,7 @@ export default function ScenePreviewPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-[100dvh] flex items-center justify-center bg-[#0d1117]">
+      <div className="min-h-[100dvh] flex items-center justify-center bg-[#0d1117] pt-[env(safe-area-inset-top,0px)] pb-[env(safe-area-inset-bottom,0px)]">
         <div className="w-5 h-5 rounded-full border-2 border-white/20 border-t-white/80 animate-spin" />
       </div>
     );
@@ -111,7 +111,7 @@ export default function ScenePreviewPage() {
 
   if (isError) {
     return (
-      <div className="min-h-[100dvh] flex items-center justify-center bg-[#0d1117] text-white/40 text-sm">
+      <div className="min-h-[100dvh] flex items-center justify-center bg-[#0d1117] text-white/40 text-sm pt-[env(safe-area-inset-top,0px)] pb-[env(safe-area-inset-bottom,0px)]">
         Scene not found
       </div>
     );

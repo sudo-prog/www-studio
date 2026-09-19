@@ -279,7 +279,7 @@ export default function FreeformEditor() {
             <Label className="text-[10px] text-muted-foreground uppercase tracking-wider mb-1 block">Font Sizes</Label>
             <div className="space-y-1">
               {Object.entries(tokens.typography.fontSize).map(([name, value]) => (
-                <div key={name} className="flex items-center justify-between text-[10px]">
+                <div key={name} className="flex flex-wrap items-center justify-between text-[10px]">
                   <span className="text-muted-foreground">{name}</span>
                   <span>{value as string}</span>
                 </div>
@@ -401,7 +401,7 @@ export default function FreeformEditor() {
             ))}
           </div>
 
-          <div className="flex justify-center py-4">
+          <div className="flex flex-wrap justify-center py-4">
             <div
               className="border-2 border-border rounded-2xl overflow-hidden bg-[#0d0d14] shadow-xl"
               style={{ width: Math.min(mobileWidth, 360), height: 500 }}
@@ -558,7 +558,7 @@ export default function FreeformEditor() {
           <Button variant="ghost" size="icon" className="min-h-[44px] min-w-[44px]" onClick={() => setShowPreview(!showPreview)} title="Preview">
             <Eye className="w-3.5 h-3.5" />
           </Button>
-          <Button variant="ghost" size="sm" className="min-h-[44px] text-xs gap-1" onClick={handleExport}>
+          <Button variant="ghost" size="sm" className="min-h-[44px] min-w-[44px] text-xs gap-1" onClick={handleExport}>
             <Download className="w-3.5 h-3.5" />
             Export
           </Button>
@@ -622,7 +622,7 @@ export default function FreeformEditor() {
 
       {/* Status bar */}
       <footer className="min-h-[48px] shrink-0 border-t border-border bg-background flex flex-wrap items-center justify-between px-3 text-[10px] text-muted-foreground pb-[env(safe-area-inset-bottom)] gap-2">
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           <span>{state.page.elements.length} elements</span>
           <span>Canvas: {state.page.canvasWidth}×{state.page.canvasHeight}</span>
           {state.page.artboards && state.page.artboards.length > 0 && (
@@ -634,7 +634,7 @@ export default function FreeformEditor() {
             </span>
           )}
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           <span>Zoom: {Math.round(state.zoom * 100)}%</span>
           {state.snapGrid && <span className="text-primary">Snap: {state.gridSize}px</span>}
           {state.showRulers && <span className="text-primary">Rulers</span>}

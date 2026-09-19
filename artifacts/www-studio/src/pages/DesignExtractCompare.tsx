@@ -40,7 +40,7 @@ function getColorDiff(
 
 function ColorBlock({ hex }: { hex: string }) {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex flex-wrap items-center gap-2">
       <div
         className="w-5 h-5 rounded border border-[#27272a]"
         style={{ backgroundColor: hex }}
@@ -136,7 +136,7 @@ export default function DesignExtractCompare() {
 
   if (loading) {
     return (
-      <div className="min-h-[100dvh] bg-[#0a0a0b] text-foreground flex items-center justify-center">
+      <div className="min-h-[100dvh] bg-[#0a0a0b] text-foreground flex items-center justify-center pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]">
         <Loader2 className="h-6 w-6 animate-spin text-[#3b82f6]" />
       </div>
     );
@@ -144,7 +144,7 @@ export default function DesignExtractCompare() {
 
   if (error) {
     return (
-      <div className="min-h-[100dvh] bg-[#0a0a0b] text-foreground p-6">
+      <div className="min-h-[100dvh] bg-[#0a0a0b] text-foreground p-6 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]">
         <Alert className="max-w-lg mx-auto border-red-500/30 bg-red-500/5">
           <AlertCircle className="h-4 w-4 text-red-400" />
           <AlertDescription className="text-red-400">{error}</AlertDescription>
@@ -159,12 +159,12 @@ export default function DesignExtractCompare() {
   const colorDiff = getColorDiff(colorsA, colorsB);
 
   return (
-    <div className="min-h-[100dvh] bg-[#0a0a0b] text-foreground pb-[env(safe-area-inset-bottom)]">
+    <div className="min-h-[100dvh] bg-[#0a0a0b] text-foreground pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]">
       <Navbar />
       {/* Header */}
       <div className="border-b border-[#27272a] px-4 md:px-6 py-4">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-3 min-h-[48px]">
+          <div className="flex items-center gap-3 min-h-[44px]">
             <GitCompare className="h-5 w-5 text-[#3b82f6]" />
             <h1 className="text-lg font-semibold font-display">Compare Designs</h1>
           </div>
@@ -172,7 +172,7 @@ export default function DesignExtractCompare() {
             size="sm"
             onClick={handleMerge}
             disabled={merging}
-            className="bg-[#3b82f6] hover:bg-[#3b82f6]/90 text-white min-h-[48px]"
+            className="bg-[#3b82f6] hover:bg-[#3b82f6]/90 text-white min-h-[44px]"
           >
             {merging ? (
               <Loader2 className="h-3 w-3 mr-1.5 animate-spin" />
@@ -254,7 +254,7 @@ export default function DesignExtractCompare() {
                           <p className="text-[10px] text-muted-foreground mb-1">{name}</p>
                           <ColorBlock hex={hex} />
                           {isDifferent && colorsA[name] && (
-                            <div className="mt-1 flex items-center gap-1 text-[10px] text-amber-400">
+                            <div className="mt-1 flex flex-wrap items-center gap-1 text-[10px] text-amber-400">
                               <ArrowRight className="h-3 w-3" />
                               <span>was {colorsA[name]}</span>
                             </div>

@@ -95,13 +95,13 @@ export default function DesignExtractGallery() {
                 className="rounded-lg border bg-card overflow-hidden hover:shadow-md transition-shadow"
               >
                 {/* Color swatch header */}
-                <div className="h-24 flex flex-wrap">
+                <div className="h-24 flex flex-wrap gap-1">
                   {Object.entries(item.colors)
                     .slice(0, 6)
                     .map(([name, value]) => (
-                      <div
+                    <div
                         key={name}
-                        className="flex-1 h-full"
+                        className="flex-1 h-full min-h-[20px]"
                         style={{ backgroundColor: value }}
                         title={name}
                       />

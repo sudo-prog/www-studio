@@ -346,7 +346,7 @@ export default function SceneEditor() {
         else if (cmd.id === "enhance") setShowEnhancer(true);
       }} />
 
-      <div className="h-[100dvh] flex flex-col bg-background overflow-hidden">
+      <div className="h-[100dvh] flex flex-col bg-background overflow-hidden pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]">
         {/* ── Top bar ── */}
         <div className="h-12 flex flex-wrap items-center gap-1.5 px-2 border-b border-border shrink-0 bg-background/95 backdrop-blur overflow-x-auto">
           <Button variant="ghost" size="icon" className="h-8 w-8 shrink-0 min-h-[44px] min-w-[44px]" onClick={() => navigate("/scenes")} title="Back to Scenes">
@@ -642,17 +642,17 @@ export default function SceneEditor() {
                               <Label className="text-xs text-muted-foreground">Font Size</Label>
                               <span className="text-xs text-muted-foreground font-mono">{selectedEl.fontSize ?? 24}px</span>
                             </div>
-                            <Slider min={8} max={120} step={2} value={[selectedEl.fontSize ?? 24]} onValueChange={([v]) => handleUpdate(selectedEl.id, { fontSize: v })} className="min-h-[44px]" />
+                            <Slider min={8} max={120} step={2} value={[selectedEl.fontSize ?? 24]} onValueChange={([v]) => handleUpdate(selectedEl.id, { fontSize: v })} className="min-h-[48px]" />
                           </div>
                         </>
                       )}
                       <div className="flex items-center justify-between">
                         <Label className="text-xs text-muted-foreground">Visible</Label>
-                        <Switch checked={selectedEl.visible} onCheckedChange={(v) => handleUpdate(selectedEl.id, { visible: v })} className="min-h-[44px]" />
+                        <Switch checked={selectedEl.visible} onCheckedChange={(v) => handleUpdate(selectedEl.id, { visible: v })} className="min-h-[48px]" />
                       </div>
                       <div className="flex items-center justify-between">
                         <Label className="text-xs text-muted-foreground">Locked</Label>
-                        <Switch checked={selectedEl.locked} onCheckedChange={(v) => handleUpdate(selectedEl.id, { locked: v })} className="min-h-[44px]" />
+                        <Switch checked={selectedEl.locked} onCheckedChange={(v) => handleUpdate(selectedEl.id, { locked: v })} className="min-h-[48px]" />
                       </div>
                       <div className="pt-2 flex gap-2 flex-wrap">
                         <Button variant="ghost" size="sm" className="flex-1 gap-1.5 text-xs min-h-[44px]" onClick={() => {

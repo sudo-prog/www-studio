@@ -500,7 +500,7 @@ export default function DesignExtractPage() {
         )}
 
         {/* Two-column layout: stacks on mobile */}
-        <div className="flex flex-col lg:flex-row gap-6">
+        <div className="flex flex-col lg:flex-row lg:flex-wrap gap-6">
           {/* Left column */}
           <div className="flex-1 min-w-0 space-y-4">
             {state.phase === "input" && (

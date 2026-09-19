@@ -96,3 +96,9 @@ artifacts/www-studio/test_minimal.ts
 artifacts/www-studio/test_template.ts
 design-md-extractor/
 .config/
+
+# Containment/trash folders (consolidation artifacts, do not push)
+_CONTAINMENT*/
+_TRASH*.tar.gz
+_TRASH_*/
+BACKUP_*/

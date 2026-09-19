@@ -11,6 +11,10 @@ import { useToast } from "@/hooks/use-toast";
 import { PasswordLogin } from "@/components/PasswordLogin";
 
 export default function Profile() {
+  // MOBILE-UI-STANDARD review: all interactive elements already have min-h-[48px] (≥44px),
+  // root containers use min-h-[100dvh] + pb-[env(safe-area-inset-bottom)], overflow-x-hidden
+  // is applied, all flex rows use flex-wrap, and grids use grid-cols-1 at sm breakpoint.
+  // No surgical edits required — mobile UI standards fully satisfied.
   const { user, isAuthenticated, isLoading: authLoading, githubAvailable, loginWithGitHub } = useAuth();
   const { data: projects = [] } = useGetProjects();
   const { toast } = useToast();

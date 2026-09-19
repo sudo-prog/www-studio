@@ -271,8 +271,8 @@ export default function Components() {
         </div>
 
         {/* Search + filters */}
-        <div className="flex flex-col md:flex-row gap-4 mb-8">
-          <div className="relative flex-1 max-w-md">
+        <div className="flex flex-col md:flex-row gap-4 mb-8 md:flex-wrap">
+          <div className="relative flex-1 max-w-md min-w-0">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <Input
               value={search}
@@ -297,11 +297,11 @@ export default function Components() {
           {/* Minimum-stars filter chip row. Tapping a chip sets the minimum
               star threshold; tapping "All" clears it. Mirrors the pattern
               of the existing CategoryNav. */}
-          <div className="flex items-center gap-1.5 overflow-x-auto" role="group" aria-label="Minimum star rating">
+          <div className="flex flex-wrap items-center gap-1.5 overflow-x-auto" role="group" aria-label="Minimum star rating">
             <button
               type="button"
               onClick={() => setMinRating(0)}
-              className={`shrink-0 px-3 h-9 min-h-[36px] rounded-full text-xs font-medium border transition-colors ${
+              className={`shrink-0 px-3 min-h-[44px] rounded-full text-xs font-medium border transition-colors ${
                 minRating === 0
                   ? "bg-primary text-primary-foreground border-primary"
                   : "border-border text-muted-foreground hover:text-foreground"
@@ -315,7 +315,7 @@ export default function Components() {
                 key={n}
                 type="button"
                 onClick={() => setMinRating(minRating === n ? 0 : n)}
-                className={`shrink-0 px-3 h-9 min-h-[36px] rounded-full text-xs font-medium border inline-flex items-center gap-1 transition-colors ${
+                className={`shrink-0 px-3 min-h-[44px] rounded-full text-xs font-medium border inline-flex items-center gap-1 transition-colors ${
                   minRating === n
                     ? "bg-amber-500/20 text-amber-300 border-amber-500/50"
                     : "border-border text-muted-foreground hover:text-foreground"
@@ -330,7 +330,7 @@ export default function Components() {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-6">
+        <div className="flex flex-col md:flex-row gap-6 md:flex-wrap">
           {/* Mobile category pills — overflow-x-auto so wide pill rows scroll at 390px */}
           <div className="md:hidden overflow-x-auto">
             <CategoryNav
@@ -361,7 +361,7 @@ export default function Components() {
             ) : (
               <>
                 <div
-                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 overflow-x-auto"
+                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
                   data-testid="component-grid"
                 >
                   {visibleItems.map((item) => (

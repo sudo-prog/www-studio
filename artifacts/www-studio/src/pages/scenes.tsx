@@ -58,7 +58,7 @@ function SceneCard({ scene, onEdit, onDelete, onFork, onTogglePublish, selected,
       {onSelect && (
         <button
           onClick={(e) => { e.stopPropagation(); onSelect(); }}
-          className="absolute top-2 right-2 z-20 min-h-[44px] min-w-[44px] flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity"
+          className="absolute top-2 right-2 z-20 min-h-[48px] min-w-[48px] flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity"
           style={selected ? { opacity: 1 } : {}}
         >
           {selected
@@ -395,7 +395,7 @@ export default function Scenes() {
             <button
               onClick={() => setTagFilter(null)}
               className={cn(
-                "text-xs px-2.5 py-1 rounded-full border transition-colors min-h-[44px] min-w-[44px] flex items-center",
+                "text-xs px-2.5 py-1 rounded-full border transition-colors min-h-[48px] min-w-[48px] flex items-center",
                 tagFilter === null ? "bg-primary text-primary-foreground border-primary" : "border-border text-muted-foreground hover:border-primary/40"
               )}
             >All</button>
@@ -404,7 +404,7 @@ export default function Scenes() {
                 key={tag}
                 onClick={() => setTagFilter(tagFilter === tag ? null : tag)}
                 className={cn(
-                  "text-xs px-2.5 py-1 rounded-full border transition-colors min-h-[44px] min-w-[44px] flex items-center",
+                  "text-xs px-2.5 py-1 rounded-full border transition-colors min-h-[48px] min-w-[48px] flex items-center",
                   tagFilter === tag ? "bg-primary/10 border-primary/40 text-primary" : "border-border text-muted-foreground hover:border-primary/30"
                 )}
               >
@@ -422,13 +422,13 @@ export default function Scenes() {
                 placeholder="Search scenes…"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="pl-9 min-h-[44px]"
+                className="pl-9 min-h-[48px]"
               />
             </div>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as "newest"|"oldest"|"name"|"likes"|"published")}
-              className="text-xs border border-border rounded-lg px-2 py-1.5 bg-background text-foreground min-h-[44px]"
+              className="text-xs border border-border rounded-lg px-2 py-1.5 bg-background text-foreground min-h-[48px] min-w-[48px]"
             >
               <option value="newest">Newest</option>
               <option value="oldest">Oldest</option>
@@ -449,16 +449,16 @@ export default function Scenes() {
         {selected.size > 0 && (
           <div className="fixed bottom-[calc(env(safe-area-inset-bottom)+1.5rem)] left-1/2 -translate-x-1/2 z-50 flex flex-wrap items-center justify-center gap-2 bg-card border border-border rounded-2xl shadow-xl px-4 py-2.5 max-w-[calc(100vw-2rem)]">
             <span className="text-sm font-medium text-muted-foreground mr-1">{selected.size} selected</span>
-            <Button size="sm" variant="outline" onClick={() => batchAction("publish")} className="gap-1.5 text-xs min-h-[44px]">
+            <Button size="sm" variant="outline" onClick={() => batchAction("publish")} className="gap-1.5 text-xs min-h-[48px]">
               <Globe className="h-3.5 w-3.5" />Publish all
             </Button>
-            <Button size="sm" variant="outline" onClick={() => batchAction("unpublish")} className="gap-1.5 text-xs min-h-[44px]">
+            <Button size="sm" variant="outline" onClick={() => batchAction("unpublish")} className="gap-1.5 text-xs min-h-[48px]">
               <EyeOff className="h-3.5 w-3.5" />Unpublish all
             </Button>
-            <Button size="sm" variant="destructive" onClick={() => batchAction("delete")} className="gap-1.5 text-xs min-h-[44px]">
+            <Button size="sm" variant="destructive" onClick={() => batchAction("delete")} className="gap-1.5 text-xs min-h-[48px]">
               <Trash2 className="h-3.5 w-3.5" />Delete all
             </Button>
-            <button onClick={() => setSelected(new Set())} className="ml-2 text-muted-foreground hover:text-foreground min-h-[44px] min-w-[44px]">
+            <button onClick={() => setSelected(new Set())} className="ml-2 text-muted-foreground hover:text-foreground min-h-[48px] min-w-[48px]">
               <XIcon className="h-4 w-4" />
             </button>
           </div>
@@ -548,8 +548,8 @@ export default function Scenes() {
                     const prompts = ["serene ocean at dawn","lavender dreamscape for sleep","forest mist at sunrise","cosmic meditation galaxy","golden hour warmth","deep breathing mindfulness","energy boost morning","chakra alignment flow","evening wind-down with amber","mountain peak clarity"];
                     setAiPrompt(prompts[Math.floor(Math.random() * prompts.length)]);
                   }}
-                  className="text-[10px] text-primary hover:opacity-70 transition-opacity min-h-[44px] flex items-center"
-                >🎲 Surprise me</button>
+                  className="text-[10px] text-primary hover:opacity-70 transition-opacity min-h-[48px] min-w-[48px] flex items-center justify-center"
+                  >🎲 Surprise me</button>
               </div>
               <div className="flex flex-wrap gap-1.5">
                 {[
@@ -566,7 +566,7 @@ export default function Scenes() {
                     key={p}
                     onClick={() => setAiPrompt(p)}
                     className={cn(
-                      "text-[10px] px-2 py-1 rounded-full border transition-colors text-left min-h-[44px] min-w-[44px] flex items-center",
+                      "text-[10px] px-2 py-1 rounded-full border transition-colors text-left min-h-[48px] min-w-[48px] flex items-center",
                       aiPrompt === p ? "border-primary/50 bg-primary/10 text-primary" : "border-border text-muted-foreground hover:border-primary/30 hover:text-foreground"
                     )}
                   >{p}</button>

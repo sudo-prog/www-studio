@@ -361,7 +361,7 @@ function AnimationsPanel() {
     <div className="flex flex-col h-full">
       <div className="p-2 border-b border-border/50 flex gap-1 flex-wrap">
         {tags.map((tag) => (
-          <button key={tag} onClick={() => setActiveTag(tag)} className={cn("text-[10px] px-2 py-1 rounded-md capitalize font-medium transition-colors", activeTag === tag ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground hover:bg-muted")}>
+          <button key={tag} onClick={() => setActiveTag(tag)} className={cn("text-[10px] px-2 py-1 rounded-md capitalize font-medium transition-colors min-h-[44px]", activeTag === tag ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground hover:bg-muted")}>
             {tag}
           </button>
         ))}
@@ -1246,7 +1246,7 @@ export default function Editor() {
         </div>
 
         {/* Right: actions */}
-        <div className="flex items-center gap-1 shrink-0">
+        <div className="flex flex-wrap items-center gap-1 shrink-0">
           {/* Selection mode toggle */}
           <Button
             variant={selectionMode ? "secondary" : "ghost"}
@@ -1263,7 +1263,7 @@ export default function Editor() {
           {selectionMode && canvasDirty && (
             <Button
               size="sm"
-              className="h-8 gap-1.5 text-xs bg-violet-600 hover:bg-violet-700"
+              className="h-8 gap-1.5 text-xs bg-violet-600 hover:bg-violet-700 min-h-[44px]"
               onClick={saveCanvasChanges}
               disabled={updateProject.isPending}
             >
@@ -1288,7 +1288,7 @@ export default function Editor() {
           {editMode && editModeDirty && (
             <Button
               size="sm"
-              className="h-8 gap-1.5 text-xs bg-blue-600 hover:bg-blue-700"
+              className="h-8 gap-1.5 text-xs bg-blue-600 hover:bg-blue-700 min-h-[44px]"
               onClick={applyInlineEdits}
               disabled={updateProject.isPending}
             >
@@ -1442,7 +1442,7 @@ export default function Editor() {
                 </div>
 
                 {/* AI Chat Bar */}
-                <div className="min-h-14 border-t border-border/50 bg-card/50 backdrop-blur flex items-center px-4 shrink-0 gap-3 pt-2 pb-[calc(theme(spacing.2)+env(safe-area-inset-bottom,0px))]">
+                <div className="min-h-14 border-t border-border/50 bg-card/50 backdrop-blur flex items-center px-4 shrink-0 gap-3 pt-2 pb-[calc(theme(spacing.2)+env(safe-area-inset-bottom,0px))] min-h-[calc(56px+env(safe-area-inset-bottom,0px))]">
                   <Wand2 className="w-4 h-4 text-primary shrink-0" />
                   <form onSubmit={handleSendChat} className="flex-1 flex flex-wrap items-center gap-2 min-w-0">
                     <Input
@@ -1463,7 +1463,7 @@ export default function Editor() {
         </main>
 
         {/* Right Inspector */}
-        <aside className="w-full lg:w-64 border-t lg:border-t-0 lg:border-l border-border/50 bg-card/30 flex flex-col shrink-0 max-h-[50vh] lg:max-h-none">
+        <aside className="w-full lg:w-64 border-t lg:border-t-0 lg:border-l border-border/50 bg-card/30 flex flex-col shrink-0 max-h-[calc(100dvh-env(safe-area-inset-bottom)-4rem)] lg:max-h-none pb-[env(safe-area-inset-bottom,0px)]">
           {/* Tab header */}
           <div className="flex overflow-x-auto border-b border-border/50 shrink-0">
             {RIGHT_TABS.map((tab) => (
