@@ -1,6 +1,6 @@
 {
-  "version": "1.0.5",
-  "source_count": 296,
+  "version": "1.0.6",
+  "source_count": 326,
   "components": [
     {
       "id": "cat-0",
@@ -4779,6 +4779,456 @@
       "description": "Community-made UI component 'Highlighter' from 21st.dev (category: button). A React/Next.js component for modern web interfaces.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2rO0IUQINTfBex4xN8Ghho5dpr4/highlighter/default/preview.png",
       "id": "unknown__highlighter",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Verdict Stack",
+      "source_url": "https://21st.dev/@eugeneshilow/components/verdict-stack",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "Verdict Stack UI component from 21st.dev community registry.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/eugeneshilow/verdict-stack/default/preview.1790081363815-7ec1a451-d517-4181-b4f8-f4d730cbc7a2.png",
+      "id": "unknown__verdict-stack",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Features 4",
+      "source_url": "https://21st.dev/@meschacirung/components/features-4",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "Features 4 UI component from 21st.dev community registry.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2tUYFzCDCVfrMrVC3TfB9DUBAyx/features-4/default/preview.png?v=1",
+      "id": "unknown__features-4",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Features 2",
+      "source_url": "https://21st.dev/@meschacirung/components/features-2",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "Features 2 UI component from 21st.dev community registry.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2tUYFzCDCVfrMrVC3TfB9DUBAyx/features-2/default/preview.png?v=1",
+      "id": "unknown__features-2",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Features 1",
+      "source_url": "https://21st.dev/@meschacirung/components/features-1",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "Features 1 UI component from 21st.dev community registry.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2tUYFzCDCVfrMrVC3TfB9DUBAyx/features-1/default/preview.png?v=1",
+      "id": "unknown__features-1",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Feature Comparison Table",
+      "source_url": "https://21st.dev/@7ovr/components/comparison-3",
+      "registry_url": "https://21st.dev/components",
+      "category": "table",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "table"
+      ],
+      "description": "Feature Comparison Table UI component from 21st.dev community registry.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/7ovr/comparison-3/default/preview.1784806075624-0e6d2b9d-8fc9-4b87-a3e9-a1d92fd00e0b.png",
+      "id": "unknown__feature-comparison-table",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Comparison Section",
+      "source_url": "https://21st.dev/@hirael/components/comparison-03",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "Comparison Section UI component from 21st.dev community registry.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/hirael/comparison-03/default/preview.1788886466877-b291a803-1a56-4774-af1e-2ae775d28849.png",
+      "id": "unknown__comparison-section",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Alternating Rows With Stats",
+      "source_url": "https://21st.dev/@7ovr/components/features-2",
+      "registry_url": "https://21st.dev/components",
+      "category": "progress",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "progress"
+      ],
+      "description": "Alternating Rows With Stats UI component from 21st.dev community registry.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/7ovr/features-2/default/preview.1789956858582-cbbc15e0-aa57-4355-91fd-ae364ddd2db0.png",
+      "id": "unknown__alternating-rows-with-stats",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Features Grid",
+      "source_url": "https://21st.dev/@shadcnui-blocks/components/features-01",
+      "registry_url": "https://21st.dev/components",
+      "category": "gallery",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "gallery"
+      ],
+      "description": "Features Grid UI component from 21st.dev community registry.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/shadcnui-blocks/features-01/default/preview.1789956849755-26579c40-f804-4958-a58c-96cefd9ff501.png",
+      "id": "unknown__features-grid",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Message loading",
+      "source_url": "https://21st.dev/@jakobhoeg/components/message-loading",
+      "registry_url": "https://21st.dev/components",
+      "category": "animation",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "animation"
+      ],
+      "description": "Message loading UI component from 21st.dev community registry.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_jakobhoeg/message-loading/default/preview.png",
+      "id": "unknown__message-loading",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Neon Button",
+      "source_url": "https://21st.dev/@cybergaz/components/neon-button",
+      "registry_url": "https://21st.dev/components",
+      "category": "button",
+      "tags": [
+        "tailwind",
+        "neon",
+        "button"
+      ],
+      "description": "Neon Button UI component from 21st.dev community registry.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2sAqoiqsju5FgfPpyDU67flpOxe/neon-button/default/preview.1738079756934.png",
+      "id": "unknown__neon-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Profile Card Testimonial Carousel",
+      "source_url": "https://21st.dev/@arunachalam/components/profile-card-testimonial-carousel",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "Profile Card Testimonial Carousel UI component from 21st.dev community registry.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/arunachalam0606/profile-card-testimonial-carousel/default/preview.1755510064157.png",
+      "id": "unknown__profile-card-testimonial-carousel",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Single Pricing Card",
+      "source_url": "https://21st.dev/@efferd/components/single-pricing-card-1",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "shader",
+        "minimal",
+        "card"
+      ],
+      "description": "Single Pricing Card UI component from 21st.dev community registry.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2tWTE0rCrloVAVylFPYfp10xU92/single-pricing-card-1/default/preview.1789741752195.png",
+      "id": "unknown__single-pricing-card",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Sonar Grid",
+      "source_url": "https://21st.dev/@n1m4mz/components/sonar-grid",
+      "registry_url": "https://21st.dev/components",
+      "category": "gallery",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "gallery"
+      ],
+      "description": "Sonar Grid UI component from 21st.dev community registry.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/n1m4mz/sonar-grid/default/preview.1788783135997-ce798b9e-0e81-4ed1-9980-2d0f2d444f6c.png",
+      "id": "unknown__sonar-grid",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Stats Bento",
+      "source_url": "https://21st.dev/@uilayout.contact/components/stats-bento",
+      "registry_url": "https://21st.dev/components",
+      "category": "gallery",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "gallery"
+      ],
+      "description": "Stats Bento UI component from 21st.dev community registry.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2zAsvSHo1IeJGKtSjJ3uR1N1Cd7/stats-bento/default/preview.1788454353339.png",
+      "id": "unknown__stats-bento",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Centered Accordion FAQ",
+      "source_url": "https://21st.dev/@ln-dev7/components/faqs-01",
+      "registry_url": "https://21st.dev/components",
+      "category": "accordion",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "accordion"
+      ],
+      "description": "Centered Accordion FAQ UI component from 21st.dev community registry.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2rmPdOT0hL8MtSnYm8IpqqrYTVg/faqs-01/default/preview.1789067227987.png",
+      "id": "unknown__centered-accordion-faq",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "FAQ Accordion Section",
+      "source_url": "https://21st.dev/@bundui/components/faq1",
+      "registry_url": "https://21st.dev/components",
+      "category": "accordion",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "accordion"
+      ],
+      "description": "FAQ Accordion Section UI component from 21st.dev community registry.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/bundui/faq1/default/preview.1788859654706-43f73ff8-76f0-4f13-941a-5c1b2d65e2b1.png",
+      "id": "unknown__faq-accordion-section",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Elegant Dark Pattern",
+      "source_url": "https://21st.dev/@jatin-yadav05/components/elegant-dark-pattern",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "Elegant Dark Pattern UI component from 21st.dev community registry.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/jatin-yadav05/elegant-dark-pattern/default/preview.1755191590435.png",
+      "id": "unknown__elegant-dark-pattern",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "SaaS Template",
+      "source_url": "https://21st.dev/@waleedkibhen/components/saa-s-template",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "SaaS Template UI component from 21st.dev community registry.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/waleedkibhen/saa-s-template/default/preview.1760472833620.png",
+      "id": "unknown__saas-template",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "SignInPage",
+      "source_url": "https://21st.dev/@bhomikproductivitylab/components/sign-in-page",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "SignInPage UI component from 21st.dev community registry.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_323ftjMSfwD7ApwHiRpKhYqnkW3/sign-in-page/default/preview.1786466195126.png",
+      "id": "unknown__signinpage",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "ReUI Frame",
+      "source_url": "https://21st.dev/@sean0205/components/reui-frame/variant-10",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "ReUI Frame UI component from 21st.dev community registry.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/larsen66/reui-frame/variant-10/preview.1785389325669-89ddf7d8-6000-4b6f-a094-cb4e146fef07.png",
+      "id": "unknown__reui-frame",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Dashboard with Collapsible Sidebar",
+      "source_url": "https://21st.dev/@uniquesonu/components/dashboard-with-collapsible-sidebar",
+      "registry_url": "https://21st.dev/components",
+      "category": "sidebar",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "sidebar"
+      ],
+      "description": "Dashboard with Collapsible Sidebar UI component from 21st.dev community registry.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2uOpchRdPn3LCzVSbgJCGyLpamB/dashboard-with-collapsible-sidebar/default/preview.1787178158518.png",
+      "id": "unknown__dashboard-with-collapsible-sidebar",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Toggle Pricing Cards",
+      "source_url": "https://21st.dev/@diarmuradi/components/pricing-7",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "shader",
+        "minimal",
+        "card"
+      ],
+      "description": "Toggle Pricing Cards UI component from 21st.dev community registry.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/diarmuradi/pricing-7/default/preview.1789237013772-7cca4b9d-bf60-4495-968e-889ffd5cfea0.png",
+      "id": "unknown__toggle-pricing-cards",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Navbar 1",
+      "source_url": "https://21st.dev/@preetsuthar17/components/navbar-1",
+      "registry_url": "https://21st.dev/components",
+      "category": "menu",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "menu"
+      ],
+      "description": "Navbar 1 UI component from 21st.dev community registry.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2rWolCuRnJW3DRiuQ5JHrl5kj8a/navbar-1/default/preview.1789739292325.png",
+      "id": "unknown__navbar-1",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Two Plan Pricing Cards",
+      "source_url": "https://21st.dev/@ln-dev7/components/pricing-16",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "Two Plan Pricing Cards UI component from 21st.dev community registry.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/ln-dev7/pricing-16/default/preview.1788990340787-e70d574c-3ddc-4a0e-9017-788eb5da4e41.png",
+      "id": "unknown__two-plan-pricing-cards",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Modern & Stunning sign in",
+      "source_url": "https://21st.dev/@preetsuthar17/components/modern-stunning-sign-in",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "Modern & Stunning sign in UI component from 21st.dev community registry.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/preetsuthar17/modern-stunning-sign-in/default/preview.1788796253685-9d105267-5b14-4168-a5f2-a26ecf544424.png",
+      "id": "unknown__modern-&-stunning-sign-in",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Input",
+      "source_url": "https://21st.dev/@shadcn/components/input",
+      "registry_url": "https://21st.dev/components",
+      "category": "input",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "input"
+      ],
+      "description": "Input UI component from 21st.dev community registry.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_shadcn/input/default/preview.png",
+      "id": "unknown__input",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Leaderboard Card",
+      "source_url": "https://21st.dev/@trophyso/components/leaderboard-card",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "Leaderboard Card UI component from 21st.dev community registry.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/larsen66/leaderboard-card/default/preview.1779976435096.png",
+      "id": "unknown__leaderboard-card",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "About Bento",
+      "source_url": "https://21st.dev/@uilayout.contact/components/about-bento",
+      "registry_url": "https://21st.dev/components",
+      "category": "gallery",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "gallery"
+      ],
+      "description": "About Bento UI component from 21st.dev community registry.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2zAsvSHo1IeJGKtSjJ3uR1N1Cd7/about-bento/default/preview.1787264104553.png",
+      "id": "unknown__about-bento",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Features 8",
+      "source_url": "https://21st.dev/@meschacirung/components/features-8",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "Features 8 UI component from 21st.dev community registry.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2tUYFzCDCVfrMrVC3TfB9DUBAyx/features-8/default/preview.png?v=1",
+      "id": "unknown__features-8",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "File Card Collections",
+      "source_url": "https://21st.dev/@urmauur/components/file-card-collections",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "File Card Collections UI component from 21st.dev community registry.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2xdw0wIOfisjct8c2LGJtbMKwoL/file-card-collections/default/preview.1785851818795.png",
+      "id": "unknown__file-card-collections",
       "source_domain": "21st.dev"
     }
   ]
