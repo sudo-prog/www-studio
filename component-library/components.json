@@ -1,6 +1,6 @@
 {
-  "version": "1.0.4",
-  "source_count": 292,
+  "version": "1.0.5",
+  "source_count": 296,
   "components": [
     {
       "id": "cat-0",
@@ -4718,6 +4718,67 @@
       "description": "Dynamic link previews for your anchor tags.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_aceternity/link-preview/default/preview.png",
       "id": "unknown__link-preview",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Interactive Hover Button",
+      "source_url": "https://21st.dev/@dillionverma/components/interactive-hover-button",
+      "registry_url": "https://21st.dev/components",
+      "category": "button",
+      "tags": [
+        "react",
+        "minimal",
+        "button"
+      ],
+      "description": "Community-made UI component 'Interactive Hover Button' from 21st.dev (category: button). A React/Next.js component for modern web interfaces.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2vgPxqtXOGc4iU0CBJH2MQn2eTG/interactive-hover-button/default/preview.1788460350777.png",
+      "id": "unknown__interactive-hover-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Liquid Metal Button",
+      "source_url": "https://21st.dev/@johuniq/components/liquid-metal-button",
+      "registry_url": "https://21st.dev/components",
+      "category": "button",
+      "tags": [
+        "react",
+        "minimal",
+        "button"
+      ],
+      "description": "Community-made UI component 'Liquid Metal Button' from 21st.dev (category: button). A React/Next.js component for modern web interfaces.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/johuniq/liquid-metal-button/default/preview.1785192955628-eade2062-f05d-4ee7-9b42-967db4df4d0b.png",
+      "id": "unknown__liquid-metal-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Gradient Menu",
+      "source_url": "https://21st.dev/@minhxthanh/components/gradient-menu",
+      "registry_url": "https://21st.dev/components",
+      "category": "button",
+      "tags": [
+        "react",
+        "gradient",
+        "button",
+        "menu"
+      ],
+      "description": "Community-made UI component 'Gradient Menu' from 21st.dev (category: button). A React/Next.js component for modern web interfaces.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2uZPYwRKdEOMrOL0qhU6KNaMNK0/gradient-menu/default/preview.1786737486075.png",
+      "id": "unknown__gradient-menu",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Highlighter",
+      "source_url": "https://21st.dev/@designali-in/components/highlighter",
+      "registry_url": "https://21st.dev/components",
+      "category": "button",
+      "tags": [
+        "react",
+        "glow",
+        "button"
+      ],
+      "description": "Community-made UI component 'Highlighter' from 21st.dev (category: button). A React/Next.js component for modern web interfaces.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2rO0IUQINTfBex4xN8Ghho5dpr4/highlighter/default/preview.png",
+      "id": "unknown__highlighter",
       "source_domain": "21st.dev"
     }
   ]
