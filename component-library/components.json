@@ -1,6 +1,6 @@
 {
-  "version": "1.0.3",
-  "source_count": 286,
+  "version": "1.0.4",
+  "source_count": 292,
   "components": [
     {
       "id": "cat-0",
@@ -4594,6 +4594,130 @@
       "description": "Interactive canvas-based kinetic mesh grid with Hooke's Law physical spring-mass physics, cursor velocity shockwaves, spatial radar readouts, and theme detection.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_332oxzW8MyPod4IDIdKq9rbPYuk/constellation-grid/default/preview.1785741912248.png",
       "id": "unknown__constellation-grid",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Scroll Choreography",
+      "source_url": "https://21st.dev/@componentry/components/scroll-choreography",
+      "registry_url": "https://21st.dev/components",
+      "category": "animation",
+      "tags": [
+        "react",
+        "typescript",
+        "ts",
+        "framer-motion",
+        "motion",
+        "gradient",
+        "animation",
+        "hero",
+        "scroll-effect"
+      ],
+      "description": "A scroll-driven animation that choreographs four quadrant images across the viewport before one hero image expands to fill the screen.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/componentry/scroll-choreography/default/preview.1783712366971.png",
+      "id": "unknown__scroll-choreography",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Rainbow Button",
+      "source_url": "https://21st.dev/@dillionverma/components/rainbow-button",
+      "registry_url": "https://21st.dev/components",
+      "category": "button",
+      "tags": [
+        "react",
+        "typescript",
+        "ts",
+        "gradient",
+        "glow",
+        "chrome",
+        "button",
+        "cta",
+        "animation"
+      ],
+      "description": "An animated button with a rainbow effect.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_2vgPxqtXOGc4iU0CBJH2MQn2eTG/rainbow-button/default/preview.1788458728838.png",
+      "id": "unknown__rainbow-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Gradient Button",
+      "source_url": "https://21st.dev/@serafimcloud/components/gradient-button",
+      "registry_url": "https://21st.dev/components",
+      "category": "button",
+      "tags": [
+        "react",
+        "typescript",
+        "plain-css",
+        "css",
+        "gradient",
+        "glow",
+        "button",
+        "hover-effect"
+      ],
+      "description": "A beautiful button component with animated gradient background and border effects, inspired by Aaron Iker's implementation.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_2nElBLvklOKlAURm6W1PTu6yYFh/gradient-button/default/preview.1788460168817.png",
+      "id": "unknown__gradient-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Shiny Button",
+      "source_url": "https://21st.dev/@designali-in/components/shiny-button",
+      "registry_url": "https://21st.dev/components",
+      "category": "button",
+      "tags": [
+        "react",
+        "typescript",
+        "css",
+        "gradient",
+        "glow",
+        "button",
+        "hover-effect"
+      ],
+      "description": "A button preserving animated conic gradients, shimmer effects, dot patterns, and hover states.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/designali-in/shiny-button/default/preview.1755271754131.png",
+      "id": "unknown__shiny-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Aurora Veil Shader",
+      "source_url": "https://21st.dev/@isaiahbjork/components/shader-aurora-veil",
+      "registry_url": "https://21st.dev/components",
+      "category": "shader",
+      "tags": [
+        "react",
+        "webgl",
+        "shader",
+        "glsl",
+        "framer-motion",
+        "motion",
+        "aurora",
+        "background",
+        "shader-art",
+        "animation"
+      ],
+      "description": "A lightweight single-draw WebGL shader background that renders soft animated aurora color fields, used as a backdrop behind hero copy, cards, or onboarding sections.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/isaiahbjork/shader-aurora-veil/default/preview.1789976208632-672120ee-68af-4d51-b7be-99235f2689c8.png",
+      "id": "unknown__aurora-veil-shader",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Link Preview",
+      "source_url": "https://21st.dev/@manuarora700/components/link-preview",
+      "registry_url": "https://21st.dev/components",
+      "category": "tooltip",
+      "tags": [
+        "react",
+        "typescript",
+        "ts",
+        "framer-motion",
+        "motion",
+        "gradient",
+        "link",
+        "hover-effect",
+        "tooltip"
+      ],
+      "description": "Dynamic link previews for your anchor tags.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_aceternity/link-preview/default/preview.png",
+      "id": "unknown__link-preview",
       "source_domain": "21st.dev"
     }
   ]
