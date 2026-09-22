@@ -1,6 +1,6 @@
 {
-  "version": "1.0.2",
-  "source_count": 285,
+  "version": "1.0.3",
+  "source_count": 286,
   "components": [
     {
       "id": "cat-0",
@@ -4573,6 +4573,27 @@
       "description": "A scroll-driven portal where you choose a letter and scroll through it into the next section \u2014 supports gradients, images, video, and canvas backgrounds with reduced-motion fallback.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/mailforreddit/glyph-portal/default/preview.1788815860826-0c5bf3c3-bce9-42fc-87de-9c0a7a451187.png",
       "id": "unknown__glyph-portal",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Constellation Grid",
+      "source_url": "https://21st.dev/@daiwiikharihar/components/constellation-grid",
+      "registry_url": "https://21st.dev/components",
+      "category": "background",
+      "tags": [
+        "react",
+        "html",
+        "css",
+        "gradient",
+        "wireframe",
+        "background",
+        "grid",
+        "canvas",
+        "animation"
+      ],
+      "description": "Interactive canvas-based kinetic mesh grid with Hooke's Law physical spring-mass physics, cursor velocity shockwaves, spatial radar readouts, and theme detection.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_332oxzW8MyPod4IDIdKq9rbPYuk/constellation-grid/default/preview.1785741912248.png",
+      "id": "unknown__constellation-grid",
       "source_domain": "21st.dev"
     }
   ]
