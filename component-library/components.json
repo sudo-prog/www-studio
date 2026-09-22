@@ -1,6 +1,6 @@
 {
-  "version": "1.0.6",
-  "source_count": 326,
+  "version": "1.0.7",
+  "source_count": 357,
   "components": [
     {
       "id": "cat-0",
@@ -5230,6 +5230,566 @@
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2xdw0wIOfisjct8c2LGJtbMKwoL/file-card-collections/default/preview.1785851818795.png",
       "id": "unknown__file-card-collections",
       "source_domain": "21st.dev"
+    },
+    {
+      "name": "Who Google Ranks, Who the AI Engines Quote: Build the Comparison in an Afternoon",
+      "source_url": "https://tympanus.net/codrops/2026/09/22/google-rankings-vs-ai-search-visibility/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "minimal",
+        "animation"
+      ],
+      "description": "Build a small Node.js tool that compares Google rankings with the sources cited by ChatGPT, Perplexity, and Google AI Overview to reveal where traditional and AI search visibility overlap and where they don\u2019t.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/08/cloro_cover-1.png?x86980",
+      "id": "tympanus-net__who-google-ranks,-who-the-ai-engines-quote:-build-the-comparison-in-an-afternoon"
+    },
+    {
+      "name": "Building an Interactive Crumpled Paper Effect with Houdini VAT and Three.js",
+      "source_url": "https://tympanus.net/codrops/2026/09/19/crumbled-paper-houdini-vat-threejs/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "3d",
+      "tags": [
+        "cannon-es",
+        "three.js",
+        "webgl",
+        "minimal",
+        "3d",
+        "animation"
+      ],
+      "description": "Crumpled paper you can unfold, grab, and throw, made by baking a Vellum simulation in Houdini and bringing it to the web with Vertex Animation Textures, Three.js, and cannon-es.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/09/crumbledpaper.png?x86980",
+      "id": "tympanus-net__building-an-interactive-crumpled-paper-effect-with-houdini-vat-and-three.js"
+    },
+    {
+      "name": "Building an Infinite Liquid Glass Grid with Three.js, WebGPU, and TSL",
+      "source_url": "https://tympanus.net/codrops/2026/09/08/building-an-infinite-liquid-glass-grid-with-three-js-webgpu-and-tsl/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "shader",
+      "tags": [
+        "react-three-fiber",
+        "three.js",
+        "tsl",
+        "webgpu",
+        "liquid-glass",
+        "background",
+        "shader"
+      ],
+      "description": "An exploration of infinite grids, liquid glass, and video refraction using Three.js, WebGPU, TSL, and custom shaders.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/09/cover_glass-1200x900.png?x86980",
+      "id": "tympanus-net__building-an-infinite-liquid-glass-grid-with-three.js,-webgpu,-and-tsl"
+    },
+    {
+      "name": "Building a Real-Time 3D Face Mask with MediaPipe, Threlte and Three.js",
+      "source_url": "https://tympanus.net/codrops/2026/09/06/building-a-real-time-3d-face-mask-with-mediapipe-threlte-and-three-js/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "3d",
+      "tags": [
+        "mediapipe",
+        "three.js",
+        "threlte",
+        "minimal",
+        "3d"
+      ],
+      "description": "Learn how MediaPipe\u2019s face landmarks, Google\u2019s canonical face model, and Three.js come together to create a real-time textured 3D face mask.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/09/3dfacemask.png?x86980",
+      "id": "tympanus-net__building-a-real-time-3d-face-mask-with-mediapipe,-threlte-and-three.js"
+    },
+    {
+      "name": "Breaking the Frame: Building a Real-Time Datamosh Effect with Three.js",
+      "source_url": "https://tympanus.net/codrops/2026/09/02/breaking-the-frame-building-a-real-time-datamosh-effect-with-three-js/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "three.js",
+        "webgl",
+        "minimal",
+        "shader"
+      ],
+      "description": "A hands-on exploration of how Three.js, shaders, and codec-inspired techniques can turn a scene transition into a convincing real-time datamosh effect.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/08/datamoch_cover-1200x900.png?x86980",
+      "id": "tympanus-net__breaking-the-frame:-building-a-real-time-datamosh-effect-with-three.js"
+    },
+    {
+      "name": "Building a Mouse-Following Square Lens Effect with Three.js and GLSL",
+      "source_url": "https://tympanus.net/codrops/2026/08/25/building-a-mouse-following-square-lens-effect-with-three-js-and-glsl/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "shader",
+      "tags": [
+        "javascript",
+        "three.js",
+        "webgl",
+        "minimal",
+        "animation",
+        "cursor",
+        "image-effect",
+        "shader"
+      ],
+      "description": "A step-by-step tutorial on using Three.js and GLSL to create a mouse-following square lens effect with image distortion, RGB shifting, and animated shader effects.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/08/pointer-square-lens-distortion-with-rgb-Shift-1200x900.webp?x86980",
+      "id": "tympanus-net__building-a-mouse-following-square-lens-effect-with-three.js-and-glsl"
+    },
+    {
+      "name": "Relighting Images with Depth Maps and Three.js",
+      "source_url": "https://tympanus.net/codrops/2026/08/19/relighting-images-with-depth-maps-and-three-js/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "3d",
+      "tags": [
+        "three.js",
+        "tsl",
+        "webgpu",
+        "minimal",
+        "3d",
+        "illustration"
+      ],
+      "description": "Explore how depth maps, TSL, and WebGPU can be combined to turn flat 2D images into dynamic surfaces with realistic lighting, surface detail, and self-shadowing.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/08/mother.png?x86980",
+      "id": "tympanus-net__relighting-images-with-depth-maps-and-three.js"
+    },
+    {
+      "name": "Building an Animated Testimonial Hero Using the GSAP Timeline and Dynamic CMS Data",
+      "source_url": "https://tympanus.net/codrops/2026/08/18/building-an-animated-testimonial-hero-using-the-gsap-timeline-and-dynamic-cms-data/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "webflow",
+        "minimal",
+        "animation",
+        "hero"
+      ],
+      "description": "Learn how to build a dynamic testimonial hero in Webflow using CMS data, a custom JavaScript counter, and GSAP\u2019s visual timeline.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/08/Animated-Testimonial-teaser.jpg?x86980",
+      "id": "tympanus-net__building-an-animated-testimonial-hero-using-the-gsap-timeline-and-dynamic-cms-data"
+    },
+    {
+      "name": "Creating an Interactive 3D Cluster with Three.js, TSL and Three Start",
+      "source_url": "https://tympanus.net/codrops/2026/08/12/creating-an-interactive-3d-cluster-with-three-js-tsl-and-three-start/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "3d",
+      "tags": [
+        "icosahedron",
+        "three.js",
+        "tsl",
+        "webgl",
+        "webgpu",
+        "minimal",
+        "3d"
+      ],
+      "description": "A step-by-step tutorial on turning a simple icosahedron into a dynamic, interactive 3D cluster using Three.js, TSL, WebGPU, noise, interaction, and post-processing.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/08/videoframe_8751.png?x86980",
+      "id": "tympanus-net__creating-an-interactive-3d-cluster-with-three.js,-tsl-and-three-start"
+    },
+    {
+      "name": "Exploring Procedural Geometry with Three.js and WebGPU",
+      "source_url": "https://tympanus.net/codrops/2026/08/11/exploring-procedural-geometry-with-three-js-and-webgpu/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "3d",
+      "tags": [
+        "three.js",
+        "tsl",
+        "webgl",
+        "webgpu",
+        "minimal",
+        "3d",
+        "shader"
+      ],
+      "description": "A deep dive into building a flexible Three.js Geometry Painter with WebGPU and TSL, from surface picking and procedural geometry to live controls, custom shaders, lighting, and post-processing.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/08/geometrypainter.png?x86980",
+      "id": "tympanus-net__exploring-procedural-geometry-with-three.js-and-webgpu"
+    },
+    {
+      "name": "Building an Endless Interactive Glass Xylophone with Three.js",
+      "source_url": "https://tympanus.net/codrops/2026/08/04/building-an-endless-interactive-glass-xylophone-with-three-js/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "shader",
+      "tags": [
+        "javascript",
+        "three.js",
+        "webgl",
+        "minimal",
+        "audio-player",
+        "background",
+        "scroll-effect",
+        "shader"
+      ],
+      "description": "A scrolling helix of frosted glass bars that ring as you sweep across them, built in Three.js with instancing, a fluid simulation, and glass faked entirely in the shader.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/08/xylophone_cover.png?x86980",
+      "id": "tympanus-net__building-an-endless-interactive-glass-xylophone-with-three.js"
+    },
+    {
+      "name": "Building an Infinite GSAP Scroll Gallery with Parallax and Flip Transitions",
+      "source_url": "https://tympanus.net/codrops/2026/07/30/building-an-infinite-gsap-scroll-gallery-with-parallax-and-flip-transitions/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "gallery",
+      "tags": [
+        "gsap",
+        "page transition",
+        "minimal",
+        "animation",
+        "gallery",
+        "parallax",
+        "scroll-effect"
+      ],
+      "description": "Learn how to build an infinite GSAP gallery with parallax scrolling, reveal animations, and Flip-powered fullscreen transitions.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/07/infinitescrollGSAP.png?x86980",
+      "id": "tympanus-net__building-an-infinite-gsap-scroll-gallery-with-parallax-and-flip-transitions"
+    },
+    {
+      "name": "Building Ridgeline: Engineering a Real-Time 3D Experience in Webflow",
+      "source_url": "https://tympanus.net/codrops/2026/07/22/building-ridgeline-engineering-a-real-time-3d-experience-in-webflow/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "3d",
+      "tags": [
+        "gsap",
+        "mcp",
+        "react-three-fiber",
+        "three.js",
+        "webflow",
+        "minimal",
+        "3d",
+        "animation"
+      ],
+      "description": "A behind-the-scenes look at the engineering behind Ridgeline, covering the architectural decisions, Webflow integration, real-time terrain rendering, animation techniques, and performance optimizations that brought a cinematic 3D experience to life.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/07/filip-1200x900.jpg?x86980",
+      "id": "tympanus-net__building-ridgeline:-engineering-a-real-time-3d-experience-in-webflow"
+    },
+    {
+      "name": "Building an Interactive Wave Propagation Cube Grid with Three.js",
+      "source_url": "https://tympanus.net/codrops/2026/07/09/building-an-interactive-wave-propagation-cube-grid-with-three-js/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "3d",
+      "tags": [
+        "three.js",
+        "webgl",
+        "minimal",
+        "3d"
+      ],
+      "description": "A tutorial on how to create a minimalistic and customizable 3D wave grid background with Three.js.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/06/franky_cover.png?x86980",
+      "id": "tympanus-net__building-an-interactive-wave-propagation-cube-grid-with-three.js"
+    },
+    {
+      "name": "Building a Scroll-Driven 3D Gallery Using a Blender Camera Path with Three.js and GSAP",
+      "source_url": "https://tympanus.net/codrops/2026/07/07/building-a-scroll-driven-3d-gallery-using-a-blender-camera-path-with-three-js-and-gsap/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "3d",
+      "tags": [
+        "blender",
+        "gsap",
+        "three.js",
+        "webgl",
+        "minimal",
+        "3d",
+        "animation",
+        "gallery",
+        "scroll-effect"
+      ],
+      "description": "Build a cinematic, scroll-driven 3D gallery using a camera path authored in Blender, rendered with Three.js, and animated with GSAP.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/07/curvegallery_cover.png?x86980",
+      "id": "tympanus-net__building-a-scroll-driven-3d-gallery-using-a-blender-camera-path-with-three.js-and-gsap"
+    },
+    {
+      "name": "Creating a Thumbnail Flow Animation with GSAP MotionPath",
+      "source_url": "https://tympanus.net/codrops/2026/06/04/creating-a-thumbnail-flow-animation-with-gsap-motionpath/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "minimal",
+        "animation"
+      ],
+      "description": "A creative exploration of GSAP MotionPath, where stacked thumbnails unfold into a flowing image strip through curved trajectories.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/06/motionpath.webp?x86980",
+      "id": "tympanus-net__creating-a-thumbnail-flow-animation-with-gsap-motionpath"
+    },
+    {
+      "name": "Building a Scroll-Driven 3D Cube Gallery in Webflow with GSAP",
+      "source_url": "https://tympanus.net/codrops/2026/05/26/building-a-scroll-driven-3d-cube-gallery-in-webflow-with-gsap/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "3d",
+      "tags": [
+        "gsap",
+        "webflow",
+        "minimal",
+        "3d",
+        "animation",
+        "gallery",
+        "scroll-effect"
+      ],
+      "description": "A step-by-step guide to building a scroll-driven 3D cube gallery in Webflow with GSAP animations and CMS-powered content.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/05/Webflow_GSAP_Cube.webp?x86980",
+      "id": "tympanus-net__building-a-scroll-driven-3d-cube-gallery-in-webflow-with-gsap"
+    },
+    {
+      "name": "Creating Scroll-Driven SVG Map Animations with GSAP",
+      "source_url": "https://tympanus.net/codrops/2026/05/21/creating-scroll-driven-svg-map-animations-with-gsap/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "svg",
+        "minimal",
+        "animation",
+        "illustration",
+        "scroll-effect"
+      ],
+      "description": "A tutorial on building cinematic scroll-driven SVG map animations with GSAP using path drawing, motion tracking, and smooth camera movement.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/05/MapAnimation.webp?x86980",
+      "id": "tympanus-net__creating-scroll-driven-svg-map-animations-with-gsap"
+    },
+    {
+      "name": "Made With Gsap: Building a Fun Gravity-Based Mouse Trail",
+      "source_url": "https://tympanus.net/codrops/2026/05/20/made-with-gsap-building-a-fun-gravity-based-mouse-trail/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "cursor",
+      "tags": [
+        "gsap",
+        "motion trail",
+        "minimal",
+        "cursor"
+      ],
+      "description": "A creative GSAP experiment where images cascade from the mouse position and rebound off the bottom of the screen with satisfying motion.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/05/Codrops-Thumb-1200x900.jpg?x86980",
+      "id": "tympanus-net__made-with-gsap:-building-a-fun-gravity-based-mouse-trail"
+    },
+    {
+      "name": "Exploring the HTML-in-Canvas Proposal",
+      "source_url": "https://tympanus.net/codrops/2026/05/13/exploring-the-html-in-canvas-proposal/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "3d",
+      "tags": [
+        "react-three-fiber",
+        "three.js",
+        "webgl",
+        "minimal",
+        "3d"
+      ],
+      "description": "A look at the HTML-in-Canvas proposal, how it works, and what it enables with a few practical demos.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/04/og-800x600.png?x86980",
+      "id": "tympanus-net__exploring-the-html-in-canvas-proposal"
+    },
+    {
+      "name": "Reverse-Engineering Claude AI\u2019s Mascot Animations with SVG and GSAP",
+      "source_url": "https://tympanus.net/codrops/2026/05/05/reverse-engineering-claude-ais-mascot-animations-with-svg-and-gsap/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "svg",
+        "minimal",
+        "animation"
+      ],
+      "description": "How I rebuilt Claude AI\u2019s mascot animations from scratch, frame by frame, purely in code using SVG and GSAP.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/05/CaludeMascot_opt.gif?x86980",
+      "id": "tympanus-net__reverse-engineering-claude-ai\u2019s-mascot-animations-with-svg-and-gsap"
+    },
+    {
+      "name": "Interactive Storytelling for the Web: Building Immersive Stories with Timelines, 3D, and Layered Scenes",
+      "source_url": "https://tympanus.net/codrops/2026/04/20/interactive-storytelling-for-the-web-building-immersive-stories-with-timelines-3d-and-layered-scenes/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "3d",
+      "tags": [
+        "instorier",
+        "minimal",
+        "3d"
+      ],
+      "description": "A step by step tutorial on creating an immersive Moon story in Instorier with motion, interaction, and 3D scene building.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/03/moon_storytelling-800x600.webp?x86980",
+      "id": "tympanus-net__interactive-storytelling-for-the-web:-building-immersive-stories-with-timelines,-3d,-and-layered-scenes"
+    },
+    {
+      "name": "Creating Custom Page Transitions in Astro with Barba.js and GSAP",
+      "source_url": "https://tympanus.net/codrops/2026/04/08/creating-custom-page-transitions-in-astro-with-barba-js-and-gsap/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "animation",
+      "tags": [
+        "astro",
+        "barba.js",
+        "gsap",
+        "page transition",
+        "minimal",
+        "animation",
+        "transition"
+      ],
+      "description": "Follow along as we build page transitions in Astro with Barba.js and GSAP, from the initial setup to a working animated transition flow.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/04/PageTransitions_AstroGSAPBarbajs-800x600.webp?x86980",
+      "id": "tympanus-net__creating-custom-page-transitions-in-astro-with-barba.js-and-gsap"
+    },
+    {
+      "name": "Animating 160,000 Cubes in Three.js to Visualize Dithering",
+      "source_url": "https://tympanus.net/codrops/2026/04/01/animating-160000-cubes-in-three-js-to-visualize-dithering/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "3d",
+      "tags": [
+        "dithering",
+        "three.js",
+        "visualization",
+        "webgl",
+        "minimal",
+        "3d",
+        "shader"
+      ],
+      "description": "A step-by-step breakdown of how I built a Three.js visual explainer on dithering by animating 160,000 cubes with custom shaders.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/04/dithering-800x600.webp?x86980",
+      "id": "tympanus-net__animating-160,000-cubes-in-three.js-to-visualize-dithering"
+    },
+    {
+      "name": "Building a Dual-Scene Fluid X-Ray Reveal Effect in Three.js",
+      "source_url": "https://tympanus.net/codrops/2026/03/23/building-a-dual-scene-fluid-x-ray-reveal-effect-in-three-js/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "background",
+      "tags": [
+        "hover",
+        "three.js",
+        "webgl",
+        "webgpu",
+        "x-ray",
+        "minimal",
+        "background"
+      ],
+      "description": "Learn how to use Three.js to blend two scenes with a fluid simulation, creating a smooth, dynamic reveal effect.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/03/ThreeJS-Fluid-Reveal-800x600.png?x86980",
+      "id": "tympanus-net__building-a-dual-scene-fluid-x-ray-reveal-effect-in-three.js"
+    },
+    {
+      "name": "Building Seamless 3D Transitions with Webflow, GSAP, and Three.js",
+      "source_url": "https://tympanus.net/codrops/2026/03/18/building-seamless-3d-transitions-with-webflow-gsap-and-three-js/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "3d",
+      "tags": [
+        "barba.js",
+        "gsap",
+        "three.js",
+        "webflow",
+        "webgl",
+        "minimal",
+        "3d",
+        "transition"
+      ],
+      "description": "Build a single, persistent Three.js scene in Webflow and drive smooth, GSAP-powered page transitions with Barba.js.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/03/GSAPThreeWebflow-800x600.webp?x86980",
+      "id": "tympanus-net__building-seamless-3d-transitions-with-webflow,-gsap,-and-three.js"
+    },
+    {
+      "name": "Building a Scroll-Reactive 3D Gallery with Three.js, Velocity, and Mood-Based Backgrounds",
+      "source_url": "https://tympanus.net/codrops/2026/03/09/building-a-scroll-reactive-3d-gallery-with-three-js-velocity-and-mood-based-backgrounds/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "3d",
+      "tags": [
+        "three.js",
+        "webgl",
+        "minimal",
+        "3d",
+        "gallery",
+        "scroll-effect"
+      ],
+      "description": "A tutorial on building a scroll-driven WebGL gallery in Three.js with depth-layered images, palette-driven backgrounds, and motion that responds to scroll velocity.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/03/depthscroll_featured-800x600.webp?x86980",
+      "id": "tympanus-net__building-a-scroll-reactive-3d-gallery-with-three.js,-velocity,-and-mood-based-backgrounds"
+    },
+    {
+      "name": "Sticky Grid Scroll: Building a Scroll-Driven Animated Grid",
+      "source_url": "https://tympanus.net/codrops/2026/03/02/sticky-grid-scroll-building-a-scroll-driven-animated-grid/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "sticky",
+        "minimal",
+        "animation",
+        "scroll-effect"
+      ],
+      "description": "Learn how to build a structured scroll-driven image grid where movement unfolds progressively within a sticky layout.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/03/theo-plawinski-sticky-grid-scroll-featured-image-800x600.webp?x86980",
+      "id": "tympanus-net__sticky-grid-scroll:-building-a-scroll-driven-animated-grid"
+    },
+    {
+      "name": "From Flat to Spatial: Creating a 3D Product Grid with React Three Fiber",
+      "source_url": "https://tympanus.net/codrops/2026/02/24/from-flat-to-spatial-creating-a-3d-product-grid-with-react-three-fiber/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "3d",
+      "tags": [
+        "product",
+        "react-three-fiber",
+        "three.js",
+        "webgl",
+        "minimal",
+        "3d",
+        "animation",
+        "shader"
+      ],
+      "description": "A practical walkthrough of building a curved 3D product grid with React Three Fiber and GLSL, covering shaders, animation, and performance.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/02/SneakerGrid-800x600.webp?x86980",
+      "id": "tympanus-net__from-flat-to-spatial:-creating-a-3d-product-grid-with-react-three-fiber"
+    },
+    {
+      "name": "Creating a Smooth Horizontal Parallax Gallery: From DOM to WebGL",
+      "source_url": "https://tympanus.net/codrops/2026/02/19/creating-a-smooth-horizontal-parallax-gallery-from-dom-to-webgl/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "shader",
+      "tags": [
+        "three.js",
+        "webgl",
+        "minimal",
+        "gallery",
+        "parallax",
+        "shader"
+      ],
+      "description": "Build a smooth horizontal parallax gallery in DOM/CSS/JS, then upgrade it to GPU-powered WebGL (Three.js) with shaders.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/02/Horizontal-Parallax-Gallery-800x600.webp?x86980",
+      "id": "tympanus-net__creating-a-smooth-horizontal-parallax-gallery:-from-dom-to-webgl"
+    },
+    {
+      "name": "Reactive Depth: Building a Scroll-Driven 3D Image Tube with React Three Fiber",
+      "source_url": "https://tympanus.net/codrops/2026/02/17/reactive-depth-building-a-scroll-driven-3d-image-tube-with-react-three-fiber/",
+      "registry_url": "https://tympanus.net/codrops/category/tutorials/",
+      "source_domain": "tympanus.net",
+      "category": "3d",
+      "tags": [
+        "react-three-fiber",
+        "three.js",
+        "webgl",
+        "minimal",
+        "3d",
+        "scroll-effect",
+        "shader"
+      ],
+      "description": "Build a scroll-driven, infinitely looping 3D image tube in React Three Fiber powered by shaders, inertia, and a unified motion system.",
+      "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/02/3DTubeR3F-800x600.webp?x86980",
+      "id": "tympanus-net__reactive-depth:-building-a-scroll-driven-3d-image-tube-with-react-three-fiber"
     }
   ]
 }
