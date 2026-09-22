@@ -1,6 +1,6 @@
 {
-  "version": "1.0.1",
-  "source_count": 260,
+  "version": "1.0.2",
+  "source_count": 285,
   "components": [
     {
       "id": "cat-0",
@@ -4078,6 +4078,501 @@
       "description": "Displays an indicator showing the completion progress of a task as a radial progress circle with status labels.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/sean0205/progress/radial/preview.1751353887848.png",
       "id": "unknown__progress-radial",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Team Member Cards",
+      "source_url": "https://21st.dev/@7ovr/components/team-1",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "card",
+        "team",
+        "avatar",
+        "grid",
+        "minimal",
+        "social-link"
+      ],
+      "description": "A responsive team grid of member cards, each showing an avatar, name, role, short bio, and LinkedIn/X/GitHub icon links.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/7ovr/team-1/default/preview.1789992680141-6fcb7b8f-2722-4bed-82a5-708a6ffdfb96.png",
+      "id": "unknown__team-member-cards",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Streaming Reply Message",
+      "source_url": "https://21st.dev/@sean0205/components/c-message-7",
+      "registry_url": "https://21st.dev/components",
+      "category": "component",
+      "tags": [
+        "react",
+        "tailwind",
+        "message",
+        "chat",
+        "animation",
+        "loading",
+        "minimal",
+        "ai"
+      ],
+      "description": "A chat message bubble that animates from a thinking spinner through a typed-out streaming reply to a settled state with a replay action.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/sean0205/c-message-7/default/preview.1789992450590-909b8e35-0284-48ed-b01d-3cb2ec8c0f13.png",
+      "id": "unknown__streaming-reply-message",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Agents Team Grid",
+      "source_url": "https://21st.dev/@shadcnstore/components/team-2",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "card",
+        "grid",
+        "avatar",
+        "team",
+        "agent",
+        "minimal"
+      ],
+      "description": "A four-column team/agent grid showing each person's photo, name, phone, email, and a listed-property count for real-estate or agency pages.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/shadcnstore/team-2/default/preview.1789991447243-20a41961-7939-45b9-8d8d-c2c2caaaae71.png",
+      "id": "unknown__agents-team-grid",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Item List with Actions",
+      "source_url": "https://21st.dev/@bundui/components/item7",
+      "registry_url": "https://21st.dev/components",
+      "category": "list",
+      "tags": [
+        "react",
+        "typescript",
+        "list",
+        "avatar",
+        "form",
+        "input",
+        "button",
+        "minimal"
+      ],
+      "description": "A grouped list of people/contact rows, each showing an avatar, username, email, and a follow/add action button.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/bundui/item7/default/preview.1789991394678-705e4466-34ce-4c06-a172-bacc5031bda9.png",
+      "id": "unknown__item-list-with-actions",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Radial Orbital Timeline",
+      "source_url": "https://21st.dev/@jatin-yadav05/components/radial-orbital-timeline",
+      "registry_url": "https://21st.dev/components",
+      "category": "animation",
+      "tags": [
+        "react",
+        "tailwind",
+        "animation",
+        "timeline",
+        "glow",
+        "chart",
+        "orbital",
+        "minimal"
+      ],
+      "description": "A dynamic orbital visualization component that displays nodes in a circular pattern around a central point, each with title, status, and energy level.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2ra80vx0iKMyQWJ5AESmNfFbCHD/radial-orbital-timeline/default/preview.1745917317806.png",
+      "id": "unknown__radial-orbital-timeline",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Testimonials Columns",
+      "source_url": "https://21st.dev/@efferd/components/testimonials-columns-1",
+      "registry_url": "https://21st.dev/components",
+      "category": "component",
+      "tags": [
+        "react",
+        "framer-motion",
+        "testimonial",
+        "animation",
+        "minimal",
+        "dark",
+        "gradient"
+      ],
+      "description": "An animated testimonials section where testimonials are shown in columns with motion-based scroll entry and marquee-style vertical scroll.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2tWTE0rCrloVAVylFPYfp10xU92/testimonials-columns-1/default/preview.1746775320320.png",
+      "id": "unknown__testimonials-columns",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Liquid Glass Button",
+      "source_url": "https://21st.dev/@designali-in/components/liquid-glass-button",
+      "registry_url": "https://21st.dev/components",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "button",
+        "liquid-glass",
+        "glass",
+        "minimal",
+        "rounded"
+      ],
+      "description": "A liquid-glass styled button with a frosted-glass blur effect, supporting rounded corners and backdrop-filter for modern UI designs.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/designali-in/liquid-glass-button/default/preview.1750605472950.png",
+      "id": "unknown__liquid-glass-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Scroll Morph Hero",
+      "source_url": "https://21st.dev/@prashantsom75/components/scroll-morph-hero",
+      "registry_url": "https://21st.dev/components",
+      "category": "background",
+      "tags": [
+        "react",
+        "framer-motion",
+        "scroll-effect",
+        "morph",
+        "rainbow",
+        "gradient",
+        "hero"
+      ],
+      "description": "A stunning hero section that morphs from a scattered layout to a circle, then to a scroll-driven interactive rainbow arc with smooth transitions.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/prashantsom75/scroll-morph-hero/default/preview.1765164297799.png",
+      "id": "unknown__scroll-morph-hero",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Animated hero",
+      "source_url": "https://21st.dev/@tommyjepsen/components/animated-hero",
+      "registry_url": "https://21st.dev/components",
+      "category": "background",
+      "tags": [
+        "react",
+        "framer-motion",
+        "hero",
+        "button",
+        "minimal",
+        "shadow",
+        "tailwind"
+      ],
+      "description": "An animated hero section with text and two shadcn/ui buttons, featuring smooth entrance animations via framer-motion.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2nElBLvklOKlAURm6W1PTu6yYFh/animated-hero/default/preview.png",
+      "id": "unknown__animated-hero",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Background Paths",
+      "source_url": "https://21st.dev/@kokonutd/components/background-paths",
+      "registry_url": "https://21st.dev/components",
+      "category": "background",
+      "tags": [
+        "react",
+        "typescript",
+        "plain-css",
+        "background",
+        "particles",
+        "gradient",
+        "hero",
+        "minimal"
+      ],
+      "description": "Abstract SVG path animations forming a dynamic background with gradient-colored curved path lines, ideal for hero sections.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2rQ1QHrJyxpmWMHhqhANzWMc64n/background-paths/default/preview.png?v=1",
+      "id": "unknown__background-paths",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Futuristic Hero",
+      "source_url": "https://21st.dev/@larsen66/components/hero-futuristic",
+      "registry_url": "https://21st.dev/components",
+      "category": "3d",
+      "tags": [
+        "react",
+        "three.js",
+        "react-three-fiber",
+        "shader",
+        "3d",
+        "hero",
+        "futuristic",
+        "glow"
+      ],
+      "description": "An interactive 3D scene with a scanning effect and depth map using React Three Fiber and Three.js, featuring WebGPU-accelerated shader visuals.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/larsen66/hero-futuristic/default/preview.1789593740925-046f6089-e048-45fa-892a-5a724acb5b83.png",
+      "id": "unknown__futuristic-hero",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Velaris",
+      "source_url": "https://21st.dev/@amanshakya307/components/velaris",
+      "registry_url": "https://21st.dev/components",
+      "category": "background",
+      "tags": [
+        "react",
+        "webgl",
+        "shader",
+        "background",
+        "noise",
+        "gradient",
+        "glow",
+        "animation"
+      ],
+      "description": "A WebGL-powered animated background featuring layered simplex noise, multi-color blending, vignette glow, and subtle film grain effects.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/amanshakya307/velaris/default/preview.1783572820237.png",
+      "id": "unknown__velaris",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Voice Powered Orb",
+      "source_url": "https://21st.dev/@isaiahbjork/components/voice-powered-orb",
+      "registry_url": "https://21st.dev/components",
+      "category": "animation",
+      "tags": [
+        "react",
+        "webgl",
+        "shader",
+        "glsl",
+        "animation",
+        "ai",
+        "glow",
+        "orb"
+      ],
+      "description": "An interactive WebGL component rendering a shader-based orb that responds to voice input via microphone, with GLSL procedural noise and color shifting.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2tkbBPFWYn8YMjZNHwgIuP3yzvd/voice-powered-orb/default/preview.1788757891078.webp",
+      "id": "unknown__voice-powered-orb",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "WaterRippleImage",
+      "source_url": "https://21st.dev/@rahil1202/components/water-ripple-image",
+      "registry_url": "https://21st.dev/components",
+      "category": "background",
+      "tags": [
+        "react",
+        "webgl",
+        "shader",
+        "background",
+        "animation",
+        "ripple",
+        "liquid-glass",
+        "hero"
+      ],
+      "description": "An immersive hero background applying animated water ripples to any image, theme-aware out of the box with configurable distortion parameters.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/rahil1202/water-ripple-image/default/preview.1760160835126.png",
+      "id": "unknown__waterrippleimage",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Feature Shader Cards",
+      "source_url": "https://21st.dev/@moazamtrade/components/feature-shader-cards",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "card",
+        "shader",
+        "gradient",
+        "grid",
+        "webgl",
+        "minimal"
+      ],
+      "description": "A features section with animated shader cards that display gradient WebGL shader backgrounds, each with an icon, title, and description.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/moazamtrade/feature-shader-cards/default/preview.1757238664169.png",
+      "id": "unknown__feature-shader-cards",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "ATC shader",
+      "source_url": "https://21st.dev/@xordev/components/atc-shader",
+      "registry_url": "https://21st.dev/components",
+      "category": "shader",
+      "tags": [
+        "react",
+        "glsl",
+        "webgl",
+        "shader",
+        "background",
+        "glow",
+        "animation",
+        "cyberpunk"
+      ],
+      "description": "An ATC (Air Traffic Control) shader component with GLSL-based animated background effects, featuring glowing grid lines and particle movement.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_xordev/atc-shader/default/preview.1786146013849.webp",
+      "id": "unknown__atc-shader",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Siri Wave",
+      "source_url": "https://21st.dev/@40973894/components/siri-wave",
+      "registry_url": "https://21st.dev/components",
+      "category": "animation",
+      "tags": [
+        "react",
+        "webgl",
+        "shader",
+        "glsl",
+        "animation",
+        "voice",
+        "glow",
+        "morph"
+      ],
+      "description": "Siri-style GLSL shaders on a raw WebGL canvas, featuring an iOS voice waveform with chromatic aberration and a fluid-dots metaball orb.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_40973894/siri-wave/default/preview.1785861402007.png",
+      "id": "unknown__siri-wave",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Liquid Effect Animation",
+      "source_url": "https://21st.dev/@minhxthanh/components/liquid-effect-animation",
+      "registry_url": "https://21st.dev/components",
+      "category": "animation",
+      "tags": [
+        "react",
+        "tailwind",
+        "animation",
+        "liquid-glass",
+        "gradient",
+        "webgl",
+        "background",
+        "flow"
+      ],
+      "description": "A liquid effect animation with flowing gradient colors and smooth morphing shapes, creating an organic background motion effect.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/minhxthanh/liquid-effect-animation/default/preview.1760769765612.png",
+      "id": "unknown__liquid-effect-animation",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Sphere",
+      "source_url": "https://21st.dev/@designali-in/components/sphere",
+      "registry_url": "https://21st.dev/components",
+      "category": "shader",
+      "tags": [
+        "react",
+        "glsl",
+        "shader",
+        "3d",
+        "noise",
+        "dither",
+        "background",
+        "glow"
+      ],
+      "description": "A sophisticated dithering shader with animated 3D shapes and effects, rendering a rotating sphere with procedural noise and color blending.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/designali-in/sphere/default/preview.1758130261160.png",
+      "id": "unknown__sphere",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Shader Svg",
+      "source_url": "https://21st.dev/@reuno-ui/components/shader-svg",
+      "registry_url": "https://21st.dev/components",
+      "category": "shader",
+      "tags": [
+        "react",
+        "framer-motion",
+        "gradient",
+        "svg",
+        "shader",
+        "logo",
+        "holographic",
+        "glow"
+      ],
+      "description": "A shader-powered SVG component rendering a mesh gradient effect on a Snapchat logo, showcasing fluid color transitions and lighting effects.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/muhammadnadeemmn9485134/shader-svg/default/preview.1756045117930.png",
+      "id": "unknown__shader-svg",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Image Stream Hero",
+      "source_url": "https://21st.dev/@ruixen.ui/components/image-stream-hero",
+      "registry_url": "https://21st.dev/components",
+      "category": "background",
+      "tags": [
+        "react",
+        "tailwind",
+        "hero",
+        "background",
+        "animation",
+        "image-grid",
+        "perspective",
+        "minimal"
+      ],
+      "description": "Two rails of images riding out of a vanishing point, sweeping to both edges with growth and rotation as they approach \u2014 a perspective-driven infinite loop.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/ruixen.ui/image-stream-hero/default/preview.1786457825693-aec7ef9e-26de-4f80-96a2-74ee9afaa09a.png",
+      "id": "unknown__image-stream-hero",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Scroll-Locked Video Hero",
+      "source_url": "https://21st.dev/@gughigug/components/scroll-locked-video-hero",
+      "registry_url": "https://21st.dev/components",
+      "category": "background",
+      "tags": [
+        "react",
+        "tailwind",
+        "hero",
+        "video-player",
+        "scroll-effect",
+        "background",
+        "minimal"
+      ],
+      "description": "A scroll-locked video hero section that plays a video in sync with scroll progress, creating an immersive full-screen storytelling experience.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_3F5lLma84xIPGAIgJ4L79Ee7KwG/scroll-locked-video-hero/default/preview-light.1787873244658.webp",
+      "id": "unknown__scroll-locked-video-hero",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Black Hole Hero Section",
+      "source_url": "https://21st.dev/@yura/components/blackhole-hero-section",
+      "registry_url": "https://21st.dev/components",
+      "category": "background",
+      "tags": [
+        "react",
+        "webgl",
+        "shader",
+        "3d",
+        "hero",
+        "background",
+        "glow",
+        "animation"
+      ],
+      "description": "A black hole that bends its own light \u2014 one ray per pixel walked through curved space, showing the far side of the accretion disc as the ring above the shadow.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/yura/blackhole-hero-section/default/preview.1785629994292-5accefa7-0f53-4c77-8bb4-5955246026e5.png",
+      "id": "unknown__black-hole-hero-section",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Gateway Flow",
+      "source_url": "https://21st.dev/@mengto/components/gateway-flow",
+      "registry_url": "https://21st.dev/components",
+      "category": "background",
+      "tags": [
+        "react",
+        "tailwind",
+        "background",
+        "particle",
+        "hero",
+        "glow",
+        "dark",
+        "animation"
+      ],
+      "description": "An animated dark background of glowing bezier particle streams converging toward the center, with click-triggered shockwave ripples for hero or login sections.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2wkgBzt5AJXsbcFLc3N4CLtXJTz/gateway-flow/default/preview.1787746748706.png",
+      "id": "unknown__gateway-flow",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Glyph Portal",
+      "source_url": "https://21st.dev/@Legacy/components/glyph-portal",
+      "registry_url": "https://21st.dev/components",
+      "category": "animation",
+      "tags": [
+        "react",
+        "typescript",
+        "animation",
+        "typography",
+        "scroll-effect",
+        "gradient",
+        "hero",
+        "minimal"
+      ],
+      "description": "A scroll-driven portal where you choose a letter and scroll through it into the next section \u2014 supports gradients, images, video, and canvas backgrounds with reduced-motion fallback.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/mailforreddit/glyph-portal/default/preview.1788815860826-0c5bf3c3-bce9-42fc-87de-9c0a7a451187.png",
+      "id": "unknown__glyph-portal",
       "source_domain": "21st.dev"
     }
   ]
