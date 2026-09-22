@@ -127,7 +127,7 @@ function GalleryCard({ scene, onLike, liked }: { scene: any; onLike: () => void;
           <h3 className="font-semibold text-sm truncate">{scene.name}</h3>
           <button
             onClick={onLike}
-            className={cn("shrink-0 flex items-center gap-1 text-xs min-h-[44px] px-1 transition-colors",
+            className={cn("shrink-0 flex items-center gap-1 text-xs min-h-[44px] min-w-[44px] px-1 transition-colors",
               liked ? "text-red-400" : "text-muted-foreground hover:text-red-400")}
           >
             <Heart className={cn("h-3.5 w-3.5", liked && "fill-current")} />
@@ -326,7 +326,7 @@ export default function SceneGallery() {
             <button
               onClick={() => setActiveTag(null)}
               className={cn(
-                "text-xs px-3 py-1.5 rounded-full border transition-colors min-h-[48px]",
+                "text-xs px-3 py-1.5 rounded-full border transition-colors min-h-[48px] min-w-[48px]",
                 !activeTag ? "bg-primary text-primary-foreground border-primary" : "border-border text-muted-foreground hover:border-primary/50"
               )}
             >
@@ -337,7 +337,7 @@ export default function SceneGallery() {
                 key={tag}
                 onClick={() => setActiveTag(activeTag === tag ? null : tag)}
                 className={cn(
-                  "text-xs px-3 py-1.5 rounded-full border transition-colors min-h-[48px]",
+                  "text-xs px-3 py-1.5 rounded-full border transition-colors min-h-[48px] min-w-[48px]",
                   activeTag === tag ? "bg-primary text-primary-foreground border-primary" : "border-border text-muted-foreground hover:border-primary/50"
                 )}
               >

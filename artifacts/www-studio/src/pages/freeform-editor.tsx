@@ -391,7 +391,7 @@ export default function FreeformEditor() {
               <button
                 key={device.w}
                 className={cn(
-                  "text-[10px] px-2 py-1 min-h-[44px] rounded-lg transition-colors",
+                  "text-[10px] px-2 py-1 min-h-[44px] min-w-[44px] rounded-lg transition-colors",
                   mobileWidth === device.w ? "bg-primary/20 text-primary" : "bg-muted/50 text-muted-foreground hover:text-foreground"
                 )}
                 onClick={() => setMobileWidth(device.w)}
@@ -441,7 +441,7 @@ export default function FreeformEditor() {
   return (
     <div className="h-[100dvh] flex flex-col bg-[#0a0a0f] text-foreground overflow-hidden">
       {/* Top bar */}
-      <header className="h-12 shrink-0 border-b border-border bg-background flex items-center justify-between px-4 gap-3 z-50 overflow-x-auto pt-[env(safe-area-inset-top)]">
+      <header className="h-12 shrink-0 border-b border-border bg-background flex flex-wrap items-center justify-between px-4 gap-3 z-50 pt-[env(safe-area-inset-top)]">
         <div className="flex flex-wrap items-center gap-3">
           <Link href="/projects" className="min-h-[44px] min-w-[44px] flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors">
             <ArrowLeft className="w-4 h-4" />
