@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "source_count": 245,
+  "version": "1.0.1",
+  "source_count": 260,
   "components": [
     {
       "id": "cat-0",
@@ -3796,6 +3796,289 @@
       "source_domain": "daisyui.com",
       "description": "daisyUI Modal component with 4 usage methods: HTML dialog element (recommended), HTML popover, hidden checkbox (legacy), and anchor links (legacy). Supports placements (top/middle/bottom/start/end), responsive variants, custom widths, and an optional modal-backdrop.",
       "code": ""
+    },
+    {
+      "name": "Scroll media expansion hero",
+      "source_url": "https://21st.dev/@arunachalam/components/scroll-expansion-hero",
+      "registry_url": "https://21st.dev/components",
+      "category": "background",
+      "tags": [
+        "react",
+        "tailwind",
+        "scroll-effect",
+        "hero",
+        "animation",
+        "minimal"
+      ],
+      "description": "A modern, interactive media component for Next.js that expands videos or images as users scroll, creating an engaging and immersive experience.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/arunachalam/scroll-expansion-hero/default/preview.1788803090804-2c8fb1d2-2c97-49da-8b80-56ad608613d9.webp",
+      "id": "unknown__scroll-media-expansion-hero",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Container Scroll Animation",
+      "source_url": "https://21st.dev/@manuarora700/components/container-scroll-animation",
+      "registry_url": "https://21st.dev/components",
+      "category": "animation",
+      "tags": [
+        "react",
+        "framer-motion",
+        "scroll-effect",
+        "animation",
+        "hero",
+        "landing-page"
+      ],
+      "description": "A scroll animation that rotates in 3d on scroll. Perfect for hero or marketing sections.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_aceternity/container-scroll-animation/default/preview.png",
+      "id": "unknown__container-scroll-animation",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Spline Scene",
+      "source_url": "https://21st.dev/@serafimcloud/components/splite",
+      "registry_url": "https://21st.dev/components",
+      "category": "3d",
+      "tags": [
+        "react",
+        "three.js",
+        "3d",
+        "hero",
+        "animation",
+        "gradient",
+        "glow"
+      ],
+      "description": "A React component that integrates Spline 3D scenes with an interactive 3D visualization and spotlight effect.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2nElBLvklOKlAURm6W1PTu6yYFh/splite/default/preview.1788457500398.webp",
+      "id": "unknown__spline-scene",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Spotlight Card",
+      "source_url": "https://21st.dev/@jahed/components/spotlight-card",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "card",
+        "glow",
+        "hover-effect",
+        "minimal",
+        "modern"
+      ],
+      "description": "A card component with a spotlight glow effect that follows cursor movement, featuring a modern glass-like design.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2xJxXqdwWohYrdd6fiMYrS9hbmO/spotlight-card/default/preview.1785940290519.png",
+      "id": "unknown__spotlight-card",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Loading Button",
+      "source_url": "https://21st.dev/@coss.com/components/loading-button-spinner",
+      "registry_url": "https://21st.dev/components",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "button",
+        "loader",
+        "spinner",
+        "animation",
+        "minimal"
+      ],
+      "description": "A disabled button that shows a spinner icon and Loading text to indicate an async action is in progress.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_cosscom/loading-button-spinner/default/preview.1789997719116.webp",
+      "id": "unknown__loading-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "AI Orb Avatar",
+      "source_url": "https://21st.dev/@odysseyui/components/components-primitives-avatar",
+      "registry_url": "https://21st.dev/components",
+      "category": "avatar",
+      "tags": [
+        "react",
+        "motion",
+        "avatar",
+        "ai",
+        "animation",
+        "glow",
+        "modern"
+      ],
+      "description": "An animated AI-style orb avatar with blinking eyes, offered in 12 color presets, 3 sizes, and 3 shapes (circle, square, squircle).",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_registry_odysseyui_1783713523591/components-primitives-avatar/default/preview.1789997748315.webp",
+      "id": "unknown__ai-orb-avatar",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Icon Item",
+      "source_url": "https://21st.dev/@felipemenezes098/components/item-with-icon",
+      "registry_url": "https://21st.dev/components",
+      "category": "list",
+      "tags": [
+        "react",
+        "typescript",
+        "icon",
+        "notification",
+        "settings",
+        "list",
+        "tailwind"
+      ],
+      "description": "A list-item row that pairs a leading icon with a title and description, used for notification and settings rows.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/felipemenezes098/item-with-icon/default/preview.1789994756948-8b76514f-04fe-494d-8de3-450572c23de9.png",
+      "id": "unknown__icon-item",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Streaming Response",
+      "source_url": "https://21st.dev/@starc007/components/streaming-response",
+      "registry_url": "https://21st.dev/components",
+      "category": "component",
+      "tags": [
+        "react",
+        "tailwind",
+        "ai-chat",
+        "copy",
+        "feedback",
+        "ai",
+        "message"
+      ],
+      "description": "A response surface for AI chat that shows streaming or completed text with copy, retry, and feedback actions plus an expandable list of sources.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/starc007/streaming-response/default/preview.1789993990084-0c3112f8-9613-43d9-910a-e9c215919da7.png",
+      "id": "unknown__streaming-response",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Department Badge Grid",
+      "source_url": "https://21st.dev/@7ovr/components/team-2",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "card",
+        "grid",
+        "badge",
+        "avatar",
+        "team"
+      ],
+      "description": "A team section showing six people in a hairline-divided grid, each with an avatar, name, role, department badge, and one-line bio.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/7ovr/team-2/default/preview.1789993737842-53c1c67e-9e57-485d-9555-c3d5ab0e6604.png",
+      "id": "unknown__department-badge-grid",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Message Reply Actions",
+      "source_url": "https://21st.dev/@sean0205/components/message-reply-actions",
+      "registry_url": "https://21st.dev/components",
+      "category": "component",
+      "tags": [
+        "react",
+        "tailwind",
+        "chat",
+        "ai",
+        "message",
+        "copy",
+        "feedback",
+        "button"
+      ],
+      "description": "A chat message footer with copy, regenerate, and thumbs up/down rating controls under an assistant reply.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/sean0205/message-reply-actions/default/preview.1789993560082-1de7579a-3775-45cb-8ba1-31a83f49e9bf.png",
+      "id": "unknown__message-reply-actions",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Switch",
+      "source_url": "https://21st.dev/@coss.com/components/switch",
+      "registry_url": "https://21st.dev/components",
+      "category": "toggle",
+      "tags": [
+        "react",
+        "typescript",
+        "toggle",
+        "button",
+        "form",
+        "minimal",
+        "modern"
+      ],
+      "description": "A toggle switch component built on Base UI Switch with animated thumb.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/coss.com/switch/default/preview.1774359000000.png",
+      "id": "unknown__switch",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Checkbox",
+      "source_url": "https://21st.dev/@coss.com/components/checkbox/card-style",
+      "registry_url": "https://21st.dev/components",
+      "category": "form",
+      "tags": [
+        "react",
+        "typescript",
+        "form",
+        "input",
+        "toggle",
+        "minimal",
+        "modern"
+      ],
+      "description": "A form control allowing the user to toggle between checked and not checked states, with card-style layout examples.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/coss.com/checkbox/card-style/preview.1774278250252.png",
+      "id": "unknown__checkbox",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Combobox",
+      "source_url": "https://21st.dev/@coss.com/components/combobox",
+      "registry_url": "https://21st.dev/components",
+      "category": "input",
+      "tags": [
+        "react",
+        "typescript",
+        "input",
+        "form",
+        "autocomplete",
+        "dropdown",
+        "minimal"
+      ],
+      "description": "An input combined with a list of predefined items to select, with autocomplete and multi-selection support.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_cosscom/combobox/default/preview.1788970571560.webp",
+      "id": "unknown__combobox",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Footer section",
+      "source_url": "https://21st.dev/@arihantcodes_1f7b8c4d/components/footer-section",
+      "registry_url": "https://21st.dev/components",
+      "category": "component",
+      "tags": [
+        "react",
+        "tailwind",
+        "footer",
+        "minimal",
+        "modern",
+        "theme-toggle"
+      ],
+      "description": "A basic footer section with theme toggle support.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_arihantcodes/footer-section/default/preview.png",
+      "id": "unknown__footer-section",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Progress Radial",
+      "source_url": "https://21st.dev/@sean0205/components/progress/radial",
+      "registry_url": "https://21st.dev/components",
+      "category": "progress",
+      "tags": [
+        "react",
+        "typescript",
+        "progress",
+        "loader",
+        "radial",
+        "upload",
+        "minimal"
+      ],
+      "description": "Displays an indicator showing the completion progress of a task as a radial progress circle with status labels.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/sean0205/progress/radial/preview.1751353887848.png",
+      "id": "unknown__progress-radial",
+      "source_domain": "21st.dev"
     }
   ]
 }
