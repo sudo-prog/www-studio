@@ -1,6 +1,6 @@
 {
-  "version": "1.0.11",
-  "source_count": 435,
+  "version": "1.0.12",
+  "source_count": 474,
   "components": [
     {
       "id": "cat-0",
@@ -7169,6 +7169,698 @@
       "preview_image": "",
       "id": "unknown__top-bar",
       "source_domain": "paper.design"
+    },
+    {
+      "name": "Paper Texture",
+      "source_url": "https://shaders.paper.design/paper-texture",
+      "registry_url": "https://shaders.paper.design",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "ts",
+        "noise",
+        "shader-art",
+        "background"
+      ],
+      "description": "Ultra-fast zero-dependency GLSL shader rendering a subtle paper-like texture with fine grain for realistic material depth.",
+      "preview_image": "https://shaders.paper.design/_next/static/media/paper-texture.e321032f.webp",
+      "id": "unknown__paper-texture",
+      "source_domain": "shaders.paper.design"
+    },
+    {
+      "name": "Fluted Glass",
+      "source_url": "https://shaders.paper.design/fluted-glass",
+      "registry_url": "https://shaders.paper.design",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "ts",
+        "liquid-glass",
+        "shader-art",
+        "background"
+      ],
+      "description": "GLSL shader simulating fluted glass with vertical grooves and translucency for modern UI surfaces.",
+      "preview_image": "https://shaders.paper.design/_next/static/media/fluted-glass.a85e4f3b.webp",
+      "id": "unknown__fluted-glass",
+      "source_domain": "shaders.paper.design"
+    },
+    {
+      "name": "Water",
+      "source_url": "https://shaders.paper.design/water",
+      "registry_url": "https://shaders.paper.design",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "ts",
+        "gooey",
+        "shader-art",
+        "background"
+      ],
+      "description": "Real-time GLSL water surface shader with ripples and light reflection for immersive backgrounds.",
+      "preview_image": "https://shaders.paper.design/_next/static/media/water.ef3b328a.webp",
+      "id": "unknown__water",
+      "source_domain": "shaders.paper.design"
+    },
+    {
+      "name": "Image Dithering",
+      "source_url": "https://shaders.paper.design/image-dithering",
+      "registry_url": "https://shaders.paper.design",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "ts",
+        "dither",
+        "shader-art",
+        "background"
+      ],
+      "description": "Dithering GLSL shader that simulates vintage color depth limitations on raster images.",
+      "preview_image": "https://shaders.paper.design/_next/static/media/image-dithering.e71ae083.webp",
+      "id": "unknown__image-dithering",
+      "source_domain": "shaders.paper.design"
+    },
+    {
+      "name": "Halftone CMYK",
+      "source_url": "https://shaders.paper.design/halftone-cmyk",
+      "registry_url": "https://shaders.paper.design",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "ts",
+        "halftone",
+        "shader-art",
+        "background"
+      ],
+      "description": "CMYK halftone dot pattern GLSL shader simulating print-style color separation on digital canvases.",
+      "preview_image": "https://shaders.paper.design/_next/static/media/halftone-cmyk.bc712032.webp",
+      "id": "unknown__halftone-cmyk",
+      "source_domain": "shaders.paper.design"
+    },
+    {
+      "name": "Lens Distortion",
+      "source_url": "https://shaders.paper.design/lens-distortion",
+      "registry_url": "https://shaders.paper.design",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "ts",
+        "glow",
+        "shader-art",
+        "background"
+      ],
+      "description": "Barrel and pincushion lens distortion GLSL shader for simulating camera optics and creative warping.",
+      "preview_image": "https://shaders.paper.design/_next/static/media/lens-distortion.48ec9ca8.webp",
+      "id": "unknown__lens-distortion",
+      "source_domain": "shaders.paper.design"
+    },
+    {
+      "name": "Heatmap",
+      "source_url": "https://shaders.paper.design/heatmap",
+      "registry_url": "https://shaders.paper.design",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "ts",
+        "gradient",
+        "shader-art",
+        "background"
+      ],
+      "description": "Animated heatmap GLSL shader with flowing color transitions for data visualization and logo treatments.",
+      "preview_image": "https://shaders.paper.design/_next/static/media/heatmap.a14663b8.webp",
+      "id": "unknown__heatmap",
+      "source_domain": "shaders.paper.design"
+    },
+    {
+      "name": "Liquid Metal",
+      "source_url": "https://shaders.paper.design/liquid-metal",
+      "registry_url": "https://shaders.paper.design",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "ts",
+        "metallic",
+        "shader-art",
+        "background"
+      ],
+      "description": "Mercury-like liquid metal GLSL shader with smooth surface tension, reflections, and morphing blobs.",
+      "preview_image": "https://shaders.paper.design/_next/static/media/liquid-metal.1941955b.webp",
+      "id": "unknown__liquid-metal",
+      "source_domain": "shaders.paper.design"
+    },
+    {
+      "name": "Gem Smoke",
+      "source_url": "https://shaders.paper.design/gem-smoke",
+      "registry_url": "https://shaders.paper.design",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "ts",
+        "holographic",
+        "shader-art",
+        "background"
+      ],
+      "description": "Prismatic smoke GLSL shader with gemstone refraction and iridescent caustics for ethereal backgrounds.",
+      "preview_image": "https://shaders.paper.design/_next/static/media/gem-smoke.8f83c3f4.webp",
+      "id": "unknown__gem-smoke",
+      "source_domain": "shaders.paper.design"
+    },
+    {
+      "name": "Mesh Gradient",
+      "source_url": "https://shaders.paper.design/mesh-gradient",
+      "registry_url": "https://shaders.paper.design",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "ts",
+        "gradient",
+        "shader-art",
+        "background"
+      ],
+      "description": "SVG-like mesh gradient GLSL shader with smooth color interpolation for modern UI backgrounds.",
+      "preview_image": "https://shaders.paper.design/_next/static/media/mesh-gradient.4a66bfa0.webp",
+      "id": "unknown__mesh-gradient",
+      "source_domain": "shaders.paper.design"
+    },
+    {
+      "name": "Static Mesh Gradient",
+      "source_url": "https://shaders.paper.design/static-mesh-gradient",
+      "registry_url": "https://shaders.paper.design",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "ts",
+        "gradient",
+        "shader-art",
+        "background"
+      ],
+      "description": "Pre-baked static mesh gradient GLSL shader with fixed color control points for consistent backgrounds.",
+      "preview_image": "https://shaders.paper.design/_next/static/media/static-mesh-gradient.09934c01.webp",
+      "id": "unknown__static-mesh-gradient",
+      "source_domain": "shaders.paper.design"
+    },
+    {
+      "name": "Static Radial Gradient",
+      "source_url": "https://shaders.paper.design/static-radial-gradient",
+      "registry_url": "https://shaders.paper.design",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "ts",
+        "gradient",
+        "shader-art",
+        "background"
+      ],
+      "description": "Fixed radial gradient GLSL shader with smooth color falloff from a center point.",
+      "preview_image": "https://shaders.paper.design/_next/static/media/static-radial-gradient.5125483b.webp",
+      "id": "unknown__static-radial-gradient",
+      "source_domain": "shaders.paper.design"
+    },
+    {
+      "name": "Dithering",
+      "source_url": "https://shaders.paper.design/dithering",
+      "registry_url": "https://shaders.paper.design",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "ts",
+        "dither",
+        "shader-art",
+        "background"
+      ],
+      "description": "Classic Bayer dithering GLSL shader for converting gradients to retro pixelated color bands.",
+      "preview_image": "",
+      "id": "unknown__dithering",
+      "source_domain": "shaders.paper.design"
+    },
+    {
+      "name": "Grain Gradient",
+      "source_url": "https://shaders.paper.design/grain-gradient",
+      "registry_url": "https://shaders.paper.design",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "ts",
+        "noise",
+        "shader-art",
+        "background"
+      ],
+      "description": "Gradient GLSL shader overlaid with analog film grain for textured, lo-fi background effects.",
+      "preview_image": "",
+      "id": "unknown__grain-gradient",
+      "source_domain": "shaders.paper.design"
+    },
+    {
+      "name": "Dot Orbit",
+      "source_url": "https://shaders.paper.design/dot-orbit",
+      "registry_url": "https://shaders.paper.design",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "ts",
+        "glow",
+        "shader-art",
+        "background"
+      ],
+      "description": "Particle orbit GLSL shader with dots circling a center point for hypnotic rotational motion.",
+      "preview_image": "https://shaders.paper.design/_next/static/media/dot-orbit.8e262802.webp",
+      "id": "unknown__dot-orbit",
+      "source_domain": "shaders.paper.design"
+    },
+    {
+      "name": "Dot Grid",
+      "source_url": "https://shaders.paper.design/dot-grid",
+      "registry_url": "https://shaders.paper.design",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "ts",
+        "flat",
+        "shader-art",
+        "background"
+      ],
+      "description": "Regular dot grid GLSL shader with configurable spacing for procedural background patterns.",
+      "preview_image": "https://shaders.paper.design/_next/static/media/dot-grid.1a74aa0c.webp",
+      "id": "unknown__dot-grid",
+      "source_domain": "shaders.paper.design"
+    },
+    {
+      "name": "Warp",
+      "source_url": "https://shaders.paper.design/warp",
+      "registry_url": "https://shaders.paper.design",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "ts",
+        "gooey",
+        "shader-art",
+        "background"
+      ],
+      "description": "Procedural warp GLSL shader simulating heat haze or energy distortion effects.",
+      "preview_image": "https://shaders.paper.design/_next/static/media/warp.4bd5f7a2.webp",
+      "id": "unknown__warp",
+      "source_domain": "shaders.paper.design"
+    },
+    {
+      "name": "Spiral",
+      "source_url": "https://shaders.paper.design/spiral",
+      "registry_url": "https://shaders.paper.design",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "ts",
+        "swirl",
+        "shader-art",
+        "background"
+      ],
+      "description": "Animated spiral GLSL shader with rotating arms and color cycling for dynamic visual focus.",
+      "preview_image": "https://shaders.paper.design/_next/static/media/spiral.1adec5ed.webp",
+      "id": "unknown__spiral",
+      "source_domain": "shaders.paper.design"
+    },
+    {
+      "name": "Swirl",
+      "source_url": "https://shaders.paper.design/swirl",
+      "registry_url": "https://shaders.paper.design",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "ts",
+        "swirl",
+        "shader-art",
+        "background"
+      ],
+      "description": "Fluid swirl GLSL shader with vortex distortion and smooth color blending for dreamy backgrounds.",
+      "preview_image": "https://shaders.paper.design/_next/static/media/swirl.e9a4e652.webp",
+      "id": "unknown__swirl",
+      "source_domain": "shaders.paper.design"
+    },
+    {
+      "name": "Waves",
+      "source_url": "https://shaders.paper.design/waves",
+      "registry_url": "https://shaders.paper.design",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "ts",
+        "wave",
+        "shader-art",
+        "background"
+      ],
+      "description": "Sinusoidal wave GLSL shader with configurable amplitude and frequency for fluid motion backgrounds.",
+      "preview_image": "https://shaders.paper.design/_next/static/media/waves.4e601c6e.webp",
+      "id": "unknown__waves",
+      "source_domain": "shaders.paper.design"
+    },
+    {
+      "name": "Neuro Noise",
+      "source_url": "https://shaders.paper.design/neuro-noise",
+      "registry_url": "https://shaders.paper.design",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "ts",
+        "noise",
+        "shader-art",
+        "background"
+      ],
+      "description": "Neural-network-inspired noise GLSL shader producing organic cloud-like procedural textures.",
+      "preview_image": "https://shaders.paper.design/_next/static/media/neuro-noise.5d482fef.webp",
+      "id": "unknown__neuro-noise",
+      "source_domain": "shaders.paper.design"
+    },
+    {
+      "name": "Perlin Noise",
+      "source_url": "https://shaders.paper.design/perlin-noise",
+      "registry_url": "https://shaders.paper.design",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "ts",
+        "noise",
+        "shader-art",
+        "background"
+      ],
+      "description": "Classic Perlin noise GLSL shader for generating natural-looking procedural clouds, terrain, and textures.",
+      "preview_image": "https://shaders.paper.design/_next/static/media/perlin-noise.df0c9f2c.webp",
+      "id": "unknown__perlin-noise",
+      "source_domain": "shaders.paper.design"
+    },
+    {
+      "name": "Simplex Noise",
+      "source_url": "https://shaders.paper.design/simplex-noise",
+      "registry_url": "https://shaders.paper.design",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "ts",
+        "noise",
+        "shader-art",
+        "background"
+      ],
+      "description": "Improved simplex noise GLSL shader with reduced computational cost over classic Perlin for smoother animation.",
+      "preview_image": "https://shaders.paper.design/_next/static/media/simplex-noise.aa43318c.webp",
+      "id": "unknown__simplex-noise",
+      "source_domain": "shaders.paper.design"
+    },
+    {
+      "name": "Voronoi",
+      "source_url": "https://shaders.paper.design/voronoi",
+      "registry_url": "https://shaders.paper.design",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "ts",
+        "low-poly",
+        "shader-art",
+        "background"
+      ],
+      "description": "Voronoi cell GLSL shader with randomized cell sizes and color fills for geometric organic patterns.",
+      "preview_image": "https://shaders.paper.design/_next/static/media/voronoi.bea0667e.webp",
+      "id": "unknown__voronoi",
+      "source_domain": "shaders.paper.design"
+    },
+    {
+      "name": "Pulsing Border",
+      "source_url": "https://shaders.paper.design/pulsing-border",
+      "registry_url": "https://shaders.paper.design",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "ts",
+        "glow",
+        "shader-art",
+        "background"
+      ],
+      "description": "Animated border GLSL shader with pulses traveling around edges for active-element focus cues.",
+      "preview_image": "https://shaders.paper.design/_next/static/media/pulsing-border.43385d6e.webp",
+      "id": "unknown__pulsing-border",
+      "source_domain": "shaders.paper.design"
+    },
+    {
+      "name": "Metaballs",
+      "source_url": "https://shaders.paper.design/metaballs",
+      "registry_url": "https://shaders.paper.design",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "ts",
+        "morph",
+        "shader-art",
+        "background"
+      ],
+      "description": "Soft merging metaball GLSL shader with implicit surface rendering and fluid blob interactions.",
+      "preview_image": "https://shaders.paper.design/_next/static/media/metaballs.83542882.webp",
+      "id": "unknown__metaballs",
+      "source_domain": "shaders.paper.design"
+    },
+    {
+      "name": "Color Panels",
+      "source_url": "https://shaders.paper.design/color-panels",
+      "registry_url": "https://shaders.paper.design",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "ts",
+        "flat",
+        "shader-art",
+        "background"
+      ],
+      "description": "Divided color panel GLSL shader with sharp geometric sections for retro-futuristic backgrounds.",
+      "preview_image": "https://shaders.paper.design/_next/static/media/color-panels.1a95966f.webp",
+      "id": "unknown__color-panels",
+      "source_domain": "shaders.paper.design"
+    },
+    {
+      "name": "Smoke Ring",
+      "source_url": "https://shaders.paper.design/smoke-ring",
+      "registry_url": "https://shaders.paper.design",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "ts",
+        "gooey",
+        "shader-art",
+        "background"
+      ],
+      "description": "Volumetric smoke ring GLSL shader with rising curls and fading opacity for ethereal overlays.",
+      "preview_image": "https://shaders.paper.design/_next/static/media/smoke-ring.e0fed968.webp",
+      "id": "unknown__smoke-ring",
+      "source_domain": "shaders.paper.design"
+    },
+    {
+      "name": "God Rays",
+      "source_url": "https://shaders.paper.design/god-rays",
+      "registry_url": "https://shaders.paper.design",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "ts",
+        "glow",
+        "shader-art",
+        "background"
+      ],
+      "description": "Volumetric light scattering GLSL shader simulating sun rays through clouds or narrow gaps.",
+      "preview_image": "https://shaders.paper.design/_next/static/media/god-rays.0a8e56db.webp",
+      "id": "unknown__god-rays",
+      "source_domain": "shaders.paper.design"
+    },
+    {
+      "name": "Atmospheric Landscape",
+      "source_url": "https://www.shadertoy.com/view/slVfD1",
+      "registry_url": "https://www.shadertoy.com",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "gradient",
+        "shader-art",
+        "animation"
+      ],
+      "description": "GLSL shader rendering a procedural atmospheric landscape with sky, terrain, and distance-based fog.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/slVfD1.jpg",
+      "id": "unknown__atmospheric-landscape",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Wormhood",
+      "source_url": "https://www.shadertoy.com/view/MdcSRj",
+      "registry_url": "https://www.shadertoy.com",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "holographic",
+        "shader-art",
+        "animation"
+      ],
+      "description": "GLSL shader creating a wormhole distortion effect with swirling vortex and depth-based color shifts.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/MdcSRj.jpg",
+      "id": "unknown__wormhood",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "GrafEq",
+      "source_url": "https://www.shadertoy.com/view/Xs3GWj",
+      "registry_url": "https://www.shadertoy.com",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "wireframe",
+        "shader-art",
+        "animation"
+      ],
+      "description": "GLSL shader visualizing mathematical equation graphs as animated 2D patterns with flowing geometry.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/Xs3GWj.jpg",
+      "id": "unknown__grafeq",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "1D Radial Lightmap Test",
+      "source_url": "https://www.shadertoy.com/view/XsK3RR",
+      "registry_url": "https://www.shadertoy.com",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "glow",
+        "shader-art",
+        "animation"
+      ],
+      "description": "GLSL shader demonstrating radial light propagation and 1D lightmap sampling for lighting effects.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/XsK3RR.jpg",
+      "id": "unknown__1d-radial-lightmap-test",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Squares Background v2",
+      "source_url": "https://www.shadertoy.com/view/MdVXzw",
+      "registry_url": "https://www.shadertoy.com",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "flat",
+        "shader-art",
+        "animation"
+      ],
+      "description": "GLSL shader rendering an animated grid of squares with parallax depth and color variation.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/MdVXzw.jpg",
+      "id": "unknown__squares-background-v2",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Astral Black hole",
+      "source_url": "https://www.shadertoy.com/view/7333RS",
+      "registry_url": "https://www.shadertoy.com",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "holographic",
+        "shader-art",
+        "animation"
+      ],
+      "description": "GLSL shader depicting a black hole with gravitational lensing, accretion disk, and relativistic light bending.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/7333RS.jpg",
+      "id": "unknown__astral-black-hole",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Day 519",
+      "source_url": "https://www.shadertoy.com/view/fXG3DR",
+      "registry_url": "https://www.shadertoy.com",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "gooey",
+        "shader-art",
+        "animation"
+      ],
+      "description": "GLSL shader from a daily shader series featuring procedural animation with evolving geometric forms.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/fXG3DR.jpg",
+      "id": "unknown__day-519",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Pattern 018 - Flashy Circles",
+      "source_url": "https://www.shadertoy.com/view/N3yGWR",
+      "registry_url": "https://www.shadertoy.com",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "neon",
+        "shader-art",
+        "animation"
+      ],
+      "description": "GLSL shader with concentric pulsing circles and bright color cycling for hypnotic visual patterns.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/N3yGWR.jpg",
+      "id": "unknown__pattern-018---flashy-circles",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Home for Lana Lux challange v1",
+      "source_url": "https://www.shadertoy.com/view/N3yGDR",
+      "registry_url": "https://www.shadertoy.com",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "minimal",
+        "shader-art",
+        "animation"
+      ],
+      "description": "GLSL shader created for a design challenge with stylized visuals, custom lighting, and materials.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/N3yGDR.jpg",
+      "id": "unknown__home-for-lana-lux-challange-v1",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Entre les Plantes",
+      "source_url": "https://www.shadertoy.com/view/7XK3RW",
+      "registry_url": "https://www.shadertoy.com",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "gooey",
+        "shader-art",
+        "animation"
+      ],
+      "description": "GLSL shader with botanical-inspired procedural forms and organic motion reminiscent of plant growth.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/7XK3RW.jpg",
+      "id": "unknown__entre-les-plantes",
+      "source_domain": "www.shadertoy.com"
     }
   ]
 }
