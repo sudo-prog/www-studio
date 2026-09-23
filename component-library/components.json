@@ -1,6 +1,6 @@
 {
-  "version": "1.0.7",
-  "source_count": 357,
+  "version": "1.0.8",
+  "source_count": 381,
   "components": [
     {
       "id": "cat-0",
@@ -5790,6 +5790,438 @@
       "description": "Build a scroll-driven, infinitely looping 3D image tube in React Three Fiber powered by shaders, inertia, and a unified motion system.",
       "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/02/3DTubeR3F-800x600.webp?x86980",
       "id": "tympanus-net__reactive-depth:-building-a-scroll-driven-3d-image-tube-with-react-three-fiber"
+    },
+    {
+      "name": "Been there",
+      "source_url": "https://www.designminis.com/tools/been-there",
+      "registry_url": "https://www.designminis.com",
+      "category": "animation",
+      "tags": [
+        "css",
+        "html",
+        "glow",
+        "glitch",
+        "tool",
+        "effect"
+      ],
+      "description": "Been there \u2014 design tool from DesignMinis directory",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/f8594604ad3bde713d9257407ca325f9562a7912-1600x1000.jpg?w=520&fit=max&auto=format",
+      "id": "unknown__been-there",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Valessa",
+      "source_url": "https://www.designminis.com/tools/valessa",
+      "registry_url": "https://www.designminis.com",
+      "category": "3d",
+      "tags": [
+        "three.js",
+        "webgl",
+        "low-poly",
+        "wireframe",
+        "tool",
+        "3d"
+      ],
+      "description": "Valessa \u2014 design tool from DesignMinis directory",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/254c5bcf13c10ad6cf0cc69f5024cde1889550d1-1260x1800.jpg",
+      "id": "unknown__valessa",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Caustic",
+      "source_url": "https://www.designminis.com/tools/caustic",
+      "registry_url": "https://www.designminis.com",
+      "category": "animation",
+      "tags": [
+        "css",
+        "html",
+        "glow",
+        "glitch",
+        "tool",
+        "effect"
+      ],
+      "description": "Caustic \u2014 design tool from DesignMinis directory",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/0170865457b98c14c1940a8f07f0dea6a528a289-1600x1000.jpg?w=520&fit=max&auto=format",
+      "id": "unknown__caustic",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Dithr",
+      "source_url": "https://www.designminis.com/tools/dithr",
+      "registry_url": "https://www.designminis.com",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "css",
+        "fluid",
+        "wave",
+        "tool",
+        "animation"
+      ],
+      "description": "Dithr \u2014 design tool from DesignMinis directory",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/dfe381e716ed867f83406c68317bd00b09885dc3-1600x1000.jpg?w=520&fit=max&auto=format",
+      "id": "unknown__dithr",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Sliick",
+      "source_url": "https://www.designminis.com/tools/sliick",
+      "registry_url": "https://www.designminis.com",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "css",
+        "fluid",
+        "wave",
+        "tool",
+        "animation"
+      ],
+      "description": "Sliick \u2014 design tool from DesignMinis directory",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/179c359762764b38d1db9573403c38102b3fa133-1600x1000.jpg?w=520&fit=max&auto=format",
+      "id": "unknown__sliick",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Gifted - Make a GIF in your browser",
+      "source_url": "https://www.designminis.com/tools/gifted-make-a-gif-in-your-browser",
+      "registry_url": "https://www.designminis.com",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "css",
+        "fluid",
+        "wave",
+        "tool",
+        "animation"
+      ],
+      "description": "Gifted - Make a GIF in your browser \u2014 design tool from DesignMinis directory",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/791b66df9047facc6632ecbe8e1adba07ae9912e-1600x1000.jpg?w=520&fit=max&auto=format",
+      "id": "unknown__gifted---make-a-gif-in-your-browser",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Swayro",
+      "source_url": "https://www.designminis.com/tools/swayro",
+      "registry_url": "https://www.designminis.com",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "css",
+        "fluid",
+        "wave",
+        "tool",
+        "animation"
+      ],
+      "description": "Swayro \u2014 design tool from DesignMinis directory",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/a6e28532a6e655b904c201c1edfd402102fd8662-1600x1000.jpg?w=520&fit=max&auto=format",
+      "id": "unknown__swayro",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Sfumato",
+      "source_url": "https://www.designminis.com/tools/sfumato",
+      "registry_url": "https://www.designminis.com",
+      "category": "background",
+      "tags": [
+        "css",
+        "js",
+        "gradient",
+        "pattern",
+        "tool",
+        "background"
+      ],
+      "description": "Sfumato \u2014 design tool from DesignMinis directory",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/458df797d68ce0c15b6f7cf4b3bb0e6a5711a1ba-1600x1000.jpg?w=520&fit=max&auto=format",
+      "id": "unknown__sfumato",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Pixel animator",
+      "source_url": "https://www.designminis.com/tools/pixel-animator",
+      "registry_url": "https://www.designminis.com",
+      "category": "background",
+      "tags": [
+        "css",
+        "js",
+        "gradient",
+        "pattern",
+        "tool",
+        "background"
+      ],
+      "description": "Pixel animator \u2014 design tool from DesignMinis directory",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/a0238f9835ecd04084977bfa4fbbc58275f56238-1600x1000.jpg?w=520&fit=max&auto=format",
+      "id": "unknown__pixel-animator",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Mirrors",
+      "source_url": "https://www.designminis.com/tools/mirrors",
+      "registry_url": "https://www.designminis.com",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "css",
+        "fluid",
+        "wave",
+        "tool",
+        "animation"
+      ],
+      "description": "Mirrors \u2014 design tool from DesignMinis directory",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/63595a589781e0ab8351003f51379ebec1429c83-1600x1000.jpg?w=520&fit=max&auto=format",
+      "id": "unknown__mirrors",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "DotForge",
+      "source_url": "https://www.designminis.com/tools/dotforge",
+      "registry_url": "https://www.designminis.com",
+      "category": "animation",
+      "tags": [
+        "css",
+        "html",
+        "glow",
+        "glitch",
+        "tool",
+        "effect"
+      ],
+      "description": "DotForge \u2014 design tool from DesignMinis directory",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/9df695c01e7cb0e0b8e5b32525607bd2ab8902e6-1600x1000.jpg?w=520&fit=max&auto=format",
+      "id": "unknown__dotforge",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Easings \u2014 CSS Cubic-Bezier Editor",
+      "source_url": "https://www.designminis.com/tools/easings-css-cubic-bezier-editor",
+      "registry_url": "https://www.designminis.com",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "css",
+        "fluid",
+        "wave",
+        "tool",
+        "animation"
+      ],
+      "description": "Easings \u2014 CSS Cubic-Bezier Editor \u2014 design tool from DesignMinis directory",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/4230ad372a319bba2fdfd1ec819caa03fc6f9788-1600x1000.jpg?w=520&fit=max&auto=format",
+      "id": "unknown__easings-\u2014-css-cubic-bezier-editor",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "GEOMETRIC",
+      "source_url": "https://www.designminis.com/tools/geometric",
+      "registry_url": "https://www.designminis.com",
+      "category": "animation",
+      "tags": [
+        "css",
+        "html",
+        "glow",
+        "glitch",
+        "tool",
+        "effect"
+      ],
+      "description": "GEOMETRIC \u2014 design tool from DesignMinis directory",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/4fbc62ce887e34011bd76cd7546e6fdd1ed4800e-1600x1000.jpg?w=520&fit=max&auto=format",
+      "id": "unknown__geometric",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Liquid Orb Editor",
+      "source_url": "https://www.designminis.com/tools/liquid-orb-editor",
+      "registry_url": "https://www.designminis.com",
+      "category": "animation",
+      "tags": [
+        "css",
+        "html",
+        "glow",
+        "glitch",
+        "tool",
+        "effect"
+      ],
+      "description": "Liquid Orb Editor \u2014 design tool from DesignMinis directory",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/040eca6b6f3da5d6480e97f19669e8dcaa5db9e2-1600x1000.jpg?w=520&fit=max&auto=format",
+      "id": "unknown__liquid-orb-editor",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Bloop",
+      "source_url": "https://www.designminis.com/tools/bloop",
+      "registry_url": "https://www.designminis.com",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "css",
+        "fluid",
+        "wave",
+        "tool",
+        "animation"
+      ],
+      "description": "Bloop \u2014 design tool from DesignMinis directory",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/ebf8f8a5b0322998cd874b08967f530559d45538-1600x1000.jpg?w=520&fit=max&auto=format",
+      "id": "unknown__bloop",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Gradlab",
+      "source_url": "https://www.designminis.com/tools/gradlab",
+      "registry_url": "https://www.designminis.com",
+      "category": "background",
+      "tags": [
+        "css",
+        "js",
+        "gradient",
+        "pattern",
+        "tool",
+        "background"
+      ],
+      "description": "Gradlab \u2014 design tool from DesignMinis directory",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/8855216272541d2418f234025f1331bdf0a7a325-1600x1000.jpg?w=520&fit=max&auto=format",
+      "id": "unknown__gradlab",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "paperlab",
+      "source_url": "https://www.designminis.com/tools/paperlab",
+      "registry_url": "https://www.designminis.com",
+      "category": "3d",
+      "tags": [
+        "three.js",
+        "webgl",
+        "low-poly",
+        "wireframe",
+        "tool",
+        "3d"
+      ],
+      "description": "paperlab \u2014 design tool from DesignMinis directory",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/90182826ae06c220befab2dfc78e609a132139d3-1600x1000.jpg?w=520&fit=max&auto=format",
+      "id": "unknown__paperlab",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "fxstudio",
+      "source_url": "https://www.designminis.com/tools/fxstudio",
+      "registry_url": "https://www.designminis.com",
+      "category": "animation",
+      "tags": [
+        "css",
+        "html",
+        "glow",
+        "glitch",
+        "tool",
+        "effect"
+      ],
+      "description": "fxstudio \u2014 design tool from DesignMinis directory",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/e88f15b0131014632755abc8d15194f76bd9f097-1600x1000.jpg?w=520&fit=max&auto=format",
+      "id": "unknown__fxstudio",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Orby",
+      "source_url": "https://www.designminis.com/tools/orby",
+      "registry_url": "https://www.designminis.com",
+      "category": "3d",
+      "tags": [
+        "three.js",
+        "webgl",
+        "low-poly",
+        "wireframe",
+        "tool",
+        "3d"
+      ],
+      "description": "Orby \u2014 design tool from DesignMinis directory",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/d3f6c2a5efea56c30aca5f8a071e4f54031b8725-1600x1000.jpg?w=520&fit=max&auto=format",
+      "id": "unknown__orby",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "teardown",
+      "source_url": "https://www.designminis.com/tools/teardown",
+      "registry_url": "https://www.designminis.com",
+      "category": "3d",
+      "tags": [
+        "three.js",
+        "webgl",
+        "low-poly",
+        "wireframe",
+        "tool",
+        "3d"
+      ],
+      "description": "teardown \u2014 design tool from DesignMinis directory",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/3300e72e927d5d4836b73d910e5bc04b2b907ae1-1600x1000.jpg?w=520&fit=max&auto=format",
+      "id": "unknown__teardown",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Hatchery",
+      "source_url": "https://www.designminis.com/tools/hatchery",
+      "registry_url": "https://www.designminis.com",
+      "category": "background",
+      "tags": [
+        "css",
+        "js",
+        "gradient",
+        "pattern",
+        "tool",
+        "background"
+      ],
+      "description": "Hatchery \u2014 design tool from DesignMinis directory",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/ea75df0a49b6ee55dcaae52436fd2db7afa89438-1600x1000.jpg?w=520&fit=max&auto=format",
+      "id": "unknown__hatchery",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Reelfolio",
+      "source_url": "https://www.designminis.com/tools/reelfolio",
+      "registry_url": "https://www.designminis.com",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "css",
+        "fluid",
+        "wave",
+        "tool",
+        "animation"
+      ],
+      "description": "Reelfolio \u2014 design tool from DesignMinis directory",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/bafb4b9af8ed665de926e38b8d6bfac9943c100d-1600x1000.jpg?w=520&fit=max&auto=format",
+      "id": "unknown__reelfolio",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Paper Studio",
+      "source_url": "https://www.designminis.com/tools/paper-studio",
+      "registry_url": "https://www.designminis.com",
+      "category": "3d",
+      "tags": [
+        "three.js",
+        "webgl",
+        "low-poly",
+        "wireframe",
+        "tool",
+        "3d"
+      ],
+      "description": "Paper Studio \u2014 design tool from DesignMinis directory",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/7b9cc7250652782edc228f73e828e9692a5e1655-1600x1000.jpg?w=520&fit=max&auto=format",
+      "id": "unknown__paper-studio",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Gradient studio",
+      "source_url": "https://www.designminis.com/tools/gradient-studio",
+      "registry_url": "https://www.designminis.com",
+      "category": "background",
+      "tags": [
+        "css",
+        "js",
+        "gradient",
+        "pattern",
+        "tool",
+        "background"
+      ],
+      "description": "Gradient studio \u2014 design tool from DesignMinis directory",
+      "preview_image": "",
+      "id": "unknown__gradient-studio",
+      "source_domain": "www.designminis.com"
     }
   ]
 }
