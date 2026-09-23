@@ -1,6 +1,6 @@
 {
-  "version": "1.0.8",
-  "source_count": 381,
+  "version": "1.0.9",
+  "source_count": 404,
   "components": [
     {
       "id": "cat-0",
@@ -6222,6 +6222,423 @@
       "preview_image": "",
       "id": "unknown__gradient-studio",
       "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Magnetic Button - overwrite modes",
+      "source_url": "https://demos.gsap.com/demo/magnetic-button-overwrite-modes",
+      "registry_url": "https://demos.gsap.com/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "minimal",
+        "neon",
+        "button",
+        "click-effect"
+      ],
+      "description": "A magnetic button demo showcasing GSAP's overwrite modes for resolving tween conflicts when multiple tweens target the same element.",
+      "preview_image": "https://gsap.com/community/uploads/monthly_2026_04/demo-2026-04-28-18h45m08s267.png.fe1b75a7892647ff00ccd2c302b46fc8.png",
+      "id": "unknown__magnetic-button---overwrite-modes",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Proximity scale grid",
+      "source_url": "https://demos.gsap.com/demo/proximity-scale-grid",
+      "registry_url": "https://demos.gsap.com/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "minimal",
+        "glow",
+        "gallery",
+        "hover-effect"
+      ],
+      "description": "A responsive grid where items smoothly scale up based on cursor proximity, demonstrating interactive hover effects with GSAP.",
+      "preview_image": "https://gsap.com/community/uploads/monthly_2026_04/proximity.png.052381991efac9ffecbc1f3d8d7bd8b1.png",
+      "id": "unknown__proximity-scale-grid",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Cursor Trail",
+      "source_url": "https://demos.gsap.com/demo/cursor-trail",
+      "registry_url": "https://demos.gsap.com/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "minimal",
+        "glow",
+        "cursor",
+        "animation"
+      ],
+      "description": "A smooth cursor trail animation that follows mouse movement with delayed, staggered visual elements using GSAP.",
+      "preview_image": "https://gsap.com/community/uploads/monthly_2025_12/flair.jpg.971284cec518a1e7007ed086bf586cbf.jpg",
+      "id": "unknown__cursor-trail",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Cursor-Tracking Image Preview",
+      "source_url": "https://demos.gsap.com/demo/cursor-tracking-image-preview",
+      "registry_url": "https://demos.gsap.com/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "minimal",
+        "soft",
+        "cursor",
+        "hover-effect"
+      ],
+      "description": "An image preview element that tracks cursor movement with smooth following animation for enhanced user interaction.",
+      "preview_image": "https://gsap.com/community/uploads/monthly_2025_12/image-hover.jpg.111b0206c948eea3f4cec2a70f942527.jpg",
+      "id": "unknown__cursor-tracking-image-preview",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Macos Dock Effect",
+      "source_url": "https://demos.gsap.com/demo/macos-dock-effect",
+      "registry_url": "https://demos.gsap.com/",
+      "category": "navbar",
+      "tags": [
+        "gsap",
+        "javascript",
+        "css",
+        "glass",
+        "soft",
+        "navbar",
+        "hover-effect"
+      ],
+      "description": "A dock-style UI where icons scale up on hover, replicating macOS Dock behavior with smooth GSAP animations.",
+      "preview_image": "https://gsap.com/community/uploads/monthly_2025_12/dock.jpg.a608b914ab62bcfbe7c5af4d344ad00f.jpg",
+      "id": "unknown__macos-dock-effect",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Velocity Skew",
+      "source_url": "https://demos.gsap.com/demo/velocity-skew",
+      "registry_url": "https://demos.gsap.com/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "flat",
+        "gradient",
+        "scroll-effect",
+        "transition"
+      ],
+      "description": "A scroll-based skew effect where page content skews according to scroll velocity, creating a dynamic parallax feel.",
+      "preview_image": "https://gsap.com/community/uploads/monthly_2025_12/skew.jpg.da22986ef829253241da0d97c3545bd1.jpg",
+      "id": "unknown__velocity-skew",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Card stack",
+      "source_url": "https://demos.gsap.com/demo/card-stack",
+      "registry_url": "https://demos.gsap.com/",
+      "category": "card",
+      "tags": [
+        "gsap",
+        "javascript",
+        "css",
+        "flat",
+        "minimal",
+        "card",
+        "carousel"
+      ],
+      "description": "A 3D flip card stack that allows users to navigate through layered cards with smooth rotation animations.",
+      "preview_image": "https://gsap.com/community/uploads/monthly_2025_11/cardstack.jpg.61260738d68d48be1bc1a32afb0a1d00.jpg",
+      "id": "unknown__card-stack",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Scrubbed bento gallery",
+      "source_url": "https://demos.gsap.com/demo/scrubbed-bento-gallery",
+      "registry_url": "https://demos.gsap.com/",
+      "category": "gallery",
+      "tags": [
+        "gsap",
+        "javascript",
+        "flat",
+        "minimal",
+        "gallery",
+        "scroll-effect"
+      ],
+      "description": "A bento-style gallery with scroll-scrubbed animations that link scroll progress to animation playback.",
+      "preview_image": "https://gsap.com/community/uploads/monthly_2025_11/bento-gallery.jpg.ff887ce73440cac12bf325550e72b599.jpg",
+      "id": "unknown__scrubbed-bento-gallery",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Orchestrated easeReverse",
+      "source_url": "https://demos.gsap.com/demo/orchestrated-easereverse",
+      "registry_url": "https://demos.gsap.com/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "minimal",
+        "neon",
+        "animation",
+        "transition"
+      ],
+      "description": "Demonstrates easeReverse for orchestrating timeline animations with different easing curves for forward and reverse directions.",
+      "preview_image": "https://gsap.com/community/uploads/monthly_2026_04/demo-2026-04-28-18h50m52s319.png.486f1a35262308f1cb21d4ec7bbafa17.png",
+      "id": "unknown__orchestrated-easereverse",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Radial Menu",
+      "source_url": "https://demos.gsap.com/demo/radial-menu",
+      "registry_url": "https://demos.gsap.com/",
+      "category": "menu",
+      "tags": [
+        "gsap",
+        "javascript",
+        "svg",
+        "flat",
+        "minimal",
+        "menu",
+        "button"
+      ],
+      "description": "A radial menu animation using easeReverse to control reverse animation behavior with smooth toggle transitions.",
+      "preview_image": "https://gsap.com/community/uploads/monthly_2026_04/demo-2026-04-28-18h48-02s644.png.f88049f7255ed5b520863960ce0e1510.png",
+      "id": "unknown__radial-menu",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "easeReverse - UI interactions",
+      "source_url": "https://demos.gsap.com/demo/easereverse-ui-interactions",
+      "registry_url": "https://demos.gsap.com/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "minimal",
+        "neon",
+        "button",
+        "animation"
+      ],
+      "description": "Shows how easeReverse creates smooth UI interactions by applying a different easing curve to the reverse animation direction.",
+      "preview_image": "https://gsap.com/community/uploads/monthly_2026_04/demo-2026-04-28-18h42m57s695.png.b618136f1471c125cf68d0b0b908c9c8.png",
+      "id": "unknown__easereverse---ui-interactions",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Draw a path",
+      "source_url": "https://demos.gsap.com/demo/draw-a-path",
+      "registry_url": "https://demos.gsap.com/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "svg",
+        "outline",
+        "monochrome",
+        "animation",
+        "2d"
+      ],
+      "description": "Uses GSAP's DrawSVGPlugin to animate SVG path drawing with precise control over the draw progress and reveal timing.",
+      "preview_image": "https://gsap.com/community/uploads/monthly_2025_11/drawsvgplugin.jpg.689c1bbb56fbbb350878d1387c0ebf4d.jpg",
+      "id": "unknown__draw-a-path",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Shape Index",
+      "source_url": "https://demos.gsap.com/demo/shape-index",
+      "registry_url": "https://demos.gsap.com/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "svg",
+        "outline",
+        "monochrome",
+        "animation",
+        "2d"
+      ],
+      "description": "Uses GSAP's ShapeIndex parameter to morph SVG shapes by finding the closest path match for smooth shape transitions.",
+      "preview_image": "https://gsap.com/community/uploads/monthly_2025_12/shapeindex.jpg.1264df3d213d89c74ffbdae72e3ed4f3.jpg",
+      "id": "unknown__shape-index",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Link To Scroll Progress",
+      "source_url": "https://demos.gsap.com/demo/link-to-scroll-progress",
+      "registry_url": "https://demos.gsap.com/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "flat",
+        "minimal",
+        "scroll-effect",
+        "progress-bar"
+      ],
+      "description": "Links scroll position to animation progress, creating scrub-based scroll interactions that respond to user scrolling.",
+      "preview_image": "https://gsap.com/community/uploads/monthly_2025_11/scrub.jpg.1e6baf9fb292ef487080ebcfa7eacbd8.jpg",
+      "id": "unknown__link-to-scroll-progress",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Horizontal scrolling gallery",
+      "source_url": "https://demos.gsap.com/demo/horizontal-scrolling-gallery",
+      "registry_url": "https://demos.gsap.com/",
+      "category": "gallery",
+      "tags": [
+        "gsap",
+        "javascript",
+        "flat",
+        "minimal",
+        "gallery",
+        "scroll-effect"
+      ],
+      "description": "A horizontal gallery layout with smooth scrolling and scroll-triggered animations for browsing media.",
+      "preview_image": "https://gsap.com/community/uploads/monthly_2025_07/horizontal-gallery.png.0135774ba3c874d088dbfeeff49891b7.png",
+      "id": "unknown__horizontal-scrolling-gallery",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Text Masking",
+      "source_url": "https://demos.gsap.com/demo/text-masking",
+      "registry_url": "https://demos.gsap.com/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "outline",
+        "flat",
+        "text-effect",
+        "mask"
+      ],
+      "description": "Uses GSAP SplitText and masking techniques to reveal text through animated mask effects.",
+      "preview_image": "https://gsap.com/community/uploads/monthly_2025_12/textmasking.jpg.f484ea107fdd27efef637b112f30ec8b.jpg",
+      "id": "unknown__text-masking",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Ignore nested elements",
+      "source_url": "https://demos.gsap.com/demo/ignore-nested-elements",
+      "registry_url": "https://demos.gsap.com/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "flat",
+        "minimal",
+        "text",
+        "animation"
+      ],
+      "description": "Demonstrates SplitText's ability to ignore nested child elements when splitting text for targeted animations.",
+      "preview_image": "https://gsap.com/community/uploads/monthly_2025_12/ignore.jpg.dfc9b3cba0c70a6ba6bd33a711c3dfaf.jpg",
+      "id": "unknown__ignore-nested-elements",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Responsive line splits on scroll",
+      "source_url": "https://demos.gsap.com/demo/responsive-line-splits-on-scroll",
+      "registry_url": "https://demos.gsap.com/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "flat",
+        "minimal",
+        "text",
+        "scroll-effect"
+      ],
+      "description": "Responsive line splitting text animations triggered by scroll events using GSAP ScrollTrigger.",
+      "preview_image": "https://gsap.com/community/uploads/monthly_2025_12/scrolltrigger-autosplit.jpg.28f4f2311e3e3feae9b36697db0a50c6.jpg",
+      "id": "unknown__responsive-line-splits-on-scroll",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Revert after animation",
+      "source_url": "https://demos.gsap.com/demo/revert-after-animation",
+      "registry_url": "https://demos.gsap.com/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "flat",
+        "minimal",
+        "text",
+        "animation"
+      ],
+      "description": "Demonstrates ScrollTrigger's revert functionality for clean animation teardown and memory management.",
+      "preview_image": "https://gsap.com/community/uploads/monthly_2025_12/revert.jpg.9a09cdcca6d341776f19173ef4e0922b.jpg",
+      "id": "unknown__revert-after-animation",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Interruptible Single Timeline Enter/Exit",
+      "source_url": "https://demos.gsap.com/demo/interruptible-single-timeline-enterexit",
+      "registry_url": "https://demos.gsap.com/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "minimal",
+        "neon",
+        "animation",
+        "transition"
+      ],
+      "description": "Uses a single timeline with interruptible enter/exit animations for smooth UI state transitions without conflicts.",
+      "preview_image": "",
+      "id": "unknown__interruptible-single-timeline-enter/exit",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Timeline clear and rebuild",
+      "source_url": "https://demos.gsap.com/demo/timeline-clear-and-rebuild",
+      "registry_url": "https://demos.gsap.com/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "minimal",
+        "neon",
+        "animation",
+        "timeline"
+      ],
+      "description": "Shows how to clear and rebuild GSAP timelines dynamically for adaptive animations based on user interactions.",
+      "preview_image": "",
+      "id": "unknown__timeline-clear-and-rebuild",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Timeline",
+      "source_url": "https://animejs.com/documentation/timeline",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "minimal",
+        "animation",
+        "timeline"
+      ],
+      "description": "Synchronizes multiple animations, timers, and callbacks into a single sequenced timeline with label-based positioning.",
+      "preview_image": "",
+      "id": "unknown__timeline",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Animatable",
+      "source_url": "https://animejs.com/documentation/animatable",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "minimal",
+        "animation",
+        "cursor"
+      ],
+      "description": "Efficiently animates frequently-changing properties, ideal for cursor tracking and real-time animation loops.",
+      "preview_image": "",
+      "id": "unknown__animatable",
+      "source_domain": "animejs.com"
     }
   ]
 }
