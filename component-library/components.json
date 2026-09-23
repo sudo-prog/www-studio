@@ -1,6 +1,6 @@
 {
-  "version": "1.0.10",
-  "source_count": 434,
+  "version": "1.0.11",
+  "source_count": 435,
   "components": [
     {
       "id": "cat-0",
@@ -7150,6 +7150,25 @@
       "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Ff262e31d-c4ea-42ed-b7b3-de6184206e4d%2F01a067e0-0c38-720c-9661-e7bf857f630c.png&w=3840&q=60",
       "id": "unknown__rakieta",
       "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Top Bar",
+      "source_url": "https://paper.design",
+      "registry_url": "https://paper.design",
+      "category": "navbar",
+      "tags": [
+        "ts",
+        "typescript",
+        "html",
+        "css",
+        "minimal",
+        "flat",
+        "navbar"
+      ],
+      "description": "Application top navigation bar for the Overflow music demo, containing brand navigation, search input, and user profile controls.",
+      "preview_image": "",
+      "id": "unknown__top-bar",
+      "source_domain": "paper.design"
     }
   ]
 }
