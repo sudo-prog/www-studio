@@ -1,6 +1,6 @@
 {
-  "version": "1.0.14",
-  "source_count": 498,
+  "version": "1.0.15",
+  "source_count": 531,
   "components": [
     {
       "id": "cat-0",
@@ -8271,6 +8271,522 @@
       "preview_image": "https://gsap.com/community/uploads/monthly_2025_11/splittext.jpg.57708cf7c423bba30adbb9a79f8b91f6.jpg",
       "id": "unknown__animate-text",
       "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Text Reveal",
+      "source_url": "https://www.framer.com/marketplace/components/text-reveal/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "component",
+      "tags": [
+        "react",
+        "minimal",
+        "text-effect",
+        "scroll-effect"
+      ],
+      "description": "Text Reveal is a scroll-driven text animation component for Framer that reveals text character by character or word by word as users scroll. Works directly with existing text layers, preserving all Framer typography styles. Features configurable start/end percentages, opacity, and CMS support.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fcomponents%2FxDgp5el32fHNjPkyEMsb%2Ftext-reveal-BSvpv8jYZfTVKcuQWkTleiFLYwaIXu&w=3840&q=60",
+      "id": "unknown__text-reveal",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Parallax Gallery Pro",
+      "source_url": "https://www.framer.com/marketplace/components/parallax-gallery-pro/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "component",
+      "tags": [
+        "react",
+        "gradient",
+        "gallery"
+      ],
+      "description": "A Framer marketplace component: Parallax Gallery Pro. Media gallery component with filter and interactive display features.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F38425120-6213-4b66-8b3c-e3e66d07ec64%2F01a0a3a5-3bd1-741e-8c33-5283081ff274.png&w=3840&q=60",
+      "id": "unknown__parallax-gallery-pro",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Liquid Glass Buttons",
+      "source_url": "https://www.framer.com/marketplace/components/liquid-glass-buttons/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "component",
+      "tags": [
+        "react",
+        "css",
+        "liquid-glass",
+        "button"
+      ],
+      "description": "Liquid Glass Button is a customizable Framer code component for transparent CTAs, navigation links and interface actions. Choose Clear, Frosted or Tinted glass with background blur, reflective edges and layered depth. On hover, reflections follow the pointer with a subtle tilt and lift; pressing compresses the surface.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F94772ad7-baad-4763-bd35-365704374dc3%2F01a0a3ee-b105-723a-ac8b-8596caee44a8.png&w=3840&q=60",
+      "id": "unknown__liquid-glass-buttons",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Glide Carousel Pro",
+      "source_url": "https://www.framer.com/marketplace/components/glide-carousel-pro/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "component",
+      "tags": [
+        "react",
+        "minimal",
+        "carousel"
+      ],
+      "description": "A Framer marketplace component: Glide Carousel Pro. Interactive carousel component for showcasing images or content with smooth transitions.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F682fc11e-0644-4920-8b94-8b794b0ece9e%2F01a08f36-c483-77c0-9c46-5211ba04c995.png&w=3840&q=60",
+      "id": "unknown__glide-carousel-pro",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Fluid Video Carousel",
+      "source_url": "https://www.framer.com/marketplace/components/fluid-video-carousel/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "component",
+      "tags": [
+        "react",
+        "gradient",
+        "carousel"
+      ],
+      "description": "A Framer marketplace component: Fluid Video Carousel. Interactive carousel component for showcasing images or content with smooth transitions.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F38425120-6213-4b66-8b3c-e3e66d07ec64%2F01a0aeb3-72af-771f-b895-8fde71f510f2.png&w=3840&q=60",
+      "id": "unknown__fluid-video-carousel",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Velocity Carousel",
+      "source_url": "https://www.framer.com/marketplace/components/velocity-carousel/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "component",
+      "tags": [
+        "react",
+        "minimal",
+        "carousel"
+      ],
+      "description": "A Framer marketplace component: Velocity Carousel. Interactive carousel component for showcasing images or content with smooth transitions.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F2179b778-b2d7-4c1e-ab27-60e7e12a6593%2F01a05cc0-ccb5-72ed-8744-7c1f89976039.jpg&w=3840&q=60",
+      "id": "unknown__velocity-carousel",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Liquid Glass Footer",
+      "source_url": "https://www.framer.com/marketplace/components/liquid-glass-footer/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "component",
+      "tags": [
+        "react",
+        "css",
+        "liquid-glass",
+        "footer"
+      ],
+      "description": "Liquid Glass Footer is a responsive premium footer with a metallic gradient rim, layered glass surface, and polished interactions. Combines organized link columns, a newsletter form, social buttons, and dedicated desktop/tablet/phone layouts. Fully editable on the Framer canvas without code.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F94772ad7-baad-4763-bd35-365704374dc3%2F019fce31-da5f-76ad-a0ca-9dee3b65cd02.png&w=3840&q=60",
+      "id": "unknown__liquid-glass-footer",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Lenis",
+      "source_url": "https://www.framer.com/marketplace/components/lenis/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "component",
+      "tags": [
+        "javascript",
+        "html",
+        "minimal",
+        "scroll-effect",
+        "animation"
+      ],
+      "description": "Lenis is a lightweight, performant smooth-scroll library for Framer sites. Provides smooth scrolling, infinite scroll, horizontal scroll, nested scroll, Scroll Snap, and touch support. Created by darkroom.engineering as a 100% free and open-source project.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fcomponents%2FbSeEZJm22jsjERCOGQvq%2Flenis-IR6x5YJmajCtRooZgkmfzfBTzWJTLg&w=3840&q=60",
+      "id": "unknown__lenis",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Draggable Masonry",
+      "source_url": "https://www.framer.com/marketplace/components/draggable-masonry/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "component",
+      "tags": [
+        "react",
+        "minimal",
+        "gallery"
+      ],
+      "description": "Draggable Masonry is an interactive media masonry gallery for Framer that lets visitors physically drag and rearrange cards. Combines responsive masonry layout with fluid spring animations, CMS Link compatibility, hover effects, and an immersive lightbox. Supports images and videos with multiple aspect ratios.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F93e0445d-da1b-434f-be79-797c7c983df6%2F01a0a026-1ab4-766d-b875-9e86abf7d562.png&w=3840&q=60",
+      "id": "unknown__draggable-masonry",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "3D Flipping Book",
+      "source_url": "https://www.framer.com/marketplace/components/interactivebook/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "component",
+      "tags": [
+        "react",
+        "three.js",
+        "isometric",
+        "3d"
+      ],
+      "description": "A Framer marketplace component: 3D Flipping Book. Interactive UI component for Framer sites.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fcomponents%2F24KyqEDfxg4nxqaSUBKV%2Finteractivebook-66RmvPIlrPpeOAZCWRZmcs5qpFKJ3T&w=3840&q=60",
+      "id": "unknown__3d-flipping-book",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Arc Pro Carousel",
+      "source_url": "https://www.framer.com/marketplace/components/arc-pro-carousel/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "component",
+      "tags": [
+        "react",
+        "minimal",
+        "carousel"
+      ],
+      "description": "A Framer marketplace component: Arc Pro Carousel. Interactive carousel component for showcasing images or content with smooth transitions.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F38425120-6213-4b66-8b3c-e3e66d07ec64%2F01a08a1e-1192-72c5-9d36-288386410255.png&w=3840&q=60",
+      "id": "unknown__arc-pro-carousel",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Pill Dropdown Nav",
+      "source_url": "https://www.framer.com/marketplace/components/pill-dropdown-nav/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "component",
+      "tags": [
+        "react",
+        "minimal",
+        "navbar"
+      ],
+      "description": "A Framer marketplace component: Pill Dropdown Nav. Interactive UI component for Framer sites.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F94772ad7-baad-4763-bd35-365704374dc3%2F01a01427-223a-7758-a5eb-23c6c4aa358a.png&w=3840&q=60",
+      "id": "unknown__pill-dropdown-nav",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "3D Scale Carousel",
+      "source_url": "https://www.framer.com/marketplace/components/3d-scale-carousel/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "component",
+      "tags": [
+        "react",
+        "three.js",
+        "isometric",
+        "carousel"
+      ],
+      "description": "3D Scale Carousel is a modern 3D image carousel for Framer that creates a dynamic depth effect by scaling and fading surrounding cards around the focused image. Features smooth dragging, wheel navigation, auto advance, focus cues, captions, CMS links, and reduced-motion support.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F38425120-6213-4b66-8b3c-e3e66d07ec64%2F01a08b22-0bc5-73e8-9e13-af44eca44516.png&w=3840&q=60",
+      "id": "unknown__3d-scale-carousel",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Media Filter Masonry",
+      "source_url": "https://www.framer.com/marketplace/components/media-filter-masonry/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "component",
+      "tags": [
+        "react",
+        "minimal",
+        "gallery"
+      ],
+      "description": "A Framer marketplace component: Media Filter Masonry. Media gallery with masonry layout and interactive drag capability.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F93e0445d-da1b-434f-be79-797c7c983df6%2F01a09aab-560c-722a-a9f7-510da4ad37fc.png&w=3840&q=60",
+      "id": "unknown__media-filter-masonry",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Interactive Pattern",
+      "source_url": "https://www.framer.com/marketplace/components/interactive-pattern/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "component",
+      "tags": [
+        "react",
+        "gradient",
+        "background",
+        "pattern"
+      ],
+      "description": "A Framer marketplace component: Interactive Pattern. Interactive UI component for Framer sites.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fcomponents%2F7uKBfhUf2BvayJSQgppk%2Finteractive-pattern-qQwBtSGiXgA1rRcZfRBVnokDxP8qx5&w=3840&q=60",
+      "id": "unknown__interactive-pattern",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Real Folder",
+      "source_url": "https://www.framer.com/marketplace/components/real-folder/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "component",
+      "tags": [
+        "react",
+        "minimal",
+        "card"
+      ],
+      "description": "A Framer marketplace component: Real Folder. Interactive UI component for Framer sites.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F94772ad7-baad-4763-bd35-365704374dc3%2F01a0877f-f6a2-7109-8560-4b60a99a41c9.png&w=3840&q=60",
+      "id": "unknown__real-folder",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Dot Grid Background",
+      "source_url": "https://www.framer.com/marketplace/components/dot-grid-background/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "component",
+      "tags": [
+        "react",
+        "minimal",
+        "background"
+      ],
+      "description": "Dot Grid Background brings a physics-inspired cursor interaction to Framer canvases. As visitors hover, surrounding dots break from the grid and orbit in randomized 3D planes. Rendered on a hardware-accelerated canvas with full light/dark theme support.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fcomponents%2FunXHEPxtqIdTzESe4oSa%2Fdot-grid-background-nFhnNM7ECZqHRivIDgAxqKc0RtksMs&w=3840&q=60",
+      "id": "unknown__dot-grid-background",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Luma Testimonial",
+      "source_url": "https://www.framer.com/marketplace/components/luma-testimonial/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "component",
+      "tags": [
+        "react",
+        "minimal",
+        "testimonial"
+      ],
+      "description": "A Framer marketplace component: Luma Testimonial. Interactive UI component for Framer sites.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F93e0445d-da1b-434f-be79-797c7c983df6%2F01a09fd9-b745-73e3-98a0-01ae5276e211.png&w=3840&q=60",
+      "id": "unknown__luma-testimonial",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Liquid Glass Navbar",
+      "source_url": "https://www.framer.com/marketplace/components/liquid-glass-navbar/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "component",
+      "tags": [
+        "react",
+        "css",
+        "liquid-glass",
+        "navbar"
+      ],
+      "description": "A Framer marketplace component: Liquid Glass Navbar. Navigation bar component with dropdown and pill-style menu items.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F94772ad7-baad-4763-bd35-365704374dc3%2F019faa24-1c01-77a0-8411-59b896df125c.png&w=3840&q=60",
+      "id": "unknown__liquid-glass-navbar",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "3D Dynamic Carousel",
+      "source_url": "https://www.framer.com/marketplace/components/3d-dynamic-carousel/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "component",
+      "tags": [
+        "react",
+        "three.js",
+        "isometric",
+        "carousel"
+      ],
+      "description": "A Framer marketplace component: 3D Dynamic Carousel. Interactive carousel component for showcasing images or content with smooth transitions.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F38425120-6213-4b66-8b3c-e3e66d07ec64%2F01a08fb2-9399-71e3-8aab-b045843545c4.png&w=3840&q=60",
+      "id": "unknown__3d-dynamic-carousel",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Filterable Gallery",
+      "source_url": "https://www.framer.com/marketplace/components/filterable-gallery/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "component",
+      "tags": [
+        "react",
+        "minimal",
+        "gallery"
+      ],
+      "description": "A Framer marketplace component: Filterable Gallery. Media gallery component with filter and interactive display features.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fcomponents%2FApqhcInEtH043AWi0KVi%2Ffilterable-gallery-ikW5J9kcBjnWDR4sZ6mdJzqcFGRF4P&w=3840&q=60",
+      "id": "unknown__filterable-gallery",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Reveal Text On Scroll",
+      "source_url": "https://www.framer.com/marketplace/components/revealtextonscroll/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "component",
+      "tags": [
+        "react",
+        "minimal",
+        "text-effect",
+        "scroll-effect"
+      ],
+      "description": "A Framer marketplace component: Reveal Text On Scroll. Text animation component with scroll-driven reveal effects.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fcomponents%2FIvn82YaFOfYI3tIkuGsA%2Frevealtextonscroll-eijK2OHNTnAQPmunfFWCf0oQMXtP6X&w=3840&q=60",
+      "id": "unknown__reveal-text-on-scroll",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Flowers Bloom",
+      "source_url": "https://www.framer.com/marketplace/components/flowers-bloom/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "component",
+      "tags": [
+        "react",
+        "gradient",
+        "gallery"
+      ],
+      "description": "A Framer marketplace component: Flowers Bloom. Interactive UI component for Framer sites.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fcomponents%2Fozq7M3TDp7qmXZcAUqlJ%2Fflowers-bloom-49WOj0BHUjwz5ja2b7vN8u5EmEPxJC&w=3840&q=60",
+      "id": "unknown__flowers-bloom",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Morphed Text",
+      "source_url": "https://www.framer.com/marketplace/components/morphed-text/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "component",
+      "tags": [
+        "react",
+        "glow",
+        "text-effect"
+      ],
+      "description": "A Framer marketplace component: Morphed Text. Text animation component with scroll-driven reveal effects.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Fbb1c9cda-6af8-4a78-8c47-d6781b9ac390%2Fpdh0gtbc&w=3840&q=60",
+      "id": "unknown__morphed-text",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Makro",
+      "source_url": "https://www.framer.com/marketplace/templates/makro/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "react",
+        "brutalist",
+        "template",
+        "landing-page"
+      ],
+      "description": "A Framer template for makro, designed for modern websites. Includes responsive layouts and customizable components.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Ftemplates%2F57621%2Fmakro-LpT69cypoANUHkSidraOcCAFAbL06d&w=3840&q=60",
+      "id": "unknown__makro",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Powder",
+      "source_url": "https://www.framer.com/marketplace/templates/powder/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "react",
+        "gradient",
+        "soft",
+        "template",
+        "landing-page"
+      ],
+      "description": "A Framer template for powder, designed for modern websites. Includes responsive layouts and customizable components.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Ftemplates%2F60074%2Fpowder-LxkKqh8wP0Swc2SIAXuvImyQ42xbDf&w=3840&q=60",
+      "id": "unknown__powder",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Interio ST",
+      "source_url": "https://www.framer.com/marketplace/templates/interio-st/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "react",
+        "minimal",
+        "template",
+        "landing-page"
+      ],
+      "description": "A Framer template for interio st, designed for modern websites. Includes responsive layouts and customizable components.",
+      "preview_image": "https://image.mux.com/B01xTcE17vxhW01U01HjjHI02Vb00GeUGdCXkOKvXsSZ02tqI/thumbnail.webp?time=1.517",
+      "id": "unknown__interio-st",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Ruhi",
+      "source_url": "https://www.framer.com/marketplace/templates/ruhi/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "react",
+        "gradient",
+        "template",
+        "landing-page"
+      ],
+      "description": "A Framer template for ruhi, designed for modern websites. Includes responsive layouts and customizable components.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F12e0575e-3c7d-4c7e-bae7-8ea7c988b663%2F01a0adee-99fd-727f-bd04-480543f0ded1.png&w=3840&q=60",
+      "id": "unknown__ruhi",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Videofolio",
+      "source_url": "https://www.framer.com/marketplace/templates/videofolio/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "react",
+        "minimal",
+        "template",
+        "landing-page"
+      ],
+      "description": "A Framer template for videofolio, designed for modern websites. Includes responsive layouts and customizable components.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Ff58ad3ab-82e2-41dd-958e-94a329e53007%2F01a0096e-25f8-77a7-9cf6-fc410452f49e.png&w=3840&q=60",
+      "id": "unknown__videofolio",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Norell",
+      "source_url": "https://www.framer.com/marketplace/templates/norell/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "react",
+        "minimal",
+        "template",
+        "landing-page"
+      ],
+      "description": "A Framer template for norell, designed for modern websites. Includes responsive layouts and customizable components.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F1364828a-b355-487e-b32f-02641033b191%2F01a0c2a8-d98c-750c-8684-c74da42efa56.png&w=3840&q=60",
+      "id": "unknown__norell",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Bureau Nine",
+      "source_url": "https://www.framer.com/marketplace/templates/bureau-nine/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "react",
+        "gradient",
+        "template",
+        "landing-page"
+      ],
+      "description": "A Framer template for bureau nine, designed for modern websites. Includes responsive layouts and customizable components.",
+      "preview_image": "https://image.mux.com/ZJJG5Q136FhpPkaP39bKBIf6sO021r43eNExObyFWfwg/thumbnail.webp?time=5.733",
+      "id": "unknown__bureau-nine",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Riwa",
+      "source_url": "https://www.framer.com/marketplace/templates/riwa/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "react",
+        "gradient",
+        "template",
+        "landing-page"
+      ],
+      "description": "A Framer template for riwa, designed for modern websites. Includes responsive layouts and customizable components.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Fe46aa50e-6486-494c-af82-d7b4b64013ce%2F01a0a8de-3dc5-717e-95b5-d43475e81a84.png&w=3840&q=60",
+      "id": "unknown__riwa",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Oberon",
+      "source_url": "https://www.framer.com/marketplace/templates/oberon/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "react",
+        "gradient",
+        "template",
+        "landing-page"
+      ],
+      "description": "A Framer template for oberon, designed for modern websites. Includes responsive layouts and customizable components.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Febaf78c9-2512-46d7-b33f-5cd3e97a4ed5%2Fi81pndo8&w=3840&q=60",
+      "id": "unknown__oberon",
+      "source_domain": "www.framer.com"
     }
   ]
 }
