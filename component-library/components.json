@@ -1,6 +1,6 @@
 {
-  "version": "1.0.13",
-  "source_count": 487,
+  "version": "1.0.14",
+  "source_count": 498,
   "components": [
     {
       "id": "cat-0",
@@ -8069,6 +8069,208 @@
       "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-05-16%20at%2021.20.57.avif",
       "id": "unknown__bud",
       "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Infinite card slider",
+      "source_url": "https://demos.gsap.com/demo/infinite-card-slider",
+      "registry_url": "https://gsap.com/demos/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "flat",
+        "slider",
+        "carousel",
+        "animation",
+        "scroll-effect"
+      ],
+      "description": "Demonstrates a technique for infinitely looping the scroll with a set of items. Includes smooth snapping and dragging logic using GSAP ScrollTrigger.",
+      "preview_image": "https://gsap.com/community/uploads/monthly_2025_11/cards.jpg.e2017990f45f3d6fd07c5df75b02ff6e.jpg",
+      "id": "unknown__infinite-card-slider",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Horizontal Text",
+      "source_url": "https://demos.gsap.com/demo/horizontal-text",
+      "registry_url": "https://gsap.com/demos/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "minimal",
+        "text-effect",
+        "animation",
+        "scroll-effect"
+      ],
+      "description": "Uses SplitText's containerAnimation property to create ScrollTriggered animations within a horizontally simulated container, like having nested ScrollTriggers. Built on GSAP with ScrollTrigger plugin.",
+      "preview_image": "https://gsap.com/community/uploads/monthly_2025_12/container.jpg.9a65ebd06bebc204cb10a4ffcbaf102f.jpg",
+      "id": "unknown__horizontal-text",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Stagger items in on scroll",
+      "source_url": "https://demos.gsap.com/demo/stagger-items-in-on-scroll",
+      "registry_url": "https://demos.gsap.com/plugin/scrolltrigger/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "minimal",
+        "animation",
+        "scroll-effect",
+        "grid",
+        "hover-effect"
+      ],
+      "description": "Uses ScrollTrigger.batch() to animate a grid of images with a stagger as they scroll into view, grouping elements that enter the viewport simultaneously for efficient batched animation.",
+      "preview_image": "https://gsap.com/community/uploads/monthly_2026_04/batch.png.007b141b27d6315ddc682db44270f37b.png",
+      "id": "unknown__stagger-items-in-on-scroll",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "MotionPath Waypoints",
+      "source_url": "https://demos.gsap.com/demo/motionpath-waypoints",
+      "registry_url": "https://demos.gsap.com/plugin/scrolltrigger/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "outline",
+        "animation",
+        "scroll-effect",
+        "motion"
+      ],
+      "description": "Demonstrates GSAP MotionPath with waypoints, allowing an element to follow a motion path through specified points as the user scrolls down the page.",
+      "preview_image": "",
+      "id": "unknown__motionpath-waypoints",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Directionally aware header",
+      "source_url": "https://demos.gsap.com/demo/directionally-aware-header",
+      "registry_url": "https://demos.gsap.com/plugin/scrolltrigger/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "minimal",
+        "animation",
+        "scroll-effect",
+        "header"
+      ],
+      "description": "A fixed header that toggles its visibility based on scroll direction, using GSAP ScrollTrigger for smooth show/hide animations as the user scrolls up or down.",
+      "preview_image": "",
+      "id": "unknown__directionally-aware-header",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Infinite looped panels",
+      "source_url": "https://demos.gsap.com/demo/infinite-looped-panels",
+      "registry_url": "https://demos.gsap.com/plugin/scrolltrigger/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "flat",
+        "animation",
+        "scroll-effect",
+        "slider"
+      ],
+      "description": "Layered pinning with infinite looping using ScrollTrigger - panels layer on top of each other as you scroll, with an infinite loop effect for continuous navigation.",
+      "preview_image": "",
+      "id": "unknown__infinite-looped-panels",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Image sequence",
+      "source_url": "https://demos.gsap.com/demo/image-sequence",
+      "registry_url": "https://demos.gsap.com/plugin/scrolltrigger/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "flat",
+        "animation",
+        "scroll-effect",
+        "gallery"
+      ],
+      "description": "Scroll-based image sequence animation using GSAP and ScrollTrigger helper function, creating frame-by-frame animation as the user scrolls through a sequence of images.",
+      "preview_image": "",
+      "id": "unknown__image-sequence",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Pinned panels with overscroll",
+      "source_url": "https://demos.gsap.com/demo/pinned-panels-with-overscroll",
+      "registry_url": "https://demos.gsap.com/plugin/scrolltrigger/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "flat",
+        "animation",
+        "scroll-effect",
+        "modal"
+      ],
+      "description": "Slides pinning with overscroll solution - sections are pinned and can be scrolled within before the next slide takes over, using ScrollTrigger's pin and overscroll behavior.",
+      "preview_image": "",
+      "id": "unknown__pinned-panels-with-overscroll",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Footer bounce",
+      "source_url": "https://demos.gsap.com/demo/footer-bounce",
+      "registry_url": "https://demos.gsap.com/plugin/scrolltrigger/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "soft",
+        "animation",
+        "scroll-effect",
+        "footer",
+        "parallax"
+      ],
+      "description": "Footer bounce animation triggered by scroll speed - the footer responds to scrolling velocity with a bouncing effect, creating a playful interaction on scroll.",
+      "preview_image": "",
+      "id": "unknown__footer-bounce",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Rolling text",
+      "source_url": "https://demos.gsap.com/demo/rolling-text",
+      "registry_url": "https://demos.gsap.com/plugin/splittext/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "flat",
+        "animation",
+        "text-effect",
+        "typography"
+      ],
+      "description": "Rolling text animation using SplitText - text characters animate in a rolling sequence, creating a cascading text reveal effect that flows through each character.",
+      "preview_image": "https://gsap.com/community/uploads/monthly_2025_12/rolling.jpg.b9b5a01cd575530c30af32fd23a41d52.jpg",
+      "id": "unknown__rolling-text",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Animate Text",
+      "source_url": "https://demos.gsap.com/demo/animate-text",
+      "registry_url": "https://demos.gsap.com/plugin/splittext/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "flat",
+        "animation",
+        "text-effect",
+        "typography",
+        "snippet"
+      ],
+      "description": "SplitText demo showcasing character-by-character staggered text animations. SplitText splits HTML text into individual chars, words, and lines for gorgeous staggered reveal effects.",
+      "preview_image": "https://gsap.com/community/uploads/monthly_2025_11/splittext.jpg.57708cf7c423bba30adbb9a79f8b91f6.jpg",
+      "id": "unknown__animate-text",
+      "source_domain": "demos.gsap.com"
     }
   ]
 }
