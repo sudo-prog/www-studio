@@ -1,6 +1,6 @@
 {
-  "version": "1.0.15",
-  "source_count": 531,
+  "version": "1.0.16",
+  "source_count": 555,
   "components": [
     {
       "id": "cat-0",
@@ -8787,6 +8787,397 @@
       "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Febaf78c9-2512-46d7-b33f-5cd3e97a4ed5%2Fi81pndo8&w=3840&q=60",
       "id": "unknown__oberon",
       "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Allocation Sankey Chart",
+      "source_url": "https://21st.dev/@LegionWebDev/components/allocation-echarts-sankey-chart",
+      "registry_url": "https://21st.dev/components",
+      "category": "chart",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "chart",
+        "card"
+      ],
+      "description": "A Allocation Sankey Chart component from 21st.dev community, built with React and Tailwind CSS. chart UI component.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_LegionWebDev/allocation-echarts-sankey-chart/default/preview.1790281412358.webp",
+      "id": "unknown__allocation-sankey-chart",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Cursor Bubble",
+      "source_url": "https://21st.dev/@soralabs/components/cursor-bubble",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "A Cursor Bubble component from 21st.dev community, built with React and Tailwind CSS. card UI component.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_registry_soralabs_1783519534815/cursor-bubble/default/preview.1790281578010.webp",
+      "id": "unknown__cursor-bubble",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Status Edge",
+      "source_url": "https://21st.dev/@Alwurts/components/status-edge",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "A Status Edge component from 21st.dev community, built with React and Tailwind CSS. card UI component.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_Alwurts/status-edge/default/preview.1790281655689.webp",
+      "id": "unknown__status-edge",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Waving Portfolio Landing",
+      "source_url": "https://21st.dev/@kedhareswer/components/waving-portfolio-landing",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "A Waving Portfolio Landing component from 21st.dev community, built with React and Tailwind CSS. card UI component.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_30fkm37UoBFJx1GiK2Q4Sy8lSrO/waving-portfolio-landing/default/preview.1790279898814.webp",
+      "id": "unknown__waving-portfolio-landing",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Engraved Ticket",
+      "source_url": "https://21st.dev/@kedhareswer/components/engraved-ticket",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "A Engraved Ticket component from 21st.dev community, built with React and Tailwind CSS. card UI component.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_30fkm37UoBFJx1GiK2Q4Sy8lSrO/engraved-ticket/default/preview.1790279960634.webp",
+      "id": "unknown__engraved-ticket",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Lanyard Badge",
+      "source_url": "https://21st.dev/@kedhareswer/components/lanyard-badge",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "A Lanyard Badge component from 21st.dev community, built with React and Tailwind CSS. card UI component.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/kedhareswer/lanyard-badge/default/preview.1790262482440-f955cb2a-2a41-4cf5-9754-7d65963b67d0.png",
+      "id": "unknown__lanyard-badge",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Topo Field",
+      "source_url": "https://21st.dev/@mengto/components/topo-field",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "A Topo Field component from 21st.dev community, built with React and Tailwind CSS. card UI component.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2wkgBzt5AJXsbcFLc3N4CLtXJTz/topo-field/default/preview.1787746261441.png",
+      "id": "unknown__topo-field",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Features With Panel",
+      "source_url": "https://21st.dev/@scrollxui/components/features-with-panel",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "A Features With Panel component from 21st.dev community, built with React and Tailwind CSS. card UI component.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/scrollxui/features-with-panel/default/preview.1790117760562-dfbab654-0cfb-47c3-ae53-b6865495c2f7.png)![Features With Panel](https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/scrollxui/features-with-panel/default/preview-dark.1790117760562-dfbab654-0cfb-47c3-ae53-b6865495c2f7.png",
+      "id": "unknown__features-with-panel",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Tabbed Feature Categories",
+      "source_url": "https://21st.dev/@7ovr/components/features-4",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "A Tabbed Feature Categories component from 21st.dev community, built with React and Tailwind CSS. card UI component.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/7ovr/features-4/default/preview.1789956858452-dbb9c67f-c141-4c73-855d-fb1b260d9cb8.png)![Tabbed Feature Categories](https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/7ovr/features-4/default/preview-dark.1789956858452-dbb9c67f-c141-4c73-855d-fb1b260d9cb8.png",
+      "id": "unknown__tabbed-feature-categories",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Ai chat input",
+      "source_url": "https://21st.dev/@jahed/components/ai-chat-input",
+      "registry_url": "https://21st.dev/components",
+      "category": "form",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "input",
+        "card"
+      ],
+      "description": "A Ai chat input component from 21st.dev community, built with React and Tailwind CSS. form UI component.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2xJxXqdwWohYrdd6fiMYrS9hbmO/ai-chat-input/default/preview.1788973170472.png",
+      "id": "unknown__ai-chat-input",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Agent Dock",
+      "source_url": "https://21st.dev/@dqnamo/components/agent-dock",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "A Agent Dock component from 21st.dev community, built with React and Tailwind CSS. card UI component.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/larsen66/agent-dock/default/preview.1782930695950.png",
+      "id": "unknown__agent-dock",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Agent Trace",
+      "source_url": "https://21st.dev/@n1m4mz/components/agent-trace",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "A Agent Trace component from 21st.dev community, built with React and Tailwind CSS. card UI component.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/n1m4mz/agent-trace/default/preview.1789054042763-5e23b7ae-9e1d-4ea0-99f9-7d2140f5d514.png)![Agent Trace](https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/n1m4mz/agent-trace/default/preview-dark.1789054042763-5e23b7ae-9e1d-4ea0-99f9-7d2140f5d514.png",
+      "id": "unknown__agent-trace",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Sign In",
+      "source_url": "https://21st.dev/@jahed/components/sign-in",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "A Sign In component from 21st.dev community, built with React and Tailwind CSS. card UI component.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2xJxXqdwWohYrdd6fiMYrS9hbmO/sign-in/default/preview.1786985270386.webp",
+      "id": "unknown__sign-in",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "3D Testimonails",
+      "source_url": "https://21st.dev/@sean0205/components/3d-testimonails",
+      "registry_url": "https://21st.dev/components",
+      "category": "3d",
+      "tags": [
+        "react",
+        "tailwind",
+        "three.js",
+        "r3f",
+        "minimal",
+        "ai-tool",
+        "card"
+      ],
+      "description": "A 3D Testimonails component from 21st.dev community, built with React and Tailwind CSS. 3d UI component.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2wpPk1CyWKAxM46S7k5UoCQhmqF/3d-testimonails/default/preview.1786985652243.webp",
+      "id": "unknown__3d-testimonails",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Us vs Them Comparison",
+      "source_url": "https://21st.dev/@7ovr/components/comparison-2",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "A Us vs Them Comparison component from 21st.dev community, built with React and Tailwind CSS. card UI component.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/7ovr/comparison-2/default/preview.1784752955610-12c2a585-4ea2-41ab-91c6-4b4f848d5b4b.png",
+      "id": "unknown__us-vs-them-comparison",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Avatar",
+      "source_url": "https://21st.dev/@sean0205/components/avatar/size",
+      "registry_url": "https://21st.dev/components",
+      "category": "avatar",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "avatar",
+        "card"
+      ],
+      "description": "A Avatar component from 21st.dev community, built with React and Tailwind CSS. avatar UI component.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/sean0205/avatar/size/preview.1751453758313.png",
+      "id": "unknown__avatar",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Dismissible Alert Stack",
+      "source_url": "https://21st.dev/@7ovr/components/notifications-5",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "A Dismissible Alert Stack component from 21st.dev community, built with React and Tailwind CSS. card UI component.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/7ovr/notifications-5/default/preview.1788807669933-c3dff6a2-c611-4382-958d-0324ef62c8bb.png)![Dismissible Alert Stack](https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/7ovr/notifications-5/default/preview-dark.1788807669933-c3dff6a2-c611-4382-958d-0324ef62c8bb.png",
+      "id": "unknown__dismissible-alert-stack",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "FAQ Accordion",
+      "source_url": "https://21st.dev/@scrollxui/components/frequently-asked-questions-with-accordion",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "accordion",
+        "card"
+      ],
+      "description": "A FAQ Accordion component from 21st.dev community, built with React and Tailwind CSS. card UI component.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/scrollxui/frequently-asked-questions-with-accordion/default/preview.1790118526161-db8fc8a3-c308-4183-9941-42b97cfc1ed7.png)![FAQ Accordion](https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/scrollxui/frequently-asked-questions-with-accordion/default/preview-dark.1790118526161-db8fc8a3-c308-4183-9941-42b97cfc1ed7.png",
+      "id": "unknown__faq-accordion",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Separator",
+      "source_url": "https://21st.dev/@shadcn/components/separator",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "A Separator component from 21st.dev community, built with React and Tailwind CSS. card UI component.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_shadcn/separator/default/preview.png",
+      "id": "unknown__separator",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Numbers Stats Grid",
+      "source_url": "https://21st.dev/@shadcnui-blocks/components/stats-06",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "A Numbers Stats Grid component from 21st.dev community, built with React and Tailwind CSS. card UI component.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/shadcnui-blocks/stats-06/default/preview.1790049881104-772bd77b-e5fb-4e9e-b431-f829b47fbbbe.png)![Numbers Stats Grid](https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/shadcnui-blocks/stats-06/default/preview-dark.1790049881104-772bd77b-e5fb-4e9e-b431-f829b47fbbbe.png",
+      "id": "unknown__numbers-stats-grid",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Not found 2",
+      "source_url": "https://21st.dev/@efferd/components/not-found-2",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "A Not found 2 component from 21st.dev community, built with React and Tailwind CSS. card UI component.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/sshahaider/not-found-2/default/preview.1770406102409.png",
+      "id": "unknown__not-found-2",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Integrations Section",
+      "source_url": "https://21st.dev/@meschacirung/components/integrations-3",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "A Integrations Section component from 21st.dev community, built with React and Tailwind CSS. card UI component.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/meschacirung/integrations-3/default/preview.1784404026081-b0bfab6a-2fb0-4f7c-bd7a-64f00d659416.png",
+      "id": "unknown__integrations-section",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Badge",
+      "source_url": "https://21st.dev/@sean0205/components/badge-2/circle",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "A Badge component from 21st.dev community, built with React and Tailwind CSS. card UI component.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/sean0205/badge-1/circle/preview.1751391624600.png",
+      "id": "unknown__badge",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Navbar with Theme Toggle",
+      "source_url": "https://21st.dev/@shadcnui-blocks/components/navbar-02",
+      "registry_url": "https://21st.dev/components",
+      "category": "menu",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "navbar"
+      ],
+      "description": "A Navbar with Theme Toggle component from 21st.dev community, built with React and Tailwind CSS. menu UI component.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/shadcnui-blocks/navbar-02/default/preview.1789959983399-1989e16b-8e25-41fc-927d-134ec1724f95.png)![Navbar with Theme Toggle](https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/shadcnui-blocks/navbar-02/default/preview-dark.1789959983399-1989e16b-8e25-41fc-927d-134ec1724f95.png",
+      "id": "unknown__navbar-with-theme-toggle",
+      "source_domain": "21st.dev"
     }
   ]
 }
