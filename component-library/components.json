@@ -1,6 +1,6 @@
 {
-  "version": "1.0.16",
-  "source_count": 555,
+  "version": "1.0.17",
+  "source_count": 561,
   "components": [
     {
       "id": "cat-0",
@@ -9178,6 +9178,90 @@
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/shadcnui-blocks/navbar-02/default/preview.1789959983399-1989e16b-8e25-41fc-927d-134ec1724f95.png)![Navbar with Theme Toggle](https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/shadcnui-blocks/navbar-02/default/preview-dark.1789959983399-1989e16b-8e25-41fc-927d-134ec1724f95.png",
       "id": "unknown__navbar-with-theme-toggle",
       "source_domain": "21st.dev"
+    },
+    {
+      "name": "Poimandres documentation",
+      "source_url": "https://docs.pmndrs.github.io/poimandres/",
+      "category": "component",
+      "tags": [
+        "documentation",
+        "component",
+        "shader"
+      ],
+      "description": "Poimandres documentation \u2013 Neumorphism example implementation",
+      "preview_image": "",
+      "id": "unknown__poimandres-documentation",
+      "source_domain": "docs.pmndrs.github.io"
+    },
+    {
+      "name": "The Three Graces",
+      "source_url": "https://great-ui.com/components/the-three-graces/",
+      "category": "component",
+      "tags": [
+        "component",
+        "animation",
+        "3d"
+      ],
+      "description": "The Three Graces \u2013 Three.js components showcase",
+      "preview_image": "",
+      "id": "unknown__the-three-graces",
+      "source_domain": "great-ui.com"
+    },
+    {
+      "name": "Gooey Search Bar",
+      "source_url": "https://blog.olivierlarose.com/tutorials/creative-buttons/",
+      "category": "component",
+      "tags": [
+        "animation",
+        "input",
+        "gooey"
+      ],
+      "description": "Gooey Search Bar \u2013 CSS gooey effect search bar component",
+      "preview_image": "",
+      "id": "unknown__gooey-search-bar",
+      "source_domain": "blog.olivierlarose.com"
+    },
+    {
+      "name": "Interactive dock-like navigation",
+      "source_url": "https://rareui.com/navbar-gallery/",
+      "category": "component",
+      "tags": [
+        "nav",
+        "animation",
+        "navbar"
+      ],
+      "description": "Interactive dock-like navigation \u2013 navbar gallery component",
+      "preview_image": "",
+      "id": "unknown__interactive-dock-like-navigation",
+      "source_domain": "rareui.com"
+    },
+    {
+      "name": "My Framer Site",
+      "source_url": "https://www.framer.com/features/prototyping/",
+      "category": "component",
+      "tags": [
+        "component",
+        "framer-motion",
+        "layout"
+      ],
+      "description": "My Framer Site \u2013 Framer prototyping showcase",
+      "preview_image": "",
+      "id": "unknown__my-framer-site",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Scroll Zoom Hero",
+      "source_url": "https://motion.dev/examples/vue-ios-app-folder",
+      "category": "component",
+      "tags": [
+        "animation",
+        "framer-motion",
+        "hero"
+      ],
+      "description": "Scroll Zoom Hero \u2013 iOS-style folder expansion animation",
+      "preview_image": "",
+      "id": "unknown__scroll-zoom-hero",
+      "source_domain": "motion.dev"
     }
   ]
 }
