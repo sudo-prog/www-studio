@@ -1,6 +1,6 @@
 {
-  "version": "1.0.18",
-  "source_count": 571,
+  "version": "1.0.19",
+  "source_count": 626,
   "components": [
     {
       "id": "cat-0",
@@ -9472,6 +9472,886 @@
       "preview_image": "https://image.mux.com/rOQEUoWKX02z6jKD5ELKjL1jAa4VBQtklpgeHzWZE5kY/thumbnail.webp?time=9.776",
       "source_domain": "www.framer.com",
       "id": "www-framer-com__bebold"
+    },
+    {
+      "name": "Function",
+      "source_url": "https://www.navbar.gallery/navbar/function",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "mega-menu"
+      ],
+      "description": "Monitor early indicators of 1000s of diseases. Health company navbar with a clean mega menu for service navigation.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-05-09%20at%2021.23.20.avif",
+      "id": "unknown__function",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "HUTS",
+      "source_url": "https://www.navbar.gallery/navbar/huts",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "mega-menu"
+      ],
+      "description": "The best way to design and develop a property in the country. Real Estate navbar featuring a spacious mega menu layout.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-05-09%20at%2021.20.26.avif",
+      "id": "unknown__huts",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Hungry Tiger",
+      "source_url": "https://www.navbar.gallery/navbar/hungry-tiger",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Bold flavors from the kitchens of India. Crafted for those who crave more. Food and drink navbar with a static layout.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-05-09%20at%2021.14.51%201.avif",
+      "id": "unknown__hungry-tiger",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Mistral",
+      "source_url": "https://www.navbar.gallery/navbar/mistral",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "mega-menu"
+      ],
+      "description": "We help organizations build tailored AI systems to solve the world's hardest problems. AI navbar with a comprehensive mega menu for product navigation.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-04-26%20at%2021.22.52.avif",
+      "id": "unknown__mistral",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Twenty",
+      "source_url": "https://www.navbar.gallery/navbar/twenty",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "Twenty gives technical teams the building blocks for a custom CRM that meets complex business needs and quickly adapts as the business evolves. SaaS navbar with dropdown navigation.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-04-26%20at%2021.25.45.avif",
+      "id": "unknown__twenty",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Ruul",
+      "source_url": "https://www.navbar.gallery/navbar/ruul",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "mega-menu"
+      ],
+      "description": "We help contractors and businesses work together, handling invoicing, payments, and compliance. Business navbar with a detailed mega menu.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-04-26%20at%2021.05.47.avif",
+      "id": "unknown__ruul",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "TUX",
+      "source_url": "https://www.navbar.gallery/navbar/tux",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "TUX is a creative agency based in Los Angeles with a production and post-production studio in Montreal. Agency navbar with full screen navigation.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-04-19%20at%2022.33.37.avif",
+      "id": "unknown__tux",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "V7Labs",
+      "source_url": "https://www.navbar.gallery/navbar/v7labs",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "mega-menu"
+      ],
+      "description": "The operating layer for Private Market AI. AI navbar with an extensive mega menu for complex SaaS navigation.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-04-19%20at%2022.37.35.avif",
+      "id": "unknown__v7labs",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Ayush Wanjari",
+      "source_url": "https://www.navbar.gallery/navbar/ayush-wanjari",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "sidebar"
+      ],
+      "description": "Framer websites for tech startups and investment firms. Designed to be clear, on-brand, and ready for the rooms that matter. Portfolio navbar with a side bar layout.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-04-19%20at%2021.42.12.avif",
+      "id": "unknown__ayush-wanjari",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Coterie",
+      "source_url": "https://www.navbar.gallery/navbar/coterie",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "sidebar"
+      ],
+      "description": "Award-winning diapering solutions. E-commerce navbar with a streamlined side bar navigation.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-04-11%20at%2016.16.04.avif",
+      "id": "unknown__coterie",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Thonik",
+      "source_url": "https://www.navbar.gallery/navbar/thonik",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "From politics to culture to business, Dutch studio thonik strikes a balance between adventurous concepts and pragmatic resolutions. Design studio navbar with full screen navigation.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-04-11%20at%2016.01.13.avif",
+      "id": "unknown__thonik",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "AccessGrid",
+      "source_url": "https://www.navbar.gallery/navbar/accessgrid",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "mega-menu"
+      ],
+      "description": "The platform for mobile keys in Apple/Google Wallet. Security navbar with a feature-rich mega menu.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-04-11%20at%2015.56.54.avif",
+      "id": "unknown__accessgrid",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Fourmula",
+      "source_url": "https://www.navbar.gallery/navbar/fourmula",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Generate professional product shots, lifestyle images, and videos instantly with AI. AI navbar with a full screen navigation design.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-04-11%20at%2015.50.30.aviff",
+      "id": "unknown__fourmula",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "E Dey Happen",
+      "source_url": "https://www.navbar.gallery/navbar/e-dey-happen",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "sidebar"
+      ],
+      "description": "E Dey Happen is a Nigerian animated series about three friends trying to survive Lagos. Film navbar with a side bar navigation.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-04-19%20at%2022.20.37.avif",
+      "id": "unknown__e-dey-happen",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Frontify",
+      "source_url": "https://www.navbar.gallery/navbar/frontify",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "mega-menu"
+      ],
+      "description": "Bring your brand to life with the platform that unites resources and intelligent workflows. SaaS navbar with a comprehensive mega menu.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-03-29%20at%2014.27.22.avif",
+      "id": "unknown__frontify",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "dancerobot",
+      "source_url": "https://www.navbar.gallery/navbar/dancerobot",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Neon-lit '80s Japanese izakaya in Rittenhouse Square by chefs Jesse Ito & Justin Bacharach. Food and drink navbar with a static layout.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-03-29%20at%2014.23.48%201.avif",
+      "id": "unknown__dancerobot",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Featurebase",
+      "source_url": "https://www.navbar.gallery/navbar/featurebase",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "mega-menu"
+      ],
+      "description": "Support your customers with AI, collect feedback, and announce product updates \u2014 all with one tool. SaaS navbar with an extensive mega menu.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-03-29%20at%2014.17.27.aviff",
+      "id": "unknown__featurebase",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Kalstore",
+      "source_url": "https://www.navbar.gallery/navbar/kalstore",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "mega-menu"
+      ],
+      "description": "Kalstore designs paper tools that stay silent while you think, plan, and create. Design navbar with a detailed mega menu.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-03-29%20at%2014.11.39.aviff",
+      "id": "unknown__kalstore",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Obsidianos",
+      "source_url": "https://www.navbar.gallery/navbar/obsidianos",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "AI-powered practice management available now - with integrated custody and execution launching soon. SaaS navbar with dropdown navigation.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-03-21%20at%2018.11.25.aviff",
+      "id": "unknown__obsidianos",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Playground",
+      "source_url": "https://www.navbar.gallery/navbar/playground",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "mega-menu"
+      ],
+      "description": "Childcare management software directors love. SaaS navbar with a comprehensive mega menu.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-03-21%20at%2018.07.07.aviff",
+      "id": "unknown__playground",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Yourbana",
+      "source_url": "https://www.navbar.gallery/navbar/yourbana",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Yourbana it's a participatory project that tells the story of the city's movement through the images its inhabitants create daily using their smartphones. Photography navbar with a full screen navigation design.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-03-21%20at%2018.01.15.aviff",
+      "id": "unknown__yourbana",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "ReflexAI",
+      "source_url": "https://www.navbar.gallery/navbar/reflexai",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "mega-menu"
+      ],
+      "description": "Simulation and QA for critical conversations. AI navbar with an extensive mega menu.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-03-21%20at%2018.12.52.aviff",
+      "id": "unknown__reflexai",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Ditto Words",
+      "source_url": "https://www.navbar.gallery/navbar/ditto-words",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "Build and manage your team's single source of truth for product copy \u2014 from draft to design to deploy. Writing navbar with dropdown navigation.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-03-14%20at%2014.50.05.aviff",
+      "id": "unknown__ditto-words",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Squint",
+      "source_url": "https://www.navbar.gallery/navbar/squint",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "mega-menu"
+      ],
+      "description": "Squint is the leading Manufacturing Intelligence platform that helps the world's most advanced companies lower downtime and improve quality at scale. Manufacturing navbar with a detailed mega menu.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-03-14%20at%2014.45.00.aviff",
+      "id": "unknown__squint",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Flexis",
+      "source_url": "https://www.navbar.gallery/navbar/flexis",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "A New Approach to Urban Logistics. Automotive navbar with a full screen navigation design.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-03-14%20at%2014.41.41.aviff",
+      "id": "unknown__flexis",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Hex Technologies",
+      "source_url": "https://www.navbar.gallery/navbar/hex-2026",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "mega-menu"
+      ],
+      "description": "The AI Analytics Platform for your whole team. AI navbar with a comprehensive mega menu for data navigation.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-03-14%20at%2014.32.38.aviff",
+      "id": "unknown__hex-technologies",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Ballance",
+      "source_url": "https://www.navbar.gallery/navbar/ballance",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Clear results from teams using Ballance to manage spending, issue cards, and stay in control as they grow. Fintech navbar with a full screen navigation design.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-03-14%20at%2015.01.26.aviff",
+      "id": "unknown__ballance",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Llama Index",
+      "source_url": "https://www.navbar.gallery/navbar/llama-index",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "mega-menu"
+      ],
+      "description": "LlamaIndex delivers the world's most accurate agentic OCR and document-specific AI workflows, powering complete enterprise automation. AI navbar with a detailed mega menu.",
+      "preview_image": "https://cdn.navbar.gallery/llama%20desktop.aviff",
+      "id": "unknown__llama-index",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Joby Aviation",
+      "source_url": "https://www.navbar.gallery/navbar/joby-aviation",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "All-electric air taxi: vertical take-off and landing, seamless door to door travel. Travel navbar with a full screen navigation design.",
+      "preview_image": "https://cdn.navbar.gallery/joby%20desktop.aviff",
+      "id": "unknown__joby-aviation",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Shade",
+      "source_url": "https://www.navbar.gallery/navbar/shade",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "mega-menu"
+      ],
+      "description": "Intelligent file streaming, review and approval, automated metadata, AI search and a whole lot more for media teams. Media SaaS navbar with an extensive mega menu.",
+      "preview_image": "https://cdn.navbar.gallery/shade%20desktop.avif",
+      "id": "unknown__shade",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Ease Health",
+      "source_url": "https://www.navbar.gallery/navbar/ease-health",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "Admit more patients, reduce staff burden, and get paid faster with an AI-native system built for behavioral healthcare. Healthcare navbar with dropdown navigation.",
+      "preview_image": "https://cdn.navbar.gallery/easehealth%20desktop.avif",
+      "id": "unknown__ease-health",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Giga Energy",
+      "source_url": "https://www.navbar.gallery/navbar/giga-energy",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "mega-menu"
+      ],
+      "description": "Your hands-on energy infrastructure partner. Technology navbar with a comprehensive mega menu.",
+      "preview_image": "https://cdn.navbar.gallery/giga%20desktop.avif",
+      "id": "unknown__giga-energy",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "VoiceFlow",
+      "source_url": "https://www.navbar.gallery/navbar/voiceflow",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "mega-menu"
+      ],
+      "description": "Build, launch, and scale advanced AI agents for support, lead generation, and beyond. AI navbar with a comprehensive mega menu.",
+      "preview_image": "https://cdn.navbar.gallery/voiceflow%20desktop.avif",
+      "id": "unknown__voiceflow",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Letta",
+      "source_url": "https://www.navbar.gallery/navbar/letta",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "Create agents that remember everything, learn continuously, and improve themselves over time. AI navbar with dropdown navigation.",
+      "preview_image": "https://cdn.navbar.gallery/letta%20desktop.avif",
+      "id": "unknown__letta",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Lightdash",
+      "source_url": "https://www.navbar.gallery/navbar/lightdash",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "mega-menu"
+      ],
+      "description": "The only open source AI-native BI platform that lets AI build, refactor, and ship analytics in minutes. AI navbar with an extensive mega menu.",
+      "preview_image": "https://cdn.navbar.gallery/lightdash%20desktop.avif",
+      "id": "unknown__lightdash",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Good Fella",
+      "source_url": "https://www.navbar.gallery/navbar/good-fella",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Good Fella is a frontend development studio that works as your dedicated team. Studio navbar with a full screen navigation design.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-02-21%20at%2021.57.07.aviff",
+      "id": "unknown__good-fella",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Athleats",
+      "source_url": "https://www.navbar.gallery/navbar/athleats",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "mega-menu"
+      ],
+      "description": "Discover a wide-range of recipes crafted to fuel your training, optimize recovery, and help you achieve your best self. Health navbar with a detailed mega menu.",
+      "preview_image": "https://cdn.navbar.gallery/fourth%20desktop.aviff",
+      "id": "unknown__athleats",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "ToDesktop",
+      "source_url": "https://www.navbar.gallery/navbar/todesktop",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "Release, Secure and Scale your Electron App. Developer tool navbar with dropdown navigation.",
+      "preview_image": "https://cdn.navbar.gallery/todesktop.avif",
+      "id": "unknown__todesktop",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "ysabella",
+      "source_url": "https://www.navbar.gallery/navbar/ysabella",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Creative porfolio website. Portfolio navbar with a static layout.",
+      "preview_image": "https://cdn.navbar.gallery/ysabella.avif",
+      "id": "unknown__ysabella",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Doss",
+      "source_url": "https://www.navbar.gallery/navbar/doss",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "mega-menu"
+      ],
+      "description": "DOSS Operations Cloud is the ERP evolved. SaaS navbar with a comprehensive mega menu.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-02-15%20at%2013.48.22.aviff",
+      "id": "unknown__doss",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Finch",
+      "source_url": "https://www.navbar.gallery/navbar/finch",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "mega-menu"
+      ],
+      "description": "Grow faster with HR and payroll connectivity. HR tech navbar with a detailed mega menu.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-02-15%20at%2013.52.10.aviff",
+      "id": "unknown__finch",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Brethen Design Co.",
+      "source_url": "https://www.navbar.gallery/navbar/brethen-design-co",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "sidebar"
+      ],
+      "description": "Creative allies for bold brands, in-house teams and agencies. Design studio navbar with a side bar layout.",
+      "preview_image": "https://cdn.navbar.gallery/brethen%20desktop.aviff",
+      "id": "unknown__brethen-design-co.",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Isa de Burgh",
+      "source_url": "https://www.navbar.gallery/navbar/isa-de-burgh",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "Creative director, brand builder, and storyteller. Portfolio navbar with dropdown navigation.",
+      "preview_image": "https://cdn.navbar.gallery/isa%20desktop.aviff",
+      "id": "unknown__isa-de-burgh",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Greptile",
+      "source_url": "https://www.navbar.gallery/navbar/greptile",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "AI agents that catch bugs in your pull requests with full context of your codebase. AI navbar with dropdown navigation.",
+      "preview_image": "https://cdn.navbar.gallery/greptile%20desktop.avif",
+      "id": "unknown__greptile",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Inversa",
+      "source_url": "https://www.navbar.gallery/navbar/inversa",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "As a humane byproduct of ecosystem restoration that addresses the harm caused by non-native species, INVERSA(tm) ethical exotics restore balance to nature. Nature navbar with a full screen navigation design.",
+      "preview_image": "https://cdn.navbar.gallery/inversa%20desktop.avif",
+      "id": "unknown__inversa",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Cartage",
+      "source_url": "https://www.navbar.gallery/navbar/cartage",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "mega-menu"
+      ],
+      "description": "Meet Wilson\u2014AI for logistics, built for manufacturers and distributors. Logistics navbar with a comprehensive mega menu.",
+      "preview_image": "https://cdn.navbar.gallery/cartage%20desktop.avif",
+      "id": "unknown__cartage",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Vap",
+      "source_url": "https://www.navbar.gallery/navbar/vap",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "At VAP, we help brands and creators convey images and messages, with videos that will be read and reread, never just seen and seen again. Studio navbar with a full screen navigation design.",
+      "preview_image": "https://cdn.navbar.gallery/vap%20desktop.avif",
+      "id": "unknown__vap",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Metamask",
+      "source_url": "https://www.navbar.gallery/navbar/metamask",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "The everything wallet. Crypto navbar with a full screen navigation design.",
+      "preview_image": "https://cdn.navbar.gallery/metamask%20desktop.avif",
+      "id": "unknown__metamask",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Mugen Studio",
+      "source_url": "https://www.navbar.gallery/navbar/mugen-studio",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "sidebar"
+      ],
+      "description": "A premium Framer template built for agencies and freelancers who want to attract high-paying clients. Studio navbar with a side bar layout.",
+      "preview_image": "https://cdn.navbar.gallery/mugen%20desktop.aviff",
+      "id": "unknown__mugen-studio",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Kyma",
+      "source_url": "https://www.navbar.gallery/navbar/kyma",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Premium Framer template for AI automation agencies. AI navbar with a full screen navigation design.",
+      "preview_image": "https://cdn.navbar.gallery/kyma%20desktop.aviff",
+      "id": "unknown__kyma",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Daytona",
+      "source_url": "https://www.navbar.gallery/navbar/daytona",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Secure and Elastic Infrastructure for Running Your AI-Generated Code. Developer tool navbar with a static layout.",
+      "preview_image": "https://cdn.navbar.gallery/daytona%20desktop.aviff",
+      "id": "unknown__daytona",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Integrated Biosciences",
+      "source_url": "https://www.navbar.gallery/navbar/integrated-biosciences",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Unraveling complex biology with optogenetics, chemistry, and AI for small molecule therapeutic discovery. Biotech navbar with a static layout.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-04-26%20at%2021.27.32.avif",
+      "id": "unknown__integrated-biosciences",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Twelve",
+      "source_url": "https://www.navbar.gallery/navbar/twelve",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "The everything wallet. Crypto navbar with a clean static layout.",
+      "preview_image": "https://cdn.navbar.gallery/twelve%20desktop.avif",
+      "id": "unknown__twelve",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Athleats Two",
+      "source_url": "https://www.navbar.gallery/navbar/athleats-two",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Discover a wide-range of recipes crafted to fuel your training, optimize recovery, and help you achieve your best self. Health navbar with a clean static layout.",
+      "preview_image": "https://cdn.navbar.gallery/athleats-two%20desktop.avif",
+      "id": "unknown__athleats-two",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Flexis Two",
+      "source_url": "https://www.navbar.gallery/navbar/flexis-two",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "A New Approach to Urban Logistics. Automotive navbar with a full screen navigation design.",
+      "preview_image": "https://cdn.navbar.gallery/flexis-two%20desktop.avif",
+      "id": "unknown__flexis-two",
+      "source_domain": "www.navbar.gallery"
     }
   ]
 }
