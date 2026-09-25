@@ -1,6 +1,6 @@
 {
-  "version": "1.0.17",
-  "source_count": 561,
+  "version": "1.0.18",
+  "source_count": 571,
   "components": [
     {
       "id": "cat-0",
@@ -9262,6 +9262,216 @@
       "preview_image": "",
       "id": "unknown__scroll-zoom-hero",
       "source_domain": "motion.dev"
+    },
+    {
+      "name": "Elements",
+      "source_url": "https://www.framer.com/marketplace/templates/elements/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "react",
+        "tailwind",
+        "html",
+        "css",
+        "minimal",
+        "gradient",
+        "landing-page",
+        "template",
+        "ai-tool"
+      ],
+      "description": "AI Website Kit for Framer providing over 100 meticulously designed UI elements across 15 categories including headers, features, testimonials, and CTAs. A no-code toolkit for building responsive AI-inspired websites.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Ftemplates%2F49015%2Felements-uxT36v1xzM9B3xlID3iSxVOZYw5H0G&w=3840&q=100",
+      "source_domain": "www.framer.com",
+      "id": "www-framer-com__elements"
+    },
+    {
+      "name": "Solari",
+      "source_url": "https://www.framer.com/marketplace/templates/solari/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "react",
+        "tailwind",
+        "html",
+        "css",
+        "gradient",
+        "neon",
+        "portfolio",
+        "landing-page",
+        "template"
+      ],
+      "description": "Bold character-driven portfolio template for designers, illustrators, and creative freelancers with a sun-soaked color palette and folder-style navigation for storytelling-focused portfolios.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Ftemplates%2F65399%2Fsolari-jbu91FLjOqzk5ASDxHtjFluUWVCSUa&w=3840&q=100",
+      "source_domain": "www.framer.com",
+      "id": "www-framer-com__solari"
+    },
+    {
+      "name": "Pastel Lab",
+      "source_url": "https://www.framer.com/marketplace/templates/pastel-lab/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "react",
+        "tailwind",
+        "html",
+        "css",
+        "soft",
+        "minimal",
+        "gradient",
+        "portfolio",
+        "landing-page",
+        "template"
+      ],
+      "description": "Elegant portfolio template for creatives emphasizing visual storytelling with soft animations and minimal direction. Designed for illustrators, photographers, and artists with CMS-ready structure.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Ftemplates%2F47766%2Fpastel-lab-OhetbJSlKxgJiswiolrb8LRJDNvR9v&w=3840&q=100",
+      "source_domain": "www.framer.com",
+      "id": "www-framer-com__pastel-lab"
+    },
+    {
+      "name": "Plywood",
+      "source_url": "https://www.framer.com/marketplace/templates/plywood/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "react",
+        "tailwind",
+        "html",
+        "css",
+        "minimal",
+        "grid",
+        "portfolio",
+        "landing-page",
+        "template"
+      ],
+      "description": "Gallery-inspired portfolio and e-commerce template bridging art and commerce for artists, illustrators and photographers with Shopify integration via Frameship and 5 CMS collections.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Fa0d236b2-97bf-42fd-ad0e-db4402ef113b%2Fszz2u125&w=3840&q=100",
+      "source_domain": "www.framer.com",
+      "id": "www-framer-com__plywood"
+    },
+    {
+      "name": "Adigun",
+      "source_url": "https://www.framer.com/marketplace/templates/adigun/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "react",
+        "tailwind",
+        "html",
+        "css",
+        "minimal",
+        "portfolio",
+        "landing-page",
+        "template"
+      ],
+      "description": "Premium agency and portfolio template with clean visual aesthetic and thoughtful structure for professionals showcasing projects, services, and brand story. Features responsive design and elegant animations.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F1548ded3-a1e3-4644-8aa8-1cd96591b05e%2F1nv84e7w&w=3840&q=100",
+      "source_domain": "www.framer.com",
+      "id": "www-framer-com__adigun"
+    },
+    {
+      "name": "Haze",
+      "source_url": "https://www.framer.com/marketplace/templates/haze/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "react",
+        "tailwind",
+        "html",
+        "css",
+        "minimal",
+        "portfolio",
+        "landing-page",
+        "template"
+      ],
+      "description": "Fullscreen horizontal portfolio showcase optimized for branding projects with rich visuals. Features color-coded project slides for presenting best work to high-ticket clients.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Ftemplates%2F45989%2Fhaze-sn6eqpCsbSdUCguCCNcLGg5lmeHrFU&w=3840&q=100",
+      "source_domain": "www.framer.com",
+      "id": "www-framer-com__haze"
+    },
+    {
+      "name": "Elian",
+      "source_url": "https://www.framer.com/marketplace/templates/elian/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "react",
+        "tailwind",
+        "html",
+        "css",
+        "dark",
+        "minimal",
+        "monochrome",
+        "portfolio",
+        "landing-page",
+        "template"
+      ],
+      "description": "Portfolio template for modern creatives with a dark magazine-style aesthetic. Features border-grid layout, smooth storytelling, and fully responsive design for designers and developers.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Ftemplates%2F58253%2Felian-U12hucxMao5JqTLhO8Yfa1gzp92Pga&w=3840&q=100",
+      "source_domain": "www.framer.com",
+      "id": "www-framer-com__elian"
+    },
+    {
+      "name": "LILT Studio",
+      "source_url": "https://www.framer.com/marketplace/templates/lilt-studio/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "react",
+        "tailwind",
+        "html",
+        "css",
+        "editorial",
+        "minimal",
+        "gradient",
+        "portfolio",
+        "landing-page",
+        "template"
+      ],
+      "description": "Bold editorial Framer template for creative studios, design practices, floral artists, and wellness brands with anti-grid composition, oversized typography, and sculptural imagery.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F112ff98f-208d-4005-bfc7-ba210b5721f5%2F01a05a2a-861f-74d9-bae4-96bab66928a2.png&w=3840&q=100",
+      "source_domain": "www.framer.com",
+      "id": "www-framer-com__lilt-studio"
+    },
+    {
+      "name": "AgenciaX",
+      "source_url": "https://www.framer.com/marketplace/templates/agenciap/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "react",
+        "tailwind",
+        "html",
+        "css",
+        "minimal",
+        "portfolio",
+        "landing-page",
+        "template"
+      ],
+      "description": "Refined portfolio and agency template with minimal design that keeps focus on work. Features carefully structured layouts, subtle interactions, and professional presentation for designers and agencies.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Ftemplates%2F58293%2Fagencia-ww-0OzQqD8yyX91J0EA9EoSLZgC0HfJgt&w=3840&q=100",
+      "source_domain": "www.framer.com",
+      "id": "www-framer-com__agenciax"
+    },
+    {
+      "name": "BEBOLD",
+      "source_url": "https://www.framer.com/marketplace/templates/bebold/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "react",
+        "tailwind",
+        "html",
+        "css",
+        "editorial",
+        "minimal",
+        "portfolio",
+        "landing-page",
+        "template"
+      ],
+      "description": "Creative portfolio template combining strong typography with crisp layouts and smooth micro-interactions. Features flexible project views, CMS-ready blog and projects, and SEO optimization.",
+      "preview_image": "https://image.mux.com/rOQEUoWKX02z6jKD5ELKjL1jAa4VBQtklpgeHzWZE5kY/thumbnail.webp?time=9.776",
+      "source_domain": "www.framer.com",
+      "id": "www-framer-com__bebold"
     }
   ]
 }
