@@ -1,6 +1,6 @@
 {
-  "version": "1.0.20",
-  "source_count": 656,
+  "version": "1.0.21",
+  "source_count": 657,
   "components": [
     {
       "id": "cat-0",
@@ -10860,6 +10860,22 @@
       "preview_image": "https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/05/InfiniteScrollParallax-400x300.webp?x86980",
       "id": "unknown__infinite-parallax-scroll-with-gsap-&-lenis",
       "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Service Tiles",
+      "source_url": "https://www.framer.com/marketplace/components/service-tiles/",
+      "registry_url": "https://www.framer.com/marketplace/components/",
+      "category": "card",
+      "tags": [
+        "cards",
+        "services",
+        "hover",
+        "responsive"
+      ],
+      "description": "Compact service cards with hover interactions",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F2179b778-b2d7-4c1e-ab27-60e7e12a6593%2F01a0c4d9-01fb-7483-85cf-c018b55575a7.jpg&w=2048&q=80",
+      "id": "unknown__service-tiles",
+      "source_domain": "www.framer.com"
     }
   ]
 }
