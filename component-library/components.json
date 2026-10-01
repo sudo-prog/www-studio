@@ -1,6 +1,6 @@
 {
-  "version": "1.0.21",
-  "source_count": 657,
+  "version": "1.0.22",
+  "source_count": 666,
   "components": [
     {
       "id": "cat-0",
@@ -10876,6 +10876,141 @@
       "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F2179b778-b2d7-4c1e-ab27-60e7e12a6593%2F01a0c4d9-01fb-7483-85cf-c018b55575a7.jpg&w=2048&q=80",
       "id": "unknown__service-tiles",
       "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Movulab",
+      "source_url": "https://www.designminis.com/tools/movulab",
+      "registry_url": "https://www.designminis.com",
+      "category": "animation",
+      "tags": [
+        "glsl",
+        "glitch",
+        "text-effect"
+      ],
+      "description": "Animated type effects tool: type any word and stack effects such as chrome glow, acid blur, halftone, grain and glitch, then export a frame for a post or poster.",
+      "preview_image": "",
+      "id": "unknown__movulab",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "FlipCut",
+      "source_url": "https://www.designminis.com/tools/flipcut",
+      "registry_url": "https://www.designminis.com",
+      "category": "animation",
+      "tags": [
+        "html",
+        "noise",
+        "animation"
+      ],
+      "description": "Stop-motion photo animations given the feel of printed matter, using scanned paper, pressed type and page-turn textures. Provides editorial templates rendered in the browser and exported straight to MP4.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/eba4b0c872b0c3b4a1f0c93cb31cfa7d3a61d5bf-1600x1000.jpg",
+      "id": "unknown__flipcut",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Swash",
+      "source_url": "https://www.designminis.com/tools/swash",
+      "registry_url": "https://www.designminis.com",
+      "category": "animation",
+      "tags": [
+        "shader",
+        "chrome",
+        "text-effect"
+      ],
+      "description": "Animated text tool with no keyframing: editable templates, per-letter animators, 3D and path layouts, variable fonts and shaders. Exports to MP4 or GIF right in the browser.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/179c359762764b38d1db9573403c38102b3fa133-1600x1000.jpg",
+      "id": "unknown__swash",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Motifs",
+      "source_url": "https://www.designminis.com/tools/motifs",
+      "registry_url": "https://www.designminis.com",
+      "category": "background",
+      "tags": [
+        "svg",
+        "flat",
+        "css-art"
+      ],
+      "description": "Pattern drawing machine for folk art traditions where every mark is generated from a number, so a new seed produces a drawing that has never been made before. Ships with templates for Warli border bands, village walls and harvest scenes.",
+      "preview_image": "",
+      "id": "unknown__motifs",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "SUMIIID",
+      "source_url": "https://www.designminis.com/tools/sumiiid",
+      "registry_url": "https://www.designminis.com",
+      "category": "3d",
+      "tags": [
+        "webgl",
+        "noise",
+        "gallery"
+      ],
+      "description": "Browser-based ink art studio for painting in 2D or 3D, transforming illustrations into ink art and saving custom brushes. Strokes can be moved and rotated in space across layers, with transparent PNG export at 1x or 2x.",
+      "preview_image": "",
+      "id": "unknown__sumiiid",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Light Stroke Tails",
+      "source_url": "https://www.designminis.com/tools/light-stroke-tails",
+      "registry_url": "https://www.designminis.com",
+      "category": "animation",
+      "tags": [
+        "css",
+        "glow",
+        "scroll-effect"
+      ],
+      "description": "Generator for light stroke tails, positioned as an ideal source for animated background treatments.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/4230ad372a319bba2fdfd1ec819caa03fc6f9788-1600x1000.jpg",
+      "id": "unknown__light-stroke-tails",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Cursor Lab",
+      "source_url": "https://www.designminis.com/tools/cursor-lab",
+      "registry_url": "https://www.designminis.com",
+      "category": "cursor",
+      "tags": [
+        "javascript",
+        "minimal",
+        "cursor"
+      ],
+      "description": "27 custom cursors you can tune live in the browser, then copy out as JS, React or CSS with your own easing and scale values baked in.",
+      "preview_image": "",
+      "id": "unknown__cursor-lab",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Signal",
+      "source_url": "https://www.designminis.com/tools/signal",
+      "registry_url": "https://www.designminis.com",
+      "category": "animation",
+      "tags": [
+        "webgl",
+        "glitch",
+        "animation"
+      ],
+      "description": "Glitch effect generator that breaks an image the way a bad signal does: torn bands, colour arriving at three different times, scanlines, static and pixels sorted by brightness until it melts. Outputs a still or a looping video.",
+      "preview_image": "",
+      "id": "unknown__signal",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Merucav",
+      "source_url": "https://www.designminis.com/tools/merucav",
+      "registry_url": "https://www.designminis.com",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "plasma",
+        "css-art"
+      ],
+      "description": "Digital design tool built around a comprehensive shader playground with dozens of named presets from kaleidoscopes to Mandelbrot and tunnel effects. Exposes velocity, detail, twist, contrast and per-channel colour parameters alongside transform and flow controls.",
+      "preview_image": "",
+      "id": "unknown__merucav",
+      "source_domain": "www.designminis.com"
     }
   ]
 }
