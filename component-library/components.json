@@ -1,6 +1,6 @@
 {
-  "version": "1.0.25",
-  "source_count": 755,
+  "version": "1.0.26",
+  "source_count": 761,
   "components": [
     {
       "id": "cat-0",
@@ -12647,6 +12647,114 @@
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2rWolCuRnJW3DRiuQ5JHrl5kj8a/magic-text/magic-text/preview.png?v=1",
       "id": "unknown__magic-text",
       "source_domain": "21st.dev"
+    },
+    {
+      "name": "loguitoc",
+      "source_url": "https://www.designminis.com/tools/loguitoc",
+      "registry_url": "https://www.designminis.com",
+      "category": "animation",
+      "tags": [
+        "svg",
+        "javascript",
+        "animation",
+        "logo",
+        "svg-generator",
+        "video-player"
+      ],
+      "description": "A free SVG animator for logos. Drop in an SVG or type a word, and every contour is traced the way it was drawn with anchor points and Bezier handles on show, exported as animated SVG, 4K MP4 or PNG entirely in the browser.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/6a4eeb4a5c7c27a3370792b2d011027e11f25dba-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__loguitoc",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Mozayk",
+      "source_url": "https://www.designminis.com/tools/mozayk",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "svg",
+        "javascript",
+        "css-art",
+        "generator",
+        "illustration",
+        "svg-generator"
+      ],
+      "description": "Fills a canvas with blocks, spheres, rings and crosses, then hands you the controls to twist the grid, scramble the palette, and feed it a photo or video clip to map into shape.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/9e85ff457ffcd7f9f81e11c11d8a93a4a710496e-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__mozayk",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Image to ASCII",
+      "source_url": "https://www.designminis.com/tools/image-to-ascii",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "javascript",
+        "css-art",
+        "image-effect",
+        "generator",
+        "pattern",
+        "svg-generator"
+      ],
+      "description": "Convert JPG, PNG, WebP or GIF to ASCII art in your browser. Set the width and style, then copy the text or export TXT, PNG or SVG; images are processed locally and never uploaded.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/a6e28532a6e655b904c201c1edfd402102fd8662-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__image-to-ascii",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "FUIbar",
+      "source_url": "https://www.designminis.com/tools/fuibar",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "svg",
+        "javascript",
+        "animation",
+        "icon-set",
+        "pattern",
+        "svg-generator"
+      ],
+      "description": "Create FUI and HUD shapes and assets with node based generative shape and pattern generation, exporting SVG and PNG. Come for the assets, stay for the animations.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/361cf3be6fef94ff0b77381fe311c8bc20fb80ac-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__fuibar",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Causal",
+      "source_url": "https://www.designminis.com/tools/causal",
+      "registry_url": "https://www.designminis.com",
+      "category": "dashboard",
+      "tags": [
+        "react",
+        "javascript",
+        "grid",
+        "gallery",
+        "ai-tool",
+        "dashboard"
+      ],
+      "description": "AI canvas workspace for creative projects: a canvas for storing visual inspiration and creating plans, bringing scattered notes, references and ideas into one place.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/2bdc924bb396f3f99036500055ad656d06cb680c-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__causal",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Gradient Builder",
+      "source_url": "https://www.designminis.com/tools/gradient-builder",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "css",
+        "javascript",
+        "gradient",
+        "gradient-generator",
+        "css-generator",
+        "mesh-gradient"
+      ],
+      "description": "Gradient studies across shape, backdrop and colour, covering mesh, grainy and animated gradients.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/0e19a97a1f1e8b31d55deac22a7904c3f12dd493-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__gradient-builder",
+      "source_domain": "www.designminis.com"
     }
   ]
 }
