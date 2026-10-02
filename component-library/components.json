@@ -1,6 +1,6 @@
 {
-  "version": "1.0.30",
-  "source_count": 811,
+  "version": "1.0.31",
+  "source_count": 837,
   "components": [
     {
       "id": "cat-0",
@@ -13599,6 +13599,396 @@
       "preview_image": "",
       "id": "unknown__add-animations",
       "source_domain": "animejs.com"
+    },
+    {
+      "name": "Tabfolio",
+      "source_url": "https://www.framer.com/marketplace/templates/tabfolio/",
+      "registry_url": "https://www.framer.com/marketplace/templates/",
+      "category": "template",
+      "tags": [
+        "react",
+        "minimal",
+        "template"
+      ],
+      "description": "Polished website template with a tabbed multi-page layout, built as a starting point for a portfolio or SaaS site.",
+      "preview_image": "",
+      "id": "unknown__tabfolio",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Reelio",
+      "source_url": "https://www.framer.com/marketplace/templates/reelio/",
+      "registry_url": "https://www.framer.com/marketplace/templates/",
+      "category": "template",
+      "tags": [
+        "react",
+        "minimal",
+        "template"
+      ],
+      "description": "Website template for creative studios with a project-first homepage.",
+      "preview_image": "",
+      "id": "unknown__reelio",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Atlas Studio",
+      "source_url": "https://www.framer.com/marketplace/templates/atlas-studio/",
+      "registry_url": "https://www.framer.com/marketplace/templates/",
+      "category": "template",
+      "tags": [
+        "react",
+        "glass",
+        "template"
+      ],
+      "description": "Studio website template with a modern glass-tinted layout and project grid.",
+      "preview_image": "",
+      "id": "unknown__atlas-studio",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Vexoo",
+      "source_url": "https://www.framer.com/marketplace/templates/vexoo/",
+      "registry_url": "https://www.framer.com/marketplace/templates/",
+      "category": "template",
+      "tags": [
+        "react",
+        "gradient",
+        "template"
+      ],
+      "description": "Website template with vibrant gradient accents and a modular section flow.",
+      "preview_image": "",
+      "id": "unknown__vexoo",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Aurel Index",
+      "source_url": "https://www.framer.com/marketplace/templates/aurel-index/",
+      "registry_url": "https://www.framer.com/marketplace/templates/",
+      "category": "template",
+      "tags": [
+        "react",
+        "monochrome",
+        "template"
+      ],
+      "description": "Index-style website template built for dense, reference-heavy content.",
+      "preview_image": "",
+      "id": "unknown__aurel-index",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Satz",
+      "source_url": "https://www.framer.com/marketplace/templates/satz/",
+      "registry_url": "https://www.framer.com/marketplace/templates/",
+      "category": "template",
+      "tags": [
+        "react",
+        "minimal",
+        "template"
+      ],
+      "description": "Swiss-inspired website template with a typographic grid and restrained palette.",
+      "preview_image": "",
+      "id": "unknown__satz",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "SkillClass",
+      "source_url": "https://www.framer.com/marketplace/templates/skillclass/",
+      "registry_url": "https://www.framer.com/marketplace/templates/",
+      "category": "template",
+      "tags": [
+        "react",
+        "flat",
+        "template"
+      ],
+      "description": "Course and class listing website template with catalogue and detail views.",
+      "preview_image": "",
+      "id": "unknown__skillclass",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Rec",
+      "source_url": "https://www.framer.com/marketplace/templates/rec/",
+      "registry_url": "https://www.framer.com/marketplace/templates/",
+      "category": "template",
+      "tags": [
+        "react",
+        "glass",
+        "template"
+      ],
+      "description": "Compact website template for recruiters with a streamlined single-page flow.",
+      "preview_image": "",
+      "id": "unknown__rec",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Velora",
+      "source_url": "https://www.framer.com/marketplace/templates/velora/",
+      "registry_url": "https://www.framer.com/marketplace/templates/",
+      "category": "template",
+      "tags": [
+        "react",
+        "glass",
+        "template"
+      ],
+      "description": "Website template with frosted glass surfaces over soft gradients.",
+      "preview_image": "",
+      "id": "unknown__velora",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Optivio",
+      "source_url": "https://www.framer.com/marketplace/templates/optivio/",
+      "registry_url": "https://www.framer.com/marketplace/templates/",
+      "category": "template",
+      "tags": [
+        "react",
+        "flat",
+        "template"
+      ],
+      "description": "Product website template with a flat, structured layout for SaaS landing pages.",
+      "preview_image": "",
+      "id": "unknown__optivio",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Maelle",
+      "source_url": "https://www.framer.com/marketplace/templates/maelle/",
+      "registry_url": "https://www.framer.com/marketplace/templates/",
+      "category": "template",
+      "tags": [
+        "react",
+        "soft",
+        "template"
+      ],
+      "description": "Wellness-studio website template with soft colour and calm spacing.",
+      "preview_image": "",
+      "id": "unknown__maelle",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Aurorix",
+      "source_url": "https://www.framer.com/marketplace/templates/aurorix/",
+      "registry_url": "https://www.framer.com/marketplace/templates/",
+      "category": "template",
+      "tags": [
+        "react",
+        "aurora",
+        "template"
+      ],
+      "description": "Website template built around aurora-style glow and layered gradients.",
+      "preview_image": "",
+      "id": "unknown__aurorix",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Tabfolio Pro",
+      "source_url": "https://www.framer.com/marketplace/templates/tabfolio-pro/",
+      "registry_url": "https://www.framer.com/marketplace/templates/",
+      "category": "template",
+      "tags": [
+        "react",
+        "flat",
+        "template"
+      ],
+      "description": "Paid extension of the Tabfolio template with extra sections and pages.",
+      "preview_image": "",
+      "id": "unknown__tabfolio-pro",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Coorda",
+      "source_url": "https://www.framer.com/marketplace/templates/coorda/",
+      "registry_url": "https://www.framer.com/marketplace/templates/",
+      "category": "template",
+      "tags": [
+        "react",
+        "flat",
+        "template"
+      ],
+      "description": "Mobile-app marketing website template with a colourful, flat hero section.",
+      "preview_image": "",
+      "id": "unknown__coorda",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Das Studio",
+      "source_url": "https://www.framer.com/marketplace/templates/das-studio/",
+      "registry_url": "https://www.framer.com/marketplace/templates/",
+      "category": "template",
+      "tags": [
+        "react",
+        "minimal",
+        "template"
+      ],
+      "description": "Studio website template pairing large imagery with restrained typography.",
+      "preview_image": "",
+      "id": "unknown__das-studio",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Focus Carousel Pro",
+      "source_url": "https://www.framer.com/marketplace/components/focus-carousel-pro/",
+      "registry_url": "https://www.framer.com/marketplace/components/",
+      "category": "gallery",
+      "tags": [
+        "framer-motion",
+        "glass",
+        "carousel"
+      ],
+      "description": "Carousel component with focus-following motion and pro layout options.",
+      "preview_image": "",
+      "id": "unknown__focus-carousel-pro",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Hover Grow Carousel",
+      "source_url": "https://www.framer.com/marketplace/components/hover-grow-carousel/",
+      "registry_url": "https://www.framer.com/marketplace/components/",
+      "category": "gallery",
+      "tags": [
+        "framer-motion",
+        "soft",
+        "hover-effect"
+      ],
+      "description": "Carousel where the hovered slide grows to full size.",
+      "preview_image": "",
+      "id": "unknown__hover-grow-carousel",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Covelight Shader",
+      "source_url": "https://www.framer.com/marketplace/components/covelight-shader/",
+      "registry_url": "https://www.framer.com/marketplace/components/",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "glow",
+        "shader-art"
+      ],
+      "description": "Shader background component rendering a cove-like light gradient.",
+      "preview_image": "",
+      "id": "unknown__covelight-shader",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "DNA Carousel",
+      "source_url": "https://www.framer.com/marketplace/components/dna-carousel/",
+      "registry_url": "https://www.framer.com/marketplace/components/",
+      "category": "gallery",
+      "tags": [
+        "framer-motion",
+        "gradient",
+        "carousel"
+      ],
+      "description": "Carousel with a DNA-helix style transition between slides.",
+      "preview_image": "",
+      "id": "unknown__dna-carousel",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Floating Pill Nav",
+      "source_url": "https://www.framer.com/marketplace/components/floating-pill-nav/",
+      "registry_url": "https://www.framer.com/marketplace/components/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "glass",
+        "navbar"
+      ],
+      "description": "Floating pill-shaped navigation bar with a frosted glass surface.",
+      "preview_image": "",
+      "id": "unknown__floating-pill-nav",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Lanyard Pass",
+      "source_url": "https://www.framer.com/marketplace/components/lanyard-pass/",
+      "registry_url": "https://www.framer.com/marketplace/components/",
+      "category": "card",
+      "tags": [
+        "css",
+        "soft",
+        "card"
+      ],
+      "description": "Event-pass card component styled like a printed lanyard badge.",
+      "preview_image": "",
+      "id": "unknown__lanyard-pass",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Confidential Folder",
+      "source_url": "https://www.framer.com/marketplace/components/confidential-folder/",
+      "registry_url": "https://www.framer.com/marketplace/components/",
+      "category": "card",
+      "tags": [
+        "css",
+        "flat",
+        "card"
+      ],
+      "description": "Folder card component for case-study or document presentation.",
+      "preview_image": "",
+      "id": "unknown__confidential-folder",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Scroll Zoom Reveal",
+      "source_url": "https://www.framer.com/marketplace/components/scroll-zoom-reveal/",
+      "registry_url": "https://www.framer.com/marketplace/components/",
+      "category": "animation",
+      "tags": [
+        "framer-motion",
+        "minimal",
+        "scroll-effect"
+      ],
+      "description": "Scroll-driven zoom-and-reveal transition component.",
+      "preview_image": "",
+      "id": "unknown__scroll-zoom-reveal",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Video Slide Show",
+      "source_url": "https://www.framer.com/marketplace/components/video-slide-show/",
+      "registry_url": "https://www.framer.com/marketplace/components/",
+      "category": "animation",
+      "tags": [
+        "css",
+        "minimal",
+        "transition"
+      ],
+      "description": "Video slideshow component with slide transitions between clips.",
+      "preview_image": "",
+      "id": "unknown__video-slide-show",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Swtich on hover tabs",
+      "source_url": "https://www.framer.com/marketplace/components/swtich-on-hover-tabs/",
+      "registry_url": "https://www.framer.com/marketplace/components/",
+      "category": "menu",
+      "tags": [
+        "css",
+        "flat",
+        "tab"
+      ],
+      "description": "Tab bar component that switches the active tab on hover. (Name as listed in the marketplace)",
+      "preview_image": "",
+      "id": "unknown__swtich-on-hover-tabs",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Testimonial Riff",
+      "source_url": "https://www.framer.com/marketplace/components/testimonial-riff/",
+      "registry_url": "https://www.framer.com/marketplace/components/",
+      "category": "card",
+      "tags": [
+        "css",
+        "soft",
+        "testimonial"
+      ],
+      "description": "Testimonial component with an editorial riff layout.",
+      "preview_image": "",
+      "id": "unknown__testimonial-riff",
+      "source_domain": "www.framer.com"
     }
   ]
 }
