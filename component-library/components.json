@@ -1,6 +1,6 @@
 {
-  "version": "1.0.32",
-  "source_count": 919,
+  "version": "1.0.33",
+  "source_count": 940,
   "components": [
     {
       "id": "cat-0",
@@ -15302,6 +15302,353 @@
       "preview_image": "https://cdn.navbar.gallery/stacker-hq/desktop.avif",
       "id": "unknown__stacker-hq",
       "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Alert Dialog",
+      "source_url": "https://coss.com/ui/docs/components/alert-dialog",
+      "registry_url": "https://21st.dev/components",
+      "category": "modal",
+      "tags": [
+        "react",
+        "typescript",
+        "minimal",
+        "dialog"
+      ],
+      "description": "A dialog that requires user response to proceed.",
+      "preview_image": "",
+      "id": "unknown__alert-dialog",
+      "source_domain": "coss.com"
+    },
+    {
+      "name": "Context Menu",
+      "source_url": "https://coss.com/ui/docs/components/context-menu",
+      "registry_url": "https://21st.dev/components",
+      "category": "menu",
+      "tags": [
+        "react",
+        "typescript",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "A menu that appears at the pointer on right click or long press.",
+      "preview_image": "",
+      "id": "unknown__context-menu",
+      "source_domain": "coss.com"
+    },
+    {
+      "name": "Drawer",
+      "source_url": "https://coss.com/ui/docs/components/drawer",
+      "registry_url": "https://21st.dev/components",
+      "category": "modal",
+      "tags": [
+        "react",
+        "typescript",
+        "framer-motion",
+        "drawer",
+        "frosted"
+      ],
+      "description": "A panel that slides in from the edge of the screen with swipe gestures, snap points, and nested drawer support.",
+      "preview_image": "",
+      "id": "unknown__drawer",
+      "source_domain": "coss.com"
+    },
+    {
+      "name": "Frame",
+      "source_url": "https://coss.com/ui/docs/components/frame",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "typescript",
+        "minimal",
+        "card"
+      ],
+      "description": "A framed container for grouping related information.",
+      "preview_image": "",
+      "id": "unknown__frame",
+      "source_domain": "coss.com"
+    },
+    {
+      "name": "Sheet",
+      "source_url": "https://coss.com/ui/docs/components/sheet",
+      "registry_url": "https://21st.dev/components",
+      "category": "modal",
+      "tags": [
+        "react",
+        "typescript",
+        "minimal",
+        "drawer"
+      ],
+      "description": "A flyout that opens from the side of the screen, based on the dialog component.",
+      "preview_image": "",
+      "id": "unknown__sheet",
+      "source_domain": "coss.com"
+    },
+    {
+      "name": "Skeleton",
+      "source_url": "https://coss.com/ui/docs/components/skeleton",
+      "registry_url": "https://21st.dev/components",
+      "category": "loader",
+      "tags": [
+        "react",
+        "typescript",
+        "plain-css",
+        "skeleton",
+        "gradient"
+      ],
+      "description": "A loading state skeleton for your components.",
+      "preview_image": "",
+      "id": "unknown__skeleton",
+      "source_domain": "coss.com"
+    },
+    {
+      "name": "Spinner",
+      "source_url": "https://coss.com/ui/docs/components/spinner",
+      "registry_url": "https://21st.dev/components",
+      "category": "loader",
+      "tags": [
+        "react",
+        "typescript",
+        "css",
+        "loader",
+        "gradient"
+      ],
+      "description": "An indicator that can be used to show a loading state.",
+      "preview_image": "",
+      "id": "unknown__spinner",
+      "source_domain": "coss.com"
+    },
+    {
+      "name": "Toggle Group",
+      "source_url": "https://coss.com/ui/docs/components/toggle-group",
+      "registry_url": "https://21st.dev/components",
+      "category": "button",
+      "tags": [
+        "react",
+        "typescript",
+        "minimal",
+        "toggle"
+      ],
+      "description": "Provides a shared state to a series of toggle buttons.",
+      "preview_image": "",
+      "id": "unknown__toggle-group",
+      "source_domain": "coss.com"
+    },
+    {
+      "name": "Text Morph",
+      "source_url": "https://www.cubby-ui.dev/docs/components/text-morph",
+      "registry_url": "https://21st.dev/components",
+      "category": "animation",
+      "tags": [
+        "react",
+        "typescript",
+        "framer-motion",
+        "morph",
+        "animation"
+      ],
+      "description": "Animates a label from one value to the next, glyph by glyph. Cubby UI ships it as React components on Base UI.",
+      "preview_image": "",
+      "id": "unknown__text-morph",
+      "source_domain": "www.cubby-ui.dev"
+    },
+    {
+      "name": "Transition Panel",
+      "source_url": "https://www.cubby-ui.dev/docs/components/transition-panel",
+      "registry_url": "https://21st.dev/components",
+      "category": "animation",
+      "tags": [
+        "react",
+        "typescript",
+        "framer-motion",
+        "glass",
+        "transition"
+      ],
+      "description": "Direction-aware animated swap between named views with auto-animated height.",
+      "preview_image": "",
+      "id": "unknown__transition-panel",
+      "source_domain": "www.cubby-ui.dev"
+    },
+    {
+      "name": "Marching Border",
+      "source_url": "https://www.cubby-ui.dev/docs/components/marching-border",
+      "registry_url": "https://21st.dev/components",
+      "category": "animation",
+      "tags": [
+        "react",
+        "svg",
+        "css",
+        "border",
+        "gradient"
+      ],
+      "description": "Animated dashed border overlay that conforms to its parent's corner radius.",
+      "preview_image": "",
+      "id": "unknown__marching-border",
+      "source_domain": "www.cubby-ui.dev"
+    },
+    {
+      "name": "Agency Landing",
+      "source_url": "https://hirael.com/templates/agency-landing",
+      "registry_url": "https://21st.dev/components",
+      "category": "template",
+      "tags": [
+        "react",
+        "webgl",
+        "gradient",
+        "landing-page"
+      ],
+      "description": "Bright, shader-lit agency landing page: a full-viewport hero with an animated WebGL backdrop and pill navigation, an editorial about section, a featured-work grid of autoplaying video cards, and a dark closing footer with a call to action.",
+      "preview_image": "https://hirael.com/templates/agency-landing",
+      "id": "unknown__agency-landing",
+      "source_domain": "hirael.com"
+    },
+    {
+      "name": "Mindloop",
+      "source_url": "https://hirael.com/templates/mindloop",
+      "registry_url": "https://21st.dev/components",
+      "category": "template",
+      "tags": [
+        "react",
+        "framer-motion",
+        "liquid-glass",
+        "monochrome",
+        "landing-page"
+      ],
+      "description": "Dark, monochrome newsletter landing page: a full-screen video hero with an inline subscribe form, an answer-engine section, scroll-revealed mission copy, a four-up feature grid and a streaming-video call to action. Framer Motion throughout, with a self-contained pure-black palette and liquid-glass accents.",
+      "preview_image": "",
+      "id": "unknown__mindloop",
+      "source_domain": "hirael.com"
+    },
+    {
+      "name": "Image Reveal",
+      "source_url": "https://skiper-ui.com/v1/skiper71",
+      "registry_url": "https://21st.dev/components",
+      "category": "animation",
+      "tags": [
+        "react",
+        "framer-motion",
+        "motion",
+        "scroll-effect",
+        "minimal"
+      ],
+      "description": "A premium Skiper UI component that reveals images as you scroll, built on Tailwind and Motion.dev for shadcn/ui.",
+      "preview_image": "",
+      "id": "unknown__image-reveal",
+      "source_domain": "skiper-ui.com"
+    },
+    {
+      "name": "Hover Members",
+      "source_url": "https://skiper-ui.com/v1/skiper6",
+      "registry_url": "https://21st.dev/components",
+      "category": "animation",
+      "tags": [
+        "react",
+        "framer-motion",
+        "motion",
+        "hover-effect",
+        "minimal"
+      ],
+      "description": "A premium Skiper UI component demonstrating hover interactions between member elements.",
+      "preview_image": "",
+      "id": "unknown__hover-members",
+      "source_domain": "skiper-ui.com"
+    },
+    {
+      "name": "Things drag and scroll",
+      "source_url": "https://skiper-ui.com/v1/skiper5",
+      "registry_url": "https://21st.dev/components",
+      "category": "animation",
+      "tags": [
+        "react",
+        "framer-motion",
+        "motion",
+        "drag",
+        "minimal"
+      ],
+      "description": "A premium Skiper UI component where things can be dragged and scrolled.",
+      "preview_image": "",
+      "id": "unknown__things-drag-and-scroll",
+      "source_domain": "skiper-ui.com"
+    },
+    {
+      "name": "Devouring Details Sign In",
+      "source_url": "https://skiper-ui.com/v1/skiper56",
+      "registry_url": "https://21st.dev/components",
+      "category": "animation",
+      "tags": [
+        "react",
+        "framer-motion",
+        "morph",
+        "form"
+      ],
+      "description": "A premium Skiper UI sign-in form styled after the Devouring Details design talk by Rauno Freiberg.",
+      "preview_image": "",
+      "id": "unknown__devouring-details-sign-in",
+      "source_domain": "skiper-ui.com"
+    },
+    {
+      "name": "Aave Token Swap",
+      "source_url": "https://skiper-ui.com/v1/skiper22",
+      "registry_url": "https://21st.dev/components",
+      "category": "animation",
+      "tags": [
+        "react",
+        "framer-motion",
+        "gradient",
+        "transition"
+      ],
+      "description": "A premium Skiper UI crypto token-swap interaction with animated values.",
+      "preview_image": "",
+      "id": "unknown__aave-token-swap",
+      "source_domain": "skiper-ui.com"
+    },
+    {
+      "name": "Image Cursor Trail",
+      "source_url": "https://skiper-ui.com/v1/skiper18",
+      "registry_url": "https://21st.dev/components",
+      "category": "animation",
+      "tags": [
+        "react",
+        "framer-motion",
+        "particles.js",
+        "cursor",
+        "glow"
+      ],
+      "description": "A Skiper UI component that trails the cursor with a stream of images.",
+      "preview_image": "",
+      "id": "unknown__image-cursor-trail",
+      "source_domain": "skiper-ui.com"
+    },
+    {
+      "name": "Hero 01",
+      "source_url": "https://ui.flexnative.com/blocks/hero/hero-01",
+      "registry_url": "https://21st.dev/components",
+      "category": "template",
+      "tags": [
+        "react",
+        "tailwind",
+        "gradient",
+        "hero"
+      ],
+      "description": "A full hero section block with light and dark variants, copyable from the Flexnative blocks gallery.",
+      "preview_image": "https://ui.flexnative.com/images/blocks/hero/hero-01.webp",
+      "id": "unknown__hero-01",
+      "source_domain": "ui.flexnative.com"
+    },
+    {
+      "name": "Hero 02",
+      "source_url": "https://ui.flexnative.com/blocks/hero/hero-02",
+      "registry_url": "https://21st.dev/components",
+      "category": "template",
+      "tags": [
+        "react",
+        "tailwind",
+        "glass",
+        "hero"
+      ],
+      "description": "A full hero section block with light and dark variants, copyable from the Flexnative blocks gallery.",
+      "preview_image": "https://ui.flexnative.com/images/blocks/hero/hero-02.webp",
+      "id": "unknown__hero-02",
+      "source_domain": "ui.flexnative.com"
     }
   ]
 }
