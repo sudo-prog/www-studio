@@ -1,6 +1,6 @@
 {
-  "version": "1.0.28",
-  "source_count": 776,
+  "version": "1.0.29",
+  "source_count": 799,
   "components": [
     {
       "id": "cat-0",
@@ -13011,6 +13011,379 @@
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2rW63QRVU1RhCOi8Yvg8YwbVWaV/kanban-board/default/preview.1790885183924.webp",
       "id": "unknown__kanban-board",
       "source_domain": "21st.dev"
+    },
+    {
+      "name": "UI Camera",
+      "source_url": "https://www.designminis.com/tools/ui-camera",
+      "registry_url": "https://www.designminis.com",
+      "category": "3d",
+      "tags": [
+        "javascript",
+        "minimal",
+        "image-effect",
+        "3d"
+      ],
+      "description": "Product photography for software",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/2bbd9bcc4fb1acdcefac31be6c437149e050b480-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__ui-camera",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Sticky",
+      "source_url": "https://www.designminis.com/tools/sticky",
+      "registry_url": "https://www.designminis.com",
+      "category": "3d",
+      "tags": [
+        "svg",
+        "glass",
+        "liquid-glass",
+        "3d",
+        "svg-generator"
+      ],
+      "description": "Dress a 3D shape in chrome, glass or holo-foil stickers.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/3cfb1ca6f3d51b0deb58442744d0bbb780c689e8-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__sticky",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Ultramock",
+      "source_url": "https://www.designminis.com/tools/ultramock",
+      "registry_url": "https://www.designminis.com",
+      "category": "3d",
+      "tags": [
+        "javascript",
+        "hard",
+        "3d",
+        "image-effect"
+      ],
+      "description": "Turn a screenshot into a 3D device mockup with depth-of-field blur.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/9ee69d5085ab33d124b09eb3f115d544f24991ca-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__ultramock",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Arq\u00e9",
+      "source_url": "https://www.designminis.com/tools/arqe",
+      "registry_url": "https://www.designminis.com",
+      "category": "template",
+      "tags": [
+        "javascript",
+        "minimal",
+        "template",
+        "animation"
+      ],
+      "description": "Drop your content into motion templates and export the video.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/cd9c3296bc9f953d5ad3d330912af7b9ce776041-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__arq\u00e9",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Pryzm",
+      "source_url": "https://www.designminis.com/tools/pryzm",
+      "registry_url": "https://www.designminis.com",
+      "category": "background",
+      "tags": [
+        "html",
+        "gradient",
+        "background",
+        "mesh-gradient"
+      ],
+      "description": "Blend gradients, photos and patterns into animated backgrounds.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/4e2b02c1776a0e540d522872edc69bf09223020f-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__pryzm",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Animatoa",
+      "source_url": "https://www.designminis.com/tools/animatoa",
+      "registry_url": "https://www.designminis.com",
+      "category": "3d",
+      "tags": [
+        "javascript",
+        "hard",
+        "video-player",
+        "3d"
+      ],
+      "description": "Animatoa turns product photos into cinematic 3D videos in 60 seconds. You just drag and drop images, pick a motion style, and export multiple sizes (TikTok, Instagram, YouTube) at once without rendering queues or uploads.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/6e55e710028749c4c43cb2bebc2dc8130080c1cc-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__animatoa",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Presenta",
+      "source_url": "https://www.designminis.com/tools/presenta",
+      "registry_url": "https://www.designminis.com",
+      "category": "3d",
+      "tags": [
+        "javascript",
+        "hard",
+        "3d",
+        "image-effect"
+      ],
+      "description": "Drop in a screenshot, sit it inside a phone or a laptop, then turn the whole thing in 3D until it looks right. Backgrounds, shadows and depth of field live on the same canvas, and no image ever leaves your browser.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/fed662b6385ad19fcb0a03b56f98653c94281d56-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__presenta",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "i3Dify",
+      "source_url": "https://www.designminis.com/tools/i3dify",
+      "registry_url": "https://www.designminis.com",
+      "category": "3d",
+      "tags": [
+        "webgl",
+        "hard",
+        "3d",
+        "animation"
+      ],
+      "description": "Turn your designs into interactive 3D experiences. Flipbooks, galleries, mockups, and more",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/ab96b4e9b0a13f4ab2e4bed34ff3b7879d8fad6f-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__i3dify",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Spherium",
+      "source_url": "https://www.designminis.com/tools/spherium",
+      "registry_url": "https://www.designminis.com",
+      "category": "3d",
+      "tags": [
+        "svg",
+        "hard",
+        "3d"
+      ],
+      "description": "Create stunning, customizable 3D globes and maps directly in your browser.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/28dccbc6f106e2838282a2b6789398b0913b94d1-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__spherium",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Dot Grid Builder",
+      "source_url": "https://www.designminis.com/tools/dot-grid-builder",
+      "registry_url": "https://www.designminis.com",
+      "category": "background",
+      "tags": [
+        "javascript",
+        "minimal",
+        "background",
+        "css-generator"
+      ],
+      "description": "Generated, manipulated dot grid background as code. Copy and export.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/179945835224f81d9b4376a71b150006f7a9179c-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__dot-grid-builder",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "ColorFlow",
+      "source_url": "https://www.designminis.com/tools/colorflow",
+      "registry_url": "https://www.designminis.com",
+      "category": "background",
+      "tags": [
+        "html",
+        "gradient",
+        "mesh-gradient",
+        "gradient-generator"
+      ],
+      "description": "Build a mesh gradient, animate it, then embed or export it.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/10d5c2b585e8f1a1d3a0e48fde4e1affe491f39e-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__colorflow",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Durves",
+      "source_url": "https://www.designminis.com/tools/durves",
+      "registry_url": "https://www.designminis.com",
+      "category": "background",
+      "tags": [
+        "svg",
+        "wave",
+        "fluid",
+        "svg-generator",
+        "background"
+      ],
+      "description": "Bend a grid of dots into a wave, then export SVG or PNG.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/c82b09f771e45848211730f535a23e4f67bae2b1-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__durves",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "ShaderGradient",
+      "source_url": "https://www.designminis.com/tools/shadergradient",
+      "registry_url": "https://www.designminis.com",
+      "category": "shader",
+      "tags": [
+        "shader",
+        "glsl",
+        "gradient",
+        "gradient-generator",
+        "shader-art"
+      ],
+      "description": "Tune a moving shader gradient and take it to Framer, Figma or React.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/c26e4fb81ed180b59a1fb2ac1f9c1d6e14d32be9-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__shadergradient",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Alembic Shader Lab",
+      "source_url": "https://www.designminis.com/tools/alembic-shader-lab",
+      "registry_url": "https://www.designminis.com",
+      "category": "shader",
+      "tags": [
+        "shader",
+        "glsl",
+        "minimal",
+        "shader-art",
+        "filter"
+      ],
+      "description": "Layer 120+ shaders over an image, a video or a blank canvas.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/8c2b14e16b1ffc6a7a39dfbd7bb6be191bb16c62-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__alembic-shader-lab",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Generative Graphics",
+      "source_url": "https://www.designminis.com/tools/generative-graphics",
+      "registry_url": "https://www.designminis.com",
+      "category": "background",
+      "tags": [
+        "javascript",
+        "noise",
+        "background",
+        "illustration"
+      ],
+      "description": "Tool for generating graphics based on Perlin noise.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/e6ca490a6aa5cea805b16b307e8ec9ca5def8ee5-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__generative-graphics",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Gradient Lab",
+      "source_url": "https://www.designminis.com/tools/gradient-lab",
+      "registry_url": "https://www.designminis.com",
+      "category": "shader",
+      "tags": [
+        "javascript",
+        "gradient",
+        "gradient-generator",
+        "shader-art"
+      ],
+      "description": "Tune animated gradient shaders, then export a PNG or 4K video.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/88121fa1843115124e39162a6534af6e143c6e11-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__gradient-lab",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Shader Lab",
+      "source_url": "https://www.designminis.com/tools/shader-lab",
+      "registry_url": "https://www.designminis.com",
+      "category": "shader",
+      "tags": [
+        "shader",
+        "glsl",
+        "minimal",
+        "shader-art",
+        "animation"
+      ],
+      "description": "An open-source tool for composing and animating shaders, with over 20 different effects",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/d516790cb17cfe4ff021c647c91824f11aa60d85-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__shader-lab",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Gradientool",
+      "source_url": "https://www.designminis.com/tools/gradientool",
+      "registry_url": "https://www.designminis.com",
+      "category": "background",
+      "tags": [
+        "javascript",
+        "gradient",
+        "gradient-generator",
+        "animation"
+      ],
+      "description": "Design and animate gradients, then export PNG, MP4 or code.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/274ef1a1670c8218d2650ca02be4832e4f0ee61f-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__gradientool",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Morflax Studio",
+      "source_url": "https://www.designminis.com/tools/morflax-studio",
+      "registry_url": "https://www.designminis.com",
+      "category": "3d",
+      "tags": [
+        "javascript",
+        "hard",
+        "3d",
+        "animation"
+      ],
+      "description": "Compose 3D mockups and motion scenes, then export image or video.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/d28b175dc778fbc3a99c2b359cc843f2fc3c849d-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__morflax-studio",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Holocloth",
+      "source_url": "https://www.designminis.com/tools/holocloth",
+      "registry_url": "https://www.designminis.com",
+      "category": "3d",
+      "tags": [
+        "javascript",
+        "holographic",
+        "3d",
+        "shader-art"
+      ],
+      "description": "Drape posters on simulated cloth with an iridescent foil shader.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/bf5b114f6e2834b9e6b2038ba4bc50464bfc63f1-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__holocloth",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Particles",
+      "source_url": "https://www.designminis.com/tools/particles",
+      "registry_url": "https://www.designminis.com",
+      "category": "3d",
+      "tags": [
+        "particles.js",
+        "webgl",
+        "minimal",
+        "particles",
+        "3d"
+      ],
+      "description": "Build WebGL particle systems and export them as JS, React or GLB.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/4371384abb88f41c9f7058d5a2a968f4b0cad6ba-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__particles",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Zoxilsi Studio",
+      "source_url": "https://www.designminis.com/tools/zoxilsi-studio",
+      "registry_url": "https://www.designminis.com",
+      "category": "background",
+      "tags": [
+        "html",
+        "gradient",
+        "mesh-gradient",
+        "gradient-generator"
+      ],
+      "description": "Build and export mesh gradients, rendered with WebGL.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/6a02ca629829bfd7186f5c8587c26a5001c6ad93-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__zoxilsi-studio",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Hero Patterns",
+      "source_url": "https://www.designminis.com/tools/hero-patterns",
+      "registry_url": "https://www.designminis.com",
+      "category": "background",
+      "tags": [
+        "svg",
+        "minimal",
+        "pattern",
+        "svg-generator"
+      ],
+      "description": "Repeatable SVG background patterns, recoloured and copied in two clicks.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/062d5799ef7c1a90bc9ba38802dfe74ec15d3862-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__hero-patterns",
+      "source_domain": "www.designminis.com"
     }
   ]
 }
