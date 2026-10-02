@@ -1,6 +1,6 @@
 {
-  "version": "1.0.31",
-  "source_count": 837,
+  "version": "1.0.32",
+  "source_count": 919,
   "components": [
     {
       "id": "cat-0",
@@ -13989,6 +13989,1319 @@
       "preview_image": "",
       "id": "unknown__testimonial-riff",
       "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Giga AI",
+      "source_url": "https://www.navbar.gallery/navbar/giga-ai",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "dropdown",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "A top navigation bar on the Giga AI site that reveals secondary link panels from hover/click dropdown triggers. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/giga-ai/desktop.avif",
+      "id": "unknown__giga-ai",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Things",
+      "source_url": "https://www.navbar.gallery/navbar/things",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "sidebar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "sidebar"
+      ],
+      "description": "A side-drawer navigation pattern on the Things site, sliding in from the edge with the primary links. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/things/desktop.avif",
+      "id": "unknown__things",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Factory",
+      "source_url": "https://www.navbar.gallery/navbar/factory-2",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "dropdown",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "A top navigation bar on the Factory site that reveals secondary link panels from hover/click dropdown triggers. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/factory-2/desktop.avif",
+      "id": "unknown__factory",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Popp AI",
+      "source_url": "https://www.navbar.gallery/navbar/popp-ai",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "menu",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "menu"
+      ],
+      "description": "A fullscreen overlay navigation on the Popp AI site, replacing page content with a full-viewport menu. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/popp-ai/desktop.avif",
+      "id": "unknown__popp-ai",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Ribbit",
+      "source_url": "https://www.navbar.gallery/navbar/ribbit",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "A static top navigation bar as shipped on the Ribbit site, kept in view without scroll-triggered transforms. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/ribbit/desktop.avif",
+      "id": "unknown__ribbit",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "KT Appliance \u2014 Builders Division",
+      "source_url": "https://www.navbar.gallery/navbar/kt-applianc",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "menu",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "menu"
+      ],
+      "description": "A fullscreen overlay navigation on the KT Appliance \u2014 Builders Division site, replacing page content with a full-viewport menu. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/kt-applianc/desktop.avif",
+      "id": "unknown__kt-appliance-\u2014-builders-division",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Alex Pierce",
+      "source_url": "https://www.navbar.gallery/navbar/alex-pierce",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "menu",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "menu"
+      ],
+      "description": "A fullscreen overlay navigation on the Alex Pierce site, replacing page content with a full-viewport menu. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/alex-pierce/desktop.avif",
+      "id": "unknown__alex-pierce",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Brandigo",
+      "source_url": "https://www.navbar.gallery/navbar/brandigo",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "menu",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "menu"
+      ],
+      "description": "A fullscreen overlay navigation on the Brandigo site, replacing page content with a full-viewport menu. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/brandigo/desktop.avif",
+      "id": "unknown__brandigo",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Lando Norris",
+      "source_url": "https://www.navbar.gallery/navbar/lando-norris",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "menu",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "menu"
+      ],
+      "description": "A fullscreen overlay navigation on the Lando Norris site, replacing page content with a full-viewport menu. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/lando-norris/desktop.avif",
+      "id": "unknown__lando-norris",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Planhat",
+      "source_url": "https://www.navbar.gallery/navbar/planhat",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "menu",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "menu"
+      ],
+      "description": "A fullscreen overlay navigation on the Planhat site, replacing page content with a full-viewport menu. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/planhat/desktop.avif",
+      "id": "unknown__planhat",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "New Layer Capital",
+      "source_url": "https://www.navbar.gallery/navbar/new-layer-capital",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "menu",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "menu"
+      ],
+      "description": "A fullscreen overlay navigation on the New Layer Capital site, replacing page content with a full-viewport menu. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/new-layer-capital/desktop.avif",
+      "id": "unknown__new-layer-capital",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Lassco",
+      "source_url": "https://www.navbar.gallery/navbar/lassco",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "A static top navigation bar as shipped on the Lassco site, kept in view without scroll-triggered transforms. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/lassco/desktop.avif",
+      "id": "unknown__lassco",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Vision Trilingual School",
+      "source_url": "https://www.navbar.gallery/navbar/vision-trilingual-school",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "menu",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "menu"
+      ],
+      "description": "A fullscreen overlay navigation on the Vision Trilingual School site, replacing page content with a full-viewport menu. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/vision-trilingual-school/desktop.avif",
+      "id": "unknown__vision-trilingual-school",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Real Template",
+      "source_url": "https://www.navbar.gallery/navbar/real-template",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "menu",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "menu"
+      ],
+      "description": "A fullscreen overlay navigation on the Real Template site, replacing page content with a full-viewport menu. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/real-template/desktop.avif",
+      "id": "unknown__real-template",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Maggie App",
+      "source_url": "https://www.navbar.gallery/navbar/maggie-app",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "A static top navigation bar as shipped on the Maggie App site, kept in view without scroll-triggered transforms. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/maggie-app/desktop.avif",
+      "id": "unknown__maggie-app",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Ona",
+      "source_url": "https://www.navbar.gallery/navbar/ona",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "dropdown",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "A top navigation bar on the Ona site that reveals secondary link panels from hover/click dropdown triggers. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/ona/desktop.avif",
+      "id": "unknown__ona",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Brand Appart",
+      "source_url": "https://www.navbar.gallery/navbar/brand-appart",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "sidebar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "sidebar"
+      ],
+      "description": "A side-drawer navigation pattern on the Brand Appart site, sliding in from the edge with the primary links. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/brand-appart/desktop.avif",
+      "id": "unknown__brand-appart",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Distributional",
+      "source_url": "https://www.navbar.gallery/navbar/distributional",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "dropdown",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "A top navigation bar on the Distributional site that reveals secondary link panels from hover/click dropdown triggers. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/distributional/desktop.avif",
+      "id": "unknown__distributional",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Assurestor",
+      "source_url": "https://www.navbar.gallery/navbar/assurestor",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "dropdown",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "A top navigation bar on the Assurestor site that reveals secondary link panels from hover/click dropdown triggers. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/assurestor/desktop.avif",
+      "id": "unknown__assurestor",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Brainfish",
+      "source_url": "https://www.navbar.gallery/navbar/brainfish",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "dropdown",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "A top navigation bar on the Brainfish site that reveals secondary link panels from hover/click dropdown triggers. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/brainfish/desktop.avif",
+      "id": "unknown__brainfish",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Craft",
+      "source_url": "https://www.navbar.gallery/navbar/craft",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "dropdown",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "A top navigation bar on the Craft site that reveals secondary link panels from hover/click dropdown triggers. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/craft/desktop.avif",
+      "id": "unknown__craft",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "ai.work",
+      "source_url": "https://www.navbar.gallery/navbar/ai-work",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "dropdown",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "A top navigation bar on the ai.work site that reveals secondary link panels from hover/click dropdown triggers. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/ai-work/desktop.avif",
+      "id": "unknown__ai.work",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Trifecta",
+      "source_url": "https://www.navbar.gallery/navbar/trifecta",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "sidebar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "sidebar"
+      ],
+      "description": "A side-drawer navigation pattern on the Trifecta site, sliding in from the edge with the primary links. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/trifecta/desktop.avif",
+      "id": "unknown__trifecta",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Atelier de Troupe",
+      "source_url": "https://www.navbar.gallery/navbar/atelier-de-troupe",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "A static top navigation bar as shipped on the Atelier de Troupe site, kept in view without scroll-triggered transforms. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/atelier-de-troupe/desktop.avif",
+      "id": "unknown__atelier-de-troupe",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Nicolas Bussi\u00e8re",
+      "source_url": "https://www.navbar.gallery/navbar/nicolas-bussiere",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "menu",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "menu"
+      ],
+      "description": "A fullscreen overlay navigation on the Nicolas Bussi\u00e8re site, replacing page content with a full-viewport menu. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/nicolas-bussiere/desktop.avif",
+      "id": "unknown__nicolas-bussi\u00e8re",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Nominal",
+      "source_url": "https://www.navbar.gallery/navbar/nominal",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "dropdown",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "A top navigation bar on the Nominal site that reveals secondary link panels from hover/click dropdown triggers. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/nominal/desktop.avif",
+      "id": "unknown__nominal",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "PostHog",
+      "source_url": "https://www.navbar.gallery/navbar/posthog-2025",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "sidebar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "sidebar"
+      ],
+      "description": "A side-drawer navigation pattern on the PostHog site, sliding in from the edge with the primary links. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/posthog-2025/desktop.avif",
+      "id": "unknown__posthog",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Fantasy",
+      "source_url": "https://www.navbar.gallery/navbar/fantasy",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "menu",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "menu"
+      ],
+      "description": "A fullscreen overlay navigation on the Fantasy site, replacing page content with a full-viewport menu. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/fantasy/desktop.avif",
+      "id": "unknown__fantasy",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Commure",
+      "source_url": "https://www.navbar.gallery/navbar/commure",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "dropdown",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "A top navigation bar on the Commure site that reveals secondary link panels from hover/click dropdown triggers. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/commure/desktop.avif",
+      "id": "unknown__commure",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "MvD Visuals",
+      "source_url": "https://www.navbar.gallery/navbar/mvd-visuals",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "sidebar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "sidebar"
+      ],
+      "description": "A side-drawer navigation pattern on the MvD Visuals site, sliding in from the edge with the primary links. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/mvd-visuals/desktop.avif",
+      "id": "unknown__mvd-visuals",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Opalhaus",
+      "source_url": "https://www.navbar.gallery/navbar/opalhaus",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "A static top navigation bar as shipped on the Opalhaus site, kept in view without scroll-triggered transforms. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/opalhaus/desktop.avif",
+      "id": "unknown__opalhaus",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "L'\u00c9tude",
+      "source_url": "https://www.navbar.gallery/navbar/letude",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "A static top navigation bar as shipped on the L'\u00c9tude site, kept in view without scroll-triggered transforms. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/letude/desktop.avif",
+      "id": "unknown__l'\u00e9tude",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Walrus",
+      "source_url": "https://www.navbar.gallery/navbar/walrus",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "dropdown",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "A top navigation bar on the Walrus site that reveals secondary link panels from hover/click dropdown triggers. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/walrus/desktop.avif",
+      "id": "unknown__walrus",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Modeinspect",
+      "source_url": "https://www.navbar.gallery/navbar/modeinspect",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "sidebar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "sidebar"
+      ],
+      "description": "A side-drawer navigation pattern on the Modeinspect site, sliding in from the edge with the primary links. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/modeinspect/desktop.avif",
+      "id": "unknown__modeinspect",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Jailhouse Lawyers",
+      "source_url": "https://www.navbar.gallery/navbar/jailhouse-lawyers",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "menu",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "menu"
+      ],
+      "description": "A fullscreen overlay navigation on the Jailhouse Lawyers site, replacing page content with a full-viewport menu. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/jailhouse-lawyers/desktop.avif",
+      "id": "unknown__jailhouse-lawyers",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Codot",
+      "source_url": "https://www.navbar.gallery/navbar/codot",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "menu",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "menu"
+      ],
+      "description": "A fullscreen overlay navigation on the Codot site, replacing page content with a full-viewport menu. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/codot/desktop.avif",
+      "id": "unknown__codot",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Heidelberg Materials",
+      "source_url": "https://www.navbar.gallery/navbar/heidelberg-materials",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "menu",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "menu"
+      ],
+      "description": "A fullscreen overlay navigation on the Heidelberg Materials site, replacing page content with a full-viewport menu. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/heidelberg-materials/desktop.avif",
+      "id": "unknown__heidelberg-materials",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Campfire",
+      "source_url": "https://www.navbar.gallery/navbar/campfire",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "dropdown",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "A top navigation bar on the Campfire site that reveals secondary link panels from hover/click dropdown triggers. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/campfire/desktop.avif",
+      "id": "unknown__campfire",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Portal Gaming",
+      "source_url": "https://www.navbar.gallery/navbar/portal-gaming",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "dropdown",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "A top navigation bar on the Portal Gaming site that reveals secondary link panels from hover/click dropdown triggers. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/portal-gaming/desktop.avif",
+      "id": "unknown__portal-gaming",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Pomergranate",
+      "source_url": "https://www.navbar.gallery/navbar/pomergranate",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "menu",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "menu"
+      ],
+      "description": "A fullscreen overlay navigation on the Pomergranate site, replacing page content with a full-viewport menu. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/pomergranate/desktop.avif",
+      "id": "unknown__pomergranate",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Truus",
+      "source_url": "https://www.navbar.gallery/navbar/truus",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "dropdown",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "A top navigation bar on the Truus site that reveals secondary link panels from hover/click dropdown triggers. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/truus/desktop.avif",
+      "id": "unknown__truus",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Divyansh Agarwal",
+      "source_url": "https://www.navbar.gallery/navbar/divyansh-agarwal",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "sidebar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "sidebar"
+      ],
+      "description": "A side-drawer navigation pattern on the Divyansh Agarwal site, sliding in from the edge with the primary links. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/divyansh-agarwal/desktop.webp",
+      "id": "unknown__divyansh-agarwal",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Pixelflakes",
+      "source_url": "https://www.navbar.gallery/navbar/pixelflakes",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "menu",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "menu"
+      ],
+      "description": "A fullscreen overlay navigation on the Pixelflakes site, replacing page content with a full-viewport menu. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/pixelflakes/desktop.avif",
+      "id": "unknown__pixelflakes",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Zoox",
+      "source_url": "https://www.navbar.gallery/navbar/zoox",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "sidebar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "sidebar"
+      ],
+      "description": "A side-drawer navigation pattern on the Zoox site, sliding in from the edge with the primary links. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/zooox%20desktop.avif",
+      "id": "unknown__zoox",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Sunday",
+      "source_url": "https://www.navbar.gallery/navbar/sunday",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "menu",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "menu"
+      ],
+      "description": "A fullscreen overlay navigation on the Sunday site, replacing page content with a full-viewport menu. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/sunday%20desktop.avif",
+      "id": "unknown__sunday",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "New Studio",
+      "source_url": "https://www.navbar.gallery/navbar/new-studio",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "menu",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "menu"
+      ],
+      "description": "A fullscreen overlay navigation on the New Studio site, replacing page content with a full-viewport menu. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/new%20studio%20desktop.avif",
+      "id": "unknown__new-studio",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Freshman",
+      "source_url": "https://www.navbar.gallery/navbar/freshman",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "menu",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "menu"
+      ],
+      "description": "A fullscreen overlay navigation on the Freshman site, replacing page content with a full-viewport menu. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/frashman%20desktop.avif",
+      "id": "unknown__freshman",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Escape Cafe",
+      "source_url": "https://www.navbar.gallery/navbar/escape-cafe",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "sidebar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "sidebar"
+      ],
+      "description": "A side-drawer navigation pattern on the Escape Cafe site, sliding in from the edge with the primary links. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/escape-desktop.avif",
+      "id": "unknown__escape-cafe",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Seed",
+      "source_url": "https://www.navbar.gallery/navbar/seed",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "dropdown",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "A top navigation bar on the Seed site that reveals secondary link panels from hover/click dropdown triggers. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/seed-desktop.avif",
+      "id": "unknown__seed",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Hims",
+      "source_url": "https://www.navbar.gallery/navbar/hims-2026",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "sidebar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "sidebar"
+      ],
+      "description": "A side-drawer navigation pattern on the Hims site, sliding in from the edge with the primary links. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-01-10%20at%2021.31.59.avif",
+      "id": "unknown__hims",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Wrangle",
+      "source_url": "https://www.navbar.gallery/navbar/wrangle",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "dropdown",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "A top navigation bar on the Wrangle site that reveals secondary link panels from hover/click dropdown triggers. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-01-10%20at%2021.46.06.avif",
+      "id": "unknown__wrangle",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Plasticity",
+      "source_url": "https://www.navbar.gallery/navbar/plasticity",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "A static top navigation bar as shipped on the Plasticity site, kept in view without scroll-triggered transforms. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202026-01-10%20at%2021.21.06.avif",
+      "id": "unknown__plasticity",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Visitors",
+      "source_url": "https://www.navbar.gallery/navbar/visitors",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "dropdown",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "A top navigation bar on the Visitors site that reveals secondary link panels from hover/click dropdown triggers. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/visitors%20desktop%20navbar.avif",
+      "id": "unknown__visitors",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "AlignUI",
+      "source_url": "https://www.navbar.gallery/navbar/alignui",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "dropdown",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "A top navigation bar on the AlignUI site that reveals secondary link panels from hover/click dropdown triggers. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/alignui%20desktop%20navbar.png",
+      "id": "unknown__alignui",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Markopolo",
+      "source_url": "https://www.navbar.gallery/navbar/markopolo",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "dropdown",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "A top navigation bar on the Markopolo site that reveals secondary link panels from hover/click dropdown triggers. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/markopolo%20desktop%20navbar.avif",
+      "id": "unknown__markopolo",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Significa",
+      "source_url": "https://www.navbar.gallery/navbar/significa",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "sidebar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "sidebar"
+      ],
+      "description": "A side-drawer navigation pattern on the Significa site, sliding in from the edge with the primary links. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202025-12-26%20at%2015.09.55.avif",
+      "id": "unknown__significa",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Solidroad",
+      "source_url": "https://www.navbar.gallery/navbar/solidroad",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "A static top navigation bar as shipped on the Solidroad site, kept in view without scroll-triggered transforms. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202025-12-26%20at%2014.53.45.avif",
+      "id": "unknown__solidroad",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Detail",
+      "source_url": "https://www.navbar.gallery/navbar/detail",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "A static top navigation bar as shipped on the Detail site, kept in view without scroll-triggered transforms. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202025-12-13%20at%2012.28.04.avif",
+      "id": "unknown__detail",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Three Circles",
+      "source_url": "https://www.navbar.gallery/navbar/three-circles",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "sidebar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "sidebar"
+      ],
+      "description": "A side-drawer navigation pattern on the Three Circles site, sliding in from the edge with the primary links. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202025-12-26%20at%2015.26.59.avif",
+      "id": "unknown__three-circles",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Linie",
+      "source_url": "https://www.navbar.gallery/navbar/linie",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "sidebar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "sidebar"
+      ],
+      "description": "A side-drawer navigation pattern on the Linie site, sliding in from the edge with the primary links. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202025-12-26%20at%2015.37.55.avif",
+      "id": "unknown__linie",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Throxy",
+      "source_url": "https://www.navbar.gallery/navbar/throxy",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "dropdown",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "A top navigation bar on the Throxy site that reveals secondary link panels from hover/click dropdown triggers. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202025-12-13%20at%2012.23.09.avif",
+      "id": "unknown__throxy",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Spacer",
+      "source_url": "https://www.navbar.gallery/navbar/spacer",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "menu",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "menu"
+      ],
+      "description": "A fullscreen overlay navigation on the Spacer site, replacing page content with a full-viewport menu. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/spacer%20desktop.avif",
+      "id": "unknown__spacer",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Toormix",
+      "source_url": "https://www.navbar.gallery/navbar/toormix",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "A static top navigation bar as shipped on the Toormix site, kept in view without scroll-triggered transforms. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/toormix%20desktop.avif",
+      "id": "unknown__toormix",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Arc",
+      "source_url": "https://www.navbar.gallery/navbar/arc",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "A static top navigation bar as shipped on the Arc site, kept in view without scroll-triggered transforms. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202025-12-06%20at%2021.34.11.avif",
+      "id": "unknown__arc",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "CallSine",
+      "source_url": "https://www.navbar.gallery/navbar/callsine",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "dropdown",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "A top navigation bar on the CallSine site that reveals secondary link panels from hover/click dropdown triggers. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202025-12-13%20at%2012.33.45.avif",
+      "id": "unknown__callsine",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Haley Park",
+      "source_url": "https://www.navbar.gallery/navbar/haley-park",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "A static top navigation bar as shipped on the Haley Park site, kept in view without scroll-triggered transforms. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202025-12-06%20at%2021.43.20.avif",
+      "id": "unknown__haley-park",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Elian Kent",
+      "source_url": "https://www.navbar.gallery/navbar/elian-kent",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "A static top navigation bar as shipped on the Elian Kent site, kept in view without scroll-triggered transforms. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202025-12-06%20at%2021.38.49.avif",
+      "id": "unknown__elian-kent",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Aave",
+      "source_url": "https://www.navbar.gallery/navbar/aave",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "dropdown",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "A top navigation bar on the Aave site that reveals secondary link panels from hover/click dropdown triggers. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202025-11-29%20at%2016.25.23.avif",
+      "id": "unknown__aave",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "TensorStax",
+      "source_url": "https://www.navbar.gallery/navbar/tensorstax",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "A static top navigation bar as shipped on the TensorStax site, kept in view without scroll-triggered transforms. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202025-11-29%20at%2016.24.19.avif",
+      "id": "unknown__tensorstax",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Tabs",
+      "source_url": "https://www.navbar.gallery/navbar/tabs",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar",
+        "mega-menu"
+      ],
+      "description": "A tabbed navigation bar on the Tabs site, switching between top-level sections inline. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202025-11-29%20at%2016.24.01.avif",
+      "id": "unknown__tabs",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Sienna",
+      "source_url": "https://www.navbar.gallery/navbar/sienna",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "A static top navigation bar as shipped on the Sienna site, kept in view without scroll-triggered transforms. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202025-11-22%20at%2020.27.15.avif",
+      "id": "unknown__sienna",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Reevo",
+      "source_url": "https://www.navbar.gallery/navbar/reevo",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "dropdown",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "A top navigation bar on the Reevo site that reveals secondary link panels from hover/click dropdown triggers. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202025-11-22%20at%2020.23.28.avif",
+      "id": "unknown__reevo",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "reOrc",
+      "source_url": "https://www.navbar.gallery/navbar/reorc",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "dropdown",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "A top navigation bar on the reOrc site that reveals secondary link panels from hover/click dropdown triggers. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/Screenshot%202025-11-22%20at%2020.03.45.avif",
+      "id": "unknown__reorc",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Mockuuups Studio",
+      "source_url": "https://www.navbar.gallery/navbar/mockuuups-studio",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "dropdown",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "A top navigation bar on the Mockuuups Studio site that reveals secondary link panels from hover/click dropdown triggers. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/mockuuups-studio/desktop.avif",
+      "id": "unknown__mockuuups-studio",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Nakula",
+      "source_url": "https://www.navbar.gallery/navbar/nakula",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "sidebar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "sidebar"
+      ],
+      "description": "A side-drawer navigation pattern on the Nakula site, sliding in from the edge with the primary links. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/nakula/desktop.avif",
+      "id": "unknown__nakula",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Aether Studio",
+      "source_url": "https://www.navbar.gallery/navbar/aether-studio",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "menu",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "menu"
+      ],
+      "description": "A fullscreen overlay navigation on the Aether Studio site, replacing page content with a full-viewport menu. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/aether-studio/desktop.avif",
+      "id": "unknown__aether-studio",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "RAWLINE",
+      "source_url": "https://www.navbar.gallery/navbar/rawline",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "dropdown",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "A top navigation bar on the RAWLINE site that reveals secondary link panels from hover/click dropdown triggers. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/rawline/desktop.avif",
+      "id": "unknown__rawline",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Duna",
+      "source_url": "https://www.navbar.gallery/navbar/duna",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "dropdown",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "A top navigation bar on the Duna site that reveals secondary link panels from hover/click dropdown triggers. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/duna/desktop.avif",
+      "id": "unknown__duna",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Free Faces",
+      "source_url": "https://www.navbar.gallery/navbar/free-faces",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "A static top navigation bar as shipped on the Free Faces site, kept in view without scroll-triggered transforms. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/free-faces/desktop.avif",
+      "id": "unknown__free-faces",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Zayla",
+      "source_url": "https://www.navbar.gallery/navbar/zayla",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "menu",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "menu"
+      ],
+      "description": "A fullscreen overlay navigation on the Zayla site, replacing page content with a full-viewport menu. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/zayla/desktop.avif",
+      "id": "unknown__zayla",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "WaxyWab",
+      "source_url": "https://www.navbar.gallery/navbar/waxywab",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "A static top navigation bar as shipped on the WaxyWab site, kept in view without scroll-triggered transforms. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/waxywab/desktop.avif",
+      "id": "unknown__waxywab",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Stacker HQ",
+      "source_url": "https://www.navbar.gallery/navbar/stacker-hq",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "menu",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "menu"
+      ],
+      "description": "A fullscreen overlay navigation on the Stacker HQ site, replacing page content with a full-viewport menu. Reference capture on Navbar Gallery.",
+      "preview_image": "https://cdn.navbar.gallery/stacker-hq/desktop.avif",
+      "id": "unknown__stacker-hq",
+      "source_domain": "www.navbar.gallery"
     }
   ]
 }
