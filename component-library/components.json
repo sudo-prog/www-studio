@@ -1,6 +1,6 @@
 {
-  "version": "1.0.27",
-  "source_count": 770,
+  "version": "1.0.28",
+  "source_count": 776,
   "components": [
     {
       "id": "cat-0",
@@ -12890,6 +12890,127 @@
       "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F0ae2481a-d862-4f17-86a7-d8b9373e7666%2Fjxschopm&w=2048&q=60",
       "id": "unknown__nuance",
       "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Code background",
+      "source_url": "https://21st.dev/@anark17r/components/code-background",
+      "registry_url": "https://21st.dev/components",
+      "category": "background",
+      "tags": [
+        "react",
+        "tailwind",
+        "css",
+        "retro",
+        "pixel",
+        "background",
+        "css-art",
+        "animation"
+      ],
+      "description": "A Matrix-style code/matrix rain background component. Published as an importable React component (`@/components/ui/code-background`) for use behind page content.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_3K3E5LSm8GsOaLhyFqNo5JwbLKS/code-background/default/preview.1790890835312.webp",
+      "id": "unknown__code-background",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Prompt Composer",
+      "source_url": "https://21st.dev/@cult-ui/components/prompt-composer",
+      "registry_url": "https://21st.dev/components",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "framer-motion",
+        "shader",
+        "gradient",
+        "glass",
+        "input",
+        "form"
+      ],
+      "description": "A multiline AI chat prompt input with an animated gradient border, a shader-powered avatar, staggered placeholder text, a loading state, and send/attach buttons. Supports send on Cmd/Ctrl+Enter and configurable loading text.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2rW63QRVU1RhCOi8Yvg8YwbVWaV/prompt-composer/default/preview.1790890615370.webp",
+      "id": "unknown__prompt-composer",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Organic Card Small",
+      "source_url": "https://21st.dev/@cult-ui/components/organic-card-small",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "framer-motion",
+        "svg",
+        "blob",
+        "morph",
+        "card",
+        "hover-effect",
+        "blog"
+      ],
+      "description": "A compact article/preview card with an animated organic SVG silhouette footer that morphs on hover or focus, showing an image, category, date, and title with a \"Read more\" link.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2rW63QRVU1RhCOi8Yvg8YwbVWaV/organic-card-small/default/preview.1790890561328.webp",
+      "id": "unknown__organic-card-small",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Black Metal Logo Preloader",
+      "source_url": "https://21st.dev/@kedhareswer/components/onyx-glyph-preloader",
+      "registry_url": "https://21st.dev/components",
+      "category": "loader",
+      "tags": [
+        "react",
+        "svg",
+        "framer-motion",
+        "metallic",
+        "noise",
+        "loader",
+        "logo",
+        "animation"
+      ],
+      "description": "Cinematic logo preloader in sandblasted black metal: glitter-flecked glyph tiles orbit and light up as the load climbs, then forge into one mark above your wordmark. Bring your own glyphs, mark and metal palette.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_30fkm37UoBFJx1GiK2Q4Sy8lSrO/onyx-glyph-preloader/default/preview.1790890809975.webp",
+      "id": "unknown__black-metal-logo-preloader",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Cyberpunk Neon Preloader",
+      "source_url": "https://21st.dev/@kedhareswer/components/neon-katakana-preloader",
+      "registry_url": "https://21st.dev/components",
+      "category": "loader",
+      "tags": [
+        "react",
+        "framer-motion",
+        "typescript",
+        "neon",
+        "glitch",
+        "loader",
+        "animation",
+        "text"
+      ],
+      "description": "Cyberpunk neon preloader where data rain condenses into a glowing katakana sign while the load counts up, then flickers on like a neon tube. Any word and palette; loop it as a splash screen or gate your page.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_30fkm37UoBFJx1GiK2Q4Sy8lSrO/neon-katakana-preloader/default/preview.1790890771380.webp",
+      "id": "unknown__cyberpunk-neon-preloader",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Kanban Board",
+      "source_url": "https://21st.dev/@cult-ui/components/kanban-board",
+      "registry_url": "https://21st.dev/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "flat",
+        "minimal",
+        "drag",
+        "card",
+        "grid"
+      ],
+      "description": "A drag-and-drop kanban board column component for organizing cards into statuses like to-do, in-progress, and done. Ships as a Vite + React + TS component with card metadata such as assignee and date.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2rW63QRVU1RhCOi8Yvg8YwbVWaV/kanban-board/default/preview.1790885183924.webp",
+      "id": "unknown__kanban-board",
+      "source_domain": "21st.dev"
     }
   ]
 }
