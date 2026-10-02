@@ -1,6 +1,6 @@
 {
-  "version": "1.0.29",
-  "source_count": 799,
+  "version": "1.0.30",
+  "source_count": 811,
   "components": [
     {
       "id": "cat-0",
@@ -13384,6 +13384,221 @@
       "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/062d5799ef7c1a90bc9ba38802dfe74ec15d3862-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
       "id": "unknown__hero-patterns",
       "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "morphTo",
+      "source_url": "https://animejs.com/documentation/svg/morphto",
+      "registry_url": "https://animejs.com/documentation/svg",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "svg",
+        "javascript",
+        "morph",
+        "minimal",
+        "animation"
+      ],
+      "description": "Creates a morphing animation from one SVG shape to another by passing the d property of an SVGPathElement, or the points property of a polyline or polygon, to svg.morphTo(). An optional precision parameter configures how many points are extrapolated to interpolate between the two shapes.",
+      "preview_image": "",
+      "id": "unknown__morphto",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "createDrawable",
+      "source_url": "https://animejs.com/documentation/svg/createdrawable",
+      "registry_url": "https://animejs.com/documentation/svg",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "svg",
+        "javascript",
+        "outline",
+        "minimal",
+        "animation"
+      ],
+      "description": "Creates a Proxy of an SVGElement exposing an extra draw property that defines how much of a line is visible or drawn, as a 'start end' string pair such as '0 .5'. Enables line-drawing animation on paths, polylines, lines and rects.",
+      "preview_image": "",
+      "id": "unknown__createdrawable",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "createMotionPath",
+      "source_url": "https://animejs.com/documentation/svg/createmotionpath",
+      "registry_url": "https://animejs.com/documentation/svg",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "svg",
+        "javascript",
+        "minimal",
+        "flat",
+        "animation"
+      ],
+      "description": "Creates pre-defined tween parameter objects that animate a target along an SVGPathElement's coordinates and inclination, returning translateX, translateY and rotate values that can be spread straight into animate().",
+      "preview_image": "",
+      "id": "unknown__createmotionpath",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "splitText",
+      "source_url": "https://animejs.com/documentation/text/splittext",
+      "registry_url": "https://animejs.com/documentation/text",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "html",
+        "javascript",
+        "minimal",
+        "monochrome",
+        "text-effect"
+      ],
+      "description": "A lightweight, responsive and accessible text utility function to split, clone and wrap lines, words and characters of an HTML element. Returns a TextSplitter whose words and chars can be staggered and animated individually.",
+      "preview_image": "",
+      "id": "unknown__splittext",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "scrambleText",
+      "source_url": "https://animejs.com/documentation/text/scrambletext",
+      "registry_url": "https://animejs.com/documentation/text",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "css",
+        "glitch",
+        "retro",
+        "text-effect"
+      ],
+      "description": "Animates text with a character-by-character scramble and reveal effect, applied as a function-based tween value to the innerHTML property. Configurable character sets, cursor character, wave speed and per-character delays.",
+      "preview_image": "",
+      "id": "unknown__scrambletext",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Draggable",
+      "source_url": "https://animejs.com/documentation/draggable",
+      "registry_url": "https://animejs.com/documentation/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "plain-css",
+        "minimal",
+        "flat",
+        "drag"
+      ],
+      "description": "Adds draggable capabilities to DOM elements via createDraggable(target, parameters). Accepts axis parameters, settings and callbacks, and returns a Draggable instance.",
+      "preview_image": "",
+      "id": "unknown__draggable",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Layout",
+      "source_url": "https://animejs.com/documentation/layout",
+      "registry_url": "https://animejs.com/documentation/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "plain-css",
+        "html",
+        "minimal",
+        "flat",
+        "grid"
+      ],
+      "description": "Automatically animates between two HTML layout states, allowing properties that are normally impossible or hard to animate such as CSS display, flex direction, grid settings and DOM order to be animated.",
+      "preview_image": "",
+      "id": "unknown__layout",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Timer",
+      "source_url": "https://animejs.com/documentation/timer",
+      "registry_url": "https://animejs.com/documentation/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "minimal",
+        "monochrome",
+        "animation"
+      ],
+      "description": "Schedules and controls timed callbacks as an alternative to setTimeout or setInterval, keeping animations and callbacks synchronized. Supports loop, frameRate and onUpdate / onLoop callbacks.",
+      "preview_image": "",
+      "id": "unknown__timer",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Animation",
+      "source_url": "https://animejs.com/documentation/animation",
+      "registry_url": "https://animejs.com/documentation/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "css",
+        "minimal",
+        "flat",
+        "animation"
+      ],
+      "description": "Animates the property values of targeted elements with a wide range of parameters, callbacks and methods, including a lighter 3KB Web Animations API powered variant via waapi.animate().",
+      "preview_image": "",
+      "id": "unknown__animation",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "convertToPath()",
+      "source_url": "https://demos.gsap.com/demo/converttopath",
+      "registry_url": "https://demos.gsap.com/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "svg",
+        "javascript",
+        "morph",
+        "outline",
+        "animation"
+      ],
+      "description": "MorphSVG convertToPath() demo showing how to convert existing SVG shapes into paths so they can be morphed and animated between each other with GSAP.",
+      "preview_image": "",
+      "id": "unknown__converttopath()",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "onScroll",
+      "source_url": "https://animejs.com/documentation/events/onscroll",
+      "registry_url": "https://animejs.com/documentation/events",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "plain-css",
+        "minimal",
+        "soft",
+        "scroll-effect"
+      ],
+      "description": "Creates ScrollObserver instances that trigger and synchronise Timer, Animation and Timeline instances on scroll, and can be passed directly into the autoplay parameter of animate(), createTimer() and createTimeline().",
+      "preview_image": "",
+      "id": "unknown__onscroll",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Add animations",
+      "source_url": "https://animejs.com/documentation/timeline/add-animations",
+      "registry_url": "https://animejs.com/documentation/timeline",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "plain-css",
+        "minimal",
+        "flat",
+        "transition"
+      ],
+      "description": "Animations can be added to a timeline with the add() method, which creates and adds them directly with tween value composition, or with sync() which synchronises an existing animation without affecting the timeline's children.",
+      "preview_image": "",
+      "id": "unknown__add-animations",
+      "source_domain": "animejs.com"
     }
   ]
 }
