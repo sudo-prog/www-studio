@@ -1,6 +1,6 @@
 {
-  "version": "1.0.48",
-  "source_count": 3628,
+  "version": "1.0.49",
+  "source_count": 3709,
   "components": [
     {
       "id": "cat-0",
@@ -61272,6 +61272,1307 @@
       "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/36fded3a096f183a5b61fa0e9e7a1538d8533f17-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
       "id": "unknown__tldraw",
       "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Built-in eases",
+      "source_url": "https://animejs.com/documentation/easings/built-in-eases",
+      "registry_url": "https://animejs.com/documentation/easings/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "soft",
+        "animation"
+      ],
+      "description": "Listed under the Easings section of the Anime.js documentation, which is described as a collection of easing functions and a physics-based spring generator. The Easings page shows the 'Built-in eases' entry linking to this reference.",
+      "preview_image": "",
+      "id": "unknown__built-in-eases",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Cubic Bezier easing",
+      "source_url": "https://animejs.com/documentation/easings/cubic-bezier-easing",
+      "registry_url": "https://animejs.com/documentation/easings/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "soft",
+        "animation"
+      ],
+      "description": "Listed under the Easings section of the Anime.js documentation, which is described as a collection of easing functions and a physics-based spring generator. The Easings page shows the 'Cubic Bezier easing' entry linking to this reference.",
+      "preview_image": "",
+      "id": "unknown__cubic-bezier-easing",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Linear easing",
+      "source_url": "https://animejs.com/documentation/easings/linear-easing",
+      "registry_url": "https://animejs.com/documentation/easings/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "soft",
+        "animation"
+      ],
+      "description": "Listed under the Easings section of the Anime.js documentation, which is described as a collection of easing functions and a physics-based spring generator. The Easings page shows the 'Linear easing' entry linking to this reference.",
+      "preview_image": "",
+      "id": "unknown__linear-easing",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Steps easing",
+      "source_url": "https://animejs.com/documentation/easings/steps-easing",
+      "registry_url": "https://animejs.com/documentation/easings/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "soft",
+        "animation"
+      ],
+      "description": "Listed under the Easings section of the Anime.js documentation, which is described as a collection of easing functions and a physics-based spring generator. The Easings page shows the 'Steps easing' entry linking to this reference.",
+      "preview_image": "",
+      "id": "unknown__steps-easing",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Irregular easing",
+      "source_url": "https://animejs.com/documentation/easings/irregular-easing",
+      "registry_url": "https://animejs.com/documentation/easings/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "soft",
+        "animation"
+      ],
+      "description": "Listed under the Easings section of the Anime.js documentation, which is described as a collection of easing functions and a physics-based spring generator. The Easings page shows the 'Irregular easing' entry linking to this reference.",
+      "preview_image": "",
+      "id": "unknown__irregular-easing",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Spring",
+      "source_url": "https://animejs.com/documentation/easings/spring",
+      "registry_url": "https://animejs.com/documentation/easings/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "soft",
+        "animation"
+      ],
+      "description": "Listed under the Easings section of the Anime.js documentation, which is described as a collection of easing functions and a physics-based spring generator. The Easings page shows the 'Spring' entry linking to this reference.",
+      "preview_image": "",
+      "id": "unknown__spring",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "stagger()",
+      "source_url": "https://animejs.com/documentation/utilities/stagger",
+      "registry_url": "https://animejs.com/documentation/utilities/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "snippet"
+      ],
+      "description": "Listed under the Utilities section of the Anime.js documentation, described as a collection of utility functions for common animation tasks that can also serve as modifier functions. The Utilities index lists 'stagger()' with a link to this page.",
+      "preview_image": "",
+      "id": "unknown__stagger()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "$()",
+      "source_url": "https://animejs.com/documentation/utilities/dollar-sign",
+      "registry_url": "https://animejs.com/documentation/utilities/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "snippet"
+      ],
+      "description": "Listed under the Utilities section of the Anime.js documentation, described as a collection of utility functions for common animation tasks that can also serve as modifier functions. The Utilities index lists '$()' with a link to this page.",
+      "preview_image": "",
+      "id": "unknown__$()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "get()",
+      "source_url": "https://animejs.com/documentation/utilities/get",
+      "registry_url": "https://animejs.com/documentation/utilities/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "snippet"
+      ],
+      "description": "Listed under the Utilities section of the Anime.js documentation, described as a collection of utility functions for common animation tasks that can also serve as modifier functions. The Utilities index lists 'get()' with a link to this page.",
+      "preview_image": "",
+      "id": "unknown__get()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "set()",
+      "source_url": "https://animejs.com/documentation/utilities/set",
+      "registry_url": "https://animejs.com/documentation/utilities/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "snippet"
+      ],
+      "description": "Listed under the Utilities section of the Anime.js documentation, described as a collection of utility functions for common animation tasks that can also serve as modifier functions. The Utilities index lists 'set()' with a link to this page.",
+      "preview_image": "",
+      "id": "unknown__set()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "cleanInlineStyles()",
+      "source_url": "https://animejs.com/documentation/utilities/clean-inline-styles",
+      "registry_url": "https://animejs.com/documentation/utilities/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "snippet"
+      ],
+      "description": "Listed under the Utilities section of the Anime.js documentation, described as a collection of utility functions for common animation tasks that can also serve as modifier functions. The Utilities index lists 'cleanInlineStyles()' with a link to this page.",
+      "preview_image": "",
+      "id": "unknown__cleaninlinestyles()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "remove()",
+      "source_url": "https://animejs.com/documentation/utilities/remove",
+      "registry_url": "https://animejs.com/documentation/utilities/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "snippet"
+      ],
+      "description": "Listed under the Utilities section of the Anime.js documentation, described as a collection of utility functions for common animation tasks that can also serve as modifier functions. The Utilities index lists 'remove()' with a link to this page.",
+      "preview_image": "",
+      "id": "unknown__remove()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "sync()",
+      "source_url": "https://animejs.com/documentation/utilities/sync",
+      "registry_url": "https://animejs.com/documentation/utilities/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "snippet"
+      ],
+      "description": "Listed under the Utilities section of the Anime.js documentation, described as a collection of utility functions for common animation tasks that can also serve as modifier functions. The Utilities index lists 'sync()' with a link to this page.",
+      "preview_image": "",
+      "id": "unknown__sync()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "keepTime()",
+      "source_url": "https://animejs.com/documentation/utilities/createtimekeeper",
+      "registry_url": "https://animejs.com/documentation/utilities/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "snippet"
+      ],
+      "description": "Listed under the Utilities section of the Anime.js documentation, described as a collection of utility functions for common animation tasks that can also serve as modifier functions. The Utilities index lists 'keepTime()' with a link to this page.",
+      "preview_image": "",
+      "id": "unknown__keeptime()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "random()",
+      "source_url": "https://animejs.com/documentation/utilities/random",
+      "registry_url": "https://animejs.com/documentation/utilities/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "snippet"
+      ],
+      "description": "Listed under the Utilities section of the Anime.js documentation, described as a collection of utility functions for common animation tasks that can also serve as modifier functions. The Utilities index lists 'random()' with a link to this page.",
+      "preview_image": "",
+      "id": "unknown__random()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "createSeededRandom()",
+      "source_url": "https://animejs.com/documentation/utilities/createseededrandom",
+      "registry_url": "https://animejs.com/documentation/utilities/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "snippet"
+      ],
+      "description": "Listed under the Utilities section of the Anime.js documentation, described as a collection of utility functions for common animation tasks that can also serve as modifier functions. The Utilities index lists 'createSeededRandom()' with a link to this page.",
+      "preview_image": "",
+      "id": "unknown__createseededrandom()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "randomPick()",
+      "source_url": "https://animejs.com/documentation/utilities/random-pick",
+      "registry_url": "https://animejs.com/documentation/utilities/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "snippet"
+      ],
+      "description": "Listed under the Utilities section of the Anime.js documentation, described as a collection of utility functions for common animation tasks that can also serve as modifier functions. The Utilities index lists 'randomPick()' with a link to this page.",
+      "preview_image": "",
+      "id": "unknown__randompick()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "shuffle()",
+      "source_url": "https://animejs.com/documentation/utilities/shuffle",
+      "registry_url": "https://animejs.com/documentation/utilities/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "snippet"
+      ],
+      "description": "Listed under the Utilities section of the Anime.js documentation, described as a collection of utility functions for common animation tasks that can also serve as modifier functions. The Utilities index lists 'shuffle()' with a link to this page.",
+      "preview_image": "",
+      "id": "unknown__shuffle()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "round()",
+      "source_url": "https://animejs.com/documentation/utilities/round",
+      "registry_url": "https://animejs.com/documentation/utilities/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "snippet"
+      ],
+      "description": "Listed under the Utilities section of the Anime.js documentation, described as a collection of utility functions for common animation tasks that can also serve as modifier functions. The Utilities index lists 'round()' with a link to this page.",
+      "preview_image": "",
+      "id": "unknown__round()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "clamp()",
+      "source_url": "https://animejs.com/documentation/utilities/clamp",
+      "registry_url": "https://animejs.com/documentation/utilities/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "snippet"
+      ],
+      "description": "Listed under the Utilities section of the Anime.js documentation, described as a collection of utility functions for common animation tasks that can also serve as modifier functions. The Utilities index lists 'clamp()' with a link to this page.",
+      "preview_image": "",
+      "id": "unknown__clamp()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "snap()",
+      "source_url": "https://animejs.com/documentation/utilities/snap",
+      "registry_url": "https://animejs.com/documentation/utilities/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "snippet"
+      ],
+      "description": "Listed under the Utilities section of the Anime.js documentation, described as a collection of utility functions for common animation tasks that can also serve as modifier functions. The Utilities index lists 'snap()' with a link to this page.",
+      "preview_image": "",
+      "id": "unknown__snap()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "wrap()",
+      "source_url": "https://animejs.com/documentation/utilities/wrap",
+      "registry_url": "https://animejs.com/documentation/utilities/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "snippet"
+      ],
+      "description": "Listed under the Utilities section of the Anime.js documentation, described as a collection of utility functions for common animation tasks that can also serve as modifier functions. The Utilities index lists 'wrap()' with a link to this page.",
+      "preview_image": "",
+      "id": "unknown__wrap()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "mapRange()",
+      "source_url": "https://animejs.com/documentation/utilities/map-range",
+      "registry_url": "https://animejs.com/documentation/utilities/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "snippet"
+      ],
+      "description": "Listed under the Utilities section of the Anime.js documentation, described as a collection of utility functions for common animation tasks that can also serve as modifier functions. The Utilities index lists 'mapRange()' with a link to this page.",
+      "preview_image": "",
+      "id": "unknown__maprange()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "lerp()",
+      "source_url": "https://animejs.com/documentation/utilities/lerp",
+      "registry_url": "https://animejs.com/documentation/utilities/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "snippet"
+      ],
+      "description": "Listed under the Utilities section of the Anime.js documentation, described as a collection of utility functions for common animation tasks that can also serve as modifier functions. The Utilities index lists 'lerp()' with a link to this page.",
+      "preview_image": "",
+      "id": "unknown__lerp()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "damp()",
+      "source_url": "https://animejs.com/documentation/utilities/damp",
+      "registry_url": "https://animejs.com/documentation/utilities/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "snippet"
+      ],
+      "description": "Listed under the Utilities section of the Anime.js documentation, described as a collection of utility functions for common animation tasks that can also serve as modifier functions. The Utilities index lists 'damp()' with a link to this page.",
+      "preview_image": "",
+      "id": "unknown__damp()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Chain-able utility functions",
+      "source_url": "https://animejs.com/documentation/utilities/chain-able-utility-functions",
+      "registry_url": "https://animejs.com/documentation/utilities/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "snippet"
+      ],
+      "description": "Listed under the Utilities section of the Anime.js documentation, described as a collection of utility functions for common animation tasks that can also serve as modifier functions. The Utilities index lists 'Chain-able utility functions' with a link to this page.",
+      "preview_image": "",
+      "id": "unknown__chain-able-utility-functions",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Targets",
+      "source_url": "https://animejs.com/documentation/animation/targets",
+      "registry_url": "https://animejs.com/documentation/animation/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "minimal",
+        "tutorial"
+      ],
+      "description": "Listed under the Animation section of the Anime.js documentation, which animates the property values of targeted elements with a wide range of parameters, callbacks and methods. The Animation index lists 'Targets' as a subpage of this section.",
+      "preview_image": "",
+      "id": "unknown__targets",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Animatable properties",
+      "source_url": "https://animejs.com/documentation/animation/animatable-properties",
+      "registry_url": "https://animejs.com/documentation/animation/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "minimal",
+        "tutorial"
+      ],
+      "description": "Listed under the Animation section of the Anime.js documentation, which animates the property values of targeted elements with a wide range of parameters, callbacks and methods. The Animation index lists 'Animatable properties' as a subpage of this section.",
+      "preview_image": "",
+      "id": "unknown__animatable-properties",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Tween value types",
+      "source_url": "https://animejs.com/documentation/animation/tween-value-types",
+      "registry_url": "https://animejs.com/documentation/animation/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "minimal",
+        "tutorial"
+      ],
+      "description": "Listed under the Animation section of the Anime.js documentation, which animates the property values of targeted elements with a wide range of parameters, callbacks and methods. The Animation index lists 'Tween value types' as a subpage of this section.",
+      "preview_image": "",
+      "id": "unknown__tween-value-types",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Tween parameters",
+      "source_url": "https://animejs.com/documentation/animation/tween-parameters",
+      "registry_url": "https://animejs.com/documentation/animation/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "minimal",
+        "tutorial"
+      ],
+      "description": "Listed under the Animation section of the Anime.js documentation, which animates the property values of targeted elements with a wide range of parameters, callbacks and methods. The Animation index lists 'Tween parameters' as a subpage of this section.",
+      "preview_image": "",
+      "id": "unknown__tween-parameters",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Playback settings",
+      "source_url": "https://animejs.com/documentation/animation/animation-playback-settings",
+      "registry_url": "https://animejs.com/documentation/animation/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "minimal",
+        "tutorial"
+      ],
+      "description": "Listed under the Animation section of the Anime.js documentation, which animates the property values of targeted elements with a wide range of parameters, callbacks and methods. The Animation index lists 'Playback settings' as a subpage of this section.",
+      "preview_image": "",
+      "id": "unknown__playback-settings",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Callbacks",
+      "source_url": "https://animejs.com/documentation/animation/animation-callbacks",
+      "registry_url": "https://animejs.com/documentation/animation/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "minimal",
+        "tutorial"
+      ],
+      "description": "Listed under the Animation section of the Anime.js documentation, which animates the property values of targeted elements with a wide range of parameters, callbacks and methods. The Animation index lists 'Callbacks' as a subpage of this section.",
+      "preview_image": "",
+      "id": "unknown__callbacks",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Methods",
+      "source_url": "https://animejs.com/documentation/animation/animation-methods",
+      "registry_url": "https://animejs.com/documentation/animation/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "minimal",
+        "tutorial"
+      ],
+      "description": "Listed under the Animation section of the Anime.js documentation, which animates the property values of targeted elements with a wide range of parameters, callbacks and methods. The Animation index lists 'Methods' as a subpage of this section.",
+      "preview_image": "",
+      "id": "unknown__methods",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Properties",
+      "source_url": "https://animejs.com/documentation/animation/animation-properties",
+      "registry_url": "https://animejs.com/documentation/animation/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "minimal",
+        "tutorial"
+      ],
+      "description": "Listed under the Animation section of the Anime.js documentation, which animates the property values of targeted elements with a wide range of parameters, callbacks and methods. The Animation index lists 'Properties' as a subpage of this section.",
+      "preview_image": "",
+      "id": "unknown__properties",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Add timers",
+      "source_url": "https://animejs.com/documentation/timeline/add-timers",
+      "registry_url": "https://animejs.com/documentation/timeline/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "snippet"
+      ],
+      "description": "Listed under the Timeline section of the Anime.js documentation, which synchronises animations, timers and callbacks together. The Timeline index lists 'Add timers' as a subpage of this section.",
+      "preview_image": "",
+      "id": "unknown__add-timers",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Sync WAAPI animations",
+      "source_url": "https://animejs.com/documentation/timeline/sync-waapi-animations",
+      "registry_url": "https://animejs.com/documentation/timeline/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "snippet"
+      ],
+      "description": "Listed under the Timeline section of the Anime.js documentation, which synchronises animations, timers and callbacks together. The Timeline index lists 'Sync WAAPI animations' as a subpage of this section.",
+      "preview_image": "",
+      "id": "unknown__sync-waapi-animations",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Sync timelines",
+      "source_url": "https://animejs.com/documentation/timeline/sync-timelines",
+      "registry_url": "https://animejs.com/documentation/timeline/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "snippet"
+      ],
+      "description": "Listed under the Timeline section of the Anime.js documentation, which synchronises animations, timers and callbacks together. The Timeline index lists 'Sync timelines' as a subpage of this section.",
+      "preview_image": "",
+      "id": "unknown__sync-timelines",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Call functions",
+      "source_url": "https://animejs.com/documentation/timeline/call-functions",
+      "registry_url": "https://animejs.com/documentation/timeline/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "snippet"
+      ],
+      "description": "Listed under the Timeline section of the Anime.js documentation, which synchronises animations, timers and callbacks together. The Timeline index lists 'Call functions' as a subpage of this section.",
+      "preview_image": "",
+      "id": "unknown__call-functions",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Time position",
+      "source_url": "https://animejs.com/documentation/timeline/time-position",
+      "registry_url": "https://animejs.com/documentation/timeline/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "snippet"
+      ],
+      "description": "Listed under the Timeline section of the Anime.js documentation, which synchronises animations, timers and callbacks together. The Timeline index lists 'Time position' as a subpage of this section.",
+      "preview_image": "",
+      "id": "unknown__time-position",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Timeline playback settings",
+      "source_url": "https://animejs.com/documentation/timeline/timeline-playback-settings",
+      "registry_url": "https://animejs.com/documentation/timeline/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "snippet"
+      ],
+      "description": "Listed under the Timeline section of the Anime.js documentation, which synchronises animations, timers and callbacks together. The Timeline index lists 'Timeline playback settings' as a subpage of this section.",
+      "preview_image": "",
+      "id": "unknown__timeline-playback-settings",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Timeline callbacks",
+      "source_url": "https://animejs.com/documentation/timeline/timeline-callbacks",
+      "registry_url": "https://animejs.com/documentation/timeline/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "snippet"
+      ],
+      "description": "Listed under the Timeline section of the Anime.js documentation, which synchronises animations, timers and callbacks together. The Timeline index lists 'Timeline callbacks' as a subpage of this section.",
+      "preview_image": "",
+      "id": "unknown__timeline-callbacks",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Timeline methods",
+      "source_url": "https://animejs.com/documentation/timeline/timeline-methods",
+      "registry_url": "https://animejs.com/documentation/timeline/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "snippet"
+      ],
+      "description": "Listed under the Timeline section of the Anime.js documentation, which synchronises animations, timers and callbacks together. The Timeline index lists 'Timeline methods' as a subpage of this section.",
+      "preview_image": "",
+      "id": "unknown__timeline-methods",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Timeline properties",
+      "source_url": "https://animejs.com/documentation/timeline/timeline-properties",
+      "registry_url": "https://animejs.com/documentation/timeline/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "snippet"
+      ],
+      "description": "Listed under the Timeline section of the Anime.js documentation, which synchronises animations, timers and callbacks together. The Timeline index lists 'Timeline properties' as a subpage of this section.",
+      "preview_image": "",
+      "id": "unknown__timeline-properties",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "CSS display property animation",
+      "source_url": "https://animejs.com/documentation/layout/usage/css-display-property-animation",
+      "registry_url": "https://animejs.com/documentation/layout/usage/",
+      "category": "transition",
+      "tags": [
+        "anime.js",
+        "plain-css",
+        "flat",
+        "transition"
+      ],
+      "description": "Listed under the Layout > Usage section of the Anime.js documentation, which automatically animates between two HTML layout states including CSS display, flex direction, grid settings and DOM order. The Layout Usage index lists 'CSS display property animation' with a link to this page.",
+      "preview_image": "",
+      "id": "unknown__css-display-property-animation",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Enter layout animation",
+      "source_url": "https://animejs.com/documentation/layout/usage/enter-layout-animation",
+      "registry_url": "https://animejs.com/documentation/layout/usage/",
+      "category": "transition",
+      "tags": [
+        "anime.js",
+        "plain-css",
+        "flat",
+        "transition"
+      ],
+      "description": "Listed under the Layout > Usage section of the Anime.js documentation, which automatically animates between two HTML layout states including CSS display, flex direction, grid settings and DOM order. The Layout Usage index lists 'Enter layout animation' with a link to this page.",
+      "preview_image": "",
+      "id": "unknown__enter-layout-animation",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Exit layout animation",
+      "source_url": "https://animejs.com/documentation/layout/usage/exit-layout-animation",
+      "registry_url": "https://animejs.com/documentation/layout/usage/",
+      "category": "transition",
+      "tags": [
+        "anime.js",
+        "plain-css",
+        "flat",
+        "transition"
+      ],
+      "description": "Listed under the Layout > Usage section of the Anime.js documentation, which automatically animates between two HTML layout states including CSS display, flex direction, grid settings and DOM order. The Layout Usage index lists 'Exit layout animation' with a link to this page.",
+      "preview_image": "",
+      "id": "unknown__exit-layout-animation",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "When to use WAAPI",
+      "source_url": "https://animejs.com/documentation/web-animation-api/when-to-use-waapi",
+      "registry_url": "https://animejs.com/documentation/web-animation-api/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "hard",
+        "docs"
+      ],
+      "description": "Listed under the Web Animation API section of the Anime.js documentation, which offers a lightweight (3KB versus 10KB) waapi.animate() alternative powered by the browser's Web Animations API. The Web Animation API index lists 'When to use WAAPI' as a subpage.",
+      "preview_image": "",
+      "id": "unknown__when-to-use-waapi",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Hardware-accelerated animations",
+      "source_url": "https://animejs.com/documentation/web-animation-api/hardware-accelerated-animations",
+      "registry_url": "https://animejs.com/documentation/web-animation-api/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "hard",
+        "docs"
+      ],
+      "description": "Listed under the Web Animation API section of the Anime.js documentation, which offers a lightweight (3KB versus 10KB) waapi.animate() alternative powered by the browser's Web Animations API. The Web Animation API index lists 'Hardware-accelerated animations' as a subpage.",
+      "preview_image": "",
+      "id": "unknown__hardware-accelerated-animations",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Improvements to the Web Animation API",
+      "source_url": "https://animejs.com/documentation/web-animation-api/improvements-to-the-web-animation-api",
+      "registry_url": "https://animejs.com/documentation/web-animation-api/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "hard",
+        "docs"
+      ],
+      "description": "Listed under the Web Animation API section of the Anime.js documentation, which offers a lightweight (3KB versus 10KB) waapi.animate() alternative powered by the browser's Web Animations API. The Web Animation API index lists 'Improvements to the Web Animation API' as a subpage.",
+      "preview_image": "",
+      "id": "unknown__improvements-to-the-web-animation-api",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "API differences with native WAAPI",
+      "source_url": "https://animejs.com/documentation/web-animation-api/api-differences-with-native-waapi",
+      "registry_url": "https://animejs.com/documentation/web-animation-api/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "hard",
+        "docs"
+      ],
+      "description": "Listed under the Web Animation API section of the Anime.js documentation, which offers a lightweight (3KB versus 10KB) waapi.animate() alternative powered by the browser's Web Animations API. The Web Animation API index lists 'API differences with native WAAPI' as a subpage.",
+      "preview_image": "",
+      "id": "unknown__api-differences-with-native-waapi",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "waapi.convertEase()",
+      "source_url": "https://animejs.com/documentation/web-animation-api/waapi-convertease",
+      "registry_url": "https://animejs.com/documentation/web-animation-api/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "hard",
+        "docs"
+      ],
+      "description": "Listed under the Web Animation API section of the Anime.js documentation, which offers a lightweight (3KB versus 10KB) waapi.animate() alternative powered by the browser's Web Animations API. The Web Animation API index lists 'waapi.convertEase()' as a subpage.",
+      "preview_image": "",
+      "id": "unknown__waapi.convertease()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Draggable axes parameters",
+      "source_url": "https://animejs.com/documentation/draggable/draggable-axes-parameters",
+      "registry_url": "https://animejs.com/documentation/draggable/",
+      "category": "drag",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "drag"
+      ],
+      "description": "Listed under the Draggable section of the Anime.js documentation, which adds draggable capabilities to DOM elements via createDraggable(). The Draggable index lists 'Draggable axes parameters' as a subpage.",
+      "preview_image": "",
+      "id": "unknown__draggable-axes-parameters",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Draggable settings",
+      "source_url": "https://animejs.com/documentation/draggable/draggable-settings",
+      "registry_url": "https://animejs.com/documentation/draggable/",
+      "category": "drag",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "drag"
+      ],
+      "description": "Listed under the Draggable section of the Anime.js documentation, which adds draggable capabilities to DOM elements via createDraggable(). The Draggable index lists 'Draggable settings' as a subpage.",
+      "preview_image": "",
+      "id": "unknown__draggable-settings",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Draggable callbacks",
+      "source_url": "https://animejs.com/documentation/draggable/draggable-callbacks",
+      "registry_url": "https://animejs.com/documentation/draggable/",
+      "category": "drag",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "drag"
+      ],
+      "description": "Listed under the Draggable section of the Anime.js documentation, which adds draggable capabilities to DOM elements via createDraggable(). The Draggable index lists 'Draggable callbacks' as a subpage.",
+      "preview_image": "",
+      "id": "unknown__draggable-callbacks",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Draggable methods",
+      "source_url": "https://animejs.com/documentation/draggable/draggable-methods",
+      "registry_url": "https://animejs.com/documentation/draggable/",
+      "category": "drag",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "drag"
+      ],
+      "description": "Listed under the Draggable section of the Anime.js documentation, which adds draggable capabilities to DOM elements via createDraggable(). The Draggable index lists 'Draggable methods' as a subpage.",
+      "preview_image": "",
+      "id": "unknown__draggable-methods",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Draggable properties",
+      "source_url": "https://animejs.com/documentation/draggable/draggable-properties",
+      "registry_url": "https://animejs.com/documentation/draggable/",
+      "category": "drag",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "flat",
+        "drag"
+      ],
+      "description": "Listed under the Draggable section of the Anime.js documentation, which adds draggable capabilities to DOM elements via createDraggable(). The Draggable index lists 'Draggable properties' as a subpage.",
+      "preview_image": "",
+      "id": "unknown__draggable-properties",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Engine parameters",
+      "source_url": "https://animejs.com/documentation/engine/engine-parameters",
+      "registry_url": "https://animejs.com/documentation/engine/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "monochrome",
+        "docs"
+      ],
+      "description": "Listed under the Engine section of the Anime.js documentation, which drives and synchronises all Animation, Timer and Timeline instances. The Engine index lists 'Engine parameters' as a subpage.",
+      "preview_image": "",
+      "id": "unknown__engine-parameters",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Engine methods",
+      "source_url": "https://animejs.com/documentation/engine/engine-methods",
+      "registry_url": "https://animejs.com/documentation/engine/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "monochrome",
+        "docs"
+      ],
+      "description": "Listed under the Engine section of the Anime.js documentation, which drives and synchronises all Animation, Timer and Timeline instances. The Engine index lists 'Engine methods' as a subpage.",
+      "preview_image": "",
+      "id": "unknown__engine-methods",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Engine properties",
+      "source_url": "https://animejs.com/documentation/engine/engine-properties",
+      "registry_url": "https://animejs.com/documentation/engine/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "monochrome",
+        "docs"
+      ],
+      "description": "Listed under the Engine section of the Anime.js documentation, which drives and synchronises all Animation, Timer and Timeline instances. The Engine index lists 'Engine properties' as a subpage.",
+      "preview_image": "",
+      "id": "unknown__engine-properties",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Engine defaults",
+      "source_url": "https://animejs.com/documentation/engine/engine-defaults",
+      "registry_url": "https://animejs.com/documentation/engine/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "monochrome",
+        "docs"
+      ],
+      "description": "Listed under the Engine section of the Anime.js documentation, which drives and synchronises all Animation, Timer and Timeline instances. The Engine index lists 'Engine defaults' as a subpage.",
+      "preview_image": "",
+      "id": "unknown__engine-defaults",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Add constructor function",
+      "source_url": "https://animejs.com/documentation/scope/add-constructor-function",
+      "registry_url": "https://animejs.com/documentation/scope/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "minimal",
+        "docs"
+      ],
+      "description": "Listed under the Scope section of the Anime.js documentation, where Anime.js instances can react to media queries, use custom root elements, share default parameters and be reverted in batch. The Scope index lists 'Add constructor function' as a subpage.",
+      "preview_image": "",
+      "id": "unknown__add-constructor-function",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Register method function",
+      "source_url": "https://animejs.com/documentation/scope/register-method-function",
+      "registry_url": "https://animejs.com/documentation/scope/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "minimal",
+        "docs"
+      ],
+      "description": "Listed under the Scope section of the Anime.js documentation, where Anime.js instances can react to media queries, use custom root elements, share default parameters and be reverted in batch. The Scope index lists 'Register method function' as a subpage.",
+      "preview_image": "",
+      "id": "unknown__register-method-function",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Scope parameters",
+      "source_url": "https://animejs.com/documentation/scope/scope-parameters",
+      "registry_url": "https://animejs.com/documentation/scope/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "minimal",
+        "docs"
+      ],
+      "description": "Listed under the Scope section of the Anime.js documentation, where Anime.js instances can react to media queries, use custom root elements, share default parameters and be reverted in batch. The Scope index lists 'Scope parameters' as a subpage.",
+      "preview_image": "",
+      "id": "unknown__scope-parameters",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Scope methods",
+      "source_url": "https://animejs.com/documentation/scope/scope-methods",
+      "registry_url": "https://animejs.com/documentation/scope/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "minimal",
+        "docs"
+      ],
+      "description": "Listed under the Scope section of the Anime.js documentation, where Anime.js instances can react to media queries, use custom root elements, share default parameters and be reverted in batch. The Scope index lists 'Scope methods' as a subpage.",
+      "preview_image": "",
+      "id": "unknown__scope-methods",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Scope properties",
+      "source_url": "https://animejs.com/documentation/scope/scope-properties",
+      "registry_url": "https://animejs.com/documentation/scope/",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "minimal",
+        "docs"
+      ],
+      "description": "Listed under the Scope section of the Anime.js documentation, where Anime.js instances can react to media queries, use custom root elements, share default parameters and be reverted in batch. The Scope index lists 'Scope properties' as a subpage.",
+      "preview_image": "",
+      "id": "unknown__scope-properties",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Three.js adapter",
+      "source_url": "https://animejs.com/documentation/adapters/threejs-adapter",
+      "registry_url": "https://animejs.com/documentation/adapters/",
+      "category": "3d",
+      "tags": [
+        "anime.js",
+        "three.js",
+        "r3f",
+        "gradient",
+        "3d"
+      ],
+      "description": "The only adapter shipped with Anime.js, loaded as the side-effect import 'animejs/adapters/three'. It lets Three.js meshes be animated with the standard animate(), createTimeline() and utils.set() API.",
+      "preview_image": "",
+      "id": "unknown__three.js-adapter",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "ScrollObserver properties",
+      "source_url": "https://animejs.com/documentation/events/onscroll/scrollobserver-properties",
+      "registry_url": "https://animejs.com/documentation/events/onscroll",
+      "category": "scroll-effect",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "noise",
+        "scroll-effect"
+      ],
+      "description": "Listed under the Events > onScroll section of the Anime.js documentation, which collects event listener utility methods used to trigger and control animations. This page documents the properties of the scroll observer returned by onScroll().",
+      "preview_image": "",
+      "id": "unknown__scrollobserver-properties",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "ScrollTrigger",
+      "source_url": "https://gsap.com/docs/v3/Plugins/ScrollTrigger",
+      "registry_url": "https://gsap.com/docs/v3/",
+      "category": "scroll-effect",
+      "tags": [
+        "gsap",
+        "javascript",
+        "flat",
+        "scroll-effect"
+      ],
+      "description": "Enables scroll-based animations with minimal code - scrub, pin, snap, or trigger anything scroll-related. The docs show both a one-line form (gsap.to('.box', { scrollTrigger: '.box' })) and an advanced form using trigger, pin, start and end.",
+      "preview_image": "",
+      "id": "unknown__scrolltrigger",
+      "source_domain": "gsap.com"
+    },
+    {
+      "name": "ScrollTo",
+      "source_url": "https://gsap.com/docs/v3/Plugins/ScrollToPlugin",
+      "registry_url": "https://gsap.com/docs/v3/",
+      "category": "scroll-effect",
+      "tags": [
+        "gsap",
+        "javascript",
+        "minimal",
+        "scroll-effect"
+      ],
+      "description": "Animates the scroll position of the window or a DOM element, like window.scrollTo(x, y) or myDiv.scrollTop = y. Accepts a numeric position, a selector such as '#someID', or an object with x and y values.",
+      "preview_image": "",
+      "id": "unknown__scrollto",
+      "source_domain": "gsap.com"
+    },
+    {
+      "name": "ScrollSmoother",
+      "source_url": "https://gsap.com/docs/v3/Plugins/ScrollSmoother",
+      "registry_url": "https://gsap.com/docs/v3/",
+      "category": "scroll-effect",
+      "tags": [
+        "gsap",
+        "javascript",
+        "soft",
+        "parallax"
+      ],
+      "description": "Adds a vertical smooth-scrolling effect to a ScrollTrigger-based page using the browser's native scroll, so it adds no fake scrollbars and avoids common smooth-scroll accessibility problems. Covers setup, smooth effects, parallax effects, callbacks and horizontal scrolling.",
+      "preview_image": "",
+      "id": "unknown__scrollsmoother",
+      "source_domain": "gsap.com"
+    },
+    {
+      "name": "GSAP Text replacement",
+      "source_url": "https://gsap.com/docs/v3/Plugins/TextPlugin",
+      "registry_url": "https://gsap.com/docs/v3/",
+      "category": "text-effect",
+      "tags": [
+        "gsap",
+        "javascript",
+        "minimal",
+        "font"
+      ],
+      "description": "Replaces the text content of a DOM element one character at a time, or one word at a time by setting delimiter to a space, so rewinding or restarting the tween reverts the text. Simple HTML nodes such as <br> are recognised and honoured.",
+      "preview_image": "",
+      "id": "unknown__gsap-text-replacement",
+      "source_domain": "gsap.com"
+    },
+    {
+      "name": "MotionPathHelper",
+      "source_url": "https://gsap.com/docs/v3/Plugins/MotionPathHelper",
+      "registry_url": "https://gsap.com/docs/v3/",
+      "category": "tool",
+      "tags": [
+        "gsap",
+        "svg",
+        "javascript",
+        "flat",
+        "editor"
+      ],
+      "description": "An in-browser editor for motion paths: drag anchors and control points, add or delete them, or drag the whole path, then copy the resulting path data string to paste into a tween or an SVG path element.",
+      "preview_image": "",
+      "id": "unknown__motionpathhelper",
+      "source_domain": "gsap.com"
+    },
+    {
+      "name": "GSAP Flip",
+      "source_url": "https://gsap.com/docs/v3/Plugins/Flip",
+      "registry_url": "https://gsap.com/docs/v3/",
+      "category": "transition",
+      "tags": [
+        "gsap",
+        "javascript",
+        "flat",
+        "transition"
+      ],
+      "description": "Records the current position, size and rotation of elements, lets you make sweeping DOM structural changes, then applies offsets so the elements look like they never moved and animates those offsets away. The docs include how to flip between two different elements plus batching.",
+      "preview_image": "",
+      "id": "unknown__gsap-flip",
+      "source_domain": "gsap.com"
+    },
+    {
+      "name": "GSAP Draggable",
+      "source_url": "https://gsap.com/docs/v3/Plugins/Draggable",
+      "registry_url": "https://gsap.com/docs/v3/",
+      "category": "drag",
+      "tags": [
+        "gsap",
+        "javascript",
+        "hard",
+        "drag"
+      ],
+      "description": "Makes virtually any DOM element draggable, spinnable, tossable and flick-scrollable with mouse and/or touch events, and integrates with InertiaPlugin so flicked motion decelerates based on momentum. Covers bounds, axis constraints, velocity reading and custom logic.",
+      "preview_image": "",
+      "id": "unknown__gsap-draggable",
+      "source_domain": "gsap.com"
+    },
+    {
+      "name": "Observer",
+      "source_url": "https://gsap.com/docs/v3/Plugins/Observer",
+      "registry_url": "https://gsap.com/docs/v3/",
+      "category": "tool",
+      "tags": [
+        "gsap",
+        "javascript",
+        "minimal",
+        "scrollbar"
+      ],
+      "description": "A unified way to sense meaningful events across touch, mouse and pointer devices, watching wheel, touch, pointer and/or scroll, debouncing deltas per requestAnimationFrame tick and firing directional callbacks such as onUp, onDown and onDrag with direction and velocity data.",
+      "preview_image": "",
+      "id": "unknown__observer",
+      "source_domain": "gsap.com"
+    },
+    {
+      "name": "Easel",
+      "source_url": "https://gsap.com/docs/v3/Plugins/EaselPlugin",
+      "registry_url": "https://gsap.com/docs/v3/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "css-filter",
+        "glow",
+        "canvas"
+      ],
+      "description": "Tweens EaselJS-related properties such as saturation, contrast, tint, colorize, brightness, exposure and hue through EaselJS's ColorFilter and ColorMatrixFilter, plus the frame property of a MovieClip. Values are wrapped in an easel object.",
+      "preview_image": "",
+      "id": "unknown__easel",
+      "source_domain": "gsap.com"
+    },
+    {
+      "name": "Pixi",
+      "source_url": "https://gsap.com/docs/v3/Plugins/PixiPlugin",
+      "registry_url": "https://gsap.com/docs/v3/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "pixi.js",
+        "glow",
+        "canvas",
+        "animation"
+      ],
+      "description": "Makes PixiJS objects far easier to animate by flattening nested properties such as scale, skew and position into a single pixi object with scaleX, scaleY, skewX and rotation in degrees rather than radians. Covers colors, ColorMatrixFilter and BlurFilter.",
+      "preview_image": "",
+      "id": "unknown__pixi",
+      "source_domain": "gsap.com"
+    },
+    {
+      "name": "CustomEase",
+      "source_url": "https://gsap.com/docs/v3/Eases/CustomEase",
+      "registry_url": "https://gsap.com/docs/v3/",
+      "category": "tool",
+      "tags": [
+        "gsap",
+        "svg",
+        "javascript",
+        "flat",
+        "editor"
+      ],
+      "description": "Creates any easing curve by drawing it in the Ease Visualizer or by pasting an SVG path, with unlimited control points. The docs also cover using cubic-bezier values and exporting a curve with getSVGData().",
+      "preview_image": "",
+      "id": "unknown__customease",
+      "source_domain": "gsap.com"
+    },
+    {
+      "name": "SteppedEase",
+      "source_url": "https://gsap.com/docs/v3/Eases/SteppedEase",
+      "registry_url": "https://gsap.com/docs/v3/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "pixel",
+        "animation"
+      ],
+      "description": "Included in GSAP's core; defines a specific number of steps for a transition, for example easing:'steps(5)' to tween x from 0 to 100 through 20, 40, 60, 80 and 100 over two seconds instead of a smooth ramp.",
+      "preview_image": "",
+      "id": "unknown__steppedease",
+      "source_domain": "gsap.com"
+    },
+    {
+      "name": "Image mask on scroll",
+      "source_url": "https://demos.gsap.com/demo/image-mask-on-scroll",
+      "registry_url": "https://demos.gsap.com/",
+      "category": "scroll-effect",
+      "tags": [
+        "gsap",
+        "javascript",
+        "gradient",
+        "scroll-effect"
+      ],
+      "description": "Demo in the GSAP demo library listed on demos.gsap.com that masks images with scroll position.",
+      "preview_image": "",
+      "id": "unknown__image-mask-on-scroll",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Infinite looped scrolling sections",
+      "source_url": "https://demos.gsap.com/demo/infinite-looped-scrolling-sections",
+      "registry_url": "https://demos.gsap.com/",
+      "category": "scroll-effect",
+      "tags": [
+        "gsap",
+        "javascript",
+        "noise",
+        "scroll-effect"
+      ],
+      "description": "Demo in the GSAP demo library listed on demos.gsap.com that builds infinitely looping scrolling sections.",
+      "preview_image": "",
+      "id": "unknown__infinite-looped-scrolling-sections",
+      "source_domain": "demos.gsap.com"
     }
   ]
 }
