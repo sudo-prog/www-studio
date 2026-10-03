@@ -1,6 +1,6 @@
 {
-  "version": "1.0.43",
-  "source_count": 2072,
+  "version": "1.0.44",
+  "source_count": 2110,
   "components": [
     {
       "id": "cat-0",
@@ -34619,6 +34619,720 @@
       "preview_image": "https://i0.wp.com/css-tricks.com/wp-content/uploads/2011/09/basicz-index.png?resize=425%2C235",
       "source_domain": "css-tricks.com",
       "id": "css-tricks-com__z-index"
+    },
+    {
+      "name": "Aurora Curtain",
+      "source_url": "https://smoothui.dev/docs/components/aurora-curtain",
+      "registry_url": "https://smoothui.dev/docs/components",
+      "category": "background",
+      "tags": [
+        "aurora",
+        "background",
+        "css",
+        "fluid",
+        "framer-motion",
+        "glsl",
+        "react",
+        "shader",
+        "shader-art",
+        "tailwind",
+        "webgl"
+      ],
+      "description": "Northern-lights ribbons drifting behind your content, rendered as a single WebGL2 fragment shader with a CSS gradient fallback.",
+      "preview_image": "https://smoothui.dev/og/docs/components/aurora-curtain/image.png",
+      "id": "unknown__aurora-curtain",
+      "source_domain": "smoothui.dev"
+    },
+    {
+      "name": "Liquid Metal",
+      "source_url": "https://smoothui.dev/docs/components/liquid-metal",
+      "registry_url": "https://smoothui.dev/docs/components",
+      "category": "3d",
+      "tags": [
+        "background",
+        "chrome",
+        "framer-motion",
+        "glsl",
+        "metallic",
+        "react",
+        "shader",
+        "shader-art",
+        "tailwind",
+        "webgl"
+      ],
+      "description": "An animated liquid-chrome material rendered with a domain-warped WebGL2 shader, with pointer-reactive flow and a text-clipped mode.",
+      "preview_image": "https://smoothui.dev/og/docs/components/liquid-metal/image.png",
+      "id": "unknown__liquid-metal",
+      "source_domain": "smoothui.dev"
+    },
+    {
+      "name": "Holographic Foil",
+      "source_url": "https://smoothui.dev/docs/components/holographic-foil",
+      "registry_url": "https://smoothui.dev/docs/components",
+      "category": "card",
+      "tags": [
+        "card",
+        "framer-motion",
+        "holographic",
+        "hover-effect",
+        "plain-css",
+        "react",
+        "tailwind"
+      ],
+      "description": "A collectible-card foil print that shifts with pointer position or device tilt \u2014 four materials, each held to a narrow hue range so it reads as foil rather than a rainbow.",
+      "preview_image": "https://smoothui.dev/og/docs/components/holographic-foil/image.png",
+      "id": "unknown__holographic-foil",
+      "source_domain": "smoothui.dev"
+    },
+    {
+      "name": "Dither Image",
+      "source_url": "https://smoothui.dev/docs/components/dither-image",
+      "registry_url": "https://smoothui.dev/docs/components",
+      "category": "tool",
+      "tags": [
+        "dither",
+        "filter",
+        "framer-motion",
+        "image-effect",
+        "javascript",
+        "pixel",
+        "react",
+        "tailwind"
+      ],
+      "description": "Dither any image at a chosen bit depth with Bayer, Atkinson, Floyd\u2013Steinberg or plain threshold quantisation.",
+      "preview_image": "https://smoothui.dev/og/docs/components/dither-image/image.png",
+      "id": "unknown__dither-image",
+      "source_domain": "smoothui.dev"
+    },
+    {
+      "name": "Ascii Render",
+      "source_url": "https://smoothui.dev/docs/components/ascii-render",
+      "registry_url": "https://smoothui.dev/docs/components",
+      "category": "animation",
+      "tags": [
+        "ascii-art",
+        "framer-motion",
+        "html",
+        "image-effect",
+        "javascript",
+        "monochrome",
+        "react",
+        "tailwind"
+      ],
+      "description": "Render an image or a video as live ASCII characters, sampled through a canvas and painted into a single pre element.",
+      "preview_image": "https://smoothui.dev/og/docs/components/ascii-render/image.png",
+      "id": "unknown__ascii-render",
+      "source_domain": "smoothui.dev"
+    },
+    {
+      "name": "Gooey Filter",
+      "source_url": "https://smoothui.dev/docs/components/gooey-filter",
+      "registry_url": "https://smoothui.dev/docs/components",
+      "category": "background",
+      "tags": [
+        "background",
+        "filter",
+        "framer-motion",
+        "gooey",
+        "morph",
+        "react",
+        "svg",
+        "tailwind"
+      ],
+      "description": "An SVG goo filter wrapper that makes separate elements behave like one body of liquid \u2014 they fuse when they touch and stretch before they part.",
+      "preview_image": "https://smoothui.dev/og/docs/components/gooey-filter/image.png",
+      "id": "unknown__gooey-filter",
+      "source_domain": "smoothui.dev"
+    },
+    {
+      "name": "Sdf Blob Transition",
+      "source_url": "https://smoothui.dev/docs/components/sdf-blob-transition",
+      "registry_url": "https://smoothui.dev/docs/components",
+      "category": "animation",
+      "tags": [
+        "animation",
+        "blob",
+        "fluid",
+        "framer-motion",
+        "glsl",
+        "react",
+        "tailwind",
+        "transition",
+        "webgl"
+      ],
+      "description": "Frame-level WebGL transition that swaps content under soft-merged SDF circles with organic noise.",
+      "preview_image": "https://smoothui.dev/og/docs/components/sdf-blob-transition/image.png",
+      "id": "unknown__sdf-blob-transition",
+      "source_domain": "smoothui.dev"
+    },
+    {
+      "name": "Shader Reveal Noise Transition",
+      "source_url": "https://smoothui.dev/docs/components/shader-reveal-noise-transition",
+      "registry_url": "https://smoothui.dev/docs/components",
+      "category": "animation",
+      "tags": [
+        "framer-motion",
+        "glsl",
+        "noise",
+        "react",
+        "shader",
+        "shader-art",
+        "tailwind",
+        "transition"
+      ],
+      "description": "Noise threshold transition with an organic shader gate.",
+      "preview_image": "https://smoothui.dev/og/docs/components/shader-reveal-noise-transition/image.png",
+      "id": "unknown__shader-reveal-noise-transition",
+      "source_domain": "smoothui.dev"
+    },
+    {
+      "name": "Kinetic Type Scroll",
+      "source_url": "https://smoothui.dev/docs/components/kinetic-type-scroll",
+      "registry_url": "https://smoothui.dev/docs/components",
+      "category": "animation",
+      "tags": [
+        "css",
+        "framer-motion",
+        "minimal",
+        "react",
+        "scroll-effect",
+        "tailwind",
+        "text-effect"
+      ],
+      "description": "Editorial kinetic typography driven by scroll \u2014 words scale, track and shift weight as the section scrolls, so the phrase breathes.",
+      "preview_image": "https://smoothui.dev/og/docs/components/kinetic-type-scroll/image.png",
+      "id": "unknown__kinetic-type-scroll",
+      "source_domain": "smoothui.dev"
+    },
+    {
+      "name": "Gravity Letters",
+      "source_url": "https://smoothui.dev/docs/components/gravity-letters",
+      "registry_url": "https://smoothui.dev/docs/components",
+      "category": "animation",
+      "tags": [
+        "animation",
+        "css",
+        "framer-motion",
+        "react",
+        "retro",
+        "tailwind",
+        "text-effect"
+      ],
+      "description": "Text whose letters detach and fall under gravity, pile up at the bottom, and can re-form on demand.",
+      "preview_image": "https://smoothui.dev/og/docs/components/gravity-letters/image.png",
+      "id": "unknown__gravity-letters",
+      "source_domain": "smoothui.dev"
+    },
+    {
+      "name": "Magnetic Button",
+      "source_url": "https://smoothui.dev/docs/components/magnetic-button",
+      "registry_url": "https://smoothui.dev/docs/components",
+      "category": "button",
+      "tags": [
+        "button",
+        "framer-motion",
+        "magnet",
+        "minimal",
+        "react",
+        "tailwind"
+      ],
+      "description": "Animated React magnetic button that follows the cursor with spring physics, configurable strength, and reduced motion support.",
+      "preview_image": "https://smoothui.dev/og/docs/components/magnetic-button/image.png",
+      "id": "unknown__magnetic-button",
+      "source_domain": "smoothui.dev"
+    },
+    {
+      "name": "Scramble Hover",
+      "source_url": "https://smoothui.dev/docs/components/scramble-hover",
+      "registry_url": "https://smoothui.dev/docs/components",
+      "category": "animation",
+      "tags": [
+        "framer-motion",
+        "glitch",
+        "hover-effect",
+        "react",
+        "tailwind",
+        "text-effect"
+      ],
+      "description": "Animated text scramble effect on hover for React. Creates playful, Matrix-style character animations with customizable speed and duration. Built with Motion.",
+      "preview_image": "https://smoothui.dev/og/docs/components/scramble-hover/image.png",
+      "id": "unknown__scramble-hover",
+      "source_domain": "smoothui.dev"
+    },
+    {
+      "name": "Ransom Note",
+      "source_url": "https://smoothui.dev/docs/components/ransom-note",
+      "registry_url": "https://smoothui.dev/docs/components",
+      "category": "typography",
+      "tags": [
+        "brutalist",
+        "css",
+        "framer-motion",
+        "react",
+        "tailwind",
+        "text-effect",
+        "typography"
+      ],
+      "description": "Text rendered as cut-out magazine letters \u2014 mixed fonts, sizes, rotations, and paper scraps, assembled from a deterministic seed.",
+      "preview_image": "https://smoothui.dev/og/docs/components/ransom-note/image.png",
+      "id": "unknown__ransom-note",
+      "source_domain": "smoothui.dev"
+    },
+    {
+      "name": "Perspective Text 3d",
+      "source_url": "https://smoothui.dev/docs/components/perspective-text-3d",
+      "registry_url": "https://smoothui.dev/docs/components",
+      "category": "animation",
+      "tags": [
+        "3d",
+        "framer-motion",
+        "isometric",
+        "react",
+        "tailwind",
+        "text-effect"
+      ],
+      "description": "Text on a 3D plane that tilts and separates in depth \u2014 lines or words pushed along the Z axis, reacting to scroll progress or the pointer.",
+      "preview_image": "https://smoothui.dev/og/docs/components/perspective-text-3d/image.png",
+      "id": "unknown__perspective-text-3d",
+      "source_domain": "smoothui.dev"
+    },
+    {
+      "name": "Orbital Image Wheel",
+      "source_url": "https://smoothui.dev/docs/components/orbital-image-wheel",
+      "registry_url": "https://smoothui.dev/docs/components",
+      "category": "gallery",
+      "tags": [
+        "carousel",
+        "css",
+        "framer-motion",
+        "gallery",
+        "minimal",
+        "react",
+        "tailwind"
+      ],
+      "description": "A circle of images that rotates with drag momentum, auto-rotation, and keyboard stepping, highlighting the item at the top of the circle.",
+      "preview_image": "https://smoothui.dev/og/docs/components/orbital-image-wheel/image.png",
+      "id": "unknown__orbital-image-wheel",
+      "source_domain": "smoothui.dev"
+    },
+    {
+      "name": "Phototab",
+      "source_url": "https://smoothui.dev/docs/components/phototab",
+      "registry_url": "https://smoothui.dev/docs/components",
+      "category": "gallery",
+      "tags": [
+        "flat",
+        "framer-motion",
+        "gallery",
+        "react",
+        "tab",
+        "tailwind"
+      ],
+      "description": "Animated React tabbed photo gallery component with smooth swipe transitions, lazy loading support, and accessible keyboard navigation.",
+      "preview_image": "https://smoothui.dev/og/docs/components/phototab/image.png",
+      "id": "unknown__phototab",
+      "source_domain": "smoothui.dev"
+    },
+    {
+      "name": "Scrollable Card Stack",
+      "source_url": "https://smoothui.dev/docs/components/scrollable-card-stack",
+      "registry_url": "https://smoothui.dev/docs/components",
+      "category": "card",
+      "tags": [
+        "card",
+        "carousel",
+        "framer-motion",
+        "react",
+        "soft",
+        "tailwind"
+      ],
+      "description": "Interactive stacked card carousel with scroll-snap navigation and smooth parallax reveal animations. Touch-friendly React component for showcases and galleries.",
+      "preview_image": "https://smoothui.dev/og/docs/components/scrollable-card-stack/image.png",
+      "id": "unknown__scrollable-card-stack",
+      "source_domain": "smoothui.dev"
+    },
+    {
+      "name": "Tilt Card",
+      "source_url": "https://smoothui.dev/docs/components/tilt-card",
+      "registry_url": "https://smoothui.dev/docs/components",
+      "category": "card",
+      "tags": [
+        "card",
+        "css",
+        "framer-motion",
+        "glass",
+        "react",
+        "tailwind",
+        "tilt"
+      ],
+      "description": "A 3D pointer-tilt card with an optional glare highlight and depth-based parallax for nested content.",
+      "preview_image": "https://smoothui.dev/og/docs/components/tilt-card/image.png",
+      "id": "unknown__tilt-card",
+      "source_domain": "smoothui.dev"
+    },
+    {
+      "name": "Typewriter Text",
+      "source_url": "https://smoothui.dev/docs/components/typewriter-text",
+      "registry_url": "https://smoothui.dev/docs/components",
+      "category": "animation",
+      "tags": [
+        "animation",
+        "framer-motion",
+        "react",
+        "retro",
+        "tailwind",
+        "text-effect"
+      ],
+      "description": "Animated typewriter text for React with character-by-character reveal and looping. Ideal for hero sections and AI chat UIs.",
+      "preview_image": "https://smoothui.dev/og/docs/components/typewriter-text/image.png",
+      "id": "unknown__typewriter-text",
+      "source_domain": "smoothui.dev"
+    },
+    {
+      "name": "Vector Editor Toolbar",
+      "source_url": "https://smoothui.dev/docs/components/vector-editor-toolbar",
+      "registry_url": "https://smoothui.dev/docs/components",
+      "category": "tool",
+      "tags": [
+        "editor",
+        "flat",
+        "framer-motion",
+        "icon-set",
+        "react",
+        "tailwind",
+        "typescript"
+      ],
+      "description": "A Figma-style floating vector toolbar with tool selection, nested flyouts and a contextual properties panel that never pushes the tools around.",
+      "preview_image": "https://smoothui.dev/og/docs/components/vector-editor-toolbar/image.png",
+      "id": "unknown__vector-editor-toolbar",
+      "source_domain": "smoothui.dev"
+    },
+    {
+      "name": "Mac Terminal",
+      "source_url": "https://smoothui.dev/docs/components/mac-terminal",
+      "registry_url": "https://smoothui.dev/docs/components",
+      "category": "tool",
+      "tags": [
+        "code-editor",
+        "framer-motion",
+        "html",
+        "javascript",
+        "pixel",
+        "react",
+        "retro",
+        "tailwind",
+        "terminal"
+      ],
+      "description": "A macOS-style terminal window that types out a scripted command session, complete with a blinking caret and traffic-light controls.",
+      "preview_image": "https://smoothui.dev/og/docs/components/mac-terminal/image.png",
+      "id": "unknown__mac-terminal",
+      "source_domain": "smoothui.dev"
+    },
+    {
+      "name": "Contribution Graph",
+      "source_url": "https://smoothui.dev/docs/components/contribution-graph",
+      "registry_url": "https://smoothui.dev/docs/components",
+      "category": "chart",
+      "tags": [
+        "chart",
+        "flat",
+        "framer-motion",
+        "grid",
+        "react",
+        "tailwind"
+      ],
+      "description": "Animated React contribution graph component with GitHub-style heatmap cells, tooltips, and custom color scales for data visualization.",
+      "preview_image": "https://smoothui.dev/og/docs/components/contribution-graph/image.png",
+      "id": "unknown__contribution-graph",
+      "source_domain": "smoothui.dev"
+    },
+    {
+      "name": "Apple Invites",
+      "source_url": "https://smoothui.dev/docs/components/apple-invites",
+      "registry_url": "https://smoothui.dev/docs/components",
+      "category": "animation",
+      "tags": [
+        "animation",
+        "drag-drop",
+        "framer-motion",
+        "react",
+        "soft",
+        "tailwind"
+      ],
+      "description": "Animated React invite list component inspired by Apple, with smooth add and remove transitions, drag reordering, and gestures.",
+      "preview_image": "https://smoothui.dev/og/docs/components/apple-invites/image.png",
+      "id": "unknown__apple-invites",
+      "source_domain": "smoothui.dev"
+    },
+    {
+      "name": "Coverflow Carousel",
+      "source_url": "https://smoothui.dev/docs/components/coverflow-carousel",
+      "registry_url": "https://smoothui.dev/docs/components",
+      "category": "gallery",
+      "tags": [
+        "3d",
+        "carousel",
+        "chrome",
+        "css",
+        "framer-motion",
+        "react",
+        "tailwind"
+      ],
+      "description": "A 3D perspective carousel with drag/swipe, keyboard navigation, autoplay, and an inverted rotation mode for side slides.",
+      "preview_image": "https://smoothui.dev/og/docs/components/coverflow-carousel/image.png",
+      "id": "unknown__coverflow-carousel",
+      "source_domain": "smoothui.dev"
+    },
+    {
+      "name": "Emboss Surface",
+      "source_url": "https://smoothui.dev/docs/components/emboss-surface",
+      "registry_url": "https://smoothui.dev/docs/components",
+      "category": "background",
+      "tags": [
+        "background",
+        "claymorphism",
+        "css-filter",
+        "framer-motion",
+        "mask",
+        "react",
+        "svg",
+        "tailwind"
+      ],
+      "description": "A realistic embossed, debossed, plaster or metal-stamped material for text, icons and shapes.",
+      "preview_image": "https://smoothui.dev/og/docs/components/emboss-surface/image.png",
+      "id": "unknown__emboss-surface",
+      "source_domain": "smoothui.dev"
+    },
+    {
+      "name": "Exposure Slider",
+      "source_url": "https://smoothui.dev/docs/components/exposure-slider",
+      "registry_url": "https://smoothui.dev/docs/components",
+      "category": "slider",
+      "tags": [
+        "framer-motion",
+        "glass",
+        "icon",
+        "react",
+        "slider",
+        "svg",
+        "tailwind"
+      ],
+      "description": "An iOS Camera-style exposure slider with a draggable ticker, animated notch marks, and a circular progress indicator.",
+      "preview_image": "https://smoothui.dev/og/docs/components/exposure-slider/image.png",
+      "id": "unknown__exposure-slider",
+      "source_domain": "smoothui.dev"
+    },
+    {
+      "name": "Ai Orb Face",
+      "source_url": "https://smoothui.dev/docs/components/ai-orb-face",
+      "registry_url": "https://smoothui.dev/docs/components",
+      "category": "animation",
+      "tags": [
+        "animation",
+        "blob",
+        "framer-motion",
+        "illustration",
+        "react",
+        "svg",
+        "tailwind"
+      ],
+      "description": "A cartoon character whose expression carries the AI state \u2014 gaze that follows the cursor, natural blinks, thinking saccades, happy arcs and spiral eyes.",
+      "preview_image": "https://smoothui.dev/og/docs/components/ai-orb-face/image.png",
+      "id": "unknown__ai-orb-face",
+      "source_domain": "smoothui.dev"
+    },
+    {
+      "name": "Emoji Reaction",
+      "source_url": "https://smoothui.dev/docs/components/emoji-reaction",
+      "registry_url": "https://smoothui.dev/docs/components",
+      "category": "animation",
+      "tags": [
+        "animation",
+        "framer-motion",
+        "minimal",
+        "particles",
+        "react",
+        "tailwind"
+      ],
+      "description": "A reaction bar with particle bursts, a rolling odometer count, and a hover/focus emoji picker.",
+      "preview_image": "https://smoothui.dev/og/docs/components/emoji-reaction/image.png",
+      "id": "unknown__emoji-reaction",
+      "source_domain": "smoothui.dev"
+    },
+    {
+      "name": "Parallax Layers",
+      "source_url": "https://smoothui.dev/docs/components/parallax-layers",
+      "registry_url": "https://smoothui.dev/docs/components",
+      "category": "animation",
+      "tags": [
+        "css",
+        "framer-motion",
+        "minimal",
+        "parallax",
+        "react",
+        "scroll-effect",
+        "tailwind"
+      ],
+      "description": "Multi-layer depth parallax for hero sections, with an optional pointer-driven layer of movement.",
+      "preview_image": "https://smoothui.dev/og/docs/components/parallax-layers/image.png",
+      "id": "unknown__parallax-layers",
+      "source_domain": "smoothui.dev"
+    },
+    {
+      "name": "Progressive Blur",
+      "source_url": "https://smoothui.dev/docs/components/progressive-blur",
+      "registry_url": "https://smoothui.dev/docs/components",
+      "category": "background",
+      "tags": [
+        "background",
+        "blur-effect",
+        "css",
+        "framer-motion",
+        "frosted",
+        "react",
+        "tailwind"
+      ],
+      "description": "A gradient blur built from stacked backdrop-filter layers, each masked by a shifted gradient, so the blur ramps smoothly instead of cutting off at a hard edge.",
+      "preview_image": "https://smoothui.dev/og/docs/components/progressive-blur/image.png",
+      "id": "unknown__progressive-blur",
+      "source_domain": "smoothui.dev"
+    },
+    {
+      "name": "Dashboard Shell",
+      "source_url": "https://shadcnuikit.com/blocks/dashboard-ui/dashboard-shell",
+      "registry_url": "https://shadcnuikit.com/components",
+      "category": "dashboard",
+      "tags": [
+        "dashboard",
+        "flat",
+        "react",
+        "sidebar",
+        "tailwind"
+      ],
+      "description": "Dashboard shell blocks built with shadcn/ui that combine an inset sidebar, grouped navigation, user menu, and a site header around an empty content area. Drop them in as the starting point for admin panels, analytics dashboards, and internal tools.",
+      "preview_image": "https://shadcnuikit.com/images/seo.jpg",
+      "id": "unknown__dashboard-shell",
+      "source_domain": "shadcnuikit.com"
+    },
+    {
+      "name": "Sidebar Layouts",
+      "source_url": "https://shadcnuikit.com/blocks/dashboard-ui/sidebar-layouts",
+      "registry_url": "https://shadcnuikit.com/components",
+      "category": "sidebar",
+      "tags": [
+        "dashboard",
+        "flat",
+        "react",
+        "sidebar",
+        "tailwind"
+      ],
+      "description": "Sidebar-based layout components built with shadcn/ui for app navigation and structure. These layouts combine collapsible sidebars, headers, and main content areas ideal for dashboards and multi-section applications.",
+      "preview_image": "https://shadcnuikit.com/images/seo.jpg",
+      "id": "unknown__sidebar-layouts",
+      "source_domain": "shadcnuikit.com"
+    },
+    {
+      "name": "Stat Cards",
+      "source_url": "https://shadcnuikit.com/blocks/dashboard-ui/stat-cards",
+      "registry_url": "https://shadcnuikit.com/components",
+      "category": "card",
+      "tags": [
+        "card",
+        "dashboard",
+        "flat",
+        "react",
+        "tailwind"
+      ],
+      "description": "Dashboard stat card components built with shadcn/ui to display key metrics, KPIs, and analytics at a glance. These stat cards feature clean layouts, trend indicators, and optional charts perfect for admin panels, SaaS dashboards, and data-heavy applications.",
+      "preview_image": "https://shadcnuikit.com/images/seo.jpg",
+      "id": "unknown__stat-cards",
+      "source_domain": "shadcnuikit.com"
+    },
+    {
+      "name": "Modal Dialogs",
+      "source_url": "https://shadcnuikit.com/blocks/dashboard-ui/modal-dialogs",
+      "registry_url": "https://shadcnuikit.com/components",
+      "category": "modal",
+      "tags": [
+        "dialog",
+        "flat",
+        "modal",
+        "react",
+        "tailwind"
+      ],
+      "description": "Modal and dialog components built with shadcn/ui for confirmations, forms, and focused content. These dialog patterns include login flows, share links, and command palettes with accessible markup and smooth animations for modern web apps.",
+      "preview_image": "https://shadcnuikit.com/images/seo.jpg",
+      "id": "unknown__modal-dialogs",
+      "source_domain": "shadcnuikit.com"
+    },
+    {
+      "name": "Hero Section",
+      "source_url": "https://prebuiltui.com/components/hero-section",
+      "registry_url": "https://prebuiltui.com/components",
+      "category": "hero",
+      "tags": [
+        "css",
+        "flat",
+        "hero",
+        "landing-page",
+        "react",
+        "tailwind"
+      ],
+      "description": "Add these Tailwind CSS Hero Section UI components to your website or application to highlight your core product or service.",
+      "preview_image": "https://prebuiltui.com/api/opengraph-image?slug=hero-section",
+      "id": "unknown__hero-section",
+      "source_domain": "prebuiltui.com"
+    },
+    {
+      "name": "Pricing Card",
+      "source_url": "https://prebuiltui.com/components/pricing-card",
+      "registry_url": "https://prebuiltui.com/components",
+      "category": "card",
+      "tags": [
+        "card",
+        "flat",
+        "pricing",
+        "react",
+        "tailwind"
+      ],
+      "description": "Add beautiful and responsive Pricing Card Components to your website.",
+      "preview_image": "https://prebuiltui.com/api/opengraph-image?slug=pricing-card",
+      "id": "unknown__pricing-card",
+      "source_domain": "prebuiltui.com"
+    },
+    {
+      "name": "Testimonial",
+      "source_url": "https://prebuiltui.com/components/testimonial",
+      "registry_url": "https://prebuiltui.com/components",
+      "category": "card",
+      "tags": [
+        "card",
+        "css",
+        "flat",
+        "react",
+        "tailwind",
+        "testimonial"
+      ],
+      "description": "Showcase customer satisfaction with Tailwind CSS testimonial components.",
+      "preview_image": "https://prebuiltui.com/api/opengraph-image?slug=testimonial",
+      "id": "unknown__testimonial",
+      "source_domain": "prebuiltui.com"
+    },
+    {
+      "name": "Cookie Policy",
+      "source_url": "https://prebuiltui.com/components/cookie-policy",
+      "registry_url": "https://prebuiltui.com/components",
+      "category": "footer",
+      "tags": [
+        "footer",
+        "minimal",
+        "react",
+        "tailwind"
+      ],
+      "description": "Create a clear and concise cookie policy UI component that explains how users can manage their cookie preferences and allows them to accept or decline cookies.",
+      "preview_image": "https://prebuiltui.com/api/opengraph-image?slug=cookie-policy",
+      "id": "unknown__cookie-policy",
+      "source_domain": "prebuiltui.com"
     }
   ]
 }
