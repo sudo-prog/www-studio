@@ -1,6 +1,6 @@
 {
-  "version": "1.0.39",
-  "source_count": 1801,
+  "version": "1.0.40",
+  "source_count": 1825,
   "components": [
     {
       "id": "cat-0",
@@ -30105,6 +30105,390 @@
       "preview_image": "https://cdn.originkit.dev/components/pixel-unfold-gallery-poster.jpg?v=mszogi8b",
       "id": "unknown__pixel-unfold",
       "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Gargantua With HDR Bloom",
+      "source_url": "https://www.shadertoy.com/view/lstSRS",
+      "registry_url": "https://www.shadertoy.com/results?query=nebula&sort=popular",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "glow",
+        "shader-art"
+      ],
+      "description": "Raymarched recreation of the Gargantua black hole from Interstellar, with a multi-pass HDR bloom halo and lensed accretion disk.",
+      "preview_image": "",
+      "id": "unknown__gargantua-with-hdr-bloom",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Pegasus Galaxy",
+      "source_url": "https://www.shadertoy.com/view/lty3Rt",
+      "registry_url": "https://www.shadertoy.com/results?query=nebula&sort=popular",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "noise",
+        "shader-art"
+      ],
+      "description": "Demoscene galaxy shader built from stacked 2D/3D noise cloud layers that drift and blend into a spiral star field.",
+      "preview_image": "",
+      "id": "unknown__pegasus-galaxy",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Supernova remnant",
+      "source_url": "https://www.shadertoy.com/view/MdKXzc",
+      "registry_url": "https://www.shadertoy.com/results?query=nebula&sort=popular",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "glow",
+        "shader-art"
+      ],
+      "description": "Volumetric dust filaments lit by emission glow, derived from 'Dusty nebula 4', flying slowly through a starry remnant shell.",
+      "preview_image": "",
+      "id": "unknown__supernova-remnant",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "STELLAR CLOUDS",
+      "source_url": "https://www.shadertoy.com/view/DtdSz7",
+      "registry_url": "https://www.shadertoy.com/results?query=nebula&sort=popular",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "glow",
+        "shader-art"
+      ],
+      "description": "Tiled volumetric nebula with light scattering and haze, presented as the glowing cloud where stars go to hang out.",
+      "preview_image": "",
+      "id": "unknown__stellar-clouds",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Clouds",
+      "source_url": "https://www.shadertoy.com/view/XslGRr",
+      "registry_url": "https://www.shadertoy.com/results?query=clouds&sort=popular",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "noise",
+        "shader-art"
+      ],
+      "description": "Inigo Quilez's classic raymarched fbm cloud volume with distance-based LOD, accumulated front-to-back with sun-direction lighting.",
+      "preview_image": "",
+      "id": "unknown__clouds",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Hell",
+      "source_url": "https://www.shadertoy.com/view/MdfGRX",
+      "registry_url": "https://www.shadertoy.com/results?query=clouds&sort=popular",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "noise",
+        "shader-art"
+      ],
+      "description": "A darker variation of iq's Clouds shader that reads as sinking through dense smoke toward the centre of hell.",
+      "preview_image": "",
+      "id": "unknown__hell",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Buoy",
+      "source_url": "https://www.shadertoy.com/view/XdsGDB",
+      "registry_url": "https://www.shadertoy.com/results?query=ocean&sort=popular",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "fluid",
+        "shader-art"
+      ],
+      "description": "A ray-traced sphere floating in a ray-marched ocean, using reflection and refraction through noisy water.",
+      "preview_image": "",
+      "id": "unknown__buoy",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Sea Creature",
+      "source_url": "https://www.shadertoy.com/view/csB3zy",
+      "registry_url": "https://www.shadertoy.com/results?query=ocean&sort=popular",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "fractal",
+        "shader-art"
+      ],
+      "description": "Procedural sea creature built from a recursive fractal signed distance field and rendered with raymarching.",
+      "preview_image": "",
+      "id": "unknown__sea-creature",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Luminescence",
+      "source_url": "https://www.shadertoy.com/view/4sXBRn",
+      "registry_url": "https://www.shadertoy.com/results?query=ocean&sort=popular",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "glow",
+        "shader-art"
+      ],
+      "description": "Raymarched deep-sea scene of glowing jellyfish drifting in dark underwater volume, mouse-look camera.",
+      "preview_image": "",
+      "id": "unknown__luminescence",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Abstract Corridor",
+      "source_url": "https://www.shadertoy.com/view/MlXSWX",
+      "registry_url": "https://www.shadertoy.com/results?query=tunnel&sort=popular",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "low-poly",
+        "shader-art"
+      ],
+      "description": "Triangle noise and a curvature function fake a flat-shaded, point-lit mesh tunnel corridor.",
+      "preview_image": "",
+      "id": "unknown__abstract-corridor",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Truchet + Kaleidoscope FTW",
+      "source_url": "https://www.shadertoy.com/view/7lKSWW",
+      "registry_url": "https://www.shadertoy.com/results?query=kaleidoscope&sort=popular",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "low-poly",
+        "shader-art"
+      ],
+      "description": "CC0 experiment combining mirrored Truchet tile patterns with kaleidoscopic folding into a seamless geometric pattern.",
+      "preview_image": "",
+      "id": "unknown__truchet-+-kaleidoscope-ftw",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Kaleidoscope Tunnel",
+      "source_url": "https://www.shadertoy.com/view/WsSGWG",
+      "registry_url": "https://www.shadertoy.com/results?query=kaleidoscope&sort=popular",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "glow",
+        "shader-art"
+      ],
+      "description": "2D iterated-fold IFS tunnel with kaleidoscopic symmetry and a VJ-inspired neon tunnel zoom.",
+      "preview_image": "",
+      "id": "unknown__kaleidoscope-tunnel",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Fractured Orb",
+      "source_url": "https://www.shadertoy.com/view/ttycWW",
+      "registry_url": "https://www.shadertoy.com/results?query=crystal&sort=love",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "holographic",
+        "shader-art"
+      ],
+      "description": "A mashup of Crystal Tetrahedron and Buckyball Fracture, rendering an exploding faceted orb with refractive dispersion.",
+      "preview_image": "",
+      "id": "unknown__fractured-orb",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Crystal Drops",
+      "source_url": "https://www.shadertoy.com/view/XlSBRW",
+      "registry_url": "https://www.shadertoy.com/results?query=crystal&sort=love",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "fluid",
+        "shader-art"
+      ],
+      "description": "Raymarched metaball droplets rendered as glossy crystal-like blobs with depth-of-field bokeh and chromatic aberration.",
+      "preview_image": "",
+      "id": "unknown__crystal-drops",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Iridescent crystals",
+      "source_url": "https://www.shadertoy.com/view/llcXWM",
+      "registry_url": "https://www.shadertoy.com/results?query=crystal&sort=love",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "holographic",
+        "shader-art"
+      ],
+      "description": "Raymarched chamfered dodecahedron crystals shaded with thin-film iridescence across each facet.",
+      "preview_image": "",
+      "id": "unknown__iridescent-crystals",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Auroras",
+      "source_url": "https://www.shadertoy.com/view/XtGGRt",
+      "registry_url": "https://www.shadertoy.com/results?query=aurora&sort=love",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "aurora",
+        "shader-art"
+      ],
+      "description": "Fully procedural northern lights with large-scale band-like curtain trails evaluated across a large atmospheric volume.",
+      "preview_image": "",
+      "id": "unknown__auroras",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Polar Night",
+      "source_url": "https://www.shadertoy.com/view/3ss3R4",
+      "registry_url": "https://www.shadertoy.com/results?query=aurora&sort=love",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "aurora",
+        "shader-art"
+      ],
+      "description": "Raymarched winter terrain under a night sky with an aurora glow, using gradient noise for the landscape.",
+      "preview_image": "",
+      "id": "unknown__polar-night",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Glitch transform",
+      "source_url": "https://www.shadertoy.com/view/XtyXzW",
+      "registry_url": "https://www.shadertoy.com/results?query=glitch&sort=love",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "neon",
+        "shader-art"
+      ],
+      "description": "Icosahedron/dodecahedron blend where the block-swap glitch displacement travels with the rotating model.",
+      "preview_image": "",
+      "id": "unknown__glitch-transform",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "mpeg artifacts",
+      "source_url": "https://www.shadertoy.com/view/Md2GDw",
+      "registry_url": "https://www.shadertoy.com/results?query=glitch&sort=love",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "noise",
+        "shader-art"
+      ],
+      "description": "Crude simulation of corrupted MPEG video: per-block RGB channel shifts, dropped luma and scanline tearing.",
+      "preview_image": "",
+      "id": "unknown__mpeg-artifacts",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Vorocracks marble",
+      "source_url": "https://www.shadertoy.com/view/Xs3fR4",
+      "registry_url": "https://www.shadertoy.com/results?query=marble&sort=love",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "fractal",
+        "shader-art"
+      ],
+      "description": "Fractalised variant of Voronoi-based crack patterns, rendering marbled stone with jittered cells and zebra veining.",
+      "preview_image": "",
+      "id": "unknown__vorocracks-marble",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Playing marble",
+      "source_url": "https://www.shadertoy.com/view/MtX3Ws",
+      "registry_url": "https://www.shadertoy.com/results?query=marble&sort=love",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "fractal",
+        "shader-art"
+      ],
+      "description": "Volumetric 3D fractal marble texture, a dense swirling stone pattern with layered fractal detail.",
+      "preview_image": "",
+      "id": "unknown__playing-marble",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Lichtenberg figure 4",
+      "source_url": "https://www.shadertoy.com/view/3tfSzs",
+      "registry_url": "https://www.shadertoy.com/results?query=lightning&sort=love",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "monochrome",
+        "shader-art"
+      ],
+      "description": "Greyscale branching lightning figure drawn by plotting millions of Monte Carlo points along a squiggly forked line.",
+      "preview_image": "",
+      "id": "unknown__lichtenberg-figure-4",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Zippy Zaps",
+      "source_url": "https://www.shadertoy.com/view/XXyGzh",
+      "registry_url": "https://www.shadertoy.com/results?query=lightning&sort=love",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "neon",
+        "shader-art"
+      ],
+      "description": "Compact raymarched storm-and-lightning scene with glowing electric zaps and hot bloom across the frame.",
+      "preview_image": "",
+      "id": "unknown__zippy-zaps",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Chromatic Resonance",
+      "source_url": "https://www.shadertoy.com/view/tlySzm",
+      "registry_url": "https://www.shadertoy.com/results?query=lightning&sort=love",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "webgl",
+        "holographic",
+        "shader-art"
+      ],
+      "description": "Audio-reactive colour experiment mapping a spectrum of sines and music input onto flowing chromatic visuals.",
+      "preview_image": "",
+      "id": "unknown__chromatic-resonance",
+      "source_domain": "www.shadertoy.com"
     }
   ]
 }
