@@ -1,6 +1,6 @@
 {
-  "version": "1.0.34",
-  "source_count": 976,
+  "version": "1.0.35",
+  "source_count": 981,
   "components": [
     {
       "id": "cat-0",
@@ -16189,6 +16189,103 @@
       "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/6c71565f5cf6cc6bbbb8ec45104c371e6e14365b-1600x1000.jpg",
       "id": "unknown__ray.so",
       "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Curve swipe",
+      "source_url": "https://demos.gsap.com/demo/curve-swipe",
+      "registry_url": "https://demos.gsap.com/explore/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "svg",
+        "morph",
+        "wave",
+        "animation",
+        "click-effect"
+      ],
+      "description": "GSAP morphSVG curve manipulation demo from the GSAP Demo Hub.",
+      "preview_image": "",
+      "id": "unknown__curve-swipe",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Directional Marquee",
+      "source_url": "https://demos.gsap.com/demo/directional-marquee",
+      "registry_url": "https://demos.gsap.com/explore/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "css",
+        "minimal",
+        "marquee",
+        "animation",
+        "infinite-scroll",
+        "text"
+      ],
+      "description": "Horizontal Loop Direction with Observer \u2014 a looping marquee whose travel direction follows the scroll observer.",
+      "preview_image": "",
+      "id": "unknown__directional-marquee",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "Dynamic Morphing",
+      "source_url": "https://demos.gsap.com/demo/dynamic-morphing",
+      "registry_url": "https://demos.gsap.com/explore/",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "svg",
+        "morph",
+        "flat",
+        "animation",
+        "transition",
+        "shape"
+      ],
+      "description": "SVG Shape Overlays \u2014 dynamic shape morphing demo from the GSAP Demo Hub.",
+      "preview_image": "",
+      "id": "unknown__dynamic-morphing",
+      "source_domain": "demos.gsap.com"
+    },
+    {
+      "name": "DOM order change animation",
+      "source_url": "https://animejs.com/documentation/layout/usage/dom-order-change-animation",
+      "registry_url": "https://animejs.com/documentation/layout/usage",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "plain-css",
+        "minimal",
+        "animation",
+        "transition",
+        "grid"
+      ],
+      "description": "Automatically animates DOM order changes.",
+      "preview_image": "",
+      "id": "unknown__dom-order-change-animation",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Swap parent animation",
+      "source_url": "https://animejs.com/documentation/layout/usage/swap-parent-animation",
+      "registry_url": "https://animejs.com/documentation/layout/usage",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "plain-css",
+        "minimal",
+        "animation",
+        "transition",
+        "drag-drop"
+      ],
+      "description": "Automatically animates children elements being moved from one parent to another.",
+      "preview_image": "",
+      "id": "unknown__swap-parent-animation",
+      "source_domain": "animejs.com"
     }
   ]
 }
