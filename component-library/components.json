@@ -1,6 +1,6 @@
 {
-  "version": "1.0.33",
-  "source_count": 940,
+  "version": "1.0.34",
+  "source_count": 976,
   "components": [
     {
       "id": "cat-0",
@@ -15649,6 +15649,546 @@
       "preview_image": "https://ui.flexnative.com/images/blocks/hero/hero-02.webp",
       "id": "unknown__hero-02",
       "source_domain": "ui.flexnative.com"
+    },
+    {
+      "name": "Fluid Letters",
+      "source_url": "https://www.designminis.com/tools/fluid-letters",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "svg",
+        "gooey",
+        "font"
+      ],
+      "description": "Modular font builder: draw glyphs on a grid, melt modules together with real morphological \"gooey\" blending, and export a working OTF.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/ebd5e8813f0ee64f21acdde54a66d69a0774f798-1600x1000.jpg",
+      "id": "unknown__fluid-letters",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Logo Lattice",
+      "source_url": "https://www.designminis.com/tools/logo-lattice",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "svg",
+        "minimal",
+        "logo-generator"
+      ],
+      "description": "Fast, browser-based logo design with editable vector exports",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/1dc422d09aacd3becb9c610abe098c6407a6628f-1600x1000.jpg",
+      "id": "unknown__logo-lattice",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Mockupreel",
+      "source_url": "https://www.designminis.com/tools/mockupreel",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "motion",
+        "minimal",
+        "mockup"
+      ],
+      "description": "Create app mockups with up to 4k export for free for your app demos, prototype showcase or portfolio presentations no watermarks.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/4f93f056ee3fa005c30650347a5f24f45478dd45-1600x1000.jpg",
+      "id": "unknown__mockupreel",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Trace",
+      "source_url": "https://www.designminis.com/tools/trace",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "svg",
+        "outline",
+        "svg-generator"
+      ],
+      "description": "Turn a PNG, JPEG or WebP logo into real SVG paths, in your browser. Choose how many colours, smooth the curves, hide or recolour a shape, then download the SVG or copy its code. It traces the shapes in the artwork rather than wrapping the pixels in an SVG, so what comes out are paths you can open in Figma or Illustrator and edit. The tracing runs on your device, with no queue and nothing uploaded.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/9634ed2ee34be73c1438c9724420422a2ca73f97-1600x1000.jpg",
+      "id": "unknown__trace",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "HalftonePro",
+      "source_url": "https://www.designminis.com/tools/halftonepro",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "svg",
+        "halftone",
+        "svg-generator"
+      ],
+      "description": "Vector halftone generator with a wide variety of patterns, shapes, and customization options. PNG and SVG export options.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/14c60347606b8a9e98a20fe1dc0ead79dfc41cd9-1600x1000.jpg",
+      "id": "unknown__halftonepro",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Frametic",
+      "source_url": "https://www.designminis.com/tools/frametic",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "javascript",
+        "minimal",
+        "mockup"
+      ],
+      "description": "Generate cinematic video mockups based on URL, even for auth-gated pages.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/ea75df0a49b6ee55dcaae52436fd2db7afa89438-1600x1000.jpg",
+      "id": "unknown__frametic",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Marbler",
+      "source_url": "https://www.designminis.com/tools/marbler",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "javascript",
+        "fluid",
+        "background"
+      ],
+      "description": "Drop ink on water and rake it into ribbons, then save the marbled sheet. Marbling the way it works in a tray of water. Drop colour with the Ink, Line or Circle tools and hold to let it bloom, then drag the tine tools through it \u2014 forwards, backwards or in a circle \u2014 to comb the drops into the feathered ribbons marbled paper is made of.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/1d68876b62afe36006d7372dd8989e5b20a9a348-1600x1000.jpg",
+      "id": "unknown__marbler",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Weaver",
+      "source_url": "https://www.designminis.com/tools/weaver",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "svg",
+        "minimal",
+        "pattern"
+      ],
+      "description": "Generate textile renders A loom you can see through. Set how many warp and weft threads you want and pick the structure \u2014 plain, twill, satin, basket, or a 2/2 tartan \u2014 then build the colour sequence for each direction and choose how it repeats: straight, mirrored, or turned back on itself at a point.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/ce081e22971d45a13ea1eb8441a68aa712d19575-1600x1000.jpg",
+      "id": "unknown__weaver",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "GeoLogo",
+      "source_url": "https://www.designminis.com/tools/geologo",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "svg",
+        "minimal",
+        "logo-generator"
+      ],
+      "description": "An experimental interactive tool to generate, customize, and export geometric logos.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/eac3a0207210077ee2e11ae9644f8a0e6b7deacd-1600x1000.jpg",
+      "id": "unknown__geologo",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Springs Studio",
+      "source_url": "https://www.designminis.com/tools/springs-studio",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "motion",
+        "minimal",
+        "css-generator"
+      ],
+      "description": "Generate easings and semantic tokens, then hand off to your agent.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/33e20f6dab2f38c5e185307d0c3372a7eb81f628-1600x1000.jpg",
+      "id": "unknown__springs-studio",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "bookofshapes",
+      "source_url": "https://www.designminis.com/tools/bookofshapes",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "svg",
+        "blob",
+        "pattern"
+      ],
+      "description": "Generate generative Shapes/Patterns and Poster-Designs",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/6ec338d8f896133a3d3f89b8692fd5b3d106f395-1600x1000.jpg",
+      "id": "unknown__bookofshapes",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Shape Divider App",
+      "source_url": "https://www.designminis.com/tools/shape-divider-app",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "svg",
+        "minimal",
+        "divider"
+      ],
+      "description": "Pick an SVG section divider and copy the CSS to place it.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/0aa52c43565e1bd0f79277469b4f4717d6499076-1600x1000.jpg",
+      "id": "unknown__shape-divider-app",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Sinwaver",
+      "source_url": "https://www.designminis.com/tools/sinwaver",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "svg",
+        "wave",
+        "divider"
+      ],
+      "description": "Set the amplitude and frequency, export the sine wave as SVG.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/552df39bc754a44ff48cdfbccf3c001ec20cf832-1600x1000.jpg",
+      "id": "unknown__sinwaver",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Tabbied",
+      "source_url": "https://www.designminis.com/tools/tabbied",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "svg",
+        "minimal",
+        "pattern"
+      ],
+      "description": "Generate a print-ready pattern from 295 designs and a palette.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/6d90af018bded6694510e365ea200e567c5d3f6b-1600x1000.jpg",
+      "id": "unknown__tabbied",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Typescale AI",
+      "source_url": "https://www.designminis.com/tools/typescale-ai",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "css",
+        "minimal",
+        "typography"
+      ],
+      "description": "Build a modular type scale and export it as CSS or tokens.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/515304c37d8daf03a5cb357674e1d0872b513f7c-1600x1000.jpg",
+      "id": "unknown__typescale-ai",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Tokokino",
+      "source_url": "https://www.designminis.com/tools/tokokino",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "javascript",
+        "minimal",
+        "mockup"
+      ],
+      "description": "Design stunning screenshots, mockups, and product demos in your browser",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/f70fe7aa8d73e6d493f811970ffd749ebc5ded63-1600x1000.jpg",
+      "id": "unknown__tokokino",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Colir",
+      "source_url": "https://www.designminis.com/tools/colir",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "css",
+        "gradient",
+        "gradient-generator"
+      ],
+      "description": "Create gradients that don't look like defaults",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/0daacc271edf00c3b08a71ca9b1b6cf44072bc90-1600x1000.jpg",
+      "id": "unknown__colir",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Cutting Mat Generator",
+      "source_url": "https://www.designminis.com/tools/cutting-mat-generator",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "svg",
+        "minimal",
+        "svg-generator"
+      ],
+      "description": "Build a customisable cutting mat and download it as SVG.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/6b7c62c13be448640ca7777e59ec6ac3b9cfeabf-1600x1000.jpg",
+      "id": "unknown__cutting-mat-generator",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Space Type Generator",
+      "source_url": "https://www.designminis.com/tools/space-type-generator",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "three.js",
+        "chrome",
+        "3d"
+      ],
+      "description": "Bend type into kinetic 3D forms \u2014 cylinders, coils, ribbons and more.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/be03cbf1c0584f422b141d1af8b31d830d55ec7c-1600x1000.jpg",
+      "id": "unknown__space-type-generator",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Ditther",
+      "source_url": "https://www.designminis.com/tools/ditther",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "javascript",
+        "pixel",
+        "pixel-art"
+      ],
+      "description": "Ditther is a browser-based pixel art generator and creative image & video effects tool.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/0de8035a0cb167d56bb2d9c1445e14fdcac02fdb-1600x1000.jpg",
+      "id": "unknown__ditther",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Ramps Studio",
+      "source_url": "https://www.designminis.com/tools/ramps-studio",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "javascript",
+        "minimal",
+        "color-tool"
+      ],
+      "description": "Generate agent-ready color ramps and semantic tokens.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/1e820617de816985ff1abcf4f8aa270eb88f9768-1600x1000.jpg",
+      "id": "unknown__ramps-studio",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "HeroKit",
+      "source_url": "https://www.designminis.com/tools/herokit",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "javascript",
+        "gradient",
+        "hero"
+      ],
+      "description": "Build an animated hero visual and embed it in your site.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/8d87186abe78cc3bdb07c286692100f95c45030f-1600x1000.jpg",
+      "id": "unknown__herokit",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Pixlo",
+      "source_url": "https://www.designminis.com/tools/pixlo",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "javascript",
+        "minimal",
+        "video-player"
+      ],
+      "description": "Turn a set of still images into a short video.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/e52187edcb2a1f392fc00a03dcc36bcec22e5bc3-1600x1000.jpg",
+      "id": "unknown__pixlo",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "TextLab",
+      "source_url": "https://www.designminis.com/tools/textlab",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "javascript",
+        "minimal",
+        "mockup"
+      ],
+      "description": "Create realistic chat, note and social media mockups in seconds.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/67a62a40bf5aa62f89bffba87fd30d7302b28261-1600x1000.jpg",
+      "id": "unknown__textlab",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "ASCIInator",
+      "source_url": "https://www.designminis.com/tools/asciinator",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "javascript",
+        "monochrome",
+        "ascii-art"
+      ],
+      "description": "Turn images and GIFs into ASCII art, exported as PNG, SVG or text.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/59153c577bcfe7c191c4e169c60d54b218a4c336-1600x1000.jpg",
+      "id": "unknown__asciinator",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Glass3D",
+      "source_url": "https://www.designminis.com/tools/glass3d",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "css",
+        "liquid-glass",
+        "css-generator"
+      ],
+      "description": "Generate 3D glassmorphism effects and copy out the CSS.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/afdc9de75299826db58df100f691bb1a3c5377d5-1600x1000.jpg",
+      "id": "unknown__glass3d",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Coolors",
+      "source_url": "https://www.designminis.com/tools/coolors",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "javascript",
+        "minimal",
+        "color-palette"
+      ],
+      "description": "Generate, lock and refine palettes with the spacebar.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/fa4638012f9799a187fc4dc45c04b512c315659b-1600x1000.jpg",
+      "id": "unknown__coolors",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Huemint",
+      "source_url": "https://www.designminis.com/tools/huemint",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "javascript",
+        "minimal",
+        "color-palette"
+      ],
+      "description": "Machine-learning palettes generated against real layout mockups.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/5a6e5dbfc714c7bb93147f5ecd6f115a183bfa4b-1600x1000.jpg",
+      "id": "unknown__huemint",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Color Hunt",
+      "source_url": "https://www.designminis.com/tools/color-hunt",
+      "registry_url": "https://www.designminis.com",
+      "category": "gallery",
+      "tags": [
+        "javascript",
+        "minimal",
+        "color-palette"
+      ],
+      "description": "A curated feed of four-colour palettes, sorted by what people actually use.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/35cb3d48a371b39bc994dc98c88d02f7606d14c8-1600x1000.jpg",
+      "id": "unknown__color-hunt",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Type Scale",
+      "source_url": "https://www.designminis.com/tools/type-scale",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "css",
+        "minimal",
+        "typography"
+      ],
+      "description": "Build a modular type ramp and copy it straight out as CSS.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/dbc4dc132eeda502b70f521451fb1d4a934e6df5-1600x1000.jpg",
+      "id": "unknown__type-scale",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Fontjoy",
+      "source_url": "https://www.designminis.com/tools/fontjoy",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "javascript",
+        "minimal",
+        "font-pairing"
+      ],
+      "description": "Pairs display, body and caption fonts with an adjustable contrast slider.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/2c44827567b469547c8fdd86a96a1668281aed05-1600x1000.jpg",
+      "id": "unknown__fontjoy",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Get Waves",
+      "source_url": "https://www.designminis.com/tools/get-waves",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "svg",
+        "wave",
+        "divider"
+      ],
+      "description": "Randomised SVG wave dividers with adjustable amplitude and complexity.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/eb66beb8b3dadb59e4eb4d68f378e795c8566e53-1600x1000.jpg",
+      "id": "unknown__get-waves",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Blobmaker",
+      "source_url": "https://www.designminis.com/tools/blobmaker",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "svg",
+        "blob",
+        "svg-generator"
+      ],
+      "description": "Organic blob shapes as SVG, with growth and edge-count controls.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/b9655382112baed08158baa5ea57c18c92bd35c4-1600x1000.jpg",
+      "id": "unknown__blobmaker",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Neumorphism.io",
+      "source_url": "https://www.designminis.com/tools/neumorphism",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "plain-css",
+        "neumorphism",
+        "css-generator"
+      ],
+      "description": "Soft-shadow generator with live distance, blur and intensity controls.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/cb5a316646fee3148288f9836d838cb61203149d-1600x1000.jpg",
+      "id": "unknown__neumorphism.io",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Animista",
+      "source_url": "https://www.designminis.com/tools/animista",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "css",
+        "minimal",
+        "animation"
+      ],
+      "description": "Browse ready-made CSS animations, tune the timing, export only what you use.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/2a8c4e45de8f415782e090fc33aabce8fc1e6525-1600x1000.jpg",
+      "id": "unknown__animista",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "ray.so",
+      "source_url": "https://www.designminis.com/tools/ray-so",
+      "registry_url": "https://www.designminis.com",
+      "category": "generator",
+      "tags": [
+        "javascript",
+        "minimal",
+        "terminal"
+      ],
+      "description": "Turn a code snippet into a presentable image for slides and posts.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/6c71565f5cf6cc6bbbb8ec45104c371e6e14365b-1600x1000.jpg",
+      "id": "unknown__ray.so",
+      "source_domain": "www.designminis.com"
     }
   ]
 }
