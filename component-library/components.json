@@ -1,6 +1,6 @@
 {
-  "version": "1.0.42",
-  "source_count": 1985,
+  "version": "1.0.43",
+  "source_count": 2072,
   "components": [
     {
       "id": "cat-0",
@@ -33220,6 +33220,1405 @@
       "preview_image": "https://cdn.navbar.gallery/yummygum/desktop.avif",
       "id": "unknown__yummygum",
       "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "gap",
+      "source_url": "https://css-tricks.com/almanac/properties/g/gap/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "grid"
+      ],
+      "description": "Shorthand for row-gap and column-gap that sets the size of the gutters between rows and columns in CSS Grid, Flexbox, and multi-column layouts.",
+      "preview_image": "https://i0.wp.com/css-tricks.com/wp-content/uploads/2020/08/DKNteyUQ.png?resize=1208%2C975&ssl=1",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__gap"
+    },
+    {
+      "name": "grid-area",
+      "source_url": "https://css-tricks.com/almanac/properties/g/grid-area/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "grid",
+      "tags": [
+        "css",
+        "plain-css",
+        "flat",
+        "grid"
+      ],
+      "description": "Shorthand that places and sizes a grid item by setting grid-row-start, grid-column-start, grid-row-end and grid-column-end in one declaration, overriding the grid's auto-placement.",
+      "preview_image": "https://i0.wp.com/css-tricks.com/wp-content/uploads/2022/11/s_0B83BF779C1CA9B58C858392173E8BAC778E167C668777E237094736651B9032_1665928692412_first-example.jpg?resize=799%2C446&ssl=1",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__grid-area"
+    },
+    {
+      "name": "grid-column",
+      "source_url": "https://css-tricks.com/almanac/properties/g/grid-column/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "grid",
+      "tags": [
+        "css",
+        "plain-css",
+        "flat",
+        "grid"
+      ],
+      "description": "Shorthand that sets the column grid lines where a grid item starts and ends, letting an item span multiple columns instead of auto-placing into one.",
+      "preview_image": "https://i0.wp.com/css-tricks.com/wp-content/uploads/2022/10/s_5E600D44A3602E06FB6B7B59AD446BE1961B4B0D409EEEA69A28E839C5C65BD4_1662830734930_first-example.jpg?resize=805%2C288&ssl=1",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__grid-column"
+    },
+    {
+      "name": "grid-row",
+      "source_url": "https://css-tricks.com/almanac/properties/g/grid-row/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "grid",
+      "tags": [
+        "css",
+        "plain-css",
+        "flat",
+        "grid"
+      ],
+      "description": "Shorthand that specifies the row grid lines where a grid item starts and ends, used together with grid-row-start and grid-row-end.",
+      "preview_image": "https://i0.wp.com/css-tricks.com/wp-content/uploads/2022/10/s_4530D59E6D8D175D8E884F20E670093F1161A40D0DD939A565C36C81F0A4B651_1665075356323_first-example.jpg?resize=803%2C395&ssl=1",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__grid-row"
+    },
+    {
+      "name": "hanging-punctuation",
+      "source_url": "https://css-tricks.com/almanac/properties/h/hanging-punctuation/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "typography"
+      ],
+      "description": "Pushes punctuation such as opening quotes or bullets outside the text box so the first real letter aligns with the rest of the document, preserving reading flow.",
+      "preview_image": "https://i0.wp.com/css-tricks.com/wp-content/uploads/2013/03/paragraph-with-hanging-punctuation%402x.png",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__hanging-punctuation"
+    },
+    {
+      "name": "hyphenate-character",
+      "source_url": "https://css-tricks.com/almanac/properties/h/hyphenate-character/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "text"
+      ],
+      "description": "Sets the character appended at the end of a line that wraps to the next one, letting you swap the default hyphen for a custom string.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__hyphenate-character"
+    },
+    {
+      "name": "hyphenate-limit-chars",
+      "source_url": "https://css-tricks.com/almanac/properties/h/hyphenate-limit-chars/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "text"
+      ],
+      "description": "Controls how many characters a word must have before hyphenation kicks in and the minimum characters allowed before and after the hyphen, avoiding awkward breaks.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__hyphenate-limit-chars"
+    },
+    {
+      "name": "hyphens",
+      "source_url": "https://css-tricks.com/almanac/properties/h/hyphenate/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "text"
+      ],
+      "description": "Controls hyphenation of text in block-level elements with none, manual and auto values; behavior is language-sensitive and depends on the lang attribute.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__hyphens"
+    },
+    {
+      "name": "image-rendering",
+      "source_url": "https://css-tricks.com/almanac/properties/i/image-rendering/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "effect",
+      "tags": [
+        "css",
+        "plain-css",
+        "pixel",
+        "image-effect"
+      ],
+      "description": "Defines how a scaled image is rendered, with crisp-edges and pixelated values that skip the browser's smoothing so pixel art, icons and diagrams stay sharp.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__image-rendering"
+    },
+    {
+      "name": "inline-size",
+      "source_url": "https://css-tricks.com/almanac/properties/i/inline-size/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "grid"
+      ],
+      "description": "Logical property that sets width when writing-mode is horizontal and height when it is vertical, so layouts survive a 90 degree flow change.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__inline-size"
+    },
+    {
+      "name": "inset",
+      "source_url": "https://css-tricks.com/almanac/properties/i/inset/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "flat",
+        "card"
+      ],
+      "description": "Shorthand for the four inset offsets \u2014 top, right, bottom and left \u2014 with padding-style clockwise value syntax; only affects elements with a non-static position.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__inset"
+    },
+    {
+      "name": "justify-content",
+      "source_url": "https://css-tricks.com/almanac/properties/j/justify-content/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "grid"
+      ],
+      "description": "Flexbox sub-property that aligns items along the main axis and distributes leftover free space, accepting flex-start, center, space-between, space-around and space-evenly.",
+      "preview_image": "http://www.w3.org/TR/css3-flexbox/images/flex-pack.svg",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__justify-content"
+    },
+    {
+      "name": "justify-items",
+      "source_url": "https://css-tricks.com/almanac/properties/j/justify-items/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "grid",
+      "tags": [
+        "css",
+        "plain-css",
+        "flat",
+        "grid"
+      ],
+      "description": "Box Alignment property that aligns grid items inside their grid area along the row (inline) axis and sets the default justify-self value for all children.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__justify-items"
+    },
+    {
+      "name": "justify-self",
+      "source_url": "https://css-tricks.com/almanac/properties/j/justify-self/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "grid",
+      "tags": [
+        "css",
+        "plain-css",
+        "flat",
+        "grid"
+      ],
+      "description": "Aligns a single grid item along the inline axis, overriding the container's justify-items value for that one element.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__justify-self"
+    },
+    {
+      "name": "letter-spacing",
+      "source_url": "https://css-tricks.com/almanac/properties/l/letter-spacing/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "typography"
+      ],
+      "description": "Controls the space between each letter; the value is added to the font's default spacing rather than replacing it, and negative values tighten type.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__letter-spacing"
+    },
+    {
+      "name": "line-break",
+      "source_url": "https://css-tricks.com/almanac/properties/l/line-break/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "text"
+      ],
+      "description": "Sets how strictly line-wrapping rules are enforced, particularly for symbols and punctuation in Chinese, Japanese and Korean writing systems.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__line-break"
+    },
+    {
+      "name": "line-height",
+      "source_url": "https://css-tricks.com/almanac/properties/l/line-height/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "text"
+      ],
+      "description": "Sets the leading above and below inline elements; it accepts normal, lengths, percentages and unitless numbers, with normal computing to a font-appropriate value.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__line-height"
+    },
+    {
+      "name": "list-style",
+      "source_url": "https://css-tricks.com/almanac/properties/l/list-style/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "flat",
+        "menu"
+      ],
+      "description": "Shorthand combining list-style-type, list-style-position and list-style-image, where omitted values revert to their initial state.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__list-style"
+    },
+    {
+      "name": "margin",
+      "source_url": "https://css-tricks.com/almanac/properties/m/margin/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "grid"
+      ],
+      "description": "Defines the outermost portion of the box model, creating space around an element outside any border; accepts lengths, percentages, negative values and auto.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__margin"
+    },
+    {
+      "name": "margin-trim",
+      "source_url": "https://css-tricks.com/almanac/properties/m/margin-trim/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "grid"
+      ],
+      "description": "Removes the stray margin a container inherits when its last child bumps right up against the container edge, e.g. margin-trim: block-end on a list.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__margin-trim"
+    },
+    {
+      "name": "mask",
+      "source_url": "https://css-tricks.com/almanac/properties/m/mask/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "effect",
+      "tags": [
+        "css",
+        "plain-css",
+        "morph",
+        "mask"
+      ],
+      "description": "Shorthand for all mask-* properties that hides part of the element it is applied to, accepting one or more comma-separated mask layers each with its own reference, position, size, repeat and mode.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__mask"
+    },
+    {
+      "name": "mask-border",
+      "source_url": "https://css-tricks.com/almanac/properties/m/mask-border/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "effect",
+      "tags": [
+        "css",
+        "plain-css",
+        "outline",
+        "border"
+      ],
+      "description": "Applies a border image to an element's masked border area, shorthand for mask-border-source, slice, width, outset, repeat and mode.",
+      "preview_image": "https://paper-attachments.dropbox.com/s_A4675D262DA10437B039C41DDD674601F72A8FFCAB2801EE4264E0D51AB8C554_1634480785629_image-border-sample-dark.png",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__mask-border"
+    },
+    {
+      "name": "mask-image",
+      "source_url": "https://css-tricks.com/almanac/properties/m/mask/mask-image/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "effect",
+      "tags": [
+        "css",
+        "plain-css",
+        "morph",
+        "mask"
+      ],
+      "description": "Sets the image used as a mask, hiding parts of the element it is applied to \u2014 pair it with mask-size, mask-repeat and mask-position to control the mask itself.",
+      "preview_image": "https://i0.wp.com/css-tricks.com/wp-content/uploads/2020/03/image-and-mask.png?fit=1024%2C878&ssl=1",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__mask-image"
+    },
+    {
+      "name": "mask-composite",
+      "source_url": "https://css-tricks.com/almanac/properties/m/mask/mask-composite/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "effect",
+      "tags": [
+        "css",
+        "plain-css",
+        "morph",
+        "mask"
+      ],
+      "description": "Combines multiple mask layer images into one final mask using add, subtract, intersect or exclude operators, like compositing layers in Photoshop or Figma.",
+      "preview_image": "https://css-tricks.com/wp-content/uploads/2021/05/mask-composite-subtract.svg",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__mask-composite"
+    },
+    {
+      "name": "max-width",
+      "source_url": "https://css-tricks.com/almanac/properties/m/max-width/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "grid"
+      ],
+      "description": "Caps the width of an element, overriding width while min-width always wins; the classic use is constraining a full-width wrapper to a readable measure.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__max-width"
+    },
+    {
+      "name": "max-height",
+      "source_url": "https://css-tricks.com/almanac/properties/m/max-height/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "card"
+      ],
+      "description": "Sets the maximum height of an element, overriding height but always yielding to min-height; percentages resolve against the containing block's height.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__max-height"
+    },
+    {
+      "name": "min-width",
+      "source_url": "https://css-tricks.com/almanac/properties/m/min-width/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "grid"
+      ],
+      "description": "Sets a floor for an element's width, overriding width whether declared before or after it; best paired with a percentage width rather than an absolute one.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__min-width"
+    },
+    {
+      "name": "min-height",
+      "source_url": "https://css-tricks.com/almanac/properties/m/min-height/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "card"
+      ],
+      "description": "Sets the minimum height of an element, always overriding both height and max-height, useful for equal-height cards and click targets.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__min-height"
+    },
+    {
+      "name": "object-position",
+      "source_url": "https://css-tricks.com/almanac/properties/o/object-position/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "flat",
+        "image-effect"
+      ],
+      "description": "Aligns a replaced element such as an img, iframe, video or embed inside the box that contains it, using keywords or length/percentage pairs.",
+      "preview_image": "https://i0.wp.com/css-tricks.com/wp-content/uploads/2021/03/object-fit-element-container.jpg?resize=1040%2C600&ssl=1",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__object-position"
+    },
+    {
+      "name": "offset-anchor",
+      "source_url": "https://css-tricks.com/almanac/properties/o/offset-anchor/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "animation",
+      "tags": [
+        "css",
+        "motion",
+        "svg",
+        "fluid",
+        "animation"
+      ],
+      "description": "Defines the point inside the element's box that travels along an offset-path, so a box follows an SVG squiggle via offset-distance rather than raw offsets.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__offset-anchor"
+    },
+    {
+      "name": "offset-distance",
+      "source_url": "https://css-tricks.com/almanac/properties/o/offset-distance/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "animation",
+      "tags": [
+        "css",
+        "motion",
+        "svg",
+        "fluid",
+        "animation"
+      ],
+      "description": "Sets how far along an offset-path an element sits and is the animatable property for motion paths \u2014 animate it from 0% to 100% to trace the path.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__offset-distance"
+    },
+    {
+      "name": "offset-rotate",
+      "source_url": "https://css-tricks.com/almanac/properties/o/offset-rotate/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "animation",
+      "tags": [
+        "css",
+        "motion",
+        "svg",
+        "fluid",
+        "animation"
+      ],
+      "description": "Controls an element's angle based on its offset-distance along an offset-path; the default auto value keeps a moving object like a race car facing its direction of travel.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__offset-rotate"
+    },
+    {
+      "name": "order",
+      "source_url": "https://css-tricks.com/almanac/properties/o/order/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "flat",
+        "grid"
+      ],
+      "description": "Flexbox sub-property that changes the visual order of flex items, which otherwise render in the same order they appear in the source document.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__order"
+    },
+    {
+      "name": "orphans",
+      "source_url": "https://css-tricks.com/almanac/properties/o/orphans/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "text"
+      ],
+      "description": "Sets the minimum number of paragraph lines left behind on the old page when a paragraph splits; pairs with widows and affects paged media and columns.",
+      "preview_image": "https://i0.wp.com/css-tricks.com/wp-content/uploads/2011/09/orphans.png",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__orphans"
+    },
+    {
+      "name": "overflow",
+      "source_url": "https://css-tricks.com/almanac/properties/o/overflow/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "card"
+      ],
+      "description": "Controls what happens to content that breaks outside its bounds, with visible, hidden, scroll and auto deciding whether it spills, is cut off or gets a scrollbar.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__overflow"
+    },
+    {
+      "name": "overflow-clip-margin",
+      "source_url": "https://css-tricks.com/almanac/properties/o/overflow-clip-margin/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "morph",
+        "clip"
+      ],
+      "description": "Sets how far overflowing content may extend past an element's box before overflow: clip cuts it, choosing a visual box and a length to widen that clip edge.",
+      "preview_image": "https://i0.wp.com/css-tricks.com/wp-content/uploads/2021/12/overflow-clip-margin.jpg?resize=1705%2C773&ssl=1",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__overflow-clip-margin"
+    },
+    {
+      "name": "overlay",
+      "source_url": "https://css-tricks.com/almanac/properties/o/overlay/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "animation",
+      "tags": [
+        "css",
+        "motion",
+        "glass",
+        "modal"
+      ],
+      "description": "Reports whether an element is rendered in the top layer (dialogs, popovers); it can't be set manually, but transition-behavior: allow-discrete lets you animate the value.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__overlay"
+    },
+    {
+      "name": "padding",
+      "source_url": "https://css-tricks.com/almanac/properties/p/padding/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "card"
+      ],
+      "description": "Defines the innermost portion of the box model, creating space between an element's content and its margins or borders; takes lengths and percentages, never negatives.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__padding"
+    },
+    {
+      "name": "page-break",
+      "source_url": "https://css-tricks.com/almanac/properties/p/page-break/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "flat",
+        "article"
+      ],
+      "description": "Legacy trio of page-break-before, page-break-after and page-break-inside that shapes how a document paginates when printed, being superseded by the generic break-* properties.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__page-break"
+    },
+    {
+      "name": "place-content",
+      "source_url": "https://css-tricks.com/almanac/properties/p/place-content/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "flat",
+        "grid"
+      ],
+      "description": "Shorthand for align-content and justify-content in Grid and Flexbox containers; a single value sets both, two values set block then inline alignment.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__place-content"
+    },
+    {
+      "name": "place-self",
+      "source_url": "https://css-tricks.com/almanac/properties/p/place-self/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "grid",
+      "tags": [
+        "css",
+        "plain-css",
+        "flat",
+        "grid"
+      ],
+      "description": "Self-alignment shorthand combining align-self and justify-self so an individual grid or flex item can align itself apart from its parent and siblings.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__place-self"
+    },
+    {
+      "name": "position",
+      "source_url": "https://css-tricks.com/almanac/properties/p/position/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "card"
+      ],
+      "description": "Manipulates where an element sits in the flow \u2014 static, relative, absolute, fixed or sticky \u2014 so offsets like top and left can be applied.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__position"
+    },
+    {
+      "name": "position-area",
+      "source_url": "https://css-tricks.com/almanac/properties/p/position-area/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "flat",
+        "tooltip"
+      ],
+      "description": "Creates an imaginary 3x3 grid around an anchor element and places an anchor-positioned target in one region or spanning several \u2014 the easy path to CSS tooltips and popovers.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__position-area"
+    },
+    {
+      "name": "quotes",
+      "source_url": "https://css-tricks.com/almanac/properties/q/quotes/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "text"
+      ],
+      "description": "Specifies the quote glyphs inserted by content: open-quote and close-quote, with the first pair used at the top level and later pairs for nested quotations.",
+      "preview_image": "https://i0.wp.com/css-tricks.com/wp-content/uploads/2011/09/quotes.png",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__quotes"
+    },
+    {
+      "name": "right",
+      "source_url": "https://css-tricks.com/almanac/properties/r/right/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "card"
+      ],
+      "description": "One of the top/bottom/left/right offset properties used with position to place an element; only affects positioned elements and moves away from the side on positive values.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__right"
+    },
+    {
+      "name": "scroll-timeline-axis",
+      "source_url": "https://css-tricks.com/almanac/properties/s/scroll-timeline-axis/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "animation",
+      "tags": [
+        "css",
+        "motion",
+        "fluid",
+        "scroll-effect"
+      ],
+      "description": "Chooses whether a scroll timeline is driven by horizontal or vertical scrolling, telling the browser which axis motion should trigger the animation.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__scroll-timeline-axis"
+    },
+    {
+      "name": "scroll-timeline-name",
+      "source_url": "https://css-tricks.com/almanac/properties/s/scroll-timeline-name/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "animation",
+      "tags": [
+        "css",
+        "motion",
+        "fluid",
+        "scroll-effect"
+      ],
+      "description": "Names a scroll timeline so animation-timeline can bind to it, letting keyframe animations progress purely as an element is scrolled \u2014 no JS scroll listeners.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__scroll-timeline-name"
+    },
+    {
+      "name": "scrollbar",
+      "source_url": "https://css-tricks.com/almanac/properties/s/scrollbar/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "scrollbar"
+      ],
+      "description": "Overview of scrollbar styling across eras: the dead IE -ms- properties, the seven ::-webkit-scrollbar pseudo-elements still used in Safari and Chrome, and the standardized scrollbar-color and scrollbar-width.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__scrollbar"
+    },
+    {
+      "name": "scrollbar-gutter",
+      "source_url": "https://css-tricks.com/almanac/properties/s/scrollbar-gutter/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "scrollbar"
+      ],
+      "description": "Reserves space for the scrollbar so content does not reflow when one appears, giving a consistent layout whether the browser uses classic or overlay scrollbars.",
+      "preview_image": "https://i0.wp.com/css-tricks.com/wp-content/uploads/2018/11/scrollbar-gutter-01.jpg?ssl=1",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__scrollbar-gutter"
+    },
+    {
+      "name": "shape-image-threshold",
+      "source_url": "https://css-tricks.com/almanac/properties/s/shape-image-threshold/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "effect",
+      "tags": [
+        "css",
+        "css-filter",
+        "gradient",
+        "clip"
+      ],
+      "description": "Decides which pixels count as part of the shape when shape-outside uses an image, so a gradient's transparent half stops contributing to the float area.",
+      "preview_image": "https://i0.wp.com/css-tricks.com/wp-content/uploads/2020/08/gradient-to-transparent.png?resize=318%2C318&ssl=1",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__shape-image-threshold"
+    },
+    {
+      "name": "shape-margin",
+      "source_url": "https://css-tricks.com/almanac/properties/s/shape-margin/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "fluid",
+        "clip"
+      ],
+      "description": "Adds margin around a shape created with shape-outside, spacing text flowing past it away from the floated shape's edge.",
+      "preview_image": "https://css-tricks.com/wp-content/uploads/2020/08/shape-margin-illustration.svg",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__shape-margin"
+    },
+    {
+      "name": "stroke",
+      "source_url": "https://css-tricks.com/almanac/properties/s/stroke/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "effect",
+      "tags": [
+        "css",
+        "svg",
+        "outline",
+        "border"
+      ],
+      "description": "Adds a border to SVG shapes, accepting any CSS color or even a pattern referenced from a defs element; it overrides presentation attributes but not inline styles.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__stroke"
+    },
+    {
+      "name": "stroke-linejoin",
+      "source_url": "https://css-tricks.com/almanac/properties/s/stroke-linejoin/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "effect",
+      "tags": [
+        "css",
+        "svg",
+        "hard",
+        "border"
+      ],
+      "description": "Defines how two SVG path lines meet at a corner, sharpening or softening joints with values like miter, round and bevel alongside stroke-miterlimit.",
+      "preview_image": "https://i0.wp.com/css-tricks.com/wp-content/uploads/2019/05/miter-stroke-linejoin.png?ssl=1",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__stroke-linejoin"
+    },
+    {
+      "name": "stroke-width",
+      "source_url": "https://css-tricks.com/almanac/properties/s/stroke-width/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "effect",
+      "tags": [
+        "css",
+        "svg",
+        "outline",
+        "border"
+      ],
+      "description": "Sets the thickness of a stroke on SVG shapes; unitless numbers resolve against the viewBox coordinate system, so 5 renders as 5% in a 0 0 100 100 viewBox.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__stroke-width"
+    },
+    {
+      "name": "tab-size",
+      "source_url": "https://css-tricks.com/almanac/properties/t/tab-size/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "pixel",
+        "code-editor"
+      ],
+      "description": "Sets how much space a tab character occupies in preformatted text, taking a number of spaces or a width, and defaulting to 8.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__tab-size"
+    },
+    {
+      "name": "table-layout",
+      "source_url": "https://css-tricks.com/almanac/properties/t/table-layout/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "flat",
+        "grid"
+      ],
+      "description": "Chooses the algorithm a browser uses to lay out table rows, cells and columns; fixed ignores content and relies on declared widths for much faster rendering.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__table-layout"
+    },
+    {
+      "name": "text-align",
+      "source_url": "https://css-tricks.com/almanac/properties/t/text-align/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "text"
+      ],
+      "description": "Aligns the inline content inside a block element with left, right, center, justify or the direction-aware start and end values.",
+      "preview_image": "https://i0.wp.com/css-tricks.com/wp-content/uploads/2011/09/Image-upload-on-2013-03-11-at-13-09-35.png",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__text-align"
+    },
+    {
+      "name": "text-align-last",
+      "source_url": "https://css-tricks.com/almanac/properties/t/text-align-last/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "text"
+      ],
+      "description": "Controls the alignment of the last, or only, line of a paragraph right before a forced line break, independently of the preceding lines.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__text-align-last"
+    },
+    {
+      "name": "text-box",
+      "source_url": "https://css-tricks.com/almanac/properties/t/text-box/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "text"
+      ],
+      "description": "Experimental shorthand for text-box-trim and text-box-edge, choosing in one declaration where and how much whitespace is trimmed from a line of text.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__text-box"
+    },
+    {
+      "name": "text-box-edge",
+      "source_url": "https://css-tricks.com/almanac/properties/t/text-box-edge/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "typography"
+      ],
+      "description": "Picks the text edge \u2014 such as cap or alphabetic \u2014 used with text-box-trim to remove the leftover whitespace above and below text.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__text-box-edge"
+    },
+    {
+      "name": "text-combine-upright",
+      "source_url": "https://css-tricks.com/almanac/properties/t/text-combine-upright/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "typography"
+      ],
+      "description": "Combines several characters into the space of one in a vertical writing mode, the Japanese tate-ch\u016b-yoko effect used for short numeric runs.",
+      "preview_image": "https://i0.wp.com/css-tricks.com/wp-content/uploads/2020/11/text-combine-upright-ex.png?resize=889%2C597&ssl=1",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__text-combine-upright"
+    },
+    {
+      "name": "text-decoration",
+      "source_url": "https://css-tricks.com/almanac/properties/t/text-decoration/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "text"
+      ],
+      "description": "Shorthand for the decorative lines on text \u2014 combining line, color, style and thickness to produce underlines, overlines and strikethroughs.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__text-decoration"
+    },
+    {
+      "name": "text-decoration-skip",
+      "source_url": "https://css-tricks.com/almanac/properties/t/text-decoration-skip/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "text"
+      ],
+      "description": "Specifies where an underline, overline or strike-through should break to improve legibility; deprecated in favor of the newer text-decoration-skip-* properties.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__text-decoration-skip"
+    },
+    {
+      "name": "text-emphasis",
+      "source_url": "https://css-tricks.com/almanac/properties/t/text-emphasis/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "text"
+      ],
+      "description": "Emphasizes text by drawing special marks beside it rather than bolding or italicizing, shorthand for text-emphasis-style and text-emphasis-color and common in East Asian typesetting.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__text-emphasis"
+    },
+    {
+      "name": "text-indent",
+      "source_url": "https://css-tricks.com/almanac/properties/t/text-indent/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "article"
+      ],
+      "description": "Pushes the first line of text inward by a set amount, measured from the block container's starting edge, with hanging and each-line modifiers.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__text-indent"
+    },
+    {
+      "name": "text-justify",
+      "source_url": "https://css-tricks.com/almanac/properties/t/text-justify/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "text"
+      ],
+      "description": "Sets how justified text is stretched \u2014 inter-word, inter-character, auto or none \u2014 and only applies when text-align is justify.",
+      "preview_image": "https://i0.wp.com/css-tricks.com/wp-content/uploads/2017/08/justify-text-figure-1.png?ssl=1",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__text-justify"
+    },
+    {
+      "name": "text-orientation",
+      "source_url": "https://css-tricks.com/almanac/properties/t/text-orientation/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "typography"
+      ],
+      "description": "Aligns and rotates whole lines of text under a vertical writing-mode, with mixed rotating horizontal-script glyphs 90 degrees and upright keeping every character upright.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__text-orientation"
+    },
+    {
+      "name": "text-rendering",
+      "source_url": "https://css-tricks.com/almanac/properties/t/text-rendering/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "typography"
+      ],
+      "description": "Tells the rendering engine whether to optimize text for speed, legibility or geometric precision; despite being an SVG property it is commonly applied to HTML.",
+      "preview_image": "https://i0.wp.com/css-tricks.com/wp-content/uploads/2014/03/better-kern.png",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__text-rendering"
+    },
+    {
+      "name": "text-transform",
+      "source_url": "https://css-tricks.com/almanac/properties/t/text-transform/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "text"
+      ],
+      "description": "Controls the rendered case of text with lowercase, uppercase, capitalize or none, transforming the display without touching the underlying source.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__text-transform"
+    },
+    {
+      "name": "text-underline-offset",
+      "source_url": "https://css-tricks.com/almanac/properties/t/text-underline-offset/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "text"
+      ],
+      "description": "Sets how far an underline sits from its text once text-decoration: underline is applied, accepting lengths, percentages or auto and negative values.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__text-underline-offset"
+    },
+    {
+      "name": "text-underline-position",
+      "source_url": "https://css-tricks.com/almanac/properties/t/text-underline-position/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "text"
+      ],
+      "description": "Sets where an underline is drawn relative to the text, with under adding space so it clears descenders and left/right serving vertical writing modes.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__text-underline-position"
+    },
+    {
+      "name": "text-wrap-mode",
+      "source_url": "https://css-tricks.com/almanac/properties/t/text-wrap-mode/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "text"
+      ],
+      "description": "Decides whether text wraps onto new lines or stays on one line and possibly overflows; it is a constituent property of both white-space and text-wrap.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__text-wrap-mode"
+    },
+    {
+      "name": "timeline-scope",
+      "source_url": "https://css-tricks.com/almanac/properties/t/timeline-scope/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "animation",
+      "tags": [
+        "css",
+        "motion",
+        "fluid",
+        "parallax",
+        "scroll-effect"
+      ],
+      "description": "Expands a named view or scroll timeline beyond its own descendants so a sibling element's scroll position can drive an unrelated animation.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__timeline-scope"
+    },
+    {
+      "name": "transition",
+      "source_url": "https://css-tricks.com/almanac/properties/t/transition/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "animation",
+      "tags": [
+        "css",
+        "motion",
+        "fluid",
+        "transition"
+      ],
+      "description": "Shorthand for transition-property, -duration, -timing-function, -delay and -behavior, animating a value change such as a hover background color over a set duration.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__transition"
+    },
+    {
+      "name": "unicode-bidi",
+      "source_url": "https://css-tricks.com/almanac/properties/u/unicode-bidi/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "text"
+      ],
+      "description": "Works with direction to control how browsers render bidirectional text mixing left-to-right and right-to-left scripts, with embed, isolate and bidi-override values.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__unicode-bidi"
+    },
+    {
+      "name": "unicode-range",
+      "source_url": "https://css-tricks.com/almanac/properties/u/unicode-range/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "font"
+      ],
+      "description": "Tells @font-face which characters a font face covers so the browser only downloads it when the page actually contains matching code points.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__unicode-range"
+    },
+    {
+      "name": "vertical-align",
+      "source_url": "https://css-tricks.com/almanac/properties/v/vertical-align/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "grid"
+      ],
+      "description": "Controls how inline and inline-block elements sitting next to each other on a line are lined up, with values from baseline and middle to sub, super and text-top.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__vertical-align"
+    },
+    {
+      "name": "view-timeline-axis",
+      "source_url": "https://css-tricks.com/almanac/properties/v/view-timeline-axis/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "animation",
+      "tags": [
+        "css",
+        "motion",
+        "fluid",
+        "scroll-effect"
+      ],
+      "description": "Sets whether a view timeline tracks horizontal or vertical scrolling, and is declared on the animated element rather than the scroll container itself.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__view-timeline-axis"
+    },
+    {
+      "name": "view-timeline-inset",
+      "source_url": "https://css-tricks.com/almanac/properties/v/view-timeline-inset/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "animation",
+      "tags": [
+        "css",
+        "motion",
+        "fluid",
+        "parallax",
+        "scroll-effect"
+      ],
+      "description": "Shrinks or expands the region where an element counts as in view, so a scroll-driven animation can begin and end at an offset rather than exactly at the scrollport edge.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__view-timeline-inset"
+    },
+    {
+      "name": "view-timeline-name",
+      "source_url": "https://css-tricks.com/almanac/properties/v/view-timeline-name/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "animation",
+      "tags": [
+        "css",
+        "motion",
+        "fluid",
+        "parallax",
+        "scroll-effect"
+      ],
+      "description": "Names the view timeline of an element so animations can be bound to its scroll position as it enters the scrollport of an ancestor scroll container.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__view-timeline-name"
+    },
+    {
+      "name": "visibility",
+      "source_url": "https://css-tricks.com/almanac/properties/v/visibility/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "glass",
+        "menu",
+        "background"
+      ],
+      "description": "Hides an element without changing the layout \u2014 it still occupies space \u2014 and can collapse table rows and columns; unlike opacity it is not inherited, so children can override it.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__visibility"
+    },
+    {
+      "name": "white-space",
+      "source_url": "https://css-tricks.com/almanac/properties/w/whitespace/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "text"
+      ],
+      "description": "Controls how text is handled on an element \u2014 whether it wraps, whether line breaks and runs of spaces are preserved (pre) or collapsed (normal).",
+      "preview_image": "https://i0.wp.com/css-tricks.com/wp-content/uploads/2011/09/normal.png?resize=143%2C82",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__white-space"
+    },
+    {
+      "name": "widows",
+      "source_url": "https://css-tricks.com/almanac/properties/w/widows/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "text"
+      ],
+      "description": "Sets the minimum number of paragraph lines allowed to fall to a new page or column, the counterpart to orphans which governs the old page.",
+      "preview_image": "https://i0.wp.com/css-tricks.com/wp-content/uploads/2011/09/widows.png",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__widows"
+    },
+    {
+      "name": "width",
+      "source_url": "https://css-tricks.com/almanac/properties/w/width/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "grid"
+      ],
+      "description": "Specifies the width of an element's content area, accepting any length value and the min-width and max-width properties that constrain it.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__width"
+    },
+    {
+      "name": "word-break",
+      "source_url": "https://css-tricks.com/almanac/properties/w/word-break/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "text"
+      ],
+      "description": "Changes when line breaks occur, with break-all letting a word split at any character so a one-em-wide box can stack text vertically letter by letter.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__word-break"
+    },
+    {
+      "name": "word-spacing",
+      "source_url": "https://css-tricks.com/almanac/properties/w/word-spacing/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "text"
+      ],
+      "description": "Sets the space between words rather than letters; em units are recommended so the spacing scales with the font size, and it affects inline-block boxes too.",
+      "preview_image": "https://i0.wp.com/css-tricks.com/wp-content/uploads/2011/09/almanac_word-spacing-example.png",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__word-spacing"
+    },
+    {
+      "name": "z-index",
+      "source_url": "https://css-tricks.com/almanac/properties/z/z-index/",
+      "registry_url": "https://css-tricks.com/almanac/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "flat",
+        "modal"
+      ],
+      "description": "Controls the vertical stacking order of overlapping positioned elements, deciding which appears closest to the viewer; nesting creates contexts that cap a child's z-index.",
+      "preview_image": "https://i0.wp.com/css-tricks.com/wp-content/uploads/2011/09/basicz-index.png?resize=425%2C235",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__z-index"
     }
   ]
 }
