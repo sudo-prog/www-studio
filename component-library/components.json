@@ -1,6 +1,6 @@
 {
-  "version": "1.0.40",
-  "source_count": 1825,
+  "version": "1.0.41",
+  "source_count": 1876,
   "components": [
     {
       "id": "cat-0",
@@ -30489,6 +30489,938 @@
       "preview_image": "",
       "id": "unknown__chromatic-resonance",
       "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "accent-color",
+      "source_url": "https://css-tricks.com/almanac/properties/a/accent-color/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "input",
+      "tags": [
+        "css",
+        "html",
+        "plain-css",
+        "flat",
+        "minimal",
+        "form",
+        "toggle"
+      ],
+      "description": "Re-tints the accent color the browser applies to native form controls such as checkboxes, radios and progress bars, so you can match them to a design with a single declaration instead of rebuilding the controls.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__accent-color"
+    },
+    {
+      "name": "anchor-name",
+      "source_url": "https://css-tricks.com/almanac/properties/a/anchor-name/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "tooltip",
+      "tags": [
+        "css",
+        "html",
+        "plain-css",
+        "soft",
+        "tooltip",
+        "dropdown"
+      ],
+      "description": "Registers an element as a named \"anchor\" that other elements can be positioned against, the foundation of CSS Anchor Positioning for tooltips, popovers and dropdowns that track their trigger.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__anchor-name"
+    },
+    {
+      "name": "animation-range",
+      "source_url": "https://css-tricks.com/almanac/properties/a/animation-range/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "scroll-effect",
+      "tags": [
+        "css",
+        "plain-css",
+        "motion",
+        "minimal",
+        "scroll-effect",
+        "animation",
+        "tutorial"
+      ],
+      "description": "Controls when a scroll-driven view-timeline animation starts and stops, letting you pin the animation range to entry, exit or the full cover range of the element in the viewport.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__animation-range"
+    },
+    {
+      "name": "animation-timeline",
+      "source_url": "https://css-tricks.com/almanac/properties/a/animation-timeline/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "animation",
+      "tags": [
+        "css",
+        "plain-css",
+        "motion",
+        "minimal",
+        "animation",
+        "scroll-effect",
+        "tutorial"
+      ],
+      "description": "Links an animation's progress to timelines beyond the document timeline, so animations can be driven by scroll position or by an element entering the viewport instead of elapsed time.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__animation-timeline"
+    },
+    {
+      "name": "aspect-ratio",
+      "source_url": "https://css-tricks.com/almanac/properties/a/aspect-ratio/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "flat",
+        "layout",
+        "image-grid"
+      ],
+      "description": "Maintains proportional box dimensions by calculating height from width as a ratio, so elements keep their shape as they grow or shrink.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__aspect-ratio"
+    },
+    {
+      "name": "backdrop-filter",
+      "source_url": "https://css-tricks.com/almanac/properties/b/backdrop-filter/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "background",
+      "tags": [
+        "css",
+        "plain-css",
+        "glass",
+        "frosted",
+        "background",
+        "filter"
+      ],
+      "description": "Applies filter effects such as blur, grayscale and contrast to an element's backdrop rather than its content, the basis of frosted-glass surfaces layered over imagery.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__backdrop-filter"
+    },
+    {
+      "name": "background-blend-mode",
+      "source_url": "https://css-tricks.com/almanac/properties/b/background-blend-mode/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "background",
+      "tags": [
+        "css",
+        "plain-css",
+        "gradient",
+        "background",
+        "filter",
+        "color-tool"
+      ],
+      "description": "Controls how an element's background image blends with its background color using Photoshop-style blend modes, without affecting the element's own text content.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__background-blend-mode"
+    },
+    {
+      "name": "border-image",
+      "source_url": "https://css-tricks.com/almanac/properties/b/border-image/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "card",
+      "tags": [
+        "css",
+        "plain-css",
+        "gradient",
+        "card",
+        "outline",
+        "clip"
+      ],
+      "description": "Shorthand that lets you use an image or CSS gradient as an element's border by slicing the source into nine regions and assigning corners, edges and center.",
+      "preview_image": "https://i0.wp.com/css-tricks.com/wp-content/uploads/2013/01/doily-border-image-slice.png",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__border-image"
+    },
+    {
+      "name": "caret-shape",
+      "source_url": "https://css-tricks.com/almanac/properties/c/caret-shape/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "input",
+      "tags": [
+        "css",
+        "plain-css",
+        "pixel",
+        "input",
+        "form",
+        "cursor"
+      ],
+      "description": "Changes the shape of the blinking text cursor inside editable elements from the default bar to a block or an underscore, for a command-line style typing effect.",
+      "preview_image": "https://i0.wp.com/css-tricks.com/wp-content/uploads/2021/01/caret-shape-underscore.gif?resize=437%2C51&ssl=1",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__caret-shape"
+    },
+    {
+      "name": "color-scheme",
+      "source_url": "https://css-tricks.com/almanac/properties/c/color-scheme/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "background",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "flat",
+        "color-tool",
+        "toggle"
+      ],
+      "description": "Lets the browser apply its own dark or light default styling to native widgets, so form controls, scrollbars and focus rings follow the user's system color preference.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__color-scheme"
+    },
+    {
+      "name": "container-type",
+      "source_url": "https://css-tricks.com/almanac/properties/c/container-type/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout",
+        "card",
+        "tutorial"
+      ],
+      "description": "Registers an element as a size container for container queries, letting descendants respond to the container's own inline size rather than to viewport media queries.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__container-type"
+    },
+    {
+      "name": "corner-shape",
+      "source_url": "https://css-tricks.com/almanac/properties/c/corner-shape/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "card",
+      "tags": [
+        "css",
+        "plain-css",
+        "soft",
+        "card",
+        "outline",
+        "clip"
+      ],
+      "description": "Defines the geometric shape of an element's corners, used alongside border-radius to produce rounded, squared, beveled, notched or squircle corner styles.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__corner-shape"
+    },
+    {
+      "name": "cursor",
+      "source_url": "https://css-tricks.com/almanac/properties/c/cursor/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "cursor",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "flat",
+        "cursor",
+        "hover-effect"
+      ],
+      "description": "Controls which mouse cursor shape is shown over an element, covering pointer, grab, grabbing, crosshair, zoom and resize cursors used to signal affordance.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__cursor"
+    },
+    {
+      "name": "field-sizing",
+      "source_url": "https://css-tricks.com/almanac/properties/f/field-sizing/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "input",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "flat",
+        "input",
+        "form"
+      ],
+      "description": "Lets inputs, selects and textareas grow automatically to fit their content instead of needing a fixed size, so form controls size themselves to the data.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__field-sizing"
+    },
+    {
+      "name": "filter",
+      "source_url": "https://css-tricks.com/almanac/properties/f/filter/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "filter",
+      "tags": [
+        "css",
+        "plain-css",
+        "css-filter",
+        "flat",
+        "filter",
+        "image-effect",
+        "background"
+      ],
+      "description": "Applies visual effects to an element's rendering before it is displayed, including blur, brightness, contrast, drop-shadow, grayscale, hue-rotate, invert, saturate and sepia.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__filter"
+    },
+    {
+      "name": "font-feature-settings",
+      "source_url": "https://css-tricks.com/almanac/properties/f/font-feature-settings/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "html",
+        "plain-css",
+        "minimal",
+        "typography",
+        "font",
+        "transition"
+      ],
+      "description": "Gives control over advanced OpenType typographic features such as ligatures, small caps and swashes by naming the feature and switching it on or off.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__font-feature-settings"
+    },
+    {
+      "name": "initial-letter",
+      "source_url": "https://css-tricks.com/almanac/properties/i/initial-letter/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "html",
+        "plain-css",
+        "minimal",
+        "typography",
+        "text-effect",
+        "article"
+      ],
+      "description": "Styles the first letter of a block of text and specifies how many lines it should span, automatically computing the font size needed for a proper drop cap with no extra markup.",
+      "preview_image": "https://i0.wp.com/css-tricks.com/wp-content/uploads/2017/01/initial-letter-newyorker.png?ssl=1",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__initial-letter"
+    },
+    {
+      "name": "interpolate-size",
+      "source_url": "https://css-tricks.com/almanac/properties/i/interpolate-size/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "transition",
+      "tags": [
+        "css",
+        "plain-css",
+        "soft",
+        "transition",
+        "hover-effect",
+        "menu"
+      ],
+      "description": "Enables transitioning an element from a fixed length to its intrinsic size such as min-content, so links and labels can expand to their natural width on hover instead of guessing a width.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__interpolate-size"
+    },
+    {
+      "name": "line-clamp",
+      "source_url": "https://css-tricks.com/almanac/properties/l/line-clamp/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "text",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "flat",
+        "text",
+        "card"
+      ],
+      "description": "Truncates text at a specified number of lines and appends an ellipsis, shorthand for max-lines and block-overflow in the current spec draft.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__line-clamp"
+    },
+    {
+      "name": "mix-blend-mode",
+      "source_url": "https://css-tricks.com/almanac/properties/m/mix-blend-mode/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "background",
+      "tags": [
+        "css",
+        "plain-css",
+        "gradient",
+        "background",
+        "filter",
+        "text-effect"
+      ],
+      "description": "Defines how an element's content should blend with its own backdrop, letting text or shapes interact with an image behind them via exclusion, multiply, screen and other blend modes.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__mix-blend-mode"
+    },
+    {
+      "name": "object-fit",
+      "source_url": "https://css-tricks.com/almanac/properties/o/object-fit/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "image-effect",
+      "tags": [
+        "css",
+        "html",
+        "plain-css",
+        "flat",
+        "image-effect",
+        "image-grid"
+      ],
+      "description": "Defines how a replaced element such as an image or video responds to the size of its content box, with fill, contain, cover, none and scale-down controlling cropping and letterboxing.",
+      "preview_image": "https://i0.wp.com/css-tricks.com/wp-content/uploads/2015/02/object-fit.png?ssl=1",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__object-fit"
+    },
+    {
+      "name": "offset-path",
+      "source_url": "https://css-tricks.com/almanac/properties/o/offset-path/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "animation",
+      "tags": [
+        "css",
+        "svg",
+        "plain-css",
+        "motion",
+        "animation",
+        "wave"
+      ],
+      "description": "Defines a movement path for an element to follow during animation, formerly motion-path, paired with offset-distance to animate progress along an SVG path.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__offset-path"
+    },
+    {
+      "name": "overscroll-behavior",
+      "source_url": "https://css-tricks.com/almanac/properties/o/overscroll-behavior/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "scroll-effect",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "scroll-effect",
+        "scrollbar",
+        "carousel"
+      ],
+      "description": "Controls scroll chaining and overscroll affordances, deciding whether reaching a scrolling area's boundary passes the scroll on to the parent or stays contained.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__overscroll-behavior"
+    },
+    {
+      "name": "overflow-wrap",
+      "source_url": "https://css-tricks.com/almanac/properties/o/overflow-wrap/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "text",
+      "tags": [
+        "css",
+        "html",
+        "plain-css",
+        "minimal",
+        "text",
+        "typography"
+      ],
+      "description": "Lets the browser break a line of text at an otherwise unbreakable point inside the target element, preventing long unbroken strings from causing layout overflow.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__overflow-wrap"
+    },
+    {
+      "name": "paint-order",
+      "source_url": "https://css-tricks.com/almanac/properties/p/paint-order/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "text-effect",
+      "tags": [
+        "css",
+        "svg",
+        "plain-css",
+        "outline",
+        "text-effect",
+        "icon-set"
+      ],
+      "description": "Sets the order in which SVG shapes and text are painted, so reversing fill and stroke lets a text fill cover the inner half of its stroke for clean outlined lettering.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__paint-order"
+    },
+    {
+      "name": "perspective",
+      "source_url": "https://css-tricks.com/almanac/properties/p/perspective/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "3d",
+      "tags": [
+        "css",
+        "plain-css",
+        "chrome",
+        "3d",
+        "card",
+        "tilt",
+        "tutorial"
+      ],
+      "description": "Gives an element a 3D space by setting the distance between the Z plane and the viewer, so all transformed children share one vanishing point rather than each getting depth individually.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__perspective"
+    },
+    {
+      "name": "place-items",
+      "source_url": "https://css-tricks.com/almanac/properties/p/place-items/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "flat",
+        "layout",
+        "tutorial"
+      ],
+      "description": "Shorthand combining align-items and justify-items into one declaration, most commonly used to center content horizontally and vertically in a Grid or Flex container.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__place-items"
+    },
+    {
+      "name": "pointer-events",
+      "source_url": "https://css-tricks.com/almanac/properties/p/pointer-events/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "tooltip",
+      "tags": [
+        "css",
+        "html",
+        "plain-css",
+        "minimal",
+        "tooltip",
+        "hover-effect"
+      ],
+      "description": "Controls whether an element can become the target of pointer events such as clicks and hover states, letting overlays sit on top without intercepting interaction underneath.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__pointer-events"
+    },
+    {
+      "name": "position-try-fallbacks",
+      "source_url": "https://css-tricks.com/almanac/properties/p/position-try-fallbacks/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "dropdown",
+      "tags": [
+        "css",
+        "plain-css",
+        "soft",
+        "dropdown",
+        "tooltip",
+        "menu"
+      ],
+      "description": "Tries a list of comma-separated positioning options for a target element against its anchor, falling through to the next option when the first runs out of available space.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__position-try-fallbacks"
+    },
+    {
+      "name": "resize",
+      "source_url": "https://css-tricks.com/almanac/properties/r/resize/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "form",
+      "tags": [
+        "css",
+        "html",
+        "plain-css",
+        "minimal",
+        "flat",
+        "form"
+      ],
+      "description": "Controls whether and how a user can resize an element by dragging its corner handle, requiring overflow to be set to something other than visible to take effect.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__resize"
+    },
+    {
+      "name": "rotate",
+      "source_url": "https://css-tricks.com/almanac/properties/r/rotate/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "animation",
+      "tags": [
+        "css",
+        "plain-css",
+        "motion",
+        "minimal",
+        "animation",
+        "3d",
+        "transition"
+      ],
+      "description": "Rotates an element around one or more axes independently of the transform property, adding the ability to rotate along the Z-axis that transform: rotate() does not provide.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__rotate"
+    },
+    {
+      "name": "scale",
+      "source_url": "https://css-tricks.com/almanac/properties/s/scale/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "animation",
+      "tags": [
+        "css",
+        "plain-css",
+        "motion",
+        "minimal",
+        "animation",
+        "transition",
+        "hover-effect"
+      ],
+      "description": "Resizes an element's width and height proportionally, independently of the transform property, accepting one to three values for the X, Y and Z axes.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__scale"
+    },
+    {
+      "name": "scroll-behavior",
+      "source_url": "https://css-tricks.com/almanac/properties/s/scroll-behavior/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "scroll-effect",
+      "tags": [
+        "css",
+        "plain-css",
+        "motion",
+        "minimal",
+        "scroll-effect",
+        "transition"
+      ],
+      "description": "Decides whether the browser jumps or smoothly animates when a link targets an anchored position inside a scrolling box, applied to the html element for whole-page smooth scrolling.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__scroll-behavior"
+    },
+    {
+      "name": "scroll-snap-align",
+      "source_url": "https://css-tricks.com/almanac/properties/s/scroll-snap-align/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "carousel",
+      "tags": [
+        "css",
+        "plain-css",
+        "flat",
+        "carousel",
+        "scroll-effect",
+        "image-grid"
+      ],
+      "description": "Tells the browser which part of an element should align to the snapport when a snap point is encountered, with start, center and end values for block and inline axes.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__scroll-snap-align"
+    },
+    {
+      "name": "scroll-snap-type",
+      "source_url": "https://css-tricks.com/almanac/properties/s/scroll-snap-type/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "carousel",
+      "tags": [
+        "css",
+        "plain-css",
+        "flat",
+        "carousel",
+        "scroll-effect",
+        "image-grid"
+      ],
+      "description": "Enables scroll snapping on a scroll container, declaring the axis to snap on and whether snapping is mandatory or only engages when the user gets close to a snap position.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__scroll-snap-type"
+    },
+    {
+      "name": "scrollbar-color",
+      "source_url": "https://css-tricks.com/almanac/properties/s/scrollbar-color/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "scrollbar",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "scrollbar",
+        "flat",
+        "color-tool"
+      ],
+      "description": "Styles the two colors of a scrollbar, its thumb and its track, so scrollbars can match a design without hiding them and rebuilding them in JavaScript.",
+      "preview_image": "https://i0.wp.com/css-tricks.com/wp-content/uploads/2019/03/custom-color-scrollbar.png?ssl=1",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__scrollbar-color"
+    },
+    {
+      "name": "scrollbar-width",
+      "source_url": "https://css-tricks.com/almanac/properties/s/scrollbar-width/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "scrollbar",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "scrollbar",
+        "flat",
+        "layout"
+      ],
+      "description": "Controls the thickness of a scrollbar, which matters in cramped interfaces such as a textarea inside a narrow container where every pixel of scrollbar eats into the content area.",
+      "preview_image": "https://i0.wp.com/css-tricks.com/wp-content/uploads/2019/03/scrollbar-auto-width.png?ssl=1",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__scrollbar-width"
+    },
+    {
+      "name": "shape-outside",
+      "source_url": "https://css-tricks.com/almanac/properties/s/shape-outside/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "layout",
+      "tags": [
+        "css",
+        "html",
+        "plain-css",
+        "blob",
+        "layout",
+        "image-grid"
+      ],
+      "description": "Controls how content wraps around a floated element's bounding box, letting text reflow along a circle, ellipse or polygon so an image can sit inside a blob-shaped hole in a paragraph.",
+      "preview_image": "https://i0.wp.com/css-tricks.com/wp-content/uploads/2015/06/shape-outside.png",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__shape-outside"
+    },
+    {
+      "name": "stroke-dasharray",
+      "source_url": "https://css-tricks.com/almanac/properties/s/stroke-dasharray/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "text-effect",
+      "tags": [
+        "css",
+        "svg",
+        "plain-css",
+        "outline",
+        "text-effect",
+        "loader"
+      ],
+      "description": "Sets the length pattern of alternating dashes and gaps in an SVG shape's stroke, the first half of the classic line-drawing animation technique.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__stroke-dasharray"
+    },
+    {
+      "name": "stroke-dashoffset",
+      "source_url": "https://css-tricks.com/almanac/properties/s/stroke-dashoffset/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "loader",
+      "tags": [
+        "css",
+        "svg",
+        "plain-css",
+        "outline",
+        "motion",
+        "loader",
+        "text-effect"
+      ],
+      "description": "Defines the point along an SVG path where a stroke's dash pattern begins, animated to produce the line-drawing effect where a stroked path appears to draw itself.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__stroke-dashoffset"
+    },
+    {
+      "name": "stroke-linecap",
+      "source_url": "https://css-tricks.com/almanac/properties/s/stroke-linecap/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "icon-set",
+      "tags": [
+        "css",
+        "svg",
+        "plain-css",
+        "outline",
+        "icon-set",
+        "clip"
+      ],
+      "description": "Sets the starting and ending points of a stroke on SVG shapes with butt, square and round values, so icon and logo strokes can have caps that suit the design.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__stroke-linecap"
+    },
+    {
+      "name": "text-box-trim",
+      "source_url": "https://css-tricks.com/almanac/properties/t/text-box-trim/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "typography",
+        "text",
+        "clip"
+      ],
+      "description": "Clips the whitespace above and below text so headings sit tight against surrounding layout, used with text-box-edge to specify how much of the text box is trimmed.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__text-box-trim"
+    },
+    {
+      "name": "text-overflow",
+      "source_url": "https://css-tricks.com/almanac/properties/t/text-overflow/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "text",
+      "tags": [
+        "css",
+        "html",
+        "plain-css",
+        "minimal",
+        "flat",
+        "text"
+      ],
+      "description": "Handles text that overflows its box by clipping it or rendering an ellipsis, requiring overflow to be hidden or auto and white-space to be nowrap.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__text-overflow"
+    },
+    {
+      "name": "text-shadow",
+      "source_url": "https://css-tricks.com/almanac/properties/t/text-shadow/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "text-effect",
+      "tags": [
+        "css",
+        "plain-css",
+        "glow",
+        "text-effect",
+        "typography",
+        "retro"
+      ],
+      "description": "Applies one or more shadows to text using x-offset, y-offset, blur radius and color values, and the classic recipe for neon and retro glowing lettering.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__text-shadow"
+    },
+    {
+      "name": "text-stroke",
+      "source_url": "https://css-tricks.com/almanac/properties/t/text-stroke/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "text-effect",
+      "tags": [
+        "css",
+        "plain-css",
+        "outline",
+        "text-effect",
+        "typography",
+        "retro"
+      ],
+      "description": "Experimental shorthand for text-stroke-width and text-stroke-color that outlines glyphs like vector drawing software, paired with text-fill-color for a graceful fallback color.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__text-stroke"
+    },
+    {
+      "name": "text-wrap-style",
+      "source_url": "https://css-tricks.com/almanac/properties/t/text-wrap-style/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "typography",
+        "text",
+        "layout"
+      ],
+      "description": "Controls how text lines wrap, choosing between filling each line in turn and balancing the text as words are written so short headings come out even on both sides.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__text-wrap-style"
+    },
+    {
+      "name": "transform-style",
+      "source_url": "https://css-tricks.com/almanac/properties/t/transform-style/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "3d",
+      "tags": [
+        "css",
+        "plain-css",
+        "chrome",
+        "3d",
+        "card",
+        "tilt",
+        "tutorial"
+      ],
+      "description": "Determines whether an element's children are positioned in real 3D space or flattened onto a plane, with preserve-3d being what keeps depth inside a rotated parent.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__transform-style"
+    },
+    {
+      "name": "view-transition-class",
+      "source_url": "https://css-tricks.com/almanac/properties/t/view-transition-class/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "transition",
+      "tags": [
+        "css",
+        "plain-css",
+        "motion",
+        "soft",
+        "transition",
+        "animation",
+        "tutorial"
+      ],
+      "description": "Groups multiple named elements under a common class so they share the same view-transition animation styles, letting a set of transitioning elements be styled together.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__view-transition-class"
+    },
+    {
+      "name": "view-transition-name",
+      "source_url": "https://css-tricks.com/almanac/properties/v/view-transition-name/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "transition",
+      "tags": [
+        "css",
+        "plain-css",
+        "motion",
+        "soft",
+        "transition",
+        "animation",
+        "tutorial"
+      ],
+      "description": "Uniquely identifies an element as a participant in a view transition, tagging individually transitioning subtrees so they can animate between old and new states.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__view-transition-name"
+    },
+    {
+      "name": "will-change",
+      "source_url": "https://css-tricks.com/almanac/properties/w/will-change/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "animation",
+      "tags": [
+        "css",
+        "plain-css",
+        "motion",
+        "minimal",
+        "animation",
+        "transition"
+      ],
+      "description": "Lets you hint which properties are about to be manipulated so the browser can prepare and optimize them ahead of an animation.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__will-change"
+    },
+    {
+      "name": "writing-mode",
+      "source_url": "https://css-tricks.com/almanac/properties/w/writing-mode/",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "category": "typography",
+      "tags": [
+        "css",
+        "html",
+        "plain-css",
+        "minimal",
+        "typography",
+        "text",
+        "tutorial"
+      ],
+      "description": "Sets whether lines of text are laid out horizontally or vertically and the direction blocks and lines progress in, used for CJK typography and vertical headings.",
+      "preview_image": "",
+      "source_domain": "css-tricks.com",
+      "id": "css-tricks-com__writing-mode"
     }
   ]
 }
