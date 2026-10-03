@@ -1,6 +1,6 @@
 {
-  "version": "1.0.37",
-  "source_count": 1423,
+  "version": "1.0.38",
+  "source_count": 1620,
   "components": [
     {
       "id": "cat-0",
@@ -23799,6 +23799,3529 @@
       "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2024/08/svgfilter_text.jpg",
       "id": "unknown__scroll-based-svg-filter-animations-on-text",
       "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Account Settings",
+      "source_url": "https://www.uxsnaps.com/account-settings-fey",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "settings",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "settings",
+        "account"
+      ],
+      "description": "Fey's settings screen uses dark UI and clarity to make changes simple and intuitive.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/b46379a34f244898bfbe222de2a0680d5a76041e-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__account-settings",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Activity Dashboard",
+      "source_url": "https://www.uxsnaps.com/activity-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "dashboard"
+      ],
+      "description": "Learn how TimeSpent nails minimalism, hierarchy, and engagement in its activity dashboard design.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/fb5888b95ca323dfb0d797a1d37bbc3c6f94e6ef-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__activity-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Activity Feed Timeline",
+      "source_url": "https://www.uxsnaps.com/activity-feed-timeline",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "gallery",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "timeline",
+        "gallery"
+      ],
+      "description": "Explore 5 advanced UI UX lessons from BFF\u2019s activity feed and learn how to design social timelines that are clear, scannable, and engagement-friendly.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/b39aed05c3806d24ecae8b030dbef7b84c984079-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__activity-feed-timeline",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Activity Guide Search",
+      "source_url": "https://www.uxsnaps.com/activity-guide-search",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "search-bar"
+      ],
+      "description": "Five advanced UI UX lessons from GetYourGuide\u2019s activity search screen, covering filters, trust signals, urgency cues, and scan-friendly layouts.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/e46aa71552062a83b599ee8b6cbc06515a4d28f4-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__activity-guide-search",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "AI Agent Builder",
+      "source_url": "https://www.uxsnaps.com/ai-agent-builder",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "button",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "avatar",
+        "button"
+      ],
+      "description": "5 UX lessons from Notion's agent builder covering dual build paths, chat action buttons, embedded setup checklists, agent avatars, and positive trial framing.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/c425163ca4486e2fda8f1fc377880551830f83cf-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__ai-agent-builder",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "AI App Builder",
+      "source_url": "https://www.uxsnaps.com/ai-app-builder",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "form",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "input",
+        "hero"
+      ],
+      "description": "5 UX lessons from Emergent covering atmospheric invitation heroes, output tabs, loaded input bars, live status provenance, and dev-tool gamification.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/72d3eb512f30ef98a75b0c19ca900d064f58b88b-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__ai-app-builder",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "AI Audio Reader",
+      "source_url": "https://www.uxsnaps.com/ai-audio-reader",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "form",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "input",
+        "toggle",
+        "card"
+      ],
+      "description": "5 UX lessons from ElevenReader covering continue listening cards, four-input upload grid, editorial collection covers, sticky audio bar, and scope-toggle tabs.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/6bd84986af8d326ceab70c8c69000eac43d55889-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__ai-audio-reader",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "AI Automation Builder",
+      "source_url": "https://www.uxsnaps.com/ai-automation-builder",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "timeline"
+      ],
+      "description": "5 UX lessons from Airtable covering inline entity chips, vertical trigger timelines, per-step testing, dashed extension slots, and breadcrumb state controls.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/66ca82ee469da018f84530b459d814a31a15d21c-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__ai-automation-builder",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "AI Business Dashboard",
+      "source_url": "https://www.uxsnaps.com/ai-business-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "button",
+        "dashboard",
+        "text"
+      ],
+      "description": "5 UX lessons from Midday covering insight-first greetings, verb action rows, number-context pairing, and meet-them-there integration.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/10852b49a7ce161cfabf801f561ce0039449f54b-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__ai-business-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "AI Candidate Sourcing",
+      "source_url": "https://www.uxsnaps.com/ai-candidate-sourcing",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "button"
+      ],
+      "description": "5 UX lessons from Wrangle's AI recruiting tool covering AI transparency, scored summaries, three-panel layout, and swipe-style actions.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/7da6e76bb70dbc0140773ed8581263953dcb5ee4-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__ai-candidate-sourcing",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "AI Design Canvas",
+      "source_url": "https://www.uxsnaps.com/ai-design-canvas",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "button"
+      ],
+      "description": "5 UX lessons from Claude's design canvas covering inline code highlighting, AI process logs, action clusters, visual annotation, and multi-file tabs.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/320f5cb36b8172a56e978a9e990b67b9033f41f5-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__ai-design-canvas",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "AI Design Canvas (Google Stitch)",
+      "source_url": "https://www.uxsnaps.com/ai-design-canvas-google-stitch",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "form",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "input"
+      ],
+      "description": "5 UX lessons from Google Stitch covering AI reasoning transparency, centered canvas input, grouped toolbars, and collapsible agent logs",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/61ec04f0cb54fb1ec2c5549c668a1c17f620b5b0-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__ai-design-canvas-(google-stitch)",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "AI Health Dashboard",
+      "source_url": "https://www.uxsnaps.com/ai-health-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "badge",
+        "dashboard"
+      ],
+      "description": "5 UX lessons from Perplexity Health covering honest data headlines, verdict-plus-coaching badges, narrating side panels, and franchised gestures.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/6c5ed9c4ffa538162877a959d9489c3f4c7ea406-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__ai-health-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "AI Image Generator",
+      "source_url": "https://www.uxsnaps.com/ai-image-generator",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "progress-bar"
+      ],
+      "description": "5 advanced UI UX lessons from Runway AI image generator on workflow structure, progressive controls, and conversion driven empty states.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/322ee9a35da1931ab5588c623142d282301c42c4-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__ai-image-generator",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "AI Powered Search",
+      "source_url": "https://www.uxsnaps.com/ai-powered-search",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "animation",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "search-bar",
+        "button"
+      ],
+      "description": "Learn 5 advanced UI UX lessons from Shop\u2019s AI search interface on transparency, decision design, microinteractions, and conversational commerce.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/6a52eb05a50c52c26086211346c722b69e0fa890-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__ai-powered-search",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "AI Search Result",
+      "source_url": "https://www.uxsnaps.com/ai-search-result",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "gallery",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "search-bar",
+        "form"
+      ],
+      "description": "5 UX lessons from Perplexity covering research trails, result-format choices, video demonstrations, structured answers, and follow-up prompts.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/4096ab0f2e3ee3dab9e2cb9eab041030d2d9ef5b-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__ai-search-result",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "AI Slide Creator",
+      "source_url": "https://www.uxsnaps.com/ai-slide-creator",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "onboarding",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "progress-bar",
+        "onboarding"
+      ],
+      "description": "5 advanced UX lessons from Manus's AI slide creator covering focus, onboarding, progressive disclosure, and conversion design.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/0e5aea12a53615abb2780cdf93fb3e33d8f15d3f-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__ai-slide-creator",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "AI Video Studio",
+      "source_url": "https://www.uxsnaps.com/ai-video-studio",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "loader",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "slider",
+        "loader"
+      ],
+      "description": "5 UX lessons from Higgsfield covering layered AI output, craft-vocabulary rationale, honest cost ranges, style chips, and render queues over spinners.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/ff36b2f166580416479f4fde96d0ce11e81de84b-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__ai-video-studio",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "AI workspace",
+      "source_url": "https://www.uxsnaps.com/ai-workspace",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "text"
+      ],
+      "description": "Advanced UI UX lessons from Sana AI chat on layout patterns, context panels, personalization, and minimal design for AI products.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/bc564578d868f6a8748f911c1643fbbdd06273f5-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__ai-workspace",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Banking Home",
+      "source_url": "https://www.uxsnaps.com/banking-home",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "icon",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "avatar",
+        "card",
+        "icon"
+      ],
+      "description": "5 UX lessons from Monzo covering wallet card stacks, open-banking aggregation, avatar-marked joint money, dual-currency amounts, and merchant logo enrichment.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/c32a037f2f27b23443ab341369788bd030a18eed-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__banking-home",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Wallet Home",
+      "source_url": "https://www.uxsnaps.com/base-wallet-home",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "button",
+        "dashboard",
+        "portfolio"
+      ],
+      "description": "5 UX lessons from Base covering asset values, portfolio allocation, network scope, clear transaction actions, and minimal dashboard design.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/f7f1cf40256db67ed13be607d7fa3be68d1e02d8-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__wallet-home",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Bike Search Map",
+      "source_url": "https://www.uxsnaps.com/bike-share-map",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "search-bar",
+        "button",
+        "text"
+      ],
+      "description": "5 UX lessons from Lyft bike share covering color-coded map pins, persistent map context, scannable station KPIs, two-action hierarchy, and benefit-status cues.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/82090b230a5eb0b603d1200b253c420cf9b808fa-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__bike-search-map",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Weekly Meal Menu",
+      "source_url": "https://www.uxsnaps.com/blue-apron-weekly-meal-menu",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "menu",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "menu",
+        "text"
+      ],
+      "description": "5 UX lessons from Blue Apron covering week navigation, practical meal categories, delivery context, recipe comparisons, and visible protein options.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/eaf0ec89405d101486a2957a9d4f302f8bad8346-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__weekly-meal-menu",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Book Taxi Ride",
+      "source_url": "https://www.uxsnaps.com/book-taxi-ride",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "gallery",
+        "dashboard"
+      ],
+      "description": "5 advanced UI UX lessons from Tesla Robotaxi dashboard on clarity, accessibility design, discovery patterns, and proactive feedback.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/1b41d6f336eebf583818a2873c4186edafb20cf4-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__book-taxi-ride",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Booking a Ride",
+      "source_url": "https://www.uxsnaps.com/booking-a-ride",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "text"
+      ],
+      "description": "Explore 5 UX lessons from Waymo\u2019s ride-booking UI\u2014how it simplifies decisions, adds context, and keeps users confident through minimal yet detailed design.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/f28a4fe9fe80bf77f08dd94673b34ccc8aa88b8d-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__booking-a-ride",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Booking a Ride (Clarity and Conversion in Motion)",
+      "source_url": "https://www.uxsnaps.com/booking-a-ride-uber",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "animation",
+        "button",
+        "pricing"
+      ],
+      "description": "Learn how Uber\u2019s ride booking screen builds trust, speeds decisions, and promotes subscriptions through contextual design and effortless interaction patterns.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/8bf1a81874d68e542370846218c5f12baf56a8fd-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__booking-a-ride-(clarity-and-conversion-in-motion)",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Race Weekend Dashboard",
+      "source_url": "https://www.uxsnaps.com/box-box-club-race-weekend-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "d3",
+        "minimal",
+        "flat",
+        "animation",
+        "chart",
+        "gallery"
+      ],
+      "description": "Five UX lessons from Box Box Club on circuit artwork, expressive typography, decorative motion cues, carousel indicators, and session-level engagement.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/4bc0bdb65c9e2ccd6acdd6c11308ee415c0ddecb-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__race-weekend-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Budget Dashboard",
+      "source_url": "https://www.uxsnaps.com/budget-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "dashboard"
+      ],
+      "description": "Learn five advanced UI UX lessons from Cleo\u2019s budget dashboard, from visual metaphors to smart KPIs that guide user decisions.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/2821a3e3cd9266943c957794897bfb040a82a653-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__budget-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Calcom Marketing Landing Page",
+      "source_url": "https://www.uxsnaps.com/calcom-marketing-landing-page",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "landing-page",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "button",
+        "landing-page"
+      ],
+      "description": "Cal.com sells its value in seconds. A focused UX that pushes users to take action fast.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/c5f8387fd2dea28d13dc8c43c9e631e41c4efc6f-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__calcom-marketing-landing-page",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Calorie Tracking Dashboard",
+      "source_url": "https://www.uxsnaps.com/calorie-tracking-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "form",
+        "dashboard"
+      ],
+      "description": "Learn 5 advanced UI UX lessons from Bitepal\u2019s calorie tracking dashboard covering gamification, mascots, hierarchy, nudges, and habit-forming design.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/f2dc2f77f8575271cd899354ee2437a8208a17e1-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__calorie-tracking-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Campaign Workflow Canvas",
+      "source_url": "https://www.uxsnaps.com/campaign-workflow-canvas",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "card"
+      ],
+      "description": "5 UX lessons from Customer.io covering persistent live warnings, readable node summaries, categorized palettes, inline failure flags, and canvas sticky notes.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/5efe749d7be67629568a41ce464ec7ebe697652c-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__campaign-workflow-canvas",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Canceling a Membership",
+      "source_url": "https://www.uxsnaps.com/canceling-a-membership",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "pricing"
+      ],
+      "description": "Netflix simplifies cancellations to reduce friction and build trust. A smart offboarding UX done right.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/41d818dc0150f5909d9ba53b5a5569a262471620-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__canceling-a-membership",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Car Rental Dashboard",
+      "source_url": "https://www.uxsnaps.com/car-rental-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "search-bar",
+        "card",
+        "dashboard"
+      ],
+      "description": "5 UX lessons from Turo covering centered search priority, use-case tabs, resume-search cards, recent-search recommendations, and non-pushy supply-side banners.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/53adef6fbaf6851faeb19f289a41d014685940a6-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__car-rental-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Card Activity Dashboard",
+      "source_url": "https://www.uxsnaps.com/card-activity-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "button",
+        "card",
+        "dashboard"
+      ],
+      "description": "5 advanced UX lessons from Apple Wallet's credit card screen covering real-world match, clarity, cashback motivation, subtle CTAs, and error communication.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/ce4c3489add9895d73bbc0ae4ad478ebcb5ea8b6-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__card-activity-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Card Management",
+      "source_url": "https://www.uxsnaps.com/card-management",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "toggle",
+        "button",
+        "card"
+      ],
+      "description": "5 UX lessons from PayPal covering card-as-hero rendering, arrival escape hatches, duplicated critical actions, number-first rewards, and instant lock toggles.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/e0d3b55de662561816c37eda55db7a3a76d6c777-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__card-management",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Chat Interface",
+      "source_url": "https://www.uxsnaps.com/chat-interface",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "dialog",
+        "modal",
+        "text"
+      ],
+      "description": "WhatsApp integrates calls, texts, and media in one clean interface. Learn 5 advanced UX lessons about contextual design and visual communication.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/7fcabbdc226b9b659e83c5f732249e29005ac6fe-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__chat-interface",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Chatbot Builder",
+      "source_url": "https://www.uxsnaps.com/chatbot-builder",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "progress-bar",
+        "onboarding",
+        "testimonial"
+      ],
+      "description": "5 UX lessons from Chatbase's playground covering live preview, training status, model comparison, instruction design, and progress-based onboarding.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/bc7146f37c17693e79115bcbf262a11e5b41cb64-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__chatbot-builder",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Climate Control Settings",
+      "source_url": "https://www.uxsnaps.com/climate-control-settings",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "settings",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "animation",
+        "toggle",
+        "settings"
+      ],
+      "description": "5 UX lessons from Tesla's climate control covering real-world match, shortcut modes, emotional design, nuanced toggles, and smart defaults.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/78548683925ea98b78bfb4b1d072c980977beaee-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__climate-control-settings",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Community Page Details",
+      "source_url": "https://www.uxsnaps.com/community-page-details",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "card"
+      ],
+      "description": "Reddit structures complex community content so users can scan fast and act faster. Here\u2019s how.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/39ae12402112ba4ec55dbe03a5797bb6821605a3-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__community-page-details",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Content Feed",
+      "source_url": "https://www.uxsnaps.com/content-feed",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "gallery",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "sidebar",
+        "gallery",
+        "icon"
+      ],
+      "description": "5 UX lessons from Digg's content feed covering feed-scope tabs, icon-only sidebars, ambient daily podcast, community tags, and trending content panels.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/bcc2ea72ac10bd00ba0babb4f65c1123937903c7-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__content-feed",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Contractbook Marketing Page",
+      "source_url": "https://www.uxsnaps.com/contractbook-marketing-page",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "landing-page",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "landing-page",
+        "testimonial"
+      ],
+      "description": "Contractbook uses trust signals, testimonials, and layout to win over skeptical first-time users.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/b3eaf9b6f4e755adfa1118e65f0d9e86de085953-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__contractbook-marketing-page",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Contractor Dashboard",
+      "source_url": "https://www.uxsnaps.com/contractor-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "button",
+        "dashboard"
+      ],
+      "description": "Learn 5 advanced UI UX lessons from Remote\u2019s dashboard, covering actionable layouts, invoice clarity, quick actions, and scalable SaaS dashboard design.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/8417a17c0b85744ef689d2b21f453e2d39442f2b-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__contractor-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Conversational AI Playground",
+      "source_url": "https://www.uxsnaps.com/conversational-ai-playground",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "animation",
+      "tags": [
+        "css",
+        "html",
+        "wave",
+        "animation",
+        "form",
+        "gallery"
+      ],
+      "description": "5 UX lessons from Hume's playground covering inline emotion metrics, model description hints, voice previews, audio waveform feedback, and config versioning.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/ee620d559cda87659e54ad3f5d8ce965f911bd0e-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__conversational-ai-playground",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Course Enrollment Details",
+      "source_url": "https://www.uxsnaps.com/course-enrollment-details",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "card"
+      ],
+      "description": "Coursera reduces decision fatigue with focused course info and a frictionless enrollment UX.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/fc7a84f7676ac330afc8b8494c87a3e4c4590ab4-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__course-enrollment-details",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Create Affiliate Link",
+      "source_url": "https://www.uxsnaps.com/create-affiliate-link",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "testimonial"
+      ],
+      "description": "Learn how Dub\u2019s affiliate link creator uses smart automation, clean hierarchy, and visual previews to simplify link creation while boosting user trust.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/b03cb350d754aa095b5ddd6e996fe240e5d6bef0-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__create-affiliate-link",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Creating a Server",
+      "source_url": "https://www.uxsnaps.com/creating-a-server",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "modal",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "dialog",
+        "button",
+        "menu"
+      ],
+      "description": "How Discord simplifies social interaction through smart onboarding, flexible navigation, and multimodal messaging. Learn UX lessons from this powerful chat app.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/63c831dec944d648307bade2f21cd0e98201b5da-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__creating-a-server",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Creating a Trip - Onboarding",
+      "source_url": "https://www.uxsnaps.com/creating-a-trip-onboarding",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "onboarding",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "onboarding"
+      ],
+      "description": "Explore 5 advanced UI/UX lessons from the Mindtrip AI planner. Learn how empty states, personalization, and smart patterns boost usability and delight.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/fa030dc853178da2577a1d6b7f3f42cf13b99b05-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__creating-a-trip---onboarding",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Creating a Website with AI",
+      "source_url": "https://www.uxsnaps.com/creating-a-website-with-ai",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "gallery",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "button",
+        "hero"
+      ],
+      "description": "Explore 5 UX lessons from v0\u2019s design - hero prompt focus, quick actions, social proof, white space, and subtle updates that enhance clarity.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/ed2e6f2133b53cb74982915fc66fbb24d324409a-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__creating-a-website-with-ai",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Crypto Coin Details",
+      "source_url": "https://www.uxsnaps.com/crypto-coin-details",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "button",
+        "icon"
+      ],
+      "description": "Learn 5 UI/UX lessons from Trust Wallet\u2019s crypto detail screen, including transparency, icon metaphors, tabbed views, and action-first design.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/e7e344d56f07bfd78e35bc459b30d12243700826-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__crypto-coin-details",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Crypto Exchange Dashboard",
+      "source_url": "https://www.uxsnaps.com/crypto-exchange-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "progress-bar",
+        "card",
+        "dashboard"
+      ],
+      "description": "Explore 5 UI UX lessons from the OKX crypto dashboard, covering tabs, privacy controls, progressive disclosure, cards, and data-heavy design clarity.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/267ab1c1a86364ae93be3d87b9140f5b2ec2c5e7-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__crypto-exchange-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Crypto Search",
+      "source_url": "https://www.uxsnaps.com/crypto-search",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "badge",
+        "search-bar",
+        "button"
+      ],
+      "description": "5 UX lessons from Phantom covering rich instant results, asset-class sectioning, leverage risk badges, search-level verification, and inline trade actions.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/51a09d5c82b8702478b482e9249aba3720aeef30-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__crypto-search",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Crypto Token Details",
+      "source_url": "https://www.uxsnaps.com/crypto-token-details",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "card"
+      ],
+      "description": "Uniswap breaks down complex token data into bite-sized, scannable cards. A smart use of finance UX.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/00f957bab2296052756c1839b37d5cb0fd776fd9-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__crypto-token-details",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Crypto Transaction Confirmation",
+      "source_url": "https://www.uxsnaps.com/crypto-transaction-confirmation",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "button"
+      ],
+      "description": "Explore how Family Crypto App builds user trust with clear labels, smart masking, bold fee info, and seamless confirmations in a high-stakes transaction flow.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/9a5daad161e123b52a9ee5bffe93ff0601593efd-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__crypto-transaction-confirmation",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Custom Interactive Maps",
+      "source_url": "https://www.uxsnaps.com/custom-interactive-maps",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "gallery",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "gallery",
+        "text"
+      ],
+      "description": "5 advanced UX lessons from PamPam's map builder covering contextual panels, human AI design, live feedback, real-world affordance.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/0226e1386555ecbac19c131501afcb786c9bbf8a-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__custom-interactive-maps",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Customer Support Inbox",
+      "source_url": "https://www.uxsnaps.com/customer-support-inbox",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "onboarding"
+      ],
+      "description": "5 UX lessons from Intercom's inbox covering three-panel layout, collapsible details, trial nudges, compose hierarchy, and bottom-anchored onboarding.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/55a2b3e439675fe846587e5abeceec85ced9e856-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__customer-support-inbox",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Daily Health Dashboard",
+      "source_url": "https://www.uxsnaps.com/daily-health-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "card",
+        "dashboard",
+        "onboarding"
+      ],
+      "description": "5 UX lessons from WHOOP's dashboard covering unified ring metaphor, color as language, baseline onboarding, coach AI entry, and primary-number activity cards.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/b683e91fe2cd8077508757cf3f5cbcec85f642e4-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__daily-health-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Dashboard Home",
+      "source_url": "https://www.uxsnaps.com/dashboard-home",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "dashboard"
+      ],
+      "description": "ElevenLabs' dashboard feels clean and in control, making features accessible without visual overload.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/cd701a178c60de0b0bef898f450a05750d81b27b-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__dashboard-home",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Dashboard Home (Aboard HR Dashboard)",
+      "source_url": "https://www.uxsnaps.com/dashboard-home-aboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "form",
+        "button",
+        "dashboard"
+      ],
+      "description": "Explore 5 advanced UI UX lessons from Aboard\u2019s HR dashboard and learn how to design clean, actionable, and high-performing enterprise dashboards.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/282b9896671e74b49f6eb3747f4762c265415dd5-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__dashboard-home-(aboard-hr-dashboard)",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Dashboard Home (dashboard-home-dropbox)",
+      "source_url": "https://www.uxsnaps.com/dashboard-home-dropbox",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "dashboard"
+      ],
+      "description": "Discover how Dropbox\u2019s dashboard uses hierarchy, personalization, and minimalism to streamline collaboration and boost user engagement.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/70ffd2d96b969c71a2c266d5a8fb79900f5ff900-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__dashboard-home-(dashboard-home-dropbox)",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Dashboard Home (Literal)",
+      "source_url": "https://www.uxsnaps.com/dashboard-home-literal",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "form",
+        "button",
+        "dashboard"
+      ],
+      "description": "Explore how Literal\u2019s dashboard blends social interaction, motivation, and clean structure to make reading more engaging and habit-forming.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/1a7d114657a1084cbe9d8485501aa09c457f07d1-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__dashboard-home-(literal)",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Developer Dashboard",
+      "source_url": "https://www.uxsnaps.com/developer-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "d3",
+        "minimal",
+        "flat",
+        "chart",
+        "card",
+        "dashboard"
+      ],
+      "description": "5 UX lessons from Firecrawl covering endpoint cards as pitch, home-screen API keys, copy-paste MCP config, layered usage charts, and code visual language.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/3008209cdcce931b471532c941fc5ad905284623-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__developer-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Development Environment Setup",
+      "source_url": "https://www.uxsnaps.com/development-environment-setup",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "button",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "progress-bar",
+        "button",
+        "text"
+      ],
+      "description": "5 UX lessons from Cursor's agent setup covering checklist progress, template-driven CTAs, sticky prompt context, post-setup nudges, and grouped config tabs.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/437f6775f07e2fe17f9754b14939b738ade9700b-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__development-environment-setup",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Home dashboard",
+      "source_url": "https://www.uxsnaps.com/dropbox-dash-home-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "dashboard"
+      ],
+      "description": "Five UX lessons from Dropbox Dash on intent labels, cross-app collections, recent recall, meeting access, and separate chat history.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/f7cf1cf0c0b09282d3db0a4479ea34e11518f01d-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__home-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Electric Scooter Ride",
+      "source_url": "https://www.uxsnaps.com/electric-scooter-ride",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "dialog",
+        "button",
+        "menu"
+      ],
+      "description": "5 UX lessons from Lime's ride screen covering bottom sheet maps, device state metrics, safety onboarding, CTA hierarchy, and contextual navigation.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/0ac1356b991e98895d7dbf20ddf57284660492f2-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__electric-scooter-ride",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Email Inbox",
+      "source_url": "https://www.uxsnaps.com/email-inbox",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "card"
+      ],
+      "description": "Gmail\u2019s inbox balances high volume with visual clarity. A clean, functional email UX that works.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/e6f60ae068ce3bef4153a23bebbe1f027b80a7f7-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__email-inbox",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Empty Cart",
+      "source_url": "https://www.uxsnaps.com/empty-cart",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "form",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "form"
+      ],
+      "description": "Discover how Amazon leverages saved items and reminders to transform an empty cart into a re-engagement opportunity.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/a803f067ac51fb7cf23e1d05b48e2357d44bb62f-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__empty-cart",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "EV Charging Station Details",
+      "source_url": "https://www.uxsnaps.com/ev-charging-station-details",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "button",
+        "navbar",
+        "text"
+      ],
+      "description": "5 UX lessons from Pangea's EV charger screen covering scannable headers, real-world match, CTA hierarchy, crowd-sourced data, and contextual delight.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/64f76f50518c2cd9c524d4e5418861e28e9c434a-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__ev-charging-station-details",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Explore Articles - Home",
+      "source_url": "https://www.uxsnaps.com/explore-articles-home",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "gallery",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "gallery",
+        "blog"
+      ],
+      "description": "Medium's home feed prioritizes content discovery through smart tabs, strategic color usage, and a clean visual hierarchy that keeps readers engaged.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/71ecb545c21161f567b22b30fe9bdfc782bf8eb4-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__explore-articles---home",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Explore Homes",
+      "source_url": "https://www.uxsnaps.com/explore-homes",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "gallery",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "menu",
+        "landing-page"
+      ],
+      "description": "Airbnb's homepage layout encourages discovery through curated content and clean navigation.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/2fe9338a6942b50d1e3bb933988e2fa967f1b7a4-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__explore-homes",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Finance Dashboard",
+      "source_url": "https://www.uxsnaps.com/finance-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "button",
+        "dashboard"
+      ],
+      "description": "5 UX lessons from Wise's wallet dashboard covering wallet metaphors, currency flag scanning, empty state conversion, three-CTA hierarchy, and update banners.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/a9b5a47430afc841e471df89c3916d0a3708583e-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__finance-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Meeting Summary and Transcript",
+      "source_url": "https://www.uxsnaps.com/fireflies-meeting-summary-and-transcript",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "testimonial"
+      ],
+      "description": "Five UX lessons from Fireflies on navigable insights, adaptable recaps, source references, speaker metrics, and meeting-specific AI questions.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/69c8914d5562b0e78b6487fb128b1b4ca612c2c8-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__meeting-summary-and-transcript",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Fitness Activity Feed",
+      "source_url": "https://www.uxsnaps.com/fitness-activity-feed",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "gallery",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "animation",
+        "gallery"
+      ],
+      "description": "5 UX lessons from Strava covering activity-aware streaks, emotional stat metrics, named achievements, self-generating route maps, and personal-first feed order.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/56c8c116a809d75120a9c6460269f7c62360db21-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__fitness-activity-feed",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Fitness Dashboard",
+      "source_url": "https://www.uxsnaps.com/fitness-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "dashboard"
+      ],
+      "description": "Discover how MyFitnessPal\u2019s dashboard boosts clarity, motivation, and usability. 5 design lessons to apply in health and fitness apps.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/9d08825bf8cd5f91b4e48a2e6822daa2deb70029-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__fitness-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Flight Booking Process",
+      "source_url": "https://www.uxsnaps.com/flight-booking-process",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "progress-bar",
+        "pricing",
+        "text"
+      ],
+      "description": "5 advanced UI UX lessons from Kiwi.com\u2019s flight booking flow on progress steppers, pricing transparency, contextual upsells, and trust design.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/09e6cf2b90ef71a80e8dca473a1e092031d9176b-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__flight-booking-process",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Flight Details",
+      "source_url": "https://www.uxsnaps.com/flight-details",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "form"
+      ],
+      "description": "Learn UI UX lessons from Flighty\u2019s flight details screen, covering real-time status design, time clarity, information hierarchy, and ethical monetization.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/3713c05b41ab25caf8c16aa7cc4423d6523a7e4f-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__flight-details",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Focus Dashboard",
+      "source_url": "https://www.uxsnaps.com/focus-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "scroll-effect",
+        "dashboard",
+        "icon"
+      ],
+      "description": "5 UX lessons from Opal's focus screen covering collectible gamification, ownership mechanics, culprit stack icons, persistent session bar, and scroll teasers.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/533a89eca9373f8c8c3f2f51165485ddb3b9154e-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__focus-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Food Ordering",
+      "source_url": "https://www.uxsnaps.com/food-ordering",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "d3",
+        "minimal",
+        "flat",
+        "chart",
+        "menu",
+        "dashboard"
+      ],
+      "description": "5 UX lessons from Grill'd's home screen covering pre-set context, profile completion nudges, time-based menus, sticky rewards, and food photography hierarchy.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/7770d7f6254422f94464ae77cc96e682f8aae8a6-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__food-ordering",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Friends Health Challenge",
+      "source_url": "https://www.uxsnaps.com/friends-health-challenge",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "card"
+      ],
+      "description": "Learn five advanced UI UX lessons from Abode\u2019s friends challenge screen, focused on clarity, motivation, white space, and flexible layouts.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/d49908797a123a524ee7e8a2b7d2eb7bc1c04d78-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__friends-health-challenge",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Personalized Card Editor",
+      "source_url": "https://www.uxsnaps.com/givingli-personalized-card-editor",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "d3",
+        "minimal",
+        "flat",
+        "chart",
+        "card",
+        "typography"
+      ],
+      "description": "Five UX lessons from Givingli on focused editing, card-giving rituals, expressive tool palettes, personal typography, and thoughtful templates.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/dbd72f566245bf15fba095610aa231ed38889420-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__personalized-card-editor",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Glucose Monitoring Dashboard",
+      "source_url": "https://www.uxsnaps.com/glucose-monitoring-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "dashboard"
+      ],
+      "description": "5 UX lessons on data visualization, education, summaries, and control that make health tracking effortless.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/6d0b17bfbf761ada9f30560e2b9b9db7385816d7-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__glucose-monitoring-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Grocery Shopping",
+      "source_url": "https://www.uxsnaps.com/grocery-shopping",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "button",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "search-bar",
+        "button",
+        "text"
+      ],
+      "description": "See how Instacart uses social proof, contextual promos, smart CTAs, and search guidance to reduce friction and drive confident grocery shopping.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/b82e74b5b168b4dc7ab02fb1682c90d715d45da5-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__grocery-shopping",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Group Food Order",
+      "source_url": "https://www.uxsnaps.com/group-food-order",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "card"
+      ],
+      "description": "5 UX lessons from Grab covering tiered discount ladders, host-named groups, feature-level localization, parallel incentive cards, and reorder shortcuts.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/36e231ab94f05a07f7aeef5fdedab36532d6e1f5-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__group-food-order",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Health Dashboard",
+      "source_url": "https://www.uxsnaps.com/health-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "card",
+        "dashboard",
+        "text"
+      ],
+      "description": "5 UX lessons from Alan's health app covering mascot warmth, streak campfire metaphors, branded reward currencies, resume cards, and contextual quick wins.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/ccc591277d749f89b2951a3dc4c74f783be64bf9-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__health-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Help/Support",
+      "source_url": "https://www.uxsnaps.com/help-support-midjourney",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "gallery",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "card"
+      ],
+      "description": "Discover how Midjourney\u2019s Help page blends AI, community, and design structure to guide users efficiently and reduce support friction.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/a288a787a4217c18fd6b684856657b1bc7d2f18c-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__help/support",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Home Air Purifier",
+      "source_url": "https://www.uxsnaps.com/home-air-purifier",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "dashboard",
+        "text"
+      ],
+      "description": "5 UX lessons from MyDyson's home screen covering ambient color strategy, outside vs inside context, thumb-friendly controls, and data hierarchy.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/31fe53ac2899d07dc8dc5155640830b68807bcca-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__home-air-purifier",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Home Dashboard (Alexa)",
+      "source_url": "https://www.uxsnaps.com/home-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "dashboard",
+        "onboarding"
+      ],
+      "description": "Discover how Alexa\u2019s Home Dashboard blends onboarding, personalization, and intuitive controls for a smooth smart home experience.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/92606cffbf32e6e0dbe634babe1c23dcad07cc9b-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__home-dashboard-(alexa)",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Home Dashboard (7-Eleven)",
+      "source_url": "https://www.uxsnaps.com/home-dashboard-7eleven",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "dashboard"
+      ],
+      "description": "7-Eleven's app uses gamified rewards, premium tier visibility, and strategic offers to drive engagement and retention through smart home screen design.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/e575abfedf0713e22ebc777c4a4235284a24dae4-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__home-dashboard-(7-eleven)",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Home Dashboard (home-dashboard-alma)",
+      "source_url": "https://www.uxsnaps.com/home-dashboard-alma",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "progress-bar",
+        "button",
+        "dashboard"
+      ],
+      "description": "Explore 5 advanced UI UX lessons from Alma\u2019s health dashboard on habit design, gamification, progress tracking, and actionable wellness data.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/be08099d3aa2b703634a607ca3d6743c120ce8d9-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__home-dashboard-(home-dashboard-alma)",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Home Dashboard (home-dashboard-binance)",
+      "source_url": "https://www.uxsnaps.com/home-dashboard-binance",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "form",
+        "dashboard"
+      ],
+      "description": "Explore 5 advanced UI UX lessons from Binance\u2019s home dashboard, covering personalization, information hierarchy, and high-density layout design.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/7f69bff9907b24c8d19a0dc4f7cb8f00d0efcee5-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__home-dashboard-(home-dashboard-binance)",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Home Dashboard (home-dashboard-cal-ai)",
+      "source_url": "https://www.uxsnaps.com/home-dashboard-cal-ai",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "dashboard"
+      ],
+      "description": "A breakdown of Cal AI\u2019s dashboard and five lessons on clarity, hierarchy, and intuitive health tracking for better UI design.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/25b198958dc2d1040d695f725ec1a1c5fd108597-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__home-dashboard-(home-dashboard-cal-ai)",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Home Dashboard (home-dashboard-coinbase)",
+      "source_url": "https://www.uxsnaps.com/home-dashboard-coinbase",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "todo",
+        "dashboard"
+      ],
+      "description": "Discover 5 advanced UI UX lessons from Coinbase\u2019s home dashboard, covering hierarchy, task flows, personalization, financial clarity, and data-dense design.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/82b44676d1f207f87b723a21d91c5bbb54a3450a-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__home-dashboard-(home-dashboard-coinbase)",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Home Dashboard (home-dashboard-exa)",
+      "source_url": "https://www.uxsnaps.com/home-dashboard-exa",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "menu",
+        "dashboard",
+        "onboarding"
+      ],
+      "description": "Learn 5 advanced UI UX lessons from Exa\u2019s dashboard on onboarding, API clarity, navigation, and conversational interfaces in developer tools.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/ba3d1e483ad2a62b5a796e072c78dc71d7a087ee-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__home-dashboard-(home-dashboard-exa)",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Home Dashboard (5 UX Lessons from a Healthcare Dashboard)",
+      "source_url": "https://www.uxsnaps.com/home-dashboard-hers",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "dashboard",
+        "pricing"
+      ],
+      "description": "Explore UI UX lessons from Hers women\u2019s healthcare dashboard, covering order transparency, subscription control, trust design, and calm visual hierarchy.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/9d0e7d4c526865b26ac96270c239f9d04cf5eaab-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__home-dashboard-(5-ux-lessons-from-a-healthcare-dashboard)",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Home Feed",
+      "source_url": "https://www.uxsnaps.com/home-feed-fable",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "gallery",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "gallery",
+        "dashboard"
+      ],
+      "description": "Five concise UI UX lessons from Fable\u2019s home screen covering habits, hierarchy, trust, and brand consistency.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/c0014ab7a87092a8b7a70f84d0e86b7e9e7a5ac5-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__home-feed",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Hotel Search Results",
+      "source_url": "https://www.uxsnaps.com/hotel-search-results",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "gallery",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "search-bar",
+        "card",
+        "pricing"
+      ],
+      "description": "Learn how Expedia designs hotel search results with clear filters, transparent pricing, smart urgency, and scannable cards to boost trust and decision speed.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/d94212b854fea7fb3ad33755780cf24c468db5ba-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__hotel-search-results",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Hotel Search Results (Booking)",
+      "source_url": "https://www.uxsnaps.com/hotel-search-results-booking",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "gallery",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "search-bar",
+        "card"
+      ],
+      "description": "5 UX lessons from Booking.com covering property card hierarchy, filter chips, ranking transparency, inline scarcity, and stacked trust signal rows.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/0ea41d9b36b9d2174a5c6a1aa6ae3dba6239d428-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__hotel-search-results-(booking)",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Investment Dashboard",
+      "source_url": "https://www.uxsnaps.com/investment-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "toggle",
+        "slider",
+        "dashboard"
+      ],
+      "description": "5 UX lessons from Acorns home screen covering brand storytelling, potential sliders, horizontal pill scanning, account switching, and fintech illustration.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/f86c525d436425c1e8d255520711d38a1010e490-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__investment-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Job Search Dashboard",
+      "source_url": "https://www.uxsnaps.com/job-search-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "search-bar",
+        "card",
+        "dashboard"
+      ],
+      "description": "5 UX lessons from Glassdoor's home screen covering AI search bar, resume-and-continue patterns, one-tap apply, community sections, and horizontal cards.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/c2516824baaed25faabef2f2aa9f50d65e910cac-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__job-search-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Job/Work Search",
+      "source_url": "https://www.uxsnaps.com/job-work-search",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "onboarding",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "search-bar",
+        "gallery",
+        "onboarding"
+      ],
+      "description": "Learn how Upwork designs its job feed for search intent, onboarding, personalization, and subtle monetization without harming user experience.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/789aaeb081f145e7177fbc31b4f07c38991d6f0a-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__job/work-search",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Landing Page",
+      "source_url": "https://www.uxsnaps.com/landing-page",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "landing-page",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "landing-page"
+      ],
+      "description": "Explore how Contra\u2019s landing page design simplifies decision-making, guides users naturally, and builds trust through thoughtful visual hierarchy.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/81acc42c7c7cfe8fa14c9657f7f13222607823b2-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__landing-page",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Learning Dashboard",
+      "source_url": "https://www.uxsnaps.com/learning-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "progress-bar",
+        "form",
+        "dashboard"
+      ],
+      "description": "Duolingo motivates with visual progress and a gamified UI. A breakdown of habit-forming UX design.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/ae22b4fbb49f31303d7bc5cb5462002787e9593d-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__learning-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Link Management",
+      "source_url": "https://www.uxsnaps.com/link-management",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "button",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "toggle",
+        "navbar",
+        "account"
+      ],
+      "description": "5 UX lessons from Linktree covering profile preview headers, inline visibility toggles, drag affordances, archive over delete, and grouped bottom toolbars.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/90c17feccf46d73e3fa60f8fa5adc03f15708050-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__link-management",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Marketing Landing Page",
+      "source_url": "https://www.uxsnaps.com/marketing-landing-page",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "landing-page",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "landing-page"
+      ],
+      "description": "Confluence\u2019s landing page uses clarity and structure to communicate value in seconds. Here\u2019s the breakdown.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/a4433c4f77a516895283e74821b80d74eba52f16-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__marketing-landing-page",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Marketing Landing Page (Binance)",
+      "source_url": "https://www.uxsnaps.com/marketing-landing-page-Binance",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "landing-page",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "form",
+        "button",
+        "landing-page"
+      ],
+      "description": "See how Binance builds trust and drives conversions with smart UI. Learn 5 actionable design lessons for fintech and crypto platforms.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/9d6bc5c987ac3ccf75fed27a75d37ad7bcc7decc-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__marketing-landing-page-(binance)",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Marketing Landing Page (marketing-landing-page-Jasper)",
+      "source_url": "https://www.uxsnaps.com/marketing-landing-page-Jasper",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "landing-page",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "landing-page"
+      ],
+      "description": "Learn how Jasper AI\u2019s landing screen drives trust, clarity, and conversions. 5 smart UI/UX takeaways designers can apply to their own work.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/e8ec87cb3ac2a6bf0f1ce8ea4e917ecce11709c7-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__marketing-landing-page-(marketing-landing-page-jasper)",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Marketing Landing Page (Acctual)",
+      "source_url": "https://www.uxsnaps.com/marketing-landing-page-acctual",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "landing-page",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "button",
+        "landing-page",
+        "login"
+      ],
+      "description": "Acctual's landing page uses outcome-focused copy, action-oriented CTAs, and authentic social proof to build trust and drive conversions effectively.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/43ee542ec89cefeaf31f68f541c12de4a7eb9d8c-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__marketing-landing-page-(acctual)",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Marketing Landing Page (Clockwise)",
+      "source_url": "https://www.uxsnaps.com/marketing-landing-page-clockwise",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "landing-page",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "button",
+        "landing-page",
+        "onboarding"
+      ],
+      "description": "Clockwise's landing page reduces signup friction and builds trust through smart button design, user-controlled media, and strategic feature discovery.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/766720e047990cf41cc8ef51a6bac3c31155a803-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__marketing-landing-page-(clockwise)",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Marketing Landing Page (Copy.ai)",
+      "source_url": "https://www.uxsnaps.com/marketing-landing-page-copy-ai",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "landing-page",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "landing-page",
+        "text"
+      ],
+      "description": "Learn 5 advanced UX lessons from Copy.ai\u2019s landing page including hierarchy, visual storytelling, conversion design, and social proof strategies.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/b3d9fb3c5f67856fe04ee7fbbabdcfa27f74b0e4-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__marketing-landing-page-(copy.ai)",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Marketing Landing Page (Glassdoor)",
+      "source_url": "https://www.uxsnaps.com/marketing-landing-page-glassdoor",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "landing-page",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "landing-page",
+        "onboarding",
+        "signup"
+      ],
+      "description": "5 advanced UX lessons from Glassdoor's signup landing page covering value framing, SSO hierarchy, illustration, partnership communication, and feature scanning.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/78b2443e0050cb0bac48bafe949fb8357455adb3-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__marketing-landing-page-(glassdoor)",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Marketing Landing Page (marketing-landing-page-n8n)",
+      "source_url": "https://www.uxsnaps.com/marketing-landing-page-n8n",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "landing-page",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "landing-page"
+      ],
+      "description": "Breakdown of n8n\u2019s landing page UI. Learn how strong visuals, role-based messaging, and trust signals create a high-converting technical product website.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/6b5872475f6a552cfd6ef4303865ecef4945f770-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__marketing-landing-page-(marketing-landing-page-n8n)",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Marketing Landing Page (TravelPerk)",
+      "source_url": "https://www.uxsnaps.com/marketing-landing-page-travelperk",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "landing-page",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "landing-page"
+      ],
+      "description": "TravelPerk earns user trust fast with clear visuals, benefits, and layout. See what makes it work.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/ea5c394ccc6ac4380eb64c9afd91a58073904f99-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__marketing-landing-page-(travelperk)",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Match Stats Summary",
+      "source_url": "https://www.uxsnaps.com/match-stats-summary",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "chart"
+      ],
+      "description": "Discover how DAZN\u2019s match stats screen blends hierarchy, structure, and color psychology to make complex football data clear, engaging, and mobile-friendly.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/7a9f3b3b7d81e24048bef39b464588651ed8de2d-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__match-stats-summary",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Meal Logging",
+      "source_url": "https://www.uxsnaps.com/meal-logging",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "button",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "toggle"
+      ],
+      "description": "5 UX lessons from MacroFactor covering plate language, learnable macro shorthand, native food units, plate-day zoom toggles, and five capture modes.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/14c07997ba58783046fb039c90a8ab489da6add4-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__meal-logging",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Meeting Insights",
+      "source_url": "https://www.uxsnaps.com/meeting-insights",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "timeline",
+        "button"
+      ],
+      "description": "5 UX lessons from Apollo's meeting screen covering speaker timelines, AI-generated summaries, tabbed insights, action hierarchy, and split-panel layout.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/ff0fee0844a7bc705e9818be6481e0001f1ce3b4-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__meeting-insights",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Movie Details",
+      "source_url": "https://www.uxsnaps.com/movie-details",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "progress-bar",
+        "button"
+      ],
+      "description": "5 advanced UI UX lessons from Google TV movie details screen on hierarchy, CTAs, progressive disclosure, and cross device control.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/09f964af7dbda4ad97f7a835be72c039fcc7289e-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__movie-details",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "New Project Setup",
+      "source_url": "https://www.uxsnaps.com/new-project-setup",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "gradient",
+        "button",
+        "testimonial"
+      ],
+      "description": "5 UX lessons from Vercel covering difficulty-gradient layout, two-column path split, template previews, subtle upgrade CTAs, and the power-user escape hatch.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/94eaf57eb9d3af3be574c7b8c1a2d34706d3de0a-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__new-project-setup",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Notes Dashboard",
+      "source_url": "https://www.uxsnaps.com/notes-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "dashboard",
+        "onboarding",
+        "text"
+      ],
+      "description": "Evernote's home dashboard uses contextual onboarding, friction-free capture, and transparent communication to drive engagement and build user habits.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/975df98552833a504293cf047010be6f2ed6aae2-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__notes-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Notion AI Prompting",
+      "source_url": "https://www.uxsnaps.com/notion-ai-prompting",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "form",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "input"
+      ],
+      "description": "Discover how Notion guides users with prompt hints to enhance AI input quality and minimize friction.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/a0b75b304c0373fb6c23a3028b4e3f835e112b9c-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__notion-ai-prompting",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Nutrition Summary",
+      "source_url": "https://www.uxsnaps.com/nutrition-summary",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "dashboard"
+      ],
+      "description": "Learn 5 advanced UI UX principles from Bevel\u2019s nutrition screen, including visual metaphors, habit design, data clarity, and calm interface systems.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/528bb8ea546ca165f60c9c5ac7c2046eb1c958b7-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__nutrition-summary",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Offers & Subscription",
+      "source_url": "https://www.uxsnaps.com/offers-and-subscription",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "pricing"
+      ],
+      "description": "Grubhub One groups multiple plans into a clean, digestible UI for better decision-making.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/cba1fb9ce42320d36bbb4eecc4d2eec628cc6e2c-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__offers-&-subscription",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Onboarding Dashboard",
+      "source_url": "https://www.uxsnaps.com/onboarding-dashboard-plane",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "onboarding",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "dashboard",
+        "onboarding"
+      ],
+      "description": "Five advanced UX lessons from Plane\u2019s home screen that improve focus, onboarding, and personalization.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/9e2efdb6d5d465fcbcca9bcfb6a712c62b923a15-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__onboarding-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Order Details & Updates",
+      "source_url": "https://www.uxsnaps.com/order-details-and-updates",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "progress-bar"
+      ],
+      "description": "Real-time updates and progress visuals reduce user anxiety. A delivery UX done right.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/03556d7394cfcc9608f0e54a924ddeeda11743a1-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__order-details-&-updates",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Order Details Review",
+      "source_url": "https://www.uxsnaps.com/order-details-review",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "testimonial",
+        "text"
+      ],
+      "description": "Discover how Chipotle\u2019s order screen uses context, visuals, and hierarchy to create a seamless and confident pickup experience for users.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/43d0cd5ef2c1d0bcebf4236dd8638b9668014b56-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__order-details-review",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Order Summary",
+      "source_url": "https://www.uxsnaps.com/order-summary",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "testimonial"
+      ],
+      "description": "Explore how HelloFresh uses delivery previews, change controls, FAQs, and clean design to reduce post-purchase anxiety and boost customer trust.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/5789c16f6798fac5cfb3d7b547510c0f49f1719e-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__order-summary",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Order Tracking",
+      "source_url": "https://www.uxsnaps.com/order-tracking",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "text"
+      ],
+      "description": "5 advanced UI UX lessons from Instacart\u2019s order tracking screen on hierarchy, proactive flows, layout structure, and contextual upsells.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/d18613e5d9ee5a03f66d8e31c4f6dfe60f22b38e-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__order-tracking",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Dashboard Home (Lessons in Clarity and Task Focus)",
+      "source_url": "https://www.uxsnaps.com/paypal-dashboard-home",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "todo",
+        "card",
+        "dashboard"
+      ],
+      "description": "Learn 5 advanced UI/UX lessons from PayPal\u2019s Home screen design, showing how clarity, hierarchy, and task-focused cards create a seamless experience.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/d1e764e78a9cedb033577b314ed56f7d6ff80365-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__dashboard-home-(lessons-in-clarity-and-task-focus)",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Personal Finance Dashboard",
+      "source_url": "https://www.uxsnaps.com/personal-finance-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "toggle",
+        "slider",
+        "sidebar"
+      ],
+      "description": "5 UX lessons from Origin's dashboard covering calendar-style spending, time range toggles, deadline nudges, widget sidebars, and contextual AI entry points.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/85e62818e68e6989acc96891bb42f1dd4b7844d3-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__personal-finance-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Personal Book Library",
+      "source_url": "https://www.uxsnaps.com/personal-library",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "progress-bar",
+        "button",
+        "navbar"
+      ],
+      "description": "5 UX lessons from Blinkist's library covering in-progress cards, item counts in nav, social Spaces, sticky continue reading, and grouped top-bar actions.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/6d6355f1a1f77f3cd8919e605019c89996705b97-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__personal-book-library",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Personalized Home Screen",
+      "source_url": "https://www.uxsnaps.com/personalized-home-screen",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "dashboard"
+      ],
+      "description": "Spotify balances variety and recency to create a sticky, personalized home screen experience.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/987164800541706f7454a39814ecd68aebd61d6d-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__personalized-home-screen",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Pet Tracking Dashboard",
+      "source_url": "https://www.uxsnaps.com/pet-tracking-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "dashboard"
+      ],
+      "description": "5 UX lessons from Fi's pet collar dashboard covering live location, device trust signals, correlated metrics, social ranking, and pet personalization.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/797c9619998b18f35e94e7eb562873a4cea4f6d0-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__pet-tracking-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Photos Collections",
+      "source_url": "https://www.uxsnaps.com/photos-collections",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "gallery",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "avatar",
+        "menu"
+      ],
+      "description": "5 UX lessons from Google Photos covering AI-generated category pills, collage albums, floating navigation, status-encoded avatars, and subtle notification dots.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/ab20083890093bb79e4b4ea154e914dd3768f0d8-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__photos-collections",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Planning a Trip with EV",
+      "source_url": "https://www.uxsnaps.com/planning-a-trip-with-ev",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "timeline",
+        "text"
+      ],
+      "description": "Discover how Rivian\u2019s trip planning UI uses timeline flow, clear charging stops, and contextual alerts to make EV journey planning effortless.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/b5bfd49114297fef03440442ac5b1ae50d108988-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__planning-a-trip-with-ev",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Podcast Search",
+      "source_url": "https://www.uxsnaps.com/podcast-search",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "gallery",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "progress-bar",
+        "search-bar",
+        "gallery"
+      ],
+      "description": "5 advanced UI UX lessons from a podcast search screen on hierarchy, multi type results, progress feedback, and persistent playback.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/3cd59655b40d73e4dfc14e56730e96ab4508145a-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__podcast-search",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Podcasts Episode Details",
+      "source_url": "https://www.uxsnaps.com/podcasts-episode-details",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "button"
+      ],
+      "description": "Learn how Apple Podcasts\u2019 episode page blends clarity, hierarchy, and interaction design to guide users naturally through audio discovery.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/60b7ff681ca606a17d2ef7dda3478dcffe2db5c8-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__podcasts-episode-details",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Post Settings",
+      "source_url": "https://www.uxsnaps.com/post-settings",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "settings",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "settings",
+        "testimonial"
+      ],
+      "description": "5 advanced UI UX lessons from Instagram\u2019s post settings screen on previews, feature placement, hierarchy, and reducing cognitive load.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/6a4cdb90db7e34228260da3fcf930c8bdc6cafee-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__post-settings",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Pricing Modal",
+      "source_url": "https://www.uxsnaps.com/pricing-modal",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "modal",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "badge",
+        "dialog",
+        "modal"
+      ],
+      "description": "5 UX lessons from Bloom's pricing covering separated trial offers, honest annual framing, verb-led taglines, dual badge psychology, and one-axis comparability.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/1a9ebc0c8fd1b82593b0524fec1c3f2be1bffe60-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__pricing-modal",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Pricing Page",
+      "source_url": "https://www.uxsnaps.com/pricing-page",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "landing-page",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "pricing"
+      ],
+      "description": "5 UX lessons from Basecamp covering free plans above paid, recency-stamped social proof, two pricing philosophies, trial length as a perk, and scannable lists.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/7c6b526e8ca09cf6bcf35d9a151fe4df1433895f-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__pricing-page",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Product Discovery Feed",
+      "source_url": "https://www.uxsnaps.com/product-discovery-feed",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "gallery",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "grid",
+        "gallery"
+      ],
+      "description": "5 UX lessons from Telescope covering masonry product grids, curator-first attribution, leaderboard incentives, inline bookmarking, and price as supporting info.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/b7ebd3395c4cb7c2c5daae1ebca1907da49d7dc0-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__product-discovery-feed",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Product Listing",
+      "source_url": "https://www.uxsnaps.com/product-listing",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "gallery",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "button"
+      ],
+      "description": "5 UX lessons from Depop covering honest scarcity signals, structured offers, raw seller voice, on-image social actions, and contactable seller identity.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/58eab12220a92cd289eb221c5be823ea9e7d483b-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__product-listing",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Product Listing Feed",
+      "source_url": "https://www.uxsnaps.com/product-listing-feed",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "gallery",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "card",
+        "gallery",
+        "testimonial"
+      ],
+      "description": "Discover 5 UI/UX lessons from On\u2019s product feed, including color previews, filter design, minimalism, and scannable product cards.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/b0d87cd2f0d5d4d5f764c6682daa43b4b235b982-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__product-listing-feed",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Products Dashboard",
+      "source_url": "https://www.uxsnaps.com/products-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "search-bar",
+        "dashboard"
+      ],
+      "description": "5 advanced UI UX lessons from Lovi\u2019s product dashboard on personalization, fit scoring, search behavior, and minimal skincare design.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/5b8f573ba9fec1bbd45e0df539b294adacfff597-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__products-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Project Overview Details",
+      "source_url": "https://www.uxsnaps.com/project-overview-details",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "dashboard"
+      ],
+      "description": "5 UX lessons from Linear covering three-panel layout, inline properties, three-number health snapshots, and integrations as first-class properties.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/b1d0402647e7d93fefd03e1f836693e4d39c1a63-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__project-overview-details",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Property Details",
+      "source_url": "https://www.uxsnaps.com/property-details",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "card"
+      ],
+      "description": "Learn how Airbnb\u2019s Home Details UI uses trust signals, clarity, and smart layout to guide users toward faster booking decisions.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/7658c010fa231f87b440c823cb0cdf36846064b2-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__property-details",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Purchase Details",
+      "source_url": "https://www.uxsnaps.com/purchase-details",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "card"
+      ],
+      "description": "Learn how Lululemon\u2019s Purchase Details screen masters hierarchy, clarity, and usability through thoughtful UI/UX design principles.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/c8c3484dc37ce9aafd013c22a0c4d3e2c7143471-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__purchase-details",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Recipe Discovery",
+      "source_url": "https://www.uxsnaps.com/recipe-discovery",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "gallery",
+      "tags": [
+        "d3",
+        "minimal",
+        "flat",
+        "chart",
+        "search-bar",
+        "input"
+      ],
+      "description": "5 UX lessons from Julienne covering conversational headlines, multi-format AI input, \"Surprise me\" copy, food photography cards, and floating contextual search.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/aceca2e52d43249d7398ed8e1ee1b674f9c6a8a6-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__recipe-discovery",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Renting an eBike",
+      "source_url": "https://www.uxsnaps.com/renting-a-ebike",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "pricing",
+        "text"
+      ],
+      "description": "See how Forest\u2019s rental UI combines real-world clarity, pricing transparency, and contextual design to create a smooth urban mobility experience.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/c50e8f438cc01bc933fc12950fbfcafc0b0741df-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__renting-an-ebike",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Restaurant Details",
+      "source_url": "https://www.uxsnaps.com/restaurant-details",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "toggle",
+        "text"
+      ],
+      "description": "5 UX lessons from foodpanda's restaurant detail screen covering trust signals, delivery toggles, upfront offers, persistent context, and decision shortcuts.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/6967b70d797a971ec6656a032da538fcdc341bee-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__restaurant-details",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Restaurant menu",
+      "source_url": "https://www.uxsnaps.com/restaurant-menu",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "menu",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "menu"
+      ],
+      "description": "Discover 5 UI/UX lessons from Uber Eats\u2019 McDonald\u2019s menu screen\u2014trust signals, hierarchy, social proof & clean design that boost food ordering ease.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/e8290f1f7973805f71ab8b8b6a76c16c0990aaca-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__restaurant-menu",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Restaurant Search",
+      "source_url": "https://www.uxsnaps.com/restaurant-search",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "search-bar"
+      ],
+      "description": "Discover 5 UI UX lessons from TheFork's restaurant search design covering filters, transparency, booking UX, and visual hierarchy for discovery products.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/44c12dfaace2063be6cc9e8e4f3c3ff87137c401-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__restaurant-search",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Ride Request",
+      "source_url": "https://www.uxsnaps.com/ride-request",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "progress-bar"
+      ],
+      "description": "5 UX lessons from InDrive covering name-your-price control, color-coded routes, driver density confidence, and progressive add stop disclosure.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/07d98f817e7851209312415d5d71dffff018818e-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__ride-request",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Route Navigation Details",
+      "source_url": "https://www.uxsnaps.com/route-navigation-details",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "menu",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "button",
+        "menu",
+        "text"
+      ],
+      "description": "Discover 5 UX lessons from Apple Maps\u2019 Directions UI\u2014how clarity, hierarchy, and contextual actions make navigation feel effortless.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/35c31f47e72b09c4fce0eee6ba69f5afe2b85aef-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__route-navigation-details",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "SaaS HR Dashboard",
+      "source_url": "https://www.uxsnaps.com/saas-hr-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "dashboard"
+      ],
+      "description": "Learn 5 advanced UI UX lessons from Deel\u2019s HR dashboard. Discover how enterprise dashboards can stay powerful, clear, and easy to use.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/b3a4212a10f234733b7f61681252f4ff81288008-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__saas-hr-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Saved Boards",
+      "source_url": "https://www.uxsnaps.com/saved-boards",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "card"
+      ],
+      "description": "5 advanced UI UX lessons from Pinterest Saved Boards on structure, privacy cues, visual recognition, and smart creation patterns.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/984a7c4c0c475b90c14a5f2b9fef3a50619cc69a-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__saved-boards",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Search and Discover",
+      "source_url": "https://www.uxsnaps.com/search-and-discover",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "gallery",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "search-bar",
+        "text"
+      ],
+      "description": "Advanced UI UX lessons from Stake\u2019s Discover screen on market context, trending discovery, movers segmentation, and subtle stock alerts.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/c4f2885f2a6176b51417dc7f8d44365719301854-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__search-and-discover",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Search Results",
+      "source_url": "https://www.uxsnaps.com/search-results",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "gallery",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "search-bar"
+      ],
+      "description": "Learn 5 advanced UI UX lessons from CVS Health\u2019s search results screen and see how great retail UX reduces friction and improves decision-making.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/d8f4245fab0b82f324532f42ea1d9285b09eb2cd-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__search-results",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Search Results (Pinterest)",
+      "source_url": "https://www.uxsnaps.com/search-results-pinterest",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "gallery",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "search-bar",
+        "grid",
+        "testimonial"
+      ],
+      "description": "5 UX lessons from Pinterest's search screen covering visual filter pills, collage previews, masonry grids, and discovery design patterns.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/bcbfc0c63d5381fa59955e5f5d69e16422e6b888-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__search-results-(pinterest)",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Setup Instruction",
+      "source_url": "https://www.uxsnaps.com/setup-instruction",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "form",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "onboarding",
+        "login"
+      ],
+      "description": "Learn 5 advanced UI UX lessons from WhatsApp\u2019s setup instruction screen and see how great onboarding design removes friction and confusion.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/d66c175ebdfba4b800de4177a6d4ed2c93e54620-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__setup-instruction",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Store home dashboard",
+      "source_url": "https://www.uxsnaps.com/shopify-store-home-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "d3",
+        "minimal",
+        "flat",
+        "chart",
+        "dashboard",
+        "text"
+      ],
+      "description": "Five UX lessons from Shopify on editable metrics, chart comparisons, incomplete data, resumable setup, contextual offers, and AI conversation history.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/66edb5b8998836d59faff7aacba6789f996e1e6f-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__store-home-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Shopping Cart",
+      "source_url": "https://www.uxsnaps.com/shopping-cart",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "card"
+      ],
+      "description": "5 UX lessons from Instacart covering precise delivery windows, exact-gap offers, per-item replacement plans, trash-at-one steppers, and goal-aligned upsells.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/9f39bcae4026d8ede227017dd577dc825b3b3887-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__shopping-cart",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Shopping Hub",
+      "source_url": "https://www.uxsnaps.com/shopping-hub",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "form",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "search-bar",
+        "input",
+        "hero"
+      ],
+      "description": "5 UX lessons from Zip covering hero spending power, aspiration-framed upsells, search-or-URL inputs, brand logo trust, and visible affiliate disclosure.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/15fca18baa062f6a07f6ee60ac1d8962940eaafc-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__shopping-hub",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Show Details",
+      "source_url": "https://www.uxsnaps.com/show-details",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "progress-bar"
+      ],
+      "description": "5 advanced UX lessons from Netflix's TV show detail page covering conversion, visual hierarchy, retention design, and progressive content exploration.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/8caac4d438cf3adbce46cb6171cfe74a96859ec6-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__show-details",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Ski Conditions Report",
+      "source_url": "https://www.uxsnaps.com/ski-conditions-report",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "text"
+      ],
+      "description": "5 UX lessons from Slopes covering vital-stat rows, human-voiced reports, data freshness attribution, community histograms, and color-linked text.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/abb0b42d59be22c11ee8e9fc027be05ecaeedb07-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__ski-conditions-report",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Sleep Analytics",
+      "source_url": "https://www.uxsnaps.com/sleep-analytics",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "animation",
+        "chart"
+      ],
+      "description": "5 advanced UX lessons from Tide's sleep analytics screen covering data hierarchy, visualization, emotional design, and habit-building patterns.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/bcaede92cd87088e970a48503e9bbf6816d1e419-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__sleep-analytics",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Soccer Match Details",
+      "source_url": "https://www.uxsnaps.com/soccer-match-details",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "card"
+      ],
+      "description": "5 practical UI UX lessons from FotMob\u2019s match detail screen, covering hierarchy, tabs, engagement, card design, and color restraint.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/647e7ad59ea6dd52ba5fa0a0085a6fe2668a2912-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__soccer-match-details",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Social Content Calendar",
+      "source_url": "https://www.uxsnaps.com/social-content-calendar",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "form",
+        "text"
+      ],
+      "description": "5 UX lessons from Later covering peak-time highlighting, status-coded post blocks, multi-platform tabs, media-to-calendar workflow, and contextual AI features.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/2ac20cdd412ce53e54f69e87a851def1e42c27b1-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__social-content-calendar",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Spending Dashboard",
+      "source_url": "https://www.uxsnaps.com/spending-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "button",
+        "dashboard"
+      ],
+      "description": "Explore 5 advanced UI/UX lessons from Kit\u2019s spending dashboard, showing how personalization, hierarchy, and clear actions improve the finance experience.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/e586b0322f92e879a82020e33ecf952354fcfea7-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__spending-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Spending Plan",
+      "source_url": "https://www.uxsnaps.com/spending-plan",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "card"
+      ],
+      "description": "5 UX lessons from Quicken covering master-detail linking, included vs excluded transparency, inline rationale, and visible empty groups.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/1a97c2e38927caec1a1da359cdb24974d617453b-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__spending-plan",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Star Rewards - Home",
+      "source_url": "https://www.uxsnaps.com/star-rewards-home",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "gallery",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "card"
+      ],
+      "description": "Discover 5 advanced UI/UX lessons from the Starbucks Rewards app, showing how gamification, clarity, and personalization drive user engagement.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/994939befa506cc828bee3c8c0f55e73a7536173-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__star-rewards---home",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Stock Market Dashboard",
+      "source_url": "https://www.uxsnaps.com/stock-market-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "dashboard"
+      ],
+      "description": "Discover 5 advanced UI/UX lessons from Fey\u2019s stock market dashboard, showing how clarity, personalization, and layout design improve decision-making.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/d12708d6b64b069ee0ddd67f8b3b2253ebfa4b4e-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__stock-market-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Daily Timeline",
+      "source_url": "https://www.uxsnaps.com/structured-daily-timeline",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "timeline",
+        "todo",
+        "progress-bar"
+      ],
+      "description": "Five UX lessons from Structured on task progress, meaningful schedule gaps, energy awareness, weekly activity previews, and inline checklists.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/d005c3a0056bfa96a50dfd64b2cfc535c160b860-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__daily-timeline",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Subscription Benefits Details",
+      "source_url": "https://www.uxsnaps.com/subscription-benefits-details",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "pricing"
+      ],
+      "description": "Discover 5 UX lessons from GrabUnlimited\u2019s subscription screen, scannable benefits, transparent trials, and trust-driven design that boosts conversions.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/7c4651a4f00396f91b13bef83632b1f420d8969e-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__subscription-benefits-details",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Subscription Management",
+      "source_url": "https://www.uxsnaps.com/subscription-management",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "pricing"
+      ],
+      "description": "5 UX lessons from Oportun covering honest trial dates, monthly-unit annual pricing, re-selling at cancellation, outcome-named features, and calm manage links.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/7d02bc134a66458fb5a74f9de94b6b147d6cfb37-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__subscription-management",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Subscription Trail Sign Up",
+      "source_url": "https://www.uxsnaps.com/subscription-trail-sign-up",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "onboarding",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "onboarding",
+        "pricing",
+        "signup"
+      ],
+      "description": "Learn 5 UI/UX lessons from Headspace\u2019s subscription trial screen, including trust-building transparency, clear value messaging, and frictionless sign-up.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/ac2c94291adc35a0b395c26926a0c28823b3f4c5-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__subscription-trail-sign-up",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Subscription Trial",
+      "source_url": "https://www.uxsnaps.com/subscription-trial",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "pricing"
+      ],
+      "description": "Learn 5 advanced UI UX lessons from AllTrails\u2019 subscription trial screen, pricing clarity, trust-building, decision psychology, and conversion-focused design.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/c19e97d283c62cb1a548d0606035890f24e79e2f-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__subscription-trial",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Subscriptions Dashboard",
+      "source_url": "https://www.uxsnaps.com/subscriptions-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "three.js",
+        "minimal",
+        "flat",
+        "dashboard",
+        "onboarding",
+        "pricing"
+      ],
+      "description": "Learn 5 advanced UI UX lessons from Orbit\u2019s subscription dashboard covering visual metaphors, onboarding, monetization, hierarchy, and financial awareness.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/2f3789fb0d675309c8505244307b4b1c90d03ee7-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__subscriptions-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Swap Crypto Tokens",
+      "source_url": "https://www.uxsnaps.com/swap-crypto-tokens",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "d3",
+        "minimal",
+        "flat",
+        "chart",
+        "progress-bar",
+        "icon"
+      ],
+      "description": "Phantom makes crypto swaps beginner-friendly using clarity, iconography, and progressive steps.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/f43b0cfb9da353d9dcba27299769d0b935fb889b-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__swap-crypto-tokens",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Task Dashboard",
+      "source_url": "https://www.uxsnaps.com/task-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "todo",
+        "chart",
+        "card"
+      ],
+      "description": "Learn 5 advanced UX lessons from Todoist\u2019s task dashboard including hierarchy, task cards, analytics insights, and minimal productivity design.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/0aaeeee6944f545c01e21d8c7fc33b290a7ffc96-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__task-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Template Discovery - Home",
+      "source_url": "https://www.uxsnaps.com/template-discovery-home",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "gallery",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "search-bar"
+      ],
+      "description": "See how Canva\u2019s UI uses clear hierarchy, smart search, and curated templates to make finding and starting designs fast and effortless.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/8a3b714bb93010abad7c3e2510f454262e8f3a7e-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__template-discovery---home",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Text-to-Speech AI",
+      "source_url": "https://www.uxsnaps.com/text-to-speech-ai",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "animation",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "animation",
+        "slider",
+        "text"
+      ],
+      "description": "5 UX lessons from ElevenLabs covering inline emotion tags, speaker pills, side-by-side generations, contextual model hints, and dual-ended sliders.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/ebb4c6f8565e1d11f599939a7a7b6a4512b5d24b-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__text-to-speech-ai",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Home Feed Timeline",
+      "source_url": "https://www.uxsnaps.com/thread-home-timeline",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "gallery",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "scroll-effect",
+        "timeline",
+        "button"
+      ],
+      "description": "Discover how Thread keeps users engaged with a visual hierarchy and subtle UI interactions.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/9f9420a50423eff99bd5251d0945511aecd2e2d7-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__home-feed-timeline",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Travel Dashboard",
+      "source_url": "https://www.uxsnaps.com/travel-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "form",
+        "dashboard"
+      ],
+      "description": "5 Takeaways from the TravelPerk dashboard that show how clean guidance, adaptive forms, and smart hierarchy create a focused travel experience.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/2d56a0fc79b5b7e7ddbd8348bc3d56c37651cd89-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__travel-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Trip Planning",
+      "source_url": "https://www.uxsnaps.com/trip-planning",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "navbar",
+        "sidebar"
+      ],
+      "description": "5 UX lessons from Komoot covering three synced route views, composition bars, scannable stat headers, proactive route alerts, and multi-day sidebar planning.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/1fd6fff5a1049bc515dc6a7ce68d22da968a8f9f-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__trip-planning",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "User Profile",
+      "source_url": "https://www.uxsnaps.com/user-profile",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "profile",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "account"
+      ],
+      "description": "Learn how Duolingo\u2019s profile screen uses playful minimalism, smart metrics, and social design to motivate users and keep learning fun.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/90e49c3d10e60e5c496ca55a7087c0589d443001-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__user-profile",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Learning Dashboard (Uxcel)",
+      "source_url": "https://www.uxsnaps.com/uxcel-learning-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "card",
+        "dashboard",
+        "onboarding"
+      ],
+      "description": "5 UX lessons from Uxcel covering layered resume cards, payoff-first onboarding, streak safety nets, dismissible bulletins, and dual-buyer upgrade cards.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/c2504a730e98241756221fc5ee0014d970f73253-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__learning-dashboard-(uxcel)",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Vehicle Dashboard",
+      "source_url": "https://www.uxsnaps.com/vehicle-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "dashboard",
+        "text"
+      ],
+      "description": "Explore five advanced UI UX takeaways from the Tesla vehicle dashboard that improve clarity, context, and user control.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/302bb8841a54971c46195d735d93d7a2c4345bab-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__vehicle-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Vibe Coding Editor",
+      "source_url": "https://www.uxsnaps.com/vibe-coding-editor",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "timeline",
+        "button",
+        "testimonial"
+      ],
+      "description": "5 UX lessons from AI Studio's vibe coding editor covering checkpoint safety, action timelines, visual annotation, contextual suggestions, and preview controls.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/9945509d6402675931342086285be048ec085fd6-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__vibe-coding-editor",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Vibe Coding Interface",
+      "source_url": "https://www.uxsnaps.com/vibe-coding-interface",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "card"
+      ],
+      "description": "Learn 5 advanced UI UX lessons from Lovable\u2019s vibe coding interface, from AI transparency to layout decisions that support fast creative workflows.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/050989ad5e9b0cb4840d61360c24c37f4479010c-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__vibe-coding-interface",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Video Publishing Settings",
+      "source_url": "https://www.uxsnaps.com/video-publishing-settings",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "settings",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "settings"
+      ],
+      "description": "Explore advanced UI UX lessons from Loom\u2019s video publishing interface, covering AI visibility, layout clarity, focused settings, and frictionless sharing.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/8667af5030322e0007ab99f18d51b57122a0966a-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__video-publishing-settings",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Subscription Plans",
+      "source_url": "https://www.uxsnaps.com/vimeo-subscription-plans",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "landing-page",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "progress-bar",
+        "pricing"
+      ],
+      "description": "Vimeo's pricing page uses trial-first psychology, visual comparison tools, and progressive disclosure to guide users toward confident purchase decisions.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/c81c08a0ba62ce46d48347db81b769aff102250e-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__subscription-plans",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Voice Creator Hub",
+      "source_url": "https://www.uxsnaps.com/voice-creator-hub",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "form",
+      "tags": [
+        "css",
+        "html",
+        "wave",
+        "form",
+        "testimonial"
+      ],
+      "description": "5 UX lessons from ElevenLabs covering voice identity orbs, v1/v2 variant pairs, waveform previews, prompt provenance, and asset-versus-output architecture.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/3f191fa44671cafc8c3f03f12209292495ed1e7d-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__voice-creator-hub",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Wallet Dashboard",
+      "source_url": "https://www.uxsnaps.com/wallet-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "dashboard"
+      ],
+      "description": "Discover 5 advanced UX lessons from Fuse Wallet\u2014how minimalism, hierarchy, and structure make finance apps simple and intuitive.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/1613a08aca9fa7778cff2cc14a51b35b34546672-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__wallet-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Website Theme Editor",
+      "source_url": "https://www.uxsnaps.com/website-theme-editor",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "font",
+      "tags": [
+        "d3",
+        "minimal",
+        "flat",
+        "chart",
+        "progress-bar",
+        "button"
+      ],
+      "description": "5 advanced UI UX lessons from Univers theme editor on live preview, progressive disclosure, typography controls, and action clarity.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/c9b7373adf8f39b1b2e3bdcb1de8d2b4d126a87e-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__website-theme-editor",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Workout Activity Summary",
+      "source_url": "https://www.uxsnaps.com/workout-activity-summary",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "login"
+      ],
+      "description": "Discover 5 UI/UX insights from the Apple Fitness app\u2019s summary UI. Learn how Apple design intuitive user flows, motivates via personalization & visualizes data.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/f599623d2ff234aaa11fef072abe3916c53f610a-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__workout-activity-summary",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Workout Dashboard",
+      "source_url": "https://www.uxsnaps.com/workout-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "button",
+        "dashboard"
+      ],
+      "description": "5 advanced UI UX lessons from Runna\u2019s workout dashboard on hierarchy, micro indicators, color coding, and sticky primary actions.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/54962051bd675b47a74dfd3e231f76f40773b2d5-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__workout-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Workout Editor",
+      "source_url": "https://www.uxsnaps.com/workout-editor",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "progress-bar",
+        "toggle",
+        "button"
+      ],
+      "description": "5 UX lessons from Tonal's custom workout screen covering hero video demos, dual-view toggles, real-world workflow, progressive disclosure, and CTA placement.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/7a7004ac1477e53da2915fb76970292a88e5de8b-1770x1368.png?rect=0,220,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__workout-editor",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Workout Filters",
+      "source_url": "https://www.uxsnaps.com/workout-filters",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "card"
+      ],
+      "description": "Learn how Tempo\u2019s workout filters use personalization, clarity, and smart layouts to create a smooth, user-friendly experience.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/0113a85b852a9742c7670a0e72d2e46ada9b6e83-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__workout-filters",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Workspace Onboarding Setup",
+      "source_url": "https://www.uxsnaps.com/workspace-onboarding-setup",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "onboarding",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "card",
+        "onboarding"
+      ],
+      "description": "5 UI/UX lessons from Workspace Admin onboarding - cards, grouping, guided setup, and clean layouts that simplify user workflows.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/551bc7a616605a336a2532cb3cd270a868be12c9-1770x1369.png?rect=0,221,1770,929&w=1200&h=630&fit=crop",
+      "id": "unknown__workspace-onboarding-setup",
+      "source_domain": "www.uxsnaps.com"
     }
   ]
 }
