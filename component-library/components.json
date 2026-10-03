@@ -1,6 +1,6 @@
 {
-  "version": "1.0.47",
-  "source_count": 3594,
+  "version": "1.0.48",
+  "source_count": 3628,
   "components": [
     {
       "id": "cat-0",
@@ -60562,6 +60562,716 @@
       "preview_image": "https://cdn.originkit.dev/components/pricing-03-gallery.png?v=msdb9fql",
       "id": "unknown__pricing-03",
       "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Cutout",
+      "source_url": "https://www.designminis.com/tools/cutout",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "minimal",
+        "soft",
+        "image-effect",
+        "background",
+        "editor"
+      ],
+      "description": "Removes the background from any image in the browser using on-device AI, so nothing is uploaded. Free web tool by Kosta Motresku.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/5b9172da1991e4d8c8ae52b2f2012e7b684766d8-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__cutout",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Refract",
+      "source_url": "https://www.designminis.com/tools/refract",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "glsl",
+        "webgl",
+        "shader",
+        "glass",
+        "frosted",
+        "gradient",
+        "filter",
+        "image-effect",
+        "blur-effect"
+      ],
+      "description": "Puts any image behind textured glass online: fluted, cross, block, ripple and rain glass presets. Runs as a live WebGL/GLSL effect in the page.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/abff60bf4b0e3fd64289516672dc9f40d25c3f6d-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__refract",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Symbl",
+      "source_url": "https://www.designminis.com/tools/symbl",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "minimal",
+        "monochrome",
+        "logo",
+        "editor",
+        "design-tool"
+      ],
+      "description": "Analyzes a logo's clarity, scalability and visual strength and reports on it. Free web tool built by Guillaume.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/df37c63ccb61738c31678ea9f9ee5a97dc483428-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__symbl",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Grainrad",
+      "source_url": "https://www.designminis.com/tools/grainrad",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "halftone",
+        "dither",
+        "noise",
+        "ascii-art",
+        "filter",
+        "image-effect"
+      ],
+      "description": "Applies ASCII, dithering, halftone and grain treatments to images in real time, in the browser. Free web tool by Alim Maasoglu.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/59b331edbf6eb56473c8d3b083adff09b152aecc-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__grainrad",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Sketch Tools",
+      "source_url": "https://www.designminis.com/tools/sketch-tools",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "minimal",
+        "outline",
+        "animation",
+        "music",
+        "visualizer",
+        "playground"
+      ],
+      "description": "A browser playground for designing motion and audio-reactive visuals. Freemium web tool from Sketch Design Club.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/7b626ef69c765bffd9437f34cc9af7433cf506e7-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__sketch-tools",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Nexus",
+      "source_url": "https://www.designminis.com/tools/nexus",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "gsap",
+        "lottie",
+        "javascript",
+        "gradient",
+        "glow",
+        "editor",
+        "filter",
+        "video-player",
+        "animation"
+      ],
+      "description": "A full web editor for creating your own filters, with video, keyframes and export. The live page ships gsap and lottie animation assets; freemium.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/3b3b73060daa2b1fe6c89ef1884ab563980fd6a2-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__nexus",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Gridcraft",
+      "source_url": "https://www.designminis.com/tools/gridcraft",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "minimal",
+        "outline",
+        "logo",
+        "icon",
+        "grid",
+        "design-tool"
+      ],
+      "description": "A specialized web design tool for logo designers and brand identity work, built around grid-based logo construction. Free, by Jubril Egbebi.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/9dd06d255062ad903b745aecbfb01a936d09094d-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__gridcraft",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Inbetween",
+      "source_url": "https://www.designminis.com/tools/inbetween",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "minimal",
+        "outline",
+        "monochrome",
+        "icon-set",
+        "icon",
+        "illustration",
+        "typography"
+      ],
+      "description": "Draws shapes, pictograms and letterforms on layered geometric grids, then sets the result as text. Free web tool by Etienne Mineur.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/dfe381e716ed867f83406c68317bd00b09885dc3-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__inbetween",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Plinth",
+      "source_url": "https://www.designminis.com/tools/plinth",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "glsl",
+        "webgl",
+        "shader",
+        "soft",
+        "minimal",
+        "mockup",
+        "image-effect",
+        "background"
+      ],
+      "description": "A free screenshot mockup generator: drop an image, stand it on a backdrop with padding and rounded corners, then export. WebGL-backed, by Kosta Motresku.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/791b66df9047facc6632ecbe8e1adba07ae9912e-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__plinth",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Image Flow",
+      "source_url": "https://www.designminis.com/tools/image-flow",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "minimal",
+        "soft",
+        "editor",
+        "image-effect",
+        "image-grid"
+      ],
+      "description": "A free browser-based layered image editor for quick visual editing and effects. Web tool by Andrii.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/a0238f9835ecd04084977bfa4fbbc58275f56238-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__image-flow",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Shatter",
+      "source_url": "https://www.designminis.com/tools/shatter",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "glsl",
+        "webgl",
+        "shader",
+        "gradient",
+        "neon",
+        "glass",
+        "image-effect",
+        "3d",
+        "filter"
+      ],
+      "description": "Breaks a sheet of glass over any image, producing real 3D shards with chamfered edges that catch a studio light. WebGL/GLSL effect, by Kosta Motresku.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/7b3c99a2d3d3b86ff61997f0bf47b9ed00884267-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__shatter",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Colour contrast checker",
+      "source_url": "https://www.designminis.com/tools/colour-contrast-checker",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "minimal",
+        "monochrome",
+        "color-tool",
+        "color-picker",
+        "color-palette"
+      ],
+      "description": "Checks contrast between background and foreground colors for WCAG AA and AAA font sizes as you type. Free accessibility web tool by Hubert Daniell.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/4ad225f507812793866fb72b4838bb534db0d8ed-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__colour-contrast-checker",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "FontFreezer",
+      "source_url": "https://www.designminis.com/tools/fontfreezer",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "minimal",
+        "font",
+        "editor",
+        "generator"
+      ],
+      "description": "Bakes OpenType features and variable-font axes permanently into a font file so the exported font carries those settings. Free web tool by Anton Gridz.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/d16b538a8184df26c41d38f7572f0dd65284e2a9-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__fontfreezer",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Ink",
+      "source_url": "https://www.designminis.com/tools/ink",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "minimal",
+        "retro",
+        "text-effect",
+        "typography",
+        "video-player",
+        "editor"
+      ],
+      "description": "Handwriting overlays for video: type a line, pick a handwriting style, and export a transparent PNG or ProRes alpha clip. Web tool by Arnold Francisca.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/e88f15b0131014632755abc8d15194f76bd9f097-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__ink",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Design System Studio",
+      "source_url": "https://www.designminis.com/tools/design-system-studio",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "minimal",
+        "flat",
+        "design-tool",
+        "theme",
+        "color-palette",
+        "typography"
+      ],
+      "description": "Establishes a contract between a design system and a UI library, covering CSS, color and typography tokens. Free web tool by Pedro Balsamao.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/7b9cc7250652782edc228f73e828e9692a5e1655-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__design-system-studio",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Hypergraph Plotter",
+      "source_url": "https://www.designminis.com/tools/hypergraph-plotter",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "minimal",
+        "outline",
+        "monochrome",
+        "illustration",
+        "grid",
+        "generator",
+        "css-art"
+      ],
+      "description": "Plots hypergraphs and any structure made of nested labeled blobs. Free browser plotting tool by Phileas Dazeley-Gaist.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/027b70138c8c3e0fb7b91582a933799576c90b4f-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__hypergraph-plotter",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Benday",
+      "source_url": "https://www.designminis.com/tools/benday",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "halftone",
+        "duotone",
+        "retro",
+        "logo",
+        "loader",
+        "svg-generator",
+        "pattern"
+      ],
+      "description": "Turns a logo into a dotted Ben-Day style thinking indicator, the way comic printing uses dot screens. Free web playground by Kacem Mathlouthi.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/25f543dbf125a6c30d013af2ec48216ccc12dc3e-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__benday",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Prisma",
+      "source_url": "https://www.designminis.com/tools/prisma",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "minimal",
+        "gradient",
+        "editor",
+        "drag-drop",
+        "file-upload",
+        "playground"
+      ],
+      "description": "A node-based file converter laid out on an infinite canvas that runs entirely in the browser. Free web tool by Shady Red Pilgrim.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/66ad8f664245d358201ac7da9c63ff2fc930c327-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__prisma",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "The Good Line-Height",
+      "source_url": "https://www.designminis.com/tools/the-good-line-height",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "minimal",
+        "typography",
+        "grid",
+        "generator"
+      ],
+      "description": "Works out the line-height that lands a given text block on the design grid. Free web and Figma tool by Fran Perez.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/7773d05f9237bf7515e05b395cc8e37c197580b4-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__the-good-line-height",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Triim",
+      "source_url": "https://www.designminis.com/tools/triim",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "minimal",
+        "image-effect",
+        "editor",
+        "image-grid"
+      ],
+      "description": "Trims the transparent pixels off the edges of an image. Free web tool by Rocco Bombardieri.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/3083e348207e8c38c4ab9fe8eb5de6c6713ebb0c-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__triim",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "WebMoment",
+      "source_url": "https://www.designminis.com/tools/webmoment",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "minimal",
+        "retro",
+        "image-effect",
+        "image-grid",
+        "timeline"
+      ],
+      "description": "Captures and lets you revisit the visual history of any website over time. Freemium web tool by Leonardo Pasquini.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/c7aafe8c408449289ad146422ff7d7ffad475d7c-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__webmoment",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "doppio",
+      "source_url": "https://www.designminis.com/tools/doppio",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "gradient",
+        "neon",
+        "glow",
+        "video-player",
+        "animation",
+        "generator",
+        "editor"
+      ],
+      "description": "Turns static visuals into a motion reel in minutes rather than hours. Freemium motion web tool by Phil.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/9dc6b596f951f4b69a2944c4eec04d3db066cef8-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__doppio",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Butter",
+      "source_url": "https://www.designminis.com/tools/butter",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "gradient",
+        "neon",
+        "glow",
+        "animation",
+        "video-player",
+        "marketplace",
+        "generator"
+      ],
+      "description": "A place to discover, remix and create custom tools, motion graphics and visual effects. Free web tool by Nate.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/81d594aa191559838ebeb1666624abe9ad2436a9-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__butter",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Animos",
+      "source_url": "https://www.designminis.com/tools/animos",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "minimal",
+        "gradient",
+        "animation",
+        "video-player",
+        "template",
+        "generator"
+      ],
+      "description": "Drops designs into motion templates and exports a looping clip. Freemium web tool by Herdetya.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/c0e492a6d86d52132e434758d75b08d1c8e5e62c-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__animos",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "AutoDraw",
+      "source_url": "https://www.designminis.com/tools/autodraw",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "minimal",
+        "outline",
+        "monochrome",
+        "design-tool",
+        "illustration",
+        "editor",
+        "marker"
+      ],
+      "description": "Sketch roughly and it swaps the scribble for a clean matching drawing. Free browser whiteboard by Google Creative Lab.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/92c33a864e9e4d86595469b235e52131327ee305-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__autodraw",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Ladybug",
+      "source_url": "https://www.designminis.com/tools/ladybug",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "neon",
+        "gradient",
+        "glow",
+        "animation",
+        "3d",
+        "video-player",
+        "editor"
+      ],
+      "description": "A live browser studio for motion graphics, 3D and video effects. Free web tool by Galleta.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/7ef14e30b8bc88b0e479d1f0afadc86e6c7902cc-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__ladybug",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "INKDRUM",
+      "source_url": "https://www.designminis.com/tools/inkdrum",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "noise",
+        "retro",
+        "duotone",
+        "image-effect",
+        "filter",
+        "pattern",
+        "color-tool"
+      ],
+      "description": "Prints artwork as risograph, with real inks, paper grain and misregistration. Free web tool by Jackson Greathouse Fall.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/46069de1c66ca4d1889c173f4a56211f0b6f605c-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__inkdrum",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Glass",
+      "source_url": "https://www.designminis.com/tools/glass",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "glass",
+        "liquid-glass",
+        "frosted",
+        "image-effect",
+        "filter",
+        "blur-effect"
+      ],
+      "description": "Applies a glass material to artwork on a canvas, then exports the result. Free web effect tool from the Toolcraft demos.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/c972d86783d2b042bcd3aed925d28c8a495a7421-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__glass",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Realtime Colors",
+      "source_url": "https://www.designminis.com/tools/realtime-colors",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "minimal",
+        "flat",
+        "color-tool",
+        "color-palette",
+        "generator",
+        "card"
+      ],
+      "description": "Tests color palettes on a real website layout instead of on tiny swatches. Free web tool by Juxtopposed.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/1cd0b0b95087499ddca0a6eaba7e31328341d92c-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__realtime-colors",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Colorable",
+      "source_url": "https://www.designminis.com/tools/colorable",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "minimal",
+        "flat",
+        "color-tool",
+        "color-picker",
+        "color-palette",
+        "card"
+      ],
+      "description": "Checks color combinations against WCAG contrast ratios while you tweak them live. Free web tool by Brent Jackson.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/c97f302a91207a68eb185678a723fd0363c9edfc-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__colorable",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Who Can Use",
+      "source_url": "https://www.designminis.com/tools/who-can-use",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "minimal",
+        "monochrome",
+        "color-tool",
+        "color-picker",
+        "color-palette",
+        "card"
+      ],
+      "description": "Shows which vision types can read a given color pairing rather than only a pass/fail score. Free accessibility web tool by Corey Ginnivan.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/ce066fc9fc03596969be1a6414b5dd57be053eaa-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__who-can-use",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Squoosh",
+      "source_url": "https://www.designminis.com/tools/squoosh",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "minimal",
+        "monochrome",
+        "image-effect",
+        "editor",
+        "image-grid",
+        "slider"
+      ],
+      "description": "Compares image codecs side by side and compresses them without leaving the browser. Free web tool from Google Chrome Labs.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/394b34c3e5a253794d61caf75e2445422bb9f23f-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__squoosh",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "SVGOMG",
+      "source_url": "https://www.designminis.com/tools/svgomg",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "minimal",
+        "monochrome",
+        "svg-generator",
+        "editor",
+        "icon",
+        "filter"
+      ],
+      "description": "Cleans up exported SVGs with a live preview of every optimisation applied. Free web tool by Jake Archibald.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/ec0a934240e81a561dae20dadd3c31af0f534c6d-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__svgomg",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "tldraw",
+      "source_url": "https://www.designminis.com/tools/tldraw",
+      "registry_url": "https://www.designminis.com/sitemap.xml",
+      "category": "tool",
+      "tags": [
+        "react",
+        "typescript",
+        "javascript",
+        "minimal",
+        "flat",
+        "design-tool",
+        "editor",
+        "prototype",
+        "drag-drop"
+      ],
+      "description": "A free whiteboard for sketching flows before opening Figma, running as a React and TypeScript web app. Freemium, by Steve Ruiz.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/36fded3a096f183a5b61fa0e9e7a1538d8533f17-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__tldraw",
+      "source_domain": "www.designminis.com"
     }
   ]
 }
