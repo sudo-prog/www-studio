@@ -1,6 +1,6 @@
 {
-  "version": "1.0.36",
-  "source_count": 1413,
+  "version": "1.0.37",
+  "source_count": 1423,
   "components": [
     {
       "id": "cat-0",
@@ -23597,6 +23597,208 @@
       "preview_image": "https://imagedelivery.net/KMb5EadhEKC1gAE0LkjL1g/9e7eb9bd-6e88-48bc-ad79-d1946e380f00/public",
       "id": "unknown__pink-cougar-tooltip",
       "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Wide Open Source Grid Experiment",
+      "source_url": "https://tympanus.net/codrops/2026/09/28/wide-template/",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "css",
+        "webgl",
+        "glsl",
+        "shader",
+        "minimal",
+        "grid",
+        "layout",
+        "transition",
+        "playground"
+      ],
+      "description": "An experimental grid-based layout system where ten DOM cards rearrange into five authored compositions plus derived mirrored variants, choreographed with out/in staggered clip-path transitions. An optional WebGL 'beast mode' overlays a GLSL directional blur that samples the existing images along the pointer direction with fbm noise and dithering.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2026/09/article-_-01-cover-1-1-1200x900.png.webp",
+      "id": "unknown__wide-open-source-grid-experiment",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Drawing With Light: Lit GPU Tubes with TSL and WebGPU",
+      "source_url": "https://tympanus.net/codrops/2026/09/07/drawing-with-light-an-exploration-of-lit-gpu-tubes-with-tsl-and-webgpu/",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "3d",
+      "tags": [
+        "three.js",
+        "shader",
+        "webgl",
+        "glow",
+        "3d",
+        "particles"
+      ],
+      "description": "A tube geometry system whose triangles never change: positions and normals are derived per-vertex in TSL on the WebGPU renderer from a progress/angle parameter grid, letting real lit tubes be swept along curves without CPU rebuilds. Includes a written walkthrough of four cross-section frame strategies and why no stateless orthonormal basis can stay continuous for every tangent.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2026/08/Biab-1200x900.png",
+      "id": "unknown__drawing-with-light:-lit-gpu-tubes-with-tsl-and-webgpu",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Unwoven Infinite Loom Image Marquee",
+      "source_url": "https://tympanus.net/codrops/2026/09/05/building-an-infinite-loom-unravelling-images-into-threads-with-three-js/",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "animation",
+      "tags": [
+        "three.js",
+        "gsap",
+        "webgl",
+        "glsl",
+        "wave",
+        "fluid",
+        "marquee",
+        "transition",
+        "scroll-effect"
+      ],
+      "description": "An endless horizontal Three.js marquee where each image card is built from 26 independent ribbon geometries instead of one plane. A shader derives a per-card 'tear' value from viewport edges so ribbons slide at random speeds, open gaps and bleach into the page as cards weave in and unravel out.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2026/09/unvowen_cover.png.webp",
+      "id": "unknown__unwoven-infinite-loom-image-marquee",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "ULTRAGRID Isometric 3D Portfolio Navigation",
+      "source_url": "https://tympanus.net/codrops/2026/09/30/ultragrid-portfolio/",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "3d",
+      "tags": [
+        "three.js",
+        "gsap",
+        "webgl",
+        "low-poly",
+        "isometric",
+        "3d",
+        "navbar",
+        "hover-effect"
+      ],
+      "description": "A case study on a portfolio whose homepage navigation is an isometric Blender scene exported to Spline, where each object on the desk is a link to a page with native hover and click events. Covers material rebuilding, GLB optimization (decimation, WebP textures, flattened armatures) and embedding the Spline runtime in a Webflow code embed gated by the page loader.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2026/08/Featured_image-compressed.jpg.webp",
+      "id": "unknown__ultragrid-isometric-3d-portfolio-navigation",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "The Drive Windshield Wiper Landing Page",
+      "source_url": "https://tympanus.net/codrops/2026/09/29/webflow-gsap-codetv-challenge/",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "three.js",
+        "astro",
+        "javascript",
+        "glsl",
+        "noise",
+        "frosted",
+        "hero",
+        "hover-effect",
+        "parallax"
+      ],
+      "description": "A winning landing-page concept built with Astro and GSAP around a hard-edged windshield-wiper wipe, photo-luminance text masking, and a single shared blood-droplet engine (surface tension, stick-and-slip, merging) driving the cursor trail, link smears and hero. Also covers a red line-city map rendered as tens of thousands of columns in one draw call.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2026/09/01-re-the-drive-intro-1.jpg.webp",
+      "id": "unknown__the-drive-windshield-wiper-landing-page",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Eiffel Tower Catapult Physics Playground",
+      "source_url": "https://tympanus.net/codrops/2026/09/01/bend-aim-fling-turning-the-eiffel-tower-into-a-catapult-with-three-js/",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "3d",
+      "tags": [
+        "three.js",
+        "webgl",
+        "javascript",
+        "minimal",
+        "3d",
+        "physics",
+        "drag",
+        "playground"
+      ],
+      "description": "An interactive Three.js scene where the Eiffel Tower acts as a deformable spring launcher: dragging bends the tower and stores energy, releasing flings you across Paris toward the conference venue. Combines interactive mesh deformation and physics with real-world geospatial 3D tiles streamed from Cesium ion.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2026/08/EiffelTowerCataputl_cover.png.webp",
+      "id": "unknown__eiffel-tower-catapult-physics-playground",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Garden Anomaly WebGPU TSL Sphere Experiment",
+      "source_url": "https://tympanus.net/codrops/2026/08/06/garden-anomaly-a-tiny-webgpu-and-tsl-experiment/",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "3d",
+      "tags": [
+        "three.js",
+        "webgl",
+        "shader",
+        "glsl",
+        "glass",
+        "3d",
+        "physics",
+        "playground"
+      ],
+      "description": "A small WebGPU and TSL experiment that binds physics simulation, glass deformation and procedural audio together inside a sphere you can play with, published as an open-source starting point for people unsure where to begin with Three Shading Language.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2026/07/gardenAnomaly-1.jpg.webp",
+      "id": "unknown__garden-anomaly-webgpu-tsl-sphere-experiment",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "On-Scroll 3D Carousel with Page Transition",
+      "source_url": "https://tympanus.net/codrops/2025/05/07/on-scroll-3d-carousel/",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "3d",
+      "tags": [
+        "gsap",
+        "javascript",
+        "css",
+        "minimal",
+        "3d",
+        "gallery",
+        "scroll-effect",
+        "transition"
+      ],
+      "description": "A scroll experiment that rotates a carousel of panels in 3D as the page moves, paired with a GSAP page transition using the rewritten SplitText and ScrollSmoother plugins. Presented as a proof of concept for balancing 3D motion against flat-screen scroll.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2025/05/scroll3dcarousel_featured_final.jpg",
+      "id": "unknown__on-scroll-3d-carousel-with-page-transition",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Animating in Frames: Repeating Image Transition",
+      "source_url": "https://tympanus.net/codrops/2025/04/28/animating-in-frames-repeating-image-transition/",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "javascript",
+        "css",
+        "brutalist",
+        "grid",
+        "transition",
+        "hover-effect"
+      ],
+      "description": "A sliced repetition effect that animates repeated frames of the same image along a path through a grid, inspired by Joana Correia's motion design. Each grid item overrides the animation with data attributes for clip-path direction, number of mover steps and per-step duration.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2025/04/RepetitionEffect_featured-2.jpg",
+      "id": "unknown__animating-in-frames:-repeating-image-transition",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Scroll-based SVG Filter Animations on Text",
+      "source_url": "https://tympanus.net/codrops/2024/08/22/scroll-based-svg-filter-animations-on-text/",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "animation",
+      "tags": [
+        "svg",
+        "gsap",
+        "css-filter",
+        "javascript",
+        "glitch",
+        "text-effect",
+        "filter",
+        "scroll-effect"
+      ],
+      "description": "A small set of SVG filter animations applied to HTML headings rather than SVG text, triggered as you scroll, with per-heading replay buttons for inspecting the distortion. Demonstrates that SVG filters can be driven by GSAP on plain DOM text across browsers.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2024/08/svgfilter_text.jpg",
+      "id": "unknown__scroll-based-svg-filter-animations-on-text",
+      "source_domain": "tympanus.net"
     }
   ]
 }
