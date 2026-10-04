@@ -1,6 +1,6 @@
 {
-  "version": "1.0.55",
-  "source_count": 26233,
+  "version": "1.0.56",
+  "source_count": 26303,
   "components": [
     {
       "id": "cat-0",
@@ -454552,6 +454552,1354 @@
       ],
       "id": "unknown__view-transition-class",
       "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Border Beam",
+      "source_url": "https://vault.hyperiux.com/effects/components/border-beam",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "card",
+      "tags": [
+        "react",
+        "css",
+        "nextjs",
+        "glow",
+        "neon",
+        "card",
+        "hover-effect"
+      ],
+      "description": "Adds a moving beam of light around cards, forms, pricing panels and CTAs to draw attention without changing the component's structure.",
+      "preview_image": "https://pub-8abee449136941f5b0a1cd2c014534e9.r2.dev/vault-listing-images/border-beam.png",
+      "id": "unknown__border-beam",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Card Drift",
+      "source_url": "https://vault.hyperiux.com/effects/components/card-drift",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "card",
+      "tags": [
+        "react",
+        "gsap",
+        "javascript",
+        "soft",
+        "minimal",
+        "card",
+        "grid",
+        "animation"
+      ],
+      "description": "Gives a grid of proof or feature cards a slow, low-amplitude independent drift so a static logo wall or testimonial row feels alive.",
+      "preview_image": "https://pub-8abee449136941f5b0a1cd2c014534e9.r2.dev/vault-listing-images/card-drift.png",
+      "id": "unknown__card-drift",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Animated FAQ",
+      "source_url": "https://vault.hyperiux.com/effects/components/animated-faq",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "accordion",
+      "tags": [
+        "react",
+        "css",
+        "shadcn",
+        "minimal",
+        "flat",
+        "accordion",
+        "block"
+      ],
+      "description": "An accordion FAQ that opens pricing and product objections near the CTA, with button-controlled rows and aria-expanded states.",
+      "preview_image": "",
+      "id": "unknown__animated-faq",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Animated Modal",
+      "source_url": "https://vault.hyperiux.com/effects/components/animated-modal",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "modal",
+      "tags": [
+        "react",
+        "css",
+        "nextjs",
+        "glass",
+        "minimal",
+        "modal",
+        "dialog"
+      ],
+      "description": "Adds entrance motion to labelled dialogs while preserving the focus trap, Escape close, scroll lock and focus restore.",
+      "preview_image": "",
+      "id": "unknown__animated-modal",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Animated Tabs",
+      "source_url": "https://vault.hyperiux.com/effects/components/animated-tabs",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "tabs",
+      "tags": [
+        "react",
+        "css",
+        "shadcn",
+        "minimal",
+        "flat",
+        "tabs"
+      ],
+      "description": "Organises dense product content into keyboardable tablist, tab and tabpanel states with readable panels.",
+      "preview_image": "",
+      "id": "unknown__animated-tabs",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Gooey Counter",
+      "source_url": "https://vault.hyperiux.com/effects/components/gooey-counter",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "animation",
+      "tags": [
+        "react",
+        "svg",
+        "css",
+        "gooey",
+        "fluid",
+        "animation",
+        "text-effect",
+        "block"
+      ],
+      "description": "Gives metric and proof-point sections a liquid number motion so counters can carry brand texture.",
+      "preview_image": "",
+      "id": "unknown__gooey-counter",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Hover Stack",
+      "source_url": "https://vault.hyperiux.com/effects/components/hover-stack",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "card",
+      "tags": [
+        "react",
+        "motion",
+        "css",
+        "soft",
+        "gradient",
+        "card",
+        "hover-effect"
+      ],
+      "description": "Layers cards on pointer focus so service groups and proof sections gain browsing depth.",
+      "preview_image": "",
+      "id": "unknown__hover-stack",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Arrow Fill Button",
+      "source_url": "https://vault.hyperiux.com/effects/buttons/arrow-fill-button",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "button",
+      "tags": [
+        "react",
+        "css",
+        "svg",
+        "minimal",
+        "flat",
+        "button",
+        "click-effect"
+      ],
+      "description": "Adds directional fill feedback to primary call-to-action buttons for product and launch sections.",
+      "preview_image": "https://pub-8abee449136941f5b0a1cd2c014534e9.r2.dev/vault-listing-images/arrow-fill-button.png",
+      "id": "unknown__arrow-fill-button",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Animated Toggle",
+      "source_url": "https://vault.hyperiux.com/effects/buttons/animated-toggle",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "toggle",
+      "tags": [
+        "react",
+        "css",
+        "shadcn",
+        "minimal",
+        "flat",
+        "toggle",
+        "switch"
+      ],
+      "description": "Clarifies a real binary state for pricing, settings and plan switches without hiding the underlying semantics.",
+      "preview_image": "https://pub-8abee449136941f5b0a1cd2c014534e9.r2.dev/vault-listing-images/animated-toggle.png",
+      "id": "unknown__animated-toggle",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Chromatic Text",
+      "source_url": "https://vault.hyperiux.com/effects/text-animations/chromatic-text",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "text-effect",
+      "tags": [
+        "react",
+        "motion",
+        "css",
+        "glitch",
+        "gradient",
+        "text-effect",
+        "animation"
+      ],
+      "description": "Adds RGB-split motion to large headlines for campaign pages, portfolios and technical brand moments.",
+      "preview_image": "",
+      "id": "unknown__chromatic-text",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Glitchy Text",
+      "source_url": "https://vault.hyperiux.com/effects/text-animations/glitchy-text",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "text-effect",
+      "tags": [
+        "react",
+        "motion",
+        "css",
+        "glitch",
+        "neon",
+        "text-effect",
+        "animation"
+      ],
+      "description": "Fractures characters before resolving into place for cyber, AI and developer-tool headlines.",
+      "preview_image": "https://pub-8abee449136941f5b0a1cd2c014534e9.r2.dev/vault-listing-images/glitchy-text.png",
+      "id": "unknown__glitchy-text",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Blur Text",
+      "source_url": "https://vault.hyperiux.com/effects/text-animations/blur-text",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "text-effect",
+      "tags": [
+        "react",
+        "motion",
+        "nextjs",
+        "soft",
+        "minimal",
+        "text-effect",
+        "animation"
+      ],
+      "description": "A soft text reveal that brings headlines and short claims into focus word by word with a calm blur-in effect.",
+      "preview_image": "https://pub-8abee449136941f5b0a1cd2c014534e9.r2.dev/vault-listing-images/blur-text.png",
+      "id": "unknown__blur-text",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Coffee Bean Cursor",
+      "source_url": "https://vault.hyperiux.com/effects/cursor-effects/coffee-bean-cursor",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "cursor",
+      "tags": [
+        "react",
+        "three.js",
+        "r3f",
+        "playful",
+        "minimal",
+        "cursor",
+        "particles"
+      ],
+      "description": "Trails branded bean-shaped objects behind the pointer for food, retail and campaign pages with a signature motif.",
+      "preview_image": "https://pub-8abee449136941f5b0a1cd2c014534e9.r2.dev/vault-listing-images/coffee-bean-cursor.png",
+      "id": "unknown__coffee-bean-cursor",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Cursor Move",
+      "source_url": "https://vault.hyperiux.com/effects/cursor-effects/cursor-move",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "cursor",
+      "tags": [
+        "react",
+        "motion",
+        "javascript",
+        "minimal",
+        "monochrome",
+        "cursor",
+        "hover-effect"
+      ],
+      "description": "Tracks pointer position and bends letters along with it for desktop-only cursor feedback.",
+      "preview_image": "https://pub-8abee449136941f5b0a1cd2c014534e9.r2.dev/vault-listing-images/cursor-move.png",
+      "id": "unknown__cursor-move",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Butterfly Trail Cursor",
+      "source_url": "https://vault.hyperiux.com/effects/cursor-effects/butterfly-trail-cursor",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "cursor",
+      "tags": [
+        "react",
+        "three.js",
+        "r3f",
+        "playful",
+        "gradient",
+        "cursor",
+        "particles"
+      ],
+      "description": "A playful cursor trail that leaves butterfly-like forms behind the pointer for creative, retail and campaign pages.",
+      "preview_image": "https://pub-8abee449136941f5b0a1cd2c014534e9.r2.dev/vault-listing-images/butterfly-trail-cursor.png",
+      "id": "unknown__butterfly-trail-cursor",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Fish Eye Cursor",
+      "source_url": "https://vault.hyperiux.com/effects/cursor-effects/fish-eye",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "cursor",
+      "tags": [
+        "react",
+        "canvas",
+        "motion",
+        "glow",
+        "playful",
+        "cursor",
+        "image-effect"
+      ],
+      "description": "Magnifies nearby imagery on hover for galleries and product visuals where detail earns the pointer effect.",
+      "preview_image": "",
+      "id": "unknown__fish-eye-cursor",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Arc Flow Carousel",
+      "source_url": "https://vault.hyperiux.com/effects/carousels/arc-flow-carousel",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "carousel",
+      "tags": [
+        "react",
+        "gsap",
+        "javascript",
+        "luxury",
+        "editorial",
+        "carousel",
+        "gallery"
+      ],
+      "description": "A curved image carousel that positions cards along an arc so each item tilts and scales as it moves through the curve.",
+      "preview_image": "https://pub-8abee449136941f5b0a1cd2c014534e9.r2.dev/vault-listing-images/arc-flow-carousel.png",
+      "id": "unknown__arc-flow-carousel",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Infinite Carousel",
+      "source_url": "https://vault.hyperiux.com/effects/carousels/infinite-carousel",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "carousel",
+      "tags": [
+        "react",
+        "motion",
+        "css",
+        "minimal",
+        "flat",
+        "carousel"
+      ],
+      "description": "Lets users drag or tap through looping cards for product, property and campaign showcases with clear controls.",
+      "preview_image": "https://pub-8abee449136941f5b0a1cd2c014534e9.r2.dev/vault-listing-images/infinite-carousel.png",
+      "id": "unknown__infinite-carousel",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Clip Path Slider",
+      "source_url": "https://vault.hyperiux.com/effects/carousels/clippath-slider",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "carousel",
+      "tags": [
+        "react",
+        "css",
+        "svg",
+        "minimal",
+        "editorial",
+        "carousel",
+        "image-effect"
+      ],
+      "description": "Reveals images through mask wipes for portfolios, lookbooks and campaign visuals, with visible controls.",
+      "preview_image": "",
+      "id": "unknown__clip-path-slider",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Dither Canvas",
+      "source_url": "https://vault.hyperiux.com/effects/backgrounds/dither-canvas",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "background",
+      "tags": [
+        "react",
+        "canvas",
+        "javascript",
+        "dither",
+        "noise",
+        "background",
+        "particles"
+      ],
+      "description": "Adds a grainy computational dithered texture behind short hero copy for technical, editorial and AI brand pages.",
+      "preview_image": "",
+      "id": "unknown__dither-canvas",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Dotted Grid",
+      "source_url": "https://vault.hyperiux.com/effects/backgrounds/dotted-grid",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "background",
+      "tags": [
+        "react",
+        "css",
+        "svg",
+        "minimal",
+        "monochrome",
+        "background",
+        "grid"
+      ],
+      "description": "A quiet technical dotted grid placed behind readable SaaS and developer-tool hero copy, with no video or WebGL cost.",
+      "preview_image": "",
+      "id": "unknown__dotted-grid",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Spider Particles Background",
+      "source_url": "https://vault.hyperiux.com/effects/backgrounds/spider-particles",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "background",
+      "tags": [
+        "react",
+        "three.js",
+        "r3f",
+        "webgl",
+        "noise",
+        "background",
+        "particles"
+      ],
+      "description": "A Three.js particle field that crawls across the background for bold brand heroes and launch pages.",
+      "preview_image": "https://pub-8abee449136941f5b0a1cd2c014534e9.r2.dev/vault-listing-images/spider-particles.png",
+      "id": "unknown__spider-particles-background",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Fractal Glass",
+      "source_url": "https://vault.hyperiux.com/effects/webgl-effects/fractal-glass",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "background",
+      "tags": [
+        "react",
+        "three.js",
+        "r3f",
+        "glass",
+        "frosted",
+        "webgl",
+        "background",
+        "image-effect"
+      ],
+      "description": "Refracted glass facets split the hero surface for premium brand launches, with a composed poster fallback for low-power devices.",
+      "preview_image": "",
+      "id": "unknown__fractal-glass",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Donut Particles",
+      "source_url": "https://vault.hyperiux.com/effects/webgl-effects/donut-particles",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "background",
+      "tags": [
+        "react",
+        "three.js",
+        "shader",
+        "webgl",
+        "glow",
+        "background",
+        "particles"
+      ],
+      "description": "Builds a torus-like particle sculpture for bold brand heroes, launch pages and WebGL visual statements.",
+      "preview_image": "",
+      "id": "unknown__donut-particles",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Colliding Models",
+      "source_url": "https://vault.hyperiux.com/effects/webgl-effects/colliding-models",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "background",
+      "tags": [
+        "react",
+        "three.js",
+        "r3f",
+        "webgl",
+        "chrome",
+        "background",
+        "animation"
+      ],
+      "description": "Creates an interactive WebGL physics field where 3D objects collide, react and add energy to a brand hero.",
+      "preview_image": "",
+      "id": "unknown__colliding-models",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "3D Portfolio Slider",
+      "source_url": "https://vault.hyperiux.com/effects/webgl-effects/3d-portfolio-slider",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "slider",
+      "tags": [
+        "react",
+        "three.js",
+        "r3f",
+        "webgl",
+        "luxury",
+        "slider",
+        "gallery"
+      ],
+      "description": "A spatial 3D slider that gives agency and creative portfolio project browsing real depth.",
+      "preview_image": "",
+      "id": "unknown__3d-portfolio-slider",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Book Flip",
+      "source_url": "https://vault.hyperiux.com/effects/webgl-effects/book-flip",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "animation",
+      "tags": [
+        "react",
+        "three.js",
+        "r3f",
+        "webgl",
+        "luxury",
+        "animation",
+        "gallery"
+      ],
+      "description": "An interactive 3D page-turn experience for portfolios, lookbooks, editorial stories and product narratives.",
+      "preview_image": "",
+      "id": "unknown__book-flip",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Horizontal Feature Reveal",
+      "source_url": "https://vault.hyperiux.com/effects/scroll-effects/horizontal-feature-reveal",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "scroll-effect",
+      "tags": [
+        "react",
+        "gsap",
+        "css",
+        "minimal",
+        "flat",
+        "scroll-effect",
+        "section"
+      ],
+      "description": "Turns vertical pages into horizontal chapters for campaigns, portfolios and product stories, with a mobile fallback.",
+      "preview_image": "https://pub-8abee449136941f5b0a1cd2c014534e9.r2.dev/vault-listing-images/horizontal-feature-reveal.png",
+      "id": "unknown__horizontal-feature-reveal",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Circular Split Roll",
+      "source_url": "https://vault.hyperiux.com/effects/scroll-effects/circular-split-roll",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "scroll-effect",
+      "tags": [
+        "react",
+        "gsap",
+        "css",
+        "soft",
+        "swirl",
+        "scroll-effect",
+        "carousel"
+      ],
+      "description": "Moves items around a controlled orbit so visual showcases read as a spatial sequence.",
+      "preview_image": "https://pub-8abee449136941f5b0a1cd2c014534e9.r2.dev/vault-listing-images/circular-split-roll.png",
+      "id": "unknown__circular-split-roll",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Sticky Content Wrapper",
+      "source_url": "https://vault.hyperiux.com/effects/scroll-effects/sticky-content-wrapper",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "scroll-effect",
+      "tags": [
+        "react",
+        "gsap",
+        "css",
+        "minimal",
+        "flat",
+        "scroll-effect",
+        "section"
+      ],
+      "description": "Wraps page sections in a sticky scroll wrapper so content stays pinned while surrounding content moves past it.",
+      "preview_image": "https://pub-8abee449136941f5b0a1cd2c014534e9.r2.dev/vault-listing-images/sticky-content-wrapper.png",
+      "id": "unknown__sticky-content-wrapper",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Grid Scale",
+      "source_url": "https://vault.hyperiux.com/effects/scroll-effects/grid-scale",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "scroll-effect",
+      "tags": [
+        "react",
+        "gsap",
+        "css",
+        "minimal",
+        "flat",
+        "scroll-effect",
+        "grid"
+      ],
+      "description": "Enlarges a structured card grid on scroll for product galleries and portfolio sections without reflow chaos.",
+      "preview_image": "",
+      "id": "unknown__grid-scale",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Cards Runway",
+      "source_url": "https://vault.hyperiux.com/effects/scroll-effects/cards-runway",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "scroll-effect",
+      "tags": [
+        "react",
+        "gsap",
+        "css",
+        "minimal",
+        "flat",
+        "scroll-effect",
+        "card"
+      ],
+      "description": "Turns feature cards into a staged runway sequence for product stories, AI sections and guided content reveals.",
+      "preview_image": "",
+      "id": "unknown__cards-runway",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Text Convergence",
+      "source_url": "https://vault.hyperiux.com/effects/scroll-effects/text-convergence",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "scroll-effect",
+      "tags": [
+        "react",
+        "gsap",
+        "css",
+        "glow",
+        "minimal",
+        "scroll-effect",
+        "text-effect"
+      ],
+      "description": "Converges scattered characters into a resolved headline as the section scrolls into view.",
+      "preview_image": "https://pub-8abee449136941f5b0a1cd2c014534e9.r2.dev/vault-listing-images/text-convergence.png",
+      "id": "unknown__text-convergence",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Helix Slider",
+      "source_url": "https://vault.hyperiux.com/effects/scroll-effects/helix-slider",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "scroll-effect",
+      "tags": [
+        "react",
+        "gsap",
+        "css",
+        "webgl",
+        "chrome",
+        "scroll-effect",
+        "carousel"
+      ],
+      "description": "Scrolls image cards around a helical path for a spatial, 3D-feeling showcase sequence.",
+      "preview_image": "https://pub-8abee449136941f5b0a1cd2c014534e9.r2.dev/vault-listing-images/helix-slider.png",
+      "id": "unknown__helix-slider",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Elevate Navbar",
+      "source_url": "https://vault.hyperiux.com/effects/navigation/elevate-navbar",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "navbar",
+      "tags": [
+        "react",
+        "gsap",
+        "css",
+        "glass",
+        "frosted",
+        "navbar",
+        "scroll-effect"
+      ],
+      "description": "Adds scroll-aware depth to a site header so navigation stays persistent without adding visual clutter.",
+      "preview_image": "https://pub-8abee449136941f5b0a1cd2c014534e9.r2.dev/vault-listing-images/elevate-navbar.png",
+      "id": "unknown__elevate-navbar",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Expanding Navbar",
+      "source_url": "https://vault.hyperiux.com/effects/navigation/expanding-navbar",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "navbar",
+      "tags": [
+        "react",
+        "motion",
+        "css",
+        "minimal",
+        "flat",
+        "navbar",
+        "menu"
+      ],
+      "description": "Grows compact navigation only when needed, for link-dense pages and mobile-friendly menus.",
+      "preview_image": "",
+      "id": "unknown__expanding-navbar",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Directional Menu",
+      "source_url": "https://vault.hyperiux.com/effects/navigation/directional-menu",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "menu",
+      "tags": [
+        "react",
+        "motion",
+        "css",
+        "minimal",
+        "flat",
+        "menu",
+        "navbar"
+      ],
+      "description": "Menu panels enter from the pointer's direction for multi-section product and agency navigation, with full keyboard support.",
+      "preview_image": "",
+      "id": "unknown__directional-menu",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Immersive Full Screen Navigation",
+      "source_url": "https://vault.hyperiux.com/effects/navigation/immersive-full-screen-nav",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "menu",
+      "tags": [
+        "react",
+        "motion",
+        "css",
+        "luxury",
+        "minimal",
+        "menu",
+        "navbar"
+      ],
+      "description": "Turns a menu into a full-screen brand moment with defined keyboard and focus-restore rules.",
+      "preview_image": "",
+      "id": "unknown__immersive-full-screen-navigation",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Character Trail Cursor",
+      "source_url": "https://vault.hyperiux.com/effects/cursor-effects/character-trail",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "cursor",
+      "tags": [
+        "react",
+        "javascript",
+        "svg",
+        "monochrome",
+        "minimal",
+        "cursor",
+        "text-effect"
+      ],
+      "description": "Turns pointer movement into typographic texture for editorial, portfolio and developer-tool pages.",
+      "preview_image": "https://pub-8abee449136941f5b0a1cd2c014534e9.r2.dev/vault-listing-images/character-trail.png",
+      "id": "unknown__character-trail-cursor",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Scramble Link Button",
+      "source_url": "https://vault.hyperiux.com/effects/buttons/scramble-link-button",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "button",
+      "tags": [
+        "react",
+        "svg",
+        "javascript",
+        "glitch",
+        "monochrome",
+        "button",
+        "hover-effect",
+        "text-effect"
+      ],
+      "description": "A link button whose label scrambles into random glyphs before resolving on hover.",
+      "preview_image": "https://pub-8abee449136941f5b0a1cd2c014534e9.r2.dev/vault-listing-images/scramble-link-button.png",
+      "id": "unknown__scramble-link-button",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Interactive List Preview",
+      "source_url": "https://vault.hyperiux.com/effects/components/interactive-list-preview",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "card",
+      "tags": [
+        "react",
+        "gsap",
+        "css",
+        "minimal",
+        "flat",
+        "card",
+        "hover-effect"
+      ],
+      "description": "Expands list rows to preview their content inline before navigating away.",
+      "preview_image": "https://pub-8abee449136941f5b0a1cd2c014534e9.r2.dev/vault-listing-images/interactive-list-preview.png",
+      "id": "unknown__interactive-list-preview",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Magnetic Image Trail",
+      "source_url": "https://vault.hyperiux.com/effects/cursor-effects/magnetic-image-trail",
+      "registry_url": "https://vault.hyperiux.com/effects",
+      "category": "cursor",
+      "tags": [
+        "react",
+        "canvas",
+        "javascript",
+        "glow",
+        "playful",
+        "cursor",
+        "image-effect"
+      ],
+      "description": "Preview imagery follows the pointer with a magnetic pull for image-led portfolio and case-study teasers.",
+      "preview_image": "https://pub-8abee449136941f5b0a1cd2c014534e9.r2.dev/vault-listing-images/magnetic-image-trail.png",
+      "id": "unknown__magnetic-image-trail",
+      "source_domain": "vault.hyperiux.com"
+    },
+    {
+      "name": "Gooey Navbar",
+      "source_url": "https://uselayouts.com/docs/components/gooey-navbar",
+      "registry_url": "https://uselayouts.com/docs/components",
+      "category": "navbar",
+      "tags": [
+        "react",
+        "motion",
+        "tailwind",
+        "gooey",
+        "fluid",
+        "blob",
+        "navbar",
+        "menu",
+        "hover-effect"
+      ],
+      "description": "A pill navigation bar that melts into its neighbour on hover, forming liquid bridges and an active dot.",
+      "preview_image": "",
+      "id": "unknown__gooey-navbar",
+      "source_domain": "uselayouts.com"
+    },
+    {
+      "name": "Liquid Index",
+      "source_url": "https://uselayouts.com/docs/components/liquid-index",
+      "registry_url": "https://uselayouts.com/docs/components",
+      "category": "animation",
+      "tags": [
+        "react",
+        "three.js",
+        "r3f",
+        "fluid",
+        "gradient",
+        "gooey",
+        "block",
+        "hover-effect",
+        "animation"
+      ],
+      "description": "A feature list whose hover badge is a WebGL liquid gradient that follows the active row.",
+      "preview_image": "",
+      "id": "unknown__liquid-index",
+      "source_domain": "uselayouts.com"
+    },
+    {
+      "name": "Holographic Referral Card",
+      "source_url": "https://uselayouts.com/docs/components/holographic-referral-card",
+      "registry_url": "https://uselayouts.com/docs/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "motion",
+        "tailwind",
+        "holographic",
+        "glass",
+        "card",
+        "hover-effect"
+      ],
+      "description": "A dark invite card that tilts in 3D with the pointer while a holographic glow follows, with touch and keyboard fallbacks.",
+      "preview_image": "",
+      "id": "unknown__holographic-referral-card",
+      "source_domain": "uselayouts.com"
+    },
+    {
+      "name": "Paper Shred Button",
+      "source_url": "https://uselayouts.com/docs/components/paper-shred-button",
+      "registry_url": "https://uselayouts.com/docs/components",
+      "category": "button",
+      "tags": [
+        "react",
+        "motion",
+        "svg",
+        "playful",
+        "minimal",
+        "button",
+        "click-effect",
+        "animation"
+      ],
+      "description": "A delete control that spawns a page above it and shreds it into animated paper strips on click, then resets.",
+      "preview_image": "",
+      "id": "unknown__paper-shred-button",
+      "source_domain": "uselayouts.com"
+    },
+    {
+      "name": "Perspective Text Scroll",
+      "source_url": "https://uselayouts.com/docs/components/perspective-text-scroll",
+      "registry_url": "https://uselayouts.com/docs/components",
+      "category": "text-effect",
+      "tags": [
+        "react",
+        "motion",
+        "tailwind",
+        "minimal",
+        "chrome",
+        "text-effect",
+        "scroll-effect"
+      ],
+      "description": "A perspective text block that rotates and scales as the section scrolls through the viewport.",
+      "preview_image": "",
+      "id": "unknown__perspective-text-scroll",
+      "source_domain": "uselayouts.com"
+    },
+    {
+      "name": "Morphing Input",
+      "source_url": "https://uselayouts.com/docs/components/morphing-input",
+      "registry_url": "https://uselayouts.com/docs/components",
+      "category": "input",
+      "tags": [
+        "react",
+        "motion",
+        "tailwind",
+        "minimal",
+        "flat",
+        "input",
+        "form",
+        "animation"
+      ],
+      "description": "A search field whose placeholder letters flip on focus and whose icon toggles between search and generate modes.",
+      "preview_image": "",
+      "id": "unknown__morphing-input",
+      "source_domain": "uselayouts.com"
+    },
+    {
+      "name": "Bento Card",
+      "source_url": "https://uselayouts.com/docs/components/bento-card",
+      "registry_url": "https://uselayouts.com/docs/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "motion",
+        "tailwind",
+        "glass",
+        "frosted",
+        "card",
+        "tabs",
+        "grid"
+      ],
+      "description": "A single glass tile with tabs that swap dashboard previews inside the same card.",
+      "preview_image": "",
+      "id": "unknown__bento-card",
+      "source_domain": "uselayouts.com"
+    },
+    {
+      "name": "Bottom Menu",
+      "source_url": "https://uselayouts.com/docs/components/bottom-menu",
+      "registry_url": "https://uselayouts.com/docs/components",
+      "category": "menu",
+      "tags": [
+        "react",
+        "motion",
+        "tailwind",
+        "glass",
+        "minimal",
+        "menu",
+        "navbar"
+      ],
+      "description": "A compact dock that expands into search, notes, notifications, profile and theme destinations.",
+      "preview_image": "",
+      "id": "unknown__bottom-menu",
+      "source_domain": "uselayouts.com"
+    },
+    {
+      "name": "Curve Drawer",
+      "source_url": "https://uselayouts.com/docs/components/curve-drawer",
+      "registry_url": "https://uselayouts.com/docs/components",
+      "category": "drawer",
+      "tags": [
+        "react",
+        "motion",
+        "tailwind",
+        "soft",
+        "fluid",
+        "drawer",
+        "animation"
+      ],
+      "description": "Side drawers whose inner edge starts as a bulge and morphs into a straight line as the panel settles.",
+      "preview_image": "",
+      "id": "unknown__curve-drawer",
+      "source_domain": "uselayouts.com"
+    },
+    {
+      "name": "Analog Stick",
+      "source_url": "https://uselayouts.com/docs/components/analog-stick",
+      "registry_url": "https://uselayouts.com/docs/components",
+      "category": "widget",
+      "tags": [
+        "react",
+        "motion",
+        "tailwind",
+        "metallic",
+        "chrome",
+        "widget",
+        "hover-effect"
+      ],
+      "description": "A metallic stick that tilts into the press, with the cap leaning and the shadow shifting on quadrant hover.",
+      "preview_image": "",
+      "id": "unknown__analog-stick",
+      "source_domain": "uselayouts.com"
+    },
+    {
+      "name": "Bucket",
+      "source_url": "https://uselayouts.com/docs/components/bucket",
+      "registry_url": "https://uselayouts.com/docs/components",
+      "category": "widget",
+      "tags": [
+        "react",
+        "motion",
+        "tailwind",
+        "glass",
+        "playful",
+        "widget",
+        "animation",
+        "card"
+      ],
+      "description": "A glass hopper that tosses feature chips in one after another like a catch tray.",
+      "preview_image": "",
+      "id": "unknown__bucket",
+      "source_domain": "uselayouts.com"
+    },
+    {
+      "name": "Day Picker",
+      "source_url": "https://uselayouts.com/docs/components/day-picker",
+      "registry_url": "https://uselayouts.com/docs/components",
+      "category": "input",
+      "tags": [
+        "react",
+        "motion",
+        "tailwind",
+        "minimal",
+        "flat",
+        "input",
+        "form",
+        "select"
+      ],
+      "description": "A frequency chip that expands into Daily, Weekly, Monthly and Yearly options, then into days of the week.",
+      "preview_image": "",
+      "id": "unknown__day-picker",
+      "source_domain": "uselayouts.com"
+    },
+    {
+      "name": "Multi Step Form",
+      "source_url": "https://uselayouts.com/docs/components/multi-step-form",
+      "registry_url": "https://uselayouts.com/docs/components",
+      "category": "form",
+      "tags": [
+        "react",
+        "motion",
+        "tailwind",
+        "minimal",
+        "flat",
+        "form",
+        "input"
+      ],
+      "description": "A project-setup wizard that steps through details, team and extras with a container height that follows the fields.",
+      "preview_image": "",
+      "id": "unknown__multi-step-form",
+      "source_domain": "uselayouts.com"
+    },
+    {
+      "name": "Pricing Card",
+      "source_url": "https://uselayouts.com/docs/components/pricing-card",
+      "registry_url": "https://uselayouts.com/docs/components",
+      "category": "pricing",
+      "tags": [
+        "react",
+        "motion",
+        "tailwind",
+        "minimal",
+        "flat",
+        "pricing",
+        "card",
+        "toggle"
+      ],
+      "description": "A narrow plan picker with a monthly/yearly toggle, rolling prices and a popular badge.",
+      "preview_image": "",
+      "id": "unknown__pricing-card",
+      "source_domain": "uselayouts.com"
+    },
+    {
+      "name": "Vertical Tabs",
+      "source_url": "https://uselayouts.com/docs/components/vertical-tabs",
+      "registry_url": "https://uselayouts.com/docs/components",
+      "category": "tabs",
+      "tags": [
+        "react",
+        "motion",
+        "tailwind",
+        "minimal",
+        "flat",
+        "tabs",
+        "sidebar"
+      ],
+      "description": "A vertical tab list that swaps panels on selection with an animated active indicator.",
+      "preview_image": "",
+      "id": "unknown__vertical-tabs",
+      "source_domain": "uselayouts.com"
+    },
+    {
+      "name": "Smooth Dropdown",
+      "source_url": "https://uselayouts.com/docs/components/smooth-dropdown",
+      "registry_url": "https://uselayouts.com/docs/components",
+      "category": "dropdown",
+      "tags": [
+        "react",
+        "motion",
+        "tailwind",
+        "minimal",
+        "flat",
+        "dropdown",
+        "menu"
+      ],
+      "description": "A dropdown menu whose panel expands and collapses with a smooth height and opacity transition.",
+      "preview_image": "",
+      "id": "unknown__smooth-dropdown",
+      "source_domain": "uselayouts.com"
+    },
+    {
+      "name": "Accessible Action",
+      "source_url": "https://uselayouts.com/docs/components/accessible-action",
+      "registry_url": "https://uselayouts.com/docs/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "motion",
+        "tailwind",
+        "soft",
+        "playful",
+        "card",
+        "click-effect"
+      ],
+      "description": "An interactive draggable card stack with 3D tilt, swipe-to-back gestures, click interactions and spring animations.",
+      "preview_image": "",
+      "id": "unknown__accessible-action",
+      "source_domain": "uselayouts.com"
+    },
+    {
+      "name": "Accordionos",
+      "source_url": "https://uselayouts.com/docs/components/accordionos",
+      "registry_url": "https://uselayouts.com/docs/components",
+      "category": "accordion",
+      "tags": [
+        "react",
+        "motion",
+        "tailwind",
+        "editorial",
+        "minimal",
+        "accordion",
+        "gallery"
+      ],
+      "description": "A numbered accordion that swaps a large image as each row opens, with optional autoplay.",
+      "preview_image": "",
+      "id": "unknown__accordionos",
+      "source_domain": "uselayouts.com"
+    },
+    {
+      "name": "3D Book",
+      "source_url": "https://uselayouts.com/docs/components/3d-book",
+      "registry_url": "https://uselayouts.com/docs/components",
+      "category": "animation",
+      "tags": [
+        "react",
+        "motion",
+        "css",
+        "luxury",
+        "chrome",
+        "animation",
+        "card",
+        "gallery"
+      ],
+      "description": "An interactive 3D book component with page flip animations.",
+      "preview_image": "",
+      "id": "unknown__3d-book",
+      "source_domain": "uselayouts.com"
+    },
+    {
+      "name": "Fluid Expanding Grid",
+      "source_url": "https://uselayouts.com/docs/components/fluid-expanding-grid",
+      "registry_url": "https://uselayouts.com/docs/components",
+      "category": "grid",
+      "tags": [
+        "react",
+        "motion",
+        "tailwind",
+        "soft",
+        "minimal",
+        "grid",
+        "gallery",
+        "click-effect"
+      ],
+      "description": "A photo grid where clicking one image makes it take the row while neighbouring images slide aside.",
+      "preview_image": "",
+      "id": "unknown__fluid-expanding-grid",
+      "source_domain": "uselayouts.com"
+    },
+    {
+      "name": "Focus Testimonials",
+      "source_url": "https://uselayouts.com/docs/components/focus-testimonials",
+      "registry_url": "https://uselayouts.com/docs/components",
+      "category": "testimonial",
+      "tags": [
+        "react",
+        "motion",
+        "tailwind",
+        "soft",
+        "minimal",
+        "testimonial",
+        "avatar",
+        "hover-effect"
+      ],
+      "description": "A row of avatars where hovering one brings that quote forward with a name tooltip that follows.",
+      "preview_image": "",
+      "id": "unknown__focus-testimonials",
+      "source_domain": "uselayouts.com"
+    },
+    {
+      "name": "Rolling Card Stack",
+      "source_url": "https://uselayouts.com/docs/components/rolling-card-stack",
+      "registry_url": "https://uselayouts.com/docs/components",
+      "category": "carousel",
+      "tags": [
+        "react",
+        "framer-motion",
+        "tailwind",
+        "soft",
+        "minimal",
+        "carousel",
+        "card"
+      ],
+      "description": "A responsive animated card stack supporting desktop and mobile layouts, swipe and keyboard navigation, autoplay and pagination.",
+      "preview_image": "",
+      "id": "unknown__rolling-card-stack",
+      "source_domain": "uselayouts.com"
+    },
+    {
+      "name": "Sticky Header",
+      "source_url": "https://uselayouts.com/docs/components/sticky-header",
+      "registry_url": "https://uselayouts.com/docs/components",
+      "category": "navbar",
+      "tags": [
+        "react",
+        "motion",
+        "tailwind",
+        "glass",
+        "frosted",
+        "navbar",
+        "scroll-effect"
+      ],
+      "description": "A header that pins to the top of the viewport and changes appearance once the page scrolls past it.",
+      "preview_image": "",
+      "id": "unknown__sticky-header",
+      "source_domain": "uselayouts.com"
+    },
+    {
+      "name": "Vertical Zoom Group",
+      "source_url": "https://uselayouts.com/docs/components/vertical-zoom-group",
+      "registry_url": "https://uselayouts.com/docs/components",
+      "category": "input",
+      "tags": [
+        "react",
+        "motion",
+        "tailwind",
+        "minimal",
+        "flat",
+        "slider",
+        "input"
+      ],
+      "description": "A vertical slider control for zooming, styled as a stacked group of options.",
+      "preview_image": "",
+      "id": "unknown__vertical-zoom-group",
+      "source_domain": "uselayouts.com"
+    },
+    {
+      "name": "Editorial Deck",
+      "source_url": "https://uselayouts.com/docs/components/editorial-deck",
+      "registry_url": "https://uselayouts.com/docs/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "motion",
+        "tailwind",
+        "editorial",
+        "minimal",
+        "card",
+        "click-effect",
+        "gallery"
+      ],
+      "description": "A stacked editorial story deck where dragging the front card springs it back into the pile.",
+      "preview_image": "",
+      "id": "unknown__editorial-deck",
+      "source_domain": "uselayouts.com"
+    },
+    {
+      "name": "Create Menu",
+      "source_url": "https://uselayouts.com/docs/components/create-menu",
+      "registry_url": "https://uselayouts.com/docs/components",
+      "category": "menu",
+      "tags": [
+        "react",
+        "motion",
+        "tailwind",
+        "minimal",
+        "flat",
+        "menu",
+        "dropdown",
+        "click-effect"
+      ],
+      "description": "A Start Creating pill that springs open into a list of write and generate actions.",
+      "preview_image": "",
+      "id": "unknown__create-menu",
+      "source_domain": "uselayouts.com"
+    },
+    {
+      "name": "Save Button",
+      "source_url": "https://uselayouts.com/docs/components/save-button",
+      "registry_url": "https://uselayouts.com/docs/components",
+      "category": "button",
+      "tags": [
+        "react",
+        "motion",
+        "tailwind",
+        "minimal",
+        "flat",
+        "button",
+        "click-effect"
+      ],
+      "description": "A save control that morphs between unsaved and saved states with a short confirmation animation.",
+      "preview_image": "",
+      "id": "unknown__save-button",
+      "source_domain": "uselayouts.com"
+    },
+    {
+      "name": "Tactile Button",
+      "source_url": "https://uselayouts.com/docs/components/tactile-button",
+      "registry_url": "https://uselayouts.com/docs/components",
+      "category": "button",
+      "tags": [
+        "react",
+        "motion",
+        "tailwind",
+        "neumorphism",
+        "soft",
+        "button",
+        "click-effect",
+        "hover-effect"
+      ],
+      "description": "A button with a pressed-down physical feel, sinking under the pointer with spring physics.",
+      "preview_image": "",
+      "id": "unknown__tactile-button",
+      "source_domain": "uselayouts.com"
     }
   ]
 }
