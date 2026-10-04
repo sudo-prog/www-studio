@@ -1,6 +1,6 @@
 {
-  "version": "1.0.51",
-  "source_count": 25734,
+  "version": "1.0.52",
+  "source_count": 25956,
   "components": [
     {
       "id": "cat-0",
@@ -446027,6 +446027,3599 @@
       "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/media/c6852b22-48a0-43a8-9b67-55012e76b7f8/019fbcdf-57bf-707a-b88b-3b674db63765.jpg",
       "id": "unknown__zyvolab",
       "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Material Symbols Icon Set",
+      "source_url": "https://icon-sets.iconify.design/material-symbols/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Material Symbols is an open source icon set on Iconify with 15,717 icons under the Apache 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__material-symbols-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Material Symbols Light Icon Set",
+      "source_url": "https://icon-sets.iconify.design/material-symbols-light/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Material Symbols Light is an open source icon set on Iconify with 15,782 icons under the Apache 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__material-symbols-light-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Google Material Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/ic/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Google Material Icons is an open source icon set on Iconify with 10,955 icons under the Apache 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__google-material-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Material Design Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/mdi/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Material Design Icons is an open source icon set on Iconify with 7,447 icons under the Apache 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__material-design-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Material Design Light Icon Set",
+      "source_url": "https://icon-sets.iconify.design/mdi-light/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Material Design Light is an open source icon set on Iconify with 284 icons under the Open Font License license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__material-design-light-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Material Line Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/line-md/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Material Line Icons is an open source icon set on Iconify with 1,218 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__material-line-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Solar Icon Set",
+      "source_url": "https://icon-sets.iconify.design/solar/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Solar is an open source icon set on Iconify with 8,706 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__solar-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Tabler Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/tabler/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "outline",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Tabler Icons is an open source icon set on Iconify with 6,220 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__tabler-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "IconMind Icon Set",
+      "source_url": "https://icon-sets.iconify.design/iconmind/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "IconMind is an open source icon set on Iconify with 31,722 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__iconmind-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Boxicons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/boxicons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Boxicons is an open source icon set on Iconify with 3,768 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__boxicons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "MingCute Icon Icon Set",
+      "source_url": "https://icon-sets.iconify.design/mingcute/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "MingCute Icon is an open source icon set on Iconify with 3,320 icons under the Apache 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__mingcute-icon-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Keyline Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/keyline-icons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Keyline Icons is an open source icon set on Iconify with 10,288 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__keyline-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Remix Icon Icon Set",
+      "source_url": "https://icon-sets.iconify.design/ri/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Remix Icon is an open source icon set on Iconify with 3,188 icons under the Apache 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__remix-icon-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Myna UI Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/mynaui/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Myna UI Icons is an open source icon set on Iconify with 2,620 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__myna-ui-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Griddy Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/griddy-icons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Griddy Icons is an open source icon set on Iconify with 2,010 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__griddy-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "IconaMoon Icon Set",
+      "source_url": "https://icon-sets.iconify.design/iconamoon/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "IconaMoon is an open source icon set on Iconify with 1,781 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__iconamoon-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Iconoir Icon Set",
+      "source_url": "https://icon-sets.iconify.design/iconoir/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "outline",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Iconoir is an open source icon set on Iconify with 1,671 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__iconoir-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Lucide Icon Set",
+      "source_url": "https://icon-sets.iconify.design/lucide/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "outline",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Lucide is an open source icon set on Iconify with 1,866 icons under the ISC license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__lucide-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Lucide Lab Icon Set",
+      "source_url": "https://icon-sets.iconify.design/lucide-lab/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "outline",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Lucide Lab is an open source icon set on Iconify with 373 icons under the ISC license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__lucide-lab-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Unicons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/uil/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Unicons is an open source icon set on Iconify with 1,215 icons under the Apache 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__unicons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "TDesign Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/tdesign/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "TDesign Icons is an open source icon set on Iconify with 2,356 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__tdesign-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Sargam Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/si/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Sargam Icons is an open source icon set on Iconify with 1,299 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__sargam-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Majesticons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/majesticons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Majesticons is an open source icon set on Iconify with 760 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__majesticons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "css.gg Icon Set",
+      "source_url": "https://icon-sets.iconify.design/gg/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "css.gg is an open source icon set on Iconify with 704 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__css.gg-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Flowbite Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/flowbite/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Flowbite Icons is an open source icon set on Iconify with 751 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__flowbite-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Vadivam Icon Set",
+      "source_url": "https://icon-sets.iconify.design/vadivam/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Vadivam is an open source icon set on Iconify with 508 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__vadivam-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Basil Icon Set",
+      "source_url": "https://icon-sets.iconify.design/basil/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Basil is an open source icon set on Iconify with 493 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__basil-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Pixelarticons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/pixelarticons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "pixel",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Pixelarticons is an open source icon set on Iconify with 1,036 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__pixelarticons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Pixel Icon Icon Set",
+      "source_url": "https://icon-sets.iconify.design/pixel/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "pixel",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Pixel Icon is an open source icon set on Iconify with 578 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__pixel-icon-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Akar Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/akar-icons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Akar Icons is an open source icon set on Iconify with 454 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__akar-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "coolicons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/ci/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "coolicons is an open source icon set on Iconify with 442 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__coolicons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "ProIcons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/proicons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "ProIcons is an open source icon set on Iconify with 544 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__proicons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Typicons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/typcn/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Typicons is an open source icon set on Iconify with 336 icons under the CC BY-SA 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__typicons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Meteor Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/meteor-icons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Meteor Icons is an open source icon set on Iconify with 409 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__meteor-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Prime Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/prime/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Prime Icons is an open source icon set on Iconify with 313 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__prime-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Circum Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/circum/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Circum Icons is an open source icon set on Iconify with 288 icons under the Mozilla Public License 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__circum-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Feather Icon Icon Set",
+      "source_url": "https://icon-sets.iconify.design/fe/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "outline",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Feather Icon is an open source icon set on Iconify with 255 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__feather-icon-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "EOS Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/eos-icons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "EOS Icons is an open source icon set on Iconify with 253 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__eos-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Bitcoin Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/bitcoin-icons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Bitcoin Icons is an open source icon set on Iconify with 330 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__bitcoin-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Humbleicons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/humbleicons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Humbleicons is an open source icon set on Iconify with 286 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__humbleicons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Unicons Monochrome Icon Set",
+      "source_url": "https://icon-sets.iconify.design/uim/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "monochrome",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Unicons Monochrome is an open source icon set on Iconify with 298 icons under the Apache 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__unicons-monochrome-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Unicons Thin Line Icon Set",
+      "source_url": "https://icon-sets.iconify.design/uit/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Unicons Thin Line is an open source icon set on Iconify with 216 icons under the Apache 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__unicons-thin-line-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Unicons Solid Icon Set",
+      "source_url": "https://icon-sets.iconify.design/uis/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Unicons Solid is an open source icon set on Iconify with 190 icons under the Apache 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__unicons-solid-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Gridicons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/gridicons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Gridicons is an open source icon set on Iconify with 207 icons under the GPL 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__gridicons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Mono Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/mi/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "monochrome",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Mono Icons is an open source icon set on Iconify with 180 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__mono-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Cuida Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/cuida/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Cuida Icons is an open source icon set on Iconify with 182 icons under the Apache 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__cuida-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "WeUI Icon Icon Set",
+      "source_url": "https://icon-sets.iconify.design/weui/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "WeUI Icon is an open source icon set on Iconify with 162 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__weui-icon-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Duoicons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/duo-icons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Duoicons is an open source icon set on Iconify with 91 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__duoicons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "SVG Spinners Icon Set",
+      "source_url": "https://icon-sets.iconify.design/svg-spinners/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "SVG Spinners is an open source icon set on Iconify with 46 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__svg-spinners-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Reicon Icon Set",
+      "source_url": "https://icon-sets.iconify.design/reicon/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Reicon is an open source icon set on Iconify with 6,590 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__reicon-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Huge Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/hugeicons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Huge Icons is an open source icon set on Iconify with 6,065 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__huge-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Lets Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/lets-icons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Lets Icons is an open source icon set on Iconify with 1,528 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__lets-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Ultimate free icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/streamline-ultimate/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Ultimate free icons is an open source icon set on Iconify with 1,999 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__ultimate-free-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Plump free icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/streamline-plump/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Plump free icons is an open source icon set on Iconify with 1,499 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__plump-free-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Sharp free icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/streamline-sharp/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Sharp free icons is an open source icon set on Iconify with 1,500 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__sharp-free-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Mage Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/mage/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Mage Icons is an open source icon set on Iconify with 1,042 icons under the Apache 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__mage-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Stash Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/stash/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Stash Icons is an open source icon set on Iconify with 982 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__stash-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Lineicons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/lineicons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Lineicons is an open source icon set on Iconify with 606 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__lineicons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "WordPress Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/wordpress/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "WordPress Icons is an open source icon set on Iconify with 345 icons under the GPL license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__wordpress-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "IconPark Outline Icon Set",
+      "source_url": "https://icon-sets.iconify.design/icon-park-outline/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "outline",
+        "icon-set",
+        "icon"
+      ],
+      "description": "IconPark Outline is an open source icon set on Iconify with 2,658 icons under the Apache 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__iconpark-outline-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "IconPark Solid Icon Set",
+      "source_url": "https://icon-sets.iconify.design/icon-park-solid/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "IconPark Solid is an open source icon set on Iconify with 1,947 icons under the Apache 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__iconpark-solid-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "IconPark TwoTone Icon Set",
+      "source_url": "https://icon-sets.iconify.design/icon-park-twotone/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "duotone",
+        "icon-set",
+        "icon"
+      ],
+      "description": "IconPark TwoTone is an open source icon set on Iconify with 1,944 icons under the Apache 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__iconpark-twotone-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Jam Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/jam/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Jam Icons is an open source icon set on Iconify with 940 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__jam-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Cyber free icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/streamline-cyber/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Cyber free icons is an open source icon set on Iconify with 500 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__cyber-free-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Guidance Icon Set",
+      "source_url": "https://icon-sets.iconify.design/guidance/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Guidance is an open source icon set on Iconify with 360 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__guidance-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "BoxIcons v2 Icon Set",
+      "source_url": "https://icon-sets.iconify.design/bx/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "BoxIcons v2 is an open source icon set on Iconify with 814 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__boxicons-v2-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "BoxIcons v2 Solid Icon Set",
+      "source_url": "https://icon-sets.iconify.design/bxs/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "BoxIcons v2 Solid is an open source icon set on Iconify with 665 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__boxicons-v2-solid-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Carbon Icon Set",
+      "source_url": "https://icon-sets.iconify.design/carbon/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Carbon is an open source icon set on Iconify with 2,631 icons under the Apache 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__carbon-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "IonIcons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/ion/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "IonIcons is an open source icon set on Iconify with 1,357 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__ionicons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Famicons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/famicons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Famicons is an open source icon set on Iconify with 1,342 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__famicons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Ant Design Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/ant-design/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Ant Design Icons is an open source icon set on Iconify with 848 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__ant-design-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Lsicon Icon Set",
+      "source_url": "https://icon-sets.iconify.design/lsicon/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Lsicon is an open source icon set on Iconify with 716 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__lsicon-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Gravity UI Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/gravity-ui/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Gravity UI Icons is an open source icon set on Iconify with 799 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__gravity-ui-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "CoreUI Free Icon Set",
+      "source_url": "https://icon-sets.iconify.design/cil/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "CoreUI Free is an open source icon set on Iconify with 554 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__coreui-free-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "@icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/at-icons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "@icons is an open source icon set on Iconify with 642 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__@icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Element Plus Icon Set",
+      "source_url": "https://icon-sets.iconify.design/ep/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Element Plus is an open source icon set on Iconify with 293 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__element-plus-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Charm Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/charm/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Charm Icons is an open source icon set on Iconify with 261 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__charm-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Quill Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/quill/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Quill Icons is an open source icon set on Iconify with 140 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__quill-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Bytesize Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/bytesize/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Bytesize Icons is an open source icon set on Iconify with 101 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__bytesize-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Bootstrap Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/bi/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Bootstrap Icons is an open source icon set on Iconify with 2,078 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__bootstrap-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Pixel free icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/streamline-pixel/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "pixel",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Pixel free icons is an open source icon set on Iconify with 662 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__pixel-free-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Streamline Block Icon Set",
+      "source_url": "https://icon-sets.iconify.design/streamline-block/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Streamline Block is an open source icon set on Iconify with 300 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__streamline-block-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Rivet Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/rivet-icons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Rivet Icons is an open source icon set on Iconify with 210 icons under the BSD 3-Clause license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__rivet-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Nimbus Icon Set",
+      "source_url": "https://icon-sets.iconify.design/nimbus/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Nimbus is an open source icon set on Iconify with 140 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__nimbus-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "FormKit Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/formkit/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "FormKit Icons is an open source icon set on Iconify with 144 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__formkit-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Fluent UI System Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/fluent/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Fluent UI System Icons is an open source icon set on Iconify with 19,876 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__fluent-ui-system-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Phosphor Icon Set",
+      "source_url": "https://icon-sets.iconify.design/ph/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Phosphor is an open source icon set on Iconify with 9,072 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__phosphor-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Glyphs Icon Set",
+      "source_url": "https://icon-sets.iconify.design/glyphs/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Glyphs is an open source icon set on Iconify with 3,452 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__glyphs-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Glyphs Poly Icon Set",
+      "source_url": "https://icon-sets.iconify.design/glyphs-poly/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Glyphs Poly is an open source icon set on Iconify with 863 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__glyphs-poly-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Teenyicons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/teenyicons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Teenyicons is an open source icon set on Iconify with 1,200 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__teenyicons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Clarity Icon Set",
+      "source_url": "https://icon-sets.iconify.design/clarity/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Clarity is an open source icon set on Iconify with 1,103 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__clarity-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Freehand free icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/streamline-freehand/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Freehand free icons is an open source icon set on Iconify with 1,000 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__freehand-free-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Siemens Industrial Experience Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/ix/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Siemens Industrial Experience Icons is an open source icon set on Iconify with 1,486 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__siemens-industrial-experience-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Octicons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/octicon/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Octicons is an open source icon set on Iconify with 767 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__octicons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Memory Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/memory/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Memory Icons is an open source icon set on Iconify with 651 icons under the Apache 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__memory-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "System UIcons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/system-uicons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "System UIcons is an open source icon set on Iconify with 430 icons under the Unlicense license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__system-uicons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Radix Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/radix-icons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "outline",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Radix Icons is an open source icon set on Iconify with 332 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__radix-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Zondicons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/zondicons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Zondicons is an open source icon set on Iconify with 297 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__zondicons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "uiw icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/uiw/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "monochrome",
+        "icon-set",
+        "icon"
+      ],
+      "description": "uiw icons is an open source icon set on Iconify with 214 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__uiw-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "CodeX Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/codex/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "CodeX Icons is an open source icon set on Iconify with 78 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__codex-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Evil Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/ei/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Evil Icons is an open source icon set on Iconify with 70 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__evil-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "HeroIcons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/heroicons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "HeroIcons is an open source icon set on Iconify with 1,288 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__heroicons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "SidekickIcons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/sidekickicons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "SidekickIcons is an open source icon set on Iconify with 232 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__sidekickicons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Pepicons Pop! Icon Set",
+      "source_url": "https://icon-sets.iconify.design/pepicons-pop/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Pepicons Pop! is an open source icon set on Iconify with 1,275 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__pepicons-pop!-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Pepicons Print Icon Set",
+      "source_url": "https://icon-sets.iconify.design/pepicons-print/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Pepicons Print is an open source icon set on Iconify with 1,275 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__pepicons-print-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Pepicons Pencil Icon Set",
+      "source_url": "https://icon-sets.iconify.design/pepicons-pencil/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Pepicons Pencil is an open source icon set on Iconify with 1,275 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__pepicons-pencil-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Framework7 Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/f7/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Framework7 Icons is an open source icon set on Iconify with 1,253 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__framework7-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Gitlab SVGs Icon Set",
+      "source_url": "https://icon-sets.iconify.design/pajamas/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Gitlab SVGs is an open source icon set on Iconify with 410 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__gitlab-svgs-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Garden SVG Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/garden/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Garden SVG Icons is an open source icon set on Iconify with 932 icons under the Apache 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__garden-svg-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Streamline Icon Set",
+      "source_url": "https://icon-sets.iconify.design/streamline/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Streamline is an open source icon set on Iconify with 3,000 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__streamline-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Flex free icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/streamline-flex/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Flex free icons is an open source icon set on Iconify with 1,500 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__flex-free-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Font Awesome Solid Icon Set",
+      "source_url": "https://icon-sets.iconify.design/fa7-solid/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Font Awesome Solid is an open source icon set on Iconify with 2,000 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__font-awesome-solid-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Font Awesome Regular Icon Set",
+      "source_url": "https://icon-sets.iconify.design/fa7-regular/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Font Awesome Regular is an open source icon set on Iconify with 272 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__font-awesome-regular-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Pico-icon Icon Set",
+      "source_url": "https://icon-sets.iconify.design/picon/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Pico-icon is an open source icon set on Iconify with 824 icons under the Open Font License license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__pico-icon-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "OOUI Icon Set",
+      "source_url": "https://icon-sets.iconify.design/ooui/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "OOUI is an open source icon set on Iconify with 421 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__ooui-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "OpenSearch UI Icon Set",
+      "source_url": "https://icon-sets.iconify.design/oui/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "OpenSearch UI is an open source icon set on Iconify with 437 icons under the Apache 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__opensearch-ui-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "NRK Core Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/nrk/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "NRK Core Icons is an open source icon set on Iconify with 637 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__nrk-core-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Dinkie Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/dinkie-icons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Dinkie Icons is an open source icon set on Iconify with 1,198 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__dinkie-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Qlementine Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/qlementine-icons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Qlementine Icons is an open source icon set on Iconify with 905 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__qlementine-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Ultimate color icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/streamline-ultimate-color/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Ultimate color icons is an open source icon set on Iconify with 998 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__ultimate-color-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Plump color icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/streamline-plump-color/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Plump color icons is an open source icon set on Iconify with 1,000 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__plump-color-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Freehand color icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/streamline-freehand-color/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Freehand color icons is an open source icon set on Iconify with 1,000 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__freehand-color-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Kameleon color icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/streamline-kameleon-color/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Kameleon color icons is an open source icon set on Iconify with 400 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__kameleon-color-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Stickies color icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/streamline-stickies-color/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Stickies color icons is an open source icon set on Iconify with 200 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__stickies-color-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Fluent UI System Color Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/fluent-color/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Fluent UI System Color Icons is an open source icon set on Iconify with 890 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__fluent-ui-system-color-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Streamline color Icon Set",
+      "source_url": "https://icon-sets.iconify.design/streamline-color/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Streamline color is an open source icon set on Iconify with 2,000 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__streamline-color-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Flex color icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/streamline-flex-color/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Flex color icons is an open source icon set on Iconify with 1,000 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__flex-color-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Sharp color icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/streamline-sharp-color/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Sharp color icons is an open source icon set on Iconify with 1,000 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__sharp-color-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Cyber color icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/streamline-cyber-color/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Cyber color icons is an open source icon set on Iconify with 500 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__cyber-color-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "IconPark Icon Set",
+      "source_url": "https://icon-sets.iconify.design/icon-park/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "IconPark is an open source icon set on Iconify with 2,658 icons under the Apache 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__iconpark-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Marketeq Icon Set",
+      "source_url": "https://icon-sets.iconify.design/marketeq/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Marketeq is an open source icon set on Iconify with 590 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__marketeq-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "VSCode Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/vscode-icons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "VSCode Icons is an open source icon set on Iconify with 1,660 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__vscode-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Codicons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/codicon/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Codicons is an open source icon set on Iconify with 653 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__codicons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Material Icon Theme Icon Set",
+      "source_url": "https://icon-sets.iconify.design/material-icon-theme/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Material Icon Theme is an open source icon set on Iconify with 904 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__material-icon-theme-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "File Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/file-icons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "File Icons is an open source icon set on Iconify with 930 icons under the ISC license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__file-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Devicon Icon Set",
+      "source_url": "https://icon-sets.iconify.design/devicon/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Devicon is an open source icon set on Iconify with 1,057 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__devicon-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Devicon Plain Icon Set",
+      "source_url": "https://icon-sets.iconify.design/devicon-plain/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Devicon Plain is an open source icon set on Iconify with 771 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__devicon-plain-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Catppuccin Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/catppuccin/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Catppuccin Icons is an open source icon set on Iconify with 656 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__catppuccin-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Skill Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/skill-icons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Skill Icons is an open source icon set on Iconify with 400 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__skill-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Google Cloud Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/gcp/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Google Cloud Icons is an open source icon set on Iconify with 214 icons under the Apache 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__google-cloud-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Kubernetes Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/k8s/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Kubernetes Icons is an open source icon set on Iconify with 38 icons under the Apache 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__kubernetes-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "UnJS Logos Icon Set",
+      "source_url": "https://icon-sets.iconify.design/unjs/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "UnJS Logos is an open source icon set on Iconify with 63 icons under the Apache 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__unjs-logos-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Simple Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/simple-icons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "logo"
+      ],
+      "description": "Simple Icons is an open source icon set on Iconify with 3,463 icons under the CC0 1.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__simple-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "SVG Logos Icon Set",
+      "source_url": "https://icon-sets.iconify.design/logos/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "logo"
+      ],
+      "description": "SVG Logos is an open source icon set on Iconify with 1,960 icons under the CC0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__svg-logos-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Logos free icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/streamline-logos/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "logo"
+      ],
+      "description": "Logos free icons is an open source icon set on Iconify with 1,362 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__logos-free-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "CoreUI Brands Icon Set",
+      "source_url": "https://icon-sets.iconify.design/cib/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "logo"
+      ],
+      "description": "CoreUI Brands is an open source icon set on Iconify with 830 icons under the CC0 1.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__coreui-brands-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Font Awesome Brands Icon Set",
+      "source_url": "https://icon-sets.iconify.design/fa7-brands/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "logo"
+      ],
+      "description": "Font Awesome Brands is an open source icon set on Iconify with 608 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__font-awesome-brands-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Boxicons Brands Icon Set",
+      "source_url": "https://icon-sets.iconify.design/bxl/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "logo"
+      ],
+      "description": "Boxicons Brands is an open source icon set on Iconify with 295 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__boxicons-brands-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Nonicons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/nonicons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "logo"
+      ],
+      "description": "Nonicons is an open source icon set on Iconify with 69 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__nonicons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Arcticons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/arcticons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "logo"
+      ],
+      "description": "Arcticons is an open source icon set on Iconify with 15,322 icons under the CC BY-SA 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__arcticons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "theSVG Icon Set",
+      "source_url": "https://icon-sets.iconify.design/thesvg/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "logo"
+      ],
+      "description": "theSVG is an open source icon set on Iconify with 3,758 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__thesvg-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "theSVG Color Icon Set",
+      "source_url": "https://icon-sets.iconify.design/thesvg-color/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "logo"
+      ],
+      "description": "theSVG Color is an open source icon set on Iconify with 4,904 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__thesvg-color-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "selfh.st/icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/selfhst/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "logo"
+      ],
+      "description": "selfh.st/icons is an open source icon set on Iconify with 7,234 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__selfh.st/icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Custom Brand Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/cbi/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "logo"
+      ],
+      "description": "Custom Brand Icons is an open source icon set on Iconify with 1,750 icons under the CC BY-NC-SA 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__custom-brand-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Brandico Icon Set",
+      "source_url": "https://icon-sets.iconify.design/brandico/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "logo"
+      ],
+      "description": "Brandico is an open source icon set on Iconify with 45 icons under the CC BY SA license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__brandico-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Entypo+ Social Icon Set",
+      "source_url": "https://icon-sets.iconify.design/entypo-social/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "logo"
+      ],
+      "description": "Entypo+ Social is an open source icon set on Iconify with 76 icons under the CC BY-SA 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__entypo+-social-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Web3 Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/token/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "logo"
+      ],
+      "description": "Web3 Icons is an open source icon set on Iconify with 1,788 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__web3-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Web3 Icons Branded Icon Set",
+      "source_url": "https://icon-sets.iconify.design/token-branded/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "logo"
+      ],
+      "description": "Web3 Icons Branded is an open source icon set on Iconify with 4,085 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__web3-icons-branded-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Cryptocurrency Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/cryptocurrency/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "logo"
+      ],
+      "description": "Cryptocurrency Icons is an open source icon set on Iconify with 483 icons under the CC0 1.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__cryptocurrency-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Cryptocurrency Color Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/cryptocurrency-color/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "logo"
+      ],
+      "description": "Cryptocurrency Color Icons is an open source icon set on Iconify with 483 icons under the CC0 1.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__cryptocurrency-color-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "OpenMoji Icon Set",
+      "source_url": "https://icon-sets.iconify.design/openmoji/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "illustration"
+      ],
+      "description": "OpenMoji is an open source icon set on Iconify with 4,544 icons under the CC BY-SA 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__openmoji-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Twitter Emoji Icon Set",
+      "source_url": "https://icon-sets.iconify.design/twemoji/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "illustration"
+      ],
+      "description": "Twitter Emoji is an open source icon set on Iconify with 3,988 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__twitter-emoji-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Noto Emoji Icon Set",
+      "source_url": "https://icon-sets.iconify.design/noto/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "illustration"
+      ],
+      "description": "Noto Emoji is an open source icon set on Iconify with 3,729 icons under the Apache 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__noto-emoji-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Fluent Emoji Flat Icon Set",
+      "source_url": "https://icon-sets.iconify.design/fluent-emoji-flat/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "illustration"
+      ],
+      "description": "Fluent Emoji Flat is an open source icon set on Iconify with 3,145 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__fluent-emoji-flat-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Fluent Emoji High Contrast Icon Set",
+      "source_url": "https://icon-sets.iconify.design/fluent-emoji-high-contrast/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "illustration"
+      ],
+      "description": "Fluent Emoji High Contrast is an open source icon set on Iconify with 1,595 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__fluent-emoji-high-contrast-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Noto Emoji (v1) Icon Set",
+      "source_url": "https://icon-sets.iconify.design/noto-v1/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "illustration"
+      ],
+      "description": "Noto Emoji (v1) is an open source icon set on Iconify with 2,162 icons under the Apache 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__noto-emoji-(v1)-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Emoji One (Colored) Icon Set",
+      "source_url": "https://icon-sets.iconify.design/emojione/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "illustration"
+      ],
+      "description": "Emoji One (Colored) is an open source icon set on Iconify with 1,834 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__emoji-one-(colored)-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Emoji One (Monotone) Icon Set",
+      "source_url": "https://icon-sets.iconify.design/emojione-monotone/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "illustration"
+      ],
+      "description": "Emoji One (Monotone) is an open source icon set on Iconify with 1,403 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__emoji-one-(monotone)-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Emoji One (v1) Icon Set",
+      "source_url": "https://icon-sets.iconify.design/emojione-v1/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "illustration"
+      ],
+      "description": "Emoji One (v1) is an open source icon set on Iconify with 1,262 icons under the CC BY-SA 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__emoji-one-(v1)-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Firefox OS Emoji Icon Set",
+      "source_url": "https://icon-sets.iconify.design/fxemoji/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "illustration"
+      ],
+      "description": "Firefox OS Emoji is an open source icon set on Iconify with 1,034 icons under the Apache 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__firefox-os-emoji-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Streamline Emojis Icon Set",
+      "source_url": "https://icon-sets.iconify.design/streamline-emojis/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "illustration"
+      ],
+      "description": "Streamline Emojis is an open source icon set on Iconify with 787 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__streamline-emojis-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Circle Flags Icon Set",
+      "source_url": "https://icon-sets.iconify.design/circle-flags/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "marker"
+      ],
+      "description": "Circle Flags is an open source icon set on Iconify with 444 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__circle-flags-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Flag Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/flag/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "marker"
+      ],
+      "description": "Flag Icons is an open source icon set on Iconify with 542 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__flag-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Flagpack Icon Set",
+      "source_url": "https://icon-sets.iconify.design/flagpack/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "marker"
+      ],
+      "description": "Flagpack is an open source icon set on Iconify with 254 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__flagpack-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "CoreUI Flags Icon Set",
+      "source_url": "https://icon-sets.iconify.design/cif/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "marker"
+      ],
+      "description": "CoreUI Flags is an open source icon set on Iconify with 199 icons under the CC0 1.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__coreui-flags-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Pinhead Map Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/pinhead/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "marker"
+      ],
+      "description": "Pinhead Map Icons is an open source icon set on Iconify with 2,738 icons under the CC0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__pinhead-map-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "R\u00f6ntgen Icon Set",
+      "source_url": "https://icon-sets.iconify.design/roentgen/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "marker"
+      ],
+      "description": "R\u00f6ntgen is an open source icon set on Iconify with 574 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__r\u00f6ntgen-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Maki Icon Set",
+      "source_url": "https://icon-sets.iconify.design/maki/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "monochrome",
+        "icon-set",
+        "icon",
+        "marker"
+      ],
+      "description": "Maki is an open source icon set on Iconify with 215 icons under the CC0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__maki-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Temaki Icon Set",
+      "source_url": "https://icon-sets.iconify.design/temaki/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "marker"
+      ],
+      "description": "Temaki is an open source icon set on Iconify with 557 icons under the CC0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__temaki-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Font-GIS Icon Set",
+      "source_url": "https://icon-sets.iconify.design/gis/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "marker"
+      ],
+      "description": "Font-GIS is an open source icon set on Iconify with 367 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__font-gis-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Map Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/map/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "marker"
+      ],
+      "description": "Map Icons is an open source icon set on Iconify with 167 icons under the Open Font License license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__map-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "GeoGlyphs Icon Set",
+      "source_url": "https://icon-sets.iconify.design/geo/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "marker"
+      ],
+      "description": "GeoGlyphs is an open source icon set on Iconify with 30 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__geoglyphs-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "OSM Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/osmic/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon",
+        "marker"
+      ],
+      "description": "OSM Icons is an open source icon set on Iconify with 169 icons under the CC0 1.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__osm-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Game Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/game-icons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Game Icons is an open source icon set on Iconify with 4,133 icons under the CC BY 3.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__game-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "FontAudio Icon Set",
+      "source_url": "https://icon-sets.iconify.design/fad/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "FontAudio is an open source icon set on Iconify with 155 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__fontaudio-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Academicons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/academicons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "monochrome",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Academicons is an open source icon set on Iconify with 158 icons under the Open Font License license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__academicons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Weather Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/wi/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Weather Icons is an open source icon set on Iconify with 219 icons under the Open Font License license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__weather-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Meteocons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/meteocons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Meteocons is an open source icon set on Iconify with 447 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__meteocons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Health Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/healthicons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Health Icons is an open source icon set on Iconify with 2,042 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__health-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Medical Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/medical-icon/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Medical Icons is an open source icon set on Iconify with 144 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__medical-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Covid Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/covid/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Covid Icons is an open source icon set on Iconify with 142 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__covid-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Ginetex Care Symbols Icon Set",
+      "source_url": "https://icon-sets.iconify.design/ginetex/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Ginetex Care Symbols is an open source icon set on Iconify with 50 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__ginetex-care-symbols-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Line Awesome Icon Set",
+      "source_url": "https://icon-sets.iconify.design/la/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Line Awesome is an open source icon set on Iconify with 1,544 icons under the Apache 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__line-awesome-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Eva Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/eva/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Eva Icons is an open source icon set on Iconify with 490 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__eva-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Dashicons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/dashicons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Dashicons is an open source icon set on Iconify with 342 icons under the GPL license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__dashicons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Flat Color Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/flat-color-icons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Flat Color Icons is an open source icon set on Iconify with 329 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__flat-color-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Entypo+ Icon Set",
+      "source_url": "https://icon-sets.iconify.design/entypo/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Entypo+ is an open source icon set on Iconify with 321 icons under the CC BY-SA 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__entypo+-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Foundation Icon Set",
+      "source_url": "https://icon-sets.iconify.design/foundation/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Foundation is an open source icon set on Iconify with 283 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__foundation-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Raphael Icon Set",
+      "source_url": "https://icon-sets.iconify.design/raphael/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Raphael is an open source icon set on Iconify with 266 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__raphael-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Icons8 Windows 10 Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/icons8/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Icons8 Windows 10 Icons is an open source icon set on Iconify with 234 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__icons8-windows-10-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Innowatio Font Icon Set",
+      "source_url": "https://icon-sets.iconify.design/iwwa/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Innowatio Font is an open source icon set on Iconify with 105 icons under the Apache 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__innowatio-font-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Gala Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/gala/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Gala Icons is an open source icon set on Iconify with 51 icons under the GPL license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__gala-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "HeroIcons v1 Outline Icon Set",
+      "source_url": "https://icon-sets.iconify.design/heroicons-outline/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "outline",
+        "icon-set",
+        "icon"
+      ],
+      "description": "HeroIcons v1 Outline is an open source icon set on Iconify with 230 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__heroicons-v1-outline-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "HeroIcons v1 Solid Icon Set",
+      "source_url": "https://icon-sets.iconify.design/heroicons-solid/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "HeroIcons v1 Solid is an open source icon set on Iconify with 230 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__heroicons-v1-solid-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Font Awesome 6 Solid Icon Set",
+      "source_url": "https://icon-sets.iconify.design/fa6-solid/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Font Awesome 6 Solid is an open source icon set on Iconify with 1,402 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__font-awesome-6-solid-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Font Awesome 6 Regular Icon Set",
+      "source_url": "https://icon-sets.iconify.design/fa6-regular/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Font Awesome 6 Regular is an open source icon set on Iconify with 163 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__font-awesome-6-regular-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Font Awesome 6 Brands Icon Set",
+      "source_url": "https://icon-sets.iconify.design/fa6-brands/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Font Awesome 6 Brands is an open source icon set on Iconify with 495 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__font-awesome-6-brands-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Font Awesome 5 Solid Icon Set",
+      "source_url": "https://icon-sets.iconify.design/fa-solid/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Font Awesome 5 Solid is an open source icon set on Iconify with 1,001 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__font-awesome-5-solid-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Font Awesome 5 Regular Icon Set",
+      "source_url": "https://icon-sets.iconify.design/fa-regular/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Font Awesome 5 Regular is an open source icon set on Iconify with 151 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__font-awesome-5-regular-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Font Awesome 5 Brands Icon Set",
+      "source_url": "https://icon-sets.iconify.design/fa-brands/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Font Awesome 5 Brands is an open source icon set on Iconify with 457 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__font-awesome-5-brands-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Font Awesome 4 Icon Set",
+      "source_url": "https://icon-sets.iconify.design/fa/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Font Awesome 4 is an open source icon set on Iconify with 678 icons under the Open Font License license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__font-awesome-4-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Fluent UI MDL2 Icon Set",
+      "source_url": "https://icon-sets.iconify.design/fluent-mdl2/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Fluent UI MDL2 is an open source icon set on Iconify with 1,735 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__fluent-ui-mdl2-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Fontisto Icon Set",
+      "source_url": "https://icon-sets.iconify.design/fontisto/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Fontisto is an open source icon set on Iconify with 615 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__fontisto-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "IcoMoon Free Icon Set",
+      "source_url": "https://icon-sets.iconify.design/icomoon-free/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "IcoMoon Free is an open source icon set on Iconify with 491 icons under the GPL license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__icomoon-free-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Subway Icon Set Icon Set",
+      "source_url": "https://icon-sets.iconify.design/subway/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Subway Icon Set is an open source icon set on Iconify with 306 icons under the CC BY 4.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__subway-icon-set-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Open Iconic Icon Set",
+      "source_url": "https://icon-sets.iconify.design/oi/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Open Iconic is an open source icon set on Iconify with 223 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__open-iconic-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Icons8 Windows 8 Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/wpf/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Icons8 Windows 8 Icons is an open source icon set on Iconify with 200 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__icons8-windows-8-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Simple line icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/simple-line-icons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Simple line icons is an open source icon set on Iconify with 189 icons under the MIT license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__simple-line-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Elegant Icon Set",
+      "source_url": "https://icon-sets.iconify.design/et/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Elegant is an open source icon set on Iconify with 100 icons under the GPL 3.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__elegant-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Elusive Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/el/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Elusive Icons is an open source icon set on Iconify with 304 icons under the Open Font License license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__elusive-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Vaadin Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/vaadin/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Vaadin Icons is an open source icon set on Iconify with 636 icons under the Apache 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__vaadin-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Grommet Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/grommet-icons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Grommet Icons is an open source icon set on Iconify with 636 icons under the Apache 2.0 license; icons can be browsed, customised and downloaded as SVG or as web components.",
+      "preview_image": "",
+      "id": "unknown__grommet-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
     }
   ]
 }
