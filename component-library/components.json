@@ -1,6 +1,6 @@
 {
-  "version": "1.0.70",
-  "source_count": 26845,
+  "version": "1.0.71",
+  "source_count": 26890,
   "components": [
     {
       "id": "cat-0",
@@ -465537,6 +465537,681 @@
       "description": "A loader component by themrsami, published on Uiverse. This Loader was posted by themrsami.",
       "preview_image": "",
       "id": "unknown__weak-kangaroo-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Hard Ladybug Card",
+      "source_url": "https://uiverse.io/Angek-Dev/hard-ladybug-72",
+      "registry_url": "https://uiverse.io/",
+      "category": "card",
+      "tags": [
+        "css",
+        "minimal",
+        "card"
+      ],
+      "description": "A minimal content card built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__hard-ladybug-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Curly Horse Loader",
+      "source_url": "https://uiverse.io/BUGHERE/curly-horse-78",
+      "registry_url": "https://uiverse.io/",
+      "category": "loader",
+      "tags": [
+        "css",
+        "glow",
+        "loader"
+      ],
+      "description": "A glow loading indicator built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__curly-horse-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Grumpy Eagle Tooltip",
+      "source_url": "https://uiverse.io/BishalSaini/grumpy-eagle-83",
+      "registry_url": "https://uiverse.io/",
+      "category": "tooltip",
+      "tags": [
+        "css",
+        "soft",
+        "tooltip"
+      ],
+      "description": "A soft hover tooltip built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__grumpy-eagle-tooltip",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Black Tiger Input",
+      "source_url": "https://uiverse.io/BlackisPlay/black-tiger-82",
+      "registry_url": "https://uiverse.io/",
+      "category": "input",
+      "tags": [
+        "css",
+        "minimal",
+        "input"
+      ],
+      "description": "A minimal text input built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__black-tiger-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Massive Wasp Input",
+      "source_url": "https://uiverse.io/Christian-putra30/massive-wasp-51",
+      "registry_url": "https://uiverse.io/",
+      "category": "input",
+      "tags": [
+        "css",
+        "soft",
+        "input"
+      ],
+      "description": "A soft text input built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__massive-wasp-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Splendid Bat Form",
+      "source_url": "https://uiverse.io/Cksunandh/splendid-bat-80",
+      "registry_url": "https://uiverse.io/",
+      "category": "form",
+      "tags": [
+        "css",
+        "minimal",
+        "form"
+      ],
+      "description": "A minimal form built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__splendid-bat-form",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Loud Cat Card",
+      "source_url": "https://uiverse.io/ClawHack1/loud-cat-92",
+      "registry_url": "https://uiverse.io/",
+      "category": "card",
+      "tags": [
+        "css",
+        "minimal",
+        "card"
+      ],
+      "description": "A minimal content card built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__loud-cat-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Fresh Goose Button",
+      "source_url": "https://uiverse.io/Creatlydev/fresh-goose-83",
+      "registry_url": "https://uiverse.io/",
+      "category": "button",
+      "tags": [
+        "css",
+        "minimal",
+        "button"
+      ],
+      "description": "A minimal button built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__fresh-goose-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Rare Treefrog Button",
+      "source_url": "https://uiverse.io/Creatlydev/rare-treefrog-56",
+      "registry_url": "https://uiverse.io/",
+      "category": "button",
+      "tags": [
+        "css",
+        "minimal",
+        "button"
+      ],
+      "description": "A minimal button built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__rare-treefrog-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Stale Mule Card",
+      "source_url": "https://uiverse.io/EddyBel/stale-mule-90",
+      "registry_url": "https://uiverse.io/",
+      "category": "card",
+      "tags": [
+        "css",
+        "gradient",
+        "card"
+      ],
+      "description": "A gradient content card built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__stale-mule-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Light Bear Card",
+      "source_url": "https://uiverse.io/ElsayedShamsEldeen/light-bear-37",
+      "registry_url": "https://uiverse.io/",
+      "category": "card",
+      "tags": [
+        "css",
+        "soft",
+        "card"
+      ],
+      "description": "A soft content card built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__light-bear-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Polite Husky Loader",
+      "source_url": "https://uiverse.io/EmmaxPlay/polite-husky-37",
+      "registry_url": "https://uiverse.io/",
+      "category": "loader",
+      "tags": [
+        "css",
+        "minimal",
+        "loader"
+      ],
+      "description": "A minimal loading indicator built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__polite-husky-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Fresh Moth Form",
+      "source_url": "https://uiverse.io/Javierrocadev/fresh-moth-39",
+      "registry_url": "https://uiverse.io/",
+      "category": "form",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "form"
+      ],
+      "description": "A minimal form built with TAILWIND for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__fresh-moth-form",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Strange Otter Toggle",
+      "source_url": "https://uiverse.io/Javierrocadev/strange-otter-53",
+      "registry_url": "https://uiverse.io/",
+      "category": "toggle",
+      "tags": [
+        "tailwind",
+        "gradient",
+        "toggle"
+      ],
+      "description": "A gradient toggle switch built with TAILWIND for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__strange-otter-toggle",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Dangerous Dolphin Loader",
+      "source_url": "https://uiverse.io/JkHuger/dangerous-dolphin-42",
+      "registry_url": "https://uiverse.io/",
+      "category": "loader",
+      "tags": [
+        "css",
+        "glow",
+        "loader"
+      ],
+      "description": "A glow loading indicator built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__dangerous-dolphin-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Slippery Mayfly Loader",
+      "source_url": "https://uiverse.io/Juanes200122/slippery-mayfly-15",
+      "registry_url": "https://uiverse.io/",
+      "category": "loader",
+      "tags": [
+        "css",
+        "minimal",
+        "loader"
+      ],
+      "description": "A minimal loading indicator built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__slippery-mayfly-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Short Earwig Loader",
+      "source_url": "https://uiverse.io/Kaizen0000/short-earwig-32",
+      "registry_url": "https://uiverse.io/",
+      "category": "loader",
+      "tags": [
+        "css",
+        "glow",
+        "loader"
+      ],
+      "description": "A glow loading indicator built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__short-earwig-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Smooth Liger Card",
+      "source_url": "https://uiverse.io/Pankaj-Meharchandani/smooth-liger-3",
+      "registry_url": "https://uiverse.io/",
+      "category": "card",
+      "tags": [
+        "css",
+        "minimal",
+        "card"
+      ],
+      "description": "A minimal content card built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__smooth-liger-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Pink Rabbit Form",
+      "source_url": "https://uiverse.io/Pinparker/pink-rabbit-53",
+      "registry_url": "https://uiverse.io/",
+      "category": "form",
+      "tags": [
+        "css",
+        "minimal",
+        "form"
+      ],
+      "description": "A minimal form built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__pink-rabbit-form",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Ugly Swan Tooltip",
+      "source_url": "https://uiverse.io/Pipo-13/ugly-swan-20",
+      "registry_url": "https://uiverse.io/",
+      "category": "tooltip",
+      "tags": [
+        "css",
+        "minimal",
+        "tooltip"
+      ],
+      "description": "A minimal hover tooltip built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__ugly-swan-tooltip",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Soft Dingo Glow Card",
+      "source_url": "https://uiverse.io/Rodrypaladin/soft-dingo-59",
+      "registry_url": "https://uiverse.io/",
+      "category": "card",
+      "tags": [
+        "css",
+        "glow",
+        "card"
+      ],
+      "description": "A glow content card built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__soft-dingo-glow-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Terrible Mole Button",
+      "source_url": "https://uiverse.io/Spacious74/terrible-mole-30",
+      "registry_url": "https://uiverse.io/",
+      "category": "button",
+      "tags": [
+        "css",
+        "metallic",
+        "button"
+      ],
+      "description": "A metallic button built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__terrible-mole-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Ugly Termite Loader",
+      "source_url": "https://uiverse.io/TechByElijah/ugly-termite-49",
+      "registry_url": "https://uiverse.io/",
+      "category": "loader",
+      "tags": [
+        "css",
+        "glow",
+        "loader"
+      ],
+      "description": "A glow loading indicator built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__ugly-termite-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Happy Wolverine Loader",
+      "source_url": "https://uiverse.io/Valeron-T/happy-wolverine-36",
+      "registry_url": "https://uiverse.io/",
+      "category": "loader",
+      "tags": [
+        "css",
+        "glow",
+        "loader"
+      ],
+      "description": "A glow loading indicator built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__happy-wolverine-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Good Mouse Button",
+      "source_url": "https://uiverse.io/adamgiebl/good-mouse-67",
+      "registry_url": "https://uiverse.io/",
+      "category": "button",
+      "tags": [
+        "css",
+        "soft",
+        "button"
+      ],
+      "description": "A soft button built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__good-mouse-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Evil Parrot Input",
+      "source_url": "https://uiverse.io/alexruix/evil-parrot-59",
+      "registry_url": "https://uiverse.io/",
+      "category": "input",
+      "tags": [
+        "css",
+        "minimal",
+        "input"
+      ],
+      "description": "A minimal text input built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__evil-parrot-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Splendid Squid Loader",
+      "source_url": "https://uiverse.io/alexs_8179/splendid-squid-28",
+      "registry_url": "https://uiverse.io/",
+      "category": "loader",
+      "tags": [
+        "css",
+        "minimal",
+        "loader"
+      ],
+      "description": "A minimal loading indicator built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__splendid-squid-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "White Robin Loader",
+      "source_url": "https://uiverse.io/andrew-demchenk0/white-robin-100",
+      "registry_url": "https://uiverse.io/",
+      "category": "loader",
+      "tags": [
+        "css",
+        "glow",
+        "loader"
+      ],
+      "description": "A glow loading indicator built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__white-robin-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Hard Cobra Card",
+      "source_url": "https://uiverse.io/arshshaikh06/hard-cobra-69",
+      "registry_url": "https://uiverse.io/",
+      "category": "card",
+      "tags": [
+        "css",
+        "soft",
+        "card"
+      ],
+      "description": "A soft content card built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__hard-cobra-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Lucky Baboon Input",
+      "source_url": "https://uiverse.io/benjimich/lucky-baboon-4",
+      "registry_url": "https://uiverse.io/",
+      "category": "input",
+      "tags": [
+        "css",
+        "minimal",
+        "input"
+      ],
+      "description": "A minimal text input built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__lucky-baboon-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Tiny Dog Button",
+      "source_url": "https://uiverse.io/dopekid_9309/tiny-dog-80",
+      "registry_url": "https://uiverse.io/",
+      "category": "button",
+      "tags": [
+        "css",
+        "minimal",
+        "button"
+      ],
+      "description": "A minimal button built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__tiny-dog-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Pretty Eel Loader",
+      "source_url": "https://uiverse.io/exyreams/pretty-eel-31",
+      "registry_url": "https://uiverse.io/",
+      "category": "loader",
+      "tags": [
+        "css",
+        "glow",
+        "loader"
+      ],
+      "description": "A glow loading indicator built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__pretty-eel-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Sweet Grasshopper Loader",
+      "source_url": "https://uiverse.io/faxriddin20/sweet-grasshopper-100",
+      "registry_url": "https://uiverse.io/",
+      "category": "loader",
+      "tags": [
+        "css",
+        "minimal",
+        "loader"
+      ],
+      "description": "A minimal loading indicator built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__sweet-grasshopper-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Red Hound Card",
+      "source_url": "https://uiverse.io/gharsh11032000/red-hound-90",
+      "registry_url": "https://uiverse.io/",
+      "category": "card",
+      "tags": [
+        "css",
+        "soft",
+        "card"
+      ],
+      "description": "A soft content card built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__red-hound-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Moody Dragonfly Button",
+      "source_url": "https://uiverse.io/gksckt/moody-dragonfly-90",
+      "registry_url": "https://uiverse.io/",
+      "category": "button",
+      "tags": [
+        "css",
+        "soft",
+        "button"
+      ],
+      "description": "A soft button built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__moody-dragonfly-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Stale Chipmunk Form",
+      "source_url": "https://uiverse.io/glisovic01/stale-chipmunk-33",
+      "registry_url": "https://uiverse.io/",
+      "category": "form",
+      "tags": [
+        "css",
+        "soft",
+        "form"
+      ],
+      "description": "A soft form built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__stale-chipmunk-form",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Average Badger Input",
+      "source_url": "https://uiverse.io/hexday/average-badger-62",
+      "registry_url": "https://uiverse.io/",
+      "category": "input",
+      "tags": [
+        "css",
+        "minimal",
+        "input"
+      ],
+      "description": "A minimal text input built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__average-badger-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Horrible Monkey Input",
+      "source_url": "https://uiverse.io/ilkhoeri/horrible-monkey-28",
+      "registry_url": "https://uiverse.io/",
+      "category": "input",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "input"
+      ],
+      "description": "A minimal text input built with TAILWIND for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__horrible-monkey-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Shaggy Cheetah Input",
+      "source_url": "https://uiverse.io/jamik-dev/shaggy-cheetah-22",
+      "registry_url": "https://uiverse.io/",
+      "category": "input",
+      "tags": [
+        "tailwind",
+        "glow",
+        "input"
+      ],
+      "description": "A glow text input built with TAILWIND for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__shaggy-cheetah-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Ordinary Baboon Loader",
+      "source_url": "https://uiverse.io/jeremyssocial/ordinary-baboon-49",
+      "registry_url": "https://uiverse.io/",
+      "category": "loader",
+      "tags": [
+        "css",
+        "minimal",
+        "loader"
+      ],
+      "description": "A minimal loading indicator built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__ordinary-baboon-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Brave Squid Form",
+      "source_url": "https://uiverse.io/jimmychen338/brave-squid-56",
+      "registry_url": "https://uiverse.io/",
+      "category": "form",
+      "tags": [
+        "tailwind",
+        "soft",
+        "form"
+      ],
+      "description": "A soft form built with TAILWIND for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__brave-squid-form",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Stupid Vampirebat Button",
+      "source_url": "https://uiverse.io/marcelodolza/stupid-vampirebat-24",
+      "registry_url": "https://uiverse.io/",
+      "category": "button",
+      "tags": [
+        "css",
+        "soft",
+        "button"
+      ],
+      "description": "A soft button built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__stupid-vampirebat-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Big Newt Card",
+      "source_url": "https://uiverse.io/mhekel/big-newt-8",
+      "registry_url": "https://uiverse.io/",
+      "category": "card",
+      "tags": [
+        "css",
+        "minimal",
+        "card"
+      ],
+      "description": "A minimal content card built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__big-newt-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Heavy Warthog Button",
+      "source_url": "https://uiverse.io/nathAd17/heavy-warthog-57",
+      "registry_url": "https://uiverse.io/",
+      "category": "button",
+      "tags": [
+        "tailwind",
+        "soft",
+        "button"
+      ],
+      "description": "A soft button built with TAILWIND for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__heavy-warthog-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Rotten Bullfrog Form",
+      "source_url": "https://uiverse.io/reglobby/rotten-bullfrog-69",
+      "registry_url": "https://uiverse.io/",
+      "category": "form",
+      "tags": [
+        "css",
+        "minimal",
+        "form"
+      ],
+      "description": "A minimal form built with CSS for use in a polished user interface.",
+      "preview_image": "",
+      "id": "unknown__rotten-bullfrog-form",
       "source_domain": "uiverse.io"
     }
   ]
