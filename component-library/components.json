@@ -1,6 +1,6 @@
 {
-  "version": "1.0.60",
-  "source_count": 26452,
+  "version": "1.0.61",
+  "source_count": 26468,
   "components": [
     {
       "id": "cat-0",
@@ -458605,6 +458605,311 @@
       "preview_image": "https://motiq.dev/components/streaming-data-rows/opengraph-image?c703c9c8d29ac508",
       "id": "unknown__streaming-data-rows",
       "source_domain": "motiq.dev"
+    },
+    {
+      "name": "Button by 0xnihilism",
+      "source_url": "https://uiverse.io/0xnihilism/quiet-dog-6",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "plain-css",
+        "css",
+        "html",
+        "brutalist",
+        "flat",
+        "button",
+        "hover-effect"
+      ],
+      "description": "Brutalist square button with a hard offset shadow that lifts on hover and pushes in on active. A circular pseudo-element wipes up from the bottom while the inner logo spins on hover.",
+      "preview_image": "",
+      "id": "unknown__button-by-0xnihilism",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Button by dylanharriscameron",
+      "source_url": "https://uiverse.io/dylanharriscameron/good-dingo-46",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "plain-css",
+        "css",
+        "html",
+        "chrome",
+        "metallic",
+        "button",
+        "click-effect"
+      ],
+      "description": "A 3D delete/keycap style button rendered with perspective transforms and layered inset gradient shadows to fake a physical key. Pressing it compresses the cap and shifts the highlight.",
+      "preview_image": "",
+      "id": "unknown__button-by-dylanharriscameron",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Button by AqFox",
+      "source_url": "https://uiverse.io/AqFox/fat-ladybug-84",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "plain-css",
+        "css",
+        "html",
+        "gradient",
+        "glow",
+        "button",
+        "hover-effect"
+      ],
+      "description": "Chrome-style gradient button whose label is a transparent cut-out that fills in with the solid colour on hover. Uses perspective rotateY plus layered text-shadow for a 3D flip effect.",
+      "preview_image": "",
+      "id": "unknown__button-by-aqfox",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Button by Gaurav-WebDev",
+      "source_url": "https://uiverse.io/Gaurav-WebDev/tame-hound-72",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "plain-css",
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "button",
+        "hover-effect"
+      ],
+      "description": "Two-state hover button where a 'Hover Me' label slides up and out while a 'Thanks' label slides in from below. The whole thing is built from two pseudo-elements on one button.",
+      "preview_image": "",
+      "id": "unknown__button-by-gaurav-webdev",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Button by niat786",
+      "source_url": "https://uiverse.io/niat786/swift-bullfrog-83",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "plain-css",
+        "css",
+        "html",
+        "minimal",
+        "soft",
+        "button",
+        "hover-effect"
+      ],
+      "description": "Minimal dark pill button on a black background with a soft drop shadow and a light hover fill. A compact base style that pairs a followers count caption underneath.",
+      "preview_image": "",
+      "id": "unknown__button-by-niat786",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Button by Codecite",
+      "source_url": "https://uiverse.io/Codecite/angry-bullfrog-58",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "plain-css",
+        "css",
+        "html",
+        "gradient",
+        "glow",
+        "button",
+        "hover-effect"
+      ],
+      "description": "Purple-to-blue gradient call-to-action pill with inner shine highlights and layered outer shadows for a glossy raised look. Two pseudo-elements create the moving light sweep.",
+      "preview_image": "",
+      "id": "unknown__button-by-codecite",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Button by Spacious74",
+      "source_url": "https://uiverse.io/Spacious74/helpless-tiger-55",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "plain-css",
+        "css",
+        "html",
+        "metallic",
+        "gradient",
+        "button",
+        "hover-effect"
+      ],
+      "description": "Realistic chrome button built from nested radial gradients that fake a reflective metal surface. A blue glowing blob element sits behind the label to add depth.",
+      "preview_image": "",
+      "id": "unknown__button-by-spacious74",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Button by vinodjangid07",
+      "source_url": "https://uiverse.io/vinodjangid07/chilly-newt-81",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "plain-css",
+        "css",
+        "html",
+        "svg",
+        "flat",
+        "button",
+        "hover-effect"
+      ],
+      "description": "Lime rounded 'Explore' button with an inline bell SVG icon that rotates on hover. Background lightens and the whole button scales down slightly when pressed.",
+      "preview_image": "",
+      "id": "unknown__button-by-vinodjangid07",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Checkbox by cbolson",
+      "source_url": "https://uiverse.io/cbolson/calm-wasp-75",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "plain-css",
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "checkbox",
+        "form"
+      ],
+      "description": "A set of four CSS-only checkboxes where the border and label colour animate to a hover colour and reveal a check glyph when checked. Uses appearance:none for full custom rendering.",
+      "preview_image": "",
+      "id": "unknown__checkbox-by-cbolson",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Checkbox by andrew-manzyk",
+      "source_url": "https://uiverse.io/andrew-manzyk/ancient-turtle-91",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "plain-css",
+        "css",
+        "html",
+        "svg",
+        "minimal",
+        "checkbox",
+        "form"
+      ],
+      "description": "Checkbox with an inline SVG tick whose rect and polyline are drawn via stroke-dasharray transitions. Checking the box animates the stroke on to complete the check mark.",
+      "preview_image": "",
+      "id": "unknown__checkbox-by-andrew-manzyk",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Checkbox by ahmed_8975",
+      "source_url": "https://uiverse.io/ahmed_8975/tiny-moose-42",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "plain-css",
+        "css",
+        "html",
+        "css-filter",
+        "glass",
+        "frosted",
+        "checkbox",
+        "ripple"
+      ],
+      "description": "Glassmorphic 'Accept terms and conditions' checkbox using backdrop-filter blur with a translucent bordered box. Checking fires a radial-gradient ripple that scales out from the centre.",
+      "preview_image": "",
+      "id": "unknown__checkbox-by-ahmed_8975",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Button by cssbuttons-io",
+      "source_url": "https://uiverse.io/cssbuttons-io/slippery-jellyfish-67",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "plain-css",
+        "css",
+        "html",
+        "flat",
+        "minimal",
+        "button",
+        "hover-effect"
+      ],
+      "description": "Outlined button with a circular pseudo-element fill that sweeps in from the bottom-right on hover, inverting the label to white. Active state darkens the fill instantly for a click feel.",
+      "preview_image": "",
+      "id": "unknown__button-by-cssbuttons-io",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Button by levxyca",
+      "source_url": "https://uiverse.io/levxyca/tidy-mayfly-7",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "plain-css",
+        "css",
+        "html",
+        "brutalist",
+        "flat",
+        "button",
+        "click-effect"
+      ],
+      "description": "Uppercase outlined button with a hard offset shadow that collapses on active so the button appears pressed into the page. Border-radius and letter-spacing give it a retro terminal look.",
+      "preview_image": "",
+      "id": "unknown__button-by-levxyca",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Button by adamgiebl",
+      "source_url": "https://uiverse.io/adamgiebl/wise-moth-35",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "plain-css",
+        "css",
+        "html",
+        "css-filter",
+        "metallic",
+        "button",
+        "hover-effect"
+      ],
+      "description": "Dark metallic button built from stacked linear and radial gradients with a repeating-conic-gradient overlay filtered down to 10% opacity for a fine grain. Hover darkens the inner span.",
+      "preview_image": "",
+      "id": "unknown__button-by-adamgiebl",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Pattern by chase2k25",
+      "source_url": "https://uiverse.io/chase2k25/nervous-rat-24",
+      "registry_url": "https://uiverse.io/all",
+      "category": "background",
+      "tags": [
+        "plain-css",
+        "css",
+        "svg",
+        "css-filter",
+        "noise",
+        "monochrome",
+        "background"
+      ],
+      "description": "Full-bleed dark void background: a vertical linear-gradient base run through an SVG turbulence filter for a grainy texture. A single filter: url() call provides the noise overlay.",
+      "preview_image": "",
+      "id": "unknown__pattern-by-chase2k25",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Button by elijahgummer",
+      "source_url": "https://uiverse.io/elijahgummer/proud-goat-69",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "plain-css",
+        "css",
+        "html",
+        "retro",
+        "flat",
+        "button",
+        "click-effect"
+      ],
+      "description": "Teal 3D push button with a hard bottom edge shadow and layered inset highlights for a raised plastic look. The whole button translates down on active so it visibly presses in.",
+      "preview_image": "",
+      "id": "unknown__button-by-elijahgummer",
+      "source_domain": "uiverse.io"
     }
   ]
 }
