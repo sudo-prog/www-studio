@@ -1,6 +1,6 @@
 {
-  "version": "1.0.68",
-  "source_count": 26757,
+  "version": "1.0.69",
+  "source_count": 26810,
   "components": [
     {
       "id": "cat-0",
@@ -464025,6 +464025,994 @@
       "preview_image": "",
       "id": "unknown__input-by-zymantas-katinas",
       "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Angle Slider",
+      "source_url": "https://diceui.com/docs/components/base/angle-slider",
+      "registry_url": "https://diceui.com/docs/components",
+      "category": "slider",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "svg",
+        "slider",
+        "input",
+        "minimal"
+      ],
+      "description": "An interactive circular slider for selecting angles with support for single values and ranges, rendered as an SVG track with themed range and thumb parts.",
+      "preview_image": "",
+      "id": "unknown__angle-slider",
+      "source_domain": "diceui.com"
+    },
+    {
+      "name": "Badge Overflow",
+      "source_url": "https://diceui.com/docs/components/base/badge-overflow",
+      "registry_url": "https://diceui.com/docs/components",
+      "category": "badge",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "badge",
+        "grid",
+        "list",
+        "minimal"
+      ],
+      "description": "Intelligently manages badge overflow by measuring available space and displaying only what fits, collapsing the remainder into a +N overflow indicator across one or more lines.",
+      "preview_image": "",
+      "id": "unknown__badge-overflow",
+      "source_domain": "diceui.com"
+    },
+    {
+      "name": "Cropper",
+      "source_url": "https://diceui.com/docs/components/base/cropper",
+      "registry_url": "https://diceui.com/docs/components",
+      "category": "image-effect",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "css",
+        "image-effect",
+        "editor",
+        "minimal"
+      ],
+      "description": "A powerful image and video cropper with zoom, rotation, aspect-ratio shapes, grid overlay and touch gesture support.",
+      "preview_image": "",
+      "id": "unknown__cropper",
+      "source_domain": "diceui.com"
+    },
+    {
+      "name": "FPS",
+      "source_url": "https://diceui.com/docs/components/base/fps",
+      "registry_url": "https://diceui.com/docs/components",
+      "category": "tool",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "javascript",
+        "tool",
+        "dashboard",
+        "minimal"
+      ],
+      "description": "A real-time frames-per-second counter overlay using requestAnimationFrame, with color-coded warning and error thresholds and configurable corner positioning.",
+      "preview_image": "",
+      "id": "unknown__fps",
+      "source_domain": "diceui.com"
+    },
+    {
+      "name": "Gauge",
+      "source_url": "https://diceui.com/docs/components/base/gauge",
+      "registry_url": "https://diceui.com/docs/components",
+      "category": "chart",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "svg",
+        "chart",
+        "dashboard",
+        "minimal"
+      ],
+      "description": "A customizable gauge that displays values on circular or partial arcs, suited to dashboards, metrics and KPIs, with composable track, range, value text and label parts.",
+      "preview_image": "",
+      "id": "unknown__gauge",
+      "source_domain": "diceui.com"
+    },
+    {
+      "name": "Key Value",
+      "source_url": "https://diceui.com/docs/components/base/key-value",
+      "registry_url": "https://diceui.com/docs/components",
+      "category": "input",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "input",
+        "form",
+        "editor",
+        "minimal"
+      ],
+      "description": "A dynamic input component for managing key-value pairs with multi-line paste support (KEY=VALUE, KEY: VALUE, tab separated), duplicate-key control and per-field validation.",
+      "preview_image": "",
+      "id": "unknown__key-value",
+      "source_domain": "diceui.com"
+    },
+    {
+      "name": "Mask Input",
+      "source_url": "https://diceui.com/docs/components/base/mask-input",
+      "registry_url": "https://diceui.com/docs/components",
+      "category": "input",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "input",
+        "form",
+        "mask",
+        "minimal"
+      ],
+      "description": "An input that formats user input with predefined patterns like phone numbers, dates, currency and credit cards, with smart cursor positioning and validation modes.",
+      "preview_image": "",
+      "id": "unknown__mask-input",
+      "source_domain": "diceui.com"
+    },
+    {
+      "name": "Relative Time Card",
+      "source_url": "https://diceui.com/docs/components/base/relative-time-card",
+      "registry_url": "https://diceui.com/docs/components",
+      "category": "tooltip",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "popover",
+        "typography",
+        "tooltip",
+        "frosted"
+      ],
+      "description": "A hover card that displays relative time with absolute date, timezone and future-time variants, positionable on any side.",
+      "preview_image": "",
+      "id": "unknown__relative-time-card",
+      "source_domain": "diceui.com"
+    },
+    {
+      "name": "Speed Dial",
+      "source_url": "https://diceui.com/docs/components/base/speed-dial",
+      "registry_url": "https://diceui.com/docs/components",
+      "category": "button",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "motion",
+        "button",
+        "menu",
+        "soft"
+      ],
+      "description": "A floating action button that reveals a set of actions when triggered, with optional labels, hover activation mode and side placement controls.",
+      "preview_image": "",
+      "id": "unknown__speed-dial",
+      "source_domain": "diceui.com"
+    },
+    {
+      "name": "Tour",
+      "source_url": "https://diceui.com/docs/components/base/tour",
+      "registry_url": "https://diceui.com/docs/components",
+      "category": "modal",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "motion",
+        "modal",
+        "onboarding",
+        "frosted"
+      ],
+      "description": "A guided tour that spotlights elements and provides step-by-step instructions, with a portal, arrow, step counter, prev/next and skip controls.",
+      "preview_image": "",
+      "id": "unknown__tour",
+      "source_domain": "diceui.com"
+    },
+    {
+      "name": "Data Grid",
+      "source_url": "https://reui.io/components/data-grid",
+      "registry_url": "https://reui.io/components",
+      "category": "table",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "table",
+        "grid",
+        "dashboard",
+        "minimal"
+      ],
+      "description": "Production-ready shadcn data grid built on TanStack Table v9 and TanStack Virtual, with sorting, filtering, pagination, pinning, column resizing, drag and drop, tree rows, CRUD, virtualization and spreadsheet editing.",
+      "preview_image": "",
+      "id": "unknown__data-grid",
+      "source_domain": "reui.io"
+    },
+    {
+      "name": "Shadcn Signature Pad",
+      "source_url": "https://reui.io/components/signature-pad",
+      "registry_url": "https://reui.io/components",
+      "category": "editor",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "svg",
+        "editor",
+        "form",
+        "minimal"
+      ],
+      "description": "A signature pad with pressure-aware ink, touch and stylus input with palm rejection, undo/redo history, native form fields and export to PNG, JPEG, SVG or JSON.",
+      "preview_image": "",
+      "id": "unknown__shadcn-signature-pad",
+      "source_domain": "reui.io"
+    },
+    {
+      "name": "Message Scroller",
+      "source_url": "https://reui.io/components/message-scroller",
+      "registry_url": "https://reui.io/components",
+      "category": "scrollbar",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "scrollbar",
+        "ai-chat",
+        "chat",
+        "minimal"
+      ],
+      "description": "A scroll container for AI chat transcripts with autoScroll pinning, scroll anchoring, jump-to-latest controls, prepended history and a footer turn navigator.",
+      "preview_image": "",
+      "id": "unknown__message-scroller",
+      "source_domain": "reui.io"
+    },
+    {
+      "name": "Icon Stack",
+      "source_url": "https://reui.io/components/icon-stack",
+      "registry_url": "https://reui.io/components",
+      "category": "icon",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "svg",
+        "icon",
+        "isometric"
+      ],
+      "description": "A layered isometric icon illustration primitive that renders offset panels around centered content for empty states, feature cards and item media.",
+      "preview_image": "https://reui.io/_next/image?url=%2Fscreenshots%2Fcomponents%2Ficon-stack-light.png&w=1080&q=75&dpl=dpl_DEcWbDEap8UuDo5vtPZYzyfdChok",
+      "id": "unknown__icon-stack",
+      "source_domain": "reui.io"
+    },
+    {
+      "name": "Hero-1",
+      "source_url": "https://hexui.sh/r/hero-1.json",
+      "registry_url": "https://hexui.sh/blocks/hero",
+      "category": "hero",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "hero",
+        "landing-page",
+        "minimal"
+      ],
+      "description": "A simple and versatile hero section with headline, dual call-to-action buttons and a trusted-by logo row, installable via the shadcn CLI.",
+      "preview_image": "",
+      "id": "unknown__hero-1",
+      "source_domain": "hexui.sh"
+    },
+    {
+      "name": "Hero-2",
+      "source_url": "https://hexui.sh/r/hero-2.json",
+      "registry_url": "https://hexui.sh/blocks/hero",
+      "category": "hero",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "hero",
+        "form",
+        "landing-page",
+        "minimal"
+      ],
+      "description": "A hero section designed to showcase media content, pairing a waitlist email capture with a dashboard preview image.",
+      "preview_image": "",
+      "id": "unknown__hero-2",
+      "source_domain": "hexui.sh"
+    },
+    {
+      "name": "Hero-5",
+      "source_url": "https://hexui.sh/r/hero-5.json",
+      "registry_url": "https://hexui.sh/blocks/hero",
+      "category": "hero",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "hero",
+        "background",
+        "landing-page",
+        "gradient"
+      ],
+      "description": "A hero section with a large background image and centered content to present a brand or product with impact, ending in desktop download badges.",
+      "preview_image": "",
+      "id": "unknown__hero-5",
+      "source_domain": "hexui.sh"
+    },
+    {
+      "name": "Login-1",
+      "source_url": "https://hexui.sh/view/login-1",
+      "registry_url": "https://hexui.sh/blocks/login",
+      "category": "form",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "form",
+        "sign-in",
+        "minimal"
+      ],
+      "description": "A simple login form with Google and Apple social sign-in, email and password fields, forgot-password link and a sign-up prompt.",
+      "preview_image": "",
+      "id": "unknown__login-1",
+      "source_domain": "hexui.sh"
+    },
+    {
+      "name": "Login-3",
+      "source_url": "https://hexui.sh/r/login-3.json",
+      "registry_url": "https://hexui.sh/blocks/login",
+      "category": "form",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "form",
+        "sign-in",
+        "background",
+        "gradient"
+      ],
+      "description": "A login form with a customizable side background image alongside the credential and social sign-in controls.",
+      "preview_image": "",
+      "id": "unknown__login-3",
+      "source_domain": "hexui.sh"
+    },
+    {
+      "name": "Login-4",
+      "source_url": "https://hexui.sh/r/login-4.json",
+      "registry_url": "https://hexui.sh/blocks/login",
+      "category": "form",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "form",
+        "sign-in",
+        "card",
+        "gradient"
+      ],
+      "description": "A login form with a customizable side background and a founder testimonial panel beside the credentials.",
+      "preview_image": "",
+      "id": "unknown__login-4",
+      "source_domain": "hexui.sh"
+    },
+    {
+      "name": "Sidebar-1",
+      "source_url": "https://hexui.sh/view/sidebar-1",
+      "registry_url": "https://hexui.sh/blocks/sidebar",
+      "category": "sidebar",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "sidebar",
+        "navigation",
+        "menu",
+        "flat"
+      ],
+      "description": "A sidebar for a note-taking application with recents, favorites and private grouped link lists plus a settings footer.",
+      "preview_image": "",
+      "id": "unknown__sidebar-1",
+      "source_domain": "hexui.sh"
+    },
+    {
+      "name": "Sidebar-2",
+      "source_url": "https://hexui.sh/view/sidebar-2",
+      "registry_url": "https://hexui.sh/blocks/sidebar",
+      "category": "sidebar",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "sidebar",
+        "dashboard",
+        "minimal"
+      ],
+      "description": "A sidebar built for developer app dashboards, listing overview, inbox, projects, team, billing and analytics.",
+      "preview_image": "",
+      "id": "unknown__sidebar-2",
+      "source_domain": "hexui.sh"
+    },
+    {
+      "name": "Sidebar-3",
+      "source_url": "https://hexui.sh/view/sidebar-3",
+      "registry_url": "https://hexui.sh/blocks/sidebar",
+      "category": "sidebar",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "sidebar",
+        "ai-chat",
+        "chat",
+        "minimal"
+      ],
+      "description": "A sidebar designed for AI applications with new chat, chat search, projects and a scrollable recent-conversation list.",
+      "preview_image": "",
+      "id": "unknown__sidebar-3",
+      "source_domain": "hexui.sh"
+    },
+    {
+      "name": "Faq-3",
+      "source_url": "https://hexui.sh/view/faq-3",
+      "registry_url": "https://hexui.sh/blocks/faq",
+      "category": "accordion",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "accordion",
+        "grid",
+        "minimal"
+      ],
+      "description": "A FAQ section arranged in a clean grid layout with numbered entries and expanded answer copy per item.",
+      "preview_image": "",
+      "id": "unknown__faq-3",
+      "source_domain": "hexui.sh"
+    },
+    {
+      "name": "Dot Expand Button",
+      "source_url": "https://www.hover.dev/components/buttons",
+      "registry_url": "https://www.hover.dev/components",
+      "category": "button",
+      "tags": [
+        "react",
+        "javascript",
+        "tailwind",
+        "motion",
+        "button",
+        "hover-effect",
+        "soft"
+      ],
+      "description": "A button that expands into a dotted circle of interactive text on hover, built with React, Tailwind CSS and Motion.",
+      "preview_image": "",
+      "id": "unknown__dot-expand-button",
+      "source_domain": "www.hover.dev"
+    },
+    {
+      "name": "Cutout Text Loader",
+      "source_url": "https://www.hover.dev/components/loaders",
+      "registry_url": "https://www.hover.dev/components",
+      "category": "loader",
+      "tags": [
+        "react",
+        "javascript",
+        "tailwind",
+        "motion",
+        "loader",
+        "text-effect",
+        "minimal"
+      ],
+      "description": "A loading state that reveals itself through cutout animated text, available in free React and TypeScript variants.",
+      "preview_image": "",
+      "id": "unknown__cutout-text-loader",
+      "source_domain": "www.hover.dev"
+    },
+    {
+      "name": "Floating Phone",
+      "source_url": "https://www.hover.dev/components/three-d",
+      "registry_url": "https://www.hover.dev/components",
+      "category": "3d",
+      "tags": [
+        "react",
+        "javascript",
+        "tailwind",
+        "motion",
+        "3d",
+        "mockup",
+        "gradient"
+      ],
+      "description": "A floating 3D phone mockup section for hero and CTA areas, built with React, Tailwind CSS and Motion.",
+      "preview_image": "",
+      "id": "unknown__floating-phone",
+      "source_domain": "www.hover.dev"
+    },
+    {
+      "name": "Accordion Solutions",
+      "source_url": "https://www.hover.dev/components/accordions",
+      "registry_url": "https://www.hover.dev/components",
+      "category": "accordion",
+      "tags": [
+        "react",
+        "javascript",
+        "tailwind",
+        "motion",
+        "accordion",
+        "card",
+        "minimal"
+      ],
+      "description": "An accordion grouping of plan tiers (Individuals, Startups, Enterprise) with per-tier copy and a Learn more action.",
+      "preview_image": "",
+      "id": "unknown__accordion-solutions",
+      "source_domain": "www.hover.dev"
+    },
+    {
+      "name": "jelly-button",
+      "source_url": "https://jelly-ui.com/api/#jelly-button",
+      "registry_url": "https://jelly-ui.com/",
+      "category": "button",
+      "tags": [
+        "html",
+        "css",
+        "plain-css",
+        "claymorphism",
+        "button",
+        "web-components"
+      ],
+      "description": "Soft-body physics button custom element from the dependency-free Jelly UI Web Components library, with seven colour variants, three sizes and square/circle shapes.",
+      "preview_image": "",
+      "id": "unknown__jelly-button",
+      "source_domain": "jelly-ui.com"
+    },
+    {
+      "name": "jelly-icon-button",
+      "source_url": "https://jelly-ui.com/api/#jelly-icon-button",
+      "registry_url": "https://jelly-ui.com/",
+      "category": "button",
+      "tags": [
+        "html",
+        "css",
+        "plain-css",
+        "claymorphism",
+        "button",
+        "icon"
+      ],
+      "description": "Compact icon-only variant of the Jelly UI button custom element that accepts any inline SVG as its child.",
+      "preview_image": "",
+      "id": "unknown__jelly-icon-button",
+      "source_domain": "jelly-ui.com"
+    },
+    {
+      "name": "jelly-checkbox",
+      "source_url": "https://jelly-ui.com/api/#jelly-checkbox",
+      "registry_url": "https://jelly-ui.com/",
+      "category": "toggle",
+      "tags": [
+        "html",
+        "css",
+        "plain-css",
+        "claymorphism",
+        "toggle",
+        "checkbox"
+      ],
+      "description": "Tactile checkbox custom element with checked and indeterminate states across seven colour variants and three sizes.",
+      "preview_image": "",
+      "id": "unknown__jelly-checkbox",
+      "source_domain": "jelly-ui.com"
+    },
+    {
+      "name": "jelly-input",
+      "source_url": "https://jelly-ui.com/api/#jelly-input",
+      "registry_url": "https://jelly-ui.com/",
+      "category": "input",
+      "tags": [
+        "html",
+        "css",
+        "plain-css",
+        "claymorphism",
+        "input",
+        "form"
+      ],
+      "description": "Soft-styled single-line text input custom element supporting text, email and password types with placeholder, value, size and readonly states.",
+      "preview_image": "",
+      "id": "unknown__jelly-input",
+      "source_domain": "jelly-ui.com"
+    },
+    {
+      "name": "jelly-otp",
+      "source_url": "https://jelly-ui.com/api/#jelly-otp",
+      "registry_url": "https://jelly-ui.com/",
+      "category": "input",
+      "tags": [
+        "html",
+        "css",
+        "plain-css",
+        "claymorphism",
+        "input",
+        "form"
+      ],
+      "description": "One-time-passcode input custom element from the Jelly UI library, built for verification-code entry flows.",
+      "preview_image": "",
+      "id": "unknown__jelly-otp",
+      "source_domain": "jelly-ui.com"
+    },
+    {
+      "name": "jelly-radio",
+      "source_url": "https://jelly-ui.com/api/#jelly-radio",
+      "registry_url": "https://jelly-ui.com/",
+      "category": "input",
+      "tags": [
+        "html",
+        "css",
+        "plain-css",
+        "claymorphism",
+        "toggle",
+        "form"
+      ],
+      "description": "Tactile radio button custom element from the Jelly UI soft-body Web Components library.",
+      "preview_image": "",
+      "id": "unknown__jelly-radio",
+      "source_domain": "jelly-ui.com"
+    },
+    {
+      "name": "jelly-radio-group",
+      "source_url": "https://jelly-ui.com/api/#jelly-radio-group",
+      "registry_url": "https://jelly-ui.com/",
+      "category": "form",
+      "tags": [
+        "html",
+        "css",
+        "plain-css",
+        "claymorphism",
+        "form",
+        "input"
+      ],
+      "description": "Grouping container custom element that coordinates a set of Jelly UI radio buttons as one control.",
+      "preview_image": "",
+      "id": "unknown__jelly-radio-group",
+      "source_domain": "jelly-ui.com"
+    },
+    {
+      "name": "jelly-range",
+      "source_url": "https://jelly-ui.com/api/#jelly-range",
+      "registry_url": "https://jelly-ui.com/",
+      "category": "slider",
+      "tags": [
+        "html",
+        "css",
+        "plain-css",
+        "claymorphism",
+        "slider",
+        "input"
+      ],
+      "description": "Range slider custom element with soft-body drag physics, part of the Jelly UI Web Components set.",
+      "preview_image": "",
+      "id": "unknown__jelly-range",
+      "source_domain": "jelly-ui.com"
+    },
+    {
+      "name": "jelly-segmented",
+      "source_url": "https://jelly-ui.com/api/#jelly-segmented",
+      "registry_url": "https://jelly-ui.com/",
+      "category": "toggle",
+      "tags": [
+        "html",
+        "css",
+        "plain-css",
+        "claymorphism",
+        "toggle",
+        "tab"
+      ],
+      "description": "Segmented control custom element for switching between a small set of mutually exclusive options.",
+      "preview_image": "",
+      "id": "unknown__jelly-segmented",
+      "source_domain": "jelly-ui.com"
+    },
+    {
+      "name": "jelly-select",
+      "source_url": "https://jelly-ui.com/api/#jelly-select",
+      "registry_url": "https://jelly-ui.com/",
+      "category": "dropdown",
+      "tags": [
+        "html",
+        "css",
+        "plain-css",
+        "claymorphism",
+        "dropdown",
+        "form"
+      ],
+      "description": "Dropdown select custom element from the Jelly UI library with tactile open/close behaviour.",
+      "preview_image": "",
+      "id": "unknown__jelly-select",
+      "source_domain": "jelly-ui.com"
+    },
+    {
+      "name": "jelly-slider",
+      "source_url": "https://jelly-ui.com/api/#jelly-slider",
+      "registry_url": "https://jelly-ui.com/",
+      "category": "slider",
+      "tags": [
+        "html",
+        "css",
+        "plain-css",
+        "claymorphism",
+        "slider",
+        "input"
+      ],
+      "description": "Labelled slider custom element used for value entry, shown in the Jelly UI workspace-controls card alongside progress and toggles.",
+      "preview_image": "",
+      "id": "unknown__jelly-slider",
+      "source_domain": "jelly-ui.com"
+    },
+    {
+      "name": "jelly-label",
+      "source_url": "https://jelly-ui.com/api/#jelly-label",
+      "registry_url": "https://jelly-ui.com/",
+      "category": "form",
+      "tags": [
+        "html",
+        "css",
+        "plain-css",
+        "claymorphism",
+        "form",
+        "typography"
+      ],
+      "description": "Form label custom element with built-in required-field marker support, used alongside Jelly UI inputs.",
+      "preview_image": "",
+      "id": "unknown__jelly-label",
+      "source_domain": "jelly-ui.com"
+    },
+    {
+      "name": "PullCord",
+      "source_url": "https://feralui.dev/pullcord",
+      "registry_url": "https://feralui.dev/",
+      "category": "toggle",
+      "tags": [
+        "react",
+        "javascript",
+        "css",
+        "physics",
+        "toggle",
+        "animation",
+        "soft"
+      ],
+      "description": "A cloth pull cord that really hangs; pulling it switches the lights, driven by soft-body physics.",
+      "preview_image": "",
+      "id": "unknown__pullcord",
+      "source_domain": "feralui.dev"
+    },
+    {
+      "name": "ClawCaptcha",
+      "source_url": "https://feralui.dev/captcha",
+      "registry_url": "https://feralui.dev/",
+      "category": "tool",
+      "tags": [
+        "react",
+        "javascript",
+        "css",
+        "physics",
+        "generator",
+        "playground",
+        "claymorphism"
+      ],
+      "description": "A captcha where you prove you are human by winning the claw machine, built as a physics-driven React element.",
+      "preview_image": "",
+      "id": "unknown__clawcaptcha",
+      "source_domain": "feralui.dev"
+    },
+    {
+      "name": "Imgrain",
+      "source_url": "https://feralui.dev/library",
+      "registry_url": "https://feralui.dev/",
+      "category": "generator",
+      "tags": [
+        "react",
+        "javascript",
+        "css",
+        "gradient",
+        "background",
+        "generator"
+      ],
+      "description": "A growing library of gradient images and wallpapers, each published with a write-up of how it was made.",
+      "preview_image": "",
+      "id": "unknown__imgrain",
+      "source_domain": "feralui.dev"
+    },
+    {
+      "name": "Momo",
+      "source_url": "https://feralui.dev/momo",
+      "registry_url": "https://feralui.dev/",
+      "category": "3d",
+      "tags": [
+        "react",
+        "javascript",
+        "css",
+        "3d",
+        "illustration",
+        "ai-chat",
+        "soft"
+      ],
+      "description": "A little 3D friend that lives in AI chat interfaces and dresses itself for whatever you ask.",
+      "preview_image": "",
+      "id": "unknown__momo",
+      "source_domain": "feralui.dev"
+    },
+    {
+      "name": "Stamp",
+      "source_url": "https://feralui.dev/stamp",
+      "registry_url": "https://feralui.dev/",
+      "category": "tool",
+      "tags": [
+        "react",
+        "javascript",
+        "css",
+        "physics",
+        "generator",
+        "tool",
+        "retro"
+      ],
+      "description": "Roll a date on the stamp, press it, and the date prints onto the invoice.",
+      "preview_image": "",
+      "id": "unknown__stamp",
+      "source_domain": "feralui.dev"
+    },
+    {
+      "name": "Blinds",
+      "source_url": "https://feralui.dev/blinds",
+      "registry_url": "https://feralui.dev/",
+      "category": "scroll-effect",
+      "tags": [
+        "react",
+        "javascript",
+        "css",
+        "motion",
+        "scroll-effect",
+        "animation",
+        "soft"
+      ],
+      "description": "A strip of slats that spring open as you pass, driven by scroll-linked motion.",
+      "preview_image": "",
+      "id": "unknown__blinds",
+      "source_domain": "feralui.dev"
+    },
+    {
+      "name": "Screenery",
+      "source_url": "https://feralui.dev/scenes",
+      "registry_url": "https://feralui.dev/",
+      "category": "mockup",
+      "tags": [
+        "react",
+        "javascript",
+        "css",
+        "motion",
+        "mockup",
+        "gallery",
+        "flat"
+      ],
+      "description": "A shelf of finished app screens, each with its own signature interaction move.",
+      "preview_image": "",
+      "id": "unknown__screenery",
+      "source_domain": "feralui.dev"
+    },
+    {
+      "name": "MotionView",
+      "source_url": "https://feralui.dev/motionview",
+      "registry_url": "https://feralui.dev/",
+      "category": "generator",
+      "tags": [
+        "react",
+        "javascript",
+        "css",
+        "motion",
+        "generator",
+        "playground",
+        "gradient"
+      ],
+      "description": "Drop in images, pick a motion, and export a seamless loop.",
+      "preview_image": "",
+      "id": "unknown__motionview",
+      "source_domain": "feralui.dev"
+    },
+    {
+      "name": "AniMaps",
+      "source_url": "https://feralui.dev/animaps",
+      "registry_url": "https://feralui.dev/",
+      "category": "visualizer",
+      "tags": [
+        "react",
+        "javascript",
+        "svg",
+        "animation",
+        "map",
+        "generator",
+        "minimal"
+      ],
+      "description": "Animated route maps you can export and share.",
+      "preview_image": "",
+      "id": "unknown__animaps",
+      "source_domain": "feralui.dev"
+    },
+    {
+      "name": "Vacuum",
+      "source_url": "https://feralui.dev/vacuum",
+      "registry_url": "https://feralui.dev/",
+      "category": "click-effect",
+      "tags": [
+        "react",
+        "javascript",
+        "css",
+        "physics",
+        "click-effect",
+        "grid",
+        "soft"
+      ],
+      "description": "Select a few tiles and a vacuum sucks them up the hose, with physics-driven tile removal.",
+      "preview_image": "",
+      "id": "unknown__vacuum",
+      "source_domain": "feralui.dev"
+    },
+    {
+      "name": "Hologram",
+      "source_url": "https://feralui.dev/hologram",
+      "registry_url": "https://feralui.dev/",
+      "category": "image-effect",
+      "tags": [
+        "react",
+        "javascript",
+        "css",
+        "css-filter",
+        "holographic",
+        "tilt"
+      ],
+      "description": "A foil trading card that catches the light as you tilt it, with holographic CSS filter treatment.",
+      "preview_image": "",
+      "id": "unknown__hologram",
+      "source_domain": "feralui.dev"
+    },
+    {
+      "name": "Circular Slider",
+      "source_url": "https://www.cubby-ui.dev/docs/components/circular-slider",
+      "registry_url": "https://www.cubby-ui.dev/",
+      "category": "slider",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "svg",
+        "slider",
+        "input",
+        "minimal"
+      ],
+      "description": "A radial slider that selects a numeric value by dragging a thumb around a ring, for timers, volume or brightness knobs, dials and color or angle pickers.",
+      "preview_image": "",
+      "id": "unknown__circular-slider",
+      "source_domain": "www.cubby-ui.dev"
+    },
+    {
+      "name": "Filters",
+      "source_url": "https://www.cubby-ui.dev/docs/components/filters",
+      "registry_url": "https://www.cubby-ui.dev/",
+      "category": "filter",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "filter",
+        "chip",
+        "search-bar",
+        "minimal"
+      ],
+      "description": "A filter bar that shows each active filter as a chip reading like a sentence, with per-field operators and a two-step add menu that searches values across fields.",
+      "preview_image": "",
+      "id": "unknown__filters",
+      "source_domain": "www.cubby-ui.dev"
     }
   ]
 }
