@@ -1,6 +1,6 @@
 {
-  "version": "1.0.53",
-  "source_count": 25991,
+  "version": "1.0.54",
+  "source_count": 26139,
   "components": [
     {
       "id": "cat-0",
@@ -450194,6 +450194,2861 @@
       "preview_image": "https://paper.design/logos/app-icons/Paper%20App%20Icon%20512.png",
       "id": "unknown__paper-desktop",
       "source_domain": "paper.design"
+    },
+    {
+      "name": "1x",
+      "source_url": "https://www.navbar.gallery/navbar/1x",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "html",
+        "mega-menu",
+        "minimal",
+        "navbar",
+        "soft"
+      ],
+      "description": "1x uses a mega menu navigation, 1X designs androids that work alongside people.",
+      "preview_image": "https://cdn.navbar.gallery/1x/desktop.avif",
+      "id": "unknown__1x",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Agile by Design",
+      "source_url": "https://www.navbar.gallery/navbar/agile-by-design",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "flat",
+        "html",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Agile by Design uses a static navigation, making agile personal.",
+      "preview_image": "https://cdn.navbar.gallery/agile-by-design/desktop.avif",
+      "id": "unknown__agile-by-design",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Airbnb",
+      "source_url": "https://www.navbar.gallery/navbar/airbnb",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "button",
+        "css",
+        "flat",
+        "html",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Airbnb uses a search bar navigation, opening the door to extraordinary experiences.",
+      "preview_image": "https://cdn.navbar.gallery/airbnb/desktop.avif",
+      "id": "unknown__airbnb",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Amplemarket",
+      "source_url": "https://www.navbar.gallery/navbar/amplemarket",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "glow",
+        "gradient",
+        "grid",
+        "html",
+        "mega-menu",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Amplemarket uses a mega menu navigation, empower reps, uncover opportunities, and grow revenue with an all-in-one AI platform.",
+      "preview_image": "https://cdn.navbar.gallery/amplemarket/desktop.avif",
+      "id": "unknown__amplemarket",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Andrematt",
+      "source_url": "https://www.navbar.gallery/navbar/andrematt",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "html",
+        "menu",
+        "minimal",
+        "navbar",
+        "typography"
+      ],
+      "description": "Andrematt uses a full screen navigation, a vision for Swiss Alpine living.",
+      "preview_image": "https://cdn.navbar.gallery/andrematt/desktop.avif",
+      "id": "unknown__andrematt",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Apple",
+      "source_url": "https://www.navbar.gallery/navbar/apple",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "button",
+        "css",
+        "flat",
+        "html",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Apple uses a search bar navigation, search bar example from Apple's website.",
+      "preview_image": "https://cdn.navbar.gallery/apple/desktop.avif",
+      "id": "unknown__apple",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Arrows",
+      "source_url": "https://www.navbar.gallery/navbar/arrows",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "flat",
+        "html",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Arrows uses a dropdown navigation, collaborative customer onboarding for teams using HubSpot.",
+      "preview_image": "https://cdn.navbar.gallery/arrows/desktop.avif",
+      "id": "unknown__arrows",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Art of Documentary",
+      "source_url": "https://www.navbar.gallery/navbar/art-of-documentary",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "html",
+        "menu",
+        "minimal",
+        "navbar",
+        "retro"
+      ],
+      "description": "Art of Documentary uses a full screen navigation, courses for filmmaking.",
+      "preview_image": "https://cdn.navbar.gallery/art-of-documentary/desktop.avif",
+      "id": "unknown__art-of-documentary",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Artboard Studio",
+      "source_url": "https://www.navbar.gallery/navbar/artboard-studio",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "gradient",
+        "html",
+        "menu",
+        "minimal",
+        "navbar",
+        "portfolio"
+      ],
+      "description": "Artboard Studio uses a full screen navigation, artboard Studio a design-oriented startup that buildw the ultimate online design tools.",
+      "preview_image": "https://cdn.navbar.gallery/artboard-studio/desktop.avif",
+      "id": "unknown__artboard-studio",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Attio",
+      "source_url": "https://www.navbar.gallery/navbar/attio",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "flat",
+        "html",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Attio uses a dropdown navigation, flexible and data-driven CRM Platform that can be customized for the needs of your business.",
+      "preview_image": "https://cdn.navbar.gallery/attio/desktop.avif",
+      "id": "unknown__attio",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Attio Breadcrumbs Navigation Design \u2013 Navbar Gallery",
+      "source_url": "https://www.navbar.gallery/navbar/attio-help",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "divider",
+        "flat",
+        "html",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Attio Breadcrumbs Navigation Design \u2013 Navbar Gallery uses a breadcrumbs navigation, attio makes it easy to build the exact CRM your business needs.",
+      "preview_image": "https://cdn.navbar.gallery/attio-help/desktop.avif",
+      "id": "unknown__attio-breadcrumbs-navigation-design-\u2013-navbar-gallery",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Augen",
+      "source_url": "https://www.navbar.gallery/navbar/augen",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "glow",
+        "gradient",
+        "html",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Augen uses a static navigation, the first-of-its-kind AI Wearable Company.",
+      "preview_image": "https://cdn.navbar.gallery/augen/desktop.avif",
+      "id": "unknown__augen",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Awsmd",
+      "source_url": "https://www.navbar.gallery/navbar/awsmd",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "gradient",
+        "html",
+        "menu",
+        "minimal",
+        "navbar",
+        "portfolio"
+      ],
+      "description": "Awsmd uses a full screen navigation, innovative design and development studio.",
+      "preview_image": "https://cdn.navbar.gallery/awsmd/desktop.avif",
+      "id": "unknown__awsmd",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Baptiste Glaymann",
+      "source_url": "https://www.navbar.gallery/navbar/baptiste-glaymann",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "navbar",
+        "portfolio",
+        "sticky",
+        "typography"
+      ],
+      "description": "Baptiste Glaymann uses a static navigation, paris-based Production Designer specializing in film, beauty, and luxury.",
+      "preview_image": "https://cdn.navbar.gallery/baptiste-glaymann/desktop.avif",
+      "id": "unknown__baptiste-glaymann",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Bequant",
+      "source_url": "https://www.navbar.gallery/navbar/bequant",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "glow",
+        "gradient",
+        "html",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Bequant uses a dropdown navigation, artificial Intelligence to improve the performance of your network.",
+      "preview_image": "https://cdn.navbar.gallery/bequant/desktop.avif",
+      "id": "unknown__bequant",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Better Stack",
+      "source_url": "https://www.navbar.gallery/navbar/better-stack",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "button",
+        "css",
+        "flat",
+        "html",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Better Stack uses a search bar navigation, spot, resolve, and prevent downtime.",
+      "preview_image": "https://cdn.navbar.gallery/better-stack/desktop.avif",
+      "id": "unknown__better-stack",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "BLCK CLD COLLECTIVE",
+      "source_url": "https://www.navbar.gallery/navbar/blck-cld-collective",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "gradient",
+        "html",
+        "mega-menu",
+        "navbar",
+        "neon"
+      ],
+      "description": "BLCK CLD COLLECTIVE uses a mega menu navigation, unleashing the next wave of sonic innovation.",
+      "preview_image": "https://cdn.navbar.gallery/blck-cld-collective/desktop.avif",
+      "id": "unknown__blck-cld-collective",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Bolt",
+      "source_url": "https://www.navbar.gallery/navbar/bolt",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "flat",
+        "html",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Bolt uses a dropdown navigation, lightning-fast checkout.",
+      "preview_image": "https://cdn.navbar.gallery/bolt/desktop.avif",
+      "id": "unknown__bolt",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Bored Cow",
+      "source_url": "https://www.navbar.gallery/navbar/bored-cow",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "flat",
+        "html",
+        "navbar",
+        "soft"
+      ],
+      "description": "Bored Cow uses a dropdown navigation, a new kind of milk alternative made with milk protein from fermentation instead of cows.",
+      "preview_image": "https://cdn.navbar.gallery/bored-cow/desktop.avif",
+      "id": "unknown__bored-cow",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Burner",
+      "source_url": "https://www.navbar.gallery/navbar/burner",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "gradient",
+        "html",
+        "navbar",
+        "neon",
+        "sticky"
+      ],
+      "description": "Burner uses a static navigation, burner is a small, secure computer that keeps your digital assets and identities safe.",
+      "preview_image": "https://cdn.navbar.gallery/burner/desktop.avif",
+      "id": "unknown__burner",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Buttery Side Bar Navigation Design \u2013 Navbar Gallery",
+      "source_url": "https://www.navbar.gallery/navbar/buttery",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "flat",
+        "html",
+        "minimal",
+        "navbar",
+        "sidebar"
+      ],
+      "description": "Buttery Side Bar Navigation Design \u2013 Navbar Gallery uses a side bar navigation, buttery smooth icons for interfaces, updated weekly.",
+      "preview_image": "https://cdn.navbar.gallery/buttery/desktop.avif",
+      "id": "unknown__buttery-side-bar-navigation-design-\u2013-navbar-gallery",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Cake Equity",
+      "source_url": "https://www.navbar.gallery/navbar/cake-equity",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "gradient",
+        "html",
+        "mega-menu",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Cake Equity uses a mega menu navigation, equity platform for fast-growing startups.",
+      "preview_image": "https://cdn.navbar.gallery/cake-equity/desktop.avif",
+      "id": "unknown__cake-equity",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Cal.com",
+      "source_url": "https://www.navbar.gallery/navbar/cal-com",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "html",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Cal.com uses a progress bar navigation, cal.com is an online call scheduler.",
+      "preview_image": "https://cdn.navbar.gallery/cal-com/desktop.avif",
+      "id": "unknown__cal.com",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Canopy",
+      "source_url": "https://www.navbar.gallery/navbar/canopy",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "grid",
+        "html",
+        "mega-menu",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Canopy uses a mega menu navigation, canopy is a cloud-based accounting practice management software.",
+      "preview_image": "https://cdn.navbar.gallery/canopy/desktop.avif",
+      "id": "unknown__canopy",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Capital",
+      "source_url": "https://www.navbar.gallery/navbar/capital",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "flat",
+        "gradient",
+        "html",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Capital uses a static navigation, banking services for the needs of today's founders.",
+      "preview_image": "https://cdn.navbar.gallery/capital/desktop.avif",
+      "id": "unknown__capital",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Cedro Side Bar Navigation Design \u2013 Navbar Gallery",
+      "source_url": "https://www.navbar.gallery/navbar/cedro",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "gradient",
+        "html",
+        "minimal",
+        "navbar",
+        "portfolio",
+        "sidebar"
+      ],
+      "description": "Cedro Side Bar Navigation Design \u2013 Navbar Gallery uses a side bar navigation, design Studio from Armenia.",
+      "preview_image": "https://cdn.navbar.gallery/cedro/desktop.avif",
+      "id": "unknown__cedro-side-bar-navigation-design-\u2013-navbar-gallery",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Circle",
+      "source_url": "https://www.navbar.gallery/navbar/circle",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "html",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Circle uses a progress bar navigation, a software that helps you build a home for your community, events, and courses under your own brand.",
+      "preview_image": "https://cdn.navbar.gallery/circle/desktop.webp",
+      "id": "unknown__circle",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Cleanforms",
+      "source_url": "https://www.navbar.gallery/navbar/cleanforms",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "button",
+        "css",
+        "dropdown",
+        "flat",
+        "html",
+        "navbar"
+      ],
+      "description": "Cleanforms uses a dropdown navigation, a truly effective Vitamin D formulation.",
+      "preview_image": "https://cdn.navbar.gallery/cleanforms/desktop.avif",
+      "id": "unknown__cleanforms",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Clerk",
+      "source_url": "https://www.navbar.gallery/navbar/clerk",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "flat",
+        "html",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Clerk uses a dropdown navigation, user management platform.",
+      "preview_image": "https://cdn.navbar.gallery/clerk/desktop.avif",
+      "id": "unknown__clerk",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Clerk Breadcrumbs Navigation Design \u2013 Navbar Gallery",
+      "source_url": "https://www.navbar.gallery/navbar/clerk-dashboard",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "divider",
+        "flat",
+        "html",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Clerk Breadcrumbs Navigation Design \u2013 Navbar Gallery uses a breadcrumbs navigation, the most comprehensive User Management Platform Explore the Clerk navbar in the Navbar Gallery collection.",
+      "preview_image": "https://cdn.navbar.gallery/clerk-dashboard/desktop.avif",
+      "id": "unknown__clerk-breadcrumbs-navigation-design-\u2013-navbar-gallery",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "COB",
+      "source_url": "https://www.navbar.gallery/navbar/cob",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "html",
+        "menu",
+        "navbar",
+        "soft"
+      ],
+      "description": "COB uses a full screen navigation, tinier, tastier, & better for you than popcorn.",
+      "preview_image": "https://cdn.navbar.gallery/cob/desktop.avif",
+      "id": "unknown__cob",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Colabs",
+      "source_url": "https://www.navbar.gallery/navbar/colabs",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "gradient",
+        "html",
+        "minimal",
+        "navbar",
+        "portfolio",
+        "sticky"
+      ],
+      "description": "Colabs uses a static navigation, supporting the transition to a circular bio-economy.",
+      "preview_image": "https://cdn.navbar.gallery/colabs/desktop.avif",
+      "id": "unknown__colabs",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Column",
+      "source_url": "https://www.navbar.gallery/navbar/column",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "flat",
+        "gradient",
+        "html",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Column uses a dropdown navigation, a nationally chartered bank built to enable developers and builders to create new financial products.",
+      "preview_image": "https://cdn.navbar.gallery/column/desktop.avif",
+      "id": "unknown__column",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Compound Planning",
+      "source_url": "https://www.navbar.gallery/navbar/compound-planning",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "flat",
+        "gradient",
+        "html",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Compound Planning uses a dropdown navigation, modern wealth management, built for people in tech.",
+      "preview_image": "https://cdn.navbar.gallery/compound-planning/desktop.avif",
+      "id": "unknown__compound-planning",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Contra",
+      "source_url": "https://www.navbar.gallery/navbar/contra",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "gradient",
+        "html",
+        "mega-menu",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Contra uses a mega menu navigation, build, manage and grow your flexible workforce \u2014 all in one place.",
+      "preview_image": "https://cdn.navbar.gallery/contra/desktop.avif",
+      "id": "unknown__contra",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Cosmos",
+      "source_url": "https://www.navbar.gallery/navbar/cosmos",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "button",
+        "css",
+        "flat",
+        "html",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Cosmos uses a search bar navigation, a discovery engine for creatives.",
+      "preview_image": "https://cdn.navbar.gallery/cosmos/desktop.avif",
+      "id": "unknown__cosmos",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "CourseOS Side Bar Navigation Design \u2013 Navbar Gallery",
+      "source_url": "https://www.navbar.gallery/navbar/courseos",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "flat",
+        "html",
+        "minimal",
+        "navbar",
+        "sidebar",
+        "sticky"
+      ],
+      "description": "CourseOS Side Bar Navigation Design \u2013 Navbar Gallery uses a side bar navigation, a Framer template that lets you build & host your online course directly in Framer and protect it with Outseta.",
+      "preview_image": "https://cdn.navbar.gallery/courseos/desktop.avif",
+      "id": "unknown__courseos-side-bar-navigation-design-\u2013-navbar-gallery",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Craftwork",
+      "source_url": "https://www.navbar.gallery/navbar/craftwork",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "html",
+        "mega-menu",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Craftwork uses a mega menu navigation, premium web design resources for busy creatives Explore the Craftwork navbar in the Navbar Gallery collection.",
+      "preview_image": "https://cdn.navbar.gallery/craftwork/desktop.avif",
+      "id": "unknown__craftwork",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Current",
+      "source_url": "https://www.navbar.gallery/navbar/current",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "flat",
+        "gradient",
+        "html",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Current uses a static navigation, banking that helps you make the most of your money.",
+      "preview_image": "https://cdn.navbar.gallery/current/desktop.avif",
+      "id": "unknown__current",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Customer.io",
+      "source_url": "https://www.navbar.gallery/navbar/customer-io",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "grid",
+        "html",
+        "mega-menu",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Customer.io uses a mega menu navigation, customer engagement platform.",
+      "preview_image": "https://cdn.navbar.gallery/customer-io/desktop.avif",
+      "id": "unknown__customer.io",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Cyd Stumpel",
+      "source_url": "https://www.navbar.gallery/navbar/cyd-stumpel",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "html",
+        "menu",
+        "minimal",
+        "navbar",
+        "portfolio",
+        "typography"
+      ],
+      "description": "Cyd Stumpel uses a full screen navigation, award winning independent creative developer and parttime teacher at the Amsterdam University of Applied Sciences.",
+      "preview_image": "https://cdn.navbar.gallery/cyd-stumpel/desktop.avif",
+      "id": "unknown__cyd-stumpel",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Dacoit Design",
+      "source_url": "https://www.navbar.gallery/navbar/dacoit-design",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "html",
+        "menu",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Dacoit Design uses a full screen navigation, wEB3 Design Studio.",
+      "preview_image": "https://cdn.navbar.gallery/dacoit-design/desktop.avif",
+      "id": "unknown__dacoit-design",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Daniel Petho",
+      "source_url": "https://www.navbar.gallery/navbar/daniel-petho",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "html",
+        "menu",
+        "minimal",
+        "navbar",
+        "portfolio",
+        "typography"
+      ],
+      "description": "Daniel Petho uses a full screen navigation, creative developer portfolio.",
+      "preview_image": "https://cdn.navbar.gallery/daniel-petho/desktop.avif",
+      "id": "unknown__daniel-petho",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Daylight Side Bar Navigation Design \u2013 Navbar Gallery",
+      "source_url": "https://www.navbar.gallery/navbar/daylight",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "flat",
+        "html",
+        "minimal",
+        "navbar",
+        "sidebar",
+        "sticky"
+      ],
+      "description": "Daylight Side Bar Navigation Design \u2013 Navbar Gallery uses a side bar navigation, the computer, de-invented.",
+      "preview_image": "https://cdn.navbar.gallery/daylight/desktop.avif",
+      "id": "unknown__daylight-side-bar-navigation-design-\u2013-navbar-gallery",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "DEF",
+      "source_url": "https://www.navbar.gallery/navbar/def",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "html",
+        "menu",
+        "minimal",
+        "monochrome",
+        "navbar"
+      ],
+      "description": "DEF uses a full screen navigation, combining urbanism and architecture, DEF are dedicated to creating urban and architectural solutions.",
+      "preview_image": "https://cdn.navbar.gallery/def/desktop.avif",
+      "id": "unknown__def",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Descript",
+      "source_url": "https://www.navbar.gallery/navbar/descript",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "grid",
+        "html",
+        "mega-menu",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Descript uses a mega menu navigation, descript is the AI-powered, fully featured, end-to-end video editor that you already know how to use.",
+      "preview_image": "https://cdn.navbar.gallery/descript/desktop.avif",
+      "id": "unknown__descript",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Dovetail",
+      "source_url": "https://www.navbar.gallery/navbar/dovetail",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "html",
+        "mega-menu",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Dovetail uses a mega menu navigation, turn calls, docs, and user feedback into insights, like magic.",
+      "preview_image": "https://cdn.navbar.gallery/dovetail/desktop.avif",
+      "id": "unknown__dovetail",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Dovetail Breadcrumbs Navigation Design \u2013 Navbar Gallery",
+      "source_url": "https://www.navbar.gallery/navbar/dovetail-help-center",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "divider",
+        "html",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Dovetail Breadcrumbs Navigation Design \u2013 Navbar Gallery uses a breadcrumbs navigation, aI-first customer insights hub that automates end-to-end qualitative data analysis and insight discovery.",
+      "preview_image": "https://cdn.navbar.gallery/dovetail-help-center/desktop.avif",
+      "id": "unknown__dovetail-breadcrumbs-navigation-design-\u2013-navbar-gallery",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Droppable",
+      "source_url": "https://www.navbar.gallery/navbar/droppable",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "flat",
+        "html",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Droppable uses a static navigation, send large files from your Desktop in a couple of clicks.",
+      "preview_image": "https://cdn.navbar.gallery/droppable/desktop.avif",
+      "id": "unknown__droppable",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Early Majority",
+      "source_url": "https://www.navbar.gallery/navbar/early-majority",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "flat",
+        "html",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Early Majority uses a static navigation, outdoor clothing for all eventualities.",
+      "preview_image": "https://cdn.navbar.gallery/early-majority/desktop.avif",
+      "id": "unknown__early-majority",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Employment Hero Tabs Navigation Design \u2013 Navbar Gallery",
+      "source_url": "https://www.navbar.gallery/navbar/employment-hero",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "button",
+        "css",
+        "html",
+        "menu",
+        "minimal"
+      ],
+      "description": "Employment Hero Tabs Navigation Design \u2013 Navbar Gallery uses a tabs navigation, a platform for automating recruitment, HR, payroll and benefits.",
+      "preview_image": "https://cdn.navbar.gallery/employment-hero/desktop.webp",
+      "id": "unknown__employment-hero-tabs-navigation-design-\u2013-navbar-gallery",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Enpower Trading",
+      "source_url": "https://www.navbar.gallery/navbar/empower-trading",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "flat",
+        "html",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Enpower Trading uses a dropdown navigation, accelerating private investment.",
+      "preview_image": "https://cdn.navbar.gallery/empower-trading/desktop.avif",
+      "id": "unknown__enpower-trading",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Energy Park",
+      "source_url": "https://www.navbar.gallery/navbar/energy-park",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "flat",
+        "html",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Energy Park uses a dropdown navigation, tailored and affordable smart EV charge point solutions.",
+      "preview_image": "https://cdn.navbar.gallery/energy-park/desktop.avif",
+      "id": "unknown__energy-park",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Equals",
+      "source_url": "https://www.navbar.gallery/navbar/equals",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "flat",
+        "html",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Equals uses a dropdown navigation, automate your reporting with precision.",
+      "preview_image": "https://cdn.navbar.gallery/equals/desktop.avif",
+      "id": "unknown__equals",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Espresso System",
+      "source_url": "https://www.navbar.gallery/navbar/espresso-system",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "flat",
+        "html",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Espresso System uses a dropdown navigation, the coordination layer for chains to create value for their users.",
+      "preview_image": "https://cdn.navbar.gallery/espresso-system/desktop.avif",
+      "id": "unknown__espresso-system",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "EventBeds",
+      "source_url": "https://www.navbar.gallery/navbar/eventbeds",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "gradient",
+        "html",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "EventBeds uses a static navigation, the webs best hotel deals for events Explore the EventBeds navbar in the Navbar Gallery collection.",
+      "preview_image": "https://cdn.navbar.gallery/eventbeds/desktop.avif",
+      "id": "unknown__eventbeds",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Evervault",
+      "source_url": "https://www.navbar.gallery/navbar/evervault",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "gradient",
+        "grid",
+        "html",
+        "mega-menu",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Evervault uses a mega menu navigation, flexible payment security.",
+      "preview_image": "https://cdn.navbar.gallery/evervault/desktop.avif",
+      "id": "unknown__evervault",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Expensify Side Bar Navigation Design \u2013 Navbar Gallery",
+      "source_url": "https://www.navbar.gallery/navbar/expensify",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "flat",
+        "gradient",
+        "html",
+        "navbar",
+        "sidebar",
+        "sticky"
+      ],
+      "description": "Expensify Side Bar Navigation Design \u2013 Navbar Gallery uses a side bar navigation, the financial management super app.",
+      "preview_image": "https://cdn.navbar.gallery/expensify/desktop.avif",
+      "id": "unknown__expensify-side-bar-navigation-design-\u2013-navbar-gallery",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Fable",
+      "source_url": "https://www.navbar.gallery/navbar/fable",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "gradient",
+        "html",
+        "minimal",
+        "navbar",
+        "portfolio"
+      ],
+      "description": "Fable uses a dropdown navigation, the modern creative studio.",
+      "preview_image": "https://cdn.navbar.gallery/fable/desktop.avif",
+      "id": "unknown__fable",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Factory",
+      "source_url": "https://www.navbar.gallery/navbar/factory",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "glow",
+        "gradient",
+        "html",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Factory uses a static navigation, delegate software development tasks to agents called Droids.",
+      "preview_image": "https://cdn.navbar.gallery/factory/desktop.avif",
+      "id": "unknown__factory",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "fatfish",
+      "source_url": "https://www.navbar.gallery/navbar/fatfish",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "gradient",
+        "html",
+        "menu",
+        "minimal",
+        "navbar",
+        "portfolio"
+      ],
+      "description": "fatfish uses a full screen navigation, branding ideas with pazazz and web projects full of surprises.",
+      "preview_image": "https://cdn.navbar.gallery/fatfish/desktop.avif",
+      "id": "unknown__fatfish",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "F\u00e9lix P\u00e9ault",
+      "source_url": "https://www.navbar.gallery/navbar/felix-peault",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "html",
+        "minimal",
+        "monochrome",
+        "navbar"
+      ],
+      "description": "F\u00e9lix P\u00e9ault uses a dropdown navigation, showcasing charismatic houses around the world.",
+      "preview_image": "https://cdn.navbar.gallery/felix-peault/desktop.avif",
+      "id": "unknown__f\u00e9lix-p\u00e9ault",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Figma Community",
+      "source_url": "https://www.navbar.gallery/navbar/figma-community",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "html",
+        "mega-menu",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Figma Community uses a mega menu navigation, community made resources and plugins.",
+      "preview_image": "https://cdn.navbar.gallery/figma-community/desktop.avif",
+      "id": "unknown__figma-community",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Figr",
+      "source_url": "https://www.navbar.gallery/navbar/figr",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "glow",
+        "gradient",
+        "html",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Figr uses a static navigation, aI-Driven UI Design & Workflow Explore the Figr navbar in the Navbar Gallery collection.",
+      "preview_image": "https://cdn.navbar.gallery/figr/desktop.avif",
+      "id": "unknown__figr",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Five Pathways Financial",
+      "source_url": "https://www.navbar.gallery/navbar/five-pathways-financial",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "flat",
+        "gradient",
+        "html",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Five Pathways Financial uses a dropdown navigation, a retirement roadmap for everyone.",
+      "preview_image": "https://cdn.navbar.gallery/five-pathways-financial/desktop.avif",
+      "id": "unknown__five-pathways-financial",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Flowbase",
+      "source_url": "https://www.navbar.gallery/navbar/flowbase",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "html",
+        "mega-menu",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Flowbase uses a mega menu navigation, flowbase is the world's largest premium library of Webflow, Figma & Framer components and tools.",
+      "preview_image": "https://cdn.navbar.gallery/flowbase/desktop.avif",
+      "id": "unknown__flowbase",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Fly.io",
+      "source_url": "https://www.navbar.gallery/navbar/fly-io",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "flat",
+        "html",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Fly.io uses a dropdown navigation, developer-focused public cloud.",
+      "preview_image": "https://cdn.navbar.gallery/fly-io/desktop.avif",
+      "id": "unknown__fly.io",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Frank Gehry",
+      "source_url": "https://www.navbar.gallery/navbar/frank-gehry",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "gallery",
+        "html",
+        "menu",
+        "minimal",
+        "navbar",
+        "typography"
+      ],
+      "description": "Frank Gehry uses a full screen navigation, an online exhibition from Getty on how Frank Gehry and his team designed Walt Disney Concert Hall.",
+      "preview_image": "https://cdn.navbar.gallery/frank-gehry/desktop.avif",
+      "id": "unknown__frank-gehry",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Fresha",
+      "source_url": "https://www.navbar.gallery/navbar/fresha",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "button",
+        "css",
+        "gradient",
+        "html",
+        "navbar",
+        "soft"
+      ],
+      "description": "Fresha uses a search bar navigation, hassle-free hair appointment bookings.",
+      "preview_image": "https://cdn.navbar.gallery/fresha/desktop.avif",
+      "id": "unknown__fresha",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Fruitful",
+      "source_url": "https://www.navbar.gallery/navbar/fruitful",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "flat",
+        "gradient",
+        "html",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Fruitful uses a dropdown navigation, a partner and a platform that make money simple.",
+      "preview_image": "https://cdn.navbar.gallery/fruitful/desktop.avif",
+      "id": "unknown__fruitful",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Genius by Diagram",
+      "source_url": "https://www.navbar.gallery/navbar/genius-by-diagram",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "glow",
+        "gradient",
+        "html",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Genius by Diagram uses a static navigation, your AI design companion Explore the Genius by Diagram navbar in the Navbar Gallery collection.",
+      "preview_image": "https://cdn.navbar.gallery/genius-by-diagram/desktop.avif",
+      "id": "unknown__genius-by-diagram",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "GitButler",
+      "source_url": "https://www.navbar.gallery/navbar/gitbutler",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "flat",
+        "html",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "GitButler uses a dropdown navigation, a Git client for simultaneous branches on top of your existing workflow.",
+      "preview_image": "https://cdn.navbar.gallery/gitbutler/desktop.avif",
+      "id": "unknown__gitbutler",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Glide",
+      "source_url": "https://www.navbar.gallery/navbar/glide",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "html",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Glide uses a progress bar navigation, glide is a no-code tool that helps to build custom business software powered by your data.",
+      "preview_image": "https://cdn.navbar.gallery/glide/desktop.avif",
+      "id": "unknown__glide",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Globalization Partners",
+      "source_url": "https://www.navbar.gallery/navbar/globalization-partners",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "grid",
+        "html",
+        "mega-menu",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Globalization Partners uses a mega menu navigation, a platform that helps to find, hire, and manage global teams.",
+      "preview_image": "https://cdn.navbar.gallery/globalization-partners/desktop.avif",
+      "id": "unknown__globalization-partners",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "GoCardless",
+      "source_url": "https://www.navbar.gallery/navbar/gocardless",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "gradient",
+        "grid",
+        "html",
+        "mega-menu",
+        "navbar",
+        "sticky"
+      ],
+      "description": "GoCardless uses a mega menu navigation, hassle-free payments.",
+      "preview_image": "https://cdn.navbar.gallery/gocardless/desktop.avif",
+      "id": "unknown__gocardless",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Grega Cuderman Side Bar Navigation Design \u2013 Navbar Gallery",
+      "source_url": "https://www.navbar.gallery/navbar/grega-cuderman",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "navbar",
+        "portfolio",
+        "sidebar",
+        "typography"
+      ],
+      "description": "Grega Cuderman Side Bar Navigation Design \u2013 Navbar Gallery uses a side bar navigation, product designer building and helping build digital products.",
+      "preview_image": "https://cdn.navbar.gallery/grega-cuderman/desktop.avif",
+      "id": "unknown__grega-cuderman-side-bar-navigation-design-\u2013-navbar-gallery",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Half Past Nine",
+      "source_url": "https://www.navbar.gallery/navbar/half-past-nine",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "flat",
+        "gradient",
+        "html",
+        "navbar"
+      ],
+      "description": "Half Past Nine uses a dropdown navigation, engineering growth marketing machines for brands.",
+      "preview_image": "https://cdn.navbar.gallery/half-past-nine/desktop.avif",
+      "id": "unknown__half-past-nine",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Heid",
+      "source_url": "https://www.navbar.gallery/navbar/heid",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "html",
+        "menu",
+        "minimal",
+        "monochrome",
+        "navbar"
+      ],
+      "description": "Heid uses a full screen navigation, architecture that inspires.",
+      "preview_image": "https://cdn.navbar.gallery/heid/desktop.avif",
+      "id": "unknown__heid",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Help Scout",
+      "source_url": "https://www.navbar.gallery/navbar/help-scout",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "grid",
+        "html",
+        "mega-menu",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Help Scout uses a mega menu navigation, help Scout unifies every client conversation under one platform.",
+      "preview_image": "https://cdn.navbar.gallery/help-scout/desktop.avif",
+      "id": "unknown__help-scout",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Heva Health",
+      "source_url": "https://www.navbar.gallery/navbar/heva-health",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "gradient",
+        "html",
+        "navbar",
+        "soft",
+        "sticky"
+      ],
+      "description": "Heva Health uses a static navigation, custom, connected wellness journeys.",
+      "preview_image": "https://cdn.navbar.gallery/heva-health/desktop.avif",
+      "id": "unknown__heva-health",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Hex.tech",
+      "source_url": "https://www.navbar.gallery/navbar/hex-tech",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "glow",
+        "gradient",
+        "html",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Hex.tech uses a dropdown navigation, collaborative, AI-powered workspace.",
+      "preview_image": "https://cdn.navbar.gallery/hex-tech/desktop.avif",
+      "id": "unknown__hex.tech",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Hiking Patrol",
+      "source_url": "https://www.navbar.gallery/navbar/hiking-patrol",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "flat",
+        "html",
+        "navbar"
+      ],
+      "description": "Hiking Patrol uses a dropdown navigation, a curated digital space for lifestyle and outdoor exploration.",
+      "preview_image": "https://cdn.navbar.gallery/hiking-patrol/desktop.avif",
+      "id": "unknown__hiking-patrol",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Hillenbrand",
+      "source_url": "https://www.navbar.gallery/navbar/hillenbrand",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "navbar",
+        "portfolio",
+        "sticky",
+        "typography"
+      ],
+      "description": "Hillenbrand uses a static navigation, graphic designer with an addiction to detail and a love for storytelling.",
+      "preview_image": "https://cdn.navbar.gallery/hillenbrand/desktop.avif",
+      "id": "unknown__hillenbrand",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "hims",
+      "source_url": "https://www.navbar.gallery/navbar/hims",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "gradient",
+        "html",
+        "mega-menu",
+        "navbar",
+        "soft"
+      ],
+      "description": "hims uses a mega menu navigation, personalized health treatments for men.",
+      "preview_image": "https://cdn.navbar.gallery/hims/desktop.avif",
+      "id": "unknown__hims",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "How Studio",
+      "source_url": "https://www.navbar.gallery/navbar/how-studio",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "gradient",
+        "html",
+        "menu",
+        "minimal",
+        "navbar",
+        "portfolio"
+      ],
+      "description": "How Studio uses a full screen navigation, a branding agency in London and Los Angeles.",
+      "preview_image": "https://cdn.navbar.gallery/how-studio/desktop.avif",
+      "id": "unknown__how-studio",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "huly",
+      "source_url": "https://www.navbar.gallery/navbar/huly",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "flat",
+        "html",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "huly uses a dropdown navigation, process, project, time, and knowledge management platform.",
+      "preview_image": "https://cdn.navbar.gallery/huly/desktop.avif",
+      "id": "unknown__huly",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "humana studio",
+      "source_url": "https://www.navbar.gallery/navbar/humana-studio",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "gradient",
+        "html",
+        "minimal",
+        "navbar",
+        "portfolio",
+        "sticky"
+      ],
+      "description": "humana studio uses a static navigation, we design independent brands.",
+      "preview_image": "https://cdn.navbar.gallery/humana-studio/desktop.avif",
+      "id": "unknown__humana-studio",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "illo",
+      "source_url": "https://www.navbar.gallery/navbar/illo",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "gradient",
+        "html",
+        "minimal",
+        "navbar",
+        "portfolio"
+      ],
+      "description": "illo uses a dropdown navigation, design studio with focus on motion design, illustration and art direction.",
+      "preview_image": "https://cdn.navbar.gallery/illo/desktop.webp",
+      "id": "unknown__illo",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Incident",
+      "source_url": "https://www.navbar.gallery/navbar/incident",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "grid",
+        "html",
+        "mega-menu",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Incident uses a mega menu navigation, on-call, incident response, and status pages \u2014 everything you need to manage incidents and reduce downtime Explore the Incident navbar in the Navbar Gallery collection.",
+      "preview_image": "https://cdn.navbar.gallery/incident/desktop.avif",
+      "id": "unknown__incident",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Instant",
+      "source_url": "https://www.navbar.gallery/navbar/instant",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "flat",
+        "html",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Instant uses a dropdown navigation, instant helps you build high-converting landing pages and sections fast, with no-code required.",
+      "preview_image": "https://cdn.navbar.gallery/instant/desktop.avif",
+      "id": "unknown__instant",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Intercom",
+      "source_url": "https://www.navbar.gallery/navbar/intercom",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "brutalist",
+        "css",
+        "html",
+        "mega-menu",
+        "navbar"
+      ],
+      "description": "Intercom uses a mega menu navigation, aI-first customer service.",
+      "preview_image": "https://cdn.navbar.gallery/intercom/desktop.avif",
+      "id": "unknown__intercom",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Isomorphic Labs",
+      "source_url": "https://www.navbar.gallery/navbar/isomorphic-labs",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "flat",
+        "html",
+        "navbar",
+        "soft",
+        "sticky"
+      ],
+      "description": "Isomorphic Labs uses a static navigation, digital biology company.",
+      "preview_image": "https://cdn.navbar.gallery/isomorphic-labs/desktop.avif",
+      "id": "unknown__isomorphic-labs",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Craft",
+      "source_url": "https://www.navbar.gallery/navbar/itscraft",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "html",
+        "menu",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Craft uses a full screen navigation, the global creative talent consultancy.",
+      "preview_image": "https://cdn.navbar.gallery/craft-desktop.avif",
+      "id": "unknown__craft",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "JansenHarris",
+      "source_url": "https://www.navbar.gallery/navbar/jansenharris",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "flat",
+        "gradient",
+        "html",
+        "navbar",
+        "sticky"
+      ],
+      "description": "JansenHarris uses a static navigation, building brave brands.",
+      "preview_image": "https://cdn.navbar.gallery/jansenharris/desktop.avif",
+      "id": "unknown__jansenharris",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Jasper",
+      "source_url": "https://www.navbar.gallery/navbar/jasper",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "gradient",
+        "html",
+        "mega-menu",
+        "navbar"
+      ],
+      "description": "Jasper uses a mega menu navigation, elevate your team, your brand, and your impact with AI that's built for marketing.",
+      "preview_image": "https://cdn.navbar.gallery/jasper/desktop.avif",
+      "id": "unknown__jasper",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Jitter",
+      "source_url": "https://www.navbar.gallery/navbar/jitter",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "html",
+        "mega-menu",
+        "morph",
+        "motion",
+        "navbar"
+      ],
+      "description": "Jitter uses a mega menu navigation, jitter makes motion accessible to every designer, enabling creative teams to collaborate on and deliver engaging animations in record time.",
+      "preview_image": "https://cdn.navbar.gallery/jitter/desktop.avif",
+      "id": "unknown__jitter",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Julian Fella",
+      "source_url": "https://www.navbar.gallery/navbar/julian-fella",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "gradient",
+        "html",
+        "menu",
+        "navbar"
+      ],
+      "description": "Julian Fella uses a full screen navigation, building Award-Winning Websites For Tech Brands & Startups.",
+      "preview_image": "https://cdn.navbar.gallery/julian-fella/desktop.avif",
+      "id": "unknown__julian-fella",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "June",
+      "source_url": "https://www.navbar.gallery/navbar/june",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "flat",
+        "html",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "June uses a dropdown navigation, product analytics designed to help you retain more customers.",
+      "preview_image": "https://cdn.navbar.gallery/june/desktop.avif",
+      "id": "unknown__june",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Kaizen Labs",
+      "source_url": "https://www.navbar.gallery/navbar/kaizen-labs",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "gradient",
+        "html",
+        "navbar",
+        "soft"
+      ],
+      "description": "Kaizen Labs uses a dropdown navigation, a company working with cities, crafting unique solutions that help communities thrive.",
+      "preview_image": "https://cdn.navbar.gallery/kaizen-labs/desktop.avif",
+      "id": "unknown__kaizen-labs",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Karl Koch",
+      "source_url": "https://www.navbar.gallery/navbar/karl-koch",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "navbar",
+        "portfolio",
+        "sticky",
+        "typography"
+      ],
+      "description": "Karl Koch uses a static navigation, equal parts designer & developer Explore the Karl Koch navbar in the Navbar Gallery collection.",
+      "preview_image": "https://cdn.navbar.gallery/karl-koch/desktop.avif",
+      "id": "unknown__karl-koch",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Kleur Studio",
+      "source_url": "https://www.navbar.gallery/navbar/kleur-studio",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "gradient",
+        "html",
+        "menu",
+        "minimal",
+        "navbar",
+        "portfolio"
+      ],
+      "description": "Kleur Studio uses a full screen navigation, website design studio.",
+      "preview_image": "https://cdn.navbar.gallery/kleur-studio/desktop.avif",
+      "id": "unknown__kleur-studio",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Kostin Design",
+      "source_url": "https://www.navbar.gallery/navbar/kostin-design",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "gradient",
+        "html",
+        "menu",
+        "minimal",
+        "navbar",
+        "portfolio"
+      ],
+      "description": "Kostin Design uses a full screen navigation, interace designer with 10+ years experience.",
+      "preview_image": "https://cdn.navbar.gallery/kostin-design/desktop.avif",
+      "id": "unknown__kostin-design",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Kota",
+      "source_url": "https://www.navbar.gallery/navbar/kota",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "button",
+        "css",
+        "dropdown",
+        "flat",
+        "html",
+        "navbar"
+      ],
+      "description": "Kota uses a dropdown navigation, access leading insurance and retirement providers globally.",
+      "preview_image": "https://cdn.navbar.gallery/kota/desktop.avif",
+      "id": "unknown__kota",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "L'\u00c9tude",
+      "source_url": "https://www.navbar.gallery/navbar/l-etude",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "gradient",
+        "html",
+        "minimal",
+        "navbar",
+        "portfolio",
+        "sticky"
+      ],
+      "description": "L'\u00c9tude uses a static navigation, modular creative studio challenging creative boundaries.",
+      "preview_image": "https://cdn.navbar.gallery/l-etude/desktop.avif",
+      "id": "unknown__l'\u00e9tude",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Lattice",
+      "source_url": "https://www.navbar.gallery/navbar/lattice",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "flat",
+        "html",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Lattice uses a dropdown navigation, lattice is a people management platform that helps you make the most of your talent.",
+      "preview_image": "https://cdn.navbar.gallery/lattice/desktop.avif",
+      "id": "unknown__lattice",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Leko Labs",
+      "source_url": "https://www.navbar.gallery/navbar/leko-labs",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "html",
+        "menu",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Leko Labs uses a full screen navigation, carbon Negative Construction.",
+      "preview_image": "https://cdn.navbar.gallery/leko-labs/desktop.avif",
+      "id": "unknown__leko-labs",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Lera.business",
+      "source_url": "https://www.navbar.gallery/navbar/lera-business",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "gradient",
+        "html",
+        "menu",
+        "navbar"
+      ],
+      "description": "Lera.business uses a full screen navigation, lera.Business empowers startups and scaling businesses with tailored solutions.",
+      "preview_image": "https://cdn.navbar.gallery/lera-business/desktop.avif",
+      "id": "unknown__lera.business",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Life Time",
+      "source_url": "https://www.navbar.gallery/navbar/life-time",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "gradient",
+        "html",
+        "menu",
+        "navbar",
+        "soft"
+      ],
+      "description": "Life Time uses a full screen navigation, championing your happy, healthy life with healthy living, healthy working, and healthy lifestyle destinations.",
+      "preview_image": "https://cdn.navbar.gallery/life-time/desktop.avif",
+      "id": "unknown__life-time",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Lightship",
+      "source_url": "https://www.navbar.gallery/navbar/lightship",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "html",
+        "menu",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Lightship uses a full screen navigation, revolutionizing the world of recreational travel Explore the Lightship navbar in the Navbar Gallery collection.",
+      "preview_image": "https://cdn.navbar.gallery/lightship/desktop.avif",
+      "id": "unknown__lightship",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Linear",
+      "source_url": "https://www.navbar.gallery/navbar/linear",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "flat",
+        "html",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Linear uses a dropdown navigation, linear helps to streamline issues, sprints, and product roadmaps.",
+      "preview_image": "https://cdn.navbar.gallery/linear/desktop.avif",
+      "id": "unknown__linear",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Linear 2024",
+      "source_url": "https://www.navbar.gallery/navbar/linear-2024",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "grid",
+        "html",
+        "mega-menu",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Linear 2024 uses a mega menu navigation, linear helps to streamline issues, sprints, and product roadmaps.",
+      "preview_image": "https://cdn.navbar.gallery/linear-2024/desktop.avif",
+      "id": "unknown__linear-2024",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "ListenUp!",
+      "source_url": "https://www.navbar.gallery/navbar/listenup",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "grid",
+        "html",
+        "mega-menu",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "ListenUp! uses a mega menu navigation, scale product discovery to ship better features.",
+      "preview_image": "https://cdn.navbar.gallery/listenup/desktop.avif",
+      "id": "unknown__listenup!",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Liveblocks",
+      "source_url": "https://www.navbar.gallery/navbar/liveblocks",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "grid",
+        "html",
+        "mega-menu",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Liveblocks uses a mega menu navigation, liveblocks provides customizable pre-built features that boost user engagement by adding collaboration to your product.",
+      "preview_image": "https://cdn.navbar.gallery/liveblocks/desktop.avif",
+      "id": "unknown__liveblocks",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Loop",
+      "source_url": "https://www.navbar.gallery/navbar/loop",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "grid",
+        "html",
+        "mega-menu",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Loop uses a mega menu navigation, returns operations platform for scaling brands.",
+      "preview_image": "https://cdn.navbar.gallery/loop/desktop.avif",
+      "id": "unknown__loop",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "MakeReign",
+      "source_url": "https://www.navbar.gallery/navbar/makereign",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "html",
+        "menu",
+        "minimal",
+        "navbar"
+      ],
+      "description": "MakeReign uses a full screen navigation, a Digital Interface Company.",
+      "preview_image": "https://cdn.navbar.gallery/makereign/desktop.avif",
+      "id": "unknown__makereign",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Mat Voyce",
+      "source_url": "https://www.navbar.gallery/navbar/mat-voyce",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "html",
+        "menu",
+        "minimal",
+        "navbar",
+        "portfolio",
+        "typography"
+      ],
+      "description": "Mat Voyce uses a full screen navigation, designed & animator, specializing in 2D type and animation and exploring type motion.",
+      "preview_image": "https://cdn.navbar.gallery/mat-voyce/desktop.avif",
+      "id": "unknown__mat-voyce",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Medusa",
+      "source_url": "https://www.navbar.gallery/navbar/medusa",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "button",
+        "css",
+        "flat",
+        "html",
+        "mega-menu",
+        "navbar"
+      ],
+      "description": "Medusa uses a mega menu navigation, open-source platform for commerce.",
+      "preview_image": "https://cdn.navbar.gallery/medusa/desktop.avif",
+      "id": "unknown__medusa",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Mercu",
+      "source_url": "https://www.navbar.gallery/navbar/mercu",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "glow",
+        "gradient",
+        "html",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Mercu uses a dropdown navigation, aI assistant for workforce.",
+      "preview_image": "https://cdn.navbar.gallery/mercu/desktop.avif",
+      "id": "unknown__mercu",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Metalab",
+      "source_url": "https://www.navbar.gallery/navbar/metalab",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "gradient",
+        "html",
+        "menu",
+        "navbar"
+      ],
+      "description": "Metalab uses a full screen navigation, agency making interfaces for top-tier companies.",
+      "preview_image": "https://cdn.navbar.gallery/metalab/desktop.avif",
+      "id": "unknown__metalab",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Metaview",
+      "source_url": "https://www.navbar.gallery/navbar/metaview",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "glow",
+        "gradient",
+        "grid",
+        "html",
+        "mega-menu",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Metaview uses a mega menu navigation, automatic, AI-powered notes.",
+      "preview_image": "https://cdn.navbar.gallery/metaview/desktop.avif",
+      "id": "unknown__metaview",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Michel Beaulieu",
+      "source_url": "https://www.navbar.gallery/navbar/michel-beaulieu",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "html",
+        "menu",
+        "minimal",
+        "navbar",
+        "typography"
+      ],
+      "description": "Michel Beaulieu uses a full screen navigation, exceptional residential real estate broker Explore the Michel Beaulieu navbar in the Navbar Gallery collection.",
+      "preview_image": "https://cdn.navbar.gallery/michel-beaulieu/desktop.avif",
+      "id": "unknown__michel-beaulieu",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Miki's Art",
+      "source_url": "https://www.navbar.gallery/navbar/mikis-art",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "gallery",
+        "html",
+        "menu",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Miki's Art uses a full screen navigation, framer photography website template by Arini Studio.",
+      "preview_image": "https://cdn.navbar.gallery/mikis-art/desktop.avif",
+      "id": "unknown__miki's-art",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Mita",
+      "source_url": "https://www.navbar.gallery/navbar/mita",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "gradient",
+        "html",
+        "menu",
+        "navbar",
+        "neon"
+      ],
+      "description": "Mita uses a full screen navigation, a movement in music.",
+      "preview_image": "https://cdn.navbar.gallery/mita/desktop.avif",
+      "id": "unknown__mita",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "MiTrust",
+      "source_url": "https://www.navbar.gallery/navbar/mitrust",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "grid",
+        "html",
+        "mega-menu",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "MiTrust uses a mega menu navigation, a complete solution to collect data from original sources.",
+      "preview_image": "https://cdn.navbar.gallery/mitrust/desktop.avif",
+      "id": "unknown__mitrust",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Mixpanel",
+      "source_url": "https://www.navbar.gallery/navbar/mixpanel",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "flat",
+        "html",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Mixpanel uses a dropdown navigation, simple and powerful product analytics.",
+      "preview_image": "https://cdn.navbar.gallery/mixpanel/desktop.avif",
+      "id": "unknown__mixpanel",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Mobbin",
+      "source_url": "https://www.navbar.gallery/navbar/mobbin",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "button",
+        "css",
+        "flat",
+        "html",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Mobbin uses a search bar navigation, extensive curated library of the best apps and websites.",
+      "preview_image": "https://cdn.navbar.gallery/mobbin/desktop.avif",
+      "id": "unknown__mobbin",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Mobbin Design",
+      "source_url": "https://www.navbar.gallery/navbar/mobbin-design",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "flat",
+        "html",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Mobbin Design uses a dropdown navigation, extensive curated library of the best apps and websites.",
+      "preview_image": "https://cdn.navbar.gallery/mobbin-design/desktop.avif",
+      "id": "unknown__mobbin-design",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Modul",
+      "source_url": "https://www.navbar.gallery/navbar/modul",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "flat",
+        "html",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Modul uses a dropdown navigation, task manager, planner & calendar.",
+      "preview_image": "https://cdn.navbar.gallery/modul/desktop.avif",
+      "id": "unknown__modul",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Mr. Pops",
+      "source_url": "https://www.navbar.gallery/navbar/mr-pops",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "html",
+        "menu",
+        "navbar",
+        "soft"
+      ],
+      "description": "Mr. Pops uses a full screen navigation, ice cream brand based in Ukraine.",
+      "preview_image": "https://cdn.navbar.gallery/mr-pops/desktop.avif",
+      "id": "unknown__mr.-pops",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Mum Studio",
+      "source_url": "https://www.navbar.gallery/navbar/mum-studio",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "gradient",
+        "html",
+        "minimal",
+        "navbar",
+        "portfolio",
+        "sticky"
+      ],
+      "description": "Mum Studio uses a static navigation, boutique design studio for startups.",
+      "preview_image": "https://cdn.navbar.gallery/mum-studio/desktop.avif",
+      "id": "unknown__mum-studio",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Niccol\u00f2 Miranda",
+      "source_url": "https://www.navbar.gallery/navbar/niccolo-miranda",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "html",
+        "menu",
+        "minimal",
+        "navbar",
+        "portfolio",
+        "typography"
+      ],
+      "description": "Niccol\u00f2 Miranda uses a full screen navigation, multidisciplinary freelancer, creating iconic digital experiences.",
+      "preview_image": "https://cdn.navbar.gallery/niccolo-miranda/desktop.avif",
+      "id": "unknown__niccol\u00f2-miranda",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "No-code Supply Co",
+      "source_url": "https://www.navbar.gallery/navbar/no-code-supply-co",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "html",
+        "menu",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "No-code Supply Co uses a full screen navigation, hand-picked no-code inspiration, code, tools, and resources.",
+      "preview_image": "https://cdn.navbar.gallery/no-code-supply-co/desktop.avif",
+      "id": "unknown__no-code-supply-co",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Notion Calendar",
+      "source_url": "https://www.navbar.gallery/navbar/notion-calendar",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "grid",
+        "html",
+        "mega-menu",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Notion Calendar uses a mega menu navigation, beautifully designed, fully integrated calendar.",
+      "preview_image": "https://cdn.navbar.gallery/notion-calendar/desktop.avif",
+      "id": "unknown__notion-calendar",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Notion Help",
+      "source_url": "https://www.navbar.gallery/navbar/notion-help",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "button",
+        "css",
+        "flat",
+        "html",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Notion Help uses a search bar navigation, help, tutorials & documentation from Notion.",
+      "preview_image": "https://cdn.navbar.gallery/notion-help/desktop.avif",
+      "id": "unknown__notion-help",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Notion Templates Breadcrumbs Navigation Design \u2013 Navbar Gallery",
+      "source_url": "https://www.navbar.gallery/navbar/notion-templates",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "divider",
+        "html",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Notion Templates Breadcrumbs Navigation Design \u2013 Navbar Gallery uses a breadcrumbs navigation, build anything on Notion with thousands of templates.",
+      "preview_image": "https://cdn.navbar.gallery/notion-templates/desktop.avif",
+      "id": "unknown__notion-templates-breadcrumbs-navigation-design-\u2013-navbar-gallery",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Old Friends Studio",
+      "source_url": "https://www.navbar.gallery/navbar/old-friends-studio",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "gradient",
+        "html",
+        "mega-menu",
+        "minimal",
+        "navbar",
+        "portfolio"
+      ],
+      "description": "Old Friends Studio uses a mega menu navigation, old Friends is an engineering studio that builds custom websites.",
+      "preview_image": "https://cdn.navbar.gallery/old-friends-studio/desktop.avif",
+      "id": "unknown__old-friends-studio",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "OMSE",
+      "source_url": "https://www.navbar.gallery/navbar/omse",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "gradient",
+        "html",
+        "minimal",
+        "navbar",
+        "portfolio",
+        "sticky"
+      ],
+      "description": "OMSE uses a static navigation, brand identity studio.",
+      "preview_image": "https://cdn.navbar.gallery/omse/desktop.avif",
+      "id": "unknown__omse",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "On",
+      "source_url": "https://www.navbar.gallery/navbar/on",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "button",
+        "css",
+        "dropdown",
+        "flat",
+        "html",
+        "navbar"
+      ],
+      "description": "On uses a dropdown navigation, global sportswear brand defined by innovation.",
+      "preview_image": "https://cdn.navbar.gallery/on/desktop.avif",
+      "id": "unknown__on",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Onverre",
+      "source_url": "https://www.navbar.gallery/navbar/onverre",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "flat",
+        "html",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Onverre uses a static navigation, simple web analytics from data you trust.",
+      "preview_image": "https://cdn.navbar.gallery/onverre/desktop.avif",
+      "id": "unknown__onverre",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Opal",
+      "source_url": "https://www.navbar.gallery/navbar/opal",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "dropdown",
+        "flat",
+        "html",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Opal uses a dropdown navigation, electronics company making cameras.",
+      "preview_image": "https://cdn.navbar.gallery/opal/desktop.avif",
+      "id": "unknown__opal",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Outerbase",
+      "source_url": "https://www.navbar.gallery/navbar/outerbase",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "grid",
+        "html",
+        "mega-menu",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Outerbase uses a mega menu navigation, outerbase makes working with data easy for engineers, researchers, and analysts alike.",
+      "preview_image": "https://cdn.navbar.gallery/outerbase/desktop.avif",
+      "id": "unknown__outerbase",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Oxide Computer",
+      "source_url": "https://www.navbar.gallery/navbar/oxide-computer",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "html",
+        "mega-menu",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Oxide Computer uses a mega menu navigation, oxide Computer is an efficient, rack-scale computing system complete with hardware and software.",
+      "preview_image": "https://cdn.navbar.gallery/oxide-computer/desktop.avif",
+      "id": "unknown__oxide-computer",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Pangram Pangram",
+      "source_url": "https://www.navbar.gallery/navbar/pangram-pangram",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "html",
+        "menu",
+        "minimal",
+        "navbar",
+        "typography"
+      ],
+      "description": "Pangram Pangram uses a full screen navigation, font foundry founded by Mathieu Desjar.",
+      "preview_image": "https://cdn.navbar.gallery/pangram-pangram/desktop.avif",
+      "id": "unknown__pangram-pangram",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Paul Hanaoka Side Bar Navigation Design \u2013 Navbar Gallery",
+      "source_url": "https://www.navbar.gallery/navbar/paul-hanaoka",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "navbar",
+        "portfolio",
+        "sidebar",
+        "typography"
+      ],
+      "description": "Paul Hanaoka Side Bar Navigation Design \u2013 Navbar Gallery uses a side bar navigation, designer with a passion for building.",
+      "preview_image": "https://cdn.navbar.gallery/paul-hanaoka/desktop.avif",
+      "id": "unknown__paul-hanaoka-side-bar-navigation-design-\u2013-navbar-gallery",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Payload",
+      "source_url": "https://www.navbar.gallery/navbar/payload",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "grid",
+        "html",
+        "mega-menu",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Payload uses a mega menu navigation, payload is the open-source Next.js backend used in production by the most innovative companies on earth.",
+      "preview_image": "https://cdn.navbar.gallery/payload/desktop.avif",
+      "id": "unknown__payload",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Pebble",
+      "source_url": "https://www.navbar.gallery/navbar/pebble",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "flat",
+        "html",
+        "minimal",
+        "navbar",
+        "sticky"
+      ],
+      "description": "Pebble uses a static navigation, california-based startup defining a new way to work, live and explore from anywhere with the 100% electric, hassle-free travel trailer.",
+      "preview_image": "https://cdn.navbar.gallery/pebble/desktop.avif",
+      "id": "unknown__pebble",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Peter Hulce",
+      "source_url": "https://www.navbar.gallery/navbar/peter-hulce",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "navbar",
+        "portfolio",
+        "sticky",
+        "typography"
+      ],
+      "description": "Peter Hulce uses a static navigation, webflow design, development, and upkeep with speed and precision.",
+      "preview_image": "https://cdn.navbar.gallery/peter-hulce/desktop.avif",
+      "id": "unknown__peter-hulce",
+      "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Pipe",
+      "source_url": "https://www.navbar.gallery/navbar/pipe",
+      "registry_url": "https://www.navbar.gallery/",
+      "category": "navbar",
+      "tags": [
+        "animation",
+        "css",
+        "flat",
+        "html",
+        "mega-menu",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Pipe uses a mega menu navigation, working capital for companies and entrepreneurs.",
+      "preview_image": "https://cdn.navbar.gallery/pipe/desktop.avif",
+      "id": "unknown__pipe",
+      "source_domain": "www.navbar.gallery"
     }
   ]
 }
