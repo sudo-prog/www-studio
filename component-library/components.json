@@ -1,6 +1,6 @@
 {
-  "version": "1.0.52",
-  "source_count": 25956,
+  "version": "1.0.53",
+  "source_count": 25991,
   "components": [
     {
       "id": "cat-0",
@@ -449620,6 +449620,580 @@
       "preview_image": "",
       "id": "unknown__grommet-icons-icon-set",
       "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Raymarching - Primitives",
+      "source_url": "https://www.shadertoy.com/view/Xds3zN",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular&filter=",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "raymarcher",
+        "shader-art",
+        "3d"
+      ],
+      "description": "Shadertoy shader \"Raymarching - Primitives\" by iq, listed with 1,165,741 views and 1,691 likes. Signed-distance-field raymarching demo of raymarched primitives.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/Xds3zN.jpg",
+      "id": "unknown__raymarching---primitives",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Seascape",
+      "source_url": "https://www.shadertoy.com/view/Ms2SD1",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular&filter=",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "wave",
+        "water",
+        "shader-art"
+      ],
+      "description": "Shadertoy shader \"Seascape\" by TDM, listed with 887,810 views and 2,259 likes. Animated ocean seascape raymarched shader.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/Ms2SD1.jpg",
+      "id": "unknown__seascape",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Creation by Silexars",
+      "source_url": "https://www.shadertoy.com/view/XsXXDn",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular&filter=",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "plasma",
+        "shader-art"
+      ],
+      "description": "Shadertoy shader \"Creation by Silexars\" by Danguafer, listed with 804,098 views and 1,377 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/XsXXDn.jpg",
+      "id": "unknown__creation-by-silexars",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Cyber Fuji 2020",
+      "source_url": "https://www.shadertoy.com/view/Wt33Wf",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular&filter=",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "neon",
+        "retro"
+      ],
+      "description": "Shadertoy shader \"Cyber Fuji 2020\" by kaiware007, listed with 670,394 views and 477 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/Wt33Wf.jpg",
+      "id": "unknown__cyber-fuji-2020",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Lover 2",
+      "source_url": "https://www.shadertoy.com/view/ssjyWc",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular&filter=",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "shader-art"
+      ],
+      "description": "Shadertoy shader \"Lover 2\" by FabriceNeyret2, listed with 550,174 views and 534 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/ssjyWc.jpg",
+      "id": "unknown__lover-2",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Octagrams",
+      "source_url": "https://www.shadertoy.com/view/tlVGDt",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular&filter=",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "pattern",
+        "css-art"
+      ],
+      "description": "Shadertoy shader \"Octagrams\" by whisky_shusuky, listed with 526,613 views and 544 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/tlVGDt.jpg",
+      "id": "unknown__octagrams",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "fractal pyramid",
+      "source_url": "https://www.shadertoy.com/view/tsXBzS",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular&filter=",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "pattern"
+      ],
+      "description": "Shadertoy shader \"fractal pyramid\" by bradjamesgrant, listed with 470,672 views and 676 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/tsXBzS.jpg",
+      "id": "unknown__fractal-pyramid",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Rainforest",
+      "source_url": "https://www.shadertoy.com/view/4ttSWf",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular&filter=",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "noise"
+      ],
+      "description": "Shadertoy shader \"Rainforest\" by iq, listed with 464,110 views and 1,370 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/4ttSWf.jpg",
+      "id": "unknown__rainforest",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "CineShader Lava",
+      "source_url": "https://www.shadertoy.com/view/3sySRK",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular&filter=",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "fluid"
+      ],
+      "description": "Shadertoy shader \"CineShader Lava\" by edankwan, listed with 436,462 views and 445 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/3sySRK.jpg",
+      "id": "unknown__cineshader-lava",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Base warp fBM",
+      "source_url": "https://www.shadertoy.com/view/tdG3Rd",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular&filter=",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "noise"
+      ],
+      "description": "Shadertoy shader \"Base warp fBM\" by trinketMage, listed with 422,380 views and 424 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/tdG3Rd.jpg",
+      "id": "unknown__base-warp-fbm",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "mandelbulb",
+      "source_url": "https://www.shadertoy.com/view/MdXSWn",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular&filter=",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "3d"
+      ],
+      "description": "Shadertoy shader \"mandelbulb\" by EvilRyu, listed with 418,168 views and 291 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/MdXSWn.jpg",
+      "id": "unknown__mandelbulb",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "another synthwave sunset thing",
+      "source_url": "https://www.shadertoy.com/view/tsScRK",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular&filter=",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "gradient",
+        "retro"
+      ],
+      "description": "Shadertoy shader \"another synthwave sunset thing\" by stduhpf, listed with 410,035 views and 245 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/tsScRK.jpg",
+      "id": "unknown__another-synthwave-sunset-thing",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Protean clouds",
+      "source_url": "https://www.shadertoy.com/view/3l23Rh",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=love&filter=",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "noise"
+      ],
+      "description": "Shadertoy shader \"Protean clouds\" by nimitz, listed with 164,017 views and 1,601 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/3l23Rh.jpg",
+      "id": "unknown__protean-clouds",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Star Nest",
+      "source_url": "https://www.shadertoy.com/view/XlfGRj",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=love&filter=",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "glow"
+      ],
+      "description": "Shadertoy shader \"Star Nest\" by Kali, listed with 134,646 views and 1,174 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/XlfGRj.jpg",
+      "id": "unknown__star-nest",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Heartfelt",
+      "source_url": "https://www.shadertoy.com/view/ltffzl",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=love&filter=",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "shader-art"
+      ],
+      "description": "Shadertoy shader \"Heartfelt\" by BigWings, listed with 162,429 views and 1,109 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/ltffzl.jpg",
+      "id": "unknown__heartfelt",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Shader Art Coding Introduction",
+      "source_url": "https://www.shadertoy.com/view/mtyGWy",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=love&filter=",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "tutorial",
+        "shader-playground"
+      ],
+      "description": "Shadertoy shader \"Shader Art Coding Introduction\" by kishimisu, listed with 186,333 views and 1,093 likes. Introductory shader-art piece for learning shader coding.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/mtyGWy.jpg",
+      "id": "unknown__shader-art-coding-introduction",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Fractal Land",
+      "source_url": "https://www.shadertoy.com/view/XsBXWt",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=love&filter=",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "low-poly"
+      ],
+      "description": "Shadertoy shader \"Fractal Land\" by Kali, listed with 157,968 views and 1,084 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/XsBXWt.jpg",
+      "id": "unknown__fractal-land",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "expansive reaction-diffusion",
+      "source_url": "https://www.shadertoy.com/view/4dcGW2",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=love&filter=",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "fluid",
+        "pattern"
+      ],
+      "description": "Shadertoy shader \"expansive reaction-diffusion\" by Flexi, listed with 80,682 views and 977 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/4dcGW2.jpg",
+      "id": "unknown__expansive-reaction-diffusion",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Cube lines",
+      "source_url": "https://www.shadertoy.com/view/NslGRN",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=love&filter=",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "wireframe"
+      ],
+      "description": "Shadertoy shader \"Cube lines\" by morimea, listed with 311,640 views and 946 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/NslGRN.jpg",
+      "id": "unknown__cube-lines",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Mushroom Kong",
+      "source_url": "https://www.shadertoy.com/view/73G3Dc",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=hot&filter=",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "3d"
+      ],
+      "description": "Shadertoy shader \"Mushroom Kong\" by patrickjaillet, listed with 85 views and 6 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/73G3Dc.jpg",
+      "id": "unknown__mushroom-kong",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Kerr Newman Black Hole",
+      "source_url": "https://www.shadertoy.com/view/wXdfzj",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=hot&filter=",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "glow"
+      ],
+      "description": "Shadertoy shader \"Kerr Newman Black Hole\" by baopinsui, listed with 55,227 views and 328 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/wXdfzj.jpg",
+      "id": "unknown__kerr-newman-black-hole",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Shader Cannon",
+      "source_url": "https://www.shadertoy.com/view/N3KGW3",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=hot&filter=",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "shader-playground"
+      ],
+      "description": "Shadertoy shader \"Shader Cannon\" by OneHung, listed with 63 views and 9 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/N3KGW3.jpg",
+      "id": "unknown__shader-cannon",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Capsule Corp Ship on Namek",
+      "source_url": "https://www.shadertoy.com/view/fXG3DK",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=hot&filter=",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "3d"
+      ],
+      "description": "Shadertoy shader \"Capsule Corp Ship on Namek\" by agloo, listed with 367 views and 17 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/fXG3DK.jpg",
+      "id": "unknown__capsule-corp-ship-on-namek",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Mystify Screensaver",
+      "source_url": "https://www.shadertoy.com/view/MsKcRh",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular&filter=multipass",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "shader-art"
+      ],
+      "description": "Shadertoy shader \"Mystify Screensaver\" by Qendolin, listed with 364,980 views and 101 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/MsKcRh.jpg",
+      "id": "unknown__mystify-screensaver",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Elevated",
+      "source_url": "https://www.shadertoy.com/view/MdX3Rr",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular&filter=multipass",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "raymarcher",
+        "3d"
+      ],
+      "description": "Shadertoy shader \"Elevated\" by iq, listed with 277,085 views and 797 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/MdX3Rr.jpg",
+      "id": "unknown__elevated",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Selfie Girl",
+      "source_url": "https://www.shadertoy.com/view/WsSBzh",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular&filter=multipass",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "illustration"
+      ],
+      "description": "Shadertoy shader \"Selfie Girl\" by iq, listed with 243,691 views and 653 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/WsSBzh.jpg",
+      "id": "unknown__selfie-girl",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Volcanic",
+      "source_url": "https://www.shadertoy.com/view/XsX3RB",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular&filter=multipass",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "raymarcher",
+        "fluid"
+      ],
+      "description": "Shadertoy shader \"Volcanic\" by iq, listed with 217,166 views and 514 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/XsX3RB.jpg",
+      "id": "unknown__volcanic",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Greek Temple",
+      "source_url": "https://www.shadertoy.com/view/ldScDh",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular&filter=multipass",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "raymarcher"
+      ],
+      "description": "Shadertoy shader \"Greek Temple\" by iq, listed with 123,508 views and 362 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/ldScDh.jpg",
+      "id": "unknown__greek-temple",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Cloudy Terrain",
+      "source_url": "https://www.shadertoy.com/view/MdlGW7",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular&filter=multipass",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "noise"
+      ],
+      "description": "Shadertoy shader \"Cloudy Terrain\" by iq, listed with 115,770 views and 403 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/MdlGW7.jpg",
+      "id": "unknown__cloudy-terrain",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Fluid solver",
+      "source_url": "https://www.shadertoy.com/view/XlsBDf",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular&filter=multipass",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "fluid",
+        "physics"
+      ],
+      "description": "Shadertoy shader \"Fluid solver\" by davidar, listed with 94,718 views and 139 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/XlsBDf.jpg",
+      "id": "unknown__fluid-solver",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Rhodium liquid carbon",
+      "source_url": "https://www.shadertoy.com/view/llK3Dy",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular&filter=multipass",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "metallic",
+        "fluid"
+      ],
+      "description": "Shadertoy shader \"Rhodium liquid carbon\" by Virgill, listed with 86,813 views and 740 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/llK3Dy.jpg",
+      "id": "unknown__rhodium-liquid-carbon",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Bricks Game",
+      "source_url": "https://www.shadertoy.com/view/MddGzf",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular&filter=multipass",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "3d"
+      ],
+      "description": "Shadertoy shader \"Bricks Game\" by iq, listed with 86,774 views and 461 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/MddGzf.jpg",
+      "id": "unknown__bricks-game",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Global Wind Circulation",
+      "source_url": "https://www.shadertoy.com/view/MdGBWG",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular&filter=multipass",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "fluid"
+      ],
+      "description": "Shadertoy shader \"Global Wind Circulation\" by davidar, listed with 84,224 views and 245 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/MdGBWG.jpg",
+      "id": "unknown__global-wind-circulation",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "The Tetris Dimension",
+      "source_url": "https://www.shadertoy.com/view/NtByzD",
+      "registry_url": "https://www.shadertoy.com/",
+      "category": "shader",
+      "tags": [
+        "webgl",
+        "glsl",
+        "shader",
+        "3d"
+      ],
+      "description": "Shadertoy shader \"The Tetris Dimension\" by Hyeve, listed with 4,377 views and 54 likes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/NtByzD.jpg",
+      "id": "unknown__the-tetris-dimension",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Paper Desktop",
+      "source_url": "https://paper.design/downloads",
+      "registry_url": "https://paper.design",
+      "category": "tool",
+      "tags": [
+        "svg",
+        "javascript",
+        "landing-page",
+        "paper-engine"
+      ],
+      "description": "Paper's desktop app build for Linux \u2014 a connected design canvas that syncs design tokens, styles and components with codebases and agents over MCP.",
+      "preview_image": "https://paper.design/logos/app-icons/Paper%20App%20Icon%20512.png",
+      "id": "unknown__paper-desktop",
+      "source_domain": "paper.design"
     }
   ]
 }
