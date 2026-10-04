@@ -1,6 +1,6 @@
 {
-  "version": "1.0.58",
-  "source_count": 26344,
+  "version": "1.0.59",
+  "source_count": 26360,
   "components": [
     {
       "id": "cat-0",
@@ -456606,6 +456606,294 @@
       "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2026/08/Codrops-x-Alex-Main-Banner-Desktop-400x300.png.webp",
       "id": "unknown__the-designer-who-went-back-to-building:-alex-tkachev",
       "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Radio by m1her",
+      "source_url": "https://uiverse.io/m1her/orange-horse-8",
+      "registry_url": "https://uiverse.io/tags/buttons",
+      "category": "input",
+      "tags": [
+        "css",
+        "html",
+        "radio",
+        "flat",
+        "3d",
+        "click-effect"
+      ],
+      "description": "A dark custom radio group built in pure HTML and CSS where each label flips forward on a 3D perspective when its hidden radio input is checked, revealing a back-side panel and glowing blue label text.",
+      "preview_image": "",
+      "id": "unknown__radio-by-m1her",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Radio by Yaya12085",
+      "source_url": "https://uiverse.io/Yaya12085/silent-liger-85",
+      "registry_url": "https://uiverse.io/tags/buttons",
+      "category": "input",
+      "tags": [
+        "css",
+        "html",
+        "svg",
+        "radio",
+        "flat",
+        "minimal"
+      ],
+      "description": "A tile-style radio selector where Bicycle, Motorbike and Car options are chosen with hidden radio inputs, and the selected tile turns blue with a scaled dot, colored SVG icon and label plus a focus ring.",
+      "preview_image": "",
+      "id": "unknown__radio-by-yaya12085",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Radio by Ratinax",
+      "source_url": "https://uiverse.io/Ratinax/itchy-mouse-15",
+      "registry_url": "https://uiverse.io/tags/buttons",
+      "category": "input",
+      "tags": [
+        "css",
+        "html",
+        "radio",
+        "glow",
+        "monochrome",
+        "hover-effect"
+      ],
+      "description": "A traffic-light style radio group with red, orange and green circular labels stacked inside a black rounded container. Each label brightens and gains a stronger glow on hover or when its hidden radio input is checked.",
+      "preview_image": "",
+      "id": "unknown__radio-by-ratinax",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Radio by mahiatlinux",
+      "source_url": "https://uiverse.io/mahiatlinux/neat-donkey-46",
+      "registry_url": "https://uiverse.io/tags/buttons",
+      "category": "input",
+      "tags": [
+        "css",
+        "html",
+        "svg",
+        "radio",
+        "flat",
+        "monochrome"
+      ],
+      "description": "A dark mode variation of Yaya12085's radio tile selector for Bicycle, Motorbike and Car. The selected tile picks up a blue border, icon fill, label color and soft white glow ring on focus.",
+      "preview_image": "",
+      "id": "unknown__radio-by-mahiatlinux",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Switch by mamyapro123",
+      "source_url": "https://uiverse.io/mamyapro123/cuddly-warthog-66",
+      "registry_url": "https://uiverse.io/tags/buttons",
+      "category": "toggle",
+      "tags": [
+        "css",
+        "html",
+        "switch",
+        "gradient",
+        "noise",
+        "animation"
+      ],
+      "description": "A theme switch that slides a sun into a moon, changing the track from a light blue gradient to night while rotating sun rays, clouds, stars, aurora, comets, meteors and shooting stars animate in. An SVG filter adds a sketchy hand-drawn texture to the whole control.",
+      "preview_image": "",
+      "id": "unknown__switch-by-mamyapro123",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Checkbox by PriyanshuGupta28",
+      "source_url": "https://uiverse.io/PriyanshuGupta28/silent-rabbit-98",
+      "registry_url": "https://uiverse.io/tags/buttons",
+      "category": "input",
+      "tags": [
+        "css",
+        "html",
+        "checkbox",
+        "minimal",
+        "flat",
+        "monochrome"
+      ],
+      "description": "A minimal custom checkbox that hides the native input and draws a 20px rounded square border with a centered inner square checkmark that fades in when the input is checked.",
+      "preview_image": "",
+      "id": "unknown__checkbox-by-priyanshugupta28",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Switch by gharsh11032000",
+      "source_url": "https://uiverse.io/gharsh11032000/sour-vampirebat-66",
+      "registry_url": "https://uiverse.io/tags/buttons",
+      "category": "toggle",
+      "tags": [
+        "css",
+        "html",
+        "switch",
+        "gradient",
+        "minimal",
+        "hover-effect"
+      ],
+      "description": "A pill-shaped toggle switch whose track shifts from light purple to deeper purple when checked, with a white circular thumb that grows and slides across on a bouncy cubic-bezier transition.",
+      "preview_image": "",
+      "id": "unknown__switch-by-gharsh11032000",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Switch by nikk7007",
+      "source_url": "https://uiverse.io/nikk7007/smooth-fox-6",
+      "registry_url": "https://uiverse.io/tags/buttons",
+      "category": "toggle",
+      "tags": [
+        "css",
+        "html",
+        "switch",
+        "flat",
+        "minimal",
+        "gradient"
+      ],
+      "description": "A compact rectangular switch styled directly on a checkbox input with appearance none, using a square thumb that slides from red to green as the input is checked. The track stays white with a small radius and a 0.3s ease transition.",
+      "preview_image": "",
+      "id": "unknown__switch-by-nikk7007",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Switch by JustCode14",
+      "source_url": "https://uiverse.io/JustCode14/red-dingo-61",
+      "registry_url": "https://uiverse.io/tags/buttons",
+      "category": "toggle",
+      "tags": [
+        "css",
+        "html",
+        "switch",
+        "gradient",
+        "animation",
+        "hover-effect"
+      ],
+      "description": "A dark theme switch where the white thumb transforms into a yellow sun on a blue track, fading out small stars while a cloud fades in. Toggle uses an overflow-hidden track and a bouncy cubic-bezier transition.",
+      "preview_image": "",
+      "id": "unknown__switch-by-justcode14",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Switch by vinodjangid07",
+      "source_url": "https://uiverse.io/vinodjangid07/gentle-parrot-87",
+      "registry_url": "https://uiverse.io/tags/buttons",
+      "category": "toggle",
+      "tags": [
+        "css",
+        "html",
+        "svg",
+        "switch",
+        "neon",
+        "glow"
+      ],
+      "description": "A pill toggle that lights up bright purple with a wide purple box-shadow glow when checked. It includes a Start label and an inline SVG path that fills white.",
+      "preview_image": "",
+      "id": "unknown__switch-by-vinodjangid07",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Switch by andrew-demchenk0",
+      "source_url": "https://uiverse.io/andrew-demchenk0/honest-stingray-90",
+      "registry_url": "https://uiverse.io/tags/buttons",
+      "category": "toggle",
+      "tags": [
+        "css",
+        "html",
+        "svg",
+        "switch",
+        "minimal",
+        "animation"
+      ],
+      "description": "A light blue to dark navy day/night switch with animated sun and moon SVG icons that rotate and tilt on hover. The round white thumb slides 30px across when checked.",
+      "preview_image": "",
+      "id": "unknown__switch-by-andrew-demchenk0",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Switch by chicogale",
+      "source_url": "https://uiverse.io/chicogale/brown-panda-75",
+      "registry_url": "https://uiverse.io/tags/buttons",
+      "category": "toggle",
+      "tags": [
+        "css",
+        "html",
+        "svg",
+        "switch",
+        "neon",
+        "glow"
+      ],
+      "description": "A cyberpunk toggle with a cyan-to-purple gradient glow track, a circular thumb carrying an SVG icon that rotates 360 degrees when checked, plus floating cyan particles, track dots and OFF/ON labels with a cyan focus outline.",
+      "preview_image": "",
+      "id": "unknown__switch-by-chicogale",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Switch by EddyBel",
+      "source_url": "https://uiverse.io/EddyBel/slimy-penguin-36",
+      "registry_url": "https://uiverse.io/tags/buttons",
+      "category": "toggle",
+      "tags": [
+        "css",
+        "html",
+        "switch",
+        "gradient",
+        "blob",
+        "animation"
+      ],
+      "description": "A 3D floating toggle that bobs up and down on a looping rotateX/rotateY animation with a blurred multi-radial-gradient halo behind it. The translucent slider turns dark and the gradient thumb slides across when checked.",
+      "preview_image": "",
+      "id": "unknown__switch-by-eddybel",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Switch by Type-Delta",
+      "source_url": "https://uiverse.io/Type-Delta/smart-fox-47",
+      "registry_url": "https://uiverse.io/tags/buttons",
+      "category": "toggle",
+      "tags": [
+        "css",
+        "html",
+        "svg",
+        "switch",
+        "minimal",
+        "animation"
+      ],
+      "description": "A reduce-motion accessibility toggle drawn entirely with SVG circles and lines. The ball slides along its trace with finely stepped cubic-bezier keyframes and the line scales in as the input is checked.",
+      "preview_image": "",
+      "id": "unknown__switch-by-type-delta",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Switch by mrhyddenn",
+      "source_url": "https://uiverse.io/mrhyddenn/old-fish-66",
+      "registry_url": "https://uiverse.io/tags/buttons",
+      "category": "toggle",
+      "tags": [
+        "css",
+        "html",
+        "switch",
+        "minimal",
+        "flat",
+        "soft"
+      ],
+      "description": "A plain white rounded switch with a grey border that turns green and transparent-bordered when checked, its white thumb sliding 1.5em across with a soft grey shadow.",
+      "preview_image": "",
+      "id": "unknown__switch-by-mrhyddenn",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Card by ilkhoeri",
+      "source_url": "https://uiverse.io/ilkhoeri/rude-eagle-32",
+      "registry_url": "https://uiverse.io/tags/buttons",
+      "category": "avatar",
+      "tags": [
+        "tailwind",
+        "html",
+        "svg",
+        "avatar",
+        "card",
+        "flat"
+      ],
+      "description": "An overlapping avatar stack of five circular SVG figures in red, purple, yellowgreen, orange and skyblue, sized and z-indexed per nth-child via arbitrary Tailwind variants so the middle avatar sits largest in front.",
+      "preview_image": "",
+      "id": "unknown__card-by-ilkhoeri",
+      "source_domain": "uiverse.io"
     }
   ]
 }
