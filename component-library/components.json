@@ -1,6 +1,6 @@
 {
-  "version": "1.0.54",
-  "source_count": 26139,
+  "version": "1.0.55",
+  "source_count": 26233,
   "components": [
     {
       "id": "cat-0",
@@ -453049,6 +453049,1509 @@
       "preview_image": "https://cdn.navbar.gallery/pipe/desktop.avif",
       "id": "unknown__pipe",
       "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "Align Content",
+      "source_url": "https://css-tricks.com/almanac/properties/a/align-content",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The align-content property is a sub-property of the Flexible Box Layout module that helps align a flex container's lines within it when there is extra space in the cross-axis.",
+      "preview_image": "",
+      "category": "flex",
+      "tags": [
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__align-content",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Align Items",
+      "source_url": "https://css-tricks.com/almanac/properties/a/align-items",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The align-items property is related to CSS layout and affects how elements are aligned along the cross axis in Flexbox and CSS Grid layouts.",
+      "preview_image": "",
+      "category": "flex",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__align-items",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Align Self",
+      "source_url": "https://css-tricks.com/almanac/properties/a/align-self",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The CSS align-self property sets an individual element's alignment, overriding its parent's current align-items value.",
+      "preview_image": "",
+      "category": "flex",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__align-self",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "All",
+      "source_url": "https://css-tricks.com/almanac/properties/a/all",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The all property resets all of an element's CSS properties except direction and unicode-bidi, allowing component-level resetting of styles.",
+      "preview_image": "",
+      "category": "tool",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__all",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Anchor Scope",
+      "source_url": "https://css-tricks.com/almanac/properties/a/anchor-scope",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The anchor-scope property scopes an anchor element to a particular selector, preventing it from clashing with anchors defined on other selectors.",
+      "preview_image": "",
+      "category": "tooltip",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__anchor-scope",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Animation",
+      "source_url": "https://css-tricks.com/almanac/properties/a/animation",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The animation property in CSS can be used to animate many other CSS properties, with each animation defined by the @keyframes at-rule.",
+      "preview_image": "",
+      "category": "animation",
+      "tags": [
+        "css",
+        "plain-css",
+        "glow",
+        "animation"
+      ],
+      "id": "unknown__animation",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Animation Trigger",
+      "source_url": "https://css-tricks.com/almanac/properties/a/animation-trigger",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The CSS animation-trigger property delays the start of a CSS animation until a specific named trigger occurs.",
+      "preview_image": "",
+      "category": "animation",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "animation"
+      ],
+      "id": "unknown__animation-trigger",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Appearance",
+      "source_url": "https://css-tricks.com/almanac/properties/a/appearance",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The appearance property is used to display an element using platform-native styling based on the user's operating system theme.",
+      "preview_image": "",
+      "category": "form",
+      "tags": [
+        "css",
+        "plain-css",
+        "flat",
+        "input"
+      ],
+      "id": "unknown__appearance",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Backface Visibility",
+      "source_url": "https://css-tricks.com/almanac/properties/b/backface-visibility",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The backface-visibility property relates to 3D transforms and controls whether an element's back face stays visible when rotated away from the screen.",
+      "preview_image": "",
+      "category": "3d",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "3d"
+      ],
+      "id": "unknown__backface-visibility",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Background",
+      "source_url": "https://css-tricks.com/almanac/properties/b/background",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The background property in CSS allows you to control the background of any element, combining eight other background properties into a single shorthand declaration.",
+      "preview_image": "",
+      "category": "background",
+      "tags": [
+        "css",
+        "plain-css",
+        "gradient",
+        "background"
+      ],
+      "id": "unknown__background",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Bleed",
+      "source_url": "https://css-tricks.com/almanac/properties/b/bleed",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The bleed property in CSS is for specifying the space outside of the page box boundary when determining the size of a printed page.",
+      "preview_image": "",
+      "category": "tool",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__bleed",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Block Overflow",
+      "source_url": "https://css-tricks.com/almanac/properties/b/block-overflow",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The block-overflow property truncates text and indicates more content follows by inserting an ellipsis or custom string after a number of lines set by max-lines.",
+      "preview_image": "",
+      "category": "text",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "text-effect"
+      ],
+      "id": "unknown__block-overflow",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Block Size",
+      "source_url": "https://css-tricks.com/almanac/properties/b/block-size",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "block-size is a CSS logical property that defines the height of an element when writing-mode is horizontal, or its width when writing-mode is vertical.",
+      "preview_image": "",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__block-size",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Border",
+      "source_url": "https://css-tricks.com/almanac/properties/b/border",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The border property is a shorthand syntax in CSS that accepts multiple values for drawing a line around the element it is applied to.",
+      "preview_image": "",
+      "category": "border",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "border"
+      ],
+      "id": "unknown__border",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Border Boundary",
+      "source_url": "https://css-tricks.com/almanac/properties/b/border-boundary",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The border-boundary property sets constraints to the bounds of an element, letting its borders respect the round boundary of circular displays.",
+      "preview_image": "",
+      "category": "border",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "border"
+      ],
+      "id": "unknown__border-boundary",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Border Collapse",
+      "source_url": "https://css-tricks.com/almanac/properties/b/border-collapse",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The border-collapse property is for use on table elements, controlling whether the space and borders between table cells collapse into one border.",
+      "preview_image": "",
+      "category": "border",
+      "tags": [
+        "css",
+        "plain-css",
+        "flat",
+        "border"
+      ],
+      "id": "unknown__border-collapse",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Border Radius",
+      "source_url": "https://css-tricks.com/almanac/properties/b/border-radius",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "You can give any element rounded corners by applying a border-radius, a shorthand that sets the four individual corner radius properties.",
+      "preview_image": "",
+      "category": "border",
+      "tags": [
+        "css",
+        "plain-css",
+        "soft",
+        "border"
+      ],
+      "id": "unknown__border-radius",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Border Spacing",
+      "source_url": "https://css-tricks.com/almanac/properties/b/border-spacing",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The border-spacing property in CSS controls how far apart cells are in a table element, and only takes effect when border-collapse is separate.",
+      "preview_image": "",
+      "category": "border",
+      "tags": [
+        "css",
+        "plain-css",
+        "flat",
+        "border"
+      ],
+      "id": "unknown__border-spacing",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Bottom",
+      "source_url": "https://css-tricks.com/almanac/properties/b/bottom",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The top, bottom, left, and right properties are used with position to set the placement of an element, and only have an effect on positioned elements.",
+      "preview_image": "",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__bottom",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Box Decoration Break",
+      "source_url": "https://css-tricks.com/almanac/properties/b/box-decoration-break",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The CSS box-decoration-break property determines what happens to a box and its decoration when it wraps onto multiple lines.",
+      "preview_image": "",
+      "category": "border",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "border"
+      ],
+      "id": "unknown__box-decoration-break",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Box Shadow",
+      "source_url": "https://css-tricks.com/almanac/properties/b/box-shadow",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The box-shadow property in CSS is for putting drop shadows on elements using horizontal offset, vertical offset, blur radius, an optional spread radius, and a color.",
+      "preview_image": "",
+      "category": "shadow-generator",
+      "tags": [
+        "css",
+        "plain-css",
+        "soft",
+        "shadow-generator"
+      ],
+      "id": "unknown__box-shadow",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Box Sizing",
+      "source_url": "https://css-tricks.com/almanac/properties/b/box-sizing",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The box-sizing property in CSS controls how the box model is handled for the element it applies to, most commonly by setting border-box on every element.",
+      "preview_image": "",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__box-sizing",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Break After",
+      "source_url": "https://css-tricks.com/almanac/properties/b/break-after",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The CSS break-after property allows, forces, or prevents breaks in paged media, multi-column layouts, and regions.",
+      "preview_image": "",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__break-after",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Break Before",
+      "source_url": "https://css-tricks.com/almanac/properties/b/break-before",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The CSS break-before property allows, forces, or prevents breaks in paged media, multi-column layouts, and regions.",
+      "preview_image": "",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__break-before",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Break Inside",
+      "source_url": "https://css-tricks.com/almanac/properties/b/break-inside",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The break-inside property tells the browser to keep specific elements together so they are not split apart across columns or pages.",
+      "preview_image": "",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__break-inside",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Caption Side",
+      "source_url": "https://css-tricks.com/almanac/properties/c/caption-side",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The caption-side property in CSS allows you to define where to position HTML's caption element used on table headers.",
+      "preview_image": "",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__caption-side",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Caret",
+      "source_url": "https://css-tricks.com/almanac/properties/c/caret",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "caret in CSS is a shorthand property that combines the caret-color and caret-shape properties into a single declaration.",
+      "preview_image": "",
+      "category": "input",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "input"
+      ],
+      "id": "unknown__caret",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Caret Color",
+      "source_url": "https://css-tricks.com/almanac/properties/c/caret-color",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The caret-color property in CSS changes the color of the cursor caret in inputs, textareas, or any element that is editable.",
+      "preview_image": "",
+      "category": "input",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "input"
+      ],
+      "id": "unknown__caret-color",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Clear",
+      "source_url": "https://css-tricks.com/almanac/properties/c/clear",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The clear property is directly related to floats, moving an element down below a floated element when applied in the same direction as the float.",
+      "preview_image": "",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__clear",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Color",
+      "source_url": "https://css-tricks.com/almanac/properties/c/color",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The color property in CSS sets the color of text and text decorations, accepting named, hex, RGB, RGBa, HSL, and HSLa values.",
+      "preview_image": "",
+      "category": "color-tool",
+      "tags": [
+        "css",
+        "plain-css",
+        "flat",
+        "color-tool"
+      ],
+      "id": "unknown__color",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Column Count",
+      "source_url": "https://css-tricks.com/almanac/properties/c/column-count",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "If you need an exact number of columns when designing a multi-column layout, use column-count and the browser will distribute the content evenly.",
+      "preview_image": "",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__column-count",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Column Fill",
+      "source_url": "https://css-tricks.com/almanac/properties/c/column-fill",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "When you add height to a multi-column element, column-fill controls how the content fills the columns, either balanced or sequentially.",
+      "preview_image": "",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__column-fill",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Column Rule",
+      "source_url": "https://css-tricks.com/almanac/properties/c/column-rule",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "To make columns distinct you can add a vertical line between each column with column-rule, a shorthand that follows the same pattern as border.",
+      "preview_image": "",
+      "category": "divider",
+      "tags": [
+        "css",
+        "plain-css",
+        "flat",
+        "divider"
+      ],
+      "id": "unknown__column-rule",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Column Rule Color",
+      "source_url": "https://css-tricks.com/almanac/properties/c/column-rule-color",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The column-rule-color CSS property determines the color of a line between columns in a CSS multi-column layout.",
+      "preview_image": "",
+      "category": "divider",
+      "tags": [
+        "css",
+        "plain-css",
+        "flat",
+        "divider"
+      ],
+      "id": "unknown__column-rule-color",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Column Rule Style",
+      "source_url": "https://css-tricks.com/almanac/properties/c/column-rule-style",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The column-rule-style CSS property specifies the type of line that is drawn between columns in a CSS multi-column layout.",
+      "preview_image": "",
+      "category": "divider",
+      "tags": [
+        "css",
+        "plain-css",
+        "flat",
+        "divider"
+      ],
+      "id": "unknown__column-rule-style",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Column Rule Width",
+      "source_url": "https://css-tricks.com/almanac/properties/c/column-rule-width",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The column-rule-width CSS property sets the thickness of the line that is drawn between columns in a CSS multi-column layout.",
+      "preview_image": "",
+      "category": "divider",
+      "tags": [
+        "css",
+        "plain-css",
+        "flat",
+        "divider"
+      ],
+      "id": "unknown__column-rule-width",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Column Span",
+      "source_url": "https://css-tricks.com/almanac/properties/c/column-span",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "In a multi-column layout, column-span allows you to make elements expand across the columns.",
+      "preview_image": "",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__column-span",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Column Width",
+      "source_url": "https://css-tricks.com/almanac/properties/c/column-width",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "When you want to keep your columns at a specific width, column-width acts as a minimum width suggestion for the browser.",
+      "preview_image": "",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__column-width",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Columns",
+      "source_url": "https://css-tricks.com/almanac/properties/c/columns",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "With just a few CSS rules you can create a print-inspired newspaper-style layout whose columns adjust and balance automatically.",
+      "preview_image": "",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__columns",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Contain",
+      "source_url": "https://css-tricks.com/almanac/properties/c/contain",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The contain property indicates to the browser that an element and its descendants are as independent of the document tree as possible, providing layout, paint, and size performance benefits.",
+      "preview_image": "",
+      "category": "tool",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__contain",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Container",
+      "source_url": "https://css-tricks.com/almanac/properties/c/container",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The CSS container property is a shorthand that combines the container-name and container-type properties into a single declaration.",
+      "preview_image": "",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__container",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Container Name",
+      "source_url": "https://css-tricks.com/almanac/properties/c/container-name",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The CSS container-name property registers an element as a query container that applies styles to other elements based on the container's size.",
+      "preview_image": "",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__container-name",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Content",
+      "source_url": "https://css-tricks.com/almanac/properties/c/content",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The content property in CSS is used with the ::before and ::after pseudo-elements to literally insert strings, counters, images, or attribute values.",
+      "preview_image": "",
+      "category": "tool",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "text-effect"
+      ],
+      "id": "unknown__content",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Content Visibility",
+      "source_url": "https://css-tricks.com/almanac/properties/c/content-visibility",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The content-visibility property indicates to the browser whether an element's contents should be rendered at initial load time, deferring off-screen content.",
+      "preview_image": "",
+      "category": "tool",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__content-visibility",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Counter Increment",
+      "source_url": "https://css-tricks.com/almanac/properties/c/counter-increment",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "Thanks to the various counter-related properties, any element can be automatically numbered, not just ordered list items.",
+      "preview_image": "",
+      "category": "tool",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "typography"
+      ],
+      "id": "unknown__counter-increment",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Counter Reset",
+      "source_url": "https://css-tricks.com/almanac/properties/c/counter-reset",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The counter-reset property allows for automatic numbering of elements by resetting a CSS counter to a given value.",
+      "preview_image": "",
+      "category": "tool",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "typography"
+      ],
+      "id": "unknown__counter-reset",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Counter Set",
+      "source_url": "https://css-tricks.com/almanac/properties/c/counter-set",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The counter-set CSS property sets the starting value for a CSS counter, letting you choose a number other than 1.",
+      "preview_image": "",
+      "category": "tool",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "typography"
+      ],
+      "id": "unknown__counter-set",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Direction",
+      "source_url": "https://css-tricks.com/almanac/properties/d/direction",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The direction property in CSS sets the direction of content flow within a block-level element, applying to text, inline, and inline-block elements.",
+      "preview_image": "",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__direction",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Display",
+      "source_url": "https://css-tricks.com/almanac/properties/d/display",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "Every element on a web page is a rectangular box, and the display property in CSS determines just how that rectangular box behaves.",
+      "preview_image": "",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__display",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Empty Cells",
+      "source_url": "https://css-tricks.com/almanac/properties/e/empty-cells",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The empty-cells property in CSS selects empty table cells for the purpose of specifying whether or not to display borders and backgrounds on them.",
+      "preview_image": "",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "flat",
+        "layout"
+      ],
+      "id": "unknown__empty-cells",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Fill",
+      "source_url": "https://css-tricks.com/almanac/properties/f/fill",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The fill property in CSS is for filling in the color of an SVG shape, accepting any CSS color value or a pattern reference.",
+      "preview_image": "",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "css",
+        "flat",
+        "background"
+      ],
+      "id": "unknown__fill",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Flex",
+      "source_url": "https://css-tricks.com/almanac/properties/f/flex",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The flex property is a sub-property of the Flexible Box Layout module and the shorthand for flex-grow, flex-shrink, and flex-basis.",
+      "preview_image": "",
+      "category": "flex",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__flex",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Flex Basis",
+      "source_url": "https://css-tricks.com/almanac/properties/f/flex-basis",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The flex-basis property specifies the initial size of a flex item before any available space is distributed according to the flex factors.",
+      "preview_image": "",
+      "category": "flex",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__flex-basis",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Flex Direction",
+      "source_url": "https://css-tricks.com/almanac/properties/f/flex-direction",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The flex-direction property establishes the main axis, thus defining the direction flex items are placed in the flex container.",
+      "preview_image": "",
+      "category": "flex",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__flex-direction",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Flex Flow",
+      "source_url": "https://css-tricks.com/almanac/properties/f/flex-flow",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The flex-flow property is a sub-property of the Flexible Box Layout module and the shorthand for flex-direction and flex-wrap.",
+      "preview_image": "",
+      "category": "flex",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__flex-flow",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Flex Grow",
+      "source_url": "https://css-tricks.com/almanac/properties/f/flex-grow",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The flex-grow property defines a flex item's ability to grow, using a unitless value that serves as a proportion of the container's available space.",
+      "preview_image": "",
+      "category": "flex",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__flex-grow",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Flex Shrink",
+      "source_url": "https://css-tricks.com/almanac/properties/f/flex-shrink",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The flex-shrink property specifies the flex shrink factor, determining how much a flex item shrinks relative to the others when there isn't enough space.",
+      "preview_image": "",
+      "category": "flex",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__flex-shrink",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Flex Wrap",
+      "source_url": "https://css-tricks.com/almanac/properties/f/flex-wrap",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The flex-wrap property defines whether flex items are forced onto a single line or can be flowed into multiple lines.",
+      "preview_image": "",
+      "category": "flex",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__flex-wrap",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Float",
+      "source_url": "https://css-tricks.com/almanac/properties/f/float",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The float property in CSS is used for positioning and layout on web pages, for example floating an image to one side and letting text wrap around it.",
+      "preview_image": "",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__float",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Font",
+      "source_url": "https://css-tricks.com/almanac/properties/f/font",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The font property in CSS is a shorthand property that combines all of the font sub-properties in a single declaration.",
+      "preview_image": "",
+      "category": "font",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "typography"
+      ],
+      "id": "unknown__font",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Font Display",
+      "source_url": "https://css-tricks.com/almanac/properties/f/font-display",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The font-display property defines how font files are loaded and displayed by the browser, applied within the @font-face rule.",
+      "preview_image": "",
+      "category": "font",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "typography"
+      ],
+      "id": "unknown__font-display",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Font Kerning",
+      "source_url": "https://css-tricks.com/almanac/properties/f/font-kerning",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The CSS font-kerning property defines the way specific pairs of letters are spaced, letting you use or disable a font's kerning data.",
+      "preview_image": "",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "typography"
+      ],
+      "id": "unknown__font-kerning",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Font Optical Sizing",
+      "source_url": "https://css-tricks.com/almanac/properties/f/font-optical-sizing",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The font-optical-sizing property allows the browser to adjust the outline of font glyphs to make them more legible at different sizes.",
+      "preview_image": "",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "typography"
+      ],
+      "id": "unknown__font-optical-sizing",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Font Palette",
+      "source_url": "https://css-tricks.com/almanac/properties/f/font-palette",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The CSS font-palette property allows you to pick the color palette of a multi-color font registered with the @font-palette-values at-rule.",
+      "preview_image": "",
+      "category": "font",
+      "tags": [
+        "css",
+        "plain-css",
+        "flat",
+        "typography"
+      ],
+      "id": "unknown__font-palette",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Font Size Adjust",
+      "source_url": "https://css-tricks.com/almanac/properties/f/font-size-adjust",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "This property gives developers the ability to set the font-size of an element depending on the size of its lowercase letters rather than its uppercase letters.",
+      "preview_image": "",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "typography"
+      ],
+      "id": "unknown__font-size-adjust",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Font Synthesis",
+      "source_url": "https://css-tricks.com/almanac/properties/f/font-synthesis",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The font-synthesis property gives the browser instructions for how to handle bolded and italicized characters when the specified font-family doesn't include them.",
+      "preview_image": "",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "typography"
+      ],
+      "id": "unknown__font-synthesis",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Font Variant Alternates",
+      "source_url": "https://css-tricks.com/almanac/properties/f/font-variant-alternates",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The CSS font-variant-alternates property lets you apply font features picked by the @font-feature-values at-rule, such as style sets, ornaments, and swashes.",
+      "preview_image": "",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "typography"
+      ],
+      "id": "unknown__font-variant-alternates",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Font Variant Emoji",
+      "source_url": "https://css-tricks.com/almanac/properties/f/font-variant-emoji",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The CSS font-variant-emoji property lets us define how emoji code points should be displayed, either as an emoji or as text.",
+      "preview_image": "",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "flat",
+        "typography"
+      ],
+      "id": "unknown__font-variant-emoji",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Font Variant Numeric",
+      "source_url": "https://css-tricks.com/almanac/properties/f/font-variant-numeric",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The font-variant-numeric property in CSS supports the OpenType font format by specifying which numeric glyphs to use, including fractions, ordinals, and styled variations.",
+      "preview_image": "",
+      "category": "typography",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "typography"
+      ],
+      "id": "unknown__font-variant-numeric",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Grid",
+      "source_url": "https://css-tricks.com/almanac/properties/g/grid",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "CSS technique documented on the CSS-Tricks Almanac.",
+      "preview_image": "",
+      "category": "grid",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "grid"
+      ],
+      "id": "unknown__grid",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Grid Row / Grid Column",
+      "source_url": "https://css-tricks.com/almanac/properties/g/grid-row-column",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The grid-row and grid-column properties define which row or column an element will be displayed on.",
+      "preview_image": "",
+      "category": "grid",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "grid"
+      ],
+      "id": "unknown__grid-row-/-grid-column",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Height",
+      "source_url": "https://css-tricks.com/almanac/properties/h/height",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The height property in CSS specifies the content height of boxes and accepts any of the length values.",
+      "preview_image": "",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__height",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Isolation",
+      "source_url": "https://css-tricks.com/almanac/properties/i/isolation",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The isolation property in CSS is used to prevent elements from blending with their backdrops, most often when mix-blend-mode is in play.",
+      "preview_image": "",
+      "category": "filter",
+      "tags": [
+        "css",
+        "plain-css",
+        "gradient",
+        "filter"
+      ],
+      "id": "unknown__isolation",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Left",
+      "source_url": "https://css-tricks.com/almanac/properties/l/left",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The top, bottom, left, and right properties are used with position to set the placement of an element, and only have an effect on positioned elements.",
+      "preview_image": "",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__left",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Max Inline Size",
+      "source_url": "https://css-tricks.com/almanac/properties/m/max-inline-size",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "max-inline-size is a CSS logical property that defines the maximum width of an element when writing-mode is horizontal, or its maximum height when vertical.",
+      "preview_image": "",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__max-inline-size",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Opacity",
+      "source_url": "https://css-tricks.com/almanac/properties/o/opacity",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The opacity property in CSS specifies how transparent an element is, using a number from 0 to 1 representing its alpha channel.",
+      "preview_image": "",
+      "category": "filter",
+      "tags": [
+        "css",
+        "plain-css",
+        "soft",
+        "filter"
+      ],
+      "id": "unknown__opacity",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Outline",
+      "source_url": "https://css-tricks.com/almanac/properties/o/outline",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The outline property in CSS draws a line around the outside of an element that is not part of the box model, so it won't affect layout.",
+      "preview_image": "",
+      "category": "border",
+      "tags": [
+        "css",
+        "plain-css",
+        "outline",
+        "border"
+      ],
+      "id": "unknown__outline",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Outline Offset",
+      "source_url": "https://css-tricks.com/almanac/properties/o/outline-offset",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The outline-offset property in CSS offsets a defined outline from an element's border edge by a specified amount.",
+      "preview_image": "",
+      "category": "border",
+      "tags": [
+        "css",
+        "plain-css",
+        "outline",
+        "border"
+      ],
+      "id": "unknown__outline-offset",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Overflow Anchor",
+      "source_url": "https://css-tricks.com/almanac/properties/o/overflow-anchor",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The overflow-anchor property enables us to opt out of Scroll Anchoring, the browser feature that keeps content loading above the user's position from shifting the page.",
+      "preview_image": "",
+      "category": "scroll-effect",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "scroll-effect"
+      ],
+      "id": "unknown__overflow-anchor",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Perspective Origin",
+      "source_url": "https://css-tricks.com/almanac/properties/p/perspective-origin",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The perspective-origin property determines the origin, or vanishing point, for the perspective property, and must be paired with it on the parent element.",
+      "preview_image": "",
+      "category": "3d",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "3d"
+      ],
+      "id": "unknown__perspective-origin",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Position Anchor",
+      "source_url": "https://css-tricks.com/almanac/properties/p/position-anchor",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The position-anchor property links an absolutely positioned element to an anchor element, defining the default anchor used by the anchor properties and functions.",
+      "preview_image": "",
+      "category": "tooltip",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__position-anchor",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Position Try Order",
+      "source_url": "https://css-tricks.com/almanac/properties/p/position-try-order",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The CSS position-try-order property sets the order of positions that a target element tries to use to display itself around an anchor element.",
+      "preview_image": "",
+      "category": "tooltip",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__position-try-order",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Position Visibility",
+      "source_url": "https://css-tricks.com/almanac/properties/p/position-visibility",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The position-visibility property provides certain conditions to hide an anchor-positioned element from the viewport.",
+      "preview_image": "",
+      "category": "tooltip",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__position-visibility",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Print Color Adjust",
+      "source_url": "https://css-tricks.com/almanac/properties/p/print-color-adjust",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The print-color-adjust CSS property gives the browser a hint for how to handle colors when printing, such as ignoring dark backgrounds to save users ink.",
+      "preview_image": "",
+      "category": "color-tool",
+      "tags": [
+        "css",
+        "plain-css",
+        "flat",
+        "color-tool"
+      ],
+      "id": "unknown__print-color-adjust",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Scroll Margin",
+      "source_url": "https://css-tricks.com/almanac/properties/s/scroll-margin",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "scroll-margin is used to adjust an element's snap area, giving it space from the edge of the scroll container when it is snapped into place.",
+      "preview_image": "",
+      "category": "scroll-effect",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "scroll-effect"
+      ],
+      "id": "unknown__scroll-margin",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Scroll Marker Group",
+      "source_url": "https://css-tricks.com/almanac/properties/s/scroll-marker-group",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The scroll-marker-group CSS property determines if the ::scroll-marker-group pseudo-element is generated within the scroll container and where.",
+      "preview_image": "",
+      "category": "scroll-effect",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "scroll-effect"
+      ],
+      "id": "unknown__scroll-marker-group",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Scroll Padding",
+      "source_url": "https://css-tricks.com/almanac/properties/s/scroll-padding",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "scroll-padding is used to adjust a snapping container's optimal viewing region, useful when a fixed header would obscure snapped elements.",
+      "preview_image": "",
+      "category": "scroll-effect",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "scroll-effect"
+      ],
+      "id": "unknown__scroll-padding",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Scroll Snap Stop",
+      "source_url": "https://css-tricks.com/almanac/properties/s/scroll-snap-stop",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The scroll-snap-stop property allows you to force a scroll-snapping container to snap to a particular element before letting the user scroll past it.",
+      "preview_image": "",
+      "category": "scroll-effect",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "scroll-effect"
+      ],
+      "id": "unknown__scroll-snap-stop",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Speak",
+      "source_url": "https://css-tricks.com/almanac/properties/s/speak",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The speak property in CSS is for specifying whether a browser should speak the content it reads, such as through a screen reader.",
+      "preview_image": "",
+      "category": "tool",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "text-effect"
+      ],
+      "id": "unknown__speak",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Text Decoration Skip Ink",
+      "source_url": "https://css-tricks.com/almanac/properties/t/text-decoration-skip-ink",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The text-decoration-skip-ink property controls the behavior of underline and overline when the line passes through part of a character or glyph.",
+      "preview_image": "",
+      "category": "text",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "text-effect"
+      ],
+      "id": "unknown__text-decoration-skip-ink",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Top Right Bottom Left",
+      "source_url": "https://css-tricks.com/almanac/properties/t/top-right-bottom-left",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The top, bottom, left, and right properties are used with position to set the placement of an element, and only have an effect on positioned elements.",
+      "preview_image": "",
+      "category": "layout",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "layout"
+      ],
+      "id": "unknown__top-right-bottom-left",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Touch Action",
+      "source_url": "https://css-tricks.com/almanac/properties/t/touch-action",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The touch-action property in CSS gives you control over the effect of touchscreen interactions with an element.",
+      "preview_image": "",
+      "category": "tool",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "click-effect"
+      ],
+      "id": "unknown__touch-action",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "User Select",
+      "source_url": "https://css-tricks.com/almanac/properties/u/user-select",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The user-select property in CSS controls how the text in an element is allowed to be selected, for example making text unselectable.",
+      "preview_image": "",
+      "category": "text",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "text-effect"
+      ],
+      "id": "unknown__user-select",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "View Transition Class",
+      "source_url": "https://css-tricks.com/almanac/properties/v/view-transition-class",
+      "registry_url": "https://css-tricks.com/almanac/properties/",
+      "description": "The CSS view-transition-class property allows multiple elements with different view-transition-name values to share the same animation styles by grouping them under a common class identifier.",
+      "preview_image": "",
+      "category": "transition",
+      "tags": [
+        "css",
+        "plain-css",
+        "minimal",
+        "transition"
+      ],
+      "id": "unknown__view-transition-class",
+      "source_domain": "css-tricks.com"
     }
   ]
 }
