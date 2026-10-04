@@ -1,6 +1,6 @@
 {
-  "version": "1.0.65",
-  "source_count": 26668,
+  "version": "1.0.66",
+  "source_count": 26694,
   "components": [
     {
       "id": "cat-0",
@@ -462485,6 +462485,470 @@
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2y2pjLtk7oS33zts6BqhEIOHrAj/reading-progress/default/preview.1785527308894.webp",
       "id": "unknown__reading-progress",
       "source_domain": "21st.dev"
+    },
+    {
+      "name": "Brave Chicken Card",
+      "source_url": "https://uiverse.io/00Kubi/brave-chicken-67",
+      "registry_url": "https://uiverse.io/tags/card",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "html",
+        "minimal",
+        "gradient",
+        "card",
+        "form"
+      ],
+      "description": "A TailwindCSS send-feedback card with a gradient heading, a large textarea placeholder and two emoji SVG buttons. Buttons and fields use slate tones with hover, focus and active scale states.",
+      "preview_image": "",
+      "id": "unknown__brave-chicken-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Shaggy Insect Input",
+      "source_url": "https://uiverse.io/Admin12121/shaggy-insect-49",
+      "registry_url": "https://uiverse.io/tags/input",
+      "category": "input",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "gradient",
+        "input"
+      ],
+      "description": "A pure CSS text input wrapper with a positioned SVG icon sized via a --icon-size custom property. The component is tagged colorful, gradient and search on its Uiverse page.",
+      "preview_image": "",
+      "id": "unknown__shaggy-insect-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Quick Sheep Tooltip",
+      "source_url": "https://uiverse.io/Brian-Pob/quick-sheep-98",
+      "registry_url": "https://uiverse.io/tags/tooltip",
+      "category": "tooltip",
+      "tags": [
+        "tailwind",
+        "html",
+        "svg",
+        "animated",
+        "tooltip",
+        "hover-effect"
+      ],
+      "description": "A Tailwind hover tooltip attached to a square GitHub icon button. On hover the button morphs to a 50% border radius with a 500ms color transition while the 'Discord' label fades in and translates upward.",
+      "preview_image": "",
+      "id": "unknown__quick-sheep-tooltip",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Green Chipmunk Button",
+      "source_url": "https://uiverse.io/Damithkumara/green-chipmunk-67",
+      "registry_url": "https://uiverse.io/tags/button",
+      "category": "button",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "dark",
+        "button"
+      ],
+      "description": "A minimal uppercase rectangular button styled in pure CSS with border and label variations. Hover and active states shift the fill while keeping the uppercase label styling.",
+      "preview_image": "",
+      "id": "unknown__green-chipmunk-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Clever Panther Card",
+      "source_url": "https://uiverse.io/Gidarx/clever-panther-6",
+      "registry_url": "https://uiverse.io/tags/card",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "html",
+        "dark",
+        "modern",
+        "card",
+        "gradient"
+      ],
+      "description": "A dark financial summary dashboard card built with Tailwind, featuring a lime accent icon block and a blurred lime glow that intensifies on hover. Tagged for dashboard, graph and interactive use.",
+      "preview_image": "",
+      "id": "unknown__clever-panther-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Spotty Swan Card",
+      "source_url": "https://uiverse.io/JkHuger/spotty-swan-68",
+      "registry_url": "https://uiverse.io/tags/card",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "animated",
+        "gradient",
+        "card"
+      ],
+      "description": "A glossy credit/debit card mockup in pure CSS with a chip, card number, expiry date and holder name. The card and its chip textures run infinite 3s ease-in-out animations for a shine effect.",
+      "preview_image": "",
+      "id": "unknown__spotty-swan-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Funny Cougar Input",
+      "source_url": "https://uiverse.io/LightAndy1/funny-cougar-97",
+      "registry_url": "https://uiverse.io/tags/input",
+      "category": "input",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "soft",
+        "input"
+      ],
+      "description": "A minimalistic search input group laid out with flex, capped at 190px wide and centered with a leading icon. Tagged blue, grey, rounded and placeholder on Uiverse.",
+      "preview_image": "",
+      "id": "unknown__funny-cougar-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Chatty Bird Loader",
+      "source_url": "https://uiverse.io/Pradeepsaranbishnoi/chatty-bird-86",
+      "registry_url": "https://uiverse.io/tags/loader",
+      "category": "loader",
+      "tags": [
+        "css",
+        "html",
+        "animated",
+        "dark",
+        "loader",
+        "animation"
+      ],
+      "description": "A pure CSS loader made of eye-shaped elements that animate to convey loading progress. Tagged animated, dots, indicator and progress on its Uiverse page.",
+      "preview_image": "",
+      "id": "unknown__chatty-bird-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Pretty Snake Form",
+      "source_url": "https://uiverse.io/SelfMadeSystem/pretty-snake-70",
+      "registry_url": "https://uiverse.io/tags/form",
+      "category": "form",
+      "tags": [
+        "css",
+        "html",
+        "animated",
+        "gradient",
+        "form",
+        "input"
+      ],
+      "description": "A 3D login and sign-up form built in CSS with a 50rem perspective container and a hidden switch input that flips the panel. Tagged with email, password, link and social variants.",
+      "preview_image": "",
+      "id": "unknown__pretty-snake-form",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Swift Insect Loader",
+      "source_url": "https://uiverse.io/SnyDeTreves/swift-insect-41",
+      "registry_url": "https://uiverse.io/tags/loader",
+      "category": "loader",
+      "tags": [
+        "css",
+        "html",
+        "neon",
+        "glow",
+        "animated",
+        "loader",
+        "3d"
+      ],
+      "description": "An atom-style spinner built from a red nucleus and orbiting rings using --float and --radius custom properties. Tagged neon, glow, rotating and floating on Uiverse.",
+      "preview_image": "",
+      "id": "unknown__swift-insect-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Perfect Zebra Input",
+      "source_url": "https://uiverse.io/TemRevil/perfect-zebra-100",
+      "registry_url": "https://uiverse.io/tags/input",
+      "category": "input",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "soft",
+        "input"
+      ],
+      "description": "A 300px wide email input container built in pure CSS for login flows, with a relative wrapper for labels or icons. Tagged minimalist, rounded and placeholder.",
+      "preview_image": "",
+      "id": "unknown__perfect-zebra-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Lazy Earwig Card",
+      "source_url": "https://uiverse.io/adamgiebl/lazy-earwig-25",
+      "registry_url": "https://uiverse.io/tags/card",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "gradient",
+        "soft",
+        "card",
+        "2d"
+      ],
+      "description": "A 190x254px card rotated -2deg with a heavy offset drop shadow and 21px rounded corners. Tagged with a pastel multicolor gradient background and blur.",
+      "preview_image": "",
+      "id": "unknown__lazy-earwig-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Short Shrimp Card",
+      "source_url": "https://uiverse.io/alexruix/short-shrimp-43",
+      "registry_url": "https://uiverse.io/tags/card",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "html",
+        "minimal",
+        "card",
+        "badge",
+        "icon"
+      ],
+      "description": "A Tailwind alert card with role=alert showing a 'New notification!' message and an emerald icon badge. Tagged for dismiss, popup and notification use cases.",
+      "preview_image": "",
+      "id": "unknown__short-shrimp-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Moody Turtle Input",
+      "source_url": "https://uiverse.io/asif_6635/moody-turtle-2",
+      "registry_url": "https://uiverse.io/tags/input",
+      "category": "input",
+      "tags": [
+        "tailwind",
+        "html",
+        "dark",
+        "minimal",
+        "input",
+        "animation"
+      ],
+      "description": "A dark audio player bar built with Tailwind: a rounded play button, an animated bar visualizer of pulsing divs and a time display. Tagged audio, play, time and rounded.",
+      "preview_image": "",
+      "id": "unknown__moody-turtle-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Horrible Husky Input",
+      "source_url": "https://uiverse.io/chase2k25/horrible-husky-56",
+      "registry_url": "https://uiverse.io/tags/input",
+      "category": "input",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "input"
+      ],
+      "description": "A 280px 'ask AI' prompt input wrapper with a white container and relatively positioned icon area. Tagged gray, rounded, placeholder and minimalist.",
+      "preview_image": "",
+      "id": "unknown__horrible-husky-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Swift Dolphin Button",
+      "source_url": "https://uiverse.io/dalioscode/swift-dolphin-48",
+      "registry_url": "https://uiverse.io/tags/button",
+      "category": "button",
+      "tags": [
+        "tailwind",
+        "html",
+        "flat",
+        "gradient",
+        "minimal",
+        "button"
+      ],
+      "description": "A simple 'Proceed' button using a slate vertical gradient with inset top and bottom box-shadows for a pressed look. Includes hover, focus-visible ring and active opacity states.",
+      "preview_image": "",
+      "id": "unknown__swift-dolphin-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Pretty Crab Loader",
+      "source_url": "https://uiverse.io/dovatgabriel/pretty-crab-95",
+      "registry_url": "https://uiverse.io/tags/loader",
+      "category": "loader",
+      "tags": [
+        "css",
+        "html",
+        "animated",
+        "minimal",
+        "loader",
+        "animation"
+      ],
+      "description": "A leap-frog style dot loader driven by --uib-size, --uib-speed and --uib-color custom properties in pure CSS. Tagged minimalistic, modern and waiting on Uiverse.",
+      "preview_image": "",
+      "id": "unknown__pretty-crab-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Angry Snake Button",
+      "source_url": "https://uiverse.io/faizanullah1999/angry-snake-12",
+      "registry_url": "https://uiverse.io/tags/button",
+      "category": "button",
+      "tags": [
+        "css",
+        "html",
+        "neon",
+        "glow",
+        "dark",
+        "button",
+        "hover-effect"
+      ],
+      "description": "An outlined dark button in pure CSS using the Ropa Sans font with a highlight hover effect. Tagged centered, clickable, label and rectangle.",
+      "preview_image": "",
+      "id": "unknown__angry-snake-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Swift Deer Form",
+      "source_url": "https://uiverse.io/hexday/swift-deer-44",
+      "registry_url": "https://uiverse.io/tags/form",
+      "category": "form",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "glass",
+        "form",
+        "input"
+      ],
+      "description": "A command-palette style form with a max-width 480px white card, 12px radius and layered soft shadows. Scoped under .cmd-palette-scope with search, notification and message sections.",
+      "preview_image": "",
+      "id": "unknown__swift-deer-form",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Chilly Cat Loader",
+      "source_url": "https://uiverse.io/kemal_5002/chilly-cat-52",
+      "registry_url": "https://uiverse.io/tags/loader",
+      "category": "loader",
+      "tags": [
+        "css",
+        "html",
+        "animated",
+        "flat",
+        "loader",
+        "animation"
+      ],
+      "description": "A 48x48px pure CSS spinner in light blue that rotates infinitely with a 1s linear animation. Its ::before and ::after pseudo-elements form 24px circular segments.",
+      "preview_image": "",
+      "id": "unknown__chilly-cat-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Selfish Tiger Card",
+      "source_url": "https://uiverse.io/mamyapro123/selfish-tiger-23",
+      "registry_url": "https://uiverse.io/tags/card",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "animated",
+        "3d",
+        "card",
+        "hover-effect"
+      ],
+      "description": "A 240x340px 3D card stage using perspective 1200px and preserve-3d, with invisible left, right and top mouse hover zones. The card tilts in 3D as the pointer enters each zone.",
+      "preview_image": "",
+      "id": "unknown__selfish-tiger-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Weak Treefrog Card",
+      "source_url": "https://uiverse.io/nazar-gavrylyk/weak-treefrog-3",
+      "registry_url": "https://uiverse.io/tags/card",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "flat",
+        "card",
+        "button"
+      ],
+      "description": "A 300px bank balance card with a 2px #dfdfdf border and 20px radius, built in pure CSS. Tagged for wallet, cash, amount and add-funds interactions.",
+      "preview_image": "",
+      "id": "unknown__weak-treefrog-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Lazy Wolverine Card",
+      "source_url": "https://uiverse.io/reshades/lazy-wolverine-61",
+      "registry_url": "https://uiverse.io/tags/card",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "gradient",
+        "neon",
+        "modern",
+        "card"
+      ],
+      "description": "A 290x404px card with a vivid pink-to-purple linear gradient background in pure CSS. Tagged bright, vibrant, clean and rounded for modern layouts.",
+      "preview_image": "",
+      "id": "unknown__lazy-wolverine-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Tender Robin Card",
+      "source_url": "https://uiverse.io/satyamchaudharydev/tender-robin-90",
+      "registry_url": "https://uiverse.io/tags/card",
+      "category": "card",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "soft",
+        "card",
+        "hover-effect"
+      ],
+      "description": "A compact social card capped at 23ch that shifts from #f7f7f8 to a pink hover background with #e50087 text. Uses a 0.3s cubic-bezier transition and rounded 5px corners.",
+      "preview_image": "",
+      "id": "unknown__tender-robin-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Lazy Dog Card",
+      "source_url": "https://uiverse.io/themrsami/lazy-dog-55",
+      "registry_url": "https://uiverse.io/tags/card",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "html",
+        "dark",
+        "gradient",
+        "card"
+      ],
+      "description": "A 380px dark testimonial card built with Tailwind, with blurred indigo and purple glow blobs that scale up on hover. Tagged for reviews, ratings, star and verified profiles.",
+      "preview_image": "",
+      "id": "unknown__lazy-dog-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Sour Octopus Input",
+      "source_url": "https://uiverse.io/vinodjangid07/sour-octopus-59",
+      "registry_url": "https://uiverse.io/tags/input",
+      "category": "input",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "modern",
+        "input",
+        "button",
+        "hover-effect"
+      ],
+      "description": "A subscribe email input wrapper in pure CSS combining a text field, icon and a clickable arrow button. Tagged hover, black, white and rounded on Uiverse.",
+      "preview_image": "",
+      "id": "unknown__sour-octopus-input",
+      "source_domain": "uiverse.io"
     }
   ]
 }
