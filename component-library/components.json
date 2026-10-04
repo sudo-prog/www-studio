@@ -1,6 +1,6 @@
 {
-  "version": "1.0.57",
-  "source_count": 26341,
+  "version": "1.0.58",
+  "source_count": 26344,
   "components": [
     {
       "id": "cat-0",
@@ -456548,6 +456548,64 @@
       "preview_image": "",
       "id": "unknown__form-purple-cow-(micaelgomestavares)",
       "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Beyond the Circle: Custom-Shaped Cursor Trail",
+      "source_url": "https://tympanus.net/codrops/2026/09/24/custom-shaped-cursor-trail/",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "cursor",
+      "tags": [
+        "three.js",
+        "react-three-fiber",
+        "r3f",
+        "webgl",
+        "shader",
+        "glsl",
+        "typescript",
+        "pixel",
+        "cursor",
+        "hover-effect"
+      ],
+      "description": "Custom-shaped cursor trail built with Three.js and the WebGPU/TSL renderer. A 200x200 float DataTexture acts as a memory grid of cursor positions and speed, while a TSL fragment shader warps the UVs, inks a source texture used as a brush mask, and colours the trail by velocity.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2026/09/featured-1200x900-1-400x300.jpg.webp",
+      "id": "unknown__beyond-the-circle:-custom-shaped-cursor-trail",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Grid Item Reveal Animation on Hover",
+      "source_url": "https://tympanus.net/Development/HoverGrid/",
+      "registry_url": "https://tympanus.net/codrops/hub/all/",
+      "category": "hover-effect",
+      "tags": [
+        "gsap",
+        "plain-css",
+        "javascript",
+        "minimal",
+        "grid",
+        "hover-effect"
+      ],
+      "description": "A grid of items that reveal their content on hover, built by Studio Grafixo for Codrops with GSAP. Tagged on the Codrops demo registry as both #Hover and #Grid.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2024/03/hovergrid_feat-1-400x300.jpg",
+      "id": "unknown__grid-item-reveal-animation-on-hover",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "The Designer Who Went Back to Building: Alex Tkachev",
+      "source_url": "https://tympanus.net/codrops/2026/10/02/alex-tkachev-designing-less/",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "portfolio",
+      "tags": [
+        "html",
+        "css",
+        "javascript",
+        "minimal",
+        "portfolio",
+        "landing-page"
+      ],
+      "description": "Codrops interview with designer Alex Tkachev on the design systems he builds to outlast him and the small front-end tools he makes for himself, illustrated with his own stripped-down personal portfolio at alextkachev.com.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2026/08/Codrops-x-Alex-Main-Banner-Desktop-400x300.png.webp",
+      "id": "unknown__the-designer-who-went-back-to-building:-alex-tkachev",
+      "source_domain": "tympanus.net"
     }
   ]
 }
