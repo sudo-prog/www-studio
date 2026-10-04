@@ -1,6 +1,6 @@
 {
-  "version": "1.0.63",
-  "source_count": 26667,
+  "version": "1.0.65",
+  "source_count": 26668,
   "components": [
     {
       "id": "cat-0",
@@ -460680,7 +460680,8 @@
         "svg",
         "react",
         "mask",
-        "transition"
+        "transition",
+        "outline"
       ],
       "description": "An SVG clip-path mask reveal built by SmoothUI, where a shape wipe exposes the underlying content.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2s2o9RwN7OoP4Na42lJREy96Xua/svg-clip-mask/default/preview.1790338743324.webp",
@@ -460696,7 +460697,8 @@
         "react",
         "svg",
         "cursor",
-        "click-effect"
+        "click-effect",
+        "minimal"
       ],
       "description": "A drawing cursor component that renders a pen/crosshair pointer with stroke feedback on canvas-style surfaces.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2s2o9RwN7OoP4Na42lJREy96Xua/drawing-cursor/default/preview.1790193807554.webp",
@@ -460713,7 +460715,8 @@
         "webgl",
         "glsl",
         "transition",
-        "react"
+        "react",
+        "fluid"
       ],
       "description": "A transition that warps a circle element through a displacement shader for a fluid shape morph.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2s2o9RwN7OoP4Na42lJREy96Xua/warped-circle-transition/default/preview.1790099161056.webp",
@@ -460729,7 +460732,8 @@
         "shader",
         "webgl",
         "glsl",
-        "transition"
+        "transition",
+        "fluid"
       ],
       "description": "An SDF-driven circle transition that dissolves and re-forms a circular element with signed distance fields.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2s2o9RwN7OoP4Na42lJREy96Xua/sdf-circle-transition/default/preview.1790099206710.webp",
@@ -460746,7 +460750,8 @@
         "webgl",
         "glsl",
         "transition",
-        "blur-effect"
+        "blur-effect",
+        "frosted"
       ],
       "description": "A luma-based shader reveal transition that wipes between two states using brightness thresholding.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2s2o9RwN7OoP4Na42lJREy96Xua/shader-reveal-luma-transition/default/preview.1790099342250.webp",
@@ -460760,9 +460765,10 @@
       "category": "card",
       "tags": [
         "glass",
-        "liquid-glass",
+        "glassmorphism",
         "react",
-        "tailwind"
+        "tailwind",
+        "card"
       ],
       "description": "A frosted glass card with translucent fill, backdrop blur and layered content slots.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/educalvolpz/glass-card/default/preview.1789957050110-8a214c1e-4b66-4425-9bac-7060045c9d4f.png",
@@ -460778,7 +460784,8 @@
         "react",
         "text-effect",
         "typography",
-        "tailwind"
+        "tailwind",
+        "minimal"
       ],
       "description": "A typographic testimonial card from Serenity UI with animated text emphasis.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/ayushmxxn/type-testimonial/default/preview.1788765746950-91511718-fce4-4c4a-9517-4e8c1b2be4b1.webp",
@@ -460789,12 +460796,13 @@
       "name": "Image Stack Carousel",
       "source_url": "https://21st.dev/@ayushmxxn/components/image-stack-carousel",
       "registry_url": "https://21st.dev/@ayushmxxn/library/serenity-ui",
-      "category": "carousel",
+      "category": "gallery",
       "tags": [
         "react",
         "framer-motion",
         "tailwind",
-        "image-grid"
+        "image-grid",
+        "soft"
       ],
       "description": "A stacked image carousel where cards overlap and offset into depth as the active slide changes.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/ayushmxxn/image-stack-carousel/default/preview.1788597516527-abf680ef-dda8-4f71-9068-a92dd59390d3.webp",
@@ -460805,12 +460813,13 @@
       "name": "Image Fan Carousel",
       "source_url": "https://21st.dev/@ayushmxxn/components/image-fan-carousel",
       "registry_url": "https://21st.dev/@ayushmxxn/library/serenity-ui",
-      "category": "carousel",
+      "category": "gallery",
       "tags": [
         "react",
         "framer-motion",
         "tailwind",
-        "animation"
+        "animation",
+        "soft"
       ],
       "description": "A fan-arranged image carousel that rotates cards along an arc for a spread-deck presentation.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/ayushmxxn/image-fan-carousel/default/preview.1788597117607-d7e6f7d3-3ad7-437f-8546-ee018639b48c.webp",
@@ -460827,7 +460836,8 @@
         "framer-motion",
         "tailwind",
         "tilt",
-        "3d"
+        "3d",
+        "flat"
       ],
       "description": "An interactive sketchbook-style portfolio with a 3D page flip for navigating project pages.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/ayushmxxn/portfolio-book/default/preview.1788121558047-09fe2892-bd75-43e8-8cc9-6f50c64e573a.webp",
@@ -460858,7 +460868,8 @@
       "tags": [
         "react",
         "tailwind",
-        "badge"
+        "badge",
+        "minimal"
       ],
       "description": "A tech stack strip that renders a row of technology badges for a product page.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/larsen66/tech-stack/default/preview.1750534120337.png",
@@ -460874,7 +460885,8 @@
         "react",
         "tailwind",
         "form",
-        "signup"
+        "signup",
+        "minimal"
       ],
       "description": "A waitlist email capture block with input and submit for landing pages.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/larsen66/waitlist/default/preview.1750533403005.png",
@@ -460885,12 +460897,13 @@
       "name": "Star Rating",
       "source_url": "https://21st.dev/@ayushmxxn/components/star-rating",
       "registry_url": "https://21st.dev/@ayushmxxn/library/serenity-ui",
-      "category": "rating",
+      "category": "testimonial",
       "tags": [
         "react",
         "svg",
         "tailwind",
-        "rating"
+        "rating",
+        "minimal"
       ],
       "description": "A star rating display component for reviews and testimonial cards.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_ayushmxxn/star-rating/default/preview.png",
@@ -460906,7 +460919,8 @@
         "react",
         "tailwind",
         "grid",
-        "card"
+        "card",
+        "flat"
       ],
       "description": "A feature section presenting product capabilities in a structured grid.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_ayushmxxn/feature-section/default/preview.png",
@@ -460922,7 +460936,8 @@
         "react",
         "typescript",
         "code-editor",
-        "monaco"
+        "monaco",
+        "monochrome"
       ],
       "description": "A styled code block component with syntax highlighting for embedding snippets.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_ayushmxxn/code-block/default/preview.png",
@@ -460955,7 +460970,8 @@
         "webgl",
         "shader",
         "glsl",
-        "holographic"
+        "iridescent",
+        "shader-art"
       ],
       "description": "A shader that braids layered strands into an iridescent shimmering pattern.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/dhileepkumargm/iridescent-braided-shader/default/preview.1785282110380-c6228d70-e074-4acf-b5e3-b167940684ea.png",
@@ -460971,7 +460987,8 @@
         "three.js",
         "react",
         "3d",
-        "animation"
+        "animation",
+        "gradient"
       ],
       "description": "A 3D mountain scene rendered as an animated procedural landscape.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/dhileepkumargm/mountain-scene/default/preview.1785191178700-86b0920d-491c-47bd-ab94-43b31c5dfced.png",
@@ -461004,7 +461021,8 @@
         "react",
         "animation",
         "scroll-effect",
-        "text"
+        "text",
+        "flat"
       ],
       "description": "An FAQ section that rolls through questions with a continuous vertical scroll.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2xffZsPH7trHq0L2RAacpvdoyXT/habit-faq-scroller/default/preview.1786151137958.webp",
@@ -461020,7 +461038,8 @@
         "react",
         "tailwind",
         "avatar",
-        "card"
+        "card",
+        "flat"
       ],
       "description": "A community testimonial block displaying quotes with author attribution.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/dhileepkumargm/community-testimonial/default/preview.1761290291398.png",
@@ -461036,7 +461055,8 @@
         "react",
         "animation",
         "image-effect",
-        "grid"
+        "grid",
+        "morph"
       ],
       "description": "An image reveal effect that animates thumbnails into view on scroll.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/dhileepkumargm/img-reveal/default/preview.1785281659729-bad27e24-c631-49ea-9fbc-569dfaa4f510.png",
@@ -461052,7 +461072,8 @@
         "react",
         "svg",
         "filter",
-        "transition"
+        "transition",
+        "fluid"
       ],
       "description": "A liquid-style reveal that unmasks content with a fluid, ink-like mask.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/dhileepkumargm/liquid-reveal/default/preview.1785281562386-380ab6f4-3ce5-478c-8289-5b77a4c1dd04.png",
@@ -461068,7 +461089,8 @@
         "react",
         "css",
         "transition",
-        "clip"
+        "clip",
+        "hard"
       ],
       "description": "A shutter reveal that splits open like camera shutters to expose content.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/dhileepkumargm/shutter-reveal/default/preview.1785281480522-30a7d499-1bac-4a3f-8d84-4f58af03d670.png",
@@ -461084,7 +461106,8 @@
         "aurora",
         "gradient",
         "react",
-        "glow"
+        "glow",
+        "card"
       ],
       "description": "A card surface filled with an animated aurora gradient and glow border.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/dhileepkumargm/aurora-card/default/preview.1785281406012-245aa9ff-dc43-40a5-bcb0-4b9cb5615d35.png",
@@ -461100,7 +461123,8 @@
         "three.js",
         "react",
         "webgl",
-        "animation"
+        "animation",
+        "iridescent"
       ],
       "description": "An anomalous 3D artifact scene with drifting, iridescent geometry.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/dhileepkumargm/aether-anomaly/default/preview.1760959226462.png",
@@ -461148,7 +461172,8 @@
         "react",
         "tailwind",
         "auth",
-        "login"
+        "login",
+        "minimal"
       ],
       "description": "A signal-themed authentication screen with styled credential fields.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/dhileepkumargm/signal-authentication/default/preview.1785280991311-e5a625ff-1cf3-4959-8c40-50d8a8dfe0da.png",
@@ -461164,7 +461189,8 @@
         "animation",
         "css",
         "react",
-        "3d"
+        "3d",
+        "plasma"
       ],
       "description": "A kinetic orb loader with rotating, deforming sphere motion.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/dhileepkumargm/kinetic-orb-loader/default/preview.1760954485122.png",
@@ -461180,7 +461206,8 @@
         "gooey",
         "svg",
         "css-filter",
-        "react"
+        "react",
+        "button"
       ],
       "description": "A button with a gooey SVG filter effect that stretches the hover/press blob.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2xffZsPH7trHq0L2RAacpvdoyXT/gooey-button/default/preview.1785531998492.png",
@@ -461194,8 +461221,10 @@
       "category": "card",
       "tags": [
         "holographic",
+        "iridescent",
         "gradient",
-        "react"
+        "react",
+        "card"
       ],
       "description": "A holographic card with shifting iridescent foil-like gradients.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/dhileepkumargm/holographic-card/default/preview.1760953529748.png",
@@ -461211,7 +461240,7 @@
         "react",
         "d3",
         "timeline",
-        "canvas"
+        "wireframe"
       ],
       "description": "A chronological board visualising events along a time axis.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/dhileepkumargm/chrono-board/default/preview.1760950505106.png",
@@ -461227,7 +461256,8 @@
         "webgl",
         "shader",
         "glsl",
-        "neon"
+        "neon",
+        "shader-art"
       ],
       "description": "A liquid neon shader producing glowing fluid plasma color bands.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/dhileepkumargm/liquid-neon-shader/default/preview.1785280626110-367833c2-cfef-4c70-b33f-17f4f12b5bab.png",
@@ -461243,7 +461273,8 @@
         "three.js",
         "react",
         "webgl",
-        "animation"
+        "animation",
+        "iridescent"
       ],
       "description": "A set of anomalous matter 3D objects rendered with reflective materials.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/dhileepkumargm/anomalous-matter-s/default/preview.1760624037714.png",
@@ -461275,7 +461306,8 @@
         "react",
         "tailwind",
         "hero",
-        "landing-page"
+        "landing-page",
+        "flat"
       ],
       "description": "An e-commerce oriented hero section with product-forward layout.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/bankkroll/commerce-hero/default/preview.1754172921365.png",
@@ -461291,7 +461323,8 @@
         "react",
         "tailwind",
         "hero",
-        "landing-page"
+        "landing-page",
+        "flat"
       ],
       "description": "A SaaS hero section for the Acme product with headline and call to action.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/bankkroll/acme-hero/default/preview.1754169391717.png",
@@ -461307,7 +461340,7 @@
         "react",
         "tailwind",
         "search-bar",
-        "command"
+        "minimal"
       ],
       "description": "A command-palette style search dialog with keyboard-driven filtering.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/bankkroll/search-command-dialog/default/preview.1753323238514.png",
@@ -461323,7 +461356,8 @@
         "react",
         "tailwind",
         "card",
-        "file-upload"
+        "file-upload",
+        "flat"
       ],
       "description": "A file viewer panel presenting a browsable file with metadata.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2vDrVta4PKJEhGZOxwYiAcxSKTV/file-viewer/default/preview.1786988795579.webp",
@@ -461339,7 +461373,8 @@
         "react",
         "tailwind",
         "input",
-        "form"
+        "form",
+        "flat"
       ],
       "description": "A numeric keypad input built for touch and mobile number entry.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/bankkroll/number-pad/default/preview.1751642013181.png",
@@ -461355,7 +461390,8 @@
         "react",
         "tailwind",
         "file-upload",
-        "button"
+        "button",
+        "flat"
       ],
       "description": "A button that triggers a file picker and shows upload progress state.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/bankkroll/file-upload-button/default/preview.1751640178519.png",
@@ -461370,8 +461406,8 @@
       "tags": [
         "react",
         "svg",
-        "emoji",
-        "search-bar"
+        "search-bar",
+        "flat"
       ],
       "description": "An emoji picker popover with searchable categories.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/bankkroll/emoji-picker/default/preview.1751639668482.png",
@@ -461387,7 +461423,8 @@
         "react",
         "tailwind",
         "auth",
-        "login"
+        "login",
+        "flat"
       ],
       "description": "A sign-in and sign-up form with email and password fields.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2vDrVta4PKJEhGZOxwYiAcxSKTV/auth-form-1/default/preview.1750812033332.png",
@@ -461403,7 +461440,8 @@
         "react",
         "monaco",
         "code-editor",
-        "drawer"
+        "drawer",
+        "monochrome"
       ],
       "description": "A code editor presented in a slide-over sheet with code and preview panes.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2vDrVta4PKJEhGZOxwYiAcxSKTV/code-editor-sheet/default/preview.1750812581036.png",
@@ -461419,7 +461457,8 @@
         "react",
         "framer-motion",
         "tailwind",
-        "avatar"
+        "avatar",
+        "soft"
       ],
       "description": "An animated testimonial row with staggered entrance and hover states.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2vDrVta4PKJEhGZOxwYiAcxSKTV/simple-animated-testimonials/default/preview.1744401708296.png",
@@ -461468,7 +461507,8 @@
         "react",
         "tailwind",
         "timeline",
-        "stepper"
+        "stepper",
+        "minimal"
       ],
       "description": "A numbered how-it-works section laying out steps in sequence.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2rmPdOT0hL8MtSnYm8IpqqrYTVg/how-it-works-01/default/preview.1789036405122.png",
@@ -461484,7 +461524,8 @@
         "react",
         "tailwind",
         "form",
-        "input"
+        "input",
+        "flat"
       ],
       "description": "A centered contact form with name, email and message fields.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2rmPdOT0hL8MtSnYm8IpqqrYTVg/contact-16/default/preview.1789036558657.webp",
@@ -461500,7 +461541,8 @@
         "react",
         "tailwind",
         "grid",
-        "card"
+        "card",
+        "flat"
       ],
       "description": "A bento-grid hero section composed of differently sized feature tiles.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2rmPdOT0hL8MtSnYm8IpqqrYTVg/bento-02/default/preview.1789036815673.png",
@@ -461516,7 +461558,8 @@
         "react",
         "tailwind",
         "form",
-        "signup"
+        "signup",
+        "flat"
       ],
       "description": "An email-only signup form block for newsletter capture.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2rmPdOT0hL8MtSnYm8IpqqrYTVg/register-02/default/preview.1789037215619.png",
@@ -461532,7 +461575,8 @@
         "react",
         "tailwind",
         "auth",
-        "login"
+        "login",
+        "flat"
       ],
       "description": "A centered social login panel with third-party sign-in buttons.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2rmPdOT0hL8MtSnYm8IpqqrYTVg/login-16/default/preview.1789037302442.png",
@@ -461548,7 +461592,8 @@
         "react",
         "framer-motion",
         "tailwind",
-        "animation"
+        "animation",
+        "morph"
       ],
       "description": "A dynamic action control that morphs between available actions on hover.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/larsen66/dynamic-action/default/preview.1749423422420.png",
@@ -461564,7 +461609,8 @@
         "react",
         "tailwind",
         "slider",
-        "rating"
+        "rating",
+        "flat"
       ],
       "description": "A feedback slider that captures a rating by dragging along a track.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2rmPdOT0hL8MtSnYm8IpqqrYTVg/feedback-slider/default/preview.1788967848653.webp",
@@ -461580,7 +461626,8 @@
         "react",
         "css",
         "animation",
-        "badge"
+        "badge",
+        "flat"
       ],
       "description": "A follower counter badge that animates when the count increments.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/larsen66/follower-counter/default/preview.1749422478218.png",
@@ -461596,7 +461643,8 @@
         "react",
         "tailwind",
         "card",
-        "grid"
+        "grid",
+        "flat"
       ],
       "description": "An auto-layout card that reflows its children into a responsive arrangement.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2rmPdOT0hL8MtSnYm8IpqqrYTVg/auto-layout-card/default/preview.1789038836420.webp",
@@ -461611,8 +461659,8 @@
       "tags": [
         "react",
         "tailwind",
-        "social",
-        "footer"
+        "footer",
+        "flat"
       ],
       "description": "A compact social links row with per-network icon buttons.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/larsen66/social-links/default/preview.1749421857897.png",
@@ -461628,7 +461676,7 @@
         "react",
         "svg",
         "animation",
-        "calendar"
+        "flat"
       ],
       "description": "A booking visualization laying out scheduled slots on a time axis.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/larsen66/visualize-booking/default/preview.1749421584098.png",
@@ -461644,7 +461692,8 @@
         "react",
         "framer-motion",
         "tailwind",
-        "float"
+        "glow",
+        "button"
       ],
       "description": "A floating action button that lifts and casts a shadow on hover.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2rmPdOT0hL8MtSnYm8IpqqrYTVg/floating-button/default/preview.1786932665688.webp",
@@ -461659,8 +461708,8 @@
       "tags": [
         "react",
         "tailwind",
-        "calendar",
-        "card"
+        "card",
+        "flat"
       ],
       "description": "A post scheduler panel for queueing and timing content publication.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/larsen66/post-scheduler/default/preview.1749420988373.png",
@@ -461676,7 +461725,7 @@
         "react",
         "tailwind",
         "input",
-        "tag"
+        "flat"
       ],
       "description": "A tag input that accepts typed text and commits chips on enter.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/larsen66/tag-input/default/preview.1749420137552.png",
@@ -461692,7 +461741,8 @@
         "react",
         "tailwind",
         "avatar",
-        "dropdown"
+        "dropdown",
+        "flat"
       ],
       "description": "An assignee selector showing avatar, name and a dropdown of options.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/larsen66/assignee-user/default/preview.1749413425517.png",
@@ -461708,7 +461758,8 @@
         "react",
         "tailwind",
         "menu",
-        "dropdown"
+        "dropdown",
+        "flat"
       ],
       "description": "An issue context menu with actions scoped to a selected issue.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/larsen66/issue-context-menu/default/preview.1749371901757.png",
@@ -461724,7 +461775,7 @@
         "react",
         "tailwind",
         "badge",
-        "color"
+        "flat"
       ],
       "description": "A compact project badge showing project color and label.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2rmPdOT0hL8MtSnYm8IpqqrYTVg/project-badge/default/preview.1750812083317.png",
@@ -461740,7 +461791,7 @@
         "react",
         "tailwind",
         "badge",
-        "tag"
+        "flat"
       ],
       "description": "A row of colored label badges for tagging items.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2rmPdOT0hL8MtSnYm8IpqqrYTVg/label-badges/default/preview.1788451337944.png",
@@ -461756,7 +461807,7 @@
         "react",
         "tailwind",
         "sidebar",
-        "nav"
+        "minimal"
       ],
       "description": "A sidebar navigation primitive with nested items and active state.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/larsen66/indevuisidebar/default/preview.1749330511992.png",
@@ -461772,7 +461823,8 @@
         "react",
         "tailwind",
         "tooltip",
-        "popover"
+        "popover",
+        "flat"
       ],
       "description": "A tooltip primitive with configurable placement and delay.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2rmPdOT0hL8MtSnYm8IpqqrYTVg/indevuitooltip/default/preview.1750812645188.png",
@@ -461788,7 +461840,8 @@
         "react",
         "tailwind",
         "input",
-        "form"
+        "form",
+        "flat"
       ],
       "description": "A textarea input primitive with resizable multi-line behaviour.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/larsen66/indevui-textarea/default/preview.1749320833863.png",
@@ -461804,7 +461857,8 @@
         "react",
         "tailwind",
         "tab",
-        "transition"
+        "transition",
+        "flat"
       ],
       "description": "A tabs primitive with animated active-tab indicator.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/larsen66/indevui-tabs/default/preview.1749320525421.png",
@@ -461820,7 +461874,7 @@
         "react",
         "tailwind",
         "rating",
-        "feedback"
+        "flat"
       ],
       "description": "A feedback form that collects a rating and written comment.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2uAqrF8oLIpxBVD9ZqYRYLfhKZ1/feedback/inline/preview.1786989278331.webp",
@@ -461836,7 +461890,8 @@
         "react",
         "tailwind",
         "slider",
-        "input"
+        "input",
+        "flat"
       ],
       "description": "A range slider primitive with value display and keyboard support.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/reapollo/interfaces-slider/range/preview.1775124751250.png",
@@ -461852,7 +461907,8 @@
         "react",
         "tailwind",
         "dropdown",
-        "form"
+        "form",
+        "flat"
       ],
       "description": "A select primitive for choosing one option from a list.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_jshguo/interfaces-select/grouped/preview.1788973285390.webp",
@@ -461868,7 +461924,8 @@
         "react",
         "tailwind",
         "input",
-        "form"
+        "form",
+        "flat"
       ],
       "description": "A textarea primitive with label, helper text and resize handling.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/reapollo/interfaces-textarea/with-label/preview.1775122706584.png",
@@ -461884,7 +461941,8 @@
         "react",
         "tailwind",
         "input",
-        "form"
+        "form",
+        "flat"
       ],
       "description": "A one-time-password input that splits digits across boxes.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_jshguo/interfaces-input-otp/alphanumeric/preview.1788948849405.webp",
@@ -461900,7 +461958,8 @@
         "react",
         "tailwind",
         "popover",
-        "hover-effect"
+        "hover-effect",
+        "flat"
       ],
       "description": "A hover card that reveals rich content on pointer hover.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_jshguo/interfaces-hover-card/top/preview.1788951650087.webp",
@@ -461915,8 +461974,7 @@
       "tags": [
         "react",
         "animation",
-        "chat",
-        "typing"
+        "minimal"
       ],
       "description": "A typing indicator that animates three dots for chat interfaces.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/ddoemonn/typing-indicator/default/preview.1785481162781-a9281095-c93e-4702-bd69-20cc00a38973.png",
@@ -461932,7 +461990,8 @@
         "react",
         "tailwind",
         "stepper",
-        "form"
+        "form",
+        "flat"
       ],
       "description": "A multi-step wizard with per-step progress and navigation.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/ddoemonn/wizard-steps/default/preview.1785481100595-bd34f56b-c117-4c3f-850c-17f9fe106632.png",
@@ -461948,7 +462007,8 @@
         "react",
         "framer-motion",
         "tailwind",
-        "text"
+        "text",
+        "flat"
       ],
       "description": "A value flash that briefly highlights a number when it changes.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/ddoemonn/value-flash/default/preview.1785481071117-a3034cd7-3822-4e6e-8242-49768af6ee9e.png",
@@ -461964,7 +462024,8 @@
         "react",
         "tailwind",
         "tooltip",
-        "animation"
+        "animation",
+        "flat"
       ],
       "description": "A grouped set of tooltips that coordinate open/close behaviour.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2y2pjLtk7oS33zts6BqhEIOHrAj/tooltip-group/default/preview.1787588923666.png",
@@ -461980,7 +462041,8 @@
         "react",
         "tailwind",
         "stepper",
-        "timeline"
+        "timeline",
+        "flat"
       ],
       "description": "A task steps indicator showing progress through an ordered checklist.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2y2pjLtk7oS33zts6BqhEIOHrAj/task-steps/default/preview.1787588490314.png",
@@ -461996,7 +462058,8 @@
         "react",
         "tailwind",
         "input",
-        "form"
+        "form",
+        "flat"
       ],
       "description": "A floating label input where the placeholder rises above the field on focus.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/ddoemonn/floating-label/billing-contact-form/preview.1785479747681-9d22987b-9b8e-4ce1-8374-081846266c42.png",
@@ -462011,8 +462074,8 @@
       "tags": [
         "react",
         "tailwind",
-        "validation",
-        "input"
+        "input",
+        "flat"
       ],
       "description": "An inline validation field that reports errors beneath the input.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2y2pjLtk7oS33zts6BqhEIOHrAj/inline-validation/default/preview.1785526788855.webp",
@@ -462027,8 +462090,8 @@
       "tags": [
         "react",
         "tailwind",
-        "table",
-        "drag"
+        "drag",
+        "flat"
       ],
       "description": "A sortable table with column sorting and row ordering.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/ddoemonn/sortable-table/default/preview.1785479684243-b3e02aca-b88b-460b-add0-e09caac72f6f.png",
@@ -462039,12 +462102,12 @@
       "name": "Snap Carousel",
       "source_url": "https://21st.dev/@ddoemonn/components/snap-carousel",
       "registry_url": "https://21st.dev/@ddoemonn/library/interior-dev",
-      "category": "carousel",
+      "category": "gallery",
       "tags": [
         "react",
         "tailwind",
         "scroll-effect",
-        "snap"
+        "flat"
       ],
       "description": "A snap carousel that snaps to each slide using CSS scroll snapping.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2y2pjLtk7oS33zts6BqhEIOHrAj/snap-carousel/default/preview.1785527001402.webp",
@@ -462060,7 +462123,8 @@
         "react",
         "tailwind",
         "skeleton",
-        "transition"
+        "transition",
+        "minimal"
       ],
       "description": "A skeleton loader that swaps to real content once data resolves.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2y2pjLtk7oS33zts6BqhEIOHrAj/skeleton-swap/default/preview.1786651222523.png",
@@ -462076,7 +462140,8 @@
         "react",
         "tailwind",
         "text",
-        "animation"
+        "animation",
+        "soft"
       ],
       "description": "A show-more control that expands truncated text with a fade.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/ddoemonn/show-more/default/preview.1785478250195-29949437-d513-4759-b66d-6ad7900c7148.png",
@@ -462092,7 +462157,8 @@
         "react",
         "tailwind",
         "slider",
-        "input"
+        "input",
+        "flat"
       ],
       "description": "A slider with detent snapping at defined stop points.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2y2pjLtk7oS33zts6BqhEIOHrAj/slider-detents/default/preview.1787348545083.png",
@@ -462103,12 +462169,12 @@
       "name": "Scroll Spy",
       "source_url": "https://21st.dev/@ddoemonn/components/scroll-spy",
       "registry_url": "https://21st.dev/@ddoemonn/library/interior-dev",
-      "category": "scrollbar",
+      "category": "animation",
       "tags": [
         "react",
         "tailwind",
         "scroll-effect",
-        "nav"
+        "flat"
       ],
       "description": "A scroll spy that highlights the section currently in view.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2y2pjLtk7oS33zts6BqhEIOHrAj/scroll-spy/default/preview.1785527266612.webp",
@@ -462124,7 +462190,8 @@
         "react",
         "tailwind",
         "auth",
-        "form"
+        "form",
+        "flat"
       ],
       "description": "A change-password screen with current and new password fields plus validation.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2rWolCuRnJW3DRiuQ5JHrl5kj8a/auth-change-password/default/preview.1787265338101.webp",
@@ -462140,7 +462207,8 @@
         "react",
         "tailwind",
         "auth",
-        "signup"
+        "signup",
+        "flat"
       ],
       "description": "An email change screen that verifies and applies a new address.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2rWolCuRnJW3DRiuQ5JHrl5kj8a/auth-email-change/default/preview.1787265363844.webp",
@@ -462156,7 +462224,8 @@
         "react",
         "tailwind",
         "error",
-        "notification"
+        "notification",
+        "flat"
       ],
       "description": "An AI error handler panel that surfaces model errors with retry affordances.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2rWolCuRnJW3DRiuQ5JHrl5kj8a/ai-error-handler/default/preview.1788355225361.png",
@@ -462172,7 +462241,7 @@
         "react",
         "animation",
         "ai-tool",
-        "chat"
+        "minimal"
       ],
       "description": "An AI thinking indicator shown while a model streams its response.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2rWolCuRnJW3DRiuQ5JHrl5kj8a/ai-thinking/default/preview.1787332193830.png",
@@ -462188,7 +462257,8 @@
         "react",
         "tailwind",
         "auth",
-        "signup"
+        "signup",
+        "flat"
       ],
       "description": "A verify-email screen that confirms ownership of an address.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/preetsuthar17/auth-verify-email/default/preview.1783695196322.png",
@@ -462204,7 +462274,8 @@
         "react",
         "tailwind",
         "card",
-        "pricing"
+        "pricing",
+        "flat"
       ],
       "description": "A billing plan selector comparing tiers with a current-plan indicator.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/preetsuthar17/billing-plan-selector/default/preview.1784685528122-ff5e282c-0d72-4e2f-8ad0-38a56a2d83a0.png",
@@ -462220,7 +462291,8 @@
         "react",
         "tailwind",
         "card",
-        "pricing"
+        "pricing",
+        "flat"
       ],
       "description": "An upgrade prompt card nudging users to a higher billing tier.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/preetsuthar17/billing-upgrade-prompt/default/preview.1784712697192-ed61da65-7e5a-45a6-ada2-6b08060ce1f6.png",
@@ -462236,7 +462308,8 @@
         "react",
         "tailwind",
         "ai-tool",
-        "grid"
+        "grid",
+        "flat"
       ],
       "description": "A set of reusable AI prompt templates laid out as selectable cards.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/preetsuthar17/ai-prompt-templates/default/preview.1763354411062.png",
@@ -462252,7 +462325,8 @@
         "react",
         "tailwind",
         "dropdown",
-        "ai-tool"
+        "ai-tool",
+        "flat"
       ],
       "description": "An AI model selector for choosing the backing model in an app.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/preetsuthar17/ai-model-selector/default/preview.1763351382383.png",
@@ -462268,7 +462342,8 @@
         "react",
         "tailwind",
         "progress-bar",
-        "dashboard"
+        "dashboard",
+        "flat"
       ],
       "description": "An AI usage quota meter showing consumption against a limit.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/preetsuthar17/ai-usage-quota/default/preview.1763350897635.png",
@@ -462284,7 +462359,8 @@
         "react",
         "tailwind",
         "text",
-        "ai-tool"
+        "ai-tool",
+        "flat"
       ],
       "description": "A citations block listing sources referenced by a model answer.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/preetsuthar17/citations/default/preview.1763350566492.png",
@@ -462300,7 +462376,8 @@
         "react",
         "tailwind",
         "feed",
-        "sidebar"
+        "sidebar",
+        "flat"
       ],
       "description": "An AI chat history list for navigating past conversations.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/preetsuthar17/ai-chat-history/default/preview.1763350169310.png",
@@ -462316,7 +462393,8 @@
         "react",
         "tailwind",
         "form",
-        "input"
+        "input",
+        "flat"
       ],
       "description": "An API settings panel for configuring keys and endpoints.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/preetsuthar17/api-settings/default/preview.1761363698163.png",
@@ -462332,7 +462410,8 @@
         "react",
         "tailwind",
         "toggle",
-        "settings"
+        "settings",
+        "flat"
       ],
       "description": "A notification settings panel with per-channel toggles.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/preetsuthar17/notification-settings/default/preview.1761363027887.png",
@@ -462348,7 +462427,8 @@
         "react",
         "tailwind",
         "form",
-        "settings"
+        "settings",
+        "flat"
       ],
       "description": "A general settings panel with account-level preferences.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/preetsuthar17/general-settings/default/preview.1761150402302.png",
@@ -462364,7 +462444,8 @@
         "react",
         "tailwind",
         "toggle",
-        "settings"
+        "settings",
+        "flat"
       ],
       "description": "An appearance settings panel controlling theme and density options.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/preetsuthar17/appearance-settings/default/preview.1761149928844.png",
@@ -462380,11 +462461,29 @@
         "react",
         "tailwind",
         "settings",
-        "toggle"
+        "toggle",
+        "flat"
       ],
       "description": "A privacy and data settings panel for consent and retention controls.",
       "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/preetsuthar17/privacy-data-setting/default/preview.1761149656456.png",
       "id": "unknown__privacy-&-data-setting",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Reading Progress",
+      "source_url": "https://21st.dev/@ddoemonn/components/reading-progress",
+      "registry_url": "https://21st.dev/@ddoemonn/library/interior-dev",
+      "category": "loader",
+      "tags": [
+        "react",
+        "tailwind",
+        "progress-bar",
+        "scroll-effect",
+        "flat"
+      ],
+      "description": "A reading progress bar that tracks scroll depth through content.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=3840,quality=75,format=webp/https://cdn.21st.dev/user_2y2pjLtk7oS33zts6BqhEIOHrAj/reading-progress/default/preview.1785527308894.webp",
+      "id": "unknown__reading-progress",
       "source_domain": "21st.dev"
     }
   ]
