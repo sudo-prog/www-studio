@@ -1,6 +1,6 @@
 {
-  "version": "1.0.71",
-  "source_count": 26890,
+  "version": "1.0.72",
+  "source_count": 26930,
   "components": [
     {
       "id": "cat-0",
@@ -466212,6 +466212,801 @@
       "description": "A minimal form built with CSS for use in a polished user interface.",
       "preview_image": "",
       "id": "unknown__rotten-bullfrog-form",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Sour Bullfrog Button",
+      "source_url": "https://uiverse.io/212004ALJI/sour-bullfrog-96",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "gradient",
+        "flat",
+        "shadow",
+        "button",
+        "hover-effect"
+      ],
+      "description": "Component by uiverse author 212004ALJI \u2014 a dark rectangular button with a linear-gradient fill, rounded corners, a box-shadow and a CSS transition on hover.",
+      "preview_image": "",
+      "id": "unknown__sour-bullfrog-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Bad Wasp Loader",
+      "source_url": "https://uiverse.io/Ali-Tahmazi99/bad-wasp-77",
+      "registry_url": "https://uiverse.io/all",
+      "category": "loader",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "minimal",
+        "flat",
+        "monochrome",
+        "loader",
+        "spinner"
+      ],
+      "description": "Component by uiverse author Ali-Tahmazi99 \u2014 a minimal grey circular loading indicator built from a CSS keyframe animation and a transform rotation.",
+      "preview_image": "",
+      "id": "unknown__bad-wasp-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Brown Duck Input",
+      "source_url": "https://uiverse.io/Amankrah/brown-duck-80",
+      "registry_url": "https://uiverse.io/all",
+      "category": "search-bar",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "css-filter",
+        "glow",
+        "gradient",
+        "aurora",
+        "search-bar",
+        "input"
+      ],
+      "description": "Component by uiverse author Amankrah \u2014 a dark rounded search input with an icon slot, layered linear, radial and conic gradients, a blur filter and a CSS keyframe animation.",
+      "preview_image": "",
+      "id": "unknown__brown-duck-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Lucky Lionfish Card",
+      "source_url": "https://uiverse.io/AyuuLima/lucky-lionfish-84",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "gradient",
+        "glow",
+        "soft",
+        "card",
+        "hover-effect"
+      ],
+      "description": "Component by uiverse author AyuuLima \u2014 a dark rounded content card with a linear-gradient fill, a blurred inner shadow and a CSS transition applied on hover.",
+      "preview_image": "",
+      "id": "unknown__lucky-lionfish-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Rare Husky Form",
+      "source_url": "https://uiverse.io/Cybercom682/rare-husky-48",
+      "registry_url": "https://uiverse.io/all",
+      "category": "form",
+      "tags": [
+        "tailwind",
+        "html",
+        "gradient",
+        "soft",
+        "flat",
+        "form",
+        "login"
+      ],
+      "description": "Component by uiverse author Cybercom682 \u2014 a rounded login form with email and password fields, a gradient submit button and light and dark colour variants.",
+      "preview_image": "",
+      "id": "unknown__rare-husky-form",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Yellow Goat Input",
+      "source_url": "https://uiverse.io/Desarrollo3HQ5/yellow-goat-19",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "tailwind",
+        "html",
+        "svg",
+        "minimal",
+        "flat",
+        "monochrome",
+        "input",
+        "login"
+      ],
+      "description": "Component by uiverse author Desarrollo3HQ5 \u2014 a minimalist rounded login input rendered with Tailwind CSS and an inline SVG icon.",
+      "preview_image": "",
+      "id": "unknown__yellow-goat-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Nasty Otter Card",
+      "source_url": "https://uiverse.io/Itskrish01/nasty-otter-93",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "frosted",
+        "glass",
+        "minimal",
+        "card",
+        "notification"
+      ],
+      "description": "Component by uiverse author Itskrish01 \u2014 a dark rounded notification card that uses a backdrop-filter with a blur value for a transparent, frosted surface.",
+      "preview_image": "",
+      "id": "unknown__nasty-otter-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Ordinary Catfish Card",
+      "source_url": "https://uiverse.io/Javierrocadev/ordinary-catfish-76",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "html",
+        "svg",
+        "flat",
+        "minimal",
+        "soft",
+        "card"
+      ],
+      "description": "Component by uiverse author Javierrocadev \u2014 a square digital watch-style card built with Tailwind CSS and inline SVG icons for the time, heart and burn readouts.",
+      "preview_image": "",
+      "id": "unknown__ordinary-catfish-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Terrible Catfish Button",
+      "source_url": "https://uiverse.io/Madflows/terrible-catfish-72",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "flat",
+        "shadow",
+        "soft",
+        "button",
+        "call-to-action"
+      ],
+      "description": "Component by uiverse author Madflows \u2014 a pink rectangular call-to-action button with rounded corners, a box-shadow and a transition on hover.",
+      "preview_image": "",
+      "id": "unknown__terrible-catfish-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Silent Lizard Button",
+      "source_url": "https://uiverse.io/MuhammadHasann/silent-lizard-44",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "gradient",
+        "flat",
+        "shadow",
+        "button",
+        "hover-effect"
+      ],
+      "description": "Component by uiverse author MuhammadHasann \u2014 an orange rounded button carrying a star label, with a filter-based treatment and a hover transition.",
+      "preview_image": "",
+      "id": "unknown__silent-lizard-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Kind Cougar Button",
+      "source_url": "https://uiverse.io/Peary74/kind-cougar-54",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "flat",
+        "minimal",
+        "soft",
+        "button",
+        "icon"
+      ],
+      "description": "Component by uiverse author Peary74 \u2014 a compact black rounded button with an inline save icon laid out with flexbox and a transition on hover.",
+      "preview_image": "",
+      "id": "unknown__kind-cougar-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Honest Rat Form",
+      "source_url": "https://uiverse.io/R1SH4BH81/honest-rat-18",
+      "registry_url": "https://uiverse.io/all",
+      "category": "form",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "3d",
+        "frosted",
+        "minimal",
+        "form",
+        "login"
+      ],
+      "description": "Component by uiverse author R1SH4BH81 \u2014 a dark sign-in form built in a 3D perspective transform with a backdrop blur and an animated entry keyframe.",
+      "preview_image": "",
+      "id": "unknown__honest-rat-form",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Heavy Fox Card",
+      "source_url": "https://uiverse.io/Siyu1017/heavy-fox-66",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "gradient",
+        "shadow",
+        "soft",
+        "card",
+        "notification"
+      ],
+      "description": "Component by uiverse author Siyu1017 \u2014 a rounded message notification card with a linear-gradient header, a drop shadow and a CSS keyframe animation.",
+      "preview_image": "",
+      "id": "unknown__heavy-fox-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Hungry Cobra Card",
+      "source_url": "https://uiverse.io/SmookyDev/hungry-cobra-77",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "html",
+        "flat",
+        "minimal",
+        "shadow",
+        "card",
+        "badge"
+      ],
+      "description": "Component by uiverse author SmookyDev \u2014 a compact tags card listing hashtag labels in a wrapping flex row, built with Tailwind CSS and a large shadow.",
+      "preview_image": "",
+      "id": "unknown__hungry-cobra-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Tiny Emu Card",
+      "source_url": "https://uiverse.io/Yaya12085/tiny-emu-37",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "minimal",
+        "flat",
+        "soft",
+        "card",
+        "badge"
+      ],
+      "description": "Component by uiverse author Yaya12085 \u2014 a compact dashboard card pairing a green status icon with a numeric sales increase readout.",
+      "preview_image": "",
+      "id": "unknown__tiny-emu-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Giant Earwig Button",
+      "source_url": "https://uiverse.io/adeladel522/giant-earwig-69",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "gradient",
+        "flat",
+        "minimal",
+        "button",
+        "hover-effect"
+      ],
+      "description": "Component by uiverse author adeladel522 \u2014 a blue rounded apply button with an arrow icon and a CSS keyframe animation on the label text.",
+      "preview_image": "",
+      "id": "unknown__giant-earwig-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Hot Mule Button",
+      "source_url": "https://uiverse.io/chase2k25/hot-mule-15",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "gradient",
+        "shadow",
+        "3d",
+        "button",
+        "hover-effect"
+      ],
+      "description": "Component by uiverse author chase2k25 \u2014 a red glossy button built with layered box-shadows and an inset highlight for an embossed look.",
+      "preview_image": "",
+      "id": "unknown__hot-mule-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Bright Goat Input",
+      "source_url": "https://uiverse.io/doniaskima/bright-goat-87",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "minimal",
+        "flat",
+        "outline",
+        "input",
+        "form"
+      ],
+      "description": "Component by uiverse author doniaskima \u2014 a minimalist underlined text input with a placeholder label and a CSS transition on focus.",
+      "preview_image": "",
+      "id": "unknown__bright-goat-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Wicked Eagle Button",
+      "source_url": "https://uiverse.io/doniaskima/wicked-eagle-30",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "gradient",
+        "flat",
+        "soft",
+        "button",
+        "submit"
+      ],
+      "description": "Component by uiverse author doniaskima \u2014 a bold black rounded submit button using a radial gradient and a masked pseudo-element, with keyframe animation.",
+      "preview_image": "",
+      "id": "unknown__wicked-eagle-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Polite Termite Card",
+      "source_url": "https://uiverse.io/drewsephski/polite-termite-5",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "retro",
+        "glow",
+        "neon",
+        "card",
+        "click-effect"
+      ],
+      "description": "Component by uiverse author drewsephski \u2014 a dark terminal-style command card with glowing text, a box-shadow glow and a text animation on the command line.",
+      "preview_image": "",
+      "id": "unknown__polite-termite-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Chilly Husky Card",
+      "source_url": "https://uiverse.io/emmanuelh-dev/chilly-husky-58",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "html",
+        "gradient",
+        "flat",
+        "soft",
+        "card",
+        "grid"
+      ],
+      "description": "Component by uiverse author emmanuelh-dev \u2014 a two-column grid of four rounded cards, each with its own colour gradient, title and body copy.",
+      "preview_image": "",
+      "id": "unknown__chilly-husky-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Serious Grasshopper Card",
+      "source_url": "https://uiverse.io/emmanuelh-dev/serious-grasshopper-66",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "html",
+        "minimal",
+        "monochrome",
+        "retro",
+        "card",
+        "code"
+      ],
+      "description": "Component by uiverse author emmanuelh-dev \u2014 a dark bash-style terminal card with three window dots and a short npm install output block.",
+      "preview_image": "",
+      "id": "unknown__serious-grasshopper-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Fat Pig Input",
+      "source_url": "https://uiverse.io/fanishah/fat-pig-29",
+      "registry_url": "https://uiverse.io/all",
+      "category": "search-bar",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "minimal",
+        "flat",
+        "shadow",
+        "search-bar",
+        "input"
+      ],
+      "description": "Component by uiverse author fanishah \u2014 a dark rounded search input with a magnifier icon, an inset box-shadow and a transition on hover.",
+      "preview_image": "",
+      "id": "unknown__fat-pig-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "White Catfish Card",
+      "source_url": "https://uiverse.io/jubayer-10/white-catfish-8",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "html",
+        "svg",
+        "minimal",
+        "outline",
+        "flat",
+        "card"
+      ],
+      "description": "Component by uiverse author jubayer-10 \u2014 a minimal purple card pairing an outlined icon with a title, subtext and a number.",
+      "preview_image": "",
+      "id": "unknown__white-catfish-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Lovely Donkey Card",
+      "source_url": "https://uiverse.io/kelvyn_8843/lovely-donkey-28",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "retro",
+        "gradient",
+        "shadow",
+        "card",
+        "error"
+      ],
+      "description": "Component by uiverse author kelvyn_8843 \u2014 a retro 404 error card styled as a vintage television with antennae, using multiple gradient layers and a clip path.",
+      "preview_image": "",
+      "id": "unknown__lovely-donkey-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Dangerous Horse Button",
+      "source_url": "https://uiverse.io/kleenpulse/dangerous-horse-41",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "neon",
+        "glow",
+        "gradient",
+        "button",
+        "hover-effect"
+      ],
+      "description": "Component by uiverse author kleenpulse \u2014 a dark rectangular button with a blue to purple gradient, a glow box-shadow, a clip path edge and keyframe animation.",
+      "preview_image": "",
+      "id": "unknown__dangerous-horse-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Modern Cougar Loader",
+      "source_url": "https://uiverse.io/louloudev59/modern-cougar-64",
+      "registry_url": "https://uiverse.io/all",
+      "category": "loader",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "flat",
+        "minimal",
+        "gradient",
+        "loader",
+        "animation"
+      ],
+      "description": "Component by uiverse author louloudev59 \u2014 a loader built from a noodle-like SVG stroke with layered linear, radial and conic gradients and keyframe animation.",
+      "preview_image": "",
+      "id": "unknown__modern-cougar-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Dull Ape Form",
+      "source_url": "https://uiverse.io/mahbowal/dull-ape-98",
+      "registry_url": "https://uiverse.io/all",
+      "category": "form",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "gradient",
+        "flat",
+        "soft",
+        "form",
+        "login"
+      ],
+      "description": "Component by uiverse author mahbowal \u2014 a rounded blue login form laid out with CSS grid, containing email and password fields and a gradient submit button.",
+      "preview_image": "",
+      "id": "unknown__dull-ape-form",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Swift Swan Input",
+      "source_url": "https://uiverse.io/prikshit_1236/swift-swan-73",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "glow",
+        "gradient",
+        "shadow",
+        "input",
+        "form"
+      ],
+      "description": "Component by uiverse author prikshit_1236 \u2014 a dark rounded input with a purple radial glow, a backdrop blur and a linear gradient placeholder.",
+      "preview_image": "",
+      "id": "unknown__swift-swan-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Old Lionfish Input",
+      "source_url": "https://uiverse.io/reglobby/old-lionfish-90",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "css-filter",
+        "neon",
+        "glow",
+        "input",
+        "form"
+      ],
+      "description": "Component by uiverse author reglobby \u2014 a dark futuristic name field combining layered gradients, a blur backdrop, a clip path and a keyframe animation.",
+      "preview_image": "",
+      "id": "unknown__old-lionfish-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Old Lizard Loader",
+      "source_url": "https://uiverse.io/risabbir/old-lizard-88",
+      "registry_url": "https://uiverse.io/all",
+      "category": "loader",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "gradient",
+        "glow",
+        "flat",
+        "loader",
+        "animation"
+      ],
+      "description": "Component by uiverse author risabbir \u2014 a centred blue circular loader using a radial gradient, a box-shadow glow and a keyframe animation.",
+      "preview_image": "",
+      "id": "unknown__old-lizard-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "White Monkey Card",
+      "source_url": "https://uiverse.io/sabbircoder07/white-monkey-68",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "3d",
+        "gradient",
+        "flat",
+        "card",
+        "progress-bar"
+      ],
+      "description": "Component by uiverse author sabbircoder07 \u2014 a purple gradient results card listing numeric performance, memory, verbal and visual scores.",
+      "preview_image": "",
+      "id": "unknown__white-monkey-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Little Eagle Input",
+      "source_url": "https://uiverse.io/saidbl1/little-eagle-84",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "minimal",
+        "outline",
+        "flat",
+        "input",
+        "form"
+      ],
+      "description": "Component by uiverse author saidbl1 \u2014 a clean centred full-name field with a rounded outline, a placeholder and a transition on focus.",
+      "preview_image": "",
+      "id": "unknown__little-eagle-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Purple Rat Button",
+      "source_url": "https://uiverse.io/satyamchaudharydev/purple-rat-85",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "3d",
+        "shadow",
+        "flat",
+        "button",
+        "click-effect"
+      ],
+      "description": "Component by uiverse author satyamchaudharydev \u2014 a red rounded action button with a 3D box-shadow treatment and a CSS transition on hover.",
+      "preview_image": "",
+      "id": "unknown__purple-rat-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Funny Seahorse Card",
+      "source_url": "https://uiverse.io/seoulchik/funny-seahorse-89",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "gradient",
+        "flat",
+        "soft",
+        "card",
+        "grid"
+      ],
+      "description": "Component by uiverse author seoulchik \u2014 a services pricing card laid out with a CSS grid, showing a star rating, project details and a gradient panel.",
+      "preview_image": "",
+      "id": "unknown__funny-seahorse-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Afraid Turtle Button",
+      "source_url": "https://uiverse.io/simphiwe_8510/afraid-turtle-52",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "css-filter",
+        "gradient",
+        "glow",
+        "button",
+        "toggle"
+      ],
+      "description": "Component by uiverse author simphiwe_8510 \u2014 a dark rounded mode toggle button using a conic gradient, a blur filter and keyframe animation.",
+      "preview_image": "",
+      "id": "unknown__afraid-turtle-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Loud Badger Button",
+      "source_url": "https://uiverse.io/suda-code/loud-badger-55",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "flat",
+        "soft",
+        "shadow",
+        "button",
+        "hover-effect"
+      ],
+      "description": "Component by uiverse author suda-code \u2014 a blue circular control button with a rounded label, a box-shadow and a transition on hover.",
+      "preview_image": "",
+      "id": "unknown__loud-badger-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Calm Eel Input",
+      "source_url": "https://uiverse.io/themrsami/calm-eel-15",
+      "registry_url": "https://uiverse.io/all",
+      "category": "search-bar",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "minimal",
+        "flat",
+        "soft",
+        "search-bar",
+        "input"
+      ],
+      "description": "Component by uiverse author themrsami \u2014 a dark rounded search field with a magnifying glass icon, a radial gradient placeholder and a focus transition.",
+      "preview_image": "",
+      "id": "unknown__calm-eel-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Friendly Firefox Form",
+      "source_url": "https://uiverse.io/themrsami/friendly-firefox-52",
+      "registry_url": "https://uiverse.io/all",
+      "category": "form",
+      "tags": [
+        "tailwind",
+        "html",
+        "svg",
+        "minimal",
+        "flat",
+        "soft",
+        "form",
+        "signup"
+      ],
+      "description": "Component by uiverse author themrsami \u2014 a rounded dark sign-up form with labelled fields, a blue submit button and inline SVG icons.",
+      "preview_image": "",
+      "id": "unknown__friendly-firefox-form",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Fat Mouse Button",
+      "source_url": "https://uiverse.io/virus231/fat-mouse-84",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "css",
+        "plain-css",
+        "html",
+        "gradient",
+        "shadow",
+        "soft",
+        "button",
+        "hover-effect"
+      ],
+      "description": "Component by uiverse author virus231 \u2014 a red rounded call-to-action button with a gradient fill, a drop shadow and a CSS transition on hover.",
+      "preview_image": "",
+      "id": "unknown__fat-mouse-button",
       "source_domain": "uiverse.io"
     }
   ]
