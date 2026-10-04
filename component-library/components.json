@@ -1,6 +1,6 @@
 {
-  "version": "1.0.72",
-  "source_count": 26930,
+  "version": "1.0.73",
+  "source_count": 26933,
   "components": [
     {
       "id": "cat-0",
@@ -467008,6 +467008,66 @@
       "preview_image": "",
       "id": "unknown__fat-mouse-button",
       "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Particle Drift 2",
+      "source_url": "https://www.originkit.dev/components/particle-drift/02",
+      "registry_url": "https://www.originkit.dev/components/particle-drift",
+      "category": "background",
+      "tags": [
+        "webgl",
+        "glsl",
+        "particles.js",
+        "minimal",
+        "glow",
+        "background",
+        "particles",
+        "cursor"
+      ],
+      "description": "A WebGL field of drifting dots that draws fading lines between close neighbours and lights particles near the pointer, tethering each one to the cursor. Ships as a sparse 150-dot variant of the Particle Drift constellation background with a deep #0E0020 backdrop.",
+      "preview_image": "https://cdn.originkit.dev/components/particle-drift-02-poster.jpg?v=mufo0emb",
+      "id": "unknown__particle-drift-2",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Particle Drift 3",
+      "source_url": "https://www.originkit.dev/components/particle-drift/03",
+      "registry_url": "https://www.originkit.dev/components/particle-drift",
+      "category": "background",
+      "tags": [
+        "webgl",
+        "glsl",
+        "particles.js",
+        "monochrome",
+        "duotone",
+        "background",
+        "particles",
+        "animation"
+      ],
+      "description": "A WebGL field of drifting dots that draws fading lines between close neighbours and lights particles near the pointer, tethering each one to the cursor. This fine-grained variant packs 252 tiny dots with a short 12px link distance for a dense red-on-black mesh.",
+      "preview_image": "https://cdn.originkit.dev/components/particle-drift-03-poster.jpg?v=mufo2ner",
+      "id": "unknown__particle-drift-3",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Particle Drift 4",
+      "source_url": "https://www.originkit.dev/components/particle-drift/04",
+      "registry_url": "https://www.originkit.dev/components/particle-drift",
+      "category": "background",
+      "tags": [
+        "webgl",
+        "glsl",
+        "particles.js",
+        "minimal",
+        "gradient",
+        "background",
+        "particles",
+        "animation"
+      ],
+      "description": "A WebGL field of drifting dots that draws fading lines between close neighbours and lights particles near the pointer, tethering each one to the cursor. This sparse variant drops link distance to zero, leaving 400 large soft dots drifting at a 200 degree angle on black.",
+      "preview_image": "https://cdn.originkit.dev/components/particle-drift-04-poster.jpg?v=mufo4u1f",
+      "id": "unknown__particle-drift-4",
+      "source_domain": "www.originkit.dev"
     }
   ]
 }
