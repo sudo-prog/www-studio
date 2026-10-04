@@ -1,6 +1,6 @@
 {
-  "version": "1.0.59",
-  "source_count": 26360,
+  "version": "1.0.60",
+  "source_count": 26452,
   "components": [
     {
       "id": "cat-0",
@@ -456894,6 +456894,1717 @@
       "preview_image": "",
       "id": "unknown__card-by-ilkhoeri",
       "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Android",
+      "source_url": "https://magicui.design/docs/components/android",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "tailwind",
+        "react",
+        "typescript",
+        "framer-motion",
+        "clip",
+        "frosted",
+        "glass",
+        "android"
+      ],
+      "description": "A mockup of an Android device.",
+      "preview_image": "https://magicui.design/og?title=Android&description=A+mockup+of+an+Android+device.",
+      "id": "unknown__android",
+      "source_domain": "magicui.design"
+    },
+    {
+      "name": "Animated Beam",
+      "source_url": "https://magicui.design/docs/components/animated-beam",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "animation",
+      "tags": [
+        "tailwind",
+        "react",
+        "typescript",
+        "framer-motion",
+        "clip",
+        "frosted",
+        "glass",
+        "glow",
+        "animated"
+      ],
+      "description": "An animated beam of light which travels along a path. Useful for showcasing the \"integration\" features of a website.",
+      "preview_image": "https://magicui.design/og?title=Animated+Beam&description=An+animated+beam+of+light+which+travels+along+a+path.+Useful+for+showcasing+the+%22integration%22+features+of+a+website.",
+      "id": "unknown__animated-beam",
+      "source_domain": "magicui.design"
+    },
+    {
+      "name": "Animated Gradient Text",
+      "source_url": "https://magicui.design/docs/components/animated-gradient-text",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "animation",
+      "tags": [
+        "tailwind",
+        "react",
+        "typescript",
+        "framer-motion",
+        "clip",
+        "frosted",
+        "glass",
+        "gradient",
+        "animated"
+      ],
+      "description": "An animated gradient background which transitions between colors for text.",
+      "preview_image": "https://magicui.design/og?title=Animated+Gradient+Text&description=An+animated+gradient+background+which+transitions+between+colors+for+text.",
+      "id": "unknown__animated-gradient-text",
+      "source_domain": "magicui.design"
+    },
+    {
+      "name": "Animated Grid Pattern",
+      "source_url": "https://magicui.design/docs/components/animated-grid-pattern",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "background",
+      "tags": [
+        "tailwind",
+        "react",
+        "typescript",
+        "framer-motion",
+        "clip",
+        "frosted",
+        "glass",
+        "animated"
+      ],
+      "description": "A animated background grid pattern made with SVGs, fully customizable using Tailwind CSS.",
+      "preview_image": "https://magicui.design/og?title=Animated+Grid+Pattern&description=A+animated+background+grid+pattern+made+with+SVGs%2C+fully+customizable+using+Tailwind+CSS.",
+      "id": "unknown__animated-grid-pattern",
+      "source_domain": "magicui.design"
+    },
+    {
+      "name": "Animated List",
+      "source_url": "https://magicui.design/docs/components/animated-list",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "animation",
+      "tags": [
+        "tailwind",
+        "react",
+        "typescript",
+        "framer-motion",
+        "clip",
+        "frosted",
+        "glass",
+        "animated"
+      ],
+      "description": "A list that animates each item in sequence with a delay. Used to showcase notifications or events on your landing page.",
+      "preview_image": "https://magicui.design/og?title=Animated+List&description=A+list+that+animates+each+item+in+sequence+with+a+delay.+Used+to+showcase+notifications+or+events+on+your+landing+page.",
+      "id": "unknown__animated-list",
+      "source_domain": "magicui.design"
+    },
+    {
+      "name": "Animated Shiny Text",
+      "source_url": "https://magicui.design/docs/components/animated-shiny-text",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "animation",
+      "tags": [
+        "tailwind",
+        "react",
+        "typescript",
+        "framer-motion",
+        "clip",
+        "frosted",
+        "glass",
+        "animated"
+      ],
+      "description": "A light glare effect which pans across text making it appear as if it is shimmering.",
+      "preview_image": "https://magicui.design/og?title=Animated+Shiny+Text&description=A+light+glare+effect+which+pans+across+text+making+it+appear+as+if+it+is+shimmering.",
+      "id": "unknown__animated-shiny-text",
+      "source_domain": "magicui.design"
+    },
+    {
+      "name": "Theme Toggler",
+      "source_url": "https://magicui.design/docs/components/animated-theme-toggler",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "toggle",
+      "tags": [
+        "tailwind",
+        "react",
+        "typescript",
+        "framer-motion",
+        "clip",
+        "frosted",
+        "glass",
+        "animated"
+      ],
+      "description": "Animated theme toggle using the View Transitions API with configurable clip-path shapes and origin.",
+      "preview_image": "https://magicui.design/og?title=Theme+Toggler&description=Animated+theme+toggle+using+the+View+Transitions+API+with+configurable+clip-path+shapes+and+origin.",
+      "id": "unknown__theme-toggler",
+      "source_domain": "magicui.design"
+    },
+    {
+      "name": "Aurora Text",
+      "source_url": "https://magicui.design/docs/components/aurora-text",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "background",
+      "tags": [
+        "tailwind",
+        "react",
+        "typescript",
+        "framer-motion",
+        "aurora",
+        "clip",
+        "frosted",
+        "glass"
+      ],
+      "description": "A beautiful aurora text effect",
+      "preview_image": "https://magicui.design/og?title=Aurora+Text&description=A+beautiful+aurora+text+effect",
+      "id": "unknown__aurora-text",
+      "source_domain": "magicui.design"
+    },
+    {
+      "name": "Avatar Circles",
+      "source_url": "https://magicui.design/docs/components/avatar-circles",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "avatar",
+      "tags": [
+        "tailwind",
+        "react",
+        "typescript",
+        "framer-motion",
+        "clip",
+        "frosted",
+        "glass",
+        "avatar"
+      ],
+      "description": "Overlapping circles of avatars.",
+      "preview_image": "https://magicui.design/og?title=Avatar+Circles&description=Overlapping+circles+of+avatars.",
+      "id": "unknown__avatar-circles",
+      "source_domain": "magicui.design"
+    },
+    {
+      "name": "Editorial Accordion | Ruixen UI",
+      "source_url": "https://ruixen.com/docs/components/accordion-editorial",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "accordion",
+      "tags": [
+        "tailwind",
+        "react",
+        "typescript",
+        "frosted",
+        "glass",
+        "accordion"
+      ],
+      "description": "React accordion component \u2014 a pull-quote-accented accordion with sentence-length titles, hover micro-translation, and opacity-driven hierarchy for editorial.",
+      "preview_image": "https://ruixen.com/og?title=Editorial+Accordion&description=React+accordion+component+%E2%80%94+a+pull-quote-accented+accordion+with+sentence-length+titles%2C+hover+micro-translation%2C+and+opacity-driven+hierarchy+for+editorial.",
+      "id": "unknown__editorial-accordion-|-ruixen-ui",
+      "source_domain": "ruixen.com"
+    },
+    {
+      "name": "Indexed Accordion | Ruixen UI",
+      "source_url": "https://ruixen.com/docs/components/accordion-indexed",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "accordion",
+      "tags": [
+        "tailwind",
+        "react",
+        "typescript",
+        "frosted",
+        "glass",
+        "accordion"
+      ],
+      "description": "React accordion component \u2014 a minimal accordion with auto-generated zero-padded indices, opacity-driven hierarchy, and spring-timed reveal transitions.",
+      "preview_image": "https://ruixen.com/og?title=Indexed+Accordion&description=React+accordion+component+%E2%80%94+a+minimal+accordion+with+auto-generated+zero-padded+indices%2C+opacity-driven+hierarchy%2C+and+spring-timed+reveal+transitions.",
+      "id": "unknown__indexed-accordion-|-ruixen-ui",
+      "source_domain": "ruixen.com"
+    },
+    {
+      "name": "Accordions | Ruixen UI",
+      "source_url": "https://ruixen.com/docs/components/accordions",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "accordion",
+      "tags": [
+        "tailwind",
+        "react",
+        "typescript",
+        "frosted",
+        "glass",
+        "accordions"
+      ],
+      "description": "Browse React accordion components for shadcn projects \u2014 copy-paste install via the shadcn CLI. Tailwind v3 or v4, Radix or Base UI.",
+      "preview_image": "https://ruixen.com/og?title=Accordions&description=Browse+React+accordion+components+for+shadcn+projects+%E2%80%94+copy-paste+install+via+the+shadcn+CLI.+Tailwind+v3+or+v4%2C+Radix+or+Base+UI.",
+      "id": "unknown__accordions-|-ruixen-ui",
+      "source_domain": "ruixen.com"
+    },
+    {
+      "name": "Account Menu | Ruixen UI",
+      "source_url": "https://ruixen.com/docs/components/account-menu",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "menu",
+      "tags": [
+        "tailwind",
+        "react",
+        "typescript",
+        "frosted",
+        "glass",
+        "account"
+      ],
+      "description": "React menu component \u2014 User account dropdown menu with profile options, settings, and logout functionality.",
+      "preview_image": "https://ruixen.com/og?title=Account+Menu&description=React+menu+component+%E2%80%94+User+account+dropdown+menu+with+profile+options%2C+settings%2C+and+logout+functionality.",
+      "id": "unknown__account-menu-|-ruixen-ui",
+      "source_domain": "ruixen.com"
+    },
+    {
+      "name": "Action Toolbar | Ruixen UI",
+      "source_url": "https://ruixen.com/docs/components/action-toolbar",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "tailwind",
+        "react",
+        "typescript",
+        "frosted",
+        "glass",
+        "action"
+      ],
+      "description": "React menu component \u2014 Versatile toolbar component with action buttons and dropdown menus for common operations.",
+      "preview_image": "https://ruixen.com/og?title=Action+Toolbar&description=React+menu+component+%E2%80%94+Versatile+toolbar+component+with+action+buttons+and+dropdown+menus+for+common+operations.",
+      "id": "unknown__action-toolbar-|-ruixen-ui",
+      "source_domain": "ruixen.com"
+    },
+    {
+      "name": "Add Task Sheet | Ruixen UI",
+      "source_url": "https://ruixen.com/docs/components/add-task-sheet",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "drawer",
+      "tags": [
+        "tailwind",
+        "react",
+        "typescript",
+        "frosted",
+        "glass",
+        "add"
+      ],
+      "description": "React dialog component \u2014 Quick-add task dialog \u2014 title input, priority pills, Enter to submit. Three zones, two hairlines.",
+      "preview_image": "https://ruixen.com/og?title=Add+Task+Sheet&description=React+dialog+component+%E2%80%94+Quick-add+task+dialog+%E2%80%94+title+input%2C+priority+pills%2C+Enter+to+submit.+Three+zones%2C+two+hairlines.",
+      "id": "unknown__add-task-sheet-|-ruixen-ui",
+      "source_domain": "ruixen.com"
+    },
+    {
+      "name": "Add To Cart Button | Ruixen UI",
+      "source_url": "https://ruixen.com/docs/components/add-to-cart-button",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "button",
+      "tags": [
+        "tailwind",
+        "react",
+        "typescript",
+        "frosted",
+        "glass",
+        "add"
+      ],
+      "description": "React button component \u2014 a morphing add-to-cart button with spring physics, slot-machine quantity flip, and live price updates.",
+      "preview_image": "https://ruixen.com/og?title=Add+To+Cart+Button&description=React+button+component+%E2%80%94+a+morphing+add-to-cart+button+with+spring+physics%2C+slot-machine+quantity+flip%2C+and+live+price+updates.",
+      "id": "unknown__add-to-cart-button-|-ruixen-ui",
+      "source_domain": "ruixen.com"
+    },
+    {
+      "name": "AI Chat Input | Ruixen UI",
+      "source_url": "https://ruixen.com/docs/components/ai-chat-input",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "input",
+      "tags": [
+        "tailwind",
+        "react",
+        "typescript",
+        "frosted",
+        "glass",
+        "ai"
+      ],
+      "description": "React AI chat input \u2014 Vanishing chat input with rotating placeholders, pixel-scatter submit, and spring-timed interactions.",
+      "preview_image": "https://ruixen.com/og?title=AI+Chat+Input&description=React+AI+chat+input+%E2%80%94+Vanishing+chat+input+with+rotating+placeholders%2C+pixel-scatter+submit%2C+and+spring-timed+interactions.",
+      "id": "unknown__ai-chat-input-|-ruixen-ui",
+      "source_domain": "ruixen.com"
+    },
+    {
+      "name": "AI Chat Inputs | Ruixen UI",
+      "source_url": "https://ruixen.com/docs/components/ai-chat-inputs",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "input",
+      "tags": [
+        "tailwind",
+        "react",
+        "typescript",
+        "frosted",
+        "glass",
+        "ai"
+      ],
+      "description": "Browse React AI chat inputs for shadcn projects \u2014 copy-paste install via the shadcn CLI. Tailwind v3 or v4, Radix or Base UI.",
+      "preview_image": "https://ruixen.com/og?title=AI+Chat+Inputs&description=Browse+React+AI+chat+inputs+for+shadcn+projects+%E2%80%94+copy-paste+install+via+the+shadcn+CLI.+Tailwind+v3+or+v4%2C+Radix+or+Base+UI.",
+      "id": "unknown__ai-chat-inputs-|-ruixen-ui",
+      "source_domain": "ruixen.com"
+    },
+    {
+      "name": "Animated Highlight Text | Ruixen UI",
+      "source_url": "https://ruixen.com/docs/components/animated-highlight-text",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "animation",
+      "tags": [
+        "tailwind",
+        "react",
+        "typescript",
+        "frosted",
+        "glass",
+        "animated"
+      ],
+      "description": "React animated text component \u2014 inline highlights whose SVG icons draw themselves in on hover, with a pointer cursor and an image tooltip per word.",
+      "preview_image": "https://ruixen.com/og?title=Animated+Highlight+Text&description=React+animated+text+component+%E2%80%94+inline+highlights+whose+SVG+icons+draw+themselves+in+on+hover%2C+with+a+pointer+cursor+and+an+image+tooltip+per+word.",
+      "id": "unknown__animated-highlight-text-|-ruixen-ui",
+      "source_domain": "ruixen.com"
+    },
+    {
+      "name": "Animated Setup \u2014 Setup React Component (Tailwind CSS)",
+      "source_url": "https://animata.design/docs/setup",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "tailwind",
+        "react",
+        "typescript",
+        "frosted",
+        "glass",
+        "setup"
+      ],
+      "description": "Make your project animation ready with Animata. Copy-paste production-ready React + Tailwind CSS code for Next.js. Open source, MIT licensed.",
+      "preview_image": "https://assets.animata.design/og/animata-og-2026.png",
+      "id": "unknown__animated-setup-\u2014-setup-react-component-(tailwind-css)",
+      "source_domain": "animata.design"
+    },
+    {
+      "name": "Animated Accordion Components (React & Tailwind)",
+      "source_url": "https://animata.design/docs/accordion",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "accordion",
+      "tags": [
+        "tailwind",
+        "react",
+        "typescript",
+        "frosted",
+        "glass",
+        "accordion"
+      ],
+      "description": "Expandable sections and FAQ-style disclosure patterns for React apps. Browse 0 free accordion React components \u2014 copy-paste Tailwind CSS animations from Animata for Next.js apps. MIT licensed.",
+      "preview_image": "https://assets.animata.design/og/animata-og-2026.png",
+      "id": "unknown__animated-accordion-components-(react-&-tailwind)",
+      "source_domain": "animata.design"
+    },
+    {
+      "name": "Animated Animated Beam \u2014 Background React Component (Tailwind CSS)",
+      "source_url": "https://animata.design/docs/background/animated-beam",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "animation",
+      "tags": [
+        "tailwind",
+        "react",
+        "typescript",
+        "frosted",
+        "glass",
+        "glow",
+        "animated"
+      ],
+      "description": "A dark section background where light beams streak diagonally down a grid of faint lines, each at its own length and speed. Copy-paste production-ready React + Tailwind CSS code for Next.js. Open source, MIT licensed.",
+      "preview_image": "https://assets.animata.design/og/background/animated-beam.v1.ae48cf2b3fdf05d8.png",
+      "id": "unknown__animated-animated-beam-\u2014-background-react-component-(tailwind-css)",
+      "source_domain": "animata.design"
+    },
+    {
+      "name": "Animated Boids Ecosystem \u2014 Background React Component (Tailwind CSS)",
+      "source_url": "https://animata.design/docs/background/boids-ecosystem",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "tailwind",
+        "react",
+        "typescript",
+        "frosted",
+        "glass",
+        "boids"
+      ],
+      "description": "A canvas flocking simulation \u2014 separation, alignment, cohesion \u2014 that parts around your cursor like a school of fish. Copy-paste production-ready React + Tailwind CSS code for Next.js. Open source, MIT licensed.",
+      "preview_image": "https://assets.animata.design/og/background/boids-ecosystem.v1.d874c192798b3e08.png",
+      "id": "unknown__animated-boids-ecosystem-\u2014-background-react-component-(tailwind-css)",
+      "source_domain": "animata.design"
+    },
+    {
+      "name": "Animated Diagonal Lines \u2014 Background React Component (Tailwind CSS)",
+      "source_url": "https://animata.design/docs/background/diagonal-lines",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "tailwind",
+        "react",
+        "typescript",
+        "frosted",
+        "glass",
+        "diagonal"
+      ],
+      "description": "A diagonal line background component Copy-paste production-ready React + Tailwind CSS code for Next.js. Open source, MIT licensed.",
+      "preview_image": "https://assets.animata.design/og/background/diagonal-lines.v1.26d7cff26745315b.png",
+      "id": "unknown__animated-diagonal-lines-\u2014-background-react-component-(tailwind-css)",
+      "source_domain": "animata.design"
+    },
+    {
+      "name": "Animated Dot \u2014 Background React Component (Tailwind CSS)",
+      "source_url": "https://animata.design/docs/background/dot",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "tailwind",
+        "react",
+        "typescript",
+        "frosted",
+        "glass",
+        "dot"
+      ],
+      "description": "A dot background component Copy-paste production-ready React + Tailwind CSS code for Next.js. Open source, MIT licensed.",
+      "preview_image": "https://assets.animata.design/og/background/dot.v1.512911de884126c8.png",
+      "id": "unknown__animated-dot-\u2014-background-react-component-(tailwind-css)",
+      "source_domain": "animata.design"
+    },
+    {
+      "name": "Animated Grid \u2014 Background React Component (Tailwind CSS)",
+      "source_url": "https://animata.design/docs/background/grid",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "grid",
+      "tags": [
+        "tailwind",
+        "react",
+        "typescript",
+        "frosted",
+        "glass",
+        "grid"
+      ],
+      "description": "A grid background component Copy-paste production-ready React + Tailwind CSS code for Next.js. Open source, MIT licensed.",
+      "preview_image": "https://assets.animata.design/og/background/grid.v1.2cd975309dedaac5.png",
+      "id": "unknown__animated-grid-\u2014-background-react-component-(tailwind-css)",
+      "source_domain": "animata.design"
+    },
+    {
+      "name": "Animated Background Components (React & Tailwind)",
+      "source_url": "https://animata.design/docs/background",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "background",
+      "tags": [
+        "tailwind",
+        "react",
+        "typescript",
+        "frosted",
+        "glass",
+        "background"
+      ],
+      "description": "Animated backgrounds and ambient canvas effects for hero sections and landing pages. Browse 10 free background React components \u2014 copy-paste Tailwind CSS animations from Animata for Next.js apps. MIT licensed.",
+      "preview_image": "https://assets.animata.design/og/animata-og-2026.png",
+      "id": "unknown__animated-background-components-(react-&-tailwind)",
+      "source_domain": "animata.design"
+    },
+    {
+      "name": "Animated Interactive Grid \u2014 Background React Component (Tailwind CSS)",
+      "source_url": "https://animata.design/docs/background/interactive-grid",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "grid",
+      "tags": [
+        "tailwind",
+        "react",
+        "typescript",
+        "frosted",
+        "glass",
+        "interactive"
+      ],
+      "description": "An interactive grid background component. Copy-paste production-ready React + Tailwind CSS code for Next.js. Open source, MIT licensed.",
+      "preview_image": "https://assets.animata.design/og/background/interactive-grid.v1.dae360847231eb1a.png",
+      "id": "unknown__animated-interactive-grid-\u2014-background-react-component-(tailwind-css)",
+      "source_domain": "animata.design"
+    },
+    {
+      "name": "Animated Moving Gradient \u2014 Background React Component (Tailwind CSS)",
+      "source_url": "https://animata.design/docs/background/moving-gradient",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "tailwind",
+        "react",
+        "typescript",
+        "frosted",
+        "glass",
+        "gradient",
+        "moving"
+      ],
+      "description": "Animated moving gradient background Copy-paste production-ready React + Tailwind CSS code for Next.js. Open source, MIT licensed.",
+      "preview_image": "https://assets.animata.design/og/background/moving-gradient.v1.c05a803d21c8aaf4.png",
+      "id": "unknown__animated-moving-gradient-\u2014-background-react-component-(tailwind-css)",
+      "source_domain": "animata.design"
+    },
+    {
+      "name": "Animated Shooting Stars \u2014 Background React Component (Tailwind CSS)",
+      "source_url": "https://animata.design/docs/background/shooting-stars",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "tailwind",
+        "react",
+        "typescript",
+        "frosted",
+        "glass",
+        "shooting"
+      ],
+      "description": "A dark sky where light streaks shoot across at different lengths, speeds and angles over a twinkling starfield. Copy-paste production-ready React + Tailwind CSS code for Next.js. Open source, MIT licensed.",
+      "preview_image": "https://assets.animata.design/og/background/shooting-stars.v1.999e612365f08912.png",
+      "id": "unknown__animated-shooting-stars-\u2014-background-react-component-(tailwind-css)",
+      "source_domain": "animata.design"
+    },
+    {
+      "name": "Accordion - UI component library built on shadcn and Base UI",
+      "source_url": "https://uiable.com/components/accordion",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "accordion",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "frosted",
+        "glass",
+        "accordion"
+      ],
+      "description": "Browse the accordion, copy the code, and quickly turn long content into clean, collapsible sections.",
+      "preview_image": "https://cdn.uiable.com/og/accordion.png",
+      "id": "unknown__accordion---ui-component-library-built-on-shadcn-and-base-ui",
+      "source_domain": "uiable.com"
+    },
+    {
+      "name": "Alert - UI component library built on shadcn and Base UI",
+      "source_url": "https://uiable.com/components/alert",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "frosted",
+        "glass",
+        "alert"
+      ],
+      "description": "Check it out, copy the code, and quickly add clean alert messages to your layout. Built with Tailwind CSS, it makes important information easy to notice.",
+      "preview_image": "https://cdn.uiable.com/og/alert.png",
+      "id": "unknown__alert---ui-component-library-built-on-shadcn-and-base-ui",
+      "source_domain": "uiable.com"
+    },
+    {
+      "name": "Alert Dialog - UI component library built on shadcn and Base UI",
+      "source_url": "https://uiable.com/components/alert-dialog",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "dialog",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "frosted",
+        "glass",
+        "alert"
+      ],
+      "description": "Try it out, browse the component, copy the code, and add a secure alert dialog to your app. Built with Tailwind CSS and Base UI, it keeps focus properly trapped and prevents accidental destructive actions.",
+      "preview_image": "https://cdn.uiable.com/og/alert-dialog.png",
+      "id": "unknown__alert-dialog---ui-component-library-built-on-shadcn-and-base-ui",
+      "source_domain": "uiable.com"
+    },
+    {
+      "name": "Aspect Ratio - UI component library built on shadcn and Base UI",
+      "source_url": "https://uiable.com/components/aspect-ratio",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "frosted",
+        "glass",
+        "aspect"
+      ],
+      "description": "Get started, copy the component, and keep your images and videos looking just right on every screen.",
+      "preview_image": "https://cdn.uiable.com/og/aspect-ratio.png",
+      "id": "unknown__aspect-ratio---ui-component-library-built-on-shadcn-and-base-ui",
+      "source_domain": "uiable.com"
+    },
+    {
+      "name": "Attachment - UI component library built on shadcn and Base UI",
+      "source_url": "https://uiable.com/components/attachment",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "frosted",
+        "glass",
+        "attachment"
+      ],
+      "description": "Display files, documents, and image uploads with the flexible Attachment component. Clean design, support for download actions, upload states, and different layouts.",
+      "preview_image": "https://cdn.uiable.com/og/attachment.png",
+      "id": "unknown__attachment---ui-component-library-built-on-shadcn-and-base-ui",
+      "source_domain": "uiable.com"
+    },
+    {
+      "name": "Avatar - UI component library built on shadcn and Base UI",
+      "source_url": "https://uiable.com/components/avatar",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "avatar",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "frosted",
+        "glass",
+        "avatar"
+      ],
+      "description": "Create beautiful user profiles with the flexible Avatar component built with Tailwind CSS and Base UI. Check out the demos, copy the code and add seamless image fallbacks to your project in minutes.",
+      "preview_image": "https://cdn.uiable.com/og/avatar.png",
+      "id": "unknown__avatar---ui-component-library-built-on-shadcn-and-base-ui",
+      "source_domain": "uiable.com"
+    },
+    {
+      "name": "Badge - UI component library built on shadcn and Base UI",
+      "source_url": "https://uiable.com/components/badge",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "badge",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "frosted",
+        "glass",
+        "badge"
+      ],
+      "description": "Add clear labels, notifications, and status indicators with a flexible Badge component powered by Tailwind CSS. Explore the examples, copy the code, and enhance your UI with clean, reusable badges.",
+      "preview_image": "https://cdn.uiable.com/og/badge.png",
+      "id": "unknown__badge---ui-component-library-built-on-shadcn-and-base-ui",
+      "source_domain": "uiable.com"
+    },
+    {
+      "name": "Bubble - UI component library built on shadcn and Base UI",
+      "source_url": "https://uiable.com/components/bubble",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "frosted",
+        "glass",
+        "bubble"
+      ],
+      "description": "Display speech bubbles and conversation messages with the flexible Bubble component. Supports left/right orientation, alignments, and custom styling.",
+      "preview_image": "https://cdn.uiable.com/og/bubble.png",
+      "id": "unknown__bubble---ui-component-library-built-on-shadcn-and-base-ui",
+      "source_domain": "uiable.com"
+    },
+    {
+      "name": "Agent Suggest Card Stack \u00b7 Cult UI",
+      "source_url": "https://www.cult-ui.com/docs/components/agent-suggest-card-stack",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "framer-motion",
+        "clip",
+        "frosted",
+        "glass",
+        "agent"
+      ],
+      "description": "Stacked AI agent suggestion cards for React and shadcn/ui, with progress bars, success and error states, and a commit button.",
+      "preview_image": "https://www.cult-ui.com/og/docs/components/agent-suggest-card-stack",
+      "id": "unknown__agent-suggest-card-stack-\u00b7-cult-ui",
+      "source_domain": "www.cult-ui.com"
+    },
+    {
+      "name": "AI Blob Warp \u00b7 Cult UI",
+      "source_url": "https://www.cult-ui.com/docs/components/ai-blob-warp",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "framer-motion",
+        "blob",
+        "frosted",
+        "glass",
+        "ai"
+      ],
+      "description": "Animated AI assistant avatar for React and shadcn/ui, a circle filled with a Paper Design Warp shader that pauses for reduced motion.",
+      "preview_image": "https://www.cult-ui.com/og/docs/components/ai-blob-warp",
+      "id": "unknown__ai-blob-warp-\u00b7-cult-ui",
+      "source_domain": "www.cult-ui.com"
+    },
+    {
+      "name": "AI Instructions \u00b7 Cult UI",
+      "source_url": "https://www.cult-ui.com/docs/components/ai-instructions",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "framer-motion",
+        "frosted",
+        "glass",
+        "ai"
+      ],
+      "description": "Composable React components for shadcn/ui to search, toggle, and create custom AI instructions from a popover command list.",
+      "preview_image": "https://www.cult-ui.com/og/docs/components/ai-instructions",
+      "id": "unknown__ai-instructions-\u00b7-cult-ui",
+      "source_domain": "www.cult-ui.com"
+    },
+    {
+      "name": "Analytics Chart \u00b7 Cult UI",
+      "source_url": "https://www.cult-ui.com/docs/components/analytics-chart",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "chart",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "framer-motion",
+        "frosted",
+        "glass",
+        "analytics"
+      ],
+      "description": "Vercel-style SVG line chart for React and shadcn/ui with a gradient stroke and floating tooltip cards for analytics dashboards.",
+      "preview_image": "https://www.cult-ui.com/og/docs/components/analytics-chart",
+      "id": "unknown__analytics-chart-\u00b7-cult-ui",
+      "source_domain": "www.cult-ui.com"
+    },
+    {
+      "name": "Apple iPhone 17 Pro Max \u00b7 Cult UI",
+      "source_url": "https://www.cult-ui.com/docs/components/apple-iphone-17-pro",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "framer-motion",
+        "frosted",
+        "glass",
+        "apple"
+      ],
+      "description": "iPhone 17 Pro device mockup for React and shadcn/ui with Dynamic Island, status bar, and four frame colors for app screenshots.",
+      "preview_image": "https://www.cult-ui.com/og/docs/components/apple-iphone-17-pro",
+      "id": "unknown__apple-iphone-17-pro-max-\u00b7-cult-ui",
+      "source_domain": "www.cult-ui.com"
+    },
+    {
+      "name": "Apple Keyboard \u00b7 Cult UI",
+      "source_url": "https://www.cult-ui.com/docs/components/apple-keyboard",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "framer-motion",
+        "frosted",
+        "glass",
+        "apple"
+      ],
+      "description": "Apple Magic Keyboard illustration for React and shadcn/ui with labeled, pressable keys and a media row for shortcut guides.",
+      "preview_image": "https://www.cult-ui.com/og/docs/components/apple-keyboard",
+      "id": "unknown__apple-keyboard-\u00b7-cult-ui",
+      "source_domain": "www.cult-ui.com"
+    },
+    {
+      "name": "Apple Pro Display XDR \u00b7 Cult UI",
+      "source_url": "https://www.cult-ui.com/docs/components/apple-pro-display-xdr",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "framer-motion",
+        "clip",
+        "frosted",
+        "glass",
+        "apple"
+      ],
+      "description": "Apple Pro Display XDR mockup for React and shadcn/ui with an aluminum frame, screen modes, and an animated macOS dock.",
+      "preview_image": "https://www.cult-ui.com/og/docs/components/apple-pro-display-xdr",
+      "id": "unknown__apple-pro-display-xdr-\u00b7-cult-ui",
+      "source_domain": "www.cult-ui.com"
+    },
+    {
+      "name": "Apple Watch Ultra \u00b7 Cult UI",
+      "source_url": "https://www.cult-ui.com/docs/components/apple-watch-ultra",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "framer-motion",
+        "frosted",
+        "glass",
+        "apple"
+      ],
+      "description": "Apple Watch Ultra mockup for React and shadcn/ui with tappable complications, a rotating crown compass, and Motion animation.",
+      "preview_image": "https://www.cult-ui.com/og/docs/components/apple-watch-ultra",
+      "id": "unknown__apple-watch-ultra-\u00b7-cult-ui",
+      "source_domain": "www.cult-ui.com"
+    },
+    {
+      "name": "Background Animate Button \u00b7 Cult UI",
+      "source_url": "https://www.cult-ui.com/docs/components/bg-animate-button",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "framer-motion",
+        "frosted",
+        "glass",
+        "bg"
+      ],
+      "description": "Animated gradient button for React and shadcn/ui with a rotating conic background, preset gradients, CVA variants, and asChild.",
+      "preview_image": "https://www.cult-ui.com/og/docs/components/bg-animate-button",
+      "id": "unknown__background-animate-button-\u00b7-cult-ui",
+      "source_domain": "www.cult-ui.com"
+    },
+    {
+      "name": "Fractal Dot Grid \u00b7 Cult UI",
+      "source_url": "https://www.cult-ui.com/docs/components/bg-animated-fractal-grid",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "grid",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "framer-motion",
+        "frosted",
+        "glass",
+        "bg"
+      ],
+      "description": "Interactive canvas dot grid background for React and shadcn/ui with a hover wave, optional noise, and a mouse-following glow.",
+      "preview_image": "https://www.cult-ui.com/og/docs/components/bg-animated-fractal-grid",
+      "id": "unknown__fractal-dot-grid-\u00b7-cult-ui",
+      "source_domain": "www.cult-ui.com"
+    },
+    {
+      "name": "Shadcn Hero Section",
+      "source_url": "https://shadcnstudio.com/blocks/marketing-ui/hero-section",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "hero",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "clip",
+        "frosted",
+        "glass",
+        "hero"
+      ],
+      "description": "Grab attention with Shadcn Hero Sections. Bold headlines, CTAs, and clean visuals for high-impact landing pages.",
+      "preview_image": "https://cdn.shadcnstudio.com/ts-assets/shadcn-studio/blocks/marketing/shadcn-studio-smm-banner.png",
+      "id": "unknown__shadcn-hero-section",
+      "source_domain": "shadcnstudio.com"
+    },
+    {
+      "name": "Shadcn Features Section",
+      "source_url": "https://shadcnstudio.com/blocks/marketing-ui/features-section",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "clip",
+        "frosted",
+        "glass",
+        "features"
+      ],
+      "description": "Highlight your product's strengths with modern Shadcn Features blocks. Clean layouts, icons, and responsive grids included.",
+      "preview_image": "https://cdn.shadcnstudio.com/ts-assets/shadcn-studio/blocks/marketing/shadcn-studio-smm-banner.png",
+      "id": "unknown__shadcn-features-section",
+      "source_domain": "shadcnstudio.com"
+    },
+    {
+      "name": "Shadcn Pricing Component",
+      "source_url": "https://shadcnstudio.com/blocks/marketing-ui/pricing-component",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "clip",
+        "frosted",
+        "glass",
+        "pricing"
+      ],
+      "description": "Create high-converting pricing tables with Shadcn Pricing blocks. Highlight features, tiers, and CTAs in a clear layout.",
+      "preview_image": "https://cdn.shadcnstudio.com/ts-assets/shadcn-studio/blocks/marketing/shadcn-studio-smm-banner.png",
+      "id": "unknown__shadcn-pricing-component",
+      "source_domain": "shadcnstudio.com"
+    },
+    {
+      "name": "Shadcn Social Proof",
+      "source_url": "https://shadcnstudio.com/blocks/marketing-ui/social-proof",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "clip",
+        "frosted",
+        "glass",
+        "social"
+      ],
+      "description": "Build trust with Shadcn Social Proof sections. Showcase reviews, brand mentions, and real user feedback with a modern layout.",
+      "preview_image": "https://cdn.shadcnstudio.com/ts-assets/shadcn-studio/blocks/marketing/shadcn-studio-smm-banner.png",
+      "id": "unknown__shadcn-social-proof",
+      "source_domain": "shadcnstudio.com"
+    },
+    {
+      "name": "Shadcn Portfolio",
+      "source_url": "https://shadcnstudio.com/blocks/marketing-ui/portfolio",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "clip",
+        "frosted",
+        "glass",
+        "portfolio"
+      ],
+      "description": "Display your work beautifully with Shadcn Portfolio sections. Designed for creatives, agencies, and developers alike.",
+      "preview_image": "https://cdn.shadcnstudio.com/ts-assets/shadcn-studio/blocks/marketing/shadcn-studio-smm-banner.png",
+      "id": "unknown__shadcn-portfolio",
+      "source_domain": "shadcnstudio.com"
+    },
+    {
+      "name": "Shadcn Team Section",
+      "source_url": "https://shadcnstudio.com/blocks/marketing-ui/team-section",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "clip",
+        "frosted",
+        "glass",
+        "team"
+      ],
+      "description": "Introduce your team using Shadcn Team blocks. Includes member photos, bios, and roles to add personality and credibility.",
+      "preview_image": "https://cdn.shadcnstudio.com/ts-assets/shadcn-studio/blocks/marketing/shadcn-studio-smm-banner.png",
+      "id": "unknown__shadcn-team-section",
+      "source_domain": "shadcnstudio.com"
+    },
+    {
+      "name": "Shadcn CTA Section",
+      "source_url": "https://shadcnstudio.com/blocks/marketing-ui/cta-section",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "clip",
+        "frosted",
+        "glass",
+        "cta"
+      ],
+      "description": "Drive conversions with bold Shadcn Call-to-Action sections. Designed for clear messaging, buttons, and seamless user engagement.",
+      "preview_image": "https://cdn.shadcnstudio.com/ts-assets/shadcn-studio/blocks/marketing/shadcn-studio-smm-banner.png",
+      "id": "unknown__shadcn-cta-section",
+      "source_domain": "shadcnstudio.com"
+    },
+    {
+      "name": "Shadcn Logo Cloud",
+      "source_url": "https://shadcnstudio.com/blocks/marketing-ui/logo-cloud",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "clip",
+        "frosted",
+        "glass",
+        "logo"
+      ],
+      "description": "Boost credibility with Shadcn Logo Cloud sections. Showcase trusted clients, partners, or tools in an organized visual grid.",
+      "preview_image": "https://cdn.shadcnstudio.com/ts-assets/shadcn-studio/blocks/marketing/shadcn-studio-smm-banner.png",
+      "id": "unknown__shadcn-logo-cloud",
+      "source_domain": "shadcnstudio.com"
+    },
+    {
+      "name": "Accordion",
+      "source_url": "https://shadcnspace.com/components/accordion",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "accordion",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "soft",
+        "accordion"
+      ],
+      "description": "Explore 9+ Shadcn UI Accordion components with vertically stacked interactive headings that reveal sections of content. Supports single or multiple open items with accessible keyboard behavior.",
+      "preview_image": "https://shadcnspace.com/images/og-image.png",
+      "id": "unknown__accordion",
+      "source_domain": "shadcnspace.com"
+    },
+    {
+      "name": "Avatar",
+      "source_url": "https://shadcnspace.com/components/avatar",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "avatar",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "soft",
+        "avatar"
+      ],
+      "description": "Explore 8+ Shadcn UI Avatar components for displaying profile pictures and user identity elements. Supports fallback initials, shapes, and responsive sizing in React apps.",
+      "preview_image": "https://shadcnspace.com/images/og-image.png",
+      "id": "unknown__avatar",
+      "source_domain": "shadcnspace.com"
+    },
+    {
+      "name": "Apple Dock",
+      "source_url": "https://shadcnspace.com/components/apple-dock",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "frosted",
+        "glass",
+        "apple"
+      ],
+      "description": "Explore 2+ Shadcn Apple Dock UI components for React. macOS style dock replica with smooth magnification animations, floating layouts, and interactive navigation.",
+      "preview_image": "https://shadcnspace.com/images/og-image.png",
+      "id": "unknown__apple-dock",
+      "source_domain": "shadcnspace.com"
+    },
+    {
+      "name": "Text Animation",
+      "source_url": "https://shadcnspace.com/components/animated-text",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "animation",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "soft",
+        "animated"
+      ],
+      "description": "Explore 12+ Shadcn text animation UI components for React. Animate text with shiny text, gradient text, typing effects, rolling status messages, and shimmer loading animations.",
+      "preview_image": "https://shadcnspace.com/images/og-image.png",
+      "id": "unknown__text-animation",
+      "source_domain": "shadcnspace.com"
+    },
+    {
+      "name": "Button",
+      "source_url": "https://shadcnspace.com/components/button",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "clip",
+        "gradient",
+        "button"
+      ],
+      "description": "Explore 33+ Shadcn UI Button components that wrap the native button element with styles and variants. Supports sizes, icons, and states for any React frameworks.",
+      "preview_image": "https://shadcnspace.com/images/og-image.png",
+      "id": "unknown__button",
+      "source_domain": "shadcnspace.com"
+    },
+    {
+      "name": "Badge",
+      "source_url": "https://shadcnspace.com/components/badge",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "badge",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "frosted",
+        "glass",
+        "badge"
+      ],
+      "description": "Explore 13+ Shadcn UI Badge components for displaying small labels and status indicators. Supports variants, custom colors, icons, spinners, and link-style badges in React UI.",
+      "preview_image": "https://shadcnspace.com/images/og-image.png",
+      "id": "unknown__badge",
+      "source_domain": "shadcnspace.com"
+    },
+    {
+      "name": "Free & Pro Shadcn App Shell Blocks",
+      "source_url": "https://efferd.com/blocks/app-shell",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "dashboard",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "gradient",
+        "app"
+      ],
+      "description": "Discover App Shell blocks \u2014 ready to copy, customize, and drop into your Shadcn/UI project.",
+      "preview_image": "https://efferd.com/api/og/blocks/app-shell",
+      "id": "unknown__free-&-pro-shadcn-app-shell-blocks",
+      "source_domain": "efferd.com"
+    },
+    {
+      "name": "Free & Pro Shadcn Auth Blocks",
+      "source_url": "https://efferd.com/blocks/auth",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "form",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "gradient",
+        "auth"
+      ],
+      "description": "Discover Auth blocks \u2014 ready to copy, customize, and drop into your Shadcn/UI project.",
+      "preview_image": "https://efferd.com/api/og/blocks/auth",
+      "id": "unknown__free-&-pro-shadcn-auth-blocks",
+      "source_domain": "efferd.com"
+    },
+    {
+      "name": "Free & Pro Shadcn Blogs Blocks",
+      "source_url": "https://efferd.com/blocks/blogs",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "gradient",
+        "blogs"
+      ],
+      "description": "Discover Blogs blocks \u2014 ready to copy, customize, and drop into your Shadcn/UI project.",
+      "preview_image": "https://efferd.com/api/og/blocks/blogs",
+      "id": "unknown__free-&-pro-shadcn-blogs-blocks",
+      "source_domain": "efferd.com"
+    },
+    {
+      "name": "Free & Pro Shadcn Contact Blocks",
+      "source_url": "https://efferd.com/blocks/contact",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "gradient",
+        "contact"
+      ],
+      "description": "Discover Contact blocks \u2014 ready to copy, customize, and drop into your Shadcn/UI project.",
+      "preview_image": "https://efferd.com/api/og/blocks/contact",
+      "id": "unknown__free-&-pro-shadcn-contact-blocks",
+      "source_domain": "efferd.com"
+    },
+    {
+      "name": "Free & Pro Shadcn Cta Blocks",
+      "source_url": "https://efferd.com/blocks/cta",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "clip",
+        "gradient",
+        "cta"
+      ],
+      "description": "Discover Cta blocks \u2014 ready to copy, customize, and drop into your Shadcn/UI project.",
+      "preview_image": "https://efferd.com/api/og/blocks/cta",
+      "id": "unknown__free-&-pro-shadcn-cta-blocks",
+      "source_domain": "efferd.com"
+    },
+    {
+      "name": "Free & Pro Shadcn Dashboard Blocks",
+      "source_url": "https://efferd.com/blocks/dashboard",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "dashboard",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "gradient",
+        "dashboard"
+      ],
+      "description": "Discover Dashboard blocks \u2014 ready to copy, customize, and drop into your Shadcn/UI project.",
+      "preview_image": "https://efferd.com/api/og/blocks/dashboard",
+      "id": "unknown__free-&-pro-shadcn-dashboard-blocks",
+      "source_domain": "efferd.com"
+    },
+    {
+      "name": "Free & Pro Shadcn Faqs Blocks",
+      "source_url": "https://efferd.com/blocks/faqs",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "gradient",
+        "faqs"
+      ],
+      "description": "Discover Faqs blocks \u2014 ready to copy, customize, and drop into your Shadcn/UI project.",
+      "preview_image": "https://efferd.com/api/og/blocks/faqs",
+      "id": "unknown__free-&-pro-shadcn-faqs-blocks",
+      "source_domain": "efferd.com"
+    },
+    {
+      "name": "Free & Pro Shadcn Features Blocks",
+      "source_url": "https://efferd.com/blocks/features",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "gradient",
+        "features"
+      ],
+      "description": "Discover Features blocks \u2014 ready to copy, customize, and drop into your Shadcn/UI project.",
+      "preview_image": "https://efferd.com/api/og/blocks/features",
+      "id": "unknown__free-&-pro-shadcn-features-blocks",
+      "source_domain": "efferd.com"
+    },
+    {
+      "name": "Mechanical Keyboard",
+      "source_url": "https://serenity-ui.com/components/mechanical-keyboard",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "framer-motion",
+        "frosted",
+        "glass",
+        "mechanical"
+      ],
+      "description": "Photorealistic 3D mechanical keyboard simulator for React with interactive keycaps, synthesized click sounds, live keystroke display, rotary knobs, and a smart LCD display. Built with React Three Fiber and Three.js.",
+      "preview_image": "",
+      "id": "unknown__mechanical-keyboard",
+      "source_domain": "serenity-ui.com"
+    },
+    {
+      "name": "Vintage Keyboard",
+      "source_url": "https://serenity-ui.com/components/vintage-keyboard",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "framer-motion",
+        "retro",
+        "vintage"
+      ],
+      "description": "Retro mechanical typewriter and keyboard interactive simulator for React with synthesized mechanical key sounds, tactile keypress states, and Tailwind CSS.",
+      "preview_image": "",
+      "id": "unknown__vintage-keyboard",
+      "source_domain": "serenity-ui.com"
+    },
+    {
+      "name": "Flame Button",
+      "source_url": "https://serenity-ui.com/components/flame-button",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "framer-motion",
+        "gradient",
+        "flame"
+      ],
+      "description": "Organic flame and particle fire button component for React featuring GPU-accelerated canvas shaders, dynamic hover physics, and customizable glow.",
+      "preview_image": "",
+      "id": "unknown__flame-button",
+      "source_domain": "serenity-ui.com"
+    },
+    {
+      "name": "Carousel 360",
+      "source_url": "https://serenity-ui.com/components/carousel-360",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "gallery",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "framer-motion",
+        "frosted",
+        "glass",
+        "carousel"
+      ],
+      "description": "360-degree cylinder 3D carousel component for React with spatial depth perspective, continuous rotational dragging, and interactive item inspection.",
+      "preview_image": "",
+      "id": "unknown__carousel-360",
+      "source_domain": "serenity-ui.com"
+    },
+    {
+      "name": "Typewriter Testimonial",
+      "source_url": "https://serenity-ui.com/components/typewriter-testimonial",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "framer-motion",
+        "glow",
+        "text-effect"
+      ],
+      "description": "Animated typewriter customer testimonial quote card for React with realistic typing cadence, avatar badge, and author verification.",
+      "preview_image": "",
+      "id": "unknown__typewriter-testimonial",
+      "source_domain": "serenity-ui.com"
+    },
+    {
+      "name": "Tubelight Navbar",
+      "source_url": "https://serenity-ui.com/components/tubelight-navbar",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "navbar",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "framer-motion",
+        "glow",
+        "tubelight"
+      ],
+      "description": "Apple-inspired floating tubelight navigation bar for React with smooth spring-physics glowing indicator, audio feedback, and dark mode.",
+      "preview_image": "",
+      "id": "unknown__tubelight-navbar",
+      "source_domain": "serenity-ui.com"
+    },
+    {
+      "name": "3D Flip Card",
+      "source_url": "https://serenity-ui.com/components/3d-flip-card",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "framer-motion",
+        "glow",
+        "3d"
+      ],
+      "description": "Free, open-source animated React and Tailwind CSS component with copy-paste code and CLI installation.",
+      "preview_image": "",
+      "id": "unknown__3d-flip-card",
+      "source_domain": "serenity-ui.com"
+    },
+    {
+      "name": "Fluid Functionalism",
+      "source_url": "https://www.fluidfunctionalism.com/docs/accordion",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "accordion",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "clip",
+        "soft",
+        "accordion"
+      ],
+      "description": "Open Source UI components created by @micka_design",
+      "preview_image": "https://www.fluidfunctionalism.com/metadata/og.png",
+      "id": "unknown__fluid-functionalism",
+      "source_domain": "www.fluidfunctionalism.com"
+    },
+    {
+      "name": "createLiquidButton | Avenra Docs",
+      "source_url": "https://docs.avenra.online/docs/liquid-glass/api-reference/create-liquid-button",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "button",
+      "tags": [
+        "svg",
+        "javascript",
+        "css-filter",
+        "plain-css",
+        "frosted",
+        "glass",
+        "liquid-glass",
+        "create"
+      ],
+      "description": "Animated glass button with spring-driven interactions.",
+      "preview_image": "https://docs.avenra.online/og/docs/liquid-glass/api-reference/create-liquid-button/image.png",
+      "id": "unknown__createliquidbutton-|-avenra-docs",
+      "source_domain": "docs.avenra.online"
+    },
+    {
+      "name": "createLiquidCursor | Avenra Docs",
+      "source_url": "https://docs.avenra.online/docs/liquid-glass/api-reference/create-liquid-cursor",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "cursor",
+      "tags": [
+        "svg",
+        "javascript",
+        "css-filter",
+        "plain-css",
+        "frosted",
+        "glass",
+        "liquid-glass",
+        "create"
+      ],
+      "description": "Glass orb cursor that follows the mouse with spring physics.",
+      "preview_image": "https://docs.avenra.online/og/docs/liquid-glass/api-reference/create-liquid-cursor/image.png",
+      "id": "unknown__createliquidcursor-|-avenra-docs",
+      "source_domain": "docs.avenra.online"
+    },
+    {
+      "name": "createLiquidDial | Avenra Docs",
+      "source_url": "https://docs.avenra.online/docs/liquid-glass/api-reference/create-liquid-dial",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "svg",
+        "javascript",
+        "css-filter",
+        "plain-css",
+        "frosted",
+        "glass",
+        "liquid-glass",
+        "create"
+      ],
+      "description": "Rotary glass knob / dial component.",
+      "preview_image": "https://docs.avenra.online/og/docs/liquid-glass/api-reference/create-liquid-dial/image.png",
+      "id": "unknown__createliquiddial-|-avenra-docs",
+      "source_domain": "docs.avenra.online"
+    },
+    {
+      "name": "createLiquidInput | Avenra Docs",
+      "source_url": "https://docs.avenra.online/docs/liquid-glass/api-reference/create-liquid-input",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "input",
+      "tags": [
+        "svg",
+        "javascript",
+        "css-filter",
+        "plain-css",
+        "frosted",
+        "glass",
+        "liquid-glass",
+        "create"
+      ],
+      "description": "Glass-wrapped text input component.",
+      "preview_image": "https://docs.avenra.online/og/docs/liquid-glass/api-reference/create-liquid-input/image.png",
+      "id": "unknown__createliquidinput-|-avenra-docs",
+      "source_domain": "docs.avenra.online"
+    },
+    {
+      "name": "createLiquidSlider | Avenra Docs",
+      "source_url": "https://docs.avenra.online/docs/liquid-glass/api-reference/create-liquid-slider",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "slider",
+      "tags": [
+        "svg",
+        "javascript",
+        "css-filter",
+        "plain-css",
+        "frosted",
+        "glass",
+        "liquid-glass",
+        "create"
+      ],
+      "description": "Horizontal range slider with glass effects.",
+      "preview_image": "https://docs.avenra.online/og/docs/liquid-glass/api-reference/create-liquid-slider/image.png",
+      "id": "unknown__createliquidslider-|-avenra-docs",
+      "source_domain": "docs.avenra.online"
+    },
+    {
+      "name": "createLiquidSwitch | Avenra Docs",
+      "source_url": "https://docs.avenra.online/docs/liquid-glass/api-reference/create-liquid-switch",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "toggle",
+      "tags": [
+        "svg",
+        "javascript",
+        "css-filter",
+        "plain-css",
+        "frosted",
+        "glass",
+        "liquid-glass",
+        "create"
+      ],
+      "description": "Toggle switch with spring-animated thumb.",
+      "preview_image": "https://docs.avenra.online/og/docs/liquid-glass/api-reference/create-liquid-switch/image.png",
+      "id": "unknown__createliquidswitch-|-avenra-docs",
+      "source_domain": "docs.avenra.online"
+    },
+    {
+      "name": "AI Response Stream",
+      "source_url": "https://motiq.dev/components/ai-response-stream",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "framer-motion",
+        "frosted",
+        "glass",
+        "ai"
+      ],
+      "description": "Streaming assistant response your app drives: text, code with copy, inline citations, and stop/retry/complete/error states.",
+      "preview_image": "https://motiq.dev/components/ai-response-stream/opengraph-image?c703c9c8d29ac508",
+      "id": "unknown__ai-response-stream",
+      "source_domain": "motiq.dev"
+    },
+    {
+      "name": "Deployment Pipeline",
+      "source_url": "https://motiq.dev/components/deployment-pipeline",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "framer-motion",
+        "frosted",
+        "glass",
+        "deployment"
+      ],
+      "description": "Visualize a CI/CD run - stage status, running-stage emphasis, durations, expandable logs, and Retry on failed stages. Data is controlled by your app.",
+      "preview_image": "https://motiq.dev/components/deployment-pipeline/opengraph-image?c703c9c8d29ac508",
+      "id": "unknown__deployment-pipeline",
+      "source_domain": "motiq.dev"
+    },
+    {
+      "name": "Live Presence Stack",
+      "source_url": "https://motiq.dev/components/live-presence-stack",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "framer-motion",
+        "frosted",
+        "glass",
+        "live"
+      ],
+      "description": "A live avatar stack for collaborative apps - animated join/leave, per-user active/idle/editing/viewing status, overflow count, and a keyboard-accessible detail list.",
+      "preview_image": "https://motiq.dev/components/live-presence-stack/opengraph-image?c703c9c8d29ac508",
+      "id": "unknown__live-presence-stack",
+      "source_domain": "motiq.dev"
+    },
+    {
+      "name": "KPI Number Morph",
+      "source_url": "https://motiq.dev/components/kpi-number-morph",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "framer-motion",
+        "frosted",
+        "glass",
+        "kpi"
+      ],
+      "description": "An animated KPI stat that morphs between values with a direction-aware, color-independent trend indicator. Controlled value, locale + compact formatting.",
+      "preview_image": "https://motiq.dev/components/kpi-number-morph/opengraph-image?c703c9c8d29ac508",
+      "id": "unknown__kpi-number-morph",
+      "source_domain": "motiq.dev"
+    },
+    {
+      "name": "Tool Call Activity",
+      "source_url": "https://motiq.dev/components/tool-call-activity",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "framer-motion",
+        "frosted",
+        "glass",
+        "tool"
+      ],
+      "description": "Presentation-only inspector for an agent's tool calls: concurrent calls, expandable details, inline approve/reject, retry, and compressed completed steps.",
+      "preview_image": "https://motiq.dev/components/tool-call-activity/opengraph-image?c703c9c8d29ac508",
+      "id": "unknown__tool-call-activity",
+      "source_domain": "motiq.dev"
+    },
+    {
+      "name": "Live Log Stream",
+      "source_url": "https://motiq.dev/components/live-log-stream",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "framer-motion",
+        "frosted",
+        "glass",
+        "live"
+      ],
+      "description": "A live log console - auto-follow that never fights your scroll, a \"N new lines\" resume indicator, pause/resume, search, per-level filtering, copy, and bounded history. Data is controlled by your app.",
+      "preview_image": "https://motiq.dev/components/live-log-stream/opengraph-image?c703c9c8d29ac508",
+      "id": "unknown__live-log-stream",
+      "source_domain": "motiq.dev"
+    },
+    {
+      "name": "Activity Stream",
+      "source_url": "https://motiq.dev/components/activity-stream",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "framer-motion",
+        "frosted",
+        "glass",
+        "activity"
+      ],
+      "description": "A collaboration activity feed that goes beyond a dotted timeline - groups repeated actions, date separators, an unread divider, live-arriving items, and filtering by event type. Your app owns the events.",
+      "preview_image": "https://motiq.dev/components/activity-stream/opengraph-image?c703c9c8d29ac508",
+      "id": "unknown__activity-stream",
+      "source_domain": "motiq.dev"
+    },
+    {
+      "name": "Streaming Data Rows",
+      "source_url": "https://motiq.dev/components/streaming-data-rows",
+      "registry_url": "https://21st.dev/community/libraries",
+      "category": "block",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "framer-motion",
+        "frosted",
+        "glass",
+        "streaming"
+      ],
+      "description": "A live operational table your app drives - animated row insert, update, resort with continuity, per-cell change emphasis (\u25b2\u25bc, never color alone), numeric morphs, and status transitions. Not a data-grid.",
+      "preview_image": "https://motiq.dev/components/streaming-data-rows/opengraph-image?c703c9c8d29ac508",
+      "id": "unknown__streaming-data-rows",
+      "source_domain": "motiq.dev"
     }
   ]
 }
