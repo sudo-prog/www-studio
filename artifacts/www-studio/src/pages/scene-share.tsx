@@ -182,7 +182,7 @@ export default function SceneShare() {
     return (
       <div className="w-full h-[100dvh] overflow-hidden bg-[#0d0d1a] relative">
         <AnimatedScene scene={scene} />
-        <div className="absolute bottom-3 right-3 flex items-center gap-2">
+        <div className="absolute bottom-[calc(0.75rem+env(safe-area-inset-bottom,0px))] right-3 flex items-center gap-2">
           <span className="text-white/40 text-[10px] font-medium px-2 py-0.5 bg-black/40 backdrop-blur rounded-full">
             ✦ WWW Studio
           </span>
@@ -194,12 +194,12 @@ export default function SceneShare() {
   return (
     <div className="min-h-[100dvh] bg-background flex flex-col">
       {/* Top bar */}
-      <div className="min-h-[56px] flex flex-wrap items-center justify-between gap-2 px-4 py-2 border-b border-border bg-background/95 backdrop-blur shrink-0">
+      <div className="min-h-[56px] flex flex-wrap items-center justify-between gap-2 px-4 py-2 pt-[calc(0.5rem+env(safe-area-inset-top,0px))] border-b border-border bg-background/95 backdrop-blur shrink-0">
         <div className="flex flex-wrap items-center gap-3 min-w-0">
-          <Button variant="ghost" size="icon" className="h-8 w-8 min-h-[48px] min-w-[48px]" onClick={() => navigate("/scenes")}>
+          <Button variant="ghost" size="icon" className="min-h-[48px] min-w-[48px]" onClick={() => navigate("/scenes")}>
             <ArrowLeft className="h-4 w-4" />
           </Button>
-          <Link href="/" className="shrink-0 flex items-center gap-1.5 font-semibold text-sm tracking-tight hover:text-primary transition-colors">
+          <Link href="/" className="shrink-0 flex items-center gap-1.5 min-h-[44px] min-w-[44px] font-semibold text-sm tracking-tight hover:text-primary transition-colors">
             <Code2 className="h-4 w-4 text-primary" />
             <span className="hidden sm:inline">WWW Studio</span>
           </Link>
@@ -242,7 +242,7 @@ export default function SceneShare() {
 
       <div className="flex flex-col md:flex-row flex-1 min-h-0">
         {/* Scene preview - left/main */}
-        <div className="flex-1 bg-[#0d0d1a] relative overflow-hidden">
+        <div className="flex-1 min-h-[45vh] md:min-h-0 bg-[#0d0d1a] relative overflow-hidden">
           <AnimatedScene scene={scene} />
           {/* Stats overlay */}
           <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-center gap-3" style={{ marginBottom: "env(safe-area-inset-bottom, 0px)" }}>

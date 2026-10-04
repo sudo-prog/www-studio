@@ -68,7 +68,7 @@ function WebsiteTemplateCard({ item }: { item: WebsiteTemplateItem }) {
     <div className="relative group">
       {/* Main card container */}
       <div
-        className="relative aspect-[4/3] w-full rounded-xl overflow-hidden border border-border bg-muted hover:border-primary/40 transition-all hover:shadow-lg hover:shadow-primary/10 cursor-pointer"
+        className="relative aspect-[4/3] w-full rounded-xl overflow-hidden border border-border bg-muted hover:border-primary/40 transition-all hover:shadow-lg hover:shadow-primary/10 cursor-pointer min-h-[44px]"
         onClick={() => setPreviewOpen(true)}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -166,7 +166,7 @@ function WebsiteTemplatesSection() {
           <button
             key={cat}
             onClick={() => setActiveCategory(cat)}
-            className={`px-3 py-1.5 min-h-[44px] rounded-full text-xs font-medium transition-colors ${
+            className={`px-3 py-1.5 min-h-[44px] min-w-[44px] rounded-full text-xs font-medium transition-colors ${
               activeCategory === cat
                 ? "bg-primary text-primary-foreground"
                 : "bg-muted text-muted-foreground hover:text-foreground"
@@ -185,7 +185,7 @@ function WebsiteTemplatesSection() {
       ) : (
         <div className="overflow-x-auto">
           {/* aura.build-style grid: grid-cols-2 lg:grid-cols-5 */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 min-w-[540px] sm:min-w-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
             {filtered.map((template) => (
               <WebsiteTemplateCard key={template.id} item={template} />
             ))}
@@ -239,11 +239,11 @@ export default function Home() {
                 className="w-full min-h-[120px] max-h-40 px-4 py-4 rounded-2xl bg-card border border-border text-foreground placeholder-muted-foreground resize-none focus:outline-none focus:ring-1 focus:ring-primary transition-shadow"
                 rows={3}
               />
-              <div className="absolute bottom-3 right-3 flex items-center gap-2">
-                <select className="hidden sm:inline-flex items-center gap-2 text-xs text-muted-foreground bg-muted/50 rounded-lg px-3 py-1.5 min-h-[44px] border border-border focus:outline-none focus:ring-1 focus:ring-primary">                  <option>GPT-5</option>
+              <div className="absolute bottom-3 right-3 left-3 sm:left-auto flex flex-wrap items-center justify-end gap-2">
+                <select className="hidden sm:inline-flex items-center gap-2 text-xs text-muted-foreground bg-muted/50 rounded-lg px-3 py-1.5 min-h-[48px] border border-border focus:outline-none focus:ring-1 focus:ring-primary">                  <option>GPT-5</option>
                   <option>Claude 4</option>
                 </select>
-                <Button size="sm" className="min-h-[44px]">
+                <Button size="sm" className="min-h-[48px]">
                   <Sparkles className="h-4 w-4 mr-2" />
                   Generate
                 </Button>
@@ -253,7 +253,7 @@ export default function Home() {
 
           <div className="mt-8 sm:mt-12">
             {/* Control bar — aura.build style (personal use version) */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 p-3 sm:p-4 bg-card/50 rounded-xl border border-border">
+            <div className="flex flex-col sm:flex-row flex-wrap items-center justify-between gap-3 sm:gap-4 p-3 sm:p-4 bg-card/50 rounded-xl border border-border">
               <div className="flex items-center gap-2 text-xs text-muted-foreground">
                 <Blocks className="h-3 w-3" />
                 <span>WWW-Studio personal template collection</span>
@@ -302,7 +302,7 @@ export default function Home() {
         {/* Wellness Scenes Showcase */}
         {showcaseScenes.length > 0 && (
           <section className="px-4 md:px-6 pb-12 max-w-7xl mx-auto">
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-6">
               <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-foreground">
                 Wellness Scenes
               </h2>
@@ -314,7 +314,7 @@ export default function Home() {
               </Button>
             </div>
             <div className="overflow-x-auto">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 min-w-[640px] sm:min-w-0">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {showcaseScenes.map((scene: any) => (
                   <SceneShowcaseCard key={scene.id} scene={scene} />
                 ))}
@@ -323,6 +323,54 @@ export default function Home() {
           </section>
         )}
 
-        {/* AURA Website Templates — personal use */}\n        <WebsiteTemplatesSection />\n\n        {/* Footer — aura.build style, personal-use version */}\n        <footer className="px-4 md:px-6 py-12 border-t border-border bg-card/30 mt-16">\n          <div className="max-w-7xl mx-auto">\n            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 mb-8">\n              <div>\n                <h3 className="text-xs font-semibold text-muted-foreground mb-3 uppercase">Product</h3>\n                <ul className="space-y-2 text-sm">\n                  <li><Link href="/editor/new" className="text-foreground hover:text-primary transition-colors">Create</Link></li>\n                  <li><Link href="/gallery" className="text-foreground hover:text-primary transition-colors">Templates</Link></li>\n                  <li><Link href="/ui-library" className="text-foreground hover:text-primary transition-colors">Components</Link></li>\n                  <li><Link href="/assets" className="text-foreground hover:text-primary transition-colors">Assets</Link></li>\n                </ul>\n              </div>\n              <div>\n                <h3 className="text-xs font-semibold text-muted-foreground mb-3 uppercase">Resources</h3>\n                <ul className="space-y-2 text-sm">\n                  <li><Link href="/skills" className="text-foreground hover:text-primary transition-colors">Skills</Link></li>\n                  <li><Link href="/design" className="text-foreground hover:text-primary transition-colors">Design</Link></li>\n                  <li><Link href="/learn" className="text-foreground hover:text-primary transition-colors">Learn</Link></li>\n                </ul>\n              </div>\n              <div>\n                <h3 className="text-xs font-semibold text-muted-foreground mb-3 uppercase">Company</h3>\n                <ul className="space-y-2 text-sm">\n                  <li><a href="https://github.com/sudo-prog" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">GitHub</a></li>\n                  <li><a href="https://twitter.com/sudo_prog" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">Twitter</a></li>\n                </ul>\n              </div>\n              <div className="col-span-2 md:col-span-1">\n                <div className="flex items-center gap-2 text-xs text-muted-foreground">\n                  <Blocks className="h-3 w-3" />\n                  <span>WWW-Studio — personal visual builder</span>\n                </div>\n              </div>\n            </div>\n            <div className="border-t border-border pt-4 text-xs text-muted-foreground">\n              Personal use template collection.\n            </div>\n          </div>\n        </footer>\n\n        {/* AI Chat Widget - www-studio unique feature */}\n        <AiChatWidget />\n      </main>\n    </div>
+        {/* AURA Website Templates — personal use */}
+        <WebsiteTemplatesSection />
+
+        {/* Footer — aura.build style, personal-use version */}
+        <footer className="px-4 md:px-6 py-12 border-t border-border bg-card/30 mt-16">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 mb-8">
+              <div>
+                <h3 className="text-xs font-semibold text-muted-foreground mb-3 uppercase">Product</h3>
+                <ul className="space-y-2 text-sm">
+                  <li><Link href="/editor/new" className="text-foreground hover:text-primary transition-colors block min-h-[44px] flex items-center">Create</Link></li>
+                  <li><Link href="/gallery" className="text-foreground hover:text-primary transition-colors block min-h-[44px] flex items-center">Templates</Link></li>
+                  <li><Link href="/ui-library" className="text-foreground hover:text-primary transition-colors block min-h-[44px] flex items-center">Components</Link></li>
+                  <li><Link href="/assets" className="text-foreground hover:text-primary transition-colors block min-h-[44px] flex items-center">Assets</Link></li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xs font-semibold text-muted-foreground mb-3 uppercase">Resources</h3>
+                <ul className="space-y-2 text-sm">
+                  <li><Link href="/skills" className="text-foreground hover:text-primary transition-colors block min-h-[44px] flex items-center">Skills</Link></li>
+                  <li><Link href="/design" className="text-foreground hover:text-primary transition-colors block min-h-[44px] flex items-center">Design</Link></li>
+                  <li><Link href="/learn" className="text-foreground hover:text-primary transition-colors block min-h-[44px] flex items-center">Learn</Link></li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xs font-semibold text-muted-foreground mb-3 uppercase">Company</h3>
+                <ul className="space-y-2 text-sm">
+                  <li><a href="https://github.com/sudo-prog" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors block min-h-[44px] flex items-center">GitHub</a></li>
+                  <li><a href="https://twitter.com/sudo_prog" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors block min-h-[44px] flex items-center">Twitter</a></li>
+                </ul>
+              </div>
+              <div className="col-span-2 md:col-span-1">
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <Blocks className="h-3 w-3" />
+                  <span>WWW-Studio — personal visual builder</span>
+                </div>
+              </div>
+            </div>
+            <div className="border-t border-border pt-4 text-xs text-muted-foreground">
+              Personal use template collection.
+            </div>
+          </div>
+        </footer>
+
+        {/* AI Chat Widget - www-studio unique feature */}
+        <AiChatWidget />
+      </main>
+    </div>
+
   );
 }

@@ -59,7 +59,7 @@ function ComponentCard({ item }: { item: typeof COMPONENT_LIBRARY[number] }) {
               <TagChip key={tag}>{tag}</TagChip>
             ))}
           </div>
-          <div className="mt-1.5 flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
+          <div className="mt-1.5 flex flex-wrap items-center gap-2 min-h-[48px]" onClick={(e) => e.stopPropagation()}>
             <StarRatingDisplay
               average={ratingApi.getAverage(item.id)}
               count={ratingApi.getCount(item.id)}
@@ -80,7 +80,7 @@ function ComponentCard({ item }: { item: typeof COMPONENT_LIBRARY[number] }) {
           <Button
             size="sm"
             variant="ghost"
-            className="h-11 w-11 min-h-[44px] min-w-[44px] shrink-0 p-0"
+            className="h-12 w-12 min-h-[48px] min-w-[48px] shrink-0 p-0"
             onClick={() => {
               navigator.clipboard.writeText(item.code);
               toast({ title: "Code copied!" });
@@ -94,7 +94,7 @@ function ComponentCard({ item }: { item: typeof COMPONENT_LIBRARY[number] }) {
             href={item.sourceUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="h-11 w-11 min-h-[44px] min-w-[44px] shrink-0 inline-flex items-center justify-center text-muted-foreground hover:text-primary"
+            className="h-12 w-12 min-h-[48px] min-w-[48px] shrink-0 inline-flex items-center justify-center text-muted-foreground hover:text-primary"
             aria-label={`Open ${item.name} source`}
           >
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
@@ -301,7 +301,7 @@ export default function Components() {
             <button
               type="button"
               onClick={() => setMinRating(0)}
-              className={`shrink-0 px-3 min-h-[44px] rounded-full text-xs font-medium border transition-colors ${
+              className={`shrink-0 px-3 min-h-[48px] rounded-full text-xs font-medium border transition-colors ${
                 minRating === 0
                   ? "bg-primary text-primary-foreground border-primary"
                   : "border-border text-muted-foreground hover:text-foreground"
@@ -315,7 +315,7 @@ export default function Components() {
                 key={n}
                 type="button"
                 onClick={() => setMinRating(minRating === n ? 0 : n)}
-                className={`shrink-0 px-3 min-h-[44px] rounded-full text-xs font-medium border inline-flex items-center gap-1 transition-colors ${
+                className={`shrink-0 px-3 min-h-[48px] rounded-full text-xs font-medium border inline-flex items-center gap-1 transition-colors ${
                   minRating === n
                     ? "bg-amber-500/20 text-amber-300 border-amber-500/50"
                     : "border-border text-muted-foreground hover:text-foreground"
@@ -382,7 +382,7 @@ export default function Components() {
                       size="lg"
                       onClick={() => setPage((p) => Math.max(1, p - 1))}
                       disabled={safePage === 1}
-                      className="min-h-[44px] px-4"
+                      className="min-h-[48px] px-4"
                       aria-label="Previous page"
                     >
                       <ChevronLeft className="h-4 w-4 mr-1" />
@@ -401,7 +401,7 @@ export default function Components() {
                       size="lg"
                       onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                       disabled={safePage === totalPages}
-                      className="min-h-[44px] px-4"
+                      className="min-h-[48px] px-4"
                       aria-label="Next page"
                     >
                       Next

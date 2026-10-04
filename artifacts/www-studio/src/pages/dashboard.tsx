@@ -103,7 +103,7 @@ export default function Dashboard() {
                         } : { background: "hsl(var(--muted))" }}
                       >
                         {scene.status === "published" && (
-                          <span className="absolute top-1.5 right-1.5 text-[9px] px-1.5 py-0.5 rounded-full bg-green-500/20 text-green-400 border border-green-500/30 min-h-[44px] flex items-center">Live</span>
+                          <span className="absolute top-1.5 right-1.5 text-[9px] px-1.5 py-0.5 rounded-full bg-green-500/20 text-green-400 border border-green-500/30">Live</span>
                         )}
                       </div>
                       <div className="px-2.5 py-2">
@@ -126,7 +126,7 @@ export default function Dashboard() {
             { icon: <Globe className="h-4 w-4" />,       label: "Public Gallery",    sub: "Browse public",       href: "/scenes/gallery",    color: "bg-green-500/10 text-green-400 border-green-500/20" },
             { icon: <PenLine className="h-4 w-4" />,     label: "Freeform Canvas",   sub: "Visual editor",          href: "/freeform",          color: "bg-orange-500/10 text-orange-400 border-orange-500/20" },
           ].map(({ icon, label, sub, href, color }) => (
-            <Link key={label} href={href} className="min-h-[48px]">
+            <Link key={label} href={href} className="block min-h-[48px]">
               <div className={`border rounded-xl p-4 hover:opacity-90 transition-all cursor-pointer h-full min-h-[48px] ${color}`}>
                 <div className="mb-2">{icon}</div>
                 <p className="font-semibold text-sm">{label}</p>

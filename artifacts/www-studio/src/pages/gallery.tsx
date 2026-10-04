@@ -29,7 +29,7 @@ function EmbedModal({ scene, onClose }: { scene: any; onClose: () => void }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" onClick={onClose}>
-      <div className="bg-card border border-border rounded-2xl p-6 w-full max-w-lg shadow-2xl" onClick={(e) => e.stopPropagation()}>
+      <div className="bg-card border border-border rounded-2xl p-4 sm:p-6 w-full max-w-lg max-h-[85dvh] overflow-y-auto shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <h2 className="font-semibold text-base mb-1">Embed Scene</h2>
         <p className="text-xs text-muted-foreground mb-4">Paste this snippet into any HTML page</p>
         <div className="overflow-x-auto">
@@ -113,8 +113,9 @@ function GallerySceneCard({ scene, onFork, onEmbed, onPreview }: {
         <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
           <span className="text-xs text-muted-foreground">{elements.length} elements</span>
           <button
-          onClick={onEmbed}
-          className="min-h-[44px] min-w-[44px] min-h-[48px] min-w-[48px] flex items-center justify-center text-[10px] text-muted-foreground hover:text-foreground gap-1 transition-colors"
+            onClick={onEmbed}
+            aria-label="Embed scene"
+            className="min-h-[48px] min-w-[48px] px-3 flex items-center justify-center text-[10px] text-muted-foreground hover:text-foreground gap-1 transition-colors"
           >
             <Code2 className="h-3 w-3" />Embed
           </button>
@@ -156,7 +157,7 @@ export default function Gallery() {
   }
 
   return (
-    <div className="min-h-[100dvh] bg-background overflow-x-hidden pb-[env(safe-area-inset-bottom)]">
+    <div className="min-h-[100dvh] bg-background overflow-x-hidden pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)] pb-[env(safe-area-inset-bottom)]">
       {embedScene && <EmbedModal scene={embedScene} onClose={() => setEmbedScene(null)} />}
 
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-8">
@@ -174,7 +175,7 @@ export default function Gallery() {
         </div>
 
         <div className="flex flex-wrap items-center gap-3 mb-8">
-          <div className="relative flex-1 max-w-sm">
+          <div className="relative w-full sm:w-auto sm:flex-1 sm:min-w-0 max-w-sm">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
               placeholder="Search public scenes…"

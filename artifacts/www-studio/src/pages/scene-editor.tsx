@@ -352,7 +352,7 @@ export default function SceneEditor() {
           <Button variant="ghost" size="icon" className="h-8 w-8 shrink-0 min-h-[44px] min-w-[44px]" onClick={() => navigate("/scenes")} title="Back to Scenes">
             <ArrowLeft className="h-4 w-4" />
           </Button>
-          <Link href="/" className="shrink-0 flex items-center gap-1.5 font-semibold text-sm tracking-tight hover:text-primary transition-colors">
+          <Link href="/" className="shrink-0 flex items-center gap-1.5 min-h-[44px] px-1 font-semibold text-sm tracking-tight hover:text-primary transition-colors">
             <Code2 className="h-4 w-4 text-primary" />
             <span className="hidden sm:inline">WWW Studio</span>
           </Link>
@@ -498,12 +498,12 @@ export default function SceneEditor() {
               onMove={handleMove}
               onDropNew={handleAdd}
             />
-            <div className="absolute bottom-2 left-2 sm:left-auto sm:bottom-[calc(env(safe-area-inset-bottom)+0.5rem)] right-2 flex items-center gap-2 text-[10px] text-white/40 bg-black/40 px-2 py-1 rounded-md pointer-events-none backdrop-blur-sm">
+            <div className="absolute bottom-2 left-2 sm:left-auto sm:bottom-[calc(env(safe-area-inset-bottom)+0.5rem)] right-2 max-w-[calc(100%-1rem)] flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[10px] text-white/40 bg-black/40 px-2 py-1 rounded-md pointer-events-none backdrop-blur-sm">
               <span>{state.scene.canvasWidth}×{state.scene.canvasHeight}</span>
               <span>·</span>
               <span>{state.scene.elements.length} elements</span>
               {state.selectedId && (
-                <><span>·</span><span className="text-primary/70">{selectedEl?.name} selected</span></>
+                <><span>·</span><span className="min-w-0 truncate text-primary/70">{selectedEl?.name} selected</span></>
               )}
               <span>·</span>
               <span className={cn(complexity < 40 ? "text-green-400/70" : complexity < 70 ? "text-yellow-400/70" : "text-red-400/70")}>
@@ -512,7 +512,7 @@ export default function SceneEditor() {
             </div>
 
             {/* Press ? hint */}
-            <div className="absolute bottom-2 sm:bottom-[calc(env(safe-area-inset-bottom)+0.5rem)] right-2 text-[10px] text-white/20 pointer-events-none">
+            <div className="absolute bottom-2 sm:bottom-[calc(env(safe-area-inset-bottom)+0.5rem)] right-2 hidden sm:block text-[10px] text-white/20 pointer-events-none">
               Press <kbd className="text-[9px] bg-white/10 px-1 rounded">?</kbd> for shortcuts
             </div>
           </div>
@@ -549,7 +549,7 @@ export default function SceneEditor() {
               ))}
             </div>
 
-            <div className="flex-1 overflow-y-auto pb-[calc(env(safe-area-inset-bottom)+0.5rem)]">
+            <div className="flex-1 min-w-0 overflow-y-auto overflow-x-hidden pb-[calc(env(safe-area-inset-bottom)+0.5rem)]">
               {/* Layers */}
               {rightTab === "layers" && (
                 <div className="p-2 space-y-1 overflow-x-auto">
@@ -565,7 +565,7 @@ export default function SceneEditor() {
                       key={el.id}
                       onClick={() => { handleSelect(el.id); setRightTab("properties"); }}
                       className={cn(
-                        "group flex flex-wrap items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer text-sm transition-colors",
+                        "group flex flex-wrap items-center gap-2 min-h-[48px] px-2 py-1.5 rounded-lg cursor-pointer text-sm transition-colors",
                         state.selectedId === el.id ? "bg-primary/15 text-foreground" : "hover:bg-muted text-muted-foreground hover:text-foreground"
                       )}
                     >

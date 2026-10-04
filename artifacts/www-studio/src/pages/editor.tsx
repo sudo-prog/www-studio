@@ -1186,7 +1186,7 @@ export default function Editor() {
   const iframeSrcDoc = currentPageId !== "home" ? (currentPageHtml ?? DEFAULT_PAGE_HTML) : localCode;
 
   return (
-    <div className="min-h-[100dvh] w-screen max-w-screen flex flex-col bg-background text-foreground overflow-hidden">
+    <div className="min-h-[100dvh] w-full max-w-full flex flex-col bg-background text-foreground overflow-hidden">
       {showPublishModal && <PublishModal projectId={project.id} projectSlug={project.slug} onClose={() => setShowPublishModal(false)} />}
 
       {/* Mobile notice */}
@@ -1196,13 +1196,13 @@ export default function Editor() {
       </div>
 
       {/* Top Toolbar */}
-      <header className="min-h-14 border-b border-border/50 bg-card/50 backdrop-blur flex flex-wrap items-center justify-between px-3 py-2 shrink-0 gap-2">
+      <header className="min-h-14 border-b border-border/50 bg-card/50 backdrop-blur flex flex-wrap items-center justify-between px-3 pt-[calc(theme(spacing.2)+env(safe-area-inset-top,0px))] pb-2 shrink-0 gap-2">
         {/* Left */}
         <div className="flex items-center gap-2 min-w-0">
           <Button variant="ghost" size="icon" asChild className="shrink-0 h-8 w-8 min-h-[44px] min-w-[44px]">
             <Link href="/projects"><ArrowLeft className="w-4 h-4" /></Link>
           </Button>
-          <Link href="/" className="shrink-0 flex items-center gap-1.5 font-semibold text-sm tracking-tight hover:text-primary transition-colors">
+          <Link href="/" className="shrink-0 flex items-center gap-1.5 font-semibold text-sm tracking-tight hover:text-primary transition-colors min-h-[44px]">
             <Code2 className="h-4 w-4 text-primary" />
             <span className="hidden sm:inline">WWW Studio</span>
           </Link>
@@ -1349,7 +1349,7 @@ export default function Editor() {
       <div className="flex-1 flex flex-col lg:flex-row overflow-hidden min-h-0">
 
         {/* Left Sidebar — Pages + Layers */}
-        <aside className="w-52 border-r border-border/50 bg-card/30 flex flex-col shrink-0">
+        <aside className="w-full lg:w-52 max-h-[38dvh] lg:max-h-none border-b lg:border-b-0 lg:border-r border-border/50 bg-card/30 flex flex-col shrink-0">
           <PageManager
             pages={pages}
             currentPageId={currentPageId}
@@ -1378,11 +1378,11 @@ export default function Editor() {
 
         {/* Center Canvas */}
         <main className="flex-1 bg-muted/10 flex flex-col overflow-hidden min-w-0">
-          <div className="flex-1 flex overflow-hidden">
+          <div className="flex-1 flex flex-col lg:flex-row overflow-hidden min-h-0">
 
             {/* Code pane (split or code-only) */}
             {viewMode !== "preview" && (
-              <div className={cn("flex flex-col border-r border-border/50 bg-[#0d1117] overflow-hidden", viewMode === "code" ? "flex-1" : "w-1/2")}>
+              <div className={cn("flex flex-col border-b lg:border-b-0 lg:border-r border-border/50 bg-[#0d1117] overflow-auto lg:overflow-hidden min-h-0", viewMode === "code" ? "flex-1" : "w-full lg:w-1/2")}>
                 <div className="h-8 flex items-center justify-between px-3 border-b border-border/20 shrink-0">
                   <span className="text-[10px] font-mono text-muted-foreground">HTML / Tailwind</span>
                   {codeDirty && <span className="text-[10px] text-amber-400 font-mono">● unsaved</span>}
@@ -1410,7 +1410,7 @@ export default function Editor() {
 
             {/* Preview pane */}
             {viewMode !== "code" && (
-              <div className={cn("flex flex-col overflow-hidden", viewMode === "split" ? "w-1/2" : "flex-1")}>
+              <div className={cn("flex flex-col overflow-hidden min-h-0", viewMode === "split" ? "w-full lg:w-1/2" : "flex-1")}>
                 <div className="flex-1 p-4 flex items-center justify-center overflow-auto">
                   <div
                     className={cn(

@@ -1,5 +1,5 @@
 import { apiFetch } from "@/lib/apiFetch";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRoute, Link } from "wouter";
 import { Code2 } from "lucide-react";
 import { useGetScene } from "@workspace/api-client-react";
@@ -76,6 +76,18 @@ export default function ScenePreviewPage() {
 
   const { data: raw, isLoading, isError } = useGetScene(sceneId);
 
+  const [viewportWidth, setViewportWidth] = useState(1440);
+  useEffect(() => {
+    const read = () => setViewportWidth(window.innerWidth);
+    read();
+    window.addEventListener("resize", read);
+    window.addEventListener("orientationchange", read);
+    return () => {
+      window.removeEventListener("resize", read);
+      window.removeEventListener("orientationchange", read);
+    };
+  }, []);
+
   useEffect(() => {
     document.title = (raw as any)?.name ? `${(raw as any).name} — Scene Preview` : "Scene Preview";
   }, [raw]);
@@ -100,6 +112,10 @@ export default function ScenePreviewPage() {
 
   const canvasWidth  = (raw as any)?.canvasWidth  ?? 1440;
   const canvasHeight = (raw as any)?.canvasHeight ?? 900;
+
+  // Fit the fixed-size scene canvas into the viewport on narrow screens.
+  // Keeps layout width = scaled width so the page never overflows at 390px.
+  const scale = Math.min(viewportWidth / canvasWidth, 1);
 
   if (isLoading) {
     return (
@@ -131,18 +147,20 @@ export default function ScenePreviewPage() {
         className="w-full min-h-[100dvh] overflow-x-auto overflow-y-auto pt-[env(safe-area-inset-top,0px)] pb-[env(safe-area-inset-bottom,0px)]"
         style={{ background: "linear-gradient(135deg, #0d1117 0%, #161b22 100%)" }}
       >
-        <div
-          className="relative mx-auto"
-          style={{
-            width:           canvasWidth,
-            height:          canvasHeight,
-            transform:       `scale(${Math.min(window.innerWidth / canvasWidth, 1)})`,
-            transformOrigin: "top center",
-          }}
-        >
-          {[...elements].sort((a, b) => (a.zIndex ?? 0) - (b.zIndex ?? 0)).map((el) => (
-            <SceneEl key={el.id} el={el} />
-          ))}
+        <div className="mx-auto" style={{ width: canvasWidth * scale, height: canvasHeight * scale }}>
+          <div
+            className="relative"
+            style={{
+              width:           canvasWidth,
+              height:          canvasHeight,
+              transform:       `scale(${scale})`,
+              transformOrigin: "top left",
+            }}
+          >
+            {[...elements].sort((a, b) => (a.zIndex ?? 0) - (b.zIndex ?? 0)).map((el) => (
+              <SceneEl key={el.id} el={el} />
+            ))}
+          </div>
         </div>
       </div>
     </>

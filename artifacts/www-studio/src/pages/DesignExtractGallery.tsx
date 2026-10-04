@@ -58,7 +58,7 @@ export default function DesignExtractGallery() {
 
   if (loading) {
     return (
-      <div className="min-h-[100dvh] bg-background flex items-center justify-center pb-[max(1.5rem,env(safe-area-inset-bottom))]">
+      <div className="min-h-[100dvh] bg-background flex items-center justify-center px-[max(1.5rem,env(safe-area-inset-left))] pt-[max(1.5rem,env(safe-area-inset-top))] pb-[max(1.5rem,env(safe-area-inset-bottom))] pr-[max(1.5rem,env(safe-area-inset-right))]">
         <div className="text-muted-foreground">Loading gallery…</div>
       </div>
     );
@@ -66,14 +66,14 @@ export default function DesignExtractGallery() {
 
   if (error) {
     return (
-      <div className="min-h-[100dvh] bg-background flex items-center justify-center pb-[max(1.5rem,env(safe-area-inset-bottom))]">
+      <div className="min-h-[100dvh] bg-background flex items-center justify-center px-[max(1.5rem,env(safe-area-inset-left))] pt-[max(1.5rem,env(safe-area-inset-top))] pb-[max(1.5rem,env(safe-area-inset-bottom))] pr-[max(1.5rem,env(safe-area-inset-right))]">
         <div className="text-destructive">{error}</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-[100dvh] bg-background px-6 pt-6 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
+    <div className="min-h-[100dvh] bg-background px-[max(1.5rem,env(safe-area-inset-left))] pt-[max(1.5rem,env(safe-area-inset-top))] pb-[max(1.5rem,env(safe-area-inset-bottom))] pr-[max(1.5rem,env(safe-area-inset-right))]">
       <Navbar />
       <div className="max-w-5xl mx-auto">
         <header className="mb-8">
@@ -116,7 +116,7 @@ export default function DesignExtractGallery() {
                   </div>
                   <button
                     onClick={() => navigate(`/design-extract/${item.id}`)}
-                    className="w-full mt-2 px-3 py-1.5 text-sm min-h-[48px] bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
+                    className="w-full min-w-0 mt-2 px-3 py-1.5 text-sm min-h-[48px] bg-primary text-primary-foreground rounded-md hover:opacity-90 transition-colors"
                   >
                     View
                   </button>

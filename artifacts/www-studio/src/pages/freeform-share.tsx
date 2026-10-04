@@ -124,7 +124,7 @@ export default function FreeformSharePage() {
       <div className="min-h-[100dvh] bg-background flex flex-col items-center justify-center gap-4 px-4 pb-[env(safe-area-inset-bottom)]">
         <Globe className="h-12 w-12 text-muted-foreground" />
         <p className="text-muted-foreground">Page not found</p>
-        <Button variant="outline" className="min-h-[44px]" asChild>
+        <Button variant="outline" className="min-h-[48px]" asChild>
           <Link href="/projects">← Back to Dashboard</Link>
         </Button>
       </div>
@@ -134,15 +134,15 @@ export default function FreeformSharePage() {
   return (
     <div className="min-h-[100dvh] bg-background flex flex-col pb-[env(safe-area-inset-bottom)]">
       {/* Top bar */}
-      <div className="min-h-[44px] py-2 flex flex-wrap items-center justify-between gap-x-3 gap-y-2 px-4 border-b border-border bg-background/95 backdrop-blur shrink-0">
+      <div className="min-h-[48px] py-2 pt-[max(0.5rem,env(safe-area-inset-top))] flex flex-wrap items-center justify-between gap-x-3 gap-y-2 px-4 border-b border-border bg-background/95 backdrop-blur shrink-0">
         <div className="flex items-center gap-3 flex-wrap">
-          <Button variant="ghost" size="icon" className="h-8 w-8 min-h-[44px] min-w-[44px]" asChild>
+          <Button variant="ghost" size="icon" className="h-12 w-12 min-h-[48px] min-w-[44px]" asChild>
             <Link href="/projects">
               <ArrowLeft className="h-4 w-4" />
             </Link>
           </Button>
           <div className="hidden sm:block h-5 w-px bg-border" />
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap min-w-0">
             <div className="w-6 h-6 rounded-md bg-primary/20 flex items-center justify-center shrink-0">
               <Sparkles className="h-3.5 w-3.5 text-primary" />
             </div>
@@ -156,7 +156,7 @@ export default function FreeformSharePage() {
           <button
             onClick={handleLike}
             className={cn(
-              "flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs border transition-colors min-h-[44px]",
+              "flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs border transition-colors min-h-[48px]",
               liked
                 ? "bg-red-500/10 text-red-500 border-red-500/30"
                 : "border-border text-muted-foreground hover:text-foreground hover:bg-muted"
@@ -165,10 +165,10 @@ export default function FreeformSharePage() {
             <Heart className={cn("h-3.5 w-3.5", liked && "fill-rose-400")} />
             {likes}
           </button>
-          <Button variant="outline" size="sm" className="gap-1.5 min-h-[44px]" onClick={() => window.open(shareUrl, "_blank")}>
+          <Button variant="outline" size="sm" className="gap-1.5 min-h-[48px]" onClick={() => window.open(shareUrl, "_blank")}>
             <ExternalLink className="h-3.5 w-3.5" />Open
           </Button>
-          <Button size="sm" className="gap-1.5 min-h-[44px]" asChild>
+          <Button size="sm" className="gap-1.5 min-h-[48px]" asChild>
             <Link href={`/freeform/${pageId}`}>
               Edit Page
             </Link>
@@ -178,7 +178,7 @@ export default function FreeformSharePage() {
 
       <div className="flex flex-col md:flex-row flex-1 min-h-0 flex-wrap">
         {/* Page preview */}
-        <div className="flex-1 bg-[#0d0d1a] relative overflow-hidden">
+        <div className="flex-1 min-h-[60dvh] md:min-h-0 bg-[#0d0d1a] relative overflow-hidden">
           <FreeformPageRenderer page={page} />
           {/* Stats overlay */}
           <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-center gap-x-3 gap-y-2 max-w-full overflow-x-auto">
@@ -192,7 +192,7 @@ export default function FreeformSharePage() {
         </div>
 
         {/* Sidebar */}
-        <div className="w-full md:w-[320px] border-l border-border bg-card/50 flex flex-col overflow-y-auto shrink-0">
+        <div className="w-full md:w-[320px] border-l border-border bg-card/50 flex flex-col overflow-visible md:overflow-y-auto shrink-0">
           {/* Info */}
           <div className="p-5 border-b border-border">
             <h2 className="font-bold text-lg mb-1">{page.name}</h2>
@@ -213,7 +213,7 @@ export default function FreeformSharePage() {
                   key={mode}
                   onClick={() => setEmbedMode(mode)}
                   className={cn(
-                    "flex-1 min-w-[100px] py-1.5 min-h-[44px] text-xs rounded-md border transition-colors",
+                    "flex-1 min-w-[100px] py-1.5 min-h-[48px] text-xs rounded-md border transition-colors",
                     embedMode === mode
                       ? "bg-primary text-primary-foreground border-primary"
                       : "border-border text-muted-foreground hover:text-foreground"
@@ -230,7 +230,7 @@ export default function FreeformSharePage() {
               </pre>
               <button
                 onClick={() => handleCopy(embedMode === "iframe" ? "iframe" : "link")}
-                className="absolute top-2 right-2 min-h-[44px] min-w-[44px] p-1.5 rounded-md bg-background border border-border hover:bg-muted transition-colors"
+                className="absolute top-2 right-2 min-h-[48px] min-w-[44px] p-1.5 rounded-md bg-background border border-border hover:bg-muted transition-colors"
               >
                 {copied ? <Check className="h-3.5 w-3.5 text-green-500" /> : <Copy className="h-3.5 w-3.5" />}
               </button>

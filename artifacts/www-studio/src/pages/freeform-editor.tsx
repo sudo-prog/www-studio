@@ -242,12 +242,12 @@ export default function FreeformEditor() {
                     }}
                   />
                   {editingColor === name && (
-                    <div className="absolute z-50 top-full mt-1 left-0 bg-background border border-border rounded shadow-lg p-2 flex flex-wrap gap-1">
+                    <div className="absolute z-50 top-full mt-1 left-0 max-w-[min(16rem,calc(100vw-3rem))] bg-background border border-border rounded shadow-lg p-2 flex flex-wrap gap-1">
                       <input
                         type="color"
                         value={editingColorDraft}
                         onChange={(e) => setEditingColorDraft(e.target.value)}
-                        className="w-8 h-8 min-h-[44px] min-w-[44px] rounded cursor-pointer border-0 p-0"
+                        className="w-11 h-11 min-h-[44px] min-w-[44px] rounded cursor-pointer border-0 p-0"
                       />
                       <input
                         type="text"
@@ -441,7 +441,7 @@ export default function FreeformEditor() {
   return (
     <div className="h-[100dvh] flex flex-col bg-[#0a0a0f] text-foreground overflow-hidden">
       {/* Top bar */}
-      <header className="h-12 shrink-0 border-b border-border bg-background flex flex-wrap items-center justify-between px-4 gap-3 z-50 pt-[env(safe-area-inset-top)]">
+      <header className="min-h-[48px] shrink-0 border-b border-border bg-background flex flex-wrap items-center justify-between py-1 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] gap-x-3 gap-y-1 z-50 pt-[calc(env(safe-area-inset-top)+0.25rem)]">
         <div className="flex flex-wrap items-center gap-3">
           <Link href="/projects" className="min-h-[44px] min-w-[44px] flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors">
             <ArrowLeft className="w-4 h-4" />
@@ -621,7 +621,7 @@ export default function FreeformEditor() {
       </div>
 
       {/* Status bar */}
-      <footer className="min-h-[48px] shrink-0 border-t border-border bg-background flex flex-wrap items-center justify-between px-3 text-[10px] text-muted-foreground pb-[env(safe-area-inset-bottom)] gap-2">
+      <footer className="min-h-[48px] shrink-0 border-t border-border bg-background flex flex-wrap items-center justify-between pl-[max(0.75rem,env(safe-area-inset-left))] pr-[max(0.75rem,env(safe-area-inset-right))] text-[10px] text-muted-foreground pb-[env(safe-area-inset-bottom)] gap-2">
         <div className="flex flex-wrap items-center gap-3">
           <span>{state.page.elements.length} elements</span>
           <span>Canvas: {state.page.canvasWidth}×{state.page.canvasHeight}</span>

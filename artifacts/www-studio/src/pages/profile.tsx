@@ -11,10 +11,10 @@ import { useToast } from "@/hooks/use-toast";
 import { PasswordLogin } from "@/components/PasswordLogin";
 
 export default function Profile() {
-  // MOBILE-UI-STANDARD review: all interactive elements already have min-h-[48px] (≥44px),
-  // root containers use min-h-[100dvh] + pb-[env(safe-area-inset-bottom)], overflow-x-hidden
-  // is applied, all flex rows use flex-wrap, and grids use grid-cols-1 at sm breakpoint.
-  // No surgical edits required — mobile UI standards fully satisfied.
+  // MOBILE-UI-STANDARD: interactive elements use min-h-[48px] (>=44px), root containers
+  // use min-h-[100dvh] + pb-[env(safe-area-inset-bottom)] + overflow-x-hidden, flex rows
+  // use flex-wrap, grids stack with grid-cols-1 at sm, and long dynamic text (user id,
+  // project name) is break-words so it cannot force per-element horizontal overflow.
   const { user, isAuthenticated, isLoading: authLoading, githubAvailable, loginWithGitHub } = useAuth();
   const { data: projects = [] } = useGetProjects();
   const { toast } = useToast();
@@ -28,7 +28,7 @@ export default function Profile() {
   const [resetLoading, setResetLoading] = useState(false);
   const { resetPassword } = useAuth();
 
-  if (authLoading) return <div className="min-h-[100dvh] bg-background" />;
+  if (authLoading) return <div className="min-h-[100dvh] bg-background overflow-x-hidden pb-[env(safe-area-inset-bottom)]" />;
 
   if (!isAuthenticated || !user) {
     return (
@@ -102,7 +102,7 @@ export default function Profile() {
           </Avatar>
           <div className="min-w-0 flex-1">
             <h1 className="text-3xl font-bold tracking-tight mb-2 break-words">{[user.firstName, user.lastName].filter(Boolean).join(" ") || "User"}</h1>
-            <p className="text-muted-foreground text-lg mb-4">@{user.id || "user"}</p>
+            <p className="text-muted-foreground text-lg mb-4 break-words min-w-0">@{user.id || "user"}</p>
             <div className="flex flex-wrap gap-4">
               <div className="flex flex-wrap items-center gap-2 text-sm">
                 <FolderGit2 className="w-4 h-4 text-muted-foreground" />
@@ -144,15 +144,15 @@ export default function Profile() {
                 </Button>
               </div>
               {hasGitHubToken() && (
-                <p className="text-[10px] text-green-400 flex flex-wrap items-center gap-1">
-                  ✓ Token connected
+                <div className="flex flex-wrap items-center gap-2 text-[10px] text-green-400">
+                  <span>✓ Token connected</span>
                   <button
-                    className="inline-flex items-center min-h-[48px] text-muted-foreground hover:text-foreground underline ml-2"
+                    className="inline-flex items-center justify-center min-h-[44px] px-2 text-muted-foreground hover:text-foreground underline"
                     onClick={() => { setGhToken(""); handleSaveToken(); }}
                   >
                     Remove
                   </button>
-                </p>
+                </div>
               )}
             </CardContent>
           </Card>
@@ -206,7 +206,7 @@ export default function Profile() {
               {publishedProjects.map((project) => (
                 <Card key={project.id} className="min-w-0">
                   <CardHeader>
-                    <CardTitle className="text-lg">{project.name}</CardTitle>
+                    <CardTitle className="text-lg break-words min-w-0">{project.name}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="text-sm text-muted-foreground">

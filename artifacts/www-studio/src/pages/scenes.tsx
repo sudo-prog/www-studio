@@ -98,7 +98,7 @@ function SceneCard({ scene, onEdit, onDelete, onFork, onTogglePublish, selected,
         )}
 
         {/* Actions */}
-        <div className="absolute top-2 right-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+        <div className="absolute top-2 right-14 md:right-2 z-10 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button size="icon" variant="secondary" className="h-11 w-11 bg-black/60 hover:bg-black/80 border-0 min-h-[48px] min-w-[48px]">
@@ -106,13 +106,13 @@ function SceneCard({ scene, onEdit, onDelete, onFork, onTogglePublish, selected,
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={onEdit} className="min-h-[44px]">
+              <DropdownMenuItem onClick={onEdit} className="min-h-[48px]">
                 <Pencil className="h-4 w-4 mr-2" />Edit
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => window.open(`/scenes/${scene.id}/share`, "_blank")} className="min-h-[44px]">
+              <DropdownMenuItem onClick={() => window.open(`/scenes/${scene.id}/share`, "_blank")} className="min-h-[48px]">
                 <ExternalLink className="h-4 w-4 mr-2" />Share Page
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => window.open(`/scenes/${scene.id}/preview`, "_blank")} className="min-h-[44px]">
+              <DropdownMenuItem onClick={() => window.open(`/scenes/${scene.id}/preview`, "_blank")} className="min-h-[48px]">
                 <ExternalLink className="h-4 w-4 mr-2" />Preview
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => {
@@ -122,14 +122,14 @@ function SceneCard({ scene, onEdit, onDelete, onFork, onTogglePublish, selected,
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
-              }} className="min-h-[44px]">
+              }} className="min-h-[48px]">
                 <Download className="h-4 w-4 mr-2" />Download HTML
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={onFork} className="min-h-[44px]">
+              <DropdownMenuItem onClick={onFork} className="min-h-[48px]">
                 <Copy className="h-4 w-4 mr-2" />Fork / Duplicate
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={onTogglePublish} className="min-h-[44px]">
+              <DropdownMenuItem onClick={onTogglePublish} className="min-h-[48px]">
                 {isPublished
                   ? <><EyeOff className="h-4 w-4 mr-2" />Unpublish</>
                   : <><Globe   className="h-4 w-4 mr-2" />Publish</>}
@@ -175,7 +175,7 @@ function SceneCard({ scene, onEdit, onDelete, onFork, onTogglePublish, selected,
           </div>
         )}
 
-        <div className="flex items-center justify-between">
+        <div className="flex flex-wrap items-center justify-between gap-1">
           <span className="text-xs text-muted-foreground flex items-center gap-1">
             <Clock className="h-3 w-3" />
             {new Date(scene.updatedAt).toLocaleDateString()}
@@ -341,7 +341,7 @@ export default function Scenes() {
   }
 
   return (
-    <div className="min-h-[100dvh] bg-background">
+    <div className="min-h-[100dvh] bg-background pb-[calc(env(safe-area-inset-bottom)+5rem)]">
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-8">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-8">
           <div>
@@ -416,7 +416,7 @@ export default function Scenes() {
 
         <div className="overflow-x-auto">
           <div className="flex flex-wrap items-center gap-3 mb-6">
-            <div className="relative flex-1 max-w-sm">
+            <div className="relative w-full sm:w-auto sm:flex-1 min-w-0 max-w-sm">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
                 placeholder="Search scenes…"
@@ -437,7 +437,7 @@ export default function Scenes() {
               <option value="published">Published</option>
             </select>
             <span className="text-sm text-muted-foreground">{filtered.length} scenes</span>
-            <Button variant="ghost" size="sm" asChild className="min-h-[44px]">
+            <Button variant="ghost" size="sm" asChild className="min-h-[48px]">
               <Link href="/scenes/gallery" className="gap-1.5 text-xs">
                 <Globe className="h-3.5 w-3.5" />Public Gallery
               </Link>
@@ -507,12 +507,12 @@ export default function Scenes() {
               onChange={(e) => setNewName(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleCreate()}
               autoFocus
-              className="min-h-[44px]"
+              className="min-h-[48px]"
             />
           </div>
           <DialogFooter>
-            <Button variant="ghost" onClick={() => setShowNew(false)} className="min-h-[44px]">Cancel</Button>
-            <Button onClick={handleCreate} disabled={!newName.trim() || createScene.isPending} className="min-h-[44px]">
+            <Button variant="ghost" onClick={() => setShowNew(false)} className="min-h-[48px]">Cancel</Button>
+            <Button onClick={handleCreate} disabled={!newName.trim() || createScene.isPending} className="min-h-[48px]">
               {createScene.isPending ? "Creating…" : "Create Scene"}
             </Button>
           </DialogFooter>
@@ -537,11 +537,11 @@ export default function Scenes() {
               onChange={(e) => setAiPrompt(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleAIGenerate()}
               autoFocus
-              className="min-h-[44px]"
+              className="min-h-[48px]"
             />
             {/* Quick prompt suggestions */}
             <div className="space-y-1.5">
-              <div className="flex items-center justify-between">
+              <div className="flex flex-wrap items-center justify-between gap-1">
                 <p className="text-[10px] text-muted-foreground font-medium uppercase tracking-wide">Quick prompts</p>
                 <button
                   onClick={() => {
@@ -575,8 +575,8 @@ export default function Scenes() {
             </div>
           </div>
           <DialogFooter>
-            <Button variant="ghost" onClick={() => setShowAI(false)} className="min-h-[44px]">Cancel</Button>
-            <Button onClick={handleAIGenerate} disabled={!aiPrompt.trim() || aiGenerate.isPending} className="min-h-[44px]">
+            <Button variant="ghost" onClick={() => setShowAI(false)} className="min-h-[48px]">Cancel</Button>
+            <Button onClick={handleAIGenerate} disabled={!aiPrompt.trim() || aiGenerate.isPending} className="min-h-[48px]">
               {aiGenerate.isPending ? "Generating…" : "Generate Scene"}
             </Button>
           </DialogFooter>
