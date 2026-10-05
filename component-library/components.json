@@ -1,6 +1,6 @@
 {
-  "version": "1.0.73",
-  "source_count": 26933,
+  "version": "1.0.74",
+  "source_count": 26936,
   "components": [
     {
       "id": "cat-0",
@@ -467068,6 +467068,57 @@
       "preview_image": "https://cdn.originkit.dev/components/particle-drift-04-poster.jpg?v=mufo4u1f",
       "id": "unknown__particle-drift-4",
       "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Design Minis Ransom Note",
+      "source_url": "https://www.designminis.com/tools/ransom-note",
+      "registry_url": "https://www.designminis.com",
+      "category": "typography",
+      "tags": [
+        "typography",
+        "cut-out",
+        "text-effect",
+        "plain-css",
+        "generator"
+      ],
+      "description": "Design Minis tool that renders anything you type in cut-out magazine letters.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/1f9ec591b595e27196be077f2eb4ca3a9a82d27c-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__design-minis-ransom-note",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Design Minis Holosticker",
+      "source_url": "https://www.designminis.com/tools/holosticker",
+      "registry_url": "https://www.designminis.com",
+      "category": "image-effect",
+      "tags": [
+        "holographic",
+        "sticker",
+        "image-effect",
+        "plain-css",
+        "generator"
+      ],
+      "description": "Design Minis tool that turns artwork into a holographic die-cut sticker and exports a PNG.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/760861b5b02c0f29257607e9c2ba8848729b847d-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__design-minis-holosticker",
+      "source_domain": "www.designminis.com"
+    },
+    {
+      "name": "Design Minis Liquid Metal",
+      "source_url": "https://www.designminis.com/tools/liquid-metal",
+      "registry_url": "https://www.designminis.com",
+      "category": "shader",
+      "tags": [
+        "metallic",
+        "canvas",
+        "shader",
+        "image-effect",
+        "generator"
+      ],
+      "description": "Design Minis tool that renders artwork as liquid metal on a canvas, then exports it.",
+      "preview_image": "https://cdn.sanity.io/images/2lay0cu8/production/3cc1092cc84237dd62a9c2cd4aac01d599d7ce92-1600x1000.jpg?w=1200&h=630&fit=crop&crop=top",
+      "id": "unknown__design-minis-liquid-metal",
+      "source_domain": "www.designminis.com"
     }
   ]
 }
