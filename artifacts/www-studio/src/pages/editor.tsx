@@ -109,7 +109,7 @@ function AssetsPanel({ projectId }: { projectId: string }) {
       {/* Drop zone */}
       <div
         className={cn(
-          "m-3 rounded-xl border-2 border-dashed flex flex-col items-center justify-center gap-2 py-5 cursor-pointer transition-colors",
+          "m-3 rounded-xl border-2 border-dashed flex flex-col items-center justify-center gap-2 py-5 min-h-[44px] cursor-pointer transition-colors",
           isDragging ? "border-primary bg-primary/5" : "border-border/50 hover:border-primary/50 hover:bg-muted/30"
         )}
         onClick={() => fileInputRef.current?.click()}
@@ -305,7 +305,7 @@ function AIImagesPanel({ projectId }: { projectId: string }) {
                 {images.map((img, i) => (
                   <div key={i} className="rounded-lg overflow-hidden border border-border/40 group relative">
                     <img src={img.url} alt={img.prompt} className="w-full aspect-video object-cover" />
-                    <div className="absolute inset-0 bg-black/60 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+                    <div className="absolute inset-0 bg-black/60 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex flex-wrap items-center justify-center gap-2 p-1">
                       <Button size="sm" variant="secondary" className="h-7 min-h-[44px] text-xs gap-1" onClick={() => navigator.clipboard.writeText(img.url)}><Copy className="w-3 h-3" />Copy URL</Button>
                       <Button size="sm" variant="secondary" className="h-7 min-h-[44px] text-xs gap-1" asChild><a href={img.url} target="_blank" rel="noopener noreferrer"><ExternalLink className="w-3 h-3" />Open</a></Button>
                     </div>
@@ -586,7 +586,7 @@ function PublishModal({ projectId, projectSlug, onClose }: { projectId: string; 
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm overflow-y-auto">
-      <div className="bg-card border border-border/50 rounded-2xl shadow-2xl w-full max-w-md mx-4 p-6 m-4">
+      <div className="bg-card border border-border/50 rounded-2xl shadow-2xl w-[calc(100%_-_2rem)] max-w-md max-h-[calc(100dvh_-_2rem)] overflow-y-auto p-6 my-4">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center"><Globe className="w-4 h-4 text-primary" /></div>
@@ -1161,7 +1161,7 @@ export default function Editor() {
   }, [currentPageId, project?.themeTokens]);
 
   if (isProjectLoading || !project) {
-    return <div className="min-h-screen bg-background flex items-center justify-center"><Loader2 className="w-6 h-6 animate-spin text-muted-foreground" /></div>;
+    return <div className="min-h-[100dvh] bg-background flex items-center justify-center"><Loader2 className="w-6 h-6 animate-spin text-muted-foreground" /></div>;
   }
 
   const RIGHT_TABS: { id: RightPanel; icon: React.ReactNode; label: string; title: string }[] = [
@@ -1190,15 +1190,15 @@ export default function Editor() {
       {showPublishModal && <PublishModal projectId={project.id} projectSlug={project.slug} onClose={() => setShowPublishModal(false)} />}
 
       {/* Mobile notice */}
-      <div className="lg:hidden flex items-center justify-center gap-2 px-3 py-2 bg-amber-500/10 border-b border-amber-500/20 text-amber-600 text-xs shrink-0">
+      <div className="lg:hidden flex flex-wrap items-center justify-center gap-2 px-3 py-2 bg-amber-500/10 border-b border-amber-500/20 text-amber-600 text-xs shrink-0">
         <Monitor className="w-3.5 h-3.5 shrink-0" />
-        <span>Editor is best experienced on desktop</span>
+        <span className="min-w-0 text-center">Editor is best experienced on desktop</span>
       </div>
 
       {/* Top Toolbar */}
-      <header className="min-h-14 border-b border-border/50 bg-card/50 backdrop-blur flex flex-wrap items-center justify-between px-3 pt-[calc(theme(spacing.2)+env(safe-area-inset-top,0px))] pb-2 shrink-0 gap-2">
+      <header className="min-h-14 border-b border-border/50 bg-card/50 backdrop-blur flex flex-wrap items-center justify-between px-3 pt-[calc(theme(spacing.2)_+_env(safe-area-inset-top,0px))] pb-2 shrink-0 gap-2">
         {/* Left */}
-        <div className="flex items-center gap-2 min-w-0">
+        <div className="flex flex-wrap items-center gap-2 min-w-0">
           <Button variant="ghost" size="icon" asChild className="shrink-0 h-8 w-8 min-h-[44px] min-w-[44px]">
             <Link href="/projects"><ArrowLeft className="w-4 h-4" /></Link>
           </Button>
@@ -1391,7 +1391,7 @@ export default function Editor() {
                   value={localCode}
                   onChange={(e) => handleCodeChange(e.target.value)}
                   spellCheck={false}
-                  className="flex-1 resize-none bg-transparent text-[12px] font-mono text-slate-300 p-3 focus:outline-none leading-relaxed"
+                  className="flex-1 resize-none bg-transparent text-[12px] font-mono text-slate-300 p-3 focus:outline-none leading-relaxed min-h-[44px]"
                   placeholder="<!-- HTML + Tailwind code appears here -->"
                   style={{ tabSize: 2 }}
                   onKeyDown={(e) => {
@@ -1442,7 +1442,7 @@ export default function Editor() {
                 </div>
 
                 {/* AI Chat Bar */}
-                <div className="min-h-14 border-t border-border/50 bg-card/50 backdrop-blur flex items-center px-4 shrink-0 gap-3 pt-2 pb-[calc(theme(spacing.2)+env(safe-area-inset-bottom,0px))] min-h-[calc(56px+env(safe-area-inset-bottom,0px))]">
+                <div className="min-h-14 border-t border-border/50 bg-card/50 backdrop-blur flex items-center px-4 shrink-0 gap-3 pt-2 pb-[calc(theme(spacing.2)_+_env(safe-area-inset-bottom,0px))] min-h-[calc(56px_+_env(safe-area-inset-bottom,0px))]">
                   <Wand2 className="w-4 h-4 text-primary shrink-0" />
                   <form onSubmit={handleSendChat} className="flex-1 flex flex-wrap items-center gap-2 min-w-0">
                     <Input
@@ -1463,7 +1463,7 @@ export default function Editor() {
         </main>
 
         {/* Right Inspector */}
-        <aside className="w-full lg:w-64 border-t lg:border-t-0 lg:border-l border-border/50 bg-card/30 flex flex-col shrink-0 max-h-[calc(100dvh-env(safe-area-inset-bottom)-4rem)] lg:max-h-none pb-[env(safe-area-inset-bottom,0px)]">
+        <aside className="w-full lg:w-64 border-t lg:border-t-0 lg:border-l border-border/50 bg-card/30 flex flex-col shrink-0 max-h-[calc(100dvh_-_env(safe-area-inset-bottom)_-_4rem)] lg:max-h-none pb-[env(safe-area-inset-bottom,0px)]">
           {/* Tab header */}
           <div className="flex overflow-x-auto border-b border-border/50 shrink-0">
             {RIGHT_TABS.map((tab) => (
@@ -1472,7 +1472,7 @@ export default function Editor() {
                 onClick={() => setRightPanel(tab.id)}
                 title={tab.title}
                 className={cn(
-                  "flex-1 flex flex-col items-center justify-center gap-0.5 min-h-[44px] text-[9px] font-medium transition-colors border-b-2",
+                  "flex-1 shrink-0 min-w-[44px] flex flex-col items-center justify-center gap-0.5 min-h-[44px] text-[9px] font-medium transition-colors border-b-2",
                   rightPanel === tab.id ? "border-primary text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"
                 )}
               >

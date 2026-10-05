@@ -404,7 +404,7 @@ export default function FreeformEditor() {
           <div className="flex flex-wrap justify-center py-4">
             <div
               className="border-2 border-border rounded-2xl overflow-hidden bg-[#0d0d14] shadow-xl"
-              style={{ width: Math.min(mobileWidth, 360), height: 500 }}
+              style={{ width: Math.min(mobileWidth, 360), maxWidth: "100%", height: 500 }}
             >
               <div
                 className="relative mx-auto"
@@ -547,7 +547,7 @@ export default function FreeformEditor() {
                   <SlidersHorizontal className="w-3.5 h-3.5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="bottom" className="h-[75dvh] overflow-y-auto pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]">
+              <SheetContent side="bottom" className="h-[75dvh] overflow-y-auto pt-[max(1.5rem,env(safe-area-inset-top))] pb-[max(1.5rem,env(safe-area-inset-bottom))]">
                 <div className="space-y-6 mt-6">
                   {rightPanelsContent}
                 </div>

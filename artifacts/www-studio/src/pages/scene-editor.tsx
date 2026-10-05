@@ -316,7 +316,7 @@ export default function SceneEditor() {
 
   if (isLoading) {
     return (
-      <div className="min-h-[100dvh] bg-background flex items-center justify-center">
+      <div className="min-h-[100dvh] bg-background flex items-center justify-center px-4 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]">
         <div className="flex flex-col items-center gap-3 text-muted-foreground">
           <div className="w-6 h-6 rounded-full border-2 border-primary/30 border-t-primary animate-spin" />
           <span className="text-sm">Loading scene…</span>
@@ -348,8 +348,8 @@ export default function SceneEditor() {
 
       <div className="h-[100dvh] flex flex-col bg-background overflow-hidden pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]">
         {/* ── Top bar ── */}
-        <div className="h-12 flex flex-wrap items-center gap-1.5 px-2 border-b border-border shrink-0 bg-background/95 backdrop-blur overflow-x-auto">
-          <Button variant="ghost" size="icon" className="h-8 w-8 shrink-0 min-h-[44px] min-w-[44px]" onClick={() => navigate("/scenes")} title="Back to Scenes">
+        <div className="min-h-[48px] h-auto flex flex-wrap items-center gap-1.5 px-2 border-b border-border shrink-0 bg-background/95 backdrop-blur overflow-x-auto">
+          <Button variant="ghost" size="icon" className="w-8 shrink-0 min-h-[44px] min-w-[44px]" onClick={() => navigate("/scenes")} title="Back to Scenes">
             <ArrowLeft className="h-4 w-4" />
           </Button>
           <Link href="/" className="shrink-0 flex items-center gap-1.5 min-h-[44px] px-1 font-semibold text-sm tracking-tight hover:text-primary transition-colors">
@@ -360,7 +360,7 @@ export default function SceneEditor() {
           <Input
             value={state.scene.name}
             onChange={(e) => dispatch({ type: "SET_NAME", name: e.target.value })}
-            className="h-8 w-44 min-w-0 sm:w-44 text-sm font-medium border-transparent bg-transparent hover:bg-muted focus:bg-muted focus:border-border shrink-0 min-h-[44px]"
+            className="w-44 min-w-0 sm:w-44 text-sm font-medium border-transparent bg-transparent hover:bg-muted focus:bg-muted focus:border-border shrink-0 min-h-[44px]"
           />
 
           {state.isDirty && !autoSavedAt && (
@@ -498,7 +498,7 @@ export default function SceneEditor() {
               onMove={handleMove}
               onDropNew={handleAdd}
             />
-            <div className="absolute bottom-2 left-2 sm:left-auto sm:bottom-[calc(env(safe-area-inset-bottom)+0.5rem)] right-2 max-w-[calc(100%-1rem)] flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[10px] text-white/40 bg-black/40 px-2 py-1 rounded-md pointer-events-none backdrop-blur-sm">
+            <div className="absolute bottom-[calc(env(safe-area-inset-bottom)+0.5rem)] left-2 sm:left-auto right-2 max-w-[calc(100%-1rem)] flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[10px] text-white/40 bg-black/40 px-2 py-1 rounded-md pointer-events-none backdrop-blur-sm">
               <span>{state.scene.canvasWidth}×{state.scene.canvasHeight}</span>
               <span>·</span>
               <span>{state.scene.elements.length} elements</span>
@@ -614,7 +614,7 @@ export default function SceneEditor() {
                       <div className="space-y-1.5">
                         <Label className="text-xs text-muted-foreground">Fill</Label>
                         <div className="flex flex-wrap gap-2 items-center overflow-x-auto">
-                          <input type="color" value={selectedEl.fill} onChange={(e) => handleUpdate(selectedEl.id, { fill: e.target.value })} className="w-8 h-7 min-h-[48px] min-w-[48px] rounded border border-border cursor-pointer bg-transparent shrink-0" />
+                          <input type="color" value={selectedEl.fill} onChange={(e) => handleUpdate(selectedEl.id, { fill: e.target.value })} className="min-h-[48px] min-w-[48px] rounded border border-border cursor-pointer bg-transparent shrink-0" />
                           <Input value={selectedEl.fill} onChange={(e) => handleUpdate(selectedEl.id, { fill: e.target.value })} className="text-xs min-h-[48px] font-mono flex-1 min-w-[140px]" />
                         </div>
                       </div>
@@ -666,7 +666,7 @@ export default function SceneEditor() {
                         </Button>
                       </div>
                       <div className="pt-1">
-                        <Button variant="outline" size="sm" className="w-full gap-1.5 text-xs h-7 min-h-[44px]" onClick={() => { setShowEnhancer(true); }}>
+                        <Button variant="outline" size="sm" className="w-full gap-1.5 text-xs min-h-[44px]" onClick={() => { setShowEnhancer(true); }}>
                           <Sparkles className="h-3 w-3" />AI Enhance scene
                         </Button>
                       </div>

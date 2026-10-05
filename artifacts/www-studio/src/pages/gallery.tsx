@@ -163,7 +163,7 @@ export default function Gallery() {
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-8">
         <div className="flex flex-wrap items-center justify-between gap-2 mb-8">
           <div>
-            <div className="flex items-center gap-2 mb-1">
+            <div className="flex flex-wrap items-center gap-2 mb-1 min-w-0">
               <Globe className="h-5 w-5 text-primary" />
               <h1 className="text-3xl font-bold tracking-tight">Public Gallery</h1>
             </div>

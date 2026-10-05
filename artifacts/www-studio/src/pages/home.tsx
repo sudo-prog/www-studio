@@ -254,8 +254,8 @@ export default function Home() {
           <div className="mt-8 sm:mt-12">
             {/* Control bar — aura.build style (personal use version) */}
             <div className="flex flex-col sm:flex-row flex-wrap items-center justify-between gap-3 sm:gap-4 p-3 sm:p-4 bg-card/50 rounded-xl border border-border">
-              <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                <Blocks className="h-3 w-3" />
+              <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                <Blocks className="h-3 w-3 shrink-0" />
                 <span>WWW-Studio personal template collection</span>
               </div>
               <div className="flex flex-wrap items-center gap-1 sm:gap-2">
@@ -354,9 +354,9 @@ export default function Home() {
                   <li><a href="https://twitter.com/sudo_prog" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors block min-h-[44px] flex items-center">Twitter</a></li>
                 </ul>
               </div>
-              <div className="col-span-2 md:col-span-1">
-                <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                  <Blocks className="h-3 w-3" />
+              <div className="col-span-1 sm:col-span-2 md:col-span-1">
+                <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                  <Blocks className="h-3 w-3 shrink-0" />
                   <span>WWW-Studio — personal visual builder</span>
                 </div>
               </div>

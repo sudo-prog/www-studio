@@ -124,7 +124,7 @@ function GalleryCard({ scene, onLike, liked }: { scene: any; onLike: () => void;
       {/* Body */}
       <div className="p-4">
         <div className="flex items-start justify-between gap-2 mb-2 flex-wrap">
-          <h3 className="font-semibold text-sm truncate">{scene.name}</h3>
+          <h3 className="font-semibold text-sm truncate min-w-0 max-w-full">{scene.name}</h3>
           <button
             onClick={onLike}
             className={cn("shrink-0 flex items-center gap-1 text-xs min-h-[48px] min-w-[48px] px-1 transition-colors",
@@ -226,7 +226,7 @@ export default function SceneGallery() {
         {/* Header */}
         <div className="flex items-center gap-4 mb-8 flex-wrap">
           <Link href="/scenes">
-            <Button variant="ghost" size="icon" className="h-9 w-9 min-h-[48px] min-w-[48px]">
+            <Button variant="ghost" size="icon" className="min-h-[48px] min-w-[48px]">
               <ArrowLeft className="h-4 w-4" />
             </Button>
           </Link>
@@ -253,7 +253,7 @@ export default function SceneGallery() {
             >
               🎲 Random Scene
             </Button>
-            <div className="text-right">
+            <div className="text-right min-w-0">
               <p className="text-2xl font-bold">{filtered.length}</p>
               <p className="text-xs text-muted-foreground">scenes</p>
             </div>

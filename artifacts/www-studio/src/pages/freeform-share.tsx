@@ -113,7 +113,7 @@ export default function FreeformSharePage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-[100dvh] bg-background flex items-center justify-center px-4">
+      <div className="min-h-[100dvh] bg-background flex items-center justify-center pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] pb-[env(safe-area-inset-bottom)]">
         <div className="w-6 h-6 rounded-full border-2 border-primary/30 border-t-primary animate-spin" />
       </div>
     );
@@ -121,7 +121,7 @@ export default function FreeformSharePage() {
 
   if (!page) {
     return (
-      <div className="min-h-[100dvh] bg-background flex flex-col items-center justify-center gap-4 px-4 pb-[env(safe-area-inset-bottom)]">
+      <div className="min-h-[100dvh] bg-background flex flex-col items-center justify-center gap-4 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] pb-[calc(env(safe-area-inset-bottom)+1rem)]">
         <Globe className="h-12 w-12 text-muted-foreground" />
         <p className="text-muted-foreground">Page not found</p>
         <Button variant="outline" className="min-h-[48px]" asChild>
@@ -132,9 +132,9 @@ export default function FreeformSharePage() {
   }
 
   return (
-    <div className="min-h-[100dvh] bg-background flex flex-col pb-[env(safe-area-inset-bottom)]">
+    <div className="min-h-[100dvh] bg-background flex flex-col pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
       {/* Top bar */}
-      <div className="min-h-[48px] py-2 pt-[max(0.5rem,env(safe-area-inset-top))] flex flex-wrap items-center justify-between gap-x-3 gap-y-2 px-4 border-b border-border bg-background/95 backdrop-blur shrink-0">
+      <div className="min-h-[48px] py-2 pt-[max(0.5rem,env(safe-area-inset-top))] flex flex-wrap items-center justify-between gap-x-3 gap-y-2 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] border-b border-border bg-background/95 backdrop-blur shrink-0">
         <div className="flex items-center gap-3 flex-wrap">
           <Button variant="ghost" size="icon" className="h-12 w-12 min-h-[48px] min-w-[44px]" asChild>
             <Link href="/projects">
@@ -146,7 +146,7 @@ export default function FreeformSharePage() {
             <div className="w-6 h-6 rounded-md bg-primary/20 flex items-center justify-center shrink-0">
               <Sparkles className="h-3.5 w-3.5 text-primary" />
             </div>
-            <span className="font-semibold text-sm truncate max-w-[200px]">{page.name}</span>
+            <span className="font-semibold text-sm truncate max-w-[140px] sm:max-w-[200px]">{page.name}</span>
             <span className="text-[10px] px-2 py-0.5 rounded-full bg-green-500/20 text-green-400 border border-green-500/30 flex items-center gap-1">
               <Globe className="h-2.5 w-2.5" />Public
             </span>
@@ -225,7 +225,7 @@ export default function FreeformSharePage() {
             </div>
 
             <div className="relative">
-              <pre className="text-[11px] leading-relaxed bg-muted rounded-lg p-3 overflow-x-auto text-muted-foreground font-mono whitespace-pre-wrap break-all">
+              <pre className="text-[11px] leading-relaxed bg-muted rounded-lg p-3 pr-14 overflow-x-auto text-muted-foreground font-mono whitespace-pre-wrap break-all">
                 {embedMode === "link" ? shareUrl : embedMode === "iframe" ? iframeCode : reactCode}
               </pre>
               <button

@@ -68,6 +68,9 @@ function ComponentCard({ item }: { item: typeof COMPONENT_LIBRARY[number] }) {
             <StarRating
               value={ratingApi.get(item.id)}
               size={14}
+              /* 14px stars are ~18px tap targets; grow each button to the
+                 48px mobile minimum without changing the star artwork. */
+              className="[&_button]:inline-flex [&_button]:items-center [&_button]:justify-center [&_button]:min-h-[48px] [&_button]:min-w-[48px] [&_button]:m-0"
               onChange={(v) => {
                 ratingApi.set(item.id, v);
                 toast({ title: v > 0 ? `Rated ${item.name} ${v}★` : `Cleared rating` });
