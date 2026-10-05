@@ -1,6 +1,6 @@
 {
-  "version": "1.0.75",
-  "source_count": 26983,
+  "version": "1.0.76",
+  "source_count": 27038,
   "components": [
     {
       "id": "cat-0",
@@ -467824,6 +467824,932 @@
       "preview_image": "",
       "id": "unknown__anime.js-individual-property-parameters",
       "source_domain": "animejs.com"
+    },
+    {
+      "name": "Azardam Social Icons",
+      "source_url": "https://www.framer.com/marketplace/vectors/admantos-social/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Essential social media icons",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/admantos-social/u1ztlfkv-bztsLjYudcA69ugEl824cJsMN7d75i",
+      "id": "unknown__azardam-social-icons",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "AI Icons",
+      "source_url": "https://www.framer.com/marketplace/vectors/ai-icon-set/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "outline",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Explore a sleek and modern AI icon set designed for creatives. Perfect for projects involving design, AI tools, and tech, these icons offer clarity and style for all users.",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/ai-icon-set/q5soj23z-shFCPwzfUqkCauLFxH5BhQobRq1ESI",
+      "id": "unknown__ai-icons",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "AI Icons Collection",
+      "source_url": "https://www.framer.com/marketplace/vectors/ai-icons-collection/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "outline",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Featuring 60+ meticulously designed icons crafted to capture the essence of AI technology.",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/ai-icon-collection/5op27c1o-CN6uZcs330BRtECw535T4C4IlsMHGu",
+      "id": "unknown__ai-icons-collection",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "AI Illustrations",
+      "source_url": "https://www.framer.com/marketplace/vectors/ai-illustrations/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "illustration",
+      "tags": [
+        "svg",
+        "flat",
+        "gradient",
+        "illustration",
+        "icon"
+      ],
+      "description": "Artificial Intelligence Composition and Elements Design Pack",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/ai-illustrations/x4w11cf6-mv61whTwyWfacGJJ3B4fRNmlZzbuiO",
+      "id": "unknown__ai-illustrations",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Airbnb and Travel",
+      "source_url": "https://www.framer.com/marketplace/vectors/airbnb-and-travel/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "illustration",
+      "tags": [
+        "svg",
+        "flat",
+        "minimal",
+        "illustration"
+      ],
+      "description": "A set of carefully designed illustration packages, tailored for Airbnb and travel-related businesses.",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/airbnb-and-travel/5bypjz02-gv4RIGs6AT1UlO4dN6AhHaNVqtiqDR",
+      "id": "unknown__airbnb-and-travel",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Alien Neo-UFO Y2K",
+      "source_url": "https://www.framer.com/marketplace/vectors/alien-neo-ufo-y2k/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "retro",
+        "neon",
+        "icon-set",
+        "icon"
+      ],
+      "description": "9 Retro-Futuristic Icons",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/media/b3389791-0882-44c3-8dd0-490ad68f00b5/01a0e06f-fa2a-73ed-bc5b-2c6f208868f6.jpg",
+      "id": "unknown__alien-neo-ufo-y2k",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "America Vectors",
+      "source_url": "https://www.framer.com/marketplace/vectors/america/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "36 America themed vectors with adjustable stroke weight and colors, suitable for cultural projects, events, travel websites, education platforms, and creative branding.",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/america/qh7u2igo-pWGHZ5Aj2by8qhpS6xAE3dxUAhRf0P",
+      "id": "unknown__america-vectors",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Architect Workers",
+      "source_url": "https://www.framer.com/marketplace/vectors/architect-workers-drawing-illustrations/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "illustration",
+      "tags": [
+        "svg",
+        "outline",
+        "isometric",
+        "illustration"
+      ],
+      "description": "Perfect for Framer websites, construction landing pages, architecture portfolios, engineering services, SaaS platforms, and modern UI projects.",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/architect-workers-drawing-illustrations/9gbl4nff",
+      "id": "unknown__architect-workers",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Hand-Drawn Arrow",
+      "source_url": "https://www.framer.com/marketplace/vectors/arrow-set/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "outline",
+        "minimal",
+        "ornament",
+        "icon"
+      ],
+      "description": "Hand-Drawn Arrow Vector Set",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/arrow-set/3jeqzhoq-VYZ70DDpjzswLICf6MHipURgbg8avj",
+      "id": "unknown__hand-drawn-arrow",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Bakery icons",
+      "source_url": "https://www.framer.com/marketplace/vectors/bakery-icons/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Vector icon set of bakery and food items for interface and branding use.",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/media/e396b4ad-2e1a-4031-9873-d67b4be343a2/bmqbe65r",
+      "id": "unknown__bakery-icons",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Banking & UPI Logos",
+      "source_url": "https://www.framer.com/marketplace/vectors/banking-upi-logos/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "minimal",
+        "logo",
+        "icon-set"
+      ],
+      "description": "Collection of Indian Banking and UPI logos. Perfect for fintech dashboards, websites, and mobile apps,",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/upi-apps/hred1yd1-rSv9jDi5yQi8Lc0jLoWUidYA0XCX2B",
+      "id": "unknown__banking-&-upi-logos",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Bathic",
+      "source_url": "https://www.framer.com/marketplace/vectors/bathic/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "outline",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Toilet Accessibilities Icons",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/media/f3fda863-276d-4f41-b54f-0b19ec65abdb/01a076e6-0c52-74c2-8ced-3a6e561ae030.png",
+      "id": "unknown__bathic",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Biometrics Vectors",
+      "source_url": "https://www.framer.com/marketplace/vectors/biometrics/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "outline",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "78 biometric security themed vectors with adjustable stroke weight and colors, ideal for authentication flows, SaaS dashboards, fintech products, and secure digital interfaces.",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/biometrics/6awyzj3b-Z9MqDE630YNOrmq2I0nmYMTyxG018L",
+      "id": "unknown__biometrics-vectors",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Construction Icons",
+      "source_url": "https://www.framer.com/marketplace/vectors/bluetico-construction-icon-pack/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "A modern and functional collection of flat icons designed for construction, engineering, and industrial-related projects.",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/bluetico-construction-icon-pack/nd9dfjqd-xueAQ9YhI9s6m2czp4eAzUaCFPSGNu",
+      "id": "unknown__construction-icons",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Medical Icons",
+      "source_url": "https://www.framer.com/marketplace/vectors/bluetico-medical-icon-pack/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Perfect for healthcare websites, medical dashboards, hospital systems, telemedicine apps, and wellness platforms, these icons blend seamlessly into modern UI systems with a clean a",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/bluetico-medical-icon-pack/xw10ytqh-LGwafRG9ENNT0G62h3h9YYAhcBlZqv",
+      "id": "unknown__medical-icons",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Body Tuned Icons",
+      "source_url": "https://www.framer.com/marketplace/vectors/body-tuned-icons/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "outline",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Free UI Icons",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/media/f3fda863-276d-4f41-b54f-0b19ec65abdb/01a0af88-768c-73e5-8d95-411f29b2d19c.png",
+      "id": "unknown__body-tuned-icons",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Brand Icons-Monotone",
+      "source_url": "https://www.framer.com/marketplace/vectors/brand-icons-monotone/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "monochrome",
+        "flat",
+        "logo",
+        "icon"
+      ],
+      "description": "150+ customizable brand logos in a neutral monotone style. Perfect for dark mode or consistent UI themes in Framer.",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/brand-icons-monotone/y4qel20w-9DnBaVhZg8pK3ydsfkyAJU69TlwwmK",
+      "id": "unknown__brand-icons-monotone",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Brazil Vectors",
+      "source_url": "https://www.framer.com/marketplace/vectors/brazil/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "42 Brazil themed vectors with adjustable stroke weight and colors, suitable for cultural projects, travel websites, events, education platforms, and creative branding.",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/brazil/0hf5z8m3-z7fl3FbS4Jeb0it5sHDBy3j8etHwrL",
+      "id": "unknown__brazil-vectors",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Business Workflow",
+      "source_url": "https://www.framer.com/marketplace/vectors/business-workflow-icons/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "illustration",
+      "tags": [
+        "svg",
+        "isometric",
+        "outline",
+        "illustration"
+      ],
+      "description": "Elevate your designs with professional 3D-style isometric line illustrations.",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/business-workflow-icons/nmh1kby7-uF1ey1sizIsAhHDbAd5c4sv4LK2WIs",
+      "id": "unknown__business-workflow",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Coffee Vectors",
+      "source_url": "https://www.framer.com/marketplace/vectors/coffee/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "illustration",
+      "tags": [
+        "svg",
+        "flat",
+        "minimal",
+        "illustration"
+      ],
+      "description": "36 coffee themed vectors with adjustable stroke weight and colors, suitable for caf\u00e9 branding, hospitality websites, menus, packaging, and lifestyle projects.",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/coffee/3q5qc2ea-qEGWi4SEjWl3hVN5FpWUfWayWmN5Y3",
+      "id": "unknown__coffee-vectors",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Company Logos",
+      "source_url": "https://www.framer.com/marketplace/vectors/company-logos/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "logo",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Collection of Company Logos",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/company-logos/vqhyv53h-XF1wcFseGWy1j1rmnG6scJOWq5QBhy",
+      "id": "unknown__company-logos",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Construction Vectors",
+      "source_url": "https://www.framer.com/marketplace/vectors/construction/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "outline",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "54 editable vectors with adjustable stroke weight and colors, ideal for construction, architecture and building industry themed websites and apps. Includes SVG, AI, EPS and Framer",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/construction/t0cwb4ve-kWRtz4rc7626rRWIakCizKjPIeLilS",
+      "id": "unknown__construction-vectors",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Fintech Vectors",
+      "source_url": "https://www.framer.com/marketplace/vectors/crypto/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "outline",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "40 editable vectors with adjustable stroke weight and colors, ideal for crypto, blockchain and fintech themed websites, apps and digital products. Includes SVG, AI, EPS and Framer",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/crypto/cca228ya-XoACuJQfVWTQLpvLmqYmmpXVCr1xXS",
+      "id": "unknown__fintech-vectors",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Duoline Developer",
+      "source_url": "https://www.framer.com/marketplace/vectors/duoline-developer/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "duotone",
+        "outline",
+        "icon-set",
+        "icon"
+      ],
+      "description": "50 two-colour developer icons",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/media/7e4b2376-92d9-49df-8580-e3293af08a29/01a0adab-09c2-777c-a441-cd6999cbaa34.png",
+      "id": "unknown__duoline-developer",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "E-Commerce Icon Set",
+      "source_url": "https://www.framer.com/marketplace/vectors/e-commerce-ui-icon-set/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "outline",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "A clean set of 50 outline icons for modern e-commerce interfaces, including shopping, payment, delivery, and analytics. Perfect for Framer, SaaS, and Shopify projects.",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/e-commerce-ui-icon-set/yjif8x5c-vrsEhamDeYfjCpSpBzsqR0rr8GC2Ld",
+      "id": "unknown__e-commerce-icon-set",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Ecology Icon",
+      "source_url": "https://www.framer.com/marketplace/vectors/ecology-filled-line-icon/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "outline",
+        "icon-set",
+        "icon"
+      ],
+      "description": "This comprehensive collection of 20 Ecology Icon Sets is designed for sustainability reports, green energy apps, and environmental awareness campaigns",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/ecology-filled-line-icon/3pazq1fa-pnDe5T7iNGlckxJULYqNu7N3lSIzJz",
+      "id": "unknown__ecology-icon",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Film Production",
+      "source_url": "https://www.framer.com/marketplace/vectors/film-production/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "illustration",
+      "tags": [
+        "svg",
+        "flat",
+        "duotone",
+        "illustration"
+      ],
+      "description": "Film Production Visuals",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/media/154d0636-e767-4df5-9f36-6ac0c379b611/019f6ed9-b34a-73f2-a1d8-b47d356252fd.jpg",
+      "id": "unknown__film-production",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Foll\ud83d\ude09wee",
+      "source_url": "https://www.framer.com/marketplace/vectors/foll-wee/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "8 social icons - your most-used",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/media/c039868d-3492-4060-bfca-237fcf6e9545/019ffb3b-abaf-700f-8178-4e0c8dd9d992.png",
+      "id": "unknown__foll\ud83d\ude09wee",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Food Icon Set",
+      "source_url": "https://www.framer.com/marketplace/vectors/food-icon-set/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Food Icon Set",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/media/1440e4a2-8652-476d-99d8-ff659c92ba2e/019f87aa-ef11-719c-b14e-e8a9d1e03e3e.jpg",
+      "id": "unknown__food-icon-set",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Gamer Pixel Lite",
+      "source_url": "https://www.framer.com/marketplace/vectors/gamer-pixel-lite/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "pixel",
+        "retro",
+        "icon-set",
+        "icon"
+      ],
+      "description": "12 free pixel art icons",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/media/7e4b2376-92d9-49df-8580-e3293af08a29/01a0afd2-be6d-76a2-bd9e-d042b1dd7d57.png",
+      "id": "unknown__gamer-pixel-lite",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Geometric Bold Icons",
+      "source_url": "https://www.framer.com/marketplace/vectors/geometric-bold-icons/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "hard",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "A premium set of bold geometric icons designed for modern digital products.",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/geometric-bold-icons/3bja1wzt-wNgmHoW6tbM8lEpkzvMY4Q5Wp2mLyG",
+      "id": "unknown__geometric-bold-icons",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Geoshapes",
+      "source_url": "https://www.framer.com/marketplace/vectors/geoshapes/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "background",
+      "tags": [
+        "svg",
+        "flat",
+        "minimal",
+        "background",
+        "ornament"
+      ],
+      "description": "Abstract Geometric Shapes",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/media/427d27c5-4225-4abf-b4af-887d568a3b5b/01a03e2e-7bfe-73ba-8aa6-496e6043eaff.png",
+      "id": "unknown__geoshapes",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Iconsa Soft Icons",
+      "source_url": "https://www.framer.com/marketplace/vectors/iconsa/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "soft",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "A clean and elegant set of soft, minimal icons crafted to bring a modern and friendly look to your Framer projects.",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/iconsa/xnec9r7d-eMogLc4pAY77YJCWjPVTnhQFisEj0E",
+      "id": "unknown__iconsa-soft-icons",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Junk Food Vector",
+      "source_url": "https://www.framer.com/marketplace/vectors/junk-food-vector/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Vector icon set of junk food and snack items for food and menu designs.",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/media/66155759-608d-48ce-a9c3-2cb0ce2a9814/01a04be4-19a9-7469-9300-a6649876fbcf.jpg",
+      "id": "unknown__junk-food-vector",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Kids Coding",
+      "source_url": "https://www.framer.com/marketplace/vectors/kids-coding-illustrations/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "illustration",
+      "tags": [
+        "svg",
+        "flat",
+        "minimal",
+        "illustration"
+      ],
+      "description": "Perfect for Framer websites, landing pages, online courses, startup products, educational dashboards, and creative UI projects, these illustrations blend seamlessly into modern",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/kids-coding-illustrations/bqym4zic-ZvUcu3fKZYEBxPquq8LeLKPpAgypMq",
+      "id": "unknown__kids-coding",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Labor Day Icon Set",
+      "source_url": "https://www.framer.com/marketplace/vectors/labor-day-icon-set/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Vector icon set themed around Labor Day for holiday campaigns and events.",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/media/e9fc1a60-16e0-4849-9c25-39fa051e9bb6/019f560c-7209-704d-991a-fd69de21a61a.jpg",
+      "id": "unknown__labor-day-icon-set",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Leaf and flower icon",
+      "source_url": "https://www.framer.com/marketplace/vectors/leaf-and-flower-icon/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Vector icon set of leaf and flower motifs for botanical and branding projects.",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/media/e396b4ad-2e1a-4031-9873-d67b4be343a2/p4y3xafr",
+      "id": "unknown__leaf-and-flower-icon",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Leaf Shapes",
+      "source_url": "https://www.framer.com/marketplace/vectors/leaf/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "36 clean leaf & plant icons in minimal flat style. Perfect for nature, wellness, eco, and botanical brands. Fully customizable colors.",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/leaf/amriko9t",
+      "id": "unknown__leaf-shapes",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Logistics Flat Icon",
+      "source_url": "https://www.framer.com/marketplace/vectors/logistics-flat-icon/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Flat vector icon set covering logistics, shipping and freight operations.",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/media/e9fc1a60-16e0-4849-9c25-39fa051e9bb6/9k8vb7uk",
+      "id": "unknown__logistics-flat-icon",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Logomarks Collection",
+      "source_url": "https://www.framer.com/marketplace/vectors/logomarks-collection/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "minimal",
+        "logo",
+        "icon-set",
+        "icon"
+      ],
+      "description": "A collection of professionally crafted, custom-made logomark vectors designed to bring clarity, personality, and polish to your next project.",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/logomarks-collection/h6xzgjtk-ll5pHiBJQeJ1XIGvCkZ6ynNuCuYF0l",
+      "id": "unknown__logomarks-collection",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "LogoVault",
+      "source_url": "https://www.framer.com/marketplace/vectors/logovault/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "logo",
+        "icon-set",
+        "icon"
+      ],
+      "description": "535 logo vectors",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/media/a94b6059-641e-47a7-ac50-cb207146c23b/embtfbeo",
+      "id": "unknown__logovault",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Loud Shapes",
+      "source_url": "https://www.framer.com/marketplace/vectors/loud-shapes/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "background",
+      "tags": [
+        "svg",
+        "brutalist",
+        "flat",
+        "hard",
+        "background"
+      ],
+      "description": "24 Bold Brutalist Shapes",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/media/16d21852-c42a-46a9-9795-1c1c3809753e/01a0f40a-cf00-7300-92ca-eada50e7d9e3.jpg",
+      "id": "unknown__loud-shapes",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Magic Marker Icons",
+      "source_url": "https://www.framer.com/marketplace/vectors/magic-marker-icons/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "outline",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "A well-balanced and easy-to-use icon set. Simple and clear, yet flexible enough to adapt to a variety of projects through color customization.",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/magic-marker-icons/zyrss1p5-WsD0APLn55VVXaQAhyo43sNAf3Hnp0",
+      "id": "unknown__magic-marker-icons",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Male Avatar Pack",
+      "source_url": "https://www.framer.com/marketplace/vectors/male-avatar-pack/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "illustration",
+      "tags": [
+        "svg",
+        "outline",
+        "minimal",
+        "illustration",
+        "icon"
+      ],
+      "description": "10 clean line-art avatar illustrations available in vector SVG format. You can easily edit facial features, skin tones, and colors to fit your style.",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/male-avatar-pack/y8b30041-j6YuOsq9LaSQkxS1ErbwShm12vYvos",
+      "id": "unknown__male-avatar-pack",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Nautical Emblems",
+      "source_url": "https://www.framer.com/marketplace/vectors/nautical/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "illustration",
+      "tags": [
+        "svg",
+        "outline",
+        "minimal",
+        "ornament",
+        "illustration"
+      ],
+      "description": "A handcrafted set of 65 Nordic-style nautical emblems. Fully vector, scalable, and customisable in Framer with stroke, colour, background, and opacity controls.",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/nautical/tlwnwdml-WyiyQcjOACw6zicQdt24R9tYtIOZbb",
+      "id": "unknown__nautical-emblems",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Navigation Icon Set",
+      "source_url": "https://www.framer.com/marketplace/vectors/navigation-icon-set/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Navigation Icon Set",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/media/1440e4a2-8652-476d-99d8-ff659c92ba2e/019f86d5-c342-709a-a7c9-7f46d215068a.jpg",
+      "id": "unknown__navigation-icon-set",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Oktoberfest Char",
+      "source_url": "https://www.framer.com/marketplace/vectors/oktoberfest-char/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "illustration",
+      "tags": [
+        "svg",
+        "flat",
+        "minimal",
+        "illustration",
+        "sticker"
+      ],
+      "description": "10 cheerful Oktoberfest character illustrations in traditional Bavarian outfits. Delivered as editable SVG files\u2014fully vector-based, scalable, and customizable. Perfect for festive",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/oktoberfest-character/vnjk8i9w-qipdXc0lN9cI278vzEwBEHiaPdSAyE",
+      "id": "unknown__oktoberfest-char",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Outdoor Adventure",
+      "source_url": "https://www.framer.com/marketplace/vectors/outdoor-adventure-illustrations/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "illustration",
+      "tags": [
+        "svg",
+        "flat",
+        "minimal",
+        "illustration"
+      ],
+      "description": "Perfect for Travel & tourism websites, Outdoor activity platforms, Hiking & camping brands, Adventure SaaS dashboards.",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/outdoor-adventure-illustrations/czb2jb65-S51iw8YHuDPIQKpouqpMroK9ErQJvl",
+      "id": "unknown__outdoor-adventure",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Social Icons Pack",
+      "source_url": "https://www.framer.com/marketplace/vectors/social-icons-pack/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "A vibrant set of social media icons, perfect for web designs. Scalable and sharp on all screens.",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/social-media-icons/p662hggm-uQPyMjJb4wHCbsUpBrcRgLGCKFNNvH",
+      "id": "unknown__social-icons-pack",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Social Media Icon Se",
+      "source_url": "https://www.framer.com/marketplace/vectors/social-media-icon-se/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "logo",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Social Media Icon Set",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/media/1440e4a2-8652-476d-99d8-ff659c92ba2e/qmj7spv7",
+      "id": "unknown__social-media-icon-se",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Best Social Icons",
+      "source_url": "https://www.framer.com/marketplace/vectors/social-media-icons/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "The best pack of Social Media Icons in Vector (SVG) for Framer! High quality, updated and ready to use. 75+ Icons Included. Get yours now!",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/social-media-icons/ovjs59y1-YN4zqNSNHBD63fisyKuTdFD8er8DIs",
+      "id": "unknown__best-social-icons",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Spring Sale Set",
+      "source_url": "https://www.framer.com/marketplace/vectors/spring-sale-set/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "flat",
+        "minimal",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Playful & Colorful Marketing Icons for Framer. Designed with a friendly and modern illustration style.",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/spring-sale-set/himic77d-xmLX2LNwLpVDACMzDEd9VVjHfduqCy",
+      "id": "unknown__spring-sale-set",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Trees and plants",
+      "source_url": "https://www.framer.com/marketplace/vectors/trees-and-plants/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "illustration",
+      "tags": [
+        "svg",
+        "flat",
+        "minimal",
+        "illustration"
+      ],
+      "description": "Vector set of trees and plant illustrations for nature and botanical projects.",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/media/e396b4ad-2e1a-4031-9873-d67b4be343a2/1ufkjzlz",
+      "id": "unknown__trees-and-plants",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Victorian Vectors",
+      "source_url": "https://www.framer.com/marketplace/vectors/victorian-vectors/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "illustration",
+      "tags": [
+        "svg",
+        "outline",
+        "ornament",
+        "illustration"
+      ],
+      "description": "Ornate Antique Victorian Vectors",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/media/0fa53115-ff93-4b72-bca3-1cd1b698a14a/qfqp8ofl",
+      "id": "unknown__victorian-vectors",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Y2K Vectors",
+      "source_url": "https://www.framer.com/marketplace/vectors/y2k/",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "retro",
+        "neon",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Y2K-inspired vector icons for retro web graphics, creative projects, and futuristic UI design",
+      "preview_image": "https://y4pdgnepgswqffpt.public.blob.vercel-storage.com/vector-sets/y2k/gzh7doxt-6qeeuSDzD8csOuWd3dom0HfxTxcjQ6",
+      "id": "unknown__y2k-vectors",
+      "source_domain": "www.framer.com"
     }
   ]
 }
