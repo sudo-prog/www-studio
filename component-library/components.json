@@ -1,6 +1,6 @@
 {
-  "version": "1.0.83",
-  "source_count": 27509,
+  "version": "1.0.84",
+  "source_count": 27563,
   "components": [
     {
       "id": "cat-0",
@@ -477180,6 +477180,1022 @@
       "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2015/04/ColoringConcept.jpg?x51331",
       "id": "unknown__interactive-drag-and-drop-coloring-concept-(codrops-article)",
       "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Discrete Tab",
+      "source_url": "https://21st.dev/@0xUrvish/components/discrete-tab",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "tabs",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "animated",
+        "minimal",
+        "tab",
+        "tabs"
+      ],
+      "description": "A tab component that switches between panels using discrete sliding animations.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_0xUrvish/discrete-tab/default/preview.1787318481208.png",
+      "id": "unknown__discrete-tab",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Astryx Button Group",
+      "source_url": "https://21st.dev/@Astryxdesign/components/astryx-button-group",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "button",
+      "tags": [
+        "react",
+        "typescript",
+        "plain-css",
+        "flat",
+        "minimal",
+        "button",
+        "layout"
+      ],
+      "description": "A Meta Astryx ButtonGroup that joins related actions into a single connected control, such as clipboard actions or a split primary save button.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_astryx/astryx-button-group/default/preview.1785860515514.png",
+      "id": "unknown__astryx-button-group",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Area Chart (Subframe)",
+      "source_url": "https://21st.dev/@SubframeApp/components/area-chart",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "chart",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "dark",
+        "light",
+        "chart",
+        "widget"
+      ],
+      "description": "A configurable area chart component that renders stacked or unstacked time-series data with custom index keys, categories, and colors.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/larsen66/area-chart/default/preview.1755894946108.png",
+      "id": "unknown__area-chart-(subframe)",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Accessible Tooltip",
+      "source_url": "https://21st.dev/@a11ypros/components/a11y-tooltip/with-heading",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "tooltip",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "minimal",
+        "soft",
+        "tooltip",
+        "icon"
+      ],
+      "description": "A WCAG-compliant tooltip that shows contextual help text on hover or keyboard focus with a content heading, Escape-to-dismiss and edge-clamping.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_registry_a11ypros_1790790185577/a11y-tooltip/with-heading/preview.1790889348607.webp",
+      "id": "unknown__accessible-tooltip",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Orbit Sweep",
+      "source_url": "https://21st.dev/@abushaidislam7/components/orbit-sweep",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "background",
+      "tags": [
+        "react",
+        "tailwind",
+        "css",
+        "gradient",
+        "blur",
+        "background",
+        "section"
+      ],
+      "description": "A pure CSS gradient background in the Orbit Sweep style with a three-color purple palette, film grain and vignette, for hero sections, cards and page backgrounds.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/abushaidislam7/orbit-sweep/default/preview.1790679332617-ec20db29-8789-445b-858c-14e0bfba403f.webp",
+      "id": "unknown__orbit-sweep",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Silk Blend gradient",
+      "source_url": "https://21st.dev/@afa.andres/components/silk-blend-gradient",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "background",
+      "tags": [
+        "react",
+        "css",
+        "tailwind",
+        "gradient",
+        "soft",
+        "blur",
+        "background"
+      ],
+      "description": "A pure CSS gradient background in the Silk Blend style with a four-color blue palette, soft blur finish and vignette, usable behind hero sections and cards.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/afa.andres/silk-blend-gradient/default/preview.1787862342836-c8c979ab-af61-4c69-9ccf-d8e35cdcf19d.webp",
+      "id": "unknown__silk-blend-gradient",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Glow Horizon",
+      "source_url": "https://21st.dev/@ahammed.bashar9/components/glow-horizon",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "hero",
+      "tags": [
+        "react",
+        "framer-motion",
+        "typescript",
+        "glow",
+        "gradient",
+        "dark",
+        "hero"
+      ],
+      "description": "A landing page hero that renders a glowing horizon effect with animated gradients and ambient lighting over a near-black background.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_310YhFguqOcml4GY3AB1vkYgGpL/glow-horizon/default/preview.1785854721512.png",
+      "id": "unknown__glow-horizon",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Styled Badges",
+      "source_url": "https://21st.dev/@ai2/components/badges-styled",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "badge",
+      "tags": [
+        "react",
+        "framer-motion",
+        "tailwind",
+        "gradient",
+        "glow",
+        "badge"
+      ],
+      "description": "A set of five decorative status badges \u2014 dot indicator, gradient fill, glow, live pulse and gradient outline \u2014 with a reduced-motion-aware pulse animation.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_3Am7aVs8YHTnEQ9BsH0hazqlJFu/badges-styled/default/preview.1790150329494.webp",
+      "id": "unknown__styled-badges",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "\u5922\u304b\u308f\u30b0\u30e9\u30c7",
+      "source_url": "https://21st.dev/@aika.mikkun0917/components/gradient-c1a9005a",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "background",
+      "tags": [
+        "react",
+        "typescript",
+        "css",
+        "gradient",
+        "soft",
+        "blur",
+        "background"
+      ],
+      "description": "A pure CSS gradient background in the Bloom Field style built from an eight-color pastel palette with a soft blur finish and vignette.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/aika.mikkun0917/gradient-c1a9005a/default/preview.1786528547281-f6ef73a0-8592-4aff-bbe5-8e4ba20cef53.webp",
+      "id": "unknown__\u5922\u304b\u308f\u30b0\u30e9\u30c7",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Delaunay Triangulation",
+      "source_url": "https://21st.dev/@airbnb-visx/components/delaunay-triangulation",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "chart",
+      "tags": [
+        "react",
+        "svg",
+        "gradient",
+        "dark",
+        "flat",
+        "chart",
+        "background"
+      ],
+      "description": "A visx visualization that renders a full-viewport Delaunay triangulation of mock data points using gradient-filled triangles.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/larsen66/delaunay-triangulation/default/preview.1747926962707.png",
+      "id": "unknown__delaunay-triangulation",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "1 Gradient",
+      "source_url": "https://21st.dev/@amirrad8841/components/1-gradient",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "background",
+      "tags": [
+        "react",
+        "typescript",
+        "css",
+        "gradient",
+        "soft",
+        "background"
+      ],
+      "description": "A pure CSS gradient background in the Bloom Field style with a four-color pink-and-blue palette and a film grain finish.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/amirrad8841/1-gradient/default/preview.1787318756875-0f49dbe5-faf7-4dda-a424-864a599f9f5d.webp",
+      "id": "unknown__1-gradient",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Button Ant",
+      "source_url": "https://21st.dev/@antdesign/components/button-ant/button-icon-position",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "button",
+      "tags": [
+        "react",
+        "typescript",
+        "css",
+        "flat",
+        "minimal",
+        "button"
+      ],
+      "description": "An Ant Design button demo that switches the iconPosition prop between start and end across solid, dashed, text and link button types.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_antdesign/button-ant/button-icon-position/preview.1787239287775.png",
+      "id": "unknown__button-ant",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Button Ant with Icon",
+      "source_url": "https://21st.dev/@antdesign/components/button-ant/button-with-icon",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "button",
+      "tags": [
+        "react",
+        "typescript",
+        "css",
+        "flat",
+        "minimal",
+        "button",
+        "icon"
+      ],
+      "description": "An Ant Design button demo showing icon-only circular buttons and icon-plus-label buttons across primary, default and dashed variants.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_antdesign/button-ant/button-with-icon/preview.1787238811582.png",
+      "id": "unknown__button-ant-with-icon",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "FloatButton",
+      "source_url": "https://21st.dev/@antdesign/components/float-button",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "button",
+      "tags": [
+        "react",
+        "typescript",
+        "css",
+        "flat",
+        "shadow",
+        "button",
+        "widget"
+      ],
+      "description": "Ant Design's floating action button component, positioned over page content and supporting type, shape, description, tooltip, badge and group variations.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_antdesign/float-button/default/preview.1788374739205.png",
+      "id": "unknown__floatbutton",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "FloatButton with Badge",
+      "source_url": "https://21st.dev/@antdesign/components/float-button/badge",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "badge",
+      "tags": [
+        "react",
+        "typescript",
+        "css",
+        "flat",
+        "badge",
+        "button"
+      ],
+      "description": "Ant Design floating buttons that display count and dot badges with custom colors and overflow counts.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_antdesign/float-button/badge/preview.1788374926350.png",
+      "id": "unknown__floatbutton-with-badge",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "FloatButton Controlled Mode",
+      "source_url": "https://21st.dev/@antdesign/components/float-button/controlled-mode",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "button",
+      "tags": [
+        "react",
+        "typescript",
+        "css",
+        "flat",
+        "switch",
+        "button",
+        "widget"
+      ],
+      "description": "Ant Design floating button groups whose open state is controlled externally, toggled here by a companion Switch component.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_antdesign/float-button/controlled-mode/preview.1788374901482.png",
+      "id": "unknown__floatbutton-controlled-mode",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "FloatButton Group",
+      "source_url": "https://21st.dev/@antdesign/components/float-button/float-button-group",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "button",
+      "tags": [
+        "react",
+        "typescript",
+        "css",
+        "flat",
+        "layout",
+        "button"
+      ],
+      "description": "Ant Design floating button groups that stack multiple floating actions, including a back-to-top button, in circle or square shapes.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_antdesign/float-button/float-button-group/preview.1788374868447.png",
+      "id": "unknown__floatbutton-group",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "FloatButton with Description",
+      "source_url": "https://21st.dev/@antdesign/components/float-button/float-button-w-description",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "button",
+      "tags": [
+        "react",
+        "typescript",
+        "css",
+        "flat",
+        "layout",
+        "button",
+        "text"
+      ],
+      "description": "Ant Design floating buttons rendered as square blocks that carry a text description label beside or below the icon.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_antdesign/float-button/float-button-w-description/preview.1788374835571.png",
+      "id": "unknown__floatbutton-with-description",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "FloatButton with Tooltip",
+      "source_url": "https://21st.dev/@antdesign/components/float-button/float-button-with-tooltip",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "button",
+      "tags": [
+        "react",
+        "typescript",
+        "css",
+        "flat",
+        "tooltip",
+        "button",
+        "icon"
+      ],
+      "description": "Ant Design floating buttons that reveal a tooltip with configurable title, color and placement on hover.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_antdesign/float-button/float-button-with-tooltip/preview.1788374853429.png",
+      "id": "unknown__floatbutton-with-tooltip",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "FloatButton Menu Mode",
+      "source_url": "https://21st.dev/@antdesign/components/float-button/menu-mode",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "menu",
+      "tags": [
+        "react",
+        "typescript",
+        "css",
+        "flat",
+        "menu",
+        "button"
+      ],
+      "description": "Ant Design floating button groups that expand into a vertical action menu on either click or hover trigger.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_antdesign/float-button/menu-mode/preview.1788374881952.png",
+      "id": "unknown__floatbutton-menu-mode",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Menu Collapsed Inline",
+      "source_url": "https://21st.dev/@antdesign/components/menu-1/collapsed-inline-menu",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "menu",
+      "tags": [
+        "react",
+        "typescript",
+        "css",
+        "flat",
+        "minimal",
+        "menu",
+        "navigation"
+      ],
+      "description": "An Ant Design menu demo that renders navigation items in a collapsed inline layout with nested submenus.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/larsen66/menu-1/collapsed-inline-menu/preview.1758091622743.png",
+      "id": "unknown__menu-collapsed-inline",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Accordion Tabs with Chevron",
+      "source_url": "https://21st.dev/@anubra266/components/accordion-1/accordion-tabs-w-chevron",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "accordion",
+      "tags": [
+        "react",
+        "tailwind",
+        "svg",
+        "minimal",
+        "gradient",
+        "accordion"
+      ],
+      "description": "An Ark UI accordion whose triggers use a chevron icon indicator to expand and collapse a list of titled content sections.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/larsen66/accordion-1/accordion-tabs-w-chevron/preview.1756477598764.png",
+      "id": "unknown__accordion-tabs-with-chevron",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Collapsible Styled",
+      "source_url": "https://21st.dev/@anubra266/components/collapsible-1/collapsible-styled",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "accordion",
+      "tags": [
+        "react",
+        "tailwind",
+        "svg",
+        "gradient",
+        "animated",
+        "accordion"
+      ],
+      "description": "A styled Ark UI collapsible whose gradient trigger bar reveals hidden content and rotates its chevron indicator when opened.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_anubra266/collapsible-1/collapsible-styled/preview.1790804880944.webp",
+      "id": "unknown__collapsible-styled",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Workout Timer",
+      "source_url": "https://21st.dev/@anubra266/components/countdown-timer/workout-timer",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "tool",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "gradient",
+        "dark",
+        "widget"
+      ],
+      "description": "An Ark UI countdown timer card that auto-starts a rest interval and provides play, pause and reset controls around a gradient panel.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_anubra266/countdown-timer/workout-timer/preview.1788973031786.webp",
+      "id": "unknown__workout-timer",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "End Inline Button Input",
+      "source_url": "https://21st.dev/@anubra266/components/field-components/end-inline-button-input",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "svg",
+        "minimal",
+        "flat",
+        "input",
+        "form"
+      ],
+      "description": "A labelled text field that embeds a send icon button inline at the end of the input for quick messages.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/larsen66/field-components/end-inline-button-input/preview.1756339627539.png",
+      "id": "unknown__end-inline-button-input",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Input and Icon Button",
+      "source_url": "https://21st.dev/@anubra266/components/field-components/input-and-icon-button",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "svg",
+        "minimal",
+        "flat",
+        "input",
+        "form"
+      ],
+      "description": "A labelled URL input that sits inside a bordered control alongside a trailing download icon button.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/larsen66/field-components/input-and-icon-button/preview.1756339627539.png",
+      "id": "unknown__input-and-icon-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Password API Key Input",
+      "source_url": "https://21st.dev/@anubra266/components/password-input/password-api-key",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "minimal",
+        "dark",
+        "input",
+        "form"
+      ],
+      "description": "An Ark UI password input styled for API keys that masks the value in monospace and toggles visibility with an eye icon.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_anubra266/password-input/password-api-key/preview.1787913610601.png",
+      "id": "unknown__password-api-key-input",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "QR Code Contact",
+      "source_url": "https://21st.dev/@anubra266/components/qr-code/qr-code-contact",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "svg",
+        "minimal",
+        "flat",
+        "card",
+        "widget"
+      ],
+      "description": "A contact card that encodes vCard details \u2014 name, organization, phone, email and URL \u2014 into a scannable QR code.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/larsen66/qr-code/qr-code-contact/preview.1756195713898.png",
+      "id": "unknown__qr-code-contact",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Toolbar Toggle Group",
+      "source_url": "https://21st.dev/@anubra266/components/toggle-group/toolbar-toggle-group",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "toggle",
+      "tags": [
+        "react",
+        "tailwind",
+        "svg",
+        "minimal",
+        "flat",
+        "toggle",
+        "toolbar"
+      ],
+      "description": "An Ark UI multiple-selection toggle group that arranges text-formatting and alignment icons into a compact toolbar.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_anubra266/toggle-group/toolbar-toggle-group/preview.1787179663100.webp",
+      "id": "unknown__toolbar-toggle-group",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Base Button Delete Badge",
+      "source_url": "https://21st.dev/@arihantcodes_1f7b8c4d/components/base-button/delete-badge",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "svg",
+        "flat",
+        "minimal",
+        "button",
+        "tooltip"
+      ],
+      "description": "A destructive icon button that displays a 'Delete' tooltip when hovered or focused.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_2xmIUPynCyYHPXZPBwS1EDV1Aq8/base-button/delete-badge/preview.1787007519318.png",
+      "id": "unknown__base-button-delete-badge",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Base Button Notification Badge",
+      "source_url": "https://21st.dev/@arihantcodes_1f7b8c4d/components/base-button/notification-badge",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "badge",
+      "tags": [
+        "react",
+        "tailwind",
+        "svg",
+        "outline",
+        "flat",
+        "badge",
+        "button"
+      ],
+      "description": "An outline icon button with an absolutely positioned count badge showing the number of notifications.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_2xmIUPynCyYHPXZPBwS1EDV1Aq8/base-button/notification-badge/preview.1787006227181.png",
+      "id": "unknown__base-button-notification-badge",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Gradient Tiers",
+      "source_url": "https://21st.dev/@arihantcodes_1f7b8c4d/components/gradient-tiers",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "typescript",
+        "gradient",
+        "soft",
+        "card",
+        "grid-layout"
+      ],
+      "description": "A three-column pricing table with pastel gradient card headers, tier icons and color-coded feature inheritance labels.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/arihantcodes_1f7b8c4d/gradient-tiers/default/preview.1790057185226-c03e1035-ed5c-451a-bdd4-ace2365cf553.png",
+      "id": "unknown__gradient-tiers",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Animated Theme Toggler",
+      "source_url": "https://21st.dev/@arunachalam/components/animated-theme-toggler",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "toggle",
+      "tags": [
+        "react",
+        "framer-motion",
+        "tailwind",
+        "animated",
+        "dark",
+        "toggle",
+        "button"
+      ],
+      "description": "A theme toggle button that swaps light and dark modes with Framer Motion sun/moon transitions and a View Transitions API clip-path reveal.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/arunachalam0606/animated-theme-toggler/default/preview.1759210475677.png",
+      "id": "unknown__animated-theme-toggler",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Expandable Search Bar",
+      "source_url": "https://21st.dev/@arunachalam/components/expandable-search-bar",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "input",
+      "tags": [
+        "react",
+        "framer-motion",
+        "tailwind",
+        "minimal",
+        "animated",
+        "search",
+        "input"
+      ],
+      "description": "A search control that collapses to a compact icon and expands into an auto-focused input with placeholder animation and Enter/Escape handling.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_2wfnj4jcSPR8JWRk7tpzrihdDV8/expandable-search-bar/default/preview.1788892563653.webp",
+      "id": "unknown__expandable-search-bar",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Animated Theme Toggle",
+      "source_url": "https://21st.dev/@axai-kaizoku/components/animated-theme-toggle",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "toggle",
+      "tags": [
+        "react",
+        "framer-motion",
+        "tailwind",
+        "animated",
+        "dark",
+        "toggle",
+        "icon"
+      ],
+      "description": "An interactive theme switcher for React and Next.js apps that animates between sun and moon icons with Framer Motion.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_2vtiTMF8aCZszGbjp2er979sp9D/animated-theme-toggle/default/preview.1761396706670.png",
+      "id": "unknown__animated-theme-toggle",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Theme Toggle (ayushmxxn)",
+      "source_url": "https://21st.dev/@ayushmxxn/components/theme-toggle",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "toggle",
+      "tags": [
+        "react",
+        "framer-motion",
+        "tailwind",
+        "animated",
+        "minimal",
+        "toggle",
+        "button"
+      ],
+      "description": "A copy-paste theme toggle button from Serenity UI that switches light and dark modes with Framer Motion animation.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_2waBIldyZV5nhuwP0bxKi0dETFP/theme-toggle/default/preview.1786716525298.webp",
+      "id": "unknown__theme-toggle-(ayushmxxn)",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Expand Button",
+      "source_url": "https://21st.dev/@balick/components/expand-button",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "svg",
+        "minimal",
+        "animated",
+        "button",
+        "icon"
+      ],
+      "description": "An icon button whose text label slides out and fades in on hover or keyboard focus, staying compact at rest.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_2zGyWJR6RbkMQVk7U0RzSiJhmyv/expand-button/default/preview.1791201446273.webp",
+      "id": "unknown__expand-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Bastian",
+      "source_url": "https://21st.dev/@bastianhjoergensen/components/bastian-2",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "background",
+      "tags": [
+        "react",
+        "typescript",
+        "css",
+        "gradient",
+        "soft",
+        "blur",
+        "background"
+      ],
+      "description": "A pure CSS gradient background in the Axis Blend style with a two-color palette plus soft blur, film grain and vignette.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/bastianhjoergensen/bastian/default/preview.1787763325798-079b8610-d85a-4f07-b099-9dd0aaead968.webp",
+      "id": "unknown__bastian",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Code Snippet Copy Button",
+      "source_url": "https://21st.dev/@beratberkayg/components/code-snippet/copy-button",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "tool",
+      "tags": [
+        "react",
+        "svg",
+        "minimal",
+        "flat",
+        "icon",
+        "tool",
+        "button"
+      ],
+      "description": "A ghost icon button that copies a supplied value to the clipboard and briefly swaps to a green check icon to confirm.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_2sjKtWeP6DDixDrGQQItKElODmk/code-snippet/default/preview.1752890163068.png",
+      "id": "unknown__code-snippet-copy-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Hero (hero-1)",
+      "source_url": "https://21st.dev/@beratberkayg/components/hero-1",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "hero",
+      "tags": [
+        "react",
+        "typescript",
+        "tailwind",
+        "gradient",
+        "glow",
+        "hero",
+        "section"
+      ],
+      "description": "An animated hero section that renders an eyebrow label, headline, supporting subtitle and a primary call-to-action link.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/beratberkayg/hero-1/default/preview.1755803737396.png",
+      "id": "unknown__hero-(hero-1)",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Honey Ember Background",
+      "source_url": "https://21st.dev/@bidyut10/components/honey-ember-background",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "background",
+      "tags": [
+        "react",
+        "tailwind",
+        "css",
+        "gradient",
+        "glow",
+        "blur",
+        "background"
+      ],
+      "description": "A warm glowing gradient background wrapper with blurred amber and orange blobs over a subtle dot-grid texture.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/bidyut10/honey-ember-background/default/preview.1790812393063-569312ce-64ca-4b8e-8501-e09a34848fba.png",
+      "id": "unknown__honey-ember-background",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Funnel Chart Five",
+      "source_url": "https://21st.dev/@bklitai/components/funnel-chart/funnel-chart-five",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "chart",
+      "tags": [
+        "react",
+        "tailwind",
+        "gradient",
+        "flat",
+        "chart",
+        "dashboard"
+      ],
+      "description": "A funnel chart that renders five conversion stages \u2014 awareness through purchase \u2014 as gradient-filled bars with absolute values and percentages.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/lyanchouss/funnel-chart/funnel-chart-five/preview.1772649671445.png",
+      "id": "unknown__funnel-chart-five",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "FUNDOP DIMENSION",
+      "source_url": "https://21st.dev/@brunninho.oliveira5/components/fundop-dimension",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "background",
+      "tags": [
+        "react",
+        "typescript",
+        "css",
+        "gradient",
+        "dark",
+        "blur",
+        "background"
+      ],
+      "description": "A pure CSS gradient background in the Silk Blend style with a deep blue-to-black palette, soft blur, film grain and vignette.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/brunninho.oliveira5/fundop-dimension/default/preview.1789134933322-6ce3ffeb-31a1-4a54-a207-061fce4bd352.webp",
+      "id": "unknown__fundop-dimension",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Sfondo centrafit",
+      "source_url": "https://21st.dev/@brxscr/components/sfondo-centrafit",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "background",
+      "tags": [
+        "react",
+        "typescript",
+        "css",
+        "gradient",
+        "soft",
+        "blur",
+        "background"
+      ],
+      "description": "A pure CSS gradient background in the Bloom Field style with a three-color white-to-sky-blue palette and a soft blur finish.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/brxscr/sfondo-centrafit/default/preview.1789120533006-8b966e64-4939-4836-afb3-923df43a8b51.webp",
+      "id": "unknown__sfondo-centrafit",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Animated Gradient Text (Bundui)",
+      "source_url": "https://21st.dev/@bundui/components/animated-text/animated-gradient-text",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "text",
+      "tags": [
+        "react",
+        "framer-motion",
+        "tailwind",
+        "gradient",
+        "animated",
+        "text",
+        "effect"
+      ],
+      "description": "A text component that fills its string with a continuously moving gradient color animation.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/larsen66/animated-text/animated-gradient-text/preview.1754079416277.png",
+      "id": "unknown__animated-gradient-text-(bundui)",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Help Dropdown Menu",
+      "source_url": "https://21st.dev/@bundui/components/dropdown-menu10",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "dropdown",
+      "tags": [
+        "react",
+        "tailwind",
+        "svg",
+        "minimal",
+        "flat",
+        "dropdown",
+        "menu"
+      ],
+      "description": "An icon-triggered dropdown menu with a labeled help section linking to documentation, support and contact options.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_bundui/dropdown-menu10/default/preview.1787680665439.png",
+      "id": "unknown__help-dropdown-menu",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Bloom Field gradient",
+      "source_url": "https://21st.dev/@carstenfson/components/bloom-field-gradient",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "background",
+      "tags": [
+        "react",
+        "typescript",
+        "css",
+        "gradient",
+        "soft",
+        "blur",
+        "background"
+      ],
+      "description": "A pure CSS gradient background in the Bloom Field style with a four-color teal-to-navy palette and a film grain finish.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/carstenfson/bloom-field-gradient/default/preview.1788861333853-07a177b8-9338-448e-a6bf-459f35494349.webp",
+      "id": "unknown__bloom-field-gradient",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Text Loop (chamaac)",
+      "source_url": "https://21st.dev/@chamaac/components/text-loop",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "text",
+      "tags": [
+        "react",
+        "framer-motion",
+        "tailwind",
+        "gradient",
+        "animated",
+        "text",
+        "effect"
+      ],
+      "description": "An animated text component that sits beside static text and cycles through rotating words with a typewriter-style reveal.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/chamaac/text-loop/default/preview.1784725725680-22729b8d-1f35-4299-be03-84c9c457b271.png",
+      "id": "unknown__text-loop-(chamaac)",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Avatar Ten",
+      "source_url": "https://21st.dev/@clevision/components/basic-avatar/avatar-ten",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "avatar",
+      "tags": [
+        "react",
+        "tailwind",
+        "svg",
+        "minimal",
+        "flat",
+        "avatar",
+        "icon"
+      ],
+      "description": "A round avatar with image and initials fallback that carries a small add button overlaid at its lower right corner.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/user_ShadcnStudio/basic-avatar/avatar-ten/preview.1787912803202.png",
+      "id": "unknown__avatar-ten",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Button Group Audio",
+      "source_url": "https://21st.dev/@clevision/components/button-group/button-group-audio",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "svg",
+        "flat",
+        "minimal",
+        "button",
+        "widget"
+      ],
+      "description": "A pill-shaped button group of media playback controls \u2014 skip back, play, pause and skip forward \u2014 each with a tooltip.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/larsen66/button-group/button-group-audio/preview.1760455322557.png",
+      "id": "unknown__button-group-audio",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Button Group Command One",
+      "source_url": "https://21st.dev/@clevision/components/button-group/button-group-command-one",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "svg",
+        "flat",
+        "minimal",
+        "button",
+        "navigation"
+      ],
+      "description": "A connected ghost button group of navigation commands for settings, dashboard and analytics views.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/larsen66/button-group/button-group-command-one/preview.1760455322558.png",
+      "id": "unknown__button-group-command-one",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Button Group Commands",
+      "source_url": "https://21st.dev/@clevision/components/button-group/button-group-commands",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "svg",
+        "outline",
+        "flat",
+        "button",
+        "toolbar"
+      ],
+      "description": "A joined outline button group of record actions \u2014 edit, duplicate and delete \u2014 sharing one rounded container.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/larsen66/button-group/button-group-commands/preview.1760455322558.png",
+      "id": "unknown__button-group-commands",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Button Group Like",
+      "source_url": "https://21st.dev/@clevision/components/button-group/button-group-like",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "svg",
+        "outline",
+        "flat",
+        "button",
+        "widget"
+      ],
+      "description": "A like button inside an outline button group that toggles a filled heart icon and tracks the reaction count.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/larsen66/button-group/button-group-like/preview.1760455322557.png",
+      "id": "unknown__button-group-like",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Button Group Preview",
+      "source_url": "https://21st.dev/@clevision/components/button-group/button-group-preview",
+      "registry_url": "https://21st.dev/community/components",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "svg",
+        "outline",
+        "flat",
+        "button",
+        "layout"
+      ],
+      "description": "An outline button group pairing a 'Live preview' link with a trailing icon button that opens the result externally.",
+      "preview_image": "https://cdn.21st.dev/cdn-cgi/image/fit=scale-down,width=1280,quality=75,format=webp/https://cdn.21st.dev/larsen66/button-group/button-group-preview/preview.1760455322558.png",
+      "id": "unknown__button-group-preview",
+      "source_domain": "21st.dev"
     }
   ]
 }
