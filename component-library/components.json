@@ -1,6 +1,6 @@
 {
-  "version": "1.0.81",
-  "source_count": 27453,
+  "version": "1.0.82",
+  "source_count": 27460,
   "components": [
     {
       "id": "cat-0",
@@ -476231,6 +476231,122 @@
       "preview_image": "",
       "id": "unknown__simple-css-chart-for-dynamic-content",
       "source_domain": "tympanus.net"
+    },
+    {
+      "name": "AI Outfit Planner",
+      "source_url": "https://www.uxsnaps.com/ai-outfit-planner",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "react",
+        "minimal",
+        "soft",
+        "dashboard"
+      ],
+      "description": "A weekly outfit-planning dashboard that renders each calendar day as a dressed human silhouette instead of an abstract marker. Every input behind a planned look stays visible and correctable, turning a schedule into a visual preview of the wardrobe.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/daf2462feedb144baf80f07aecf5ec5fd1ddf957-1770x1368.png?w=1400&fm=webp&q=90",
+      "id": "unknown__ai-outfit-planner",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Content Idea Board",
+      "source_url": "https://www.uxsnaps.com/content-idea-board",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "react",
+        "flat",
+        "soft",
+        "grid",
+        "card"
+      ],
+      "description": "A kanban-style content idea board that ships with four opinionated default stages (Unassigned, To Do, In Progress, Done) plus a '+ New Group' escape hatch in the same visual grammar. Onboarding lives as cards on the board itself rather than a separate flow.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/4b7423fcbb2f160801e5cd99b20b575ee9ed5dfe-1770x1368.png?w=1400&fm=webp&q=90",
+      "id": "unknown__content-idea-board",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Crypto Wallet Portfolio",
+      "source_url": "https://www.uxsnaps.com/crypto-wallet",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "react",
+        "gradient",
+        "wave",
+        "card"
+      ],
+      "description": "A crypto wallet portfolio screen built around a branded texture card that layers a subtle wave pattern over the brand color for depth against flat surfaces. Groups primary wallet actions into an icon-only circular rail so users can act by shape and position, plus a dismissible promo card styled like a physical card.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/1addc300d30608c41f04eab6555a2d16549d833a-1770x1368.png?w=1400&fm=webp&q=90",
+      "id": "unknown__crypto-wallet-portfolio",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Events Dashboard",
+      "source_url": "https://www.uxsnaps.com/events-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "react",
+        "gradient",
+        "flat",
+        "card"
+      ],
+      "description": "An events listing that shifts verb and color temperature with temporal proximity: a week out a card offers 'view details', two minutes out the card turns hot with an 'In 2m' chip and materializes a 'Check in' scan action. Uses the events section as an 'Incoming' strip to give the screen kinetic energy.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/97a306fcbdb843ccfb5fbae877ec9b57699a8868-1770x1368.png?w=1400&fm=webp&q=90",
+      "id": "unknown__events-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Homepage Summary Dashboard",
+      "source_url": "https://www.uxsnaps.com/homepage-summary-dashboard",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "dashboard",
+      "tags": [
+        "react",
+        "gradient",
+        "soft",
+        "dashboard",
+        "progress-bar"
+      ],
+      "description": "A gamified homepage summary that reinforces habit-building with a streak and growth snapshot of color-coded, instantly scannable stats. Pairs the metrics with a low-effort 'Your Daily Mission' CTA and interest-based category chips for one-tap personalization.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/4e43c19b9a7148230c2292d747c249c41182bc5b-1770x1368.png?w=1400&fm=webp&q=90",
+      "id": "unknown__homepage-summary-dashboard",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Place Details",
+      "source_url": "https://www.uxsnaps.com/place-details",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "react",
+        "gradient",
+        "flat",
+        "card",
+        "badge"
+      ],
+      "description": "A social map place-detail screen that models the place lifecycle with two top chips \u2014 a 'to try' bookmark and a 'been' check \u2014 instead of collapsing intent and memory into one save state. Leads with a pink '946 SAVES' pill in place of a star rating and a Saved By row of avatars, in a chunky zine aesthetic of sticker shapes and dashed comment boxes.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/c453cdbaf574f5a701f04e5f2d804245fbdde434-1770x1368.png?w=1400&fm=webp&q=90",
+      "id": "unknown__place-details",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Support Inbox",
+      "source_url": "https://www.uxsnaps.com/support-inbox",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "react",
+        "minimal",
+        "soft",
+        "card",
+        "feed"
+      ],
+      "description": "A support triage inbox whose AI summary extracts stakes rather than recapping: customer may cancel, product launch next week, no team responses in the thread. Queue cards act as a fixed scan ladder where color has to be earned, so urgent threads stand out without permanent visual noise.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/1d4997ace1ed1a4e1b53494cc9fd0753c7e33472-1770x1368.png?w=1400&fm=webp&q=90",
+      "id": "unknown__support-inbox",
+      "source_domain": "www.uxsnaps.com"
     }
   ]
 }
