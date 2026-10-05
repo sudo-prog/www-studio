@@ -1,6 +1,6 @@
 {
-  "version": "1.0.78",
-  "source_count": 27204,
+  "version": "1.0.79",
+  "source_count": 27276,
   "components": [
     {
       "id": "cat-0",
@@ -471740,6 +471740,1169 @@
       "preview_image": "",
       "id": "unknown__input-by-zaeniahmad-id",
       "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Parallax Scrolling",
+      "source_url": "https://21st.dev/@osmosupply/components/parallax-scrolling",
+      "registry_url": "https://21st.dev/@osmosupply/library/osmo",
+      "category": "animation",
+      "tags": [
+        "tailwind",
+        "react",
+        "motion",
+        "parallax",
+        "minimal"
+      ],
+      "description": "A scroll-driven parallax animation where layers move at different rates as the page is scrolled. Built for marketing hero sections and storytelling blocks.",
+      "preview_image": "https://cdn.21st.dev/larsen66/parallax-scrolling/default/preview.1753957121379.png",
+      "id": "unknown__parallax-scrolling",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Looping words with GSAP",
+      "source_url": "https://21st.dev/@osmosupply/components/looping-words-with-gsap",
+      "registry_url": "https://21st.dev/@osmosupply/library/osmo",
+      "category": "text-effect",
+      "tags": [
+        "gsap",
+        "react",
+        "morph",
+        "text-effect"
+      ],
+      "description": "A GSAP-powered headline that cycles through a list of words with a looping reveal transition. Useful for rotating taglines and value propositions.",
+      "preview_image": "https://cdn.21st.dev/larsen66/looping-words-with-gsap/default/preview.1753898518403.png",
+      "id": "unknown__looping-words-with-gsap",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Draw Random Underline",
+      "source_url": "https://21st.dev/@osmosupply/components/draw-random-underline",
+      "registry_url": "https://21st.dev/@osmosupply/library/osmo",
+      "category": "hover-effect",
+      "tags": [
+        "svg",
+        "react",
+        "noise",
+        "hover-effect"
+      ],
+      "description": "An underline that is drawn along a randomised SVG path when the link is hovered or focused. Adds a hand-drawn feel to inline text links.",
+      "preview_image": "https://cdn.21st.dev/user_osmosupply/draw-random-underline/default/preview.1788892983200.webp",
+      "id": "unknown__draw-random-underline",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Slider",
+      "source_url": "https://21st.dev/@ekmas/components/slider/slider-demo",
+      "registry_url": "https://21st.dev/@ekmas/library/neobrutalism",
+      "category": "slider",
+      "tags": [
+        "tailwind",
+        "react",
+        "brutalist",
+        "slider"
+      ],
+      "description": "A range slider in a hard-edged neobrutalist style with a thick offset shadow track and a chunky square thumb. Lets users pick a numeric value by dragging.",
+      "preview_image": "https://cdn.21st.dev/user_2reteS3IODi8OJpbNYOpgLKdwT7/slider/slider-demo/preview.png?v=1",
+      "id": "unknown__slider",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Pagination",
+      "source_url": "https://21st.dev/@ekmas/components/pagination/pagination-demo",
+      "registry_url": "https://21st.dev/@ekmas/library/neobrutalism",
+      "category": "pagination",
+      "tags": [
+        "tailwind",
+        "react",
+        "brutalist",
+        "pagination"
+      ],
+      "description": "A numbered pagination control styled with hard borders and solid offset shadows. Highlights the current page and supports disabled prev/next states.",
+      "preview_image": "https://cdn.21st.dev/user_2reteS3IODi8OJpbNYOpgLKdwT7/pagination/pagination-demo/preview.1789742934000.png",
+      "id": "unknown__pagination",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Marquee",
+      "source_url": "https://21st.dev/@ekmas/components/marquee/marquee-demo",
+      "registry_url": "https://21st.dev/@ekmas/library/neobrutalism",
+      "category": "animation",
+      "tags": [
+        "tailwind",
+        "react",
+        "brutalist",
+        "text-effect"
+      ],
+      "description": "An endlessly scrolling horizontal marquee for repeated headlines, logos or ticker text. Built for announcement bars and logo strips.",
+      "preview_image": "https://cdn.21st.dev/user_2reteS3IODi8OJpbNYOpgLKdwT7/marquee/marquee-demo/preview.png?v=1",
+      "id": "unknown__marquee",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Image Card",
+      "source_url": "https://21st.dev/@ekmas/components/image-card/image-card-demo",
+      "registry_url": "https://21st.dev/@ekmas/library/neobrutalism",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "react",
+        "brutalist",
+        "card"
+      ],
+      "description": "A media card with a heavy border, flat offset shadow and a bold caption block. Suits gallery and feature-card layouts.",
+      "preview_image": "https://cdn.21st.dev/user_2reteS3IODi8OJpbNYOpgLKdwT7/image-card/image-card-demo/preview.1788451795555.png",
+      "id": "unknown__image-card",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Alert",
+      "source_url": "https://21st.dev/@ekmas/components/alert/alert-demo",
+      "registry_url": "https://21st.dev/@ekmas/library/neobrutalism",
+      "category": "notification",
+      "tags": [
+        "tailwind",
+        "react",
+        "brutalist",
+        "notification"
+      ],
+      "description": "An inline alert banner with a solid colour fill and hard shadow, used for status and warning messages. Supports multiple alert variants.",
+      "preview_image": "https://cdn.21st.dev/user_2reteS3IODi8OJpbNYOpgLKdwT7/alert/alert-demo/preview.1789743426323.png",
+      "id": "unknown__alert",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Checkbox",
+      "source_url": "https://21st.dev/@ekmas/components/checkbox/checkbox-demo",
+      "registry_url": "https://21st.dev/@ekmas/library/neobrutalism",
+      "category": "toggle",
+      "tags": [
+        "tailwind",
+        "react",
+        "brutalist",
+        "toggle"
+      ],
+      "description": "A square checkbox control with a thick outline and offset shadow that animates on check. Used inside forms and lists.",
+      "preview_image": "https://cdn.21st.dev/user_2reteS3IODi8OJpbNYOpgLKdwT7/checkbox/checkbox-demo/preview.png?v=1",
+      "id": "unknown__checkbox",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Input",
+      "source_url": "https://21st.dev/@ekmas/components/input/input-demo",
+      "registry_url": "https://21st.dev/@ekmas/library/neobrutalism",
+      "category": "input",
+      "tags": [
+        "tailwind",
+        "react",
+        "brutalist",
+        "input"
+      ],
+      "description": "A text input with a chunky bordered box, hard shadow and visible focus ring in neobrutalist styling. Includes label and error slots.",
+      "preview_image": "https://cdn.21st.dev/user_2reteS3IODi8OJpbNYOpgLKdwT7/input/input-demo/preview.png?v=1",
+      "id": "unknown__input",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Button",
+      "source_url": "https://21st.dev/@ekmas/components/button/button-demo",
+      "registry_url": "https://21st.dev/@ekmas/library/neobrutalism",
+      "category": "button",
+      "tags": [
+        "tailwind",
+        "react",
+        "brutalist",
+        "button"
+      ],
+      "description": "A button with a solid offset shadow that depresses on press. Ships several size and variant options for primary and secondary actions.",
+      "preview_image": "https://cdn.21st.dev/user_2reteS3IODi8OJpbNYOpgLKdwT7/button/button-demo/preview.png?v=1",
+      "id": "unknown__button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Accordion",
+      "source_url": "https://21st.dev/@ekmas/components/accordion",
+      "registry_url": "https://21st.dev/@ekmas/library/neobrutalism",
+      "category": "accordion",
+      "tags": [
+        "tailwind",
+        "react",
+        "brutalist",
+        "accordion"
+      ],
+      "description": "A disclosure accordion with hard borders and shadowed panels that expand and collapse one section at a time. Useful for FAQ blocks.",
+      "preview_image": "https://cdn.21st.dev/user_2reteS3IODi8OJpbNYOpgLKdwT7/accordion/default/preview.1739030210739.png",
+      "id": "unknown__accordion",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "AI Prompt Input",
+      "source_url": "https://21st.dev/@senommu/components/ai-prompt-input",
+      "registry_url": "https://21st.dev/@senommu/library/motokoui",
+      "category": "input",
+      "tags": [
+        "tailwind",
+        "react",
+        "framer-motion",
+        "input",
+        "minimal"
+      ],
+      "description": "A prompt composer for AI chat interfaces with an auto-growing textarea, attach and send affordances, and keyboard shortcuts.",
+      "preview_image": "https://cdn.21st.dev/user_39720J8FZrHCoGeL23ljF4x20L3/ai-prompt-input/default/preview.1785741962209.png",
+      "id": "unknown__ai-prompt-input",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "AI Model Select",
+      "source_url": "https://21st.dev/@senommu/components/ai-model-select",
+      "registry_url": "https://21st.dev/@senommu/library/motokoui",
+      "category": "dropdown",
+      "tags": [
+        "tailwind",
+        "react",
+        "framer-motion",
+        "dropdown",
+        "minimal"
+      ],
+      "description": "A model picker dropdown for AI apps listing available models with labels and metadata rows. Opens a searchable menu anchored to the trigger.",
+      "preview_image": "https://cdn.21st.dev/user_39720J8FZrHCoGeL23ljF4x20L3/ai-model-select/default/preview.1786664125707.webp",
+      "id": "unknown__ai-model-select",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "GitHub Sky",
+      "source_url": "https://21st.dev/@senommu/components/git-hub-sky",
+      "registry_url": "https://21st.dev/@senommu/library/motokoui",
+      "category": "background",
+      "tags": [
+        "react",
+        "three.js",
+        "aurora",
+        "background"
+      ],
+      "description": "A three.js sky background with drifting cloud layers used behind hero content. Renders an animated gradient dome over the page.",
+      "preview_image": "https://cdn.21st.dev/senommu/git-hub-sky/default/preview.1785312664752-1c43a5f1-a110-4a44-a339-0874c7117dc1.png",
+      "id": "unknown__github-sky",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Letter Morph",
+      "source_url": "https://21st.dev/@senommu/components/letter-morph",
+      "registry_url": "https://21st.dev/@senommu/library/motokoui",
+      "category": "text-effect",
+      "tags": [
+        "svg",
+        "react",
+        "morph",
+        "text-effect"
+      ],
+      "description": "An SVG-based letter animation that morphs characters into a target word on hover or in the viewport.",
+      "preview_image": "https://cdn.21st.dev/senommu/letter-morph/default/preview.1785311947371-a8e1107e-0819-4d85-8954-3682127b61ce.png",
+      "id": "unknown__letter-morph",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Terminal Pikachu",
+      "source_url": "https://21st.dev/@senommu/components/terminal-pikachu",
+      "registry_url": "https://21st.dev/@senommu/library/motokoui",
+      "category": "terminal",
+      "tags": [
+        "react",
+        "css",
+        "pixel",
+        "terminal"
+      ],
+      "description": "A pixel-art terminal window illustration with an ASCII character rendered in the output area. Purely decorative hero art.",
+      "preview_image": "https://cdn.21st.dev/homlu/terminal-pikachu/default/preview.1784206270382-3ce20923-36f5-444f-ba1f-15df84bc4987.webp",
+      "id": "unknown__terminal-pikachu",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Line Shader Homlu UI",
+      "source_url": "https://21st.dev/@senommu/components/line-shader-homlu-ui",
+      "registry_url": "https://21st.dev/@senommu/library/motokoui",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "react",
+        "shader",
+        "shader-playground",
+        "neon"
+      ],
+      "description": "A GLSL line shader drawing animated flowing strokes on a canvas. Used as an ambient background or border effect.",
+      "preview_image": "https://cdn.21st.dev/homlu/line-shader-homlu-ui/default/preview.1784205972564-e9c8db3d-9bd1-4dc9-9e6f-46c3b0fb6e40.webp",
+      "id": "unknown__line-shader-homlu-ui",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Waves Shaders Homlu UI",
+      "source_url": "https://21st.dev/@senommu/components/waves-shaders-homlu-ui",
+      "registry_url": "https://21st.dev/@senommu/library/motokoui",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "react",
+        "shader",
+        "shader-playground",
+        "plasma"
+      ],
+      "description": "A fragment-shader wave field that ripples continuously across a full-bleed canvas. Adds a plasma-like backdrop to hero sections.",
+      "preview_image": "https://cdn.21st.dev/homlu/waves-shaders-homlu-ui/default/preview.1784198770036-296f4b27-ad66-4a44-a318-a720415dc4e3.webp",
+      "id": "unknown__waves-shaders-homlu-ui",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Xenon Component",
+      "source_url": "https://21st.dev/@uvcanvas/components/xenon-component",
+      "registry_url": "https://21st.dev/@uvcanvas/library/uvcanvas",
+      "category": "background",
+      "tags": [
+        "webgl",
+        "react",
+        "gradient",
+        "background"
+      ],
+      "description": "A shaded WebGL canvas background from the uvcanvas library that renders smooth colour gradients as a page backdrop.",
+      "preview_image": "https://cdn.21st.dev/larsen66/xenon-component/default/preview.1756837485378.png",
+      "id": "unknown__xenon-component",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Tags Breadcrumb",
+      "source_url": "https://21st.dev/@nextjsshop/components/tags-breadcrumb",
+      "registry_url": "https://21st.dev/@nextjsshop/library/nextjsshop",
+      "category": "breadcrumbs",
+      "tags": [
+        "tailwind",
+        "react",
+        "pixel",
+        "breadcrumbs"
+      ],
+      "description": "A breadcrumb trail that appends removable tags to each path segment, useful for faceted navigation.",
+      "preview_image": "https://cdn.21st.dev/user_2zxiDlyxY96s67p94sGoEXo2PsN/tags-breadcrumb/default/preview.1788206396641.png",
+      "id": "unknown__tags-breadcrumb",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Icon Accordion",
+      "source_url": "https://21st.dev/@nextjsshop/components/icon-accordion",
+      "registry_url": "https://21st.dev/@nextjsshop/library/nextjsshop",
+      "category": "accordion",
+      "tags": [
+        "tailwind",
+        "react",
+        "motion",
+        "accordion",
+        "flat"
+      ],
+      "description": "An accordion whose headers each carry a leading icon and rotate as the panel opens.",
+      "preview_image": "https://cdn.21st.dev/user_2zxiDlyxY96s67p94sGoEXo2PsN/icon-accordion/default/preview.1786472602404.webp",
+      "id": "unknown__icon-accordion",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Sneaky Button",
+      "source_url": "https://21st.dev/@nextjsshop/components/sneaky-button",
+      "registry_url": "https://21st.dev/@nextjsshop/library/nextjsshop",
+      "category": "button",
+      "tags": [
+        "tailwind",
+        "framer-motion",
+        "magnet",
+        "button",
+        "soft"
+      ],
+      "description": "A button that dodges the cursor with a spring animation as you approach it. Built as a playful micro-interaction.",
+      "preview_image": "https://cdn.21st.dev/nextjsshop/sneaky-button/default/preview.1756717693248.png",
+      "id": "unknown__sneaky-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Arrow Dots Button",
+      "source_url": "https://21st.dev/@nextjsshop/components/arrow-dots-button",
+      "registry_url": "https://21st.dev/@nextjsshop/library/nextjsshop",
+      "category": "button",
+      "tags": [
+        "tailwind",
+        "framer-motion",
+        "hover-effect",
+        "button",
+        "flat"
+      ],
+      "description": "A call-to-action button that reveals a travelling arrow and dot trail on hover.",
+      "preview_image": "https://cdn.21st.dev/nextjsshop/arrow-dots-button/default/preview.1756717047899.png",
+      "id": "unknown__arrow-dots-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Animated Arrow Button",
+      "source_url": "https://21st.dev/@nextjsshop/components/animated-arrow-button",
+      "registry_url": "https://21st.dev/@nextjsshop/library/nextjsshop",
+      "category": "button",
+      "tags": [
+        "tailwind",
+        "motion",
+        "hover-effect",
+        "button",
+        "minimal"
+      ],
+      "description": "A button with an arrow glyph that loops continuously, signalling an onward action.",
+      "preview_image": "https://cdn.21st.dev/nextjsshop/animated-arrow-button/default/preview.1756659517971.png",
+      "id": "unknown__animated-arrow-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Pixel Broke Button",
+      "source_url": "https://21st.dev/@nextjsshop/components/pixel-broke-button",
+      "registry_url": "https://21st.dev/@nextjsshop/library/nextjsshop",
+      "category": "button",
+      "tags": [
+        "tailwind",
+        "react",
+        "pixel",
+        "button"
+      ],
+      "description": "A deliberately glitchy pixel-art button whose border breaks apart on hover.",
+      "preview_image": "https://cdn.21st.dev/user_2zxiDlyxY96s67p94sGoEXo2PsN/pixel-broke-button/default/preview.1789745623162.webp",
+      "id": "unknown__pixel-broke-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Pixel Button",
+      "source_url": "https://21st.dev/@nextjsshop/components/pixel-button",
+      "registry_url": "https://21st.dev/@nextjsshop/library/nextjsshop",
+      "category": "button",
+      "tags": [
+        "tailwind",
+        "react",
+        "pixel",
+        "button"
+      ],
+      "description": "A retro 8-bit styled button with blocky bevels and press-down feedback.",
+      "preview_image": "https://cdn.21st.dev/user_2zxiDlyxY96s67p94sGoEXo2PsN/pixel-button/default/preview.1788896111128.webp",
+      "id": "unknown__pixel-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Nextjsshop Button",
+      "source_url": "https://21st.dev/@nextjsshop/components/nextjsshop-button",
+      "registry_url": "https://21st.dev/@nextjsshop/library/nextjsshop",
+      "category": "button",
+      "tags": [
+        "tailwind",
+        "react",
+        "minimal",
+        "button"
+      ],
+      "description": "A general-purpose storefront button with several variants and sizes for primary commerce actions.",
+      "preview_image": "https://cdn.21st.dev/nextjsshop/nextjsshop-button/default/preview.1756641923089.png",
+      "id": "unknown__nextjsshop-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Notification Alert Dialog",
+      "source_url": "https://21st.dev/@rynkovski/components/notification-alert-dialog",
+      "registry_url": "https://21st.dev/@rynkovski/library/extendui",
+      "category": "notification",
+      "tags": [
+        "tailwind",
+        "react",
+        "glass",
+        "notification"
+      ],
+      "description": "A modal alert dialog styled as a glass notification card with title, body and action row.",
+      "preview_image": "https://cdn.21st.dev/user_2s2ozTrUVOHALa21HE13Xuo2lhc/notification-alert-dialog/default/preview.1788887739209.webp",
+      "id": "unknown__notification-alert-dialog",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Error Alert Dialog",
+      "source_url": "https://21st.dev/@rynkovski/components/error-alert-dialog",
+      "registry_url": "https://21st.dev/@rynkovski/library/extendui",
+      "category": "dialog",
+      "tags": [
+        "tailwind",
+        "react",
+        "flat",
+        "dialog"
+      ],
+      "description": "An error-state alert dialog presenting a failure message with confirm and dismiss actions.",
+      "preview_image": "https://cdn.21st.dev/larsen66/error-alert-dialog/default/preview.1750554517848.png",
+      "id": "unknown__error-alert-dialog",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Alert Dialog Icon",
+      "source_url": "https://21st.dev/@rynkovski/components/alert-dialog-icon",
+      "registry_url": "https://21st.dev/@rynkovski/library/extendui",
+      "category": "dialog",
+      "tags": [
+        "svg",
+        "react",
+        "flat",
+        "dialog"
+      ],
+      "description": "A compact icon treatment used inside alert dialogs to communicate severity at a glance.",
+      "preview_image": "https://cdn.21st.dev/larsen66/alert-dialog-icon/default/preview.1750554425266.png",
+      "id": "unknown__alert-dialog-icon",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "3D Card",
+      "source_url": "https://21st.dev/@rynkovski/components/3d-card-1",
+      "registry_url": "https://21st.dev/@rynkovski/library/extendui",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "react",
+        "isometric",
+        "card"
+      ],
+      "description": "A card that tilts in 3D following the pointer, with layered depth on hover.",
+      "preview_image": "https://cdn.21st.dev/larsen66/3d-card-1/default/preview.1750554261740.png",
+      "id": "unknown__3d-card",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Extended Select",
+      "source_url": "https://21st.dev/@rynkovski/components/select",
+      "registry_url": "https://21st.dev/@rynkovski/library/extendui",
+      "category": "dropdown",
+      "tags": [
+        "tailwind",
+        "react",
+        "soft",
+        "dropdown"
+      ],
+      "description": "A select control with richer option rows including descriptions and icons.",
+      "preview_image": "https://cdn.21st.dev/user_extendui/select/default/preview.png",
+      "id": "unknown__extended-select",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Credit Card",
+      "source_url": "https://21st.dev/@rynkovski/components/credit-card",
+      "registry_url": "https://21st.dev/@rynkovski/library/extendui",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "react",
+        "gradient",
+        "card"
+      ],
+      "description": "A payment card face mock with gradient finish, chip and masked account digits.",
+      "preview_image": "https://cdn.21st.dev/user_extendui/credit-card/default/preview.png",
+      "id": "unknown__credit-card",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Flip Coin Button",
+      "source_url": "https://21st.dev/@voxlet-ui/components/flip-coin-button",
+      "registry_url": "https://21st.dev/@voxlet-ui/library/voxlet-ui",
+      "category": "button",
+      "tags": [
+        "css",
+        "react",
+        "3d",
+        "button",
+        "metallic"
+      ],
+      "description": "A button whose face flips on click to reveal a second label, giving a coin-toss interaction.",
+      "preview_image": "https://cdn.21st.dev/larsen66/flip-coin-button/default/preview.1750168079194.png",
+      "id": "unknown__flip-coin-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Button Download",
+      "source_url": "https://21st.dev/@voxlet-ui/components/button-download",
+      "registry_url": "https://21st.dev/@voxlet-ui/library/voxlet-ui",
+      "category": "button",
+      "tags": [
+        "tailwind",
+        "react",
+        "hover-effect",
+        "button",
+        "minimal"
+      ],
+      "description": "A download button with an animated arrow and progress affordance while a file is transferring.",
+      "preview_image": "https://cdn.21st.dev/larsen66/button-download/default/preview.1750167943742.png",
+      "id": "unknown__button-download",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Space Box",
+      "source_url": "https://21st.dev/@voxlet-ui/components/space-box",
+      "registry_url": "https://21st.dev/@voxlet-ui/library/voxlet-ui",
+      "category": "animation",
+      "tags": [
+        "css",
+        "react",
+        "gradient",
+        "animation"
+      ],
+      "description": "A rotating gradient box illustration used as a decorative loading or hero element.",
+      "preview_image": "https://cdn.21st.dev/larsen66/space-box/default/preview.1750167618510.png",
+      "id": "unknown__space-box",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Magic Wand",
+      "source_url": "https://21st.dev/@voxlet-ui/components/magic-wand",
+      "registry_url": "https://21st.dev/@voxlet-ui/library/voxlet-ui",
+      "category": "button",
+      "tags": [
+        "tailwind",
+        "react",
+        "glow",
+        "button"
+      ],
+      "description": "A pill button topped with a glowing wand icon that trails sparks on hover.",
+      "preview_image": "https://cdn.21st.dev/larsen66/magic-wand/default/preview.1750167517164.png",
+      "id": "unknown__magic-wand",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Globe",
+      "source_url": "https://21st.dev/@nyxbui/components/globe",
+      "registry_url": "https://21st.dev/@nyxbui/library/nyxb-ui",
+      "category": "3d",
+      "tags": [
+        "react",
+        "three.js",
+        "glow",
+        "3d"
+      ],
+      "description": "A slowly rotating 3D globe rendered on a canvas for hero backgrounds and about sections.",
+      "preview_image": "https://cdn.21st.dev/larsen66/globe/default/preview.1750173776553.png",
+      "id": "unknown__globe",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Warp Background",
+      "source_url": "https://21st.dev/@nyxbui/components/warp-background",
+      "registry_url": "https://21st.dev/@nyxbui/library/nyxb-ui",
+      "category": "background",
+      "tags": [
+        "webgl",
+        "react",
+        "gradient",
+        "background"
+      ],
+      "description": "A WebGL warp-speed streak background that accelerates on scroll or on trigger.",
+      "preview_image": "https://cdn.21st.dev/larsen66/warp-background/default/preview.1750173412665.png",
+      "id": "unknown__warp-background",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Stepper",
+      "source_url": "https://21st.dev/@nyxbui/components/stepper",
+      "registry_url": "https://21st.dev/@nyxbui/library/nyxb-ui",
+      "category": "stepper",
+      "tags": [
+        "tailwind",
+        "react",
+        "flat",
+        "stepper"
+      ],
+      "description": "A multi-step progress indicator with completed, active and upcoming states for wizards and onboarding flows.",
+      "preview_image": "https://cdn.21st.dev/user_nyxbui/stepper/default/preview.1786713456372.webp",
+      "id": "unknown__stepper",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Video Modal",
+      "source_url": "https://21st.dev/@nyxbui/components/video-modal",
+      "registry_url": "https://21st.dev/@nyxbui/library/nyxb-ui",
+      "category": "video-player",
+      "tags": [
+        "react",
+        "css",
+        "flat",
+        "video-player"
+      ],
+      "description": "A lightbox modal that plays a video with backdrop blur, close control and keyboard dismissal.",
+      "preview_image": "https://cdn.21st.dev/user_nyxbui/video-modal/default/preview.1786463728905.webp",
+      "id": "unknown__video-modal",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Sankey Diagram",
+      "source_url": "https://21st.dev/@bklitai/components/sankey-chart",
+      "registry_url": "https://21st.dev/@bklitai/library/bklit",
+      "category": "chart",
+      "tags": [
+        "react",
+        "d3",
+        "flat",
+        "chart"
+      ],
+      "description": "A Sankey flow diagram that visualises quantities moving between nodes. Tooltips show the value carried by each link.",
+      "preview_image": "https://cdn.21st.dev/bklitai/sankey-chart/default/preview.1790091990765.webp",
+      "id": "unknown__sankey-diagram",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Candlestick Chart",
+      "source_url": "https://21st.dev/@bklitai/components/candlestick-chart",
+      "registry_url": "https://21st.dev/@bklitai/library/bklit",
+      "category": "chart",
+      "tags": [
+        "react",
+        "svg",
+        "flat",
+        "chart"
+      ],
+      "description": "A financial candlestick chart with up and down candles, gridlines and a themed dark variant.",
+      "preview_image": "https://cdn.21st.dev/bklitai/candlestick-chart/default/preview.1790060660637-5fde71bd-6d94-46ca-afef-65fed3eca620.png",
+      "id": "unknown__candlestick-chart",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Bar Chart",
+      "source_url": "https://21st.dev/@bklitai/components/bar-chart",
+      "registry_url": "https://21st.dev/@bklitai/library/bklit",
+      "category": "chart",
+      "tags": [
+        "react",
+        "svg",
+        "gradient",
+        "chart"
+      ],
+      "description": "A bar chart supporting horizontal, stacked, multi-series and gradient fills with custom tooltips.",
+      "preview_image": "https://cdn.21st.dev/bklitai/bar-chart/default/preview.1785311329972-b058687e-c765-43f3-9e84-57c20691fb75.png",
+      "id": "unknown__bar-chart",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Area Chart",
+      "source_url": "https://21st.dev/@bklitai/components/area-chart",
+      "registry_url": "https://21st.dev/@bklitai/library/bklit",
+      "category": "chart",
+      "tags": [
+        "react",
+        "svg",
+        "flat",
+        "chart"
+      ],
+      "description": "An area chart with y-axis options and drag-to-select ranges for filtering dashboards.",
+      "preview_image": "https://cdn.21st.dev/bklitai/area-chart/area-charts-yaxis/default/preview.1785309273855-6fae08e5-ac3a-4650-b752-7eb7a41fd523.png",
+      "id": "unknown__area-chart",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Funnel Chart",
+      "source_url": "https://21st.dev/@bklitai/components/funnel-chart",
+      "registry_url": "https://21st.dev/@bklitai/library/bklit",
+      "category": "chart",
+      "tags": [
+        "react",
+        "svg",
+        "flat",
+        "chart"
+      ],
+      "description": "A funnel chart with optional stage labels, grid overlay and pattern fills for conversion pipelines.",
+      "preview_image": "https://cdn.21st.dev/lyanchouss/funnel-chart/default/preview.1772649671445.png",
+      "id": "unknown__funnel-chart",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Flow Button",
+      "source_url": "https://21st.dev/@clevision/components/flow-button",
+      "registry_url": "https://21st.dev/@clevision/library/shadcnstudio",
+      "category": "button",
+      "tags": [
+        "tailwind",
+        "react",
+        "morph",
+        "button"
+      ],
+      "description": "A button whose surface flows between states on hover, with a gradient sheen that follows the pointer.",
+      "preview_image": "https://cdn.21st.dev/clevision/flow-button/default/preview.1790681752672-eb51f9c4-49c4-47b5-bc85-101aacd4922b.png",
+      "id": "unknown__flow-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Orbit 29",
+      "source_url": "https://21st.dev/@clevision/components/orbit-29",
+      "registry_url": "https://21st.dev/@clevision/library/shadcnstudio",
+      "category": "animation",
+      "tags": [
+        "react",
+        "css",
+        "glow",
+        "animation"
+      ],
+      "description": "An orbiting element animation with 29 staggered satellites rotating around a centre point.",
+      "preview_image": "https://cdn.21st.dev/clevision/orbit-29/default/preview.1790680908891-cf352c8a-2de5-454a-8c10-ff60577ff640.png",
+      "id": "unknown__orbit-29",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Radio Group 1",
+      "source_url": "https://21st.dev/@clevision/components/radio-group-1",
+      "registry_url": "https://21st.dev/@clevision/library/shadcnstudio",
+      "category": "form",
+      "tags": [
+        "tailwind",
+        "react",
+        "soft",
+        "form"
+      ],
+      "description": "A radio group with many layout and colour variants including horizontal rows and size options.",
+      "preview_image": "https://cdn.21st.dev/larsen66/radio-group-1/default/preview.1761028811506.png",
+      "id": "unknown__radio-group-1",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Switch",
+      "source_url": "https://21st.dev/@clevision/components/switch-1",
+      "registry_url": "https://21st.dev/@clevision/library/shadcnstudio",
+      "category": "toggle",
+      "tags": [
+        "tailwind",
+        "react",
+        "soft",
+        "toggle"
+      ],
+      "description": "A toggle switch with eighteen size, colour and state variants for settings panels.",
+      "preview_image": "https://cdn.21st.dev/larsen66/switch-1/switch-eighteen/preview.1760584544926.png",
+      "id": "unknown__switch",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Accordion 1",
+      "source_url": "https://21st.dev/@clevision/components/accordion-1",
+      "registry_url": "https://21st.dev/@clevision/library/shadcnstudio",
+      "category": "accordion",
+      "tags": [
+        "tailwind",
+        "react",
+        "soft",
+        "accordion"
+      ],
+      "description": "An accordion with animated open/close transitions and optional single-open behaviour.",
+      "preview_image": "",
+      "id": "unknown__accordion-1",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Basic Avatar",
+      "source_url": "https://21st.dev/@clevision/components/basic-avatar",
+      "registry_url": "https://21st.dev/@clevision/library/shadcnstudio",
+      "category": "avatar",
+      "tags": [
+        "tailwind",
+        "react",
+        "minimal",
+        "avatar"
+      ],
+      "description": "A basic avatar component supporting image, initials and fallback states at multiple sizes.",
+      "preview_image": "",
+      "id": "unknown__basic-avatar",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Breadrcrumb",
+      "source_url": "https://21st.dev/@clevision/components/breadrcrumb",
+      "registry_url": "https://21st.dev/@clevision/library/shadcnstudio",
+      "category": "breadcrumbs",
+      "tags": [
+        "tailwind",
+        "react",
+        "minimal",
+        "breadcrumbs"
+      ],
+      "description": "A breadcrumb navigation trail with separators, collapse behaviour for deep paths and link slots.",
+      "preview_image": "",
+      "id": "unknown__breadrcrumb",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Button Group",
+      "source_url": "https://21st.dev/@clevision/components/button-group",
+      "registry_url": "https://21st.dev/@clevision/library/shadcnstudio",
+      "category": "button",
+      "tags": [
+        "tailwind",
+        "react",
+        "minimal",
+        "button"
+      ],
+      "description": "A segmented group of related buttons joined into a single control bar with a shared border.",
+      "preview_image": "",
+      "id": "unknown__button-group",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Combobox",
+      "source_url": "https://21st.dev/@clevision/components/combobox",
+      "registry_url": "https://21st.dev/@clevision/library/shadcnstudio",
+      "category": "dropdown",
+      "tags": [
+        "tailwind",
+        "react",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "An editable combobox that filters a list of options as the user types.",
+      "preview_image": "",
+      "id": "unknown__combobox",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Input OTPs",
+      "source_url": "https://21st.dev/@clevision/components/input-otps",
+      "registry_url": "https://21st.dev/@clevision/library/shadcnstudio",
+      "category": "input",
+      "tags": [
+        "tailwind",
+        "react",
+        "minimal",
+        "input"
+      ],
+      "description": "A one-time-passcode input that splits a code across fixed character boxes with paste support.",
+      "preview_image": "",
+      "id": "unknown__input-otps",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "HeroUI Close Button",
+      "source_url": "https://21st.dev/@hero_ui/components/heroui-close-button",
+      "registry_url": "https://21st.dev/@hero_ui/library/hero-ui",
+      "category": "button",
+      "tags": [
+        "react",
+        "css",
+        "minimal",
+        "button"
+      ],
+      "description": "A close button with default, custom-icon and interactive variants for modals and drawers.",
+      "preview_image": "https://cdn.21st.dev/hero_ui/heroui-close-button/default/preview.1783009277489.png",
+      "id": "unknown__heroui-close-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "HeroUI Dropdown",
+      "source_url": "https://21st.dev/@hero_ui/components/heroui-dropdown",
+      "registry_url": "https://21st.dev/@hero_ui/library/hero-ui",
+      "category": "dropdown",
+      "tags": [
+        "react",
+        "css",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "A keyboard-accessible dropdown menu with custom trigger, icons, descriptions and shortcut hints.",
+      "preview_image": "https://cdn.21st.dev/hero_ui/heroui-dropdown/custom-trigger/preview.1782324392000.png",
+      "id": "unknown__heroui-dropdown",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "HeroUI ListBox",
+      "source_url": "https://21st.dev/@hero_ui/components/heroui-list-box",
+      "registry_url": "https://21st.dev/@hero_ui/library/hero-ui",
+      "category": "menu",
+      "tags": [
+        "react",
+        "css",
+        "minimal",
+        "menu"
+      ],
+      "description": "A virtualised listbox supporting multi-select, sections, disabled items and custom render functions.",
+      "preview_image": "https://cdn.21st.dev/hero_ui/heroui-list-box/default/preview.1783009626068.png",
+      "id": "unknown__heroui-listbox",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "HeroUI Toggle Button",
+      "source_url": "https://21st.dev/@hero_ui/components/heroui-toggle-button",
+      "registry_url": "https://21st.dev/@hero_ui/library/hero-ui",
+      "category": "toggle",
+      "tags": [
+        "react",
+        "css",
+        "minimal",
+        "toggle"
+      ],
+      "description": "A two-state toggle button with controlled, disabled, icon-only and size variants.",
+      "preview_image": "https://cdn.21st.dev/user_hero_ui/heroui-toggle-button/default/preview.1785863312494.png",
+      "id": "unknown__heroui-toggle-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Toggle Button Group",
+      "source_url": "https://21st.dev/@hero_ui/components/heroui-toggle-button-group",
+      "registry_url": "https://21st.dev/@hero_ui/library/hero-ui",
+      "category": "button",
+      "tags": [
+        "react",
+        "css",
+        "minimal",
+        "button"
+      ],
+      "description": "A group of toggle buttons that supports single or multiple selection states.",
+      "preview_image": "",
+      "id": "unknown__toggle-button-group",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Tooltip",
+      "source_url": "https://21st.dev/@hero_ui/components/heroui-tooltip",
+      "registry_url": "https://21st.dev/@hero_ui/library/hero-ui",
+      "category": "tooltip",
+      "tags": [
+        "react",
+        "css",
+        "minimal",
+        "tooltip"
+      ],
+      "description": "A tooltip with custom render support and placement control for hover and focus hints.",
+      "preview_image": "https://cdn.21st.dev/hero_ui/heroui-tooltip/custom-render/preview.1782315701961.png",
+      "id": "unknown__tooltip",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Admin Inset Layout",
+      "source_url": "https://21st.dev/@deltacomponents/components/admin-inset-layout",
+      "registry_url": "https://21st.dev/@deltacomponents/library/deltacomponents",
+      "category": "dashboard",
+      "tags": [
+        "tailwind",
+        "react",
+        "flat",
+        "dashboard"
+      ],
+      "description": "An admin shell layout with an inset content surface, sidebar and header regions for dashboard apps.",
+      "preview_image": "https://cdn.21st.dev/deltacomponents/admin-inset-layout/default/preview.1790193288321-6a60724f-e4e1-4f25-b2ff-58bd6a6601b0.png",
+      "id": "unknown__admin-inset-layout",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Admonition",
+      "source_url": "https://21st.dev/@deltacomponents/components/admonition",
+      "registry_url": "https://21st.dev/@deltacomponents/library/deltacomponents",
+      "category": "notification",
+      "tags": [
+        "tailwind",
+        "react",
+        "flat",
+        "notification"
+      ],
+      "description": "A callout admonition block for notes, tips and warnings inside documentation and article content.",
+      "preview_image": "",
+      "id": "unknown__admonition",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Auth Form",
+      "source_url": "https://21st.dev/@deltacomponents/components/auth-form",
+      "registry_url": "https://21st.dev/@deltacomponents/library/deltacomponents",
+      "category": "login",
+      "tags": [
+        "tailwind",
+        "react",
+        "minimal",
+        "login"
+      ],
+      "description": "A sign-in and sign-up form with email and password fields, social provider buttons and a forgot-password link.",
+      "preview_image": "https://cdn.21st.dev/deltacomponents/auth-form/default/preview.1784470251349-b4dc7bbf-e60d-4434-91da-1c45448e45d2.png",
+      "id": "unknown__auth-form",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Basic Dropdown",
+      "source_url": "https://21st.dev/@deltacomponents/components/basic-dropdown",
+      "registry_url": "https://21st.dev/@deltacomponents/library/deltacomponents",
+      "category": "dropdown",
+      "tags": [
+        "tailwind",
+        "react",
+        "minimal",
+        "dropdown"
+      ],
+      "description": "A straightforward dropdown menu with menu items and keyboard dismissal.",
+      "preview_image": "",
+      "id": "unknown__basic-dropdown",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Modal Drop",
+      "source_url": "https://21st.dev/@deltacomponents/components/modal-drop",
+      "registry_url": "https://21st.dev/@deltacomponents/library/deltacomponents",
+      "category": "modal",
+      "tags": [
+        "tailwind",
+        "react",
+        "glass",
+        "modal"
+      ],
+      "description": "A drop-in modal with minimal, custom-header, blurred-background and no-easy-close variants.",
+      "preview_image": "https://cdn.21st.dev/user_deltacomponents/modal-drop/minimal-modal/preview.1787224034956.png",
+      "id": "unknown__modal-drop",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "MP3 Player",
+      "source_url": "https://21st.dev/@deltacomponents/components/mp3-player",
+      "registry_url": "https://21st.dev/@deltacomponents/library/deltacomponents",
+      "category": "audio-player",
+      "tags": [
+        "react",
+        "css",
+        "flat",
+        "audio-player"
+      ],
+      "description": "A compact MP3 audio player with play control, progress bar and light and dark themes.",
+      "preview_image": "https://cdn.21st.dev/deltacomponents/mp3-player/default/preview.1790319375968-6421d563-142f-49a9-9553-6cbdba60429b.png",
+      "id": "unknown__mp3-player",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Product Card",
+      "source_url": "https://21st.dev/@deltacomponents/components/product-card",
+      "registry_url": "https://21st.dev/@deltacomponents/library/deltacomponents",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "react",
+        "minimal",
+        "card"
+      ],
+      "description": "A commerce product card with image, price, rating and action slot, offered in grid, size, custom and inner demos.",
+      "preview_image": "https://cdn.21st.dev/deltacomponents/product-card/default/preview.1789956964555-ab26ccd8-e67d-48ee-b19f-95d55b9f86c0.png",
+      "id": "unknown__product-card",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Scramble Text",
+      "source_url": "https://21st.dev/@deltacomponents/components/scramble-text",
+      "registry_url": "https://21st.dev/@deltacomponents/library/deltacomponents",
+      "category": "text-effect",
+      "tags": [
+        "react",
+        "javascript",
+        "noise",
+        "text-effect"
+      ],
+      "description": "A text effect that scrambles characters into place when it enters the viewport or on demand.",
+      "preview_image": "https://cdn.21st.dev/user_deltacomponents/scramble-text/default/preview.1788360737959.webp",
+      "id": "unknown__scramble-text",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Scroll Area",
+      "source_url": "https://21st.dev/@lina.sameer/components/scroll-area-1",
+      "registry_url": "https://21st.dev/@lina.sameer/library/lina",
+      "category": "scrollbar",
+      "tags": [
+        "tailwind",
+        "react",
+        "minimal",
+        "scrollbar"
+      ],
+      "description": "A custom-styled scroll container with an optional horizontal mode and a timezone select demo.",
+      "preview_image": "https://cdn.21st.dev/larsen66/scroll-area-1/default/preview.1756365537905.png",
+      "id": "unknown__scroll-area",
+      "source_domain": "21st.dev"
     }
   ]
 }
