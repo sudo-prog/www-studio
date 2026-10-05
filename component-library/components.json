@@ -1,6 +1,6 @@
 {
-  "version": "1.0.80",
-  "source_count": 27375,
+  "version": "1.0.81",
+  "source_count": 27453,
   "components": [
     {
       "id": "cat-0",
@@ -474790,6 +474790,1447 @@
       "preview_image": "",
       "id": "unknown__soft-bear-tooltip",
       "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Building a Scrollable and Draggable Timeline with GSAP",
+      "source_url": "https://tympanus.net/codrops/2022/01/03/building-a-scrollable-and-draggable-timeline-with-gsap",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "scroll-effect",
+      "tags": [
+        "gsap",
+        "plain-css",
+        "javascript",
+        "drag",
+        "timeline",
+        "scroll-effect",
+        "minimal"
+      ],
+      "description": "The Greensock animation library\u2019s ScrollTrigger and Draggable plugins can help us create some very cool effects that respond to user interaction. In this tutorial we\u2019ll look at how to use them together, to create an interactive timeline that\u2019s both scrollable and draggable.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2021/12/Gsapscroll.jpg?x51331",
+      "id": "unknown__building-a-scrollable-and-draggable-timeline-with-gsap",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Crafting Scroll Based Animations in Three.js",
+      "source_url": "https://tympanus.net/codrops/2022/01/05/crafting-scroll-based-animations-in-three-js",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "scroll-effect",
+      "tags": [
+        "three.js",
+        "gsap",
+        "webgl",
+        "javascript",
+        "scroll-effect",
+        "parallax",
+        "minimal"
+      ],
+      "description": "Having an experience composed of only WebGL is great, but sometimes, you\u2019ll want the experience to be part of a classic website.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2022/01/ScrollbasedGSAP.jpg?x51331",
+      "id": "unknown__crafting-scroll-based-animations-in-three.js",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Pixel Distortion Effect with Three.js",
+      "source_url": "https://tympanus.net/codrops/2022/01/12/pixel-distortion-effect-with-three-js",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "shader",
+      "tags": [
+        "three.js",
+        "webgl",
+        "shader",
+        "javascript",
+        "cursor",
+        "click-effect",
+        "pixel",
+        "glow"
+      ],
+      "description": "An interactive WebGL pixel distortion effect with lots of possibilities based on the effect seen on the website for \u201cInfinite Bad Guy\u201d.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2022/01/DistrotedPixels_feat.jpg?x51331",
+      "id": "unknown__pixel-distortion-effect-with-three.js",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Case Study: Anatole Touvron\u2019s Portfolio",
+      "source_url": "https://tympanus.net/codrops/2022/01/14/case-study-anatole-touvrons-portfolio",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "layout",
+      "tags": [
+        "three.js",
+        "gsap",
+        "plain-css",
+        "javascript",
+        "portfolio",
+        "landing-page",
+        "minimal"
+      ],
+      "description": "A case study walking through the full redesign of a developer portfolio, from the design decisions to the implementation, built end to end by one developer.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2022/01/CaseStudyAnatole.jpg?x51331",
+      "id": "unknown__case-study:-anatole-touvron\u2019s-portfolio",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Animate Anything Along an SVG Path",
+      "source_url": "https://tympanus.net/codrops/2022/01/19/animate-anything-along-an-svg-path",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "animation",
+      "tags": [
+        "svg",
+        "javascript",
+        "gsap",
+        "animation",
+        "typography",
+        "flat",
+        "gradient"
+      ],
+      "description": "A tutorial on animating elements along an SVG path using the path data rather than the visual shape, moving illustrations, icons or logos along a defined curve.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2022/01/AlongPath.jpg?x51331",
+      "id": "unknown__animate-anything-along-an-svg-path",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Inspirational Websites Roundup #33",
+      "source_url": "https://tympanus.net/codrops/2022/01/20/inspirational-websites-roundup-33",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "gallery",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "gallery",
+        "article"
+      ],
+      "description": "A very special selection of the most inspiring website designs from the past couple of weeks.",
+      "preview_image": "",
+      "id": "unknown__inspirational-websites-roundup-#33",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Build and Ship a Design System in 8 Steps Using Backlight",
+      "source_url": "https://tympanus.net/codrops/2022/01/24/build-and-ship-a-design-system-in-8-steps-using-backlight",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "registry",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "minimal",
+        "card",
+        "tutorial"
+      ],
+      "description": "If you ever wondered how Apple, Uber or Spotify keep their UI and UX perfectly consistent over their hundreds of pages, it\u2019s because they use a Design System. Enhanced version of what used to be \u201cpattern libraries\u201d or \u201cbranding guidelines\u201d a Design System could be defined as a library of reusable components, that.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2022/01/Featured.jpg?x51331",
+      "id": "unknown__build-and-ship-a-design-system-in-8-steps-using-backlight",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "UI Interactions & Animations Roundup #21",
+      "source_url": "https://tympanus.net/codrops/2022/02/01/ui-interactions-animations-roundup-21",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "css",
+        "minimal",
+        "animation",
+        "hover-effect",
+        "article"
+      ],
+      "description": "A new collection of the most interesting and creative motion designs and animations from the last couple of weeks.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2022/02/UI21_feat.jpg?x51331",
+      "id": "unknown__ui-interactions-&-animations-roundup-#21",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Inspirational Websites Roundup #34",
+      "source_url": "https://tympanus.net/codrops/2022/02/18/inspirational-websites-roundup-34",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "gallery",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "gallery",
+        "article"
+      ],
+      "description": "A fresh collection of new websites to get you up-to-date with the latest web design trends.",
+      "preview_image": "",
+      "id": "unknown__inspirational-websites-roundup-#34",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Noise Pattern Reconstruction from Monopo Studio",
+      "source_url": "https://tympanus.net/codrops/2022/02/21/noise-pattern-reconstruction-from-monopo-studio",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "shader",
+      "tags": [
+        "three.js",
+        "glsl",
+        "webgl",
+        "shader",
+        "javascript",
+        "noise",
+        "background"
+      ],
+      "description": "In this coding tutorial you learn how to recreate the noise pattern seen on the Monopo Studio website using Three.js",
+      "preview_image": "",
+      "id": "unknown__noise-pattern-reconstruction-from-monopo-studio",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Creating Native Web Components",
+      "source_url": "https://tympanus.net/codrops/2022/03/04/creating-native-web-components",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "registry",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "card",
+        "grid",
+        "minimal"
+      ],
+      "description": "Native web components have been here for a while, but they still seem like the new kid on the block. Mainly due to the fact that they have a high barrier to entry, notably for beginners, and don\u2019t have most of the features from the more established front-end frameworks. Nonetheless, they can be useful, especially for.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2022/03/Minze_feat.jpg?x51331",
+      "id": "unknown__creating-native-web-components",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "UI Interactions & Animations Roundup #22",
+      "source_url": "https://tympanus.net/codrops/2022/03/05/ui-interactions-animations-roundup-22",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "css",
+        "minimal",
+        "animation",
+        "hover-effect",
+        "article"
+      ],
+      "description": "The latest motion design concepts and web animation inspiration from the past couple of weeks.",
+      "preview_image": "",
+      "id": "unknown__ui-interactions-&-animations-roundup-#22",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Creating a Risograph Grain Light Effect in Three.js",
+      "source_url": "https://tympanus.net/codrops/2022/03/07/creating-a-risograph-grain-light-effect-in-three-js",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "shader",
+      "tags": [
+        "three.js",
+        "glsl",
+        "webgl",
+        "shader",
+        "javascript",
+        "noise",
+        "glow",
+        "halftone",
+        "animation"
+      ],
+      "description": "A Three.js tutorial that recreates the risograph grain and light effect seen on the author's portfolio, layering an animated grain shader over a fullscreen scene.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2022/03/RisographGrain_fea.jpg?x51331",
+      "id": "unknown__creating-a-risograph-grain-light-effect-in-three.js",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "15 Awesome Tools and Resources for Designers and Agencies in 2022",
+      "source_url": "https://tympanus.net/codrops/2022/03/08/15-awesome-tools-and-resources-for-designers-and-agencies-in-2022",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "tool",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "tool",
+        "article"
+      ],
+      "description": "An effective and well-organized workflow is an important asset for professional web designers and web design agencies alike. Achieving this requires having the necessary design tools and resources within easy reach to keep lost or wasted an absolute minimum while increasing the chances of realizing high-quality.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2022/03/15tools_feat.jpg?x51331",
+      "id": "unknown__15-awesome-tools-and-resources-for-designers-and-agencies-in-2022",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Inspirational Websites Roundup #35",
+      "source_url": "https://tympanus.net/codrops/2022/03/16/inspirational-websites-roundup-35",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "gallery",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "gallery",
+        "article"
+      ],
+      "description": "A new collection of creative websites to keep you up-to-date on the latest web design trends.",
+      "preview_image": "",
+      "id": "unknown__inspirational-websites-roundup-#35",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Replicating the Interweave Shape Animation with Three.js",
+      "source_url": "https://tympanus.net/codrops/2022/03/21/replicating-the-interweave-shape-animation-with-three-js",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "shader",
+      "tags": [
+        "three.js",
+        "glsl",
+        "webgl",
+        "shader",
+        "javascript",
+        "morph",
+        "fluid",
+        "animation"
+      ],
+      "description": "A coding tutorial on how to reconstruct the shape animation from the website of INTERWEAVE using Three.js.",
+      "preview_image": "",
+      "id": "unknown__replicating-the-interweave-shape-animation-with-three.js",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Building an Interactive Sparkline Graph with D3",
+      "source_url": "https://tympanus.net/codrops/2022/03/29/building-an-interactive-sparkline-graph-with-d3",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "grid",
+      "tags": [
+        "d3",
+        "svg",
+        "javascript",
+        "grid",
+        "animation",
+        "minimal",
+        "flat"
+      ],
+      "description": "D3 is a great JavaScript library for building data visualizations using SVG elements. Today we\u2019re going to walk through how to use it to build a simple line graph with an interactive element, taking inspiration from the NPM website.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2022/03/spark.jpg?x51331",
+      "id": "unknown__building-an-interactive-sparkline-graph-with-d3",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Inspirational Websites Roundup #36",
+      "source_url": "https://tympanus.net/codrops/2022/04/08/inspirational-websites-roundup-36",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "gallery",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "gallery",
+        "article"
+      ],
+      "description": "The freshest and most intriguing web designs from the past couple of weeks to get your creative juices flowing.",
+      "preview_image": "",
+      "id": "unknown__inspirational-websites-roundup-#36",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Creating a Fluid Distortion Animation with Three.js",
+      "source_url": "https://tympanus.net/codrops/2022/04/11/creating-a-fluid-distortion-animation-with-three-js",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "shader",
+      "tags": [
+        "three.js",
+        "webgl",
+        "javascript",
+        "morph",
+        "fluid",
+        "cursor",
+        "blob"
+      ],
+      "description": "A coding session where you\u2019ll learn how to create the interactive liquid-like effect from the PixiJS website using Three.js.",
+      "preview_image": "",
+      "id": "unknown__creating-a-fluid-distortion-animation-with-three.js",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Creating an Infinite Auto-Scrolling Gallery using WebGL with OGL and GLSL Shaders",
+      "source_url": "https://tympanus.net/codrops/2021/01/05/creating-an-infinite-auto-scrolling-gallery-using-webgl-with-ogl-and-glsl-shaders",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "gallery",
+      "tags": [
+        "webgl",
+        "glsl",
+        "javascript",
+        "gallery",
+        "scroll-effect",
+        "gradient",
+        "fluid"
+      ],
+      "description": "An infinite auto-scrolling image gallery built with WebGL, OGL and GLSL shaders, where the images wrap endlessly and respond to the scroll position and cursor.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2021/01/InfiniteScrollingGallery.jpg?x51331",
+      "id": "unknown__creating-an-infinite-auto-scrolling-gallery-using-webgl-with-ogl-and-glsl-shaders",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Infinite Hyperbolic Helicoid Animation with Three.js",
+      "source_url": "https://tympanus.net/codrops/2021/01/11/infinite-hyperbolic-helicoid-animation-with-three-js",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "3d",
+      "tags": [
+        "three.js",
+        "webgl",
+        "javascript",
+        "3d",
+        "morph",
+        "animation",
+        "gradient"
+      ],
+      "description": "A coding session where you\u2019ll learn how to create an infinite shape animation of a hyperbolic helicoid using Three.js.",
+      "preview_image": "",
+      "id": "unknown__infinite-hyperbolic-helicoid-animation-with-three.js",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "New Web Design Trends and Inspiration for 2021",
+      "source_url": "https://tympanus.net/codrops/2021/01/11/new-web-design-trends-and-inspiration-for-2021",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "gallery",
+      "tags": [
+        "html",
+        "css",
+        "gradient",
+        "minimal",
+        "gallery",
+        "article"
+      ],
+      "description": "We had a heck of a year in 2020. Businesses were forced to pivot in new and creative ways. Consumers had to adjust. As a result, the web needed to change, too.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2021/01/BeTheme2021.jpg?x51331",
+      "id": "unknown__new-web-design-trends-and-inspiration-for-2021",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "On-Scroll Letter Animations",
+      "source_url": "https://tympanus.net/codrops/2021/01/20/on-scroll-letter-animations",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "text-effect",
+      "tags": [
+        "plain-css",
+        "css",
+        "javascript",
+        "text-effect",
+        "typography",
+        "scroll-effect",
+        "minimal"
+      ],
+      "description": "A small set of examples showing how letters can be animated on scroll.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2021/01/OnScrollLetterAnimations.jpg?x51331",
+      "id": "unknown__on-scroll-letter-animations",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Awesome Demos Roundup #19",
+      "source_url": "https://tympanus.net/codrops/2021/01/22/awesome-demos-roundup-19",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "gallery",
+      "tags": [
+        "html",
+        "css",
+        "javascript",
+        "minimal",
+        "animation",
+        "gallery",
+        "article"
+      ],
+      "description": "A large collection of fantastic web experiments that were made in the past couple of weeks.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2021/01/demosroundup19.jpg?x51331",
+      "id": "unknown__awesome-demos-roundup-#19",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Recreating Frontier Development Lab\u2019s Sun in  Three.js",
+      "source_url": "https://tympanus.net/codrops/2021/01/25/recreating-frontier-development-labs-sun-in-three-js",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "3d",
+      "tags": [
+        "three.js",
+        "webgl",
+        "javascript",
+        "3d",
+        "glow",
+        "particles",
+        "gradient"
+      ],
+      "description": "Learn how to create a 3D sun with Three.js in this coding session.",
+      "preview_image": "",
+      "id": "unknown__recreating-frontier-development-lab\u2019s-sun-in--three.js",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Twisted Colorful Spheres with Three.js",
+      "source_url": "https://tympanus.net/codrops/2021/01/26/twisted-colorful-spheres-with-three-js",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "shader",
+      "tags": [
+        "three.js",
+        "glsl",
+        "webgl",
+        "shader",
+        "javascript",
+        "blob",
+        "morph",
+        "gradient",
+        "animation"
+      ],
+      "description": "I love blobs and I enjoy looking for interesting ways to change basic geometries with Three.js: bending a plane, twisting a box, or exploring a torus (like in this10-min video tutorial). So this time, my love for shaping things will be the excuse to see what we can do with a sphere, transforming it using shaders.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2021/01/blob.jpg?x51331",
+      "id": "unknown__twisted-colorful-spheres-with-three.js",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Inspirational Websites Roundup #22",
+      "source_url": "https://tympanus.net/codrops/2021/01/27/inspirational-websites-roundup-22",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "gallery",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "gallery",
+        "article"
+      ],
+      "description": "A collection of fresh websites with brilliant designs to get you updated on the current trends.",
+      "preview_image": "",
+      "id": "unknown__inspirational-websites-roundup-#22",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "How to Code the Travelling Particles Animation from \u201cVolt for Drive\u201d",
+      "source_url": "https://tympanus.net/codrops/2021/02/01/how-to-code-the-travelling-particles-animation-from-volt-for-drive",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "animation",
+      "tags": [
+        "three.js",
+        "webgl",
+        "javascript",
+        "particles",
+        "animation",
+        "glow",
+        "gradient"
+      ],
+      "description": "A coding session where you\u2019ll learn how to implement Volt for Drive\u2019s travelling particles animation with Three.js.",
+      "preview_image": "",
+      "id": "unknown__how-to-code-the-travelling-particles-animation-from-\u201cvolt-for-drive\u201d",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Rotating Loading Animation of 3D Shapes with Three.js",
+      "source_url": "https://tympanus.net/codrops/2021/02/03/rotating-loading-animation-of-3d-shapes-with-three-js",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "loader",
+      "tags": [
+        "three.js",
+        "webgl",
+        "javascript",
+        "loader",
+        "3d",
+        "morph",
+        "flat"
+      ],
+      "description": "Some rubber-like 3D shape rotations that are perfect for loading animations.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2021/02/rotated3dshape.jpg?x51331",
+      "id": "unknown__rotating-loading-animation-of-3d-shapes-with-three.js",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "UI Interactions & Animations Roundup #14",
+      "source_url": "https://tympanus.net/codrops/2021/02/05/ui-interactions-animations-roundup-14",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "css",
+        "minimal",
+        "animation",
+        "hover-effect",
+        "article"
+      ],
+      "description": "Here is a fresh roundup of the latest UI animation trends from Dribbble for you! We\u2019ve selected some exceptionally stylish interactions that show some really nice, experimental motion concepts and animation ideas.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2021/02/UI14.jpg?x51331",
+      "id": "unknown__ui-interactions-&-animations-roundup-#14",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "How ImageEngine can Optimize Contentful CMS For Faster Web Performance",
+      "source_url": "https://tympanus.net/codrops/2021/02/18/how-imageengine-can-optimize-contentful-cms-for-faster-web-performance",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "minimal",
+        "card",
+        "tool",
+        "tutorial"
+      ],
+      "description": "A headless CMS is a content management system with only a back-end configuration. The content repository is accessible through a RESTful API for display on any platform. The only focus is to create, manage and deliver structured content wherever it\u2019s needed. Contentful is a headless content infrastructure, especially.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2021/02/Contenful-ImageEngine-Preview-900-Square.jpg?x51331",
+      "id": "unknown__how-imageengine-can-optimize-contentful-cms-for-faster-web-performance",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Creating an Infinite Circular Gallery using WebGL with OGL and GLSL Shaders",
+      "source_url": "https://tympanus.net/codrops/2021/02/23/creating-an-infinite-circular-gallery-using-webgl-with-ogl-and-glsl-shaders",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "gallery",
+      "tags": [
+        "webgl",
+        "glsl",
+        "javascript",
+        "gallery",
+        "3d",
+        "scroll-effect",
+        "gradient"
+      ],
+      "description": "In this tutorial we\u2019ll implement an infinite circular gallery using WebGL with OGL based on the website Lions Good News 2020 made by SHIFTBRAIN inc.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2021/02/CircularInfiniteWebglgallery.jpg?x51331",
+      "id": "unknown__creating-an-infinite-circular-gallery-using-webgl-with-ogl-and-glsl-shaders",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Inspirational Websites Roundup #23",
+      "source_url": "https://tympanus.net/codrops/2021/03/02/inspirational-websites-roundup-23",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "gallery",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "gallery",
+        "article"
+      ],
+      "description": "A new roundup of the most interesting and creative websites we encountered in the past couple of weeks.",
+      "preview_image": "",
+      "id": "unknown__inspirational-websites-roundup-#23",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Shape Slideshow with Clip-path",
+      "source_url": "https://tympanus.net/codrops/2021/03/10/shape-slideshow-with-clip-path",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "slider",
+      "tags": [
+        "plain-css",
+        "css",
+        "javascript",
+        "slider",
+        "transition",
+        "morph",
+        "flat"
+      ],
+      "description": "An experimental slideshow using clip-path to create shape transitions between slides.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2021/03/ShapeSlideshow02.jpg?x51331",
+      "id": "unknown__shape-slideshow-with-clip-path",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "7 Creative Ways to Use Geometry in Web Design",
+      "source_url": "https://tympanus.net/codrops/2021/03/16/7-creative-ways-to-use-geometry-in-web-design",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "layout",
+      "tags": [
+        "plain-css",
+        "css",
+        "minimal",
+        "layout",
+        "article",
+        "isometric"
+      ],
+      "description": "A look at creative ways to use geometry in web design, such as slicing sections on a diagonal so visitors naturally move down the page.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2021/03/Geometry_featured.png?x51331",
+      "id": "unknown__7-creative-ways-to-use-geometry-in-web-design",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Tropical Particles Rain Animation with Three.js",
+      "source_url": "https://tympanus.net/codrops/2021/03/17/tropical-particles-rain-animation-with-three-js",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "animation",
+      "tags": [
+        "three.js",
+        "webgl",
+        "javascript",
+        "particles",
+        "animation",
+        "gradient",
+        "noise"
+      ],
+      "description": "A WebGL particle rain animation resulting in an interesting image effect made with Three.js.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2021/03/ParticleRainEffect_featured.jpg?x51331",
+      "id": "unknown__tropical-particles-rain-animation-with-three.js",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "15 Tools and Resources for Designers and Agencies To Use in 2021",
+      "source_url": "https://tympanus.net/codrops/2021/03/23/15-tools-and-resources-for-designers-and-agencies-to-use-in-2021",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "tool",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "tool",
+        "article"
+      ],
+      "description": "You take pride in delivering a project on time, but when unanticipated issues arise, meeting a deadline can suddenly become a challenge. Quite often the cause of the problem is that one of your tools simply isn\u2019t up to the task at hand.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2021/03/tools_featured.jpg?x51331",
+      "id": "unknown__15-tools-and-resources-for-designers-and-agencies-to-use-in-2021",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Inspirational Websites Roundup #24",
+      "source_url": "https://tympanus.net/codrops/2021/03/30/inspirational-websites-roundup-24",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "gallery",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "gallery",
+        "article"
+      ],
+      "description": "A fresh collection of hand-picked websites with interesting and outstanding designs to get you updated on the current trends.",
+      "preview_image": "",
+      "id": "unknown__inspirational-websites-roundup-#24",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "UI Interactions & Animations Roundup #15",
+      "source_url": "https://tympanus.net/codrops/2021/03/31/ui-interactions-animations-roundup-15",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "css",
+        "minimal",
+        "animation",
+        "hover-effect",
+        "article"
+      ],
+      "description": "A fresh set of hand-picked animation shots that show the current trends in motion and interaction design.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2021/03/UiRoundup14.jpg?x51331",
+      "id": "unknown__ui-interactions-&-animations-roundup-#15",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "How to Create a Globe and Add Cities using Three.js",
+      "source_url": "https://tympanus.net/codrops/2021/04/05/how-to-create-a-globe-and-add-cities-using-three-js",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "3d",
+      "tags": [
+        "three.js",
+        "webgl",
+        "javascript",
+        "3d",
+        "particles",
+        "glow",
+        "animation"
+      ],
+      "description": "A coding session where you\u2019ll learn how to create a globe and add cities to it with Three.js.",
+      "preview_image": "",
+      "id": "unknown__how-to-create-a-globe-and-add-cities-using-three.js",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Wobbly 2D Physics with Matter.js and Paper.js",
+      "source_url": "https://tympanus.net/codrops/2021/04/12/wobbly-2d-physics-with-matter-js-and-paper-js",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "animation",
+      "tags": [
+        "svg",
+        "javascript",
+        "matter-js",
+        "paper-js",
+        "blob",
+        "morph",
+        "cursor"
+      ],
+      "description": "A recreation of the effect seen on C\u00e9dric Pereira\u2019s website using Matter.js and Paper.js.",
+      "preview_image": "",
+      "id": "unknown__wobbly-2d-physics-with-matter.js-and-paper.js",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Text Outline Animation with Three.js",
+      "source_url": "https://tympanus.net/codrops/2021/04/19/text-outline-animation-with-three-js",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "text-effect",
+      "tags": [
+        "three.js",
+        "glsl",
+        "webgl",
+        "shader",
+        "javascript",
+        "text-effect",
+        "typography",
+        "outline"
+      ],
+      "description": "Learn how to code the text outline effect seen on cornrevolution.com using Three.js with some GLSL.",
+      "preview_image": "",
+      "id": "unknown__text-outline-animation-with-three.js",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Texture Ripples and Video Zoom Effect with Three.js and GLSL",
+      "source_url": "https://tympanus.net/codrops/2021/04/26/texture-ripples-and-video-zoom-effect-with-three-js-and-glsl",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "shader",
+      "tags": [
+        "three.js",
+        "glsl",
+        "webgl",
+        "shader",
+        "javascript",
+        "particles",
+        "wave",
+        "glow"
+      ],
+      "description": "Learn how to replicate the ripples and video zoom effect from \u201cThe Avener\u201d by TOOSOON studio using Three.js and GLSL.",
+      "preview_image": "",
+      "id": "unknown__texture-ripples-and-video-zoom-effect-with-three.js-and-glsl",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Inspirational Websites Roundup #25",
+      "source_url": "https://tympanus.net/codrops/2021/04/27/inspirational-websites-roundup-25",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "gallery",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "gallery",
+        "article"
+      ],
+      "description": "A hot new collection of amazing website designs and experiences for your inspiration.",
+      "preview_image": "",
+      "id": "unknown__inspirational-websites-roundup-#25",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Ten Useful Image and Video Transformations",
+      "source_url": "https://tympanus.net/codrops/2021/05/03/ten-useful-image-and-video-transformations",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "tool",
+      "tags": [
+        "css-filter",
+        "css",
+        "html",
+        "svg",
+        "minimal",
+        "tool",
+        "tutorial"
+      ],
+      "description": "Cloudinary is an end-to-end image- and video-management solution for websites and mobile apps, covering everything from uploads, storage, transformations, optimizations to delivery. Additionally, Cloudinary offers comprehensive APIs and administration capabilities that seamlessly integrate with web and mobile apps.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2021/05/image.jpg?x51331",
+      "id": "unknown__ten-useful-image-and-video-transformations",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "SVG Filters 101",
+      "source_url": "https://tympanus.net/codrops/2019/01/15/svg-filters-101",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "css-filter",
+        "css",
+        "html",
+        "minimal",
+        "icon-set",
+        "tutorial"
+      ],
+      "description": "CSS currently provides us with a way to apply color effects to images such as saturation, lightness, and contrast, among other effects, via the filter property and the filter functions that come with it.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2019/01/SVGFilters101_featured.jpg?x51331",
+      "id": "unknown__svg-filters-101",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Interactive Particles with Three.js",
+      "source_url": "https://tympanus.net/codrops/2019/01/17/interactive-particles-with-three-js",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "animation",
+      "tags": [
+        "three.js",
+        "glsl",
+        "webgl",
+        "shader",
+        "javascript",
+        "glow",
+        "particles",
+        "cursor"
+      ],
+      "description": "This tutorial is going to demonstrate how to draw a large number of particles with Three.js and an efficient way to make them react to mouse and touch input using shaders and an off-screen texture.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2019/01/InteractiveParticles_featured.jpg?x51331",
+      "id": "unknown__interactive-particles-with-three.js",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Freebie: Emojious Icons (AI, SVG, PNG)",
+      "source_url": "https://tympanus.net/codrops/2019/01/18/freebie-emojious-icons-ai-svg-png",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "html",
+        "flat",
+        "icon-set",
+        "outline"
+      ],
+      "description": "A set of 50 vector icons from the quirky Emojious icon set exclusively for Codrops readers.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2019/01/Emojious_featured.jpg?x51331",
+      "id": "unknown__freebie:-emojious-icons-(ai,-svg,-png)",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Freebie: \u201cScribbler\u201d Website Template (HTML, Sketch)",
+      "source_url": "https://tympanus.net/codrops/2018/01/12/freebie-scribbler-website-template-html-sketch",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "layout",
+      "tags": [
+        "html",
+        "css",
+        "javascript",
+        "layout",
+        "landing-page",
+        "minimal",
+        "portfolio"
+      ],
+      "description": "A responsive HTML template for coding projects with a clean, user friendly design. Crafted with the latest web technologies, the template is suitable for landing pages and documentations.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2018/01/Scribbler.jpg?x51331",
+      "id": "unknown__freebie:-\u201cscribbler\u201d-website-template-(html,-sketch)",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Freebie: \u201cDropcast\u201d Website Template (HTML, Sketch)",
+      "source_url": "https://tympanus.net/codrops/2018/02/23/freebie-dropcast-website-template-html-sketch",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "layout",
+      "tags": [
+        "html",
+        "css",
+        "javascript",
+        "layout",
+        "landing-page",
+        "minimal",
+        "portfolio"
+      ],
+      "description": "Dropcast is a responsive HTML/CSS/Javascript template, comes with Sketch files and a fully working site with SCSS. It works very well for podcasts landing pages or blogs, and can be easily customized.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2018/02/Dropcast_Featured.jpg?x51331",
+      "id": "unknown__freebie:-\u201cdropcast\u201d-website-template-(html,-sketch)",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Freebie: Designer Workspace Illustrations (AI, EPS, SVG, PNG)",
+      "source_url": "https://tympanus.net/codrops/2018/03/07/freebie-designer-workspace-illustrations",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "html",
+        "flat",
+        "illustration",
+        "icon-set"
+      ],
+      "description": "A set of 10 colorful and detailed designer workspace related illustrations coming in the formats AI, EPS, SVG, PNG.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2018/03/DesignerWorkspace_Featured.jpg?x51331",
+      "id": "unknown__freebie:-designer-workspace-illustrations-(ai,-eps,-svg,-png)",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Little Fragments: Creating a Simple Image Poster Effect",
+      "source_url": "https://tympanus.net/codrops/2017/01/19/little-fragments-creating-a-simple-image-poster-effect",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "transition",
+      "tags": [
+        "plain-css",
+        "css",
+        "javascript",
+        "transition",
+        "background",
+        "hover-effect",
+        "morph"
+      ],
+      "description": "Today we\u2019d like to show you how to achieve a very simple, yet interesting effect with an image. The inspiration comes from a poster of the Grand Canyon with a fun distortion-like effect: some pieces of the image are cut out and placed in a different position. The pieces are very small which creates an interesting and.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2017/01/LittleFragments_01.jpg?x51331",
+      "id": "unknown__little-fragments:-creating-a-simple-image-poster-effect",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Freebie: Smoothies Icon Set (AI, SVG, PNG)",
+      "source_url": "https://tympanus.net/codrops/2017/01/20/freebie-smoothies-icon-set",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "html",
+        "soft",
+        "icon-set",
+        "gradient"
+      ],
+      "description": "A free icon set of 12 yummy smoothies made with soft shading and modern shapes. The illustrations come in SVG, AI and ready-to-use optimized PNG format in three different sizes.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2017/01/Freebie_SmoothieIconSet_Featured.jpg?x51331",
+      "id": "unknown__freebie:-smoothies-icon-set-(ai,-svg,-png)",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Freebie: Drone Icons (AI, Sketch, SVG, PNG, Iconjar)",
+      "source_url": "https://tympanus.net/codrops/2017/01/24/freebie-drone-icons",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "html",
+        "outline",
+        "icon-set",
+        "flat"
+      ],
+      "description": "A free drone icon set in solid and line style with 50 easy-to-adjust icons in AI, Sketch, SVG, PNG and Iconjar format. An exclusive set from the gigantic Native Line/Solid Icons Pack by Round Icons.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2017/01/Freebie_Drones_Featured.jpg?x51331",
+      "id": "unknown__freebie:-drone-icons-(ai,-sketch,-svg,-png,-iconjar)",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Freebie: Science Line Icons (AI, EPS, PSD, SVG, PNG)",
+      "source_url": "https://tympanus.net/codrops/2016/01/29/freebie-science-line-icons",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "html",
+        "outline",
+        "icon-set",
+        "minimal"
+      ],
+      "description": "A free set of 30 vector line icons with a scientific theme in the formats AI, EPS, SVG, PSD and PNG by Vecteezy.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2016/01/ScienceIcons1.png?x51331",
+      "id": "unknown__freebie:-science-line-icons-(ai,-eps,-psd,-svg,-png)",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Freebie: Pollution & Energy Icons (AI, EPS, SVG)",
+      "source_url": "https://tympanus.net/codrops/2016/02/18/freebie-pollution-energy-icons",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "html",
+        "flat",
+        "icon-set",
+        "minimal"
+      ],
+      "description": "A free set of 24 meaningful and carefully designed vector icons with an environmental theme covering topics of (renewable) energy and pollution.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2016/02/pollutioniconset_featured.jpg?x51331",
+      "id": "unknown__freebie:-pollution-&-energy-icons-(ai,-eps,-svg)",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Icon Animations Powered by mo.js",
+      "source_url": "https://tympanus.net/codrops/2016/02/23/icon-animations-powered-by-mo-js",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "animation",
+      "tags": [
+        "svg",
+        "javascript",
+        "animation",
+        "click-effect",
+        "icon-set",
+        "morph"
+      ],
+      "description": "Various icon animations made with mo.js, a powerful motion graphics library by Oleg Solomka. Inspiration comes from the Dribbble shot \u201cLike Animation\u201d by Daryl Ginn.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2016/02/Animocons_Featured.png?x51331",
+      "id": "unknown__icon-animations-powered-by-mo.js",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Inspiration for Text Input Effects",
+      "source_url": "https://tympanus.net/codrops/2015/01/08/inspiration-text-input-effects",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "form",
+      "tags": [
+        "plain-css",
+        "css",
+        "form",
+        "input",
+        "focus",
+        "minimal",
+        "transition"
+      ],
+      "description": "Some inspiration for effects on text inputs using CSS transitions, animations and pseudo-elements.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2015/01/TextInputEffects1.jpg?x51331",
+      "id": "unknown__inspiration-for-text-input-effects",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Some Ideas for Checkout Effects",
+      "source_url": "https://tympanus.net/codrops/2015/01/22/ideas-checkout-effects",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "button",
+      "tags": [
+        "plain-css",
+        "css",
+        "button",
+        "morph",
+        "transition",
+        "click-effect",
+        "flat"
+      ],
+      "description": "Some fun effect and layout ideas for the first step of a checkout process in an online store. We are using the morphing buttons concept together with CSS transforms and transitions.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2015/01/CheckoutConcepts.png?x51331",
+      "id": "unknown__some-ideas-for-checkout-effects",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Freebie: \u201cBoxify\u201d One Page Website Template",
+      "source_url": "https://tympanus.net/codrops/2015/01/27/freebie-boxify-one-page-website-template",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "layout",
+      "tags": [
+        "html",
+        "css",
+        "javascript",
+        "layout",
+        "landing-page",
+        "minimal",
+        "portfolio"
+      ],
+      "description": "A modern free HTML5/CSS3 website template with a polished look and smooth animations, carefully crafted with the latest web technologies.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2015/01/Boxify_Splash.jpg?x51331",
+      "id": "unknown__freebie:-\u201cboxify\u201d-one-page-website-template",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Labels: Managing User Expectations",
+      "source_url": "https://tympanus.net/codrops/2014/01/08/labels-managing-user-expectations",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "form",
+      "tags": [
+        "plain-css",
+        "css",
+        "form",
+        "tooltip",
+        "minimal",
+        "article"
+      ],
+      "description": "An article about how to manage user expectations by properly labeling UI components. The better users are able to predict what an interaction will do, the more trust can be built, enabling the user to smoothly navigate a website and perform actions in a comfortable way.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2014/01/Labels_ManagingUserExpectations.png?x51331",
+      "id": "unknown__labels:-managing-user-expectations",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Sticky Table Headers & Columns",
+      "source_url": "https://tympanus.net/codrops/2014/01/09/sticky-table-headers-columns",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "layout",
+      "tags": [
+        "javascript",
+        "plain-css",
+        "css",
+        "minimal",
+        "grid",
+        "scroll-effect",
+        "layout"
+      ],
+      "description": "A tutorial on creating sticky table headers and columns with jQuery, offering an alternative to existing sticky-header approaches that also solves the overflowing-table problem and supports biaxial headers.",
+      "preview_image": "",
+      "id": "unknown__sticky-table-headers-&-columns",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Creating a Border Animation Effect with SVG and CSS",
+      "source_url": "https://tympanus.net/codrops/2014/02/26/creating-a-border-animation-effect-with-svg-and-css",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "hover-effect",
+      "tags": [
+        "svg",
+        "plain-css",
+        "css",
+        "hover-effect",
+        "grid",
+        "card",
+        "outline"
+      ],
+      "description": "Today we\u2019d like to explore a very subtle, but interesting border animation effect that can be seen on the creative website of Carl Philipe Brenner. When you hover over one of the white portfolio items in the grid, you will see a subtle animation happening: the grid item becomes transparent and the border lines of each.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2014/02/BorderAnimationSVG.png?x51331",
+      "id": "unknown__creating-a-border-animation-effect-with-svg-and-css",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Techniques for Creating Motion in Web Design",
+      "source_url": "https://tympanus.net/codrops/2013/01/02/techniques-for-creating-motion-in-web-design",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "animation",
+      "tags": [
+        "plain-css",
+        "css",
+        "javascript",
+        "animation",
+        "article",
+        "minimal"
+      ],
+      "description": "Everyone wants to create a page that is active and engaging and one of the best tools to achieve those goals is through motion.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2013/01/CreatingMotionInWebDesign.jpg?x51331",
+      "id": "unknown__techniques-for-creating-motion-in-web-design",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Designing For The Empty States",
+      "source_url": "https://tympanus.net/codrops/2013/01/09/designing-for-the-empty-states",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "layout",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "layout",
+        "card",
+        "article"
+      ],
+      "description": "Understand how to add some delight into an app by designing the empty states and give users a better experience.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2013/01/Designingforrmptystates.jpg?x51331",
+      "id": "unknown__designing-for-the-empty-states",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "3D Image Gallery Room",
+      "source_url": "https://tympanus.net/codrops/2013/01/15/3d-image-gallery-room",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "3d",
+      "tags": [
+        "plain-css",
+        "css",
+        "javascript",
+        "3d",
+        "gallery",
+        "isometric",
+        "parallax"
+      ],
+      "description": "An experimental image gallery with a realistic touch: the images are displayed in a 3D room with walls.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2013/01/3DGalleryRoom.jpg?x51331",
+      "id": "unknown__3d-image-gallery-room",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Fullscreen Background Image Slideshow with CSS3",
+      "source_url": "https://tympanus.net/codrops/2012/01/02/fullscreen-background-image-slideshow-with-css3",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "background",
+      "tags": [
+        "plain-css",
+        "css",
+        "background",
+        "slider",
+        "transition",
+        "minimal",
+        "animation"
+      ],
+      "description": "Happy new year, everybody! Today we will create a CSS-only fullscreen background image slideshow. We\u2019ll create different image transitions and also make a title appear using CSS animations.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2011/12/CSS3FullscreenSlideshow.jpg?x51331",
+      "id": "unknown__fullscreen-background-image-slideshow-with-css3",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Thumbnail Proximity Effect with jQuery and CSS3",
+      "source_url": "https://tympanus.net/codrops/2012/01/04/thumbnail-proximity-effect",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "hover-effect",
+      "tags": [
+        "javascript",
+        "jquery",
+        "css",
+        "hover-effect",
+        "gallery",
+        "parallax",
+        "soft"
+      ],
+      "description": "Today we want to show you how to create a neat thumbnail proximity effect with jQuery. The idea is to scale thumbnails when hovering over them and also scale their neighbouring thumbnails proportionally to their distance. We\u2019ll also make a description appear.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2012/01/ProximityEffect.jpg?x51331",
+      "id": "unknown__thumbnail-proximity-effect-with-jquery-and-css3",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Examples of Fresh Effects in Web Design",
+      "source_url": "https://tympanus.net/codrops/2012/01/05/examples-of-fresh-effects-in-web-design",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "animation",
+      "tags": [
+        "html",
+        "css",
+        "javascript",
+        "animation",
+        "hover-effect",
+        "article",
+        "minimal"
+      ],
+      "description": "Having some fresh and maybe even unexpected effects on a website, can juice up the experience for the user. Be it a whole new and experimental way of navigating through the website or just a tiny surprising hover effect \u2013 fresh effects can spice up your design and bring some life to it.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2012/01/FreshEffects.jpg?x51331",
+      "id": "unknown__examples-of-fresh-effects-in-web-design",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "25 Fresh Examples of Beautiful UI Elements",
+      "source_url": "https://tympanus.net/codrops/2011/01/06/25-beautiful-ui-elements",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "registry",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "card",
+        "menu",
+        "gallery",
+        "article"
+      ],
+      "description": "UI elements \u2013 user interface elements \u2013 are a really important part of the design process. They are what we can call the face of interaction between your site and its users. Everything need to be well designed, positioned and planned. Drop downs, menus, search boxes, forms\u2026all these elements need to be clear, easy to.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2011/01/25freshuielements.jpg?x51331",
+      "id": "unknown__25-fresh-examples-of-beautiful-ui-elements",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Animated Form Switching with jQuery",
+      "source_url": "https://tympanus.net/codrops/2011/01/06/animated-form-switching",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "form",
+      "tags": [
+        "javascript",
+        "jquery",
+        "css",
+        "form",
+        "input",
+        "transition",
+        "morph"
+      ],
+      "description": "In this tutorial we will create a simple animated form switch with three very common forms. The idea is not to leave the page when the user goes to another form but instead make the new form appear within the same container, expanding or contracting to the dimensions of the new form.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2011/01/AnimatedFormSwitching.jpg?x51331",
+      "id": "unknown__animated-form-switching-with-jquery",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Share, Don\u2019t Steal (why we copy)",
+      "source_url": "https://tympanus.net/codrops/2011/01/07/share-dont-steal-why-we-copy",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "layout",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "article",
+        "layout"
+      ],
+      "description": "An article on why designers copy other sites and when to reference existing work rather than replicate it outright.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2011/01/copycat1.jpg?x51331",
+      "id": "unknown__share,-don\u2019t-steal-(why-we-copy)",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "PrettyNumber \u2013 A jQuery Plugin for Formatting Numbers",
+      "source_url": "https://tympanus.net/codrops/2010/01/03/prettynumber-a-jquery-plugin-for-formatting-numbers",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "jquery",
+        "ts",
+        "text-effect",
+        "typography",
+        "tool",
+        "monochrome"
+      ],
+      "description": "A jQuery plugin that turns a raw number into a human-readable string, formatting values such as 23454321234 into 23.454.321.234 with configurable delimiters.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2010/01/prettyNumber.png?x51331",
+      "id": "unknown__prettynumber-\u2013-a-jquery-plugin-for-formatting-numbers",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Scrolling to the Top and Bottom with jQuery",
+      "source_url": "https://tympanus.net/codrops/2010/01/03/scrolling-to-the-top-and-bottom-with-jquery",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "jquery",
+        "plain-css",
+        "scroll-effect",
+        "tool",
+        "minimal"
+      ],
+      "description": "A jQuery technique for scrolling a page to the very top or the very bottom with a single click, using jQuery special scroll events.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2010/01/scrolljQuery.png?x51331",
+      "id": "unknown__scrolling-to-the-top-and-bottom-with-jquery",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Some Useful JavaScript & jQuery Snippets",
+      "source_url": "https://tympanus.net/codrops/2010/01/05/some-useful-javascript-jquery-snippets",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "gallery",
+      "tags": [
+        "javascript",
+        "jquery",
+        "minimal",
+        "gallery",
+        "tool",
+        "tutorial"
+      ],
+      "description": "A collection of short jQuery and JavaScript snippets covering common tasks such as cache-busting an image src, detecting when an image has finished loading, and similar DOM utilities.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2010/01/snippets.png?x51331",
+      "id": "unknown__some-useful-javascript-&-jquery-snippets",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "JavaScript: Changing location or stylesheet according to device or browser",
+      "source_url": "https://tympanus.net/codrops/2009/08/26/javascript-changing-location-or-stylesheet-according-to-device-or-browser",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "minimal",
+        "layout",
+        "tool",
+        "tutorial"
+      ],
+      "description": "Developing web applications for mobile phones sometimes brings the need to just create separate content for different devices.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2009/08/Devices.jpg?x51331",
+      "id": "unknown__javascript:-changing-location-or-stylesheet-according-to-device-or-browser",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Simple CSS: Update box for category or posts",
+      "source_url": "https://tympanus.net/codrops/2009/08/26/simple-css-update-box-for-category-or-posts",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "card",
+      "tags": [
+        "plain-css",
+        "css",
+        "card",
+        "grid",
+        "minimal",
+        "layout"
+      ],
+      "description": "A tutorial on creating a simple, clean CSS box that shows the most recent updates for a category, or any similar list of items, using only basic markup and styling.",
+      "preview_image": "",
+      "id": "unknown__simple-css:-update-box-for-category-or-posts",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Simple CSS chart for dynamic content",
+      "source_url": "https://tympanus.net/codrops/2009/08/27/simple-css-chart-for-dynamic-content",
+      "registry_url": "https://tympanus.net/codrops/",
+      "category": "grid",
+      "tags": [
+        "plain-css",
+        "css",
+        "grid",
+        "minimal",
+        "flat",
+        "layout"
+      ],
+      "description": "A very simple CSS-only chart built from a single small background image, used to visualise dynamic content values on a page.",
+      "preview_image": "",
+      "id": "unknown__simple-css-chart-for-dynamic-content",
+      "source_domain": "tympanus.net"
     }
   ]
 }
