@@ -1,6 +1,6 @@
 {
-  "version": "1.0.85",
-  "source_count": 27608,
+  "version": "1.0.86",
+  "source_count": 27615,
   "components": [
     {
       "id": "cat-0",
@@ -479028,6 +479028,141 @@
       "preview_image": "",
       "id": "unknown__good-grasshopper-input",
       "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Bottled Sunshine and Matchbooks: How Goodside Builds Brands From the Inside Out",
+      "source_url": "https://tympanus.net/codrops/2026/10/05/goodside/",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "animation",
+      "tags": [
+        "motion",
+        "svg",
+        "gradient",
+        "neon",
+        "animation",
+        "typography"
+      ],
+      "description": "Codrops studio profile on Goodside, an Austin brand design studio whose identity work leans on kinetic typography, conceptual illustration and bright color animation loops. Useful as a reference for brand-led motion language across web and social assets.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2026/08/goodside_featured_image-1.png?x51331",
+      "id": "unknown__bottled-sunshine-and-matchbooks:-how-goodside-builds-brands-from-the-inside-out",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "I Like to Play: Michael Vestergaard's Path from Flash Experiments to Interactive Installations",
+      "source_url": "https://tympanus.net/codrops/2026/10/01/michael-verstergaard/",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "animation",
+      "tags": [
+        "gsap",
+        "webgl",
+        "javascript",
+        "minimal",
+        "glow",
+        "animation",
+        "particles"
+      ],
+      "description": "Interview-style case study following a creative developer's sites including Ribbit and Octocube Games, built with GSAP, WebGL and a custom framework. Covers scroll-driven book-opening sequences, sprite-based character animation and playable hero interactions.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2026/10/Michael-Vestergaard-%E2%80%93-Cover-4_3.png?x51331",
+      "id": "unknown__i-like-to-play:-michael-vestergaard's-path-from-flash-experiments-to-interactive-installations",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Anoukia Perrey: Mimesis, Material, and the Almost Real",
+      "source_url": "https://tympanus.net/codrops/2026/09/26/anoukia-perrey-mimesis/",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "3d",
+      "tags": [
+        "glsl",
+        "webgl",
+        "shader",
+        "glass",
+        "holographic",
+        "3d",
+        "shader-art"
+      ],
+      "description": "Studio interview on a Paris 3D designer's hyper-real material work, including liquid-glass spheres, dispersion and thin-film experiments made in Cinema 4D and Octane. A strong reference for physically based material and refraction studies.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2026/09/midjourney-editor-1790416397926.png.webp?x51331",
+      "id": "unknown__anoukia-perrey:-mimesis,-material,-and-the-almost-real",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "R-K '26: The Thinking and Code Behind a Portfolio Led by Presence",
+      "source_url": "https://tympanus.net/codrops/2026/04/07/r-k-26-the-thinking-and-code-behind-a-portfolio-led-by-presence/",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "transition",
+      "tags": [
+        "gsap",
+        "webgl",
+        "javascript",
+        "barba.js",
+        "minimal",
+        "monochrome",
+        "portfolio",
+        "transition",
+        "hero"
+      ],
+      "description": "Case study of a Webflow portfolio with GSAP animation, Barba.js page transitions and a Unicorn Studio WebGL hero, plus an attribute-driven custom framework. Good reference for Webflow-plus-GSAP architecture and transition boilerplate.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2026/03/rk-thumb.webp?x51331",
+      "id": "unknown__r-k-'26:-the-thinking-and-code-behind-a-portfolio-led-by-presence",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "They Call Me Giulio: The Making of a Cinematic Cyberpunk Portfolio",
+      "source_url": "https://tympanus.net/codrops/2026/04/14/they-call-me-giulio-the-making-of-a-cinematic-cyberpunk-portfolio/",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "3d",
+      "tags": [
+        "webgl",
+        "glsl",
+        "three.js",
+        "neon",
+        "noise",
+        "hero",
+        "animation"
+      ],
+      "description": "Build story for a Blade Runner-inspired cyberpunk portfolio that opens on a rainy neon rooftop scene, blending 3D canvas work with oversized type and character animation. Useful reference for cinematic web narratives and mood-driven hero sequences.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2026/04/Theycallmegiulio.webp?x51331",
+      "id": "unknown__they-call-me-giulio:-the-making-of-a-cinematic-cyberpunk-portfolio",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Designing a Flexible Digital Archive for Chems.Studio's Creative Practice",
+      "source_url": "https://tympanus.net/codrops/2026/08/08/designing-a-flexible-digital-archive-for-chems-studios-creative-practice/",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "transition",
+      "tags": [
+        "javascript",
+        "css",
+        "swup.js",
+        "minimal",
+        "flat",
+        "grid",
+        "portfolio",
+        "transition"
+      ],
+      "description": "Case study on a three-column grid system that reshapes from vertical homepage sequence to archive grid to horizontal project narrative, with Swup.js transitions. A practical reference for grid-driven archive browsing and image-first portfolio layouts.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2026/08/chems.png.webp?x51331",
+      "id": "unknown__designing-a-flexible-digital-archive-for-chems.studio's-creative-practice",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Exporting a Cloth Simulation from Blender to an Interactive Three.js Scene",
+      "source_url": "https://tympanus.net/codrops/2025/08/20/exporting-a-cloth-simulation-from-blender-to-an-interactive-three-js-scene/",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "animation",
+      "tags": [
+        "three.js",
+        "javascript",
+        "soft",
+        "fluid",
+        "button",
+        "physics",
+        "animation"
+      ],
+      "description": "Tutorial baking a Blender cloth simulation of a pillowy button and replaying it as a click-triggered interactive Three.js scene. Combines offline physics simulation with in-browser rendering for organic button press feedback.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2025/08/clothpillow.jpeg?x51331",
+      "id": "unknown__exporting-a-cloth-simulation-from-blender-to-an-interactive-three.js-scene",
+      "source_domain": "tympanus.net"
     }
   ]
 }
