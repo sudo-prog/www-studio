@@ -1,6 +1,6 @@
 {
-  "version": "1.0.93",
-  "source_count": 27945,
+  "version": "1.0.94",
+  "source_count": 27975,
   "components": [
     {
       "id": "cat-0",
@@ -484648,6 +484648,456 @@
       "preview_image": "",
       "id": "unknown__hugeicons-agreement-03",
       "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Phantom Star for CineShader",
+      "source_url": "https://www.shadertoy.com/view/ttKGDt",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "gradient",
+        "shader-art"
+      ],
+      "description": "Phantom Star for CineShader by kasari39 is a GLSL shader created for the Cineshader platform, featuring a celestial star theme.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/ttKGDt.jpg",
+      "id": "unknown__phantom-star-for-cineshader",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "fractal trees gif",
+      "source_url": "https://www.shadertoy.com/view/llXfRr",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "fractal",
+        "animation"
+      ],
+      "description": "fractal trees gif by macbooktall renders fractal tree patterns using GLSL shader code in a looping animation.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/llXfRr.jpg",
+      "id": "unknown__fractal-trees-gif",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Cloud raymarching",
+      "source_url": "https://www.shadertoy.com/view/WslGWl",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular",
+      "category": "shader",
+      "tags": [
+        "raymarching",
+        "volumetric",
+        "shader-art"
+      ],
+      "description": "Cloud raymarching sample by edo_m18 renders volumetric cloud formations using ray marching techniques, cloned from an existing shadertoy and accompanied by a detailed article.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/WslGWl.jpg",
+      "id": "unknown__cloud-raymarching",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "DVD Bounce",
+      "source_url": "https://www.shadertoy.com/view/wtcSzN",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "pixel",
+        "animation"
+      ],
+      "description": "DVD Bounce by tdhooper renders the iconic bouncing DVD logo animation with colorful ripple effects, created for the Cineshader platform.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/wtcSzN.jpg",
+      "id": "unknown__dvd-bounce",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "GLSL ray tracing test",
+      "source_url": "https://www.shadertoy.com/view/3sc3z4",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "gradient",
+        "shader-art"
+      ],
+      "description": "GLSL ray tracing test by colin299 is a shader experimenting with ray tracing techniques in GLSL.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/3sc3z4.jpg",
+      "id": "unknown__glsl-ray-tracing-test",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Raymarching Basic",
+      "source_url": "https://www.shadertoy.com/view/Ml2XRD",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular",
+      "category": "shader",
+      "tags": [
+        "raymarching",
+        "minimal",
+        "raymarcher"
+      ],
+      "description": "Raymarching Basic by gyabo is an introductory shader demonstrating fundamental ray marching techniques with simple geometric shapes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/Ml2XRD.jpg",
+      "id": "unknown__raymarching-basic",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "w10",
+      "source_url": "https://www.shadertoy.com/view/lllSR2",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular",
+      "category": "shader",
+      "tags": [
+        "raymarching",
+        "minimal",
+        "background"
+      ],
+      "description": "w10 by gyabo is a work-in-progress Windows 10 wallpaper style shader featuring raymarched geometric patterns.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/lllSR2.jpg",
+      "id": "unknown__w10",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "ED-209",
+      "source_url": "https://www.shadertoy.com/view/wsGczG",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular",
+      "category": "shader",
+      "tags": [
+        "raymarching",
+        "metallic",
+        "3d"
+      ],
+      "description": "ED-209 by dean_the_coder renders a detailed 3D raymarched model of the ED-209 robot from the Robocop movie, featuring metallic shading and procedural construction.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/wsGczG.jpg",
+      "id": "unknown__ed-209",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Dive to Cloud",
+      "source_url": "https://www.shadertoy.com/view/ll3SWl",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "volumetric",
+        "shader-art"
+      ],
+      "description": "Dive to Cloud by lise renders volumetric cloud formations with procedural texturing, referencing shadertoy.com/view/4sXGRM for cloud rendering techniques.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/ll3SWl.jpg",
+      "id": "unknown__dive-to-cloud",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Ray Marching: Part 6",
+      "source_url": "https://www.shadertoy.com/view/4tcGDr",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular",
+      "category": "shader",
+      "tags": [
+        "raymarching",
+        "minimal",
+        "shader-art"
+      ],
+      "description": "Part 6 of a ray marching tutorial covering CSG operations and geometric primitives with rotation transforms and distance field subtraction techniques.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/4tcGDr.jpg",
+      "id": "unknown__ray-marching:-part-6",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Parallax view on Cineshader",
+      "source_url": "https://www.shadertoy.com/view/wtdSR8",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "gradient",
+        "3d"
+      ],
+      "description": "Parallax view on Cineshader by edankwan renders a parallax-based 3D scene view for the Cineshader platform.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/wtdSR8.jpg",
+      "id": "unknown__parallax-view-on-cineshader",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "FWA logo",
+      "source_url": "https://www.shadertoy.com/view/tt3XDn",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular",
+      "category": "shader",
+      "tags": [
+        "sdf",
+        "minimal",
+        "shader-art"
+      ],
+      "description": "FWA logo by edankwan traces the FWA (Favourite Website Awards) logo using capsule signed distance functions with smooth union operations.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/tt3XDn.jpg",
+      "id": "unknown__fwa-logo",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Oblivion radar",
+      "source_url": "https://www.shadertoy.com/view/4s2SRt",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "gradient",
+        "shader-art"
+      ],
+      "description": "Oblivion radar by ndel is a GLSL shader that renders a radar-style visualization, featured on the Shadertoy platform.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/4s2SRt.jpg",
+      "id": "unknown__oblivion-radar",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "70s Melt",
+      "source_url": "https://www.shadertoy.com/view/XsX3zl",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "gradient",
+        "animation"
+      ],
+      "description": "70s Melt by tomorrowevening renders a colorful, psychedelic animation of flowing sine waves and gradients, inspired by WAHa_06x36's sine puke shader.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/XsX3zl.jpg",
+      "id": "unknown__70s-melt",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Ray Marching: Part 1",
+      "source_url": "https://www.shadertoy.com/view/llt3R4",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular",
+      "category": "shader",
+      "tags": [
+        "raymarching",
+        "minimal",
+        "shader-art"
+      ],
+      "description": "Part 1 of a ray marching tutorial covering signed distance functions, demonstrating basic sphere SDF rendering and ray marching loop implementation.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/llt3R4.jpg",
+      "id": "unknown__ray-marching:-part-1",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Snail",
+      "source_url": "https://www.shadertoy.com/view/ld3Gz2",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "gradient",
+        "shader-art"
+      ],
+      "description": "Snail by iq is a GLSL shader that renders a snail-themed visual scene with ray marched geometry.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/ld3Gz2.jpg",
+      "id": "unknown__snail",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Happy Jumping",
+      "source_url": "https://www.shadertoy.com/view/3lsSzf",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular",
+      "category": "shader",
+      "tags": [
+        "raymarching",
+        "organic",
+        "animation"
+      ],
+      "description": "Happy Jumping by iq renders a happy blobby creature that jumps procedurally, using 3D ray marching with signed distance functions and organic geometry.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/3lsSzf.jpg",
+      "id": "unknown__happy-jumping",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Ray Marching: Part 2",
+      "source_url": "https://www.shadertoy.com/view/lt33z7",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular",
+      "category": "shader",
+      "tags": [
+        "raymarching",
+        "minimal",
+        "shader-art"
+      ],
+      "description": "Part 2 of a ray marching tutorial covering lighting implementation with multiple light sources and shadowing in a ray marched scene.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/lt33z7.jpg",
+      "id": "unknown__ray-marching:-part-2",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Ray Marching: Part 3",
+      "source_url": "https://www.shadertoy.com/view/Xtd3z7",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular",
+      "category": "shader",
+      "tags": [
+        "raymarching",
+        "minimal",
+        "3d"
+      ],
+      "description": "Part 3 of a ray marching tutorial covering camera movement and transformations in a ray marched 3D scene.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/Xtd3z7.jpg",
+      "id": "unknown__ray-marching:-part-3",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Ray Marching: Part 4",
+      "source_url": "https://www.shadertoy.com/view/MttGz7",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular",
+      "category": "shader",
+      "tags": [
+        "raymarching",
+        "minimal",
+        "shader-art"
+      ],
+      "description": "Part 4 of a ray marching tutorial covering CSG operations including union, intersection, and subtraction of distance fields.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/MttGz7.jpg",
+      "id": "unknown__ray-marching:-part-4",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Ray Marching: Part 5",
+      "source_url": "https://www.shadertoy.com/view/XtcGWn",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular",
+      "category": "shader",
+      "tags": [
+        "raymarching",
+        "minimal",
+        "shader-art"
+      ],
+      "description": "Ray Marching: Part 5 by jlfwong is the fifth installment in a ray marching tutorial series covering advanced signed distance function techniques.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/XtcGWn.jpg",
+      "id": "unknown__ray-marching:-part-5",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Very fast procedural ocean",
+      "source_url": "https://www.shadertoy.com/view/MdXyzX",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular",
+      "category": "shader",
+      "tags": [
+        "procedural",
+        "fluid",
+        "animation"
+      ],
+      "description": "Very fast procedural ocean by afl_ext renders an animated ocean surface using sin waves instead of noise for fast procedural water generation.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/MdXyzX.jpg",
+      "id": "unknown__very-fast-procedural-ocean",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Warping - procedural 2",
+      "source_url": "https://www.shadertoy.com/view/lsl3RH",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "gradient",
+        "animation"
+      ],
+      "description": "Warping - procedural 2 by iq renders procedural warping patterns using GLSL shader techniques with animated geometric distortions.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/lsl3RH.jpg",
+      "id": "unknown__warping---procedural-2",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "[SIG15] Mario World 1-1",
+      "source_url": "https://www.shadertoy.com/view/XtlSD7",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular",
+      "category": "shader",
+      "tags": [
+        "shader",
+        "pixel",
+        "2d"
+      ],
+      "description": "[SIG15] Mario World 1-1 by knarkowicz renders the iconic first level of Super Mario Bros. in a single GLSL shader, featuring pixel art sprites and CRT-style display with NES sound.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/XtlSD7.jpg",
+      "id": "unknown__[sig15]-mario-world-1-1",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Flame",
+      "source_url": "https://www.shadertoy.com/view/MdX3zr",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular",
+      "category": "shader",
+      "tags": [
+        "sdf",
+        "glow",
+        "shader-art"
+      ],
+      "description": "Flame by XT95 renders a simple flame effect using distance fields with transparency and glow.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/MdX3zr.jpg",
+      "id": "unknown__flame",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Voxel Edges",
+      "source_url": "https://www.shadertoy.com/view/4dfGzs",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular",
+      "category": "shader",
+      "tags": [
+        "raymarching",
+        "wireframe",
+        "3d"
+      ],
+      "description": "Voxel Edges by iq renders a voxel scene with correct edge detection using floating-point DDA ray marching, featuring 3D voxel intersection and occlusion effects.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/4dfGzs.jpg",
+      "id": "unknown__voxel-edges",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "The Universe Within",
+      "source_url": "https://www.shadertoy.com/view/lscczl",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "gradient",
+        "shader-art"
+      ],
+      "description": "The Universe Within by BigWIngs is a GLSL shader that renders an abstract visualization exploring cosmic and microscopic scale themes.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/lscczl.jpg",
+      "id": "unknown__the-universe-within",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Fovea detector",
+      "source_url": "https://www.shadertoy.com/view/4dsXzM",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular",
+      "category": "shader",
+      "tags": [
+        "procedural",
+        "neon",
+        "2d"
+      ],
+      "description": "Fovea detector by nimitz renders a visual illusion of rotating stars that demonstrates how peripheral vision creates apparent motion, working best in full screen mode.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/4dsXzM.jpg",
+      "id": "unknown__fovea-detector",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Palettes",
+      "source_url": "https://www.shadertoy.com/view/ll2GD3",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular",
+      "category": "shader",
+      "tags": [
+        "glsl",
+        "gradient",
+        "shader-art"
+      ],
+      "description": "Palettes by iq is a GLSL shader that showcases color palette and gradient techniques for shader art.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/ll2GD3.jpg",
+      "id": "unknown__palettes",
+      "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Starleidoscope",
+      "source_url": "https://www.shadertoy.com/view/ftt3R7",
+      "registry_url": "https://www.shadertoy.com/results?query=&sort=popular",
+      "category": "shader",
+      "tags": [
+        "shader",
+        "gradient",
+        "animation"
+      ],
+      "description": "Starleidoscope by DanielXMoore renders an animated starfield visualization forked from a Starfield tutorial, creating a cosmic tunnel effect with layered star particles.",
+      "preview_image": "https://www.shadertoy.com/media/shaders/ftt3R7.jpg",
+      "id": "unknown__starleidoscope",
+      "source_domain": "www.shadertoy.com"
     }
   ]
 }
