@@ -1,6 +1,6 @@
 {
-  "version": "1.0.89",
-  "source_count": 27763,
+  "version": "1.0.90",
+  "source_count": 27810,
   "components": [
     {
       "id": "cat-0",
@@ -481743,6 +481743,759 @@
       "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2009/11/jTextTranslate-copy.gif?x21095",
       "id": "unknown__jtexttranslate:-a-jquery-translation-plugin",
       "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Acrylic Pour",
+      "source_url": "https://www.originkit.dev/components/acrylic-pour",
+      "registry_url": "https://originkit.dev",
+      "category": "background",
+      "tags": [
+        "webgl",
+        "fluid",
+        "shader",
+        "background",
+        "animation"
+      ],
+      "description": "A WebGL fluid simulation that pours layered paint from a wandering stream onto a dark board, then opens silicone cells in it and keeps flowing.",
+      "preview_image": "",
+      "id": "unknown__acrylic-pour",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Auger Tape",
+      "source_url": "https://www.originkit.dev/components/auger-tape",
+      "registry_url": "https://originkit.dev",
+      "category": "animation",
+      "tags": [
+        "webgl",
+        "text",
+        "animation",
+        "react"
+      ],
+      "description": "A WebGL funnel of tapering coils: your text and a ruled tick grid slide along the fixed ribbon by angle, with drag, scroll and speed driving the flow.",
+      "preview_image": "",
+      "id": "unknown__auger-tape",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Cello Stack",
+      "source_url": "https://www.originkit.dev/components/cello-stack",
+      "registry_url": "https://originkit.dev",
+      "category": "gallery",
+      "tags": [
+        "webgl",
+        "image",
+        "gallery",
+        "react"
+      ],
+      "description": "A WebGL stack of image cards that deals the next card upward, sealed under one procedural shrink-wrap film that refracts and glares over the whole pile.",
+      "preview_image": "",
+      "id": "unknown__cello-stack",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Chladni Tune",
+      "source_url": "https://www.originkit.dev/components/chladni-tune",
+      "registry_url": "https://originkit.dev",
+      "category": "loader",
+      "tags": [
+        "canvas",
+        "animation",
+        "loader",
+        "physics"
+      ],
+      "description": "Full-screen canvas overlay where 12,000 sand grains on a vibrating plate settle into Chladni figures as a frequency sweep climbs with load progress.",
+      "preview_image": "",
+      "id": "unknown__chladni-tune",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Clip Stack Fixed",
+      "source_url": "https://www.originkit.dev/components/clip-stack-fixed",
+      "registry_url": "https://originkit.dev",
+      "category": "animation",
+      "tags": [
+        "webgl",
+        "animation",
+        "background",
+        "shader"
+      ],
+      "description": "A WebGL background of horizontal hairlines that light from the centre outward, one row after the next in a widening V, then drain top to bottom back to grey.",
+      "preview_image": "",
+      "id": "unknown__clip-stack-fixed",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Cluster About Soap",
+      "source_url": "https://www.originkit.dev/components/cluster-about-soap",
+      "registry_url": "https://originkit.dev",
+      "category": "3d",
+      "tags": [
+        "webgl",
+        "3d",
+        "animation",
+        "bubble"
+      ],
+      "description": "A WebGL2 fragment shader that raytraces up to 32 overlapping soap bubbles into a rotating clump, with thin-film color, lit seams and trapped air pockets.",
+      "preview_image": "",
+      "id": "unknown__cluster-about-soap",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Color Hexa Sphere",
+      "source_url": "https://www.originkit.dev/components/color-hexa-sphere",
+      "registry_url": "https://originkit.dev",
+      "category": "3d",
+      "tags": [
+        "canvas",
+        "3d",
+        "animation",
+        "sphere"
+      ],
+      "description": "A canvas-drawn sphere built from hexagonal cells that spin, pulse in size and swap colours from a weighted palette, with drag to orbit it by hand.",
+      "preview_image": "",
+      "id": "unknown__color-hexa-sphere",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Crease Flyer",
+      "source_url": "https://www.originkit.dev/components/crease-flyer",
+      "registry_url": "https://originkit.dev",
+      "category": "animation",
+      "tags": [
+        "webgl",
+        "animation",
+        "transition",
+        "paper"
+      ],
+      "description": "A two-page transition that collapses the first page along a Miura-ori crease grid into a flat stack, flips it, and unfolds the back side as the second page.",
+      "preview_image": "",
+      "id": "unknown__crease-flyer",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Crystal Caldera",
+      "source_url": "https://www.originkit.dev/components/crystal-caldera",
+      "registry_url": "https://originkit.dev",
+      "category": "3d",
+      "tags": [
+        "webgl",
+        "3d",
+        "animation",
+        "sphere"
+      ],
+      "description": "A WebGL wireframe caldera where glowing balls rain down, bounce, shrink with every hit and push coloured ripple rings outward across the surface.",
+      "preview_image": "",
+      "id": "unknown__crystal-caldera",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Cube",
+      "source_url": "https://www.originkit.dev/components/cube",
+      "registry_url": "https://originkit.dev",
+      "category": "3d",
+      "tags": [
+        "webgl",
+        "3d",
+        "animation",
+        "react"
+      ],
+      "description": "A 3D particle Rubik's cube that auto-scrambles, tumbles, and rotates on drag, rendered on canvas with additive blending for a glowing look.",
+      "preview_image": "",
+      "id": "unknown__cube",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Dense Grid Round",
+      "source_url": "https://www.originkit.dev/components/dense-grid-round",
+      "registry_url": "https://originkit.dev",
+      "category": "animation",
+      "tags": [
+        "webgl",
+        "animation",
+        "grid",
+        "background"
+      ],
+      "description": "A WebGL dot-matrix plane in true perspective, where a cyan light run sweeps along each row, fades to blue, and climbs the grid as alternating rows burn orange.",
+      "preview_image": "",
+      "id": "unknown__dense-grid-round",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Embroidery",
+      "source_url": "https://www.originkit.dev/components/embroidery",
+      "registry_url": "https://originkit.dev",
+      "category": "text",
+      "tags": [
+        "canvas",
+        "text",
+        "animation",
+        "react"
+      ],
+      "description": "Canvas text that sews itself in satin stitch, column by column like a machine head, with a dashed transfer outline marking the path before the thread arrives.",
+      "preview_image": "",
+      "id": "unknown__embroidery",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Energy Ring",
+      "source_url": "https://www.originkit.dev/components/energy-ring",
+      "registry_url": "https://originkit.dev",
+      "category": "3d",
+      "tags": [
+        "webgl",
+        "animation",
+        "3d",
+        "react"
+      ],
+      "description": "Canvas section that draws a flickering plasma ring from stacked sine strands, ringed with additive glow, over a particle carpet pooled in the lower half.",
+      "preview_image": "",
+      "id": "unknown__energy-ring",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Fibre Image Tear",
+      "source_url": "https://www.originkit.dev/components/fibre-image-tear",
+      "registry_url": "https://originkit.dev",
+      "category": "animation",
+      "tags": [
+        "webgl",
+        "animation",
+        "transition",
+        "image"
+      ],
+      "description": "Page A rips down a ragged paper seam and its two halves fall away with gravity and spin, revealing Page B behind a fibre-strewn, cream-cored torn edge.",
+      "preview_image": "",
+      "id": "unknown__fibre-image-tear",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Gabriel Graph",
+      "source_url": "https://www.originkit.dev/components/gabriel-graph",
+      "registry_url": "https://originkit.dev",
+      "category": "3d",
+      "tags": [
+        "webgl",
+        "3d",
+        "animation",
+        "geometry"
+      ],
+      "description": "Random points on a sphere joined by their Gabriel graph, each edge drawn as an outlined 3D box, spinning slowly on the vertical axis and draggable to orbit.",
+      "preview_image": "",
+      "id": "unknown__gabriel-graph",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Glowing Dome Liquid",
+      "source_url": "https://www.originkit.dev/components/glowing-dome-liquid",
+      "registry_url": "https://originkit.dev",
+      "category": "background",
+      "tags": [
+        "webgl",
+        "shader",
+        "animation",
+        "background"
+      ],
+      "description": "A WebGL dome built from latitude ribbons that churn like liquid metal under noise warping, lit from above with thin-film fringes, a rim halo and film grain.",
+      "preview_image": "",
+      "id": "unknown__glowing-dome-liquid",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Glowing Sphere",
+      "source_url": "https://www.originkit.dev/components/glowing-sphere",
+      "registry_url": "https://originkit.dev",
+      "category": "3d",
+      "tags": [
+        "webgl",
+        "3d",
+        "animation",
+        "react"
+      ],
+      "description": "A WebGL2 shader sphere with crumpled-glass facets, cyan crease veins and a pink inner core; drag spins it with inertia and a click sends a spring squash through it.",
+      "preview_image": "",
+      "id": "unknown__glowing-sphere",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Glyph Burst",
+      "source_url": "https://www.originkit.dev/components/glyph-burst",
+      "registry_url": "https://originkit.dev",
+      "category": "cursor",
+      "tags": [
+        "canvas",
+        "cursor",
+        "animation",
+        "icon"
+      ],
+      "description": "Replaces the pointer with a pixel-art arrow that drops 7x7 bitmap glyphs along its path and throws a staggered burst of them outward on every click.",
+      "preview_image": "",
+      "id": "unknown__glyph-burst",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Glyph Globe",
+      "source_url": "https://www.originkit.dev/components/glyph-globe",
+      "registry_url": "https://originkit.dev",
+      "category": "3d",
+      "tags": [
+        "webgl",
+        "3d",
+        "text",
+        "animation"
+      ],
+      "description": "A WebGL globe of latitude rows only: dim dots over water, ASCII glyphs over land chosen by distance inland, ticking round and bending away from the pointer.",
+      "preview_image": "",
+      "id": "unknown__glyph-globe",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Hairline Loader",
+      "source_url": "https://www.originkit.dev/components/hairline-loader",
+      "registry_url": "https://originkit.dev",
+      "category": "loader",
+      "tags": [
+        "canvas",
+        "animation",
+        "loader",
+        "react"
+      ],
+      "description": "Full-screen preloader that draws a hairline rule across the page with a percentage riding its tip, then splits the sheet in two along the line to reveal the page.",
+      "preview_image": "",
+      "id": "unknown__hairline-loader",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Infinity Trail",
+      "source_url": "https://www.originkit.dev/components/infinity-trail",
+      "registry_url": "https://originkit.dev",
+      "category": "loader",
+      "tags": [
+        "canvas",
+        "animation",
+        "loader",
+        "react"
+      ],
+      "description": "A canvas loader that runs a tapered, glowing comet head around a Bernoulli lemniscate, shedding sparks and a soft halo, with an optional label underneath.",
+      "preview_image": "",
+      "id": "unknown__infinity-trail",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Isometric Squares",
+      "source_url": "https://www.originkit.dev/components/isometric-squares",
+      "registry_url": "https://originkit.dev",
+      "category": "background",
+      "tags": [
+        "canvas",
+        "3d",
+        "animation",
+        "isometric"
+      ],
+      "description": "A canvas isometric slab of cube columns with a deep rounded-square pit whose rainbow-lit walls orbit across the grid and follow the pointer on hover.",
+      "preview_image": "",
+      "id": "unknown__isometric-squares",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Jade Bagel",
+      "source_url": "https://www.originkit.dev/components/jade-bagel",
+      "registry_url": "https://originkit.dev",
+      "category": "3d",
+      "tags": [
+        "webgl",
+        "3d",
+        "text",
+        "animation"
+      ],
+      "description": "A raymarched torus whose surface is your word extruded inward as a signed-distance field, lit from inside the tube and rolling endlessly through the hole.",
+      "preview_image": "",
+      "id": "unknown__jade-bagel",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Letter Flue",
+      "source_url": "https://www.originkit.dev/components/letter-flue",
+      "registry_url": "https://originkit.dev",
+      "category": "3d",
+      "tags": [
+        "webgl",
+        "3d",
+        "text",
+        "animation"
+      ],
+      "description": "A ray-cast square tunnel whose four walls carry the same block of type, flown through endlessly with motion-blurred letters, a slow roll and pointer-led aim.",
+      "preview_image": "",
+      "id": "unknown__letter-flue",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Luminous Prism",
+      "source_url": "https://www.originkit.dev/components/luminous-prism",
+      "registry_url": "https://originkit.dev",
+      "category": "3d",
+      "tags": [
+        "webgl",
+        "3d",
+        "animation",
+        "react"
+      ],
+      "description": "A dark faceted prism rotating in fixed studio light, raytraced in a WebGL2 shader, with coloured facet reflections, bloom, lit edges and drag to spin it.",
+      "preview_image": "",
+      "id": "unknown__luminous-prism",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Luminous Text",
+      "source_url": "https://www.originkit.dev/components/luminous-text",
+      "registry_url": "https://originkit.dev",
+      "category": "text",
+      "tags": [
+        "react",
+        "animation",
+        "text",
+        "gradient"
+      ],
+      "description": "Displays one large number with outline copies that drift in from behind and land on it, flashing the glow, while a gradient fill tracks the pointer across the glyphs.",
+      "preview_image": "",
+      "id": "unknown__luminous-text",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Many Thin Light",
+      "source_url": "https://www.originkit.dev/components/many-thin-light",
+      "registry_url": "https://originkit.dev",
+      "category": "background",
+      "tags": [
+        "webgl",
+        "animation",
+        "background",
+        "shader"
+      ],
+      "description": "A WebGL background where dashes of light travel along bending lanes that converge on a point, merging into a single beam, then drain and restart on a loop.",
+      "preview_image": "",
+      "id": "unknown__many-thin-light",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Masthead Reveal",
+      "source_url": "https://www.originkit.dev/components/masthead-reveal",
+      "registry_url": "https://originkit.dev",
+      "category": "loader",
+      "tags": [
+        "react",
+        "animation",
+        "loader",
+        "text"
+      ],
+      "description": "A full-screen overlay loader where each letter of a word rises out of a baseline mask as loading passes its share, over a rule that draws across and a 3-digit counter.",
+      "preview_image": "",
+      "id": "unknown__masthead-reveal",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Miura Image Fold",
+      "source_url": "https://www.originkit.dev/components/miura-image-fold",
+      "registry_url": "https://originkit.dev",
+      "category": "animation",
+      "tags": [
+        "webgl",
+        "animation",
+        "transition",
+        "image"
+      ],
+      "description": "A two-page transition that collapses the first page along a Miura-ori crease grid into a flat stack, flips it, and unfolds the back side as the second page.",
+      "preview_image": "",
+      "id": "unknown__miura-image-fold",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "One Solid Glass",
+      "source_url": "https://www.originkit.dev/components/one-solid-glass",
+      "registry_url": "https://originkit.dev",
+      "category": "3d",
+      "tags": [
+        "webgl",
+        "3d",
+        "animation",
+        "react"
+      ],
+      "description": "A raymarched rounded glass cube that spins inside a studio of coloured light strips, bending them through its body; drag to turn it, hover to brighten it.",
+      "preview_image": "",
+      "id": "unknown__one-solid-glass",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Orbit Bundle",
+      "source_url": "https://www.originkit.dev/components/orbit-bundle",
+      "registry_url": "https://originkit.dev",
+      "category": "3d",
+      "tags": [
+        "svg",
+        "3d",
+        "animation",
+        "geometry"
+      ],
+      "description": "Nested ellipse rings share one tilted axis and spin in 3D, each lagging the last so the bundle fans from circle to sliver; hover speeds it, drag turns it.",
+      "preview_image": "",
+      "id": "unknown__orbit-bundle",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Petrol Glob",
+      "source_url": "https://www.originkit.dev/components/petrol-glob",
+      "registry_url": "https://originkit.dev",
+      "category": "3d",
+      "tags": [
+        "three.js",
+        "3d",
+        "animation",
+        "react"
+      ],
+      "description": "A three.js orb of oil-slick glass that cycles between a smooth bubble and sharp cellophane folds, with a rainbow rim fixed to the view and a red bloom halo.",
+      "preview_image": "",
+      "id": "unknown__petrol-glob",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Purple Wireframe Room",
+      "source_url": "https://www.originkit.dev/components/purple-wireframe-room",
+      "registry_url": "https://originkit.dev",
+      "category": "background",
+      "tags": [
+        "canvas",
+        "3d",
+        "animation",
+        "isometric"
+      ],
+      "description": "Canvas corridor flight: a scrolling triangle-mesh floor, outlined rune glyphs on both walls and falling center columns, all drawn to one vanishing point.",
+      "preview_image": "",
+      "id": "unknown__purple-wireframe-room",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Rope",
+      "source_url": "https://www.originkit.dev/components/rope",
+      "registry_url": "https://originkit.dev",
+      "category": "3d",
+      "tags": [
+        "webgl",
+        "3d",
+        "animation",
+        "react"
+      ],
+      "description": "A WebGL ball of coiled rope that endlessly unwinds from one pole and re-coils onto a freshly tilted axis, lit with braided-strand shading and drag to rotate.",
+      "preview_image": "",
+      "id": "unknown__rope",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Single Clear Faceted",
+      "source_url": "https://www.originkit.dev/components/single-clear-faceted",
+      "registry_url": "https://originkit.dev",
+      "category": "3d",
+      "tags": [
+        "webgl",
+        "3d",
+        "animation",
+        "react"
+      ],
+      "description": "A WebGL2 gem built from intersecting planes and ray-traced with per-channel refraction, so it splits light into colour as it turns; drag to spin it.",
+      "preview_image": "",
+      "id": "unknown__single-clear-faceted",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Single Glossy Sphere",
+      "source_url": "https://www.originkit.dev/components/single-glossy-sphere",
+      "registry_url": "https://originkit.dev",
+      "category": "3d",
+      "tags": [
+        "webgl",
+        "3d",
+        "animation",
+        "react"
+      ],
+      "description": "A raymarched WebGL sphere whose surface stacks into offset slabs with iridescent reflections, spinning under pointer drag with a spring-driven squash.",
+      "preview_image": "",
+      "id": "unknown__single-glossy-sphere",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Six Chunky Cubes",
+      "source_url": "https://www.originkit.dev/components/six-chunky-cubes",
+      "registry_url": "https://originkit.dev",
+      "category": "3d",
+      "tags": [
+        "webgl",
+        "3d",
+        "animation",
+        "geometry"
+      ],
+      "description": "Six bevelled cubes raymarched in WebGL gather into an interlocked isometric cluster, hold, then fly apart and loop, with iridescent matcap shading.",
+      "preview_image": "",
+      "id": "unknown__six-chunky-cubes",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Solar Particle Globe",
+      "source_url": "https://www.originkit.dev/components/solar-particle-globe",
+      "registry_url": "https://originkit.dev",
+      "category": "background",
+      "tags": [
+        "webgl",
+        "3d",
+        "animation",
+        "background"
+      ],
+      "description": "A WebGL2 point cloud arranged on a sphere by Fibonacci spiral, spinning on a tilted axis with depth-faded glowing dots that attract or repel near the cursor.",
+      "preview_image": "",
+      "id": "unknown__solar-particle-globe",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Spiral Glass Hollow",
+      "source_url": "https://www.originkit.dev/components/spiral-glass-hollow",
+      "registry_url": "https://originkit.dev",
+      "category": "3d",
+      "tags": [
+        "webgl",
+        "3d",
+        "text",
+        "animation"
+      ],
+      "description": "A raymarched WebGL2 glass coil with your text extruded inside it, turning on its vertical axis with refraction, chromatic dispersion and internal bounces.",
+      "preview_image": "",
+      "id": "unknown__spiral-glass-hollow",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Star Burst Graph",
+      "source_url": "https://www.originkit.dev/components/star-burst-graph",
+      "registry_url": "https://originkit.dev",
+      "category": "3d",
+      "tags": [
+        "canvas",
+        "3d",
+        "animation",
+        "geometry"
+      ],
+      "description": "A Canvas 2D starburst: colored hairline spokes run from a center hub out to a sphere of dots, turning slowly in 3D, with dots springing away from the pointer.",
+      "preview_image": "",
+      "id": "unknown__star-burst-graph",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Stencil Moon",
+      "source_url": "https://www.originkit.dev/components/stencil-moon",
+      "registry_url": "https://originkit.dev",
+      "category": "3d",
+      "tags": [
+        "three.js",
+        "3d",
+        "text",
+        "animation"
+      ],
+      "description": "A three.js sphere stencilled with repeating rows of your own text on a flat unlit ground, the bands streaming out of the pole that faces the viewer.",
+      "preview_image": "",
+      "id": "unknown__stencil-moon",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Thread Sphere",
+      "source_url": "https://www.originkit.dev/components/thread-sphere",
+      "registry_url": "https://originkit.dev",
+      "category": "3d",
+      "tags": [
+        "webgl",
+        "3d",
+        "animation",
+        "geometry"
+      ],
+      "description": "A WebGL globe of a few hundred points tied by thousands of hairline chords that turns, breathes, leans toward the cursor and names the point you hover.",
+      "preview_image": "",
+      "id": "unknown__thread-sphere",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Tiles Loader",
+      "source_url": "https://www.originkit.dev/components/tiles-loader",
+      "registry_url": "https://originkit.dev",
+      "category": "loader",
+      "tags": [
+        "canvas",
+        "animation",
+        "loader",
+        "react"
+      ],
+      "description": "Full-page loading overlay: square tiles ink in one by one in random order behind a blend-mode percentage, then shrink away in a diagonal wave.",
+      "preview_image": "",
+      "id": "unknown__tiles-loader",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Transparent Glass Cube",
+      "source_url": "https://www.originkit.dev/components/transparent-glass-cube",
+      "registry_url": "https://originkit.dev",
+      "category": "3d",
+      "tags": [
+        "webgl",
+        "3d",
+        "animation",
+        "react"
+      ],
+      "description": "A ray-traced glass cube tumbling around a marbled sphere, drawn by one WebGL2 fragment shader with per-channel refraction and drag-to-spin.",
+      "preview_image": "",
+      "id": "unknown__transparent-glass-cube",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Twist Ribbon",
+      "source_url": "https://www.originkit.dev/components/twist-ribbon",
+      "registry_url": "https://originkit.dev",
+      "category": "animation",
+      "tags": [
+        "webgl",
+        "animation",
+        "background",
+        "shader"
+      ],
+      "description": "A WebGL2 shader that draws one twisting satin ribbon across the frame, drifting sideways on a looping spline as its colour dissolves from gold into blue.",
+      "preview_image": "",
+      "id": "unknown__twist-ribbon",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Void Spiral",
+      "source_url": "https://www.originkit.dev/components/void-spiral",
+      "registry_url": "https://originkit.dev",
+      "category": "loader",
+      "tags": [
+        "webgl",
+        "animation",
+        "loader",
+        "shader"
+      ],
+      "description": "A rotating log-spiral swirl around a hollow center that cycles from soft blur through block pixelation into sharp focus, drawn in a two-pass WebGL2 shader.",
+      "preview_image": "",
+      "id": "unknown__void-spiral",
+      "source_domain": "www.originkit.dev"
+    },
+    {
+      "name": "Wave Ribbons",
+      "source_url": "https://www.originkit.dev/components/wave-ribbons",
+      "registry_url": "https://originkit.dev",
+      "category": "background",
+      "tags": [
+        "webgl",
+        "animation",
+        "background",
+        "shader"
+      ],
+      "description": "A WebGL2 background of three overlapping ribbons drawn as stacks of hairlines that twist edge-on into bright creases and breathe on a slow cycle.",
+      "preview_image": "",
+      "id": "unknown__wave-ribbons",
+      "source_domain": "www.originkit.dev"
     }
   ]
 }
