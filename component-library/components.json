@@ -1,6 +1,6 @@
 {
-  "version": "1.0.91",
-  "source_count": 27870,
+  "version": "1.0.92",
+  "source_count": 27914,
   "components": [
     {
       "id": "cat-0",
@@ -483456,6 +483456,733 @@
       "preview_image": "",
       "id": "unknown__waapi-improvements:-function-based-values",
       "source_domain": "animejs.com"
+    },
+    {
+      "name": "DeliverableDeck",
+      "source_url": "https://www.framer.com/marketplace/components/deliverabledeck",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "scroll-effect",
+      "tags": [
+        "html",
+        "dark",
+        "light",
+        "card",
+        "font",
+        "image-effect"
+      ],
+      "description": "DeliverableDeck Show what a buyer receives as a deck of image cards. What it does: - Up to 7 cards, each with an image, file-type label, title, description and detail tag - The selected card grows and lifts while the others ease back - Select by click, or optionally on hover - Optional entrance animation when the deck scrolls into view - Optional slight blur on unselected cards - Stacks vertically on narrow screens - Light and Dark themes plus colour, radius, depth and font controls Good to know: - Cards are display only.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F0dd86399-fd80-4a26-b21d-bae04f727184%2F01a1060f-9dc6-71c9-82eb-01e847de2bb8.png&w=2048&q=80",
+      "id": "unknown__deliverabledeck",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Expanding Hover List",
+      "source_url": "https://www.framer.com/marketplace/components/expanding-hover-list",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "button",
+      "tags": [
+        "html",
+        "minimal",
+        "button",
+        "image-effect",
+        "hover-effect"
+      ],
+      "description": "Expanding Hover List Expanding Hover List \u2013 A Service List That Comes Alive on Hover Expanding Hover List is a numbered list of services. When a visitor hovers a row, it fills with a deep color, its image appears and a short description and arrow button show up beside the title.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F492da4c7-1f68-44bb-a835-d654f4ede7b8%2F01a10830-2ced-72a8-bc06-780cb8d02f3a.png&w=2048&q=80",
+      "id": "unknown__expanding-hover-list",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Global Orbit Map",
+      "source_url": "https://www.framer.com/marketplace/components/global-orbit-map",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "toggle",
+      "tags": [
+        "motion",
+        "flat",
+        "toggle",
+        "background"
+      ],
+      "description": "Global Orbit Map \ud83c\udf0d Your global presence, set in motion. Switch between a flat world map and an orthographic globe that smoothly rotates toward the selected city, with animated routes and a synchronized detail panel.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F79840e7d-e190-4735-961d-c00df3339538%2F01a109ab-1527-72ed-8db4-77cb914f3597.png&w=2048&q=80",
+      "id": "unknown__global-orbit-map",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Glow Border Button",
+      "source_url": "https://www.framer.com/marketplace/components/glow-border-button",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "button",
+      "tags": [
+        "html",
+        "glow",
+        "button"
+      ],
+      "description": "It is disabled by default and does not overwrite your saved component settings. Support: hello@bodilum.com Bode Chris@bode-chris Published Oct 4, 2026 Updated Oct 4, 2026 LicenseSingle-Use Show PreviewBuy for $5",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Fe17f23e2-a374-4908-9f81-15238497466d%2F01a106fd-efb2-71eb-821a-acf0686f93c8.png&w=2048&q=80",
+      "id": "unknown__glow-border-button",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Gravity Bubbles",
+      "source_url": "https://www.framer.com/marketplace/components/gravity-bubbles",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "form",
+      "tags": [
+        "html",
+        "minimal",
+        "form",
+        "background",
+        "physics"
+      ],
+      "description": "Gravity Bubbles Gravity Bubbles Gravity Bubbles is an interactive data visualization component for Framer that transforms your data into physics-based bubbles. Use it to showcase statistics, analytics, marketing data, metrics, categories, and more.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Fb71bf58f-a2de-4e15-bd9d-fa0feef2baf7%2F01a10714-5e8e-7633-9fae-a5b09fddc2d1.png&w=2048&q=80",
+      "id": "unknown__gravity-bubbles",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Mega Menu Pro",
+      "source_url": "https://www.framer.com/marketplace/components/mega-menu-pro",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "menu",
+      "tags": [
+        "html",
+        "minimal",
+        "menu",
+        "navbar",
+        "dropdown"
+      ],
+      "description": "Mega Menu Pro A navigation component for Framer sites that need more than a row of links. Build simple links, dropdown lists and multi-column mega menus from the properties panel.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Fef2bb5d0-8e59-43b7-be65-c14c5f941c99%2F01a106af-f639-730a-bdf7-3c90a60b42d7.png&w=2048&q=80",
+      "id": "unknown__mega-menu-pro",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "NR \u2014 FAQ Accordion",
+      "source_url": "https://www.framer.com/marketplace/components/nr-faq-accordion",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "accordion",
+      "tags": [
+        "html",
+        "dark",
+        "light",
+        "accordion",
+        "scroll-effect"
+      ],
+      "description": "Smooth height-animated reveal, Cormorant questions, DM Mono index, thin 1px rules. Light / Dark / Custom, single or multi-open, fully responsive.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Fb8a1f709-8b95-422f-b426-970fcc7565b3%2F019faba9-c8eb-7618-9131-86a1f599c433.png&w=2048&q=80",
+      "id": "unknown__nr-\u2014-faq-accordion",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "NR \u2014 Tabs",
+      "source_url": "https://www.framer.com/marketplace/components/nr-tabs",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "menu",
+      "tags": [
+        "html",
+        "minimal",
+        "menu"
+      ],
+      "description": "NR \u2014 Tabs An editorial tab set with the quiet of a printed page. A mono index, a serif panel title, and one hairline rule that slides to the active tab \u2014 no boxes, no shadows, no rounded pills unless you ask for them.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Fb8a1f709-8b95-422f-b426-970fcc7565b3%2F019fef94-30c0-7379-9a0d-94762fec33ac.png&w=2048&q=80",
+      "id": "unknown__nr-\u2014-tabs",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Optical Glass Button",
+      "source_url": "https://www.framer.com/marketplace/components/optical-glass-button",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "button",
+      "tags": [
+        "html",
+        "glass",
+        "liquid-glass",
+        "soft",
+        "light",
+        "button"
+      ],
+      "description": "Optical Glass Button Optical Glass Button A premium animated glass CTA with moving optical edge light, curved shading, soft internal illumination, and a beautifully slow hover response. Instead of applying a basic glassmorphism blur to a button, Optical Glass Button builds the effect from multiple layers of light.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Fe17f23e2-a374-4908-9f81-15238497466d%2F01a10731-f0b1-72ad-a1bd-411a0d735d07.png&w=2048&q=80",
+      "id": "unknown__optical-glass-button",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Orbit Quote Switcher",
+      "source_url": "https://www.framer.com/marketplace/components/orbit-quote-switcher",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "toggle",
+      "tags": [
+        "html",
+        "light",
+        "testimonial",
+        "toggle",
+        "background",
+        "section"
+      ],
+      "description": "Orbit Quote Switcher Orbit Quote Switcher \u2013 A Testimonial Section Wrapped in an Arc of Faces Orbit Quote Switcher places your customer photos in an arc around a single centered quote. Click any avatar and it gets a highlight ring while the quote, name and role in the middle switch to that person.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F492da4c7-1f68-44bb-a835-d654f4ede7b8%2F01a10829-2f2c-7531-a2ee-95f90fb22a2a.png&w=2048&q=80",
+      "id": "unknown__orbit-quote-switcher",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "ROI Calculator Kit",
+      "source_url": "https://www.framer.com/marketplace/components/roi-calculator-kit",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "form",
+      "tags": [
+        "html",
+        "minimal",
+        "slider",
+        "input",
+        "form",
+        "toggle"
+      ],
+      "description": "ROI Calculator Kit Build your own calculator in the properties panel Add sliders, number fields, dropdowns, toggles and read-only values, then write the formulas that turn them into results. Savings, pricing, payback, hiring cost or energy use: the maths is yours.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Fef2bb5d0-8e59-43b7-be65-c14c5f941c99%2F01a1075c-8031-7346-9c7a-bedfe742b96a.png&w=2048&q=80",
+      "id": "unknown__roi-calculator-kit",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "ScrollDriven Gallery",
+      "source_url": "https://www.framer.com/marketplace/components/scrolldriven-gallery",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "gallery",
+      "tags": [
+        "rive",
+        "minimal",
+        "gallery",
+        "image-effect",
+        "scroll-effect",
+        "grid"
+      ],
+      "description": "ScrollDriven Gallery Stop showing your products in a boring grid. Infinite Collection turns any set of images into a never-ending, scroll-driven gallery.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F05a709d4-8896-47ec-bf2a-08f0bb794c86%2F01a1061b-045a-708a-8357-63f427a7acef.png&w=2048&q=80",
+      "id": "unknown__scrolldriven-gallery",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Switching Tabs Card",
+      "source_url": "https://www.framer.com/marketplace/components/switching-tabs-card",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "menu",
+      "tags": [
+        "html",
+        "bold",
+        "menu",
+        "card",
+        "toggle",
+        "image-effect"
+      ],
+      "description": "Switching Tabs Card \u2726 Put the visual first. Create bold, image-led tab sections with an overlapping content card, smooth transitions and a clean editorial layout.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F2179b778-b2d7-4c1e-ab27-60e7e12a6593%2F01a10336-3eaa-7354-b92c-9a72b78a6672.jpg&w=2048&q=80",
+      "id": "unknown__switching-tabs-card",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Testimonials Slider",
+      "source_url": "https://www.framer.com/marketplace/components/testimonials-slider",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "gallery",
+      "tags": [
+        "html",
+        "minimal",
+        "slider",
+        "testimonial",
+        "logo"
+      ],
+      "description": "Live Preview When the slide changes, the old content fades out and the new content enters one piece at a time, with the logo sliding up from behind a mask. Write your testimonials.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Fd84b3af4-cf3a-4f8c-a330-137560bb6207%2F01a1075b-c28e-7435-b48d-e1d1e224d629.png&w=2048&q=80",
+      "id": "unknown__testimonials-slider",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Drone Photo Site",
+      "source_url": "https://www.framer.com/marketplace/templates/drone-photo-site",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "html",
+        "neon",
+        "dark",
+        "hero",
+        "template"
+      ],
+      "description": "Drone Photo Site A dark, HUD-style Framer template for drone pilots and aerial photographers \u2014 neon lime on black, a live telemetry bar, a pulsing crosshair and cockpit corner marks. ALTITUDE opens with a full-screen aerial hero framed like a drone camera feed, with readouts for altitude, speed, heading and battery.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F57f4e434-6bc4-451c-ad9d-d0c170454253%2F01a106ca-bcca-720e-b998-f23487aec832.jpg&w=2048&q=80",
+      "id": "unknown__drone-photo-site",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "E-Bike Brand Site",
+      "source_url": "https://www.framer.com/marketplace/templates/e-bike-brand-site",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "rive",
+        "bold",
+        "dark",
+        "section",
+        "template"
+      ],
+      "description": "E-Bike Brand Site A bold, dark Framer template for e-bike and urban mobility brands \u2014 signal orange, wide wordmark and data-driven product sections. Vectra is built for a product launch with engineering behind it.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F57f4e434-6bc4-451c-ad9d-d0c170454253%2F01a1052f-f7fe-752c-b346-54f74fbbcbc8.jpg&w=2048&q=80",
+      "id": "unknown__e-bike-brand-site",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Halal Hotel Retreat",
+      "source_url": "https://www.framer.com/marketplace/templates/halal-hotel-retreat",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "html",
+        "minimal",
+        "template"
+      ],
+      "description": "Halal Hotel Retreat NOOR is a modern Framer template designed for Muslim-friendly hotels, halal hotels, boutique stays, resorts and hospitality brands serving Muslim travelers and families. The template combines a refined boutique-hotel aesthetic with thoughtful features tailored to Muslim guests, including halal dining, prayer facilities, family-friendly accommodation, privacy-focused spaces and destination guides.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F57f4e434-6bc4-451c-ad9d-d0c170454253%2F01a10394-f52c-73d8-a9cd-79ff97ad2488.jpg&w=2048&q=80",
+      "id": "unknown__halal-hotel-retreat",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Halden Clinic",
+      "source_url": "https://www.framer.com/marketplace/templates/halden-clinic",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "html",
+        "soft",
+        "typography",
+        "scroll-effect",
+        "template"
+      ],
+      "description": "Halden Clinic Halden Clinic: Medical Website Template Halden is a calm, modern Framer template for clinics, medical practices and healthcare specialists. Its clean typography, soft blue palette and generous spacing build trust from the first scroll.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Fd348f9f7-8fb9-43ae-8af1-4cb0e3dbccaa%2F01a1075d-93b0-734d-8211-e25c9c0b2eaa.png&w=2048&q=80",
+      "id": "unknown__halden-clinic",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Halflight Cinema",
+      "source_url": "https://www.framer.com/marketplace/templates/halflight-cinema",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "html",
+        "light",
+        "image-effect",
+        "template"
+      ],
+      "description": "Halflight Cinema Give a film weekend a clear programme and room for its images. Halflight Cinema is a free Framer template for independent cinemas, film clubs and small screening events.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F5fc019e6-a4e0-41fa-930c-c299939e1d33%2F01a10904-3ced-716d-935a-8a624d9522c0.jpg&w=2048&q=80",
+      "id": "unknown__halflight-cinema",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Hotel Photographer",
+      "source_url": "https://www.framer.com/marketplace/templates/hotel-photographer",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "html",
+        "minimal",
+        "card",
+        "hero",
+        "image-effect",
+        "template"
+      ],
+      "description": "Hotel Photographer Atrium is a warm, editorial Framer template for interior and hospitality photographers who work with designers, boutique hotels, restaurants and furniture brands. A magazine-style hero pairs an arch-shaped interior image with a styled detail card and key numbers.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F57f4e434-6bc4-451c-ad9d-d0c170454253%2F01a102a2-6bb9-76af-bce5-8e8362f7d4de.jpg&w=2048&q=80",
+      "id": "unknown__hotel-photographer",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Liora Studio",
+      "source_url": "https://www.framer.com/marketplace/templates/liora-studio",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "html",
+        "minimal",
+        "typography",
+        "image-effect",
+        "template"
+      ],
+      "description": "Liora Studio Liora Studio is a Framer template for beauty studios, facialists and boutique skincare brands. A quiet editorial layout pairs a full-height image column with warm typography, rose accents and room for your treatments, care products and story.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Fb6a63866-140d-4cff-93b5-0e45bae7a00d%2F01a10441-9b3e-73eb-a209-3a3d5931ecf7.jpg&w=2048&q=80",
+      "id": "unknown__liora-studio",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Luxury Car Rental",
+      "source_url": "https://www.framer.com/marketplace/templates/luxury-car-rental",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "html",
+        "bold",
+        "luxury",
+        "template"
+      ],
+      "description": "Luxury Car Rental VANTAGE is a bold Framer template designed for exotic car rental companies, luxury car hire services and premium automotive brands. Inspired by contemporary automotive editorials and digital showrooms, the template moves away from traditional luxury design and puts the vehicles at the center of the experience.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F57f4e434-6bc4-451c-ad9d-d0c170454253%2F01a10394-148e-7742-8344-7333a06d4204.jpg&w=2048&q=80",
+      "id": "unknown__luxury-car-rental",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Maison Noir \u2014 Luxury",
+      "source_url": "https://www.framer.com/marketplace/templates/maison-noir-luxury",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "motion",
+        "luxury",
+        "form",
+        "typography",
+        "scroll-effect",
+        "parallax"
+      ],
+      "description": "Maison Noir \u2014 Luxury Maison Noir is an ultra-premium, cinematic Framer template explicitly crafted for high-end luxury fashion, modern design studios, and elite lifestyle brands. Featuring a deep obsidian backdrop, dramatic high-fashion serif typography, and trending parallax scroll-transform motion, this layout offers an immersive digital experience.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F694b4f70-83a2-4b03-94f3-167378dcbf56%2F019f7154-5da9-725a-a2d3-a56774e38bef.png&w=2048&q=80",
+      "id": "unknown__maison-noir-\u2014-luxury",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Mila Tan",
+      "source_url": "https://www.framer.com/marketplace/templates/mila-tan",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "html",
+        "minimal",
+        "button",
+        "portfolio"
+      ],
+      "description": "Mila Tan Mila Tan is a one-page portfolio for UGC creators who film ads for brands. The first screen says what you make and who for, with a booking button and your best numbers on show.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Fc810b452-c1f6-466c-bc6f-a1150dc241a7%2F01a104de-fe9d-75ae-bc32-8bdd58d937a1.png&w=2048&q=80",
+      "id": "unknown__mila-tan",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Monish & Sarah",
+      "source_url": "https://www.framer.com/marketplace/templates/monish-sarah",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "html",
+        "minimal",
+        "typography",
+        "template"
+      ],
+      "description": "Monish & Sarah Monish & Sarah is a modern, minimalist Framer template crafted specifically for wedding announcements, digital invitations, and event celebrations. It combines refined typography, generous whitespace, and responsive layouts to help couples share their story and manage event details effortlessly.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Fd9d25840-c8a4-42f9-9a76-d9d7caeda349%2F01a10b17-c39e-716b-8758-21ecaa4ed537.png&w=2048&q=80",
+      "id": "unknown__monish-&-sarah",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Mosaic \u2014 Studio",
+      "source_url": "https://www.framer.com/marketplace/templates/mosaic-studio",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "html",
+        "bold",
+        "typography",
+        "portfolio",
+        "template"
+      ],
+      "description": "Mosaic \u2014 Studio Mosaic is a premium portfolio template for designers, developers, freelancers, and creative professionals who want to showcase their work with clarity and impact. Built around a bold editorial layout, Mosaic combines strong typography, structured project showcases, refined spacing, and responsive layouts to create a distinctive personal website without unnecessary complexity.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F16604e2c-1d1f-4297-b82f-25abc103eaab%2F019ff078-93dc-75e0-8576-362983375e99.png&w=2048&q=80",
+      "id": "unknown__mosaic-\u2014-studio",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Ply\u0144 Treci",
+      "source_url": "https://www.framer.com/marketplace/templates/ply-treci",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "html",
+        "minimal",
+        "portfolio"
+      ],
+      "description": "Ply\u0144 Treci Ply\u0144 Treci is an infinite ultra-minimal portfolio built as one continuous experience. Your work, story, and projects live on a single page.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Fa0aa68bc-049b-44da-ab6f-b1d075f00500%2F01a10669-cbff-73ac-bb17-9312c95d19e3.webp&w=2048&q=80",
+      "id": "unknown__ply\u0144-treci",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "RUA 18",
+      "source_url": "https://www.framer.com/marketplace/templates/rua-18",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "html",
+        "minimal",
+        "template"
+      ],
+      "description": "RUA 18 RUA 18 is a polished six-page Framer template for a single city apartment, short-let or design-led holiday rental. It gives independent hosts a boutique-hotel level website without needing multiple properties or a complex booking system.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F7367fba4-f7a5-4813-9b00-06c675ee1dbf%2F01a111a2-f4a5-7628-972e-3c91e09f0ea7.png&w=2048&q=80",
+      "id": "unknown__rua-18",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "UEYON",
+      "source_url": "https://www.framer.com/marketplace/templates/ueyon",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "motion",
+        "bold",
+        "section",
+        "template"
+      ],
+      "description": "UEYON UEYON is a bold, editorial Framer template for creative agencies, studios and designers. Oversized display type, a strict red-on-cream palette and a mono UI voice give your work a confident, crafted presence, with motion in every section.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F9b4b653d-2395-4deb-b141-6b74934d21e6%2F01a10872-6b84-7559-a198-68055149108c.png&w=2048&q=80",
+      "id": "unknown__ueyon",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Wedding Photographer",
+      "source_url": "https://www.framer.com/marketplace/templates/wedding-photographer",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "template",
+      "tags": [
+        "html",
+        "minimal",
+        "elegant",
+        "typography",
+        "image-effect",
+        "scroll-effect"
+      ],
+      "description": "Wedding Photographer A minimal, modern portfolio template for editorial wedding photographers, designed with a cool and atmospheric aesthetic. Featuring smooth reveal animations, subtle image transitions, elegant typography, responsive layouts, and an editorial-inspired portfolio section.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F57f4e434-6bc4-451c-ad9d-d0c170454253%2F01a103aa-5041-729e-9859-b6b67a0b60d7.jpg&w=2048&q=80",
+      "id": "unknown__wedding-photographer",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Achievement set",
+      "source_url": "https://www.framer.com/marketplace/vectors/achievement-set",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "illustration",
+      "tags": [
+        "svg",
+        "playful",
+        "illustration"
+      ],
+      "description": "Achievement set Achievement Illustrations Set A modern, playful illustration pack designed to celebrate achievements, rewards, and success in your app or website. Featuring trophy, medal, crown, banner, coin, diamond, chest and more , each illustration is fully customizable with intuitive color variables.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fvector-sets%2Fachievement-set%2Fu6tnvuj8-bAdbKSzM5zFLVml1K5c8QLx1HbyVyZ&w=2048&q=80",
+      "id": "unknown__achievement-set",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Blue Splashes",
+      "source_url": "https://www.framer.com/marketplace/vectors/blue-splashes",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "illustration",
+      "tags": [
+        "svg",
+        "fluid",
+        "playful",
+        "background"
+      ],
+      "description": "Blue Splashes About this vector set A playful collection of abstract organic shapes designed to add personality and fluidity to modern web designs. Perfect for creating eye-catching compositions, backgrounds, and UI accents.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fvector-sets%2Fblue-splashes%2F1jz3ppcm-PQXIzWMjKJghHTMriQZ16fuzzxh5kU&w=2048&q=80",
+      "id": "unknown__blue-splashes",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Business Flat Icon",
+      "source_url": "https://www.framer.com/marketplace/vectors/business-flat-icon",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "illustration",
+      "tags": [
+        "svg",
+        "soft",
+        "flat",
+        "icon"
+      ],
+      "description": "Business Flat Icon Featuring a soft flat style with subtle color accents, this icon pack is perfect for business, finance, SaaS, and productivity-focused projects. Each icon is crafted with a balanced visual style, making it easy to integrate into modern interfaces without overwhelming your layout.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fvector-sets%2Fbusiness-flat-icon%2Fut7j93tx-hmHlC4xNCuexbxUSDEf93aCHE0ogMa&w=2048&q=80",
+      "id": "unknown__business-flat-icon",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Calendar icon set",
+      "source_url": "https://www.framer.com/marketplace/vectors/calendar-icon-set",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "illustration",
+      "tags": [
+        "svg",
+        "minimal",
+        "navbar",
+        "icon"
+      ],
+      "description": "Calendar icon set A modern and versatile calendar icon pack built for UI designers and product creators. This set includes clean, consistent icons for events, tasks, reminders, alerts, navigation, and productivity features.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fvector-sets%2Fcalendar-icon-set%2F7nj17t4g-zv4lsjDSu9Mi89DAgWlt28XKo4Gjjv&w=2048&q=80",
+      "id": "unknown__calendar-icon-set",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Cool Shapes",
+      "source_url": "https://www.framer.com/marketplace/vectors/cool-shapes",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "illustration",
+      "tags": [
+        "svg",
+        "minimal",
+        "bold",
+        "logo"
+      ],
+      "description": "Bold, minimal shapes designed to inject character into any creative project. This versatile vector collection is perfect for use as logo bases, striking graphic elements, UI masks, or digital stickers.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fvector-sets%2Fcool-shapes%2Fl1dvhizi-PT2O9ppasUvzXHvquegnYyPnylzpL9&w=2048&q=80",
+      "id": "unknown__cool-shapes",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Cyber Icon Set",
+      "source_url": "https://www.framer.com/marketplace/vectors/cyber-icon-set",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "illustration",
+      "tags": [
+        "svg",
+        "minimal",
+        "pixel",
+        "soft",
+        "form",
+        "icon"
+      ],
+      "description": "Cyber Icon Set Strengthen your digital interfaces with this Essential Cyber Security Icon Set, a collection of 20 professionally designed solid black icons created specifically for cybersecurity platforms, mobile applications, websites, cloud services, IT infrastructure, SaaS products, and enterprise software. Featuring a clean minimalist style, consistent proportions, and pixel-perfect precision, this icon pack helps designers and developers build secure, modern, and trustworthy user experiences.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F1440e4a2-8652-476d-99d8-ff659c92ba2e%2F019f52e4-e54b-75f9-9cce-39c25259c5d1.jpg&w=2048&q=80",
+      "id": "unknown__cyber-icon-set",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Futuristic/Y2K",
+      "source_url": "https://www.framer.com/marketplace/vectors/futuristic-y2k",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "illustration",
+      "tags": [
+        "svg",
+        "minimal",
+        "gradient",
+        "wireframe",
+        "icon",
+        "background"
+      ],
+      "description": "Futuristic/Y2K A collection of modern abstract vector icons featuring futuristic, geometric, and cyber-inspired elements. The set includes orbital shapes, sparkling stars, crescent moons, wireframe globes, distorted grids, concentric squares, halftone gradients, circular patterns, and minimalist line art.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Fdde1b40e-11ff-49b4-85c4-7541f0e952cf%2Fj6ef942y&w=2048&q=80",
+      "id": "unknown__futuristic/y2k",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Gorilla icons set",
+      "source_url": "https://www.framer.com/marketplace/vectors/gorilla",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "illustration",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon"
+      ],
+      "description": "Gorilla icons set A collection of gorilla icons featuring various powerful poses. The set includes gorillas standing upright, walking on all fours, leaning against a tree, crossing their arms, and expressing aggression with an open-mouth roar Note: Digital products that have been purchased are non-refundable Sleek Dsign@sleek-dsign Published Dec 22, 2025 Updated Dec 22, 2025 LicenseSingle-Use Buy for $5",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fvector-sets%2Fgorilla%2F241bcc40-YwmNvZJLSEboD7kdFWarrzznpe9rJr&w=2048&q=80",
+      "id": "unknown__gorilla-icons-set",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "tree icons",
+      "source_url": "https://www.framer.com/marketplace/vectors/tree-icons",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "illustration",
+      "tags": [
+        "svg",
+        "minimal",
+        "icon",
+        "logo",
+        "background"
+      ],
+      "description": "tree icons Green tree icons in various shapes and styles on a white background for eco friendly designs and logos symbolizing nature and conservation. FOREX Suree@forex-suree Published Jul 5, 2026 Updated Jul 5, 2026 LicenseSingle-Use Buy for $8",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Fe396b4ad-2e1a-4031-9873-d67b4be343a2%2F7wb2a00m&w=2048&q=80",
+      "id": "unknown__tree-icons",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Wedding Vectors",
+      "source_url": "https://www.framer.com/marketplace/vectors/wedding",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "illustration",
+      "tags": [
+        "svg",
+        "elegant",
+        "illustration"
+      ],
+      "description": "Wedding Vectors Add a touch of elegance to your next project with this 54 vector set. Each vector features consistent line work and editable strokes\u2014adjust stroke weight and colors to suit your design.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fvector-sets%2Fwedding%2Fn90agqby-rccuss1cYLK31ZAEASfsYu3o5A9KAZ&w=2048&q=80",
+      "id": "unknown__wedding-vectors",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Brand Kits 2.0",
+      "source_url": "https://www.framer.com/marketplace/plugins/brand-kits",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "plugin",
+      "tags": [
+        "canvas",
+        "minimal",
+        "plugin"
+      ],
+      "description": "Brand Kits 2.0 Stop manually re-styling components and chasing asset folders. Simply select any layer or component on your canvas and apply instant brand updates across your design.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F10850bb9-770d-49fd-9574-76bf09e47522%2F01a100bb-4be7-7139-ba4e-3c2e92c4b821.png&w=2048&q=80",
+      "id": "unknown__brand-kits-2.0",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "ColorFlow \u2014 Mesh Gradient",
+      "source_url": "https://www.framer.com/marketplace/plugins/colorflow-mesh-gradient",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "plugin",
+      "tags": [
+        "typescript",
+        "gradient",
+        "hero",
+        "plugin",
+        "background"
+      ],
+      "description": "ColorFlow \u2014 Mesh Gradient ColorFlow is a powerful mesh gradient editor built as a Framer plugin. Whether you're crafting a hero background, a brand asset, or an animated website element \u2014 ColorFlow gives you the tools to make it look exactly right.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fplugins%2F954-2KXd4UFM3K9KY1yrqrCKLlYxCm5mFo&w=2048&q=80",
+      "id": "unknown__colorflow-\u2014-mesh-gradient",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Frame Drop",
+      "source_url": "https://www.framer.com/marketplace/plugins/frame-drop",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "plugin",
+      "tags": [
+        "typescript",
+        "minimal",
+        "plugin"
+      ],
+      "description": "Frame Drop Frame Drop is a comprehensive Framer plugin that accelerates your design workflow with rapid page assembly and automated design systems. As detailed, the tool provides a robust suite of features that help designers launch responsive, accessible web pages in a fraction of the time.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Fcf7cb587-e750-4495-8c25-07fad2402b05%2F01a10370-860d-7094-bac3-db73dd380d2b.png&w=2048&q=80",
+      "id": "unknown__frame-drop",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Hazelchat",
+      "source_url": "https://www.framer.com/marketplace/plugins/hazelchat",
+      "registry_url": "https://www.framer.com/marketplace/assets/",
+      "category": "plugin",
+      "tags": [
+        "typescript",
+        "minimal",
+        "plugin"
+      ],
+      "description": "Hazelchat answers from the content you approve, shows the sources behind supported answers, and offers your chosen contact or next-step link. Review real questions to improve your content.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F61bc61c6-0ee3-41bb-b95c-0f845af1c633%2F01a10bac-2a4a-7699-94b8-b84217cc240f.png&w=2048&q=80",
+      "id": "unknown__hazelchat",
+      "source_domain": "www.framer.com"
     }
   ]
 }
