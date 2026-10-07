@@ -1,6 +1,6 @@
 {
-  "version": "1.0.87",
-  "source_count": 27665,
+  "version": "1.0.88",
+  "source_count": 27715,
   "components": [
     {
       "id": "cat-0",
@@ -480059,6 +480059,856 @@
       "preview_image": "https://cdn.21st.dev/makviesainte/progress-metric-card/default/preview.1782062854405.png",
       "id": "unknown__progress-metric-card",
       "source_domain": "21st.dev"
+    },
+    {
+      "name": "Slimy Cow Switch",
+      "source_url": "https://uiverse.io/coding-masala/slimy-cow-34",
+      "registry_url": "https://uiverse.io/all",
+      "category": "toggle",
+      "tags": [
+        "css",
+        "glow",
+        "switch",
+        "animation",
+        "transition"
+      ],
+      "description": "A toggle switch with a circular thumb that slides left and right, featuring a pulsing red-to-orange glow animation on the shadow when toggled on.",
+      "preview_image": "",
+      "id": "unknown__slimy-cow-switch",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Blue Turkey Card",
+      "source_url": "https://uiverse.io/datpedo_9896/blue-turkey-41",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "css",
+        "gradient",
+        "card",
+        "hover-effect",
+        "animation"
+      ],
+      "description": "A Polaroid-style photo card with a lake scene background featuring animated water flow, sparkles, and a sun glow effect. The card tilts and scales on hover.",
+      "preview_image": "",
+      "id": "unknown__blue-turkey-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Swift Ladybug Card",
+      "source_url": "https://uiverse.io/vaibhavchandranv/swift-ladybug-51",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "css",
+        "brutalist",
+        "card",
+        "hover-effect",
+        "transition"
+      ],
+      "description": "A neobrutalist window-style card with a white header bar, content area, and a button. The card lifts upward on hover with a bold shadow effect.",
+      "preview_image": "",
+      "id": "unknown__swift-ladybug-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Moody Squid Switch",
+      "source_url": "https://uiverse.io/web_4_zero/moody-squid-10",
+      "registry_url": "https://uiverse.io/all",
+      "category": "toggle",
+      "tags": [
+        "css",
+        "neon",
+        "switch",
+        "click-effect",
+        "transition"
+      ],
+      "description": "A currency toggle switch displaying GBP and USD symbols that flips between states with a smooth sliding animation.",
+      "preview_image": "",
+      "id": "unknown__moody-squid-switch",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Dull Ladybug Button",
+      "source_url": "https://uiverse.io/vinodjangid07/dull-ladybug-18",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "css",
+        "glow",
+        "button",
+        "hover-effect",
+        "transition"
+      ],
+      "description": "A dark reward button with a coin icon that lifts upward with a glow effect on hover, and the coin animates with a bounce effect.",
+      "preview_image": "",
+      "id": "unknown__dull-ladybug-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Clever Fly Card",
+      "source_url": "https://uiverse.io/ahmed150up/clever-fly-79",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "css",
+        "neumorphism",
+        "card",
+        "hover-effect",
+        "transition"
+      ],
+      "description": "A chat window card resembling a messaging interface with incoming and outgoing message bubbles, a text input, and a send button. Messages animate in with staggered delays.",
+      "preview_image": "",
+      "id": "unknown__clever-fly-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Helpless Fireant Loader",
+      "source_url": "https://uiverse.io/LightAndy1/helpless-fireant-0",
+      "registry_url": "https://uiverse.io/all",
+      "category": "loader",
+      "tags": [
+        "css",
+        "monochrome",
+        "loader",
+        "animation",
+        "transition"
+      ],
+      "description": "A star-based loader with three stars of varying sizes that fade in and rotate around a central point with infinite looping animation.",
+      "preview_image": "",
+      "id": "unknown__helpless-fireant-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Happy Turtle Button",
+      "source_url": "https://uiverse.io/doniaskima/happy-turtle-32",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "css",
+        "flat",
+        "button",
+        "hover-effect",
+        "animation"
+      ],
+      "description": "A circular black button with uppercase 'BUTTON' text. On hover, the text letters animate upward with staggered delays revealing a hidden background.",
+      "preview_image": "",
+      "id": "unknown__happy-turtle-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Green Fireant Card",
+      "source_url": "https://uiverse.io/waleedlh10/green-fireant-79",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "css",
+        "gradient",
+        "card",
+        "hover-effect",
+        "transition"
+      ],
+      "description": "A product card with a gradient header image, product title, description, price tag, and action buttons. The favorite button has a bouncing animation.",
+      "preview_image": "",
+      "id": "unknown__green-fireant-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Fuzzy Robin Card",
+      "source_url": "https://uiverse.io/gharsh11032000/fuzzy-robin-67",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "css",
+        "gradient",
+        "card",
+        "hover-effect",
+        "transition"
+      ],
+      "description": "A gradient card with layered background elements that animate rotation on hover, creating a dynamic depth effect with text and links.",
+      "preview_image": "",
+      "id": "unknown__fuzzy-robin-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Lovely Donkey Card (mRcOol7)",
+      "source_url": "https://uiverse.io/mRcOol7/lovely-donkey-55",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "css",
+        "gradient",
+        "card",
+        "hover-effect",
+        "transition"
+      ],
+      "description": "A 'Magic Card' with multiple layered gradient backgrounds rotated at different angles. On hover, the colored layers fade out to reveal the card content.",
+      "preview_image": "",
+      "id": "unknown__lovely-donkey-card-(mrcool7)",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Fuzzy Liger Input",
+      "source_url": "https://uiverse.io/AKAspidey01/fuzzy-liger-17",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "input",
+        "hover-effect",
+        "transition"
+      ],
+      "description": "A Tailwind CSS input field component with clean styling and focus effects. The component uses modern utility classes for a streamlined appearance.",
+      "preview_image": "",
+      "id": "unknown__fuzzy-liger-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Calm Tiger Button",
+      "source_url": "https://uiverse.io/cssbuttons-io/calm-tiger-42",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "css",
+        "outline",
+        "button",
+        "hover-effect",
+        "ripple"
+      ],
+      "description": "A 'Get in touch' button with a ripple effect on hover. Circular background elements sweep across the button with a color transition from dark to teal.",
+      "preview_image": "",
+      "id": "unknown__calm-tiger-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Young Swan Loader",
+      "source_url": "https://uiverse.io/NlghtM4re/young-swan-89",
+      "registry_url": "https://uiverse.io/all",
+      "category": "loader",
+      "tags": [
+        "css",
+        "glow",
+        "loader",
+        "animation",
+        "transition"
+      ],
+      "description": "A spinner loader with five bars that flip and fade in sequence with staggered animation delays, creating a circular loading pattern.",
+      "preview_image": "",
+      "id": "unknown__young-swan-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Helpless Swan Input",
+      "source_url": "https://uiverse.io/lenfear23/helpless-swan-97",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "css",
+        "neumorphism",
+        "input",
+        "transition",
+        "focus"
+      ],
+      "description": "A neumorphic input field with dual outset and inset box shadows that invert on focus, creating a pressed-in effect with a soft gray background.",
+      "preview_image": "",
+      "id": "unknown__helpless-swan-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Dull Fireant Card",
+      "source_url": "https://uiverse.io/soroush_8757/dull-fireant-51",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "card",
+        "transition",
+        "hover-effect"
+      ],
+      "description": "A Tailwind CSS card component with clean styling and utility-based layout. Uses modern classes for a streamlined card presentation.",
+      "preview_image": "",
+      "id": "unknown__dull-fireant-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Clever Mule Input",
+      "source_url": "https://uiverse.io/sudhucodes/clever-mule-21",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "input",
+        "transition",
+        "focus"
+      ],
+      "description": "A Tailwind CSS input field component with modern utility-based styling and focus effects. Features clean design with appropriate spacing and typography.",
+      "preview_image": "",
+      "id": "unknown__clever-mule-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Strange Deer Input",
+      "source_url": "https://uiverse.io/Jules-gitclerc/strange-deer-3",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "input",
+        "transition",
+        "focus"
+      ],
+      "description": "A Tailwind CSS input component that is a variation of another design. Uses utility classes for a clean, modern text input field.",
+      "preview_image": "",
+      "id": "unknown__strange-deer-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Red Duck Card",
+      "source_url": "https://uiverse.io/amir_6539/red-duck-82",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "css",
+        "dark",
+        "card",
+        "animation",
+        "gradient"
+      ],
+      "description": "A card with a dark animated starfield background created using CSS box-shadow for star particles. Features a radial gradient overlay with animated elements.",
+      "preview_image": "",
+      "id": "unknown__red-duck-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Cowardly Fireant Input",
+      "source_url": "https://uiverse.io/Yaya12085/cowardly-fireant-2",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "input",
+        "transition",
+        "focus"
+      ],
+      "description": "A Tailwind CSS input component that is a variation of another design. Features utility-based styling for a modern input field.",
+      "preview_image": "",
+      "id": "unknown__cowardly-fireant-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Funny Sloth Button",
+      "source_url": "https://uiverse.io/Smit-Prajapati/funny-sloth-75",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "css",
+        "glow",
+        "button",
+        "hover-effect",
+        "transition"
+      ],
+      "description": "A product card button for an Adidas hoodie with price tag, color options, size selector, and rating display. Features a favorite toggle with bouncing animation.",
+      "preview_image": "",
+      "id": "unknown__funny-sloth-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Gentle Yak Input",
+      "source_url": "https://uiverse.io/sabbircoder07/gentle-yak-43",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "css",
+        "minimal",
+        "input",
+        "hover-effect",
+        "transition"
+      ],
+      "description": "A search input with a magnifying glass icon, mic button, and picture attachment button. The input expands on focus with a smooth transition.",
+      "preview_image": "",
+      "id": "unknown__gentle-yak-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Fat Tiger Button",
+      "source_url": "https://uiverse.io/cssbuttons-io/fat-tiger-100",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "css",
+        "flat",
+        "button",
+        "click-effect",
+        "transition"
+      ],
+      "description": "A simple blue button with text shadow and border depth effect. On hover, the button brightens and on click, it presses down with reduced padding.",
+      "preview_image": "",
+      "id": "unknown__fat-tiger-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Fuzzy Otter Tooltip",
+      "source_url": "https://uiverse.io/VassoD/fuzzy-otter-2",
+      "registry_url": "https://uiverse.io/all",
+      "category": "tooltip",
+      "tags": [
+        "css",
+        "gradient",
+        "tooltip",
+        "hover-effect",
+        "transition"
+      ],
+      "description": "A help button that reveals a tooltip with assistance text on hover. The tooltip fades in and slides up with a glow animation on the label text.",
+      "preview_image": "",
+      "id": "unknown__fuzzy-otter-tooltip",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Itchy Turtle Input",
+      "source_url": "https://uiverse.io/Akshdeep74644/itchy-turtle-76",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "css",
+        "gradient",
+        "input",
+        "focus",
+        "transition"
+      ],
+      "description": "A floating label input with an animated underline that transitions from gray to blue on focus. The label moves upward with a color change.",
+      "preview_image": "",
+      "id": "unknown__itchy-turtle-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Purple Mule Loader",
+      "source_url": "https://uiverse.io/KhaledMatalkah/purple-mule-91",
+      "registry_url": "https://uiverse.io/all",
+      "category": "loader",
+      "tags": [
+        "css",
+        "glow",
+        "loader",
+        "animation",
+        "transition"
+      ],
+      "description": "A circular loader with a blue ring that rotates continuously, and an inner element that grows and fades in a looping pulse animation.",
+      "preview_image": "",
+      "id": "unknown__purple-mule-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Itchy Squid Input",
+      "source_url": "https://uiverse.io/EddyBel/itchy-squid-77",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "css",
+        "liquid-glass",
+        "input",
+        "focus",
+        "transition"
+      ],
+      "description": "A 'Username' input field with a glassmorphism container featuring a blurred gradient background. The input inverts to dark background with white text on hover or focus.",
+      "preview_image": "",
+      "id": "unknown__itchy-squid-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Dry Wolverine Loader",
+      "source_url": "https://uiverse.io/AHMED-MIT/dry-wolverine-85",
+      "registry_url": "https://uiverse.io/all",
+      "category": "loader",
+      "tags": [
+        "css",
+        "glow",
+        "loader",
+        "animation",
+        "transition"
+      ],
+      "description": "A 3D perspective spinner with five bars that rotateY flip in sequence with staggered animation delays, creating a folding cube effect.",
+      "preview_image": "",
+      "id": "unknown__dry-wolverine-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Nervous Mouse Input",
+      "source_url": "https://uiverse.io/omriluz/nervous-mouse-69",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "css",
+        "gradient",
+        "input",
+        "focus",
+        "transition"
+      ],
+      "description": "A text input with a border that animates a gradient underline from left to right on focus. Features two variants with different transition speeds.",
+      "preview_image": "",
+      "id": "unknown__nervous-mouse-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Popular Gecko Card",
+      "source_url": "https://uiverse.io/NotReal22/popular-gecko-14",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "css",
+        "gradient",
+        "card",
+        "hover-effect",
+        "animation"
+      ],
+      "description": "A gradient card with a circular element containing list items that rotate and change opacity on hover, creating an interactive reveal effect.",
+      "preview_image": "",
+      "id": "unknown__popular-gecko-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Odd Lion Input",
+      "source_url": "https://uiverse.io/ZAKARIAE48CHELLE/odd-lion-80",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "css",
+        "minimal",
+        "input",
+        "focus",
+        "transition"
+      ],
+      "description": "A circular search input that expands to full width with a blue bottom border on focus. Features an icon button that appears on the right side.",
+      "preview_image": "",
+      "id": "unknown__odd-lion-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Modern Snail Loader",
+      "source_url": "https://uiverse.io/20essentials/modern-snail-42",
+      "registry_url": "https://uiverse.io/all",
+      "category": "loader",
+      "tags": [
+        "css",
+        "dark",
+        "loader",
+        "animation",
+        "3d"
+      ],
+      "description": "A 3D perspective ring loader with CSS custom properties. Features dotted rings that rotate with a spinning animation in a dark-themed container.",
+      "preview_image": "",
+      "id": "unknown__modern-snail-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Lazy Robin Input",
+      "source_url": "https://uiverse.io/danielleallennn/lazy-robin-49",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "css",
+        "monochrome",
+        "input",
+        "focus",
+        "transition"
+      ],
+      "description": "A color-coded input with a floating label that moves up and changes color on focus. Includes a copy button with crosshair cursor and backdrop blur.",
+      "preview_image": "",
+      "id": "unknown__lazy-robin-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Loud Chicken Card",
+      "source_url": "https://uiverse.io/zaeniahmad-id/loud-chicken-59",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "css",
+        "dark",
+        "card",
+        "hover-effect",
+        "transition"
+      ],
+      "description": "A social media card with icons for Instagram, Twitter, LinkedIn, and WhatsApp. Icons scale up and change background colors on hover with smooth transitions.",
+      "preview_image": "",
+      "id": "unknown__loud-chicken-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Average Chipmunk Button",
+      "source_url": "https://uiverse.io/barisdogansutcu/average-chipmunk-44",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "css",
+        "glow",
+        "button",
+        "hover-effect",
+        "transition"
+      ],
+      "description": "A 'PLAY NOW' button with an SVG mask shape and a glow effect that sweeps across the button on hover. Features a color transition from dark to teal.",
+      "preview_image": "",
+      "id": "unknown__average-chipmunk-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Swift Moth Radio",
+      "source_url": "https://uiverse.io/mihocsaszilard/swift-moth-5",
+      "registry_url": "https://uiverse.io/all",
+      "category": "component",
+      "tags": [
+        "css",
+        "dark",
+        "radio",
+        "click-effect",
+        "transition"
+      ],
+      "description": "A browser-style URL bar with radio options for cursor, lovable, and other icons. Radio selections update the displayed URL with a flashing cursor animation.",
+      "preview_image": "",
+      "id": "unknown__swift-moth-radio",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Good Otter Card",
+      "source_url": "https://uiverse.io/jlutrezehue/good-otter-35",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "card",
+        "transition",
+        "hover-effect"
+      ],
+      "description": "A Tailwind CSS card component with clean utility-based styling. The card uses modern classes for layout and presentation.",
+      "preview_image": "",
+      "id": "unknown__good-otter-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Stale Lionfish Card",
+      "source_url": "https://uiverse.io/ardianhu/stale-lionfish-9",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "card",
+        "transition",
+        "hover-effect"
+      ],
+      "description": "A Tailwind CSS card component with clean utility-based styling in a dark theme. Uses modern Tailwind classes for layout.",
+      "preview_image": "",
+      "id": "unknown__stale-lionfish-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Light Starfish Loader",
+      "source_url": "https://uiverse.io/JaydipPrajapati1910/light-starfish-10",
+      "registry_url": "https://uiverse.io/all",
+      "category": "loader",
+      "tags": [
+        "css",
+        "flat",
+        "loader",
+        "animation",
+        "transition"
+      ],
+      "description": "A block-based loader with three red squares that rearrange positions in a continuous 4-second loop, creating a shifting pattern animation.",
+      "preview_image": "",
+      "id": "unknown__light-starfish-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Splendid Bat Form (vinodjangid07)",
+      "source_url": "https://uiverse.io/vinodjangid07/splendid-bat-9",
+      "registry_url": "https://uiverse.io/all",
+      "category": "form",
+      "tags": [
+        "css",
+        "minimal",
+        "form",
+        "focus",
+        "transition"
+      ],
+      "description": "A login form with text input fields that have animated underline borders. Features a submit button with a sweeping glow effect on hover.",
+      "preview_image": "",
+      "id": "unknown__splendid-bat-form-(vinodjangid07)",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Quick Cheetah Input",
+      "source_url": "https://uiverse.io/Satwinder04/quick-cheetah-45",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "css",
+        "minimal",
+        "input",
+        "focus",
+        "transition"
+      ],
+      "description": "A floating label input with an animated highlight bar that expands to full width on focus. The label moves upward with a size and color change.",
+      "preview_image": "",
+      "id": "unknown__quick-cheetah-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Dull Mole Button",
+      "source_url": "https://uiverse.io/Pradeepsaranbishnoi/dull-mole-49",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "css",
+        "neon",
+        "button",
+        "hover-effect",
+        "animation"
+      ],
+      "description": "A voltage-themed button with SVG lightning effects, pulsing stroke animations, and flying dots that cascade in sequence. Colors shift from blue to teal on hover.",
+      "preview_image": "",
+      "id": "unknown__dull-mole-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Curly Husky Loader",
+      "source_url": "https://uiverse.io/mrhyddenn/curly-husky-77",
+      "registry_url": "https://uiverse.io/all",
+      "category": "loader",
+      "tags": [
+        "css",
+        "glow",
+        "loader",
+        "animation",
+        "transition"
+      ],
+      "description": "A rotating loader with six dots that rotate around a central axis with staggered animation delays. Includes a text label below the spinner.",
+      "preview_image": "",
+      "id": "unknown__curly-husky-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Ordinary Rat Button",
+      "source_url": "https://uiverse.io/Navarog21/ordinary-rat-19",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "css",
+        "dark",
+        "button",
+        "hover-effect",
+        "animation"
+      ],
+      "description": "A 'P L A Y' button with a hexagon clip-path border, animated corner elements, and sliding arrows that activate on hover with color transitions.",
+      "preview_image": "",
+      "id": "unknown__ordinary-rat-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Tiny Chicken Input",
+      "source_url": "https://uiverse.io/Li-Deheng/tiny-chicken-50",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "css",
+        "liquid-glass",
+        "input",
+        "focus",
+        "transition"
+      ],
+      "description": "A rounded color input with a floating label and a copy-to-clipboard button. Features glassmorphism effects with backdrop blur on focus.",
+      "preview_image": "",
+      "id": "unknown__tiny-chicken-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Honest Lionfish Form",
+      "source_url": "https://uiverse.io/KhelVers/honest-lionfish-67",
+      "registry_url": "https://uiverse.io/all",
+      "category": "form",
+      "tags": [
+        "css",
+        "liquid-glass",
+        "form",
+        "hover-effect",
+        "animation"
+      ],
+      "description": "A glowing login form with a frosted glass background and animated rays. Form inputs have a neon border that intensifies on focus, with a gradient submit button.",
+      "preview_image": "",
+      "id": "unknown__honest-lionfish-form",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Dull Penguin Loader",
+      "source_url": "https://uiverse.io/Nawsome/dull-penguin-97",
+      "registry_url": "https://uiverse.io/all",
+      "category": "loader",
+      "tags": [
+        "css",
+        "dark",
+        "loader",
+        "animation",
+        "text-effect"
+      ],
+      "description": "A falling binary code loader that displays 'LOADING STUFF...' text. Binary digits (0s and 1s) fall from the top with rotation and opacity animations.",
+      "preview_image": "",
+      "id": "unknown__dull-penguin-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Yellow Fox Input",
+      "source_url": "https://uiverse.io/pablofernz/yellow-fox-100",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "css",
+        "minimal",
+        "input",
+        "focus",
+        "transition"
+      ],
+      "description": "An email input field with a floating label that uses flexbox column-reverse layout. On focus, the input border glows white and the label color lightens.",
+      "preview_image": "",
+      "id": "unknown__yellow-fox-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Pink Lizard Button",
+      "source_url": "https://uiverse.io/zymantas-katinas/pink-lizard-56",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "css",
+        "dark",
+        "button",
+        "hover-effect",
+        "3d"
+      ],
+      "description": "A 3D 'Click me' button with shadow and edge layers that lift on hover and press down on click. The button uses a dark gradient background with depth effects.",
+      "preview_image": "",
+      "id": "unknown__pink-lizard-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Proud Fireant Form",
+      "source_url": "https://uiverse.io/themrsami/proud-fireant-91",
+      "registry_url": "https://uiverse.io/all",
+      "category": "form",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "form",
+        "transition",
+        "focus"
+      ],
+      "description": "A Tailwind CSS form component with utility-based styling. Uses modern classes for layout, spacing, and responsive design.",
+      "preview_image": "",
+      "id": "unknown__proud-fireant-form",
+      "source_domain": "uiverse.io"
     }
   ]
 }
