@@ -1,6 +1,6 @@
 {
-  "version": "1.0.86",
-  "source_count": 27615,
+  "version": "1.0.87",
+  "source_count": 27665,
   "components": [
     {
       "id": "cat-0",
@@ -479163,6 +479163,902 @@
       "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2025/08/clothpillow.jpeg?x51331",
       "id": "unknown__exporting-a-cloth-simulation-from-blender-to-an-interactive-three.js-scene",
       "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Cnippet Empty/Filters",
+      "source_url": "https://21st.dev/@cnippet-dev/components/cnippet-empty/filters",
+      "registry_url": "https://21st.dev/community/components/s/card",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "ts",
+        "minimal",
+        "flat",
+        "card"
+      ],
+      "description": "A composable empty-state block for screens with no data to show, composed of Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription and EmptyContent subcomponents. The filters variant renders an icon, a no-matching-results message and Clear filters / Edit filters actions.",
+      "preview_image": "https://cdn.21st.dev/larsen66/cnippet-empty/filters/preview.1784047727980.png",
+      "id": "unknown__cnippet-empty/filters",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Testimonial/Modern Customer Testimonial",
+      "source_url": "https://21st.dev/@prebuiltui/components/testimonial/modern-customer-testimonial",
+      "registry_url": "https://21st.dev/community/components/s/card",
+      "category": "testimonial",
+      "tags": [
+        "react",
+        "tailwind",
+        "svg",
+        "minimal",
+        "flat",
+        "testimonial"
+      ],
+      "description": "A customer testimonial card with a circular avatar that overlaps the top border, the person's name and role, a quote paragraph, and a row of five star SVGs used for the rating. Intended for wrapping several testimonial cards side by side.",
+      "preview_image": "https://cdn.21st.dev/user_prebuiltui/testimonial/modern-customer-testimonial/preview.1785939834987.png",
+      "id": "unknown__testimonial/modern-customer-testimonial",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "SymmetryEngine",
+      "source_url": "https://21st.dev/@dhileepkumargm/components/symmetry-engine",
+      "registry_url": "https://21st.dev/community/components/s/hero",
+      "category": "3d",
+      "tags": [
+        "react",
+        "tailwind",
+        "webgl",
+        "shader",
+        "gradient",
+        "background"
+      ],
+      "description": "A real-time interactive fractal world rendered with ray marching and domain folding, producing infinite self-similar geometry from pure mathematical transformations. Mouse movement rotates the camera through the folded dimensions, revealing a kaleidoscopic landscape of recursive forms and colour.",
+      "preview_image": "https://cdn.21st.dev/dhileepkumargm/symmetry-engine/default/preview.1758730467099.png",
+      "id": "unknown__symmetryengine",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Gradient Bold Card",
+      "source_url": "https://21st.dev/@ruixen.ui/components/gradient-bold-card",
+      "registry_url": "https://21st.dev/community/components/s/card",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "css",
+        "glass",
+        "glow",
+        "card"
+      ],
+      "description": "An animated card with a glass surface treatment and a glowing border that moves around the edge of the component. Exported as a single drop-in component so it can be placed directly on a page.",
+      "preview_image": "https://cdn.21st.dev/ruixen.ui/gradient-bold-card/default/preview.1755624994936.png",
+      "id": "unknown__gradient-bold-card",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Split Hero With Image Cards",
+      "source_url": "https://21st.dev/@felipemenezes098/components/hero-08",
+      "registry_url": "https://21st.dev/community/components/s/hero",
+      "category": "hero",
+      "tags": [
+        "react",
+        "tailwind",
+        "motion",
+        "minimal",
+        "flat",
+        "hero"
+      ],
+      "description": "A split hero section pairing a serif headline and supporting copy with avatar-based social proof and two image cards. Each card takes a title, subtitle, image, an invert flag for the overlay text treatment, and an optional call-to-action button; animation intensity is set through a prop.",
+      "preview_image": "https://cdn.21st.dev/felipemenezes098/hero-08/default/preview.1783679118535.png",
+      "id": "unknown__split-hero-with-image-cards",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Animated Shader Hero",
+      "source_url": "https://21st.dev/@ravikatiyar162/components/animated-shader-hero",
+      "registry_url": "https://21st.dev/community/components/s/hero",
+      "category": "hero",
+      "tags": [
+        "react",
+        "tailwind",
+        "webgl",
+        "shader",
+        "glow",
+        "hero"
+      ],
+      "description": "A hero section laid over an animated WebGL shader background, with content passed in as props: a trust badge, a two-line headline, a subtitle, and primary and secondary buttons with their own click handlers.",
+      "preview_image": "https://cdn.21st.dev/ravikatiyar162/animated-shader-hero/default/preview.1755360493434.png",
+      "id": "unknown__animated-shader-hero",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Oceanic Shimmer",
+      "source_url": "https://21st.dev/@serafimcloud/components/oceanic-shimmer",
+      "registry_url": "https://21st.dev/community/components/s/hero",
+      "category": "background",
+      "tags": [
+        "react",
+        "tailwind",
+        "css",
+        "gradient",
+        "noise",
+        "background"
+      ],
+      "description": "A pure CSS gradient background built from a four-colour palette in the Layered Tide style, with a film grain overlay and no dependencies. It is meant to drop into hero sections, cards, or as a full page background.",
+      "preview_image": "https://cdn.21st.dev/serafimcloud/oceanic-shimmer/default/preview.1783766344706.webp",
+      "id": "unknown__oceanic-shimmer",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Call to Action 01",
+      "source_url": "https://21st.dev/@designali-in/components/call-to-action-01",
+      "registry_url": "https://21st.dev/community/components/s/hero",
+      "category": "section",
+      "tags": [
+        "react",
+        "tailwind",
+        "svg",
+        "minimal",
+        "flat",
+        "section"
+      ],
+      "description": "A call-to-action section that combines brand logos with the promotional block. It pulls its icon and logo sets from the aliimam icon and logo packages.",
+      "preview_image": "https://cdn.21st.dev/designali-in/call-to-action-01/default/preview.1760505399837.png",
+      "id": "unknown__call-to-action-01",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Statistics Card 7",
+      "source_url": "https://21st.dev/@sean0205/components/statistics-card-7",
+      "registry_url": "https://21st.dev/community/components/s/card",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "svg",
+        "minimal",
+        "flat",
+        "card"
+      ],
+      "description": "A statistic card presenting a headline metric with its period as a subtitle, a large value, a coloured delta badge carrying an icon, and a comparison line against the previous period. Three cards render as one bordered row that collapses to a single column at smaller widths.",
+      "preview_image": "https://cdn.21st.dev/sean0205/statistics-card-7/default/preview.1753372970551.png",
+      "id": "unknown__statistics-card-7",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Stats Section with Text",
+      "source_url": "https://21st.dev/@tommyjepsen/components/stats-section-with-text",
+      "registry_url": "https://21st.dev/community/components/s/card",
+      "category": "section",
+      "tags": [
+        "react",
+        "tailwind",
+        "svg",
+        "minimal",
+        "flat",
+        "section"
+      ],
+      "description": "A statistics section that sets a short explanatory passage next to four figures covering monthly active users, daily active users, monthly recurring revenue, and cost per acquisition. Each figure carries its own percentage change, coloured by direction.",
+      "preview_image": "https://cdn.21st.dev/user_2nElBLvklOKlAURm6W1PTu6yYFh/stats-section-with-text/default/preview.png",
+      "id": "unknown__stats-section-with-text",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Floating Bubbles Background",
+      "source_url": "https://21st.dev/@uniquesonu/components/floating-bubbles-background",
+      "registry_url": "https://21st.dev/community/components/s/hero",
+      "category": "hero",
+      "tags": [
+        "react",
+        "tailwind",
+        "framer-motion",
+        "svg",
+        "gradient",
+        "particles"
+      ],
+      "description": "A hero built on a full-viewport SVG background of fifty randomly sized and coloured semi-transparent bubbles that continuously scale, fade and drift. Above it, a spring-animated letter-by-letter gradient title sits over a frosted, blur-backed call-to-action button that scales and shifts its arrow on hover.",
+      "preview_image": "https://cdn.21st.dev/uniquesonu/floating-bubbles-background/default/preview.1749721120669.png",
+      "id": "unknown__floating-bubbles-background",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Focus Frame Border",
+      "source_url": "https://21st.dev/@shadcnspace/components/shine-border-06",
+      "registry_url": "https://21st.dev/community/components/s/card",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "css",
+        "glow",
+        "minimal",
+        "border"
+      ],
+      "description": "A wrapper that adds a camera-style focus-lock border to any card or panel using four pulsing glowing corner brackets rather than a continuous shine ring. Pulse duration and colour are set through props.",
+      "preview_image": "https://cdn.21st.dev/shadcnspace/shine-border-06/default/preview.1790133202193-ab524238-42dc-495a-877b-e5fdd3cb03de.png",
+      "id": "unknown__focus-frame-border",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Background Gradient Glow",
+      "source_url": "https://21st.dev/@meghtrix/components/background-gradient-glow/peachy-mint-gradient",
+      "registry_url": "https://21st.dev/community/components/s/hero",
+      "category": "background",
+      "tags": [
+        "react",
+        "tailwind",
+        "css",
+        "gradient",
+        "glow",
+        "background"
+      ],
+      "description": "A full-screen background layer made from a single linear-gradient, with content rendered above it. Variants apply layered radial-gradients to produce aurora-style glow fields.",
+      "preview_image": "https://cdn.21st.dev/larsen66/background-gradient-glow/peachy-mint-gradient/preview.1757787288212.png",
+      "id": "unknown__background-gradient-glow",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Halftone Nebula",
+      "source_url": "https://21st.dev/@kedhareswer/components/halftone-nebula",
+      "registry_url": "https://21st.dev/community/components/s/hero",
+      "category": "background",
+      "tags": [
+        "react",
+        "tailwind",
+        "webgl",
+        "halftone",
+        "pixel",
+        "parallax"
+      ],
+      "description": "An interactive halftone space background in the style of printed pixel art: a crimson nebula, sparkle stars and a dotted planet spread across three parallax depths. Pointer movement lights the gas and a click hangs a new star; it uses WebGL with no dependencies.",
+      "preview_image": "https://cdn.21st.dev/user_30fkm37UoBFJx1GiK2Q4Sy8lSrO/halftone-nebula/default/preview.1790598283998.webp",
+      "id": "unknown__halftone-nebula",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Hero 2",
+      "source_url": "https://21st.dev/@preetsuthar17/components/hero-2-1",
+      "registry_url": "https://21st.dev/community/components/s/hero",
+      "category": "hero",
+      "tags": [
+        "react",
+        "tailwind",
+        "motion",
+        "noise",
+        "soft",
+        "hero"
+      ],
+      "description": "A grainy hero section built for an email-focused website. The component is exported as Hero2 with no props and uses motion plus lucide-react icons.",
+      "preview_image": "https://cdn.21st.dev/user_2rWolCuRnJW3DRiuQ5JHrl5kj8a/hero-2-1/default/preview.1785485869955.png",
+      "id": "unknown__hero-2",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Calendar with localisation",
+      "source_url": "https://21st.dev/@shadcn/components/calendar-with-localisation",
+      "registry_url": "https://21st.dev/community/components/s/card",
+      "category": "form",
+      "tags": [
+        "react",
+        "tailwind",
+        "ts",
+        "minimal",
+        "flat",
+        "date-picker"
+      ],
+      "description": "A calendar set inside a card for booking an appointment, running in range mode across two months with react-day-picker. A select in the card header switches the locale and swaps the card title and description between English and Spanish strings.",
+      "preview_image": "https://cdn.21st.dev/larsen66/calendar-with-localisation/default/preview.1749972605587.png",
+      "id": "unknown__calendar-with-localisation",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Blog 7",
+      "source_url": "https://21st.dev/@shadcnblockscom/components/blog7",
+      "registry_url": "https://21st.dev/community/components/s/card",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "svg",
+        "minimal",
+        "flat",
+        "card"
+      ],
+      "description": "A blog section built from shadcn/ui cards, holding a tagline, heading, description and an explore-all button above three post cards. Each post entry supplies a title, summary, label, author, published date, url and image.",
+      "preview_image": "https://cdn.21st.dev/user_2rguB0QxcSITG2Y7ivePFsKsUU6/blog7/default/preview.png?v=1",
+      "id": "unknown__blog-7",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Black Hole Vortex Animation",
+      "source_url": "https://21st.dev/@minhxthanh/components/black-hole-vortex-animation",
+      "registry_url": "https://21st.dev/community/components/s/hero",
+      "category": "animation",
+      "tags": [
+        "react",
+        "tailwind",
+        "framer-motion",
+        "svg",
+        "glow",
+        "animation"
+      ],
+      "description": "A black hole animation drawn with SVG and driven by Framer Motion, where a central vortex pulls surrounding particles into a smooth spiral. A title appears letter by letter over the scene, making it usable as a hero section or background.",
+      "preview_image": "https://cdn.21st.dev/minhxthanh/black-hole-vortex-animation/default/preview.1752554941340.png",
+      "id": "unknown__black-hole-vortex-animation",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Bold Stats",
+      "source_url": "https://21st.dev/@uilayout.contact/components/stats-bold",
+      "registry_url": "https://21st.dev/community/components/s/card",
+      "category": "section",
+      "tags": [
+        "react",
+        "tailwind",
+        "ts",
+        "minimal",
+        "gradient",
+        "section"
+      ],
+      "description": "A statistics section that leads with one oversized metric and its supporting sentence, paired with a supporting image, then a row of smaller key figures such as latency, region count, and support availability.",
+      "preview_image": "https://cdn.21st.dev/uilayout.contact/stats-bold/default/preview.1784420582612-62029dd9-6f32-4290-b757-ef0820cf8bff.png",
+      "id": "unknown__bold-stats",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Profile Dropdown",
+      "source_url": "https://21st.dev/@arihantcodes_1f7b8c4d/components/profile-dropdown",
+      "registry_url": "https://21st.dev/community/components/s/card",
+      "category": "menu",
+      "tags": [
+        "react",
+        "tailwind",
+        "framer-motion",
+        "minimal",
+        "flat",
+        "menu"
+      ],
+      "description": "A profile dropdown menu component built with Framer Motion and Next.js, using lucide-react icons and next-themes for light and dark mode handling.",
+      "preview_image": "https://cdn.21st.dev/arihantcodes_1f7b8c4d/profile-dropdown/default/preview.1788796534398-7d2e0435-b42e-4cd9-a310-3cdf5f67c9b0.png",
+      "id": "unknown__profile-dropdown",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Achievement badge",
+      "source_url": "https://21st.dev/@trophyso/components/achievement-badge/clickable-achievement",
+      "registry_url": "https://21st.dev/community/components/s/card",
+      "category": "badge",
+      "tags": [
+        "react",
+        "tailwind",
+        "ts",
+        "minimal",
+        "metallic",
+        "badge"
+      ],
+      "description": "An achievement badge that takes an achievement object containing id, name, trigger, achievedAt and progress, and fires an onAchievementClick callback with that object when clicked.",
+      "preview_image": "https://cdn.21st.dev/larsen66/achievement-badge/clickable-achievement/preview.1779967238976.png",
+      "id": "unknown__achievement-badge",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Modal Card",
+      "source_url": "https://21st.dev/@beratberkayg/components/modal-card",
+      "registry_url": "https://21st.dev/community/components/s/card",
+      "category": "modal",
+      "tags": [
+        "react",
+        "tailwind",
+        "css",
+        "glass",
+        "gradient",
+        "modal"
+      ],
+      "description": "A modal card promoting an advanced voice mode, with a heading, two feature entries describing natural conversation and emotion handling, a Learn more link, and Start chatting / Maybe later actions.",
+      "preview_image": "https://cdn.21st.dev/beratberkayg/modal-card/default/preview.1759605207016.png",
+      "id": "unknown__modal-card",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Stats",
+      "source_url": "https://21st.dev/@meschacirung/components/stats/stats-metric",
+      "registry_url": "https://21st.dev/community/components/s/card",
+      "category": "section",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "flat",
+        "section"
+      ],
+      "description": "A stats section laid out as a responsive grid of large figures, such as integration count and a productivity boost percentage, alongside a supporting paragraph about platform growth.",
+      "preview_image": "https://cdn.21st.dev/meschacirung/stats/stats-metric/preview.1785191202349-a0d97a9a-33b7-4e87-a8e5-4c1951689142.png",
+      "id": "unknown__stats",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Modern Landing Hero",
+      "source_url": "https://21st.dev/@mokshithgujjeti/components/modern-landing-hero",
+      "registry_url": "https://21st.dev/community/components/s/hero",
+      "category": "hero",
+      "tags": [
+        "react",
+        "tailwind",
+        "svg",
+        "minimal",
+        "flat",
+        "hero"
+      ],
+      "description": "A landing page hero with a headline, supporting paragraph, two call-to-action buttons and an update badge. Below it sits a search field for components and settings plus a terminal-style panel printing an install command and its resolution log.",
+      "preview_image": "https://cdn.21st.dev/mokshithcodez/modern-landing-hero/default/preview.1783617372063.png",
+      "id": "unknown__modern-landing-hero",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Gradient Background 4",
+      "source_url": "https://21st.dev/@ibelick/components/gradient-background-4",
+      "registry_url": "https://21st.dev/community/components/s/hero",
+      "category": "background",
+      "tags": [
+        "react",
+        "tailwind",
+        "css",
+        "gradient",
+        "soft",
+        "background"
+      ],
+      "description": "A gradient background snippet from a set of background snippets, intended to sit behind page or hero content. The detail page exposes only the preview and a default import, so no further structure is documented.",
+      "preview_image": "https://cdn.21st.dev/user_2rkgEMvkQ7I2oxalLXELCy8NObN/gradient-background-4/default/preview.1786563234987.png",
+      "id": "unknown__gradient-background-4",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Parallax Cosmic Background",
+      "source_url": "https://21st.dev/@jahed/components/parallax-cosmic-background",
+      "registry_url": "https://21st.dev/community/components/s/hero",
+      "category": "background",
+      "tags": [
+        "react",
+        "tailwind",
+        "ts",
+        "aurora",
+        "gradient",
+        "parallax"
+      ],
+      "description": "A full-screen cosmic parallax background hero that accepts a heading and a tagline, plus a loop prop to repeat the animation. Content is layered over the moving scene.",
+      "preview_image": "https://cdn.21st.dev/user_2xJxXqdwWohYrdd6fiMYrS9hbmO/parallax-cosmic-background/default/preview.1786737874985.webp",
+      "id": "unknown__parallax-cosmic-background",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Hero Section Dark",
+      "source_url": "https://21st.dev/@kinfe123/components/hero-section-dark",
+      "registry_url": "https://21st.dev/community/components/s/hero",
+      "category": "hero",
+      "tags": [
+        "react",
+        "tailwind",
+        "gradient",
+        "monochrome",
+        "hero"
+      ],
+      "description": "A dark hero section taking a title, a subtitle split into regular and gradient spans, a description, call-to-action text and href, and separate light and dark bottom images. A gridOptions prop controls the background grid angle, opacity, cell size, and light and dark line colours.",
+      "preview_image": "https://cdn.21st.dev/user_2rgfvfP6KhEePYzaDzrZPKcn1JO/hero-section-dark/default/preview.1738001828259.png",
+      "id": "unknown__hero-section-dark",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Shine Border",
+      "source_url": "https://21st.dev/@dillionverma/components/shine-border",
+      "registry_url": "https://21st.dev/community/components/s/card",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "css",
+        "gradient",
+        "glow",
+        "border"
+      ],
+      "description": "An animated background border effect that wraps any content, with the border colours supplied as an array. The demo shows both a multi-colour variant and a monochrome variant that follows the current theme.",
+      "preview_image": "https://cdn.21st.dev/user_magicui/shine-border/824/preview.png",
+      "id": "unknown__shine-border",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Hero Modern",
+      "source_url": "https://21st.dev/@brijr/components/hero-modern/hero-four",
+      "registry_url": "https://21st.dev/community/components/s/hero",
+      "category": "hero",
+      "tags": [
+        "react",
+        "tailwind",
+        "ts",
+        "minimal",
+        "flat",
+        "hero"
+      ],
+      "description": "A modern hero section from a set of hero variants, assembled from small layout primitives such as Section, Container, Article and Box, and relying on prose typography utilities for its text styling.",
+      "preview_image": "https://cdn.21st.dev/larsen66/hero-modern/hero-four/preview.1757991712685.png",
+      "id": "unknown__hero-modern",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Card with Grid Pattern",
+      "source_url": "https://21st.dev/@Ali-Hussein-dev/components/card-with-grid-pattern",
+      "registry_url": "https://21st.dev/community/components/s/card",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "css",
+        "minimal",
+        "flat",
+        "card"
+      ],
+      "description": "A card whose surface sits on a grid-pattern backdrop. The detail page returned not found, so no further structure or content could be confirmed from it.",
+      "preview_image": "https://cdn.21st.dev/user_Ali-Hussein-dev/card-with-grid-pattern/default/preview.1786369773446.png",
+      "id": "unknown__card-with-grid-pattern",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Recent Activity Card",
+      "source_url": "https://21st.dev/@olewandowski1/components/activity-1",
+      "registry_url": "https://21st.dev/community/components/s/card",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "ts",
+        "minimal",
+        "flat",
+        "feed"
+      ],
+      "description": "A recent-activity feed card for a workspace or profile dashboard. Each row shows an avatar, the actor, the action performed, the target, and a relative timestamp such as minutes, hours, or yesterday.",
+      "preview_image": "https://cdn.21st.dev/user_registry_7ovr_1782691739820/activity-1/default/preview.1789990214727.png",
+      "id": "unknown__recent-activity-card",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Book",
+      "source_url": "https://21st.dev/@shugar/components/book/width",
+      "registry_url": "https://21st.dev/community/components/s/card",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "ts",
+        "soft",
+        "minimal",
+        "card"
+      ],
+      "description": "A responsive book component that takes a title and a width, demonstrated side by side at several widths to show how the layout adapts as the available space narrows.",
+      "preview_image": "https://cdn.21st.dev/shugar/book/width/preview.1751642846697.png",
+      "id": "unknown__book",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Audio Upload Card",
+      "source_url": "https://21st.dev/@isaiahbjork/components/audio-upload-card",
+      "registry_url": "https://21st.dev/community/components/s/card",
+      "category": "form",
+      "tags": [
+        "react",
+        "tailwind",
+        "framer-motion",
+        "minimal",
+        "flat",
+        "file-upload"
+      ],
+      "description": "An interactive drag-and-drop upload target for audio files with animated visual feedback. Once a file is selected the upload area transforms to show a waveform visualization and the filename, and clicking the area also opens the file picker.",
+      "preview_image": "https://cdn.21st.dev/user_2tkbBPFWYn8YMjZNHwgIuP3yzvd/audio-upload-card/default/preview.1789399074309.png",
+      "id": "unknown__audio-upload-card",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "CreditCardForm",
+      "source_url": "https://21st.dev/@rahil1202/components/credit-card-form",
+      "registry_url": "https://21st.dev/community/components/s/card",
+      "category": "form",
+      "tags": [
+        "react",
+        "tailwind",
+        "ts",
+        "gradient",
+        "minimal",
+        "form"
+      ],
+      "description": "A fully controlled card payment form that renders the card number, holder name, expiry and CVV live as you type, flips the card to show the CVV on the back, and validates the fields. Accent rings and layout are configurable, and callbacks fire on change and submit.",
+      "preview_image": "https://cdn.21st.dev/user_2xwKgtBqIAlJYqgH2WNdp6W9H58/credit-card-form/default/preview.1789038980398.webp",
+      "id": "unknown__creditcardform",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Underline Hero Section",
+      "source_url": "https://21st.dev/@waleedkibhen/components/underline-hero-section",
+      "registry_url": "https://21st.dev/community/components/s/hero",
+      "category": "hero",
+      "tags": [
+        "react",
+        "tailwind",
+        "ts",
+        "minimal",
+        "outline",
+        "typography"
+      ],
+      "description": "A SaaS hero section on a dark background with a bold headline in which one word is set in a script typeface and finished with a hand-drawn underline. It pairs a white primary call-to-action button with supporting copy aimed at SaaS landing pages.",
+      "preview_image": "https://cdn.21st.dev/waleedkibhen/underline-hero-section/default/preview.1759671673115.png",
+      "id": "unknown__underline-hero-section",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "HeroGridSection",
+      "source_url": "https://21st.dev/@hurerag24/components/hero-grid-section",
+      "registry_url": "https://21st.dev/community/components/s/hero",
+      "category": "hero",
+      "tags": [
+        "react",
+        "tailwind",
+        "ts",
+        "minimal",
+        "flat",
+        "grid"
+      ],
+      "description": "A modern hero with a subtle background grid behind the content, a stacked row of avatars for social proof, and a pair of call-to-action buttons.",
+      "preview_image": "https://cdn.21st.dev/user_31Osr1ruj9xnEtg3A7Tn63fGuc2/hero-grid-section/default/preview.1785838416440.png",
+      "id": "unknown__herogridsection",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Hero Scrub",
+      "source_url": "https://21st.dev/@jean.duthil13/components/hero-scrub",
+      "registry_url": "https://21st.dev/community/components/s/hero",
+      "category": "hero",
+      "tags": [
+        "react",
+        "tailwind",
+        "gsap",
+        "minimal",
+        "monochrome",
+        "scroll-effect"
+      ],
+      "description": "A scroll-scrubbed hero that draws an image sequence onto a canvas, with the central card scaling from a thumbnail up to cover the viewport as the frames play and shrinking back symmetrically. It is choreographed with GSAP ScrollTrigger pinning, is mobile aware, and respects prefers-reduced-motion.",
+      "preview_image": "https://cdn.21st.dev/jean.duthil13/hero-scrub/default/preview.1776866028764.png",
+      "id": "unknown__hero-scrub",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Canvas Crowd",
+      "source_url": "https://21st.dev/@reuno-ui/components/skiper39",
+      "registry_url": "https://21st.dev/community/components/s/hero",
+      "category": "hero",
+      "tags": [
+        "react",
+        "tailwind",
+        "gsap",
+        "pixel",
+        "monochrome",
+        "particles"
+      ],
+      "description": "An animated canvas scene of a walking crowd built from a character sprite sheet, with GSAP timelines driving the looping walk cycles. It fills a full viewport and works as a lively hero or landing page background.",
+      "preview_image": "https://cdn.21st.dev/reuno-ui/skiper39/default/preview.1789979673763-27bd0c6e-bfba-4a5e-af7d-de24cfd12bf3.png",
+      "id": "unknown__canvas-crowd",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Volumetric Studio",
+      "source_url": "https://21st.dev/@alexperezcedeno/components/volumetric-studio",
+      "registry_url": "https://21st.dev/community/components/s/hero",
+      "category": "3d",
+      "tags": [
+        "react",
+        "tailwind",
+        "three.js",
+        "framer-motion",
+        "glow",
+        "3d"
+      ],
+      "description": "A 3D WebGL studio environment rendered with physically accurate spotlights, wrapping arbitrary children so hero copy and buttons can sit over the scene. Built with React Three Fiber and drei, with Framer Motion handling the entrance animations of the overlaid content.",
+      "preview_image": "https://cdn.21st.dev/alexperezcedeno/volumetric-studio/default/preview.1782494920649.png",
+      "id": "unknown__volumetric-studio",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Hero Parallax",
+      "source_url": "https://21st.dev/@manuarora700/components/hero-parallax",
+      "registry_url": "https://21st.dev/community/components/s/hero",
+      "category": "hero",
+      "tags": [
+        "react",
+        "tailwind",
+        "css",
+        "gradient",
+        "minimal",
+        "parallax"
+      ],
+      "description": "A scroll parallax hero that animates rotation, translation and opacity as the page moves, followed by a grid of product cards each showing a logo image, title and link.",
+      "preview_image": "https://cdn.21st.dev/user_aceternity/hero-parallax/default/preview.png",
+      "id": "unknown__hero-parallax",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Floating Gradient",
+      "source_url": "https://21st.dev/@moumensoliman/components/floating-gradient-shadcnui",
+      "registry_url": "https://21st.dev/community/components/s/hero",
+      "category": "background",
+      "tags": [
+        "react",
+        "tailwind",
+        "framer-motion",
+        "gradient",
+        "blob",
+        "background"
+      ],
+      "description": "An animated gradient background of soft blurred colour blobs that drift and scale behind centered content. The motion is driven by Framer Motion and the component is used as a decorative hero or page background.",
+      "preview_image": "https://cdn.21st.dev/moumensoliman/floating-gradient-shadcnui/default/preview.1783734880940.png",
+      "id": "unknown__floating-gradient",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Portfolio Hero with paper shaders",
+      "source_url": "https://21st.dev/@moazamtrade/components/portfolio-hero-with-paper-shaders",
+      "registry_url": "https://21st.dev/community/components/s/hero",
+      "category": "hero",
+      "tags": [
+        "react",
+        "tailwind",
+        "shader",
+        "noise",
+        "soft",
+        "hero"
+      ],
+      "description": "A portfolio hero whose background is built from shader components from the paper-design shaders-react package, giving the page a paper-like texture. The component is imported as a single page level block.",
+      "preview_image": "https://cdn.21st.dev/moazamtrade/portfolio-hero-with-paper-shaders/default/preview.1785191264696-244f12d2-825a-4068-b507-74e095df65b6.png",
+      "id": "unknown__portfolio-hero-with-paper-shaders",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Course Design Cards",
+      "source_url": "https://21st.dev/@kristen17/components/course-design-cards",
+      "registry_url": "https://21st.dev/community/components/s/card",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "gradient",
+        "flat",
+        "progress-bar"
+      ],
+      "description": "A project card for design or course work, taking a date, title, subtitle, progress percentage, two member images and a countdown label, with a colour class driving the accent. Cards are rendered as a section by mapping an array of this data.",
+      "preview_image": "https://cdn.21st.dev/larsen66/course-design-cards/default/preview.1753891440996.png",
+      "id": "unknown__course-design-cards",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Stats cards with links",
+      "source_url": "https://21st.dev/@ephraimduncan/components/stats-cards-with-links/stats-with-trending",
+      "registry_url": "https://21st.dev/community/components/s/card",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "ts",
+        "minimal",
+        "flat",
+        "card"
+      ],
+      "description": "A row of stat cards, each showing a label, a monetary value and a percentage change coloured by whether it is positive or negative. The cards share a single container so their borders collapse into a unified grid.",
+      "preview_image": "https://cdn.21st.dev/larsen66/stats-cards-with-links/stats-with-trending/preview.1753307424371.png",
+      "id": "unknown__stats-cards-with-links",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Card Studio",
+      "source_url": "https://21st.dev/@clevision/components/card-studio/meeting-notes-card",
+      "registry_url": "https://21st.dev/community/components/s/card",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "flat",
+        "card"
+      ],
+      "description": "A meeting notes card with a title, a description, a short transcript paragraph and an ordered list of action items. The footer holds a row of participant avatars that spread apart on hover.",
+      "preview_image": "https://cdn.21st.dev/larsen66/card-studio/meeting-notes-card/preview.1760510314037.png",
+      "id": "unknown__card-studio",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Basic Item",
+      "source_url": "https://21st.dev/@bundui/components/item1",
+      "registry_url": "https://21st.dev/community/components/s/card",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "ts",
+        "minimal",
+        "flat",
+        "card"
+      ],
+      "description": "A compact content row that pairs a title and description with trailing action buttons, intended for lists of settings, notifications, or selectable options.",
+      "preview_image": "https://cdn.21st.dev/bundui/item1/default/preview.1789989115528-ed2d36cc-7cd3-4849-9539-841f57810bac.png",
+      "id": "unknown__basic-item",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Card Tabs",
+      "source_url": "https://21st.dev/@uiable/components/card-tabs",
+      "registry_url": "https://21st.dev/community/components/s/card",
+      "category": "dashboard",
+      "tags": [
+        "react",
+        "tailwind",
+        "svg",
+        "minimal",
+        "flat",
+        "tab"
+      ],
+      "description": "A dashboard card with a tab switcher that keeps project overview stats, analytics, and settings toggles inside a single card surface.",
+      "preview_image": "https://cdn.21st.dev/uiable/card-tabs/default/preview.1790063541023-870672b1-87ff-47e3-9b66-600abeca8324.png",
+      "id": "unknown__card-tabs",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Skeleton Loader",
+      "source_url": "https://21st.dev/@animbits/components/loaders-skeleton",
+      "registry_url": "https://21st.dev/community/components/s/card",
+      "category": "skeleton",
+      "tags": [
+        "react",
+        "tailwind",
+        "motion",
+        "gradient",
+        "soft",
+        "skeleton"
+      ],
+      "description": "A shimmer placeholder block that animates a moving highlight to signal that content is loading. Width, height and corner radius are set per block, so shapes can be composed into avatars, text lines and image placeholders.",
+      "preview_image": "https://cdn.21st.dev/user_registry_animbits_1783710080732/loaders-skeleton/default/preview.1788369892385.png",
+      "id": "unknown__skeleton-loader",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Contact Card",
+      "source_url": "https://21st.dev/@efferd/components/contact-card",
+      "registry_url": "https://21st.dev/community/components/s/card",
+      "category": "card",
+      "tags": [
+        "react",
+        "tailwind",
+        "svg",
+        "minimal",
+        "flat",
+        "card"
+      ],
+      "description": "A contact block combining a title, description, and a list of icon-labelled contact details such as email, phone, and address. It accepts children, so an inquiry form can be rendered alongside the details in the same panel.",
+      "preview_image": "https://cdn.21st.dev/sshahaider/contact-card/default/preview.1755584847121.png",
+      "id": "unknown__contact-card",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Progress Metric Card",
+      "source_url": "https://21st.dev/@makviesainte/components/progress-metric-card",
+      "registry_url": "https://21st.dev/community/components/s/card",
+      "category": "chart",
+      "tags": [
+        "react",
+        "tailwind",
+        "svg",
+        "minimal",
+        "flat",
+        "chart"
+      ],
+      "description": "A KPI card pairing a large headline figure and unit with a data-driven chart built from a series of dated value points. The chart can be switched between a smooth progression curve and bars, and a default index sets the highlighted point.",
+      "preview_image": "https://cdn.21st.dev/makviesainte/progress-metric-card/default/preview.1782062854405.png",
+      "id": "unknown__progress-metric-card",
+      "source_domain": "21st.dev"
     }
   ]
 }
