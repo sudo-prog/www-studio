@@ -1,6 +1,6 @@
 {
-  "version": "1.0.96",
-  "source_count": 28040,
+  "version": "1.0.97",
+  "source_count": 28069,
   "components": [
     {
       "id": "cat-0",
@@ -486151,6 +486151,490 @@
       "preview_image": "",
       "id": "unknown__prevent-css-caching",
       "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Pagination with Arrows",
+      "source_url": "https://21st.dev/@sean0205/components/pagination-arrows",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "button",
+        "navigation"
+      ],
+      "description": "A pagination control with Previous/Next buttons and left/right arrow icons instead of numbered pages. Uses lucide-react for arrow icons and renders in a centered flex layout.",
+      "preview_image": "https://cdn.21st.dev/sean0205/pagination-arrows/default/preview.1789968416723-8368102c-e8cf-4584-a115-59b37e0f9fe8.png",
+      "id": "unknown__pagination-with-arrows",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Textarea with Character Count",
+      "source_url": "https://21st.dev/@cnippet-dev/components/v-textarea-6",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "textarea",
+        "input"
+      ],
+      "description": "An auto-resizing textarea with a live character counter (limit 280) that changes color as you approach and reach the limit. Shows remaining character count updating in real time.",
+      "preview_image": "https://cdn.21st.dev/user_36Tbt0v8JdD4jEycmBFhR8tojnR/v-textarea-6/default/preview.1788193778492.png",
+      "id": "unknown__textarea-with-character-count",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "ChronoSelect",
+      "source_url": "https://21st.dev/@ruixen.ui/components/chrono-select",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "date-picker",
+      "tags": [
+        "react",
+        "tailwind",
+        "shadcn",
+        "date-picker",
+        "select"
+      ],
+      "description": "A shadcn-inspired date selection tool with a built-in year selector alongside the calendar view, allowing users to jump across decades. Uses Popover, Select, and Calendar primitives with an adjustable yearRange prop (shown as [1990, 2035]).",
+      "preview_image": "https://cdn.21st.dev/ruixen.ui/chrono-select/default/preview.1758924114445.png",
+      "id": "unknown__chronoselect",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Calendar Date Picker",
+      "source_url": "https://21st.dev/@shadcn/components/calendar-date-picker",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "date-picker",
+      "tags": [
+        "react",
+        "tailwind",
+        "shadcn",
+        "date-picker",
+        "popover"
+      ],
+      "description": "A shadcn calendar with a date picker using Popover and Calendar components. Features a 'Date of birth' label, single date selection mode, and a dropdown caption layout for month/year navigation.",
+      "preview_image": "https://cdn.21st.dev/larsen66/calendar-date-picker/default/preview.1749973425034.png",
+      "id": "unknown__calendar-date-picker",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Form 1/Simple Contact Us Form",
+      "source_url": "https://21st.dev/@prebuiltui/components/form-1/simple-contact-us-form",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "form",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "form",
+        "input"
+      ],
+      "description": "A contact form with Name, Email, and Message fields using required validation and a submit button. Includes focus states with indigo border and responsive layout with gap spacing.",
+      "preview_image": "https://cdn.21st.dev/larsen66/form-1/simple-contact-us-form/preview.1757571359574.png",
+      "id": "unknown__form-1/simple-contact-us-form",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Textarea with floating label",
+      "source_url": "https://21st.dev/@shadcnspace/components/textarea-with-floating-label",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "textarea",
+        "input"
+      ],
+      "description": "A textarea component with a floating label that moves up when the field is focused or contains text. Built with shadcn/ui patterns and renders in a centered flex layout.",
+      "preview_image": "https://cdn.21st.dev/user_38qAOtph5HovpSn2yjNYXjbTOm2/textarea-with-floating-label/default/preview.1788374331942.png",
+      "id": "unknown__textarea-with-floating-label",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "One Button",
+      "source_url": "https://21st.dev/@felipemenezes098/components/one-button",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "button"
+      ],
+      "description": "A shadcn/ui Button wrapper with multiple variants (default, secondary, outline, ghost, destructive, link) and sizes (xs, sm, default, lg, icon). Supports leading/trailing icons, disabled and loading states.",
+      "preview_image": "https://cdn.21st.dev/larsen66/one-button/default/preview.1780007091520.png",
+      "id": "unknown__one-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Form [react-aria-components]",
+      "source_url": "https://21st.dev/@jolbol1/components/field",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "form",
+      "tags": [
+        "react",
+        "tailwind",
+        "radix-ui",
+        "form",
+        "input"
+      ],
+      "description": "A form built with react-aria-components that allows users to submit data with field-level validation error support. Contains a TextField with Label and FieldError, demonstrating email input with isRequired validation.",
+      "preview_image": "https://cdn.21st.dev/user_jolbol1/field/814/preview.png",
+      "id": "unknown__form-[react-aria-components]",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Book A Demo 3",
+      "source_url": "https://21st.dev/@designali-in/components/book-a-demo-3",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "form",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "form",
+        "hero"
+      ],
+      "description": "A contact form section with Full Name, Work Email, Studio Name, Team Size dropdown, Project Details, and source selection fields, plus a submit button. Includes a FAQ section and connects to a design team.",
+      "preview_image": "https://cdn.21st.dev/designali-in/book-a-demo-3/default/preview.1760502060488.png",
+      "id": "unknown__book-a-demo-3",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Clean & Minimal sign in",
+      "source_url": "https://21st.dev/@preetsuthar17/components/clean-minimal-sign-in",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "login",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "login",
+        "auth"
+      ],
+      "description": "A clean and minimal sign-in component with form data validation, social login buttons (Google, Facebook, Apple) via SVG icons, and a 'Remember me' style layout. Uses lucide-react for icons.",
+      "preview_image": "https://cdn.21st.dev/user_2rWolCuRnJW3DRiuQ5JHrl5kj8a/clean-minimal-sign-in/clean-minimal-sign-in/preview.png?v=1",
+      "id": "unknown__clean-&-minimal-sign-in",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "HeroUI Field Error",
+      "source_url": "https://21st.dev/@hero_ui/components/heroui-field-error",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "radix-ui",
+        "input",
+        "form"
+      ],
+      "description": "HeroUI v3 FieldError component for per-field validation error display on TextField. Shows dynamic error messages like 'Username must be at least 3 characters' based on input length validation.",
+      "preview_image": "https://cdn.21st.dev/user_hero_ui/heroui-field-error/default/preview.1788376106335.png",
+      "id": "unknown__heroui-field-error",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Hero with group of images, text and two buttons",
+      "source_url": "https://21st.dev/@tommyjepsen/components/hero-with-group-of-images-text-and-two-buttons",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "hero",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "hero",
+        "button"
+      ],
+      "description": "A hero section displaying 'We're live!' title, a headline, descriptive text about streamlining SMB trade, and two shadcn/ui buttons ('Jump on a call' and 'Sign up here') with a group of images.",
+      "preview_image": "https://cdn.21st.dev/user_tommyjepsen/hero-with-group-of-images-text-and-two-buttons/default/preview.png",
+      "id": "unknown__hero-with-group-of-images,-text-and-two-buttons",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "AI Suggestions",
+      "source_url": "https://21st.dev/@educalvolpz/components/ai-suggestions",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "framer-motion",
+        "button",
+        "minimal"
+      ],
+      "description": "Follow-up suggestion chips that stagger in with framer-motion after a reply and clear themselves when one is chosen. Features a label prop, suggestions array of {id, label} objects, and respects prefers-reduced-motion.",
+      "preview_image": "https://cdn.21st.dev/user_2s2o9RwN7OoP4Na42lJREy96Xua/ai-suggestions/default/preview.1785742321104.png",
+      "id": "unknown__ai-suggestions",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Multiple Selector",
+      "source_url": "https://21st.dev/@arihantcodes_1f7b8c4d/components/multiple-selector/disabled-selector",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "radix-ui",
+        "input",
+        "select"
+      ],
+      "description": "A multi-select component with disabled options, controlled and uncontrolled modes via value/defaultValue, and a selectFirstItem prop. Supports creatable options, hideClearAllButton, and custom emptyIndicator rendering.",
+      "preview_image": "https://cdn.21st.dev/user_2xmIUPynCyYHPXZPBwS1EDV1Aq8/multiple-selector/disabled-selector/preview.1785497298553.png",
+      "id": "unknown__multiple-selector",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "CTA 3",
+      "source_url": "https://21st.dev/@efferd/components/cta-3",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "hero",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "button",
+        "hero"
+      ],
+      "description": "A call-to-action section with headline 'Let your plans shape the future.', subtext about free trial, and two buttons: 'Contact Sales' and 'Get Started'. Uses lucide-react and renders in a centered flex layout.",
+      "preview_image": "https://cdn.21st.dev/user_2tWTE0rCrloVAVylFPYfp10xU92/cta-3/default/preview.1789741826859.png",
+      "id": "unknown__cta-3",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Dither Button",
+      "source_url": "https://21st.dev/@radiumcoders/components/dither-button",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "canvas",
+        "button",
+        "retro"
+      ],
+      "description": "A button with live ordered-dithering (Bayer matrix) canvas fill animating a subtle wave across the surface. Configurable via ditherColor, ditherSize, and ditherOpacity props. Pure 2D canvas, no WebGL.",
+      "preview_image": "https://cdn.21st.dev/larsen66/dither-button/default/preview.1780081213960.png",
+      "id": "unknown__dither-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Reshaped Toggle button group",
+      "source_url": "https://21st.dev/@reshaped/components/reshaped-toggle-button-group",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "toggle",
+      "tags": [
+        "react",
+        "tailwind",
+        "radix-ui",
+        "toggle",
+        "button"
+      ],
+      "description": "A toggle button group built on Reshaped's Button.Group that manages selection state for child ToggleButton components. Supports single or multiple selection via selectionMode, controlled/uncontrolled modes through value/defaultValue, disabled per-button, and full keyboard navigation.",
+      "preview_image": "https://cdn.21st.dev/larsen66/reshaped-toggle-button-group/default/preview.1783531004078.png",
+      "id": "unknown__reshaped-toggle-button-group",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "OTP Verification Field",
+      "source_url": "https://21st.dev/@coss.com/components/p-otp-field-7",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "input",
+        "form"
+      ],
+      "description": "A six-digit OTP input field that validates the entered code and displays inline error or success messages. Requires entering '123456' to pass validation and shows 'Verification code' label.",
+      "preview_image": "https://cdn.21st.dev/coss.com/p-otp-field-7/default/preview.1790060791215-95294d65-19ad-4d91-af2f-30246aaaf0bb.png",
+      "id": "unknown__otp-verification-field",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Texture Button",
+      "source_url": "https://21st.dev/@cult-ui/components/texture-button",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "neumorphism",
+        "button"
+      ],
+      "description": "A button with neumorphic undertones, supporting variants (primary, accent, secondary, destructive, minimal, icon) and sizes (sm, default, lg). Built with radix-ui/react-slot and class-variance-authority, rendered on a dark stone background.",
+      "preview_image": "https://cdn.21st.dev/user_cult_ui/texture-button/default/preview.png",
+      "id": "unknown__texture-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Native Button",
+      "source_url": "https://21st.dev/@moumensoliman/components/native-button",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "glass",
+        "framer-motion",
+        "button"
+      ],
+      "description": "A glassmorphism-inspired button wrapping shadcn/ui Button with framer-motion whileHover/whileTap spring micro-interactions. Supports an optional glow prop (shadow + radial overlay), loading state with Loader2 spinner, and disabled state. Falls back to no animation when prefers-reduced-motion is set.",
+      "preview_image": "https://cdn.21st.dev/user_38G0vmio7769KItXe9W53CqheUX/native-button/default/preview.1785852189056.png",
+      "id": "unknown__native-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Eclipse Button",
+      "source_url": "https://21st.dev/@iamsatish4564/components/eclipse-button",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "button"
+      ],
+      "description": "A button component with variants (primary, outline, ghost, destructive) and sizes (sm, default, lg, icon). Supports leftIcon, rightIcon, isLoading, and uses motion for animations. Requires @container class on parent for container queries.",
+      "preview_image": "https://cdn.21st.dev/larsen66/eclipse-button/default/preview.1767633698039.png",
+      "id": "unknown__eclipse-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "FlowButton",
+      "source_url": "https://21st.dev/@xubohuah/components/flow-button",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "button"
+      ],
+      "description": "A button component with a hover animation effect. Renders a 'Flow Button' label on a gray background, using lucide-react for icons and a centered flex layout.",
+      "preview_image": "https://cdn.21st.dev/user_2vl1Dn19f2uJMuYVfUEcAh5qqyv/flow-button/default/preview.1746631996530.png",
+      "id": "unknown__flowbutton",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Actions",
+      "source_url": "https://21st.dev/@vercel-crawled/components/actions",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "button"
+      ],
+      "description": "An AI Elements Actions component with a 'Like' button using ThumbsUpIcon from lucide-react. Renders action buttons in a flex layout with a 'mt-2' margin.",
+      "preview_image": "https://cdn.21st.dev/user_vercel/actions/default/preview.1790815004856.png",
+      "id": "unknown__actions",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Not found",
+      "source_url": "https://21st.dev/@nevsky118/components/not-found",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "button"
+      ],
+      "description": "A 404 not-found page with an Illustration component rendered with low opacity as a background. Displays 'Page not found' title and 'Lost, this page is. In another system, it may be.' description with search and navigation buttons.",
+      "preview_image": "https://cdn.21st.dev/user_nevsky118/not-found/default/preview.1738157641216.png",
+      "id": "unknown__not-found",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Buttons/Button Loading",
+      "source_url": "https://21st.dev/@clevision/components/buttons/button-loading",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "button"
+      ],
+      "description": "A loading button using LoaderCircleIcon with animate-spin, disabled state, and inline flex layout with icon and text. Part of a ShadcnStudio Buttons component suite with multiple button variants.",
+      "preview_image": "https://cdn.21st.dev/user_ShadcnStudio/buttons/button-loading/preview.1787910859601.png",
+      "id": "unknown__buttons/button-loading",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Feature Modern/Feature Three",
+      "source_url": "https://21st.dev/@brijr/components/feature-modern/feature-three",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "hero",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "hero",
+        "section"
+      ],
+      "description": "A feature section with an image placeholder (480px height) and text content ('Lorem ipsum dolor sit' heading, description paragraph, and 'Get Started' / 'Learn More' buttons). Uses next/image for the placeholder and grid layout for md breakpoint.",
+      "preview_image": "https://cdn.21st.dev/larsen66/feature-modern/feature-three/preview.1757993312673.png",
+      "id": "unknown__feature-modern/feature-three",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Pearl Button",
+      "source_url": "https://21st.dev/@reuno-ui/components/pearl-button",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "glass",
+        "button",
+        "hover-effect"
+      ],
+      "description": "A pearl button with a hover effect, displaying decorative characters (\u2727\u2726) and 'Pearl Button' text. Uses skiper-ui as the source and renders a decorative gradient-style button.",
+      "preview_image": "https://cdn.21st.dev/user_skiper-ui/pearl-button/default/preview.1787666785032.png",
+      "id": "unknown__pearl-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Anti Metal Button",
+      "source_url": "https://21st.dev/@smammar/components/anti-metal-button",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "glow",
+        "button"
+      ],
+      "description": "A sleek dark-themed CTA button featuring a cascading dot-wave animation and a colorful accent slab that expands smoothly on hover. Default label 'Book a demo', rendered in a centered flex layout with gap spacing.",
+      "preview_image": "https://cdn.21st.dev/user_2xRjS2rL8c12AIzdnylhcQoZwi4/anti-metal-button/default/preview.1787323038746.png",
+      "id": "unknown__anti-metal-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Kbd Button",
+      "source_url": "https://21st.dev/@uiable/components/kbd-button",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "button"
+      ],
+      "description": "A button with an inline keyboard-shortcut indicator (kbd element) showing the Enter key (\u23ce) needed to trigger the action. Default label 'Accept', rendered in a centered flex layout.",
+      "preview_image": "https://cdn.21st.dev/user_registry_uiable_1783486969177/kbd-button/default/preview.1789744456111.png",
+      "id": "unknown__kbd-button",
+      "source_domain": "21st.dev"
     }
   ]
 }
