@@ -1,6 +1,6 @@
 {
-  "version": "1.0.108",
-  "source_count": 28598,
+  "version": "1.0.109",
+  "source_count": 28658,
   "components": [
     {
       "id": "cat-0",
@@ -495841,6 +495841,1033 @@
       "preview_image": "",
       "id": "unknown__year-shortcode",
       "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Three.js Instanced Meshes",
+      "source_url": "https://animejs.com/documentation/adapters/threejs-adapter/threejs-instanced-and-batched-meshes",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "three.js",
+        "webgl",
+        "javascript",
+        "smooth",
+        "animation",
+        "3d"
+      ],
+      "description": "getInstances(mesh) returns one proxy per slot of an InstancedMesh or BatchedMesh, enabling per-instance animation of position, rotation, scale, color, and visibility. commitChanges flushes pending matrix writes before each render.",
+      "preview_image": "",
+      "id": "unknown__three.js-instanced-meshes",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Three.js Extended Transforms",
+      "source_url": "https://animejs.com/documentation/adapters/threejs-adapter/threejs-transforms-adapter",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "three.js",
+        "webgl",
+        "css",
+        "javascript",
+        "smooth",
+        "animation",
+        "3d"
+      ],
+      "description": "Provides a CSS-like transforms API for Three.js objects, animating position, rotation, scale, skew, and transformOrigin per axis in degrees. Setting any scale axis or opacity to 0 automatically toggles the target's visible flag.",
+      "preview_image": "",
+      "id": "unknown__three.js-extended-transforms",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Animatable Settings: Duration",
+      "source_url": "https://animejs.com/documentation/animatable/animatable-settings/duration",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "anime.js",
+        "javascript",
+        "minimal",
+        "animation",
+        "api"
+      ],
+      "description": "Specifies the duration in milliseconds for the transition to an animated value. Accepts a Number equal to or greater than 0 or a function-based value, defaulting to 1000.",
+      "preview_image": "",
+      "id": "unknown__animatable-settings:-duration",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "CSS Variables",
+      "source_url": "https://animejs.com/documentation/animation/animatable-properties/css-variables",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "css",
+        "javascript",
+        "anime.js",
+        "minimal",
+        "animation"
+      ],
+      "description": "CSS variables with numerical or color values can be animated by passing the variable name directly to animation parameters, including those on pseudo-elements like ::after and ::before.",
+      "preview_image": "",
+      "id": "unknown__css-variables",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "JavaScript Object Properties",
+      "source_url": "https://animejs.com/documentation/animation/animatable-properties/javascript-object-properties",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "animation",
+        "api"
+      ],
+      "description": "Numerical and color JavaScript Object properties can be passed directly to animation parameters, enabling interpolation of plain object values without DOM or CSS involvement.",
+      "preview_image": "",
+      "id": "unknown__javascript-object-properties",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "onComplete",
+      "source_url": "https://animejs.com/documentation/animation/animation-callbacks/oncomplete",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "animation",
+        "callback"
+      ],
+      "description": "Executes a function when all iterations of an animation have finished playing. The callback receives the animation itself as its first argument.",
+      "preview_image": "",
+      "id": "unknown__oncomplete",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "pause()",
+      "source_url": "https://animejs.com/documentation/animation/animation-methods/pause",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "animation",
+        "api"
+      ],
+      "description": "Pauses a running animation. Returns the animation itself so it can be chained with other animation methods.",
+      "preview_image": "",
+      "id": "unknown__pause()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "alternate",
+      "source_url": "https://animejs.com/documentation/animation/animation-playback-settings/alternate",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "smooth",
+        "animation",
+        "easing"
+      ],
+      "description": "Defines whether the animation direction alternates on each iteration when loop is set to true or greater than 1. Accepts a Boolean, defaulting to false.",
+      "preview_image": "",
+      "id": "unknown__alternate",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Animation Playback Settings: Delay",
+      "source_url": "https://animejs.com/documentation/animation/animation-playback-settings/delay",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "animation",
+        "api"
+      ],
+      "description": "Defines the default delay in milliseconds before animation tweens begin. Accepts a Number equal to or greater than 0 or a function-based value, defaulting to 0.",
+      "preview_image": "",
+      "id": "unknown__animation-playback-settings:-delay",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "loopDelay",
+      "source_url": "https://animejs.com/documentation/animation/animation-playback-settings/playback-loopdelay",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "smooth",
+        "animation",
+        "timeline"
+      ],
+      "description": "Defines the delay in milliseconds between loops of an animation. Accepts a Number equal to or greater than 0, defaulting to 0.",
+      "preview_image": "",
+      "id": "unknown__loopdelay",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Tween Parameters Keyframes",
+      "source_url": "https://animejs.com/documentation/animation/keyframes/tween-parameters-keyframes",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "animation",
+        "stagger"
+      ],
+      "description": "Sequences multiple tween parameters specific to an animatable property, allowing fine-grained control over ease, delay, duration, and modifier for each individual keyframe.",
+      "preview_image": "",
+      "id": "unknown__tween-parameters-keyframes",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "modifier",
+      "source_url": "https://animejs.com/documentation/animation/tween-parameters/modifier",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "animation",
+        "utility"
+      ],
+      "description": "A function that modifies the animated numerical value, either globally for all properties or locally for a specific property. String units are preserved on the final value.",
+      "preview_image": "",
+      "id": "unknown__modifier",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Color Value",
+      "source_url": "https://animejs.com/documentation/animation/tween-value-types/color-value",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "css",
+        "javascript",
+        "anime.js",
+        "minimal",
+        "animation"
+      ],
+      "description": "Color values in HEX, HEXA, RGB, RGBA, HSL, HSLA, and named string formats can be parsed and used as animatable color properties by the animation engine.",
+      "preview_image": "",
+      "id": "unknown__color-value",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "CSS Variable",
+      "source_url": "https://animejs.com/documentation/animation/tween-value-types/css-variable",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "css",
+        "javascript",
+        "anime.js",
+        "minimal",
+        "animation"
+      ],
+      "description": "CSS variables can be used as animation values by passing them with the var(--my-value) syntax. Updates are reflected only when the variable is refreshed via the .refresh() method.",
+      "preview_image": "",
+      "id": "unknown__css-variable",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Unit Conversion Value",
+      "source_url": "https://animejs.com/documentation/animation/tween-value-types/unit-conversion-value",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "animation",
+        "utility"
+      ],
+      "description": "Converts and animates to a value with a different unit than the default, such as from px to % or from deg to turn. Results may vary when using the JS animate() method.",
+      "preview_image": "",
+      "id": "unknown__unit-conversion-value",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "mapTo",
+      "source_url": "https://animejs.com/documentation/draggable/draggable-axes-parameters/mapto",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "css",
+        "minimal",
+        "drag"
+      ],
+      "description": "Maps an axis value of a draggable to a different property of the element, allowing x and y drag input to drive other transforms like rotateY or z position.",
+      "preview_image": "",
+      "id": "unknown__mapto",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Draggable Axes Parameters: Modifier",
+      "source_url": "https://animejs.com/documentation/draggable/draggable-axes-parameters/modifier",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "drag",
+        "utility"
+      ],
+      "description": "Defines a modifier function that alters the value of either both axes or one specific axis of a draggable, leveraging the same modifier utility as tween parameters.",
+      "preview_image": "",
+      "id": "unknown__draggable-axes-parameters:-modifier",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "x",
+      "source_url": "https://animejs.com/documentation/draggable/draggable-axes-parameters/x",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "drag",
+        "api"
+      ],
+      "description": "Defines the behavior of the x-axis for a draggable, either enabling it with an object of parameters or disabling it by setting the value to false.",
+      "preview_image": "",
+      "id": "unknown__x",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "animateInView()",
+      "source_url": "https://animejs.com/documentation/draggable/draggable-methods/animateinview",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "smooth",
+        "drag",
+        "transition"
+      ],
+      "description": "Animates a draggable inside its viewport if it is positioned outside the container, with optional duration, gap, and easing parameters.",
+      "preview_image": "",
+      "id": "unknown__animateinview()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "scrollInView()",
+      "source_url": "https://animejs.com/documentation/draggable/draggable-methods/scrollinview",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "smooth",
+        "drag",
+        "scroll-effect"
+      ],
+      "description": "Animates the scroll position of the container if the draggable is outside the scroll threshold, bringing it back into view with optional duration and easing.",
+      "preview_image": "",
+      "id": "unknown__scrollinview()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "setY()",
+      "source_url": "https://animejs.com/documentation/draggable/draggable-methods/sety",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "drag",
+        "api"
+      ],
+      "description": "Manually sets the y position of a draggable target, equivalent to updating draggable.y directly when no muteCallback parameter is defined.",
+      "preview_image": "",
+      "id": "unknown__sety()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "dragThreshold",
+      "source_url": "https://animejs.com/documentation/draggable/draggable-settings/dragthreshold",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "drag",
+        "api"
+      ],
+      "description": "Specifies the distance in pixels that must be traveled before a drag is triggered, with separate thresholds configurable for mouse and touch devices.",
+      "preview_image": "",
+      "id": "unknown__dragthreshold",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "releaseContainerFriction",
+      "source_url": "https://animejs.com/documentation/draggable/draggable-settings/releasecontainerfriction",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "smooth",
+        "drag",
+        "physics"
+      ],
+      "description": "Overrides the containerFriction applied to a dragged element when released out of bounds, where 0 means no friction and 1 prevents exceeding container bounds.",
+      "preview_image": "",
+      "id": "unknown__releasecontainerfriction",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "velocityMultiplier",
+      "source_url": "https://animejs.com/documentation/draggable/draggable-settings/velocitymultiplier",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "smooth",
+        "drag",
+        "physics"
+      ],
+      "description": "Specifies a multiplier applied to the velocity of a dragged element after release, where 0 removes velocity, 1 is normal, and values above 1 amplify it.",
+      "preview_image": "",
+      "id": "unknown__velocitymultiplier",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "resume()",
+      "source_url": "https://animejs.com/documentation/engine/engine-methods/resume",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "animation",
+        "api"
+      ],
+      "description": "Resumes the engine after it has been paused with engine.pause(), restoring all animations and their timing.",
+      "preview_image": "",
+      "id": "unknown__resume()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "pauseOnDocumentHidden",
+      "source_url": "https://animejs.com/documentation/engine/engine-parameters/pauseondocumenthidden",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "animation",
+        "api"
+      ],
+      "description": "Controls whether the engine pauses animations when the browser tab is hidden. When false, animations catch up on currentTime when the tab regains focus.",
+      "preview_image": "",
+      "id": "unknown__pauseondocumenthidden",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "precision",
+      "source_url": "https://animejs.com/documentation/engine/engine-parameters/precision",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "css",
+        "svg",
+        "minimal",
+        "utility"
+      ],
+      "description": "Defines how many decimal places to round string values during an animation, affecting CSS properties, SVG, and DOM attributes. Setting 0 removes decimals.",
+      "preview_image": "",
+      "id": "unknown__precision",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "timeUnit (seconds / milliseconds)",
+      "source_url": "https://animejs.com/documentation/engine/engine-parameters/timeunit-seconds-milliseconds",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "animation",
+        "api"
+      ],
+      "description": "Configures the unit of time (seconds or milliseconds) for time-related values like duration and delay, automatically adjusting the default duration.",
+      "preview_image": "",
+      "id": "unknown__timeunit-(seconds-/-milliseconds)",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "onEnterBackward",
+      "source_url": "https://animejs.com/documentation/events/onscroll/scrollobserver-callbacks/onenterbackward",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "scroll-effect",
+        "callback"
+      ],
+      "description": "Triggers a function every time the enter threshold is met while scrolling backward, receiving the ScrollObserver instance as its first argument.",
+      "preview_image": "",
+      "id": "unknown__onenterbackward",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "onSyncComplete",
+      "source_url": "https://animejs.com/documentation/events/onscroll/scrollobserver-callbacks/onsynccomplete",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "scroll-effect",
+        "callback"
+      ],
+      "description": "Triggers a function when the linked object synchronization of a ScrollObserver completes, receiving the ScrollObserver instance as its first argument.",
+      "preview_image": "",
+      "id": "unknown__onsynccomplete",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "ScrollObserver Methods: Revert",
+      "source_url": "https://animejs.com/documentation/events/onscroll/scrollobserver-methods/revert",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "scroll-effect",
+        "utility"
+      ],
+      "description": "Disables the ScrollObserver, removes all event listeners, and removes the debug HTMLElement if necessary, cleaning up the observer instance.",
+      "preview_image": "",
+      "id": "unknown__scrollobserver-methods:-revert",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "target",
+      "source_url": "https://animejs.com/documentation/events/onscroll/scrollobserver-settings/target",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "css",
+        "minimal",
+        "scroll-effect",
+        "api"
+      ],
+      "description": "Specifies which HTMLElement triggers the scroll event for a ScrollObserver, defaulting to the first targeted element of an animation or null when defined outside one.",
+      "preview_image": "",
+      "id": "unknown__target",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Installation",
+      "source_url": "https://animejs.com/documentation/getting-started/installation",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "plain-css",
+        "minimal",
+        "docs"
+      ],
+      "description": "Anime.js can be installed via the animejs npm package or loaded from CDN providers like esm.sh and JsDelivr, with both ES module and UMD build options available.",
+      "preview_image": "",
+      "id": "unknown__installation",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Layout Methods: Revert",
+      "source_url": "https://animejs.com/documentation/layout/layout-methods/revert",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "transition",
+        "utility"
+      ],
+      "description": "Completes all currently running layout animations, reverting DOM elements to their actual current state and cleaning up inline styles.",
+      "preview_image": "",
+      "id": "unknown__layout-methods:-revert",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "update()",
+      "source_url": "https://animejs.com/documentation/layout/layout-methods/update",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "transition",
+        "api"
+      ],
+      "description": "A one-call helper that records the current layout, executes DOM mutations via a callback, and calls animate() with optional parameter overrides.",
+      "preview_image": "",
+      "id": "unknown__update()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Layout Settings: Delay",
+      "source_url": "https://animejs.com/documentation/layout/layout-settings/delay",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "transition",
+        "api"
+      ],
+      "description": "Defines the default delay in milliseconds for all animated layout transitions, compatible with the stagger() utility function and overridable per update call.",
+      "preview_image": "",
+      "id": "unknown__layout-settings:-delay",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Layout Settings: Duration",
+      "source_url": "https://animejs.com/documentation/layout/layout-settings/duration",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "transition",
+        "api"
+      ],
+      "description": "Defines the duration in milliseconds for all animated layout elements, compatible with stagger() and overridable per update call, defaulting to 350ms.",
+      "preview_image": "",
+      "id": "unknown__layout-settings:-duration",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "add()",
+      "source_url": "https://animejs.com/documentation/scope/scope-methods/add",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "ts",
+        "minimal",
+        "api"
+      ],
+      "description": "Adds a constructor function that sets up animations, or registers a named method function, to a Scope instance, returning the Scope itself for chaining.",
+      "preview_image": "",
+      "id": "unknown__add()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "mediaQueries",
+      "source_url": "https://animejs.com/documentation/scope/scope-parameters/mediaqueries",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "css",
+        "javascript",
+        "anime.js",
+        "plain-css",
+        "minimal",
+        "api"
+      ],
+      "description": "Defines media queries as named key-value pairs that conditionally refresh the Scope when their match state changes, accessible via the scope's matches property.",
+      "preview_image": "",
+      "id": "unknown__mediaqueries",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "onChange",
+      "source_url": "https://animejs.com/documentation/text/scrambletext/scrambletext-callbacks/onchange",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "text-effect",
+        "callback"
+      ],
+      "description": "Executes a function every time the scrambled text characters are updated during a scrambleText animation, receiving the current string and progress as arguments.",
+      "preview_image": "",
+      "id": "unknown__onchange",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "chars",
+      "source_url": "https://animejs.com/documentation/text/scrambletext/scrambletext-parameters/chars",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "text-effect",
+        "generator"
+      ],
+      "description": "Characters used during the scramble animation, accepting literal strings, range syntax like a-z, named presets like braille, or a function returning a string.",
+      "preview_image": "",
+      "id": "unknown__chars",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "cursor",
+      "source_url": "https://animejs.com/documentation/text/scrambletext/scrambletext-parameters/cursor",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "text-effect",
+        "api"
+      ],
+      "description": "Characters displayed at the leading edge of the scramble reveal wave as it moves through each character, accepting boolean, numeric character codes, or string values.",
+      "preview_image": "",
+      "id": "unknown__cursor",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "text",
+      "source_url": "https://animejs.com/documentation/text/scrambletext/scrambletext-parameters/text",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "text-effect",
+        "api"
+      ],
+      "description": "The target text content to transition to during a scrambleText animation. If not set, the original text content of the target element is used.",
+      "preview_image": "",
+      "id": "unknown__text",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "HTML Template",
+      "source_url": "https://animejs.com/documentation/text/splittext/html-template",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "html",
+        "minimal",
+        "text-effect",
+        "generator"
+      ],
+      "description": "Custom HTML templates can be used on split text elements, where {value} and {i} variables are replaced by the split value and current index, with styles applied automatically.",
+      "preview_image": "",
+      "id": "unknown__html-template",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "wrap",
+      "source_url": "https://animejs.com/documentation/text/splittext/split-parameters/wrap",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "css",
+        "plain-css",
+        "minimal",
+        "text-effect"
+      ],
+      "description": "Adds an extra wrapper element with a specified CSS overflow property to all split elements, accepting values like hidden, clip, visible, scroll, or auto.",
+      "preview_image": "",
+      "id": "unknown__wrap",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "onBegin",
+      "source_url": "https://animejs.com/documentation/timeline/timeline-callbacks/onbegin",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "timeline",
+        "callback"
+      ],
+      "description": "Executes a function when a timeline begins to play, receiving the timeline itself as its first argument and respecting the timeline's delay setting.",
+      "preview_image": "",
+      "id": "unknown__onbegin",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Timeline Methods: Complete",
+      "source_url": "https://animejs.com/documentation/timeline/timeline-methods/complete",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "timeline",
+        "api"
+      ],
+      "description": "Completes a timeline instantly, finishing all active tweens and advancing to the end state. Returns the timeline for chaining with other methods.",
+      "preview_image": "",
+      "id": "unknown__timeline-methods:-complete",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Timeline Methods: Revert",
+      "source_url": "https://animejs.com/documentation/timeline/timeline-methods/revert",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "timeline",
+        "utility"
+      ],
+      "description": "Cancels the timeline, reverts all children's animated values to their original state, cleans up CSS inline styles, and reverts any linked onScroll instance.",
+      "preview_image": "",
+      "id": "unknown__timeline-methods:-revert",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "seek()",
+      "source_url": "https://animejs.com/documentation/timeline/timeline-methods/seek",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "timeline",
+        "api"
+      ],
+      "description": "Updates the currentTime of the timeline to a specific time in milliseconds, with an optional parameter to mute callbacks during the seek.",
+      "preview_image": "",
+      "id": "unknown__seek()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "stretch()",
+      "source_url": "https://animejs.com/documentation/timeline/timeline-methods/stretch",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "smooth",
+        "timeline",
+        "api"
+      ],
+      "description": "Changes the total duration of a timeline and its children to fit a specific time, redistributing keyframe positions proportionally across the new duration.",
+      "preview_image": "",
+      "id": "unknown__stretch()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "loop",
+      "source_url": "https://animejs.com/documentation/timeline/timeline-playback-settings/loop",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "smooth",
+        "timeline",
+        "easing"
+      ],
+      "description": "Defines how many times a timeline repeats, accepting a Number in the range 0 to Infinity, the value true, or -1, all of which loop indefinitely.",
+      "preview_image": "",
+      "id": "unknown__loop",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "onPause",
+      "source_url": "https://animejs.com/documentation/timer/timer-callbacks/onpause",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "timer",
+        "callback"
+      ],
+      "description": "Executes a function when a running timer is paused, receiving the timer instance as its first argument and configurable via the engine defaults.",
+      "preview_image": "",
+      "id": "unknown__onpause",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Timer Methods",
+      "source_url": "https://animejs.com/documentation/timer/timer-methods",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "timer",
+        "docs"
+      ],
+      "description": "Methods available on the Timer instance returned by createTimer(), including play(), reverse(), pause(), restart(), complete(), reset(), and seek() for controlling timer behavior.",
+      "preview_image": "",
+      "id": "unknown__timer-methods",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Timer Methods: Complete",
+      "source_url": "https://animejs.com/documentation/timer/timer-methods/complete",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "timer",
+        "api"
+      ],
+      "description": "Completes a timer instantly, jumping to the end of the current iteration. Returns the timer itself for chaining with other timer methods.",
+      "preview_image": "",
+      "id": "unknown__timer-methods:-complete",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "reverse()",
+      "source_url": "https://animejs.com/documentation/timer/timer-methods/reverse",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "smooth",
+        "timer",
+        "transition"
+      ],
+      "description": "Forces a timer to play backward, reversing the direction of the iteration progress. Returns the timer for chaining.",
+      "preview_image": "",
+      "id": "unknown__reverse()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Timer Playback Settings: Delay",
+      "source_url": "https://animejs.com/documentation/timer/timer-playback-settings/delay",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "timer",
+        "api"
+      ],
+      "description": "Defines the time in milliseconds before a timer starts counting, accepting a Number equal to or greater than 0 and defaulting to 0.",
+      "preview_image": "",
+      "id": "unknown__timer-playback-settings:-delay",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "padEnd()",
+      "source_url": "https://animejs.com/documentation/utilities/pad-end",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "utility"
+      ],
+      "description": "Pads a Number from the end with a string until the result reaches a given length, or creates a reusable padding function when no value is provided.",
+      "preview_image": "",
+      "id": "unknown__padend()",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "Numerical Value",
+      "source_url": "https://animejs.com/documentation/utilities/stagger/stagger-value-types/numerical-value",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "stagger",
+        "utility"
+      ],
+      "description": "Represents by how much each staggered value is incremented, accepting a Number or a String containing at least one number, used for distributing animations over target elements.",
+      "preview_image": "",
+      "id": "unknown__numerical-value",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "easing",
+      "source_url": "https://animejs.com/documentation/web-animation-api/api-differences-with-native-waapi/easing",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "easing",
+        "animation"
+      ],
+      "description": "Replaces the native WAAPI easing parameter with Anime.js's ease parameter, accepting any easing string or function name plus all native WAAPI easing functions. The default is out(2) instead of linear.",
+      "preview_image": "",
+      "id": "unknown__easing",
+      "source_domain": "animejs.com"
+    },
+    {
+      "name": "finished",
+      "source_url": "https://animejs.com/documentation/web-animation-api/api-differences-with-native-waapi/finished",
+      "registry_url": "https://animejs.com/documentation",
+      "category": "animation",
+      "tags": [
+        "javascript",
+        "anime.js",
+        "minimal",
+        "animation",
+        "api"
+      ],
+      "description": "Replaces animation.finished with the then() method, returning a Promise that resolves with a callback when the animation completes, or usable in async/await contexts.",
+      "preview_image": "",
+      "id": "unknown__finished",
+      "source_domain": "animejs.com"
     }
   ]
 }
