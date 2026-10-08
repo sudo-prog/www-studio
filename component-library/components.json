@@ -1,6 +1,6 @@
 {
-  "version": "1.0.103",
-  "source_count": 28305,
+  "version": "1.0.104",
+  "source_count": 28365,
   "components": [
     {
       "id": "cat-0",
@@ -491139,6 +491139,914 @@
       "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/a49d30e4f8ebc09c583ac3d9dcf1611b60550355-1770x1368.png",
       "id": "unknown__destination-overview-and-audio-guide",
       "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Case Sensitive Selectors",
+      "source_url": "https://css-tricks.com/snippets/css/case-sensitive-selectors/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet"
+      ],
+      "description": "CSS styling snippet. Works across modern browsers.",
+      "preview_image": "",
+      "id": "unknown__case-sensitive-selectors",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Cross Browser Inline Block",
+      "source_url": "https://css-tricks.com/snippets/css/cross-browser-inline-block/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "border"
+      ],
+      "description": "CSS snippet using width and min-height and border with display and vertical-align and margin for styling.",
+      "preview_image": "",
+      "id": "unknown__cross-browser-inline-block",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Cross Browser Min Height",
+      "source_url": "https://css-tricks.com/snippets/css/cross-browser-min-height/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "scroll-effect"
+      ],
+      "description": "CSS snippet using min-height and height for styling.",
+      "preview_image": "",
+      "id": "unknown__cross-browser-min-height",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "CSS Hacks Targeting Firefox",
+      "source_url": "https://css-tricks.com/snippets/css/css-hacks-targeting-firefox/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet"
+      ],
+      "description": "CSS snippet using x and color for styling.",
+      "preview_image": "",
+      "id": "unknown__css-hacks-targeting-firefox",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Exactly Center an Image/Div Horizontally and Vertically",
+      "source_url": "https://css-tricks.com/snippets/css/exactly-center-an-imagediv-horizontally-and-vertically/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet"
+      ],
+      "description": "CSS snippet using width and height and position with left and top and margin-left for styling.",
+      "preview_image": "",
+      "id": "unknown__exactly-center-an-image/div-horizontally-and-vertically",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Layered Paper",
+      "source_url": "https://css-tricks.com/snippets/css/layered-paper/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "glass",
+        "background"
+      ],
+      "description": "CSS styling snippet. Works across modern browsers.",
+      "preview_image": "",
+      "id": "unknown__layered-paper",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Solarized Theme For Codemirror And Prettify",
+      "source_url": "https://css-tricks.com/snippets/css/solarized-theme-for-codemirror-and-prettify/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "border"
+      ],
+      "description": "CSS snippet using color and background-color and font-style with font-weight for styling.",
+      "preview_image": "",
+      "id": "unknown__solarized-theme-for-codemirror-and-prettify",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Triangular List Bullets",
+      "source_url": "https://css-tricks.com/snippets/css/triangular-list-bullets/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "border"
+      ],
+      "description": "CSS snippet using margin and padding and list-style with li and content and border-color for styling.",
+      "preview_image": "",
+      "id": "unknown__triangular-list-bullets",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Active Gzip Compression",
+      "source_url": "https://css-tricks.com/snippets/htaccess/active-gzip-compression/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "minimal",
+        "filter"
+      ],
+      "description": ".htaccess snippet using BEGIN, GZIP, AddOutputFilterByType, DEFLATE for server configuration.",
+      "preview_image": "",
+      "id": "unknown__active-gzip-compression",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Denying Allowing Access",
+      "source_url": "https://css-tricks.com/snippets/htaccess/denying-allowing-access/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "minimal",
+        "utility"
+      ],
+      "description": ".htaccess snippet using Order, Deny, All, Allow for server configuration.",
+      "preview_image": "",
+      "id": "unknown__denying-allowing-access",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Fix DreamHost Stats Page WordPress",
+      "source_url": "https://css-tricks.com/snippets/htaccess/fix-dreamhost-stats-page-wordpress/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "minimal",
+        "utility"
+      ],
+      "description": ".htaccess snippet using IfModule, RewriteEngine, On, RewriteBase for server configuration.",
+      "preview_image": "",
+      "id": "unknown__fix-dreamhost-stats-page-wordpress",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Force Charset UTF 8",
+      "source_url": "https://css-tricks.com/snippets/htaccess/force-charset-utf-8/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "minimal",
+        "utility"
+      ],
+      "description": ".htaccess snippet using AddDefaultCharset for server configuration.",
+      "preview_image": "",
+      "id": "unknown__force-charset-utf-8",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Force HTTPS",
+      "source_url": "https://css-tricks.com/snippets/htaccess/force-https/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "minimal",
+        "utility"
+      ],
+      "description": ".htaccess snippet using RewriteEngine, RewriteCond, HTTPS, RewriteRule for server configuration.",
+      "preview_image": "",
+      "id": "unknown__force-https",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "iPhone Catcher",
+      "source_url": "https://css-tricks.com/snippets/htaccess/iphone-catcher/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "minimal",
+        "utility"
+      ],
+      "description": ".htaccess snippet using IfModule, RewriteEngine, On, RewriteCond for server configuration.",
+      "preview_image": "",
+      "id": "unknown__iphone-catcher",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Password Protect Folders",
+      "source_url": "https://css-tricks.com/snippets/htaccess/password-protect-folders/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "minimal",
+        "utility"
+      ],
+      "description": ".htaccess snippet using AuthType, Basic, AuthName, This for server configuration.",
+      "preview_image": "",
+      "id": "unknown__password-protect-folders",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Accessible Logo Link",
+      "source_url": "https://css-tricks.com/snippets/html/accessible-logo-link/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "minimal",
+        "snippet"
+      ],
+      "description": "HTML snippet using a, img tags for markup.",
+      "preview_image": "",
+      "id": "unknown__accessible-logo-link",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Embedding Windows Media",
+      "source_url": "https://css-tricks.com/snippets/html/embedding-windows-media/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "minimal",
+        "snippet"
+      ],
+      "description": "HTML snippet using object, param tags for markup.",
+      "preview_image": "",
+      "id": "unknown__embedding-windows-media",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Mailto Links",
+      "source_url": "https://css-tricks.com/snippets/html/mailto-links/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "minimal",
+        "snippet"
+      ],
+      "description": "HTML snippet using a tags for markup. Works across modern browsers.",
+      "preview_image": "",
+      "id": "unknown__mailto-links",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Meta Tag for Forcing IE 8 to Behave Like IE 7",
+      "source_url": "https://css-tricks.com/snippets/html/meta-tag-for-forcing-ie-8-to-behave-like-ie-7/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "minimal",
+        "snippet"
+      ],
+      "description": "HTML snippet using meta tags for markup.",
+      "preview_image": "",
+      "id": "unknown__meta-tag-for-forcing-ie-8-to-behave-like-ie-7",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Meta Tag to Prevent Search Engine Bots",
+      "source_url": "https://css-tricks.com/snippets/html/meta-tag-to-prevent-search-engine-bots/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "minimal",
+        "snippet"
+      ],
+      "description": "HTML snippet using meta, a tags for markup.",
+      "preview_image": "",
+      "id": "unknown__meta-tag-to-prevent-search-engine-bots",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Tooltips For Acronyms",
+      "source_url": "https://css-tricks.com/snippets/html/tooltips-for-acronyms/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "minimal",
+        "snippet"
+      ],
+      "description": "HTML snippet using acronym tags for markup.",
+      "preview_image": "",
+      "id": "unknown__tooltips-for-acronyms",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "XHTML 1.0 Strict Page Structure",
+      "source_url": "https://css-tricks.com/snippets/html/xhtml-1-0-strict-page-structure/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "minimal",
+        "responsive"
+      ],
+      "description": "HTML snippet using html, head, meta tags for markup.",
+      "preview_image": "",
+      "id": "unknown__xhtml-1.0-strict-page-structure",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Check If Function Exists Before Calling",
+      "source_url": "https://css-tricks.com/snippets/javascript/check-if-function-exists-before-calling/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "minimal",
+        "snippet"
+      ],
+      "description": "JavaScript snippet using yourFunctionName for client-side scripting.",
+      "preview_image": "",
+      "id": "unknown__check-if-function-exists-before-calling",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Error-Free Firebug Logging",
+      "source_url": "https://css-tricks.com/snippets/javascript/error-free-firebug-logging/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "minimal",
+        "snippet"
+      ],
+      "description": "JavaScript snippet using function, replace, log for client-side scripting.",
+      "preview_image": "",
+      "id": "unknown__error-free-firebug-logging",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Get YouTube Key From a Link",
+      "source_url": "https://css-tricks.com/snippets/javascript/get-youtube-key-from-a-link/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "minimal",
+        "list"
+      ],
+      "description": "JavaScript snippet using getElementById, substr, lastIndexOf for client-side scripting.",
+      "preview_image": "",
+      "id": "unknown__get-youtube-key-from-a-link",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "HTMLEntities for JavaScript",
+      "source_url": "https://css-tricks.com/snippets/javascript/htmlentities-for-javascript/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "minimal",
+        "snippet"
+      ],
+      "description": "JavaScript snippet using htmlEntities, replace for client-side scripting.",
+      "preview_image": "",
+      "id": "unknown__htmlentities-for-javascript",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Inject HTML From a String of HTML",
+      "source_url": "https://css-tricks.com/snippets/javascript/inject-html-from-a-string-of-html/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "minimal",
+        "snippet"
+      ],
+      "description": "JavaScript snippet for client-side functionality.",
+      "preview_image": "",
+      "id": "unknown__inject-html-from-a-string-of-html",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "JavaScript Keycodes",
+      "source_url": "https://css-tricks.com/snippets/javascript/javascript-keycodes/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "minimal",
+        "list"
+      ],
+      "description": "JavaScript snippet for client-side functionality.",
+      "preview_image": "",
+      "id": "unknown__javascript-keycodes",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Lighten/Darken Color",
+      "source_url": "https://css-tricks.com/snippets/javascript/lighten-darken-color/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "minimal",
+        "color-palette"
+      ],
+      "description": "JavaScript snippet using darken for client-side scripting.",
+      "preview_image": "",
+      "id": "unknown__lighten/darken-color",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Strip HTML Tags in JavaScript",
+      "source_url": "https://css-tricks.com/snippets/javascript/strip-html-tags-in-javascript/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "minimal",
+        "snippet"
+      ],
+      "description": "JavaScript snippet using replace for client-side scripting.",
+      "preview_image": "",
+      "id": "unknown__strip-html-tags-in-javascript",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Calculate Distance Between Mouse and Element",
+      "source_url": "https://css-tricks.com/snippets/jquery/calculate-distance-between-mouse-and-element/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "javascript",
+        "minimal",
+        "snippet"
+      ],
+      "description": "jQuery snippet using mousemove for DOM manipulation.",
+      "preview_image": "",
+      "id": "unknown__calculate-distance-between-mouse-and-element",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Detect First Visible Element",
+      "source_url": "https://css-tricks.com/snippets/jquery/detect-first-visible-element/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "javascript",
+        "minimal",
+        "scroll-effect"
+      ],
+      "description": "jQuery snippet using scroll, scrollTop for DOM manipulation.",
+      "preview_image": "",
+      "id": "unknown__detect-first-visible-element",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Display Only First X Divs Toggle Rest",
+      "source_url": "https://css-tricks.com/snippets/jquery/display-only-first-x-divs-toggle-rest/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "javascript",
+        "minimal",
+        "snippet"
+      ],
+      "description": "jQuery snippet using html, click for DOM manipulation.",
+      "preview_image": "",
+      "id": "unknown__display-only-first-x-divs-toggle-rest",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Make jQuery Contains Case-Insensitive",
+      "source_url": "https://css-tricks.com/snippets/jquery/make-jquery-contains-case-insensitive/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "javascript",
+        "minimal",
+        "snippet"
+      ],
+      "description": "jQuery snippet using text for DOM manipulation.",
+      "preview_image": "",
+      "id": "unknown__make-jquery-contains-case-insensitive",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Open External Links in New Window",
+      "source_url": "https://css-tricks.com/snippets/jquery/open-external-links-in-new-window/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "javascript",
+        "minimal",
+        "snippet"
+      ],
+      "description": "jQuery snippet using each, click for DOM manipulation.",
+      "preview_image": "",
+      "id": "unknown__open-external-links-in-new-window",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Paste Events",
+      "source_url": "https://css-tricks.com/snippets/jquery/paste-events/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "javascript",
+        "minimal",
+        "snippet"
+      ],
+      "description": "jQuery snippet using each, on for DOM manipulation.",
+      "preview_image": "",
+      "id": "unknown__paste-events",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Run JavaScript Only After Entire Page Has Loaded",
+      "source_url": "https://css-tricks.com/snippets/jquery/run-javascript-only-after-entire-page-has-loaded/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "javascript",
+        "minimal",
+        "snippet"
+      ],
+      "description": "jQuery snippet using bind for DOM manipulation.",
+      "preview_image": "",
+      "id": "unknown__run-javascript-only-after-entire-page-has-loaded",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Triple Click Event",
+      "source_url": "https://css-tricks.com/snippets/jquery/triple-click-event/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "javascript",
+        "minimal",
+        "snippet"
+      ],
+      "description": "jQuery snippet using bind for DOM manipulation.",
+      "preview_image": "",
+      "id": "unknown__triple-click-event",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Convert Br To Newline",
+      "source_url": "https://css-tricks.com/snippets/php/convert-br-to-newline/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "utility"
+      ],
+      "description": "PHP snippet using br2newline, br2nl, str_replace for WordPress/server-side development.",
+      "preview_image": "",
+      "id": "unknown__convert-br-to-newline",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Convert Comma Separated String Into Array",
+      "source_url": "https://css-tricks.com/snippets/php/convert-comma-separated-string-into-array/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "utility"
+      ],
+      "description": "PHP snippet using explode() to convert comma-separated strings into arrays.",
+      "preview_image": "",
+      "id": "unknown__convert-comma-separated-string-into-array",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Create Data URIs",
+      "source_url": "https://css-tricks.com/snippets/php/create-data-uris/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "utility"
+      ],
+      "description": "PHP snippet using base64_encode and file_get_contents for data URI generation.",
+      "preview_image": "",
+      "id": "unknown__create-data-uris",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Get All-Time Number of MySQL Queries",
+      "source_url": "https://css-tricks.com/snippets/php/get-all-time-number-of-mysql-queries/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "utility"
+      ],
+      "description": "PHP snippet using mysql_connect and fputcsv for CSV import into MySQL.",
+      "preview_image": "",
+      "id": "unknown__get-all-time-number-of-mysql-queries",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Get Current File Name",
+      "source_url": "https://css-tricks.com/snippets/php/get-current-file-name/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "utility"
+      ],
+      "description": "PHP snippet using basename() and $_SERVER for current file name detection.",
+      "preview_image": "",
+      "id": "unknown__get-current-file-name",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Import CSV into MySQL",
+      "source_url": "https://css-tricks.com/snippets/php/import-csv-into-mysql/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "utility"
+      ],
+      "description": "PHP snippet using mysql_connect and fputcsv for CSV import into MySQL.",
+      "preview_image": "",
+      "id": "unknown__import-csv-into-mysql",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Randomize Background Image",
+      "source_url": "https://css-tricks.com/snippets/php/randomize-background-image/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "background"
+      ],
+      "description": "PHP snippet using array, rand, count for WordPress/server-side development.",
+      "preview_image": "",
+      "id": "unknown__randomize-background-image",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Truncate String By Words",
+      "source_url": "https://css-tricks.com/snippets/php/truncate-string-by-words/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "utility"
+      ],
+      "description": "PHP snippet using explode() to convert comma-separated strings into arrays.",
+      "preview_image": "",
+      "id": "unknown__truncate-string-by-words",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Advanced Type Checking",
+      "source_url": "https://css-tricks.com/snippets/sass/advanced-type-checking/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "sass",
+        "minimal",
+        "snippet"
+      ],
+      "description": "Sass snippet with author, function, number for CSS preprocessing.",
+      "preview_image": "",
+      "id": "unknown__advanced-type-checking",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "BEM Mixins",
+      "source_url": "https://css-tricks.com/snippets/sass/bem-mixins/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "sass",
+        "minimal",
+        "snippet"
+      ],
+      "description": "Sass snippet using @mixin and & (parent selector) for BEM methodology.",
+      "preview_image": "",
+      "id": "unknown__bem-mixins",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Fix Number N Digits",
+      "source_url": "https://css-tricks.com/snippets/sass/fix-number-n-digits/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "sass",
+        "minimal",
+        "snippet"
+      ],
+      "description": "Sass function using toFixed() for number precision control.",
+      "preview_image": "",
+      "id": "unknown__fix-number-n-digits",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Simplifying Contexts Events",
+      "source_url": "https://css-tricks.com/snippets/sass/simplifying-contexts-events/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "sass",
+        "minimal",
+        "hover-effect"
+      ],
+      "description": "Sass snippet with author, param, see for CSS preprocessing.",
+      "preview_image": "",
+      "id": "unknown__simplifying-contexts-events",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Str Replace Function",
+      "source_url": "https://css-tricks.com/snippets/sass/str-replace-function/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "sass",
+        "minimal",
+        "snippet"
+      ],
+      "description": "Sass function using str-replace() to replace substrings in strings.",
+      "preview_image": "",
+      "id": "unknown__str-replace-function",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Striped Gradient Mixin",
+      "source_url": "https://css-tricks.com/snippets/sass/striped-gradient-mixin/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "sass",
+        "gradient",
+        "background"
+      ],
+      "description": "Sass snippet with author, param, output for CSS preprocessing.",
+      "preview_image": "",
+      "id": "unknown__striped-gradient-mixin",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Tint Shade Functions",
+      "source_url": "https://css-tricks.com/snippets/sass/tint-shade-functions/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "sass",
+        "monochrome",
+        "background"
+      ],
+      "description": "Sass function using mix() and darken() for tint and shade color functions.",
+      "preview_image": "",
+      "id": "unknown__tint-shade-functions",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Customize Comments Markup",
+      "source_url": "https://css-tricks.com/snippets/wordpress/customize-comments-markup/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "list"
+      ],
+      "description": "PHP snippet using my_custom_comments, comment_class, comment_ID for WordPress/server-side development.",
+      "preview_image": "",
+      "id": "unknown__customize-comments-markup",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Facebook Like Button",
+      "source_url": "https://css-tricks.com/snippets/wordpress/facebook-like-button/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "scroll-effect"
+      ],
+      "description": "PHP snippet using rawurlencode, get_permalink for WordPress/server-side processing.",
+      "preview_image": "",
+      "id": "unknown__facebook-like-button",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Include Any File From Your Theme",
+      "source_url": "https://css-tricks.com/snippets/wordpress/include-any-file-from-your-theme/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "utility"
+      ],
+      "description": "PHP snippet using include for WordPress/server-side development.",
+      "preview_image": "",
+      "id": "unknown__include-any-file-from-your-theme",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Move WordPress Admin Bar to the Bottom",
+      "source_url": "https://css-tricks.com/snippets/wordpress/move-wordpress-admin-bar-to-the-bottom/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "utility"
+      ],
+      "description": "PHP snippet using fb_move_admin_bar, add_action for WordPress/server-side processing.",
+      "preview_image": "",
+      "id": "unknown__move-wordpress-admin-bar-to-the-bottom",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Post Divider",
+      "source_url": "https://css-tricks.com/snippets/wordpress/post-divider/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "utility"
+      ],
+      "description": "PHP snippet for WordPress/server-side processing.",
+      "preview_image": "",
+      "id": "unknown__post-divider",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Remove Gallery Inline Styling",
+      "source_url": "https://css-tricks.com/snippets/wordpress/remove-gallery-inline-styling/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "filter"
+      ],
+      "description": "PHP snippet using add_filter for WordPress/server-side processing.",
+      "preview_image": "",
+      "id": "unknown__remove-gallery-inline-styling",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Turn On WordPress Error Reporting",
+      "source_url": "https://css-tricks.com/snippets/wordpress/turn-on-wordpress-error-reporting/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "utility"
+      ],
+      "description": "PHP snippet using define, ini_set for WordPress/server-side development.",
+      "preview_image": "",
+      "id": "unknown__turn-on-wordpress-error-reporting",
+      "source_domain": "css-tricks.com"
     }
   ]
 }
