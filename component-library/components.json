@@ -1,6 +1,6 @@
 {
-  "version": "1.0.107",
-  "source_count": 28538,
+  "version": "1.0.108",
+  "source_count": 28598,
   "components": [
     {
       "id": "cat-0",
@@ -494934,6 +494934,913 @@
       "preview_image": "",
       "id": "unknown__and-what-about-resolution",
       "source_domain": "tympanus.net"
+    },
+    {
+      "name": "All Stylesheet Media Types",
+      "source_url": "https://css-tricks.com/snippets/css/all-stylesheet-media-types/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "layout",
+        "utility"
+      ],
+      "description": "Lists all media types for the link element's media attribute, including all, aural, braille, embossed, handheld, print, projection, screen, tty, and tv for targeting different output devices.",
+      "preview_image": "",
+      "id": "unknown__all-stylesheet-media-types",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Css Box Shadow",
+      "source_url": "https://css-tricks.com/snippets/css/css-box-shadow/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "layout",
+        "utility"
+      ],
+      "description": "Creates box shadows using box-shadow shorthand with horizontal and vertical offsets, blur radius, spread radius, and color. Supports inset and negative spread for one-side effects.",
+      "preview_image": "",
+      "id": "unknown__css-box-shadow",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Css Diagnostics",
+      "source_url": "https://css-tricks.com/snippets/css/css-diagnostics/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "utility",
+        "layout"
+      ],
+      "description": "Highlights HTML errors using CSS selectors like div:empty and p:empty to find empty elements, and *[alt], *[class] to flag empty attributes, plus deprecated tags and attributes.",
+      "preview_image": "",
+      "id": "unknown__css-diagnostics",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Fluid Typography",
+      "source_url": "https://css-tricks.com/snippets/css/fluid-typography/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "responsive",
+        "typography"
+      ],
+      "description": "Scales font-size using calc() with viewport units (100vw) between min and max breakpoints, transitioning from a fixed size at 320px to another at 1000px viewport width with a Sass fluid-type mixin.",
+      "preview_image": "",
+      "id": "unknown__fluid-typography",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Gradient Text",
+      "source_url": "https://css-tricks.com/snippets/css/gradient-text/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "gradient",
+        "typography"
+      ],
+      "description": "Creates gradient-filled text using -webkit-linear-gradient, -webkit-background-clip: text, and -webkit-text-fill-color: transparent, keeping text editable and selectable.",
+      "preview_image": "",
+      "id": "unknown__gradient-text",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Multiple Columns",
+      "source_url": "https://css-tricks.com/snippets/css/multiple-columns/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "layout",
+        "grid"
+      ],
+      "description": "Creates multi-column text layouts using -webkit-column-count: 3 and -moz-column-count: 3 with column-gap: 20px, automatically balancing column heights per the CSS specification.",
+      "preview_image": "",
+      "id": "unknown__multiple-columns",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Prevent Long Urls From Breaking Out Of Container",
+      "source_url": "https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "utility",
+        "layout"
+      ],
+      "description": "Prevents long unbreakable strings from overflowing containers using overflow-wrap: break-word, word-break: break-word, -ms-hyphens: auto, and hyphens: auto with vendor prefixes.",
+      "preview_image": "",
+      "id": "unknown__prevent-long-urls-from-breaking-out-of-container",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Typewriter Effect",
+      "source_url": "https://css-tricks.com/snippets/css/typewriter-effect/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "animation",
+        "typography"
+      ],
+      "description": "Simulates typing with CSS animation using overflow: hidden, border-right for cursor, white-space: nowrap, and @keyframes typing that animates width from 0 to 100% with steps() timing.",
+      "preview_image": "",
+      "id": "unknown__typewriter-effect",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Allow Single Url Through Htaccess Password Protection",
+      "source_url": "https://css-tricks.com/snippets/htaccess/allow-single-url/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "htaccess",
+        "server",
+        "utility"
+      ],
+      "description": "Uses SetEnvIf to match Request_URI or HOST variables, combined with Order Deny,Allow and Satisfy any to permit specific URLs or hosts through basic auth while requiring valid-user.",
+      "preview_image": "",
+      "id": "unknown__allow-single-url-through-htaccess-password-protection",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Different Directory Index Page",
+      "source_url": "https://css-tricks.com/snippets/htaccess/different-directory-index-page/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "htaccess",
+        "server",
+        "utility"
+      ],
+      "description": "Changes the default directory index file served by Apache from index.html or index.php to a custom filename using the DirectoryIndex directive in .htaccess.",
+      "preview_image": "",
+      "id": "unknown__different-directory-index-page",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Fancy Indexing",
+      "source_url": "https://css-tricks.com/snippets/htaccess/fancy-indexing/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "htaccess",
+        "server",
+        "utility"
+      ],
+      "description": "Enables Apache mod_autoindex FancyIndexing with FoldersFirst and NameWidth=* directives to produce formatted file listings with sizes, dates, and sort capability.",
+      "preview_image": "",
+      "id": "unknown__fancy-indexing",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Force Files To Download Not Open In Browser",
+      "source_url": "https://css-tricks.com/snippets/htaccess/force-files-to-download-not-open-in-browser/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "htaccess",
+        "server",
+        "utility"
+      ],
+      "description": "Forces specific file types to download instead of opening in-browser by setting AddType application/octet-stream for .csv, .xls, .doc, .avi, .mpg, .mov, and .pdf extensions.",
+      "preview_image": "",
+      "id": "unknown__force-files-to-download-not-open-in-browser",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Prevent Image Hotlinking",
+      "source_url": "https://css-tricks.com/snippets/htaccess/prevent-image-hotlinking/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "htaccess",
+        "server",
+        "utility"
+      ],
+      "description": "Blocks hotlinking using RewriteCond to check HTTP_REFERER against own domain, redirecting matching .jpg/.gif/.bmp/.png requests to a dontsteal.jpg placeholder with search engine exemptions.",
+      "preview_image": "",
+      "id": "unknown__prevent-image-hotlinking",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Shock Teenage Gangsters With Wp-config Redirect",
+      "source_url": "https://css-tricks.com/snippets/htaccess/shock-teenage-gangsters-with-wp-config-redirect/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "htaccess",
+        "php",
+        "server",
+        "utility"
+      ],
+      "description": "Returns a 301 Redirect from /wp-config.php to fbi.gov using the Redirect directive, targeting bots scanning for vulnerable WordPress config files.",
+      "preview_image": "",
+      "id": "unknown__shock-teenage-gangsters-with-wp-config-redirect",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Www No-Www",
+      "source_url": "https://css-tricks.com/snippets/htaccess/www-no-www/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "htaccess",
+        "server",
+        "utility"
+      ],
+      "description": "Enforces www or non-www canonical URLs using RewriteCond on HTTP_HOST and RewriteRule with R=301 redirect for SEO consistency.",
+      "preview_image": "",
+      "id": "unknown__www-no-www",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Button With Line Breaks",
+      "source_url": "https://css-tricks.com/snippets/html/button-with-line-breaks/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "button",
+        "layout"
+      ],
+      "description": "Creates multi-line button text using a button element with br tags for line breaks, or uses &#x00A; and &#13;&#10; entities in input value attributes as fallbacks.",
+      "preview_image": "",
+      "id": "unknown__button-with-line-breaks",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Get Directions Form Google Maps",
+      "source_url": "https://css-tricks.com/snippets/html/get-directions-form-google-maps/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "form",
+        "layout"
+      ],
+      "description": "Submits a GET form to maps.google.com with saddr (start address) input and daddr (destination) hidden field to open Google Maps directions in a new tab.",
+      "preview_image": "",
+      "id": "unknown__get-directions-form-google-maps",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Meta Refresh",
+      "source_url": "https://css-tricks.com/snippets/html/meta-refresh/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "utility",
+        "server"
+      ],
+      "description": "Uses the meta http-equiv refresh tag with a content of 5;url=... to redirect to another URL after 5 seconds, or immediately with content 0.",
+      "preview_image": "",
+      "id": "unknown__meta-refresh",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Open Link In A New Window",
+      "source_url": "https://css-tricks.com/snippets/html/open-link-in-a-new-window/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "javascript",
+        "utility"
+      ],
+      "description": "Opens links in new tabs using target='_blank' on anchor elements, alternatively using window.open(this.href) in onclick and onkeypress handlers for JavaScript-based popups.",
+      "preview_image": "",
+      "id": "unknown__open-link-in-a-new-window",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Post Data To An Iframe",
+      "source_url": "https://css-tricks.com/snippets/html/post-data-to-an-iframe/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "form",
+        "layout"
+      ],
+      "description": "Posts form data to an iframe by matching the form target attribute to the iframe name attribute, preventing full page reload while submitting via method=post.",
+      "preview_image": "",
+      "id": "unknown__post-data-to-an-iframe",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Stop Ie Page Load Flicker",
+      "source_url": "https://css-tricks.com/snippets/html/stop-ie-page-load-flicker/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "utility",
+        "server"
+      ],
+      "description": "Uses IE conditional comments with meta http-equiv Page-Enter and Page-Exit blendTrans(duration=0) to eliminate page load flicker in Internet Explorer.",
+      "preview_image": "",
+      "id": "unknown__stop-ie-page-load-flicker",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "View Source Of Rss Feed In Firefox",
+      "source_url": "https://css-tricks.com/snippets/html/view-source-of-rss-feed-in-firefox/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "utility",
+        "server"
+      ],
+      "description": "UsesFirefox browser config about:config to set browser.foobar.contextmenu to enable viewing RSS feed source, or right-clicks feed and selects View Source.",
+      "preview_image": "",
+      "id": "unknown__view-source-of-rss-feed-in-firefox",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "AddEventListener Polyfill",
+      "source_url": "https://css-tricks.com/snippets/javascript/addeventlistner-polyfill/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "accessibility",
+        "utility"
+      ],
+      "description": "Polyfills addEventListener and removeEventListener for IE8 using attachEvent, with a fallback that wraps callbacks to provide event object normalization.",
+      "preview_image": "",
+      "id": "unknown__addeventlistener-polyfill",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Get Url Variables",
+      "source_url": "https://css-tricks.com/snippets/javascript/get-url-variables/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "utility",
+        "server"
+      ],
+      "description": "Parses URL query string parameters using split() on ? and &, then splits each pair on = and returns a key-value object via window.location.search.",
+      "preview_image": "",
+      "id": "unknown__get-url-variables",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Make Html5 Elements Work In Old Ie",
+      "source_url": "https://css-tricks.com/snippets/javascript/make-html5-elements-work-in-old-ie/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "accessibility",
+        "html",
+        "utility"
+      ],
+      "description": "Creates HTML5 elements via document.createElement for article, header, nav, section, aside, and footer so IE8 and below can style them.",
+      "preview_image": "",
+      "id": "unknown__make-html5-elements-work-in-old-ie",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Move Cursor To End Of Input",
+      "source_url": "https://css-tricks.com/snippets/javascript/move-cursor-to-end-of-input/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "form",
+        "utility"
+      ],
+      "description": "Moves text cursor to end of an input or textarea using selectionStart and selectionEnd set to value.length, with createTextRange fallback for IE.",
+      "preview_image": "",
+      "id": "unknown__move-cursor-to-end-of-input",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Print Object To Screen",
+      "source_url": "https://css-tricks.com/snippets/javascript/print-object-screen/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "utility",
+        "typography"
+      ],
+      "description": "Uses JSON.stringify with tab indentation, then replaces newlines with br tags and tabs with non breaking spaces to display objects directly in the browser DOM.",
+      "preview_image": "",
+      "id": "unknown__print-object-to-screen",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Redirect",
+      "source_url": "https://css-tricks.com/snippets/javascript/redirect/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "server",
+        "utility"
+      ],
+      "description": "Redirects the browser using window.location assignment, with alternatives of location.href and location.replace for same-page navigation control.",
+      "preview_image": "",
+      "id": "unknown__redirect",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Remove Element",
+      "source_url": "https://css-tricks.com/snippets/javascript/remove-element/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "utility",
+        "layout"
+      ],
+      "description": "Removes DOM elements using parentNode.removeChild() after selecting with querySelectorAll, or empties child nodes with a while loop calling removeChild on firstChild.",
+      "preview_image": "",
+      "id": "unknown__remove-element",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Trim First/Last Characters In String",
+      "source_url": "https://css-tricks.com/snippets/javascript/trim-firstlast-characters-in-string/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "utility",
+        "form"
+      ],
+      "description": "Uses string substr() to remove last N characters via substr(0, length-N) and first N characters via substr(N), or chains substr and slice for trimming both ends.",
+      "preview_image": "",
+      "id": "unknown__trim-first/last-characters-in-string",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Add Active Navigation Class Based On Url",
+      "source_url": "https://css-tricks.com/snippets/jquery/add-active-navigation-class-based-on-url/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "layout",
+        "utility"
+      ],
+      "description": "Adds active class to nav links using jQuery based on location.pathname, matching href attributes that start with the URL's directory segment.",
+      "preview_image": "",
+      "id": "unknown__add-active-navigation-class-based-on-url",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Draggable Without jQuery Ui",
+      "source_url": "https://css-tricks.com/snippets/jquery/draggable-without-jquery-ui/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "animation",
+        "utility"
+      ],
+      "description": "Implements drag-and-drop using mousedown, mousemove, and mouseup events with jQuery's offset(), outerHeight(), outerWidth(), and css for z-index management.",
+      "preview_image": "",
+      "id": "unknown__draggable-without-jquery-ui",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Find All Internal Links",
+      "source_url": "https://css-tricks.com/snippets/jquery/find-all-internal-links/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "utility",
+        "layout"
+      ],
+      "description": "Selects all internal links matching the site domain, root-relative paths starting with slash, relative paths, or hash fragments, using jQuery attribute selectors.",
+      "preview_image": "",
+      "id": "unknown__find-all-internal-links",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Get An Images Native Width",
+      "source_url": "https://css-tricks.com/snippets/jquery/get-an-images-native-width/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "utility",
+        "layout"
+      ],
+      "description": "Creates a new Image() object and reads its .width and .height properties to get intrinsic dimensions, avoiding max-width scaling that affects jQuery .width() values.",
+      "preview_image": "",
+      "id": "unknown__get-an-images-native-width",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Get Query Params As Object",
+      "source_url": "https://css-tricks.com/snippets/jquery/get-query-params-object/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "server",
+        "utility"
+      ],
+      "description": "Parses window.location.search into a key-value object using replace with regex to strip leading question mark, split on ampersands, and split each pair on equals sign.",
+      "preview_image": "",
+      "id": "unknown__get-query-params-as-object",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Konami Code",
+      "source_url": "https://css-tricks.com/snippets/jquery/konomi-code/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "animation",
+        "form",
+        "utility"
+      ],
+      "description": "Tracks keydown events via jQuery, pushing keyCode values into an array and matching against the sequence 38,38,40,40,37,39,37,39,66,65 to trigger actions.",
+      "preview_image": "",
+      "id": "unknown__konami-code",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "A jQuery hasAttr() Equivalent",
+      "source_url": "https://css-tricks.com/snippets/jquery/make-an-jquery-hasattr/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "utility",
+        "form"
+      ],
+      "description": "Checks if an element has an attribute using $(this).attr('name') with typeof and !== false check, or delegates to native hasAttribute via $(this)[0].hasAttribute(), or uses .is() selector filter.",
+      "preview_image": "",
+      "id": "unknown__a-jquery-hasattr()-equivalent",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Track Window Resizes through Google Analytics",
+      "source_url": "https://css-tricks.com/snippets/jquery/track-window-resizes-through-google-analytics/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "server",
+        "animation",
+        "utility"
+      ],
+      "description": "Throttles window resize events with a setTimeout, then pushes dimensions to Google Analytics via _gaq.push with _trackEvent using window.width and window.height.",
+      "preview_image": "",
+      "id": "unknown__track-window-resizes-through-google-analytics",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Append Login Credentials to URL",
+      "source_url": "https://css-tricks.com/snippets/php/append-login-credentials-to-url/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "server",
+        "form",
+        "utility"
+      ],
+      "description": "Reads POST variables and constructs an ftp:// URL with embedded credentials via header('Location: $url') redirect, building the URL from company, username, and password fields.",
+      "preview_image": "",
+      "id": "unknown__append-login-credentials-to-url",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Find the Full Path to a File",
+      "source_url": "https://css-tricks.com/snippets/php/find-the-full-path-to-a-file/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "server",
+        "utility"
+      ],
+      "description": "Uses PHP dirname(__FILE__) to output the full server filesystem path to the current script's directory, useful for .htpasswd and file system references.",
+      "preview_image": "",
+      "id": "unknown__find-the-full-path-to-a-file",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Generate Expiring Amazon S3 Link",
+      "source_url": "https://css-tricks.com/snippets/php/generate-expiring-amazon-s3-link/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "server",
+        "htaccess",
+        "utility"
+      ],
+      "description": "Generates temporary S3 URLs using HMAC SHA1 hashing with el_crypto_hmacSHA1, base64_encode for signatures, and http_build_query to create query strings with AWSAccessKeyId and Expires parameters.",
+      "preview_image": "",
+      "id": "unknown__generate-expiring-amazon-s3-link",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Get File Size",
+      "source_url": "https://css-tricks.com/snippets/php/get-file-size/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "utility",
+        "server"
+      ],
+      "description": "Uses is_file(), filesize(), and a loop dividing by 1024 to convert bytes to human readable units TB, GB, MB, KB, B, returning round() result with unit suffix.",
+      "preview_image": "",
+      "id": "unknown__get-file-size",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Get Suffix of Given Number/Date",
+      "source_url": "https://css-tricks.com/snippets/php/get-suffix-of-given-number/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "typography",
+        "utility"
+      ],
+      "description": "Uses substr() to extract the last digit and date() with mktime to return English ordinal suffixes (st, nd, rd, th) for any given number.",
+      "preview_image": "",
+      "id": "unknown__get-suffix-of-given-number/date",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Make Random Number",
+      "source_url": "https://css-tricks.com/snippets/php/make-random-number/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "utility",
+        "server"
+      ],
+      "description": "Wraps PHP mt_rand() with optional min and max parameters, returning a random number in the given range when both are numeric, otherwise an unseeded mt_rand() result.",
+      "preview_image": "",
+      "id": "unknown__make-random-number",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Random Slogan Displayer",
+      "source_url": "https://css-tricks.com/snippets/php/random-slogan-displayer/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "server",
+        "typography"
+      ],
+      "description": "Reads slogans from a text file with file() and selects a random entry using array_rand(), printing each slogan on a separate line from the file.",
+      "preview_image": "",
+      "id": "unknown__random-slogan-displayer",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Simple Zipcode Range Tester",
+      "source_url": "https://css-tricks.com/snippets/php/zip-regex/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "utility",
+        "server"
+      ],
+      "description": "Tests zip codes against the regex /^096[0-9]{2}$/ using preg_match to verify they start with 096 followed by exactly two digits, echoing Yes or No.",
+      "preview_image": "",
+      "id": "unknown__simple-zipcode-range-tester",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Correctly Adding Unit to Number",
+      "source_url": "https://css-tricks.com/snippets/sass/correctly-adding-unit-number/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "sass",
+        "utility",
+        "layout"
+      ],
+      "description": "Converts unitless Sass numbers to lengths using $value + 0px or $value * 1px, both producing number type instead of string, avoiding arithmetic errors from string concatenation.",
+      "preview_image": "",
+      "id": "unknown__correctly-adding-unit-to-number",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Functional Programming Functions",
+      "source_url": "https://css-tricks.com/snippets/sass/functional-programming-functions/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "sass",
+        "utility",
+        "layout"
+      ],
+      "description": "Defines walk(), some(), every(), and functions-walk() Sass functions using function-exists(), call(), set-nth(), and @each/@for loops to apply functions across lists dynamically.",
+      "preview_image": "",
+      "id": "unknown__functional-programming-functions",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Color Luminance Function",
+      "source_url": "https://css-tricks.com/snippets/sass/luminance-color-function/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "sass",
+        "typography",
+        "utility"
+      ],
+      "description": "Calculates relative color luminance using red(), green(), blue() functions, WCAG gamma correction with 2.4 exponent and coefficients .2126, .7152, .0722, returning a 0-to-1 float.",
+      "preview_image": "",
+      "id": "unknown__color-luminance-function",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Placing Items on a Circle",
+      "source_url": "https://css-tricks.com/snippets/sass/placing-items-circle/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "sass",
+        "layout",
+        "animation"
+      ],
+      "description": "Uses a Sass @for loop to calculate rotation angles (360 / item-count) and applies chained CSS transforms rotate(), translate(), and reverse rotate() to position items evenly along a circle.",
+      "preview_image": "",
+      "id": "unknown__placing-items-on-a-circle",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Power Function",
+      "source_url": "https://css-tricks.com/snippets/sass/power-function/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "sass",
+        "utility",
+        "layout"
+      ],
+      "description": "Implements a pow() Sass function using @for loops with multiplication for positive exponents and division for negative, plus factorial(), exp(), and ln() functions for non-integer exponents.",
+      "preview_image": "",
+      "id": "unknown__power-function",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Simple Asset Helper Functions",
+      "source_url": "https://css-tricks.com/snippets/sass/simple-asset-helper-functions/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "sass",
+        "utility",
+        "layout"
+      ],
+      "description": "Defines image() and font() Sass functions that call a base asset() function to build url() strings from $asset-base-path variable, compiling to url('../assets/images/kittens.png').",
+      "preview_image": "",
+      "id": "unknown__simple-asset-helper-functions",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Strip-unit Function",
+      "source_url": "https://css-tricks.com/snippets/sass/strip-unit-function/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "sass",
+        "utility",
+        "layout"
+      ],
+      "description": "Removes units from Sass numbers by dividing $number by ($number * 0 + 1), using type-of and unitless checks to return a unitless value while preserving the numeric portion.",
+      "preview_image": "",
+      "id": "unknown__strip-unit-function",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Get ID from Page Name",
+      "source_url": "https://css-tricks.com/snippets/wordpress/get-id-from-page-name/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "utility",
+        "server"
+      ],
+      "description": "Queries wp_posts table using $wpdb->get_var() with WHERE post_name and post_type equals page to retrieve the WordPress post ID from a page slug.",
+      "preview_image": "",
+      "id": "unknown__get-id-from-page-name",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Include jQuery in WordPress Theme",
+      "source_url": "https://css-tricks.com/snippets/wordpress/include-jquery-in-wordpress-theme/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "jquery",
+        "server",
+        "utility"
+      ],
+      "description": "Hooks wp_deregister_script, wp_register_script from Google CDN, and wp_enqueue_script to wp_enqueue_scripts action to load jQuery externally, avoiding WordPress bundled version conflicts.",
+      "preview_image": "",
+      "id": "unknown__include-jquery-in-wordpress-theme",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Remove Paragraph Tags From Around Images",
+      "source_url": "https://css-tricks.com/snippets/wordpress/remove-paragraph-tags-from-around-images/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "html",
+        "utility"
+      ],
+      "description": "Uses preg_replace with pattern matching <p> tags wrapping <img> and optional <a> tags, hooked to the_content filter via add_filter to strip auto-generated paragraph wrappers.",
+      "preview_image": "",
+      "id": "unknown__remove-paragraph-tags-from-around-images",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Remove Whitespace From Function Output",
+      "source_url": "https://css-tricks.com/snippets/wordpress/remove-whitespace-from-function-output/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "utility",
+        "server"
+      ],
+      "description": "Strips whitespace from function output using ob_start with a callback that applies trim, preg_replace, and str_replace to remove newlines, tabs, and extra spaces.",
+      "preview_image": "",
+      "id": "unknown__remove-whitespace-from-function-output",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Replace Excerpt Ellipsis With Permalink",
+      "source_url": "https://css-tricks.com/snippets/wordpress/replace-excerpt-ellipsis-with-permalink/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "utility",
+        "server"
+      ],
+      "description": "Hooks the excerpt_more filter to replace the default [...] ellipsis with an anchor tag using get_permalink and get_the_title to link to the full post.",
+      "preview_image": "",
+      "id": "unknown__replace-excerpt-ellipsis-with-permalink",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Using Custom Fields",
+      "source_url": "https://css-tricks.com/snippets/wordpress/using-custom-fields/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "utility",
+        "server"
+      ],
+      "description": "Retrieves WordPress custom field values using get_post_meta with the true parameter for single value return, accessed via the post ID and custom field key name.",
+      "preview_image": "",
+      "id": "unknown__using-custom-fields",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Year Shortcode",
+      "source_url": "https://css-tricks.com/snippets/wordpress/year-shortcode/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "utility",
+        "server"
+      ],
+      "description": "Registers a [year] shortcode via add_shortcode that returns date('Y') for the current 4-digit year, useful in post content and widget areas.",
+      "preview_image": "",
+      "id": "unknown__year-shortcode",
+      "source_domain": "css-tricks.com"
     }
   ]
 }
