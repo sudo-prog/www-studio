@@ -1,6 +1,6 @@
 {
-  "version": "1.0.94",
-  "source_count": 27975,
+  "version": "1.0.95",
+  "source_count": 27976,
   "components": [
     {
       "id": "cat-0",
@@ -485098,6 +485098,22 @@
       "preview_image": "https://www.shadertoy.com/media/shaders/ftt3R7.jpg",
       "id": "unknown__starleidoscope",
       "source_domain": "www.shadertoy.com"
+    },
+    {
+      "name": "Align UI",
+      "source_url": "https://www.navbar.gallery/navbar/align-ui",
+      "registry_url": "https://navbar.gallery",
+      "category": "navbar",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "A design system for Figma with over 5900 components, featuring a static navigation bar.",
+      "preview_image": "https://cdn.prod.website-files.com/65676438ff1c480b81cf0085/675db6c6cc75dbb01a915b47_Screenshot%202024-12-14%20at%2017.47.59.webp",
+      "id": "unknown__align-ui",
+      "source_domain": "www.navbar.gallery"
     }
   ]
 }
