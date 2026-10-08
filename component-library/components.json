@@ -1,6 +1,6 @@
 {
-  "version": "1.0.104",
-  "source_count": 28365,
+  "version": "1.0.105",
+  "source_count": 28425,
   "components": [
     {
       "id": "cat-0",
@@ -492047,6 +492047,1086 @@
       "preview_image": "",
       "id": "unknown__turn-on-wordpress-error-reporting",
       "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Button 1/With Icon",
+      "source_url": "https://21st.dev/@sean0205/components/button-1/with-icon",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "button",
+        "minimal",
+        "typescript",
+        "framer-motion"
+      ],
+      "description": "A button component variant with icon support that accepts an icon prop to render alongside or instead of children, using Tailwind CSS for styling and React for rendering.",
+      "preview_image": "https://cdn.21st.dev/sean0205/button-1/with-icon/preview.1751371706465.png",
+      "id": "unknown__button-1/with-icon",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Delete Account Form",
+      "source_url": "https://21st.dev/@cnippet-dev/components/v-form-12",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "form",
+      "tags": [
+        "react",
+        "tailwind",
+        "form",
+        "zod",
+        "react-hook-form",
+        "typescript"
+      ],
+      "description": "A form component that displays a confirmation dialog before deleting an account, with a delete button trigger and a form submission flow that validates user intent before proceeding.",
+      "preview_image": "https://cdn.21st.dev/cnippet.dev/v-form-12/default/preview.1787160660564-76918de1-4bd7-4f89-a1d8-bc70c8c6ff4d.png",
+      "id": "unknown__delete-account-form",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Modern Payment Form",
+      "source_url": "https://21st.dev/@ruixen.ui/components/modern-payment-form",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "form",
+      "tags": [
+        "react",
+        "tailwind",
+        "form",
+        "minimal",
+        "typescript",
+        "nextjs"
+      ],
+      "description": "A payment form component with card number, expiration date, CVC, and cardholder name fields, featuring inline validation and a clean, modern layout styled with Tailwind CSS.",
+      "preview_image": "https://cdn.21st.dev/ruixen.ui/modern-payment-form/default/preview.1753152426285.png",
+      "id": "unknown__modern-payment-form",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Shadcn Form",
+      "source_url": "https://21st.dev/@shadcn/components/form",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "form",
+      "tags": [
+        "react",
+        "tailwind",
+        "form",
+        "shadcn",
+        "typescript",
+        "zod"
+      ],
+      "description": "A shadcn/ui form wrapper that integrates with react-hook-form and zod validation, providing form field components with label, control, and error message handling.",
+      "preview_image": "https://cdn.21st.dev/user_shadcn/form/default/preview.png",
+      "id": "unknown__shadcn-form",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Badge Tag",
+      "source_url": "https://21st.dev/@prebuiltui/components/badge-tag/update-badge-tag",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "badge",
+      "tags": [
+        "react",
+        "tailwind",
+        "badge",
+        "minimal",
+        "typescript",
+        "html"
+      ],
+      "description": "A badge tag component with variant styles and update functionality, allowing dynamic label assignment and visual customization through Tailwind CSS classes.",
+      "preview_image": "https://cdn.21st.dev/larsen66/badge-tag/update-badge-tag/preview.1757090305326.png",
+      "id": "unknown__badge-tag",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Button Save",
+      "source_url": "https://21st.dev/@shadcnspace/components/button-save",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "button",
+        "minimal",
+        "typescript",
+        "framer-motion"
+      ],
+      "description": "A save button component that toggles between edit and save states with a loading spinner, using framer-motion for smooth transition animations between states.",
+      "preview_image": "https://cdn.21st.dev/larsen66/button-save/default/preview.1773081261504.png",
+      "id": "unknown__button-save",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Newsletter Subscription Form",
+      "source_url": "https://21st.dev/@felipemenezes098/components/tsf-recipes-04",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "form",
+      "tags": [
+        "react",
+        "tailwind",
+        "form",
+        "minimal",
+        "typescript",
+        "nextjs"
+      ],
+      "description": "A newsletter subscription form with email input and submit button, featuring inline validation and success state feedback with a clean, minimal design.",
+      "preview_image": "https://cdn.21st.dev/felipemenezes098/tsf-recipes-04/default/preview.1787163858463-bff8a4c7-036b-4118-92d5-cba9bfb6ebf9.png",
+      "id": "unknown__newsletter-subscription-form",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Form/Select Form",
+      "source_url": "https://21st.dev/@azacdev/components/form/select-form",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "form",
+      "tags": [
+        "react",
+        "tailwind",
+        "form",
+        "select",
+        "zod",
+        "typescript"
+      ],
+      "description": "A form component with a select dropdown input that integrates with react-hook-form and zod validation, providing label, control, and error handling for form selections.",
+      "preview_image": "https://cdn.21st.dev/user_shadcn/form/select-form/preview.png?v=1",
+      "id": "unknown__form/select-form",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Button 1/Loading",
+      "source_url": "https://21st.dev/@jolbol1/components/button-1/loading",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "button",
+        "minimal",
+        "typescript",
+        "framer-motion"
+      ],
+      "description": "A loading button variant that displays a spinner while in the loading state, disabling interaction and showing visual feedback during pending operations.",
+      "preview_image": "https://cdn.21st.dev/larsen66/button-1/loading/preview.1754505356616.png",
+      "id": "unknown__button-1/loading",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "AI Actions",
+      "source_url": "https://21st.dev/@designali-in/components/ai-actions",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "button",
+        "minimal",
+        "typescript",
+        "framer-motion"
+      ],
+      "description": "An AI actions button component with tooltip hover effects and multiple action variants, featuring smooth animations and a modern UI for triggering AI-powered operations.",
+      "preview_image": "https://cdn.21st.dev/designali-in/ai-actions/default/preview.1756918230237.png",
+      "id": "unknown__ai-actions",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Input 1/Fieldset",
+      "source_url": "https://21st.dev/@olivier_1b6cd5bc/components/input-1/fieldset",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "input",
+        "minimal",
+        "typescript",
+        "html"
+      ],
+      "description": "An input fieldset component that groups related form controls with a legend, providing consistent styling and layout for form input groups using Tailwind CSS.",
+      "preview_image": "https://cdn.21st.dev/larsen66/input-1/fieldset/preview.1753379535421.png",
+      "id": "unknown__input-1/fieldset",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Password update Block",
+      "source_url": "https://21st.dev/@preetsuthar17/components/password-update-block",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "form",
+      "tags": [
+        "react",
+        "tailwind",
+        "form",
+        "input",
+        "typescript",
+        "zod"
+      ],
+      "description": "A password update block component with current password, new password, and confirm password fields, featuring inline validation and strength indicators.",
+      "preview_image": "https://cdn.21st.dev/user_2rWolCuRnJW3DRiuQ5JHrl5kj8a/password-update-block/default/preview.1788206138961.png",
+      "id": "unknown__password-update-block",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Button/Supabase Button",
+      "source_url": "https://21st.dev/@serafimcloud/components/button/supabase-button",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "button",
+        "nextjs",
+        "typescript",
+        "minimal"
+      ],
+      "description": "A Supabase authentication button component that integrates with Supabase auth providers, enabling one-click sign-in flows with OAuth and email providers.",
+      "preview_image": "https://cdn.21st.dev/user_shadcn/button/supabase-button/preview.png?v=1",
+      "id": "unknown__button/supabase-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "HeroUI Button Group",
+      "source_url": "https://21st.dev/@hero_ui/components/heroui-button-group/variants",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "button",
+        "variant",
+        "typescript",
+        "hero-ui"
+      ],
+      "description": "A HeroUI button group component with multiple variant styles (solid, bordered, light) and size options, allowing grouped button interactions with consistent spacing.",
+      "preview_image": "https://cdn.21st.dev/user_hero_ui/heroui-button-group/variants/preview.1787666069492.png",
+      "id": "unknown__heroui-button-group",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Call to action",
+      "source_url": "https://21st.dev/@tommyjepsen/components/call-to-action",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "hero",
+      "tags": [
+        "react",
+        "tailwind",
+        "cta",
+        "hero",
+        "typescript",
+        "minimal"
+      ],
+      "description": "A call-to-action section with a headline, subheading, and primary action button, designed for landing pages with centered layout and gradient background styling.",
+      "preview_image": "https://cdn.21st.dev/user_tommyjepsen/call-to-action/default/preview.1786552329192.png",
+      "id": "unknown__call-to-action",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Duration Picker",
+      "source_url": "https://21st.dev/@educalvolpz/components/duration-picker",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "date-picker",
+      "tags": [
+        "react",
+        "tailwind",
+        "slider",
+        "input",
+        "typescript",
+        "minimal"
+      ],
+      "description": "A duration picker slider component that allows selecting time intervals through a draggable range control, displaying selected values with animated thumb transitions.",
+      "preview_image": "https://cdn.21st.dev/educalvolpz/duration-picker/default/preview.1790071917163-66cb6ba8-44a3-44a2-94f8-33ffac027ff6.png",
+      "id": "unknown__duration-picker",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Login Card",
+      "source_url": "https://21st.dev/@arihantcodes_1f7b8c4d/components/login-card-1/quick-expense",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "login",
+      "tags": [
+        "react",
+        "tailwind",
+        "login",
+        "card",
+        "typescript",
+        "minimal"
+      ],
+      "description": "A login card component with email and password fields, submit button, and social login options, presented in a centered card layout with decorative elements.",
+      "preview_image": "https://cdn.21st.dev/larsen66/login-card-1/quick-expense/preview.1754087327498.png",
+      "id": "unknown__login-card",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Button/Button Group",
+      "source_url": "https://21st.dev/@mynaui/components/button/button-group",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "button",
+        "group",
+        "typescript",
+        "minimal"
+      ],
+      "description": "A button group component with multiple buttons rendered as a connected set, supporting variant and size props for consistent styling across grouped actions.",
+      "preview_image": "https://cdn.21st.dev/user_shadcn/button/button-group/preview.png?v=1",
+      "id": "unknown__button/button-group",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Clevision Buttons",
+      "source_url": "https://21st.dev/@clevision/components/buttons/button-one",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "button",
+        "minimal",
+        "typescript",
+        "html"
+      ],
+      "description": "A buttons collection component with multiple style variants including solid, outline, and ghost styles, featuring hover and active state animations.",
+      "preview_image": "https://cdn.21st.dev/user_ShadcnStudio/buttons/button-one/preview.1787910156780.png",
+      "id": "unknown__clevision-buttons",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "The Button Group",
+      "source_url": "https://21st.dev/@edwinvakayil/components/the-button-group",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "button",
+        "group",
+        "typescript",
+        "minimal"
+      ],
+      "description": "A button group component with segmented controls and active state selection, allowing single-selection from multiple options with clear visual feedback.",
+      "preview_image": "https://cdn.21st.dev/lyanchouss/the-button-group/default/preview.1780152769626.png",
+      "id": "unknown__the-button-group",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Minimal Button",
+      "source_url": "https://21st.dev/@radiumcoders/components/minimal-button",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "button",
+        "minimal",
+        "shadcn",
+        "typescript"
+      ],
+      "description": "A clean, minimal button built on the shadcn Button with a faint diagonal hatch overlay and a soft drop shadow that adapts to light and dark themes.",
+      "preview_image": "https://cdn.21st.dev/user_36kD1scOExJb89UoQCZAl3Z0xi7/minimal-button/default/preview.1785853176423.png",
+      "id": "unknown__minimal-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Contact Page",
+      "source_url": "https://21st.dev/@efferd/components/contact-page",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "section",
+      "tags": [
+        "react",
+        "tailwind",
+        "html",
+        "css",
+        "typescript",
+        "minimal"
+      ],
+      "description": "A professional contact page with email, phone, office details, and social media links, featuring copy-to-clipboard actions and a modern UI layout.",
+      "preview_image": "https://cdn.21st.dev/sshahaider/contact-page/default/preview.1757519188483.png",
+      "id": "unknown__contact-page",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "SignUpPage",
+      "source_url": "https://21st.dev/@bhomikproductivitylab/components/sign-up-page",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "signup",
+      "tags": [
+        "react",
+        "tailwind",
+        "signup",
+        "form",
+        "typescript",
+        "nextjs"
+      ],
+      "description": "A signup page with an image on the left and a registration form on the right, featuring first name, last name, email, and password fields with submit action.",
+      "preview_image": "https://cdn.21st.dev/bhomikproductivitylab/sign-up-page/default/preview.1759132242612.png",
+      "id": "unknown__signuppage",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Field Components",
+      "source_url": "https://21st.dev/@anubra266/components/field-components/error-input",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "input",
+        "form",
+        "typescript",
+        "radix"
+      ],
+      "description": "A field component with error display for invalid input, showing validation messages and error styling when the input fails validation checks.",
+      "preview_image": "https://cdn.21st.dev/larsen66/field-components/error-input/preview.1756339627539.png",
+      "id": "unknown__field-components",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Forgot Password",
+      "source_url": "https://21st.dev/@meschacirung/components/forgot-password/forgot-password",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "auth",
+      "tags": [
+        "react",
+        "tailwind",
+        "login",
+        "form",
+        "typescript",
+        "minimal"
+      ],
+      "description": "A forgot password form component with email input and reset link submission, featuring inline validation and a clean layout for password recovery flows.",
+      "preview_image": "https://cdn.21st.dev/larsen66/forgot-password/forgot-password/preview.1751848180634.png",
+      "id": "unknown__forgot-password",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Lavikatiyar Login",
+      "source_url": "https://21st.dev/@lavikatiyar/components/login",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "login",
+      "tags": [
+        "react",
+        "tailwind",
+        "login",
+        "form",
+        "typescript",
+        "minimal"
+      ],
+      "description": "A login form with email and password fields, a submit button, and social login options, presented in a centered card layout with brand styling.",
+      "preview_image": "https://cdn.21st.dev/lavikatiyar/login/default/preview.1760596417118.png",
+      "id": "unknown__lavikatiyar-login",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Gaming Login",
+      "source_url": "https://21st.dev/@kamalesh/components/gaming-login",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "login",
+      "tags": [
+        "react",
+        "tailwind",
+        "login",
+        "gaming",
+        "typescript",
+        "framer-motion"
+      ],
+      "description": "A gaming-themed login form with animated background effects, username/password fields, and a neon-styled submit button with hover particle effects.",
+      "preview_image": "https://cdn.21st.dev/kamaleshsa/gaming-login/default/preview.1747242747332.png",
+      "id": "unknown__gaming-login",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Login / Signup",
+      "source_url": "https://21st.dev/@lyanchouss/components/login-signup/login-signup",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "login",
+      "tags": [
+        "react",
+        "tailwind",
+        "login",
+        "signup",
+        "form",
+        "typescript"
+      ],
+      "description": "A login and signup toggle component that switches between login and registration forms, featuring email and password fields with smooth transition animations.",
+      "preview_image": "https://cdn.21st.dev/lyanchouss/login-signup/login-signup/preview.1785602015747.png",
+      "id": "unknown__login-/-signup",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Bjork Textarea",
+      "source_url": "https://21st.dev/@isaiahbjork/components/primitive-textarea",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "textarea",
+        "input",
+        "typescript",
+        "minimal"
+      ],
+      "description": "A primitive textarea component built from scratch without external dependencies, providing a lightweight multi-line text input with basic styling and focus states.",
+      "preview_image": "https://cdn.21st.dev/isaiahbjork/primitive-textarea/default/preview.1789690339900-dc73f4ef-c254-41bf-9429-1a6f5c92d52e.png",
+      "id": "unknown__bjork-textarea",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Form/Zod",
+      "source_url": "https://21st.dev/@coss.com/components/form/zod",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "form",
+      "tags": [
+        "react",
+        "tailwind",
+        "form",
+        "zod",
+        "typescript",
+        "react-hook-form"
+      ],
+      "description": "A form component that integrates zod schema validation with react-hook-form, providing type-safe form handling with automatic error message display for invalid fields.",
+      "preview_image": "https://cdn.21st.dev/coss.com/form/zod/preview.1774277903029.png",
+      "id": "unknown__form/zod",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Login 2",
+      "source_url": "https://21st.dev/@socolled/components/login-2",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "login",
+      "tags": [
+        "react",
+        "tailwind",
+        "login",
+        "form",
+        "shadcn",
+        "typescript"
+      ],
+      "description": "A simple login form using shadcn/ui components with email and password fields, a sign in button, and Google OAuth social login integration.",
+      "preview_image": "https://cdn.21st.dev/user_2wfnwMgx0nHGt7gMHA84CSEXfdj/login-2/default/preview.1791197905738.png",
+      "id": "unknown__login-2",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Form 2",
+      "source_url": "https://21st.dev/@ephraimduncan/components/form-2",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "form",
+      "tags": [
+        "react",
+        "tailwind",
+        "form",
+        "minimal",
+        "typescript",
+        "nextjs"
+      ],
+      "description": "A minimalistic register form with first name, last name, email, address, and city fields, featuring a clean two-column layout and submit button.",
+      "preview_image": "https://cdn.21st.dev/user_2vZexZytBe3Vo4fbfmzWgvCugbB/form-2/default/preview.1748455681560.png",
+      "id": "unknown__form-2",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Text Area",
+      "source_url": "https://21st.dev/@oui/components/oui-text-area",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "textarea",
+        "input",
+        "typescript",
+        "radix"
+      ],
+      "description": "A multi-line text input built on React Aria Components with shadcn styling, for use inside a text field with label, description, and validation.",
+      "preview_image": "https://cdn.21st.dev/oui/oui-text-area/default/preview.1788287135101-89d01893-ea24-4531-a345-bdd3ae1f55b2.png",
+      "id": "unknown__text-area",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Calendar React Day Picker",
+      "source_url": "https://21st.dev/@originui/components/calendar/date-range-picker",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "date-picker",
+      "tags": [
+        "react",
+        "tailwind",
+        "date-picker",
+        "calendar",
+        "typescript",
+        "shadcn"
+      ],
+      "description": "A date range picker component built on React Day Picker with range selection, displaying start and end dates with preset quick-select options and calendar navigation.",
+      "preview_image": "https://cdn.21st.dev/user_originui/calendar/default/preview.1737991401753.png",
+      "id": "unknown__calendar-react-day-picker",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Group Tone Input",
+      "source_url": "https://21st.dev/@ai2/components/input-group-tone",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "input",
+        "group",
+        "typescript",
+        "minimal"
+      ],
+      "description": "An input group component with tone adjustment, featuring multiple input fields grouped together with consistent styling and optional icon addons.",
+      "preview_image": "https://cdn.21st.dev/ai2/input-group-tone/default/preview.1790047489948-4866d407-e94e-4695-9d33-e3057e950c41.png",
+      "id": "unknown__group-tone-input",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Cromia Channels",
+      "source_url": "https://21st.dev/@arikchakma/components/cromia-channels",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "section",
+      "tags": [
+        "react",
+        "tailwind",
+        "navigation",
+        "menu",
+        "typescript",
+        "nextjs"
+      ],
+      "description": "A channel navigation component with sidebar layout, featuring a list of channels with icons and active state highlighting, suitable for messaging or dashboard applications.",
+      "preview_image": "https://cdn.21st.dev/user_registry_arikchakma_1785470443007/cromia-channels/default/preview.1785484815346.png",
+      "id": "unknown__cromia-channels",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Reshaped Checkbox",
+      "source_url": "https://21st.dev/@reshaped/components/reshaped-checkbox/sizes",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "checkbox",
+        "input",
+        "typescript",
+        "radix"
+      ],
+      "description": "A checkbox component with multiple size variants (sm, md, lg) and custom styling, supporting checked, unchecked, and indeterminate states with smooth transitions.",
+      "preview_image": "https://cdn.21st.dev/user_reshaped/reshaped-checkbox/sizes/preview.1787328714923.png",
+      "id": "unknown__reshaped-checkbox",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Button 1/Circle",
+      "source_url": "https://21st.dev/@sean0205/components/button-1/circle",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "button",
+        "icon",
+        "typescript",
+        "minimal"
+      ],
+      "description": "A circular icon button variant that renders a button in a perfect circle, ideal for icon-only actions with consistent sizing and hover effects.",
+      "preview_image": "https://cdn.21st.dev/sean0205/button-1/circle/preview.1751374349985.png",
+      "id": "unknown__button-1/circle",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Multi-Select Combobox Form Field",
+      "source_url": "https://21st.dev/@cnippet-dev/components/v-combobox-13",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "combobox",
+        "form",
+        "typescript",
+        "zod"
+      ],
+      "description": "A form field with a multi-select combobox that renders selected values as removable chips, filters options as you type, and validates on submit.",
+      "preview_image": "https://cdn.21st.dev/cnippet.dev/v-combobox-13/default/preview.1788463278336-32ea2a98-ca0f-4200-a880-ff62424ff6e1.png",
+      "id": "unknown__multi-select-combobox-form-field",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "NovaQRButton",
+      "source_url": "https://21st.dev/@ruixen.ui/components/nova-qrbutton",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "button",
+        "glow",
+        "typescript",
+        "css"
+      ],
+      "description": "A modern, glowing UI button component with animated radial and conic gradients, supporting full customization of color, speed, and element type via props.",
+      "preview_image": "https://cdn.21st.dev/ruixen.ui/nova-qrbutton/default/preview.1749228409359.png",
+      "id": "unknown__novaqrbutton",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Empty/Avatar Group",
+      "source_url": "https://21st.dev/@shadcn/components/empty/avatar-group",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "avatar",
+      "tags": [
+        "react",
+        "tailwind",
+        "avatar",
+        "group",
+        "typescript",
+        "minimal"
+      ],
+      "description": "An avatar group component that displays multiple user avatars stacked with overlap, showing a condensed horizontal row of profile pictures with hover tooltips.",
+      "preview_image": "https://cdn.21st.dev/larsen66/empty/avatar-group/preview.1760028926875.png",
+      "id": "unknown__empty/avatar-group",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Form 1",
+      "source_url": "https://21st.dev/@prebuiltui/components/form-1",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "form",
+      "tags": [
+        "react",
+        "tailwind",
+        "form",
+        "input",
+        "typescript",
+        "minimal"
+      ],
+      "description": "A form component with styled input fields and a submit button, featuring consistent spacing and validation states for building structured data entry forms.",
+      "preview_image": "https://cdn.21st.dev/larsen66/form-1/default/preview.1757571359573.png",
+      "id": "unknown__form-1",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Textarea with characters left",
+      "source_url": "https://21st.dev/@shadcnspace/components/textarea-with-characters-left",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "textarea",
+        "input",
+        "typescript",
+        "minimal"
+      ],
+      "description": "A textarea component with a live character counter that updates as you type, showing remaining characters with color changes when approaching the limit.",
+      "preview_image": "https://cdn.21st.dev/larsen66/textarea-with-characters-left/default/preview.1772711593047.png",
+      "id": "unknown__textarea-with-characters-left",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "The Input",
+      "source_url": "https://21st.dev/@felipemenezes098/components/the-input/with-addon-in-the-end",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "input",
+        "group",
+        "typescript",
+        "minimal"
+      ],
+      "description": "An input component with an addon element rendered at the end of the input field, allowing for appended icons or buttons with consistent styling.",
+      "preview_image": "https://cdn.21st.dev/larsen66/the-input/with-addon-in-the-end/preview.1780003626696.png",
+      "id": "unknown__the-input",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Form/Dual Range Slider Form",
+      "source_url": "https://21st.dev/@azacdev/components/form/dual-range-slider-form",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "form",
+      "tags": [
+        "react",
+        "tailwind",
+        "form",
+        "slider",
+        "input",
+        "typescript"
+      ],
+      "description": "A form component with dual range sliders that capture two values with a ghost preview on hover, displaying formatted currency values below each slider thumb.",
+      "preview_image": "https://cdn.21st.dev/user_shadcn/form/dual-range-slider-form/preview.png?v=1",
+      "id": "unknown__form/dual-range-slider-form",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Button 1/Icon",
+      "source_url": "https://21st.dev/@jolbol1/components/button-1/icon",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "button",
+        "icon",
+        "typescript",
+        "minimal"
+      ],
+      "description": "An icon button variant that renders a button containing only an icon, with consistent sizing and hover effects suitable for compact UI actions.",
+      "preview_image": "https://cdn.21st.dev/larsen66/button-1/icon/preview.1754505356615.png",
+      "id": "unknown__button-1/icon",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Book A Demo 4",
+      "source_url": "https://21st.dev/@designali-in/components/book-a-demo-4",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "hero",
+      "tags": [
+        "react",
+        "tailwind",
+        "cta",
+        "hero",
+        "typescript",
+        "minimal"
+      ],
+      "description": "A demo booking section with a headline, description, and demo request form featuring name and email fields with a submit button and smooth hover animations.",
+      "preview_image": "https://cdn.21st.dev/designali-in/book-a-demo-4/default/preview.1760502616478.png",
+      "id": "unknown__book-a-demo-4",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Button 1/Button Group",
+      "source_url": "https://21st.dev/@olivier_1b6cd5bc/components/button-1/button-group",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "button",
+        "group",
+        "typescript",
+        "minimal"
+      ],
+      "description": "A button group component with segmented controls that share a common border, allowing grouped button interactions with active state highlighting.",
+      "preview_image": "https://cdn.21st.dev/larsen66/button-1/button-group/preview.1755558085665.png",
+      "id": "unknown__button-1/button-group",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Full Screen Signup",
+      "source_url": "https://21st.dev/@preetsuthar17/components/full-screen-signup",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "signup",
+      "tags": [
+        "react",
+        "tailwind",
+        "signup",
+        "form",
+        "typescript",
+        "nextjs"
+      ],
+      "description": "A full-screen signup page with a split layout featuring an illustration on the left and a registration form with name, email, and password fields on the right.",
+      "preview_image": "https://cdn.21st.dev/user_2rWolCuRnJW3DRiuQ5JHrl5kj8a/full-screen-signup/default/preview.1747163524498.png",
+      "id": "unknown__full-screen-signup",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Button Retro",
+      "source_url": "https://21st.dev/@serafimcloud/components/button-retro",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "button",
+        "retro",
+        "glow",
+        "typescript"
+      ],
+      "description": "A retro-styled button component with a textured background and border animation, featuring a pressed state with subtle scaling and hover effects.",
+      "preview_image": "https://cdn.21st.dev/larsen66/button-retro/default/preview.1760290102489.png",
+      "id": "unknown__button-retro",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "HeroUI Switch",
+      "source_url": "https://21st.dev/@hero_ui/components/heroui-switch",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "toggle",
+      "tags": [
+        "react",
+        "tailwind",
+        "switch",
+        "toggle",
+        "typescript",
+        "hero-ui"
+      ],
+      "description": "A HeroUI switch toggle component with smooth sliding animation during state changes, supporting checked and unchecked states with customizable colors.",
+      "preview_image": "https://cdn.21st.dev/user_hero_ui/heroui-switch/default/preview.1785862680043.png",
+      "id": "unknown__heroui-switch",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Hero with image, text and two buttons",
+      "source_url": "https://21st.dev/@tommyjepsen/components/hero-with-image-text-and-two-buttons",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "hero",
+      "tags": [
+        "react",
+        "tailwind",
+        "hero",
+        "cta",
+        "typescript",
+        "minimal"
+      ],
+      "description": "A hero section with an image, headline text, and two action buttons, featuring a responsive layout with centered content and gradient background.",
+      "preview_image": "https://cdn.21st.dev/user_tommyjepsen/hero-with-image-text-and-two-buttons/default/preview.png",
+      "id": "unknown__hero-with-image,-text-and-two-buttons",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Animated File Upload",
+      "source_url": "https://21st.dev/@educalvolpz/components/animated-file-upload",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "file-upload",
+      "tags": [
+        "react",
+        "tailwind",
+        "file-upload",
+        "framer-motion",
+        "typescript",
+        "animation"
+      ],
+      "description": "A file upload component with animated drag-and-drop zone, displaying a file icon and progress feedback with smooth transitions between empty and uploaded states.",
+      "preview_image": "https://cdn.21st.dev/educlopez/animated-file-upload/default/preview.1783571477956.png",
+      "id": "unknown__animated-file-upload",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Input Modal",
+      "source_url": "https://21st.dev/@arihantcodes_1f7b8c4d/components/input-modal",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "modal",
+      "tags": [
+        "react",
+        "tailwind",
+        "modal",
+        "input",
+        "typescript",
+        "framer-motion"
+      ],
+      "description": "A modal dialog component triggered by a button click, containing a form with input fields and submit/cancel buttons, with backdrop blur and scale animation.",
+      "preview_image": "https://cdn.21st.dev/larsen66/input-modal/default/preview.1754084179407.png",
+      "id": "unknown__input-modal",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Switch List Card",
+      "source_url": "https://21st.dev/@sean0205/components/c-switch-6",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "toggle",
+      "tags": [
+        "react",
+        "tailwind",
+        "switch",
+        "toggle",
+        "typescript",
+        "minimal"
+      ],
+      "description": "A switch list card component with multiple toggle items in a card layout, each with a label and switch control, allowing multi-selection with smooth state transitions.",
+      "preview_image": "https://cdn.21st.dev/sean0205/c-switch-6/default/preview.1790120328374-afc8f3ad-4620-4004-98e0-51896af46bad.png",
+      "id": "unknown__switch-list-card",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Cnippet Button/Star",
+      "source_url": "https://21st.dev/@cnippet-dev/components/cnippet-button/star",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "button",
+        "base-ui",
+        "typescript",
+        "icon"
+      ],
+      "description": "A polymorphic button built on Base UI's useRender with 8 visual variants and full size options including icon sizes, featuring a built-in loading state with inline spinner.",
+      "preview_image": "https://cdn.21st.dev/user_36Tbt0v8JdD4jEycmBFhR8tojnR/cnippet-button/star/preview.1788947245569.png",
+      "id": "unknown__cnippet-button/star",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "ConfettiButton",
+      "source_url": "https://21st.dev/@ruixen.ui/components/confetti-button",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "button",
+        "animation",
+        "framer-motion",
+        "typescript"
+      ],
+      "description": "A celebratory button component that triggers confetti particle animations on click, using canvas-based rendering for performant visual feedback with sound effect support.",
+      "preview_image": "https://cdn.21st.dev/ruixen.ui/confetti-button/default/preview.1758650413010.png",
+      "id": "unknown__confettibutton",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Sonner",
+      "source_url": "https://21st.dev/@shadcn/components/sonner",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "notification",
+      "tags": [
+        "react",
+        "tailwind",
+        "notification",
+        "toast",
+        "typescript",
+        "shadcn"
+      ],
+      "description": "A toast notification component that displays temporary messages with auto-dismissal and position control, supporting multiple toast types including success, error, and warning.",
+      "preview_image": "https://cdn.21st.dev/user_shadcn/sonner/886/preview.png",
+      "id": "unknown__sonner",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Button Ui",
+      "source_url": "https://21st.dev/@prebuiltui/components/button-ui/button-with-border-animation",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "button",
+        "animation",
+        "typescript",
+        "html"
+      ],
+      "description": "A button component with animated border effects that animate on hover, featuring a smooth border-draw animation using CSS keyframes and transition timing.",
+      "preview_image": "https://cdn.21st.dev/larsen66/button-ui/button-with-border-animation/preview.1757093042394.png",
+      "id": "unknown__button-ui",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Price Range Slider",
+      "source_url": "https://21st.dev/@shadcnspace/components/slider-06",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "slider",
+      "tags": [
+        "react",
+        "tailwind",
+        "slider",
+        "input",
+        "typescript",
+        "shadcn"
+      ],
+      "description": "A dual-thumb price range filter slider that previews a ghost extension on hover outside the selected range, with animated number values and thumb scaling.",
+      "preview_image": "https://cdn.21st.dev/shadcnspace/slider-06/default/preview.1788812402476-6b30a264-9044-412e-b881-e45e64b532d6.png",
+      "id": "unknown__price-range-slider",
+      "source_domain": "21st.dev"
     }
   ]
 }
