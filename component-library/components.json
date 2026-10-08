@@ -1,6 +1,6 @@
 {
-  "version": "1.0.97",
-  "source_count": 28069,
+  "version": "1.0.98",
+  "source_count": 28086,
   "components": [
     {
       "id": "cat-0",
@@ -486634,6 +486634,295 @@
       "description": "A button with an inline keyboard-shortcut indicator (kbd element) showing the Enter key (\u23ce) needed to trigger the action. Default label 'Accept', rendered in a centered flex layout.",
       "preview_image": "https://cdn.21st.dev/user_registry_uiable_1783486969177/kbd-button/default/preview.1789744456111.png",
       "id": "unknown__kbd-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Origin Button",
+      "source_url": "https://21st.dev/@edwinvakayil/components/origin-button",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "motion",
+        "button",
+        "minimal"
+      ],
+      "description": "A button component from Dali Agents using the motion library for hover animations. Renders a simple 'Origin Button' label in a centered layout, with motion-based transform effects on interaction.",
+      "preview_image": "https://cdn.21st.dev/larsen66/origin-button/default/preview.1780693767860.png",
+      "id": "unknown__origin-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Basic Toast",
+      "source_url": "https://21st.dev/@anubra266/components/basic-toast/toast-positions",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "toast",
+      "tags": [
+        "react",
+        "tailwind",
+        "radix-ui",
+        "toast",
+        "notification"
+      ],
+      "description": "A toast notification component with six position variants (top/bottom x left/center/right) using @ark-ui/react/toast. Creates toasts with title, description, and close button, rendered in a responsive grid layout.",
+      "preview_image": "https://cdn.21st.dev/user_anubra266/basic-toast/toast-positions/preview.1787179898158.png",
+      "id": "unknown__basic-toast",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Hover Glow Button",
+      "source_url": "https://21st.dev/@jahed/components/hover-glow-button",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "glow",
+        "button",
+        "hover-effect"
+      ],
+      "description": "A React button with a mouse-following glow effect, configurable via glowColor, backgroundColor, textColor, and hoverTextColor props. The glow tracks cursor movement on hover for an interactive lighting experience.",
+      "preview_image": "https://cdn.21st.dev/user_2xJxXqdwWohYrdd6fiMYrS9hbmO/hover-glow-button/default/preview.1750805132705.png",
+      "id": "unknown__hover-glow-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Great UI Button",
+      "source_url": "https://21st.dev/@saurabh-2607/components/great-ui-button",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "button",
+        "interactive"
+      ],
+      "description": "A versatile button with six variants (primary, secondary, outline, ghost, destructive, link) and multiple sizes, supporting icons and a loading state with disabled handling. Built with class-variance-authority patterns.",
+      "preview_image": "https://cdn.21st.dev/user_greatui/great-ui-button/default/preview.1785943961167.png",
+      "id": "unknown__great-ui-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Star Button",
+      "source_url": "https://21st.dev/@m.umairwaheedansari/components/star-button",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "glow",
+        "button",
+        "hover-effect"
+      ],
+      "description": "An animated button with a star-themed hover animation, displaying decorative sparkle characters (\u2727\u2726) that animate on hover. Uses CSS transitions for the glow and sparkle effects.",
+      "preview_image": "https://cdn.21st.dev/user_318J0Ggv5tBerzHI6pxne3zH7wk/star-button/default/preview.1787011327043.png",
+      "id": "unknown__star-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Premium Auth",
+      "source_url": "https://21st.dev/@dhileepkumargm/components/premium-auth",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "auth",
+      "tags": [
+        "react",
+        "tailwind",
+        "glass",
+        "framer-motion",
+        "auth"
+      ],
+      "description": "A glass-morphism authentication modal with Login/Sign Up toggle, form validation with error handling, password visibility toggle, and social login (Google, GitHub). Features framer-motion animations, particle background, and responsive mobile support.",
+      "preview_image": "https://cdn.21st.dev/user_2xffZsPH7trHq0L2RAacpvdoyXT/premium-auth/default/preview.1786740100555.png",
+      "id": "unknown__premium-auth",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Login 1",
+      "source_url": "https://21st.dev/@shadcnblockscom/components/login-1",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "login",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "login",
+        "auth"
+      ],
+      "description": "A login form with email and password fields plus a Google social login button, rendered as a centered card with shadcnblocks.com branding. Uses react-icons and features a toggle between Login and Sign Up modes.",
+      "preview_image": "https://cdn.21st.dev/user_2rguB0QxcSITG2Y7ivePFsKsUU6/login-1/default/preview.1789742357595.png",
+      "id": "unknown__login-1",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Authentication Card",
+      "source_url": "https://21st.dev/@ahmedmayara/components/authentication-card",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "auth",
+      "tags": [
+        "react",
+        "tailwind",
+        "glass",
+        "login",
+        "auth"
+      ],
+      "description": "A responsive authentication card with email and password fields, 'keep me logged in' checkbox, forgot password link, and a 'Continue' submit button. Includes a smokey background animation effect and centered flex layout.",
+      "preview_image": "https://cdn.21st.dev/ahmedmayara/authentication-card/default/preview.1755542147871.png",
+      "id": "unknown__authentication-card",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Login Form",
+      "source_url": "https://21st.dev/@minhxthanh/components/login-form",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "login",
+      "tags": [
+        "react",
+        "tailwind",
+        "glass",
+        "login",
+        "auth"
+      ],
+      "description": "A login form with email and password inputs, 'Forgot Password?' link, Google social login button, and a smokey background canvas animation. Includes 'Don't have an account? Sign Up' navigation, built with lucide-react icons.",
+      "preview_image": "https://cdn.21st.dev/minhxthanh/login-form/default/preview.1755857543824.png",
+      "id": "unknown__login-form",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Neural Access Login",
+      "source_url": "https://21st.dev/@shivendra9795kumar/components/neural-access-login",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "login",
+      "tags": [
+        "react",
+        "tailwind",
+        "neon",
+        "login",
+        "cyberpunk"
+      ],
+      "description": "A cyberpunk login interface with animated floating blobs using SVG gooey filter effects and parallax cursor interaction. Features 'User Identity' and 'Sequence Key' input fields with a mercury-themed submit button that scales on hover.",
+      "preview_image": "https://cdn.21st.dev/shivendra9795kumar/neural-access-login/default/preview.1782659931069.png",
+      "id": "unknown__neural-access-login",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Image Cropper",
+      "source_url": "https://21st.dev/@info-mdshakeeb/components/image-cropper",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "image",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "upload-download",
+        "input"
+      ],
+      "description": "A drag-and-drop image uploader with live cropping support, file validation (JPEG/PNG/GIF/WEBP up to 4MB), and configurable aspect ratio. Integrates with react-hook-form and provides onChange/onBlur callbacks with error handling.",
+      "preview_image": "https://cdn.21st.dev/user_2uAKzKEgupNsq04CnbW6WtzI54M/image-cropper/default/preview.1788948960493.png",
+      "id": "unknown__image-cropper",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Form Field",
+      "source_url": "https://21st.dev/@kevingirelli/components/form",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "form",
+      "tags": [
+        "react",
+        "tailwind",
+        "radix-ui",
+        "form",
+        "input"
+      ],
+      "description": "A react-hook-form wrapper that lays out label, control, description, and error states with proper aria-invalid and aria-describedby wiring. Supports rules-based validation and renders any input via render props with required/error messaging.",
+      "preview_image": "https://cdn.21st.dev/user_registry_kevingirelli_1790903224160/form/default/preview.1791207713410.png",
+      "id": "unknown__form-field",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "useAutoResizeTextarea",
+      "source_url": "https://21st.dev/@kokonutd/components/use-auto-resize-textarea",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "hook",
+        "textarea"
+      ],
+      "description": "A React hook that automatically resizes a textarea based on content, accepting minHeight (100px default) and optional maxHeight (400px) props. Exposes textareaRef and adjustHeight function for integration with controlled form inputs.",
+      "preview_image": "https://cdn.21st.dev/user_2rQ1QHrJyxpmWMHhqhANzWMc64n/use-auto-resize-textarea/default/preview.png",
+      "id": "unknown__useautoresizetextarea",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Controlled Textarea",
+      "source_url": "https://21st.dev/@shadcnui-blocks/components/controlled-textarea",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "textarea",
+        "input"
+      ],
+      "description": "A controlled textarea where value is managed by React state, wrapped in a card layout with max-w-sm constraint. Suitable for forms and message input fields with standard shadcn/ui textarea styling.",
+      "preview_image": "https://cdn.21st.dev/shadcnui-blocks/controlled-textarea/default/preview.1787254875782-6219ca60-e6fc-4231-bbd7-4d272411dacc.png",
+      "id": "unknown__controlled-textarea",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Contact with Globe",
+      "source_url": "https://21st.dev/@scrollxui/components/contact-with-globe",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "hero",
+      "tags": [
+        "react",
+        "tailwind",
+        "three.js",
+        "form",
+        "hero"
+      ],
+      "description": "A contact page section featuring an animated 3D wireframe globe built with d3 and topojson, alongside contact links (email, phone) and a message form with Full Name, Company, Email, and Message fields. Uses motion for animations.",
+      "preview_image": "https://cdn.21st.dev/scrollxui/contact-with-globe/default/preview.1790139366674-ab8e18d4-d88d-4c69-bb2f-068db468c642.png",
+      "id": "unknown__contact-with-globe",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Textarea with Error",
+      "source_url": "https://21st.dev/@bundui/components/textarea-with-error",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "textarea",
+        "input"
+      ],
+      "description": "A textarea component with inline validation showing a destructive error state and message ('Message should be at least 10 characters') below the input when the 10-character minimum is not met.",
+      "preview_image": "https://cdn.21st.dev/bundui/textarea-with-error/default/preview.1787256013036-9059a3e4-edcf-409c-952e-49169c275be4.png",
+      "id": "unknown__textarea-with-error",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Modern Login & Signup",
+      "source_url": "https://21st.dev/@pulseawan/components/modern-login-signup",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "login",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "login",
+        "auth"
+      ],
+      "description": "A modern authentication interface with 'Sign in to Account' screen, email/password input, and social login buttons (Google, GitHub, Apple). Includes terms of service agreement link and dark theme styling with smooth UX.",
+      "preview_image": "https://cdn.21st.dev/user_3F4Dp7TbgIOgmrP2XZLif4L9scj/modern-login-signup/default/preview.1786570858021.png",
+      "id": "unknown__modern-login-&-signup",
       "source_domain": "21st.dev"
     }
   ]
