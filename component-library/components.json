@@ -491150,7 +491150,7 @@
         "minimal",
         "snippet"
       ],
-      "description": "CSS styling snippet. Works across modern browsers.",
+      "description": "Adds an `s` flag to attribute selectors like a[href*='css-tricks' s] for case-sensitive matching, while `i` makes them case-insensitive.",
       "preview_image": "",
       "id": "unknown__case-sensitive-selectors",
       "source_domain": "css-tricks.com"
@@ -491180,7 +491180,7 @@
         "minimal",
         "scroll-effect"
       ],
-      "description": "CSS snippet using min-height and height for styling.",
+      "description": "Sets min-height with a height:auto !important fallback exploiting IE's height handling, plus an alternate height: expression() for IE.",
       "preview_image": "",
       "id": "unknown__cross-browser-min-height",
       "source_domain": "css-tricks.com"
@@ -491195,7 +491195,7 @@
         "minimal",
         "snippet"
       ],
-      "description": "CSS snippet using x and color for styling.",
+      "description": "Targets Firefox only using @-moz-document url-prefix() or the x:-moz-any-link, x:default selector pair, applied to .selector.",
       "preview_image": "",
       "id": "unknown__css-hacks-targeting-firefox",
       "source_domain": "css-tricks.com"
@@ -491225,7 +491225,7 @@
         "glass",
         "background"
       ],
-      "description": "CSS styling snippet. Works across modern browsers.",
+      "description": "The .layered-paper class draws a paper-stack look with box-shadow using stacked rgba shadows and background-color stripes spaced in 10px steps.",
       "preview_image": "",
       "id": "unknown__layered-paper",
       "source_domain": "css-tricks.com"
@@ -491315,7 +491315,7 @@
         "minimal",
         "utility"
       ],
-      "description": ".htaccess snippet using AddDefaultCharset for server configuration.",
+      "description": "Forces UTF-8 decoding site-wide with the AddDefaultCharset utf-8 directive when Apache charset config can't be changed.",
       "preview_image": "",
       "id": "unknown__force-charset-utf-8",
       "source_domain": "css-tricks.com"
@@ -491375,7 +491375,7 @@
         "minimal",
         "snippet"
       ],
-      "description": "HTML snippet using a, img tags for markup.",
+      "description": "Wraps a logo in an <a> link whose <img> alt text supplies the accessible name, honoring the first rule of ARIA over aria-label.",
       "preview_image": "",
       "id": "unknown__accessible-logo-link",
       "source_domain": "css-tricks.com"
@@ -491390,7 +491390,7 @@
         "minimal",
         "snippet"
       ],
-      "description": "HTML snippet using object, param tags for markup.",
+      "description": "Embeds Windows Media with an <object> element and <param> child tags for src, autostart, and controller instead of the <embed> tag.",
       "preview_image": "",
       "id": "unknown__embedding-windows-media",
       "source_domain": "css-tricks.com"
@@ -491405,7 +491405,7 @@
         "minimal",
         "snippet"
       ],
-      "description": "HTML snippet using a tags for markup. Works across modern browsers.",
+      "description": "Builds mailto: links by appending ?subject, ?cc, ?bcc, and &body query parameters to the href value on an <a> element.",
       "preview_image": "",
       "id": "unknown__mailto-links",
       "source_domain": "css-tricks.com"
@@ -491420,7 +491420,7 @@
         "minimal",
         "snippet"
       ],
-      "description": "HTML snippet using meta tags for markup.",
+      "description": "Forces IE8 into IE7 mode with <meta http-equiv=\"X-UA-Compatible\" content=\"IE=EmulateIE7\" />, a Microsoft-documented compatibility switch.",
       "preview_image": "",
       "id": "unknown__meta-tag-for-forcing-ie-8-to-behave-like-ie-7",
       "source_domain": "css-tricks.com"
@@ -491435,7 +491435,7 @@
         "minimal",
         "snippet"
       ],
-      "description": "HTML snippet using meta, a tags for markup.",
+      "description": "Uses <meta name=\"robots\" content=\"noindex\"> (or meta name=\"googlebot\" content=\"noindex\">) plus rel=\"nofollow\" on links to hide pages from crawlers.",
       "preview_image": "",
       "id": "unknown__meta-tag-to-prevent-search-engine-bots",
       "source_domain": "css-tricks.com"
@@ -491450,7 +491450,7 @@
         "minimal",
         "snippet"
       ],
-      "description": "HTML snippet using acronym tags for markup.",
+      "description": "Adds a tooltip to <acronym title=\"Cascading Style Sheets\">CSS</acronym> via its title attribute; the acronym tag is now deprecated in favor of abbr.",
       "preview_image": "",
       "id": "unknown__tooltips-for-acronyms",
       "source_domain": "css-tricks.com"
@@ -491465,7 +491465,7 @@
         "minimal",
         "responsive"
       ],
-      "description": "HTML snippet using html, head, meta tags for markup.",
+      "description": "Declares the XHTML 1.0 Strict doctype with html xmlns and a meta Content-Type of text/html; charset=utf-8 before an empty body.",
       "preview_image": "",
       "id": "unknown__xhtml-1.0-strict-page-structure",
       "source_domain": "css-tricks.com"
@@ -491480,7 +491480,7 @@
         "minimal",
         "snippet"
       ],
-      "description": "JavaScript snippet using yourFunctionName for client-side scripting.",
+      "description": "Guards a call with if (typeof yourFunctionName == 'function') so shared scripts don't throw when a dependency is absent on some pages.",
       "preview_image": "",
       "id": "unknown__check-if-function-exists-before-calling",
       "source_domain": "css-tricks.com"
@@ -491540,7 +491540,7 @@
         "minimal",
         "snippet"
       ],
-      "description": "JavaScript snippet for client-side functionality.",
+      "description": "Puts an HTML string into the DOM via document.body.innerHTML or el.insertAdjacentHTML, the latter placing nodes at beforebegin/afterbegin/beforeend/afterend positions.",
       "preview_image": "",
       "id": "unknown__inject-html-from-a-string-of-html",
       "source_domain": "css-tricks.com"
@@ -491555,7 +491555,7 @@
         "minimal",
         "list"
       ],
-      "description": "JavaScript snippet for client-side functionality.",
+      "description": "Logs event.which in a keydown listener to map keys to numbers, e.g. backspace=8, space=32, and a\u2013z on the 65\u201390 range.",
       "preview_image": "",
       "id": "unknown__javascript-keycodes",
       "source_domain": "css-tricks.com"
@@ -491570,7 +491570,7 @@
         "minimal",
         "color-palette"
       ],
-      "description": "JavaScript snippet using darken for client-side scripting.",
+      "description": "The LightenDarkenColor(col, amt) function shifts a hex color's RGB channels by amt, clamping each component to the 0\u2013255 range.",
       "preview_image": "",
       "id": "unknown__lighten/darken-color",
       "source_domain": "css-tricks.com"
@@ -491585,7 +491585,7 @@
         "minimal",
         "snippet"
       ],
-      "description": "JavaScript snippet using replace for client-side scripting.",
+      "description": "Strips tags with originalString.replace(/(<([^>]+)>)/gi, \"\") using a case-insensitive, global regex over angle-bracket pairs.",
       "preview_image": "",
       "id": "unknown__strip-html-tags-in-javascript",
       "source_domain": "css-tricks.com"
@@ -491601,7 +491601,7 @@
         "minimal",
         "snippet"
       ],
-      "description": "jQuery snippet using mousemove for DOM manipulation.",
+      "description": "Tracks mousemove to read e.pageX/e.pageY, then Math.sqrt(Math.pow(...)) computes Euclidean distance from the cursor to an element's center.",
       "preview_image": "",
       "id": "unknown__calculate-distance-between-mouse-and-element",
       "source_domain": "css-tricks.com"
@@ -491617,7 +491617,7 @@
         "minimal",
         "scroll-effect"
       ],
-      "description": "jQuery snippet using scroll, scrollTop for DOM manipulation.",
+      "description": "On window scroll it loops .activity elements comparing offset().top and height to scrollTop plus window height, adding a first class to the first visible one.",
       "preview_image": "",
       "id": "unknown__detect-first-visible-element",
       "source_domain": "css-tricks.com"
@@ -491633,7 +491633,7 @@
         "minimal",
         "snippet"
       ],
-      "description": "jQuery snippet using html, click for DOM manipulation.",
+      "description": "Hides overflow with .news:not(:lt(N)).hide() leaving the first N visible, then a click handler toggles the hidden ones via show() and hide().",
       "preview_image": "",
       "id": "unknown__display-only-first-x-divs-toggle-rest",
       "source_domain": "css-tricks.com"
@@ -491649,7 +491649,7 @@
         "minimal",
         "snippet"
       ],
-      "description": "jQuery snippet using text for DOM manipulation.",
+      "description": "Reoverrides jQuery.expr[':'].contains with an uppercased jQuery(a).text().indexOf to make the :contains selector case-insensitive.",
       "preview_image": "",
       "id": "unknown__make-jquery-contains-case-insensitive",
       "source_domain": "css-tricks.com"
@@ -491665,7 +491665,7 @@
         "minimal",
         "snippet"
       ],
-      "description": "jQuery snippet using each, click for DOM manipulation.",
+      "description": "Loops every <a>, tests its href against a RegExp built from window.location.host, and opens external links via window.open(href,'_blank').",
       "preview_image": "",
       "id": "unknown__open-external-links-in-new-window",
       "source_domain": "css-tricks.com"
@@ -491681,7 +491681,7 @@
         "minimal",
         "snippet"
       ],
-      "description": "jQuery snippet using each, on for DOM manipulation.",
+      "description": "The $.fn.pasteEvents plugin binds a paste handler that triggers a prepaste event then a delayed postpaste event via setTimeout.",
       "preview_image": "",
       "id": "unknown__paste-events",
       "source_domain": "css-tricks.com"
@@ -491697,7 +491697,7 @@
         "minimal",
         "snippet"
       ],
-      "description": "jQuery snippet using bind for DOM manipulation.",
+      "description": "Uses $(window).bind(\"load\", fn) to run code only after the whole page, including images, finishes loading rather than just DOM-ready.",
       "preview_image": "",
       "id": "unknown__run-javascript-only-after-entire-page-has-loaded",
       "source_domain": "css-tricks.com"
@@ -491713,7 +491713,7 @@
         "minimal",
         "snippet"
       ],
-      "description": "jQuery snippet using bind for DOM manipulation.",
+      "description": "Registers a tripleclick via $.event.special.tripleclick that increments a clicks counter in $.data and fires when it reaches three.",
       "preview_image": "",
       "id": "unknown__triple-click-event",
       "source_domain": "css-tricks.com"
@@ -491743,7 +491743,7 @@
         "minimal",
         "utility"
       ],
-      "description": "PHP snippet using explode() to convert comma-separated strings into arrays.",
+      "description": "Splits a string with PHP's explode(\",\", $str) into a numeric array of tokens like foo, bar, baz.",
       "preview_image": "",
       "id": "unknown__convert-comma-separated-string-into-array",
       "source_domain": "css-tricks.com"
@@ -491773,7 +491773,7 @@
         "minimal",
         "utility"
       ],
-      "description": "PHP snippet using mysql_connect and fputcsv for CSV import into MySQL.",
+      "description": "Connects with mysql_connect and runs SHOW GLOBAL STATUS LIKE 'Questions' (or SHOW STATUS pre-5.0.02) to return the all-time query count.",
       "preview_image": "",
       "id": "unknown__get-all-time-number-of-mysql-queries",
       "source_domain": "css-tricks.com"
@@ -491803,7 +491803,7 @@
         "minimal",
         "utility"
       ],
-      "description": "PHP snippet using mysql_connect and fputcsv for CSV import into MySQL.",
+      "description": "Reads a CSV with fopen/fread, splits each line via split() and explode(',', $line), then inserts rows with mysql_query.",
       "preview_image": "",
       "id": "unknown__import-csv-into-mysql",
       "source_domain": "css-tricks.com"
@@ -491833,7 +491833,7 @@
         "minimal",
         "utility"
       ],
-      "description": "PHP snippet using explode() to convert comma-separated strings into arrays.",
+      "description": "Truncates by splitting a phrase on spaces with explode(' ', $phrase), slicing to $max_words with array_slice, and appending an ellipsis.",
       "preview_image": "",
       "id": "unknown__truncate-string-by-words",
       "source_domain": "css-tricks.com"
@@ -491848,7 +491848,7 @@
         "minimal",
         "snippet"
       ],
-      "description": "Sass snippet with author, function, number for CSS preprocessing.",
+      "description": "Uses Sass type-of() and unit() to build helpers is-number, is-time, is-angle, is-length, and is-position for type-safe mixins.",
       "preview_image": "",
       "id": "unknown__advanced-type-checking",
       "source_domain": "css-tricks.com"
@@ -491878,7 +491878,7 @@
         "minimal",
         "snippet"
       ],
-      "description": "Sass function using toFixed() for number precision control.",
+      "description": "The to-fixed($float, $digits) Sass function rounds to N places using round($float * pow(10,$digits)) / pow(10,$digits).",
       "preview_image": "",
       "id": "unknown__fix-number-n-digits",
       "source_domain": "css-tricks.com"
@@ -491893,7 +491893,7 @@
         "minimal",
         "hover-effect"
       ],
-      "description": "Sass snippet with author, param, see for CSS preprocessing.",
+      "description": "Defines on-event (wrapping &:hover,:active,:focus) and when-inside (wrapping #{$context} &) Sass mixins to simplify selector nesting.",
       "preview_image": "",
       "id": "unknown__simplifying-contexts-events",
       "source_domain": "css-tricks.com"
@@ -491908,7 +491908,7 @@
         "minimal",
         "snippet"
       ],
-      "description": "Sass function using str-replace() to replace substrings in strings.",
+      "description": "Provides a recursive str-replace Sass function using str-index and str-slice to substitute a substring, since Sass lacks a native version.",
       "preview_image": "",
       "id": "unknown__str-replace-function",
       "source_domain": "css-tricks.com"
@@ -491923,7 +491923,7 @@
         "gradient",
         "background"
       ],
-      "description": "Sass snippet with author, param, output for CSS preprocessing.",
+      "description": "The @mixin stripes($direction, $colors) builds linear-gradient color-stops by appending nth($colors, $i) at offsets derived from length($colors).",
       "preview_image": "",
       "id": "unknown__striped-gradient-mixin",
       "source_domain": "css-tricks.com"
@@ -491983,7 +491983,7 @@
         "minimal",
         "utility"
       ],
-      "description": "PHP snippet using include for WordPress/server-side development.",
+      "description": "Includes a theme partial with PHP include (TEMPLATEPATH . '/your-file.php'); comments favor get_template_part() for WordPress themes.",
       "preview_image": "",
       "id": "unknown__include-any-file-from-your-theme",
       "source_domain": "css-tricks.com"
@@ -492013,7 +492013,7 @@
         "minimal",
         "utility"
       ],
-      "description": "PHP snippet for WordPress/server-side processing.",
+      "description": "Before The Loop closes, compares ($wp_query->current_post + 1) < $wp_query->post_count and echoes a post-item-divider div only between posts.",
       "preview_image": "",
       "id": "unknown__post-divider",
       "source_domain": "css-tricks.com"
@@ -492028,7 +492028,7 @@
         "minimal",
         "filter"
       ],
-      "description": "PHP snippet using add_filter for WordPress/server-side processing.",
+      "description": "Disables default gallery styles by filtering use_default_gallery_style through __return_false, removing WordPress's inline gallery CSS.",
       "preview_image": "",
       "id": "unknown__remove-gallery-inline-styling",
       "source_domain": "css-tricks.com"
