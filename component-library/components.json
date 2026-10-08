@@ -1,6 +1,6 @@
 {
-  "version": "1.0.95",
-  "source_count": 27976,
+  "version": "1.0.96",
+  "source_count": 28040,
   "components": [
     {
       "id": "cat-0",
@@ -485114,6 +485114,1043 @@
       "preview_image": "https://cdn.prod.website-files.com/65676438ff1c480b81cf0085/675db6c6cc75dbb01a915b47_Screenshot%202024-12-14%20at%2017.47.59.webp",
       "id": "unknown__align-ui",
       "source_domain": "www.navbar.gallery"
+    },
+    {
+      "name": "[attribute]",
+      "source_url": "https://css-tricks.com/almanac/selectors/a/attribute/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "reference",
+      "tags": [
+        "css",
+        "minimal",
+        "reference"
+      ],
+      "description": "Attribute selectors in CSS select elements based on their HTML attributes, with seven match types: exact match [attribute=\"value\"], attribute exists [data-value], value contains [attribute*=\"value\"], space-separated list [attribute~=\"value\"], starts with [attribute^=\"value\"], dash-separated list [attribute|=\"value\"], and ends with [attribute$=\"value\"]. Case-insensitive matching is supported by adding an \"i\" flag before the closing bracket.",
+      "preview_image": "",
+      "id": "unknown__[attribute]",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Class",
+      "source_url": "https://css-tricks.com/almanac/selectors/c/class/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "reference",
+      "tags": [
+        "css",
+        "minimal",
+        "reference"
+      ],
+      "description": "A class selector in CSS starts with a dot (.) and selects all elements with a matching class attribute. Class names must start with a letter, hyphen, or underscore, elements can have multiple classes, and classes can be combined for more specific selection. JavaScript's classList API and jQuery methods provide programmatic class manipulation.",
+      "preview_image": "",
+      "id": "unknown__class",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Descendant",
+      "source_url": "https://css-tricks.com/almanac/selectors/d/descendant/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "reference",
+      "tags": [
+        "css",
+        "minimal",
+        "reference"
+      ],
+      "description": "A descendant selector uses white space between two selectors to match elements nested anywhere within another element, such as ul li or header h2. It differs from the child combinator (>) which requires a direct parent-child relationship. The descendant selector is the most expensive selector for rendering engines, especially when using tag or universal selectors.",
+      "preview_image": "",
+      "id": "unknown__descendant",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "ID",
+      "source_url": "https://css-tricks.com/almanac/selectors/i/id/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "reference",
+      "tags": [
+        "css",
+        "minimal",
+        "reference"
+      ],
+      "description": "The #id selector targets elements by their HTML id attribute, which must be unique per page. ID selectors have high specificity (0, 1, 0, 0) and override class and tag selectors, which is why they're considered a CSS 'nuclear option'. IDs are also used as hooks for JavaScript and anchor link targeting.",
+      "preview_image": "",
+      "id": "unknown__id",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Accessibility/SEO Friendly CSS Hiding",
+      "source_url": "https://css-tricks.com/snippets/css/accessibilityseo-friendly-css-hiding/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "accessibility"
+      ],
+      "description": "The .screen-reader-text class hides elements visually while keeping them accessible to screen readers, using position: absolute with negative offsets instead of display:none or visibility:hidden. WordPress provides a more robust version with focus states, and the technique is preferred over CSS hiding methods that remove content from the accessibility tree.",
+      "preview_image": "",
+      "id": "unknown__accessibility/seo-friendly-css-hiding",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Glowing Blue Input Highlights",
+      "source_url": "https://css-tricks.com/snippets/css/glowing-blue-input-highlights/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet"
+      ],
+      "description": "The :focus pseudo-class with a blue box-shadow creates glowing highlight effects on form inputs when they receive focus. Uses transition for smooth animation of the box-shadow property.",
+      "preview_image": "",
+      "id": "unknown__glowing-blue-input-highlights",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "LESS Mixin for REM Font Sizing",
+      "source_url": "https://css-tricks.com/snippets/css/less-mixin-for-rem-font-sizing/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "typography"
+      ],
+      "description": "A LESS mixin using the rem() function calculates rem font sizes by dividing target pixel values by a root font size, with px fallbacks for older browsers. It allows setting responsive font sizes that scale with the root html element's font-size property.",
+      "preview_image": "",
+      "id": "unknown__less-mixin-for-rem-font-sizing",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Quality Abbreviations",
+      "source_url": "https://css-tricks.com/snippets/css/quality-abbreviations/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet"
+      ],
+      "description": "The <abbr> HTML element with a title attribute provides accessible tooltips for abbreviations and acronyms like HTML, CSS, W3C, and HTTP. CSS styles the abbr element with a dotted bottom border and underline on hover for a visual indication of the tooltip.",
+      "preview_image": "",
+      "id": "unknown__quality-abbreviations",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Remove Dotted Link Borders",
+      "source_url": "https://css-tricks.com/snippets/css/remove-dotted-link-borders/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet"
+      ],
+      "description": "The :focus outline is removed using outline: none or outline: 0 on anchor elements to eliminate the default dotted border that appears when clicking links. Note that removing outlines can harm accessibility for keyboard users.",
+      "preview_image": "",
+      "id": "unknown__remove-dotted-link-borders",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Standard CSS Image Replacement",
+      "source_url": "https://css-tricks.com/snippets/css/standard-css-image-replacement/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet"
+      ],
+      "description": "Image replacement techniques replace text with background images while keeping the original text accessible to screen readers, commonly using text-indent: -9999px or clipping with position: absolute and clip: rect().",
+      "preview_image": "",
+      "id": "unknown__standard-css-image-replacement",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "301 Redirects",
+      "source_url": "https://css-tricks.com/snippets/htaccess/301-redirects/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "snippet",
+        "htaccess",
+        "server"
+      ],
+      "description": "301 redirects in .htaccess permanently redirect old URLs to new URLs using Redirect 301 or RewriteRule directives, preserving SEO value. Covers redirect syntax for single pages, wildcards, and domain-level redirects.",
+      "preview_image": "",
+      "id": "unknown__301-redirects",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Custom Error Pages",
+      "source_url": "https://css-tricks.com/snippets/htaccess/custom-error-pages/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "snippet",
+        "htaccess",
+        "server"
+      ],
+      "description": "Custom error pages in .htaccess are configured using ErrorDocument directives to return specific HTTP error codes (404, 500, 403) with custom HTML pages instead of default server error pages.",
+      "preview_image": "",
+      "id": "unknown__custom-error-pages",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Force Favicon Requests to Correct Location",
+      "source_url": "https://css-tricks.com/snippets/htaccess/force-favicon-requests-to-correct-location/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "snippet",
+        "htaccess",
+        "server"
+      ],
+      "description": "Redirects favicon.ico requests to the correct location using .htaccess mod_rewrite rules, typically redirecting from the root to a specific theme or assets directory.",
+      "preview_image": "",
+      "id": "unknown__force-favicon-requests-to-correct-location",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "iPad Detection",
+      "source_url": "https://css-tricks.com/snippets/htaccess/ipad-detection/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "snippet",
+        "htaccess",
+        "server"
+      ],
+      "description": "Detects iPad devices using the User-Agent string in .htaccess and redirects them to an iPad-specific site or page, matching the iPad's browser user agent signature.",
+      "preview_image": "",
+      "id": "unknown__ipad-detection",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "PHP Error Logging",
+      "source_url": "https://css-tricks.com/snippets/htaccess/php-error-logging/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "snippet",
+        "htaccess",
+        "server"
+      ],
+      "description": "Configures PHP error logging via .htaccess using php_flag log_errors and php_value error_log directives to enable and specify the location of error log files.",
+      "preview_image": "",
+      "id": "unknown__php-error-logging",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Remove File Extension from URLs",
+      "source_url": "https://css-tricks.com/snippets/htaccess/remove-file-extention-from-urls/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "snippet",
+        "htaccess",
+        "server"
+      ],
+      "description": "Uses .htaccess mod_rewrite to remove file extensions like .php and .html from URLs, making them cleaner. The rewrite rule internally maps extensionless paths to the actual files.",
+      "preview_image": "",
+      "id": "unknown__remove-file-extension-from-urls",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Set Expires",
+      "source_url": "https://css-tricks.com/snippets/htaccess/set-expires/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "snippet",
+        "htaccess",
+        "server"
+      ],
+      "description": "Sets HTTP Expires headers and cache control in .htaccess to instruct browsers to cache static assets (images, CSS, JS) for a specified period, reducing server requests on repeat visits.",
+      "preview_image": "",
+      "id": "unknown__set-expires",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Autocomplete Off",
+      "source_url": "https://css-tricks.com/snippets/html/autocomplete-off/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet"
+      ],
+      "description": "The autocomplete=\"off\" attribute on HTML form input elements prevents browsers from automatically filling in saved values, useful for sensitive fields like passwords or one-time codes.",
+      "preview_image": "",
+      "id": "unknown__autocomplete-off",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Base64 Encode of 1x1px Transparent GIF",
+      "source_url": "https://css-tricks.com/snippets/html/base64-encode-of-1x1px-transparent-gif/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet"
+      ],
+      "description": "A 1x1 transparent GIF encoded in base64 data URI format for use as a spacer or placeholder image, embeddable directly in HTML or CSS without a separate file request.",
+      "preview_image": "",
+      "id": "unknown__base64-encode-of-1x1px-transparent-gif",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Embedding Quicktime",
+      "source_url": "https://css-tricks.com/snippets/html/embedding-quicktime/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet"
+      ],
+      "description": "Embeds QuickTime video or audio content using the <object> and <embed> HTML tags with the QuickTime plugin, specifying the src, type, and dimensions for the media.",
+      "preview_image": "",
+      "id": "unknown__embedding-quicktime",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Empty Table Markup",
+      "source_url": "https://css-tricks.com/snippets/html/empty-table-markup/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet"
+      ],
+      "description": "A minimal HTML table structure using <table>, <thead>, <tbody>, <tr>, <th>, and <td> elements for semantic tabular data markup.",
+      "preview_image": "",
+      "id": "unknown__empty-table-markup",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Example Form Markup",
+      "source_url": "https://css-tricks.com/snippets/html/example-form-markup/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "form"
+      ],
+      "description": "A semantic HTML contact form using <form>, <fieldset>, <legend>, <label>, <input>, and <textarea> elements with proper input types and accessible label associations.",
+      "preview_image": "",
+      "id": "unknown__example-form-markup",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Keep Flash Behind Other Elements",
+      "source_url": "https://css-tricks.com/snippets/html/keep-flash-behind-other-elements/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet"
+      ],
+      "description": "Uses the wmode parameter set to opaque or transparent on embedded Flash objects so Flash content does not overlay HTML elements like dropdown menus or modals.",
+      "preview_image": "",
+      "id": "unknown__keep-flash-behind-other-elements",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Standard List Navigation",
+      "source_url": "https://css-tricks.com/snippets/html/standard-list-navigation/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet"
+      ],
+      "description": "An HTML navigation menu built using <ul> and <li> elements with anchor tags, providing semantic structure for navigation links without relying on divs or tables.",
+      "preview_image": "",
+      "id": "unknown__standard-list-navigation",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Add Number to Two Variables",
+      "source_url": "https://css-tricks.com/snippets/javascript/add-number-two-variables/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "javascript"
+      ],
+      "description": "Parses numeric values from two string variables and adds them together, handling the common JavaScript issue where string concatenation occurs instead of arithmetic addition.",
+      "preview_image": "",
+      "id": "unknown__add-number-to-two-variables",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Array of Country Names",
+      "source_url": "https://css-tricks.com/snippets/javascript/array-of-country-names/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "javascript"
+      ],
+      "description": "A JavaScript array containing all country names as strings, useful for populating dropdown selectors or validating country inputs in forms.",
+      "preview_image": "",
+      "id": "unknown__array-of-country-names",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Basic Alert",
+      "source_url": "https://css-tricks.com/snippets/javascript/basic-alert/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "javascript"
+      ],
+      "description": "The alert() function displays a simple modal dialog box with a message and an OK button, blocking script execution until the user dismisses it.",
+      "preview_image": "",
+      "id": "unknown__basic-alert",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Go Back Button",
+      "source_url": "https://css-tricks.com/snippets/javascript/go-back-button/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "javascript"
+      ],
+      "description": "Uses history.back() or history.go(-1) in JavaScript to navigate to the previous page in the browser's session history, simulating a back button.",
+      "preview_image": "",
+      "id": "unknown__go-back-button",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Lazy Loading Images",
+      "source_url": "https://css-tricks.com/snippets/javascript/lazy-loading-images/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "javascript"
+      ],
+      "description": "Defers loading of images until they are about to enter the viewport, improving page load performance by using a placeholder and a scroll event listener to replace src with the actual image URL.",
+      "preview_image": "",
+      "id": "unknown__lazy-loading-images",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Random Hex Color",
+      "source_url": "https://css-tricks.com/snippets/javascript/random-hex-color/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "javascript"
+      ],
+      "description": "Generates a random hex color string using JavaScript's Math.random() combined with toString(16) to produce values like #3a7f2b, useful for dynamic styling or testing.",
+      "preview_image": "",
+      "id": "unknown__random-hex-color",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "The ClassList API",
+      "source_url": "https://css-tricks.com/snippets/javascript/the-classlist-api/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "javascript"
+      ],
+      "description": "The classList DOM API provides methods to add, remove, toggle, and check for classes on HTML elements, including classList.add(), classList.remove(), classList.toggle(), and classList.contains().",
+      "preview_image": "",
+      "id": "unknown__the-classlist-api",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Check for Empty Elements",
+      "source_url": "https://css-tricks.com/snippets/jquery/check-for-empty-elements/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "javascript",
+        "jquery"
+      ],
+      "description": "Uses jQuery's :empty selector or .length to check whether DOM elements have no content, allowing conditional logic based on whether elements like divs or fields are empty.",
+      "preview_image": "",
+      "id": "unknown__check-for-empty-elements",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Display Latest FeedBurner Post",
+      "source_url": "https://css-tricks.com/snippets/jquery/display-latest-feedburner-post/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "javascript",
+        "jquery"
+      ],
+      "description": "Fetches and displays the latest post from a FeedBurner feed using jQuery to parse the feed's JSON or XML output and inject content into a specified DOM element.",
+      "preview_image": "",
+      "id": "unknown__display-latest-feedburner-post",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Insert Element Between Other Elements",
+      "source_url": "https://css-tricks.com/snippets/jquery/insert-element-between-other-elements/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "javascript",
+        "jquery"
+      ],
+      "description": "Uses jQuery's .eq() and .after() or nth-child selectors to insert a separator or gap element between consecutive sibling elements, useful for pagination or gallery spacing.",
+      "preview_image": "",
+      "id": "unknown__insert-element-between-other-elements",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Load jQuery Only If Not Present",
+      "source_url": "https://css-tricks.com/snippets/jquery/load-jquery-only-if-not-present/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "javascript",
+        "jquery"
+      ],
+      "description": "Checks if jQuery is already loaded using window.jQuery or typeof jQuery, and only injects a script tag to load jQuery from a CDN if it is not available.",
+      "preview_image": "",
+      "id": "unknown__load-jquery-only-if-not-present",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Select Only If Children Not Animated",
+      "source_url": "https://css-tricks.com/snippets/jquery/select-only-if-children-not-animated/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "javascript",
+        "jquery"
+      ],
+      "description": "Uses jQuery's :not() and :has() selectors combined with :animated to select parent elements whose child elements are not currently being animated, allowing exclusion of elements in transition.",
+      "preview_image": "",
+      "id": "unknown__select-only-if-children-not-animated",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Validate Age",
+      "source_url": "https://css-tricks.com/snippets/jquery/validate-age/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "javascript",
+        "jquery"
+      ],
+      "description": "Validates a user's age from form input fields by parsing date values and calculating whether the user is above a minimum age threshold, often used for age-gated content.",
+      "preview_image": "",
+      "id": "unknown__validate-age",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Check If File Exists, Append Number to Name",
+      "source_url": "https://css-tricks.com/snippets/php/check-if-file-exists-append-number-to-name/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "php",
+        "backend"
+      ],
+      "description": "Checks if a file exists using file_exists() and appends an incrementing number to the filename before the extension (e.g., file-1.jpg) to avoid overwriting existing files during uploads.",
+      "preview_image": "",
+      "id": "unknown__check-if-file-exists,-append-number-to-name",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Comments in PHP",
+      "source_url": "https://css-tricks.com/snippets/php/comments-in-php/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "php",
+        "backend"
+      ],
+      "description": "PHP supports single-line // and # comments, as well as multi-line /* */ comments, which are ignored by the interpreter and used for documentation and code annotations.",
+      "preview_image": "",
+      "id": "unknown__comments-in-php",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "English Time to Seconds",
+      "source_url": "https://css-tricks.com/snippets/php/english-time-to-seconds/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "php",
+        "backend"
+      ],
+      "description": "Parses English time strings like '2 hours 30 minutes' into a total number of seconds using strtotime() or regex parsing, useful for storing durations in a standardized format.",
+      "preview_image": "",
+      "id": "unknown__english-time-to-seconds",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Get FeedBurner Subscriber Count with cURL",
+      "source_url": "https://css-tricks.com/snippets/php/get-feedburner-subscriber-count-with-curl/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "php",
+        "backend"
+      ],
+      "description": "Uses PHP cURL to fetch the FeedBurner Awareness API and parse the XML response to extract the number of subscribers for a given feed URL.",
+      "preview_image": "",
+      "id": "unknown__get-feedburner-subscriber-count-with-curl",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Intelligent PHP Cache Control",
+      "source_url": "https://css-tricks.com/snippets/php/intelligent-php-cache-control/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "php",
+        "backend"
+      ],
+      "description": "Sets PHP cache control headers using header() to manage browser caching of dynamic content, with logic to set expiration times based on content type and modification time.",
+      "preview_image": "",
+      "id": "unknown__intelligent-php-cache-control",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "PHP Array Contains",
+      "source_url": "https://css-tricks.com/snippets/php/php-array-contains/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "php",
+        "backend"
+      ],
+      "description": "Checks if a value exists in a PHP array using in_array() for simple values or array_search() to get the key, with options for strict type comparison.",
+      "preview_image": "",
+      "id": "unknown__php-array-contains",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Post Validation Loop",
+      "source_url": "https://css-tricks.com/snippets/php/post-validation-loop/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "php",
+        "backend"
+      ],
+      "description": "Iterates over $_POST input fields to validate and sanitize each value, commonly using a foreach loop with htmlspecialchars and trim to clean user-submitted form data before processing.",
+      "preview_image": "",
+      "id": "unknown__post-validation-loop",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Caching Current Selector in Sass",
+      "source_url": "https://css-tricks.com/snippets/sass/caching-current-selector-sass/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "sass"
+      ],
+      "description": "Uses the & (parent selector) reference in Sass to cache and reuse the current selector context, allowing nested rules to reference the parent without repeating the full selector.",
+      "preview_image": "",
+      "id": "unknown__caching-current-selector-in-sass",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Clamping Number",
+      "source_url": "https://css-tricks.com/snippets/sass/clamping-number/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "sass"
+      ],
+      "description": "A Sass mixin using the CSS clamp() function to constrain a value between minimum, preferred, and maximum values, ensuring it stays within specified bounds.",
+      "preview_image": "",
+      "id": "unknown__clamping-number",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Deep Get/Set Maps in Sass",
+      "source_url": "https://css-tricks.com/snippets/sass/deep-getset-maps/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "sass"
+      ],
+      "description": "Sass functions to deeply get and set values within nested maps using map-get() and map-merge(), traversing multiple levels of map structures for complex configuration data.",
+      "preview_image": "",
+      "id": "unknown__deep-get/set-maps-in-sass",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Extend Wrapper (aka Mixtend) in Sass",
+      "source_url": "https://css-tricks.com/snippets/sass/extend-wrapper-aka-mixtend/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "sass"
+      ],
+      "description": "Uses @extend in Sass to share CSS rules between selectors, allowing one selector to inherit all styles of another, creating efficient combined selectors in the compiled output.",
+      "preview_image": "",
+      "id": "unknown__extend-wrapper-(aka-mixtend)-in-sass",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Mixin Offset Positioning in Sass",
+      "source_url": "https://css-tricks.com/snippets/sass/mixin-offset-positioning/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "sass"
+      ],
+      "description": "A Sass mixin that sets position, top, right, bottom, and left properties with sensible defaults, streamlining the creation of positioned elements.",
+      "preview_image": "",
+      "id": "unknown__mixin-offset-positioning-in-sass",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Use Sass Variable as Selector",
+      "source_url": "https://css-tricks.com/snippets/sass/use-sass-variable-selector/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "sass"
+      ],
+      "description": "Uses interpolation with Sass variables to dynamically generate CSS selectors, allowing selector names to come from $variable values instead of being hardcoded.",
+      "preview_image": "",
+      "id": "unknown__use-sass-variable-as-selector",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Viewport-Sized Typography",
+      "source_url": "https://css-tricks.com/snippets/sass/viewport-sized-typography-minimum-maximum-sizes/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "sass"
+      ],
+      "description": "Uses CSS viewport units (vw, vh, vmin, vmax) combined with calc() and min/max to create responsive typography that scales with the viewport width while staying within specified minimum and maximum bounds.",
+      "preview_image": "",
+      "id": "unknown__viewport-sized-typography",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Adobe Illustrator Export Options",
+      "source_url": "https://css-tricks.com/snippets/svg/abobe-illustrator-export-options/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "svg"
+      ],
+      "description": "Recommended SVG export settings for optimizing files created in Adobe Illustrator for web use, including removing unnecessary metadata and applying group descriptions.",
+      "preview_image": "",
+      "id": "unknown__adobe-illustrator-export-options",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Curved Text Along Path",
+      "source_url": "https://css-tricks.com/snippets/svg/curved-text-along-path/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "svg"
+      ],
+      "description": "Uses SVG's <textPath> and <path> elements to render text along a curved path, with the textPath referencing a defined path via <defs> and <path> with startOffset for positioning.",
+      "preview_image": "",
+      "id": "unknown__curved-text-along-path",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Shape Morphing Icons on Button Click",
+      "source_url": "https://css-tricks.com/snippets/svg/shape-morphing-icons-button-click/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "svg"
+      ],
+      "description": "Uses SVG path morphing with CSS or JavaScript to animate icon shapes between two states, typically toggling between menu and close icons on button click events.",
+      "preview_image": "",
+      "id": "unknown__shape-morphing-icons-on-button-click",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "SVG Hamburger Menu",
+      "source_url": "https://css-tricks.com/snippets/svg/svg-hamburger-menu/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "svg"
+      ],
+      "description": "An SVG-based hamburger menu icon using lines or paths that can be animated with CSS to transform into a close icon, commonly used for mobile navigation toggles.",
+      "preview_image": "",
+      "id": "unknown__svg-hamburger-menu",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "SVG Knockout Text",
+      "source_url": "https://css-tricks.com/snippets/svg/svg-knockout-text/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "svg"
+      ],
+      "description": "Uses SVG's <mask> element to create knockout text effects where text appears as cut-out shapes filled with background patterns or images, achieved with maskUnits and fill properties.",
+      "preview_image": "",
+      "id": "unknown__svg-knockout-text",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Text Lockup",
+      "source_url": "https://css-tricks.com/snippets/svg/text-lock-up/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "svg"
+      ],
+      "description": "Techniques for grouping and styling text elements together in SVG, controlling individual glyph positioning, kerning, and baseline alignment for typographic layouts.",
+      "preview_image": "",
+      "id": "unknown__text-lockup",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Custom Database Error Page",
+      "source_url": "https://css-tricks.com/snippets/wordpress/custom-database-error-page/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "wordpress",
+        "backend"
+      ],
+      "description": "A db-error.php file in /wp-content/ that WordPress automatically uses when database connection fails, returning a 503 HTTP status with custom HTML and optional email notifications.",
+      "preview_image": "",
+      "id": "unknown__custom-database-error-page",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "\"Edit This\" Button on Posts and Pages",
+      "source_url": "https://css-tricks.com/snippets/wordpress/edit-this-button-on-posts-and-pages/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "wordpress",
+        "backend"
+      ],
+      "description": "Uses WordPress's edit_post_link() function to display a contextual 'Edit This' link on posts and pages, visible only to logged-in users with editing permissions.",
+      "preview_image": "",
+      "id": "unknown__\"edit-this\"-button-on-posts-and-pages",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "HTML5 Shim in functions.php",
+      "source_url": "https://css-tricks.com/snippets/wordpress/html5-shim-in-functions-php/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "php",
+        "backend"
+      ],
+      "description": "Adds the HTML5 JavaScript shim for Internet Explorer versions less than 9 to the page header using WordPress's wp_head action hook and add_ie_html5_shim function, enabling styling of HTML5 elements in older IE.",
+      "preview_image": "",
+      "id": "unknown__html5-shim-in-functions.php",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Insert Images with Figure/Figcaption",
+      "source_url": "https://css-tricks.com/snippets/wordpress/insert-images-with-figurefigcaption/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "wordpress",
+        "backend"
+      ],
+      "description": "Uses the image_send_to_editor filter in WordPress to wrap inserted images in HTML5 <figure> and <figcaption> elements instead of default WordPress markup.",
+      "preview_image": "",
+      "id": "unknown__insert-images-with-figure/figcaption",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Natural Sort Using Post meta_key",
+      "source_url": "https://css-tricks.com/snippets/wordpress/natural-sort/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "wordpress",
+        "backend"
+      ],
+      "description": "Modifies WordPress's query.php to add a meta_value_num orderby type that applies +0 to the meta_value field, enabling numeric natural sort order for custom fields instead of string sorting.",
+      "preview_image": "",
+      "id": "unknown__natural-sort-using-post-meta_key",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Output Excerpt Manually",
+      "source_url": "https://css-tricks.com/snippets/wordpress/output-excerpt-manually/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "wordpress",
+        "backend"
+      ],
+      "description": "Gets post content via get_the_content() and uses substr() or wp_trim_words() to extract a custom excerpt of a specified length, bypassing WordPress's default the_excerpt() behavior.",
+      "preview_image": "",
+      "id": "unknown__output-excerpt-manually",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Prevent CSS Caching",
+      "source_url": "https://css-tricks.com/snippets/wordpress/prevent-css-caching/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "snippet",
+        "wordpress",
+        "backend"
+      ],
+      "description": "Appends filemtime() as a query string to CSS stylesheet URLs in WordPress, so the version number changes when the file is modified, forcing browsers to load updated styles instead of cached versions.",
+      "preview_image": "",
+      "id": "unknown__prevent-css-caching",
+      "source_domain": "css-tricks.com"
     }
   ]
 }
