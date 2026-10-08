@@ -1,6 +1,6 @@
 {
-  "version": "1.0.106",
-  "source_count": 28475,
+  "version": "1.0.107",
+  "source_count": 28538,
   "components": [
     {
       "id": "cat-0",
@@ -493927,6 +493927,1013 @@
       "preview_image": "",
       "id": "unknown__fuzzy-pika",
       "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Creating Interactive Product Pages With React And Cloudinary",
+      "source_url": "https://tympanus.net/codrops/2021/09/06/creating-interactive-product-pages-with-react-and-cloudinary",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "component",
+      "tags": [
+        "react",
+        "javascript",
+        "minimal",
+        "component"
+      ],
+      "description": "A Codrops tutorial showing how to build interactive product pages using React state management and Cloudinary's responsive image transformations, enabling zoom, 360-view, and dynamic image loading.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2021/09/InteractiveProductPages.jpg?x21095",
+      "id": "unknown__creating-interactive-product-pages-with-react-and-cloudinary",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Menu And Thumb Stack Animation",
+      "source_url": "https://tympanus.net/codrops/2021/09/22/menu-and-thumb-stack-animation",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "menu",
+      "tags": [
+        "css",
+        "javascript",
+        "minimal",
+        "hover-effect"
+      ],
+      "description": "A menu that uses CSS clip-path animation to create a 3D stack of thumbnails that unfold on hover, revealing navigation items with a layered card effect using CSS transforms.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2021/09/StackAnimation.jpg?x21095",
+      "id": "unknown__menu-and-thumb-stack-animation",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Magical Marbles In Three Js",
+      "source_url": "https://tympanus.net/codrops/2021/08/02/magical-marbles-in-three-js",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "3d",
+      "tags": [
+        "three.js",
+        "glsl",
+        "3d",
+        "blob"
+      ],
+      "description": "A Three.js demo rendering thousands of interactive 3D glass marbles with realistic refraction and reflection, using custom shaders for physical-based material simulation.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2021/08/MagicalMarbles.jpg?x21095",
+      "id": "unknown__magical-marbles-in-three-js",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "A Look Back At 2021 Roundup Of Codrops Resources",
+      "source_url": "https://tympanus.net/codrops/2021/12/31/a-look-back-at-2021-roundup-of-codrops-resources",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "inspiration",
+      "tags": [
+        "html",
+        "css",
+        "inspiration",
+        "landing-page"
+      ],
+      "description": "A curated roundup of Codrops' best resources from 2021 including tutorials, demos, and design inspiration across web development and creative coding.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2021/12/codrops2021.jpg?x21095",
+      "id": "unknown__a-look-back-at-2021-roundup-of-codrops-resources",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Surface Sampling In Three Js",
+      "source_url": "https://tympanus.net/codrops/2021/08/31/surface-sampling-in-three-js",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "3d",
+      "tags": [
+        "three.js",
+        "javascript",
+        "3d",
+        "particle"
+      ],
+      "description": "A Three.js technique for sampling points across mesh surfaces to generate particle distributions, using barycentric coordinates and triangle area calculations for accurate placement.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2021/08/SurfaceSampling_featured.jpg?x21095",
+      "id": "unknown__surface-sampling-in-three-js",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Inspirational Websites Roundup 30",
+      "source_url": "https://tympanus.net/codrops/2021/10/05/inspirational-websites-roundup-30",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "inspiration",
+      "tags": [
+        "html",
+        "css",
+        "inspiration",
+        "landing-page"
+      ],
+      "description": "A collection of 30+ inspirational websites showcasing creative web design trends, interactive WebGL experiences, and innovative uses of modern web technologies.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2021/10/WebsitesRoundup30.jpg?x21095",
+      "id": "unknown__inspirational-websites-roundup-30",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "8 Design Tips To Make Your Blog Or Shop Stand Out",
+      "source_url": "https://tympanus.net/codrops/2021/12/17/8-design-tips-to-make-your-blog-or-shop-stand-out",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "inspiration",
+      "tags": [
+        "html",
+        "css",
+        "typography",
+        "responsive"
+      ],
+      "description": "Eight actionable design tips for making blogs and e-commerce shops stand out, covering typography, white space, color contrast, and user experience fundamentals.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2021/12/DesignTips.jpg?x21095",
+      "id": "unknown__8-design-tips-to-make-your-blog-or-shop-stand-out",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Fbo Particles With Three Js",
+      "source_url": "https://tympanus.net/codrops/2021/05/31/fbo-particles-with-three-js",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "3d",
+      "tags": [
+        "three.js",
+        "glsl",
+        "webgl",
+        "particle"
+      ],
+      "description": "A Three.js tutorial demonstrating FBO (Framebuffer Object) particle systems, rendering thousands of particles on GPU with custom shaders for simulation of physics and movement.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2021/05/FBOParticles.jpg?x21095",
+      "id": "unknown__fbo-particles-with-three-js",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Building A Svelte Static Website With Smooth Page Transitions",
+      "source_url": "https://tympanus.net/codrops/2020/11/30/building-a-svelte-static-website-with-smooth-page-transitions",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "template",
+      "tags": [
+        "svelte",
+        "javascript",
+        "transition",
+        "template"
+      ],
+      "description": "A guide to building a static Svelte website with smooth page transitions using Svelte's built-in transition system and routing, deployed as a static site.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2020/11/SvelteStaticSite.jpg?x21095",
+      "id": "unknown__building-a-svelte-static-website-with-smooth-page-transitions",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Inspirational Websites Roundup 18",
+      "source_url": "https://tympanus.net/codrops/2020/09/18/inspirational-websites-roundup-18",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "inspiration",
+      "tags": [
+        "html",
+        "css",
+        "inspiration",
+        "landing-page"
+      ],
+      "description": "A showcase of 18+ inspirational websites featuring creative design, interactive WebGL experiences, and innovative frontend development techniques from designers worldwide.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2020/09/websitesroundup18.jpg?x21095",
+      "id": "unknown__inspirational-websites-roundup-18",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Coding The Mouse Particle Effect From Mark Applebys Website",
+      "source_url": "https://tympanus.net/codrops/2020/10/12/coding-the-mouse-particle-effect-from-mark-applebys-website",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "effect",
+      "tags": [
+        "javascript",
+        "canvas",
+        "hover-effect",
+        "particle"
+      ],
+      "description": "Recreation of Mark Appleby's mouse particle effect using vanilla JavaScript and canvas, where hovering the mouse generates trailing particles that follow cursor movement.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2020/10/MouseParticles.jpg?x21095",
+      "id": "unknown__coding-the-mouse-particle-effect-from-mark-applebys-website",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Ui Interactions Animations Roundup 7",
+      "source_url": "https://tympanus.net/codrops/2020/06/01/ui-interactions-animations-roundup-7",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "inspiration",
+      "tags": [
+        "javascript",
+        "css",
+        "animation",
+        "inspiration"
+      ],
+      "description": "A roundup of UI interaction and animation demos showcasing creative hover effects, micro-interactions, and animated transitions from the web development community.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2020/06/UI7.jpg?x21095",
+      "id": "unknown__ui-interactions-animations-roundup-7",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Coding A 3d Lines Animation With Three Js",
+      "source_url": "https://tympanus.net/codrops/2020/12/14/coding-a-3d-lines-animation-with-three-js",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "3d",
+      "tags": [
+        "three.js",
+        "javascript",
+        "3d",
+        "animation"
+      ],
+      "description": "A Three.js tutorial for creating animated 3D line systems using line segments that move and connect in 3D space, with trigonometric functions controlling vertex positions.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2020/12/3DLines.jpg?x21095",
+      "id": "unknown__coding-a-3d-lines-animation-with-three-js",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Create A Wave Motion Effect On An Image With Three Js",
+      "source_url": "https://tympanus.net/codrops/2020/03/17/create-a-wave-motion-effect-on-an-image-with-three-js",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "effect",
+      "tags": [
+        "three.js",
+        "glsl",
+        "shader",
+        "3d"
+      ],
+      "description": "A Three.js effect applying a sinusoidal wave distortion to an image using custom GLSL shaders, creating a liquid-like motion across the surface of a plane.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2020/03/WaveMotion_featured.jpg?x21095",
+      "id": "unknown__create-a-wave-motion-effect-on-an-image-with-three-js",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Ui Interactions Animations Roundup 3",
+      "source_url": "https://tympanus.net/codrops/2020/02/10/ui-interactions-animations-roundup-3",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "inspiration",
+      "tags": [
+        "javascript",
+        "css",
+        "animation",
+        "inspiration"
+      ],
+      "description": "A collection of UI interaction and animation demos from the web community, featuring creative hover effects, button animations, and micro-interactions.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2020/02/UIInteractionsAnimationsRoundup3.jpg?x21095",
+      "id": "unknown__ui-interactions-animations-roundup-3",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "A Look Back At 2020 Roundup Of Codrops Resources",
+      "source_url": "https://tympanus.net/codrops/2020/12/31/a-look-back-at-2020-roundup-of-codrops-resources",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "inspiration",
+      "tags": [
+        "html",
+        "css",
+        "inspiration",
+        "landing-page"
+      ],
+      "description": "A retrospective roundup of Codrops' best resources from 2020, including tutorials, code experiments, and design inspiration articles published throughout the year.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2020/12/codrops2020.png?x21095",
+      "id": "unknown__a-look-back-at-2020-roundup-of-codrops-resources",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Inspirational Websites Roundup 11",
+      "source_url": "https://tympanus.net/codrops/2019/12/26/inspirational-websites-roundup-11",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "inspiration",
+      "tags": [
+        "html",
+        "css",
+        "inspiration",
+        "landing-page"
+      ],
+      "description": "A showcase of 11+ inspirational websites featuring creative web design, interactive WebGL experiences, and innovative frontend development from designers worldwide.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2019/12/WebsitesRoundup11.jpg?x21095",
+      "id": "unknown__inspirational-websites-roundup-11",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Showcase Of Creative Websites",
+      "source_url": "https://tympanus.net/codrops/2019/12/09/showcase-of-creative-websites",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "inspiration",
+      "tags": [
+        "html",
+        "css",
+        "inspiration",
+        "landing-page"
+      ],
+      "description": "A curated showcase of outstanding creative websites, highlighting innovative design approaches, interactive storytelling, and cutting-edge web development techniques.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2019/12/ShowcaseWebsites.jpg?x21095",
+      "id": "unknown__showcase-of-creative-websites",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Creating A Distorted Mask Effect On An Image With Babylon Js And Glsl",
+      "source_url": "https://tympanus.net/codrops/2019/11/26/creating-a-distorted-mask-effect-on-an-image-with-babylon-js-and-glsl",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "effect",
+      "tags": [
+        "babylon",
+        "glsl",
+        "webgl",
+        "shader"
+      ],
+      "description": "A Babylon.js tutorial creating a distorted mask effect on images using custom GLSL shaders, applying vertex displacement based on Perlin noise to create organic warping.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2019/11/DistortedMask.jpg?x21095",
+      "id": "unknown__creating-a-distorted-mask-effect-on-an-image-with-babylon-js-and-glsl",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Svg Filter Effects Duotone Images With Fecomponenttransfer",
+      "source_url": "https://tympanus.net/codrops/2019/02/05/svg-filter-effects-duotone-images-with-fecomponenttransfer",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "effect",
+      "tags": [
+        "svg",
+        "css",
+        "css-filter",
+        "image-effect"
+      ],
+      "description": "Using SVG feComponentTransfer filter to apply duotone color grading to images, remapping pixel values through component transfer functions to create vintage-style color effects.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2019/02/SVGFilterEffects_feturbulence_featured.jpg?x21095",
+      "id": "unknown__svg-filter-effects-duotone-images-with-fecomponenttransfer",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Awesome Demos Roundup 5",
+      "source_url": "https://tympanus.net/codrops/2019/06/06/awesome-demos-roundup-5",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "inspiration",
+      "tags": [
+        "javascript",
+        "css",
+        "animation",
+        "inspiration"
+      ],
+      "description": "A roundup of creative demos from the web development community, featuring WebGL experiments, CSS animations, interactive visualizations, and innovative coding techniques.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2019/06/DemosRoundup5-1.jpg?x21095",
+      "id": "unknown__awesome-demos-roundup-5",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "How To Dynamically Change The Colors Of Product Images Using Css Blend Mode And Svg",
+      "source_url": "https://tympanus.net/codrops/2019/09/03/how-to-dynamically-change-the-colors-of-product-images-using-css-blend-mode-and-svg",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "effect",
+      "tags": [
+        "css",
+        "svg",
+        "css-filter",
+        "gradient"
+      ],
+      "description": "A technique using CSS blend modes and SVG masks to dynamically recolor product images on the fly, allowing multiple color variants from a single base image asset.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2019/09/DynamicColorChange_featured.jpg?x21095",
+      "id": "unknown__how-to-dynamically-change-the-colors-of-product-images-using-css-blend-mode-and-svg",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Crafting Stylised Mouse Trails With Ogl",
+      "source_url": "https://tympanus.net/codrops/2019/09/24/crafting-stylised-mouse-trails-with-ogl",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "effect",
+      "tags": [
+        "javascript",
+        "webgl",
+        "hover-effect",
+        "motion"
+      ],
+      "description": "Using the OGL library to create stylized mouse trails with WebGL, rendering animated line meshes that follow cursor movement with smooth easing and fading effects.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2019/09/MouseTrails.jpg?x21095",
+      "id": "unknown__crafting-stylised-mouse-trails-with-ogl",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Responsive Retina Ready Menu",
+      "source_url": "https://tympanus.net/codrops/2013/05/08/responsive-retina-ready-menu",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "menu",
+      "tags": [
+        "css",
+        "javascript",
+        "minimal",
+        "navbar"
+      ],
+      "description": "A responsive navigation menu that adapts for retina displays using CSS media queries and icon font techniques, with hamburger toggle for mobile and touch device support.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2013/05/ResponsiveRetinaReadyMenu.jpg?x21095",
+      "id": "unknown__responsive-retina-ready-menu",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Elastic Content Slider",
+      "source_url": "https://tympanus.net/codrops/2013/02/26/elastic-content-slider",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "component",
+      "tags": [
+        "css",
+        "javascript",
+        "minimal",
+        "slider"
+      ],
+      "description": "A responsive content slider with elastic transition effects, using CSS3 transforms and JavaScript to create smooth sliding animations between content panels with pagination.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2013/01/Blueprint_ElasticContentSlider.jpg?x21095",
+      "id": "unknown__elastic-content-slider",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Troubleshooting Css",
+      "source_url": "https://tympanus.net/codrops/2013/07/17/troubleshooting-css",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "typography"
+      ],
+      "description": "A practical guide to debugging common CSS issues, covering specificity conflicts, float clearing, z-index stacking, cross-browser compatibility, and CSS3 property support.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2013/07/TroubleshootingCSS.jpg?x21095",
+      "id": "unknown__troubleshooting-css",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Putting Css Clip To Work Expanding Overlay Effect",
+      "source_url": "https://tympanus.net/codrops/2013/01/17/putting-css-clip-to-work-expanding-overlay-effect",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "effect",
+      "tags": [
+        "css",
+        "javascript",
+        "minimal",
+        "mask"
+      ],
+      "description": "Using CSS clip-path to create an expanding overlay effect where content is revealed through geometric clipping paths animated with JavaScript on hover or click.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2013/01/ExpandingOverlay.jpg?x21095",
+      "id": "unknown__putting-css-clip-to-work-expanding-overlay-effect",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Full Width Image Slider",
+      "source_url": "https://tympanus.net/codrops/2013/02/26/full-width-image-slider",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "component",
+      "tags": [
+        "css",
+        "javascript",
+        "minimal",
+        "slider"
+      ],
+      "description": "A full-width responsive image slider that scales to fill the viewport, with CSS3 transitions for fade effects and JavaScript-based autoplay and navigation controls.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2013/01/Blueprint_FullWidthImageSlider.jpg?x21095",
+      "id": "unknown__full-width-image-slider",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Interactive Infographic With Svg And Css Animations",
+      "source_url": "https://tympanus.net/codrops/2013/02/06/interactive-infographic-with-svg-and-css-animations",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "effect",
+      "tags": [
+        "svg",
+        "css",
+        "animation",
+        "typography"
+      ],
+      "description": "An interactive infographic built with SVG and CSS animations, using SVG elements for data visualization with hover-triggered CSS transitions and animated chart elements.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2013/01/InteractiveSVG.jpg?x21095",
+      "id": "unknown__interactive-infographic-with-svg-and-css-animations",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Responsive Multi Column Form",
+      "source_url": "https://tympanus.net/codrops/2013/06/06/responsive-multi-column-form",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "form",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "form"
+      ],
+      "description": "A responsive multi-column form layout using CSS for adaptive column arrangements, with floating labels and form validation styling that adjusts from desktop to mobile.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2013/06/Blueprint_ResponsiveMultiColumnForm.png?x21095",
+      "id": "unknown__responsive-multi-column-form",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Ui Design Guidelines For Responsive Design",
+      "source_url": "https://tympanus.net/codrops/2013/01/21/ui-design-guidelines-for-responsive-design",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "inspiration",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "responsive"
+      ],
+      "description": "Design guidelines for responsive web design covering breakpoints, flexible grids, scalable images, component adaptability, and mobile-first approach principles with practical examples.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2013/01/UiGuidelinesForResponsiveDesign.jpg?x21095",
+      "id": "unknown__ui-design-guidelines-for-responsive-design",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "How To Create A Fast Hover Slideshow With Css3",
+      "source_url": "https://tympanus.net/codrops/2012/05/09/how-to-create-a-fast-hover-slideshow-with-css3",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "effect",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "hover-effect"
+      ],
+      "description": "A CSS3 hover slideshow effect using transform and opacity transitions, with staggered animation delays on child elements to create a sequential reveal when hovering over a trigger.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2012/05/FastHoverslideshow.jpg?x21095",
+      "id": "unknown__how-to-create-a-fast-hover-slideshow-with-css3",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "A Creative Year Distinctive Web Designs Of 2012",
+      "source_url": "https://tympanus.net/codrops/2012/12/18/a-creative-year-distinctive-web-designs-of-2012",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "inspiration",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "2d"
+      ],
+      "description": "A showcase of distinctive web designs from 2012, featuring creative portfolios, interactive experiences, and innovative design trends that defined the year in web design.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2012/12/2012WebDesigns.jpg?x21095",
+      "id": "unknown__a-creative-year-distinctive-web-designs-of-2012",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "How To Create Animated Tooltips With Css3",
+      "source_url": "https://tympanus.net/codrops/2012/02/01/how-to-create-animated-tooltips-with-css3",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "tooltip",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "tooltip"
+      ],
+      "description": "Creating animated tooltips using CSS3 transitions and pseudo-elements, with hover-triggered fade, scale, and directional animations without JavaScript.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2012/01/CSS3Tooltips.jpg?x21095",
+      "id": "unknown__how-to-create-animated-tooltips-with-css3",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Freebie Soft Ui Kit Psd",
+      "source_url": "https://tympanus.net/codrops/2012/08/04/freebie-soft-ui-kit-psd",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "mockup",
+      "tags": [
+        "minimal",
+        "gradient",
+        "flat",
+        "soft"
+      ],
+      "description": "A free PSD UI kit featuring soft UI design elements including buttons, forms, and interface components with subtle shadows, rounded corners, and pastel color schemes.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2012/08/SoftUIKit.jpg?x21095",
+      "id": "unknown__freebie-soft-ui-kit-psd",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Slideshow With Jmpress Js",
+      "source_url": "https://tympanus.net/codrops/2012/04/05/slideshow-with-jmpress-js",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "component",
+      "tags": [
+        "javascript",
+        "html",
+        "minimal",
+        "slider"
+      ],
+      "description": "A responsive slideshow using the jmpress.js library (jQuery port of impress.js) for 3D transition effects between slides, with data attributes controlling 3D positioning and rotation.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2012/04/SlideshowJmpress.jpg?x21095",
+      "id": "unknown__slideshow-with-jmpress-js",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Creative Css Loading Animations",
+      "source_url": "https://tympanus.net/codrops/2012/11/14/creative-css-loading-animations",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "loader",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "loader"
+      ],
+      "description": "A collection of creative CSS-only loading spinner animations using keyframe animations, border tricks, and transform sequences to create various spinner shapes and motion effects.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2012/11/CSSLoadingAnimations1.jpg?x21095",
+      "id": "unknown__creative-css-loading-animations",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Mobile Design Typography Is Vitally Important And Challenging",
+      "source_url": "https://tympanus.net/codrops/2012/11/12/mobile-design-typography-is-vitally-important-and-challenging",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "inspiration",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "typography"
+      ],
+      "description": "An article discussing mobile typography challenges including font sizing for small screens, line height optimization, contrast ratios, and readable text hierarchy on mobile devices.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2012/11/MobileDesignTypography.jpg?x21095",
+      "id": "unknown__mobile-design-typography-is-vitally-important-and-challenging",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Make A Statement With Type",
+      "source_url": "https://tympanus.net/codrops/2012/09/26/make-a-statement-with-type",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "inspiration",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "typography"
+      ],
+      "description": "Exploring typographic techniques for commanding visual attention using bold fonts, large scale text, high contrast, strategic spacing, and creative text layouts in web design.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2012/09/MakeAStatementWithType.jpg?x21095",
+      "id": "unknown__make-a-statement-with-type",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Developing Visual Rhythm In Web Design",
+      "source_url": "https://tympanus.net/codrops/2011/08/19/developing-visual-rhythm-in-web-design",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "inspiration",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "2d"
+      ],
+      "description": "An article on creating visual rhythm in web design through repeating elements, covering regular, progressive, and flowing rhythm patterns with CSS to establish predictable visual intervals.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2011/08/featured_image.jpg?x21095",
+      "id": "unknown__developing-visual-rhythm-in-web-design",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Fullscreen Slideshow With Html5 Audio",
+      "source_url": "https://tympanus.net/codrops/2011/07/05/fullscreen-slideshow-with-html5-audio",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "component",
+      "tags": [
+        "javascript",
+        "html",
+        "minimal",
+        "slider"
+      ],
+      "description": "A fullscreen photo slideshow with HTML5 audio integration using the Vegas jQuery plugin for image transitions and Buzz.js for audio control, with custom thumbnail navigation.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2011/07/fullscreenSlideshowHtml5.jpg?x21095",
+      "id": "unknown__fullscreen-slideshow-with-html5-audio",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "6 Questions You Should Ask Yourself When Choosing Fonts",
+      "source_url": "https://tympanus.net/codrops/2011/12/01/6-questions-you-should-ask-yourself-when-choosing-fonts",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "inspiration",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "typography"
+      ],
+      "description": "A guide to font selection covering six key questions about readability, content purpose, audience, tone, pairing strategies, and licensing considerations for web typography.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2011/12/featured_houseind.jpg?x21095",
+      "id": "unknown__6-questions-you-should-ask-yourself-when-choosing-fonts",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Portfolio Item Display",
+      "source_url": "https://tympanus.net/codrops/2011/01/11/portfolio-item-display",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "gallery",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "gallery"
+      ],
+      "description": "A showcase of creative portfolio item display techniques including hover effects, overlay panels, grid layouts, and animated transitions for presenting work samples.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2011/01/portfolioitems.jpg?x21095",
+      "id": "unknown__portfolio-item-display",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Vertical Sliding Accordion",
+      "source_url": "https://tympanus.net/codrops/2011/07/22/vertical-sliding-accordion",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "accordion",
+      "tags": [
+        "javascript",
+        "minimal",
+        "accordion"
+      ],
+      "description": "A flexible vertical jQuery accordion with sliding panel animations, where clicking slices expands content while squeezing other panels, with mousewheel navigation and custom transition effects.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2011/07/verticalSlidingAccordion.jpg?x21095",
+      "id": "unknown__vertical-sliding-accordion",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Wave Display Effect",
+      "source_url": "https://tympanus.net/codrops/2011/10/17/wave-display-effect",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "effect",
+      "tags": [
+        "javascript",
+        "minimal",
+        "animation",
+        "wave"
+      ],
+      "description": "An image gallery effect using jQuery where thumbnails arrange in a wave-like pattern with sequential animation delays, and hovering over images creates a ripple dispersion effect.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2011/10/WaveDisplayEffect.jpg?x21095",
+      "id": "unknown__wave-display-effect",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Draggable Image Boxes Grid",
+      "source_url": "https://tympanus.net/codrops/2011/10/07/draggable-image-boxes-grid",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "gallery",
+      "tags": [
+        "javascript",
+        "minimal",
+        "drag",
+        "grid"
+      ],
+      "description": "A draggable image grid layout using jQuery and CSS that allows users to drag and reposition image boxes within a container, with snap-back animation on release.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2011/10/DraggableImageBoxesGrid.jpg?x21095",
+      "id": "unknown__draggable-image-boxes-grid",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Mega Web Buttons Pack 1",
+      "source_url": "https://tympanus.net/codrops/2011/04/17/mega-web-buttons-pack-1",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "button",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "button"
+      ],
+      "description": "A collection of CSS-only mega web buttons with hover effects, including social media icons, gradient backgrounds, and rounded designs using pure CSS and HTML markup.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2011/04/megawebbuttonspack1.jpg?x21095",
+      "id": "unknown__mega-web-buttons-pack-1",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Polaroid Photobar Gallery",
+      "source_url": "https://tympanus.net/codrops/2010/09/28/polaroid-photobar-gallery",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "gallery",
+      "tags": [
+        "javascript",
+        "minimal",
+        "gallery",
+        "slider"
+      ],
+      "description": "A Polaroid-style photobar gallery using jQuery that displays photos in a horizontal scrollable bar with Polaroid frame styling, expanding to full view on click with overlay navigation.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2010/09/polaroidphotobar.jpg?x21095",
+      "id": "unknown__polaroid-photobar-gallery",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Interactive Photo Desk",
+      "source_url": "https://tympanus.net/codrops/2010/07/01/interactive-photo-desk",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "gallery",
+      "tags": [
+        "javascript",
+        "minimal",
+        "drag",
+        "gallery"
+      ],
+      "description": "An interactive photo desk where users can drag, rotate, and stack images using jQuery with CSS3 transforms, creating a desktop-like photo manipulation experience.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2010/07/photodesk.jpg?x21095",
+      "id": "unknown__interactive-photo-desk",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Awesome Cufonized Fly Out Menu",
+      "source_url": "https://tympanus.net/codrops/2010/06/28/awesome-cufonized-fly-out-menu",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "menu",
+      "tags": [
+        "javascript",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "A full-page cufonized fly-out menu using jQuery and CSS3 where hovering over items reveals a sliding description bar and hover-state indicator that adapts to item width.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2010/06/flyoutmenu.jpg?x21095",
+      "id": "unknown__awesome-cufonized-fly-out-menu",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Full Page Image Gallery",
+      "source_url": "https://tympanus.net/codrops/2010/09/08/full-page-image-gallery",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "gallery",
+      "tags": [
+        "javascript",
+        "css",
+        "minimal",
+        "gallery"
+      ],
+      "description": "A full-page image gallery with scrollable thumbnails and fullscreen preview using jQuery and CSS3 Webkit properties, with auto-scrolling thumbnail bar and image loading effects.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2010/09/fullpageimagegallery.jpg?x21095",
+      "id": "unknown__full-page-image-gallery",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Website Tour",
+      "source_url": "https://tympanus.net/codrops/2010/12/21/website-tour",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "tooltip",
+      "tags": [
+        "javascript",
+        "minimal",
+        "tooltip",
+        "component"
+      ],
+      "description": "A jQuery website tour plugin that guides users through page elements with tooltips at each step, supporting autoplay mode, step positioning, and navigation controls.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2010/12/websitetour.jpg?x21095",
+      "id": "unknown__website-tour",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Hover Slide Effect",
+      "source_url": "https://tympanus.net/codrops/2010/11/16/hover-slide-effect",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "effect",
+      "tags": [
+        "javascript",
+        "css",
+        "minimal",
+        "hover-effect"
+      ],
+      "description": "A jQuery hover slide effect where images in a grid randomly slide out on hover to reveal underlying images, with random direction and fade animations inspired by Flash designs.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2010/11/HoverSlideEffect.jpg?x21095",
+      "id": "unknown__hover-slide-effect",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Stunning Circular Motion Effect",
+      "source_url": "https://tympanus.net/codrops/2010/05/07/stunning-circular-motion-effect",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "menu",
+      "tags": [
+        "javascript",
+        "css",
+        "minimal",
+        "animation"
+      ],
+      "description": "A circular motion menu effect using the jQuery.path plugin for circular animation, where hovering menu items causes sub-menus to circulate around a rounded content area.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2010/05/circularPortfolio.gif?x21095",
+      "id": "unknown__stunning-circular-motion-effect",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Design Inspiration From Music Videos Sick Muse By Metric",
+      "source_url": "https://tympanus.net/codrops/2010/02/20/design-inspiration-from-music-videos-sick-muse-by-metric",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "inspiration",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "2d"
+      ],
+      "description": "A showcase of design inspiration drawn from music videos, highlighting visual storytelling, motion graphics, color palettes, and creative direction from contemporary music video art.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2010/02/inspire3-copy1.jpg?x21095",
+      "id": "unknown__design-inspiration-from-music-videos-sick-muse-by-metric",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Cool Css Only Registration Form",
+      "source_url": "https://tympanus.net/codrops/2009/08/28/cool-css-only-registration-form",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "form",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "form"
+      ],
+      "description": "A CSS-only registration form with rounded borders and box-shadow effects, using only CSS for styling with a pen background image and semantic HTML form elements.",
+      "preview_image": "",
+      "id": "unknown__cool-css-only-registration-form",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Css3 Big Style Fieldset Registration Form",
+      "source_url": "https://tympanus.net/codrops/2009/09/01/css3-big-style-fieldset-registration-form",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "form",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "form"
+      ],
+      "description": "A large styled CSS3 registration form using fieldset elements with rounded corners, box shadows, and gradient backgrounds, demonstrating advanced CSS3 form styling without JavaScript.",
+      "preview_image": "",
+      "id": "unknown__css3-big-style-fieldset-registration-form",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Codrops New Style Lessons Learned From Applying Css3",
+      "source_url": "https://tympanus.net/codrops/2009/09/13/codrops-new-style-lessons-learned-from-applying-css3",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "html",
+        "minimal",
+        "typography"
+      ],
+      "description": "Lessons learned from applying CSS3 in real projects, discussing browser compatibility issues, progressive enhancement strategies, and practical tips for using new CSS3 features safely.",
+      "preview_image": "",
+      "id": "unknown__codrops-new-style-lessons-learned-from-applying-css3",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "42 Jquery Image Gallery Plugins",
+      "source_url": "https://tympanus.net/codrops/2009/09/07/42-jquery-image-gallery-plugins",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "gallery",
+      "tags": [
+        "javascript",
+        "minimal",
+        "gallery",
+        "component"
+      ],
+      "description": "A collection of 42 jQuery image gallery plugins covering various styles including sliders, lightboxes, masonry grids, 3D carousels, and thumbnail navigation effects.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2009/09/42ImageGalleryPlugins.jpg?x21095",
+      "id": "unknown__42-jquery-image-gallery-plugins",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Beautiful Slide Out Navigation Revised",
+      "source_url": "https://tympanus.net/codrops/2009/12/08/beautiful-slide-out-navigation-revised",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "menu",
+      "tags": [
+        "javascript",
+        "css",
+        "minimal",
+        "navbar"
+      ],
+      "description": "A revised slide-out navigation menu using jQuery and CSS3, with fixed positioning on the side of the screen, hover-activated slide animations, and CSS3 rounded corner styling.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2009/12/slideoutrevised1.png?x21095",
+      "id": "unknown__beautiful-slide-out-navigation-revised",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "42 Famous Login And Registration Forms",
+      "source_url": "https://tympanus.net/codrops/2009/09/20/42-famous-login-and-registration-forms",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "form",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "inspiration"
+      ],
+      "description": "A showcase of 42 famous login and registration forms from real websites, analyzing design patterns, form field layouts, and styling approaches from popular web services.",
+      "preview_image": "",
+      "id": "unknown__42-famous-login-and-registration-forms",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "21 Free Captcha Sources",
+      "source_url": "https://tympanus.net/codrops/2009/09/22/21-free-captcha-sources",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "php",
+        "minimal",
+        "snippet"
+      ],
+      "description": "A roundup of 21 free CAPTCHA services and scripts that can be integrated into websites using PHP or JavaScript to prevent spam bots and automated form submissions.",
+      "preview_image": "",
+      "id": "unknown__21-free-captcha-sources",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "And What About Resolution",
+      "source_url": "https://tympanus.net/codrops/2009/10/21/and-what-about-resolution",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "inspiration",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "2d"
+      ],
+      "description": "An article discussing web design considerations for different screen resolutions, covering fluid layouts, fixed-width designs, responsive approaches, and resolution testing strategies.",
+      "preview_image": "",
+      "id": "unknown__and-what-about-resolution",
+      "source_domain": "tympanus.net"
     }
   ]
 }
