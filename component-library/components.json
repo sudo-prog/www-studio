@@ -1,6 +1,6 @@
 {
-  "version": "1.0.105",
-  "source_count": 28425,
+  "version": "1.0.106",
+  "source_count": 28475,
   "components": [
     {
       "id": "cat-0",
@@ -493127,6 +493127,806 @@
       "preview_image": "https://cdn.21st.dev/shadcnspace/slider-06/default/preview.1788812402476-6b30a264-9044-412e-b881-e45e64b532d6.png",
       "id": "unknown__price-range-slider",
       "source_domain": "21st.dev"
+    },
+    {
+      "name": "Funny Treefrog",
+      "source_url": "https://uiverse.io/ahmedyasserdev/funny-treefrog-48",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "tailwind",
+        "html",
+        "minimal",
+        "search-bar"
+      ],
+      "description": "A rounded search input bar with a magnifying-glass icon on the left and a clear (X) button on the right; the border turns blue on focus while the placeholder fades out.",
+      "preview_image": "",
+      "id": "unknown__funny-treefrog",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Modern Stingray",
+      "source_url": "https://uiverse.io/sans-script/modern-stingray-0",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "plain-css",
+        "html",
+        "outline",
+        "checkbox"
+      ],
+      "description": "A 40x40px square checkbox with a thick dark border that reveals a green checkmark rotated 45 degrees and offset inward when checked.",
+      "preview_image": "",
+      "id": "unknown__modern-stingray",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Smooth Wombat",
+      "source_url": "https://uiverse.io/kerolos23/smooth-wombat-54",
+      "registry_url": "https://uiverse.io/all",
+      "category": "loader",
+      "tags": [
+        "plain-css",
+        "html",
+        "3d",
+        "loader"
+      ],
+      "description": "A 3D cube spinner rendered with CSS transforms and box-shadow orbits in green and red, rotating on a 45-degree axis with infinite spin animation.",
+      "preview_image": "",
+      "id": "unknown__smooth-wombat",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Helpless Tiger",
+      "source_url": "https://uiverse.io/csemszepp/helpless-tiger-5",
+      "registry_url": "https://uiverse.io/all",
+      "category": "loader",
+      "tags": [
+        "plain-css",
+        "html",
+        "glow",
+        "loader"
+      ],
+      "description": "A 120px circular loader with a red center dot surrounded by eight orbiting colored dots that pulse in sequence via box-shadow animation.",
+      "preview_image": "",
+      "id": "unknown__helpless-tiger",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Brown Dolphin",
+      "source_url": "https://uiverse.io/Novaxlo/brown-dolphin-19",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "plain-css",
+        "html",
+        "gradient",
+        "card"
+      ],
+      "description": "A compact date-display card with an animated rotating cloud SVG background and orange accent text that slides and scales when hovered.",
+      "preview_image": "",
+      "id": "unknown__brown-dolphin",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Good Walrus",
+      "source_url": "https://uiverse.io/mi-series/good-walrus-42",
+      "registry_url": "https://uiverse.io/all",
+      "category": "form",
+      "tags": [
+        "plain-css",
+        "html",
+        "gradient",
+        "form"
+      ],
+      "description": "A peach-toned registration form collecting full name, phone, birth date, gender radio buttons, and a country dropdown, with an orange submit button.",
+      "preview_image": "",
+      "id": "unknown__good-walrus",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Spicy Panther",
+      "source_url": "https://uiverse.io/Yaya12085/spicy-panther-48",
+      "registry_url": "https://uiverse.io/all",
+      "category": "form",
+      "tags": [
+        "plain-css",
+        "html",
+        "gradient",
+        "form"
+      ],
+      "description": "A dark gradient newsletter signup form (blue to deep blue) with a large title, description text, a single email input, and a purple subscribe button.",
+      "preview_image": "",
+      "id": "unknown__spicy-panther",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Serious Duck",
+      "source_url": "https://uiverse.io/sameer2malik/serious-duck-16",
+      "registry_url": "https://uiverse.io/all",
+      "category": "form",
+      "tags": [
+        "plain-css",
+        "html",
+        "liquid-glass",
+        "form"
+      ],
+      "description": "A frosted-glass login form with a blurred radial gradient backdrop, email and password fields with floating labels, and a blue submit button.",
+      "preview_image": "",
+      "id": "unknown__serious-duck",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Wet Grasshopper",
+      "source_url": "https://uiverse.io/pharmacist-sabot/wet-grasshopper-85",
+      "registry_url": "https://uiverse.io/all",
+      "category": "toggle",
+      "tags": [
+        "plain-css",
+        "html",
+        "liquid-glass",
+        "switch"
+      ],
+      "description": "A 3D flip toggle switch with two sides labeled Home and Profile, flipping with a smooth animation and a cyan glow marker when toggled.",
+      "preview_image": "",
+      "id": "unknown__wet-grasshopper",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Popular Sheep",
+      "source_url": "https://uiverse.io/chris_6688/popular-sheep-12",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "plain-css",
+        "html",
+        "minimal",
+        "input"
+      ],
+      "description": "A dark-themed floating-label input where the grey label lifts up and the border turns white on focus, with a pill-shaped rounded field.",
+      "preview_image": "",
+      "id": "unknown__popular-sheep",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Tasty Yak",
+      "source_url": "https://uiverse.io/andrew-demchenk0/tasty-yak-79",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "plain-css",
+        "html",
+        "gradient",
+        "button"
+      ],
+      "description": "A green rectangular button with a sliding icon panel that slides in from the right on hover, pushing the white text leftward with a smooth transition.",
+      "preview_image": "",
+      "id": "unknown__tasty-yak",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Grumpy Impala",
+      "source_url": "https://uiverse.io/dorian_8749/grumpy-impala-60",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "tailwind",
+        "html",
+        "minimal",
+        "input"
+      ],
+      "description": "A dark chat-style textarea input with attachment buttons for file, web link, and Figma link, plus a paper-plane send icon, all in a black rounded container.",
+      "preview_image": "",
+      "id": "unknown__grumpy-impala",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Silly Moth",
+      "source_url": "https://uiverse.io/iZOXVL/silly-moth-15",
+      "registry_url": "https://uiverse.io/all",
+      "category": "form",
+      "tags": [
+        "tailwind",
+        "html",
+        "gradient",
+        "form"
+      ],
+      "description": "A login form on a blue-to-purple gradient background with email and password inputs, a remember-me checkbox, forgot-password link, and a purple sign-in button.",
+      "preview_image": "",
+      "id": "unknown__silly-moth",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Average Liger",
+      "source_url": "https://uiverse.io/AlimurtuzaCodes/average-liger-0",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "plain-css",
+        "html",
+        "gradient",
+        "button"
+      ],
+      "description": "A dark rounded button with a small star SVG icon that, on hover, transitions to a purple gradient background with a large glow shadow and scales the icon up.",
+      "preview_image": "",
+      "id": "unknown__average-liger",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Young Zebra",
+      "source_url": "https://uiverse.io/Satwinder04/young-zebra-44",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "plain-css",
+        "html",
+        "minimal",
+        "card"
+      ],
+      "description": "A 300x400px card with an image header and content overlay that lifts upward, scales the image, and slides the content off-screen on hover.",
+      "preview_image": "",
+      "id": "unknown__young-zebra",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Quiet Duck",
+      "source_url": "https://uiverse.io/adamgiebl/quiet-duck-54",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "plain-css",
+        "html",
+        "gradient",
+        "card"
+      ],
+      "description": "A dark-navy profile card with a cyan gradient header bar, social media icons, and three stat rows that scale up slightly on hover.",
+      "preview_image": "",
+      "id": "unknown__quiet-duck",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Wet Bobcat",
+      "source_url": "https://uiverse.io/mowalee/wet-bobcat-17",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "tailwind",
+        "html",
+        "minimal",
+        "input"
+      ],
+      "description": "A Tailwind-styled text input with a floating label that shrinks and shifts to the top-left on focus, with a user-icon SVG on the left side.",
+      "preview_image": "",
+      "id": "unknown__wet-bobcat",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Ancient Lizard",
+      "source_url": "https://uiverse.io/Subaashbala/ancient-lizard-57",
+      "registry_url": "https://uiverse.io/all",
+      "category": "loader",
+      "tags": [
+        "plain-css",
+        "html",
+        "3d",
+        "loader"
+      ],
+      "description": "A 3D rotating dice spinner inside a circular black frame, with colored dots on each face that cycle through green, pink, orange, and blue background colors.",
+      "preview_image": "",
+      "id": "unknown__ancient-lizard",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Cowardly Goat",
+      "source_url": "https://uiverse.io/Cobp/cowardly-goat-90",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "plain-css",
+        "html",
+        "gradient",
+        "input"
+      ],
+      "description": "An AI chat-style input bar with a voice-recording circular panel that expands on focus, a file-upload icon row, and a gradient text-light animation inside the voice button.",
+      "preview_image": "",
+      "id": "unknown__cowardly-goat",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Popular Lion",
+      "source_url": "https://uiverse.io/20essentials/popular-lion-34",
+      "registry_url": "https://uiverse.io/all",
+      "category": "loader",
+      "tags": [
+        "plain-css",
+        "html",
+        "glow",
+        "loader"
+      ],
+      "description": "A large 3D ball loader with a split-color ring and a tiny animated fish that swims across the surface, casting a soft blurred shadow below.",
+      "preview_image": "",
+      "id": "unknown__popular-lion",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Clever Puma",
+      "source_url": "https://uiverse.io/Yaya12085/clever-puma-30",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "plain-css",
+        "html",
+        "minimal",
+        "button"
+      ],
+      "description": "A clean white button with an SVG icon that removes its box-shadow on hover and scales up slightly with a smooth transition.",
+      "preview_image": "",
+      "id": "unknown__clever-puma",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Ancient Eagle",
+      "source_url": "https://uiverse.io/Yaya12085/ancient-eagle-71",
+      "registry_url": "https://uiverse.io/all",
+      "category": "toggle",
+      "tags": [
+        "plain-css",
+        "html",
+        "gradient",
+        "switch"
+      ],
+      "description": "A smooth toggle switch with a sliding white knob that shifts from gray inactive to green active background, with a subtle glow on the knob during hover.",
+      "preview_image": "",
+      "id": "unknown__ancient-eagle",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Kind Cheetah",
+      "source_url": "https://uiverse.io/Galahhad/kind-cheetah-52",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "plain-css",
+        "html",
+        "outline",
+        "button"
+      ],
+      "description": "A small circular copy button with a dark background and an SVG icon; hovering reveals a tooltip that flips upward from a hidden 3D rotation.",
+      "preview_image": "",
+      "id": "unknown__kind-cheetah",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Odd Goat",
+      "source_url": "https://uiverse.io/catraco/odd-goat-3",
+      "registry_url": "https://uiverse.io/all",
+      "category": "loader",
+      "tags": [
+        "plain-css",
+        "html",
+        "minimal",
+        "loader"
+      ],
+      "description": "A set of four small square blocks that rotate in sequence with alternating ease-in-out timing, creating a staggered spinning loader effect.",
+      "preview_image": "",
+      "id": "unknown__odd-goat",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Stale Panda",
+      "source_url": "https://uiverse.io/Shoh2008/stale-panda-35",
+      "registry_url": "https://uiverse.io/all",
+      "category": "loader",
+      "tags": [
+        "plain-css",
+        "html",
+        "gradient",
+        "loader"
+      ],
+      "description": "A bicycle wheel loader with a rotating outer rim formed from CSS gradients and an inner wheel with eight animated spokes that spin continuously.",
+      "preview_image": "",
+      "id": "unknown__stale-panda",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Wise Shrimp",
+      "source_url": "https://uiverse.io/himanshu9682/wise-shrimp-26",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "plain-css",
+        "html",
+        "gradient",
+        "button"
+      ],
+      "description": "A decorative button with corner bracket markers and three triangle cutouts that cascade open with staggered animations on hover, revealing the button text.",
+      "preview_image": "",
+      "id": "unknown__wise-shrimp",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Angry Snail",
+      "source_url": "https://uiverse.io/dovatgabriel/angry-snail-76",
+      "registry_url": "https://uiverse.io/all",
+      "category": "loader",
+      "tags": [
+        "plain-css",
+        "html",
+        "glow",
+        "loader"
+      ],
+      "description": "A set of bouncing dots orbiting in a circular pattern with varying opacity and scale, creating a pulsing ring spinner effect.",
+      "preview_image": "",
+      "id": "unknown__angry-snail",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Lucky Dragon",
+      "source_url": "https://uiverse.io/anand_4957/lucky-dragon-87",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "plain-css",
+        "html",
+        "gradient",
+        "card"
+      ],
+      "description": "A dark financial dashboard card with an animated rainbow gradient border, income amount display, a bar chart with bounce animation, and a More button.",
+      "preview_image": "",
+      "id": "unknown__lucky-dragon",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Ancient Mule",
+      "source_url": "https://uiverse.io/Mike11jr/ancient-mule-46",
+      "registry_url": "https://uiverse.io/all",
+      "category": "loader",
+      "tags": [
+        "plain-css",
+        "html",
+        "minimal",
+        "loader"
+      ],
+      "description": "Three small dots that bounce vertically in a sequence with a 0.16s delay between each, using a cubic scale animation on a dark background.",
+      "preview_image": "",
+      "id": "unknown__ancient-mule",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Chatty Cat",
+      "source_url": "https://uiverse.io/OnCloud125252/chatty-cat-54",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "plain-css",
+        "html",
+        "minimal",
+        "search-bar"
+      ],
+      "description": "A compact search input bar with a left-positioned search icon and a dark grey background container, with placeholder text and no border on the input field.",
+      "preview_image": "",
+      "id": "unknown__chatty-cat",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Rude Mayfly",
+      "source_url": "https://uiverse.io/Thomasgsn/rude-mayfly-69",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "html",
+        "minimal",
+        "search-bar"
+      ],
+      "description": "A Tailwind-styled search card resembling a file explorer with a search input, recent search items, and action buttons for adding new files, folders, and hashtags.",
+      "preview_image": "",
+      "id": "unknown__rude-mayfly",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Tall Turkey",
+      "source_url": "https://uiverse.io/FWDJc/tall-turkey-62",
+      "registry_url": "https://uiverse.io/all",
+      "category": "loader",
+      "tags": [
+        "plain-css",
+        "html",
+        "gradient",
+        "loader"
+      ],
+      "description": "A stylized eye loader with a yellow iris, black pupil, and white highlight that blinks and shifts shape periodically with a pulsing animation.",
+      "preview_image": "",
+      "id": "unknown__tall-turkey",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Breezy Otter",
+      "source_url": "https://uiverse.io/prashantj510/breezy-otter-62",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "plain-css",
+        "html",
+        "gradient",
+        "card"
+      ],
+      "description": "A small gradient card that transitions from teal to deep purple on hover, with a rounded border and a glowing box-shadow effect on interaction.",
+      "preview_image": "",
+      "id": "unknown__breezy-otter",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Foolish Sloth",
+      "source_url": "https://uiverse.io/gharsh11032000/foolish-sloth-90",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "plain-css",
+        "html",
+        "minimal",
+        "button"
+      ],
+      "description": "A transparent ghost button with a golden border and text that scales up on hover, revealing an expanding golden circular background with a glow shadow.",
+      "preview_image": "",
+      "id": "unknown__foolish-sloth",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Old Termite",
+      "source_url": "https://uiverse.io/cybrejon/old-termite-43",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "plain-css",
+        "html",
+        "gradient",
+        "button"
+      ],
+      "description": "A link-style button with a subtle border and white text on a dark background that lifts upward with a box-shadow on hover.",
+      "preview_image": "",
+      "id": "unknown__old-termite",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Green Skunk",
+      "source_url": "https://uiverse.io/mirbasit01/green-skunk-3",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "plain-css",
+        "html",
+        "gradient",
+        "card"
+      ],
+      "description": "A compact card with a gradient border framing a dark background, displaying a heading, description, category tags, and a footer row with an Analyse button.",
+      "preview_image": "",
+      "id": "unknown__green-skunk",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Cowardly Jellyfish",
+      "source_url": "https://uiverse.io/jamaldine-hub/cowardly-jellyfish-52",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "plain-css",
+        "html",
+        "minimal",
+        "input"
+      ],
+      "description": "A teal-tinted input field with a floating label that slides up and fades to the left on focus, with a transparent dark background and teal text color.",
+      "preview_image": "",
+      "id": "unknown__cowardly-jellyfish",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Sharp Quail",
+      "source_url": "https://uiverse.io/Yaya12085/sharp-quail-80",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "plain-css",
+        "html",
+        "minimal",
+        "button"
+      ],
+      "description": "A clean white rectangular button with a left-positioned SVG icon that scales up slightly on hover with a smooth transition.",
+      "preview_image": "",
+      "id": "unknown__sharp-quail",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Big Wombat",
+      "source_url": "https://uiverse.io/m1her/big-wombat-31",
+      "registry_url": "https://uiverse.io/all",
+      "category": "loader",
+      "tags": [
+        "plain-css",
+        "html",
+        "gradient",
+        "loader"
+      ],
+      "description": "An animated road scene with dashed white lane lines and gray trees on either side that scroll infinitely in a 3D perspective, simulating forward motion.",
+      "preview_image": "",
+      "id": "unknown__big-wombat",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Lovely Wombat",
+      "source_url": "https://uiverse.io/FColombati/lovely-wombat-56",
+      "registry_url": "https://uiverse.io/all",
+      "category": "toggle",
+      "tags": [
+        "plain-css",
+        "html",
+        "gradient",
+        "switch"
+      ],
+      "description": "A large toggle switch with YES and NO labels that swaps visibility on click, with the active label scaling large while the inactive one shrinks, set against a light blue background.",
+      "preview_image": "",
+      "id": "unknown__lovely-wombat",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Curvy Snake",
+      "source_url": "https://uiverse.io/mamyapro123/curvy-snake-6",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "plain-css",
+        "html",
+        "brutalist",
+        "card"
+      ],
+      "description": "A brutalist-themed poster card with a checkbox toggle that switches between an editorial minimal theme and an acid brutalist theme with animated text, geometric orbs, and a scrolling ribbon banner.",
+      "preview_image": "",
+      "id": "unknown__curvy-snake",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Average Earwig",
+      "source_url": "https://uiverse.io/Yaya12085/average-earwig-11",
+      "registry_url": "https://uiverse.io/all",
+      "category": "tooltip",
+      "tags": [
+        "plain-css",
+        "html",
+        "gradient",
+        "tooltip"
+      ],
+      "description": "A tooltip element that flips upward with a 3D rotation on hover, revealing a light gradient text box with a subtle drop shadow and pointer events.",
+      "preview_image": "",
+      "id": "unknown__average-earwig",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Stupid Impala",
+      "source_url": "https://uiverse.io/cssbuttons-io/stupid-impala-51",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "plain-css",
+        "html",
+        "gradient",
+        "button"
+      ],
+      "description": "A red rectangular delete button with a trash-can icon that slides in from the left on hover, pushing the white text rightward while the icon panel expands.",
+      "preview_image": "",
+      "id": "unknown__stupid-impala",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Lucky Mouse",
+      "source_url": "https://uiverse.io/MuhammadHasann/lucky-mouse-99",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "plain-css",
+        "html",
+        "gradient",
+        "button"
+      ],
+      "description": "A rounded button with three decorative SVG icons positioned at different corners that rotate back and forth continuously, with a gradient background on hover triggered by animation.",
+      "preview_image": "",
+      "id": "unknown__lucky-mouse",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Great Ape",
+      "source_url": "https://uiverse.io/vinodjangid07/great-ape-33",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "plain-css",
+        "html",
+        "gradient",
+        "button"
+      ],
+      "description": "A circular 45x45px icon button with a vibrant gradient background that rotates 35 degrees on hover while revealing a frosted-glass inner container.",
+      "preview_image": "",
+      "id": "unknown__great-ape",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Mean Dingo",
+      "source_url": "https://uiverse.io/ahmedcome/mean-dingo-68",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "plain-css",
+        "html",
+        "gradient",
+        "button"
+      ],
+      "description": "A 3D perspective button with side borders that extrude from the surface; on click it translates inward along the Z-axis with the side panels collapsing to zero width.",
+      "preview_image": "",
+      "id": "unknown__mean-dingo",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Slimy Parrot",
+      "source_url": "https://uiverse.io/pipic1/slimy-parrot-86",
+      "registry_url": "https://uiverse.io/all",
+      "category": "button",
+      "tags": [
+        "plain-css",
+        "html",
+        "gradient",
+        "button"
+      ],
+      "description": "A keyboard-style keycap button with a subtle linear gradient background, inner shadow depth, and uppercase bold text, resembling a computer keyboard key.",
+      "preview_image": "",
+      "id": "unknown__slimy-parrot",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Old Chicken",
+      "source_url": "https://uiverse.io/mahiatlinux/old-chicken-43",
+      "registry_url": "https://uiverse.io/all",
+      "category": "card",
+      "tags": [
+        "plain-css",
+        "html",
+        "gradient",
+        "card"
+      ],
+      "description": "A dark card with a loading placeholder that animates a shimmering gradient sweep across a circular avatar and text lines, simulating content loading.",
+      "preview_image": "",
+      "id": "unknown__old-chicken",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Moody Swan",
+      "source_url": "https://uiverse.io/vnuny/moody-swan-60",
+      "registry_url": "https://uiverse.io/all",
+      "category": "search-bar",
+      "tags": [
+        "plain-css",
+        "html",
+        "minimal",
+        "search-bar"
+      ],
+      "description": "A collapsible black search bar that shrinks to a circular icon button when a hidden checkbox is checked, with a search icon inside and the input field animating to zero width.",
+      "preview_image": "",
+      "id": "unknown__moody-swan",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Fuzzy Pika",
+      "source_url": "https://uiverse.io/devestter/fuzzy-panda-69",
+      "registry_url": "https://uiverse.io/all",
+      "category": "input",
+      "tags": [
+        "plain-css",
+        "html",
+        "minimal",
+        "input"
+      ],
+      "description": "A labeled text input with a subtle shadow border that shifts to a blue outline on focus while the field scales down slightly, accompanied by a white submit button below.",
+      "preview_image": "",
+      "id": "unknown__fuzzy-pika",
+      "source_domain": "uiverse.io"
     }
   ]
 }
