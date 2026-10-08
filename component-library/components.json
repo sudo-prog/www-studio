@@ -1,6 +1,6 @@
 {
-  "version": "1.0.102",
-  "source_count": 28302,
+  "version": "1.0.103",
+  "source_count": 28305,
   "components": [
     {
       "id": "cat-0",
@@ -491094,6 +491094,51 @@
       "preview_image": "",
       "id": "unknown__flickr-photobar-gallery",
       "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Agent Run Review and Optimization",
+      "source_url": "https://www.uxsnaps.com/browserbase-agent-run-review-and-optimization",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "tool",
+      "tags": [
+        "javascript",
+        "minimal",
+        "dashboard"
+      ],
+      "description": "Browserbase's agent run review interface combines execution traces with an optimizer that proposes prompt rewrites and projects runtime savings, showing diagnosis, evidence, and recommendations side by side.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/b5333bd02788e82db56602cf6609ce65b5274e57-1770x1368.png",
+      "id": "unknown__agent-run-review-and-optimization",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Merchant Store Launch Setup",
+      "source_url": "https://www.uxsnaps.com/doordash-merchant-store-launch-setup",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "tool",
+      "tags": [
+        "html",
+        "minimal",
+        "onboarding"
+      ],
+      "description": "DoorDash's merchant store launch interface pairs a near-term goal ('Get ready to go live today') with numbered setup steps, device handoff QR codes, and a live store preview alongside optional branding tasks.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/b483b21732c04f58bfc259ec6a00b801bd4a1ac1-1770x1368.png",
+      "id": "unknown__merchant-store-launch-setup",
+      "source_domain": "www.uxsnaps.com"
+    },
+    {
+      "name": "Destination Overview and Audio Guide",
+      "source_url": "https://www.uxsnaps.com/mindtrip-destination-overview-and-audio-guide",
+      "registry_url": "https://www.uxsnaps.com",
+      "category": "card",
+      "tags": [
+        "html",
+        "gradient",
+        "hero"
+      ],
+      "description": "Mindtrip's destination overview combines a photographic hero image with an audio guide player, community mentions, planning category tabs, and an open question channel for conversational exploration.",
+      "preview_image": "https://cdn.sanity.io/images/xdk30n1s/production/a49d30e4f8ebc09c583ac3d9dcf1611b60550355-1770x1368.png",
+      "id": "unknown__destination-overview-and-audio-guide",
+      "source_domain": "www.uxsnaps.com"
     }
   ]
 }
