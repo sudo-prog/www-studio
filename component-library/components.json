@@ -1,6 +1,6 @@
 {
-  "version": "1.0.115",
-  "source_count": 28884,
+  "version": "1.0.116",
+  "source_count": 28940,
   "components": [
     {
       "id": "cat-0",
@@ -500436,6 +500436,943 @@
       "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2013/10/ThumbnailGridAnimations1.jpg",
       "id": "unknown__animations-for-thumbnail-grids",
       "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Depth Carousel Pro",
+      "source_url": "https://www.framer.com/marketplace/components/depth-carousel-pro",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "carousel",
+      "tags": [
+        "react",
+        "3d",
+        "carousel",
+        "parallax"
+      ],
+      "description": "A premium 3D image and video carousel for Framer that creates a layered depth effect with perspective, tilt, spacing, and smooth card transitions. It supports drag, wheel, touch, keyboard navigation, autoplay, and responsive positioning across desktop, tablet, and mobile.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F38425120-6213-4b66-8b3c-e3e66d07ec64%2F01a10542-b27c-76b9-90c5-afbf87368edb.png&w=2048&q=80",
+      "id": "unknown__depth-carousel-pro",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Fractal Glass",
+      "source_url": "https://www.framer.com/marketplace/components/fractalglass",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "shader",
+      "tags": [
+        "react",
+        "webgl",
+        "liquid-glass",
+        "blur-effect",
+        "3d"
+      ],
+      "description": "A high-performance React component that transforms standard images and videos into refracting glass masterpieces using a hybrid WebGL engine. It renders cinematic distortion with fractal noise, volumetric height maps, and organic fluid motion, plus desktop mouse parallax and mobile gyroscope support.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Fb5b3d717-05b6-48eb-b299-3ca1e4d2ba81%2F019f5079-20fc-77fa-9940-7249c5c5d29f.png&w=2048&q=80",
+      "id": "unknown__fractal-glass",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Hero Banner Pro",
+      "source_url": "https://www.framer.com/marketplace/components/hero-banner-pro",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "hero",
+      "tags": [
+        "react",
+        "hero",
+        "form",
+        "gradient"
+      ],
+      "description": "A hero and banner section for Framer that supports full-height landing heroes, lead-gen banners with forms, launch countdowns, sale banners, or simple section headers. Every color, font, spacing, and animation is a property control, with carousel mode, video backgrounds, and responsive layouts for all devices.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Fef2bb5d0-8e59-43b7-be65-c14c5f941c99%2F01a10763-3b3e-70a9-b4ab-5a58eb8e4219.png&w=2048&q=80",
+      "id": "unknown__hero-banner-pro",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Hover Blur Icon Card",
+      "source_url": "https://www.framer.com/marketplace/components/hover-blur-icon-card",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "card",
+      "tags": [
+        "react",
+        "hover-effect",
+        "blur-effect",
+        "liquid-glass",
+        "card"
+      ],
+      "description": "A service card component that pairs a text panel with a tall image. On hover, the image softly blurs and an eye icon button appears on top while the text panel stretches to full height. Includes mobile and tablet variants and is customizable via the properties panel.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F492da4c7-1f68-44bb-a835-d654f4ede7b8%2F01a1082b-0f24-7164-b3e6-f060bdf63b5d.png&w=2048&q=80",
+      "id": "unknown__hover-blur-icon-card",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Hover Project List",
+      "source_url": "https://www.framer.com/marketplace/components/hover-project-list",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "portfolio",
+      "tags": [
+        "react",
+        "hover-effect",
+        "modal",
+        "portfolio",
+        "carousel"
+      ],
+      "description": "An interactive portfolio index with a gliding hover highlight that slides between project rows. Clicking a row opens a modal with the project image, title, category, year, description, and link. Features keyboard accessibility, responsive layout, and fully editable project data.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Fd84b3af4-cf3a-4f8c-a330-137560bb6207%2F01a10809-a8c4-731f-923c-e1534f0e527a.png&w=2048&q=80",
+      "id": "unknown__hover-project-list",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Image Comparison",
+      "source_url": "https://www.framer.com/marketplace/components/imagecomparison",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "image-effect",
+      "tags": [
+        "react",
+        "image-effect",
+        "slider"
+      ],
+      "description": "A before/after image comparison slider for Framer that uses a draggable divider to compare two images side by side. Perfect for showcasing redesigns, retouching, case studies, and demonstrating visual impact in real time.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fcomponents%2FqzRn4Jh4QWzCPnqxSDcL%2Fimagecomparison-QpNZhGGxoauevpcp1xw1eYzYFAg7Tc&w=2048&q=80",
+      "id": "unknown__image-comparison",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Image Trail",
+      "source_url": "https://www.framer.com/marketplace/components/imagetrail",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "hover-effect",
+      "tags": [
+        "react",
+        "hover-effect",
+        "animation",
+        "cursor"
+      ],
+      "description": "A Framer code component that creates a smooth, animated trail of custom images following the user's mouse cursor. Features adjustable trail threshold, visible duration, fade-out duration, scale-down factor, width and height, and corner radius.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fcomponents%2FiYnmzv50c9cdWuoOdGqu%2Fimagetrail-BzlMRGBzgwcenNEQiRrsjrNz9FPk9l&w=2048&q=80",
+      "id": "unknown__image-trail",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Inertia Text",
+      "source_url": "https://www.framer.com/marketplace/components/inertia-text",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "text",
+      "tags": [
+        "react",
+        "text-effect",
+        "animation",
+        "framer-motion"
+      ],
+      "description": "An interactive typography component that gives each word a smooth, physical reaction to cursor movement. Words stretch, shift, and rotate with elastic motion as the cursor moves across the text. Adjustable strength, velocity, rotation, elasticity, and typography controls with no external dependencies.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Fcdbd7ebc-86d4-4b64-baea-421f236c7c35%2F01a103ad-ec2d-733c-ba5a-045403e143ca.png&w=2048&q=80",
+      "id": "unknown__inertia-text",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Isometric SVG Pack",
+      "source_url": "https://www.framer.com/marketplace/components/isometric-svg-pack",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "illustration",
+      "tags": [
+        "svg",
+        "illustration",
+        "isometric",
+        "3d"
+      ],
+      "description": "A pack of five interactive isometric SVG illustrations called Reperti. Each illustration reacts to interaction \u2014 a hearth lights up, a balance settles, a strongbox opens, a computer takes typing input, and a slab lifts off. All drawings are generated in-browser with synthesized sounds, no image or audio files to load.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F804c6d57-adef-4494-9f6d-d9bbfdfe54fa%2F01a106d8-6a15-74b8-aecb-702201aa2fa4.png&w=2048&q=80",
+      "id": "unknown__isometric-svg-pack",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Liquid Backdrop",
+      "source_url": "https://www.framer.com/marketplace/components/liquidbackdrop",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "background",
+      "tags": [
+        "react",
+        "webgl",
+        "background",
+        "blur-effect",
+        "liquid-glass"
+      ],
+      "description": "A WebGL-driven interactive background that tracks cursor movement with zero lag, creating reactive lens distortion. Features convex or concave depth modes, infinite fade edges, six brand tint blend modes, anti-stretch aspect locking, and native touch tracking on mobile.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fcomponents%2FwrIB07aRHuGdbTclFUIT%2Fliquidbackdrop-yRX8ykxfxWwjWDcpsNXevZmxc85wzU&w=2048&q=80",
+      "id": "unknown__liquid-backdrop",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Loop Gallery Pro",
+      "source_url": "https://www.framer.com/marketplace/components/loop-gallery-pro",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "gallery",
+      "tags": [
+        "react",
+        "gallery",
+        "image-grid",
+        "infinite-scroll",
+        "carousel"
+      ],
+      "description": "An infinite gallery for showcasing work with seamless scrolling in both directions. Features grayscale-to-color hover reveals, clickable project cards, smart video playback with pause/play controls, and responsive card sizing. Customize dimensions, spacing, corners, typography, colors, and motion via Framer's panel.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Fd5d21879-9a86-4b24-bd8e-dd9fea64d8e1%2F01a1152d-cce0-737a-a34b-3ce34d1cf145.png&w=2048&q=80",
+      "id": "unknown__loop-gallery-pro",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Magnetic Hover Button",
+      "source_url": "https://www.framer.com/marketplace/components/magnetic-hover-btn",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "button",
+      "tags": [
+        "react",
+        "hover-effect",
+        "button",
+        "magnet",
+        "animation"
+      ],
+      "description": "A highly customizable CTA button with magnetic hover effects that respond to cursor position. Features smooth transitions, Lucide icons, and full typography control. Perfect for landing page CTAs, product buttons, and interactive hero sections.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fcomponents%2FxCVAEWKnrInYZgRDTjCu%2Fmagnetic-hover-btn-yYMTuLjZFAdm1xO0skYRIGPmVe9Xek&w=2048&q=80",
+      "id": "unknown__magnetic-hover-button",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Multi Step Form",
+      "source_url": "https://www.framer.com/marketplace/components/multistep-frame-form",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "form",
+      "tags": [
+        "react",
+        "form",
+        "input"
+      ],
+      "description": "A multi-step form component that splits long forms into small steps to improve completion rates. Supports 9 field types including text, email, phone, textarea, date picker, dropdown, radio, checkboxes, and chips. Connects to Zapier, Make, or Google Sheets via webhooks with built-in validation and custom error messages.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fcomponents%2F8NWstwsUWbNs4VXuFN3B%2Fmultistep-frame-form-uVrQ7xFQoihhVelwpywCMCcZaTfWpP&w=2048&q=80",
+      "id": "unknown__multi-step-form",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Parallax Showreel",
+      "source_url": "https://www.framer.com/marketplace/components/parallax-showreel",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "carousel",
+      "tags": [
+        "react",
+        "parallax",
+        "carousel",
+        "3d",
+        "scroll-effect"
+      ],
+      "description": "A scroll-driven portfolio reel where each project fills the screen. As you scroll, the next card rises with a parallax image while the previous one sinks back in 3D \u2014 shrinking, tilting, and dimming. Controls for parallax distance, image zoom, sink depth, tilt, blur, perspective, and card height.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F29ef87c6-7130-4312-ac0b-e05b305c9c22%2F01a1085c-d7b2-7361-9d6a-97cab4f56154.jpg&w=2048&q=80",
+      "id": "unknown__parallax-showreel",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Premium Footer",
+      "source_url": "https://www.framer.com/marketplace/components/premium-footer",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "footer",
+      "tags": [
+        "react",
+        "footer",
+        "hover-effect",
+        "animation"
+      ],
+      "description": "A playful Framer footer with cursor-responsive artwork where fruits and stickers move away from the cursor then spring back around a bold wordmark. Combines native navigation, a newsletter form, and footer text with interactive code artwork. Includes desktop, tablet, and phone variants.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F5d6b118a-0f38-448f-be4a-54efa0a23bc5%2F01a106b8-11b8-75b3-a665-27b1f3c1b4c9.png&w=2048&q=80",
+      "id": "unknown__premium-footer",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Pricing Cards \u2014 JYRY",
+      "source_url": "https://www.framer.com/marketplace/components/pricing-cards-jyry",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "pricing",
+      "tags": [
+        "react",
+        "pricing",
+        "gradient",
+        "card",
+        "minimal"
+      ],
+      "description": "Modern pricing cards for SaaS websites, startups, and digital product sites. Features clean card layout with vibrant gradient header areas, balanced spacing, and strong visual hierarchy. Includes 3 premium variants with feature lists, CTA buttons, and responsive layout optimized for all devices.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F8fc90346-4ee8-4fae-9363-0f14ccd6a439%2F019f9aa8-ff38-7505-9a00-7640e8eb8551.png&w=2048&q=80",
+      "id": "unknown__pricing-cards-\u2014-jyry",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Progressive Blur",
+      "source_url": "https://www.framer.com/marketplace/components/progressiveblur",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "background",
+      "tags": [
+        "react",
+        "blur-effect",
+        "background",
+        "css-filter"
+      ],
+      "description": "Applies the Apple iOS progressive blur (gradient blur) effect that eases from max blur strength to no blur. Useful for accessibility and readability when not using a contrasting gradient. Features adjustable blur strength, selectable blur direction, and customizable corner radius.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fcomponents%2FoIa9jYqVoiduNUSqRQ7h%2Fprogressiveblur-KsAIowZFAnFWCvA1Xs8CGD0xsGE5c8&w=2048&q=80",
+      "id": "unknown__progressive-blur",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Resource Library Pro",
+      "source_url": "https://www.framer.com/marketplace/components/resource-library-pro",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "grid",
+      "tags": [
+        "react",
+        "grid",
+        "search-bar",
+        "filter",
+        "modal"
+      ],
+      "description": "A filterable resource library for Framer sites featuring guides, reports, templates, and downloads in a grid layout. Visitors can filter by category and search as they type, with details opening in a side drawer. Supports Framer's file picker for downloads, dark/light modes, and full accessibility with keyboard navigation.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Fef2bb5d0-8e59-43b7-be65-c14c5f941c99%2F01a106d3-56ae-72b7-9efa-4b8a5f34c32f.png&w=2048&q=80",
+      "id": "unknown__resource-library-pro",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Ripple Effect",
+      "source_url": "https://www.framer.com/marketplace/components/rippleeffect",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "ripple",
+      "tags": [
+        "javascript",
+        "ripple",
+        "click-effect",
+        "animation"
+      ],
+      "description": "A lightweight interactive ripple effect that adds smooth tactile feedback to buttons and clickable elements. Built with clean JavaScript and Framer without external libraries. Creates subtle water-like ripple animations on click or tap for modern interface feedback.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fcomponents%2Fc4VxHYm0MGNokqzk3y7m%2Frippleeffect-myFjH6Xvni93KcFvQaaEGUwk6384I3&w=2048&q=80",
+      "id": "unknown__ripple-effect",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Scroll Progress Sticks",
+      "source_url": "https://www.framer.com/marketplace/components/scrollprogressticks",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "scroll-effect",
+      "tags": [
+        "react",
+        "scroll-effect",
+        "progress-bar",
+        "animation"
+      ],
+      "description": "A customizable scroll progress indicator with tick marks showing scroll position. Features adjustable tick count, colors, spacing, top and right alignment, dark/light mode support, and native browser scrollbar hiding for a cleaner UI.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fcomponents%2FZxtBJtt5Hr9fWZrj4anW%2Fscrollprogressticks-O92X5PKzCJwlRHXGWx3oWcx8pwp5Vo&w=2048&q=80",
+      "id": "unknown__scroll-progress-sticks",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Story Progress Card",
+      "source_url": "https://www.framer.com/marketplace/components/story-progress-card",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "card",
+      "tags": [
+        "react",
+        "animation",
+        "card",
+        "carousel",
+        "autoplay"
+      ],
+      "description": "An autoplay story card that mimics social media stories. Three images play sequentially with progress bars filling in order at the top, and a stats row showing likes, comments, and shares for each story. Designed for hero sections, about pages, or portfolio showcases.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F492da4c7-1f68-44bb-a835-d654f4ede7b8%2F01a1082c-a947-7228-9d96-ef81698f7f06.png&w=2048&q=80",
+      "id": "unknown__story-progress-card",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Team Profile Pro",
+      "source_url": "https://www.framer.com/marketplace/components/team-profile-pro",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "carousel",
+      "tags": [
+        "react",
+        "carousel",
+        "profile",
+        "animation",
+        "3d"
+      ],
+      "description": "A premium interactive team showcase for Framer with a horizontal profile carousel. Displays portraits, names, roles, locations, specialties, joining dates, and social profiles with drag/wheel navigation, infinite loop, autoplay, hover effects, entrance animations, and responsive controls.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F38425120-6213-4b66-8b3c-e3e66d07ec64%2F01a1061a-6227-728d-9de5-2894e0474705.png&w=2048&q=80",
+      "id": "unknown__team-profile-pro",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Text Rotate",
+      "source_url": "https://www.framer.com/marketplace/components/textrotate",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "text",
+      "tags": [
+        "react",
+        "text-effect",
+        "animation",
+        "glitch",
+        "gradient"
+      ],
+      "description": "Animated text rotation with 7 animation styles: Slide, Blur Slide, Scale Rotate, Wave, Glitch, Bounce, and Flip. Features staggered character animation with customizable direction, dynamic color modes (solid, gradient, rainbow), optional background styling, and full typography controls.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fcomponents%2FVYHgaIoFD7IKhcHdf34Z%2Ftextrotate-yn7S3oUJQ1XuYyzK7cVWLN1YkjBII7&w=2048&q=80",
+      "id": "unknown__text-rotate",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Tilt Card",
+      "source_url": "https://www.framer.com/marketplace/components/tiltcard",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "card",
+      "tags": [
+        "react",
+        "tilt",
+        "3d",
+        "hover-effect",
+        "gpu"
+      ],
+      "description": "A 3D tilt card that rotates based on cursor position, creating a realistic parallax effect with dynamic glow and light reflections. Features customizable image, background color, border radius, shadow toggle, tilt intensity, and glow controls. Uses GPU-accelerated animations for seamless performance.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fcomponents%2FJ8lOPSobSDx9F6VqON9C%2Ftiltcard-asczu86KGz8NNioE6UwmoOAkOQIfiX&w=2048&q=80",
+      "id": "unknown__tilt-card",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Cal.com",
+      "source_url": "https://www.framer.com/marketplace/plugins/cal-com",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "plugin",
+      "tags": [
+        "react",
+        "calendar",
+        "booking",
+        "widget"
+      ],
+      "description": "Cal.com is the open-source scheduling infrastructure plugin for Framer. Connect your Cal.com event types to a Framer embed with customizable theme, light/dark mode colors, and layout. Supports unique IDs for multiple event type instances on the same page.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fplugins%2F517-j3wueWw1wNrlGP9IteWupr04bg2COM&w=2048&q=80",
+      "id": "unknown__cal.com",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Coda",
+      "source_url": "https://www.framer.com/marketplace/plugins/coda-cms",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "plugin",
+      "tags": [
+        "react",
+        "cms",
+        "api",
+        "database"
+      ],
+      "description": "An open-source plugin that synchronizes Coda tables to Framer CMS. Connect using a Coda doc API key to sync any table to your Framer CMS collection, enabling seamless data flow from Coda documents to Framer websites.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fplugins%2F345-74vYg8vAZVkph3bO4W3UgPPYHhmgdT&w=2048&q=80",
+      "id": "unknown__coda",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "EGO \u2014 Waitlist",
+      "source_url": "https://www.framer.com/marketplace/templates/ego-waitlist",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "landing-page",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "landing-page",
+        "form"
+      ],
+      "description": "A bold, modern Framer template for startups, products, apps, and creative launches. Features an interactive waitlist form with loading and success states, social proof section, social media links, and SEO-ready setup. Built as a clean, minimal one-page structure to turn visitors into early supporters.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F16604e2c-1d1f-4297-b82f-25abc103eaab%2F01a06c60-76a7-7338-8a04-345648830cf6.png&w=2048&q=80",
+      "id": "unknown__ego-\u2014-waitlist",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Ember",
+      "source_url": "https://www.framer.com/marketplace/templates/ember-portfolio-template",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "portfolio",
+      "tags": [
+        "html",
+        "css",
+        "portfolio",
+        "responsive",
+        "minimal"
+      ],
+      "description": "A portfolio template that creates a seamless fusion of modern aesthetics and intuitive functionality. Showcases creative work with fully responsive layouts, 2 CMS collections for projects and blog, detailed instructions, and full support. Designed to ignite digital presence and let work shine.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Ftemplates%2F45805%2Fember-portfolio-template-0qy92pgrzFZ6XcL4JO3ZkwOpt7uNbn&w=2048&q=80",
+      "id": "unknown__ember",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "EON Longevity",
+      "source_url": "https://www.framer.com/marketplace/templates/eon-longevity",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "landing-page",
+      "tags": [
+        "html",
+        "css",
+        "3d",
+        "medical",
+        "cms"
+      ],
+      "description": "A Framer template for longevity clinics and physician-led health practices. Includes Home, Programs, program detail, Journal, article detail, Contact, Privacy, Terms, and a custom 404 page. Features CMS collections for repeatable content, a layered 3D organism on the home page, responsive layouts, and restrained animations.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F80b4cba2-b4ed-467a-8dde-2307aea034ce%2F01a107c8-e864-73ba-a01b-73e3033bac89.jpg&w=2048&q=80",
+      "id": "unknown__eon-longevity",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Ephemeris",
+      "source_url": "https://www.framer.com/marketplace/templates/ephemeris",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "blog",
+      "tags": [
+        "html",
+        "css",
+        "blog",
+        "cms",
+        "illustration"
+      ],
+      "description": "An astrology and tarot website template for Framer, designed for astrologers, tarot readers, and numerologists. Features celestial imagery, interactive astrology elements, reading pages with service descriptions and pricing, and Framer CMS for managing readings, zodiac profiles, and journal articles.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F721d00ac-e830-44a2-bb86-37e526aa3c75%2F01a106ac-1071-7004-ab79-b5bc1f195e3d.png&w=2048&q=80",
+      "id": "unknown__ephemeris",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Hibana",
+      "source_url": "https://www.framer.com/marketplace/templates/hibana",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "landing-page",
+      "tags": [
+        "html",
+        "css",
+        "restaurant",
+        "minimal",
+        "landing-page"
+      ],
+      "description": "A Framer template for izakayas and late-night ramen shops, designed to showcase dining experiences with a focused, modern layout. Features responsive design suitable for restaurant websites with an emphasis on capturing the atmosphere of Japanese casual dining.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F19f0e736-ba01-41b1-a951-8f169b1d976d%2F01a107e3-3a8c-73ab-b7c1-55da0636ab75.png&w=2048&q=80",
+      "id": "unknown__hibana",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Image Generator",
+      "source_url": "https://www.framer.com/marketplace/templates/image-generator",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "landing-page",
+      "tags": [
+        "html",
+        "css",
+        "ai-tool",
+        "landing-page",
+        "minimal"
+      ],
+      "description": "A landing page template for AI video and photo tool SaaS startups. Showcases AI-powered image generation services with a modern design optimized for converting visitors into users. Features responsive layout suitable for AI product websites and creative tool platforms.",
+      "preview_image": "https://image.mux.com/MY00E02bDtXY00gZkoJSfj4T01EpG8yiqXCCjVTlR8M7UXE/thumbnail.webp?time=9.367",
+      "id": "unknown__image-generator",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Indian Wedding Photo",
+      "source_url": "https://www.framer.com/marketplace/templates/indian-wedding-photo",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "landing-page",
+      "tags": [
+        "html",
+        "css",
+        "portfolio",
+        "photography",
+        "landing-page"
+      ],
+      "description": "A South Asian wedding photo and film template for Framer, designed for wedding photographers specializing in Indian ceremonies. Showcases wedding imagery and storytelling with a layout optimized for presenting large photo galleries and cinematic wedding films.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F57f4e434-6bc4-451c-ad9d-d0c170454253%2F01a1026b-6906-750f-8501-48e274c23916.jpg&w=2048&q=80",
+      "id": "unknown__indian-wedding-photo",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Indie Game Page",
+      "source_url": "https://www.framer.com/marketplace/templates/indie-game-page",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "landing-page",
+      "tags": [
+        "html",
+        "css",
+        "gaming",
+        "landing-page",
+        "3d"
+      ],
+      "description": "A landing page template for indie video game launches. Designed to showcase games with a modern layout optimized for presenting gameplay imagery, features, and purchase links. Features responsive design tailored for game studios and independent developers.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F57f4e434-6bc4-451c-ad9d-d0c170454253%2F01a10392-aa45-740e-aa29-786ea8eab6d3.jpg&w=2048&q=80",
+      "id": "unknown__indie-game-page",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Junk Removal",
+      "source_url": "https://www.framer.com/marketplace/templates/junk-removal",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "landing-page",
+      "tags": [
+        "html",
+        "css",
+        "services",
+        "landing-page",
+        "minimal"
+      ],
+      "description": "A Framer template for waste management and cleanout services. Features a modern layout designed to showcase junk removal services, pricing, and booking flows. Optimized for local service businesses and cleaning companies with responsive design.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F681d351d-963d-4b16-914b-7a52b0718155%2F01a10d3e-8e6d-776f-8c57-4dd6e1b20aaa.png&w=2048&q=80",
+      "id": "unknown__junk-removal",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Liftline",
+      "source_url": "https://www.framer.com/marketplace/templates/liftline",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "landing-page",
+      "tags": [
+        "html",
+        "css",
+        "services",
+        "quote-engine",
+        "business"
+      ],
+      "description": "A garage door repair and quote engine template for Framer. Features a built-in quote calculation system for service pricing, appointment booking, and service showcase. Designed for home service businesses and contractors with responsive layouts.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F264ba45d-4318-432c-965b-ff507292d5de%2F01a10846-9392-749d-8703-3feff6159a17.png&w=2048&q=80",
+      "id": "unknown__liftline",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "My Portfolio",
+      "source_url": "https://www.framer.com/marketplace/templates/my-portfolio",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "portfolio",
+      "tags": [
+        "html",
+        "css",
+        "portfolio",
+        "minimal",
+        "dark"
+      ],
+      "description": "A simple, powerful dark minimal portfolio template that gives creative work the spotlight. Designed for agencies and personal work with a beautiful, clean structure that emphasizes visual presentation.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Ftemplates%2F46147%2Fmy-portfolio-uRDxu4RLn6GpZnSfp4Tfw8tXc0Hdq0&w=2048&q=80",
+      "id": "unknown__my-portfolio",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Pathline by ErinTech",
+      "source_url": "https://www.framer.com/marketplace/templates/pathline-by-erintech",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "landing-page",
+      "tags": [
+        "html",
+        "css",
+        "landing-page",
+        "funnel",
+        "minimal"
+      ],
+      "description": "A Framer template that turns a service landing page into an adaptive funnel with native design. Features built-in conversion optimization, responsive layouts, and a clean aesthetic suitable for SaaS and service-based businesses.",
+      "preview_image": "https://image.mux.com/zAswNs21JIZC00DioPNhW7PMidNpQlncaDyJF324hytc/thumbnail.webp?time=22.033",
+      "id": "unknown__pathline-by-erintech",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Photographer Site",
+      "source_url": "https://www.framer.com/marketplace/templates/photographer-site",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "portfolio",
+      "tags": [
+        "html",
+        "css",
+        "photography",
+        "portfolio",
+        "minimal"
+      ],
+      "description": "A minimal photographer portfolio template for Framer, designed to showcase visual work with clean, responsive layouts. Optimized for presenting photography galleries and creative portfolios with a focus on image presentation.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F57f4e434-6bc4-451c-ad9d-d0c170454253%2F01a103ab-06d6-76eb-a470-730eacb9ec6f.jpg&w=2048&q=80",
+      "id": "unknown__photographer-site",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Platebook",
+      "source_url": "https://www.framer.com/marketplace/templates/platebook",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "portfolio",
+      "tags": [
+        "html",
+        "css",
+        "portfolio",
+        "minimal",
+        "cursor"
+      ],
+      "description": "A free portfolio template with cursor reveal interactions for Framer. Features a clean, modern layout that emphasizes visual storytelling and creative work presentation with interactive cursor-based reveal effects.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F08a0564c-901d-4623-9aae-4f9c87e1bb77%2F01a11280-4078-7793-bed9-49141f9900f0.jpg&w=2048&q=80",
+      "id": "unknown__platebook",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Raydex",
+      "source_url": "https://www.framer.com/marketplace/templates/raydex",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "landing-page",
+      "tags": [
+        "html",
+        "css",
+        "energy",
+        "landing-page",
+        "minimal"
+      ],
+      "description": "A renewable energy template for Framer, designed for solar and wind energy companies, sustainability startups, and green technology businesses. Features modern layouts optimized for presenting clean energy solutions and environmental services.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F79f76133-1971-4b5c-b7e9-023aa640dc1c%2F01a1084d-1ab7-7315-b5ed-94d79245ef53.png&w=2048&q=80",
+      "id": "unknown__raydex",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Running Shoe Page",
+      "source_url": "https://www.framer.com/marketplace/templates/running-shoe-page",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "landing-page",
+      "tags": [
+        "html",
+        "css",
+        "ecommerce",
+        "product",
+        "dark"
+      ],
+      "description": "A dark-themed running shoe launch page for Framer, designed for sneaker brands and athletic footwear launches. Features a bold, high-contrast layout optimized for showcasing product imagery and driving conversions for shoe releases.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F57f4e434-6bc4-451c-ad9d-d0c170454253%2F01a1052d-d56b-7232-b2c1-ff91b4afc9b3.jpg&w=2048&q=80",
+      "id": "unknown__running-shoe-page",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Shade \u2014 Designer Portfolio Template",
+      "source_url": "https://www.framer.com/marketplace/templates/shade-designer-portfolio-template",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "portfolio",
+      "tags": [
+        "html",
+        "css",
+        "portfolio",
+        "minimal",
+        "responsive"
+      ],
+      "description": "A designer portfolio template for Framer with a clean, modern aesthetic. Showcases creative work with responsive layouts and professional presentation features tailored for design portfolios.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Ftemplates%2F45938%2Fshade-designer-portfolio-template-Mzu6d4GDcHxWIJi30YnFM4PH35IuD9&w=2048&q=80",
+      "id": "unknown__shade-\u2014-designer-portfolio-template",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Slow Shutter",
+      "source_url": "https://www.framer.com/marketplace/templates/slow-shutter",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "portfolio",
+      "tags": [
+        "html",
+        "css",
+        "portfolio",
+        "minimal",
+        "photography"
+      ],
+      "description": "A minimal portfolio template for designers by Joel Cimpean, featuring a clean, restrained aesthetic with responsive layouts optimized for showcasing creative work and design projects.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F068c9b5d-8e4f-498b-ab2b-a707fae9470c%2F01a10810-4576-770f-9cbb-5a6054e426e8.png&w=2048&q=80",
+      "id": "unknown__slow-shutter",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Startify",
+      "source_url": "https://www.framer.com/marketplace/templates/startify-framer-template-for-startups",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "landing-page",
+      "tags": [
+        "html",
+        "css",
+        "startup",
+        "landing-page",
+        "saas"
+      ],
+      "description": "A premium startup website template for Framer, designed for SaaS products and technology startups. Features modern layouts, conversion-focused sections, and responsive design optimized for presenting products and capturing leads.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Ftemplates%2F46690%2FStartify_1-QmHHE0lkmQIzZeHPOCEEJtbSnX0HpC.jpg&w=2048&q=80",
+      "id": "unknown__startify",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Watch Brand Site",
+      "source_url": "https://www.framer.com/marketplace/templates/watch-brand-site",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "landing-page",
+      "tags": [
+        "html",
+        "css",
+        "ecommerce",
+        "product",
+        "landing-page"
+      ],
+      "description": "A watch microbrand product page template for Framer, designed for independent watchmakers and microbrand retailers. Features elegant product showcase layouts optimized for presenting timepieces with detailed imagery and purchase flows.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F57f4e434-6bc4-451c-ad9d-d0c170454253%2F01a10532-e178-72ce-bb01-0ec3f18ccdc2.jpg&w=2048&q=80",
+      "id": "unknown__watch-brand-site",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Blob set",
+      "source_url": "https://www.framer.com/marketplace/vectors/blob-set",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "illustration",
+      "tags": [
+        "svg",
+        "illustration",
+        "abstract",
+        "blob",
+        "minimal"
+      ],
+      "description": "A free abstract blob vector set featuring soft, organic shapes in a muted color palette. Perfect for backgrounds, hero sections, and UI accents. Designed to add warmth and visual flow, fully scalable for modern websites and digital products.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fvector-sets%2Fblob-set%2F8ik66h9v-YQVeepRlDkm4ytrcTvyxybc6qAAwQl&w=2048&q=80",
+      "id": "unknown__blob-set",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Brand Identity Basic",
+      "source_url": "https://www.framer.com/marketplace/vectors/brand-identity-basic",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "illustration",
+      "tags": [
+        "svg",
+        "illustration",
+        "branding",
+        "outline",
+        "minimal"
+      ],
+      "description": "A brand identity basics illustration set with beautifully crafted vector illustrations communicating essential brand identity elements. Includes illustrations for clarity and creativity in branding projects, perfect for Framer websites, branding agencies, and design studios.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F154d0636-e767-4df5-9f36-6ac0c379b611%2F019f5f84-89ca-72ec-91d9-ef0b16ad851d.jpg&w=2048&q=80",
+      "id": "unknown__brand-identity-basic",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Emoticon Icon Set",
+      "source_url": "https://www.framer.com/marketplace/vectors/emoticon-icon-set",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "icon-set",
+        "emoji",
+        "gradient",
+        "flat"
+      ],
+      "description": "A collection of 20 vibrant, professionally designed emoji icons created for mobile applications, websites, messaging platforms, social media interfaces, SaaS products, and online communities. Features bright colors, smooth gradients, expressive facial details, and consistent proportions.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F1440e4a2-8652-476d-99d8-ff659c92ba2e%2F019f52ec-15db-734b-8339-9e5e84692dab.jpg&w=2048&q=80",
+      "id": "unknown__emoticon-icon-set",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Jakarta Outline Icon",
+      "source_url": "https://www.framer.com/marketplace/vectors/jakarta-outline-icon",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "icon-set",
+        "isometric",
+        "outline",
+        "flat"
+      ],
+      "description": "A colorful collection of 30 Jakarta outline icons featuring famous landmarks, transportation, culture, architecture, and city lifestyle. Includes eagle mascot, modern skyscraper, monument, stadium, coffee shop, public transport, historic buildings, shopping bag, and traditional Betawi masks.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Fe9fc1a60-16e0-4849-9c25-39fa051e9bb6%2F019f5702-6ed5-7304-9fb6-c194f9851639.jpg&w=2048&q=80",
+      "id": "unknown__jakarta-outline-icon",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Daily Nursery Icons",
+      "source_url": "https://www.framer.com/marketplace/vectors/nursery-school-vector-set",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "icon-set",
+        "outline",
+        "flat",
+        "minimal"
+      ],
+      "description": "A free icon pack designed for nursery and early years websites, including everyday routines, activities, and essentials \u2014 from meals and naps to play, health, and communication. All icons are fully vector, optimised for web use, and customisable via variables.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fvector-sets%2Fnursery-school-vector-set%2Fdjzmgnam-7AaBRtPSR88xwODRFKyNLsBL3GVKZ6&w=2048&q=80",
+      "id": "unknown__daily-nursery-icons",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "RealEstate icon",
+      "source_url": "https://www.framer.com/marketplace/vectors/realestate-icon",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "icon-set",
+        "outline",
+        "flat",
+        "minimal"
+      ],
+      "description": "A premium pack of 50 clean, minimal real estate outline icons on a 24\u00d724 grid with 2px rounded strokes. Organized by category: Property, Location, Finance, People, Documents, Interiors, and Analytics. Delivered as a Framer component with variants for easy icon switching.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fvector-sets%2Frealestate-outline-vectors%2Fyz2qok8t-FVhlo9c0xwk0h28k2uHeNOkVX5bA2f&w=2048&q=80",
+      "id": "unknown__realestate-icon",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Travel & Maps",
+      "source_url": "https://www.framer.com/marketplace/vectors/travel-maps",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "icon-set",
+        "outline",
+        "flat",
+        "travel"
+      ],
+      "description": "A set of icons for tourism, maps, and adventures. Includes symbols for activities like kayaking, surfing, cycling, trekking, and climbing, plus places and services like restaurants, accommodation, airports, and heritage spots. Features a clean, mid-century cartographic design style.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fvector-sets%2Ftravel-maps%2Fofzdd2io-AYdfVNMtvL4LLR0FvzGDnhADPvxjb3&w=2048&q=80",
+      "id": "unknown__travel-&-maps",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Tropical Vector Icon",
+      "source_url": "https://www.framer.com/marketplace/vectors/tropical-vector-icon",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "icon-set",
+        "gradient",
+        "flat",
+        "tropical"
+      ],
+      "description": "A vibrant collection of 20+ handcrafted tropical travel and holiday icons called Tropical Sherbet. Features playful pastel colors, bold outlines, and a clean modern style. Perfect for travel booking platforms, resort landing pages, summer campaigns, and lifestyle brands.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2Fcb944773-ed28-432c-bc53-417a3da4e181%2F019f58e3-4838-70ad-929e-8ba6556ff5f4.png&w=2048&q=80",
+      "id": "unknown__tropical-vector-icon",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "UI Decorations",
+      "source_url": "https://www.framer.com/marketplace/vectors/ui-decorations",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "illustration",
+      "tags": [
+        "svg",
+        "illustration",
+        "abstract",
+        "geometric",
+        "pattern"
+      ],
+      "description": "A vibrant collection of modern decorative UI elements designed to elevate websites, mobile apps, presentations, and creative projects. Features colorful geometric shapes, abstract symbols, dividers, accents, and interface decorations that add personality and visual balance.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fmedia%2F3a69cedf-b24f-424b-a6c6-5fd1bdf48714%2F8yzzb4vf&w=2048&q=80",
+      "id": "unknown__ui-decorations",
+      "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Winter Xmas Set",
+      "source_url": "https://www.framer.com/marketplace/vectors/winter-xmas-set",
+      "registry_url": "https://www.framer.com/marketplace",
+      "category": "illustration",
+      "tags": [
+        "svg",
+        "illustration",
+        "christmas",
+        "icons",
+        "pattern"
+      ],
+      "description": "A premium vector set of winter and Christmas elements including snowflakes, stockings, bells, candles, and gift boxes. Each element has variable color settings for easy customization. Works well small like emojis or as large decorative elements falling from above.",
+      "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fvector-sets%2Fwinter-xmas-set%2Fjvsiruuq-s4JSJfni4pIYZ08V0apSK5ycjsmFov&w=2048&q=80",
+      "id": "unknown__winter-xmas-set",
+      "source_domain": "www.framer.com"
     }
   ]
 }
