@@ -1,6 +1,6 @@
 {
-  "version": "1.0.116",
-  "source_count": 28940,
+  "version": "1.0.117",
+  "source_count": 29000,
   "components": [
     {
       "id": "cat-0",
@@ -501373,6 +501373,906 @@
       "preview_image": "https://www.framer.com/creators-assets/_next/image/?url=https%3A%2F%2Fy4pdgnepgswqffpt.public.blob.vercel-storage.com%2Fvector-sets%2Fwinter-xmas-set%2Fjvsiruuq-s4JSJfni4pIYZ08V0apSK5ycjsmFov&w=2048&q=80",
       "id": "unknown__winter-xmas-set",
       "source_domain": "www.framer.com"
+    },
+    {
+      "name": "Basic Multi-Page View Transition",
+      "source_url": "https://css-tricks.com/snippets/css/basic-view-transition/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "plain-css",
+        "soft",
+        "transition"
+      ],
+      "description": "Uses the @view-transition CSS at-rule with navigation: auto to enable cross-fade transitions between page navigations. This is the most basic view transition relying on the browser's native View Transitions API.",
+      "preview_image": "",
+      "id": "unknown__basic-multi-page-view-transition",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Diagonal Graph Paper Gradient",
+      "source_url": "https://css-tricks.com/snippets/css/diagonal-graph-paper-gradient/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "plain-css",
+        "gradient",
+        "background"
+      ],
+      "description": "Creates a diagonal graph paper background using repeating-linear-gradient with 45deg and -45deg angles, combined with background-size and RGBA color stops. Uses -webkit-, -moz-, -o-, and standard gradient prefixes.",
+      "preview_image": "",
+      "id": "unknown__diagonal-graph-paper-gradient",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Fixed Footer",
+      "source_url": "https://css-tricks.com/snippets/css/fixed-footer/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "layout"
+      ],
+      "description": "Positions a footer at the bottom of the viewport using position:fixed with left:0, bottom:0, width:100%. Includes an IE6 fallback using * html selector and expression() for dynamic positioning.",
+      "preview_image": "",
+      "id": "unknown__fixed-footer",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Handling Long Words and URLs (Forcing Breaks, Hyphenation, Ellipsis, Etc)",
+      "source_url": "https://css-tricks.com/snippets/css/handling-long-words-and-urls/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "typography"
+      ],
+      "description": "Provides CSS techniques for handling long words and URLs including word-break, word-wrap, hyphens, and text-overflow: ellipsis. Uses white-space, overflow-wrap, and text-overflow properties.",
+      "preview_image": "",
+      "id": "unknown__handling-long-words-and-urls-(forcing-breaks,-hyphenation,-ellipsis,-etc)",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Internationalization Language CSS",
+      "source_url": "https://css-tricks.com/snippets/css/internationalization-language-css/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "typography"
+      ],
+      "description": "Defines language-specific CSS using :lang() pseudo-class selectors for quotes, font-family, and font-size properties across 30+ languages. Uses the :lang() attribute selector with quotes and font-family declarations.",
+      "preview_image": "",
+      "id": "unknown__internationalization-language-css",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Multiple Borders",
+      "source_url": "https://css-tricks.com/snippets/css/multiple-borders/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "border"
+      ],
+      "description": "Creates multiple borders using CSS pseudo-elements (:before, :after) with absolute positioning and negative z-index, the outline property, and box-shadow with comma-separated values for layered border effects.",
+      "preview_image": "",
+      "id": "unknown__multiple-borders",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Prevent Superscripts and Subscripts From Affecting Line-Height",
+      "source_url": "https://css-tricks.com/snippets/css/prevent-superscripts-and-subscripts-from-affecting-line-height/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "typography"
+      ],
+      "description": "Resets vertical-align to baseline and uses position:relative with top adjustments for sup and sub elements. Sets sub{top:0.4em} to prevent line-height disruption from superscript and subscript text.",
+      "preview_image": "",
+      "id": "unknown__prevent-superscripts-and-subscripts-from-affecting-line-height",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Reversing Text",
+      "source_url": "https://css-tricks.com/snippets/css/reversing-text/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "text-effect"
+      ],
+      "description": "Reverses text direction using the dir='rtl' attribute or CSS unicode-bidi:bidi-override and direction:rtl. Also uses -webkit-transform, -moz-transform, -o-transform, and -ms-transform with rotateY(180deg).",
+      "preview_image": "",
+      "id": "unknown__reversing-text",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Unordered List as a Timeline",
+      "source_url": "https://css-tricks.com/snippets/css/unordered-list-as-a-timeline/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "layout"
+      ],
+      "description": "Creates a vertical timeline using semantic HTML list elements with li:before pseudo-element for the vertical line (background-color:#c00, width:3px) and li:after for circular markers using inline SVG data URIs.",
+      "preview_image": "",
+      "id": "unknown__unordered-list-as-a-timeline",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Useful CSS3 Less Mixins",
+      "source_url": "https://css-tricks.com/snippets/css/useful-css3-less-mixins/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "less",
+        "minimal",
+        "reference"
+      ],
+      "description": "Collection of LESS mixins for text-shadow, box-shadow, drop-shadow, inner-shadow, box-sizing, border-radius, opacity, and gradient with IE filter fallbacks. Uses LESS parametric mixin syntax with default arguments.",
+      "preview_image": "",
+      "id": "unknown__useful-css3-less-mixins",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Add Spaces to Dock in OS X",
+      "source_url": "https://css-tricks.com/snippets/html/add-spaces-to-dock-in-os-x/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "minimal",
+        "tool"
+      ],
+      "description": "Adds spacer tiles to the macOS Dock using the defaults write command with com.apple.dock persistent-apps array. Uses killall Dock to restart the dock process and make changes take effect.",
+      "preview_image": "",
+      "id": "unknown__add-spaces-to-dock-in-os-x",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Form Submission Opens New Tab/Window",
+      "source_url": "https://css-tricks.com/snippets/html/form-submission-new-window/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "minimal",
+        "form"
+      ],
+      "description": "Forces a form to submit in a new tab or window using the target='_blank' attribute on the <form> element, matching the same behavior used on anchor <a> tags. The form action and method attributes work alongside target.",
+      "preview_image": "",
+      "id": "unknown__form-submission-opens-new-tab/window",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Get Rid of White Flash When Iframe Loads",
+      "source_url": "https://css-tricks.com/snippets/html/get-rid-of-white-flash-when-iframe-loads/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "minimal",
+        "image-effect"
+      ],
+      "description": "Prevents the white flash when an iframe loads by hiding it with style='visibility:hidden' and then revealing it via the onload event handler setting visibility='visible'. This ensures content is fully loaded before display.",
+      "preview_image": "",
+      "id": "unknown__get-rid-of-white-flash-when-iframe-loads",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "HTML5 Article Structure with hNews",
+      "source_url": "https://css-tricks.com/snippets/html/html5-article-structure-with-hnews/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "minimal",
+        "layout"
+      ],
+      "description": "Uses hNews microformat with <article class='hentry'> containing <header>, <time>, <p class='byline author vcard'>, <div class='entry-content'>, <figure>, <aside>, and <footer> elements for semantic article markup.",
+      "preview_image": "",
+      "id": "unknown__html5-article-structure-with-hnews",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "HTML5 Page Structure",
+      "source_url": "https://css-tricks.com/snippets/html/html5-page-structure/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "minimal",
+        "layout"
+      ],
+      "description": "Provides a complete HTML5 document structure with <!DOCTYPE HTML>, <header>, <nav>, <section>, <article>, <aside>, <time>, and <footer> elements. Uses semantic HTML5 tags for page layout and content organization.",
+      "preview_image": "",
+      "id": "unknown__html5-page-structure",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Make IE 6 Crash",
+      "source_url": "https://css-tricks.com/snippets/html/make-ie-6-crash/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "brutalist",
+        "tool"
+      ],
+      "description": "Crashes Internet Explorer 6 using a CSS rule that sets position:relative on all elements inside a <table> that contains an <input>. The combination of table > input > * { position: relative } triggers the IE6 crash.",
+      "preview_image": "",
+      "id": "unknown__make-ie-6-crash",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Meta Tags for Instructing Search Bots",
+      "source_url": "https://css-tricks.com/snippets/html/meta-tags-for-instructing-search-bots/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "minimal",
+        "reference"
+      ],
+      "description": "Uses meta tags with name='robots' or name='googlebot' to control search engine indexing with content values like 'noindex, nofollow' and 'noindex, follow'. Also includes meta name='description' for search result snippets.",
+      "preview_image": "",
+      "id": "unknown__meta-tags-for-instructing-search-bots",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Use Firebug in Any Browser",
+      "source_url": "https://css-tricks.com/snippets/html/use-firebug-in-any-browser/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "minimal",
+        "tool"
+      ],
+      "description": "Includes Firebug Lite JavaScript console for debugging in any browser by loading the firebug-lite-compressed.js script. Also provides a bookmarklet version using document.createElement and document.body.appendChild to inject the script.",
+      "preview_image": "",
+      "id": "unknown__use-firebug-in-any-browser",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Video for Everybody (HTML5 Video with Flash Fallback)",
+      "source_url": "https://css-tricks.com/snippets/html/video-for-everybody-html5-video-with-flash-fallback/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "minimal",
+        "reference"
+      ],
+      "description": "Provides HTML5 <video> element with MP4 and OGV <source> tags for cross-browser support, wrapped with a Flash <object> fallback containing <param> elements and an <img> tag for browsers without video support.",
+      "preview_image": "",
+      "id": "unknown__video-for-everybody-(html5-video-with-flash-fallback)",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Async Sharing Buttons (G+, Facebook, Twitter)",
+      "source_url": "https://css-tricks.com/snippets/javascript/async-sharing-buttons-g-facebook-twitter/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "flat",
+        "tool"
+      ],
+      "description": "Loads social sharing scripts (Google+, Facebook SDK, Twitter widgets) asynchronously using document.createDocumentFragment to batch DOM insertions. Uses an add() function that creates script elements with specific src URLs and IDs.",
+      "preview_image": "",
+      "id": "unknown__async-sharing-buttons-(g+,-facebook,-twitter)",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Break Out of Iframe",
+      "source_url": "https://css-tricks.com/snippets/javascript/break-out-of-iframe/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "minimal",
+        "tool"
+      ],
+      "description": "Detects if the page is running inside an iframe by comparing window.top.location to window.self.location and redirects the top window to the current location. Includes alternatives using IIFE with 'this' reference.",
+      "preview_image": "",
+      "id": "unknown__break-out-of-iframe",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Clear Field on Focus",
+      "source_url": "https://css-tricks.com/snippets/javascript/clear-field-on-focus/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "minimal",
+        "input"
+      ],
+      "description": "Clears an input field's default value on focus using onfocus event handler that checks if this.value equals the placeholder text and clears it. Provides an alternative onfocus handler to always clear the field on focus.",
+      "preview_image": "",
+      "id": "unknown__clear-field-on-focus",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Default Arguments for Functions",
+      "source_url": "https://css-tricks.com/snippets/javascript/default-arguments-for-functions/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "minimal",
+        "tool"
+      ],
+      "description": "Implements default function arguments by extending Object.prototype with a combine() method that merges defaults with passed arguments. Uses a for-in loop and typeof checks to fill in undefined values from the defaults object.",
+      "preview_image": "",
+      "id": "unknown__default-arguments-for-functions",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Detect Internet Explorer",
+      "source_url": "https://css-tricks.com/snippets/javascript/detect-internet-explorer/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "minimal",
+        "tool"
+      ],
+      "description": "Detects IE version using navigator.userAgent regex matching for 'MSIE (\\d+\\.\\d+)' and RegExp.$1 to capture the version number. Also includes the Dean Edwards conditional compilation trick: var isMSIE = /*@cc_on!@*/false.",
+      "preview_image": "",
+      "id": "unknown__detect-internet-explorer",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Different Stylesheets for Different Days of the Week",
+      "source_url": "https://css-tricks.com/snippets/javascript/different-stylesheets-for-different-days-of-the-week/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "minimal",
+        "tool"
+      ],
+      "description": "Dynamically loads day-specific CSS files using a JavaScript array of weekday names and new Date().getDay() to determine the current day, then writes a <link rel='stylesheet'> tag via document.writeln. Falls back to default.css via <noscript>.",
+      "preview_image": "",
+      "id": "unknown__different-stylesheets-for-different-days-of-the-week",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Empty an Array",
+      "source_url": "https://css-tricks.com/snippets/javascript/empty-an-array/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "minimal",
+        "tool"
+      ],
+      "description": "Empties an array by setting its length property to 0 (myArray.length = 0), which clears all elements while preserving the original array reference for any other code pointing to it.",
+      "preview_image": "",
+      "id": "unknown__empty-an-array",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Inject New CSS Rules",
+      "source_url": "https://css-tricks.com/snippets/javascript/inject-new-css-rules/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "minimal",
+        "tool"
+      ],
+      "description": "Injects dynamic CSS rules by creating a <style> element appended to the document body, useful for styling pseudo-classes like :hover that cannot be modified via inline styles. Uses jQuery's $('<div />') constructor with html option.",
+      "preview_image": "",
+      "id": "unknown__inject-new-css-rules",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Prevent Background Image Flickering in IE",
+      "source_url": "https://css-tricks.com/snippets/javascript/prevent-background-image-flickering-in-ie/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "minimal",
+        "tool"
+      ],
+      "description": "Prevents IE6 background image flickering by calling document.execCommand('BackgroundImageCache', false, true) wrapped in a try-catch block to handle browsers that don't support the command.",
+      "preview_image": "",
+      "id": "unknown__prevent-background-image-flickering-in-ie",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Word Count Bookmarklet",
+      "source_url": "https://css-tricks.com/snippets/javascript/word-count-bookmarklet/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "minimal",
+        "tool"
+      ],
+      "description": "Counts selected text words using window.getSelection() or document.selection.createRange() with fallback to textarea selectionStart/selectionEnd. Returns alert with word count using match(/(\\S+)/g).length.",
+      "preview_image": "",
+      "id": "unknown__word-count-bookmarklet",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Append Site Overlay Div",
+      "source_url": "https://css-tricks.com/snippets/jquery/append-site-overlay-div/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "minimal",
+        "tool"
+      ],
+      "description": "Appends a full-screen overlay div to the page using jQuery by selecting all elements and setting position:fixed with 100% width and height, typically used for modal or loading overlays.",
+      "preview_image": "",
+      "id": "unknown__append-site-overlay-div",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Check If Event Was Triggered or Native",
+      "source_url": "https://css-tricks.com/snippets/jquery/check-if-event-was-triggered-or-native/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "minimal",
+        "tool"
+      ],
+      "description": "Differentiates between browser-triggered and programmatically-triggered events by using a flag variable and jQuery's .trigger() method versus native DOM event dispatching. Uses event.namespace or custom data to identify the event source.",
+      "preview_image": "",
+      "id": "unknown__check-if-event-was-triggered-or-native",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Click Once and Unbind",
+      "source_url": "https://css-tricks.com/snippets/jquery/click-once-and-unbind/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "minimal",
+        "tool"
+      ],
+      "description": "Binds a click event handler that executes only once using jQuery's .one() method or by calling .off() inside the handler to unbind itself after the first trigger. Prevents duplicate event handling from multiple clicks.",
+      "preview_image": "",
+      "id": "unknown__click-once-and-unbind",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Disable / Re-Enable Inputs",
+      "source_url": "https://css-tricks.com/snippets/jquery/disable-re-enable-inputs/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "minimal",
+        "input"
+      ],
+      "description": "Disables all form input elements using jQuery's .prop('disabled', true) on selectors like $('input, select, textarea'), then re-enables them with .prop('disabled', false) or .removeAttr('disabled').",
+      "preview_image": "",
+      "id": "unknown__disable-/-re-enable-inputs",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "jQuery Plugin Template",
+      "source_url": "https://css-tricks.com/snippets/jquery/jquery-plugin-template/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "minimal",
+        "reference"
+      ],
+      "description": "Provides a boilerplate structure for creating jQuery plugins using an IIFE wrapper that receives the jQuery object and defines default options with $.extend(). Uses this.each() to iterate over matched elements.",
+      "preview_image": "",
+      "id": "unknown__jquery-plugin-template",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "jQuery Sticky Footer",
+      "source_url": "https://css-tricks.com/snippets/jquery/jquery-sticky-footer/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "minimal",
+        "layout"
+      ],
+      "description": "Creates a sticky footer that stays at the bottom of the viewport using jQuery to calculate window and document heights via $(window).height() and $(document).height(), then applies CSS margin or padding adjustments.",
+      "preview_image": "",
+      "id": "unknown__jquery-sticky-footer",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Move Clicked List Items to Top of List",
+      "source_url": "https://css-tricks.com/snippets/jquery/move-clicked-list-items-to-top-of-list/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "minimal",
+        "tool"
+      ],
+      "description": "Moves clicked list items to the top of a jQuery list using .click() event handler with .prependTo() or detach/append operations. Sorts list items by dragging clicked item to the first position in the DOM.",
+      "preview_image": "",
+      "id": "unknown__move-clicked-list-items-to-top-of-list",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Smarter Event Binding",
+      "source_url": "https://css-tricks.com/snippets/jquery/smarter-event-binding/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "minimal",
+        "tool"
+      ],
+      "description": "Binds events to dynamic content using jQuery's .on() method with a static parent selector, avoiding the need to rebind events when new elements are added. Uses event delegation with the parent selector and event type.",
+      "preview_image": "",
+      "id": "unknown__smarter-event-binding",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Check If Element Is Inside Another Specific Element",
+      "source_url": "https://css-tricks.com/snippets/jquery/test-if-element-inside-element/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "minimal",
+        "tool"
+      ],
+      "description": "Checks if one element is inside another using jQuery's .has() or .closest() method, or by comparing parent nodes with .parent() and .is(). Uses contains relationship checks like $(parent).has(child).length.",
+      "preview_image": "",
+      "id": "unknown__check-if-element-is-inside-another-specific-element",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Window Load Event with Minimum Delay",
+      "source_url": "https://css-tricks.com/snippets/jquery/window-load-event-with-minimum-delay/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "minimal",
+        "scroll-effect"
+      ],
+      "description": "Binds a load event handler that fires only after images and external resources are fully loaded, using jQuery's $(window).on('load', handler) with a minimum delay via setTimeout. Ensures all assets are ready before executing.",
+      "preview_image": "",
+      "id": "unknown__window-load-event-with-minimum-delay",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Calendar Function",
+      "source_url": "https://css-tricks.com/snippets/php/calendar-function/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "tool"
+      ],
+      "description": "Generates an HTML calendar using PHP date functions like date(), strtotime(), and mktime() to create a month grid. Outputs table cells with day numbers, highlighting the current date and using date('F Y') for the header.",
+      "preview_image": "",
+      "id": "unknown__calendar-function",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Debugging $_REQUEST",
+      "source_url": "https://css-tricks.com/snippets/php/debugging-_request/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "tool"
+      ],
+      "description": "Dumps the contents of the PHP $_REQUEST superglobal array using print_r() or var_dump() inside a <pre> tag, typically gated behind an IP check or debug constant to prevent exposing sensitive request data.",
+      "preview_image": "",
+      "id": "unknown__debugging-$_request",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Detect IE5 or IE6",
+      "source_url": "https://css-tricks.com/snippets/php/detect-ie5-or-ie6/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "tool"
+      ],
+      "description": "Detects IE5 or IE6 using PHP's $_SERVER['HTTP_USER_AGENT'] string with strstr() or stripos() checks for 'MSIE' and version numbers, returning a boolean to conditionally serve IE-specific content or stylesheets.",
+      "preview_image": "",
+      "id": "unknown__detect-ie5-or-ie6",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Get Geo-IP Information",
+      "source_url": "https://css-tricks.com/snippets/php/get-geo-ip-information/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "tool"
+      ],
+      "description": "Retrieves geographic IP information using PHP's file_get_contents or cURL with a geo-IP API service, parsing the JSON response to extract country, region, city, and latitude/longitude data from the visitor's IP.",
+      "preview_image": "",
+      "id": "unknown__get-geo-ip-information",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Highlight a Substring",
+      "source_url": "https://css-tricks.com/snippets/php/highlight-a-substring/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "text-effect"
+      ],
+      "description": "Highlights a substring within text using str_ireplace() or preg_replace() with a case-insensitive pattern, wrapping the matched portion in a <mark> or <span> tag with custom styling to make the match stand out.",
+      "preview_image": "",
+      "id": "unknown__highlight-a-substring",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "HTTP or HTTPS",
+      "source_url": "https://css-tricks.com/snippets/php/http-or-https/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "tool"
+      ],
+      "description": "Determines if the current request uses HTTP or HTTPS by checking $_SERVER['HTTPS'] and $_SERVER['SERVER_PORT'] variables, returning a boolean to conditionally set URLs, canonical links, or load external resources.",
+      "preview_image": "",
+      "id": "unknown__http-or-https",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Increase Maximum PHP Upload Size",
+      "source_url": "https://css-tricks.com/snippets/php/increase-maximum-php-upload-size/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "tool"
+      ],
+      "description": "Increases the maximum file upload size in PHP by setting ini_set('upload_max_filesize'), ini_set('post_max_size'), and ini_set('memory_limit') at runtime, with values like '64M' or '128M' for each directive.",
+      "preview_image": "",
+      "id": "unknown__increase-maximum-php-upload-size",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Pagination Function",
+      "source_url": "https://css-tricks.com/snippets/php/pagination-function/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "tool"
+      ],
+      "description": "Creates pagination links for database query results using LIMIT and OFFSET in SQL, calculating total pages from row count and per-page limit, then generating HTML navigation with previous/next links and page numbers.",
+      "preview_image": "",
+      "id": "unknown__pagination-function",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Options to Truncate Strings",
+      "source_url": "https://css-tricks.com/snippets/php/truncate-strings/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "text-effect"
+      ],
+      "description": "Truncates a string to a specified length using substr() or mb_substr() with an optional ellipsis appended when the string exceeds the limit. Includes word-boundary handling to avoid cutting mid-word.",
+      "preview_image": "",
+      "id": "unknown__options-to-truncate-strings",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Zero Padded Numbers",
+      "source_url": "https://css-tricks.com/snippets/php/zero-padded-numbers/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "tool"
+      ],
+      "description": "Formats numbers with leading zeros using sprintf('%03d', $number) or str_pad($number, 3, '0', STR_PAD_LEFT), useful for generating sequential IDs, invoice numbers, or formatted counters.",
+      "preview_image": "",
+      "id": "unknown__zero-padded-numbers",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Easing Map Get Function",
+      "source_url": "https://css-tricks.com/snippets/sass/easing-map-get-function/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "sass",
+        "minimal",
+        "reference"
+      ],
+      "description": "Defines CSS transition timing functions using a Sass map with named easing values like $ease-in and $ease-out, then retrieves them with map-get() to apply to transition-timing-function property in mixins.",
+      "preview_image": "",
+      "id": "unknown__easing-map-get-function",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Bloginfo Shortcode",
+      "source_url": "https://css-tricks.com/snippets/wordpress/bloginfo-shortcode/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "wordpress",
+        "minimal",
+        "reference"
+      ],
+      "description": "Creates a WordPress shortcode that wraps the bloginfo() function to output site information like the site title, tagline, or URL within post content, using add_shortcode() with extract(shortcode_atts()) for parameters.",
+      "preview_image": "",
+      "id": "unknown__bloginfo-shortcode",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Disable Automatic Formatting",
+      "source_url": "https://css-tricks.com/snippets/wordpress/disable-automatic-formatting/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "wordpress",
+        "minimal",
+        "tool"
+      ],
+      "description": "Disables WordPress automatic content formatting by removing the wpautop filter from the_content using remove_filter('the_content', 'wpautop') and replacing with a custom function that only adds <p> tags around block elements.",
+      "preview_image": "",
+      "id": "unknown__disable-automatic-formatting",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Find ID of Top-Most Parent Page",
+      "source_url": "https://css-tricks.com/snippets/wordpress/find-id-of-top-most-parent-page/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "wordpress",
+        "minimal",
+        "tool"
+      ],
+      "description": "Finds the top-most parent page ID in WordPress using get_post_ancestors() in a loop that traverses parent IDs, returning the root ancestor ID for hierarchical post types like pages.",
+      "preview_image": "",
+      "id": "unknown__find-id-of-top-most-parent-page",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Insert Images Within Figure Element From Media Uploader",
+      "source_url": "https://css-tricks.com/snippets/wordpress/insert-images-within-figure-element-from-media-uploader/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "wordpress",
+        "minimal",
+        "tool"
+      ],
+      "description": "Inserts uploaded images wrapped in <figure> elements using the WordPress media uploader along with wp_get_attachment_image() and get_post_gallery() functions, adding <figcaption> for captions and custom size attributes.",
+      "preview_image": "",
+      "id": "unknown__insert-images-within-figure-element-from-media-uploader",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Remove Admin Bar for Subscribers",
+      "source_url": "https://css-tricks.com/snippets/wordpress/remove-admin-bar-for-subscribers/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "wordpress",
+        "minimal",
+        "tool"
+      ],
+      "description": "Removes the WordPress admin bar for subscribers by hooking into show_admin_bar filter with add_filter('show_admin_bar', '__return_false'), checking current_user_can() for the subscriber role before hiding the bar.",
+      "preview_image": "",
+      "id": "unknown__remove-admin-bar-for-subscribers",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Remove Link to the WLW Manifest File",
+      "source_url": "https://css-tricks.com/snippets/wordpress/remove-link-to-the-wlw-manifest-file/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "wordpress",
+        "minimal",
+        "tool"
+      ],
+      "description": "Removes the WLW manifest link from the page head using remove_action('wp_head', 'wlwmanifest_link'), which eliminates the <link rel='wlwmanifest' /> tag that's added by default for Windows Live Writer compatibility.",
+      "preview_image": "",
+      "id": "unknown__remove-link-to-the-wlw-manifest-file",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Reset Admin Password Through Database",
+      "source_url": "https://css-tricks.com/snippets/wordpress/reset-admin-password-through-database/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "wordpress",
+        "minimal",
+        "tool"
+      ],
+      "description": "Resets a WordPress admin password by running a SQL UPDATE on the wp_users table setting user_pass to MD5 of the new password, useful when the admin is locked out and phpMyAdmin or direct database access is available.",
+      "preview_image": "",
+      "id": "unknown__reset-admin-password-through-database",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Run a Loop Outside of WordPress",
+      "source_url": "https://css-tricks.com/snippets/wordpress/run-a-loop-outside-of-wordpress/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "wordpress",
+        "minimal",
+        "tool"
+      ],
+      "description": "Runs a WordPress loop outside the WordPress installation by including wp-blog-header.php with define('WP_USE_THEMES', false), then using query_posts() to fetch and display posts in a standalone PHP file.",
+      "preview_image": "",
+      "id": "unknown__run-a-loop-outside-of-wordpress",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Shortcode for Action Button",
+      "source_url": "https://css-tricks.com/snippets/wordpress/shortcode-for-action-button/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "wordpress",
+        "gradient",
+        "button"
+      ],
+      "description": "Creates a WordPress action button shortcode using add_shortcode() with extract(shortcode_atts()) to handle color, title, subtitle, and url parameters, outputting a styled <span> with an <a> link and CSS gradient background.",
+      "preview_image": "",
+      "id": "unknown__shortcode-for-action-button",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Shrink the Admin Bar / Expand on Hover",
+      "source_url": "https://css-tricks.com/snippets/wordpress/shrink-the-admin-bar-expand-on-hover/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "wordpress",
+        "minimal",
+        "hover-effect"
+      ],
+      "description": "Shrinks the WordPress admin bar to a small button using CSS transitions on width with -webkit-transition, -moz-transition, -o-transition, -ms-transition and transition properties, expanding on hover via :hover selector.",
+      "preview_image": "",
+      "id": "unknown__shrink-the-admin-bar-/-expand-on-hover",
+      "source_domain": "css-tricks.com"
     }
   ]
 }
