@@ -1,6 +1,6 @@
 {
-  "version": "1.0.114",
-  "source_count": 28873,
+  "version": "1.0.115",
+  "source_count": 28884,
   "components": [
     {
       "id": "cat-0",
@@ -500238,6 +500238,204 @@
       "preview_image": "",
       "id": "unknown__bitter-cobra-input",
       "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Designing With Motion",
+      "source_url": "https://tympanus.net/codrops/2013/02/08/designing-with-motion",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "animation",
+      "tags": [
+        "css",
+        "javascript",
+        "minimal",
+        "animation",
+        "transition",
+        "text-effect"
+      ],
+      "description": "Explores how subtle CSS animations with directional timing, easing curves, and requestAnimationFrame-driven transitions bring life to static UI, using Animate.css and jQuery to demonstrate natural-feeling motion through focal-point-aware animation sequencing.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2013/02/Designingwithmotion.jpg",
+      "id": "unknown__designing-with-motion",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "3D Shading With Box-Shadows",
+      "source_url": "https://tympanus.net/codrops/2013/08/27/3d-shading-with-box-shadows",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "3d",
+      "tags": [
+        "plain-css",
+        "html",
+        "3d",
+        "transform",
+        "box-shadow",
+        "gloss"
+      ],
+      "description": "Uses CSS transform-style: preserve-3d, perspective, and dynamic inset box-shadows with transition animations to simulate directional lighting and surface materials on 3D-transformed poster elements, falling back gracefully via Modernizr.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2013/08/3DShadingWithBoxShadows.jpg",
+      "id": "unknown__3d-shading-with-box-shadows",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Replicating The Icosahedron From Rogier De Boev\u00e9's Website",
+      "source_url": "https://tympanus.net/codrops/2020/11/23/replicating-the-icosahedron-from-rogier-de-boeves-website",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "3d",
+      "tags": [
+        "three.js",
+        "glsl",
+        "webgl",
+        "shader",
+        "3d",
+        "geometry"
+      ],
+      "description": "A live coding session replicating a 3D icosahedron animation using Three.js geometry, custom GLSL vertex and fragment shaders, and postprocessing effects to reconstruct Rogier de Boev\u00e9's interactive WebGL scene with dynamic lighting and noise.",
+      "preview_image": "",
+      "id": "unknown__replicating-the-icosahedron-from-rogier-de-boev\u00e9's-website",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Why Developers Should Design Niche Portfolio Sites For Themselves",
+      "source_url": "https://tympanus.net/codrops/2020/08/20/why-developers-should-design-niche-portfolio-sites-for-themselves",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "inspiration",
+      "tags": [
+        "html",
+        "css",
+        "minimal",
+        "flat",
+        "gradient",
+        "landing-page"
+      ],
+      "description": "Argues for targeting specific industry niches in portfolio sites using pre-built WordPress themes like BeTheme, showing real-world examples from wellness, beauty, nonprofit, and financial services sectors that rank better and convert prospects more effectively.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2020/08/BeTheme_20_08_2020.jpg",
+      "id": "unknown__why-developers-should-design-niche-portfolio-sites-for-themselves",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "How To Unroll Images With Three.js",
+      "source_url": "https://tympanus.net/codrops/2020/01/22/how-to-unroll-images-with-three-js",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "tutorial",
+      "tags": [
+        "three.js",
+        "glsl",
+        "webgl",
+        "shader",
+        "3d",
+        "scroll-effect"
+      ],
+      "description": "Replaces HTML img elements with Three.js PlaneGeometry meshes and animates them in WebGL using custom GLSL vertex shaders with sine and cosine math functions to progressively unroll images as the user scrolls, with smooth-scroll integration.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2020/01/Unrolling_featured-1.jpg",
+      "id": "unknown__how-to-unroll-images-with-three.js",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "3D Folding Layout Technique For HTML Elements",
+      "source_url": "https://tympanus.net/codrops/2020/01/14/3d-folding-technique",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "effect",
+      "tags": [
+        "css",
+        "html",
+        "javascript",
+        "3d",
+        "transform",
+        "minimal"
+      ],
+      "description": "Creates the illusion of bending HTML elements by lining up multiple overflow-hidden divs with fixed dimensions inside a perspective container, rotating each fold face with CSS transform-origin and requestAnimationFrame-synced scroll handlers.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2020/01/FoldingDOM_featured.jpg",
+      "id": "unknown__3d-folding-layout-technique-for-html-elements",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Creating Material Design Ripple Effects With SVG",
+      "source_url": "https://tympanus.net/codrops/2015/09/14/creating-material-design-ripple-effects-svg",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "effect",
+      "tags": [
+        "gsap",
+        "svg",
+        "css",
+        "javascript",
+        "button",
+        "motion"
+      ],
+      "description": "Builds Material Design radial action ripple effects using SVG circle elements within symbol sprites, animating scale and opacity via GreenSock's TweenMax and TimelineMax with dynamically calculated Euclidean distance from click origin to element bounds.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2015/09/SVGRipples.jpg",
+      "id": "unknown__creating-material-design-ripple-effects-with-svg",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Motion Blur Effect With SVG",
+      "source_url": "https://tympanus.net/codrops/2015/04/08/motion-blur-effect-svg",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "effect",
+      "tags": [
+        "svg",
+        "javascript",
+        "css-filter",
+        "animation",
+        "motion",
+        "blur"
+      ],
+      "description": "Applies directional motion blur to JS and CSS animations by dynamically updating SVG feGaussianBlur filter stdDeviation attributes per frame via requestAnimationFrame, measuring element movement with jQuery offset and cloning filter elements for independent control.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2015/04/MotionBlur.jpg",
+      "id": "unknown__motion-blur-effect-with-svg",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Some More Inspiration For Text Input Effects",
+      "source_url": "https://tympanus.net/codrops/2015/03/18/inspiration-text-input-effects-2",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "form",
+      "tags": [
+        "css",
+        "html",
+        "plain-css",
+        "input",
+        "animation",
+        "minimal"
+      ],
+      "description": "Presents a second set of creative text input interaction effects using CSS transitions and animations on label elements and pseudo-elements, including jelly-like moving shapes and lines that animate on focus to enhance form engagement.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2015/03/TextInputEffects_Set2.jpg",
+      "id": "unknown__some-more-inspiration-for-text-input-effects",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Creating A Jump Loader Animation With SVG And GSAP",
+      "source_url": "https://tympanus.net/codrops/2015/03/25/jump-loader-animation-svg-gsap",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "loader",
+      "tags": [
+        "gsap",
+        "svg",
+        "javascript",
+        "animation",
+        "loader",
+        "motion"
+      ],
+      "description": "Constructs a playful jump loader animation using SVG paths and ellipses authored in Illustrator, animating stroke drawing with GSAP's DrawSVGPlugin and TimelineMax while cloning the jump line for a reflected shadow effect with opacity and scale transforms.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2015/03/JumpLoader.png",
+      "id": "unknown__creating-a-jump-loader-animation-with-svg-and-gsap",
+      "source_domain": "tympanus.net"
+    },
+    {
+      "name": "Animations For Thumbnail Grids",
+      "source_url": "https://tympanus.net/codrops/2013/10/23/animations-for-thumbnail-grids",
+      "registry_url": "https://tympanus.net/codrops/?category=collection",
+      "category": "gallery",
+      "tags": [
+        "css",
+        "javascript",
+        "animation",
+        "grid",
+        "gallery",
+        "transition"
+      ],
+      "description": "Implements fancy thumbnail grid animations using CSS keyframes for scale-and-rotate, fade, and stack effects with staggered transition delays applied through class toggling on list items, managing z-index for correct overlapping during animated transitions.",
+      "preview_image": "https://tympanus.net/codrops/wp-content/uploads/2013/10/ThumbnailGridAnimations1.jpg",
+      "id": "unknown__animations-for-thumbnail-grids",
+      "source_domain": "tympanus.net"
     }
   ]
 }
