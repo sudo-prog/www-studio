@@ -1,6 +1,6 @@
 {
-  "version": "1.0.111",
-  "source_count": 28766,
+  "version": "1.0.112",
+  "source_count": 28824,
   "components": [
     {
       "id": "cat-0",
@@ -498632,6 +498632,877 @@
       "preview_image": "",
       "id": "unknown__the_category-with-excludes",
       "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Base Badge With Icon",
+      "source_url": "https://21st.dev/@sean0205/components/base-badge/with-icon",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "badge",
+      "tags": [
+        "react",
+        "minimal",
+        "badge"
+      ],
+      "description": "A customizable badge component built with Base UI and the useRender hook for composition. Supports variant prop (primary, success, etc.) and appearance prop (ghost, solid, light, outline) to render badges with icons from lucide-react.",
+      "preview_image": "https://cdn.21st.dev/sean0205/base-badge/with-icon/preview.1758873435454.png",
+      "id": "unknown__base-badge-with-icon",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Item Link",
+      "source_url": "https://21st.dev/@shadcn/components/item",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "list",
+      "tags": [
+        "react",
+        "minimal",
+        "item"
+      ],
+      "description": "A composable item component using ItemContent, ItemTitle, ItemDescription, ItemActions, and ItemMedia sub-components. Supports variant (outline) and size props, with asChild prop for rendering as an anchor link with ChevronRightIcon navigation.",
+      "preview_image": "https://cdn.21st.dev/user_shadcn/item/default/preview.1787911971964.png",
+      "id": "unknown__item-link",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Required Input",
+      "source_url": "https://21st.dev/@originui/components/input/required-input",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "minimal",
+        "input"
+      ],
+      "description": "An upgraded shadcn/ui Input component with required field indicator. Uses Label and Input components from @/components/ui, with useId hook for id generation and a text-destructive span for the asterisk marker.",
+      "preview_image": "https://cdn.21st.dev/user_originui/input/required-input/preview.png?v=1",
+      "id": "unknown__required-input",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Cnippet Empty Bordered",
+      "source_url": "https://21st.dev/@cnippet-dev/components/cnippet-empty/bordered",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "component",
+      "tags": [
+        "react",
+        "minimal",
+        "item"
+      ],
+      "description": "A composable empty-state block with Empty, EmptyHeader, EmptyMedia (icon variant), EmptyTitle, EmptyDescription, and EmptyContent sub-components. Dependency-free using cva and cn for variant styling with a bordered container.",
+      "preview_image": "https://cdn.21st.dev/larsen66/cnippet-empty/bordered/preview.1784047727980.png",
+      "id": "unknown__cnippet-empty-bordered",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Smart Assist Input",
+      "source_url": "https://21st.dev/@ruixen.ui/components/smart-assist-input",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "minimal",
+        "input"
+      ],
+      "description": "A next-generation input field with local history storage, dropdown re-selection of past inputs, and built-in copy and clear actions. Imports from @/components/ui/smart-assist-input and depends on lucide-react for iconography.",
+      "preview_image": "https://cdn.21st.dev/ruixen.ui/smart-assist-input/default/preview.1757064616684.png",
+      "id": "unknown__smart-assist-input",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "DateField Controlled",
+      "source_url": "https://21st.dev/@hero_ui/components/heroui-date-field/controlled",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "minimal",
+        "input"
+      ],
+      "description": "A date input field built on React Aria DateField with labels, descriptions, and validation. Uses DateField.Group with DateField.Input for segmented editing, controlled via value/onChange props and DateValue type.",
+      "preview_image": "https://cdn.21st.dev/reapollo/heroui-date-field/controlled/preview.1780281808380.png",
+      "id": "unknown__datefield-controlled",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Input With Label",
+      "source_url": "https://21st.dev/@shugar/components/input/label",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "minimal",
+        "input"
+      ],
+      "description": "A text input component from the Geist design system with a label prop and aria-labelledby attribute. Supports size variants (small, default, large) and prefix/suffix adornments for flexible form layouts.",
+      "preview_image": "https://cdn.21st.dev/shugar/input/label/preview.1752232795227.png",
+      "id": "unknown__input-with-label",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Animated Verification OTP Input",
+      "source_url": "https://21st.dev/@shadcnspace/components/input-otp-10",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "minimal",
+        "input"
+      ],
+      "description": "A 6-digit one-time-passcode input with an animated rotating particle-sphere avatar, glowing typing feedback per slot, and success state on code completion. Depends on motion, input-otp, and lucide-react for animations and icons.",
+      "preview_image": "https://cdn.21st.dev/shadcnspace/input-otp-10/default/preview.1788833985456-2db31489-4494-4e3a-aca6-c5f7c196043f.png",
+      "id": "unknown__animated-verification-otp-input",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Sign Up Block",
+      "source_url": "https://21st.dev/@preetsuthar17/components/sign-up-block",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "form",
+      "tags": [
+        "react",
+        "minimal",
+        "form"
+      ],
+      "description": "A complete sign-up form component with validation, password strength requirements, and terms acceptance checkbox. Built with Vite + React + TS, depends on next and lucide-react, accepting form schema props for submission handling.",
+      "preview_image": "https://cdn.21st.dev/user_2rWolCuRnJW3DRiuQ5JHrl5kj8a/sign-up-block/default/preview.1786649136897.png",
+      "id": "unknown__sign-up-block",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Form One Forgot Password Form Dark",
+      "source_url": "https://21st.dev/@prebuiltui/components/form-1/forgot-password-form-dark",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "form",
+      "tags": [
+        "react",
+        "minimal",
+        "form"
+      ],
+      "description": "A dark-themed forgot password form with an email input field using type='email' and a gradient background. Built with Vite + React + TS, featuring a centered card layout with rounded shadow and indigo-500 focus border styling.",
+      "preview_image": "https://cdn.21st.dev/larsen66/form-1/forgot-password-form-dark/preview.1757571359574.png",
+      "id": "unknown__form-one-forgot-password-form-dark",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Tag Selector",
+      "source_url": "https://21st.dev/@serafimcloud/components/tag-selector",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "minimal",
+        "input"
+      ],
+      "description": "A versatile multi-tag selection component with search functionality, keyboard navigation, and tag creation. Uses useState for selectedTags, accepts availableTags and onChange props, and depends on lucide-react.",
+      "preview_image": "https://cdn.21st.dev/user_2nElBLvklOKlAURm6W1PTu6yYFh/tag-selector/default/preview.1786655046893.png",
+      "id": "unknown__tag-selector",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Kbd Input Group",
+      "source_url": "https://21st.dev/@uiable/components/kbd-input-group",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "minimal",
+        "input"
+      ],
+      "description": "A search input field with a leading search icon and trailing keyboard shortcut badges (Cmd+K) hinting at global shortcuts. Uses lucide-react for icons and is dependency-free beyond that.",
+      "preview_image": "https://cdn.21st.dev/uiable/kbd-input-group/default/preview.1788807758245-27e98c97-7acc-4cb2-aad6-5162e3fde471.png",
+      "id": "unknown__kbd-input-group",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Message Circle Off Icon",
+      "source_url": "https://21st.dev/@skyleen77/components/icons-message-circle-off",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "component",
+      "tags": [
+        "react",
+        "minimal",
+        "icon"
+      ],
+      "description": "An animated message circle off icon that shakes and draws its slash on hover, for muted or disabled chat states. Uses the motion library for animation and exposes animateOnHover prop with size control.",
+      "preview_image": "https://cdn.21st.dev/user_2vJfh2NfFGAPdS5oQXlSpccjJvB/icons-message-circle-off/default/preview.1787330791003.png",
+      "id": "unknown__message-circle-off-icon",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Flexnative Breadcrumb With Icon",
+      "source_url": "https://21st.dev/@felipemenezes098/components/flexnative-breadcrumb/with-icon",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "menu",
+      "tags": [
+        "react",
+        "minimal",
+        "breadcrumbs"
+      ],
+      "description": "A Radix-based breadcrumb navigation with 9 variants including icon-leading links, custom separators, dot dividers, ellipsis collapse, and responsive dropdown collapse. Uses Radix Slot and dropdown-menu primitives with lucide-react icons.",
+      "preview_image": "https://cdn.21st.dev/larsen66/flexnative-breadcrumb/with-icon/preview.1780071770173.png",
+      "id": "unknown__flexnative-breadcrumb-with-icon",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Services Card",
+      "source_url": "https://21st.dev/@ravikatiyar162/components/services-card",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "card",
+      "tags": [
+        "react",
+        "minimal",
+        "card"
+      ],
+      "description": "A modern card component for showcasing services and offerings with clear visuals and descriptions. Built with Vite + React + TS, using tailwindcss for responsive layout and branding presentation.",
+      "preview_image": "https://cdn.21st.dev/ravikatiyar162/services-card/default/preview.1758279268638.png",
+      "id": "unknown__services-card",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Label Input",
+      "source_url": "https://21st.dev/@tom_ui/components/label-input",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "minimal",
+        "input"
+      ],
+      "description": "A labeled text input component using the Input component from @/components/ui/input with an aria-labelledby attribute. Supports size variations (small, default, large) for flexible form field layouts.",
+      "preview_image": "https://cdn.21st.dev/larsen66/label-input/default/preview.1773097339249.png",
+      "id": "unknown__label-input",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Pin Input With Field",
+      "source_url": "https://21st.dev/@anubra266/components/pin-input/pin-with-field",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "minimal",
+        "input"
+      ],
+      "description": "A one-time passcode input with individual editable segments, rendered with a PinInput component accepting onChange and autoFocus props. Built with tailwindcss and uses webp-based preview assets.",
+      "preview_image": "https://cdn.21st.dev/user_anubra266/pin-input/pin-with-field/preview.1786537464730.webp",
+      "id": "unknown__pin-input-with-field",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Password Input",
+      "source_url": "https://21st.dev/@uilayout.contact/components/password-input-2",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "minimal",
+        "input"
+      ],
+      "description": "A password input field with toggle visibility functionality, rendered as a webp preview. Built with Vite + React + TS and designed with tailwindcss for form authentication flows.",
+      "preview_image": "https://cdn.21st.dev/user_2zAsvSHo1IeJGKtSjJ3uR1N1Cd7/password-input-2/default/preview.1786968631913.webp",
+      "id": "unknown__password-input",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Feature 73",
+      "source_url": "https://21st.dev/@shadcnblockscom/components/feature-73",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "component",
+      "tags": [
+        "react",
+        "minimal",
+        "card"
+      ],
+      "description": "A feature showcase block displaying platform content sections with bento-grid-style features. Built with Vite + React + TS and tailwindcss, featuring icon-based feature cards with title and description text.",
+      "preview_image": "https://cdn.21st.dev/shadcnblockscom/feature-73/default/preview.1747700873848.png",
+      "id": "unknown__feature-73",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Menu Toggle Icon",
+      "source_url": "https://21st.dev/@efferd/components/menu-toggle-icon",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "component",
+      "tags": [
+        "react",
+        "minimal",
+        "icon"
+      ],
+      "description": "An animated menu toggle icon that morphs smoothly between hamburger and close states. Uses the motion library for spring-physics animation, accepts open prop and className with duration control.",
+      "preview_image": "https://cdn.21st.dev/user_2tWTE0rCrloVAVylFPYfp10xU92/menu-toggle-icon/default/preview.1788461241770.png",
+      "id": "unknown__menu-toggle-icon",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Experience Timeline",
+      "source_url": "https://21st.dev/@shadcnui-blocks/components/timeline-02",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "list",
+      "tags": [
+        "react",
+        "minimal",
+        "list"
+      ],
+      "description": "A vertical timeline block listing work experience entries with icon, company name, role title, date range, description, and technology badges. Uses lucide-react for icons and supports reusable Timeline sub-components.",
+      "preview_image": "https://cdn.21st.dev/shadcnui-blocks/timeline-02/default/preview.1789967984632-1bd8d294-a124-4812-8986-1b445bd9d474.png",
+      "id": "unknown__experience-timeline",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Chevrons Up Down Icon",
+      "source_url": "https://21st.dev/@ncdai/components/chevrons-up-down-icon",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "component",
+      "tags": [
+        "react",
+        "minimal",
+        "icon"
+      ],
+      "description": "An animated chevrons icon that morphs between up and down directions on hover. Uses the motion library for animation, exposes startAnimation and stopAnimation methods via a component ref, and renders on a button with border and hover states.",
+      "preview_image": "https://cdn.21st.dev/user_2xinnI75Qf12K3Et3dvJlqCNjMq/chevrons-up-down-icon/default/preview.1784800766076.png",
+      "id": "unknown__chevrons-up-down-icon",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Icon Bar",
+      "source_url": "https://21st.dev/@edwinvakayil/components/icon-bar",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "menu",
+      "tags": [
+        "react",
+        "minimal",
+        "icon-set"
+      ],
+      "description": "A vertical icon bar with labeled icon items using lucide-react (Building2, GraduationCap, Sun, Cloud). Uses the motion library for hover animations and IconBar/IconBarItem components with label and icon props.",
+      "preview_image": "https://cdn.21st.dev/lyanchouss/icon-bar/default/preview.1780694376489.png",
+      "id": "unknown__icon-bar",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Prompt Input With Suggestions",
+      "source_url": "https://21st.dev/@ibelick/components/promt-input-with-actions/prompt-input-with-suggestions",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "minimal",
+        "input"
+      ],
+      "description": "A prompt input with suggestion groups, PromptInput, PromptInputTextarea, and PromptInputActions components. Supports onValueChange and onSubmit props, keyboard Enter shortcut (without Shift), and category-based suggestion grouping.",
+      "preview_image": "https://cdn.21st.dev/larsen66/promt-input-with-actions/prompt-input-with-suggestions/preview.1755906580165.png",
+      "id": "unknown__prompt-input-with-suggestions",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Input With Feedback",
+      "source_url": "https://21st.dev/@tigerabrodi/components/input-with-feedback",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "minimal",
+        "input"
+      ],
+      "description": "An input component with helper text and error message display, supporting isError, errorMessage, disabled, and helperText props. Accepts placeholder, uses inline SVGs for icons, and is built for form validation workflows.",
+      "preview_image": "https://cdn.21st.dev/user_tigerabrodi/input-with-feedback/default/preview.png?v=1",
+      "id": "unknown__input-with-feedback",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Reshaped Number Field",
+      "source_url": "https://21st.dev/@reshaped/components/reshaped-number-field",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "minimal",
+        "input"
+      ],
+      "description": "A numeric input with increase/decrease controls and keyboard arrow support, based on the Reshaped TextField component. Supports controlled and uncontrolled modes via defaultChecked/onChange, increaseAriaLabel and decreaseAriaLabel props, using the Reshaped bundle.",
+      "preview_image": "https://cdn.21st.dev/larsen66/reshaped-number-field/default/preview.1783431936465.png",
+      "id": "unknown__reshaped-number-field",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Claude Style Chat Input",
+      "source_url": "https://21st.dev/@sensewood8/components/claude-style-chat-input",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "minimal",
+        "input"
+      ],
+      "description": "A Claude AI-style chat input with auto-resizing textarea, file attachment previews using FileText, Loader2, Code, and Archive icons. Features quick action chips, dark mode support, smooth animations, and a swoosh underline aesthetic using framer-motion.",
+      "preview_image": "https://cdn.21st.dev/sensewood8/claude-style-chat-input/default/preview.1766469408921.png",
+      "id": "unknown__claude-style-chat-input",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Animated Input",
+      "source_url": "https://21st.dev/@minhxthanh/components/animated-input",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "minimal",
+        "input"
+      ],
+      "description": "An animated input component called OrbInput, using motion for glow effects on typing. Built with Vite + React + TS and tailwindcss, featuring 3D-inspired animation and glowing feedback per keystroke.",
+      "preview_image": "https://cdn.21st.dev/user_2uZPYwRKdEOMrOL0qhU6KNaMNK0/animated-input/default/preview.1788963090165.png",
+      "id": "unknown__animated-input",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Form Textarea",
+      "source_url": "https://21st.dev/@paceui/components/form-textarea",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "form",
+      "tags": [
+        "react",
+        "minimal",
+        "textarea"
+      ],
+      "description": "A textarea form field wired to TanStack Form with label, error handling, and validation display. Uses useForm from @tanstack/react-form, FormTextarea component with form and name props, and validators onBlur for empty field checks.",
+      "preview_image": "https://cdn.21st.dev/user_paceui/form-textarea/default/preview.1788202970598.png",
+      "id": "unknown__form-textarea",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "AI Prompt Box",
+      "source_url": "https://21st.dev/@johuniq/components/ai-prompt-box",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "minimal",
+        "input"
+      ],
+      "description": "An animated AI prompt input with expanding textarea, keyboard shortcuts, model selector, and file attachments. Uses framer-motion for animation, @radix-ui/react-dialog and @radix-ui/react-tooltip for UI primitives, and clsx/tailwind-merge for styling.",
+      "preview_image": "https://cdn.21st.dev/johuniq/ai-prompt-box/default/preview.1773916120385.png",
+      "id": "unknown__ai-prompt-box",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Chatgpt Prompt Input",
+      "source_url": "https://21st.dev/@jahed/components/chatgpt-prompt-input",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "minimal",
+        "input"
+      ],
+      "description": "A complete replica of the ChatGPT prompt input with file attachment via image picker, voice recording, and send message actions. Uses a form-based PromptBox component with FormData extraction and dark mode bg-[#212121].",
+      "preview_image": "https://cdn.21st.dev/user_2xJxXqdwWohYrdd6fiMYrS9hbmO/chatgpt-prompt-input/default/preview.1786746272516.png",
+      "id": "unknown__chatgpt-prompt-input",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Date Field React Aria",
+      "source_url": "https://21st.dev/@jolbol1/components/datefield",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "minimal",
+        "input"
+      ],
+      "description": "A date field built on react-aria-components allowing keyboard entry with individually editable segments. Uses DateField and DateInput from @/components/ui/datefield with Label from @/components/ui/field, supporting segment-based date editing.",
+      "preview_image": "https://cdn.21st.dev/user_jolbol1/datefield/1027/preview.png",
+      "id": "unknown__date-field-react-aria",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "AI Thinking Orb And Input",
+      "source_url": "https://21st.dev/@anark17r/components/ai-thiking-orb-and-input",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "minimal",
+        "input"
+      ],
+      "description": "An AI thinking orb with morphing animation and chat input, showing Answer, Thinking, and New question states. Uses MorphOrb component from @/components/ui/ai-thiking-orb-and-input, built with Vite + React + TS.",
+      "preview_image": "https://cdn.21st.dev/user_3K3E5LSm8GsOaLhyFqNo5JwbLKS/ai-thiking-orb-and-input/default/preview.1790788347241.webp",
+      "id": "unknown__ai-thinking-orb-and-input",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Claude Style AI Input",
+      "source_url": "https://21st.dev/@suraj-xd/components/claude-style-ai-input",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "minimal",
+        "input"
+      ],
+      "description": "A Claude-style dynamic chat input that adapts its preview based on content type \u2014 showing code snippets for programming files, content previews for documents, and traditional previews for media. Uses lucide-react for iconography.",
+      "preview_image": "https://cdn.21st.dev/suraj-xd/claude-style-ai-input/default/preview.1748942175971.png",
+      "id": "unknown__claude-style-ai-input",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "How It Works Timeline",
+      "source_url": "https://21st.dev/@olewandowski1/components/how-it-works-2",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "list",
+      "tags": [
+        "react",
+        "minimal",
+        "timeline",
+        "list"
+      ],
+      "description": "A vertical timeline stacking numbered onboarding steps with bordered icon circles, connecting lines, bold titles, and supporting copy. Uses @remixicon/react for icons and HowItWorksBlock component for layout.",
+      "preview_image": "https://cdn.21st.dev/user_registry_7ovr_1782691739820/how-it-works-2/default/preview.1786648103335.png",
+      "id": "unknown__how-it-works-timeline",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Feature Section With Bento Grid",
+      "source_url": "https://21st.dev/@tommyjepsen/components/feature-section-with-bento-grid",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "component",
+      "tags": [
+        "react",
+        "minimal",
+        "card"
+      ],
+      "description": "A feature section displaying a bento-grid layout with multiple feature cards, each containing an icon, title, and description. Uses lucide-react (Coins, ArrowRight) and react-wrap-balancer for text wrapping, with next/link for routing.",
+      "preview_image": "https://cdn.21st.dev/user_2nElBLvklOKlAURm6W1PTu6yYFh/feature-section-with-bento-grid/default/preview.png",
+      "id": "unknown__feature-section-with-bento-grid",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Streak Badge",
+      "source_url": "https://21st.dev/@trophyso/components/streak-badge",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "badge",
+      "tags": [
+        "react",
+        "minimal",
+        "badge"
+      ],
+      "description": "A streak badge component showing a 7-day daily streak indicator. Uses lucide-react and class-variance-authority for styling, accepting length and frequency props to display streak count and period.",
+      "preview_image": "https://cdn.21st.dev/larsen66/streak-badge/default/preview.1779990287189.png",
+      "id": "unknown__streak-badge",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Feature Modern Feature Six",
+      "source_url": "https://21st.dev/@brijr/components/feature-modern/feature-six",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "component",
+      "tags": [
+        "react",
+        "minimal",
+        "card"
+      ],
+      "description": "A feature showcase component using react-wrap-balancer for text and next/link for routing, with lucide-react icons (Coins, ArrowRight). Uses clsx and tailwind-merge for className merging, supporting feature cards with icons and descriptions.",
+      "preview_image": "https://cdn.21st.dev/larsen66/feature-modern/feature-six/preview.1757993312673.png",
+      "id": "unknown__feature-modern-feature-six",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Astryx Breadcrumbs With Icons",
+      "source_url": "https://21st.dev/@Astryxdesign/components/astryx-breadcrumbs/with-icons",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "menu",
+      "tags": [
+        "react",
+        "minimal",
+        "breadcrumbs"
+      ],
+      "description": "Breadcrumbs from Meta's Astryx design system showing user hierarchy with icon leading links. Composes BreadcrumbItem children with links, icons, and onClick handlers using @astryxdesign/core, with custom separator support.",
+      "preview_image": "https://cdn.21st.dev/user_astryx/astryx-breadcrumbs/with-icons/preview.1785921556418.png",
+      "id": "unknown__astryx-breadcrumbs-with-icons",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Animated State Icons",
+      "source_url": "https://21st.dev/@dev.yadhakim/components/animated-state-icons",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "component",
+      "tags": [
+        "react",
+        "minimal",
+        "icon-set"
+      ],
+      "description": "A collection of 12 animated icons that continuously morph between two states using framer-motion spring physics. Includes loading-to-checkmark, hamburger-to-X, play-to-pause, lock-to-unlock, and more, each with programmatic toggle control.",
+      "preview_image": "https://cdn.21st.dev/user_39US82jUnMicURPKQSF6KHvMUo3/animated-state-icons/default/preview.1786451127140.webp",
+      "id": "unknown__animated-state-icons",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Framework Agnostic Card",
+      "source_url": "https://21st.dev/@amanshakya1808/components/framework-agnostic",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "card",
+      "tags": [
+        "react",
+        "minimal",
+        "card"
+      ],
+      "description": "A card component designed to integrate with any tech stack including Next.js, React, HTML, or anything else. Uses cardTitle and cardDescription props for content display, with framework-agnostic rendering via @/components/ui/framework-agnostic.",
+      "preview_image": "https://cdn.21st.dev/larsen66/framework-agnostic/default/preview.1756784508135.png",
+      "id": "unknown__framework-agnostic-card",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Whatsapp Sidebar",
+      "source_url": "https://21st.dev/@rayimanoj8/components/whatsapp-sidebar",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "sidebar",
+      "tags": [
+        "react",
+        "minimal",
+        "sidebar"
+      ],
+      "description": "A replica of WhatsApp desktop's left sidebar using SidebarProvider and AppSidebar components. Uses lucide-react for icons and a SidebarInset wrapper, with chat list and status display using tailwindcss for layout.",
+      "preview_image": "https://cdn.21st.dev/user_2tGqCCR3512kD1my3QHlP4CK6Lk/whatsapp-sidebar/default/preview.1786632241515.png",
+      "id": "unknown__whatsapp-sidebar",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Empty Products",
+      "source_url": "https://21st.dev/@j1zuzz/components/empty/products",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "component",
+      "tags": [
+        "react",
+        "minimal",
+        "item"
+      ],
+      "description": "An empty state component displaying messages when no content is available, using Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription, and EmptyContent sub-components. Uses class-variance-authority and lucide-react Tag icon with gradient text styling.",
+      "preview_image": "https://cdn.21st.dev/user_2xpxDVUWjajB9QvcjiyPOsj2UA7/empty/products/preview.1785532424580.png",
+      "id": "unknown__empty-products",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Interactive Animated Arrow Icon",
+      "source_url": "https://21st.dev/@ringlabs/components/interactive-animated-arrow-icon",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "component",
+      "tags": [
+        "react",
+        "minimal",
+        "icon"
+      ],
+      "description": "An interactive animated arrow icon using Lottie JSON animation data from Cloudinary. Imports IntIcon from @/components/ui/interactive-animated-arrow-icon with lottie-web dependency, supporting playOnClick, size, color, and autoplay props.",
+      "preview_image": "https://cdn.21st.dev/user_2wSSd03cGcvnllzmXFkxJJb8FTN/interactive-animated-arrow-icon/default/preview.1788962386406.png",
+      "id": "unknown__interactive-animated-arrow-icon",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Legends",
+      "source_url": "https://21st.dev/@airbnb-visx/components/legends",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "component",
+      "tags": [
+        "react",
+        "minimal",
+        "component"
+      ],
+      "description": "A legends component from Airbnb's visx design system for chart visualization, using @visx/glyph, @visx/scale, @visx/legend, and @visx/vendor npm packages. Renders chart legend items with scale-based color mapping.",
+      "preview_image": "https://cdn.21st.dev/user_airbnb/legends/default/preview.1785486357643.png",
+      "id": "unknown__legends",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Hairline Dish",
+      "source_url": "https://21st.dev/@lucasmarkes/components/hairline-dish",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "component",
+      "tags": [
+        "react",
+        "minimal",
+        "icon"
+      ],
+      "description": "An isometric parabolic satellite dish on a two-axis gimbal drawn as an animated SVG line figure using the Hairline library. Swings toward pointer on hover with spring physics, using plain CSS and SVG animation techniques.",
+      "preview_image": "https://cdn.21st.dev/user_registry_lucasmarkes_1791397778844/hairline-dish/default/preview.1791490178404.webp",
+      "id": "unknown__hairline-dish",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Accordion Plus Minus",
+      "source_url": "https://21st.dev/@designali-in/components/accordion-plus-minus/accordion-plus-minus",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "accordion",
+      "tags": [
+        "react",
+        "minimal",
+        "accordion"
+      ],
+      "description": "A collapsible accordion component using Radix UI's @radix-ui/react-accordion primitive with custom plus/minus icons from dicons. Supports single-select type with collapsible items, rendering AccordionItem, AccordionContent, and AccordionHeader.",
+      "preview_image": "https://cdn.21st.dev/user_2rO0IUQINTfBex4xN8Ghho5dpr4/accordion-plus-minus/accordion-plus-minus/preview.png?v=1",
+      "id": "unknown__accordion-plus-minus",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "System Theme Icon",
+      "source_url": "https://21st.dev/@campsite/components/system-theme",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "component",
+      "tags": [
+        "react",
+        "minimal",
+        "icon"
+      ],
+      "description": "A system theme icon component for switching between light, dark, and system color modes. Built by Campsite, this icon integrates with theme-switching contexts and uses lucide-react-style SVG paths for rendering.",
+      "preview_image": "https://cdn.21st.dev/user_campsite/system-theme/default/preview.png?v=1",
+      "id": "unknown__system-theme-icon",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Empty State No Data",
+      "source_url": "https://21st.dev/@uniquesonu/components/empty-state-beautiful-accessible-no-data-states",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "component",
+      "tags": [
+        "react",
+        "minimal",
+        "item"
+      ],
+      "description": "An accessible empty state component for no-data moments with built-in icons, customizable CTAs, and dark mode support. Uses lucide-react for icon assets and bg-gradient-to-r with bg-clip-text for title styling.",
+      "preview_image": "https://cdn.21st.dev/uniquesonu/empty-state-beautiful-accessible-no-data-states/default/preview.1758875891255.png",
+      "id": "unknown__empty-state-no-data",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Lucide Icon Drawer With Anime JS",
+      "source_url": "https://21st.dev/@oldkong88/components/lucide-icon-drawer/icon-drawer-with-lucide-and-anime-js",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "component",
+      "tags": [
+        "react",
+        "minimal",
+        "icon-set"
+      ],
+      "description": "An icon drawer animating Lucide icons (Atom, CircleArrowDown, Zap, Heart) using anime.js for sequential reveal. Imports useLucideDrawerAnimation hook from @/components/ui/lucide-icon-drawer with ref-based animation trigger.",
+      "preview_image": "https://cdn.21st.dev/user_2vOYzEX38Q67e1sovzgyVj7bzuU/lucide-icon-drawer/icon-drawer-with-lucide-and-anime-js/preview.png?v=1",
+      "id": "unknown__lucide-icon-drawer-with-anime-js",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Swap",
+      "source_url": "https://21st.dev/@diceui/components/swap",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "toggle",
+      "tags": [
+        "react",
+        "minimal",
+        "toggle"
+      ],
+      "description": "A component that swaps between two states with click or hover activation using fade, rotate, flip, or scale transitions. Built on radix-ui with Swap, SwapOn, and SwapOff primitives, supporting activationMode and animation props.",
+      "preview_image": "https://cdn.21st.dev/user_diceui/swap/default/preview.1787680874431.png",
+      "id": "unknown__swap",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Heart Favorite",
+      "source_url": "https://21st.dev/@moumensoliman/components/heart-favorite-shadcnui",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "component",
+      "tags": [
+        "react",
+        "minimal",
+        "icon"
+      ],
+      "description": "An animated heart icon for like/favorite toggle actions using framer-motion for animation. Imports HeartFavorite from @/components/ui/heart-favorite-shadcnui with lucide-react as a dependency, supporting click-triggered fill transitions.",
+      "preview_image": "https://cdn.21st.dev/larsen66/heart-favorite-shadcnui/default/preview.1773290127499.png",
+      "id": "unknown__heart-favorite",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Switch Button",
+      "source_url": "https://21st.dev/@user_hardp/components/switch-button",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "toggle",
+      "tags": [
+        "react",
+        "minimal",
+        "toggle"
+      ],
+      "description": "A toggle switch component for dark/light mode switching using motion library for animation. Accepts value and onToggle props with iconOn and iconOff for custom icons (Sun and Moon from lucide-react), rendering with bg-background styling.",
+      "preview_image": "https://cdn.21st.dev/user_hardp/switch-button/default/preview.1787913777491.png",
+      "id": "unknown__switch-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Ghost Logout Button",
+      "source_url": "https://21st.dev/@sean0205/components/c-button-21",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "button",
+      "tags": [
+        "react",
+        "minimal",
+        "button"
+      ],
+      "description": "A ghost-styled button with a logout icon aligned to the right of its label, built for sign-out actions in menus and toolbars. Uses lucide-react for iconography and CButton21 component with inline-flex layout and border styling.",
+      "preview_image": "https://cdn.21st.dev/user_2wpPk1CyWKAxM46S7k5UoCQhmqF/c-button-21/default/preview.1790153287695.png",
+      "id": "unknown__ghost-logout-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Empty Outline",
+      "source_url": "https://21st.dev/@shadcn/components/empty/outline",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "component",
+      "tags": [
+        "react",
+        "minimal",
+        "item"
+      ],
+      "description": "An empty state component with a dashed border outline, using Empty, EmptyHeader, EmptyMedia, EmptyTitle, and EmptyDescription sub-components. Imports IconCloud from @tabler/icons-react and Button from @/components/ui/button for CTA.",
+      "preview_image": "https://cdn.21st.dev/larsen66/empty/outline/preview.1760028926875.png",
+      "id": "unknown__empty-outline",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Input With Inline Add Ons",
+      "source_url": "https://21st.dev/@originui/components/input/input-with-inline-start-and-end-add-on",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "minimal",
+        "input"
+      ],
+      "description": "An upgraded shadcn/ui Input with inline start and end addons, showing a Euro symbol prefix and EUR suffix text. Uses Label, Input components with relative flex layout and shadow-sm border, built with tailwindcss spacing.",
+      "preview_image": "https://cdn.21st.dev/user_originui/input/input-with-inline-start-and-end-add-on/preview.png?v=1",
+      "id": "unknown__input-with-inline-add-ons",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Cnippet Empty Default",
+      "source_url": "https://21st.dev/@cnippet-dev/components/cnippet-empty",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "component",
+      "tags": [
+        "react",
+        "minimal",
+        "item"
+      ],
+      "description": "A composable empty-state block with Empty, EmptyHeader, EmptyMedia (icon variant), EmptyTitle, EmptyDescription, and EmptyContent sub-components. Uses lucide-react RouteIcon and Button with custom btnBase className via cva variants.",
+      "preview_image": "https://cdn.21st.dev/larsen66/cnippet-empty/default/preview.1784047727980.png",
+      "id": "unknown__cnippet-empty-default",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Action Hub Input",
+      "source_url": "https://21st.dev/@ruixen.ui/components/action-hub-input",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "minimal",
+        "input"
+      ],
+      "description": "A multi-purpose input field combining inline action buttons, live validation, async status feedback, and persistent input history. Uses lucide-react for action icons, supports send/copy/clear actions with loading, success, and error states.",
+      "preview_image": "https://cdn.21st.dev/user_2y5Wd5l713ZIFYjX19aZXSyXd6b/action-hub-input/default/preview.1788375353636.png",
+      "id": "unknown__action-hub-input",
+      "source_domain": "21st.dev"
     }
   ]
 }
