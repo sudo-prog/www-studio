@@ -1,6 +1,6 @@
 {
-  "version": "1.0.113",
-  "source_count": 28872,
+  "version": "1.0.114",
+  "source_count": 28873,
   "components": [
     {
       "id": "cat-0",
@@ -500222,6 +500222,21 @@
       "description": "A loading animation with pulsing card elements using opacity keyframes. Uses CSS animations.",
       "preview_image": "",
       "id": "unknown__unlucky-crab-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Bitter Cobra Input",
+      "source_url": "https://uiverse.io/Rodrypaladin/bitter-cobra-27",
+      "registry_url": "https://uiverse.io",
+      "category": "input",
+      "tags": [
+        "css",
+        "glow",
+        "input"
+      ],
+      "description": "A custom input field with styled border and focus effects. Uses linear-gradient backgrounds, box-shadow effects, transforms.",
+      "preview_image": "",
+      "id": "unknown__bitter-cobra-input",
       "source_domain": "uiverse.io"
     }
   ]
