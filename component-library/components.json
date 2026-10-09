@@ -1,6 +1,6 @@
 {
-  "version": "1.0.112",
-  "source_count": 28824,
+  "version": "1.0.113",
+  "source_count": 28872,
   "components": [
     {
       "id": "cat-0",
@@ -499503,6 +499503,726 @@
       "preview_image": "https://cdn.21st.dev/user_2y5Wd5l713ZIFYjX19aZXSyXd6b/action-hub-input/default/preview.1788375353636.png",
       "id": "unknown__action-hub-input",
       "source_domain": "21st.dev"
+    },
+    {
+      "name": "Brown Bird Card",
+      "source_url": "https://uiverse.io/Admin12121/brown-bird-6",
+      "registry_url": "https://uiverse.io",
+      "category": "card",
+      "tags": [
+        "css",
+        "gradient",
+        "card"
+      ],
+      "description": "A styled card component with decorative elements. Uses CSS flexbox, linear-gradient backgrounds, box-shadow effects.",
+      "preview_image": "",
+      "id": "unknown__brown-bird-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Weak Wombat Input",
+      "source_url": "https://uiverse.io/escannord/weak-wombat-42",
+      "registry_url": "https://uiverse.io",
+      "category": "input",
+      "tags": [
+        "css",
+        "glow",
+        "input"
+      ],
+      "description": "A custom input field with styled border and focus effects. Uses box-shadow effects.",
+      "preview_image": "",
+      "id": "unknown__weak-wombat-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Orange Rattlesnake Loader",
+      "source_url": "https://uiverse.io/Z4drus/orange-rattlesnake-68",
+      "registry_url": "https://uiverse.io",
+      "category": "loader",
+      "tags": [
+        "css",
+        "gradient",
+        "loader"
+      ],
+      "description": "A loading animation with CSS keyframe cycles. Uses CSS flexbox, CSS animations, transforms.",
+      "preview_image": "",
+      "id": "unknown__orange-rattlesnake-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Bitter Octopus Input",
+      "source_url": "https://uiverse.io/JaydipPrajapati1910/bitter-octopus-23",
+      "registry_url": "https://uiverse.io",
+      "category": "input",
+      "tags": [
+        "css",
+        "neumorphism",
+        "input"
+      ],
+      "description": "A custom input field with styled border and focus effects. Uses box-shadow effects, transitions.",
+      "preview_image": "",
+      "id": "unknown__bitter-octopus-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Happy Dog Loader",
+      "source_url": "https://uiverse.io/csemszepp/happy-dog-58",
+      "registry_url": "https://uiverse.io",
+      "category": "loader",
+      "tags": [
+        "css",
+        "gradient",
+        "loader"
+      ],
+      "description": "A loading animation with CSS keyframe cycles. Uses linear-gradient backgrounds, CSS animations, transforms.",
+      "preview_image": "",
+      "id": "unknown__happy-dog-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Sour Panda Card",
+      "source_url": "https://uiverse.io/Satwinder04/sour-panda-50",
+      "registry_url": "https://uiverse.io",
+      "category": "card",
+      "tags": [
+        "css",
+        "minimal",
+        "card"
+      ],
+      "description": "A styled card component with decorative elements. Uses CSS flexbox, linear-gradient backgrounds, box-shadow effects.",
+      "preview_image": "",
+      "id": "unknown__sour-panda-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Sour Donkey Button",
+      "source_url": "https://uiverse.io/abrahamcalsin/sour-donkey-65",
+      "registry_url": "https://uiverse.io",
+      "category": "button",
+      "tags": [
+        "css",
+        "glow",
+        "button"
+      ],
+      "description": "A custom button component with hover and active states. Uses CSS flexbox, box-shadow effects, CSS animations.",
+      "preview_image": "",
+      "id": "unknown__sour-donkey-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "White Wombat Card",
+      "source_url": "https://uiverse.io/laminelawal/white-wombat-4",
+      "registry_url": "https://uiverse.io",
+      "category": "card",
+      "tags": [
+        "css",
+        "gradient",
+        "card"
+      ],
+      "description": "A styled card component with decorative elements. Uses CSS flexbox, CSS grid, linear-gradient backgrounds.",
+      "preview_image": "",
+      "id": "unknown__white-wombat-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Splendid Firefox Card",
+      "source_url": "https://uiverse.io/Yaya12085/splendid-firefox-37",
+      "registry_url": "https://uiverse.io",
+      "category": "card",
+      "tags": [
+        "css",
+        "glow",
+        "card"
+      ],
+      "description": "A styled card component with decorative elements. Uses CSS flexbox, box-shadow effects.",
+      "preview_image": "",
+      "id": "unknown__splendid-firefox-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Smart Eel Tooltip",
+      "source_url": "https://uiverse.io/UwUTastisch/smart-eel-70",
+      "registry_url": "https://uiverse.io",
+      "category": "tooltip",
+      "tags": [
+        "css",
+        "gradient",
+        "tooltip"
+      ],
+      "description": "A tooltip component with hover-triggered display and positioning. Uses CSS flexbox, linear-gradient backgrounds, box-shadow effects.",
+      "preview_image": "",
+      "id": "unknown__smart-eel-tooltip",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Silent Quail Card",
+      "source_url": "https://uiverse.io/Spacious74/silent-quail-90",
+      "registry_url": "https://uiverse.io",
+      "category": "card",
+      "tags": [
+        "css",
+        "gradient",
+        "card"
+      ],
+      "description": "A styled card component with decorative elements. Uses CSS flexbox, linear-gradient backgrounds, box-shadow effects.",
+      "preview_image": "",
+      "id": "unknown__silent-quail-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Empty Rattlesnake Loader",
+      "source_url": "https://uiverse.io/ZacharyCrespin2/empty-rattlesnake-82",
+      "registry_url": "https://uiverse.io",
+      "category": "loader",
+      "tags": [
+        "css",
+        "minimal",
+        "loader"
+      ],
+      "description": "A loading spinner with rotating rings and stroke animations. Uses CSS animations.",
+      "preview_image": "",
+      "id": "unknown__empty-rattlesnake-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Evil Chicken Button",
+      "source_url": "https://uiverse.io/vinodjangid07/evil-chicken-13",
+      "registry_url": "https://uiverse.io",
+      "category": "button",
+      "tags": [
+        "css",
+        "minimal",
+        "button"
+      ],
+      "description": "A custom button component with hover and active states. Uses CSS flexbox, transforms, transitions.",
+      "preview_image": "",
+      "id": "unknown__evil-chicken-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Selfish Bobcat Card",
+      "source_url": "https://uiverse.io/eslam-hany/selfish-bobcat-73",
+      "registry_url": "https://uiverse.io",
+      "category": "card",
+      "tags": [
+        "css",
+        "minimal",
+        "card"
+      ],
+      "description": "A styled card component with decorative elements. Uses CSS flexbox, box-shadow effects, transforms.",
+      "preview_image": "",
+      "id": "unknown__selfish-bobcat-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Popular Termite Button",
+      "source_url": "https://uiverse.io/adamgiebl/popular-termite-0",
+      "registry_url": "https://uiverse.io",
+      "category": "button",
+      "tags": [
+        "css",
+        "glow",
+        "button"
+      ],
+      "description": "A custom button component with hover and active states. Uses box-shadow effects, transforms, transitions.",
+      "preview_image": "",
+      "id": "unknown__popular-termite-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Warm Gecko Card",
+      "source_url": "https://uiverse.io/andrew-demchenk0/warm-gecko-73",
+      "registry_url": "https://uiverse.io",
+      "category": "card",
+      "tags": [
+        "css",
+        "minimal",
+        "card"
+      ],
+      "description": "A styled card component with decorative elements. Uses CSS flexbox, box-shadow effects, transforms.",
+      "preview_image": "",
+      "id": "unknown__warm-gecko-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Moody Starfish Card",
+      "source_url": "https://uiverse.io/alexcgomez/moody-starfish-34",
+      "registry_url": "https://uiverse.io",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "card"
+      ],
+      "description": "A styled card component with decorative elements. Uses transforms, transitions, Tailwind utility classes.",
+      "preview_image": "",
+      "id": "unknown__moody-starfish-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Soft Rabbit Form",
+      "source_url": "https://uiverse.io/zombie223/soft-rabbit-58",
+      "registry_url": "https://uiverse.io",
+      "category": "form",
+      "tags": [
+        "css",
+        "minimal",
+        "form"
+      ],
+      "description": "A form component with styled input fields and buttons. Uses CSS flexbox, CSS animations, transitions.",
+      "preview_image": "",
+      "id": "unknown__soft-rabbit-form",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Rotten Pig Button",
+      "source_url": "https://uiverse.io/xueyuantan/rotten-pig-19",
+      "registry_url": "https://uiverse.io",
+      "category": "button",
+      "tags": [
+        "css",
+        "minimal",
+        "button"
+      ],
+      "description": "A custom button component with hover and active states. Uses linear-gradient backgrounds, box-shadow effects, transitions.",
+      "preview_image": "",
+      "id": "unknown__rotten-pig-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Blue Snail Card",
+      "source_url": "https://uiverse.io/ayman-ashine/blue-snail-11",
+      "registry_url": "https://uiverse.io",
+      "category": "card",
+      "tags": [
+        "tailwind",
+        "flat",
+        "card"
+      ],
+      "description": "A styled card component with decorative elements. Uses Tailwind utility classes.",
+      "preview_image": "",
+      "id": "unknown__blue-snail-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Hot Husky Form",
+      "source_url": "https://uiverse.io/Rohankumar620/hot-husky-77",
+      "registry_url": "https://uiverse.io",
+      "category": "form",
+      "tags": [
+        "css",
+        "minimal",
+        "form"
+      ],
+      "description": "A form component with styled input fields and buttons. Uses CSS flexbox, box-shadow effects, transforms.",
+      "preview_image": "",
+      "id": "unknown__hot-husky-form",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Tough Fish Card",
+      "source_url": "https://uiverse.io/chase2k25/tough-fish-36",
+      "registry_url": "https://uiverse.io",
+      "category": "card",
+      "tags": [
+        "css",
+        "minimal",
+        "card"
+      ],
+      "description": "A styled card component with decorative elements. Uses CSS flexbox, CSS grid, linear-gradient backgrounds.",
+      "preview_image": "",
+      "id": "unknown__tough-fish-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Moody Rat Card",
+      "source_url": "https://uiverse.io/Smit-Prajapati/moody-rat-79",
+      "registry_url": "https://uiverse.io",
+      "category": "card",
+      "tags": [
+        "css",
+        "gradient",
+        "card"
+      ],
+      "description": "A styled card component with decorative elements. Uses CSS flexbox, CSS grid, linear-gradient backgrounds.",
+      "preview_image": "",
+      "id": "unknown__moody-rat-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Chatty Newt Loader",
+      "source_url": "https://uiverse.io/Deri-Kurniawan/chatty-newt-63",
+      "registry_url": "https://uiverse.io",
+      "category": "loader",
+      "tags": [
+        "css",
+        "gradient",
+        "loader"
+      ],
+      "description": "A loading animation with CSS keyframe cycles. Uses linear-gradient backgrounds, CSS animations, transforms.",
+      "preview_image": "",
+      "id": "unknown__chatty-newt-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Helpless Bulldog Input",
+      "source_url": "https://uiverse.io/laminelawal/helpless-bulldog-88",
+      "registry_url": "https://uiverse.io",
+      "category": "input",
+      "tags": [
+        "css",
+        "minimal",
+        "input"
+      ],
+      "description": "A custom input field with styled border and focus effects. Uses box-shadow effects, transitions.",
+      "preview_image": "",
+      "id": "unknown__helpless-bulldog-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Dull Dragonfly Button",
+      "source_url": "https://uiverse.io/ZacharyCrespin/dull-dragonfly-23",
+      "registry_url": "https://uiverse.io",
+      "category": "button",
+      "tags": [
+        "css",
+        "minimal",
+        "button"
+      ],
+      "description": "A custom button component with hover and active states. Uses box-shadow effects, transitions.",
+      "preview_image": "",
+      "id": "unknown__dull-dragonfly-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Black Skunk Input",
+      "source_url": "https://uiverse.io/chandrasek_6406/black-skunk-81",
+      "registry_url": "https://uiverse.io",
+      "category": "input",
+      "tags": [
+        "css",
+        "retro",
+        "input"
+      ],
+      "description": "A custom input field with styled border and focus effects. Uses CSS flexbox, CSS grid, linear-gradient backgrounds.",
+      "preview_image": "",
+      "id": "unknown__black-skunk-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Moody Mole Loader",
+      "source_url": "https://uiverse.io/vikramsinghnegi/moody-mole-33",
+      "registry_url": "https://uiverse.io",
+      "category": "loader",
+      "tags": [
+        "css",
+        "neumorphism",
+        "loader"
+      ],
+      "description": "A loading animation using custom cubic-bezier easing functions. Uses box-shadow effects, CSS animations, transforms.",
+      "preview_image": "",
+      "id": "unknown__moody-mole-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Soft Dragonfly Input",
+      "source_url": "https://uiverse.io/danilppzz/soft-dragonfly-28",
+      "registry_url": "https://uiverse.io",
+      "category": "input",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "input"
+      ],
+      "description": "A search input field with styled border and focus ring effects. Uses transitions, Tailwind utility classes.",
+      "preview_image": "",
+      "id": "unknown__soft-dragonfly-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Odd Squid Button",
+      "source_url": "https://uiverse.io/andrew-demchenk0/odd-squid-52",
+      "registry_url": "https://uiverse.io",
+      "category": "button",
+      "tags": [
+        "css",
+        "minimal",
+        "button"
+      ],
+      "description": "A custom button component with hover and active states. Uses CSS flexbox, CSS animations, transforms.",
+      "preview_image": "",
+      "id": "unknown__odd-squid-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Bad Hound Form",
+      "source_url": "https://uiverse.io/nathann09/bad-hound-78",
+      "registry_url": "https://uiverse.io",
+      "category": "form",
+      "tags": [
+        "css",
+        "glow",
+        "form"
+      ],
+      "description": "A form component with styled input fields and buttons. Uses box-shadow effects, transforms.",
+      "preview_image": "",
+      "id": "unknown__bad-hound-form",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Tender Bulldog Loader",
+      "source_url": "https://uiverse.io/Iliasman2/tender-bulldog-74",
+      "registry_url": "https://uiverse.io",
+      "category": "loader",
+      "tags": [
+        "css",
+        "retro",
+        "loader"
+      ],
+      "description": "A loading animation with CSS keyframe cycles. Uses CSS animations, clip-path shapes, transforms.",
+      "preview_image": "",
+      "id": "unknown__tender-bulldog-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Bad Dolphin Button",
+      "source_url": "https://uiverse.io/Awadhesh684827/bad-dolphin-14",
+      "registry_url": "https://uiverse.io",
+      "category": "button",
+      "tags": [
+        "css",
+        "minimal",
+        "button"
+      ],
+      "description": "A custom button component with hover and active states. Uses hover effects, transforms.",
+      "preview_image": "",
+      "id": "unknown__bad-dolphin-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Bright Quail Tooltip",
+      "source_url": "https://uiverse.io/escannord/bright-quail-85",
+      "registry_url": "https://uiverse.io",
+      "category": "tooltip",
+      "tags": [
+        "css",
+        "neumorphism",
+        "tooltip"
+      ],
+      "description": "A tooltip component with hover-triggered display and positioning. Uses CSS flexbox, box-shadow effects, transforms.",
+      "preview_image": "",
+      "id": "unknown__bright-quail-tooltip",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Afraid Octopus Card",
+      "source_url": "https://uiverse.io/ahmed150up/afraid-octopus-75",
+      "registry_url": "https://uiverse.io",
+      "category": "card",
+      "tags": [
+        "css",
+        "minimal",
+        "card"
+      ],
+      "description": "A styled card component with decorative elements. Uses CSS flexbox. The component is hand-crafted with pure CSS and modern layout techniques.",
+      "preview_image": "",
+      "id": "unknown__afraid-octopus-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Strange Wasp Loader",
+      "source_url": "https://uiverse.io/20essentials/strange-wasp-98",
+      "registry_url": "https://uiverse.io",
+      "category": "loader",
+      "tags": [
+        "css",
+        "minimal",
+        "loader"
+      ],
+      "description": "A loading spinner with rotating rings and stroke animations. Uses CSS animations, hover effects, transforms.",
+      "preview_image": "",
+      "id": "unknown__strange-wasp-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Good Pig Card",
+      "source_url": "https://uiverse.io/dexter-st/good-pig-77",
+      "registry_url": "https://uiverse.io",
+      "category": "card",
+      "tags": [
+        "css",
+        "gradient",
+        "card"
+      ],
+      "description": "A styled card component with decorative elements. Uses CSS flexbox, CSS grid, linear-gradient backgrounds.",
+      "preview_image": "",
+      "id": "unknown__good-pig-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Massive Mouse Loader",
+      "source_url": "https://uiverse.io/ajxcj/massive-mouse-92",
+      "registry_url": "https://uiverse.io",
+      "category": "loader",
+      "tags": [
+        "css",
+        "glow",
+        "loader"
+      ],
+      "description": "A loading animation with CSS keyframe cycles. Uses box-shadow effects, CSS animations, transforms.",
+      "preview_image": "",
+      "id": "unknown__massive-mouse-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Light Vampirebat Loader",
+      "source_url": "https://uiverse.io/vk-uiux/light-vampirebat-28",
+      "registry_url": "https://uiverse.io",
+      "category": "loader",
+      "tags": [
+        "css",
+        "minimal",
+        "loader"
+      ],
+      "description": "A loading animation using custom cubic-bezier easing functions. Uses CSS animations, transforms.",
+      "preview_image": "",
+      "id": "unknown__light-vampirebat-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Rude Tiger Card",
+      "source_url": "https://uiverse.io/SouravBandyopadhyay/rude-tiger-29",
+      "registry_url": "https://uiverse.io",
+      "category": "card",
+      "tags": [
+        "css",
+        "gradient",
+        "card"
+      ],
+      "description": "A styled card component with decorative elements. Uses CSS flexbox, linear-gradient backgrounds, transforms.",
+      "preview_image": "",
+      "id": "unknown__rude-tiger-card",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Hungry Treefrog Button",
+      "source_url": "https://uiverse.io/Shoh2008/hungry-treefrog-88",
+      "registry_url": "https://uiverse.io",
+      "category": "button",
+      "tags": [
+        "css",
+        "glow",
+        "button"
+      ],
+      "description": "A custom button component with hover and active states. Uses box-shadow effects, CSS animations, transforms.",
+      "preview_image": "",
+      "id": "unknown__hungry-treefrog-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Silly Panda Loader",
+      "source_url": "https://uiverse.io/bhaveshxrawat/silly-panda-37",
+      "registry_url": "https://uiverse.io",
+      "category": "loader",
+      "tags": [
+        "css",
+        "minimal",
+        "loader"
+      ],
+      "description": "A loading animation with CSS keyframe cycles. Uses CSS animations, transforms.",
+      "preview_image": "",
+      "id": "unknown__silly-panda-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Plastic Swan Form",
+      "source_url": "https://uiverse.io/chase2k25/plastic-swan-37",
+      "registry_url": "https://uiverse.io",
+      "category": "form",
+      "tags": [
+        "css",
+        "gradient",
+        "form"
+      ],
+      "description": "A form component with styled input fields and buttons. Uses CSS flexbox, linear-gradient backgrounds, box-shadow effects.",
+      "preview_image": "",
+      "id": "unknown__plastic-swan-form",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Stale Bobcat Input",
+      "source_url": "https://uiverse.io/roroland/stale-bobcat-33",
+      "registry_url": "https://uiverse.io",
+      "category": "input",
+      "tags": [
+        "css",
+        "fluid",
+        "input"
+      ],
+      "description": "A custom input field with styled border and focus effects. Uses CSS grid, box-shadow effects, transitions.",
+      "preview_image": "",
+      "id": "unknown__stale-bobcat-input",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Sour Baboon Button",
+      "source_url": "https://uiverse.io/alshahwan/sour-baboon-86",
+      "registry_url": "https://uiverse.io",
+      "category": "button",
+      "tags": [
+        "css",
+        "minimal",
+        "button"
+      ],
+      "description": "A custom button component with hover and active states. Uses transitions.",
+      "preview_image": "",
+      "id": "unknown__sour-baboon-button",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Sour Fireant Form",
+      "source_url": "https://uiverse.io/Shamaun-Nabi/sour-fireant-94",
+      "registry_url": "https://uiverse.io",
+      "category": "form",
+      "tags": [
+        "tailwind",
+        "minimal",
+        "form"
+      ],
+      "description": "A form component with styled input fields and buttons. Uses Tailwind utility classes.",
+      "preview_image": "",
+      "id": "unknown__sour-fireant-form",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "New Owl Loader",
+      "source_url": "https://uiverse.io/Tsiangana/new-owl-29",
+      "registry_url": "https://uiverse.io",
+      "category": "loader",
+      "tags": [
+        "css",
+        "minimal",
+        "loader"
+      ],
+      "description": "A loading animation with CSS keyframe cycles. Uses CSS animations. The component is hand-crafted with pure CSS and modern layout techniques.",
+      "preview_image": "",
+      "id": "unknown__new-owl-loader",
+      "source_domain": "uiverse.io"
+    },
+    {
+      "name": "Unlucky Crab Loader",
+      "source_url": "https://uiverse.io/Ashon-G/unlucky-crab-35",
+      "registry_url": "https://uiverse.io",
+      "category": "loader",
+      "tags": [
+        "css",
+        "minimal",
+        "loader"
+      ],
+      "description": "A loading animation with pulsing card elements using opacity keyframes. Uses CSS animations.",
+      "preview_image": "",
+      "id": "unknown__unlucky-crab-loader",
+      "source_domain": "uiverse.io"
     }
   ]
 }
