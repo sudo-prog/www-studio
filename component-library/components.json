@@ -1,6 +1,6 @@
 {
-  "version": "1.0.109",
-  "source_count": 28658,
+  "version": "1.0.110",
+  "source_count": 28706,
   "components": [
     {
       "id": "cat-0",
@@ -496868,6 +496868,870 @@
       "preview_image": "",
       "id": "unknown__finished",
       "source_domain": "animejs.com"
+    },
+    {
+      "name": "BPMN Icon Set",
+      "source_url": "https://icon-sets.iconify.design/bpmn/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "css",
+        "html",
+        "outline",
+        "icon-set",
+        "icon"
+      ],
+      "description": "112 open source SVG icons under the Open Font License, covering BPMN workflow symbols for business process diagramming.",
+      "preview_image": "",
+      "id": "unknown__bpmn-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Feather Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/feather/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "css",
+        "html",
+        "outline",
+        "icon-set",
+        "icon"
+      ],
+      "description": "286 open source feather-weight SVG icons on a 24px grid, MIT licensed for commercial use, covering UI, media and device actions.",
+      "preview_image": "",
+      "id": "unknown__feather-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Flat UI Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/flat-ui/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "css",
+        "html",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "100 flat-design SVG icons from Designmodo under MIT license, covering UI actions, devices and everyday symbols.",
+      "preview_image": "",
+      "id": "unknown__flat-ui-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Fluent Emoji Icon Set",
+      "source_url": "https://icon-sets.iconify.design/fluent-emoji/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "css",
+        "html",
+        "colorful",
+        "icon-set",
+        "icon"
+      ],
+      "description": "3126 colorful emoji SVG icons from Microsoft on a 32px grid, MIT licensed for open source and commercial use.",
+      "preview_image": "",
+      "id": "unknown__fluent-emoji-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Fontelico Icon Set",
+      "source_url": "https://icon-sets.iconify.design/fontelico/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "css",
+        "html",
+        "outline",
+        "icon-set",
+        "icon"
+      ],
+      "description": "34 open source web browser SVG icons including Chrome, Firefox and IE, licensed under CC BY SA for attribution-based use.",
+      "preview_image": "",
+      "id": "unknown__fontelico-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Icalicons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/il/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "css",
+        "html",
+        "outline",
+        "icon-set",
+        "icon"
+      ],
+      "description": "84 open source SVG icons from Icalia Labs under MIT license, covering general UI, social and brand symbols.",
+      "preview_image": "",
+      "id": "unknown__icalicons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Ligature Symbols Icon Set",
+      "source_url": "https://icon-sets.iconify.design/ls/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "css",
+        "html",
+        "outline",
+        "icon-set",
+        "icon"
+      ],
+      "description": "348 open source ligature-based SVG icons under Open Font License, covering symbols, brands and UI actions.",
+      "preview_image": "",
+      "id": "unknown__ligature-symbols-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Matita Icon Set",
+      "source_url": "https://icon-sets.iconify.design/matita/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "css",
+        "html",
+        "outline",
+        "icon-set",
+        "icon"
+      ],
+      "description": "173 open source SVG icons from matita.dev on a 24px grid, MIT licensed, covering general UI and editing actions.",
+      "preview_image": "",
+      "id": "unknown__matita-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Mono Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/mono-icons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "css",
+        "html",
+        "outline",
+        "icon-set",
+        "icon"
+      ],
+      "description": "180 open source SVG icons by Mono on a 24px grid, MIT licensed, featuring a consistent outline style for UI actions.",
+      "preview_image": "",
+      "id": "unknown__mono-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Pepicons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/pepicons/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "css",
+        "html",
+        "outline",
+        "icon-set",
+        "icon"
+      ],
+      "description": "428 open source SVG icons from CyCraft under CC BY 4.0, covering UI, media and business actions with print theme variants.",
+      "preview_image": "",
+      "id": "unknown__pepicons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "PrestaShop Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/ps/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "css",
+        "html",
+        "outline",
+        "icon-set",
+        "icon"
+      ],
+      "description": "479 open source SVG icons from PrestaShop under CC BY-NC 4.0, covering e-commerce, UI and general brand symbols.",
+      "preview_image": "",
+      "id": "unknown__prestashop-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "SmartIcons Glyph Icon Set",
+      "source_url": "https://icon-sets.iconify.design/si-glyph/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "css",
+        "html",
+        "outline",
+        "icon-set",
+        "icon"
+      ],
+      "description": "799 open source SVG glyph icons from SmartIcons under CC BY SA 4.0, covering general UI, media and editing actions.",
+      "preview_image": "",
+      "id": "unknown__smarticons-glyph-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "TopCoat Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/topcoat/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "css",
+        "html",
+        "outline",
+        "icon-set",
+        "icon"
+      ],
+      "description": "89 open source SVG icons from TopCoat under Apache 2.0 license, covering UI actions, devices and social symbols.",
+      "preview_image": "",
+      "id": "unknown__topcoat-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Vesper Icons Icon Set",
+      "source_url": "https://icon-sets.iconify.design/vs/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "css",
+        "html",
+        "outline",
+        "icon-set",
+        "icon"
+      ],
+      "description": "159 open source SVG icons from TableCheck under Open Font License, covering UI, file and editing actions.",
+      "preview_image": "",
+      "id": "unknown__vesper-icons-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Web Symbols Liga Icon Set",
+      "source_url": "https://icon-sets.iconify.design/websymbol/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "css",
+        "html",
+        "outline",
+        "icon-set",
+        "icon"
+      ],
+      "description": "85 open source ligature-based SVG icons under Open Font License by Just Be Nice studio, covering UI and social icons.",
+      "preview_image": "",
+      "id": "unknown__web-symbols-liga-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "WebHostingHub Glyphs Icon Set",
+      "source_url": "https://icon-sets.iconify.design/whh/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "css",
+        "html",
+        "outline",
+        "icon-set",
+        "icon"
+      ],
+      "description": "2125 open source SVG glyph icons by WebHostingHub under Open Font License, covering general UI, brands and editing.",
+      "preview_image": "",
+      "id": "unknown__webhostinghub-glyphs-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Material Design Iconic Font Icon Set",
+      "source_url": "https://icon-sets.iconify.design/zmdi/",
+      "registry_url": "https://icon-sets.iconify.design/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "css",
+        "html",
+        "filled",
+        "icon-set",
+        "icon"
+      ],
+      "description": "777 open source Material Design SVG icons from MDI Community under Open Font License, covering UI, media and brands.",
+      "preview_image": "",
+      "id": "unknown__material-design-iconic-font-icon-set",
+      "source_domain": "icon-sets.iconify.design"
+    },
+    {
+      "name": "Shine7 General Icons",
+      "source_url": "https://www.iconshock.com/bright-icons/general-icons/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "html",
+        "glass",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Bright and glossy SVG general interface icons from Shine7, with 9 PNG sizes from 16px to 512px and editable AI vector sources.",
+      "preview_image": "",
+      "id": "unknown__shine7-general-icons",
+      "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "Sunny day Networking Icons",
+      "source_url": "https://www.iconshock.com/cartoon-icons/networking-icons/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "html",
+        "colorful",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Cartoon-style networking SVG icons covering hardware, servers and VPN concepts, available in 8 PNG sizes and editable AI vector format.",
+      "preview_image": "",
+      "id": "unknown__sunny-day-networking-icons",
+      "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "Sigma Networking Icons",
+      "source_url": "https://www.iconshock.com/clear-icons/networking-icons/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "html",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Clear and fun SVG networking icons for connectivity, security and VPN concepts, provided in 10 PNG sizes and transparent vector format.",
+      "preview_image": "",
+      "id": "unknown__sigma-networking-icons",
+      "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "Impressions Database Icons",
+      "source_url": "https://www.iconshock.com/colorful-icons/database-icons/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "html",
+        "colorful",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Detailed and colorful SVG database icons covering tables, queries and software brands, with 9 PNG sizes from 16px to 400px.",
+      "preview_image": "",
+      "id": "unknown__impressions-database-icons",
+      "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "Clean Database Icons",
+      "source_url": "https://www.iconshock.com/computer-icons/database-icons/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "html",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Clean SVG database icons for import, merge and table management functions, with 8 PNG sizes from 16px to 256px and vector AI files.",
+      "preview_image": "",
+      "id": "unknown__clean-database-icons",
+      "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "Credit Cards Icons",
+      "source_url": "https://www.iconshock.com/credit-card-icons/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "html",
+        "outline",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Ios line SVG credit card payment icons including Visa, Mastercard and regional payment methods, with PNG sizes from 32px to 512px.",
+      "preview_image": "",
+      "id": "unknown__credit-cards-icons",
+      "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "Luminight General Icons",
+      "source_url": "https://www.iconshock.com/dark-icons/general-icons/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "html",
+        "glow",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Dark and shiny SVG general interface icons for navigation, files and utilities, with 9 PNG sizes from 16px to 400px and vector AI files.",
+      "preview_image": "",
+      "id": "unknown__luminight-general-icons",
+      "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "Real vista Multimedia Icons",
+      "source_url": "https://www.iconshock.com/desktop-icons/multimedia-icons/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "html",
+        "isometric",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Perspective SVG multimedia icons covering video formats, playback and audio editing tools, with 9 PNG sizes from 16px to 400px.",
+      "preview_image": "",
+      "id": "unknown__real-vista-multimedia-icons",
+      "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "Diamond Web design Icons",
+      "source_url": "https://www.iconshock.com/diamond-icons/web-design-icons/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "html",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Flat SVG web design icons for banners, SEO, 404 pages and broadband concepts, with 9 PNG sizes from 16px to 400px and transparent SVG.",
+      "preview_image": "",
+      "id": "unknown__diamond-web-design-icons",
+      "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "Real vista Flags Icons",
+      "source_url": "https://www.iconshock.com/flags-icons/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "html",
+        "isometric",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Windows Vista-style SVG flag icons for every country, with 9 PNG sizes from 16px to 400px and vector source files in AI format.",
+      "preview_image": "",
+      "id": "unknown__real-vista-flags-icons",
+      "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "Flat Transportation Icons",
+      "source_url": "https://www.iconshock.com/flat-icons/transportation-icons/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "html",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Color flat SVG transportation icons for vehicles, traffic and logistics, with 8 PNG sizes from 24px to 512px and SVG vector files.",
+      "preview_image": "",
+      "id": "unknown__flat-transportation-icons",
+      "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "Beta Networking Icons",
+      "source_url": "https://www.iconshock.com/geometric-icons/networking-icons/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "html",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Simple geometric SVG networking icons for hardware, servers and VPN concepts, with 10 PNG sizes and AI vector source files.",
+      "preview_image": "",
+      "id": "unknown__beta-networking-icons",
+      "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "Lumina General Icons",
+      "source_url": "https://www.iconshock.com/glass-icons/general-icons/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "html",
+        "glass",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Shiny and glossy SVG general interface icons for navigation, files and settings, with 9 PNG sizes from 16px to 400px and SVG vector files.",
+      "preview_image": "",
+      "id": "unknown__lumina-general-icons",
+      "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "Hardware icons glossy Icons",
+      "source_url": "https://www.iconshock.com/glossy-icons/hardware-icons/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "html",
+        "glass",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Glossy SVG hardware icons for computer gadgets, networking and peripherals, with 8 PNG sizes from 16px to 512px and SVG vector files.",
+      "preview_image": "",
+      "id": "unknown__hardware-icons-glossy-icons",
+      "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "Crystal General Icons",
+      "source_url": "https://www.iconshock.com/gray-icons/general-icons/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "html",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Glossy gray SVG general interface icons for navigation, files and utilities, with 9 PNG sizes from 16px to 400px and vector AI files.",
+      "preview_image": "",
+      "id": "unknown__crystal-general-icons",
+      "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "Halloween Icons",
+      "source_url": "https://www.iconshock.com/halloween-icons/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "html",
+        "colorful",
+        "icon-set",
+        "icon"
+      ],
+      "description": "A set of Halloween icons in two styles: flat and kawaii, containing 150 icons for monsters, candy and autumn pieces with SVG and PNG formats.",
+      "preview_image": "https://www.iconshock.com/img/CUSTOM_SET/halloween-icons/content/flat_512.png",
+      "id": "unknown__halloween-icons",
+      "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "High detail social Icons",
+      "source_url": "https://www.iconshock.com/high-detail-social-icons/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "html",
+        "colorful",
+        "icon-set",
+        "icon"
+      ],
+      "description": "High detail 3D SVG social media icons for major platforms including Facebook, Twitter and Instagram, in PNG and SVG vector formats.",
+      "preview_image": "https://www.iconshock.com/img/CUSTOM_SET/high-detail-social-icons/content/High_Detail_Social_icons_2_11a.jpg",
+      "id": "unknown__high-detail-social-icons",
+      "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "Font Icons",
+      "source_url": "https://www.iconshock.com/icon-font/graphics/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "icon-font",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Web development font icons covering general, business, database and networking categories, with 6 different styles and Bootstrap integration.",
+      "preview_image": "",
+      "id": "unknown__font-icons",
+      "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "Iphone Communications Icons",
+      "source_url": "https://www.iconshock.com/iphone-icons/communication-icons/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "html",
+        "outline",
+        "icon-set",
+        "icon"
+      ],
+      "description": "iPhone-style communication icons for calling, messaging, chat and contact handling, with vector AI, SVG, PSD and PNG at 7 sizes.",
+      "preview_image": "",
+      "id": "unknown__iphone-communications-icons",
+      "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "Ios line Multimedia Icons",
+      "source_url": "https://www.iconshock.com/line-icons/multimedia-icons/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "html",
+        "outline",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Outline SVG multimedia icons for games, cameras, media formats and playback controls, with 6 PNG sizes from 32px to 512px and editable vectors.",
+      "preview_image": "",
+      "id": "unknown__ios-line-multimedia-icons",
+      "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "X-mac General Icons",
+      "source_url": "https://www.iconshock.com/mac-icons/general-icons/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "html",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Mac-style general interface SVG icons for navigation, files and utilities, with 9 PNG sizes from 16px to 512px and source PSD vector files.",
+      "preview_image": "",
+      "id": "unknown__x-mac-general-icons",
+      "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "Material Video production Icons",
+      "source_url": "https://www.iconshock.com/material-design-icons/video-icons/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "html",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Material Design SVG video production icons covering formats, editing tools and recording technologies, with 8 PNG sizes from 24px to 512px.",
+      "preview_image": "",
+      "id": "unknown__material-video-production-icons",
+      "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "Sophistique Networking Icons",
+      "source_url": "https://www.iconshock.com/metal-icons/networking-icons/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "html",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Sophisticated networking SVG icons for connectivity, security and VPN concepts, with PNG sizes from 16px to 400px and SVG and PNG vector formats.",
+      "preview_image": "",
+      "id": "unknown__sophistique-networking-icons",
+      "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "Mobile Icons",
+      "source_url": "https://www.iconshock.com/mobile-icons/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "html",
+        "isometric",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Mobile icons available in SVG and PNG at 72px, 128px, 256px, 2000px and 4000px sizes, covering communications and social platforms.",
+      "preview_image": "",
+      "id": "unknown__mobile-icons",
+      "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "Modern General Icons",
+      "source_url": "https://www.iconshock.com/modern-icons/general-icons/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "html",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Modern geometric SVG general interface icons for navigation, files and utilities, with 10 PNG sizes from 16px to 512px and vector AI files.",
+      "preview_image": "",
+      "id": "unknown__modern-general-icons",
+      "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "Perspective General Icons",
+      "source_url": "https://www.iconshock.com/perspective-icons/general-icons/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "html",
+        "isometric",
+        "icon-set",
+        "icon"
+      ],
+      "description": "3D perspective SVG general interface icons for navigation, files and utilities, with 9 PNG sizes from 16px to 512px.",
+      "preview_image": "",
+      "id": "unknown__perspective-general-icons",
+      "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "Prisma General Icons",
+      "source_url": "https://www.iconshock.com/plastic-icons/general-icons/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "html",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Plastic-style SVG general interface icons for navigation, files and utilities, with 9 PNG sizes from 16px to 512px and source PSD files.",
+      "preview_image": "",
+      "id": "unknown__prisma-general-icons",
+      "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "Sophistique night Networking Icons",
+      "source_url": "https://www.iconshock.com/presentation-icons/networking-icons/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "html",
+        "glow",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Elegant dark networking SVG icons for connectivity, security and VPN concepts, with SVG and PNG vector formats and 9 PNG sizes from 16px.",
+      "preview_image": "",
+      "id": "unknown__sophistique-night-networking-icons",
+      "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "Seven General Icons",
+      "source_url": "https://www.iconshock.com/realistic-icons/general-icons/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "html",
+        "isometric",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Realistic SVG general interface icons for navigation, files and utilities, with 10 PNG sizes from 16px to 512px and vector AI source files.",
+      "preview_image": "",
+      "id": "unknown__seven-general-icons",
+      "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "Vectorama General Icons",
+      "source_url": "https://www.iconshock.com/simple-icons/general-icons/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "html",
+        "colorful",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Colorful SVG general interface icons for navigation, files and utilities, with 9 PNG sizes from 16px to 400px and transparent SVG vector files.",
+      "preview_image": "",
+      "id": "unknown__vectorama-general-icons",
+      "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "Social Icons",
+      "source_url": "https://www.iconshock.com/social-icons/",
+      "registry_url": "https://www.iconshock.com/",
+      "category": "icon-set",
+      "tags": [
+        "svg",
+        "webfont",
+        "html",
+        "flat",
+        "icon-set",
+        "icon"
+      ],
+      "description": "Free and premium SVG and PNG social media icons for popular platforms in Flat and Material styles, available for direct download.",
+      "preview_image": "",
+      "id": "unknown__social-icons",
+      "source_domain": "www.iconshock.com"
     }
   ]
 }
