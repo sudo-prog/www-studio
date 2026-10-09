@@ -1,6 +1,6 @@
 {
-  "version": "1.0.117",
-  "source_count": 29000,
+  "version": "1.0.118",
+  "source_count": 29046,
   "components": [
     {
       "id": "cat-0",
@@ -502273,6 +502273,738 @@
       "preview_image": "",
       "id": "unknown__shrink-the-admin-bar-/-expand-on-hover",
       "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Breadcramb",
+      "source_url": "https://21st.dev/@sean0205/components/breadcramb/icon",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "icon",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "breadcrumbs"
+      ],
+      "description": "Displays a hierarchy of links to the current page or resource in an application, with a Home icon and chevron separators between items.",
+      "preview_image": "https://cdn.21st.dev/sean0205/breadcramb/icon/preview.1751443356891.png",
+      "id": "unknown__breadcramb",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Button Breadcrumb",
+      "source_url": "https://21st.dev/@cnippet-dev/components/v-breadcrumb-9",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "minimal",
+        "breadcrumbs"
+      ],
+      "description": "A breadcrumb navigation where each item is rendered as a button, with icons and the current page highlighted as a secondary button variant.",
+      "preview_image": "https://cdn.21st.dev/user_36Tbt0v8JdD4jEycmBFhR8tojnR/v-breadcrumb-9/default/preview.1788199497399.png",
+      "id": "unknown__button-breadcrumb",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Sign In Form",
+      "source_url": "https://21st.dev/@ruixen.ui/components/sign-in-form",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "form",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "auth"
+      ],
+      "description": "A sign-in form with email and password inputs, remember-me checkbox, forgot-password link, and social login buttons for Google, Apple, and GitHub.",
+      "preview_image": "https://cdn.21st.dev/ruixen.ui/sign-in-form/default/preview.1757273241613.png",
+      "id": "unknown__sign-in-form",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Empty/Background",
+      "source_url": "https://21st.dev/@shadcn/components/empty/background",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "gradient",
+        "empty-state",
+        "background"
+      ],
+      "description": "An empty state with a gradient background showing a 'No Notifications' message and a Refresh button for retrying or clearing.",
+      "preview_image": "https://cdn.21st.dev/larsen66/empty/background/preview.1760028926875.png",
+      "id": "unknown__empty/background",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Table",
+      "source_url": "https://21st.dev/@originui/components/table/comparison-table",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "icon",
+      "tags": [
+        "html",
+        "minimal",
+        "table"
+      ],
+      "description": "A responsive comparison table that displays browser support data across desktop and mobile platforms using checkmarks and version numbers.",
+      "preview_image": "https://cdn.21st.dev/user_originui/table/default/preview.1738000705513.png",
+      "id": "unknown__table",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Textarea with button",
+      "source_url": "https://21st.dev/@shadcnspace/components/textarea-with-button",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "form",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "form"
+      ],
+      "description": "A textarea paired with an adjacent submit button, combining freeform text entry with an inline action trigger.",
+      "preview_image": "https://cdn.21st.dev/larsen66/textarea-with-button/default/preview.1772711125378.png",
+      "id": "unknown__textarea-with-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Number Field",
+      "source_url": "https://21st.dev/@olivier_1b6cd5bc/components/number-field-1",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "input"
+      ],
+      "description": "A numeric input field with increment and decrement buttons and supporting min, max, and step props for controlling value ranges.",
+      "preview_image": "https://cdn.21st.dev/larsen66/number-field-1/default/preview.1753378876903.png",
+      "id": "unknown__number-field",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "DateField",
+      "source_url": "https://21st.dev/@hero_ui/components/heroui-date-field/required-field",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "date-picker"
+      ],
+      "description": "A date input field with labels, descriptions, and validation built on React Aria DateField, supporting required-field patterns and error messaging.",
+      "preview_image": "https://cdn.21st.dev/reapollo/heroui-date-field/required-field/preview.1780281808380.png",
+      "id": "unknown__datefield",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Keyboard Input",
+      "source_url": "https://21st.dev/@shugar/components/keyboard-input",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "icon",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "input"
+      ],
+      "description": "A keyboard input display component that shows key symbols and optionally listens for keyboard events to render pressed keys.",
+      "preview_image": "https://cdn.21st.dev/shugar/keyboard-input/default/preview.1751388322006.png",
+      "id": "unknown__keyboard-input",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Alert Badge",
+      "source_url": "https://21st.dev/@serafimcloud/components/alert-badge",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "icon",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "badge"
+      ],
+      "description": "A badge component inspired by Tremor, designed for displaying alert or status information with concise text and optional icon support.",
+      "preview_image": "https://cdn.21st.dev/user_2nElBLvklOKlAURm6W1PTu6yYFh/alert-badge/default/preview.png?v=1",
+      "id": "unknown__alert-badge",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "The Item one",
+      "source_url": "https://21st.dev/@felipemenezes098/components/the-item-one/items-popover",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "minimal",
+        "popover"
+      ],
+      "description": "A popover-based item component that triggers a floating panel with additional content or actions when clicked.",
+      "preview_image": "https://cdn.21st.dev/larsen66/the-item-one/items-popover/preview.1780010061771.png",
+      "id": "unknown__the-item-one",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Cookies",
+      "source_url": "https://21st.dev/@prebuiltui/components/cookies/privacy-choices-panel",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "flat",
+        "auth"
+      ],
+      "description": "A cookie consent popup panel that lets users manage privacy choices and accept or reject cookie categories before interacting with the site.",
+      "preview_image": "https://cdn.21st.dev/larsen66/cookies/privacy-choices-panel/preview.1757564166656.png",
+      "id": "unknown__cookies",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Message Input block",
+      "source_url": "https://21st.dev/@preetsuthar17/components/message-input-block",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "input"
+      ],
+      "description": "A messaging input block with emoji, GIF, and attachment support, providing a chat-style text entry area with media attachments.",
+      "preview_image": "https://cdn.21st.dev/preetsuthar17/message-input-block/default/preview.1760769276002.png",
+      "id": "unknown__message-input-block",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Button 1/Primary",
+      "source_url": "https://21st.dev/@jolbol1/components/button-1/primary",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "button"
+      ],
+      "description": "A button component with primary styling, rendering a clickable element with variant and size props for controlling appearance.",
+      "preview_image": "https://cdn.21st.dev/larsen66/button-1/primary/preview.1754505356615.png",
+      "id": "unknown__button-1/primary",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Icon Breadcrumb",
+      "source_url": "https://21st.dev/@uiable/components/uiable-breadcrumb-icon",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "icon",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "breadcrumbs"
+      ],
+      "description": "A breadcrumb navigation where each item is rendered with an icon, showing the current page path with visual indicators.",
+      "preview_image": "https://cdn.21st.dev/user_registry_uiable_1783486969177/uiable-breadcrumb-icon/default/preview.1788370326760.png",
+      "id": "unknown__icon-breadcrumb",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Log Out Icon",
+      "source_url": "https://21st.dev/@skyleen77/components/icons-log-out",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "icon",
+      "tags": [
+        "react",
+        "motion",
+        "minimal",
+        "icon"
+      ],
+      "description": "An animated log out icon that slides its arrow on hover, tap, or view, suitable for auth and sign-out actions in menus and toolbars.",
+      "preview_image": "https://cdn.21st.dev/skyleen77/icons-log-out/default/preview.1783583306072.png",
+      "id": "unknown__log-out-icon",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Folder",
+      "source_url": "https://21st.dev/@ravikatiyar162/components/folder",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "icon",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "hover-effect"
+      ],
+      "description": "An interactive folder component with a hover-triggered open/close animation, suitable for dashboards and file browser UIs.",
+      "preview_image": "https://cdn.21st.dev/ravikatiyar162/folder/default/preview.1755846786428.png",
+      "id": "unknown__folder",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Basic Tags Input",
+      "source_url": "https://21st.dev/@anubra266/components/basic-tags-input/tags-with-combobox",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "input"
+      ],
+      "description": "A tags input with a combobox that lets users select from predefined options like React, Vue, and Svelte, with clear-all and removable tag support.",
+      "preview_image": "https://cdn.21st.dev/user_anubra266/basic-tags-input/tags-with-combobox/preview.1787179960848.webp",
+      "id": "unknown__basic-tags-input",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Buttons",
+      "source_url": "https://21st.dev/@clevision/components/buttons/button-theme-switcher",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "button"
+      ],
+      "description": "A theme switcher button that toggles between light and dark modes with an animated transition between theme icons.",
+      "preview_image": "https://cdn.21st.dev/user_ShadcnStudio/buttons/button-theme-switcher/preview.1787911286219.png",
+      "id": "unknown__buttons",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Book A Demo 1",
+      "source_url": "https://21st.dev/@designali-in/components/book-a-demo-1",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "form",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "form"
+      ],
+      "description": "A demo booking form with name, project budget dropdown, design field multi-select, and project description, for collecting client information.",
+      "preview_image": "https://cdn.21st.dev/designali-in/book-a-demo-1/default/preview.1788796097633-7425e65c-cc19-443e-84e9-5bc7bc681656.png",
+      "id": "unknown__book-a-demo-1",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Grid Feature Cards",
+      "source_url": "https://21st.dev/@efferd/components/grid-feature-cards",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "icon",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "grid"
+      ],
+      "description": "A grid layout showcasing feature cards with icons, titles, and descriptions, designed for marketing and product showcase sections.",
+      "preview_image": "https://cdn.21st.dev/user_2tWTE0rCrloVAVylFPYfp10xU92/grid-feature-cards/default/preview.1789739376715.png",
+      "id": "unknown__grid-feature-cards",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Mobius Loop Icon",
+      "source_url": "https://21st.dev/@ncdai/components/mobius-loop-icon",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "icon",
+      "tags": [
+        "svg",
+        "motion",
+        "gradient",
+        "animation"
+      ],
+      "description": "An animated SVG icon that continuously morphs between two circles and an infinity symbol, with smooth looping motion.",
+      "preview_image": "https://cdn.21st.dev/ncdai/mobius-loop-icon/default/preview.1784758509842-024297c4-558b-4846-a3fe-93587223f2f8.png",
+      "id": "unknown__mobius-loop-icon",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Feature Modern",
+      "source_url": "https://21st.dev/@brijr/components/feature-modern/feature-two",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "icon",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "hero"
+      ],
+      "description": "A modern feature section with two-column cards showing title, description, and call-to-action, designed for landing pages and product showcases.",
+      "preview_image": "https://cdn.21st.dev/larsen66/feature-modern/feature-two/preview.1757993312673.png",
+      "id": "unknown__feature-modern",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Keyboard Shortcuts",
+      "source_url": "https://21st.dev/@tom_ui/components/kbd/key-symbols",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "icon",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "icon"
+      ],
+      "description": "A keyboard shortcut display that renders key symbols and optionally listens for keyboard events to show pressed keys in real-time.",
+      "preview_image": "https://cdn.21st.dev/tom_ui/kbd/key-symbols/preview.1776941177360.png",
+      "id": "unknown__keyboard-shortcuts",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Favicon Badge",
+      "source_url": "https://21st.dev/@edwinvakayil/components/favicon-badge",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "icon",
+      "tags": [
+        "react",
+        "html",
+        "flat",
+        "icon"
+      ],
+      "description": "A circular favicon badge with optional label text, spring entrance animation, and automatic favicon resolution from a domain or URL.",
+      "preview_image": "https://cdn.21st.dev/user_edwinvakayil/favicon-badge/default/preview.1787933922842.png",
+      "id": "unknown__favicon-badge",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Pagination with Icon and Label",
+      "source_url": "https://21st.dev/@shadcnui-blocks/components/pagination-icon-label",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "icon",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "pagination"
+      ],
+      "description": "A pagination component with labeled Previous and Next controls using chevron icons, providing intuitive navigation between pages.",
+      "preview_image": "https://cdn.21st.dev/shadcnui-blocks/pagination-icon-label/default/preview.1787165433651-320d269a-7be5-4b76-8684-e41262f11918.png",
+      "id": "unknown__pagination-with-icon-and-label",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Image Preview Dropzone",
+      "source_url": "https://21st.dev/@uilayout.contact/components/imgpreview-dropzone",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "file-upload"
+      ],
+      "description": "A drag-and-drop file uploader that shows thumbnail previews of selected images with per-file remove controls, supporting SVG, PNG, JPG, and GIF formats.",
+      "preview_image": "https://cdn.21st.dev/uilayout.contact/imgpreview-dropzone/default/preview.1784390692917-4ae54344-b41e-474e-a7f5-3c8a1fe4bad7.png",
+      "id": "unknown__image-preview-dropzone",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Signup 1",
+      "source_url": "https://21st.dev/@shadcnblockscom/components/signup-1",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "signup"
+      ],
+      "description": "A signup page with email input and Google authentication buttons, featuring a centered card layout with social login options.",
+      "preview_image": "https://cdn.21st.dev/shadcnblockscom/signup-1/default/preview.1747813152257.png",
+      "id": "unknown__signup-1",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "ReUI Input OTP",
+      "source_url": "https://21st.dev/@sean0205/components/reui-input-otp/variant-2",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "input"
+      ],
+      "description": "An OTP input component with the first 6 official ReUI examples, supporting digit-only patterns, controlled values, and form integration.",
+      "preview_image": "https://cdn.21st.dev/larsen66/reui-input-otp/variant-2/preview.1785341210607-669c022b-7c99-4790-8a52-5528b2de3401.png",
+      "id": "unknown__reui-input-otp",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Icon Link Card",
+      "source_url": "https://21st.dev/@cnippet-dev/components/v-card-14",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "icon",
+      "tags": [
+        "react",
+        "minimal",
+        "card"
+      ],
+      "description": "A compact card with an icon badge, title, description, and call-to-action link, useful for feature highlights and navigation shortcuts.",
+      "preview_image": "https://cdn.21st.dev/cnippet.dev/v-card-14/default/preview.1787243179519-2718acf7-06b0-4da0-9095-4a2bc1272063.png",
+      "id": "unknown__icon-link-card",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Icon Label Subtext Button",
+      "source_url": "https://21st.dev/@ruixen.ui/components/icon-label-subtext-button",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "button"
+      ],
+      "description": "A button component that combines an icon, primary label, and secondary subtext, supporting variants, sizes, loading states, and success indicators.",
+      "preview_image": "https://cdn.21st.dev/ruixen.ui/icon-label-subtext-button/default/preview.1758554993292.png",
+      "id": "unknown__icon-label-subtext-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Kbd",
+      "source_url": "https://21st.dev/@shadcn/components/kbd",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "icon"
+      ],
+      "description": "A keyboard key display component that renders kbd elements with platform-specific symbols for showing shortcuts like Cmd, Ctrl, and Alt.",
+      "preview_image": "https://cdn.21st.dev/user_shadcn/kbd/default/preview.1788373785540.png",
+      "id": "unknown__kbd",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Input/Input With End Icon",
+      "source_url": "https://21st.dev/@originui/components/input/input-with-end-icon",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "icon",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "input"
+      ],
+      "description": "A text input with a trailing icon positioned at the end, featuring proper spacing and label support for inline icon integration.",
+      "preview_image": "https://cdn.21st.dev/user_originui/input/input-with-end-icon/preview.png?v=1",
+      "id": "unknown__input/input-with-end-icon",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Figma File Button",
+      "source_url": "https://21st.dev/@shadcnspace/components/figma-file-button",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "button"
+      ],
+      "description": "A button component for opening Figma files, rendering a clickable element with preview and variant options for seamless design tool integration.",
+      "preview_image": "https://cdn.21st.dev/larsen66/figma-file-button/default/preview.1773078067204.png",
+      "id": "unknown__figma-file-button",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Input 1/Field",
+      "source_url": "https://21st.dev/@olivier_1b6cd5bc/components/input-1/field",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "input"
+      ],
+      "description": "A field input component built on Base UI's Field primitive, supporting labels, helper text, error messages, and validation states.",
+      "preview_image": "https://cdn.21st.dev/larsen66/input-1/field/preview.1753379535421.png",
+      "id": "unknown__input-1/field",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "HeroUI Input OTP",
+      "source_url": "https://21st.dev/@hero_ui/components/heroui-input-otp/form-example",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "input"
+      ],
+      "description": "A HeroUI v3 InputOTP segmented one-time-password input supporting digit counts, patterns, disabled state, controlled values, validation, on-complete callbacks, and form integration.",
+      "preview_image": "https://cdn.21st.dev/larsen66/heroui-input-otp/form-example/preview.1782394098112.png",
+      "id": "unknown__heroui-input-otp",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Input/Error",
+      "source_url": "https://21st.dev/@shugar/components/input/error",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "input"
+      ],
+      "description": "A text input variant that displays an error message below the field on validation failure, providing inline feedback with red border and helper text.",
+      "preview_image": "https://cdn.21st.dev/shugar/input/error/preview.1752232795226.png",
+      "id": "unknown__input/error",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Payment Card Form",
+      "source_url": "https://21st.dev/@felipemenezes098/components/payment-1",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "form",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "form"
+      ],
+      "description": "A payment card form with name, card number, expiry, and CVC inputs plus a secure-checkout note, for collecting credit card information.",
+      "preview_image": "https://cdn.21st.dev/felipemenezes098/payment-1/default/preview.1787165320090-0f746c35-72b9-430e-9086-c14ac2316aa1.png",
+      "id": "unknown__payment-card-form",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Autocomplete",
+      "source_url": "https://21st.dev/@prebuiltui/components/autocomplete",
+      "registry_url": "https://21st.dev/community/components/s/form",
+      "category": "form",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "form"
+      ],
+      "description": "A text input with a dropdown list of suggested values, supporting search tags with an async search example that fetches movie results by name or year.",
+      "preview_image": "https://cdn.21st.dev/user_prebuiltui/autocomplete/default/preview.1786574268453.png",
+      "id": "unknown__autocomplete",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Hero 1",
+      "source_url": "https://21st.dev/@preetsuthar17/components/hero-1",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "gradient",
+        "hero"
+      ],
+      "description": "A hero section for AI chat websites with a large animated headline, call-to-action buttons, and gradient background for product showcases.",
+      "preview_image": "https://cdn.21st.dev/preetsuthar17/hero-1/default/preview.1788803584188-87a0c75a-4b20-4c32-b813-0a950df17efb.png",
+      "id": "unknown__hero-1",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Button 1/Destructive",
+      "source_url": "https://21st.dev/@jolbol1/components/button-1/destructive",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "flat",
+        "button"
+      ],
+      "description": "A button variant styled for destructive actions like delete or remove, with a red color scheme and confirmation intent.",
+      "preview_image": "https://cdn.21st.dev/larsen66/button-1/destructive/preview.1754505356615.png",
+      "id": "unknown__button-1/destructive",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Input OTP Alphanumeric",
+      "source_url": "https://21st.dev/@uiable/components/input-otp-alphanumeric",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "input"
+      ],
+      "description": "A one-time-passcode input made of grouped boxes that accepts both letters and digits, useful for alphanumeric verification codes.",
+      "preview_image": "https://cdn.21st.dev/uiable/input-otp-alphanumeric/default/preview.1790065213059-fa8a605e-9890-43d3-a7a8-8967a4f179a1.png",
+      "id": "unknown__input-otp-alphanumeric",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Message Circle Heart Icon",
+      "source_url": "https://21st.dev/@skyleen77/components/icons-message-circle-heart",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "icon",
+      "tags": [
+        "react",
+        "motion",
+        "minimal",
+        "icon"
+      ],
+      "description": "An animated message circle heart icon that wiggles and pulses its heart on hover or view, for chat, feedback, and like interactions.",
+      "preview_image": "https://cdn.21st.dev/user_2vJfh2NfFGAPdS5oQXlSpccjJvB/icons-message-circle-heart/default/preview.1787330728138.png",
+      "id": "unknown__message-circle-heart-icon",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Icon Set",
+      "source_url": "https://21st.dev/@ravikatiyar162/components/icon-set",
+      "registry_url": "https://21st.dev/community/components/s/icon",
+      "category": "icon",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "grid"
+      ],
+      "description": "A clean grid layout of social and productivity icons including Apple, Twitter, GitHub, and Figma, ideal for navigation and quick platform access.",
+      "preview_image": "https://cdn.21st.dev/ravikatiyar162/icon-set/default/preview.1756289108343.png",
+      "id": "unknown__icon-set",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Pin Input",
+      "source_url": "https://21st.dev/@anubra266/components/pin-input/pin-verification",
+      "registry_url": "https://21st.dev/community/components/s/input",
+      "category": "input",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "input"
+      ],
+      "description": "A PIN verification input that accepts one-time codes with auto-focus, blur-on-complete, and resend code functionality for phone verification flows.",
+      "preview_image": "https://cdn.21st.dev/user_anubra266/pin-input/pin-verification/preview.1786537533212.webp",
+      "id": "unknown__pin-input",
+      "source_domain": "21st.dev"
+    },
+    {
+      "name": "Button 1/Link",
+      "source_url": "https://21st.dev/@sean0205/components/button-1/link",
+      "registry_url": "https://21st.dev/community/components/s/button",
+      "category": "button",
+      "tags": [
+        "react",
+        "tailwind",
+        "minimal",
+        "button"
+      ],
+      "description": "A button rendered as an inline link with solid and dashed underline variants, for seamless navigation within text flows.",
+      "preview_image": "https://cdn.21st.dev/sean0205/button-1/link/preview.1751380813044.png",
+      "id": "unknown__button-1/link",
+      "source_domain": "21st.dev"
     }
   ]
 }
