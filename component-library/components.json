@@ -1,6 +1,6 @@
 {
-  "version": "1.0.110",
-  "source_count": 28706,
+  "version": "1.0.111",
+  "source_count": 28766,
   "components": [
     {
       "id": "cat-0",
@@ -497732,6 +497732,906 @@
       "preview_image": "",
       "id": "unknown__social-icons",
       "source_domain": "www.iconshock.com"
+    },
+    {
+      "name": "Centering a Website",
+      "source_url": "https://css-tricks.com/snippets/css/centering-a-website/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "layout"
+      ],
+      "description": "Centers a website layout by applying a fixed width to a wrapper div and using margin: 0 auto to horizontally center it within the browser viewport. The page also includes comment-suggested fallbacks using text-align center on the body and negative margin-left for older Internet Explorer versions.",
+      "preview_image": "",
+      "id": "unknown__centering-a-website",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Change Text Selection Color",
+      "source_url": "https://css-tricks.com/snippets/css/change-text-selection-color/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "monochrome",
+        "reference"
+      ],
+      "description": "Uses the ::selection pseudo-element with background-color and color properties to customize the appearance of highlighted text across the page. Vendor-prefixed variants such as ::-moz-selection and ::-webkit-selection are included for Firefox and WebKit browser support.",
+      "preview_image": "",
+      "id": "unknown__change-text-selection-color",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "CSS3 Zebra Striping a Table",
+      "source_url": "https://css-tricks.com/snippets/css/css3-zebra-striping-a-table/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "monochrome",
+        "background"
+      ],
+      "description": "Applies alternating background colors to table rows using the CSS3 nth-child(odd) pseudo-class on tbody tr elements, eliminating the need for JavaScript or server-side striping logic to produce zebra-striped table rows.",
+      "preview_image": "",
+      "id": "unknown__css3-zebra-striping-a-table",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Font Stacks",
+      "source_url": "https://css-tricks.com/snippets/css/font-stacks/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "typography"
+      ],
+      "description": "Provides curated font-family stacks for serif, sans-serif, and monospace typefaces, listing cross-platform fallback fonts including system fonts for Windows, macOS, and Linux to ensure consistent typography rendering across operating systems and browsers.",
+      "preview_image": "",
+      "id": "unknown__font-stacks",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Noise Data URI Image",
+      "source_url": "https://css-tricks.com/snippets/css/noise-data-uri-image/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "noise",
+        "background"
+      ],
+      "description": "Embeds a noise texture as a base64-encoded data URI directly in the CSS background-image property, allowing the image to load without a separate HTTP request. Commenters note data URI limits in older Internet Explorer versions and recommend tools like datauri.net for generation.",
+      "preview_image": "",
+      "id": "unknown__noise-data-uri-image",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Non-Form Fieldset Look",
+      "source_url": "https://css-tricks.com/snippets/css/non-form-fieldset-look/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "flat",
+        "layout"
+      ],
+      "description": "Simulates a fieldset with legend appearance using a div styled with position relative and a border, plus an absolutely positioned heading element that overlaps the border with a white background to mimic the traditional legend break effect.",
+      "preview_image": "",
+      "id": "unknown__non-form-fieldset-look",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Remove Button Text in IE7",
+      "source_url": "https://css-tricks.com/snippets/css/remove-button-text-in-ie7/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "button"
+      ],
+      "description": "Moves button text off-screen using text-indent with a large negative value combined with text-transform: capitalize, which triggers IE7 to hide the text on input and button elements where negative-indent alone fails.",
+      "preview_image": "",
+      "id": "unknown__remove-button-text-in-ie7",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Removing Dotted Outline",
+      "source_url": "https://css-tricks.com/snippets/css/removing-dotted-outline/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "minimal",
+        "reference"
+      ],
+      "description": "Removes the default dotted outline that appears on focused links and inputs using the CSS outline property set to zero or outline-style set to none, with a note to define custom focus styles for keyboard accessibility.",
+      "preview_image": "",
+      "id": "unknown__removing-dotted-outline",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Ribbon",
+      "source_url": "https://css-tricks.com/snippets/css/ribbon/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "css",
+        "flat",
+        "border"
+      ],
+      "description": "Creates a ribbon banner element using :before and :after pseudo-elements with border-based triangles and negative z-index to produce folded corner effects on both sides of the ribbon. A protector wrapper with relative positioning and positive z-index prevents the negative z-index elements from being hidden behind opaque backgrounds.",
+      "preview_image": "",
+      "id": "unknown__ribbon",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "iPhone Calling and Texting Links",
+      "source_url": "https://css-tricks.com/snippets/html/iphone-calling-and-texting-links/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "minimal",
+        "reference"
+      ],
+      "description": "Uses tel: and sms: URI schemes in anchor href attributes to initiate phone calls and SMS messages directly from mobile devices, overriding the iPhone's default phone number auto-detection behavior for clickable text links.",
+      "preview_image": "",
+      "id": "unknown__iphone-calling-and-texting-links",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Left & Right Halves Layout",
+      "source_url": "https://css-tricks.com/snippets/html/left-right-halves-layout/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "minimal",
+        "layout"
+      ],
+      "description": "Splits the viewport into two side-by-side halves using absolute positioning with left: 0 and right: 0 on two containers each set to 50% width, both positioned at top: 0 to fill the full height of the browser window.",
+      "preview_image": "",
+      "id": "unknown__left-&-right-halves-layout",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Lorem Ipsum Paragraph",
+      "source_url": "https://css-tricks.com/snippets/html/lorem-ipsum-paragraph/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "minimal",
+        "reference"
+      ],
+      "description": "Provides a standard Lorem ipsum placeholder paragraph for use in HTML documents and design mockups, allowing developers to test layout and typography with realistic Latin text content without writing original copy.",
+      "preview_image": "",
+      "id": "unknown__lorem-ipsum-paragraph",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Multiple File Input",
+      "source_url": "https://css-tricks.com/snippets/html/multiple-file-input/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "minimal",
+        "input"
+      ],
+      "description": "Adds the HTML5 multiple attribute to a file input element with a name ending in square brackets, enabling selection of several files in one file dialog that are then processed as an array in the receiving PHP backend.",
+      "preview_image": "",
+      "id": "unknown__multiple-file-input",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Responsive Meta Tag",
+      "source_url": "https://css-tricks.com/snippets/html/responsive-meta-tag/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "minimal",
+        "layout"
+      ],
+      "description": "Sets the viewport meta tag with width=device-width and initial-scale=1 attributes to instruct mobile browsers to size page content to the device screen width, enabling responsive CSS layouts and media query-based designs to render correctly on smartphones and tablets.",
+      "preview_image": "",
+      "id": "unknown__responsive-meta-tag",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Start a Web Server With One Terminal Command on OS X",
+      "source_url": "https://css-tricks.com/snippets/html/start-a-web-server-with-one-terminal-command-on-os-x/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "minimal",
+        "tool"
+      ],
+      "description": "Spins up a local web server from any directory using Python's SimpleHTTPServer module or Python 3's http.server module with a port number, allowing instant testing of static files via localhost without configuring Apache or nginx.",
+      "preview_image": "",
+      "id": "unknown__start-a-web-server-with-one-terminal-command-on-os-x",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Top & Bottom Halves Layout",
+      "source_url": "https://css-tricks.com/snippets/html/top-bottom-halves-layout/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "minimal",
+        "layout"
+      ],
+      "description": "Divides the viewport into top and bottom halves using jQuery to measure window height and set equal 50% heights on two absolutely positioned containers, updating on browser resize to maintain the split-screen layout as the window dimensions change.",
+      "preview_image": "",
+      "id": "unknown__top-&-bottom-halves-layout",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Serving Up Universal IE 6 Stylesheet",
+      "source_url": "https://css-tricks.com/snippets/html/universal-ie6-css/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "html",
+        "minimal",
+        "reference"
+      ],
+      "description": "Uses IE conditional comments with if lte IE 6 and if gte IE 7 syntax to serve a stripped-down stylesheet to IE6 and below while all other browsers receive the full-featured stylesheet, leveraging downlevel-revealed conditional comment structure.",
+      "preview_image": "",
+      "id": "unknown__serving-up-universal-ie-6-stylesheet",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Alphabetizing Arrays, Objects, and Arrays of Objects",
+      "source_url": "https://css-tricks.com/snippets/javascript/alphabetizing-arrays-objects-and-arrays-of-objects/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "minimal",
+        "reference"
+      ],
+      "description": "Sorts arrays using JavaScript's sort() method with localeCompare for case-insensitive alphabetical ordering, and extends the pattern to sort arrays of objects by a property key and object keys by sorting Object.keys then building a new object.",
+      "preview_image": "",
+      "id": "unknown__alphabetizing-arrays,-objects,-and-arrays-of-objects",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Check if Number is Even/Odd",
+      "source_url": "https://css-tricks.com/snippets/javascript/check-if-number-is-evenodd/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "minimal",
+        "tool"
+      ],
+      "description": "Uses the JavaScript modulo operator with value % 2 == 0 to determine if a number is even or odd, with alternative solutions including bitwise AND (1 & n) for improved performance and regex validation for string inputs.",
+      "preview_image": "",
+      "id": "unknown__check-if-number-is-even/odd",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Get Object Size",
+      "source_url": "https://css-tricks.com/snippets/javascript/get-object-size/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "minimal",
+        "tool"
+      ],
+      "description": "Counts the number of own enumerable properties in a JavaScript object by iterating with for-in and hasOwnProperty checks, or uses Object.keys(obj).length in modern browsers as a shorter one-liner for retrieving the property count.",
+      "preview_image": "",
+      "id": "unknown__get-object-size",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Get All Possible DOM Events",
+      "source_url": "https://css-tricks.com/snippets/javascript/get-possible-dom-events/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "minimal",
+        "reference"
+      ],
+      "description": "Runs a JavaScript expression in the Firefox console that iterates over document properties using for-in, filters for keys starting with 'on' that are either null or functions, and returns an array of all supported DOM event handler names.",
+      "preview_image": "",
+      "id": "unknown__get-all-possible-dom-events",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Getting First and Last Items in Array (and splitting all the rest)",
+      "source_url": "https://css-tricks.com/snippets/javascript/getting-first-and-last-items-in-array-and-splitting-all-the-rest/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "minimal",
+        "tool"
+      ],
+      "description": "Uses JavaScript array methods shift() and pop() to extract first and last items, or uses slice(0, 1) and slice(1) to extract portions without mutating the original array when working with read-only data such as Apollo GraphQL query results.",
+      "preview_image": "",
+      "id": "unknown__getting-first-and-last-items-in-array-(and-splitting-all-the-rest)",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Prevent Embedded JavaScript from Failing Validation",
+      "source_url": "https://css-tricks.com/snippets/javascript/prevent-embedded-javascript-from-failing-validation/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "minimal",
+        "reference"
+      ],
+      "description": "Wraps inline JavaScript code in CDATA sections using the //<![CDATA[ and //]]> comment syntax inside script tags to prevent XHTML validators from parsing JavaScript content such as ampersands and angle brackets as markup errors.",
+      "preview_image": "",
+      "id": "unknown__prevent-embedded-javascript-from-failing-validation",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Remove the Last Character from a String",
+      "source_url": "https://css-tricks.com/snippets/javascript/remove-the-last-character-from-a-string/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "minimal",
+        "tool"
+      ],
+      "description": "Uses JavaScript's substring() method with a length-1 parameter to remove the last character from a string, or uses the slice(0, -1) method as a shorter alternative that accepts a negative index to count from the end of the string.",
+      "preview_image": "",
+      "id": "unknown__remove-the-last-character-from-a-string",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Strip Whitespace From String",
+      "source_url": "https://css-tricks.com/snippets/javascript/strip-whitespace-from-string/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "minimal",
+        "tool"
+      ],
+      "description": "Uses JavaScript's native String.trim() method to remove leading and trailing whitespace from strings, with a polyfill for IE8 and below using replace(/^\\s+|\\s+$/g, '') and regex alternatives using \\s+ to remove all internal whitespace as well.",
+      "preview_image": "",
+      "id": "unknown__strip-whitespace-from-string",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Unescape HTML in JS",
+      "source_url": "https://css-tricks.com/snippets/javascript/unescape-html-in-js/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "javascript",
+        "minimal",
+        "tool"
+      ],
+      "description": "Creates a temporary DOM div element, sets its innerHTML to an HTML-encoded string, and retrieves the decoded value from childNodes[0].nodeValue to convert HTML entities back to their original characters in JavaScript.",
+      "preview_image": "",
+      "id": "unknown__unescape-html-in-js",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Animate Height/Width to Auto",
+      "source_url": "https://css-tricks.com/snippets/jquery/animate-heightwidth-to-auto/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "minimal",
+        "transition"
+      ],
+      "description": "Clones the target element, removes fixed height and width constraints to measure natural content dimensions via the clone's computed styles, then animates the original element to those measured values since jQuery cannot animate directly to the keyword auto.",
+      "preview_image": "",
+      "id": "unknown__animate-height/width-to-auto",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Better Broken Image Handling",
+      "source_url": "https://css-tricks.com/snippets/jquery/better-broken-image-handling/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "minimal",
+        "image-effect"
+      ],
+      "description": "Binds an error event handler to img elements using jQuery's .on('error') method to detect when images fail to load, then either replaces the src attribute with a fallback placeholder image or hides the broken element entirely.",
+      "preview_image": "",
+      "id": "unknown__better-broken-image-handling",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Check if Checkbox is Checked",
+      "source_url": "https://css-tricks.com/snippets/jquery/check-if-checkbox-is-checked/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "minimal",
+        "input"
+      ],
+      "description": "Uses jQuery's :checked pseudo-selector with attr('checked') to return a boolean for a single checkbox, and applies $('input[type=checkbox]:checked') to select all checked checkboxes in a single query for bulk operations.",
+      "preview_image": "",
+      "id": "unknown__check-if-checkbox-is-checked",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Clear a File Input",
+      "source_url": "https://css-tricks.com/snippets/jquery/clear-a-file-input/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "minimal",
+        "input"
+      ],
+      "description": "Clears a file input element's selected file by cloning it with clone(true) to preserve bound event handlers, clearing the clone's value with val(''), and replacing the original element, which works around browser security restrictions on directly setting file input values.",
+      "preview_image": "",
+      "id": "unknown__clear-a-file-input",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Link Nudging",
+      "source_url": "https://css-tricks.com/snippets/jquery/link-nudging/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "minimal",
+        "hover-effect"
+      ],
+      "description": "Applies a horizontal padding animation to links on hover using jQuery's .animate() method with .stop() to prevent animation queue buildup, moving paddingLeft from 0px to 10px when the mouse enters the link and back when it leaves.",
+      "preview_image": "",
+      "id": "unknown__link-nudging",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Load Only a Section of a Page",
+      "source_url": "https://css-tricks.com/snippets/jquery/load-only-a-section-of-a-page/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "minimal",
+        "reference"
+      ],
+      "description": "Uses jQuery's .load() method with a URL and space-separated selector combination to perform an AJAX request that fetches an entire page and extracts only the matching HTML section from a same-domain target for insertion into the current page.",
+      "preview_image": "",
+      "id": "unknown__load-only-a-section-of-a-page",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Move Cursor To End of Textarea or Input",
+      "source_url": "https://css-tricks.com/snippets/jquery/move-cursor-to-end-of-textarea-or-input/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "minimal",
+        "input"
+      ],
+      "description": "Extends jQuery with a putCursorAtEnd plugin that uses setSelectionRange to position the caret at the end of an input or textarea's content, with a fallback using val() reassignment for older browsers without setSelectionRange support.",
+      "preview_image": "",
+      "id": "unknown__move-cursor-to-end-of-textarea-or-input",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Simple jQuery Accordion",
+      "source_url": "https://css-tricks.com/snippets/jquery/simple-jquery-accordion/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "minimal",
+        "toggle"
+      ],
+      "description": "Binds click handlers to accordion header dt a links that call slideUp() on all panels and slideDown() on only the clicked panel's sibling dd, using jQuery's DOM traversal to toggle content visibility in a definition list structure.",
+      "preview_image": "",
+      "id": "unknown__simple-jquery-accordion",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Target Only External Links",
+      "source_url": "https://css-tricks.com/snippets/jquery/target-only-external-links/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "jquery",
+        "minimal",
+        "reference"
+      ],
+      "description": "Uses jQuery's .filter() method with hostname comparison to select anchor tags whose hostname differs from window.location.hostname, or uses attribute selectors to match links starting with http:// that do not contain the current domain string.",
+      "preview_image": "",
+      "id": "unknown__target-only-external-links",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Check if Website is Available",
+      "source_url": "https://css-tricks.com/snippets/php/check-if-website-is-available/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "tool"
+      ],
+      "description": "Performs a cURL HTTP request with CURLOPT_CONNECTTIMEOUT and CURLOPT_NOBODY headers to verify if a website responds with a valid HTTP status code, returning true for successful 200-range responses and false for connection failures or error codes.",
+      "preview_image": "",
+      "id": "unknown__check-if-website-is-available",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Convert Accented Characters",
+      "source_url": "https://css-tricks.com/snippets/php/convert-accented-characters/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "tool"
+      ],
+      "description": "Uses PHP's htmlentities() with ENT_COMPAT and UTF-8 encoding to convert accented characters to HTML entities, then preg_replace to strip diacritical marks and html_entity_decode to return clean ASCII-safe strings suitable for URL slugs.",
+      "preview_image": "",
+      "id": "unknown__convert-accented-characters",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Display FeedBurner Feed Count",
+      "source_url": "https://css-tricks.com/snippets/php/display-feedburner-feed-count/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "reference"
+      ],
+      "description": "Uses PHP cURL functions to request the FeedBurner Awareness API endpoint with a feed URI parameter, parses the returned XML with SimpleXMLElement, and extracts the circulation count from the feed entry's circulation attribute to display the subscriber total.",
+      "preview_image": "",
+      "id": "unknown__display-feedburner-feed-count",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Find Highest Numerically Named File",
+      "source_url": "https://css-tricks.com/snippets/php/find-highest-numerically-named-file/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "tool"
+      ],
+      "description": "Uses PHP's glob() to find files matching a pattern, explodes each filename by underscore to extract the numeric prefix, stores results in an array keyed by the numeric value, sorts with ksort(SORT_NUMERIC), and returns the highest entry using array_pop.",
+      "preview_image": "",
+      "id": "unknown__find-highest-numerically-named-file",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Perform Function on Each Item of an Array",
+      "source_url": "https://css-tricks.com/snippets/php/perform-function-on-each-item-of-an-array/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "reference"
+      ],
+      "description": "Uses PHP's array_map() function to apply a built-in function such as strip_tags to every element in an array, returning a new array with the transformed values without modifying the original input array.",
+      "preview_image": "",
+      "id": "unknown__perform-function-on-each-item-of-an-array",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Quick Alphabetic Navigation",
+      "source_url": "https://css-tricks.com/snippets/php/quick-alphabetic-navigation/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "navbar"
+      ],
+      "description": "Uses PHP's range() function to generate an array of characters from 'a' to 'z' and loops through them with foreach to output anchor links for each letter, building an alphabetical navigation system suitable for indexes or glossaries.",
+      "preview_image": "",
+      "id": "unknown__quick-alphabetic-navigation",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "PHP Redirect",
+      "source_url": "https://css-tricks.com/snippets/php/redirect/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "reference"
+      ],
+      "description": "Uses PHP's header() function with a Location directive to send an HTTP redirect response to the browser, which must be called before any output is sent to the document for the redirect to execute correctly.",
+      "preview_image": "",
+      "id": "unknown__php-redirect",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Return Only One Variable from MySQL Query",
+      "source_url": "https://css-tricks.com/snippets/php/return-only-one-variable-from-mysql-query/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "reference"
+      ],
+      "description": "Defines a PHP function that executes a MySQL query with mysql_query(), fetches a single row with mysql_fetch_array(), and returns a specific field value from the result array using an index parameter, allowing extraction of a single value from a database result set.",
+      "preview_image": "",
+      "id": "unknown__return-only-one-variable-from-mysql-query",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Unzip Files",
+      "source_url": "https://css-tricks.com/snippets/php/unzip-files/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "php",
+        "minimal",
+        "tool"
+      ],
+      "description": "Uses PHP's zip extension functions including zip_open, zip_read, zip_entry_name, and zip_entry_read to iterate through a zip archive, extract each file's contents, and write them to the filesystem with fopen and fwrite calls.",
+      "preview_image": "",
+      "id": "unknown__unzip-files",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Black and White Opacity Functions",
+      "source_url": "https://css-tricks.com/snippets/sass/black-white-opacity-mixins/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "sass",
+        "monochrome",
+        "reference"
+      ],
+      "description": "Defines Sass @function declarations that return rgba(black, opacity) and rgba(white, opacity) using color keywords with a numeric opacity parameter, allowing reusable transparent black and white color helpers to be called throughout a Sass stylesheet.",
+      "preview_image": "",
+      "id": "unknown__black-and-white-opacity-functions",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Centering Mixin",
+      "source_url": "https://css-tricks.com/snippets/sass/centering-mixin/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "sass",
+        "minimal",
+        "layout"
+      ],
+      "description": "Creates a Sass mixin that absolutely positions an element at 50% from the top and left of a relatively positioned parent, then uses transform: translate(-50%, -50%) to offset the element by half of its own dimensions for perfect horizontal and vertical centering.",
+      "preview_image": "",
+      "id": "unknown__centering-mixin",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Covering Mixin",
+      "source_url": "https://css-tricks.com/snippets/sass/covering-mixin/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "sass",
+        "minimal",
+        "layout"
+      ],
+      "description": "Defines a Sass mixin that sets position absolute with top, left, width, and height all set to cover the full dimensions of the parent container, creating a full-size overlay or cover element for backgrounds, modals, or fullscreen layers.",
+      "preview_image": "",
+      "id": "unknown__covering-mixin",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Maintain Aspect Ratio Mixin",
+      "source_url": "https://css-tricks.com/snippets/sass/maintain-aspect-ratio-mixin/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "sass",
+        "minimal",
+        "layout"
+      ],
+      "description": "Uses a Sass mixin with the padding-top percentage technique, calculating the ratio as ($height / $width) * 100 to set the :before pseudo-element's padding-top to 56.25% for 16:9, while absolutely positioning the inner content element to fill the resulting aspect ratio box.",
+      "preview_image": "",
+      "id": "unknown__maintain-aspect-ratio-mixin",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Mixin to Manage Breakpoints",
+      "source_url": "https://css-tricks.com/snippets/sass/mixin-manage-breakpoints/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "sass",
+        "minimal",
+        "reference"
+      ],
+      "description": "Defines a Sass breakpoint management system using a map of named breakpoints mapped to min-width media query values, with a respond-to mixin that accepts a breakpoint name and outputs the corresponding @media query wrapping the content block.",
+      "preview_image": "",
+      "id": "unknown__mixin-to-manage-breakpoints",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Mixin to Prefix Properties",
+      "source_url": "https://css-tricks.com/snippets/sass/mixin-prefix-properties/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "sass",
+        "minimal",
+        "reference"
+      ],
+      "description": "Creates a Sass mixin that iterates over a list of vendor prefix strings and outputs prefixed property declarations using interpolation (#{'-' + $prefix + '-' + $property}) before the standard unprefixed declaration, providing fine-grained control over which prefixes are generated.",
+      "preview_image": "",
+      "id": "unknown__mixin-to-prefix-properties",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Px to Em Functions",
+      "source_url": "https://css-tricks.com/snippets/sass/px-to-em-functions/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "sass",
+        "minimal",
+        "tool"
+      ],
+      "description": "Defines Sass @function declarations that divide a pixel target value by a base context (default 16px) and multiply by 1em, using either string interpolation (#{$pixels/$context}em) or arithmetic multiplication to convert pixel measurements to em units.",
+      "preview_image": "",
+      "id": "unknown__px-to-em-functions",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Sorting Function",
+      "source_url": "https://css-tricks.com/snippets/sass/sorting-function/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "sass",
+        "minimal",
+        "tool"
+      ],
+      "description": "Implements a quicksort algorithm in Sass using @function that recursively partitions a list into less-than, equal-to, and greater-than groups based on a pivot seed value, with a _str-compare helper for string comparison against a configurable sort order list.",
+      "preview_image": "",
+      "id": "unknown__sorting-function",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Base Threaded Comments Styling",
+      "source_url": "https://css-tricks.com/snippets/wordpress/base-threaded-comments-styling/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "wordpress",
+        "minimal",
+        "reference"
+      ],
+      "description": "Provides a comprehensive CSS stylesheet for WordPress threaded comments using the ol.commentlist selector with nested ul.children for depth-based indentation, targeting depth-2 through depth-5 classes with border-left colors and alternating even/odd row backgrounds.",
+      "preview_image": "",
+      "id": "unknown__base-threaded-comments-styling",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Display Author Info",
+      "source_url": "https://css-tricks.com/snippets/wordpress/display-author-info/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "wordpress",
+        "minimal",
+        "reference"
+      ],
+      "description": "Outputs an author box containing the author's Gravatar image via get_avatar() with the post author's email and size 80, the display name via the_author_meta('display_name'), and the biographical description using the_author_meta('user_description').",
+      "preview_image": "",
+      "id": "unknown__display-author-info",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Get Featured Image URL",
+      "source_url": "https://css-tricks.com/snippets/wordpress/get-featured-image-url/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "wordpress",
+        "minimal",
+        "reference"
+      ],
+      "description": "Retrieves a WordPress post's featured image URL by calling get_post_thumbnail_id() to obtain the attachment ID, then passing it to wp_get_attachment_image_src() to get an array where index 0 contains the full image URL usable as a CSS background-image.",
+      "preview_image": "",
+      "id": "unknown__get-featured-image-url",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Increase Custom Fields Dropdown Limit",
+      "source_url": "https://css-tricks.com/snippets/wordpress/increase-custom-fields-dropdown-limit/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "wordpress",
+        "minimal",
+        "tool"
+      ],
+      "description": "Hooks into the WordPress postmeta_form_limit filter to increase the default 30-item cap on the Custom Fields dropdown in the post editor, returning a higher integer value of 100 so more previously used custom field names appear in the admin panel.",
+      "preview_image": "",
+      "id": "unknown__increase-custom-fields-dropdown-limit",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "List Posts, Highlight Current",
+      "source_url": "https://css-tricks.com/snippets/wordpress/list-posts-highlight-current/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "wordpress",
+        "minimal",
+        "reference"
+      ],
+      "description": "Uses WordPress's get_posts() function to query recent posts ordered by date and loops through them with foreach, adding a 'current' class to the list item whose post ID matches the global $wp_query->post->ID to highlight the active post.",
+      "preview_image": "",
+      "id": "unknown__list-posts,-highlight-current",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Remove Specific Categories From The Loop",
+      "source_url": "https://css-tricks.com/snippets/wordpress/remove-specific-categories-from-the-loop/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "wordpress",
+        "minimal",
+        "reference"
+      ],
+      "description": "Uses WordPress's query_posts() function with the cat parameter set to a negative category ID to exclude specific categories from the main post loop, accepting comma-separated values to exclude multiple categories simultaneously.",
+      "preview_image": "",
+      "id": "unknown__remove-specific-categories-from-the-loop",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "Reset Admin Password in Database",
+      "source_url": "https://css-tricks.com/snippets/wordpress/reset-admin-password/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "wordpress",
+        "minimal",
+        "tool"
+      ],
+      "description": "Executes a MySQL UPDATE query on the wp_users table to set the user_pass column to an MD5 hash of a new password where user_login matches the target admin username, allowing password reset directly through phpMyAdmin when email recovery is unavailable.",
+      "preview_image": "",
+      "id": "unknown__reset-admin-password-in-database",
+      "source_domain": "css-tricks.com"
+    },
+    {
+      "name": "the_category with Excludes",
+      "source_url": "https://css-tricks.com/snippets/wordpress/the_category-excludes/",
+      "registry_url": "https://css-tricks.com/snippets/",
+      "category": "snippet",
+      "tags": [
+        "wordpress",
+        "minimal",
+        "reference"
+      ],
+      "description": "Defines a custom PHP function that retrieves post categories via get_the_category() and filters out specified category IDs by checking against an exclusion list with in_array(), outputting category anchor links with configurable spacers while skipping excluded items.",
+      "preview_image": "",
+      "id": "unknown__the_category-with-excludes",
+      "source_domain": "css-tricks.com"
     }
   ]
 }
