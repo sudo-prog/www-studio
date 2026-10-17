@@ -242,7 +242,7 @@ export default function Dashboard() {
           </div>
         )}
       </main>
-      <div className="pb-[env(safe-area-inset-bottom)]">
+      <div className="min-h-[100dvh] pb-[env(safe-area-inset-bottom)] pt-[env(safe-area-inset-bottom)]">
       <AiChatWidget context="my projects dashboard" onNavigate={setLocation} />
       </div>
     </div>

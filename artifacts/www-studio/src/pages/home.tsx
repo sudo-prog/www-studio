@@ -74,7 +74,7 @@ function WebsiteTemplateCard({ item }: { item: WebsiteTemplateItem }) {
         onMouseLeave={() => setIsHovered(false)}
       >
         {/* Thumbnail placeholder — aura.build style */}
-        <div className="w-full h-full bg-muted/50 flex items-center justify-center">
+        <div className="w-full h-full bg-muted/50 flex flex-wrap items-center justify-center">
           <div className="text-center">
             <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-3">
               <Eye className="h-5 w-5 text-primary" />
@@ -327,7 +327,7 @@ export default function Home() {
         <WebsiteTemplatesSection />
 
         {/* Footer — aura.build style, personal-use version */}
-        <footer className="px-4 md:px-6 py-12 border-t border-border bg-card/30 mt-16">
+        <footer className="px-4 md:px-6 py-12 border-t border-border bg-card/30 mt-16" style={{ paddingBottom: "calc(12px + env(safe-area-inset-bottom))" }}>
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 mb-8">
               <div>
